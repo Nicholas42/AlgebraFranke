@@ -86,12 +86,13 @@
 
 
 
-\newcommand{\pp}{\mathfrak{p}}
-\newcommand{\mm}{\mathfrak{m}}
+
+
 \renewcommand{\aa}{\mathfrak{a}}
 \newcommand{\bb}{\mathfrak{b}}
-
-
+\newcommand{\mm}{\mathfrak{m}}
+\newcommand{\pp}{\mathfrak{p}}
+\newcommand{\qq}{\mathfrak{q}}
 
 \renewcommand{\AA}{\mathfrak A}
 
@@ -102,7 +103,8 @@
 \newcommand{\End}{\operatorname{End}}
 \newcommand{\Aut}{\operatorname{Aut}}
 \newcommand{\Gal}{\operatorname{Gal}}
-
+\newcommand{\codim}{\operatorname{codim}}
+\newcommand{\Spec}{\operatorname{Spec}}
 %\newcommand{\multiline}[1]{#1}
 \newcommand{\longto}{\longrightarrow}
 \newcommand{\longot}{\longleftarrow}
@@ -597,7 +599,7 @@ Let $\mm$ be any maximal ideal and $x$ a zero of $\mm$, then $\mm\subseteq\mm_x$
 \begin{rem}
  \begin{alphanumerate}
   \item If $k\neq\overline{k}$, the bijection is between $\Aut(\overline{k}/k)-$orbits on $\overline{k}^n$ and maximal ideals in $R=k[X_1,\ldots,X_n]$. If $k$ has no separable extensions (i.e., $k$ is \emph{separably closed}, $k=k^{\operatorname{sep}}$), then the bijection is between $\overline{k}^n$ and $\mm-\operatorname{Spec}(R)$, the set of maximal ideals of $R$.
-  \item For arbitrary $R$, Grothendieck takes arbitrary prime ideals (which the lecturer thinks was also proposed by Krull, who was a noob compared to Grothendieck) and turns $\operatorname{Spec} R$, the set of prime ideals of $R$, into a geometric object.
+  \item For arbitrary $R$, Grothendieck takes arbitrary prime ideals (which the lecturer thinks was also proposed by Krull, who was a n00b compared to Grothendieck) and turns $\operatorname{Spec} R$, the set of prime ideals of $R$, into a geometric object.
  \end{alphanumerate}
 
 \end{rem}
@@ -789,11 +791,11 @@ $T$ is \emph{connected} if the following equivalent properties hold:
  \end{alphanumerate}
 A closed subset of $X$ is called irreducible when it is irreducible as a topological subspace.
 \end{defi}
-\begin{rem}[a.k.a Remark 4]
+\begin{rem}[a.k.a. Remark 4]
  For the sake of simplicity "irreducible subset of $X$" will be used as as a substitute of "irreducible closed subset of $X$".
 \end{rem}
 
-\begin{prop}[a.k.a Proposition 2]
+\begin{prop}[a.k.a. Proposition 2]
  In a Noetherian topological space $X$, any closed subset $Y$ is Noetherian and can be expressed as a finite union $Y= \bigcup_{i=1}^k Y_i$ of irreducible subsets $Y_i$ where $Y_i\subseteq Y_j$ implies $i=j$. Moreover the $Y_i$ are unique up to permutation of their order and $\{Y_1,\ldots, Y_k\}$ can be characterized as:
  \begin{itemize}
   \item The set of irreducible closed subsets of $Y$ containing a non-empty open subset of $Y$.
@@ -819,7 +821,7 @@ Hence $\left\{ Y_i\st 1\leq i \leq k\right\}$ contains all irreducible subsets c
  \end{alphanumerate}
 
 \end{example}
-\begin{prop}[a.k.a. Proposition 3]
+\begin{prop}[a.k.a. Proposition 3]\lbl{prop:primeIdealIrreducibleZeros}
  Let $I$ be an ideal in $R=k[X_1,\ldots, X_n]$ then $V(I)$ is irreducible iff $\sqrt{I}$ is a prime ideal.
 \end{prop}
 \begin{proof}
@@ -832,15 +834,73 @@ where the two members are closed. As $Y$ is irreducible at least one member equa
 Let $I$ be a prime ideal. Then $I\subsetneq R$ hence $Y=V(I)$ is not empty by the Nullstellensatz. Assume $Y=Y_1\cup Y_2$ a proper decomposition. In particular $Y_1\not \subseteq Y_2$ and $Y_1\not\supseteq Y_2$. Let $J_k\subseteq R$ be the ideal of polynomials vanishing on $Y_k$. Then $J_1\not \subseteq J_2$ and $J_1\not \supseteq J_2$ by remark \reff{rem:ZariskiBijectiveToRadicals}. Let $f\in J_1\setminus J_2$ and $g\in J_2\setminus J_1$, then $f_1$ vanishes on $Y_1$ but not on $Y_2$ and $g$ vanishes on $Y_2$ but not on $Y_1$, $fg\in I$ (by Proposition \reff{prop:varietyOfRadical}, as it vanishes on $Y$ and $I=\sqrt{I}$) but $f\not \in I$ as it does not vanish identically on $Y_2$ and $g\not\in I$ as it does not vanish on $Y_1$. So $I$ is not prime.
 \end{proof}
 \begin{rem*}
- In $R=k[X,Y]$, $X\cdot R$ and $Y\cdot R$ are primed ideals because e.g. $R/Y\cdot R \simeq k[X]$ which is a domain. Hence $k\times\{0\}$ and $\{0\}\times k$ are indeed irreducible as was claimed in example 4. In particular, they are connected and since they have a non-empty intersection, their union is connected as well.
+ In $R=k[X,Y]$, $X\cdot R$ and $Y\cdot R$ are prime ideals because e.g. $R/Y\cdot R \simeq k[X]$ which is a domain. Hence $k\times\{0\}$ and $\{0\}\times k$ are indeed irreducible as was claimed in example 4. In particular, they are connected and since they have a non-empty intersection, their union is connected as well.
 \end{rem*}
 \begin{example}
  We have $k^n = V(\{0\})$ is irreducible as $R$ is a domain, hence $\{0\}\subseteq R$ is prime.
 \end{example}
-\begin{cor}
- If $f\in R = k[X_1,\ldots, X_n]$ is an irreducible polynomial, then $V(f)$ is an irreducible closed subset of $k^n$.
+\begin{cor}\lbl{cor:irreducibleSetsAnsPolynomials}
+ If $f\in R = k[X_1,\ldots, X_n]$ is an irreducible polynomial, then $V(f)$ is an irreducible closed subset of $k^n$, $R$ being a unique factorization domain.
 \end{cor}
+\begin{defi}\lbl{def:dimension}
+ Let $M$ be an irreducible subset of the Noetherian topological space $X$. The \emph{codimension} $\codim(M,X)$ of $M$ in $X$ is the (possible infinite) supremum of the set of integers $k$ such that there is a strictly ascending chain $M=M_0\subsetneq M_1\subsetneq \ldots \subsetneq M_k\subseteq X$ of irreducible subsets of $X$. The \emph{dimension} of $X$ is the possibly infinite supremum of the codimensions of all irreducible subsets of $X$.
+\end{defi}
+\begin{rem*}
+ This notion of dimension seems to go back to W. Krull.
+\end{rem*}
+\newcounter{temp}
+\setcounter{temp}{\theequation}
+\setcounter{equation}{0}
+\begin{rem}[a.k.a. Remark 5]
+\begin{alphanumerate}
+ \item Let $X$ be Noetherian and $A\supseteq B\supseteq C$ are irreducible, then
+\begin{align}
+\begin{split}
+ \codim(C,B) +\codim(B,A) &\leq \codim(C,A) \\
+ \dim(A) + \codim(A,X) &\leq \dim(X)
+ \end{split}
+\end{align}
+\item Let $X$ be irreducible and $U\subseteq X$ open such that $Y\cap U\neq\emptyset$. Then there is a bijection between the irreducible subsets $A$ of $X$ with $A\supseteq Y$ and the irreducible subsets $M$ of $U$ with $M\supseteq U\cap Y$.
+\begin{align*}
+ A &\longmapsto M = A\cap V\\
+ \overline{M}&\longmapsfrom M
+\end{align*}
+This implies the locality of codimension:
+\begin{align}
+ \codim(Y,X) = \codim(Y\cap U, U) 
+\end{align}
+\item A noetherian topological space is called \emph{catenary} if, for arbitrary $X\supseteq A\supseteq B\supseteq C$ equality in the first line of $(1)$.
+\end{alphanumerate}
+\setcounter{equation}{\thetemp}
 
+\end{rem}
+\begin{thm}
+ For $X=k^n$ with the Zariski-topology $\dim(X) = n$ and equality occurs in $(1)$. In particular, $X$ is catenary.
+\end{thm}
+\begin{rem}[a.k.a. Remark 5]
+ Obviously $\codim(\{0\}^n, k^n) \geq n$ because of the chain $\{0\}^n\subsetneq k\times \{0\}^{n-1}\subsetneq k^2\times\{0\}^{n-2}\subsetneq \ldots \subsetneq k^{n-1}\times\{0\} \subsetneq k^n$. The subsets here are irreducible because they are homeomorphic to $k^i$ which is irreducible by Proposition \reff{prop:primeIdealIrreducibleZeros} as $k[X_1,\ldots,X_i]$ is a domain (i.e. $\{0\}$ is prime). Similarly, $\codim(\{x\}, X) \geq n$ for any $x\in X =k^n$.
+\end{rem}
+
+\begin{rem*}
+ \begin{alphanumerate}
+  \item Even the finiteness of $\dim(k^n)$ is not trivial. 
+  \item In topology, the fact that no open subset $U\subseteq \IR^n$, $U\neq \emptyset$ is homeomorphic to any open $V\subseteq \IR^k$ for $k\neq n$ is not trivial. Among the first proofs are by Brouwer and Lebesgue (Pflastersatz, Lebesgue covering theorem)
+  \item For $\Spec(R)$ with $R$ Noetherian, $\codim(A,B)$ is finite for irreducible $A\subseteq B$ (quite hard, probably Krull (even though Krull was a n00b compared to Grothendieck)) but there are examples where $\Spec(R)$ is infinite-dimensional (relatively easy), there are closed points of differing codimensions (quite easy) and $\Spec(R)$ may fail to be catenary (very hard, Nagata) but the $R$ encountered "in free nature" are catenary.
+ \end{alphanumerate}
+
+\end{rem*}
+\begin{lem}
+ Let $R$ be a factorial domain. If $\pp\subseteq R$ is a non-zero prime ideal, then $\pp$ contains a prime element.
+\end{lem}
+\begin{proof}
+ Let $f\in \pp \setminus \{0\}$ and $f = \prod_{i=1}^n p_i$ (note $n\neq 0$ as $f\not \in R^\times$, as $\pp$ is prime) be its decomposition into prime factors, then one of the $p_i$ must be in $\pp$, since $\pp$ is prime.
+\end{proof}
+\begin{prop}[a.k.a. Proposition 1, srsly get your shit together]
+ Let $p\in R=k[X_1,\ldots, X_n]$ be an irreducible polynomial. Then $V(p)$ (irreducible by Corollary \reff{cor:irreducibleSetsAnsPolynomials}) is of codimension 1 in $k^n$ and all subsets of $k^n$ with codimension 1 can be obtained in this way.
+\end{prop}
+\begin{proof}
+ Let $p$ be as required, then $\pp = p\cdot R$ is prime. If $X=V(\pp)$ had codimension 0, it would equal $k^n$ (which is irreducible by Proposition \reff{prop:primeIdealIrreducibleZeros} and $\pp=0$ and $p=0$, a contradiction. If $\codim(X,k^n) >1$, there is a irreducible subset $Y=V(\qq)$ between $X$ and $k^n$ where $\qq$ may be assumed prime (Remark \reff{rem:ZariskiBijectiveToRadicals} and Proposition \reff{prop:primeIdealIrreducibleZeros}) and $\qq\subsetneq \pp$ by Remark \reff{rem:ZariskiBijectiveToRadicals}. We have $\qq \neq \{0\}$ because $Y=k^n$ otherwise. Let $f\in \qq\setminus\{0\}$, then $p|f$ Let $f = \prod_{i=1}^m q_i$ be the prime factor decomposition of $f$ in $R$, where $m$ may be assumed minimal. Then $p$ is proportional to one of the $q_i$ and if $p\in \qq$ then $q_i$ could be removed from the factors, $f=g\cdot p$, and $g\in \qq$ can be factored with $m-1$ prime factors, in contradiction to the minimality of $m$. Thus $p\in \qq$ and $p\cdot R \subseteq \qq \subseteq \pp=p\cdot R$, a contradiction to $\qq\subsetneq \pp$. Thus, the codimension is 1 in this case (a special case of Krull's principal ideal theorem). 
+\end{proof}
 
 
 \end{document}
