@@ -101,6 +101,9 @@
 	\IfBeginWith{\temp}{\thesubsection}{\hyperref[#1]{\tempcropped}}{\hyperref[#1]{\temp}}%
 }
 
+\newcommand{\Oo}{\mathcal{O}}
+\newcommand{\Gg}{\mathcal{G}}
+
 \newcommand{\IN}{\mathbb{N}}
 \newcommand{\IZ}{\mathbb{Z}}
 \newcommand{\IQ}{\mathbb{Q}}
@@ -131,6 +134,7 @@
 \newcommand{\codim}{\operatorname{codim}}
 \newcommand{\Spec}{\operatorname{Spec}}
 \newoperator{sep}
+\newoperator{tr}
 %\newcommand{\multiline}[1]{#1}
 \newcommand{\longto}{\longrightarrow}
 \newcommand{\longot}{\longleftarrow}
@@ -431,9 +435,9 @@ Remark of the author: It's called integrity not entireness ...
 \begin{rem}
  It is not really necessary to assume $A\to B$ to be injective.
 \end{rem}
-\begin{prop}\lbl{prop:integralStuff}
+\begin{prop}%\lbl{prop:integralStuff}
  \begin{rmnumerate}
-  \item An element $b\in B$ is integral over $A$ iff there is an intermediate ring $A\subseteq C\subseteq B$ containing $b$ which is finite over $A$. If $b_1\ldotspam b_n$ are finitely many integral elements of $B$, there is an $A$-subalgebra $A\subseteq C\subseteq B$ containing all $b_i$ which is finite over $A$.
+  \item An element $b\in B$ is integral over $A$ iff there is an intermediate ring $A\subseteq C\subseteq B$ containing $b$ which is finite over $A$. If $b_1\ldotspam b_n$ are finitely many integral elements of $B$, there is an $A$-subalgebra $A\subseteq C\subseteq B$ containing all $b_i$ which is finite over $A$.\lbl{prop:integralStuff} % This is some dumb latex issue...
   \item The elements of $B$ which are integral over $A$ form a subring of $B$, the \emph{integral closure} of $A$ in $B$.
   \item If $C/B$ and $B/A$ are integral, so is $C/A$.
   \item Let $B/A$ be integral (where it is essential that $A$ is a subring of $B$). If $B$ is a field, then so is $A$.
@@ -754,7 +758,7 @@ Let $k$ be an algebraically closed field.
 \begin{example}
   Let $n=1$. Any ideal $I\subseteq k[X]$ is principal $I=\langle \prod_[i=1]^m (X-\xi_i)^{a_i}\rangle_{k[X]}$ and $V(I) = \left\{\xi_1,\ldots, \xi_n\right\}$ unless $I=0$, $V(I) = k$. Thus the Zariski-closed subsets of $k$ are $k$ and the finite subsets and the open subsets are $\emptyset$ and the cofinite subsets (i.e. the subsets $U$ with $k\setminus U$ being finite). In particular the intersection of two non-empty open subsets is in turn non-empty.
 \end{example}
-\begin{example}
+\begin{example}\lbl{exm:ZariskiClosedInK^2}
  Let $n=2$. We will see at the end of this chapter that the Zariski-closed subsets of $k^2$, besides $k^2$, are the subsets of the form $C\cup F$ where $C=\left\{x\in k^2\st P(x) = 0\right\}$ (for some $P\in k[X_1,X_2]\setminus\{0\}$, $C$ is a \emph{curve}) and $F\subseteq k^2$ is finite.
 \end{example}
 \begin{rem}\lbl{rem:ZariskiBijectiveToRadicals}
@@ -907,7 +911,7 @@ This implies the locality of codimension:
 \setcounter{equation}{\thetemp}
 
 \end{rem}
-\begin{thm}
+\begin{thm}\lbl{thm:k^nIsCatenary}
  For $X=k^n$ with the Zariski-topology $\dim(X) = n$ and equality occurs in \eqref{eq:codimIneqs}. In particular, $X$ is catenary.
 \end{thm}
 \begin{rem}[a.k.a. Remark 5]
@@ -928,13 +932,96 @@ This implies the locality of codimension:
 \begin{proof}
  Let $f\in \pp \setminus \{0\}$ and $f = \prod_{i=1}^n p_i$ (note $n\neq 0$ as $f\not \in R^\times$, as $\pp$ is prime) be it's decomposition into prime factors, then one of the $p_i$ must be in $\pp$, since $\pp$ is prime.
 \end{proof}
-\begin{prop}[a.k.a. Proposition 1, srsly get your shit together]
+\begin{prop}[a.k.a. Proposition 4, formerly known as Proposition 1, srsly get your shit together]
  Let $p\in R=k[X_1,\ldots, X_n]$ be an irreducible polynomial. Then $V(p)$ (irreducible by Corollary \reff{cor:irreducibleSetsAnsPolynomials}) is of codimension 1 in $k^n$ and all subsets of $k^n$ with codimension 1 can be obtained in this way.
 \end{prop}
 \begin{proof}
  Let $p$ be as required, then $\pp = p\cdot R$ is prime. If $X=V(\pp)$ had codimension 0, it would equal $k^n$ (which is irreducible by Proposition \reff{prop:primeIdealIrreducibleZeros} and $\pp=0$ and $p=0$, a contradiction. If $\codim(X,k^n) >1$, there is a irreducible subset $Y=V(\qq)$ between $X$ and $k^n$ where $\qq$ may be assumed prime (Remark \reff{rem:ZariskiBijectiveToRadicals} and Proposition \reff{prop:primeIdealIrreducibleZeros}) and $\qq\subsetneq \pp$ by Remark \reff{rem:ZariskiBijectiveToRadicals}. We have $\qq \neq \{0\}$ because $Y=k^n$ otherwise. Let $f\in \qq\setminus\{0\}$, then $p|f$ Let $f = \prod_{i=1}^m q_i$ be the prime factor decomposition of $f$ in $R$, where $m$ may be assumed minimal. Then $p$ is proportional to one of the $q_i$ and if $p\in \qq$ then $q_i$ could be removed from the factors, $f=g\cdot p$, and $g\in \qq$ can be factored with $m-1$ prime factors, in contradiction to the minimality of $m$. Thus $p\in \qq$ and $p\cdot R \subseteq \qq \subseteq \pp=p\cdot R$, a contradiction to $\qq\subsetneq \pp$. Thus, the codimension is 1 in this case (a special case of Krull's principal ideal theorem). 
 \end{proof}
 
+\begin{rem*} [on Example \reff{exm:ZariskiClosedInK^2}]
+If Theorem \ref{thm:k^nIsCatenary} is assumed, $\dim(k^2) = 2$ and the irreducible subsets are of codimension 2 (points), of codimension 1 ($V(f)$ for irreducible $f$), and 0 ($k^2$).
+\end{rem*}
+
+\subsection{Quasi-affine algebraic varieties}
+Let the algebraically closed field be fixed.
+\begin{defi}\lbl{def:affineVariety}
+ An affine algebraic variety is (for our purposes) an irreducible (Zariski-closed) subset $Z\subseteq k^n$, for some $n$. A quasi-affine algebraic variety is a non-empty Zariski-open subset of an affine algebraic variety.
+\end{defi}
+\begin{rem}
+ A closed subset of a Noetherian space is Noetherian, as is any open subset thereof, affine and quasi-affine varieties are Noetherian.
+\end{rem}
+\begin{defi}\lbl{def:regularFunctions}
+ Let $Z\subseteq k^n$ be a quasi-affine algebraic variety and $f: Z\to k$ a $k$-valued function on it. We call $f$ \emph{regular of $x$} if there is a neighbourhood $V\subseteq U\subseteq Z$ of $x$ and polynomials $p,q\in k[X_1,\ldots,X_n]$ such that $V(q) \cap U = \emptyset$ and such that $f(y) = \frac{p(y)}{q(y)}$ for all $y\in U$. We call $f$ \emph{regular} on $Z$ if it is regular on every point of $Z$. Denote the ring of regular functions by $\Oo(Z)$ and and put $\Oo(\emptyset)=\{\text{empty function})$.
+ \end{defi}
+ The association $Z\to \Oo(Z)$ is part of the structure of a sheaf.
+\begin{defi}\lbl{def:sheaf}
+ Let $X$ be a topological space. A \emph{sheaf} $\Gg$ (of sets, (abelian) groups or rings) on $X$ associates:
+ \begin{itemize}
+  \item To each open subset $U\subseteq X$ an object $\Gg(U)$.
+  \item To each inclusion $V\subseteq U$ of open subsets for $X$, a morphism
+  \begin{align*}
+   \Gg(U) &\longto\Gg(V)\\
+   f&\longmapsto f|_V
+  \end{align*}
+ \end{itemize}
+such that the following conditions hold:
+\begin{enumerate}[greek]
+ \item $f|_U = f$ when $f\in \Gg(U)$
+ \item $(f|_V)|_W = f|_W$ for $f\in \Gg(U)$ and inclusions $W\subseteq V\subseteq U$ of open subsets.
+ \item If $U = \bigcup_{\lambda\in\Lambda} U_\lambda$ is a covering of an open subset $U\subseteq X$ by open subsets $U_\lambda \subseteq U$, then the map
+ \begin{align*}\label{eq:sheafGamma}
+  \Gg(U) &\longto \left\{(f_\lambda)\in \prod_{\lambda\in\Lambda} G(U_\lambda)\st f_\lambda|_{U_\lambda\cap U_\theta} = f_\theta|_{U_\lambda\cap U_\theta} \text{ for }\lambda,\theta\in \Lambda\right\}\tag{*}\\
+  f &\longmapsto (f|_{U_\lambda})_{\lambda\in\Lambda}
+ \end{align*}
+is bijective.
+\end{enumerate}
+\end{defi}
+\begin{rem*}
+ \begin{alphanumerate}
+  \item If only $\alpha)$ and $\beta)$ are satisfied, then $\Gg$ is called a \emph{presheaf}. If in addition \eqref{eq:sheafGamma} is injective it is called a \emph{separated presheaf}.
+  \item If $f_\lambda = f|_{U_\lambda}$ then $f_\lambda|_{U_\lambda\cap U_\theta} = f|_{U_\lambda}|_{U_\theta} = f|_{U_\lambda\cap U_\theta} = f|_{U_\theta}|_{U_\lambda} = f_\theta|_{U_\lambda\cap U_\theta}$ by $\beta$. Hence \eqref{eq:sheafGamma} is well-defined and only may be violated for some presheaves.
+  \item Condition $\gamma)$ is called the \emph{sheaf axiom} and has interesting consequences if $\Lambda=\emptyset$ (hence $U=\emptyset$). Then the product on the right-hand side of \eqref{eq:sheafGamma} is the empty product (containing just one element), the condition
+  \begin{align*}
+   \forall \lambda, \theta\in \Lambda: f_\lambda|_{U_\lambda\cap U_\theta} = f_\theta|_{U_\lambda\cap U_\theta}
+  \end{align*}
+  is trivially satisfied and it follows that $\Gg(\emptyset)$ is the object with just one element.
+  \item If $R$ is an object and $\Gg(U) = \left\{\text{functions } U\to R\right\}$ and $f|_U$ is the ordinary restriction then $\Gg$ is a sheaf of these objects, where the group/ring operations on $\Gg(U)$ are defined pointwise:
+ \begin{align*}
+  (f\ast g)(x) = f(x)\ast g(x)
+ \end{align*}
+ where $\ast = +$ or $\ast = \cdot$.
+ \item If $R$ has a topology such that the group/ring operations are continuous (as maps $R\times R \to R$, $R\times R$ carrying the product topology) then $C^0(U)\subseteq \Gg(U)$, the subset of continuous functions, form a subsheaf. The same happens with $C^\infty$ functions if $R=\IR$ or $R=\IC$ and $X=\IR^n$ (or a $C^\infty$-manifold) or with holomorphic functions if $R= \IC$ and $X=\IC^n$ (or a holomorphic manifold).
+ \item It is clear from Definition \reff{def:regularFunctions} that $U\to \Oo(U)$ defines a sheaf of rings on a quasi-affine algebraic variety.
+ \item The elements of $\Gg(U)$ are called \emph{sections} of $\Gg$ on $U$
+ \end{alphanumerate}
+ \end{rem*}
+\begin{example}
+ \begin{alphanumerate}
+  \item If $f\in k[X_1,\ldots,X_n]$ then $f|_Z\in \Oo(Z)$ (put $U=Z$, $p=f$ and $q=1$ in Definition \reff{def:regularFunctions}).
+  \item If $f\in \Oo(Z)$ and $V(f) = \left\{z\in Z\st f(z) = 0\right\}$ is empty, then $\frac{1}{f}\in \Oo(Z)$.
+  \item We call $\Oo=\Oo_Z: U\mapsto \Oo(U)$ the \emph{structure sheaf} of $Z$.
+ \end{alphanumerate}
+
+\end{example}
+
+\begin{prop} \lbl{prop:vectorOfRegularFunctionsContinuous}
+ Let $z\in Z$. If $f_1,\ldots,f_m$ are functions $Z\to k$ which are regular at $z\in Z$ then
+ \begin{align*}
+  Z&\longto k^m\\
+  \zeta &\longmapsto (f_1(\zeta),\ldots, f_m(\zeta))
+ \end{align*}
+is Zariski-continuous on some neighbourhood of $z$.
+\end{prop}
+\begin{cor}
+  If $f\in \Oo(X)$ then $V(f)$ is a closed subset of $X$.
+\end{cor}
+\begin{rem*}
+ If $K/k$ then there is a subset $B\subseteq K$ (a \emph{transcendence base}) which is algebraically independent over $k$ and such that $K$ is algebraic over the subfield generated by $B$ and $k$. The cardinality of $B$ depends only on $K/k$ and is called \emph{transcendence degree} $\deg\tr(K/k)$ of $K/k$. 
+\end{rem*}
+\begin{thm}
+ If $X$ is a quasi-affine algebraic variety, $K$ the quotient field of $\Oo(X)$ (the field of rational functions on $X$) then $\dim(X) = \deg\tr(K/k)$ and equality always occurs in Proposition \reff{prop:vectorOfRegularFunctionsContinuous}.
+\end{thm}
 
 
 \end{document}
