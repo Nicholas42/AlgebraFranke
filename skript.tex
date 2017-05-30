@@ -822,9 +822,9 @@
 	\end{defi}
 	\begin{proof}
 		\begin{description}
-			\item [$a)\to b)$] Otherwise, select $M_1\in \XX$, $M_2\subsetneq M_1$, if $M_1$ is not yet minimal and so on.
-			\item[$b)\to c)$] Let $U\subseteq T$ be open, $U = \bigcup_{\lambda\in\Lambda}(T\setminus M\lambda)$ with $M_\lambda$ closed, $M_\lambda\supseteq T\setminus U$. Consider $\XX = \left\{\bigcap_{\lambda\in F} M_\lambda\st |F|<\infty\right\}$. It has a minimal element $N$ which equals $T\setminus U$. because every $u\in U$ is not in $M_\lambda$ for some $\lambda$ and $N\cap M_\lambda\subsetneq M_\lambda$ contradicting minimality. If $N= \bigcap_{\lambda \in F}M_\lambda$ then $U= \bigcup_{\lambda \in F} (T\setminus M_\lambda)$.
-			\item[$c)\to b)$] Otherwise, $U = T\setminus M_\infty$ with $M_\infty = \bigcap_{i=1}^\infty M_i$ the is covered by the $T\setminus M_i$ without finite sub-covering.
+			\item [$(a)\to (b)$] Otherwise, select $M_1\in \XX$, $M_2\subsetneq M_1$, if $M_1$ is not yet minimal and so on.
+			\item[$(b)\to (c)$] Let $U\subseteq T$ be open, $U = \bigcup_{\lambda\in\Lambda}(T\setminus M\lambda)$ with $M_\lambda$ closed, $M_\lambda\supseteq T\setminus U$. Consider $\XX = \left\{\bigcap_{\lambda\in F} M_\lambda\st |F|<\infty\right\}$. It has a minimal element $N$ which equals $T\setminus U$. because every $u\in U$ is not in $M_\lambda$ for some $\lambda$ and $N\cap M_\lambda\subsetneq M_\lambda$ contradicting minimality. If $N= \bigcap_{\lambda \in F}M_\lambda$ then $U= \bigcup_{\lambda \in F} (T\setminus M_\lambda)$.
+			\item[$(c)\to (b)$] Otherwise, $U = T\setminus M_\infty$ with $M_\infty = \bigcap_{i=1}^\infty M_i$ the is covered by the $T\setminus M_i$ without finite sub-covering.
 		\end{description}
 		
 	\end{proof}
@@ -836,10 +836,10 @@
 		A non-empty topological space $X$ is called \emph{irreducible},  if the following equivalent conditions hold:
 		\begin{alphanumerate}
 			\item If $X=A\cup B$ where $A$ and $B$ are closed subsets of $X$, then $X=A$ or $X=B$. 
-			\item Two arbitrary non-empty open subsets of $X$ have a non-empty intersection.
+			\item Two arbitrary non-empty open subsets of $X$ have non-empty intersection.
 			\item Any non-empty open subset of $X$ is dense.
 		\end{alphanumerate}
-		A closed subset of $X$ is called irreducible when it is irreducible as a topological subspace.
+		A closed subset of $X$ is called irreducible if it is irreducible as a topological subspace.
 	\end{defi}
 	\begin{rem}[a.k.a. Remark 4]
 		For the sake of simplicity ``irreducible subset of $X$" will be used as as a substitute of ``irreducible closed subset of $X$".
@@ -854,7 +854,7 @@
 		The $(Y_i)_{i=1}^k$ are called the \emph{irreducible components} of $Y$.
 	\end{prop}
 	\begin{proof}
-		The first assertion is trivial, $Y$ being Noetherian. For the existence of a finite decomposition into irreducible subsets, let $\XX$ be the set of closed subsets $Y\subseteq X$ without such a representation. As $X$ is Noetherian $\XX$ has $\subseteq $-minimal element $Y$. We have $Y\neq \emptyset$, because $\emptyset$ can be written as the empty subset and it is not irreducible because it would be the union $\{Y\}$ of irreducible subsets otherwise. Thus $Y= Y_1\cup Y_2$ with $Y_1\subsetneq Y$ and $Y_2\subsetneq Y$. By the induction assumption ($Y\in \XX$ being minimal) $Y_1$ and $Y_2$ can be written as finite unions of irreducible subsets of $X$. Hence $Y$ is a finite union of irreducible subsets, a contradiction. Let $Y=\bigcup_{i=1}^k Y_i$ where $Y_i$ is irreducible and $k$ is minimal. If $Y_i\subseteq Y_j$ and $i\neq j$, then $Y_i$ could be removed from the list and $k$ would not be minimal. Thus all our claims in the existence assumption are satisfied.
+		The first assertion, $Y$ being Noetherian, is trivial. For the existence of a finite decomposition into irreducible subsets, let $\XX$ be the set of closed subsets $Y\subseteq X$ without such a representation. As $X$ is Noetherian $\XX$ has $\subseteq $-minimal element $Y$. We have $Y\neq \emptyset$, because $\emptyset$ can be written as the empty subset and it is not irreducible because it would be the union $\{Y\}$ of irreducible subsets otherwise. Thus $Y= Y_1\cup Y_2$ with $Y_1\subsetneq Y$ and $Y_2\subsetneq Y$. By the induction assumption ($Y\in \XX$ being minimal) $Y_1$ and $Y_2$ can be written as finite unions of irreducible subsets of $X$. Hence $Y$ is a finite union of irreducible subsets, a contradiction. Let $Y=\bigcup_{i=1}^k Y_i$ where $Y_i$ is irreducible and $k$ is minimal. If $Y_i\subseteq Y_j$ and $i\neq j$, then $Y_i$ could be removed from the list and $k$ would not be minimal. Thus all our claims in the existence assumption are satisfied.
 		
 		Generally let $Y=\bigcup_{i=1}^kY_i$, $Y_i$ irreducible and $Y_i\not\subseteq Y_j$ for $i\neq j$. Then $Y_i\not\subseteq \bigcup_{j=1, j\neq i}^k Y_j$ because $Y_i$ is irreducible. Now let $A$ be any irreducible subset of $Y$ containing a non-empty subset $U$ of $Y$. If $U\cap Y_i\neq \emptyset$ then $U$ is dense in $Y_i$ as $Y_i$ is irreducible. As $A\supseteq U$ and $A$ is closed $A\supseteq Y_i = U$. Hence $A=Y_i$ otherwise we had a non-trivial composition of $A$ with 
 		\begin{align*}
@@ -866,7 +866,7 @@
 	\begin{example}
 		\begin{alphanumerate}
 			\item Every point is irreducible.
-			\item Any irreducible topological space is connected.
+			\item Every irreducible topological space is connected.
 			\item $k\times\{0\}\cup \{0\} \times k \subseteq k^2$ turns out to be Zariski-closed ( $=V(XY)$) and connected (as we will see) but \emph{not} irreducible, as it is $V(XY) =V(X)\cup V(Y)$.
 		\end{alphanumerate}
 		
@@ -893,7 +893,7 @@
 		If $f\in R = k[X_1,\ldots, X_n]$ is an irreducible polynomial, then $V(f)$ is an irreducible closed subset of $k^n$, $R$ being a unique factorization domain.
 	\end{cor}
 	\begin{defi}\lbl{def:dimension}
-		Let $M$ be an irreducible subset of the Noetherian topological space $X$. The \emph{codimension} $\codim(M,X)$ of $M$ in $X$ is the (possible infinite) supremum of the set of integers $k$ such that there is a strictly ascending chain $M=M_0\subsetneq M_1\subsetneq \ldots \subsetneq M_k\subseteq X$ of irreducible subsets of $X$. The \emph{dimension} of $X$ is the possibly infinite supremum of the codimensions of all irreducible subsets of $X$.
+		Let $M$ be an irreducible subset of the Noetherian topological space $X$. The \emph{codimension} $\codim(M,X)$ of $M$ in $X$ is the (possible infinite) supremum of the set of integers $k$ such that there is a strictly ascending chain $M=M_0\subsetneq M_1\subsetneq \ldots \subsetneq M_k\subseteq X$ of irreducible subsets of $X$. The \emph{dimension} of $X$ is the (possibly infinite) supremum of the codimensions of all irreducible subsets of $X$.
 	\end{defi}
 	\begin{rem*}
 		This notion of dimension seems to go back to W. Krull.
@@ -942,7 +942,7 @@
 		\begin{alphanumerate}
 			\item Even the finiteness of $\dim(k^n)$ is not trivial. 
 			\item In topology, the fact that no open subset $U\subseteq \IR^n$, $U\neq \emptyset$ is homeomorphic to any open $V\subseteq \IR^k$ for $k\neq n$ is not trivial. Among the first proofs are by Brouwer and Lebesgue (Pflastersatz, Lebesgue covering theorem)
-			\item For $\Spec(R)$ with $R$ Noetherian, $\codim(A,B)$ is finite for irreducible $A\subseteq B$ (quite hard, probably Krull (even though Krull was a n00b compared to Grothendieck)) but there are examples where $\Spec(R)$ is infinite-dimensional (relatively easy), there are closed points of differing codimensions (quite easy) and $\Spec(R)$ may fail to be catenary (very hard, Nagata) but the $R$ encountered "in free nature" are catenary.
+			\item For $\Spec(R)$ with $R$ Noetherian, $\codim(A,B)$ is finite for irreducible $A\subseteq B$ (quite hard, probably Krull (even though Krull was a \emph{n00b} compared to Grothendieck)) but there are examples where $\Spec(R)$ is infinite-dimensional (relatively easy), there are closed points of differing codimensions (quite easy) and $\Spec(R)$ may fail to be catenary (very hard, Nagata) but the $R$ encountered "in free nature" are catenary.
 		\end{alphanumerate}
 		
 	\end{rem*}
@@ -957,6 +957,8 @@
 	\end{prop}
 	\begin{proof}
 		Let $p$ be as required, then $\pp = p\cdot R$ is prime. If $X=V(\pp)$ had codimension 0, it would equal $k^n$ (which is irreducible by Proposition \reff{prop:primeIdealIrreducibleZeros} and $\pp=0$ and $p=0$, a contradiction. If $\codim(X,k^n) >1$, there is a irreducible subset $Y=V(\qq)$ between $X$ and $k^n$ where $\qq$ may be assumed prime (Remark \reff{rem:ZariskiBijectiveToRadicals} and Proposition \reff{prop:primeIdealIrreducibleZeros}) and $\qq\subsetneq \pp$ by Remark \reff{rem:ZariskiBijectiveToRadicals}. We have $\qq \neq \{0\}$ because $Y=k^n$ otherwise. Let $f\in \qq\setminus\{0\}$, then $p|f$ Let $f = \prod_{i=1}^m q_i$ be the prime factor decomposition of $f$ in $R$, where $m$ may be assumed minimal. Then $p$ is proportional to one of the $q_i$ and if $p\in \qq$ then $q_i$ could be removed from the factors, $f=g\cdot p$, and $g\in \qq$ can be factored with $m-1$ prime factors, in contradiction to the minimality of $m$. Thus $p\in \qq$ and $p\cdot R \subseteq \qq \subseteq \pp=p\cdot R$, a contradiction to $\qq\subsetneq \pp$. Thus, the codimension is 1 in this case (a special case of Krull's principal ideal theorem). 
+		
+		On the other hand, let $V(\pp)$ be irreducible and of codimension 1. By Proposition \reff{prop:primeIdealIrreducibleZeros} we may assume $\pp\subseteq R$ to be a prime ideal. If $p\in\pp$ is a prime, then $V(\pp)\subseteq V(p)\subsetneq k^n$, proving that $V(\pp)=V(p)$.
 	\end{proof}
 	
 	\begin{rem*} [on Example \reff{exm:ZariskiClosedInK^2}]
@@ -972,7 +974,7 @@
 		A closed subset of a Noetherian space is Noetherian, as is any open subset thereof, affine and quasi-affine varieties are Noetherian.
 	\end{rem}
 	\begin{defi}\lbl{def:regularFunctions}
-		Let $Z\subseteq k^n$ be a quasi-affine algebraic variety and $f: Z\to k$ a $k$-valued function on it. We call $f$ \emph{regular of $x$} if there is a neighbourhood $V\subseteq U\subseteq Z$ of $x$ and polynomials $p,q\in k[X_1,\ldots,X_n]$ such that $V(q) \cap U = \emptyset$ and such that $f(y) = \frac{p(y)}{q(y)}$ for all $y\in U$. We call $f$ \emph{regular} on $Z$ if it is regular on every point of $Z$. Denote the ring of regular functions by $\Oo(Z)$ and and put $\Oo(\emptyset)=\{\text{empty function}\}$.
+		Let $Z\subseteq k^n$ be a quasi-affine algebraic variety and $f: Z\to k$ a $k$-valued function on it. We call $f$ \emph{regular at $x$} if there is a neighbourhood $U\subseteq Z$ of $x$ and polynomials $p,q\in k[X_1,\ldots,X_n]$ such that $V(q) \cap U = \emptyset$ and such that $f(y) = \frac{p(y)}{q(y)}$ for all $y\in U$. We call $f$ \emph{regular} on $Z$ if it is regular at every point of $Z$. Denote the ring of regular functions by $\Oo(Z)$ and put $\Oo(\emptyset)=\{\text{empty function}\}$.
 	\end{defi}
 	The association $Z\to \Oo(Z)$ is part of the structure of a \emph{sheaf}.
 	\begin{defi}\lbl{def:sheaf}
@@ -1033,15 +1035,85 @@
 		\end{align*}
 		is Zariski-continuous on some neighbourhood of $z$.
 	\end{prop}
-	\begin{cor}
-		If $f\in \Oo(X)$ then $V(f)$ is a closed subset of $X$.
+	\begin{proof}
+		This will follow easily from the fact that the following classes of maps are Zariski-continuous:
+		\begin{alphanumerate}
+			\item $f: Z\to k^m$ where $f=(f_1,\ldots,f_m)$ with $f_i\in S=k[X_1,\ldots,X_n]$. Indeed, if $A\subseteq k^m$ is Zariski-closed, then $A=V(I)$ with the ideal $I\subseteq R$ being generated by $I=(g_1,\ldots,g_\ell)_R$, where $R=k[X_1,\ldots,X_m]$. Then
+			\begin{align*}
+				f^{-1}(A)=V\big(g_1(f(-)),\ldots,g_\ell(f(-))\big),
+			\end{align*} 
+			where $g_i(f(-)=g_i\big(f_1(X_1,\ldots,X_n),\ldots,f_m(X_1,\ldots,X_n)\big)\in S$.
+			\item The map
+			\begin{align*}
+				\Omega=k^m\times(k^\times)^m&\morphism[q]k^m\\
+				(x_1,\ldots,x_m,y_1,\ldots,y_m)&\longmapsto \left(\frac{x_1}{y_1},\ldots,\frac{x_m}{y_m}\right)
+			\end{align*}
+			is continuous. Indeed, let $A\subseteq k^m$, $A=V(g_1,\ldots,g_\ell)$ be Zariski-closed. If $N$ is the maximum total degree of the $g_i$, then $h_1,\ldots,h_\ell$ defined by 
+			\begin{align*}
+				h_i(X_1,\ldots,X_m,Y_1,\ldots,Y_m)=(Y_1\cdots Y_m)^Ng_i\left(\frac{X_1}{Y_1},\ldots,\frac{X_m}{Y_m}\right)\in k[X_1,\ldots,X_m,Y_1,\ldots,Y_m]
+			\end{align*}
+			are polynomials and $q^{-1}(A)=\Omega\cap V(h_1,\ldots,h_\ell)$, as the factor $(Y_1\cdots Y_m)^N$ vanishes nowhere on $\Omega$.
+		\end{alphanumerate}
+		If now $f$ is as in the formulation above, then there are $p_i,q_i\in k[X_1,\ldots,X_n]$ such that in some neighbourhood $U\ni z$ in $Z$ none of the $q_i$ has zeros and $f_i=\frac{p_i}{q_i}$. Then $f|_U$ is equal to the composition of continuous maps
+		\begin{align*}
+			U\morphism[(p_1,\ldots,p_m,q_1,\ldots,q_m)]k^m\times(k^\times)^m\morphism[q]k^m
+		\end{align*}
+		and thus continuous itself.
+	\end{proof}
+	\begin{cor}\lbl{cor:VofFClosed}
+		If $f\in \Oo(Z)$ then $V(f)=\left\{z\in Z\st f(z)=0\right\}$ is a closed subset of $Z$.
 	\end{cor}
-	\begin{rem*}
-		If $K/k$ then there is a subset $B\subseteq K$ (a \emph{transcendence base}) which is algebraically independent over $k$ and such that $K$ is algebraic over the subfield generated by $B$ and $k$. The cardinality of $B$ depends only on $K/k$ and is called \emph{transcendence degree} $\deg\tr(K/k)$ of $K/k$. 
-	\end{rem*}
-	\begin{thm}
+	\begin{proof}
+		By Proposition \reff{prop:vectorOfRegularFunctionsContinuous}, $Z\morphism[f]k$ is continuous. Since $\{0\}\subseteq k$ is Zariski-closed, so is it's preimage $V(f)$.
+	\end{proof}
+	\begin{thm}\lbl{thm:quotienFieldOfRegularFunctions}
 		If $X$ is a quasi-affine algebraic variety, $K$ the quotient field of $\Oo(X)$ (the field of rational functions on $X$) then $\dim(X) = \deg\tr(K/k)$ and equality always occurs in equation \eqreff{eq:codimIneqs}.
 	\end{thm}
+	\begin{rem*}
+		\begin{alphanumerate}
+			\item If $K/k$ is a field extension, then there is a subset $B\subseteq K$ (a \emph{transcendence base}) which is algebraically independent over $k$ and such that $K$ is algebraic over the subfield generated by $B$ and $k$. The cardinality of $B$ only depends on $K/k$ and is called \emph{transcendence degree} $\deg\tr(K/k)$ of $K/k$. 
+			\item If $\emptyset\not=U\subseteq X$ is open, then $\Oo(X)\to\Oo(U),f\mapsto f|_U$ is an injective homomorphism (by Corollary \reff{cor:VofFClosed} and irreducibility of $X$) which can be seen to induce an isomorphism of quotient fields $K(X)\isomorphism K(U)$.
+			\item If $X=k^n$, then $\Oo(X)=k[X_1,\ldots,X_n]$ by the following Proposition \reff{prop:primeIdealIso} and $K=k(X_1,\ldots,X_n)$ for which $\{X_1,\ldots,X_n\}$ is a transcendence base over $k$. Thus, Theorem \reff{thm:k^nIsCatenary} is a special case of Theorem \reff{thm:quotienFieldOfRegularFunctions}.
+		\end{alphanumerate}		
+	\end{rem*}
+	\begin{prop}\lbl{prop:primeIdealIso}
+		If $\pp\subseteq R=k[X_1,\ldots,X_n]$ is a prime ideal and $X=V(\pp)$, then
+		\begin{align*}
+			R/\pp&\longto \Oo(X)\\
+			f\mod \pp &\longmapsto f|_X
+		\end{align*}
+		is an isomorphism.
+	\end{prop}
+	\begin{rem*}\begin{alphanumerate}
+			\item The subset $X\subseteq k^n$ occurring here are precisely the affine algebraic varieties in $k^n$.
+			\item In particular, the ring extension $\Oo(X)/k$ is of finite type for such $X$.
+			\item If $X$ is a quasi-affine algebraic variety, $\Oo(X)/k$ may fail to be of finite type (see Nagata (the Lord of the Rings), \emph{Lectures on Hilberts 13$^{\text{th}}$ problem}).
+		\end{alphanumerate}
+	\end{rem*}
+	\begin{proof}[Proof of Proposition \reff{prop:primeIdealIso}.]
+		Injectivity is quite obvious. To prove surjectivity, let $f\in \Oo(X)$. By  Definition \reff{def:regularFunctions}, for any $\xi\in X$ there are an open neighbourhood $U_\xi\ni\xi$ in $X$ and $p_\xi,q_\xi\in R$ such that $V(q_\xi)\cap U_\xi=\emptyset $ and $f=\frac{p_\xi}{q_\xi}$ on $U_\xi$. Recall that any open subset of $X$ is dense, $X$ being irreducible. For any $\xi,\eta\in X$ we therefore have $\frac{p_\xi}{q_\xi}=\frac{p_\eta}{q_\eta}$, hence $p_\xi q_\eta=p_\eta q_\xi$ on the (open and thus) dense subset $U_\xi\cap U_\eta\subseteq X$, 
+		But then we must have
+		 \begin{align*}\lbl{eq:prodEqualOnX}
+		 	p_\xi q_\eta=p_\eta q_\xi\quad(\text{on }X),\tag{$*$}
+		 \end{align*}
+		 because $V(p_\xi q_\eta-p_\eta q_\xi)$ is closed and dense in $X$.
+		 
+		 If $U_\xi$ is open, the set $X\setminus U_\xi$ is closed in $X$, hence also in $k^n$ and so it admits a representation $X\setminus U_\xi=V(I_\xi)$ for a suitable ideal $I_\xi\subseteq R$. Then $\xi\not\in V(I_\xi)$, hence there is $r_\xi\in I_\xi$ such that $r_\xi(\xi)\not=0$. Then $W_\xi=X\setminus V(r_\xi)\subseteq U_\xi$. Replacing $U_\xi$ by $W_\xi$ and $p_\xi$ by $r_\xi p_\xi$ and $q_\xi$ by $r_\xi q_\xi$ we still have $f=\frac{p_\xi}{q_\xi}$ on $U_\xi$, hence \eqreff{eq:prodEqualOnX}, but additionally we obtained the condition $U_\xi=X\setminus V(q_\xi)$. Since the $U_\xi=X\setminus V(q_\xi)$ cover $X$, which is quasi-compact, we have finitely many $\xi_1,\ldots,\xi_N$ such that $X\setminus V(q_i)$ cover $X$ (where we set $p_i=p_{\xi_i},q_i=q_{\xi_i}$ for brevity). Let $\pp=(q_{N+1},\ldots,q_\ell)_R$ and let $p_{N+1}=\ldots=p_\ell=0$. Then $\bigcap_{i=1}^\ell V(q_i)=\emptyset$ in $k^m$, hence there are $a_1,\ldots,a_\ell\in R$ such that
+		 \begin{align*}\lbl{eq:linearCombIs1}
+		 	\sum_{i=1}^\ell a_iq_i=1\quad\text{in }R=k[X_1,\ldots,X_m]\tag{\#}
+		 \end{align*}
+		 by Hilbert's Nullstellensatz. Put $\phi=\sum_{i=1}^\ell a_ip_i\in R$. We claim that $\phi|_X=f$. Indeed, we have
+		 \begin{align*}\lbl{eq:prodEqualOnX2}
+		 	p_iq_j=p_jq_i\quad(\text{on }X)\text{ for all }i,j\leq\ell\tag{\$}
+		 \end{align*}
+		 If $i,j\leq N$, this is just \eqreff{eq:prodEqualOnX} and otherwise both sides vanish.
+		 Now, if $x\in X$ there is some $j\leq N$ such that $x\in U_{\xi_j}$, hence $f(x)=\frac{p_j(x)}{q_j(x)}$ and therefore 
+		 \begin{align*}
+		 	q_j(x)f(x)&=p_j(x)\overset{\text{\eqreff{eq:linearCombIs1}}}{=}q_j(x)\sum_{i=1}^{\ell}p_j(x)\big(a_i(x)p_i(x)\big)\overset{\text{\eqreff{eq:prodEqualOnX2}}}{=}\sum_{i=1}^{\ell}p_i(x)q_j(x)a_i(x)=q_j(x)\sum_{i=1}^{\ell}p_i(x)a_i(x)\\
+		 	&=q_j(x)\phi(x),
+		 \end{align*}
+		 which yields $f(x)=\phi(x)$ since $q_j(x)\not=0$.
+	\end{proof}
 	
 	
 \end{document}
