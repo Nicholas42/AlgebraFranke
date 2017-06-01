@@ -89,10 +89,12 @@
 
 \theoremstyle{cdef}
 \newtheorem{defi}{Definition}[subsection]
+\newtheorem*{defi*}{Definition}
 \newtheorem{example}{Example}[subsection]
+\newtheorem{example*}{Example}
 \newtheorem{rem}{Remark}[subsection]
 \newtheorem*{rem*}{Remark}
-
+\newtheorem{fact}{Fact}
 \newcommand{\lbl}[1]{
 	\label{#1}
 	\ifmmode
@@ -153,6 +155,7 @@
 \newcommand{\Spec}{\operatorname{Spec}}
 \newoperator{sep}
 \newoperator{tr}
+\newoperator{id}
 %\newcommand{\multiline}[1]{#1}
 \newcommand{\longto}{\longrightarrow}
 \newcommand{\longot}{\longleftarrow}
@@ -767,7 +770,7 @@
 	\end{rem}
 	
 	\section{Quasi-affine algebraic varieties and their dimension}
-	\subsection{The Zariski topology on \texorpdfstring{$k^n$}{kn}}
+	\subsection{The Zariski topology on \texorpdfstring{$k^n$}{kn}} \label{sec:ZariskiOnk^n}
 	Let $k$ be an algebraically closed field.
 	\begin{defi}\lbl{def:Zariski}
 		A subset $M$ of $k^n$ is \emph{Zariski-closed} iff it can be written as $M=V(I)$ where $I\subseteq k[X_1,\ldots,X_n]$ is some ideal.
@@ -1115,6 +1118,113 @@
 		 which yields $f(x)=\phi(x)$ since $q_j(x)\not=0$.
 	\end{proof}
 	
-	
+	\begin{cor}\lbl{cor:correspondenceClosedIdeals}
+	 In the situation of Proposition, we have a bijection between the closed subsets of $X$ and the ideals $I$ of $\Oo(X)$ such that $I=\sqrt{I}$
+	 \begin{align*}
+	   A\subseteq X &\longmapsto \left\{f\in\Oo(X)\st f|_A =0\right\}\\
+	   V(I) &\longmapsfrom I
+	 \end{align*}
+	 By this correspondence, the irreducible subsets correspond to the prime ideals and the points correspond to the maximal ideals.
+	\end{cor}
+	\begin{proof}
+	 It is known from subsection \ref{sec:ZariskiOnk^n} that we have a correspondence between the closed subsets of $k^n$ and the ideals $J\subseteq R=  k[X_1,\ldots,X_n]$ such that $J=\sqrt{J}$
+	 \begin{align*}\lbl{eq:correspondenceClosedIdeals}
+	   A\subseteq X &\longmapsto \left\{f\in R\st f|_A =0\right\}\\
+	   V(J) &\longmapsfrom J \tag{$*$} 
+	 \end{align*}
+	 with the stated behaviour for points/irreducible subsets and maximal/prime ideals. We show that in \eqreff{eq:correspondenceClosedIdeals},
+	 \begin{align*}\lbl{eq:cor2.2.2+}
+	   A\subseteq X \Longleftrightarrow J\supseteq \pp \tag{$+$}
+	 \end{align*}
+	 Then the bijection between the ideals $I$ in $R/\pp$ and the ideals $J$ in $R$ such that $J\supseteq \pp$ 
+	 \begin{align*}
+	  I&\longmapsto \pi_{R,R/\pp}^{-1}(I)\\
+	  J/\pp &\longmapsfrom J
+	 \end{align*}
+	 which maps maximal ideals, prime ideals and ideals coinciding with their radicals on both sides to each other composed with \eqreff{eq:correspondenceClosedIdeals} gives the desired bijection. By one of the versions of the Nullstellensatz (i.e. \eqreff{eq:correspondenceClosedIdeals} with $J=\pp$ and $A=X$) we have $\pp =\left\{f\in R\st f|X =0\right\}$ such that $J\supseteq \pp$ implies $V(J)\subseteq V(\pp) = X$ and vice versa which shows \eqreff{eq:cor2.2.2+}.
+
+	\end{proof}
+	\begin{fact}
+	 Let $X$ be a quasi-affine algebraic variety in $k^n$. The open subsets of the form $X\setminus V(f)$ with $f\in\Oo(X)$ form a base of the topology on $X$.
+	\end{fact}
+	\begin{proof}
+	 We have $X\subseteq \overline{X}$ where $\overline{X}\in k^n$ is irreducible. Let $U\subseteq X$ and $x\in U$, then we must find $f\in \Oo(X)$ such that $f(x)\neq 0$ and $X\setminus V(f)\subseteq U$. If suffices to find $f\in \Oo(\overline{X})$ such that $f(x)\neq 0$ and such that $\overline{X}\setminus V(f)\subseteq U$. By Corollary \reff{cor:correspondenceClosedIdeals} applied to $\overline{X}$ such $f$ exists because otherwise $x\in V\left(\left\{f\in \Oo(\overline{X})\st f|_{\overline{X}\setminus U}=0\right\}\right ) =\overline{X}\setminus U$.
+	\end{proof}
+	\begin{defi}\lbl{def:varietymorphism}
+	 Let $X\subseteq k^m$ and $Y\subseteq k^n$ be quasi-affine varieties. A \emph{morphism} $X\morphism[f] Y$ is a continuous map such that the following equivalent conditions hold:
+	 \begin{alphanumerate}
+	  \item $f= (f_1,\ldots,f_n)$ where $f_i\in\Oo_X(X)$.
+	  \item If $U\subseteq Y$ is open and $\phi\in \Oo_Y(U)$ then $\psi(x)\coloneqq \phi(f(x))$ defines an element of $\Oo_X(f^{-1}(U))$.
+	 \end{alphanumerate}
+
+	\end{defi}
+	\begin{proof}
+	 \begin{description}
+	  \item [$(b)\to (a)$] We have $f_i(x) = X_i(f(x))$ where $Y\morphism[X_i] k$ is the $i$-th coordinate.
+	  \item[$(a)\to (b)$] Let $x\in f^{-1}(U)$. By the definition of $\Oo_Y(U)$ there are $p,q\in k[X_1,\ldots, X_n] \eqqcolon S$ and a neighbourhood $V$ of $f(x)$ such that $q$ does not vanish on $V$ and $\phi(y) = \frac{p(y)}{q(y)}$ on $V$. We have $\phi(f(\xi)) = \frac{p(f(\xi))}{q(f(\xi))}$ on $f^{-1}(V)$. By (a), we have a neighbourhood $W$ of $x$ in $X$ and $a_i,b_i\in k[X_1,\ldots, X_m]\eqqcolon R$ such that $f_i(\xi) = \frac{a_i(\xi)}{b_i(\xi)}$ on $W$. Replacing $W$ by $W\cap f_i^{-1}(V)$ and Replacing the $b_i$ by a common denominator and changing $a_i$ accordingly, we may assume that $W\subseteq f^{-1}(V)$ and $b_1=\ldots = b_n = b$. Then we have, for $\xi\in W$ 
+	  \begin{align*}
+	   \phi(f(\xi)) = \frac{p\left(\frac{a_1}{b}(\xi), \ldots, \frac{a_n}{b}(\xi)\right)}{q\left(\frac{a_1}{b}(\xi), \ldots, \frac{a_n}{b}(\xi)\right)}=  \frac{b(\xi)^N p\left(\frac{a_1}{b}(\xi), \ldots, \frac{a_n}{b}(\xi)\right)}{b(\xi)^Nq\left(\frac{a_1}{b}(\xi), \ldots, \frac{a_n}{b}(\xi)\right)}
+	  \end{align*}
+	  and both parts of the fractions on the right hand side are in $R$ if $N$ is large enough ($N\geq \max(\deg p, \deg q)$)
+	 \end{description}
+
+	\end{proof}
+	\begin{rem}
+	 \begin{alphanumerate}
+	  \item $f\in \Oo(X) \Longleftrightarrow (X\morphism[f] k)$ is a morphism in this sense.
+	  \item Using characterization (b) of morphisms, it is clear, that the composition of morphisms is a morphism and that $\id_x$ is a morphism $X\longto X$. Quasi-affine varieties in some $k^n$ with morphisms as in Definition \reff{def:varietymorphism} and the ordinary composition of maps therefore form a category.
+	 \end{alphanumerate}
+	\end{rem}
+	\begin{defi*}
+	 A \emph{category} is a triple $\AA = (O,M,s,t,\circ)$ consisting of the five elements:
+	 \begin{enumerate}
+	  \item A class of objects $O$.
+	  \item A class $M$ of morphisms.
+	  \item Maps $O\overset{s}{\longot} M \morphism[t] O$ where we put $\Hom_\AA(X,Y)$ for $\left\{a\in M\st s(a) = X, t(a) = Y\right\}$.
+	  \item \begin{align*}
+	   \circ: \left\{(a,b)\in M\times M \st t(a) = s(b)\right\} &\longto M\\
+	   (a,b) &\longmapsto b\circ a         
+	        \end{align*}
+	 \end{enumerate}
+	 with the following conditions:
+	 \begin{alphanumerate}
+	  \item $c\circ(b\circ a) = (c\circ b) \circ a$
+	  \item For every object $X\in O$, there is a unique $\id_X\in \Hom_\AA(X,X)$ such that $f\circ \id_X = f$ and $\id_X\circ g = g$ for morphisms $X\morphism[f] T$, $S\morphism[g] X$.
+	 \end{alphanumerate}
+	\end{defi*}
+	\begin{example*}
+	 \begin{alphanumerate}
+	  \item (abelian) groups, group homomorphisms.
+	  \item $k$-vector spaces, their linear maps.
+	  \item $R$-modules, morphisms of $R$-modules.
+	  \item Sets, maps between sets.
+	  \item rings, ring homomorphisms.
+	  \item affine or quasi-affine varieties. 
+	  \item $k$-algebras or $k$-algebras of finite type, with $k$-linear ring homomorphisms as morphisms.
+	 \end{alphanumerate}
+
+	\end{example*}
+	\begin{rem*}
+	 \begin{alphanumerate}
+	  \item It is normally assumed, that $\Hom_\AA(X,Y)$ form a set.
+	  \item If the class of objects and morphisms are sets, the category is called \emph{small}.
+	 \end{alphanumerate}
+	\end{rem*}
+	\begin{prop} If $X$ and $Y$ are affine algebraic varieties, we have a bijection between the morphisms $X\morphism[f] Y$ and the $k$-linear ring homomorphisms $\Oo(Y) \morphism[\Phi]\Oo(X)$ given by
+	 \begin{align*}
+	   f &\longmapsto (\psi \longmapsto \psi\circ f)\\
+	   f \text{ with } \mm_{f(x))} = \Phi^{1}(\mm_X) &\longmapsfrom \Phi
+	 \end{align*}
+	 where $\mm_x = \left\{\lambda \in \Oo_X(X) \st \lambda(x) = 0\right\}$
+	\end{prop}
+
+
+
+
+
+
+
+
+
 \end{document}
 
