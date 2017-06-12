@@ -121,6 +121,8 @@
 	\IfBeginWith{\temp}{\thesubsection}{\hyperref[#1]{\upshape(\getrefnumber{#1})}}{\hyperref[#1]{\upshape(\thesubsection .\getrefnumber{#1})}}%	
 }
 
+\newcommand{\Aa}{\mathcal{A}}
+\newcommand{\Bb}{\mathcal{B}}
 \newcommand{\Oo}{\mathcal{O}}
 \newcommand{\Gg}{\mathcal{G}}
 
@@ -155,7 +157,9 @@
 \newcommand{\Spec}{\operatorname{Spec}}
 \newoperator{sep}
 \newoperator{tr}
-\newoperator{id}
+\newcommand{\id}{\operatorname{id}}
+\newoperator{Ob}
+\newcommand{\op}{^{\operatorname{op}}}
 %\newcommand{\multiline}[1]{#1}
 \newcommand{\longto}{\longrightarrow}
 \newcommand{\longot}{\longleftarrow}
@@ -164,6 +168,9 @@
 \newcommand{\morphism}[1][]{\overset{#1}{\longto}}
 
 \newcommand{\ldotspam}{,\ldots,}
+\newcommand{\ordinalst}{^{\text{st}}}
+\newcommand{\ordinalrd}{^{\text{rd}}}
+\newcommand{\ordinalth}{^{\text{th}}}
 \newcommand{\st}{\ \middle|\ }
 %\newcommand{\dashed}{dash pattern = on 2pt off 2pt}
 
@@ -779,7 +786,7 @@
 		Consider $X$ a metric space and $I\subseteq C(X)$ an ideal in the ring of continues functions on $X$. Then the set of zeroes $V(I) = \left\{ x\in X\st f(x) = 0 \text{ for all } f\in I\right\} = \bigcap_{f\in I} V(f)$ is an closed subset and any closed subset $M\subseteq X$ is $V(f)$ with $f(x) = d_X(x,M) = \inf\left\{d_X(x,m)\st m\in M\right\}$.
 	\end{example}
 	\begin{example}
-		Let $n=1$. Any ideal $I\subseteq k[X]$ is principal $I=\left\langle \prod_{i=1}^m (X-\xi_i)^{a_i}\right\rangle_{k[X]}$ and $V(I) = \left\{\xi_1,\ldots, \xi_n\right\}$ unless $I=0$, $V(I) = k$. Thus the Zariski-closed subsets of $k$ are $k$ and the finite subsets and the open subsets are $\emptyset$ and the cofinite subsets (i.e. the subsets $U$ with $k\setminus U$ being finite). In particular the intersection of two non-empty open subsets is in turn non-empty.
+		Let $n=1$. Any ideal $I\subseteq k[X]$ is principal $I=\big(\prod_{i=1}^m (X-\xi_i)^{a_i}\big)_{k[X]}$ and $V(I) = \left\{\xi_1,\ldots, \xi_n\right\}$ unless $I=0$, $V(I) = k$. Thus the Zariski-closed subsets of $k$ are $k$ and the finite subsets and the open subsets are $\emptyset$ and the cofinite subsets (i.e. the subsets $U$ with $k\setminus U$ being finite). In particular the intersection of two non-empty open subsets is in turn non-empty.
 	\end{example}
 	\begin{example}\lbl{exm:ZariskiClosedInK^2}
 		Let $n=2$. We will see at the end of this chapter that the Zariski-closed subsets of $k^2$, besides $k^2$, are the subsets of the form $C\cup F$ where $C=\left\{x\in k^2\st P(x) = 0\right\}$ (for some $P\in k[X_1,X_2]\setminus\{0\}$, $C$ is a \emph{curve}) and $F\subseteq k^2$ is finite.
@@ -791,7 +798,7 @@
 		M=V(I) &\longmapsfrom I\\
 		M&\longmapsto I = \left\{f\in R\st M\subseteq V(f)\right\}
 		\end{align*}
-		which is anti-monotonic (i.e. from $I\subseteq J$ follows $V(I)\supseteq V(J)$) and it sends $\bigcap_{\lambda\in\Lambda} M_\lambda$ to $\sqrt{\sum_{\lambda\in\Lambda}I_\lambda}$ and $M_1\cup M_2$ to $I_1\cap I_2$. In particular, the Zariski-closed subsets are indeed the closed subsets for some topology on $k^n$.
+		which is anti-monotonic (in the sense that from $I\subseteq J$ follows $V(I)\supseteq V(J)$) and it sends $\bigcap_{\lambda\in\Lambda} M_\lambda$ to $\sqrt{\sum_{\lambda\in\Lambda}I_\lambda}$ and $M_1\cup M_2$ to $I_1\cap I_2$. In particular, the Zariski-closed subsets are indeed the closed subsets for some topology on $k^n$.
 	\end{rem}
 	\begin{rem*}
 		A \emph{topology} $\tau$ on a set $T$ is a set of subsets of $T$ (the \emph{open} subsets of $T$) containing $\emptyset$ and $T$ and with the property, that the union of arbitrarily many open subsets and the intersection of finitely many open subsets is in turn open. The complements of the open subsets are called \emph{closed}. The union of finitely many and the intersection of arbitrarily many closed subsets is closed. The topological space $(T,\tau)$ may or may not have the following separation properties for which the following is required for arbitrary $x\neq y\in T$.
@@ -1121,6 +1128,8 @@
 	\begin{cor}\lbl{cor:correspondenceClosedIdeals}
 	 In the situation of Proposition, we have a bijection between the closed subsets of $X$ and the ideals $I$ of $\Oo(X)$ such that $I=\sqrt{I}$
 	 \begin{align*}
+	 	\left\{\text{closed subsets of } X\right\}&\isomorphism\left\{	 	\text{ideals }I\subseteq\Oo(X)\text{ such that }I=\sqrt{I}
+	 	\right\}\\
 	   A\subseteq X &\longmapsto \left\{f\in\Oo(X)\st f|_A =0\right\}\\
 	   V(I) &\longmapsfrom I
 	 \end{align*}
@@ -1129,8 +1138,11 @@
 	\begin{proof}
 	 It is known from subsection \ref{sec:ZariskiOnk^n} that we have a correspondence between the closed subsets of $k^n$ and the ideals $J\subseteq R=  k[X_1,\ldots,X_n]$ such that $J=\sqrt{J}$
 	 \begin{align*}\lbl{eq:correspondenceClosedIdeals}
-	   A\subseteq X &\longmapsto \left\{f\in R\st f|_A =0\right\}\\
-	   V(J) &\longmapsfrom J \tag{$*$} 
+	 \begin{split}
+	 \left\{\text{Zariski-closed subsets of }k^n\right\}&\isomorphism\left\{\text{ideals }J\subseteq R=k[X_1,\ldots,X_n]\text{ such that }J=\sqrt J\right\}\\
+	 A\subseteq X &\longmapsto \left\{f\in R\st f|_A =0\right\}\\
+	 V(J) &\longmapsfrom J 
+	 \end{split}\tag{$*$} 
 	 \end{align*}
 	 with the stated behaviour for points/irreducible subsets and maximal/prime ideals. We show that in \eqreff{eq:correspondenceClosedIdeals},
 	 \begin{align*}\lbl{eq:cor2.2.2+}
@@ -1138,11 +1150,11 @@
 	 \end{align*}
 	 Then the bijection between the ideals $I$ in $R/\pp$ and the ideals $J$ in $R$ such that $J\supseteq \pp$ 
 	 \begin{align*}
-	  I&\longmapsto \pi_{R,R/\pp}^{-1}(I)\\
-	  J/\pp &\longmapsfrom J
+	 \left\{\text{ideals }I\subseteq R/\pp\right\}&\isomorphism\left\{\text{ideals }J\subseteq R\text{ such that }J\supseteq\pp\right\}\\
+	 I&\longmapsto \text{preimage of }I\text{ under }R\to R/\pp\\
+	 J/\pp &\longmapsfrom J
 	 \end{align*}
-	 which maps maximal ideals, prime ideals and ideals coinciding with their radicals on both sides to each other composed with \eqreff{eq:correspondenceClosedIdeals} gives the desired bijection. By one of the versions of the Nullstellensatz (i.e. \eqreff{eq:correspondenceClosedIdeals} with $J=\pp$ and $A=X$) we have $\pp =\left\{f\in R\st f|X =0\right\}$ such that $J\supseteq \pp$ implies $V(J)\subseteq V(\pp) = X$ and vice versa which shows \eqreff{eq:cor2.2.2+}.
-
+	 (which maps maximal ideals, prime ideals, and ideals coinciding with their radicals on both sides to each other) composed with \eqreff{eq:correspondenceClosedIdeals} gives the desired bijection. By one of the versions of the Nullstellensatz (i.e. \eqreff{eq:correspondenceClosedIdeals} with $J=\pp$ and $A=X$) we have $\pp =\left\{f\in R\st f|_X =0\right\}$ such that $J\supseteq \pp$ implies $V(J)\subseteq V(\pp) = X$ and vice versa, which shows \eqreff{eq:cor2.2.2+}.
 	\end{proof}
 	\begin{fact}
 	 Let $X$ be a quasi-affine algebraic variety in $k^n$. The open subsets of the form $X\setminus V(f)$ with $f\in\Oo(X)$ form a base of the topology on $X$.
@@ -1154,34 +1166,34 @@
 	 Let $X\subseteq k^m$ and $Y\subseteq k^n$ be quasi-affine varieties. A \emph{morphism} $X\morphism[f] Y$ is a continuous map such that the following equivalent conditions hold:
 	 \begin{alphanumerate}
 	  \item $f= (f_1,\ldots,f_n)$ where $f_i\in\Oo_X(X)$.
-	  \item If $U\subseteq Y$ is open and $\phi\in \Oo_Y(U)$ then $\psi(x)\coloneqq \phi(f(x))$ defines an element of $\Oo_X(f^{-1}(U))$.
+	  \item If $U\subseteq Y$ is open and $\phi\in \Oo_Y(U)$ then $f^*\phi(x)\coloneqq \phi(f(x))$ defines an element of $\Oo_X(f^{-1}(U))$.
 	 \end{alphanumerate}
 
 	\end{defi}
 	\begin{proof}
 	 \begin{description}
-	  \item [$(b)\to (a)$] We have $f_i(x) = X_i(f(x))$ where $Y\morphism[X_i] k$ is the $i$-th coordinate.
-	  \item[$(a)\to (b)$] Let $x\in f^{-1}(U)$. By the definition of $\Oo_Y(U)$ there are $p,q\in k[X_1,\ldots, X_n] \eqqcolon S$ and a neighbourhood $V$ of $f(x)$ such that $q$ does not vanish on $V$ and $\phi(y) = \frac{p(y)}{q(y)}$ on $V$. We have $\phi(f(\xi)) = \frac{p(f(\xi))}{q(f(\xi))}$ on $f^{-1}(V)$. By (a), we have a neighbourhood $W$ of $x$ in $X$ and $a_i,b_i\in k[X_1,\ldots, X_m]\eqqcolon R$ such that $f_i(\xi) = \frac{a_i(\xi)}{b_i(\xi)}$ on $W$. Replacing $W$ by $W\cap f_i^{-1}(V)$ and Replacing the $b_i$ by a common denominator and changing $a_i$ accordingly, we may assume that $W\subseteq f^{-1}(V)$ and $b_1=\ldots = b_n = b$. Then we have, for $\xi\in W$ 
+	  \item [$(b)\to (a)$] We have $f_i(x) = X_i(f(x))$ where $Y\morphism[X_i] k$ is the $i\ordinalth$ coordinate.
+	  \item[$(a)\to (b)$] Let $x\in f^{-1}(U)$. By definition of $\Oo_Y(U)$ there are $p,q\in k[X_1,\ldots, X_n] \eqqcolon S$ and a neighbourhood $V$ of $f(x)$ such that $q$ does not vanish on $V$ and $\phi(y) = \frac{p(y)}{q(y)}$ on $V$. We have $\phi(f(\xi)) = \frac{p(f(\xi))}{q(f(\xi))}$ on $f^{-1}(V)$. By (a), we have a neighbourhood $W$ of $x$ in $X$ and $a_i,b_i\in k[X_1,\ldots, X_m]\eqqcolon R$ such that $f_i(\xi) = \frac{a_i(\xi)}{b_i(\xi)}$ on $W$. Replacing $W$ by $W\cap f_i^{-1}(V)$ and replacing the $b_i$ by a common denominator and changing $a_i$ accordingly, we may assume that $W\subseteq f^{-1}(V)$ and $b_1=\ldots = b_n = b$. Then we have, for $\xi\in W$ 
 	  \begin{align*}
 	   \phi(f(\xi)) = \frac{p\left(\frac{a_1}{b}(\xi), \ldots, \frac{a_n}{b}(\xi)\right)}{q\left(\frac{a_1}{b}(\xi), \ldots, \frac{a_n}{b}(\xi)\right)}=  \frac{b(\xi)^N p\left(\frac{a_1}{b}(\xi), \ldots, \frac{a_n}{b}(\xi)\right)}{b(\xi)^Nq\left(\frac{a_1}{b}(\xi), \ldots, \frac{a_n}{b}(\xi)\right)}
 	  \end{align*}
-	  and both parts of the fractions on the right hand side are in $R$ if $N$ is large enough ($N\geq \max(\deg p, \deg q)$)
+	  and both parts of the fractions on the right hand side are in $R$ if $N$ is large enough (i.e. $N\geq \max(\deg p, \deg q)$)
 	 \end{description}
 
 	\end{proof}
 	\begin{rem}
 	 \begin{alphanumerate}
-	  \item $f\in \Oo(X) \Longleftrightarrow (X\morphism[f] k)$ is a morphism in this sense.
+	  \item $f\in \Oo(X)$ if and only if $X\morphism[f] k$ is a morphism in this sense.
 	  \item Using characterization (b) of morphisms, it is clear, that the composition of morphisms is a morphism and that $\id_x$ is a morphism $X\longto X$. Quasi-affine varieties in some $k^n$ with morphisms as in Definition \reff{def:varietymorphism} and the ordinary composition of maps therefore form a category.
 	 \end{alphanumerate}
 	\end{rem}
 	\begin{defi*}
-	 A \emph{category} is a triple $\AA = (O,M,s,t,\circ)$ consisting of the five elements:
+	 A \emph{category} is a triple $\Aa = (O,M,s,t,\circ)$ consisting of the five elements:
 	 \begin{enumerate}
-	  \item A class of objects $O$.
+	  \item A class of objects $O=\Ob(\Aa)$.
 	  \item A class $M$ of morphisms.
-	  \item Maps $O\overset{s}{\longot} M \morphism[t] O$ where we put $\Hom_\AA(X,Y)$ for $\left\{a\in M\st s(a) = X, t(a) = Y\right\}$.
-	  \item \begin{align*}
+	  \item Maps $O\overset{s}{\longot} M \morphism[t] O$ where we put $\Hom_\Aa(X,Y)$ for $\left\{a\in M\st s(a) = X, t(a) = Y\right\}$.
+	  \item\begin{align*}
 	   \circ: \left\{(a,b)\in M\times M \st t(a) = s(b)\right\} &\longto M\\
 	   (a,b) &\longmapsto b\circ a         
 	        \end{align*}
@@ -1206,17 +1218,97 @@
 	\end{example*}
 	\begin{rem*}
 	 \begin{alphanumerate}
-	  \item It is normally assumed, that $\Hom_\AA(X,Y)$ form a set.
+	  \item It is normally assumed, that $\Hom_\Aa(X,Y)$ form a set.
 	  \item If the class of objects and morphisms are sets, the category is called \emph{small}.
 	 \end{alphanumerate}
 	\end{rem*}
-	\begin{prop} If $X$ and $Y$ are affine algebraic varieties, we have a bijection between the morphisms $X\morphism[f] Y$ and the $k$-linear ring homomorphisms $\Oo(Y) \morphism[\Phi]\Oo(X)$ given by
-	 \begin{align*}
-	   f &\longmapsto (\psi \longmapsto \psi\circ f)\\
-	   f \text{ with } \mm_{f(x))} = \Phi^{1}(\mm_X) &\longmapsfrom \Phi
-	 \end{align*}
-	 where $\mm_x = \left\{\lambda \in \Oo_X(X) \st \lambda(x) = 0\right\}$
+	\begin{prop} For affine algebraic varieties $M\subseteq k^m$ and $N\subseteq k^n$ we have a bijection
+		\begin{align*}
+			\Hom(M,N)=\left\{\text{Morphisms }M\morphism[f]N\right\}&\isomorphism\left\{\begin{array}{c}
+			\text{{Morphisms of }}k\text{-algebras}\\
+			\Oo(N)\morphism[\phi]\Oo(M)
+			\end{array}\right\}\\
+			f&\longmapsto\phi=f^*\quad\text{where }f^*\lambda(x)=\lambda(f(x))\ \forall x\in M\\
+			f_\phi=\left(\phi(Y_1),\ldots,\phi(Y_n)\right)&\longmapsfrom\phi,
+		\end{align*}
+		where $N\morphism[Y_k]k,(\nu_1,\ldots,\nu_n)\mapsto\nu_k$ denotes the projection onto the $k\ordinalth$ coordinate.
 	\end{prop}
+	\begin{rem*}
+		Actually the condition on $M$ may be relaxed to $M$ being quasi-affine (as the proof will show). If $N$ is quasi-affine, the map $\to$ is still well-defined, but may fail to be bijective (cf. Example \reff{ex:nothereyet} below).%to be added!
+	\end{rem*}
+	\begin{proof}
+		It is obvious from Definition \reff{def:varietymorphism}(b) that $\to$ is well-defined. To show that $\leftarrow$ is well-defined as well, it is sufficient (by Definition \reff{def:varietymorphism}(a)) to check that $f_\phi(M)\subseteq k^n$ is in fact a subset of $N$. To prove this, let $N=V(\qq)$ for some prime ideal $\qq\in\Spec S$ (with $S=k[Y_1,\ldots,Y_n]$). If $g\in\qq$ and $x\in M$, then
+		\begin{align*}
+			g\big(f_\phi(x)\big)=g\big(\phi(Y_1)(x),\ldots,\phi(Y_n)(x)\big)=\phi\big(g(Y_1,\ldots,Y_n)\big)(x)=0
+		\end{align*}
+		as $g(Y_1,\ldots,Y_n)=0$ in $\Oo(N)$ by Proposition \reff{prop:primeIdealIso}. Thus, $f_\phi(x)\in V(\qq)=N$, as claimed.
+		It remains to show that these maps are indeed inverse to each other. We have
+		\begin{align*}
+			f_{f^*}(x)=\big(f^*Y_1(x),\ldots,f^*Y_n(x)\big)=\left(f_1(x),\ldots,f_n(x)\right)=f(x).
+		\end{align*}
+		Thus, $f_{f^*}=f$. Conversely,
+		\begin{align*}
+			f_\phi^*Y_i(x)=i\ordinalth\text{ coordinate of }f_\phi(x)=\phi(Y_i)(x),
+		\end{align*}
+		hence $f_\phi^*Y_i=\phi(Y_i)$. Since the $Y_i$ generate $\Oo(N)$ as a $k$-algebra (by Proposition \reff{prop:primeIdealIso}), we have $f_\phi^*=\phi$ on $\Oo(N)$.
+	\end{proof}
+	\begin{rem*}
+		\begin{alphanumerate}
+			\item Note that $\Oo(X)$ is a domain when $X$ is (quasi-)affine.
+			\item The proposition may be restated (in category theoretical manner) by claiming that
+			\begin{align*}
+				\left\{\text{affine algebraic varieties}\text{ over }k\right\}&\isomorphism\left\{k\text{-algebras of finite type which are domains}\right\}\\
+				X&\longmapsto \Oo(X)\\
+				\left(X\morphism[f]Y\right)&\longmapsto \left(\Oo(Y)\morphism[f^*]\Oo(X)\right)
+			\end{align*}
+			is a (contravariant) \emph{equivalence of categories}.
+			\item \textbf{Lots of stuff about categories:} Let $\Aa$ be some category, $X,Y\in\Ob(\Aa)$ be objects of $\Aa$ and $X\morphism[f]Y$ a morphism in $\Aa$. We say that $f$ is an \emph{isomorphism} in $\Aa$ if there is a morphism $g\in\Hom_\Aa(Y,X)$ which is both left- and right-inverse (i.e. $gf=\id_X$ and $fg=\id_Y$).
+			
+			A \emph{covariant functor} $F:\Aa\to\Bb$ between categories consists of a map associating an object $F(X)\in\Ob(\Bb)$ to each $X\in\Ob(\Aa)$ and, for objects $X,Y\in\Ob(\Aa)$, a map $\Hom_\Aa(X,Y)\morphism[F]\Hom_\Bb(F(X),F(Y))$ such that $F(\id_X)=\id_{F(X)}$ and $F(\alpha\circ\beta)=F(\alpha)\circ F(\beta)$ for composable morphisms $X\morphism[\alpha]Y\morphism[\beta]Z$. For a \emph{contravariant functor}, one instead requires that $F$ maps $\Hom_\Aa(X,Y)\morphism[F]\Hom_\Bb(F(Y),F(X))$, $F(\id_X)=\id_{F(X)}$ and $F(\alpha\circ\beta)=F(\beta)\circ F(\alpha)$.
+			
+			Let $\Aa\op$ (the \emph{dual} or \emph{opposite} category) be $\Aa$ with every morphism reversed, i.e. $\Ob(\Aa\op)=\Ob(\Aa)$ and $\Hom_{\Aa\op}(X,Y)=\Hom_\Aa(Y,X)$ for all $X,Y\in\Ob(\Aa)$ and the composition $\alpha\circ\beta$ in $\Aa\op$ is given by $\beta\circ\alpha$ in $\Aa$ (with $X\morphism[\alpha]Y\morphism[\beta]Z$ in $\Aa$, hence $Z\morphism[\beta]Y\morphism[\alpha]X$ in $\Aa\op$). Then, obviously, each covariant functor $\Aa\to\Bb$ corresponds to a covariant functor $\Aa\op\to\Bb\op$ and a contravariant functor $\Aa\op\to\Bb$. Together with $(\Aa\op)\op=\Aa$, the reader will easily find two sets of each four similar correspondences.
+			
+			A (co- or contravariant) functor $F:\Aa\to\Bb$ is an \emph{equivalence of categories} if it induces bijections $\Hom_\Aa(X,Y)\isomorphism\Hom_\Bb(F(X),F(Y))$ resp. $\Hom_\Bb(F(Y),F(X))$ and if every object $Y\in\Ob(\Bb)$ is $\Bb$-isomorphic to $F(X)$ for some $X\in\Ob(\Aa)$.
+			
+			A \emph{functormorphism} (or \emph{natural transformation}) between functors $F,G:\Aa\to\Bb$ (both co- or both contravariant) is a map $\phi$ associating a morphism $F(X)\morphism[\phi_X]G(X)$ to each $X\in\Ob(\Aa)$ such that for any morphism $X\morphism[\alpha]Y$ in $\Aa$ the diagram
+			\begin{center}
+				\begin{minipage}{0.35\textwidth}
+					\centering
+					\begin{tikzpicture}
+					\node (a) at (0,1.5) {$F(X)$};
+					\node (b)at (2.5,1.5) {$F(Y)$};
+					\node (c) at (0,0) {$G(X)$};
+					\node (d) at (2.5,0) {$G(Y)$};
+					\scriptsize
+					\draw[->] (a) -- (b) node[pos=0.5, above] {$F(\alpha)$};
+					\draw[->] (c) -- (d) node[pos=0.5, below] {$G(\alpha)$};
+					\draw[->] (a) -- (c) node[pos=0.5, left] {$\phi_X$};
+					\draw[->] (b) -- (d) node[pos=0.5, right] {$\phi_Y$};
+					\end{tikzpicture}
+					
+					(if $F,G$ are covariant)
+				\end{minipage}
+				resp.
+				\begin{minipage}{0.35\textwidth}
+					\centering
+					\begin{tikzpicture}
+					\node (a) at (0,1.5) {$F(Y)$};
+					\node (b)at (2.5,1.5) {$F(X)$};
+					\node (c) at (0,0) {$G(Y)$};
+					\node (d) at (2.5,0) {$G(X)$};
+					\scriptsize
+					\draw[->] (a) -- (b) node[pos=0.5, above] {$F(\alpha)$};
+					\draw[->] (c) -- (d) node[pos=0.5, below] {$G(\alpha)$};
+					\draw[->] (a) -- (c) node[pos=0.5, left] {$\phi_Y$};
+					\draw[->] (b) -- (d) node[pos=0.5, right] {$\phi_X$};
+					\end{tikzpicture}
+					
+					(if $F,G$ are contravariant)
+				\end{minipage}
+			\end{center}
+			commutes. If $F\morphism[\phi]G\morphism[\psi]H$ are functormorphisms, then so is $F\morphism[\psi\circ\phi]H$ defined by $(\psi\circ\phi)_X=\psi_X\circ\phi_X$. Obviously, there is a functormorphism $F\morphism[\id_F]F$ given by $\left(\id_F\right)_X=\id_F(X)$. We thus have a \emph{category} of co- resp. contravariant functors $\Aa\morphism[F]\Bb$ between given categories $\Aa,\Bb$.
+		\end{alphanumerate}
+	\end{rem*}
 
 
 
