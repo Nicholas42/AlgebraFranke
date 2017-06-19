@@ -95,6 +95,7 @@
 \newtheorem{rem}{Remark}[subsection]
 \newtheorem*{rem*}{Remark}
 \newtheorem{fact}{Fact}
+\newtheorem*{fact*}{Fact}
 \newcommand{\lbl}[1]{
 	\label{#1}
 	\ifmmode
@@ -159,6 +160,7 @@
 \newoperator{tr}
 \newcommand{\id}{\operatorname{id}}
 \newoperator{Ob}
+\newoperator{lcm}
 \newcommand{\op}{^{\operatorname{op}}}
 %\newcommand{\multiline}[1]{#1}
 \newcommand{\longto}{\longrightarrow}
@@ -1156,7 +1158,7 @@
 	 \end{align*}
 	 (which maps maximal ideals, prime ideals, and ideals coinciding with their radicals on both sides to each other) composed with \eqreff{eq:correspondenceClosedIdeals} gives the desired bijection. By one of the versions of the Nullstellensatz (i.e. \eqreff{eq:correspondenceClosedIdeals} with $J=\pp$ and $A=X$) we have $\pp =\left\{f\in R\st f|_X =0\right\}$ such that $J\supseteq \pp$ implies $V(J)\subseteq V(\pp) = X$ and vice versa, which shows \eqreff{eq:cor2.2.2+}.
 	\end{proof}
-	\begin{fact}
+	\begin{fact}\lbl{fact:complemntOfVarietiesFormBase}
 	 Let $X$ be a quasi-affine algebraic variety in $k^n$. The open subsets of the form $X\setminus V(f)$ with $f\in\Oo(X)$ form a base of the topology on $X$.
 	\end{fact}
 	\begin{proof}
@@ -1222,7 +1224,7 @@
 	  \item If the class of objects and morphisms are sets, the category is called \emph{small}.
 	 \end{alphanumerate}
 	\end{rem*}
-	\begin{prop} For affine algebraic varieties $M\subseteq k^m$ and $N\subseteq k^n$ we have a bijection
+	\begin{prop}\lbl{prop:varietiesIsomAlgebras} For affine algebraic varieties $M\subseteq k^m$ and $N\subseteq k^n$ we have a bijection
 		\begin{align*}
 			\Hom(M,N)=\left\{\text{Morphisms }M\morphism[f]N\right\}&\isomorphism\left\{\begin{array}{c}
 			\text{{Morphisms of }}k\text{-algebras}\\
@@ -1307,8 +1309,62 @@
 				\end{minipage}
 			\end{center}
 			commutes. If $F\morphism[\phi]G\morphism[\psi]H$ are functormorphisms, then so is $F\morphism[\psi\circ\phi]H$ defined by $(\psi\circ\phi)_X=\psi_X\circ\phi_X$. Obviously, there is a functormorphism $F\morphism[\id_F]F$ given by $\left(\id_F\right)_X=\id_F(X)$. We thus have a \emph{category} of co- resp. contravariant functors $\Aa\morphism[F]\Bb$ between given categories $\Aa,\Bb$.
+		\item 
+			Let $F:\Aa \to \Bb$ be co- or contravariant functor. We call $F$ faithful (respectively fully faithful) if for objects $X, Y$ of $\Aa$ the map $\Hom_\Aa(X,Y) \morphism[F] \Hom_\Bb(FX, FY)$ (respectively $\Hom_\Aa(X,y) \morphism[F] \Hom_\Bb(FY,FX)$ if $F$ is contravariant) is injective (if $F$ is to be faithful) or bijective (if $F$ is to be fully faithful). It is \emph{essentially surjective} if every object $M$ of $\Bb$ is isomorphic to $F(X)$ for some $X\in \Aa$. $F$ is an equivalence of categories, if it is fully faithful and essentially surjective.
+		\item 
+			Assuming the Axiom of choice, a functor $\Aa \morphism[F] \Bb$ is an equivalence of categories iff there is an inverse functor $\Bb \morphism[G] \Aa$  (contravariant iff $F$ is) such that there are functormorphisms $FG \simeq \id_\Bb$ and $GF \simeq \id_\Aa$. To construct $G$, chose for any object $M$ of $\Bb$ an object $X_M$ of $\Aa$ with an isomorphism $i_M:F(X_M) \isomorphism X$. Put $G(M) = X_M$ and $G(M\morphism[\mu] N)$ is determined by the commutativity of [insert diagram here]
 		\end{alphanumerate}
 	\end{rem*}
+	\begin{cor}
+		The contravariant functor $X\overset{F}{\mapsto} \Oo(X)$ from the categoriy of affine algebraic varieties over $k$ to the category of $k$-algebras of finite type which are domains is an equivalence of categories.
+	\end{cor}
+	\begin{proof}
+	 	By Proposition \reff{prop:varietiesIsomAlgebras} it is fully faithful. To demonstrate essential surjectivity, let $A$ be a $k$-algebra of finite type which is a domain. As it is of finite type, there is a surjective ring homomorphism $R=k[X_1,\ldots, X_n]\morphism[\phi] A$, for some finite $n$. If $\pp = \ker(\phi)$ then $A\simeq R/\pp$ and the fact, that $A$ is a domain implies, that $\pp\in\Spec(R)$. By Proposition \reff{prop:primeIdealIso} $\Oo(X)\simeq R/\pp \simeq A$ where $X=V(\pp)$ is an affine algebraic variety in $k^n$. establishing essential surjectivity.
+	\end{proof}
+	\begin{fact*}
+		If $\Aa\morphism[F] \Bb$ is an equivalence of categories (or even fully faithful) and $X\morphism[\phi]Y$ a morphism in $\Aa$, then $\phi$ is an isomorphism in $\Aa$ iff $F(\phi)$ is isomorphism in $\Bb$. Indeed, if $F(Y) \morphism[g] F(X)$ is inverse to $f=F(\phi)$ then $g= F(\gamma)$ for a unique $Y\morphism[\gamma] X$ as $F$ is fully faithful. Using that $F$ is fully faithful, one easily checks, that $\gamma$ and $\phi$ are inverse.
+	\end{fact*}
+	\begin{cor}\lbl{cor:IsomInOImpliesIsom}
+		If $X$ and $Y$ are affine algebraic varieties (or isomorphic to affine ones) and $X\morphism[f] Y$ is a morphism such that $\Oo(Y) \morphism[f^\times] \Oo(X)$ is an isomorphism, then $f$ is one.
+	\end{cor}
+	\begin{prop}\lbl{prop:quasiIsomAffine}
+		Let $X= V(\pp)\subseteq k^n$ be an affine algebraic variety in $k^n$ and $f\in \Oo(X)$. Then the quasi affine variety $X\setminus V(f)$ is isomorphic to an affine one, namely to $V(\qq)\subseteq k^{n+1}$ where $\qq\subseteq S=k[X_1,\ldots, X_{n+1}]$ is generated by the elements of $\pp$ (viewed as elements of $S$ which do not depend on $X_{n+1}$. and by $g= 1 - X_{n+1}\tilde f(X_1,\ldots, X_n)$ where $\tilde f  \in R =k[X_1,\ldots,X_n+1]$ is any preimage of $f$ under $R\to R/\pp \simeq \Oo(X)$. 
+	\end{prop}
+	\begin{proof}
+		Obviously, $\qq$ is an ideal in $S$ (which can (and will) be shown to be prime) which is independent of the choice of $\tilde f$. We have maps
+		\begin{align*}
+			V(\qq) &\longto X\setminus V(f)\lbl{eq:prop2.2.4star}\tag{$*$}\\
+			(x_1,\ldots, x_{n+1}) &\overset{\pi}{\longmapsto} (x_1,\ldots, x_n) \\
+			\left(x_1, \ldots, x_n, \frac{1}{f(x_1,\ldots,x_n)}\right)& \overset{\iota}{\longmapsfrom}(x_1,\ldots, x_n)
+		\end{align*}
+		It is easily seen form the definition of $\Oo$ that $\frac{1}{f}\in \Oo(X\setminus V(f))$. Hence, $\iota$ is continuous. Thus, $V(\qq)$ is homeomorphic to $X\setminus V(f)$. It is irreducible, hence an affine algebraic variety and the maps in \eqreff{eq:prop2.2.4star} are morphisms of algebraic varieties, which are inverse to each other.
+	\end{proof}
+	\begin{rem*}
+		By fact \reff{fact:complemntOfVarietiesFormBase} it follows that the \emph{affine open subsets} (open subsets which are isomorphic to affine algebraic varieties) for a base of the topology of any quasi-affine algebraic varieties.
+	\end{rem*}
+	\begin{cor}
+		Let $X$ be quasi-affine and $x\in X$, then there is a neighbourhood $U$ of $x$ which is isomorphic to an affine algebraic variety.
+	\end{cor}
+	\begin{rem}[or maybe 2, who knows? But swallows are butterflies, so who cares?]
+		If $n\geq 2$ then $k[X_1,\ldots, X_n] \isomorphism \Oo(k^n\setminus\{0\})$. Hence the inclusion $k^n\setminus \{0\} \to k^n$ induces an isomorphism $\Oo(k^n) \isomorphism \Oo(k^n\setminus\{0\})$. But $k^n\setminus\{0\}\to k^n$ cannot be isomorphic. As $k^n$ is affine, by Corollary \reff{cor:IsomInOImpliesIsom} $k^n\setminus \{0\}$ mus fail to be affine. The proof of our claim about $\Oo(k^n\setminus\{0\})$ follows from
+	\end{rem}
+	\begin{prop}
+	 	If $Z\subseteq k^n$ is Zariski-closed, then any element $f$ of $\Oo(k^n\setminus Z)$ has the form $f=\frac{p}{q}$ where $p,q$ are elements of $R= k[X_1,\ldots, X_n]$ where $V(q)\cap (k^n\setminus Z) = \emptyset$.
+	\end{prop}
+	\begin{proof}
+		By the definition of $\Oo(\Omega)$, $\Omega = k^n\setminus Z$, there is a non-empty open $U\subseteq \Omega$ where $f = \frac{p_0}{q_0}$, where $p_0, q_0 \in R$ and $V(q_0)\cap U = \emptyset$. We claim that it is possible to chose this representation in such a way that any other representation $f=\frac{p}{q}$ in the open subset has the form $p=\lambda p_0$, $q=\lambda q_0$ with $\lambda \in R$ with $V(\lambda) \cap U= \emptyset$. Indeed, if $\frac{p_0}{q_0}$ does not yet have this property, and $\frac{p}{q}$ fails to have the desired form, then $f=\frac{p_1}{q_1}$ with $q_1 = \gcd(q,q_0)$, $p_1 = \frac{p\cdot q_1}{q}=\frac{p_0\cdot q_1}{q_0}$ ($pq_0 = qp_0$ is common multiple of $q$ and $q_0$ in $R$ hence a multiple of $\lcm (q,q_0) = \frac{q\cdot q_0}{q_1}$ in $R$) and in this reduction step $q_0R\subsetneq q_1R$ as $R$ is Noetherian, this terminates after finitely many steps with a representation $f=\frac{p_0}{q_0}$ on some non-empty open subset of $\Omega$ such that any other such representation $f=\frac{p}{q}$ on some non-empty open subset of $\Omega$ has the form $p=\lambda p_0$, $q=\lambda q_0$ with $\lambda\in R\setminus\{0\}$
+		
+		Now if $x\in \Omega$ then by definition there is a open neighbourhood $U\subseteq \Omega$ such that $f=\frac{p}{q}$ on $U$ and $V(q) \cap \Omega=\emptyset$. In particular $q(x)\neq 0$ and $q(x) =\lambda(x)q_0(x)$, hence $q_0(x) \neq 0$ and $V(q_0) \cap \Omega = \emptyset$. 
+	\end{proof}
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1319,4 +1375,5 @@
 
 
 \end{document}
+
 
