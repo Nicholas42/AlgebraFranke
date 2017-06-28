@@ -13,7 +13,7 @@
 
 \usepackage{old-arrows}
 \usepackage{pgf,tikz}
-\usetikzlibrary{arrows}
+\usetikzlibrary{positioning,arrows}
 \usepackage[shortlabels]{enumitem}
 \setlist[description]{font={\bfseries\rmfamily}}
 
@@ -94,7 +94,7 @@
 \newtheorem{example*}{Example}
 \newtheorem{rem}{Remark}[subsection]
 \newtheorem*{rem*}{Remark}
-\newtheorem{fact}{Fact}
+\newtheorem{fact}{Fact}[subsection]
 \newtheorem*{fact*}{Fact}
 \newcommand{\lbl}[1]{
 	\label{#1}
@@ -162,10 +162,11 @@
 \newoperator{Ob}
 \newoperator{lcm}
 \newcommand{\op}{^{\operatorname{op}}}
-\newcommand{\mSpec}{\operatorname{m-Spec}}
+\newcommand{\mSpec}{\mm\operatorname{-Spec}}
 %\newcommand{\multiline}[1]{#1}
 \newcommand{\longto}{\longrightarrow}
 \newcommand{\longot}{\longleftarrow}
+\newcommand{\ov}{\overline}
 \newcommand{\isomorphism}{
 	\tikz[baseline=(a.base)] \node (a) at (0,0) {$\longrightarrow$} node[above=-0.25ex] {\tiny $\sim$};}
 \newcommand{\lisomorphism}{
@@ -1326,8 +1327,8 @@
 				\scriptsize
 				\draw[->] (a) -- (b) node[pos=0.5,above] {$F(G(\mu))$};
 				\draw[->] (c) -- (d) node[pos=0.5,above] {$\mu$};
-				\draw[->] (a) -- (c) node[pos=0.5,left] {$\simeq$} node[pos=0.5,right] {$j_M$};
-				\draw[->] (b) -- (d) node[pos=0.5,left] {$\simeq$} node[pos=0.5,right] {$j_N$};
+				\draw[->] (a) -- (c) node[pos=0.5, below, sloped] {$\sim$} node[pos=0.5,right] {$j_M$};
+				\draw[->] (b) -- (d) node[pos=0.5, below, sloped] {$\sim$} node[pos=0.5,right] {$j_N$};
 			\end{diagram}
 		\end{alphanumerate}
 	\end{rem*}
@@ -1389,18 +1390,30 @@
 		Now let $x\in\Omega$. We find an open neighbourhood $x\in V\subseteq \Omega$ and polynomials $p,q\in R$ such that $f=\frac pq$ on $V$ and $V(q)\cap V=\emptyset$. Since any two non-empty Zariski-open subsets of $k^n$ intersect, we have $pq_0=p_0q$ on the open and thus Zariski-dense subset $U\cap V\subseteq k^n$ (recall that $k^n=V\left(\{0\}\right)$ is irreducible since $\{0\}\subseteq R$ is prime). As polynomials are continuous, we get $pq_0=p_0q$ on all of $k^n$ and hence, by Hilbert's Nullstellensatz, as an identity in $R$. Now since $q_0\mid q$ and $V(q)\cap V=\emptyset$ we also have $V(q_0)\cap V=\emptyset$. Therefore, $f=\frac{p_0}{q_0}$ on $V$, proving the assertion.
 	\end{proof}
 	\begin{prop}\lbl{prop:productAffineVarieties}
-		Let $X\subseteq k^m$ and $Y\subseteq k^n$ be quasi-affine algebraic varieties. Then $X\times Y \subseteq k^{m+n}$ is quasi-affine and has, together with the two projections $X\overset{p_1}{\longot} X\times Y \morphism[p_2] Y$, $x \mapsfrom (x,y) \mapsto y$, satisfies the universal property of the product of $X$ and $Y$ in the category of quasi-affine algebraic varieties over $k$.
+		Let $X\subseteq k^m$ and $Y\subseteq k^n$ be quasi-affine algebraic varieties. Then $X\times Y \subseteq k^{m+n}$ is quasi-affine and, together with the two projections $X\overset{p_1}{\longot} X\times Y \morphism[p_2] Y$, $x \mapsfrom (x,y) \mapsto y$, satisfies the universal property of the \emph{product} of $X$ and $Y$ in the category of quasi-affine algebraic varieties over $k$. That is,
 		\begin{align*}
 			\Hom(T, X\times Y) &\longto \Hom(T,X)\times \Hom(T,Y)\\
 			f &\longmapsto (p_1f, p_2f)
 		\end{align*}
-		is bijective for any object $T$ of that category.
+		is bijective for any object $T$ of that category. Equivalently, if $T\morphism[f]X$ and $T\morphism[g]Y$ are morphisms, then there is precisely one morphism $T\morphism[\phi]X\times Y$ such that the following diagram commutes
+		\begin{diagram}
+			\node (XY) at (0,0) {$X\times Y$};
+			\node (X) at (-1,1.25) {$X$};
+			\node (Y) at (-1,-1.25) {$Y$};
+			\node (T) at (2.5,0) {$T$};
+			\scriptsize
+			\draw[->] (XY) -- (X) node[pos=0.5, above right] {$p_1$};
+			\draw[->] (XY) -- (Y) node[pos=0.5, below right] {$p_2$};
+			\draw[->, dashed] (T) -- (XY) node[pos = 0.5, above] {$\exists!\ \phi$};
+			\draw[->, bend right] (T) to node[pos=0.5,below left] {$f$} (X);
+			\draw[->, bend left] (T) to node[pos=0.5,above left] {$g$} (Y);
+		\end{diagram}
 		Moreover, if $X$ and $Y$ are affine then so is $X\times Y$ and the canonical linear map
 		\begin{align*}
 			\Oo(X)\otimes \Oo(Y) &\longto\Oo(X\times Y)\\
-			f\otimes g &\longmapsto h,
+			f\otimes g &\longmapsto h(x,y)=f(x)g(y)\;,
 		\end{align*}
-		where $h(x,y) = f(x)g(y)$, is an isomorphism.
+		is an isomorphism.
 	\end{prop}
 	\begin{rem*}
 		\begin{alphanumerate}
@@ -1416,29 +1429,48 @@
 			\end{align*}
 			is bijective. 
 			
-			In particular, empty coproducts are \emph{initial} objects $I$ characterized by $|\Hom_\Aa(I,T)| = 1$ for any object $T$. In the category of sets, groups, abelian groups, $R$-modules, rings the initial objects are $\emptyset$, $\{0\}$, $\{0\}$, $\{0\}$, $\IZ$ and $X\amalg Y$ is the disjoint union of $X$ and $Y$, (complicated), $X\times Y$, $X\times Y$, $X\otimes_\IZ Y$. If $\Lambda$ is arbitrary and for abelian groups or $R$-modules, $\coprod_{\lambda\in \Lambda} = \left\{(x_\lambda) \in \prod_{\lambda\in \Lambda} X_\lambda\st x_\lambda = 0 \text{ for all but finitely many } \lambda \right\}$.
-		\item 
-			$V\otimes_k W$, together with $V\times W\to V\otimes W, (v,w) \mapsto v\otimes w$, which must be bilinear, is characterized by the universal property
+			In particular, empty coproducts are \emph{initial} objects $I$ characterized by $|\Hom_\Aa(I,T)| = 1$ for any object $T$. In the category of sets, groups, abelian groups, $R$-modules, rings the initial objects are $\emptyset$, $\{0\}$, $\{0\}$, $\{0\}$, $\IZ$ and $X\amalg Y$ is the disjoint union of $X$ and $Y$, (complicated), $X\times Y$, $X\times Y$, $X\otimes_\IZ Y$. If $\Lambda$ is arbitrary and for abelian groups or $R$-modules, 
 			\begin{align*}
-				\Hom_k(V\otimes W, T)&\longto \operatorname{Bil}_k(V,W; T)\\
-				(V\otimes W \morphism[f] T) &\longmapsto B(v,w) \coloneqq f(v\otimes, w)
+				\coprod_{\lambda\in \Lambda} = \left\{(x_\lambda) \in \prod_{\lambda\in \Lambda} X_\lambda\st x_\lambda = 0 \text{ for all but finitely many } \lambda \right\}\;.
 			\end{align*}
-
-
-		\end{alphanumerate}
+		\item 
+			The tensor product $V\otimes_k W$, together with $V\times W\morphism[\otimes] V\otimes W$, $(v,w) \mapsto v\otimes w$ (which must be $k$-bilinear) is characterized by the universal property
+			\begin{align*}
+				\Hom_k(V\otimes W, T)&\longto \operatorname{Bil}_k(V\times W, T)\\
+				(V\otimes W \morphism[f] T) &\longmapsto B(v,w) \coloneqq f(v\otimes w)\;,
+			\end{align*}
+			$\operatorname{Bil}_k(V\times W,T)$ denoting the set of $k$-bilinear maps $V\times W\to T$. Equivalently, for every $k$-bilinear map $V\times W\morphism[\langle-,-\rangle]T$ there is precisely one linear map $V\otimes W\morphism[f]T$ such that the following diagram commutes
+			\begin{diagram}
+				\node (a) at (0,1.5) {$V\times W$};
+				\node (b) at (3,1.5) {$T$};
+				\node (c) at (1.5,0) {$V\otimes W$};
+				\footnotesize
+				\node (A) at (-1.5,1.5) {$(v,w)$};
+				\node (C) at (0,0) {$v\otimes w$};
+				\draw[|->] (A) -- (C);
+				\scriptsize
+				\draw[->] (a) -- (b) node[pos=0.5, above] {$\langle -,-\rangle$};
+				\draw[->] (a) -- (c) node[pos=0.5, below left] {$\otimes$};
+				\draw[->, dashed] (c) -- (b) node[pos=0.5, below right] {$\exists!\ f$};
+			\end{diagram}
+	\end{alphanumerate}
 
 	\end{rem*}
 	\begin{proof}[Proof of Proposition \reff{prop:productAffineVarieties}]
-		Let $X$ and $Y$ be affine $X=V(\pp)$, $Y=V(\qq)$. Then $X\times Y$ is $V(I)$ where $I$ is the ideal generated by $\left\{(x,y) \to f(x)\st f\in \pp\right\}$ and $\left\{(x,y) \to g(y)\st g\in \qq\right\}$. Thus, $X\times Y$ is closed. If $X\times Y = A\cup B$ with $A$ and $B$ closed in $X\times Y$. Then for each $y\in Y$ we have $X = A_y\cup B_y$ where $A_y=\left\{ x\in X\st (x,y)\in A \right\}$ and $B_y = \left\{x\in X \st (x,y)\in B\right\}$ are easily seen to be closed. As $X$ is irreducible, this implies that for each $y\in Y$ the condition $A_y = X$ or $B_y = X$ are satisfied. Thus, $Y=\tilde A\cup \tilde B$ where $\tilde A = \left\{ y\in A_y\st A_y=X\right\}$ and $\tilde B =\left\{y\in Y\st B_y = x\right\}$ turn out to be closed, e.g. $\tilde A = \bigcap_{x\in X} A^{(x)}$ with $A^{(x)} =\left\{y\in Y\st (x,y)\in S\right\}$. Thus, $Y= \tilde A$ or $Y=\tilde B$ and $X\times Y = A$ or $X\times Y = B$. 
+		Let $X$ and $Y$ be affine $X=V(\pp)$, $Y=V(\qq)$. Then $X\times Y=V(I)$ where $I$ is the ideal generated by $\left\{(x,y) \mapsto f(x)\st f\in \pp\right\}$ and $\left\{(x,y) \mapsto g(y)\st g\in \qq\right\}$. Thus, $X\times Y$ is closed. Let $X\times Y = A\cup B$ with $A$ and $B$ closed in $X\times Y$. Then for each $y\in Y$ we have $X = A_y\cup B_y$ where $A_y=\left\{ x\in X\st (x,y)\in A \right\}$ and $B_y = \left\{x\in X \st (x,y)\in B\right\}$ are easily seen to be closed. As $X$ is irreducible, this implies that for each $y\in Y$ the condition $A_y = X$ or $B_y = X$ are satisfied. Thus, $Y=\tilde A\cup \tilde B$ where $\tilde A = \left\{ y\in A_y\st A_y=X\right\}$ and $\tilde B =\left\{y\in Y\st B_y = x\right\}$ turn out to be closed, e.g. $\tilde A = \bigcap_{x\in X} A^{(x)}$ with $A^{(x)} =\left\{y\in Y\st (x,y)\in S\right\}$. Thus, $Y= \tilde A$ or $Y=\tilde B$ and $X\times Y = A$ or $X\times Y = B$, proving that $X\times Y$ is irreducible. 
 		
-		If $X$ and $Y$ are quasi-affine then $X\subseteq \overline{X}$ and $Y\subseteq \overline{Y}$ with $\overline{X}$, $\overline{Y}$ affine. Then $X\times Y$ is open in $\overline{X}\times \overline{Y}$, thus quasi affine. If $T$ is any quasi-affine variety and $X\lmorphism[f] T\morphism[g] Y$ then, by Definition \reff{def:varietymorphism}, $f=(f_1,\ldots, f_m)$ and $g=(g_1,\ldots, g_n)$ with $g_j, f_i\in \Oo(T)$ and $T\morphism[(f,g)] X\times Y$, $(f,g) = (f_1,\ldots, f_m, g_1,\ldots, g_n)$ is a uniquely determined morphism of quasi-affine varieties whose projections to the two factors are $f$ and $g$.
+		If $X$ and $Y$ are quasi-affine then $X\subseteq \overline{X}$ and $Y\subseteq \overline{Y}$ with $\overline{X}$, $\overline{Y}$ affine. Then $X\times Y$ is open in $\overline{X}\times \overline{Y}$ (since both $(\ov X\setminus X)\times \ov Y$ and $\ov X\times (\ov Y\setminus Y)$ are closed, similar to $X\times Y$ in the affine case), thus quasi affine. If $T$ is any quasi-affine variety and $X\lmorphism[f] T\morphism[g] Y$ then, by Definition \reff{def:varietymorphism}, $f=(f_1,\ldots, f_m)$ and $g=(g_1,\ldots, g_n)$ with $g_j, f_i\in \Oo(T)$ and $T\morphism[(f,g)] X\times Y$, $(f,g) = (f_1,\ldots, f_m, g_1,\ldots, g_n)$ is a uniquely determined morphism of quasi-affine varieties whose projections to the two factors are $f$ and $g$.
 		
-		It remains to prove that $\Oo(X)\otimes_k \Oo(Y) \isomorphism \Oo(X\times Y)$. This morphism is surjective because, by Proposition \reff{prop:primeIdealIso}, the target space is generated by monomial $x_1^{\alpha_1}\cdot\ldots\cdot x_m^{\alpha_m}\cdot y_1^{\beta_1}\cdot\ldots\cdot y_n^{\beta_n}$ in $(x,y)$ and such a monomial is the image of $x^\alpha\otimes_k y^\beta$. Assume that $h\in \Oo(X)\otimes_k \Oo(Y)$ is in the kernel. There are finite-dimensional subspaces $V\subseteq \Oo(X)$ and $W\subseteq \Oo(Y)$ such that $h\in V\otimes_k W$. Let $(f_i)_{i=1}^a$ and $(g_j)_{j=1}^b$ be bases of $V$ and $W$, then $h = \sum_{i=1}^a\sum_{j=1}^b c_{i,j}f_i\otimes_k g_j$. That $h$ is in the kernel of $\Oo(X)\otimes_k\Oo(Y) \isomorphism \Oo(X\times Y)$ is equivalent to $\sum_{i=1}^a\sum_{j=1} c_{i,j}f_i(x) g_j(y) = \sum_{j=1}^b\left(\sum_{i=1}^a c_{i,j}f_i(x)\right) g_j(y) =0$ for all $x\in X$ and $y\in Y$. As the $(g_j)_{j=1}^b$ are $k$-linearly independent in $\Oo(Y)$ is follows that $\sum_{i=1}^a c_{i,j}f_i(x) = 0$ for all $x\in X$ and $1\leq j\leq b$. The $f_i$ being $k$-linearly independent in $\Oo(X)$, this implies $c_{i,j}=0$ for $1\leq i\leq a$ and $1\leq j \leq b$ and $h=0$.
+		It remains to prove that $\Oo(X)\otimes_k \Oo(Y) \isomorphism \Oo(X\times Y)$. This morphism is surjective because, by Proposition \reff{prop:primeIdealIso}, the target space is generated by monomials $x_1^{\alpha_1}\cdots x_m^{\alpha_m} y_1^{\beta_1}\cdots y_n^{\beta_n}$ in $(x,y)$ and such a monomial is the image of $x^\alpha\otimes_k y^\beta$. Assume that $h\in \Oo(X)\otimes_k \Oo(Y)$ is in the kernel. There are finite-dimensional subspaces $V\subseteq \Oo(X)$ and $W\subseteq \Oo(Y)$ such that $h\in V\otimes_k W$. Let $(f_i)_{i=1}^a$ and $(g_j)_{j=1}^b$ be bases of $V$ and $W$, then $h = \sum_{i=1}^a\sum_{j=1}^b c_{i,j}f_i\otimes_k g_j$. That $h$ is in the kernel of $\Oo(X)\otimes_k\Oo(Y) \isomorphism \Oo(X\times Y)$ is equivalent to
+		\begin{align*}
+			\sum_{i=1}^a\sum_{j=1}^b c_{i,j}f_i(x) g_j(y) = \sum_{j=1}^b\left(\sum_{i=1}^a c_{i,j}f_i(x)\right) g_j(y) =0\quad\text{for all }x\in X\text{ and }y\in Y\;.
+		\end{align*}
+		As the $(g_j)_{j=1}^b$ are $k$-linearly independent in $\Oo(Y)$ is follows that $\sum_{i=1}^a c_{i,j}f_i(x) = 0$ for all $x\in X$ and $j\leq b$. The $f_i$ being $k$-linearly independent in $\Oo(X)$, this implies $c_{i,j}=0$ for $i\leq a$ and $j \leq b$ and therefore $h=0$.
 	\end{proof}
 	\begin{defi}\lbl{def:germ}
-		Let $X$ be a quasi-affine algebraic variety, $x\in X$. A \emph{germ} (deutsch: \emph{Keim}) at $x$ of a regular function on $X\times Y$ is an equivalence class of pairs $(f,U)$ where $U$ is an open neighbourhood of $x$ and $f\in\Oo(U)$ and where $(f,U)\sim (g,V)$ if $f|_W = g|_W$ for some open neighbourhood $W\subseteq U\cap V$ of $x$ in $X$. The set of such germs is denoted by $\Oo_{X,x}$ (the local ring of $X$ at $x$) and it is ring with ring operations
+		Let $X$ be a quasi-affine algebraic variety, $x\in X$. A \emph{germ} (German: \emph{Keim}) at $x$ of a regular function on $X\times Y$ is an equivalence class of pairs $(f,U)$ where $U$ is an open neighbourhood of $x$ and $f\in\Oo(U)$ and where $(f,U)\sim (g,V)$ if $f|_W = g|_W$ for some open neighbourhood $W\subseteq U\cap V$ of $x$ in $X$. The set of such germs is denoted by $\Oo_{X,x}$ (the \emph{local ring} or \emph{stalk} (German: \emph{Keim}) of $X$ at $x$) and it is a ring with ring operations
 		\begin{align*}
-			\left[(f,U)/_\sim\right] \circ \left[(g,V)/_\sim\right] = \left[(f|_{U\cap V} \circ g|_{U\cap V}, U\cap V)\right]/_\sim
+			\big[(f,U)/_\sim\big] \circ \big[(g,V)/_\sim\big] = \big[(f|_{U\cap V} \circ g|_{U\cap V}, U\cap V)\big]/_\sim
 		\end{align*}
 		for $\circ\in\{+,\cdot\}$.
 	\end{defi}
@@ -1447,9 +1479,9 @@
 	\item 
 		If $U\subseteq X$ open and $x\in U$ then $\Oo_{U,x} \isomorphism \Oo_{X,x}$ with $(f,W)/_\sim \mapsto (f,W)/_\sim$
 	\item 
-		Every $\phi\in \Oo_{X,x}$ has a unique value $\phi(x)$ at $x$ defined by $\phi(x) = f(x)$ where $\phi=(f,U)/\sim$.
+		Every $\phi\in \Oo_{X,x}$ has a unique value $\phi(x)$ at $x$ defined by $\phi(x) = f(x)$ where $\phi=(f,U)/_\sim$.
 	\item 
-		In our situation, $X$ is irreducible and $V(f|_{U\cap V} -g|_{U\cap V})$ is closed in the irreducible space $U\cap V$ in which it is dense as it is non-empty. Hence, $(f,U)\sim (g,V)$ iff $f|_{U\cap V} = g|_{U\cap B}$.
+		In our situation, $X$ is irreducible and $V(f|_{U\cap V} -g|_{U\cap V})$ is closed in the irreducible space $U\cap V$ in which any non-empty open subset $W$ is dense. Hence, $(f,U)\sim (g,V)$ iff $f|_{U\cap V} = g|_{U\cap V}$.
 	\item 
 		We have a ring homomorphism $\Oo_{X,x}\to k$, $\psi \mapsto \psi(x)$ of evaluation at $x$ defined by $\psi (x) = f(x)$ when $\psi = (f,U)/_\sim$.
 	\end{alphanumerate}
@@ -1471,19 +1503,17 @@
 	\item 
 		In particular the ring $\{0\}$ is not a local ring as it has no maximal ideals and no non-units.
 	\item 
-		Recall the definitions: an ideal $\pp$ is prime iff $R/\pp$ is a domain which is equivalent to $1\not\in \pp$ and from $ab\in \pp$ follows $a\in \pp$ or $b\in \pp$. An ideal $\pp$ is maximal iff $R/\pp$ is a domain which is equivalent to $1\not\in \pp$ and from $\pp\subseteq I\subseteq R$ follows $I=R$ or $I=\pp$.
+		Recall the definitions: an ideal $\pp$ is prime iff $R/\pp$ is a domain which is equivalent to $1\not\in \pp$ and from $ab\in \pp$ follows $a\in \pp$ or $b\in \pp$. An ideal $\mm$ is maximal iff $R/\mm$ is a field, or equivalently, $1\not\in \mm$ and from $\mm\subseteq I\subseteq R$ it follows that $I=R$ or $I=\mm$.
 	\item
-		 In $\Oo_{X,x}$ $\mm_x$ is a maximal ideal since $\Oo_{X,x}/\mm_x \isomorphism k, (\psi\mod x)\mapsto \psi(x)$ is an isomorphism. Let $\psi = (f,U)/_\sim\in \Oo_{X,x}\setminus \mm_x$, then $f(x) = \psi(x) \neq 0$ hence $V=U\setminus V(f)$ is an open neighbourhood of $x$. Let $h=\frac{1}{f}$ and $\eta = (h, V)$, then $\eta\cdot \psi = 1$. Hence $\mm_x$ is the set of non-units in $\Oo_x$.
+		 In $\Oo_{X,x}$, the ideal $\mm_x$ is maximal since $\Oo_{X,x}/\mm_x \isomorphism k$, $(\psi\mod x)\mapsto \psi(x)$ is an isomorphism. Let $\psi = (f,U)/_\sim\in \Oo_{X,x}\setminus \mm_x$, then $f(x) = \psi(x) \neq 0$ hence $V=U\setminus V(f)$ is an open neighbourhood of $x$. Let $h=\frac{1}{f}$ and $\eta = (h, V)$, then $\eta\cdot \psi = 1$. Hence, $\mm_x$ is the set of non-units in $\Oo_{X,x}$.
 	\item 
-		\textbf{Proof of equivalence}
+		\emph{Proof of equivalence.} $(b)\to (a)$ is trivial.
 		
-		$b)\to a)$ is trivial.
+		$(a)\to (b)$ Let $\mm$ be the set of non-units. If $\mm\subseteq I\subseteq R$ and $I\neq R$, then all elements of $I$ must be non-units, hence $\mm = I$. Also $1\not\in \mm$, so $\mm$ is maximal.
 		
-		$a)\to b)$ Let $\mm$ be the set of non-units. If $\mm\subseteq I\subseteq R$ and $I\neq R$, then all elements of $I$ must be non-units, hence $\mm = I$. Also $1\not\in \mm$, so $\mm$ is maximal.
+		$(a)\to (c)$ Retaining the previous notation, any ideal $I\subsetneq R$ must not contain any unit, hence $I\subseteq \mm$ and $\mm$ is the only maximal ideal.
 		
-		$a)\to c)$ Retaining the previous notation, any ideal $I\subsetneq R$ must not contain any unit, hence $I\subseteq \mm$ and $\mm$ is the only maximal ideal.
-		
-		$c) \to a)$ (assuming that any ideal $I\subsetneq R$ is contained in some maximal ideal, which is implied by the axiom of choice) Let $\mm$ be the only maximal ideal. Then all elements of $\mm$ are non-units and for any non-unit $f\in R$, $fR\subsetneq R$ must be contained in some maximal ideal, hence $f\in\mm$.
+		$(c) \to (a)$ (assuming that any ideal $I\subsetneq R$ is contained in some maximal ideal, which is implied by the axiom of choice) Let $\mm$ be the only maximal ideal. Then all elements of $\mm$ are non-units and for any non-unit $f\in R$, $fR\subsetneq R$ must be contained in some maximal ideal, hence $f\in\mm$.\qed
 	
 	\end{alphanumerate}
 	\end{rem}
@@ -1492,26 +1522,27 @@
 		\item 
 			The ring $\Oo_{X,x}$ is local.
 		\item 
-			any field is a local ring.
+			Any field is a local ring.
 		\end{alphanumerate}
 
 	\end{example}
 \subsection{Localization of rings. The Spectrum of a ring}\lbl{sec:LocalizationSpectrum}
 	\begin{defi}\lbl{def:spectrum}
-		We define the \emph{spectrum} $\Spec R$ as the set of prime ideals of $R$ and $\mSpec R$ as the set of maximal ideals of $R$. We equip $\Spec R$ with the Zariski-Topology where the closed sets are precisely the sets $V(I) = \left\{ \pp\in\Spec R\st \pp\supseteq I\right\}$ where $I\subseteq R$ is any ideal.
+		We define the \emph{spectrum} $\Spec R$ as the set of prime ideals of $R$ and $\mSpec R$ as the set of maximal ideals of $R$. We equip $\Spec R$ with the Zariski-Topology in which the closed sets are precisely the sets $V(I) = \left\{ \pp\in\Spec R\st \pp\supseteq I\right\}$ where $I\subseteq R$ is any ideal.
 	\end{defi}
 	\begin{fact}
+		Just like in the $k^n$-setting we have the following properties:
 		\begin{alphanumerate}
 		\item 
 			$V(\sqrt{I}) = V(I)$
 		\item
-			$V\left(\sum_{\lambda\in\Lambda} I_\lambda\right) = \bigcap_{\lambda\in \Lambda} V(I_\lambda)$
+			$V\big(\sum_{\lambda\in\Lambda} I_\lambda\big) = \bigcap_{\lambda\in \Lambda} V(I_\lambda)$
 		\item $V(I\cdot J) = V(I\cap J) = V(I) \cup V(J)$
 		\end{alphanumerate}
 	
 	\end{fact}
 	\begin{defi} \lbl{def:multiplicativeSubset}
-		A subset $S\subseteq R$ is \emph{multiplicative} if $\prod_{f\in F} f \in S$ for any finite subset $F\subseteq S$. This is equivalent to $1\in S$ and $fg\in S$ for any $f,g\in S$.
+		A subset $S\subseteq R$ is \emph{multiplicative} if $1\in S$ and $fg\in S$ for all $f,g\in S$.
 	\end{defi}
 	\begin{prop}\lbl{prop:localization}
 		Let $R$ be a ring, $S\subseteq R$ a multiplicative subset, then there are a ring $R_S$ (the \emph{localization of $R$ with respect to $S$}) with a ring homomorphism $R\morphism[\psi=\psi_S] R_S$ such that the following properties hold:
@@ -1519,25 +1550,43 @@
 		\item 
 			$\psi_S(S) \subseteq R^\times_S$.
 		\item 
-			$\psi_S$ has the universal property for ring homomorphisms with a):
-			
-			If $R\morphism[\phi] A$ is any ring homomorphism with $\phi(S) \subseteq A^\times$ then there is unique ring homomorphism $R_S\morphism[\alpha]$ such that $\phi = \alpha \psi_S$.
+			$\psi_S$ has the universal property for ring homomorphisms with $(a)$:	If $R\morphism[\phi] A$ is any ring homomorphism with $\phi(S) \subseteq A^\times$ then there is unique ring homomorphism $R_S\morphism[\alpha]A$ such that 
+			\begin{diagram}
+				\node (R) at (0,1.5) {$R$};
+				\node (A) at (2.5,1.5) {$A$};
+				\node (RS) at (1.25,0) {$R_S$};
+				\scriptsize
+				\draw[->] (R) -- (A) node[pos=0.5, above] {$\phi$};
+				\draw[->] (R) -- (RS) node[pos=0.5, below left] {$\psi_S$};
+				\draw[->, dashed] (RS) -- (A) node[pos=0.5, below right] {$\exists!\ \alpha$};
+			\end{diagram}
+			commutes.
 		\end{alphanumerate}
-		The properties (a) and (b) characterize $R_S$ uniquely up to unique isomorphism: If $R\morphism[\tilde\psi] \tilde {R_S}$ also satisfies (a) and (b), then there is a unique ring isomorphism $R_S\isomorphism \tilde{R_S}$ such that commutes.
+		The properties $(a)$ and $(b)$ characterize $R_S$ uniquely up to unique isomorphism: If $R\morphism[\tilde\psi] \tilde {R_S}$ also satisfies $(a)$ and $(b)$, then there is a unique ring isomorphism $R_S\isomorphism \tilde R_S$ such that
+		\begin{diagram}
+			\node (R) at (0,0) {$R$};
+			\node (RS) at (2,0.75) {$R_S$};
+			\node (Rs) at (2,-0.75) {$\tilde R_S$};
+			\scriptsize 
+			\draw[->] (R) -- (RS) node[pos=0.5, above left] {$\psi_S$};
+			\draw[->] (R) -- (Rs) node[pos=0.5, below left] {$\tilde{\psi}$};
+			\draw[->, dashed] (RS) -- (Rs) node[pos=0.5, below, sloped] {$\sim$} node[pos=0.5, right] {$\exists!$};
+		\end{diagram}
+		commutes.
 	\end{prop}
 	\begin{proof}
-	\textbf{Proof of uniqueness:} 
-		If $\tilde \psi$ has the same universal property (up), then by the up of $\psi$ there is a unique ring homomorphism $R_S \morphism[i] \tilde{R_S}$ such that $\tilde\psi = i\psi$ and by the up of $\tilde \psi$ there is a unique $\tilde{R_S}\morphism[j] R_S$ such that $\psi = j\tilde\psi$. By the uniqueness part of the up of $\psi$ and $\tilde \psi$ any ring endomorphism $a$ of $R_S$ respectively $b$ of $\tilde{R_S}$ satisfying $a\psi = \psi$ respectively $b\tilde\psi = \tilde\psi$ must equal $\id_{R_S}$ respectively $\id_{\tilde{R_S}}$. As $a=ji$ and $b=ij$ have these properties, it follows that $i$ and $j$ are inverse to each other, hence isomorphisms.
+	\emph{Uniqueness:} 
+		If $\tilde \psi$ has the same universal property (up), then by the (up) of $\psi$ there is a unique ring homomorphism $R_S \morphism[i] \tilde R_S$ such that $\tilde\psi = i\psi$ and by the (up) of $\tilde \psi$ there is a unique $\tilde R_S\morphism[j] R_S$ such that $\psi = j\tilde\psi$. By the uniqueness part of the (up) of $\psi$ and $\tilde \psi$ any ring endomorphism $a$ of $R_S$ respectively $b$ of $\tilde R_S$ satisfying $a\psi = \psi$ respectively $b\tilde\psi = \tilde\psi$ must equal $\id_{R_S}$ respectively $\id_{\tilde R_S}$. As $a=ji$ and $b=ij$ have these properties, it follows that $i$ and $j$ are inverse to each other, hence isomorphisms.
 		
-	\textbf{Construction of $R_S$:}
-		We take $R_S = R\times S/_\sim$ where $(r,s) \sim (\rho,\sigma)$ if there is a $t\in S$ such that $t\sigma r = ts\rho$. The proof that this is an equivalence relation which is respected by the ring operations is not hard but tedious and therefore will be left as an exercise to the reader. Remark that $\frac{r}{s}$ often denotes the equivalence class of $(r,s)$. Then $\psi: R\to R_S, \psi(r) = \frac{r}{1}$ is a ring homomorphism satisfying
+	\emph{Construction of $R_S$:}
+		We take $R_S = (R\times S)/_\sim$ where $(r,s) \sim (\rho,\sigma)$ if there is a $t\in S$ such that $t\sigma r = ts\rho$. The proof that this is an equivalence relation which is respected by the ring operations is not hard but tedious and therefore will be left as an exercise to the reader. Remark that $\frac{r}{s}$ often denotes the equivalence class of $(r,s)$. Then $\psi: R\to R_S$, $\psi(r) = \frac{r}{1}$ is a ring homomorphism satisfying
 		\begin{alphanumerate}
 		\item 
 			as $\frac{1}{s}\in R_S$ is inverse to $\psi(s) = \frac{s}{1}$.
 		\item 
-			If $R\morphism[\phi] A$ is as in (b) and $R_S\morphism[\alpha] A$ is such that $\phi = \alpha \psi$ then $\alpha\left(\frac{r}{s}\right) = \frac{\phi(r)}{\phi(s)}$ as $\phi(s)\in A^\times$ and $\alpha\left(\frac rs\right) \phi(s) = \alpha\left(\frac{r}{s}\right) \alpha(\psi(s)) = \alpha\left(\frac{r}{s}\cdot\frac{r}{1}\right) = \alpha\left(\frac{r}{1}\right) = \alpha(\psi(r)) = \phi(r)$. Hence $\alpha$ in (b) is unique. Conversely, $\alpha\left(\frac{r}{s}\right)\coloneqq \frac{\phi(r)}{\phi(s)}$ is easily seen to be independent of the choice of representatives. Moreover, $\alpha$ is easily seen to be a ring homomorphism and $\alpha(\psi(r)) = \alpha\left(\frac{r}{1}\right) = \frac{\phi(r)}{\phi(1)} = \phi(r)$.
+			If $R\morphism[\phi] A$ is as in (b) and $R_S\morphism[\alpha] A$ is such that $\phi = \alpha \psi$ then $\alpha\left(\frac{r}{s}\right) = \frac{\phi(r)}{\phi(s)}$ as $\phi(s)\in A^\times$ and $\alpha\left(\frac rs\right) \phi(s) = \alpha\left(\frac{r}{s}\right) \alpha(\psi(s)) = \alpha\left(\frac{r}{s}\cdot\frac{r}{1}\right) = \alpha\left(\frac{r}{1}\right) = \alpha(\psi(r)) = \phi(r)$. Hence, $\alpha$ in (b) is unique. Conversely, $\alpha\left(\frac{r}{s}\right)\coloneqq \frac{\phi(r)}{\phi(s)}$ is easily seen to be independent of the choice of representatives. Moreover, $\alpha$ is easily seen to be a ring homomorphism and $\alpha(\psi(r)) = \alpha\left(\frac{r}{1}\right) = \frac{\phi(r)}{\phi(1)} = \phi(r)$.
 		\end{alphanumerate}
-
+		This proves the assertion.
 	\end{proof}
 	\begin{rem*}
 		When $S=f^\IN = \left\{f^n\st n\in\IN\right\}$ the localization $R_S$ is denoted by $R_f$.
