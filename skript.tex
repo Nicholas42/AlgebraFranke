@@ -6,7 +6,7 @@
 \usepackage{amsmath,amsfonts,amssymb,mathtools}
 \usepackage{amsthm}
 \usepackage[colorlinks=true,linkcolor=blue]{hyperref}
-\usepackage{xstring}
+\usepackage{xstring,verbatim}
 \usepackage{bm}
 
 \usepackage{stmaryrd}
@@ -124,6 +124,7 @@
 
 \newcommand{\Aa}{\mathcal{A}}
 \newcommand{\Bb}{\mathcal{B}}
+\newcommand{\Cc}{\mathcal{C}}
 \newcommand{\Oo}{\mathcal{O}}
 \newcommand{\Gg}{\mathcal{G}}
 
@@ -1597,6 +1598,92 @@
 	\begin{example}
 		If $R$ is a domain, $S=R\setminus\{0\}$ is multiplicative subset and $R_S = K$ is the quotient field. If $R$ is arbitrary, $S$ the set of non-zero divisors is multiplicative and $R\morphism[\psi_T] R_T$ is injective iff $T\subseteq S$.
 	\end{example}
+	
+	\begin{fact}
+		Let $S\subseteq T$ be multiplicative subsets and $\tilde T$ the image of $T$ in $R_S$. Then there is a unique isomorphism $R_T\isomorphism (R_S)_{\tilde T}$ such that 
+		
+		FERDI (btw kennts du was schöneres für Tilde über was als \begin{verbatim}{\tilde{was}}\end{verbatim} ?
+		
+		commutes.
+	\end{fact}
+	\begin{rem*}
+	 We have $\psi_{\tilde T}(\psi_S(T)) = \psi_{\tilde T}(\tilde T)\subseteq (R^\times_S)_{\tilde T}$, hence the existence and uniqueness of the dotted ring morphism in the diagram.
+	\end{rem*}
+	\begin{proof}
+		By the universal properties (considering ring homomorphisms)
+		\begin{align*}
+			\Hom((R_S)_{\tilde T}, A)& = \left\{ \alpha \in \Hom(R_S,A)\st \alpha(\tilde T) \subseteq A^\times\right\} \\
+			&\simeq \left\{\beta\in\Hom(R,A) \st \beta(S) \subseteq A^\times \text{ and } \alpha(\tilde T) \subseteq A^\times \text{ for } \alpha = \beta\psi_S \right\} \\
+			&\simeq \left\{\beta \in\Hom(R,A) \st \beta(T)\subseteq A^\times\right\} \\
+			&=\Hom(R_T,A)
+		\end{align*}
+
+	\end{proof}
+	\begin{rem}
+		$R\morphism[\psi_S] R_S$ is injective iff $S$ contains no zero-divisors.  If $r\in R$, $s\in S$ and $sr = 0$, then $\psi_S(r) = 0$ as $\frac{r}{1} = \frac{0}{1}$ in $R_S$ and vice versa. Thus, $\ker(R\morphism[\psi_S] R_S) = \left\{r\in R\st \exists s\in S: rs = 0\right\}$.
+	\end{rem}
+	By the ring homomorphism $R\morphism[\psi_S] R_S$, every $R_S$-module becomes an $R$-module (and $R_S$ becomes an $R$-algebra).
+	\begin{prop}\lbl{prop:modulesOfLocalizations}
+		\begin{alphanumerate}
+		\item 
+			This functor from $R_S$-modules to $R$-modules is fully faithful and its essential image is the full subcategory of $R$-modules on which the elements of $S$ act bijectively.
+		\item
+			If $M$ is an $R$-module, there are an $R$-module $M_S$ on which $S$ acts bijectively and a morphism $M\morphism[\phi_S] M_S$ which has the following universal property determining is uniquely up to unique isomorphism. If $N$ is some $R$-module on which $S$ acts bijectively then any morphism $M\morphism[\alpha] N$ can be expressed as $\alpha = \nu\phi_S$, where $M_S\morphism[\nu]N$ is determined uniquely by this equation.
+		\item 
+			If $M\morphism N$ is a morphism of $R$-modules, there is a unique morphism $M_S\morphism N_S$ of $R$-modules such that
+			
+			FERDI
+			
+			commutes, making $(\_)_S$ into a functor between $R$-modules and $R_S$-modules.
+		\item
+			If $M\morphism[\alpha] N$ is injective then $M_S\morphism[\alpha_S]N_S$ is injective. We obtain a surjective map from the $R$-submodules of $N$ to the $R_S$-submodules of $N_S$ which maps $M$ to the image of $M_S$ in $N_S$. This becomes bijective when restricted to the $R$-submodules $M\subseteq N$ which $S$-saturated in the sense that $m\in N$, $s\IN S$, $s\cdot m\in M$ implies $m\in M$. The inverse map sends an $R_S$-submodule $X\subseteq N_S$ to its preimage $\phi_S^{-1}(X)$ under $N\morphism[\phi_S] N_S$.
+		\item 
+			If $M\subseteq  N$ is a submodule, then there is a unique morphism $(N/M)_S\isomorphism N_S/(\text{image of }M_S\text{ in }N_S)$ such that
+			
+			FERDI
+			
+			commutes.
+		\end{alphanumerate}
+	\end{prop}
+	\begin{rem*}
+		Recall $\Aa \morphism[F] \Bb$ faithful (fully faithful) if $\Hom_\Aa(X, Y)\morphism[F] \Hom_\Bb(F(X), F(Y))$ is injective (bijective). The essential image is the set (or class?) of all objects of $\Bb$ isomorphic to $FX$ for some object $X$ of $\Aa$. $\Cc$ is a subcategory of $\Bb$ iff the class of objects of $\Cc$ is a subclass of the class of objects of $\Bb$, $\Hom_\Cc(X,Y) \subseteq \Hom_\Bb(X,Y)$ for all objects $X,Y$ of $\Cc$ respecting compositions of morphisms and such that every $\id_X$ in $\Cc$ is in $\Hom_\Bb(X,X)$. Then, there is an inclusion functor $\Cc\morphism \Bb$ given by identities on objects and morphisms which is faithful. It is fully faithful iff $\Hom_\Cc(X,Y)=\Hom_B(X,Y)$ for all objects $X,Y$ of $\Cc$. In this case, $\Cc$ is said to be a \emph{full subcategory} of $\Bb$. For instance, finite dimensional $k$-vector spaces with linear maps between them form a full subcategory of all $k$-vector spaces.
+		
+		We may say that functors $\Aa\morphism[L] \Bb$ and $\Aa\lmorphism[R]\Bb$ form an adjoint functor pair, with $L$ being left adjoint to $R$ and $R$ right adjoint to $L$, if we are given canonical bijections 
+		\begin{align*}   
+		\Hom_\Aa(X, RY) \isomorphism \Hom_\Bb(LX, Y).
+		\end{align*}
+		In our example $\Bb$ are the $R_S$-modules, $\Aa$ the $R$-modules, $R$ the functor from Proposition \reff{prop:modulesOfLocalizations}(a) and $L: M\mapsto M_S$.
+		
+		Other examples:
+		\begin{itemize}
+		 \item 
+			$\Bb:$ $R$-modules, $\Aa:$ Set, $R$: forgetful functor, $L(X)$ the free module generated by $X$
+		\item
+			$\Bb:$ groups, $\Aa:$ Set, $R$: forgetful functor, $L(X)$ the free group generated by $X$
+		\item
+			$\Bb:$ compact spaces, $\Aa:$ Set, $R$: forgetful functor, $L(X)$ the Stone-\v Cech compactification of $X$
+		\end{itemize}
+
+	\end{rem*}
+	\begin{proof}[Proof of Proposition \reff{prop:modulesOfLocalizations}]
+	\begin{alphanumerate}
+	\item 
+		The fact that all modules in the image, and thus in the effective image, have $S$ acting bijectively is trivial. If $S$ act bijectively on $M$, we let $s^{-1}: M\morphism M$ denote the inverse of $M\morphism[s\cdot]M$ and define the structure of an $R_S$-module by $\frac{r}{s}\cdot m = s^{-1} (r\cdot m)$. If $\frac{r}{s}=\frac{\rho}{\sigma}$ in $R_S$, there is $t\in S$ such that $t\sigma r = ts\rho$ and $s^{-1} r\cdot m = (ts\sigma)^{-1} \sigma t r \cdot m = (ts\sigma)^{-1} s t \rho \cdot m = \sigma^{-1} \rho \cdot m $. It is easy to see that this is OK... Similar for full faithfulness: If $M\morphism[\alpha] N$ is any morphism of $R$-modules, with $S$ acting bijectively on $M$ and $N$, then $\alpha(s^{-1} m) = s^{-1}\alpha(m)$ and $\alpha(\frac{r}{s}) = \frac{r}{s}\alpha(m)$ for the $R_S$-module-structure defined before. which is the only one reproducing the original $R$-module-structure.... (many tedious details left out)
+	\item
+		Similar to Proposition \reff{prop:localization}. $M_S = M\times S/_\sim$ where $(m,s) \sim (\mu,\sigma) \Leftrightarrow \exists t\in S \text{ such that } t\sigma m = ts\mu$, and $(m,s)/_\sim$, and $r\cdot \frac{m}{s} = \frac{r\cdot m}{s}$ and $\frac{m}{s}+\frac{\mu}{\sigma} = \frac{\sigma m +s\mu}{s\sigma}$....
+	\item 
+		We just prove the injectivity of $\alpha_S$. If $\alpha_S(\frac{m}{s})=0$ then $\frac{\alpha(m)}{s} = 0$ in $N_S$ hence, there is $t\in S$ such that $\alpha(tm) = t\alpha(m) = 0$. But alpha is injective, hence $\alpha(tm)= 0$ implies $tm=0$ hence $\frac{m}{s}=0$ in $M_S$.
+	\item
+		$N_S/(\text{image of }M_S) = \{(n,s)\}/_\sim = \{(\overline{n},s\}/_\sim$ where $(n,s)\sim(\nu,\sigma)$ iff there are $t\in S$ and $m\in M$ such that $ts\nu = t\sigma n+m$ and $\overline{n}\in N/M$ and $(\overline{n}, s)= (\overline{\nu},s)$ iff $\exists t\in S$ such that $t\sigma n = ts\nu$ in $N/M$.
+	\end{alphanumerate}
+
+	\end{proof}
+
+
+
+
+
+
 
 
 
