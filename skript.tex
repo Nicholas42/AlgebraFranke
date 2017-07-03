@@ -1528,7 +1528,7 @@
 		\end{alphanumerate}
 
 	\end{example}
-\subsection{Localization of rings. The Spectrum of a ring}\lbl{sec:LocalizationSpectrum}
+\subsection{Localization of rings. The Spectrum of a ring.}\lbl{sec:LocalizationSpectrum}
 	\begin{defi}\lbl{def:spectrum}
 		We define the \emph{spectrum} $\Spec R$ as the set of prime ideals of $R$ and $\mSpec R$ as the set of maximal ideals of $R$. We equip $\Spec R$ with the Zariski-Topology in which the closed sets are precisely the sets $V(I) = \left\{ \pp\in\Spec R\st \pp\supseteq I\right\}$ where $I\subseteq R$ is any ideal.
 	\end{defi}
@@ -1631,10 +1631,10 @@
 		$R\morphism[\psi_S] R_S$ is injective iff $S$ contains no zero-divisors.  If $r\in R$, $s\in S$ and $sr = 0$, then $\psi_S(r) = 0$ as $\frac{r}{1} = \frac{0}{1}$ in $R_S$ and vice versa. Thus, $\ker(R\morphism[\psi_S] R_S) = \left\{r\in R\st \exists s\in S\colon rs = 0\right\}$.
 	\end{rem}
 	By the ring homomorphism $R\morphism[\psi_S] R_S$, every $R_S$-module becomes an $R$-module (and $R_S$ becomes an $R$-algebra).
-	\begin{prop}\lbl{prop:modulesOfLocalizations}
+	\begin{prop}\relax
 		\begin{alphanumerate}
 		\item 
-			This functor from $R_S$-modules to $R$-modules is fully faithful and its essential image is the full subcategory of $R$-modules on which the elements of $S$ act bijectively.
+			This functor from $R_S$-modules to $R$-modules is fully faithful and its essential image is the full subcategory of $R$-modules on which the elements of $S$ act bijectively.\lbl{prop:modulesOfLocalizations}
 		\item
 			If $M$ is an $R$-module, there are an $R$-module $M_S$ on which $S$ acts bijectively and a morphism $M\morphism[\phi_S] M_S$ which has the following universal property determining is uniquely up to unique isomorphism. If $N$ is some $R$-module on which $S$ acts bijectively then any morphism $M\morphism[\alpha] N$ uniquely determines a morphism $M_S\morphism[\nu]N$  such that
 			\begin{diagram}
@@ -1670,16 +1670,16 @@
 			such that
 			\begin{diagram}
 				\node (img) at (0,0) {$N_S/(\text{image of }M_S)$};
-				\node (NMS) at (3.5,0) {$(N/M)_S$};
-				\node (NS) at (0,1) {$N_S$};
-				\node (NM) at (3.5,2) {$N/M$};
-				\node (N) at (0,2) {$N$};
+				\node (NMS) at (3.5,1.2) {$(N/M)_S$};
+				\node (NS) at (0,1.2) {$N_S$};
+				\node (NM) at (3.5,2.4) {$N/M$};
+				\node (N) at (0,2.4) {$N$};
 				\scriptsize
 				\draw[->] (N) -- (NS);
 				\draw[->] (NS) -- (img);
 				\draw[->] (N) -- (NM);
 				\draw[->] (NM) -- (NMS);
-				\draw[->, dashed] (img) -- (NMS) node[pos=0.5, above] {$\sim$};
+				\draw[->, dashed] (img) -- (NMS) node[pos=0.5, above, sloped] {$\sim$} node [pos=0.5, below right] {$\exists!$};
 			\end{diagram}
 			commutes.
 		\end{alphanumerate}
@@ -1707,7 +1707,9 @@
 	\begin{proof}[Proof of Proposition \reff{prop:modulesOfLocalizations}]
 	\begin{alphanumerate}
 	\item 
-		The fact that all modules in the image, and thus in the effective image, have $S$ acting bijectively is trivial. If $S$ act bijectively on $M$, we let $s^{-1}: M\morphism M$ denote the inverse of $M\morphism[s\cdot]M$ and define the structure of an $R_S$-module by $\frac{r}{s}\cdot m = s^{-1} (r\cdot m)$. If $\frac{r}{s}=\frac{\rho}{\sigma}$ in $R_S$, there is $t\in S$ such that $t\sigma r = ts\rho$ and $s^{-1} r\cdot m = (ts\sigma)^{-1} \sigma t r \cdot m = (ts\sigma)^{-1} s t \rho \cdot m = \sigma^{-1} \rho \cdot m $. It is easy to see that this is OK $\ldots$  Similar for full faithfulness: If $M\morphism[\alpha] N$ is any morphism of $R$-modules, with $S$ acting bijectively on $M$ and $N$, then $\alpha(s^{-1} m) = s^{-1}\alpha(m)$ and $\alpha(\frac{r}{s}) = \frac{r}{s}\alpha(m)$ for the $R_S$-module-structure defined before. which is the only one reproducing the original $R$-module-structure $\ldots$ (many tedious details left out).
+		The fact that all modules in the image, and thus in the effective image, have $S$ acting bijectively is trivial. If $S$ act bijectively on $M$, we let $s^{-1}: M\morphism M$ denote the inverse of $M\morphism[s\cdot]M$ and define the structure of an $R_S$-module by $\frac{r}{s}\cdot m = s^{-1} (r\cdot m)$. If $\frac{r}{s}=\frac{\rho}{\sigma}$ in $R_S$, there is $t\in S$ such that $t\sigma r = ts\rho$ and $s^{-1} r\cdot m = (ts\sigma)^{-1} \sigma t r \cdot m = (ts\sigma)^{-1} s t \rho \cdot m = \sigma^{-1} \rho \cdot m $. It is easy to see that this is OK $\ldots$
+		
+		Similar for full faithfulness: If $M\morphism[\alpha] N$ is any morphism of $R$-modules, with $S$ acting bijectively on $M$ and $N$, then $\alpha(s^{-1} m) = s^{-1}\alpha(m)$ and $\alpha(\frac{r}{s}) = \frac{r}{s}\alpha(m)$ for the $R_S$-module-structure defined before. which is the only one reproducing the original $R$-module structure $\ldots$ (many tedious details left out).
 	\item
 		Similar to Proposition \reff{prop:localization}, we define $M_S = (M\times S)/_\sim$ where $(m,s) \sim (\mu,\sigma) $ if there is a $t\in S$ such that $t\sigma m = ts\mu$. Again, write $\frac ms$ for the equivalence class $(m,s)/_\sim$, and  define the module operations in the obvious way, i.e.
 		\begin{align*}
@@ -1737,45 +1739,62 @@
 		\item
 			If $M$ is a Noetherian $R$-module, $M_S$ is a Noetherian $R_S$-Module.
 		\item
-			If $R$ is a Noetherian ring, then $R_S$ is a Noetherian ring.
+			If $R$ is a Noetherian ring, then so is $R_S$.
 		\item 
-			Every ideal $I$ of $R_S$ has the form $I=J\cdot R_S$ where $J$ is an ideal in $R$ and we have a bijection between the ideals $J\subseteq R$ which are $S$-saturated (if we have $r\in R$, $s\in S$ and $sr\in J$, this implies $r\in J$) and the ideals $I$ in $R_S$:
+			Every ideal $I$ of $R_S$ has the form $I=J\cdot R_S$ where $J$ is an ideal in $R$ and we have a bijection
 			\begin{align*}
-				J &\longmapsto I = (\text{image of } J_S \text{ in } R_S) = J\cdot R_S = \left\{\rho \psi_S(j)\st \rho \in R_S, j\in J\right\}
+				\left\{\begin{array}{c}
+				\text{ideals }J\subseteq R\text{ which are }S\text{-saturated, i.e.}\\
+				 (sr\in J\Rightarrow r\in J)\ \forall s\in S,\, r\in R
+				\end{array}\right\}&\isomorphism\{\text{ideals }I\subseteq R_S\}\\
+				J &\longmapsto\begin{aligned}[t]
+					J\cdot R_S &= \text{image of } J_S \text{ in } R_S\\
+					& = \left\{\rho \psi_S(j)\st \rho \in R_S,\, j\in J\right\}
+				\end{aligned}\\
+				\psi_S^{-1}(I)&\longmapsfrom I\;.
 			\end{align*}
 		\item 
 			Under this correspondence, we have 
 			\begin{align*}
 				\left\{\pp\in\Spec(R)\st \pp\cap S=\emptyset\right\}& \isomorphism \Spec(R_S)\\
 				\pp &\longmapsto \qq = \pp\cdot R_S\\
-				\pp = \qq\sqcap R = \psi_S^{-1}(\qq) \longmapsfrom \qq
+				\pp = \qq\sqcap R = \psi_S^{-1}(\qq)& \longmapsfrom \qq
 			\end{align*}
-			and this is a homeomorphism if the l.h.s. is equipped with the induced topology.
+			and this is a (Zariski-)homeomorphism if the l.h.s. is equipped with the induced subspace topology.
 		\end{alphanumerate}
 		\item
 			In the situation of (d), if $I\subseteq R$ is any ideal and $\snake S$ denotes the image of $S$ in $R/I$, we have a unique isomorphism 
 			\begin{align*}
 				R_S/(I\cdot R_S) &\isomorphism (R/I)_{\snake S}
 			\end{align*}
-			such that
-			
-			FERDI
-			
-			commutes. (It is very important for FERDI to commute)
+			such that the following diagram commutes
+			\begin{diagram}
+				\node (img) at (0,0) {$R_S/(I\cdot R_S)$};
+				\node (RIS) at (3.5,1.2) {$(N/M)_S$};
+				\node (RS) at (0,1.2) {$N_S$};
+				\node (RI) at (3.5,2.4) {$N/M$};
+				\node (R) at (0,2.4) {$N$};
+				\scriptsize
+				\draw[->] (R) -- (RS);
+				\draw[->] (RS) -- (img);
+				\draw[->] (R) -- (RI);
+				\draw[->] (RI) -- (RIS);
+				\draw[->, dashed] (img) -- (RIS) node[pos=0.5, above, sloped] {$\sim$} node [pos=0.5, below right] {$\exists!$};
+			\end{diagram}
 	\end{cor}
 	\begin{proof}
 		\begin{alphanumerate}
 		\item
 			Follows from our explicit construction of $M_S$ and $R_S$.
 		\item 
-			Follows from the bijection of sets of submodules from Proposition \reff{prop:modulesOfLocalizations}, recapitulated at the beginning.
+			Denote $M\morphism[\phi_S]M_S$ the map to the localization. If $N_1\subsetneq N_2\subsetneq \ldots$ is a properly ascending chain of submodules in $M_S$, then so is $\phi_S^{-1}(N_1)\subsetneq \phi_S^{-1}(N_2)\subsetneq \ldots$ in $M$, but $M$ is Noetherian.
 		\item 
 			Special case of (b).
 		\item 
 			This is the special case $M=R$ of the correspondence recapitulated at the beginning. The equality $J\cdot R_S \simeq (\text{image of } J_S \text{ in } R_S)$ follows from 
 			\begin{align*}
 				J\cdot R_S &= \left\{\psi_S(j) \cdot\rho \st \rho \in R_S, j\in J\right\} = \left\{\frac{j}{1}\cdot\frac{r}{s}\in R_S\st j\in J, r\in R, s\in S\right\}\\
-				&= \left\{\frac{\snake j}{s}\st \snake j \in J, s\in S\right\} = \left\{ \left(\text{image of } \frac{\snake j}{s}\in J_S \text{ in } R_S\right)\st \snake j \in J, s\in S\right\}
+				&= \left\{\frac{j'}{s}\st j'\in J, s\in S\right\} = \left\{ \text{image of } \frac{j'}{s}\in J_S \text{ in } R_S\st j' \in J, s\in S\right\}
 			\end{align*}
 		\item 
 			The bijection follows from (d) if the following facts are shown:
@@ -1783,47 +1802,63 @@
 			 \item [$(\alpha)$]
 				$\pp\in \Spec R$ is $S$-saturated iff $\pp\cap S = \emptyset$. If $s\cdot 1 = s \in S\cap \pp$, then $\pp$ is not $S$-saturated as $1\not\in \pp$. If $\pp\cap S = \emptyset$ and $r\in R$, $s\in S$ and $r\cdot s\in \pp$, then $r\in \pp$ as $s\not \in\pp$.
 			\item[$(\beta)$]
-				If $\qq\in \Spec(R_S)$ then $\qq\sqcap R\in \Spec R$. If $A\morphism[f] B$ is a ring homomorphism and $\qq\in \Spec B$, then $\pp= f^{-1}(\qq)\in \Spec R$. We have $1\not\in \pp$ since $f(1) = 1\not \in\qq$. Moreover, if $ab\in\pp$ then $f(a)f(b)=f(ab)\in\qq$, hence $f(a)\in \qq$ (and $a\in \pp$) or $f(b)\in\qq$ (and $b\in\qq$). Applying ths to $R\morphism R_S$ gives the assertion.
+				If $\qq\in \Spec(R_S)$ then $\qq\sqcap R\in \Spec R$. If $A\morphism[f] B$ is a ring homomorphism and $\qq\in \Spec B$, then $\pp= f^{-1}(\qq)\in \Spec A$. Indeed, we have $1\not\in \pp$ since $f(1) = 1\not \in\qq$. Moreover, if $ab\in\pp$ then $f(a)f(b)=f(ab)\in\qq$, hence $f(a)\in \qq$ (and $a\in \pp$) or $f(b)\in\qq$ (and $b\in\qq$). Applying ths to $R\morphism R_S$ gives the assertion.
 			\item[$(\gamma)$]
-				If $\pp\in \Spec R$ and $\pp\cap S= \emptyset$ then $\pp\cdot R_S\in \Spec R_S$. We have $R_S/\pp\cdot R_S\simeq (R/\pp)_{\snake S}$ by (f), where $\snake S$ is the image of $S$ in $R/\pp$. We have $0\not\in \snake S$ as $S\cap \pp = \emptyset$. But $R/\pp$ is a domain and by Fact \reff{fact:localizationAndQuotientField} $(R/\pp)_{\snake S}$ is a subring of the field of quotients of $R/\pp$, hence a domain.
+				If $\pp\in \Spec R$ and $\pp\cap S= \emptyset$ then $\pp\cdot R_S\in \Spec R_S$. We have $R_S/\pp\cdot R_S\simeq (R/\pp)_{\snake S}$ by (f), where $\snake S$ is the image of $S$ in $R/\pp$. We have $0\not\in \snake S$ as $S\cap \pp = \emptyset$. But $R/\pp$ is a domain and by Fact \reff{fact:localizationAndQuotientField}, $(R/\pp)_{\snake S}$ is a subring of the field of quotients of $R/\pp$, hence a domain.
 			\end{itemize}
-			The homeomorphism follows form the fact that any closed subset of $\Spec(R_S)$ has the form $V(I)$ and $I = J\cdot R_S$ for an ideal $J$ in $R$. We claim that the preimage of $V(I)\subseteq \Spec(R_S)$ under the studied bijection is $\left\{\pp\in V(J) \st \pp\cap S= \emptyset\right\}$, which is easy to see. Bet the sets of this form are precisely the closed sets of the induced topology form the Zariski topology on $\Spec R$.
+			The homeomorphism follows form the fact that any closed subset of $\Spec(R_S)$ has the form $V(I)$ and $I = J\cdot R_S$ for an ideal $J$ in $R$. The preimage of $V(I)\subseteq \Spec(R_S)$ under the studied bijection is easily seen to be $\left\{\pp\in V(J) \st \pp\cap S= \emptyset\right\}$, thus closed in the induced subspace topology, and all Zariski-closed subsets of $\left\{\pp\in\Spec(R)\st \pp\cap S=\emptyset\right\}$ can be obtained in this way.
 		\item 
-			This follows from the assertion about quotient modules in Proposition \reff{prop:modulesOfLocalizations} or by a comparison of universal properties:
+			This follows from the assertion about quotient modules in Proposition \reff{prop:modulesOfLocalizations} or by a pushing universal properties around:
 			\begin{align*}
-				\Hom(R_S/(J\cdot R_S) , A) &\simeq \left\{f\in \Hom(R_S,A)\st f(j)=0 \forall j\in J\cdot R_S\right\} \\
+				\Hom(R_S/(J\cdot R_S) , A) &\simeq \left\{f\in \Hom(R_S,A)\st f(j)=0\ \forall j\in J\cdot R_S\right\} \\
 				&=\left\{f\in \Hom(R_S,A)\st (J\morphism[\psi_S] R_S\morphism[f] A ) =0\right\}\\
 				&\simeq\left\{g = (f\psi_S) \in \Hom(R,A)\st g(S) \subseteq A^\times \text{ and } g|_J = 0\right\}\\
 				&\simeq \left\{\gamma \in \Hom(R/J,A)\st \gamma(\snake S) \subseteq A^\times\right\}\\
 				&\simeq \Hom((R/J)_{\snake S}, A)
 			\end{align*}
-			where $g=\gamma\circ \pi$ with $R\morphism[\pi] R/J$ in the projection.
+			where $g=\gamma\circ \pi$ with $R\morphism[\pi] R/J$ denoting the projection to $R/J$.
 		\end{alphanumerate}
 	\end{proof}
 	\begin{rem*}
-		The constructed isomorphism maps $\frac{r}{s}\mod J\cdot R_S$ to $\frac{r\mod J}{s\mod J}$
+		The constructed isomorphism maps 
+		\begin{align*}
+			\frac{r}{s}\mod J\cdot R_S\longmapsto\frac{r\mod J}{s\mod J}\;.
+		\end{align*}		
 	\end{rem*}
 	\begin{cor}
 		If $R$ is a Noetherian ring, then $R_S$ is Noetherian.
 	\end{cor}
 	\begin{cor}
-		$\Spec R_f \simeq \Spec(R)\setminus V(f)$ (a homeomorphism), and open subsets of this form form a topology base of $\Spec R$. Indeed as $\pp$ is prime, $p\cap f^\IN =\emptyset$ is equivalent to $f\not\in\pp$ which in turn is equivalent to $\pp\not\in V(f)$.
+		$\Spec R_f \simeq \Spec(R)\setminus V(f)$ (a homeomorphism), and open subsets of this form form a topology base of $\Spec R$.
 	\end{cor}
+	\begin{proof}
+		 Indeed as $\pp$ is prime, $f^N\not\in\pp$ for some $N\in\IN$ is equivalent to $f\not\in\pp$ which in turn is equivalent to $\pp\not\in V(f)$.
+		 
+		 Suppose that $U\ni\pp$ is an open neighbourhood of $\pp$, i.e. $U=\Spec R\setminus V(I)$ for some ideal $I\subseteq R$ such that $\pp\not\supseteq I$. Then there must be some $f\in I\setminus \pp$, hence $\pp\in\Spec R\setminus V(f)\subseteq U$.
+	\end{proof}
 	\begin{example}
-		$R_f\simeq A/\langle 1-T\cdot f\rangle_A$ where $A=R[T]$.
+		$R_f\simeq R[T]/(1-T\cdot f)$.
 	\end{example}
 	\begin{proof}
-		Indeed, we have $T\cdot f = 1$ in $A$, hence the image of $f$ in $A$ is in $A^\times$. If $R\morphism[\beta] B$ is a ring homomorphism with $\beta(f)\in B^\times$, there is unique ring homomorphism $A\morphism[\gamma] B$ extending $\beta$ and such that $\gamma(T) =\frac{1}{\beta(f)}$. This annihilates $1-T\cdot f$, hence comes from a ring homomorphism $A/\langle 1-T\cdot f\rangle_A \morphism[\delta]B$. On the other side, for any such $\delta$ the homomorphism $\gamma = (A\morphism A/\langle 1-T\cdot f \rangle_A\morphism[\delta] B)$ such that $\delta|_R = \beta$ muse send $1-T\cdot f$ to 0, hence $\gamma(T) \cdot \gamma(f) = 1$ and $\gamma(T) = \frac{1}{\beta(f)}$, hence $\delta$ is unique.
+		Indeed, we have $Tf = 1$ in $A=R[T]/(1-Tf)$, hence the image of $f$ in $A$ is in $A^\times$. If $R\morphism[\beta] B$ is a ring homomorphism with $\beta(f)\in B^\times$, there is unique ring homomorphism $R[T]\morphism[\gamma] B$ extending $\beta$ and such that $\gamma(T) =\beta(f)^{-1}$. This annihilates $(1-Tf)$, hence comes from a ring homomorphism 
+		\begin{align*}
+			R[T]/(1-Tf) \morphism[\delta]B\;. 
+		\end{align*}
+		On the other side, for any such $\delta$ the homomorphism 
+		\begin{align*}
+			\gamma\colon R[T]\morphism R[T]/(1-Tf)\morphism[\delta] B
+		\end{align*}
+		such that $\gamma|_R = \beta$ must send $1-T\cdot f$ to 0, hence $\gamma(T) \cdot \gamma(f) = 1$ and $\gamma(T) = \beta(f)^{-1}$, hence $\delta$ is unique.
 	\end{proof}
 	By comparison with Proposition \reff{prop:quasiIsomAffine}, we obtain a special case of
 	\begin{prop}
 		Let $X$ be a quasi-affine algebraic variety over $k=\ov k$ and $f\in\Oo(X)\setminus\{0\}$, then the unique ring homomorphism $\iota:\Oo(X)_f \isomorphism\Oo(X\setminus V(f))$ is an isomorphism.
 	\end{prop}
 	\begin{rem*}
-		Let $\pp\in \Spec R$, then $S=R\setminus \pp$ is a multiplicative subset, and the image of $S$ in $A=R/\pp$ is $A\setminus\{0\}$, hence $A_{\snake S}$ is the quotient field of $A$, $R_S/\pp\cdot R_S \simeq A_{\snake S}$ is a field and $\mm = \pp\cdot R_S$ is a maximal ideal of $R_S$. In fact, if $\rho \in R_S\setminus \mm$ then $\rho =\frac rs$ with $s\in S = R\setminus \pp$, $r\in R\setminus \pp$ (as $\rho\in \pp \cdot R_S$ otherwise), hence $r\in S$ and $\frac{r}{s}$ is a unit (with inverse $\frac{s}{r}$) in $R_S$. It follows that $R_S$ is a local ring with maximal ideal $\mm$. One puts $R_\pp\coloneqq R_S$ in this situation.
+		Let $\pp\in \Spec R$. Then $S=R\setminus \pp$ is a multiplicative subset, and the image of $S$ in $A=R/\pp$ is $A\setminus\{0\}$, hence $R_S/\pp\cdot R_S \simeq A_{\snake S}$ is the quotient field of $R/\pp$. Then $\mm = \pp\cdot R_S$ is a maximal ideal of $R_S$. In fact, if $\rho \in R_S\setminus \mm$ then $\rho =\frac rs$ with $s\in S = R\setminus \pp$, $r\in R\setminus \pp$ (as $\rho\in \pp \cdot R_S$ otherwise), hence $r\in S$ and $\frac{r}{s}$ is a unit (with inverse $\frac{s}{r}$) in $R_S$. It follows that $R_S$ is a local ring with maximal ideal $\mm$. One puts $R_\pp\coloneqq R_S$ in this situation.
 	\end{rem*}
 	\begin{rem*}
-		If $X\subseteq k^n$ affine and $x\in X$ corresponds to $\mm\in\mSpec (\Oo(x))$ then $\Oo(X)_\mm \simeq \Oo_{X,x}$.
+		If $X\subseteq k^n$ affine and $x\in X$ corresponds to $\mm\in\mSpec (\Oo(X))$ (which, by Corollary \reff{cor:correspondenceClosedIdeals} makes sense) then $\Oo(X)_\mm \simeq \Oo_{X,x}$.
 	\end{rem*}
 
 
