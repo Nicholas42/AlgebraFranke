@@ -1593,7 +1593,7 @@
 	\begin{rem*}
 		When $S=f^\IN = \left\{f^n\st n\in\IN\right\}$ the localization $R_S$ is denoted $R_f$.
 	\end{rem*}
-	\begin{fact}
+	\begin{fact}\lbl{fact:localizationAndQuotientField}
 		If $R$ is a domain and $0\not\in S$ then $R_S=\left\{\frac{r}{s}\in K\st r\in R,s\in S\right\}$ where $K$ is the quotient field of $R$.
 	\end{fact}
 	\begin{example}
@@ -1727,9 +1727,113 @@
 		  	(N/M)_S= \{(\ov{n},s)\}/_\sim\;,
 		  \end{align*}
 		  such that $(\overline{n}, s)= (\overline{\nu},s)$ iff there is a $t\in S$ such that $t\sigma n = ts\nu$ in $N/M$, i.e. $ts\nu=t\sigma n+m$ for some $m\in M$. The conclusion is easily deduced.
-	\end{alphanumerate}
-
+	\end{alphanumerate} 
 	\end{proof}
+	\begin{cor}
+		Let $S\subseteq R$ be a multiplicative subset of a ring $R$.
+		\begin{alphanumerate}
+		\item 
+			The localization of $R$ as an $R$-module with respect to $S$ is isomorphic to $R_S$, the localization as a ring.
+		\item
+			If $M$ is a Noetherian $R$-module, $M_S$ is a Noetherian $R_S$-Module.
+		\item
+			If $R$ is a Noetherian ring, then $R_S$ is a Noetherian ring.
+		\item 
+			Every ideal $I$ of $R_S$ has the form $I=J\cdot R_S$ where $J$ is an ideal in $R$ and we have a bijection between the ideals $J\subseteq R$ which are $S$-saturated (if we have $r\in R$, $s\in S$ and $sr\in J$, this implies $r\in J$) and the ideals $I$ in $R_S$:
+			\begin{align*}
+				J &\longmapsto I = (\text{image of } J_S \text{ in } R_S) = J\cdot R_S = \left\{\rho \psi_S(j)\st \rho \in R_S, j\in J\right\}
+			\end{align*}
+		\item 
+			Under this correspondence, we have 
+			\begin{align*}
+				\left\{\pp\in\Spec(R)\st \pp\cap S=\emptyset\right\}& \isomorphism \Spec(R_S)\\
+				\pp &\longmapsto \qq = \pp\cdot R_S\\
+				\pp = \qq\sqcap R = \psi_S^{-1}(\qq) \longmapsfrom \qq
+			\end{align*}
+			and this is a homeomorphism if the l.h.s. is equipped with the induced topology.
+		\end{alphanumerate}
+		\item
+			In the situation of (d), if $I\subseteq R$ is any ideal and $\snake S$ denotes the image of $S$ in $R/I$, we have a unique isomorphism 
+			\begin{align*}
+				R_S/(I\cdot R_S) &\isomorphism (R/I)_{\snake S}
+			\end{align*}
+			such that
+			
+			FERDI
+			
+			commutes. (It is very important for FERDI to commute)
+	\end{cor}
+	\begin{proof}
+		\begin{alphanumerate}
+		\item
+			Follows from our explicit construction of $M_S$ and $R_S$.
+		\item 
+			Follows from the bijection of sets of submodules from Proposition \reff{prop:modulesOfLocalizations}, recapitulated at the beginning.
+		\item 
+			Special case of (b).
+		\item 
+			This is the special case $M=R$ of the correspondence recapitulated at the beginning. The equality $J\cdot R_S \simeq (\text{image of } J_S \text{ in } R_S)$ follows from 
+			\begin{align*}
+				J\cdot R_S &= \left\{\psi_S(j) \cdot\rho \st \rho \in R_S, j\in J\right\} = \left\{\frac{j}{1}\cdot\frac{r}{s}\in R_S\st j\in J, r\in R, s\in S\right\}\\
+				&= \left\{\frac{\snake j}{s}\st \snake j \in J, s\in S\right\} = \left\{ \left(\text{image of } \frac{\snake j}{s}\in J_S \text{ in } R_S\right)\st \snake j \in J, s\in S\right\}
+			\end{align*}
+		\item 
+			The bijection follows from (d) if the following facts are shown:
+			\begin{itemize}
+			 \item [$(\alpha)$]
+				$\pp\in \Spec R$ is $S$-saturated iff $\pp\cap S = \emptyset$. If $s\cdot 1 = s \in S\cap \pp$, then $\pp$ is not $S$-saturated as $1\not\in \pp$. If $\pp\cap S = \emptyset$ and $r\in R$, $s\in S$ and $r\cdot s\in \pp$, then $r\in \pp$ as $s\not \in\pp$.
+			\item[$(\beta)$]
+				If $\qq\in \Spec(R_S)$ then $\qq\sqcap R\in \Spec R$. If $A\morphism[f] B$ is a ring homomorphism and $\qq\in \Spec B$, then $\pp= f^{-1}(\qq)\in \Spec R$. We have $1\not\in \pp$ since $f(1) = 1\not \in\qq$. Moreover, if $ab\in\pp$ then $f(a)f(b)=f(ab)\in\qq$, hence $f(a)\in \qq$ (and $a\in \pp$) or $f(b)\in\qq$ (and $b\in\qq$). Applying ths to $R\morphism R_S$ gives the assertion.
+			\item[$(\gamma)$]
+				If $\pp\in \Spec R$ and $\pp\cap S= \emptyset$ then $\pp\cdot R_S\in \Spec R_S$. We have $R_S/\pp\cdot R_S\simeq (R/\pp)_{\snake S}$ by (f), where $\snake S$ is the image of $S$ in $R/\pp$. We have $0\not\in \snake S$ as $S\cap \pp = \emptyset$. But $R/\pp$ is a domain and by Fact \reff{fact:localizationAndQuotientField} $(R/\pp)_{\snake S}$ is a subring of the field of quotients of $R/\pp$, hence a domain.
+			\end{itemize}
+			The homeomorphism follows form the fact that any closed subset of $\Spec(R_S)$ has the form $V(I)$ and $I = J\cdot R_S$ for an ideal $J$ in $R$. We claim that the preimage of $V(I)\subseteq \Spec(R_S)$ under the studied bijection is $\left\{\pp\in V(J) \st \pp\cap S= \emptyset\right\}$, which is easy to see. Bet the sets of this form are precisely the closed sets of the induced topology form the Zariski topology on $\Spec R$.
+		\item 
+			This follows from the assertion about quotient modules in Proposition \reff{prop:modulesOfLocalizations} or by a comparison of universal properties:
+			\begin{align*}
+				\Hom(R_S/(J\cdot R_S) , A) &\simeq \left\{f\in \Hom(R_S,A)\st f(j)=0 \forall j\in J\cdot R_S\right\} \\
+				&=\left\{f\in \Hom(R_S,A)\st (J\morphism[\psi_S] R_S\morphism[f] A ) =0\right\}\\
+				&\simeq\left\{g = (f\psi_S) \in \Hom(R,A)\st g(S) \subseteq A^\times \text{ and } g|_J = 0\right\}\\
+				&\simeq \left\{\gamma \in \Hom(R/J,A)\st \gamma(\snake S) \subseteq A^\times\right\}\\
+				&\simeq \Hom((R/J)_{\snake S}, A)
+			\end{align*}
+			where $g=\gamma\circ \pi$ with $R\morphism[\pi] R/J$ in the projection.
+		\end{alphanumerate}
+	\end{proof}
+	\begin{rem*}
+		The constructed isomorphism maps $\frac{r}{s}\mod J\cdot R_S$ to $\frac{r\mod J}{s\mod J}$
+	\end{rem*}
+	\begin{cor}
+		If $R$ is a Noetherian ring, then $R_S$ is Noetherian.
+	\end{cor}
+	\begin{cor}
+		$\Spec R_f \simeq \Spec(R)\setminus V(f)$ (a homeomorphism), and open subsets of this form form a topology base of $\Spec R$. Indeed as $\pp$ is prime, $p\cap f^\IN =\emptyset$ is equivalent to $f\not\in\pp$ which in turn is equivalent to $\pp\not\in V(f)$.
+	\end{cor}
+	\begin{example}
+		$R_f\simeq A/\langle 1-T\cdot f\rangle_A$ where $A=R[T]$.
+	\end{example}
+	\begin{proof}
+		Indeed, we have $T\cdot f = 1$ in $A$, hence the image of $f$ in $A$ is in $A^\times$. If $R\morphism[\beta] B$ is a ring homomorphism with $\beta(f)\in B^\times$, there is unique ring homomorphism $A\morphism[\gamma] B$ extending $\beta$ and such that $\gamma(T) =\frac{1}{\beta(f)}$. This annihilates $1-T\cdot f$, hence comes from a ring homomorphism $A/\langle 1-T\cdot f\rangle_A \morphism[\delta]B$. On the other side, for any such $\delta$ the homomorphism $\gamma = (A\morphism A/\langle 1-T\cdot f \rangle_A\morphism[\delta] B)$ such that $\delta|_R = \beta$ muse send $1-T\cdot f$ to 0, hence $\gamma(T) \cdot \gamma(f) = 1$ and $\gamma(T) = \frac{1}{\beta(f)}$, hence $\delta$ is unique.
+	\end{proof}
+	By comparison with Proposition \reff{prop:quasiIsomAffine}, we obtain a special case of
+	\begin{prop}
+		Let $X$ be a quasi-affine algebraic variety over $k=\ov k$ and $f\in\Oo(X)\setminus\{0\}$, then the unique ring homomorphism $\iota:\Oo(X)_f \isomorphism\Oo(X\setminus V(f))$ is an isomorphism.
+	\end{prop}
+	\begin{rem*}
+		Let $\pp\in \Spec R$, then $S=R\setminus \pp$ is a multiplicative subset, and the image of $S$ in $A=R/\pp$ is $A\setminus\{0\}$, hence $A_{\snake S}$ is the quotient field of $A$, $R_S/\pp\cdot R_S \simeq A_{\snake S}$ is a field and $\mm = \pp\cdot R_S$ is a maximal ideal of $R_S$. In fact, if $\rho \in R_S\setminus \mm$ then $\rho =\frac rs$ with $s\in S = R\setminus \pp$, $r\in R\setminus \pp$ (as $\rho\in \pp \cdot R_S$ otherwise), hence $r\in S$ and $\frac{r}{s}$ is a unit (with inverse $\frac{s}{r}$) in $R_S$. It follows that $R_S$ is a local ring with maximal ideal $\mm$. One puts $R_\pp\coloneqq R_S$ in this situation.
+	\end{rem*}
+	\begin{rem*}
+		If $X\subseteq k^n$ affine and $x\in X$ corresponds to $\mm\in\mSpec (\Oo(x))$ then $\Oo(X)_\mm \simeq \Oo_{X,x}$.
+	\end{rem*}
+
+
+
+
+
+
+
+
+
 
 %\ov ist Shortcut für \overline
 %\snake für Tilden
