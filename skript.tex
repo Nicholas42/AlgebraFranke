@@ -5,6 +5,7 @@
 
 \usepackage{amsmath,amsfonts,amssymb,mathtools}
 \usepackage{amsthm}
+\usepackage{xpatch}
 \usepackage[colorlinks=true,linkcolor=blue]{hyperref}
 \usepackage{xstring,verbatim}
 \usepackage{bm}
@@ -34,8 +35,8 @@
 \def\newnewtheorem#1#2[#3]{\newtheorem{#1}{#2}[#3]\expandafter\def\csname thmcaption#1\endcsname{#2}}%erstellt zusätzlich ein Makro, das den Umgebungsnamen enthält                               
 
 \newtheoremstyle{cthm}
-{\topsep}
-{\topsep}
+{12pt}
+{0pt}
 {\itshape}
 {}
 {\bfseries}
@@ -44,18 +45,8 @@
 {\thmname{#1}\thmnumber{ \IfBeginWith{#2}{\thesubsection.}{\StrBehind{#2}{\thesubsection.}}{#2}}\thmnote{ \textmd{(#3)}}\xdef\curthm{#2}}
 
 \newtheoremstyle{cvarthm}
-{\topsep}
-{\topsep}
-{\itshape}
-{}
-{\bfseries}
-{.}
-{ }
-{\thmname{\thmcaption}\thmnumber{ #2}\thmnote{ \textmd{(#3)}}\xdef\curthm{#2}}
-
-\newtheoremstyle{cvarthm}
-{\topsep}
-{\topsep}
+{12pt}
+{0pt}
 {\itshape}
 {}
 {\bfseries}
@@ -64,8 +55,8 @@
 {\edef\curthmnumber{\csname the\thmenv\endcsname}\thmname{\csname thmcaption\thmenv\endcsname}\thmnumber{ \IfBeginWith{\curthmnumber}{\thesubsection.}{\StrBehind{\curthmnumber a}{\thesubsection.}}{\curthmnumber a}}\thmnote{ \textmd{(#3)}}\xdef\curthm{\curthmnumber a}}%für Varianten von Theoremen
 
 \newtheoremstyle{cdef}
-{\topsep}
-{\topsep}
+{12pt}
+{0pt}
 {}
 {}
 {\bfseries}
@@ -87,6 +78,9 @@
 
 \newenvironment{varthm}[1]{\gdef\thmenv{#1}\begin{varthmcontainer}}{\end{varthmcontainer}}
 
+\renewenvironment{proof}[1][\proofname]
+{\pushQED{\qed}\topsep0pt \partopsep0pt\trivlist\item[\hskip\labelsep\itshape #1.] }{\popQED\endtrivlist\addvspace{6pt plus 6pt}}
+
 \theoremstyle{cdef}
 \newtheorem{defi}{Definition}[subsection]
 \newtheorem*{defi*}{Definition}
@@ -96,6 +90,8 @@
 \newtheorem*{rem*}{Remark}
 \newtheorem{fact}{Fact}[subsection]
 \newtheorem*{fact*}{Fact}
+
+
 \newcommand{\lbl}[1]{
 	\label{#1}
 	\ifmmode
@@ -119,7 +115,7 @@
 
 \newcommand{\eqreff}[1]{%
 	\edef\temp{\csname eqsubsec#1\endcsname}%
-	\IfBeginWith{\temp}{\thesubsection}{\hyperref[#1]{\upshape(\getrefnumber{#1})}}{\hyperref[#1]{\upshape(\thesubsection .\getrefnumber{#1})}}%	
+	\IfBeginWith{\temp}{\thesubsection}{\hyperref[#1]{\upshape(\getrefnumber{#1})}}{\hyperref[#1]{\upshape(\temp .\getrefnumber{#1})}}%	
 }
 
 \newcommand{\Aa}{\mathcal{A}}
@@ -273,7 +269,7 @@
 		is bijective, where $t$ is surjective iff $\tau$ is and $t$ is injective iff $\ker(\tau)$ equals $N$.
 	\end{prop}
 	\begin{cor}
-		Let $N,L\subseteq M$ be submodules of some $R$-Module $M$.
+		Let $N,L\subseteq M$ be submodules of some $R$-Module $M$.~
 		\begin{alphanumerate}
 			\item There is a unique isomorphism $L/(N\cap L)\isomorphism (N+L)/N$ such that the following diagram commutes:
 			\begin{diagram}
@@ -1731,7 +1727,7 @@
 		  such that $(\overline{n}, s)= (\overline{\nu},s)$ iff there is a $t\in S$ such that $t\sigma n = ts\nu$ in $N/M$, i.e. $ts\nu=t\sigma n+m$ for some $m\in M$. The conclusion is easily deduced.
 	\end{alphanumerate} 
 	\end{proof}
-	\begin{cor}
+	\begin{cor}\lbl{cor:localizations}
 		Let $S\subseteq R$ be a multiplicative subset of a ring $R$.
 		\begin{alphanumerate}
 		\item 
@@ -1828,6 +1824,9 @@
 	\begin{cor}
 		If $R$ is a Noetherian ring, then $R_S$ is Noetherian.
 	\end{cor}
+	\begin{proof}
+		This is just Corollary \reff{cor:localizations}. We got it, ok?
+	\end{proof}
 	\begin{cor}
 		$\Spec R_f \simeq \Spec(R)\setminus V(f)$ (a homeomorphism), and open subsets of this form form a topology base of $\Spec R$.
 	\end{cor}
