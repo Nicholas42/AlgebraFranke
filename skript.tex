@@ -138,6 +138,7 @@
 
 \renewcommand{\aa}{\mathfrak{a}}
 \newcommand{\bb}{\mathfrak{b}}
+\newcommand{\kk}{\mathfrak{k}}
 \newcommand{\mm}{\mathfrak{m}}
 \newcommand{\pp}{\mathfrak{p}}
 \newcommand{\qq}{\mathfrak{q}}
@@ -664,7 +665,7 @@
 	\end{rem}
 	
 	
-	\subsection{Some operations on ideals}\lbl{sec:operationsOnIdeals}
+\subsection{Some operations on ideals}\lbl{sec:operationsOnIdeals}
 	\begin{defi}\lbl{def:variety}
 		For $k=\overline{k}$ and $I\subseteq R = k[X_1,\ldots,X_n]$ we denote the of zeros of $I$ by $V(I)$ called the \emph{variety} of $I$. If $I=(f_1,\ldots,f_k)_R$ we write $V(f_1,\ldots,f_k)$ for $V(I)$.
 	\end{defi}
@@ -782,8 +783,9 @@
 		
 	\end{rem}
 	
-	\section{Quasi-affine algebraic varieties and their dimension}
-	\subsection{The Zariski topology on \texorpdfstring{$k^n$}{kn}} \label{sec:ZariskiOnk^n}
+\section{Quasi-affine algebraic varieties and their dimension}
+
+\subsection{The Zariski topology on \texorpdfstring{$k^n$}{kn}} \label{sec:ZariskiOnk^n}
 	Let $k$ be an algebraically closed field.
 	\begin{defi}\lbl{def:Zariski}
 		A subset $M$ of $k^n$ is \emph{Zariski-closed} iff it can be written as $M=V(I)$ where $I\subseteq k[X_1,\ldots,X_n]$ is some ideal.
@@ -1859,6 +1861,52 @@
 	\begin{rem*}
 		If $X\subseteq k^n$ affine and $x\in X$ corresponds to $\mm\in\mSpec (\Oo(X))$ (which, by Corollary \reff{cor:correspondenceClosedIdeals} makes sense) then $\Oo(X)_\mm \simeq \Oo_{X,x}$.
 	\end{rem*}
+	\begin{defi}
+		Let $\pp\subseteq R$ be prime, $S=R\setminus \pp$, $R_\pp \coloneqq R_S$ is the localization of $R$ at $\pp$. This a local ring with maximal ideal $\pp \cdot R_\pp$, for any $I\supsetneq \pp \cdot R_\pp$ must be given as $J\cdot R_\pp$ where $J\supsetneq \pp$, hence $J\cap S \neq \emptyset$ hence $J\cdot R_\pp = R_\pp$ since $1=\frac{s}{s}\in J\cdot R_\pp$ with $s\in J\cap S$.
+	\end{defi}
+	\begin{prop}\lbl{prop:IsomMaximalIdealStructureSheaf}
+		Let $k=\ov k$ and $X$ an affine algebraic variety in some $k^n$. Let $x\in X$ correspond to the maximal $\mm_x\subseteq \Oo(X)$, i.e. $\mm_x = \left\{f\in\Oo(X)\st f(x) = 0\right\}$. Then the canonical morphism $\Oo(X)_{\mm_x} \morphism \Oo_{X,x}$ (extending $\Oo(X) \morphism \Oo_{X,x}$, defined by the universal property of localization) is an isomorphism.
+	\end{prop}
+	\begin{proof}
+		If $\frac{f}{s}\in\Oo(X)_{\mm_x}$ is in the kernel, then $f$ must vanish on some neighbourhood of $x$, for the image of $\frac{f}{s}$ under the morphism we consider is $\left(\frac{f|_U}{s|_u},U\right)/_\sim$ where $U$ is any open neighbourhood of $X$ where $s$ has no zeros, and vanishes iff $f|U = 0$ for sufficiently small $U$. As $X$ is irreducible, $U$ is dense and $f|U = 0$ implies $f=0$. Thus the morphism is injective. Let $\gamma \in \Oo_{X,x}$ then $\gamma = (g, U)/_\sim$ where $U$ is an open neighbourhood of $x$ and $g\in \Oo(U)$. By the definition of $\Oo(V)$ it is possible to replace $U$ by some smaller open neighbourhood $U$ of $x$ such that $g= \frac{f}{s}$ on $U$, where $f$ and $s$ are polynomials and $V(s)\cap U = \emptyset$. Then $f$ and $s$ define elements $\Oo(X)$ and $s\not\in \mm_x$ and the image of $\frac{f}{s}$ in $\Oo_{X,x}$ is $\gamma$. Hence the morphism we consider is surjective.
+	\end{proof}
+	\begin{prop}\lbl{prop:QuotientFieldOfR/p}
+		Let $\pp\in \Spec R$, then $R_\pp/\pp\cdot R_\pp$ is isomorphic to the quotient field of the domain $R/\pp$.
+	\end{prop}
+	\begin{proof}
+		From Corollary \reff{cor:localizations} we obtain that the prime ideals of $R_S$ correspond to the $S$-saturated prime ideals of $R$. Applying this with $S=R\setminus \pp$, the image of $S$ in $R/\pp$ is $(R/\pp)\setminus\{0\}$ and $(R/\pp)_{(R/\pp\setminus)\{0\}}$ is the quotient field of $R/\pp$.
+	\end{proof}
+\subsection{Proof of \texorpdfstring{$\dim(k^n) = n$}{dim(kn) = n}}
+	\begin{prop}\lbl{prop:transcendenceDegreeMonotonic}
+		Let $k$ be a field, $A$ a $k$-algebra of finite type, $\pp_{1,2}\in \Spec A$ such that $\pp_1\subsetneq \pp_2$ then $\deg\tr(k(\pp_1)/k)> \deg\tr(k(\pp_2)/k)$ where $k(\pp)$ is the Quotient field of $R/\pp$ (see Proposition \reff{prop:QuotientFieldOfR/p})
+	\end{prop}
+	\begin{lem}\lbl{lem:prop2.4.1forMaximals}
+		This holds when $\pp_2$ is a maximal ideal.
+	\end{lem}
+	\begin{proof}
+		In this case, $A/\pp_2$ is a finite field extension of $k$ by the Hilbert Nullstellensatz, hence $\deg\tr(k(\pp_2)/k) =0$ and must show that $\deg \tr (l(\pp_1)/k)>0$. If this was false, $k(\pp_2)/k$ would be algebraic. Since $A$ is finitely generated as a $k$-algebra, so is $A/\pp_1$ and its quotient field is finitely generated as a field extension of $k$ hence is finite if it is algebraic. Then $A/\pp_1\subseteq k(\pp_1)$ is a finite-dimensional $k$-algebra. Since it is a domain, it is a field. Since $A/\pp_1$ is a field, $\pp_1$ is a maximal ideal, contradicting $\pp_1\subsetneq \pp_2$.
+	\end{proof}
+	\begin{lem}\lbl{lem:prop2.4.1withS-satisfiedIdeals}
+		If $\pp_1\subsetneq \pp_2$ and the multiplicative subset $S\subsetneq A$ is disjoint from $\pp_2$, then $\pp_1\cdot R_S\subsetneq \pp_2 \cdot R_S$ and these are prime ideals in $R_S$.
+	\end{lem}
+	\begin{proof}
+		Corollary \reff{cor:localizations}
+	\end{proof}
+	\begin{proof}[Proof of Proposition \reff{prop:transcendenceDegreeMonotonic}]
+		Let $B = (b_1,\ldots, b_n)$ be a tuple of $n$ elements of $A$ whose images in $k(\pp_2)$ form a transcendence base for $k(\pp_2)/k$ (representatives of a maximal $k$-algebraically independent subset of $A/\pp_2$ will have the desired property). Let $S= \left\{f(b_1,\ldots,b_n)\st f\in  k[X_1,\ldots,X_n]\setminus\{0\}\right)$, this is a multiplicative subset of $A$ which is disjoint from $\pp_2$ by the $k$-algebraic independence of the images of the $b_i$ in $k(\pp_2)$. Let $\snake A=A_S$, $\snake\pp_i = \pp_i\cdot \snake A$, then $\snake \pp_1\subsetneq\snake\pp_2$ by Lemma \reff{lem:prop2.4.1withS-satisfiedIdeals}. Let $R=k[X_1,\ldots,X_n]$ then $A$ is an $R$-algebra (by sending $X_i$ to $b_i$) and $S$ is the image of $R\setminus\{0\}$ hence $\snake A = A_S$ is an algebra over $R_{R\setminus\{0\}} = \snake\kk$ the quotient field of $R$. Since $\frac{1}{s}\in\snake \kk$ for $s\in S$, If $a_1,\ldots,a,_L$ generate $A$ as a $k$-algebra their images in $\snake A$ generate $\snake A$ as a $\kk$-algebra. Also, $k(\pp_i)\isomorphism k(\snake \pp_i)$ because the elements of $S$ are already units in $k(\pp_i)$. Since the images of the elements of $B$ form a transcendence base for $k(\pp_2)/k$, $k(\pp_2)$ is algebraic over $\snake \kk$. Since $\snake A/\snake \kk$ is of finite type, $k(\pp_2)\simeq \snake{\kk(\pp_2)}$ is a finite $\snake k$ extension and $\snake A/\snake\pp_2 \subseteq k(\snake \pp_2)$ is a finite dimensional $\snake \kk$-algebra, hence a field and $\snake\pp_2$ is maximal. By Lemma \reff{lem:prop2.4.1forMaximals}, $k(\pp_1)\simeq k(\snake\pp_1)$ is not algebraic over $\snake \kk$. Since the image of $B$ in $k(\pp_1)$ is $k$-algebraically independent but does not form a transcendence base (they generate $\snake\kk$, together with $k$), we have $\deg\tr(k(\pp_1)/k)> n =\# B = \deg\tr(k(\pp_2)/k)$.
+	\end{proof}
+	\begin{cor}\lbl{cor:transcendenceDegreeDimension}
+		If $X$ is an affine algebraic variety in some $k^n$ (with $k=\ov k$), then we have $\dim X\leq \deg\tr(k(X)/k)$ where $k(X)$ is the quotient ring of $\Oo(X)$.
+	\end{cor}
+	\begin{proof}
+		Let $z_0\subsetneq z_1\subsetneq\ldots\subsetneq z_d=X$ correspond to the prime ideals $\{0\} = \pp_d\subsetneq \ldots\subsetneq \pp_0$ with $\pp_i\in \Spec(\Oo(X))$, then $k(\pp_0) = k(X)$ and $\deg\tr(k(\pp_0)/k)Y \deg\tr(k(\pp_1)/k)>\ldots > \deg\tr(k(\pp_d)/k)$ by Proposition \reff{prop:transcendenceDegreeMonotonic}. Hence $\deg\tr(k(X)/k)  =\deg\tr(k(\pp_0)/k) \geq d$.
+	\end{proof}
+	\begin{cor}
+		$\dim(k^n) = n$.
+	\end{cor}
+	\begin{proof}
+		The fact that $\dim (k^n) \geq n$ is seen by $k^n\supsetneq k^{n-1}\times\{0\}\supsetneq \ldots\supseteq k\times\{0\}^{n-1}\supsetneq \{0\}^n$ are irreducible subsets. Putting $X=k^n$ in Corollary \reff{cor:transcendenceDegreeDimension} we have $k(X) = k(X_1,\ldots,X_n)$  and $\deg\tr(k(X)/k) = n$  the opposite inequality holds.
+	\end{proof}
 
 
 
@@ -1871,14 +1919,6 @@
 
 %\ov ist Shortcut für \overline
 %\snake für Tilden
-
-
-
-
-
-
-
-
 
 
 \end{document}
