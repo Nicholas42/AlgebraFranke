@@ -14,7 +14,7 @@
 
 \usepackage{old-arrows}
 \usepackage{pgf,tikz}
-\usetikzlibrary{positioning,arrows}
+\usetikzlibrary{positioning,arrows,calc}
 \usepackage[shortlabels]{enumitem}
 \setlist[description]{font={\bfseries\rmfamily}}
 
@@ -133,6 +133,7 @@
 \renewcommand{\AA}{\mathfrak A}
 \newcommand{\BB}{\mathfrak B}
 \newcommand{\CC}{\mathfrak C}
+\newcommand{\KK}{\mathfrak K}
 \newcommand{\MM}{\mathfrak{M}}
 \newcommand{\XX}{\mathfrak{X}}
 
@@ -165,7 +166,7 @@
 \newcommand{\longto}{\longrightarrow}
 \newcommand{\longot}{\longleftarrow}
 \newcommand{\ov}{\overline}
-\newcommand{\snake}{\widetilde}
+\newcommand{\snake}[1]{\widetilde{#1}\vphantom{\overrightarrow{#1}}}%space adjusting hack
 \newcommand{\isomorphism}{
 	\tikz[baseline=(a.base)] \node (a) at (0,0) {$\longrightarrow$} node[above=-0.25ex] {\tiny $\sim$};}
 \newcommand{\lisomorphism}{
@@ -952,7 +953,7 @@
 	\begin{thm}\lbl{thm:k^nIsCatenary}
 		For $X=k^n$ with the Zariski-topology $\dim(X) = n$ and equality occurs in \eqreff{eq:codimIneqs}. In particular, $X$ is catenary.
 	\end{thm}
-	\begin{rem}[a.k.a. Remark 5]
+	\begin{rem}[a.k.a. Remark 5]\label{rem:chainOfIrreducibles}
 		Obviously $\codim(\{0\}^n, k^n) \geq n$ because of the chain $\{0\}^n\subsetneq k\times \{0\}^{n-1}\subsetneq k^2\times\{0\}^{n-2}\subsetneq \ldots \subsetneq k^{n-1}\times\{0\} \subsetneq k^n$. The subsets here are irreducible because they are homeomorphic to $k^i$ which is irreducible by Proposition \reff{prop:primeIdealIrreducibleZeros} as $k[X_1,\ldots,X_i]$ is a domain (i.e. $\{0\}$ is prime). Similarly, $\codim(\{x\}, X) \geq n$ for any $x\in X =k^n$.
 	\end{rem}
 	
@@ -1837,7 +1838,7 @@
 		 
 		 Suppose that $U\ni\pp$ is an open neighbourhood of $\pp$, i.e. $U=\Spec R\setminus V(I)$ for some ideal $I\subseteq R$ such that $\pp\not\supseteq I$. Then there must be some $f\in I\setminus \pp$, hence $\pp\in\Spec R\setminus V(f)\subseteq U$.
 	\end{proof}
-	\begin{example}
+	\begin{example}\lbl{ex:LocalizationIsQuotient}
 		$R_f\simeq R[T]/(1-T\cdot f)$.
 	\end{example}
 	\begin{proof}
@@ -1852,9 +1853,12 @@
 		such that $\gamma|_R = \beta$ must send $1-T\cdot f$ to 0, hence $\gamma(T) \cdot \gamma(f) = 1$ and $\gamma(T) = \beta(f)^{-1}$, hence $\delta$ is unique.
 	\end{proof}
 	By comparison with Proposition \reff{prop:quasiIsomAffine}, we obtain a special case of
-	\begin{prop}
-		Let $X$ be a quasi-affine algebraic variety over $k=\ov k$ and $f\in\Oo(X)\setminus\{0\}$, then the unique ring homomorphism $\iota:\Oo(X)_f \isomorphism\Oo(X\setminus V(f))$ is an isomorphism.
+	\begin{prop}\lbl{prop:regFunctionsLocalization}
+		Let $X$ be a quasi-affine algebraic variety over an algebraically closed field $k$ and $f\in\Oo(X)\setminus\{0\}$, then the unique ring homomorphism $\iota:\Oo(X)_f \isomorphism\Oo(X\setminus V(f))$ is an isomorphism.
 	\end{prop}
+	\begin{proof}
+		If $X$ is affine, this follows from Proposition \reff{prop:quasiIsomAffine} and Example \reff{ex:LocalizationIsQuotient}. We won't have to consider the quasi-affine case and the proof is omitted.
+	\end{proof}
 	\begin{rem*}
 		Let $\pp\in \Spec R$. Then $S=R\setminus \pp$ is a multiplicative subset, and the image of $S$ in $A=R/\pp$ is $A\setminus\{0\}$, hence $R_S/\pp\cdot R_S \simeq A_{\snake S}$ is the quotient field of $R/\pp$. Then $\mm = \pp\cdot R_S$ is a maximal ideal of $R_S$. In fact, if $\rho \in R_S\setminus \mm$ then $\rho =\frac rs$ with $s\in S = R\setminus \pp$, $r\in R\setminus \pp$ (as $\rho\in \pp \cdot R_S$ otherwise), hence $r\in S$ and $\frac{r}{s}$ is a unit (with inverse $\frac{s}{r}$) in $R_S$. It follows that $R_S$ is a local ring with maximal ideal $\mm$. One puts $R_\pp\coloneqq R_S$ in this situation.
 	\end{rem*}
@@ -1865,51 +1869,172 @@
 		Let $\pp\subseteq R$ be prime, $S=R\setminus \pp$, $R_\pp \coloneqq R_S$ is the localization of $R$ at $\pp$. This a local ring with maximal ideal $\pp \cdot R_\pp$, for any $I\supsetneq \pp \cdot R_\pp$ must be given as $J\cdot R_\pp$ where $J\supsetneq \pp$, hence $J\cap S \neq \emptyset$ hence $J\cdot R_\pp = R_\pp$ since $1=\frac{s}{s}\in J\cdot R_\pp$ with $s\in J\cap S$.
 	\end{defi}
 	\begin{prop}\lbl{prop:IsomMaximalIdealStructureSheaf}
-		Let $k=\ov k$ and $X$ an affine algebraic variety in some $k^n$. Let $x\in X$ correspond to the maximal $\mm_x\subseteq \Oo(X)$, i.e. $\mm_x = \left\{f\in\Oo(X)\st f(x) = 0\right\}$. Then the canonical morphism $\Oo(X)_{\mm_x} \morphism \Oo_{X,x}$ (extending $\Oo(X) \morphism \Oo_{X,x}$, defined by the universal property of localization) is an isomorphism.
+		Let $k$ be algebraically closed and $X$ an affine algebraic variety in some $k^n$. Let $x\in X$ correspond to the maximal $\mm_x\subseteq \Oo(X)$, i.e. $\mm_x = \left\{f\in\Oo(X)\st f(x) = 0\right\}$. Then the canonical morphism
+		\begin{align*}
+			\Oo(X)_{\mm_x} \morphism[\phi] \Oo_{X,x}
+		\end{align*}
+		(extending $\Oo(X) \to \Oo_{X,x}$ by the universal property of localization) is an isomorphism.
 	\end{prop}
 	\begin{proof}
-		If $\frac{f}{s}\in\Oo(X)_{\mm_x}$ is in the kernel, then $f$ must vanish on some neighbourhood of $x$, for the image of $\frac{f}{s}$ under the morphism we consider is $\left(\frac{f|_U}{s|_u},U\right)/_\sim$ where $U$ is any open neighbourhood of $X$ where $s$ has no zeros, and vanishes iff $f|U = 0$ for sufficiently small $U$. As $X$ is irreducible, $U$ is dense and $f|U = 0$ implies $f=0$. Thus the morphism is injective. Let $\gamma \in \Oo_{X,x}$ then $\gamma = (g, U)/_\sim$ where $U$ is an open neighbourhood of $x$ and $g\in \Oo(U)$. By the definition of $\Oo(V)$ it is possible to replace $U$ by some smaller open neighbourhood $U$ of $x$ such that $g= \frac{f}{s}$ on $U$, where $f$ and $s$ are polynomials and $V(s)\cap U = \emptyset$. Then $f$ and $s$ define elements $\Oo(X)$ and $s\not\in \mm_x$ and the image of $\frac{f}{s}$ in $\Oo_{X,x}$ is $\gamma$. Hence the morphism we consider is surjective.
+		Suppose that $\frac{f}{s}\in\Oo(X)_{\mm_x}$ is in the kernel $\ker\phi$, where $f,s\in\Oo(X)$, $s\not\in\mm_x$. Then $s(x)\not=0$, therefore the image of $\frac{f}{s}$ under $\phi$ is $\left(\frac{f|_U}{s|_U},U\right)/_\sim$ where $U$ is any open neighbourhood of $x$ where $s$ has no zeros. Hence, $\phi$ maps $\frac fs$ to $0$ iff $f|_U = 0$ for sufficiently small $U$. As $X$ is irreducible, $U$ is dense and $f|_U = 0$ implies $f=0$. Thus, $\phi$ is injective.
+		
+		 Let $\gamma \in \Oo_{X,x}$ then $\gamma = (g, U)/_\sim$ where $U$ is an open neighbourhood of $x$ and $g\in \Oo(U)$. By definition of $\Oo(U)$ it is possible to replace $U$ by some smaller open neighbourhood $U$ of $x$ such that $g= \frac{f}{s}$ on $U$, where $f$ and $s$ are polynomials and $V(s)\cap U = \emptyset$. Then $f$ and $s$ define elements $\Oo(X)$ and $s\not\in \mm_x$ and the image of $\frac{f}{s}$ in $\Oo_{X,x}$ is $\gamma$. Hence, $\phi$ is surjective.
 	\end{proof}
 	\begin{prop}\lbl{prop:QuotientFieldOfR/p}
-		Let $\pp\in \Spec R$, then $R_\pp/\pp\cdot R_\pp$ is isomorphic to the quotient field of the domain $R/\pp$.
+		Let $\pp\in \Spec R$, then $R_\pp/\pp R_\pp$ is isomorphic to the quotient field of the domain $R/\pp$.
 	\end{prop}
 	\begin{proof}
-		From Corollary \reff{cor:localizations} we obtain that the prime ideals of $R_S$ correspond to the $S$-saturated prime ideals of $R$. Applying this with $S=R\setminus \pp$, the image of $S$ in $R/\pp$ is $(R/\pp)\setminus\{0\}$ and $(R/\pp)_{(R/\pp\setminus)\{0\}}$ is the quotient field of $R/\pp$.
+		From Corollary \reff{cor:localizations} we obtain that the prime ideals of $R_S$ correspond to the $S$-saturated prime ideals of $R$. Applying this to $S=R\setminus \pp$, the image of $S$ in $R/\pp$ is $(R/\pp)\setminus\{0\}$ and $(R/\pp)_{(R/\pp)\setminus\{0\}}$ is the quotient field of $R/\pp$.
 	\end{proof}
 \subsection{Proof of \texorpdfstring{$\dim(k^n) = n$}{dim(kn) = n}}
 	\begin{prop}\lbl{prop:transcendenceDegreeMonotonic}
-		Let $k$ be a field, $A$ a $k$-algebra of finite type, $\pp_{1,2}\in \Spec A$ such that $\pp_1\subsetneq \pp_2$ then $\deg\tr(k(\pp_1)/k)> \deg\tr(k(\pp_2)/k)$ where $k(\pp)$ is the Quotient field of $R/\pp$ (see Proposition \reff{prop:QuotientFieldOfR/p})
+		Let $k$ be a field (not necessarily algebraically closed), $A$ a $k$-algebra of finite type, and $\pp_1,\pp_2\in \Spec A$ prime ideals such that $\pp_1\subsetneq \pp_2$. Then 
+		\begin{align*}
+			\deg\tr(\KK(\pp_1)/k)> \deg\tr(\KK(\pp_2)/k)\;,
+		\end{align*}
+		where $\KK(\pp)$ denotes the Quotient field of $R/\pp$ (see Proposition \reff{prop:QuotientFieldOfR/p})
 	\end{prop}
 	\begin{lem}\lbl{lem:prop2.4.1forMaximals}
 		This holds when $\pp_2$ is a maximal ideal.
 	\end{lem}
 	\begin{proof}
-		In this case, $A/\pp_2$ is a finite field extension of $k$ by the Hilbert Nullstellensatz, hence $\deg\tr(k(\pp_2)/k) =0$ and must show that $\deg \tr (l(\pp_1)/k)>0$. If this was false, $k(\pp_2)/k$ would be algebraic. Since $A$ is finitely generated as a $k$-algebra, so is $A/\pp_1$ and its quotient field is finitely generated as a field extension of $k$ hence is finite if it is algebraic. Then $A/\pp_1\subseteq k(\pp_1)$ is a finite-dimensional $k$-algebra. Since it is a domain, it is a field. Since $A/\pp_1$ is a field, $\pp_1$ is a maximal ideal, contradicting $\pp_1\subsetneq \pp_2$.
+		In this case, $A/\pp_2$ is a finite field extension of $k$ by the Hilbert Nullstellensatz (Theorem \reff{thm:fieldExtensionOfFiniteTypeIsFinite}), hence $\deg\tr(\KK(\pp_2)/k) =0$ and must show that $\deg \tr (\KK(\pp_1)/k)>0$. Assume not, then $\KK(\pp_2)/k$ is algebraic. Since $A$ is finitely generated as a $k$-algebra, so is $A/\pp_1$ and its quotient field is finitely generated as a field extension of $k$, hence finite if it is algebraic. In particular, $\KK(\pp_1)$ is a finite dimensional $k$-vector space, and the $k$-vector subspace $A/\pp_1\subseteq \KK(\pp_1)$ must be finite-dimensional as well. Since $A/\pp_1$  is a domain, it is a field and $\pp_1$ must be maximal, contradicting $\pp_1\subsetneq \pp_2$.
 	\end{proof}
 	\begin{lem}\lbl{lem:prop2.4.1withS-satisfiedIdeals}
-		If $\pp_1\subsetneq \pp_2$ and the multiplicative subset $S\subsetneq A$ is disjoint from $\pp_2$, then $\pp_1\cdot R_S\subsetneq \pp_2 \cdot R_S$ and these are prime ideals in $R_S$.
+		If $\pp_1\subsetneq \pp_2$ and the multiplicative subset $S\subsetneq A$ is disjoint from $\pp_2$, then $\pp_1 R_S\subsetneq \pp_2  R_S$ and these are prime ideals in $R_S$.
 	\end{lem}
 	\begin{proof}
 		Corollary \reff{cor:localizations}
 	\end{proof}
 	\begin{proof}[Proof of Proposition \reff{prop:transcendenceDegreeMonotonic}]
-		Let $B = (b_1,\ldots, b_n)$ be a tuple of $n$ elements of $A$ whose images in $k(\pp_2)$ form a transcendence base for $k(\pp_2)/k$ (representatives of a maximal $k$-algebraically independent subset of $A/\pp_2$ will have the desired property). Let $S= \left\{f(b_1,\ldots,b_n)\st f\in  k[X_1,\ldots,X_n]\setminus\{0\}\right)$, this is a multiplicative subset of $A$ which is disjoint from $\pp_2$ by the $k$-algebraic independence of the images of the $b_i$ in $k(\pp_2)$. Let $\snake A=A_S$, $\snake\pp_i = \pp_i\cdot \snake A$, then $\snake \pp_1\subsetneq\snake\pp_2$ by Lemma \reff{lem:prop2.4.1withS-satisfiedIdeals}. Let $R=k[X_1,\ldots,X_n]$ then $A$ is an $R$-algebra (by sending $X_i$ to $b_i$) and $S$ is the image of $R\setminus\{0\}$ hence $\snake A = A_S$ is an algebra over $R_{R\setminus\{0\}} = \snake\kk$ the quotient field of $R$. Since $\frac{1}{s}\in\snake \kk$ for $s\in S$, If $a_1,\ldots,a,_L$ generate $A$ as a $k$-algebra their images in $\snake A$ generate $\snake A$ as a $\kk$-algebra. Also, $k(\pp_i)\isomorphism k(\snake \pp_i)$ because the elements of $S$ are already units in $k(\pp_i)$. Since the images of the elements of $B$ form a transcendence base for $k(\pp_2)/k$, $k(\pp_2)$ is algebraic over $\snake \kk$. Since $\snake A/\snake \kk$ is of finite type, $k(\pp_2)\simeq \snake{\kk(\pp_2)}$ is a finite $\snake k$ extension and $\snake A/\snake\pp_2 \subseteq k(\snake \pp_2)$ is a finite dimensional $\snake \kk$-algebra, hence a field and $\snake\pp_2$ is maximal. By Lemma \reff{lem:prop2.4.1forMaximals}, $k(\pp_1)\simeq k(\snake\pp_1)$ is not algebraic over $\snake \kk$. Since the image of $B$ in $k(\pp_1)$ is $k$-algebraically independent but does not form a transcendence base (they generate $\snake\kk$, together with $k$), we have $\deg\tr(k(\pp_1)/k)> n =\# B = \deg\tr(k(\pp_2)/k)$.
+		Pick an $n$-tuple $B = (b_1,\ldots, b_n)$ of elements of $A$ whose images in $\KK(\pp_2)$ form a transcendence base of $\KK(\pp_2)/k$. To do so, choose the $b_i$ to be representatives of a maximal $k$-algebraically independent subset of $A/\pp_2$. Then all elements of $A/\pp_2$ are algebraic over $k(b_1,\ldots,b_n)$. But the $k(b_1,\ldots,b_n)$-algebraic elements of $\KK(\pp_2)$ form a subfield, hence $\KK(\pp_2)/k(b_1,\ldots,b_n)$ is algebraic. 
+		
+		Let $S= \left\{f(b_1,\ldots,b_n)\st f\in  k[X_1,\ldots,X_n]\setminus\{0\}\right)$. This is a multiplicative subset of $A$ which is disjoint from $\pp_2$ by the $k$-algebraic independence of the images of the $b_i$ in $\KK(\pp_2)$. Let $\snake A=A_S$, $\snake\pp_i = \pp_i\snake A$, then $\snake \pp_1\subsetneq\snake\pp_2$ by Lemma \reff{lem:prop2.4.1withS-satisfiedIdeals}. Let $R=k\left[X_1,\ldots,X_n\right]$, then $A$ becomes an $R$-algebra by sending $X_i$ to $b_i$ and $S$ is the image of $R\setminus\{0\}$. Hence, $\snake A = A_S$ becomes an algebra over $R_{R\setminus\{0\}} = \snake k$, the quotient field of $R$. Since $\frac{1}{s}\in\snake k$ for $s\in S$, the images in $\snake A$ of any generators $a_1,\ldots,a_\ell$ of $A$ as a $k$-algebra generate $\snake A$ as a $\snake k$-algebra. Also, $\KK(\pp_i)\isomorphism \KK\left(\snake \pp_i\right)$ because the elements of $S$ are already units in $\KK(\pp_i)$. Since the images of the elements of $B$ form a transcendence base for $\KK(\pp_2)/k$, $\KK(\pp_2)$ is algebraic over $\snake k$. Since $\snake A$ is a $\snake k$-algebra of finite type, $\KK(\pp_2)\simeq \KK\left(\snake\pp_2\right)$ is a finite $\snake k$-extension (it is finitely generated and algebraic) and $\snake A/\snake\pp_2 \subseteq \KK(\snake \pp_2)$ is a finite dimensional $\snake k$-algebra, i.e. a finite dimensional $\snake k$-vector subspace of $\KK(\snake{\pp}_2)$, hence a field and $\snake\pp_2$ is maximal. By Lemma \reff{lem:prop2.4.1forMaximals}, $\KK(\pp_1)\simeq \KK\left(\snake\pp_1\right)$ is not algebraic over $\snake k$. Since the image of $B$ in $\KK(\pp_1)$ is $k$-algebraically independent but does not form a transcendence base (they generate $\snake k$ together with $k$), we have $\deg\tr(\KK(\pp_1)/k)> n =\# B = \deg\tr(\KK(\pp_2)/k)$.
 	\end{proof}
 	\begin{cor}\lbl{cor:transcendenceDegreeDimension}
-		If $X$ is an affine algebraic variety in some $k^n$ (with $k=\ov k$), then we have $\dim X\leq \deg\tr(k(X)/k)$ where $k(X)$ is the quotient ring of $\Oo(X)$.
+		If $X$ is an affine algebraic variety in some $k^n$ (with $k$ an algebraically closed field) and $K(X)$ it's ring of rational functions (i.e. the quotient field of $\Oo(X)$), then 
+		\begin{align*}
+			\dim X\leq \deg\tr(K(X)/k)\;.
+		\end{align*}
 	\end{cor}
 	\begin{proof}
-		Let $z_0\subsetneq z_1\subsetneq\ldots\subsetneq z_d=X$ correspond to the prime ideals $\{0\} = \pp_d\subsetneq \ldots\subsetneq \pp_0$ with $\pp_i\in \Spec(\Oo(X))$, then $k(\pp_0) = k(X)$ and $\deg\tr(k(\pp_0)/k)Y \deg\tr(k(\pp_1)/k)>\ldots > \deg\tr(k(\pp_d)/k)$ by Proposition \reff{prop:transcendenceDegreeMonotonic}. Hence $\deg\tr(k(X)/k)  =\deg\tr(k(\pp_0)/k) \geq d$.
+		By Corollary \reff{cor:correspondenceClosedIdeals} there is an antimonotonic bijection between closed subsets of $X$ and ideals $I\subseteq\Oo(X)$ coinciding with their radicals $\sqrt{I}$, with irreducibles corresponding to prime ideals. If $Z_0\subsetneq Z_1\subsetneq\ldots\subsetneq Z_d=X$ is a chain of irreducible subsets terminating at $X$ and $\pp_i=\left\{f\in\Oo(X)\st f|_{Z_i}=0\right\}$ denotes the corresponding prime ideals, then $(0)=\pp_d\subsetneq\ldots\subsetneq\pp_0$. By Proposition \reff{prop:transcendenceDegreeMonotonic},
+		\begin{align*}
+			\deg\tr\big(K(X)/k\big)=\deg\tr\big (\KK(\pp_d)/k\big)>\deg\tr \big(\KK(\pp_{d-1})/k\big)>\ldots>\deg\tr \big(\KK(\pp_0)/k\big)\geq 0\;,
+		\end{align*}
+		hence $\deg\tr(K(X)/k)\geq d$.
 	\end{proof}
 	\begin{cor}
 		$\dim(k^n) = n$.
 	\end{cor}
 	\begin{proof}
-		The fact that $\dim (k^n) \geq n$ is seen by $k^n\supsetneq k^{n-1}\times\{0\}\supsetneq \ldots\supseteq k\times\{0\}^{n-1}\supsetneq \{0\}^n$ are irreducible subsets. Putting $X=k^n$ in Corollary \reff{cor:transcendenceDegreeDimension} we have $k(X) = k(X_1,\ldots,X_n)$  and $\deg\tr(k(X)/k) = n$  the opposite inequality holds.
+		The fact that $\dim (k^n) \geq n$ follows from $k^n\supsetneq k^{n-1}\times\{0\}\supsetneq \ldots\supseteq k\times\{0\}^{n-1}\supsetneq \{0\}^n$ being irreducible subsets (Remark \reff{rem:chainOfIrreducibles}). Putting $X=k^n$ we have $\Oo(X)=k[X_1,\ldots,X_n]$ by Proposition \reff{prop:primeIdealIso}, hence $K(X) = k(X_1,\ldots,X_n)$ has transcendence degree $n$ over $k$ and $\deg\tr(K(X)/k)\leq n$  by Corollary \reff{cor:transcendenceDegreeDimension}.
 	\end{proof}
-
-
-
+	\begin{cor}\label{cor:dimIneqQuasiAffine}
+		Let $X$ be a quasi-affine algebraic variety in $k^n$ and $K(X)$ the quotient field of $\Oo(X)$. Then $\dim(X)\leqslant \deg\tr (K(X)/k)$.
+	\end{cor}
+	\begin{rem*}
+		If algebraic varietes in general are defined as on the exercise sheet, one has to define (for irreducible $X$)
+		\begin{align*}
+			K(X)=\{(f,U)\}/_\sim\quad\text{where }U\subseteq X\text{ open, }f\in\Oo(U)\;,
+		\end{align*}
+		and we set $(f,U)\sim(g,U)$ iff $f|_{U\cap V}=g|_{U\cap V}$ (This can be weakened to $f|_W=g|_W$ on an open subset $W\subseteq U\cap V$. If $f-g$ vanishes on the open and thus dense subset $W\subseteq U\cap V$, it must vanish on all of $U\cap V$ since $f$ and $g$ are continuous.), which turns out to be an equivalence relation. Then (it can be shown that) $\dim(X)=\deg\tr(K(X)/k)$ and $\codim(Z,X)=\dim(X)-\dim(Z)$ for any irreducible $Z\subseteq X$.
+	\end{rem*}
+	\begin{proof}[Proof of Corollary \reff{cor:dimIneqQuasiAffine}.]
+		Let $X\subset\ov X\subseteq k^n$. The closure $\ov X$ of $X$ is irreducible, hence so is $X$ and there is a bijection
+		\begin{align*}
+			\{\text{closed irreducibles}A\subseteq X\}&\isomorphism\left\{
+			\begin{array}{c}
+				\text{closed irreducibles }B\subseteq\ov X\\
+				\text{such that }B\cap X\not=\emptyset
+			\end{array}\right\}\\
+			A=B\cap X&\mapsfrom B\\
+			A&\mapsto B=\ov A
+		\end{align*}
+		(somewhere on an exercise sheet (on \#6, that is)), hence $\dim(X)\leq\dim(\ov X)$. We want to show that $K(X)\simeq K(\ov X)$. To do so, we use the fact that there is some $f\in\Oo(\ov X)\setminus\{0\}$ such that $W\coloneqq \ov X\setminus V(f)\subseteq X$ (by Fact \reff{fact:complemntOfVarietiesFormBase}, the open subsets $\ov X\setminus\{0\}$, $f\in\Oo(\ov X)$ form a topology base of $\ov X$). SInce $W$ is dense in $X$ and $\ov X$, we may identify $\Oo(X)$ and $\Oo(\ov X)$ with subrings $B$ and $A$ of $\Oo(W)$, where $A\subseteq B\subseteq \Oo(W)$. By Proposition \reff{prop:regFunctionsLocalization} we have $\Oo(W)=A_f$, hence $A$ and $\Oo(W)$ have the same quotient fields. But then the quotient field of $B$ must coincide with $K(\ov X)=K(W)$ as well.
+	\end{proof}
+	\begin{rem*} 
+		In particular, we proved that if $X$ is affine in $k^n$ and $U\subseteq X$ is open and nonempty, then $K(X)\simeq K(U)$.
+	\end{rem*}
+	
+	We would like to prove the opposite inequality to Corollary \reff{cor:transcendenceDegreeDimension}. Our strategy will be to use the Noether normalization theorem. There are $f_1,\ldots,f_d\in\Oo(X)$ algebraically independent over $k$, such that $\Oo(X)$ is integral (and finitely generated, hence finite) over $k[f_1,\ldots,f_d]$. Then
+	\begin{align*}
+		X\morphism[(f_1,\ldots,f_d)]k^d
+	\end{align*}
+	is a \emph{finite morphism} in the terminology of modern algebraic topology and one would hope to lift the chain
+	\begin{align*}
+		\{0\}^d\subsetneq k\times\{0\}^{d-1}\subsetneq k^2\times\{0\}^{d-2}\subsetneq\ldots\subsetneq k^d
+	\end{align*}
+	of irreducible subsets of $k^d$ to a chain of irreducible subsets of $X$ of the same length, which would establish equality in Corollary \reff{cor:transcendenceDegreeDimension}. At this point, the going-up and going down theorem of Krull (who certainly was a \emph{n00b} compared to Grothendieck) and Cohen/Seidenberg are our friends and will be proved in the next section.
+	
+	\subsection{Lifting of prime ideals to integral extension rings}
+	\begin{defi}\lbl{def:goingup/down}
+		Let $A\morphism[f]B$ be a ring homomorphism.
+		\begin{alphanumerate}
+			\item We say that \emph{going-up} holds for $f$ if for arbitrary prime ideals $\pp\subseteq \qq$ of $A$ and every prime ideal $\snake \pp$ of $B$ lying \emph{above} $\pp$ (in the sense that $\pp\sqcap A=f^{-1}(\snake \pp)$ equals $\pp$), there is a prime ideal $\snake \qq\supseteq\snake \pp$ of $b$ which is above $\qq$ (in the sense that $\qq=f^{-1}(\qq)$).
+			\item We say that $f$ satisfies \emph{going-down} if for all prime ideals $\pp\subseteq\qq$ of $A$ and $\snake \qq\in\Spec B$ above $\qq$, there exists a prime ideal $\snake \pp\subseteq\qq$ above $\pp$.
+		\end{alphanumerate}
+	\end{defi}
+	\begin{fact}
+		Let $X\morphism[f]Y$ be a morphism of affine algebraic varieties. Let $U\subseteq Y$ be open. In Definition \reff{def:varietymorphism} we constructed a ring homomorphism
+		\begin{align*}
+			f^*\colon\Oo(U)&\longto\Oo(f^{-1}U)\\
+			\lambda&\longmapsto\lambda\circ f\;.
+		\end{align*}
+		If $x\in X$, $y=f(x)$ we have a ring homomorphism (also denoted $f^*$) $\Oo_{Y,y}\morphism[f^*]\Oo_{X,x}$ sending $(\lambda,W)/_\sim$ to $(f^*\lambda,f^{-1}W)/_\sim$ (where $W\subseteq Y$ is an open neighbourhood of $y$ and $\lambda\in\Oo(W)$).
+		\begin{alphanumerate}
+			\item The preimage of $\mm_{X,x}\subseteq\Oo_{X,x}$ under $f^*$ is $(f^*)^{-1}\mm_{X,x}=\mm_{Y,y}$ (where $\mm_{X,x}$, $\mm_{Y,y}$ denote the maximal ideals of the stalks $\Oo_{X,x}$ and $\Oo_{Y,y}$).
+			\item If $I\subseteq \Oo(X)$ is an ideal, then $V((f^*)^{-1}I)=\ov{f(V(I))}$ (the closure with respect to the Zariski topology on $Y$). If $V(I)$ is irreducible in $X$ then so is $f(V(I))$ in $Y$ and the diagram (of sets)
+			\begin{diagram}
+				\node (ol) at (0,0) {$\left\{
+					\begin{array}{c}
+						\text{irreducible subsets}\\ 
+						K\subseteq X
+					\end{array}\right\}$};
+				\node (or) at (6,0) {$\left\{
+					\begin{array}{c}
+						\text{prime ideals}\\ 
+						\snake\pp\subseteq \Oo(X)=B
+					\end{array}\right\}$};
+				\node (ul) at (0,-2.5) {$\left\{
+					\begin{array}{c}
+						\text{irreducible subsets}\\
+						 L\subseteq Y
+					\end{array}\right\}$};
+				\node (ur) at (6,-2.5) {$\left\{
+					\begin{array}{c}
+						\text{prime ideals}\\ 
+						\pp\subseteq \Oo(Y)=A
+					\end{array}\right\}$};
+				\footnotesize
+				\node (ul1) at ($(ul.east) + (0,-1)$) [left] {$L$};
+				\node (ur1) at ($(ur.west) + (0,-1)$) [right] {$\pp=\left\{f\in A\st f|_L=0\right\}$};
+				\node (ul2) at ($(ul.east) + (0,-1.5)$) [left] {$L=V(\pp)$};
+				\node (ur2) at ($(ur.west) + (0,-1.5)$) [right] {$\pp$};
+				\node (ol1) at ($(ol.east) + (0,1.5)$) [left] {$K$};
+				\node (or1) at ($(or.west) + (0,1.5)$) [right] {$\snake \pp=\left\{f\in B\st f|_K=0\right\}$};
+				\node (ol2) at ($(ol.east) + (0,1)$) [left] {$K=V\left(\snake \pp\right)$};
+				\node (or2) at ($(or.west) + (0,1)$) [right] {$\snake \pp$};
+				\node (oll) at ($(ol.south) + (-3.5,0)$) [above]{$K$};
+				\node (ull) at ($(ul.north) + (-3.5,0)$) [below]{$L=\ov{f(K)}$};
+				\node (orr) at ($(or.south) + (3.5,0)$) [above]{$\snake \pp$};
+				\node (urr) at ($(ur.north) + (3.5,0)$) [below]{$\pp=(f^*)^{-1}(\snake \pp)$};
+				\scriptsize
+				\draw[->](ul) -- (ur) node[pos=0.5, above] {$\sim$};
+				\draw[->](ol) -- (or) node[pos=0.5, above] {$\sim$};
+				\draw[->] (ol) -- (ul);
+				\draw[->] (or) -- (ur);
+				\draw[|->] (ul1) -- (ur1);
+				\draw[<-|] (ul2) -- (ur2);
+				\draw[|->] (ol1) -- (or1);
+				\draw[<-|] (ol2) -- (or2);
+				\draw[|->] (oll) -- (ull);
+				\draw[|->] (orr) -- (urr);
+			\end{diagram}
+			commutes, the horizontal bijections coming from Corollary \reff{cor:correspondenceClosedIdeals}.
+			\item If going-up holds for $f$, then $f$ is a closed map (i.e. the image of a closed subset of $X$ is closed in $Y$).
+		\end{alphanumerate}
+	\end{fact}
 
 
 
