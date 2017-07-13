@@ -27,7 +27,7 @@
 \author{Nicholas Schwab}
 \date{Sommersemester 2017}
 
-\newenvironment{alphanumerate}{\begin{enumerate}[label={\upshape(\alph*)},ref=\curthm]}{\end{enumerate}}       
+\newenvironment{alphanumerate}{\begin{enumerate}[label={$(\alph*)$},ref=\curthm]}{\end{enumerate}}       
 %\newenvironment{rmnumerate}{\begin{enumerate}[label={\upshape(\roman*)},ref=\curthm]}{\end{enumerate}}   
 \renewenvironment{itemize}{\begin{enumerate}[label={$\bullet$},ref=\curthm]}{\end{enumerate}}
 \newenvironment{diagram}{\begin{center}\begin{tikzpicture}}{\end{tikzpicture}\end{center}}  
@@ -559,7 +559,7 @@
 		is injective, hence $k[X_1,\ldots, X_n]\simeq k[a_1,\ldots, a_n]$ as $k$-algebras.
 	\end{rem}
 	
-	\begin{thm}\lbl{thm:NoetherNormalization}
+	\begin{thm}[Noether Normalization Theorem]\lbl{thm:NoetherNormalization}
 		Let $k$ be a field, $A$ a $k$-algebra of finite type over $k$. Then there are over $k$ algebraically independent $a_1\ldotspam a_n\in A$ such that $A/k[a_1\ldotspam a_n]$ is integral.
 	\end{thm}
 	\begin{proof}
@@ -865,7 +865,7 @@
 		For the sake of simplicity ``irreducible subset of $X$" will be used as as a substitute of ``irreducible closed subset of $X$".
 	\end{rem}
 	
-	\begin{prop}[a.k.a. Proposition 2]
+	\begin{prop}[a.k.a. Proposition 2]\lbl{prop:irreducibleComponents}
 		In a Noetherian topological space $X$, any closed subset $Y$ is Noetherian and can be expressed as a finite union $Y= \bigcup_{i=1}^k Y_i$ of irreducible subsets $Y_i$ where $Y_i\subseteq Y_j$ implies $i=j$. Moreover the $Y_i$ are unique up to permutation of their order and $\{Y_1,\ldots, Y_k\}$ can be characterized as:
 		\begin{itemize}
 			\item The set of irreducible closed subsets of $Y$ containing a non-empty open subset of $Y$.
@@ -1979,13 +1979,13 @@
 	\begin{fact}
 		Let $X\morphism[f]Y$ be a morphism of affine algebraic varieties. Let $U\subseteq Y$ be open. In Definition \reff{def:varietymorphism} we constructed a ring homomorphism
 		\begin{align*}
-			f^*\colon\Oo(U)&\longto\Oo(f^{-1}U)\\
+			f^*\colon\Oo_Y(U)&\longto\Oo_X(f^{-1}U)\\
 			\lambda&\longmapsto\lambda\circ f\;.
 		\end{align*}
-		If $x\in X$, $y=f(x)$ we have a ring homomorphism (also denoted $f^*$) $\Oo_{Y,y}\morphism[f^*]\Oo_{X,x}$ sending $(\lambda,W)/_\sim$ to $(f^*\lambda,f^{-1}W)/_\sim$ (where $W\subseteq Y$ is an open neighbourhood of $y$ and $\lambda\in\Oo(W)$).
+		If $x\in X$, $y=f(x)$ we have a ring homomorphism (also denoted $f^*$) $\Oo_{Y,y}\morphism[f^*]\Oo_{X,x}$ sending $(\lambda,W)/_\sim$ to $(f^*\lambda,f^{-1}W)/_\sim$ (where $W\subseteq Y$ is an open neighbourhood of $y$ and $\lambda\in\Oo_Y(W)$).
 		\begin{alphanumerate}
 			\item The preimage of $\mm_{X,x}\subseteq\Oo_{X,x}$ under $f^*$ is $(f^*)^{-1}\mm_{X,x}=\mm_{Y,y}$ (where $\mm_{X,x}$, $\mm_{Y,y}$ denote the maximal ideals of the stalks $\Oo_{X,x}$ and $\Oo_{Y,y}$).
-			\item If $I\subseteq \Oo(X)$ is an ideal, then $V((f^*)^{-1}I)=\ov{f(V(I))}$ (the closure with respect to the Zariski topology on $Y$). If $V(I)$ is irreducible in $X$ then so is $f(V(I))$ in $Y$ and the diagram (of sets)
+			\item If $I\subseteq \Oo_X(X)$ is an ideal, then $V((f^*)^{-1}I)=\ov{f(V(I))}$ (the closure with respect to the Zariski topology on $Y$). If $V(I)$ is irreducible in $X$ then so is $f(V(I))$ in $Y$ and the diagram (of sets)
 			\begin{diagram}
 				\node (ol) at (0,0) {$\left\{
 					\begin{array}{c}
@@ -2039,17 +2039,19 @@
 	\begin{proof}
 		\begin{alphanumerate}
 		\item
-			trivial.
+			trivial since $f^*g\in\mm_{X,x}\Leftrightarrow f^*g(x)=0\Leftrightarrow g(y)=g(f(x))=0\Leftrightarrow g\in\mm_{Y,y}$.
 		\item
-			Assume $I = \sqrt{I}$ without loss of generality. Let $X\subseteq k^m$, $Y\subseteq k^n$. Since $\Oo(X)$ and $\Oo(Y)$ are quotients of the ring of polynomials over $k$ with $m$ respectively $n$ variables (by Proposition \reff{prop:primeIdealIso}) and by the definition of the Zariski-topology and well-known facts about
+			Assume $I = \sqrt{I}$ without loss of generality. Let $X\subseteq k^m$, $Y\subseteq k^n$. Since $\Oo_X(X)$ and $\Oo_Y(Y)$ are quotients of the ring of polynomials over $k$ in $m$ respectively $n$ variables (by Proposition \reff{prop:primeIdealIso}) and by the definition of the Zariski-topology and well-known facts about vanishing sets,
 			\begin{align*}
-				\ov{f(V(I))}& = \bigcap_{A\supseteq f(V(I) \text{ closed}} A = \bigcap_{\substack{J\subseteq \Oo(Y) \text{ an ideal}\\ V(J) \supseteq f(V(I))}}V(J) = V\left(\sum_{\substack{J\subseteq \Oo(Y) \text{ an ideal}\\ V(J) \supseteq f(V(I))}} J\right) \\
-				&= V\left(\left\{\lambda\in \Oo(Y) \st \lambda|_{f(V(I))} = 0\right\}\right) = V\left(\left\{\lambda\in \Oo_Y(Y)\st f^*\lambda|_{V(I)} = 0\right\}\right) \\
-				&= (f^*)^{-1} (\sqrt{I}) = (f^*)^{-1}(I)
+				\ov{f(V(I))}& = \bigcap_{A\supseteq f(V(I) \text{ closed}} A = \bigcap_{\substack{J\subseteq \Oo_Y(Y) \text{ an ideal}\\ V(J) \supseteq f(V(I))}}V(J) = V\Bigg(\sum_{\substack{J\subseteq \Oo_Y(Y) \text{ an ideal}\\ V(J) \supseteq f(V(I))}} J\Bigg) \\
+				&= V\Big(\left\{\lambda\in \Oo_Y(Y) \st \lambda|_{f(V(I))} = 0\right\}\Big) = V\Big(\left\{\lambda\in \Oo_Y(Y)\st f^*\lambda|_{V(I)} = 0\right\}\Big) \\
+				&= (f^*)^{-1} \left(\sqrt{I}\right) = (f^*)^{-1}(I)
 			\end{align*}
-			by our assumptions. If $V(I)$ is irreducible, $I$ is a prime ideal (by our additional assumption $I= \sqrt{I}$) and so is $(f^*)^{-1}(I)$ Thus $\ov{f(V(I))} = V((f^*)^{-1}I)$ is irreducible.
+			by our assumptions. If $V(I)$ is irreducible, $I$ is a prime ideal (by our additional assumption $I= \sqrt{I}$) and so is $(f^*)^{-1}(I)$  (preimages of prime ideals are always prime). Thus $\ov{f(V(I))} = V((f^*)^{-1}I)$ is irreducible.
 		\item
-			Since $X$ is Noetherian it is sufficient to show the closedness of $f(Z)$ where $Z\subseteq X$ is irreducible. Thus, let $I=\snake \pp$ be prime. Let $\pp\subseteq(\Oo_Y)(Y)$ be $\pp= (f^*)^{-1}(\snake\pp)$. If $y\in Y$ belongs to $\ov{f(Z)} = V(\snake \pp)$. Then the maximal ideal  $\snake \qq = \left\{f\in\Oo_Y(Y)\st f(Y) = 0\right\}$ contains $\snake \pp$. By our going-up assumption there is a prime ideal $\qq\supseteq \pp$ of $\Oo_X(X)$ such that $(f^*)^{-1} (\qq) = \snake \qq$. Let $\mm\supseteq \qq$ be a maximal ideal, then $(f*)^{-1}\mm \supseteq (f^*)^{-1} (\qq) = \snake \qq$ and equality holds here as $\snake \qq$ is already maximal. The maximal ideal $\mm\subseteq \Oo(X)$ corresponds to a point $x$ on that variety and $x\in V(\snake\pp) $ as $\snake\pp\subseteq\snake\qq\subseteq\mm$ hence $V(\mm) = \left\{x\right\}\subseteq V(\snake\pp)$. We have $f(x) = y$ as $V(\qq) = \left\{y\right\} $ but $f(x)\in V(\qq)$ as $f(x)=(f^*)^{-1}(\mm) = \qq$.
+			Since $X$ is Noetherian it is sufficient to show the closedness of $f(Z)$ where $Z\subseteq X$ is irreducible (cf. Proposition \reff{prop:irreducibleComponents}). Thus, let $I=\snake\pp$ be prime, $Z=V(\snake\pp)$. Let $\pp= (f^*)^{-1}\snake\pp\subseteq\Oo_Y(Y)$ be the prime ideal below $\snake \pp$.  We will show that $f(Z)=V(\pp)$. 
+			
+			If $y\in Y$ belongs to $\ov{f(Z)} = V(\pp)$ (they are equal due to (b)), then the maximal ideal  $\qq = \left\{f\in\Oo_Y(Y)\st f(y) = 0\right\}$ contains $\pp$. By our going-up assumption there is a prime ideal $\snake \qq\supseteq \snake\pp$ of $\Oo_X(X)$ such that $(f^*)^{-1} \snake\qq = \qq$. Let $\mm\supseteq \snake\qq$ be a maximal ideal, then $(f^*)^{-1}\mm \supseteq (f^*)^{-1} \snake\qq = \qq$ and equality holds as $\qq$ is already maximal. The maximal ideal $\mm\subseteq \Oo_X(X)$ corresponds to a point $x\in X$. From $\snake \pp\subseteq\snake\qq\subseteq\mm$ it follows, that $V(\mm) = \left\{x\right\}\subseteq V(\snake \pp)$, that is, $x\in V(\snake\pp)$. We have $f(x) = y$ because $V(\qq) = \left\{y\right\} $ but $f(x)\in V(\qq)$ as $\ov{f(x)}=V\big((f^*)^{-1}\mm\big) = V(\qq)$ by (b). Hence, $y$ has a preimage $x\in V(\snake \pp)=Z$ and $f(Z)=V(\pp)$ is closed, as was claimed.
 		\end{alphanumerate}
 
 	\end{proof}\lbl{thm:goingupInIntegralRingExtensions}
@@ -2060,32 +2062,56 @@
 		\item 
 			 Any $\pp\in\Spec A$ is of the form  $\qq\cap A$ where $\qq\in\Spec B$.
 		\item 
-			For any $\pp\in \Spec A$, there are no proper inclusions between the different $\qq\in\Spec B$ with $\qq\cap A = \pp$.
+			For any $\pp\in \Spec A$, there are no proper inclusions between the $\qq\in\Spec B$ with $\qq\cap A = \pp$.
 		\item
-			Going-up holds for the inclusion $\iota: A\morphism B$.
+			Going-up holds for the inclusion $A\hookrightarrow B$.
 		\item
 			A prime ideal $\qq\in\Spec B$ is maximal iff $\pp = \qq\cap A$ is maximal.
 		\end{alphanumerate}
 	\end{thm}
 	\begin{proof}
+		\begin{alphanumerate}
+		\item[$(d)$]
+			$S= B/\qq$ is an integral extension of $R=B/\pp$ and the assertion follows form the fact that in an integral ring extension of domains, either both or none of them  are fields (cf. Proposition \reff{prop:integralStuff}(d)).
+		\end{alphanumerate}
 		\begin{description}
-		\item[(d)]
-			$S= B/\qq$ is an integral extension of $R=B/\pp$ and the assertion follows form the fact that in an integral ring extension of domains, either both or no domains are fields.
-		\item[(a)+(b)] 
-			Let $\pp\in\Spec A$ be arbitrary, $S= A\setminus \pp$, we put $B_\pp = B_S$. Since any element of $B_S$ has the form $\frac{b}{s}$ with $b\in B$, $s\in S$, $B_\pp = B_S$ is entire over $A_S = A_\pp$ (if $b^m = \sum_{i=0}^{m-1} a_ib^i$, $a_i\in A$, then $\left(\frac{b}{s}\right)^m = \sum_{i=0}^{m-1} \frac{a_i}{s^{m-i}}\left(\frac{b}{s}\right)^i$). We thus have 
+		\item[$ (a)+(b)$] 
+			Let $\pp\in\Spec A$ be arbitrary. Then $S= A\setminus \pp$ is a multiplicative subset not only of $A$, but also of $B$, and we put $B_\pp = B_S$. Then $B_\pp$ is integral over $A_\pp$ (indeed, if 
+			\begin{align*}
+				b^m = \sum_{i=0}^{m-1} a_ib^i\;,\;a_i\in A\;,\quad \text{then}\quad\left(\frac{b}{s}\right)^m = \sum_{i=0}^{m-1} \frac{a_i}{s^{m-i}}\left(\frac{b}{s}\right)^i
+			\end{align*}
+			for alle $s\in S$, hence $\frac bs$ is integral over $A_\pp$). We thus have 
+			\begin{diagram}
+				\node (A) at (0,0) {$A$};
+				\node (s1) at (0,-0.75) [rotate=-90] {$\subseteq$};
+				\node (B) at (0,-1.5) {$B$};
+				\node (Ap) at (2,0) {$A_\pp$};
+				\node (s2) at (2,-0.75) [rotate=-90] {$\subseteq$};
+				\node (Bp) at (2,-1.5) {$B_\pp$};
+				\scriptsize
+				\draw[->] (A) -- (Ap) node[pos=0.5, above] {$\alpha_\pp$};
+				\draw[->] (B) -- (Bp) node[pos=0.5, below] {$\beta_\pp$};
+			\end{diagram}
+			the vertical inclusions being integral ring extensions. By (a) there is $\rr\in \Spec(B_\pp)$ such that $\rr\cap A_\pp = \pp A_\pp$ and, putting $\qq = \beta_{\pp}^{-1}(\rr)\in\Spec B$ we have $\qq\cap A = \beta_{\pp}^{-1}(\rr)\cap A = \alpha_{\pp}^{-1}(\rr\cap A_\pp)=\alpha_{\pp}^{-1}(\pp A_\pp) = \pp$. This implies (a).
 			
-			[FERDI]
-			
-			where the vertical inclusions are integral ring extensions By (a) there is $\rr\in \Spec(B_\pp)$ such that $\rr\sqcap A_\pp = \pp A_\pp$ and, putting $\qq = (\rr\sqcap B) \in\Spec B$ we have $\qq\sqcap A = (\rr\sqcap B)\sqcap A = (\rr\sqcap A_\pp) \sqcap A = (\pp\cdot A_\pp)\cap A = \pp$. This implies (a).
-			
-			If $\qq\subsetneq \qq'$ are prime ideals of $B$ such that $\qq\sqcap A = \pp = \qq'\sqcap A$ then $\qq  B_\pp\subsetneq\qq' B_\pp$. This inclusion is proper, since $\qq$ and $\qq'$ are disjoint from $S$. But $(\qq B_S)\sqcap A_\pp = \pp A_\pp$ as $\qq\sqcap A = \pp$ and $\pp A_\pp$ is already maximal. Thus $\qq B_\pp$ is maximal by (d), a contradiction to $\qq B_\pp \subsetneq \qq' B_\pp$.
-		\item [(c)]
-			Let $\pp\subseteq \qq\subseteq A$ be a chain of prime ideals in $A$ and let $\snake \pp\in \Spec B$ be above $\pp$. Replacing $A\subseteq B$ by $\snake A = A/\pp\subseteq \snake B = B/\snake \pp$, it suffices to find $\rr\in \Spec \snake B$ such that $\rr\sqcap \snake A = \qq/\pp$ (as $\snake \qq= \rr\sqcap B$ will have the desired property). As $\snake A\subseteq \snake B$ still is an integral ring extension and the existence of $\rr$ follows form the proven assertion (a): 
+			If $\qq\subsetneq \qq'$ are prime ideals of $B$ such that $\qq\cap A = \pp = \qq'\cap A$, then $\qq  B_\pp\subsetneq\qq' B_\pp$. This inclusion is proper, since $\qq$ and $\qq'$ are disjoint from $S$ and we have a bijection between $\Spec B_\pp$ and $\left\{\qq\in\Spec B\st \qq\cap S=\emptyset\right\}$. But $\qq B_\pp\cap A_\pp = \pp A_\pp$ as $\qq\cap A = \pp$ and $\pp A_\pp$ is already maximal. Thus $\qq B_\pp$ is maximal by (d), a contradiction to $\qq B_\pp \subsetneq \qq' B_\pp$.
 		\end{description}
+		\begin{alphanumerate}
+		\item [$(c)$]
+			Let $\pp\subseteq \qq\subseteq A$ be a chain of prime ideals in $A$ and let $\snake \pp\in \Spec B$ be above $\pp$. Replacing $A\subseteq B$ by $\snake A = A/\pp\subseteq  B/\snake \pp=\snake B $, it suffices to find $\rr\in \Spec \snake B$ such that $\rr\cap \snake A = \qq/\pp$ (as the preimage $\snake \qq$ of $\rr$ under $B\to B/\snake \pp$ will have the desired property). As $\snake A\subseteq \snake B$ still is an integral ring extension, the existence of $\rr$ follows form the proven assertion (a).
+		\end{alphanumerate}
 
 	\end{proof}
 	\begin{proof}[Proof out of the blue of $\dim (X) = \deg\tr (K(X)/k)$, for $X$ affine]
-		By Noether Normalization there are $f_1,\ldots, f_d\in \Oo_X(X)$ such that they are algebraically independent over $k$ and such that the ring extension $\Oo(X)/k[f_1,\ldots,f_d]$ is integral. Thus $\deg\tr (K(X)/k) = d$ as the $f$ form a transcendence base. By Theorem \reff{thm:goingupInIntegralRingExtensions}(c), going-up holds for $k[T_1,\ldots, T_d]\subseteq \Oo_X(X)$. From the chain $\pp_0=\{0\} \subsetneq \pp_1 = \langle X_1\rangle_A\subsetneq \ldots\subsetneq \pp_d = \langle X_1,\ldots, X_d\rangle_A$ of prime ideals in $A = k[X_1,\ldots, X_d]$ we obtain a chain $\qq_0 = \{0\}\subsetneq \qq_1\subsetneq\ldots\subsetneq \qq_d \subsetneq B = \Oo_X(X)$ of prime ideals of $B$ by applying going-up successively to $\qq_i$ over $\pp_i\subsetneq \pp_{i+1}$. Corresponding to this strictly increasing chain of prime ideals in $B$ we have a strictly decreasing chain of irreducible subsets of $X$.
+		By Noether Normalization (Theorem \reff{thm:NoetherNormalization}) there are $f_1,\ldots, f_d\in \Oo(X)$ algebraically independent over $k$, such that the ring extension $\Oo(X)/k[f_1,\ldots,f_d]$ is integral. Thus $\deg\tr (K(X)/k) = d$ as the $f$ form a transcendence base. By Theorem \reff{thm:goingupInIntegralRingExtensions}(c), going-up holds for $k[X_1,\ldots, X_d]\subseteq \Oo(X)$. The chain 
+		\begin{align*}
+			\pp_0=\{0\} \subsetneq \pp_1 = (X_1)\subsetneq \pp_2=(X_1,X_2)\subsetneq\ldots\subsetneq \pp_d = (X_1,\ldots, X_d)
+		\end{align*}
+		of prime ideals in $A = k[X_1,\ldots, X_d]$ may be lifted to a chain
+		\begin{align*}
+			\qq_0 = \{0\}\subsetneq \qq_1\subsetneq\qq_2\subsetneq\ldots\subsetneq \qq_d \subsetneq B = \Oo(X)
+		\end{align*}
+		of prime ideals of $B$ by applying going-up successively to $\qq_i$ over $\pp_i\subsetneq \pp_{i+1}$. Corresponding to this strictly increasing chain of prime ideals in $B$ we have a strictly decreasing chain of irreducible subsets $V(\qq_i)\subsetneq X$ of length $d$, establishing $\dim(X)\geq d$.
 	\end{proof}
 
 
