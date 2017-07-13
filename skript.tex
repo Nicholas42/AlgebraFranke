@@ -143,6 +143,7 @@
 \newcommand{\mm}{\mathfrak{m}}
 \newcommand{\pp}{\mathfrak{p}}
 \newcommand{\qq}{\mathfrak{q}}
+\newcommand{\rr}{\mathfrak{r}}
 
 \renewcommand{\AA}{\mathfrak A}
 
@@ -1967,11 +1968,11 @@
 	\end{align*}
 	of irreducible subsets of $k^d$ to a chain of irreducible subsets of $X$ of the same length, which would establish equality in Corollary \reff{cor:transcendenceDegreeDimension}. At this point, the going-up and going down theorem of Krull (who certainly was a \emph{n00b} compared to Grothendieck) and Cohen/Seidenberg are our friends and will be proved in the next section.
 	
-	\subsection{Lifting of prime ideals to integral extension rings}
+\subsection{Lifting of prime ideals to integral extension rings}
 	\begin{defi}\lbl{def:goingup/down}
 		Let $A\morphism[f]B$ be a ring homomorphism.
 		\begin{alphanumerate}
-			\item We say that \emph{going-up} holds for $f$ if for arbitrary prime ideals $\pp\subseteq \qq$ of $A$ and every prime ideal $\snake \pp$ of $B$ lying \emph{above} $\pp$ (in the sense that $\pp\sqcap A=f^{-1}(\snake \pp)$ equals $\pp$), there is a prime ideal $\snake \qq\supseteq\snake \pp$ of $b$ which is above $\qq$ (in the sense that $\qq=f^{-1}(\qq)$).
+			\item We say that \emph{going-up} holds for $f$ if for arbitrary prime ideals $\pp\subseteq \qq$ of $A$ and every prime ideal $\snake \pp$ of $B$ lying \emph{above} $\pp$ (in the sense that $\pp\sqcap A=f^{-1}(\snake \pp)$ equals $\pp$), there is a prime ideal $\snake \qq\supseteq\snake \pp$ of $B$ which is above $\qq$ (in the sense that $\qq=f^{-1}(\qq)$).
 			\item We say that $f$ satisfies \emph{going-down} if for all prime ideals $\pp\subseteq\qq$ of $A$ and $\snake \qq\in\Spec B$ above $\qq$, there exists a prime ideal $\snake \pp\subseteq\qq$ above $\pp$.
 		\end{alphanumerate}
 	\end{defi}
@@ -2035,6 +2036,60 @@
 			\item If going-up holds for $f$, then $f$ is a closed map (i.e. the image of a closed subset of $X$ is closed in $Y$).
 		\end{alphanumerate}
 	\end{fact}
+	\begin{proof}
+		\begin{alphanumerate}
+		\item
+			trivial.
+		\item
+			Assume $I = \sqrt{I}$ without loss of generality. Let $X\subseteq k^m$, $Y\subseteq k^n$. Since $\Oo(X)$ and $\Oo(Y)$ are quotients of the ring of polynomials over $k$ with $m$ respectively $n$ variables (by Proposition \reff{prop:primeIdealIso}) and by the definition of the Zariski-topology and well-known facts about
+			\begin{align*}
+				\ov{f(V(I))}& = \bigcap_{A\supseteq f(V(I) \text{ closed}} A = \bigcap_{\substack{J\subseteq \Oo(Y) \text{ an ideal}\\ V(J) \supseteq f(V(I))}}V(J) = V\left(\sum_{\substack{J\subseteq \Oo(Y) \text{ an ideal}\\ V(J) \supseteq f(V(I))}} J\right) \\
+				&= V\left(\left\{\lambda\in \Oo(Y) \st \lambda|_{f(V(I))} = 0\right\}\right) = V\left(\left\{\lambda\in \Oo_Y(Y)\st f^*\lambda|_{V(I)} = 0\right\}\right) \\
+				&= (f^*)^{-1} (\sqrt{I}) = (f^*)^{-1}(I)
+			\end{align*}
+			by our assumptions. If $V(I)$ is irreducible, $I$ is a prime ideal (by our additional assumption $I= \sqrt{I}$) and so is $(f^*)^{-1}(I)$ Thus $\ov{f(V(I))} = V((f^*)^{-1}I)$ is irreducible.
+		\item
+			Since $X$ is Noetherian it is sufficient to show the closedness of $f(Z)$ where $Z\subseteq X$ is irreducible. Thus, let $I=\snake \pp$ be prime. Let $\pp\subseteq(\Oo_Y)(Y)$ be $\pp= (f^*)^{-1}(\snake\pp)$. If $y\in Y$ belongs to $\ov{f(Z)} = V(\snake \pp)$. Then the maximal ideal  $\snake \qq = \left\{f\in\Oo_Y(Y)\st f(Y) = 0\right\}$ contains $\snake \pp$. By our going-up assumption there is a prime ideal $\qq\supseteq \pp$ of $\Oo_X(X)$ such that $(f^*)^{-1} (\qq) = \snake \qq$. Let $\mm\supseteq \qq$ be a maximal ideal, then $(f*)^{-1}\mm \supseteq (f^*)^{-1} (\qq) = \snake \qq$ and equality holds here as $\snake \qq$ is already maximal. The maximal ideal $\mm\subseteq \Oo(X)$ corresponds to a point $x$ on that variety and $x\in V(\snake\pp) $ as $\snake\pp\subseteq\snake\qq\subseteq\mm$ hence $V(\mm) = \left\{x\right\}\subseteq V(\snake\pp)$. We have $f(x) = y$ as $V(\qq) = \left\{y\right\} $ but $f(x)\in V(\qq)$ as $f(x)=(f^*)^{-1}(\mm) = \qq$.
+		\end{alphanumerate}
+
+	\end{proof}\lbl{thm:goingupInIntegralRingExtensions}
+	Professor Franke does not [know] to what extent the following is due to the n00b Krull or to Cohen/Seidenberg.
+	\begin{thm}
+		Let $A\subseteq B$ be an integral ring extension.
+		\begin{alphanumerate}
+		\item 
+			 Any $\pp\in\Spec A$ is of the form  $\qq\cap A$ where $\qq\in\Spec B$.
+		\item 
+			For any $\pp\in \Spec A$, there are no proper inclusions between the different $\qq\in\Spec B$ with $\qq\cap A = \pp$.
+		\item
+			Going-up holds for the inclusion $\iota: A\morphism B$.
+		\item
+			A prime ideal $\qq\in\Spec B$ is maximal iff $\pp = \qq\cap A$ is maximal.
+		\end{alphanumerate}
+	\end{thm}
+	\begin{proof}
+		\begin{description}
+		\item[(d)]
+			$S= B/\qq$ is an integral extension of $R=B/\pp$ and the assertion follows form the fact that in an integral ring extension of domains, either both or no domains are fields.
+		\item[(a)+(b)] 
+			Let $\pp\in\Spec A$ be arbitrary, $S= A\setminus \pp$, we put $B_\pp = B_S$. Since any element of $B_S$ has the form $\frac{b}{s}$ with $b\in B$, $s\in S$, $B_\pp = B_S$ is entire over $A_S = A_\pp$ (if $b^m = \sum_{i=0}^{m-1} a_ib^i$, $a_i\in A$, then $\left(\frac{b}{s}\right)^m = \sum_{i=0}^{m-1} \frac{a_i}{s^{m-i}}\left(\frac{b}{s}\right)^i$). We thus have 
+			
+			[FERDI]
+			
+			where the vertical inclusions are integral ring extensions By (a) there is $\rr\in \Spec(B_\pp)$ such that $\rr\sqcap A_\pp = \pp A_\pp$ and, putting $\qq = (\rr\sqcap B) \in\Spec B$ we have $\qq\sqcap A = (\rr\sqcap B)\sqcap A = (\rr\sqcap A_\pp) \sqcap A = (\pp\cdot A_\pp)\cap A = \pp$. This implies (a).
+			
+			If $\qq\subsetneq \qq'$ are prime ideals of $B$ such that $\qq\sqcap A = \pp = \qq'\sqcap A$ then $\qq  B_\pp\subsetneq\qq' B_\pp$. This inclusion is proper, since $\qq$ and $\qq'$ are disjoint from $S$. But $(\qq B_S)\sqcap A_\pp = \pp A_\pp$ as $\qq\sqcap A = \pp$ and $\pp A_\pp$ is already maximal. Thus $\qq B_\pp$ is maximal by (d), a contradiction to $\qq B_\pp \subsetneq \qq' B_\pp$.
+		\item [(c)]
+			Let $\pp\subseteq \qq\subseteq A$ be a chain of prime ideals in $A$ and let $\snake \pp\in \Spec B$ be above $\pp$. Replacing $A\subseteq B$ by $\snake A = A/\pp\subseteq \snake B = B/\snake \pp$, it suffices to find $\rr\in \Spec \snake B$ such that $\rr\sqcap \snake A = \qq/\pp$ (as $\snake \qq= \rr\sqcap B$ will have the desired property). As $\snake A\subseteq \snake B$ still is an integral ring extension and the existence of $\rr$ follows form the proven assertion (a): 
+		\end{description}
+
+	\end{proof}
+	\begin{proof}[Proof out of the blue of $\dim (X) = \deg\tr (K(X)/k)$, for $X$ affine]
+		By Noether Normalization there are $f_1,\ldots, f_d\in \Oo_X(X)$ such that they are algebraically independent over $k$ and such that the ring extension $\Oo(X)/k[f_1,\ldots,f_d]$ is integral. Thus $\deg\tr (K(X)/k) = d$ as the $f$ form a transcendence base. By Theorem \reff{thm:goingupInIntegralRingExtensions}(c), going-up holds for $k[T_1,\ldots, T_d]\subseteq \Oo_X(X)$. From the chain $\pp_0=\{0\} \subsetneq \pp_1 = \langle X_1\rangle_A\subsetneq \ldots\subsetneq \pp_d = \langle X_1,\ldots, X_d\rangle_A$ of prime ideals in $A = k[X_1,\ldots, X_d]$ we obtain a chain $\qq_0 = \{0\}\subsetneq \qq_1\subsetneq\ldots\subsetneq \qq_d \subsetneq B = \Oo_X(X)$ of prime ideals of $B$ by applying going-up successively to $\qq_i$ over $\pp_i\subsetneq \pp_{i+1}$. Corresponding to this strictly increasing chain of prime ideals in $B$ we have a strictly decreasing chain of irreducible subsets of $X$.
+	\end{proof}
+
+
+	
 
 
 
