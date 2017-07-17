@@ -121,6 +121,7 @@
 \newcommand{\Aa}{\mathcal{A}}
 \newcommand{\Bb}{\mathcal{B}}
 \newcommand{\Cc}{\mathcal{C}}
+\newcommand{\Ll}{\mathcal{L}}
 \newcommand{\Oo}{\mathcal{O}}
 \newcommand{\Gg}{\mathcal{G}}
 
@@ -141,6 +142,7 @@
 \newcommand{\bb}{\mathfrak{b}}
 \newcommand{\kk}{\mathfrak{k}}
 \newcommand{\mm}{\mathfrak{m}}
+\newcommand{\nn}{\mathfrak{n}}
 \newcommand{\pp}{\mathfrak{p}}
 \newcommand{\qq}{\mathfrak{q}}
 \newcommand{\rr}{\mathfrak{r}}
@@ -158,7 +160,9 @@
 \newcommand{\Spec}{\operatorname{Spec}}
 \newoperator{sep}
 \newoperator{tr}
+%\newoperator{char}
 \newcommand{\id}{\operatorname{id}}
+\newcommand{\cha}{\operatorname{char}}
 \newoperator{Ob}
 \newoperator{lcm}
 \newcommand{\op}{^{\operatorname{op}}}
@@ -1972,7 +1976,7 @@
 	\begin{defi}\lbl{def:goingup/down}
 		Let $A\morphism[f]B$ be a ring homomorphism.
 		\begin{alphanumerate}
-			\item We say that \emph{going-up} holds for $f$ if for arbitrary prime ideals $\pp\subseteq \qq$ of $A$ and every prime ideal $\snake \pp$ of $B$ lying \emph{above} $\pp$ (in the sense that $\pp\sqcap A=f^{-1}(\snake \pp)$ equals $\pp$), there is a prime ideal $\snake \qq\supseteq\snake \pp$ of $B$ which is above $\qq$ (in the sense that $\qq=f^{-1}(\qq)$).
+			\item We say that \emph{going-up} holds for $f$ if for arbitrary prime ideals $\pp\subseteq \qq$ of $A$ and every prime ideal $\snake \pp$ of $B$ lying \emph{above} $\pp$ (in the sense that $\pp\sqcap A=f^{-1}(\snake \pp)$ equals $\pp$), there is a prime ideal $\snake \qq\supseteq\snake \pp$ of $B$ which is above $\qq$ (in the sense that $\qq=f^{-1}(\snake\qq)$).
 			\item We say that $f$ satisfies \emph{going-down} if for all prime ideals $\pp\subseteq\qq$ of $A$ and $\snake \qq\in\Spec B$ above $\qq$, there exists a prime ideal $\snake \pp\subseteq\qq$ above $\pp$.
 		\end{alphanumerate}
 	\end{defi}
@@ -2054,9 +2058,9 @@
 			If $y\in Y$ belongs to $\ov{f(Z)} = V(\pp)$ (they are equal due to (b)), then the maximal ideal  $\qq = \left\{f\in\Oo_Y(Y)\st f(y) = 0\right\}$ contains $\pp$. By our going-up assumption there is a prime ideal $\snake \qq\supseteq \snake\pp$ of $\Oo_X(X)$ such that $(f^*)^{-1} \snake\qq = \qq$. Let $\mm\supseteq \snake\qq$ be a maximal ideal, then $(f^*)^{-1}\mm \supseteq (f^*)^{-1} \snake\qq = \qq$ and equality holds as $\qq$ is already maximal. The maximal ideal $\mm\subseteq \Oo_X(X)$ corresponds to a point $x\in X$. From $\snake \pp\subseteq\snake\qq\subseteq\mm$ it follows, that $V(\mm) = \left\{x\right\}\subseteq V(\snake \pp)$, that is, $x\in V(\snake\pp)$. We have $f(x) = y$ because $V(\qq) = \left\{y\right\} $ but $f(x)\in V(\qq)$ as $\ov{f(x)}=V\big((f^*)^{-1}\mm\big) = V(\qq)$ by (b). Hence, $y$ has a preimage $x\in V(\snake \pp)=Z$ and $f(Z)=V(\pp)$ is closed, as was claimed.
 		\end{alphanumerate}
 
-	\end{proof}\lbl{thm:goingupInIntegralRingExtensions}
+	\end{proof}
 	Professor Franke does not [know] to what extent the following is due to the n00b Krull or to Cohen/Seidenberg.
-	\begin{thm}
+	\begin{thm}\lbl{thm:goingupInIntegralRingExtensions}
 		Let $A\subseteq B$ be an integral ring extension.
 		\begin{alphanumerate}
 		\item 
@@ -2098,21 +2102,63 @@
 		\end{description}
 		\begin{alphanumerate}
 		\item [$(c)$]
-			Let $\pp\subseteq \qq\subseteq A$ be a chain of prime ideals in $A$ and let $\snake \pp\in \Spec B$ be above $\pp$. Replacing $A\subseteq B$ by $\snake A = A/\pp\subseteq  B/\snake \pp=\snake B $, it suffices to find $\rr\in \Spec \snake B$ such that $\rr\cap \snake A = \qq/\pp$ (as the preimage $\snake \qq$ of $\rr$ under $B\to B/\snake \pp$ will have the desired property). As $\snake A\subseteq \snake B$ still is an integral ring extension, the existence of $\rr$ follows form the proven assertion (a).
+			Let $\pp\subseteq \qq\subseteq A$ be a chain of prime ideals in $A$ and let $\snake \pp\in \Spec B$ be above $\pp$. Replacing $A\subseteq B$ by $\snake A = A/\pp\subseteq  B/\snake \pp=\snake B $, it suffices to find $\rr\in \Spec \snake B$ such that $\rr\cap \snake A = \qq/\pp$ (as the preimage $\snake \qq$ of $\rr$ under $B\to B/\snake \pp$ will have the desired property). As $\snake A\subseteq \snake B$ still is an integral ring extension, the existence of $\rr$ follows from the proven assertion (a).
 		\end{alphanumerate}
 
 	\end{proof}
 	\begin{proof}[Proof out of the blue of $\dim (X) = \deg\tr (K(X)/k)$, for $X$ affine]
 		By Noether Normalization (Theorem \reff{thm:NoetherNormalization}) there are $f_1,\ldots, f_d\in \Oo(X)$ algebraically independent over $k$, such that the ring extension $\Oo(X)/k[f_1,\ldots,f_d]$ is integral. Thus $\deg\tr (K(X)/k) = d$ as the $f$ form a transcendence base. By Theorem \reff{thm:goingupInIntegralRingExtensions}(c), going-up holds for $k[X_1,\ldots, X_d]\subseteq \Oo(X)$. The chain 
-		\begin{align*}
+		\begin{align*}\lbl{eq:idealchain}\tag{*}
 			\pp_0=\{0\} \subsetneq \pp_1 = (X_1)\subsetneq \pp_2=(X_1,X_2)\subsetneq\ldots\subsetneq \pp_d = (X_1,\ldots, X_d)
 		\end{align*}
 		of prime ideals in $A = k[X_1,\ldots, X_d]$ may be lifted to a chain
-		\begin{align*}
+		\begin{align*}\lbl{eq:dimchain}
 			\qq_0 = \{0\}\subsetneq \qq_1\subsetneq\qq_2\subsetneq\ldots\subsetneq \qq_d \subsetneq B = \Oo(X)
 		\end{align*}
 		of prime ideals of $B$ by applying going-up successively to $\qq_i$ over $\pp_i\subsetneq \pp_{i+1}$. Corresponding to this strictly increasing chain of prime ideals in $B$ we have a strictly decreasing chain of irreducible subsets $V(\qq_i)\subsetneq X$ of length $d$, establishing $\dim(X)\geq d$.
 	\end{proof}
+	\paragraph{problem with this proof}
+	If equality is to hold in $\dim Z +\codim(Z,X)\leq \dim X$ we must have (with $Z=\{x\}$) $\codim(x,X) = d$ for any point $x\in X$. Let $\mm = \mm_x$ and $\nn = \mm_x\sqcap A$ its preimage $A$, then $\nn$ is a maximal ideal (Theorem \reff{thm:goingupInIntegralRingExtensions}) hence $\nn = \langle T_1-\xi_1,\ldots, T_d-\xi_d\rangle_A$ and without loss of generality we may assume that the $\xi_i$ are 0. Then we are in the situation from \eqreff{eq:idealchain} but $\pp_d = \nn$ is given and the descending chain has to be found, which requires going-down. 
+	
+	The situation for proving going-down in this situation is as follows: Assume first that $K(X)/A$ is Galois and $B=\Oo(X)$ is $G=\Gal(K/A)$-invariant and that for any $\pp\in\Spec A$ the group $G$ acts upon the prime ideals of $B$ lying above $\pp$ transitively, then the maximal length of a chain in \eqreff{eq:idealchain} ending on $\pp_d$ does not depend on the choice of $\pp_d$ as lying above $\langle T_1,\ldots, T_d\rangle_A$. Since for at least one such $\pp_d$ this length is $d$, by the above construction, the same holds for the others.
+	
+	In general, the field extension is not Galois and if it is, $B$ may not be $G$-invariant. but this problem can be fixed by chosing $L/K$ such that $L/A$ is normal, denoting the integral closure of $A$ in $L$ by $\snake B$, chosing a prime ideal $\snake\mm$ of $\snake B$ such that $\snake\mm \sqcap B = \mm$. Then $\Aut(L/A)$ acts transitively upon the prime ideals of $\snake B$ lying above a given prime ideal of $A$. One can use this to find $\{0\}\subsetneq \snake\pp_1\subsetneq \ldots\subsetneq \snake\pp_d = \snake \mm$ in $\snake B$ as needed, then puts $\pp_I = B\sqcap \snake\pp_i$.
+
+	\begin{thm}\lbl{thm:actsTransitively}
+		Let $A$ be a domain which is normal, i.e. integrally closed in its field of quotients $K$. 
+		\begin{alphanumerate}
+		\item 
+			Let $L/K$ be a finite normal field extension, $B\subseteq L$ the integral closure of $A$ in $L$, $G = \Aut(L/K)$. For any $\pp\in\Spec A$, $G$ transitively acts upon $\left\{\qq\in\Spec B\st \qq\cap A = \pp\right\}$. 
+		\item
+			The same holds when $L/K$ is algebraic and normal but not necessarily finite.
+		\end{alphanumerate}
+	\end{thm}
+	We need two preparations.
+	\begin{lem}\lbl{lem:primeAvoidance}
+		Let $I\subseteq A$ be an ideal in a ring $A$ and let $\pp_1,\ldots,\pp_n$ be finitely many ideals such that $I$ is not contained in any of the $\pp_i$. If at most two of the ideals $\pp_i$ fail to be prime, there is $f\in I\setminus\bigcup_{i=1}^n\pp_i$
+	\end{lem}
+	\begin{proof}
+		Induction on $n$. If $n\leq 1$ the assertion is trivial. Let $n\leq 2$ and the assertion be true for fewer than $n$ ideals $\pp_i$. If $n>2$, we may (permuting the the $\pp_i$) assume that $\pp_1$ is prime. By the induction assumption, there is $f_i\in I\setminus \bigcap_{i\neq j = 1}^n \pp_i$ for $1\leq i\leq n$. If we also have $f_i\not \in \pp_i$ for some $i$, the assertion holds. Otherwise, $f= f_1+\prod_{i=2}^nf_i$ has the derived properties. We have $f\not\in\pp_i$ for $2\leq i\leq n$ because for such $i$ the second summand is in $\pp_i$ but $f_1$ is not. We have $f\not\in \pp_1$ because $f_1\in\pp_1$ but the factors in $\prod_{i=2}^nf_i$ are not in $\pp_1$ and $\pp_1$ is prime if there is more than one factor. For $n=2$ we have $f_1+f_2\in I\setminus (\pp_1\cup\pp_2)$.
+	\end{proof}
+	\begin{lem}\lbl{lem:fixedElements}
+		Let $L/K$ be a normal extension, $G=\Aut(L/K)$, $f\in L$ be fixed under $G$. If $\cha K = p$ then $f\in K$ when $p=0$ and $f^{p^k}$ for some $k\in\IN$ when $p>0$.
+	\end{lem}
+	\begin{proof}
+		If $p=0$, the field extension is Galois and $K=L^G$ as claimed. 
+		
+		Assume $L/K$ is finite. Induction on the degree $d=\deg(f/K)$ of the minimal polynomial of $f$. If $d=1$, then $f\in K$, If $d>1$ and the minimal polynomial $P$ has a zero $\phi\neq f$ in an algebraic closure $\ov L$ of $L$, there is a morphism $\theta$ from $K(f)$ to $\ov L$ extending $\id_K$ with $\theta(f) =\phi$. It is possible to extend $K(f)\morphism[\theta] \ov K$ to $L\morphism[\sigma] \ov L$ and $\sigma(L) \subseteq L$ as $L/K$ is normal. But $\sigma(f) = \theta(f) = \phi\neq f$ contradicting $f\in L^G$.
+		
+		If $d>1$ and $f$ is the only zero of $P$ in $\ov L$, then $f$ is a zero of multiplicity bigger than 1 of $P$ and $P'=0$. Hence $P=Q(T^P)$ for some $Q\in K[T]$. Then $\deg Q = \frac{d}{p}<d$, $\phi =f^p$ is a zero of $Q$ and the induction assumption can be applied. There is $k\in\IN$ such that $\phi^{p^k}\in K$. Then $f^{p^{k+1}} = \phi^{p^k} \in K$.
+	\end{proof}
+	\begin{proof}[Proof of Theorem \reff{thm:actsTransitively}(a)]
+		Assume that $\pp\in\Spec A$, $\qq,\snake\qq\in \Spec B$ is such that $\qq\cap A = \pp = \snake\qq\cap A$ and there is no $\sigma\in G =\Aut(L/K)$ such that $\sigma(\qq) =\snake\qq$. Let $\qq_1=\qq, \qq_2,\ldots,\qq_d$ be the images of $\qq$ under $G$. By Theorem \reff{thm:goingupInIntegralRingExtensions}(b), $\snake\qq\subsetneq\qq_i$. By Lemma \reff{lem:primeAvoidance}, there is $f\in\qq\setminus\bigcup_{i=1}^d \qq_i$. Let $g=\prod_{\sigma\in G}\sigma(f)$. For $\theta\in G$ $\theta(g) = g$ as applying $\theta$ only permutes the factors of $g$. We have $g\in\snake{\qq}$ but $g\not\in\qq$ because otherwise one factor $\sigma(f)$ must be in $\qq$ and $f\in\sigma^{-1} (\qq)$. But $\sigma^{-1}(\qq)$ is among the $\qq_i$. Hence $\phi\in L^G$ and $\phi\in\snake\qq\setminus\qq$. But $A\cap \snake\qq = A\cap\qq = \pp$ a contradiction.
+	\end{proof}
+	\begin{proof}[Proof of Theorem \reff{thm:actsTransitively}(b)]
+		 Let $\pp\in\Spec A$ and let $\qq,\snake\qq\in \Spec B$ such that $\qq\cap A = \snake\qq\cap A = \pp$. Let $\mm = \{(M,\sigma)\}$ where $M$ is an intermediate field $K\subseteq M \subseteq L$, $\sigma\in\Aut(M/K)$ such that $\sigma(\qq\cap M)  = \snake\qq \cap M$. Let $(M,\sigma)\preceq (\snake M,\snake \sigma)$ iff $M\subseteq \snake M$ and $\snake\sigma|_M = \sigma$. Then $\mm \neq \emptyset$ as $(K,\id)\in\mm$ (as $A$ is normal, hence $B\cap K = A$). If $\Ll\subseteq\mm$ is non-empty $\preceq$-linearly ordered, then $\Ll$ is dominated by $(M,\sigma)\in\mm$ where $M = \bigcup_{(N,\theta)\in\Ll} N$ and $\sigma=\bigcap_{(N,\theta)\in\Ll)} \theta$. By Zorns Lemma, $\mm$ has a $\preceq$-maximal element $(M,\sigma)$. If $M=L$ the assertion is proved. 
+		 
+		 Otherwise, let $x\in L\setminus M$. As $L/K$ is normal, $L$ contains all zeroes $x_1=x,x_2,\ldots, x_d$ of the minimal polynomial of $x$ in $\ov L$. Let $N\subseteq L$ be the subfield generated by $M$ and the $x_i$. Then $N/M$ is normal, being a splitting field. Let $\eta\in \Aut(N/K)$ be some extension f $\sigma\in \Aut(M/K)$ to $N$. Let $\snake A = B\cap M$, $\snake B = B\cap N$, $\snake\pp = \qq\cap M  =\qq\cap \snake A = \eta^{-1}(\snake \qq)\cap M = \eta^{-1}(\snake\qq)\cap \snake A$. By part (a) there is an automorphism $\zeta$ of $N/M$ such that $\zeta(\qq_1) = \qq_2$. Let $\theta = \eta\zeta\in \Aut(N/K)$, then $\theta(\qq\cap N) = \theta(\qq_1) = \eta(\qq_2) = \snake\qq\cap N$ and $(N,\theta)\not\preceq (M,\sigma)$. 
+	\end{proof}
+
 
 
 	
