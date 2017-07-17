@@ -5,7 +5,7 @@
 
 \usepackage{amsmath,amsfonts,amssymb,mathtools}
 \usepackage{amsthm}
-\usepackage{xpatch}
+%\usepackage{halloweenmath}
 \usepackage[colorlinks=true,linkcolor=blue]{hyperref}
 \usepackage{xstring,verbatim}
 \usepackage{bm}
@@ -1080,7 +1080,7 @@
 		\end{alphanumerate}
 		If now $f$ is as in the formulation above, then there are $p_i,q_i\in k[X_1,\ldots,X_n]$ such that in some neighbourhood $U\ni z$ in $Z$ none of the $q_i$ has zeros and $f_i=\frac{p_i}{q_i}$. Then $f|_U$ is equal to the composition of continuous maps
 		\begin{align*}
-			U\morphism[(p_1,\ldots,p_m,q_1,\ldots,q_m)]k^m\times(k^\times)^m\morphism[q]k^m
+			U\xrightarrow{(p_1,\ldots,p_m,q_1,\ldots,q_m)}k^m\times(k^\times)^m\morphism[q]k^m
 		\end{align*}
 		and thus continuous itself.
 	\end{proof}
@@ -1964,7 +1964,7 @@
 	
 	We would like to prove the opposite inequality to Corollary \reff{cor:transcendenceDegreeDimension}. Our strategy will be to use the Noether normalization theorem. There are $f_1,\ldots,f_d\in\Oo(X)$ algebraically independent over $k$, such that $\Oo(X)$ is integral (and finitely generated, hence finite) over $k[f_1,\ldots,f_d]$. Then
 	\begin{align*}
-		X\morphism[(f_1,\ldots,f_d)]k^d
+		X\xrightarrow{(f_1,\ldots,f_d)}k^d
 	\end{align*}
 	is a \emph{finite morphism} in the terminology of modern algebraic topology and one would hope to lift the chain
 	\begin{align*}
@@ -2108,7 +2108,7 @@
 	\end{proof}
 	\begin{proof}[Proof out of the blue of $\dim (X) = \deg\tr (K(X)/k)$, for $X$ affine]
 		By Noether Normalization (Theorem \reff{thm:NoetherNormalization}) there are $f_1,\ldots, f_d\in \Oo(X)$ algebraically independent over $k$, such that the ring extension $\Oo(X)/k[f_1,\ldots,f_d]$ is integral. Thus $\deg\tr (K(X)/k) = d$ as the $f$ form a transcendence base. By Theorem \reff{thm:goingupInIntegralRingExtensions}(c), going-up holds for $k[X_1,\ldots, X_d]\subseteq \Oo(X)$. The chain 
-		\begin{align*}\lbl{eq:idealchain}\tag{*}
+		\begin{align*}\lbl{eq:idealchain}\tag{$*$}
 			\pp_0=\{0\} \subsetneq \pp_1 = (X_1)\subsetneq \pp_2=(X_1,X_2)\subsetneq\ldots\subsetneq \pp_d = (X_1,\ldots, X_d)
 		\end{align*}
 		of prime ideals in $A = k[X_1,\ldots, X_d]$ may be lifted to a chain
@@ -2117,46 +2117,63 @@
 		\end{align*}
 		of prime ideals of $B$ by applying going-up successively to $\qq_i$ over $\pp_i\subsetneq \pp_{i+1}$. Corresponding to this strictly increasing chain of prime ideals in $B$ we have a strictly decreasing chain of irreducible subsets $V(\qq_i)\subsetneq X$ of length $d$, establishing $\dim(X)\geq d$.
 	\end{proof}
-	\paragraph{problem with this proof}
-	If equality is to hold in $\dim Z +\codim(Z,X)\leq \dim X$ we must have (with $Z=\{x\}$) $\codim(x,X) = d$ for any point $x\in X$. Let $\mm = \mm_x$ and $\nn = \mm_x\sqcap A$ its preimage $A$, then $\nn$ is a maximal ideal (Theorem \reff{thm:goingupInIntegralRingExtensions}) hence $\nn = \langle T_1-\xi_1,\ldots, T_d-\xi_d\rangle_A$ and without loss of generality we may assume that the $\xi_i$ are 0. Then we are in the situation from \eqreff{eq:idealchain} but $\pp_d = \nn$ is given and the descending chain has to be found, which requires going-down. 
+	\paragraph{Problem with this proof}
+	If equality is to hold in $\dim Z +\codim(Z,X)\leq \dim X$ we must have (with $Z=\{x\}$) $\codim(x,X) = d$ for any point $x\in X$. Let $\mm = \mm_x$ and $\nn = \mm_x\cap A$ its preimage $A$, then $\nn$ is a maximal ideal (Theorem \reff{thm:goingupInIntegralRingExtensions}) hence $\nn = \left(X_1-\xi_1,\ldots, X_d-\xi_d\right)_A$ and without loss of generality we may assume that the $\xi_i$ are 0. Then we are in the situation from \eqreff{eq:idealchain} but $\qq_d = \mm$ is given and the descending chain has to be found, which requires going-down. 
 	
-	The situation for proving going-down in this situation is as follows: Assume first that $K(X)/A$ is Galois and $B=\Oo(X)$ is $G=\Gal(K/A)$-invariant and that for any $\pp\in\Spec A$ the group $G$ acts upon the prime ideals of $B$ lying above $\pp$ transitively, then the maximal length of a chain in \eqreff{eq:idealchain} ending on $\pp_d$ does not depend on the choice of $\pp_d$ as lying above $\langle T_1,\ldots, T_d\rangle_A$. Since for at least one such $\pp_d$ this length is $d$, by the above construction, the same holds for the others.
+	The situation for proving going-down in this situation is as follows: Let $K=K(X)$. Assume first that $K/k(X_1,\ldots,X_d)$ is Galois and $B=\Oo(X)$ is $G=\Gal\big(K/k(X_1,\ldots,X_d)\big)$-invariant and that for any $\pp\in\Spec A$ the group $G$ acts transitively upon the prime ideals of $B$ lying above $\pp$ (i.e. if $\qq|\pp$ is a prime ideal above $\pp$ and  $\sigma\in G$, then $\sigma\qq$ is a prime ideal of $B$ lying above $\pp$; conversely, each prime ideal $\qq'|\pp$ of $B$ can be obtained as $\qq'=\sigma\qq$ for a suitable $\sigma\in G$), then the maximal length of a chain in \eqreff{eq:idealchain} ending on $\pp_d$ does not depend on the choice of $\pp_d$ lying above $\left(X_1,\ldots, X_d\right)_A$. Since for at least one such $\pp_d$ this length is $d$, by the above construction, the same holds for the others.
 	
-	In general, the field extension is not Galois and if it is, $B$ may not be $G$-invariant. but this problem can be fixed by chosing $L/K$ such that $L/A$ is normal, denoting the integral closure of $A$ in $L$ by $\snake B$, chosing a prime ideal $\snake\mm$ of $\snake B$ such that $\snake\mm \sqcap B = \mm$. Then $\Aut(L/A)$ acts transitively upon the prime ideals of $\snake B$ lying above a given prime ideal of $A$. One can use this to find $\{0\}\subsetneq \snake\pp_1\subsetneq \ldots\subsetneq \snake\pp_d = \snake \mm$ in $\snake B$ as needed, then puts $\pp_I = B\sqcap \snake\pp_i$.
+	In general, the field extension is not Galois and even if it is, $B$ may not be $G$-invariant. but this problem can be fixed by chosing $L/K$ such that $L/A$ is normal, denoting the integral closure of $A$ in $L$ by $\snake B$, chosing a prime ideal $\snake\mm$ of $\snake B$ such that $\snake\mm \cap B = \mm$. Then $\Aut\big(L/k(X_1,\ldots,X_n)\big)$ acts transitively upon the prime ideals of $\snake B$ lying above a given prime ideal of $A$. One can use this to find $\{0\}\subsetneq \snake\pp_1\subsetneq \ldots\subsetneq \snake\pp_d = \snake \mm$ in $\snake B$ as needed, then puts $\pp_I = B\cap \snake\pp_i$.
 
 	\begin{thm}\lbl{thm:actsTransitively}
 		Let $A$ be a domain which is normal, i.e. integrally closed in its field of quotients $K$. 
 		\begin{alphanumerate}
 		\item 
-			Let $L/K$ be a finite normal field extension, $B\subseteq L$ the integral closure of $A$ in $L$, $G = \Aut(L/K)$. For any $\pp\in\Spec A$, $G$ transitively acts upon $\left\{\qq\in\Spec B\st \qq\cap A = \pp\right\}$. 
+			Let $L/K$ be a finite normal field extension, $B\subseteq L$ the integral closure of $A$ in $L$, and $G = \Aut(L/K)$. For any $\pp\in\Spec A$, $G$ transitively acts upon $\left\{\qq\in\Spec B\st \qq\cap A = \pp\right\}$. 
 		\item
 			The same holds when $L/K$ is algebraic and normal but not necessarily finite.
 		\end{alphanumerate}
 	\end{thm}
 	We need two preparations.
 	\begin{lem}\lbl{lem:primeAvoidance}
-		Let $I\subseteq A$ be an ideal in a ring $A$ and let $\pp_1,\ldots,\pp_n$ be finitely many ideals such that $I$ is not contained in any of the $\pp_i$. If at most two of the ideals $\pp_i$ fail to be prime, there is $f\in I\setminus\bigcup_{i=1}^n\pp_i$
+		Let $I\subseteq A$ be an ideal in a ring $A$ and let $\pp_1,\ldots,\pp_n$ be finitely many ideals such that $I$ is not contained in any of the $\pp_i$. If at most two of the ideals $\pp_i$ fail to be prime, there is $f\in I\setminus\bigcup_{i=1}^n\pp_i$.
 	\end{lem}
 	\begin{proof}
-		Induction on $n$. If $n\leq 1$ the assertion is trivial. Let $n\leq 2$ and the assertion be true for fewer than $n$ ideals $\pp_i$. If $n>2$, we may (permuting the the $\pp_i$) assume that $\pp_1$ is prime. By the induction assumption, there is $f_i\in I\setminus \bigcap_{i\neq j = 1}^n \pp_i$ for $1\leq i\leq n$. If we also have $f_i\not \in \pp_i$ for some $i$, the assertion holds. Otherwise, $f= f_1+\prod_{i=2}^nf_i$ has the derived properties. We have $f\not\in\pp_i$ for $2\leq i\leq n$ because for such $i$ the second summand is in $\pp_i$ but $f_1$ is not. We have $f\not\in \pp_1$ because $f_1\in\pp_1$ but the factors in $\prod_{i=2}^nf_i$ are not in $\pp_1$ and $\pp_1$ is prime if there is more than one factor. For $n=2$ we have $f_1+f_2\in I\setminus (\pp_1\cup\pp_2)$.
+		Induction on $n$. If $n\leq 1$ the assertion is trivial. Let $n\leq 2$ and the assertion be true for fewer than $n$ ideals $\pp_i$. If $n>2$, we may (permuting the the $\pp_i$) assume that $\pp_1$ is prime. By the induction assumption, there is 
+		\begin{align*}
+			f_i\in I\setminus \bigcup_{\substack{j = 1\\i\not=j}}^n \pp_i\quad\text{for }i=1,\ldots,n\;. 
+		\end{align*}
+		If we also have $f_i\not \in \pp_i$ for some $i$, this $f_i$ will do the job. Otherwise, $f= f_1+\prod_{i=2}^nf_i$ has the desired properties. Indeed, we have $f\not\in\pp_i$ for $2\leq i\leq n$ because for such $i$ the second summand is in $\pp_i$ but $f_1$ is not. If $n=2$, that is, $f=f_1+f_2$, the same argument applies to $\pp_1$. If $n>2$, remember that we took $\pp_1$ to be prime. We then have $f\not\in \pp_1$ because $f_1\in\pp_1$ but the factors in $\prod_{i=2}^nf_i$ are not in $\pp_1$.
 	\end{proof}
 	\begin{lem}\lbl{lem:fixedElements}
-		Let $L/K$ be a normal extension, $G=\Aut(L/K)$, $f\in L$ be fixed under $G$. If $\cha K = p$ then $f\in K$ when $p=0$ and $f^{p^k}$ for some $k\in\IN$ when $p>0$.
+		Let $L/K$ be a normal extension, $G=\Aut(L/K)$, and $\ell\in L$ be fixed under $G$. If $\cha K = p$ then $\ell\in K$ when $p=0$ and $\ell^{p^k}$ for some $k\in\IN_0$ when $p>0$.
 	\end{lem}
-	\begin{proof}
+	\begin{proof}[First proof]
 		If $p=0$, the field extension is Galois and $K=L^G$ as claimed. 
 		
-		Assume $L/K$ is finite. Induction on the degree $d=\deg(f/K)$ of the minimal polynomial of $f$. If $d=1$, then $f\in K$, If $d>1$ and the minimal polynomial $P$ has a zero $\phi\neq f$ in an algebraic closure $\ov L$ of $L$, there is a morphism $\theta$ from $K(f)$ to $\ov L$ extending $\id_K$ with $\theta(f) =\phi$. It is possible to extend $K(f)\morphism[\theta] \ov K$ to $L\morphism[\sigma] \ov L$ and $\sigma(L) \subseteq L$ as $L/K$ is normal. But $\sigma(f) = \theta(f) = \phi\neq f$ contradicting $f\in L^G$.
+		Assume $L/K$ is finite. Induction on the degree $d=\deg(\ell/K)$ of the minimal polynomial of $\ell$. If $d=1$, then $\ell\in K$, If $d>1$ and the minimal polynomial $f$ has a zero $\phi\neq \ell$ in an algebraic closure $\ov L$ of $L$, there is a morphism $\vartheta$ from $K(\ell)$ to $\ov L$ extending $\id_K$ with $\vartheta(\ell) =\phi$. It is possible to extend $K(\ell)\morphism[\vartheta] \ov K$ to $L\morphism[\sigma] \ov L$ and $\sigma(L) \subseteq L$ as $L/K$ is normal. But $\sigma(\ell) = \vartheta(\ell) = \phi\neq f$ contradicting $f\in L^G$.
 		
-		If $d>1$ and $f$ is the only zero of $P$ in $\ov L$, then $f$ is a zero of multiplicity bigger than 1 of $P$ and $P'=0$. Hence $P=Q(T^P)$ for some $Q\in K[T]$. Then $\deg Q = \frac{d}{p}<d$, $\phi =f^p$ is a zero of $Q$ and the induction assumption can be applied. There is $k\in\IN$ such that $\phi^{p^k}\in K$. Then $f^{p^{k+1}} = \phi^{p^k} \in K$.
+		If $d>1$ and $\ell$ is the only zero of $f$ in $\ov L$, then $\ell$ is a zero of multiplicity bigger than 1 of $f$ and $f'=0$. Hence $f=g(X^p)$ for some $g\in K[X]$. Then $\deg g = \frac{d}{p}<d$, $\phi =\ell^p$ is a zero of $g$ and the induction assumption can be applied. There is $k\in\IN_0$ such that $\phi^{p^k}\in K$. Then $\ell^{p^{k+1}} = \phi^{p^k} \in K$.
 	\end{proof}
-	\begin{proof}[Proof of Theorem \reff{thm:actsTransitively}(a)]
-		Assume that $\pp\in\Spec A$, $\qq,\snake\qq\in \Spec B$ is such that $\qq\cap A = \pp = \snake\qq\cap A$ and there is no $\sigma\in G =\Aut(L/K)$ such that $\sigma(\qq) =\snake\qq$. Let $\qq_1=\qq, \qq_2,\ldots,\qq_d$ be the images of $\qq$ under $G$. By Theorem \reff{thm:goingupInIntegralRingExtensions}(b), $\snake\qq\subsetneq\qq_i$. By Lemma \reff{lem:primeAvoidance}, there is $f\in\qq\setminus\bigcup_{i=1}^d \qq_i$. Let $g=\prod_{\sigma\in G}\sigma(f)$. For $\theta\in G$ $\theta(g) = g$ as applying $\theta$ only permutes the factors of $g$. We have $g\in\snake{\qq}$ but $g\not\in\qq$ because otherwise one factor $\sigma(f)$ must be in $\qq$ and $f\in\sigma^{-1} (\qq)$. But $\sigma^{-1}(\qq)$ is among the $\qq_i$. Hence $\phi\in L^G$ and $\phi\in\snake\qq\setminus\qq$. But $A\cap \snake\qq = A\cap\qq = \pp$ a contradiction.
+	\begin{proof}[Second proof]
+		We would like to present a somewhat more natural (and less messy) proof. Replacing $L$ with a finite normal extension containing $\ell$ we may assume that $L/K$ is finite. It's easy to see that $G=\Aut(L/K)$ still fixes $\ell$, as each $\sigma\in G$ can be extended to an automorphism of the original field extension. If $\cha K=0$, then $L/K$ is Galois and $\ell\in L^G=K$.
+		
+		Now let $\cha K=p>0$ and $f\in K[X]$ the minimal polynomial of $\ell$. Then there is an integer $k\in\IN_0$ and a \emph{separable} polynomial $f_0\in K[X]$ such that $f=f_0\big(X^{p^k}\big)$ (Indeed, if $f$ is not separable, then each monomial of $f$ must be a power of $X^p$. Now iterate.). Consider normal closure $N$ of $K\big(\ell^{p^k}\big)$. $N/K$ is Galois and $\ell^{p^k}$ is fixed by $G$ (as $\ell$ is), hence also by $\Gal(N/K)$ and we obtain $\ell^{p^k}\in K$, as claimed.
 	\end{proof}
-	\begin{proof}[Proof of Theorem \reff{thm:actsTransitively}(b)]
-		 Let $\pp\in\Spec A$ and let $\qq,\snake\qq\in \Spec B$ such that $\qq\cap A = \snake\qq\cap A = \pp$. Let $\mm = \{(M,\sigma)\}$ where $M$ is an intermediate field $K\subseteq M \subseteq L$, $\sigma\in\Aut(M/K)$ such that $\sigma(\qq\cap M)  = \snake\qq \cap M$. Let $(M,\sigma)\preceq (\snake M,\snake \sigma)$ iff $M\subseteq \snake M$ and $\snake\sigma|_M = \sigma$. Then $\mm \neq \emptyset$ as $(K,\id)\in\mm$ (as $A$ is normal, hence $B\cap K = A$). If $\Ll\subseteq\mm$ is non-empty $\preceq$-linearly ordered, then $\Ll$ is dominated by $(M,\sigma)\in\mm$ where $M = \bigcup_{(N,\theta)\in\Ll} N$ and $\sigma=\bigcap_{(N,\theta)\in\Ll)} \theta$. By Zorns Lemma, $\mm$ has a $\preceq$-maximal element $(M,\sigma)$. If $M=L$ the assertion is proved. 
-		 
-		 Otherwise, let $x\in L\setminus M$. As $L/K$ is normal, $L$ contains all zeroes $x_1=x,x_2,\ldots, x_d$ of the minimal polynomial of $x$ in $\ov L$. Let $N\subseteq L$ be the subfield generated by $M$ and the $x_i$. Then $N/M$ is normal, being a splitting field. Let $\eta\in \Aut(N/K)$ be some extension f $\sigma\in \Aut(M/K)$ to $N$. Let $\snake A = B\cap M$, $\snake B = B\cap N$, $\snake\pp = \qq\cap M  =\qq\cap \snake A = \eta^{-1}(\snake \qq)\cap M = \eta^{-1}(\snake\qq)\cap \snake A$. By part (a) there is an automorphism $\zeta$ of $N/M$ such that $\zeta(\qq_1) = \qq_2$. Let $\theta = \eta\zeta\in \Aut(N/K)$, then $\theta(\qq\cap N) = \theta(\qq_1) = \eta(\qq_2) = \snake\qq\cap N$ and $(N,\theta)\not\preceq (M,\sigma)$. 
+	\begin{proof}[Proof of Theorem \reff{thm:actsTransitively}]
+		\begin{alphanumerate}
+			\item Assume that for some $\pp\in\Spec A$ there are prime ideals $\qq,\snake\qq\in \Spec B$ above $\pp$, that is, $\qq\cap A = \pp = \snake\qq\cap A$, such that there is no $\sigma\in G =\Aut(L/K)$ with $\sigma(\qq) =\snake\qq$. Let $\qq_1=\qq, \qq_2,\ldots,\qq_d$ be the images of $\qq$ under $G$. By Theorem \reff{thm:goingupInIntegralRingExtensions}(b) we have $\snake\qq\subsetneq\qq_i$. By Lemma \reff{lem:primeAvoidance}, there is an $f\in\qq\setminus\bigcup_{i=1}^d \qq_i$. Let $\phi=\prod_{\sigma\in G}\sigma(f)$. We have $\phi\in\snake{\qq}$ but $\phi\not\in\qq$ because otherwise one factor $\sigma(f)$ would have to be in $\qq$, but $\sigma^{-1}(\qq)$ is among the $\qq_i$, hence $f\not\in\sigma^{-1}(\qq)$. Also, $\phi\in L^G$, as applying $\vartheta\in G$ only permutes the factors. By Lemma \reff{lem:fixedElements}, $\phi^k\in K$ for some positive integer $k\in\IN$. Since $\phi^k$ is integral over $A$ ($f$ is, and hence are it's conjugates $\sigma(f)$) and $A$ is integrally closed in $K$, this implies $\phi^k\in A$. Also $\phi^k\in \snake \qq\setminus\qq$, as $\phi$ already has this property. But $\snake \qq\cap A=\pp=\qq\cap A$, contradiction.
+			\item Let $\pp\in\Spec A$ and let $\qq,\snake\qq\in \Spec B$ such that $\qq\cap A = \snake\qq\cap A = \pp$. Let 
+			\begin{align*}
+				\MM =\left\{(M,\sigma)\st
+				\begin{array}{c}
+					M\text{ is an intermediate field }K\subseteq M \subseteq L\\
+					\sigma\in\Aut(M/K)\text{ such that }\sigma\left(\qq\cap M\right)  = \snake\qq \cap M
+				\end{array}\right\}\;.
+			\end{align*}
+			Introduce a partial order $\preceq$ on $\MM$ via $(M,\sigma)\preceq (\snake M,\snake \sigma)$ iff $M\subseteq \snake M$ and $\snake\sigma|_M = \sigma$. Then $\MM \neq \emptyset$ as $(K,\id)\in\MM$ (where we need that $A$ is normal, hence $B\cap K = A$). If $\Ll\subseteq\MM$ is non-empty $\preceq$-linearly ordered chain, then $\Ll$ is dominated by $(M,\sigma)\in\MM$ where $M = \bigcup_{(N,\vartheta)\in\Ll} N$ and $\sigma=\bigcap_{(N,\vartheta)\in\Ll)} \vartheta$. By Zorns Lemma, $\MM$ thus has a $\preceq$-maximal element $(M,\sigma)$. If $M=L$ the assertion is proved. 
+			
+			Otherwise, let $x\in L\setminus M$. As $L/K$ is normal, $L$ contains all zeroes $x_1=x,x_2,\ldots, x_d$ of the minimal polynomial of $x$ in $\ov L$. Let $N=M(x_1,\ldots,x_d)$ be the subfield generated by $M$ and the $x_i$. Then $N/M$ is normal, being a splitting field. Let $\eta\in \Aut(N/K)$ be some extension of $\sigma\in \Aut(M/K)$ to $N$. Let $\snake A = B\cap M$, $\snake B = B\cap N$, and $\snake\pp = \qq\cap M  =\qq\cap \snake A = \eta^{-1}\left(\snake \qq\cap M\right) = \eta^{-1}\big(\snake\qq\cap \snake A\big)$. Now consider $\qq_1=\qq\cap \snake B$, $\qq_2=\eta-1\big(\snake \qq\cap\snake B\big)$. These are prime ideals of $\snake B$ lying above $\snake \pp$. By part (a) there is an automorphism $\zeta$ of $N/M$ such that $\zeta(\qq_1) = \qq_2$. Let $\vartheta = \eta\zeta\in \Aut(N/K)$, then $\vartheta(\qq\cap N) = \vartheta(\qq_1) = \eta(\qq_2) = \snake\qq\cap N$ and $(M,\sigma)\prec (N,\vartheta)$, contradiction!
+		\end{alphanumerate}
 	\end{proof}
 
 
