@@ -6,7 +6,6 @@
 \usepackage{amsmath,amsfonts,amssymb,mathtools}
 \usepackage{amsthm}
 %\usepackage{halloweenmath}
-\usepackage[colorlinks=true,linkcolor=blue]{hyperref}
 \usepackage{xstring,verbatim}
 \usepackage{bm}
 
@@ -21,6 +20,8 @@
 \usepackage[english]{babel}
 \usetikzlibrary{calc}
 \usepackage{subcaption}
+
+\usepackage[colorlinks=true,linkcolor=blue]{hyperref}
 
 \renewcommand{\phi}{\varphi}
 \title{Algebra I}
@@ -958,7 +959,7 @@
 		
 	\end{rem}
 	\begin{thm}\lbl{thm:k^nIsCatenary}
-		For $X=k^n$ with the Zariski-topology $\dim(X) = n$ and equality occurs in \eqreff{eq:codimIneqs}. In particular, $X$ is catenary.
+		For $X=k^n$ with the Zariski-topology, $\dim(X) = n$ and equality occurs in \eqreff{eq:codimIneqs}. In particular, $X$ is catenary.
 	\end{thm}
 	\begin{rem}[a.k.a. Remark 5]\label{rem:chainOfIrreducibles}
 		Obviously $\codim(\{0\}^n, k^n) \geq n$ because of the chain $\{0\}^n\subsetneq k\times \{0\}^{n-1}\subsetneq k^2\times\{0\}^{n-2}\subsetneq \ldots \subsetneq k^{n-1}\times\{0\} \subsetneq k^n$. The subsets here are irreducible because they are homeomorphic to $k^i$ which is irreducible by Proposition \reff{prop:primeIdealIrreducibleZeros} as $k[X_1,\ldots,X_i]$ is a domain (i.e. $\{0\}$ is prime). Similarly, $\codim(\{x\}, X) \geq n$ for any $x\in X =k^n$.
@@ -2124,7 +2125,7 @@
 	
 	The situation for proving going-down in this situation is as follows: Let $K=K(X)$. Assume first that $K/k(X_1,\ldots,X_d)$ is Galois and $B=\Oo(X)$ is $G=\Gal\big(K/k(X_1,\ldots,X_d)\big)$-invariant and that for any $\pp\in\Spec A$ the group $G$ acts transitively upon the prime ideals of $B$ lying above $\pp$ (i.e. if $\qq|\pp$ is a prime ideal above $\pp$ and  $\sigma\in G$, then $\sigma\qq$ is a prime ideal of $B$ lying above $\pp$; conversely, each prime ideal $\qq'|\pp$ of $B$ can be obtained as $\qq'=\sigma\qq$ for a suitable $\sigma\in G$), then the maximal length of a chain in \eqreff{eq:idealchain} ending on $\pp_d$ does not depend on the choice of $\pp_d$ lying above $\left(X_1,\ldots, X_d\right)_A$. Since for at least one such $\pp_d$ this length is $d$, by the above construction, the same holds for the others.
 	
-	In general, the field extension is not Galois and even if it is, $B$ may not be $G$-invariant. but this problem can be fixed by chosing $L/K$ such that $L/A$ is normal, denoting the integral closure of $A$ in $L$ by $\snake B$, chosing a prime ideal $\snake\mm$ of $\snake B$ such that $\snake\mm \cap B = \mm$. Then $\Aut\big(L/k(X_1,\ldots,X_n)\big)$ acts transitively upon the prime ideals of $\snake B$ lying above a given prime ideal of $A$. One can use this to find $\{0\}\subsetneq \snake\pp_1\subsetneq \ldots\subsetneq \snake\pp_d = \snake \mm$ in $\snake B$ as needed, then puts $\pp_I = B\cap \snake\pp_i$.
+	In general, the field extension is not Galois and even if it is, $B$ may not be $G$-invariant. but this problem can be fixed by chosing $L/K$ such that $L/A$ is normal, denoting the integral closure of $A$ in $L$ by $\snake B$, chosing a prime ideal $\snake\mm$ of $\snake B$ such that $\snake\mm \cap B = \mm$. Then $\Aut\big(L/k(X_1,\ldots,X_n)\big)$ acts transitively upon the prime ideals of $\snake B$ lying above a given prime ideal of $A$. One can use this to find $\{0\}\subsetneq \snake\pp_1\subsetneq \ldots\subsetneq \snake\pp_d = \snake \mm$ in $\snake B$ as needed, then puts $\pp_i= B\cap \snake\pp_i$.
 
 	\begin{thm}\lbl{thm:actsTransitively}
 		Let $A$ be a domain which is normal, i.e. integrally closed in its field of quotients $K$. 
@@ -2182,36 +2183,38 @@
 		\item
 			It is actually sufficient to assume that $A$ is integrally closed in $K$ and $B$ is a $\Aut(L/K)$-invariant subset of the integral closure of $A$ in $L$.
 		\item
-			The result is also important in algebraic number theory where $A=\Oo_K$, $B=\Oo_L$ are the rings of integers in their respective fields. 
-		\item If $L/K$ is infinite algebraic, $\Aut(L/K)$ is given the Krull-topology where $X\subseteq \Aut(L/K)$ is neighbourhood of $\sigma\in\Aut(L/K)$ iff there is a intermediate field $K\subseteq M\subseteq L$ such that $X\supseteq\left\{\vartheta \in \Aut(L/K)\st \vartheta|_M = \sigma|_M\right\}$ and $M/K$ is finite. When $L/K$ is normal and separable over $K$ then there is a bijection between the closed subgroups of $\Gal(L/K)$ and the intermediate fields of $L/K$:
+			This result is also important in algebraic number theory where $A=\Oo_K$, $B=\Oo_L$ are the rings of integers in their respective fields. 
+		\item If $L/K$ is infinite algebraic, $\Aut(L/K)$ is equipped with the \emph{Krull topology} (not to be confused with \emph{Grothendieck topologies}, a different and -- of course -- far more powerful concept), in which $X\subseteq \Aut(L/K)$ is a neighbourhood of $\sigma\in\Aut(L/K)$ iff there is an intermediate field $K\subseteq M\subseteq L$ such that $X\supseteq\left\{\vartheta \in \Aut(L/K)\st \vartheta|_M = \sigma|_M\right\}$ and $M/K$ is finite. When $L/K$ is normal and separable over $K$ (that is, an infinite Galois extension) this is equivalent to saying that $\sigma\Gal(L/M)\subseteq X$ for some finite Galois subextension $M/K$, i.e. the sets $\sigma\Gal(L/M)$, where $M/K$ is a finite Galois subextension, form a neighbourhood system of $\sigma$, and  there is a bijection 
 		\begin{align*}
+			\left\{\text{closed subgroups }H\subseteq \Gal(L/K)\right\}&\isomorphism\left\{\text{intermediate fields }M\subseteq L\right\}\\
 			H&\longmapsto M= L^H\\
 			H=\Gal(L/M) &\longmapsfrom M
 		\end{align*}
-		where $M/K$ is finite iff $H$ is open iff $H$ has finite order index in $\Gal(L/K)$ and $M/K$ is normal iff $H$ is a normal divisor in which case $\Gal(M/K) \simeq \Gal(L/K)/H$.
+		where $M/K$ is finite iff $H$ is open iff $H$ has finite index in $\Gal(L/K)$ and $M/K$ is normal iff $H$ is a normal divisor in which case $\Gal(M/K) \simeq \Gal(L/K)/H$.
 		\end{alphanumerate}
 	\end{rem*}
 	\begin{thm}\lbl{thm:goingdownRingExtension}
 		Let $A\subseteq B$ be an integral ring extension where $A$ and $B$ are domains and $A$ is integrally closed in its field of quotients $K$. Then going-down holds for $B/A$.
 	\end{thm}
 	\begin{proof}
-		Let $L/K$ be a normal field extension containing the field of quotients $M$ of $B$ (e.g. $L$ can be taken to be an algebraic closure of $M$, or the union of the splitting fields of the $K$-irreducible polynomials with a zero in $M$). Let $\snake B$ be the integral closure of $A$ in $L$. Let $\pp\subseteq \qq$ be prime ideals of $A$ and $\snake \qq\in\Spec B$ such that $\snake \qq\cap A = \qq$. It is possible to apply Theorem \reff{thm:goingupInIntegralRingExtensions} to $\snake B/A$ and $\snake B/B$ and Theorem \reff{thm:actsTransitively} to $\snake B/A$. By Theorem \reff{thm:goingupInIntegralRingExtensions} there is $\qq_1\in\Spec \snake B$ such that $\qq_1\cap B = \snake \qq$. By Theorem \reff{thm:goingupInIntegralRingExtensions} for $\snake B/A$ there is $\pp_1\in\Spec \snake B$ such that $\pp_1\cap A = \pp$ and (going-up for $\snake B/A$ there is $\qq_2\in \Spec \snake B$ such that $\qq_2\supseteq \pp_1$ and $\qq_2\cap A =\pp$. By Theorem \reff{thm:actsTransitively} there is $\sigma\in\Aut(L/K)$ such that $\sigma(\qq_2) = \qq_1$. Let $\snake\pp = (\sigma(\pp_1))\cap B$, then $\snake\pp\cap A = \sigma(\pp_1)\cap A = \pp_1\cap A = \pp$ and $\snake\pp\subseteq \sigma(\qq_2)\cap B = \qq_1\cap B = \snake \qq$
+		Let $L/K$ be a normal field extension containing the field of quotients $M$ of $B$ (e.g. $L$ can be taken to be an algebraic closure of $M$, or the union of the splitting fields of the $K$-irreducible polynomials with a zero in $M$). Let $\snake B$ be the integral closure of $A$ in $L$. Let $\pp\subseteq \qq$ be prime ideals of $A$ and $\snake \qq\in\Spec B$ such that $\snake \qq\cap A = \qq$. It is possible to apply Theorem \reff{thm:goingupInIntegralRingExtensions} to $\snake B/A$ and $\snake B/B$ and Theorem \reff{thm:actsTransitively} to $\snake B/A$. By Theorem \reff{thm:goingupInIntegralRingExtensions} there is $\qq_2\in\Spec \snake B$ such that $\qq_2\cap B = \snake \qq$. By Theorem \reff{thm:goingupInIntegralRingExtensions} for $\snake B/A$ there is $\pp_1\in\Spec \snake B$ such that $\pp_1\cap A = \pp$ and (going-up for $\snake B/A$ there is $\qq_1\in \Spec \snake B$ such that $\qq_1\supseteq \pp_1$ and $\qq_1\cap A =\pp$. By Theorem \reff{thm:actsTransitively} there is $\sigma\in\Aut(L/K)$ such that $\sigma(\qq_1) = \qq_2$. Let $\snake\pp = (\sigma(\pp_1))\cap B$, then $\snake\pp\cap A = \sigma(\pp_1)\cap A = \pp_1\cap A = \pp$ and $\snake\pp\subseteq \sigma(\qq_1)\cap B = \qq_2\cap B = \snake \qq$.
 	\end{proof}
 
-\subsection{Proof of Theorem}% \texorpdfstring{\reff{thm:k^nIsCatenary}}{5}}% and \reff{thm:quotienFieldOfRegularFunctions}}
+\subsection[Proof of Theorems \getrefnumber{thm:k^nIsCatenary} and \getrefnumber{thm:quotienFieldOfRegularFunctions}]{Proof of Theorems \reff{thm:k^nIsCatenary} and \reff{thm:quotienFieldOfRegularFunctions}}% \texorpdfstring{\reff{thm:k^nIsCatenary}}{5}}% and \reff{thm:quotienFieldOfRegularFunctions}}
 %HEEELLLP
+%np br0
 	\begin{defi}\lbl{def:height}
-		Let $A$ be a ring, $\pp\in\Spec A$, let 
+		Let $A$ be a ring, $\pp\in\Spec A$, then the \emph{height} of $\pp$  
 		\begin{align*}
-			\hoehe(\pp) = \sup\left\{\ell\st\text{there is a chain of prime ideals in }A: \pp_\ell\subsetneq \pp_{\ell-1}\subsetneq \ldots\subsetneq \pp_0 =\pp\right\}.
+			\hoehe(\pp) = \sup\left\{\ell\st\text{there is a chain of prime ideals } \pp_\ell\subsetneq \pp_{\ell-1}\subsetneq \ldots\subsetneq \pp_0 =\pp\text{ in }A\right\}\;.
 		\end{align*}
 		If $\qq\subseteq\pp$ is another prime ideal then
 		\begin{align*}
-			\hoehe(\pp/\qq) = \sup\left\{\ell\st\text{there is a chain of prime ideals in }A: \qq=\pp_\ell\subsetneq \pp_{\ell-1}\subsetneq \ldots\subsetneq \pp_0 =\pp\right\}.
+			\hoehe(\pp/\qq) = \sup\left\{\ell\st\text{there is a chain of prime ideals } \qq=\pp_\ell\subsetneq \pp_{\ell-1}\subsetneq \ldots\subsetneq \pp_0 =\pp\text{ in }A\right\}\;.
 		\end{align*}
-		Furthermore we have
+		Furthermore we have, let
 		\begin{align*}
-			\dim R = \sup\left\{\hoehe(\pp)\st\pp\in\Spec R\right\} = \dim\Spec R.
+			\dim R = \sup\left\{\hoehe(\pp)\st\pp\in\Spec R\right\} = \dim\Spec R\;.
 		\end{align*}
 
 	\end{defi}
@@ -2222,27 +2225,32 @@
 		\item 
 			By the correspondence between the irreducible subsets of $\Spec A$ and the prime ideals of $A$, we have $\hoehe(\pp) = \codim(V(\pp), \Spec A)$ and $\hoehe(\pp/\qq) = \codim(V(\pp),V(\qq))$.
 		\item 
-			By a theorem of Krull, $\hoehe(\pp)$ is finite when $A$ is Noetherian, but nevertheless $\dim(A) = \sup\left\{\hoehe(\pp)\st\pp\in\Spec A \right\}$ may be infinite even when $A$ is Noetherian.
+			By a theorem of Krull, $\hoehe(\pp)$ is finite when $A$ is Noetherian, but nevertheless $\dim(A) = \sup\left\{\hoehe(\pp)\st\pp\in\Spec A \right\}$ may be infinite, even when $A$ is Noetherian.
 		\item 
-			Obviously, we have the inequalities
+			Obviously, we have the following inequalities for prime ideals $\rr\subseteq\qq\subseteq\pp\subseteq A$
 			\begin{align*}
 				\hoehe(\qq/\rr)+\hoehe(\pp/\qq) &\leq\hoehe(\pp/\rr)\\
-				\hoehe(\qq)+\hoehe(\pp/\qq) &\leq \hoehe(\pp)
+				\hoehe(\qq)+\hoehe(\pp/\qq) &\leq \hoehe(\pp)\;.
 			\end{align*}
-			One would like to have equality here this may fail, even when $A$ is Noetherian. A Noetherian ring is called \emph{catenary} if, for arbitrary prime ideals $\qq\subseteq\pp$ of $A$, equality holds on the first line. Examples for non-catenary Noetherian rings exist but are hard to give.
+			One would like to have equality here this may fail, even when $A$ is Noetherian. A Noetherian ring is called \emph{catenary} if, for arbitrary prime ideals $\qq\subseteq\pp$ of $A$, equality holds on the first line. Examples for non-catenary Noetherian rings exist but are hard to construct.
 		\end{alphanumerate}
 	\end{rem}
 	\begin{fact}
-		Obviously, $\dim R = \hoehe(\mm)$ when $R$ is local with maximal ideal $\mm$. If $S\subseteq R$ is multiplicative, we have a bijection $\Spec R_S \simeq \left\{\pp\in\Spec R \st\pp\cap S = \emptyset\right\}$. In particular $\hoehe(\pp ) = \hoehe(\pp R_S)$ and ($S=R\setminus\pp$) $\hoehe(\pp) = \dim(R_\pp)$.
+		Obviously, $\dim R = \hoehe(\mm)$ when $R$ is local with maximal ideal $\mm$. If $S\subseteq R$ is multiplicative, we have a bijection $\Spec R_S \simeq \left\{\pp\in\Spec R \st\pp\cap S = \emptyset\right\}$. In particular, 
+		\begin{align*}
+			\hoehe(\pp ) = \hoehe(\pp R_S)\quad\text{and (for }S=R\setminus\pp)\quad \hoehe(\pp) = \dim(R_\pp)\;.
+		\end{align*}
 	\end{fact}
 	\begin{rem}
-		If $X$ is an affine variety, $R=\Oo_X(X)$, $\pp,\qq\in\Spec R$ correspond to irreducible subsets $A$ and $B$, then $\hoehe(\pp) = \codim(A,X)$, $\hoehe(\qq) = \codim(B,X)$, $\hoehe(\pp/\qq) = \codim(A,B)$ and $\dim R = \dim X$ by the one-to-one correspondence between irreducible subsets of $X$ and $\Spec R$.
+		If $X$ is an affine variety, $R=\Oo_X(X)$, $\pp,\qq\in\Spec R$ prime ideals corresponding to irreducible subsets $A$ and $B$, then $\hoehe(\pp) = \codim(A,X)$, $\hoehe(\qq) = \codim(B,X)$, $\hoehe(\pp/\qq) = \codim(A,B)$ and $\dim R = \dim X$ by the one-to-one correspondence between irreducible subsets of $X$ and $\Spec R$.
 	\end{rem}
 	\begin{fact}
-		Let $B\supseteq A$ be an integral ring extension. Then $\dim B = \dim A$, and $\hoehe(\qq\cap A) \geq \hoehe(\qq)$ holds for every $\qq\in\Spec B$. If going-down holds for $B/A$, the last inequality becomes an equality.
+		Let $B\supseteq A$ be an integral ring extension. Then $\dim B = \dim A$, and $\hoehe(\qq\cap A) \geq \hoehe(\qq)$ for every $\qq\in\Spec B$. If going-down holds for $B/A$, the last inequality becomes an equality.
 	\end{fact}
 	\begin{proof}
-		If $\qq_0\subsetneq\ldots\subsetneq \qq_\ell$ is a strictly increasing chain of prime ideals of $B$, $\qq_0\cap A\subsetneq\ldots\subsetneq \qq_\ell\cap A$ by Theorem \reff{thm:goingupInIntegralRingExtensions}. Thus $\dim B\leq \dim A$. In the same way, $\hoehe(\qq\cap A) \geq \hoehe(\qq)$ because any strictly increasing chain of elements of $\Spec B$ ending in $\qq$ remains strictly increasing after intersection with $A$. If $\pp_0\subsetneq\ldots\subsetneq \pp_d$ is a strictly increasing chain of prime ideals in $A$ it is possible to finde $\qq_0\subsetneq\ldots\subsetneq \qq_d$ of prime ideals in $B$ by Theorem \reff{thm:goingupInIntegralRingExtensions}. Thus, $d\leq \dim B$ and $\dim A \leq \dim B$. If going down holds, any increasing chain of prime ideals of $A$ ending in $\qq\cap A$ can be lifted to a similar chain for $B$ ending in $\qq$.
+		If $\qq_0\subsetneq\ldots\subsetneq \qq_\ell$ is a strictly increasing chain of prime ideals in $B$, $\qq_0\cap A\subsetneq\ldots\subsetneq \qq_\ell\cap A$ is such a chain in $A$, the inclusions being proper by Theorem \reff{thm:goingupInIntegralRingExtensions}(b). Thus $\dim B\leq \dim A$ and the same argument shows $\hoehe(\qq\cap A) \geq \hoehe(\qq)$.
+		
+		 If $\pp_0\subsetneq\ldots\subsetneq \pp_d$ is a strictly increasing chain of prime ideals in $A$ it is possible to find $\qq_0\subsetneq\ldots\subsetneq \qq_d$ a chain  of prime ideals in $B$ by going-up (Theorem \reff{thm:goingupInIntegralRingExtensions}(c)). Thus, $d\leq \dim B$ and $\dim A \leq \dim B$. If going down holds, any increasing chain of prime ideals of $A$ ending in $\qq\cap A$ can be lifted to a similar chain for $B$ ending in $\qq$, establishing $\hoehe(\qq)\geq\hoehe(\qq\cap A)$.
 	\end{proof}
 
 
