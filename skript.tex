@@ -2115,7 +2115,7 @@
 			\pp_0=\{0\} \subsetneq \pp_1 = (X_1)\subsetneq \pp_2=(X_1,X_2)\subsetneq\ldots\subsetneq \pp_d = (X_1,\ldots, X_d)
 		\end{align*}
 		of prime ideals in $A = k[X_1,\ldots, X_d]$ may be lifted to a chain
-		\begin{align*}\lbl{eq:dimchain}
+		\begin{align*}
 			\qq_0 = \{0\}\subsetneq \qq_1\subsetneq\qq_2\subsetneq\ldots\subsetneq \qq_d \subsetneq B = \Oo(X)
 		\end{align*}
 		of prime ideals of $B$ by applying going-up successively to $\qq_i$ over $\pp_i\subsetneq \pp_{i+1}$. Corresponding to this strictly increasing chain of prime ideals in $B$ we have a strictly decreasing chain of irreducible subsets $V(\qq_i)\subsetneq X$ of length $d$, establishing $\dim(X)\geq d$.
@@ -2252,6 +2252,90 @@
 		
 		 If $\pp_0\subsetneq\ldots\subsetneq \pp_d$ is a strictly increasing chain of prime ideals in $A$ it is possible to find $\qq_0\subsetneq\ldots\subsetneq \qq_d$ a chain  of prime ideals in $B$ by going-up (Theorem \reff{thm:goingupInIntegralRingExtensions}(c)). Thus, $d\leq \dim B$ and $\dim A \leq \dim B$. If going down holds, any increasing chain of prime ideals of $A$ ending in $\qq\cap A$ can be lifted to a similar chain for $B$ ending in $\qq$, establishing $\hoehe(\qq)\geq\hoehe(\qq\cap A)$.
 	\end{proof}
+	\begin{thm}
+		If $B$ is a domain which is of finite type over a field $k$ and $K$ denotes the field of quotients of $B$, then $\dim B = \deg\tr(K/k)$. Moreover 
+		\begin{align*}\tag{1} \lbl{eq:thm10eq1}
+			\hoehe(\mm) = \deg\tr(K/k)
+		\end{align*}
+		holds for any maximal ideal $\mm$ of $B$. If $\pp$ is any prime ideal, then 
+		\begin{align*}\tag{2} \lbl{eq:thm10eq2}
+			\hoehe(\pp) = \deg\tr(K/k) -\deg\tr(k(\pp)/k).
+		\end{align*}
+		This implies that $B$ is catenary.
+	\end{thm}
+	\begin{proof}
+		The inequality $\hoehe(\mm) \leq \deg\tr(K/k)$ follow from Proposition \reff{prop:transcendenceDegreeMonotonic}. For the opposite inequality let $x_1,\ldots,x_n\in B$ be algebraically independent over $k$ such that $B$ is finite over $A= k[x_1,\ldots,x_n]$. By the Noether Normalization Theore it is possible to find such elements. Let $\xi_i$ denote the image of $x_i$ in $k(\mm) = B/\mm$. As this field is finite over $k$ (Nullstellensatz), there is $P_i\in k(T)$ such that $P_i(\xi_i) = 0$ in $k(\mm)$. Replacing the $x_i$ by $P_i(x_i)$ we retain the algebraic independence of the $x_i$ and the fact that $B/k[x_1,\ldots,x_n]$ is integral and obtain $x_i\in\mm$. Thus, $\nn = \mm\cap A = \langle x_1,\ldots,x_n\rangle_A$. We consider the chain of prime ideals $\nn = \pp_0\supsetneq \pp_1\supsetneq\ldots\supsetneq \pp_n = \{0\}$ with $\pp_i = \langle x_{i+1},\ldots,x_n\rangle_A$ in $A$. Since $A$ is factorial, it is normal. By Theorem \reff{thm:goingdownRingExtension}, going down holds for $B/A$. It is thus possible to find $\qq_A\in \Spec B$ such that $\qq_1\subseteq \qq_0\coloneqq \mm$ and $\qq_1 \cap A = \pp_1$. Proceeding inductively, we find a chain $\mm=\qq_0\supsetneq \qq_1\supsetneq\ldots\supsetneq \qq_n$ of elements of $\Spec B$. Thus $\hoehe(\mm) \geq n$. But $\deg\tr(K/k) = n$ as the $x_i$ form a transcendence base.
+		
+		For the case of general prime ideals $\pp$ we use reduction to the case just established, similar to the proof of Proposition \reff{prop:transcendenceDegreeMonotonic}. Let $x_1,\ldots,x_d\in B$ such that their images in $B/\pp$ are algebraically independent and such that $B/\pp$ is finite over $k[\ov{x_1},\ldots,\ov{x_d}]$. It is possible to find such elements by Noether Normalization. Let $R=k[x_1,\ldots,x_d]\subseteq A$, $S = R\setminus\{0\}$, $\snake B = B_S$, $\snake k = R_S = k(x_1,\ldots, x_d)$. Then $\snake B$ is a domain, $\snake B/\snake k$ is of finite type. Let $\snake\pp = \pp \snake B$. By our description of prime ideals in localizations, there is a one-to-one correspondence between the elements $\qq$ of $\Spec B$ contained in $\pp$ (which are disjoint from $S$) and the prime ideals $\snake\qq$ of $\snake B$ contained in $\snake\pp$, putting $\qq = \snake \qq\cap B$ and $\snake \qq = \qq \snake B$. Thus $\hoehe(\pp) = \hoehe(\snake\pp)$. On the other side, $B/\pp$ is finite over $R$, hence $\snake B/\snake \pp$ is algebraic over $\snake k$. Thus $\snake \pp$ is a maximal ideal and $\hoehe(\pp) = \hoehe(\snake \pp) = \deg\tr(\snake B/\snake k)$. On the other side, it is possible to extend the ($k$-algebraically independent) $x_1,\ldots,x_d$ to a transcendence Base of $B/k$. Then the $x_{d+1},\ldots,x_n$ form a transcendence base of $K$ (which is also a quotient field of $\snake B$) over $\snake k$. Thus, $\hoehe(\pp) = \deg\tr(\snake B /\snake k) = n-d = \deg\tr(K/k) -\deg\tr(k(\pp)/k)$. For the assertion about the transcendence of $K$ over $\snake k$, note that all elements of $k$ are algebraic over $k(x_1,\ldots,x_n) = \snake k (x_{d+1},\ldots, x_n)$. If $Q\in\snake k [T_{d+1},\ldots, T_n]$ such that $Q(x_{d+1},\ldots,x_n) = 0$, we have $Q=\frac{E}{d}$ where $d\in R = k[x_1,\ldots,x_n]$ is not $0$ and $E\in R[T_{d+1},\ldots, T_n]$. Then $E (x_{d+1},\ldots,x_n) = 0$ contradicting the $k$-algebraic independence of $x_1,\ldots, x_n$.
+	\end{proof}
+	\begin{cor}
+		Let $X\subseteq k^n$ be a quasi-affine algebraic variety over an algebraically closed field $k$ and let $K$ be its field of rational functions, then $\dim X = \deg\tr(K/k)$. For any irreducible subset $Z\subseteq X$ we have $\codim(Z,X) = \dim X-\dim Z$. In particular, Theorems \reff{thm:k^nIsCatenary} and \reff{thm:quotienFieldOfRegularFunctions}
+	\end{cor}
+	\begin{proof}
+		For affine $X$, this follows from the geometric interpretation of $\hoehe(\pp)$. The quasi-affine case can be reduced as in the proof of Corollary \reff{cor:dimIneqQuasiAffine}.
+	\end{proof}
+
+\section{Concluding remarks}
+	\begin{thm}[Principal ideal theorem, Krull 1928]\lbl{thm:principalIdealTheorem}
+		Let $R$ be a Noetherian domain, $f\in R\setminus\{0\}$, $\pp\in \Spec R$ a prime ideal which is minimal among all the prime ideals containing $f$. Then $\hoehe(\pp) = 1$.
+	\end{thm}
+	\begin{cor}
+		Let $R$ be a Noetherian local ring with maximal ideal $\mm$. Then $\dim_{k(\mm)}(\mm/\mm^2)$ equals the minimal number of generators for $\mm$ and is greater or equal to $\dim R$.
+	\end{cor}
+	\begin{defi}
+		$R$ is called regular if equality occurs in the above inequality.
+	\end{defi}
+	\begin{exc}
+		Confirm that the local rings of the affine variety $k^n$ are regular.
+	\end{exc}
+	The fact that $\dim_k(\mm/\mm^2$ is smaller or equal to the minimal number of generators of $\mm$ is trivial. That $\mm$ can be generated by $\dim_{k(\mm)}(\mm/\mm^2)$ of its elements follows from the following important lemma.
+	\begin{lem}[Nakayama-Lemma, Nakayama-Azumara-Krull-Lemma, CRT]
+		Let $(R,\mm)$ be a local ring and $M$ be a finitely generated $R$-module.
+		\begin{alphanumerate}
+		\item
+			If $M = \mm \cdot M$ then $M=0$.
+		\item 
+			If $N\subseteq M$ is any submodule such that $M = \mm\cdot M +N$ then $M=N$.
+		\item 
+			If $m_1,\ldots, m_n\in M$ are such that their images generate $M/(\mm\cdot M)$ as a $k(\mm)$-vector space then they generate $M$ as an $R$-module.
+		\end{alphanumerate}
+
+	\end{lem}
+	\begin{proof}
+		\begin{alphanumerate}
+		\item 
+			Let $m_1,\ldots, m_k$ generate $M$. We denote $(m_1,\ldots, m_k)$ by $\vec m$. Since $M = \mm \cdot M$, there are $\mu_{i,j}\in \mm$ such that $m_i = \sum_{j=1}^k \mu_{j,i}m_j$. Thus $(\id_k - N)\vec m = 0$ where $N$ is the matrix formed by the $\mu_{i,j}$. We have $\det(\id_k -N) \equiv 1\mod \mm$ as the $\mu_{i,j}$ are in $\mm$. Since $R^\times = R\setminus \mm$ this implies $\det(\id_k -N) \in R^\times$. By Cramer's rule we hae $\vec M =0$ hence the $m_i = 0$ and $M = 0$.
+		\item 
+			Apply a) to $M/N$.
+		\item 
+			Apply b) to $N = \langle m_1,\ldots, m_n\rangle_R$ the submodule generated by the $m_i$.
+		\end{alphanumerate}
+
+	\end{proof}
+	\begin{cor}\lbl{cor:irreducibleCapK^d}
+		If $Z\subseteq k^n$ is an irreducible subset then all irreducible components of $k^d\cap Z$ have dimension greater or equal to $\dim(Z) - (n-d)$ and codimension in $k^d$ at most $\codim(Z,k^n)$.
+	\end{cor}
+	\begin{cor}\lbl{cor:irreducibleCapIrreducible}
+		If $X,Y\subseteq k^n$ are irreducible subsets then all irreducible components of $X\cap Y$ have codimension smaller or equal to $\codim(X,k^n)+\codim(Y,k^n)$.
+	\end{cor}
+	\begin{rem}
+		\begin{alphanumerate}
+		\item 
+			Of course, the intersections may be empty no matter what the lower bound for the dimensions of their irreducible components is.
+		\item 
+			Corollary \reff{cor:irreducibleCapIrreducible} is derived from Corollary \reff{cor:irreducibleCapK^d} considering $X\times Y \cap \Delta$ where $\Delta = \left\{(x_1,\ldots,x_n,y_1,\ldots, y_n)\st x_i = y_i\right\}\subseteq k^{2n}$.
+		\end{alphanumerate}
+
+	\end{rem}
+
+
+
+
+
+
+
+
+
 
 
 
