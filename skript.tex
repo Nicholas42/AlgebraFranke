@@ -207,7 +207,9 @@
 \begin{document}
 	
 	\maketitle
-	This text consists of notes of the lecture Algebra I taught at the University of Bonn by Professor Jens Franke in the summer term (Sommersemester) 2017.
+	This text consists of notes of the lecture Algebra I taught at the University of Bonn by Professor Jens Franke in the summer term (Sommersemester) 2017. 
+	
+	Professor Franke dropped some hints regarding the exam. They may be found \hyperref[rem:examHints]{here}.
 	\tableofcontents
 	
 	% start 2017-04-20
@@ -387,7 +389,7 @@
 		A module $M$ over a ring $R$ is Noetherian iff it is finitely generated and $R/\Ann(M)$ is a Noetherian ring.
 	\end{prop}
 	
-\subsection{Proof of the Hilbert basis theorem}\lbl{sec:HilbertBasisProof}
+\subsection{Proof of the Hilbert Basissatz}\lbl{sec:HilbertBasisProof}
 	\begin{proof}\lbl{proof:HilbertBasis}
 		Let $R$ be a Noetherian ring and $I\subseteq R[T]$ be an ideal. Let $R[T]_{\leq n}$ be the set of polynomials over $R$ of degree smaller or equal to $n$. This is isomorphic to $R^{n+1}$ ($1,\ldots, T^n$ being free generators) as $R$-modules, thus Noetherian (Proposition~\reff{prop:ringNoetherianModule}) which implies that $I_{\leq n} = I \cap R[T]_{\leq n}$ is a finitely generated $R$-module. Let $I_n$ be the set of all $a_n\in R$, such that $a_0+a_1T+\ldots+a_nT^n\in I$ for some $a_0,\ldots,a_{n-1}\in R$. This is an ideal ($R$-submodule) of $R$, being the image of $I_{\leq n} \to R$ sending $a_0+a_1T+\ldots+a_nT^n\in I_{\leq n}$ to $a_n$. We have $I_n\subseteq I_{n+1}$ as $T\cdot I_{\leq n}\subseteq I_{\leq n+1}$. As $R$ is Noetherian, this chain terminates at some $N\in\IN$ with $I_n = I_N$ for $n\geq N$. Let $f_1,\ldots, f_k$ be generators of $I_{\leq N}$ as an $R$-module. We claim that they generate $I$ as an $R[T]$-module. Since they generate $I_{\leq N}$ as an $R$-module, their $N$-th coefficients $f_N^{(i)}$, where $i\leq k$, generate $I_n = I_N$, for $n\geq N$, as an $R$-module.
 		
@@ -812,7 +814,7 @@
 		Let $n=2$. We will see at the end of this chapter that the Zariski-closed subsets of $k^2$, besides $k^2$, are the subsets of the form $C\cup F$ where $C=\left\{x\in k^2\st P(x) = 0\right\}$ (for some $P\in k[X_1,X_2]\setminus\{0\}$, $C$ is a \emph{curve}) and $F\subseteq k^2$ is finite.
 	\end{example}
 	\begin{rem}\lbl{rem:ZariskiBijectiveToRadicals}
-		By the results of subsection \ref{sec:operationsOnIdeals}, there is a bijection% between the Zariski-closed subset of $k^n$ and the ideals in $R=k[X_1,\ldots, X_n]$ with $I\sqrt{I}$.
+		By the results of Section \ref{sec:operationsOnIdeals}, there is a bijection% between the Zariski-closed subset of $k^n$ and the ideals in $R=k[X_1,\ldots, X_n]$ with $I\sqrt{I}$.
 		\begin{align*}
 		\left\{\text{Zariski-closed subsets of }k^n\right\}&\isomorphism\left\{\text{ideals }I\subseteq R=k[X_1,\ldots,X_n]\text{ such that }I=\sqrt I\right\}\\
 		M=V(I) &\longmapsfrom I\\
@@ -995,7 +997,7 @@
 		If Theorem \ref{thm:k^nIsCatenary} is assumed, $\dim(k^2) = 2$ and the irreducible subsets are of codimension 2 (points), of codimension 1 ($V(f)$ for irreducible $f$), and 0 ($k^2$).
 	\end{rem*}
 	
-	\subsection{Quasi-affine algebraic varieties}
+	\subsection{Quasi-affine algebraic varieties}\lbl{sec:quasiAffineVarieties}
 	Let the algebraically closed field $k$ be fixed.
 	\begin{defi}\lbl{def:affineVariety}
 		An \emph{affine algebraic variety} is (for our purposes) an irreducible (Zariski-closed) subset $Z\subseteq k^n$, for some $n$. A \emph{quasi-affine algebraic variety} is a non-empty Zariski-open subset of an affine algebraic variety.
@@ -1156,7 +1158,7 @@
 	 By this correspondence, the irreducible subsets correspond to the prime ideals and the points correspond to the maximal ideals.
 	\end{cor}
 	\begin{proof}
-	 It is known from subsection \ref{sec:ZariskiOnk^n} that we have a correspondence between the closed subsets of $k^n$ and the ideals $J\subseteq R=  k[X_1,\ldots,X_n]$ such that $J=\sqrt{J}$
+	 It is known from Section \ref{sec:ZariskiOnk^n} that we have a correspondence between the closed subsets of $k^n$ and the ideals $J\subseteq R=  k[X_1,\ldots,X_n]$ such that $J=\sqrt{J}$
 	 \begin{align*}\lbl{eq:correspondenceClosedIdeals}
 	 \begin{split}
 	 \left\{\text{Zariski-closed subsets of }k^n\right\}&\isomorphism\left\{\text{ideals }J\subseteq R=k[X_1,\ldots,X_n]\text{ such that }J=\sqrt J\right\}\\
@@ -1780,10 +1782,10 @@
 			such that the following diagram commutes
 			\begin{diagram}
 				\node (img) at (0,0) {$R_S/(I\cdot R_S)$};
-				\node (RIS) at (3.5,1.2) {$(N/M)_S$};
-				\node (RS) at (0,1.2) {$N_S$};
-				\node (RI) at (3.5,2.4) {$N/M$};
-				\node (R) at (0,2.4) {$N$};
+				\node (RIS) at (3.5,1.2) {$(R/I)_{\snake S}$};
+				\node (RS) at (0,1.2) {$R_S$};
+				\node (RI) at (3.5,2.4) {$R/I$};
+				\node (R) at (0,2.4) {$R$};
 				\scriptsize
 				\draw[->] (R) -- (RS);
 				\draw[->] (RS) -- (img);
@@ -2066,7 +2068,7 @@
 		\end{alphanumerate}
 
 	\end{proof}
-	Professor Franke does not [know] to what extent the following is due to the n00b Krull or to Cohen/Seidenberg.
+	Professor Franke does not [know] to what extent the following is due to the \emph{n00b} Krull or to Cohen/Seidenberg.
 	\begin{thm}\lbl{thm:goingupInIntegralRingExtensions}
 		Let $A\subseteq B$ be an integral ring extension.
 		\begin{alphanumerate}
@@ -2204,7 +2206,7 @@
 		Let $L/K$ be a normal field extension containing the field of quotients $M$ of $B$ (e.g. $L$ can be taken to be an algebraic closure of $M$, or the union of the splitting fields of the $K$-irreducible polynomials with a zero in $M$). Let $\snake B$ be the integral closure of $A$ in $L$. Let $\pp\subseteq \qq$ be prime ideals of $A$ and $\snake \qq\in\Spec B$ such that $\snake \qq\cap A = \qq$. It is possible to apply Theorem~\reff{thm:goingupInIntegralRingExtensions} to $\snake B/A$ and $\snake B/B$ and Theorem~\reff{thm:actsTransitively} to $\snake B/A$. By Theorem~\reff{thm:goingupInIntegralRingExtensions} there is $\qq_2\in\Spec \snake B$ such that $\qq_2\cap B = \snake \qq$. By Theorem~\reff{thm:goingupInIntegralRingExtensions} for $\snake B/A$ there is $\pp_1\in\Spec \snake B$ such that $\pp_1\cap A = \pp$ and (going-up for $\snake B/A$ there is $\qq_1\in \Spec \snake B$ such that $\qq_1\supseteq \pp_1$ and $\qq_1\cap A =\pp$. By Theorem~\reff{thm:actsTransitively} there is $\sigma\in\Aut(L/K)$ such that $\sigma(\qq_1) = \qq_2$. Let $\snake\pp = (\sigma(\pp_1))\cap B$, then $\snake\pp\cap A = \sigma(\pp_1)\cap A = \pp_1\cap A = \pp$ and $\snake\pp\subseteq \sigma(\qq_1)\cap B = \qq_2\cap B = \snake \qq$.
 	\end{proof}
 
-\subsection[Proof of Theorems \getrefnumber{thm:k^nIsCatenary} and \getrefnumber{thm:quotienFieldOfRegularFunctions}]{Proof of Theorems~\reff{thm:k^nIsCatenary} and~\reff{thm:quotienFieldOfRegularFunctions}}% \texorpdfstring{\reff{thm:k^nIsCatenary}}{5}}% and~\reff{thm:quotienFieldOfRegularFunctions}}
+\subsection[Proof of Theorems \getrefnumber{thm:k^nIsCatenary} and \getrefnumber{thm:quotienFieldOfRegularFunctions}]{Proof of Theorems~\reff{thm:k^nIsCatenary} and~\reff{thm:quotienFieldOfRegularFunctions}}\lbl{sec:proofOfDimThms}% \texorpdfstring{\reff{thm:k^nIsCatenary}}{5}}% and~\reff{thm:quotienFieldOfRegularFunctions}}
 %HEEELLLP
 %np br0
 	\begin{defi}\lbl{def:height}
@@ -2310,6 +2312,7 @@
 \setcounter{defi}{0}
 \setcounter{rem}{0}
 \setcounter{fact}{0}
+\setcounter{subsection}{0}
 \section*{Concluding remarks}
 \addcontentsline{toc}{section}{Concluding remarks}
 	\begin{thm}[Principal ideal theorem, Krull 1928]\lbl{thm:principalIdealTheorem}
@@ -2348,50 +2351,25 @@
 		\item 
 			Apply (a) to $M/N$.
 		\item 
-			Apply (b) to $N = \langle m_1,\ldots, m_n\rangle_R$ the submodule generated by the $m_i$.
+			Apply (b) to $N = \langle m_1,\ldots, m_n\rangle_R$, the submodule generated by the $m_i$.
 		\end{alphanumerate}
-
 	\end{proof}
-	\begin{cor}\lbl{cor:irreducibleCapK^d}
-		If $Z\subseteq k^n$ is an irreducible subset then all irreducible components of $k^d\cap Z$ have dimension greater or equal to $\dim(Z) - (n-d)$ and $\codim(k^d\cap Z,k^d)\leq\codim(Z,k^n)$.
-	\end{cor}
-	\begin{cor}\lbl{cor:irreducibleCapIrreducible}
-		If $X,Y\subseteq k^n$ are irreducible subsets then all irreducible components of $X\cap Y$ have codimension smaller or equal to $\codim(X,k^n)+\codim(Y,k^n)$.
-	\end{cor}
-	\begin{rem}
-		\begin{alphanumerate}
-		\item 
-			Of course, the intersections may be empty no matter what the lower bound for the dimensions of their irreducible components is.
-		\item 
-			Corollary~\reff{cor:irreducibleCapIrreducible} is derived from Corollary~\reff{cor:irreducibleCapK^d} considering $X\times Y \cap \Delta$ where 
-			\begin{align*}
-				\Delta = \left\{(x_1,\ldots,x_n,y_1,\ldots, y_n)\st x_i = y_i\right\}\subseteq k^{2n}\;.
-			\end{align*}
-			
-		\end{alphanumerate}
-
-	\end{rem}
-	\begin{rem}[Proofs asked in the exam (this list may not be complete)]
-		\begin{itemize}
-		 \item Theorem 1
-		 \item Proposition 2.2.2
-		 \item $I\subseteq k[X_1,\ldots, X_n]$, $k=\ov k $: $f|_{V(I)} = 0 \Leftrightarrow f\in \sqrt{I}$
-		 \item The proofs to the other Theorems can also be useful to know.
-		\end{itemize}
-	\end{rem}
-	\begin{prop}
-		If $X\subseteq k^m$ and $Y\subseteq k^n$ are affine algebraic varieties then $\dim(X\times Y) = \dim X +\dim Y$.
+	\begin{prop}\lbl{prop:dimXxY}
+		If $X\subseteq k^m$ and $Y\subseteq k^n$ are affine algebraic varieties, then 
+		\begin{align*}
+			\dim(X\times Y) = \dim X +\dim Y\;.
+		\end{align*}
 	\end{prop}
 	\begin{proof}
-		It was shown in 2.2. that $X\times Y$ remains irreducible. Let $X_0\subsetneq X_1\subsetneq \ldots\subsetneq X_d = X$ and $Y_0 \subsetneq Y_1\subsetneq \ldots \subsetneq Y_e = Y$ are chains of irreducible subsets Then 
+		It was shown in Section~\reff{sec:quasiAffineVarieties}. that $X\times Y\subseteq k^{m+n}$ remains irreducible (cf. the proof of Proposition~\reff{prop:productAffineVarieties}). Let $X_0\subsetneq X_1\subsetneq \ldots\subsetneq X_d = X$ and $Y_0 \subsetneq Y_1\subsetneq \ldots \subsetneq Y_e = Y$ be chains of irreducible subsets Then 
 		\begin{align*}
 			X_0\times Y_0\subsetneq X_1\times Y_0\subsetneq \ldots\subsetneq X_d\times Y_0\subsetneq X_d\times Y_1 \subsetneq \ldots\subsetneq X_d\times Y_d = X\times Y
 		\end{align*}
-		is a chain of irreducible subsets of $X\times Y$ of length $d+e$. Thus, $\dim(X\times Y) \geq \dim X+\dim Y$. If $X= X_0\subsetneq X_1\subsetneq\ldots \subsetneq X_c = k^m$ and $Y = Y_0\subsetneq Y_1\subsetneq \ldots\subsetneq Y_b=k^n$ are chains of irreducible subsets, then 
+		is a chain of irreducible subsets of $X\times Y$ of length $d+e$. Thus, $\dim(X\times Y) \geq \dim X+\dim Y$. If $X= X_0\subsetneq X_1\subsetneq\ldots \subsetneq X_{d'} = k^m$ and $Y = Y_0\subsetneq Y_1\subsetneq \ldots\subsetneq Y_{e'}=k^n$ are chains of irreducible subsets, then 
 		\begin{align*}
-			X\times Y = X_0\times Y_0\subsetneq X_1\times Y_0\subsetneq \ldots\subsetneq X_c\times Y_0\subsetneq X_c\times Y_1 \subsetneq \ldots\subsetneq X_c\times Y_b = k^m \times k^n
+			X\times Y = X_0\times Y_0\subsetneq X_1\times Y_0\subsetneq \ldots\subsetneq X_{d'}\times Y_0\subsetneq X_{d'}\times Y_1 \subsetneq \ldots\subsetneq X_{d'}\times Y_{e'} = k^m \times k^n
 		\end{align*}
-		is a chain of length $b+c$. Thus, $\codim(X\times Y, k^{m+n}) \geq \codim(X, k^m) +\codim(Y, k^n)$. Because of Theorem \reff{thm:k^nIsCatenary} 
+		is a chain of length $d'+e'$. Thus, $\codim(X\times Y, k^{m+n}) \geq \codim(X, k^m) +\codim(Y, k^n)$. Because of Theorem \reff{thm:k^nIsCatenary},
 		\begin{align*}
 			\dim X + \codim(X,k^m) &= m \\
 			\dim Y +\codim (Y, k^n) &= n\\
@@ -2403,58 +2381,100 @@
 		If $X\subseteq k^m$ is an affine algebraic variety and $f\in \Oo(X)\setminus\{0\}$ every irreducible component of $V(f)$ has codimension $1$ in $X$. 
 	\end{cor}
 	\begin{proof}
-		There is a $1-1$ correspondence between the irreducible $Z\subseteq \Oo(X)$ and the prime ideals $\pp\subseteq \Oo(X)$ with $Z\subseteq V(f)$ iff $f\in\pp$.
+		There is a one-to-one correspondence between the irreducible $Z\subseteq \Oo(X)$ and the prime ideals $\pp\subseteq \Oo(X)$ with $Z\subseteq V(f)$ iff $f\in\pp$. Under this bijection, minimal prime ideals containing $f$ correspond to maximal irreducible subsets of $Z=V(\pp)\subseteq V(f)$, i.e. the irreducible components of $V(f)$ (cf. Proposition~\reff{prop:irreducibleComponents}).
 	\end{proof}
+	\begin{cor}\lbl{cor:irreducibleCapIrreducible}
+		If $X,Y\subseteq k^n$ are irreducible subsets then
+		\begin{align*}
+			\codim(C,k^n)\leq\codim(X,k^n)+\codim(Y,k^n)
+		\end{align*}
+		 for all irreducible components of $C\subseteq X\cap Y$.
+	\end{cor}
+	\begin{rem}
+		Of course, the intersection may be empty no matter what the lower bound for the dimensions of their irreducible components is.
+	\end{rem}
 	\begin{proof}[Proof of Corollary \reff{cor:irreducibleCapIrreducible}]
-		\begin{description}
-		 \item[Step 1]
-			We consider the case where $Y$ is a $k$-linear subspace of codimension $1$. Then $Y$ has the form $Y = V(l)$ where $l\neq 0$ is a linear functorial, and by Corollary \reff{cor:codimensionOfVanishingSetRegularFunction} has codimension smaller or equal to 1.
-		\item[Step 2]
-			We consider the case where $Y$ is a $k$-linear subspace of codimenion $d$. Induction on $d$, using step 1.
-		\item[Step 3]
-			We apply step 2 to $I = (X\times Y)\cap \Delta\subseteq k^{2n}$ where $\Delta =\left\{(x,y)\in (k^n)^2| x= y\right\} \subseteq k^{2n}$. We have $I\simeq X\cap Y$ by $I\ni(x,y) \mapsto x$ and $(X\cap Y)\ni x\mapsto (x,x)$ and it is sufficient to show $\dim(C) \leq \dim(X)\cdot\dim (Y) - n$ or $\codim(C,k^{2m}) \leq \codim(X,k^m)+\codim(Y,k^m) +m$ for any irreducible component $C$ of $I$. This follows step 2.
-		\end{description}
+		\emph{Step 1.}	We consider the case where $Y$ is a $k$-linear subspace of codimension $1$. Then $Y$ has the form $Y = V(l)$ where $l\neq 0$ is a linear functional (that is, a linear polynomial in $X_1,\ldots,X_n$ for our purposes), and by Corollary~\reff{cor:codimensionOfVanishingSetRegularFunction} has codimension smaller or equal to 1.
+		
+		\emph{Step 2.}	We consider the case where $Y$ is a $k$-linear subspace of codimenion $d$. This is an easy induction on $d$, using step 1.
+		
+		\emph{Step 3.}	We apply step 2 to $I = (X\times Y)\cap \Delta\subseteq k^{2n}$ where 
+		\begin{align*}
+			\Delta =\left\{(x_1,\ldots,x_n,y_1,\ldots,y_n)\in k^{2n}\st x_i= y_i\ \forall i\right\} \subseteq k^{2n}\;.
+		\end{align*}
+		We have $I\simeq X\cap Y$ since the maps $I\ni(x,y) \mapsto x$ and $X\cap Y\ni x\mapsto (x,x)$ are clearly morphisms of algebraic varieties and inverse to each other. Hence it is sufficient to show $\dim(C) \leq \dim(X)+\dim (Y) - n$, or equivalently, $\codim(C,k^{2n}) \leq \codim(X,k^n)+\codim(Y,k^n) +n$ for any irreducible component $C\subseteq I$. From Step 2 and Proposition~\reff{prop:dimXxY},
+		\begin{align*}
+			\codim(C,I)\leq\codim(X\times Y,k^{2n})+\codim(\Delta,k^{2n})=\codim(X,k^n)+\codim(Y,k^n)+n\;,
+		\end{align*}
+		proving the assertion.
 	\end{proof}
 	\begin{rem}
 		If $A$ is an algebraic variety with non-regular local rings $\Oo_{A,a}$, it may be $\codim(C,A) < \codim(X,A)+\codim(Y,A)$ if $C$ is an irreducible component of $X\cap Y$ contained in the set of singular points of $A$.
 	\end{rem}
-\section{Projective Spaces}
-If $V$ is a $k$-vector space, its projective space $\IP(V)$ is the set for $1$-dimensional $k$-linear subspaces of equivalently, of equivalence classes of elements of $V\setminus\{0\}$ where $v\sim w$ iff $v=\lambda w$ with $\lambda\in k$. If $V = k^{m+1}$ we denote $\IP(V)$ by $\IP^m(k)$ and $(x_0,\ldots, x_m)/_\sim$ is denoted by $[x_0:\ldots:x_m]$. The $(m+1)$-tuple $[x_0:\ldots:x_m]$  is called a tuple of homogeneous coordinates of $(x_0,\ldots,x_m)$. 
-
-The subset $\left\{[x_0:\ldots x_m]\st x_0\neq 0 \right\}$ of $\IP^m(k)$ is isomorphic to $k^m$ by division by $x_0$ and $V(x_0) = \left\{[x_0:\ldots:x_m]\st x_0=0\right\}$, the infinite hyperplane, is isomorphic to $\IP^{m-1}(k)$.
-
-Let $R_\ell = k[X_0,\ldots, X_m]_\ell$ be the subspace $\left\{\sum_{|\alpha| = \ell} p_\alpha X^\alpha\right\}$ of degree $\ell$ polynomials. Then this is a \emph{graded ring} $R_a\cdot R_b \subseteq R_{a+b}$. An ideal $I$ is called homogeneous iff $I = \sum_{a=0}^\infty (I\cap R_a)$. If $I$ is homogeneous, the condition $(x_0,\ldots,x_m)\in V(I)$ does only depend on $[(x_1,\ldots,x_m)]$. The set of such points is called $V_{proj}(I)$. Using these sets as closed subsets one gives $\IP^m(k)$ a Zariski-topology.
-
-If $X\subseteq \IP^m(k)$ is irreducible, $\Oo(U) = \left\{f: U\to k\st \text{ for every } x\in U \text{, there are } P, Q\in R_d \text{ such that } Q([x_0:\ldots:x_d]) \neq \text{ and } f([y_0:\ldots:y_m]) = \frac{P(y_0,\ldots,y_m)}{Q(y_0,\ldots, y_m)} \text{ for all } y\text{ in some neighbourhood of } x\right\}$. The analogous of Theorems \reff{thm:k^nIsCatenary} and \reff{thm:} holds. The problem with Corollary \reff{cor:irreducibleCapIrreducible} disappears in the following sense. If $X,Y\subseteq \IP^m(k)$ with algebraically closed $k$ and $\codim(X,\IP^m)+\codim(Y,\IP^m) \leq m$, then $X\cap Y$ is non-empty and every irreducible component has codimenion at most $\codim(X,\IP^m(k)) +\codim(Y,\IP^m)$. This is established by applying Corollary \reff{cor:irreducibleCapIrreducible} to the \emph{cones} $C(X)$ and $C(Y)$ with $C(X) = \left\{x=(x_0,\ldots,x_m) \st x= 0 or [x_0,\ldots,x_m]\in X\right\}$ 
-\begin{thm}[Bezout]
-	If $C,D\subseteq \IP^2(k)$ are curves of degrees $a$ and $B$, then $C\cap D$ is infinite or has $a\cdot b$.
-\end{thm}
-We will prove this considering the Hilbert Polynomial $P_H(\ell) = \dim_k (R_\ell/I_\ell)$ where $I$ is the ideal defining $X$, $\ell$ large. The degree of this Hilbert Polynomial equals $\dim X$.
-
-The modern proof of the principal ideal theorem uses Hilbert Polynomial arguments.
-
-Let $R$ be a Noetherian local ring with maximal ideal $\mm$, $M$ a finitely generated $R$-module, then
-\begin{align*}
-	\dim(M ) &\coloneqq  \dim \operatorname{supp} M = \dim \left\{\pp\in \Spec R\st M_\pp\neq 0\right\}\\
-	d(M) &\coloneqq \deg P(\ell)  = \deg \dim_{k(\mm)} (\mm^\ell M /\mm^{\ell+1}M)\\
-	\delta(M) &\coloneqq \min\left\{\ell\st \text{there are } (f_1,\ldots,f_m), f_i\in \mm, \text{ such that } l(M/(\sum f_iM)<\infty\right\}
-\end{align*}
-where the length $l(X)$ of a module is the largest length of a strictly increasing chain of submodules. $\dim \leq d\leq  \delta\leq \dim$ (this implies the principal ideal theorem)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	\begin{rem}\lbl{rem:examHints}
+		The following proofs might be asked in the exam (\emph{Warning!} This list may not be complete!).
+		\begin{itemize}
+			\item The Theorems~\reff{thm:Basissatz} (proof in Section~\reff{sec:HilbertBasisProof}),  \reff{thm:NoetherNormalization},  \reff{thm:fieldExtensionOfFiniteTypeIsFinite}/\reff{thm:NullstellensatzApplication1},  \reff{thm:k^nIsCatenary} and \reff{thm:quotienFieldOfRegularFunctions} (proof in Section \reff{sec:proofOfDimThms}),  \reff{thm:goingupInIntegralRingExtensions},  \reff{thm:actsTransitively},  \reff{thm:goingdownRingExtension}.
+			\item Proposition~\reff{prop:primeIdealIso}.
+			\item If $k$ is algebraically closed, $I\subseteq k[X_1,\ldots, X_n]$ an arbitrary ideal, then $f|_{V(I)} = 0 \Leftrightarrow f\in \sqrt{I}$ (this is Proposition~\reff{prop:varietyOfRadical}).
+		\end{itemize}
+		Moreover, you should be
+		\begin{itemize}
+			\item able to apply properties of irreducible or Noetherian topological spaces, local rings etc.
+			\item familiar with the Zariski topology, varietes, and variety morphisms.
+		\end{itemize}
+		``Usually" (whatever that means) in the exam only the affine case will be required. Professor Franke also said that no results from the exercise sheets will be needed, except for (the existence and properties of) the transcendence degree and the Zariski topology on $\Spec R$ (which was also introduced in the lecture). We think this essentially says that matroids, Gröbner bases, preschemes and locally ringed spaces (but not local rings though (!)) won't appear in the exam.
+	\end{rem}
+	\subsection*{Projective Spaces}
+	\addcontentsline{toc}{subsection}{Projective spaces}
+	If $V$ is a $k$-vector space, its \emph{projective space} $\IP(V)$ is the set of $1$-dimensional $k$-linear subspaces of equivalently, of equivalence classes of elements of $V\setminus\{0\}$ where $v\sim w$ iff $v=\lambda w$ with $\lambda\in k$. If $V = k^{m+1}$ we denote $\IP(V)$ by $\IP^m(k)$ and $(x_0,\ldots, x_m)/_\sim$ is denoted by $[x_0:\ldots:x_m]$. The $(m+1)$-tuple $[x_0:\ldots:x_m]$  is called a tuple of \emph{homogeneous coordinates} of $(x_0,\ldots,x_m)$. 
+	
+	The subset $\left\{[x_0:\ldots x_m]\st x_0\neq 0 \right\}$ of $\IP^m(k)$ is isomorphic to $k^m$ via $[x_0:\ldots:x_n]\mapsto\left(\frac{x_1}{x_0},\ldots,\frac{x_n}{x_0}\right)$ by division by $x_0$ and $V(x_0) = \left\{[x_0:\ldots:x_m]\st x_0=0\right\}$, the \emph{infinite hyperplane}, is isomorphic to $\IP^{m-1}(k)$.
+	
+	Let $R_\ell = k[X_0,\ldots, X_m]_\ell$ be the subspace $\left\{\sum_{|\alpha| = \ell} p_\alpha X^\alpha\right\}$ of degree $\ell$ polynomials (where $X^\alpha=X_0^{\alpha_0}\cdots X_n^{\alpha_n}$ and $|\alpha|=\alpha_0+\ldots+\alpha_n$). Then $R$ becomes a \emph{graded ring}, that is, $R_a\cdot R_b \subseteq R_{a+b}$. An ideal $I$ is called homogeneous iff $I = \sum_{a=0}^\infty (I\cap R_a)$. If $I$ is homogeneous, the condition $(x_0,\ldots,x_m)\in V(I)$ does only depend on $[x_0:\ldots:x_m]$. The set of such points is called $V_{\operatorname{proj}}(I)$. Using these sets as closed subsets one gives $\IP^m(k)$ a Zariski-topology.
+	
+	If $X\subseteq \IP^m(k)$ is irreducible,
+	\begin{align*}
+		\Oo(U) = \left\{f: U\to k\st 
+		\begin{array}{c}
+			\text{for every } x\in U \text{ there are } P, Q\in R_d \text{ (for some }d\in\IN)\\
+			\text{such that } Q([x_0:\ldots:x_d]) \not=0\text{ and }f(y)=P(y)/Q(y)  \\
+			 \text{for all }y\text{ in some neighbourhood of } x
+		\end{array}\right\}\;.
+	\end{align*}
+	The analogues of Theorems~\reff{thm:k^nIsCatenary} and \reff{thm:quotienFieldOfRegularFunctions} holds. The problem with Corollary~\reff{cor:irreducibleCapIrreducible} disappears in the following sense. If $X,Y\subseteq \IP^m(k)$ with algebraically closed $k$ and $\codim(X,\IP^m)+\codim(Y,\IP^m) \leq m$, then $X\cap Y$ is non-empty and every irreducible component has codimenion at most $\codim(X,\IP^m(k)) +\codim(Y,\IP^m)$. This is established by applying Corollary \reff{cor:irreducibleCapIrreducible} to the \emph{cones} $C(X)$ and $C(Y)$, where $C(X) = \left\{x=(x_0,\ldots,x_m) \st x= 0\text{ or }[x_0:\ldots:x_m]\in X\right\}$.
+	\begin{thm}[Bezout]
+		If $C,D\subseteq \IP^2(k)$ are curves of degrees $a$ and $B$, then $C\cap D$ is infinite or has $a\cdot b$.
+	\end{thm}
+	We will prove this (in Algebra II) considering the Hilbert Polynomial $P_H(\ell) = \dim_k (R_\ell/I_\ell)$ where $I$ is the ideal defining $X$, and $\ell$ is large enough. The degree of $P_H$ equals $\dim X$.
+	
+	\begin{proof}[Sketch of a proof of Theorem~\reff{thm:principalIdealTheorem}]
+		The modern proof of the principal ideal theorem uses Hilbert Polynomial arguments.
+		
+		Let $R$ be a Noetherian local ring with maximal ideal $\mm$, $M$ a finitely generated $R$-module, then
+		\begin{align*}
+		\dim(M ) &\coloneqq  \dim \operatorname{supp} M = \dim \left\{\pp\in \Spec R\st M_\pp\neq 0\right\}\\
+		d(M) &\coloneqq \deg P\;,\quad\text{where }  P(\ell)=  \dim_{\KK(\mm)} \left(\mm^\ell M /\mm^{\ell+1}M\right)\\
+		\delta(M) &\coloneqq \min\big\{\ell\ \big|\ \text{there are } f_1,\ldots,f_\ell\in \mm, \text{ such that } l\left(M/\left\langle f_1,\ldots,f_\ell\right\rangle_R\right)<\infty\big\}
+		\end{align*}
+		where the \emph{length} $l(N)$ of an $R$-module $N$ is the largest length of a strictly increasing chain of submodules. It can be shown that $\dim(M) \leq d(M)\leq  \delta(M)\leq \dim(M)$, which implies the principal ideal theorem.
+	\end{proof}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 %\ov ist Shortcut für \overline
 %\snake für Tilden
