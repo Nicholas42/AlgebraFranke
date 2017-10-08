@@ -1,0 +1,87 @@
+\newenvironment{diagram}{\begin{center}\begin{tikzpicture}}{\end{tikzpicture}\end{center}}  
+
+\newcommand{\Aa}{\mathcal{A}}
+\newcommand{\Bb}{\mathcal{B}}
+\newcommand{\Cc}{\mathcal{C}}
+\newcommand{\Ll}{\mathcal{L}}
+\newcommand{\Oo}{\mathcal{O}}
+\newcommand{\Gg}{\mathcal{G}}
+
+\newcommand{\IN}{\mathbb{N}}
+\newcommand{\IZ}{\mathbb{Z}}
+\newcommand{\IP}{\mathbb{P}}
+\newcommand{\IQ}{\mathbb{Q}}
+\newcommand{\IR}{\mathbb{R}}
+\newcommand{\IC}{\mathbb{C}}
+
+\renewcommand{\AA}{\mathfrak A}
+\newcommand{\BB}{\mathfrak B}
+\newcommand{\CC}{\mathfrak C}
+\newcommand{\KK}{\mathfrak K}
+\newcommand{\MM}{\mathfrak{M}}
+\newcommand{\XX}{\mathfrak{X}}
+
+\renewcommand{\aa}{\mathfrak{a}}
+\newcommand{\bb}{\mathfrak{b}}
+\newcommand{\kk}{\mathfrak{k}}
+\newcommand{\mm}{\mathfrak{m}}
+\newcommand{\nn}{\mathfrak{n}}
+\newcommand{\pp}{\mathfrak{p}}
+\newcommand{\qq}{\mathfrak{q}}
+\newcommand{\rr}{\mathfrak{r}}
+
+\renewcommand{\AA}{\mathfrak A}
+
+\newcommand{\newoperator}[1]{\expandafter\def\csname #1\endcsname{\operatorname{#1}}}
+
+\renewcommand{\Im}{\operatorname{Im}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\Ann}{\operatorname{Ann}}
+\newcommand{\End}{\operatorname{End}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\Gal}{\operatorname{Gal}}
+\newcommand{\codim}{\operatorname{codim}}
+\newcommand{\Spec}{\operatorname{Spec}}
+\newoperator{sep}
+\newcommand{\tr}{\operatorname{tr}}
+%\newoperator{ht}
+%\newoperator{char}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\cha}{\operatorname{char}}
+\newcommand{\hoehe}{\operatorname{ht}}
+\newoperator{Ob}
+\newoperator{lcm}
+\newcommand{\op}{^{\operatorname{op}}}
+\newcommand{\mSpec}{\mm\operatorname{-Spec}}
+%\newcommand{\multiline}[1]{#1}
+\newcommand{\longto}{\longrightarrow}
+\newcommand{\longot}{\longleftarrow}
+\newcommand{\ov}{\overline}
+\newcommand{\snake}[1]{\widetilde{#1}\vphantom{\overrightarrow{#1}}}%space adjusting hack
+\newcommand{\isomorphism}{
+	\tikz[baseline=(a.base)] \node (a) at (0,0) {$\longrightarrow$} node[above=-0.25ex] {\tiny $\sim$};}
+\newcommand{\lisomorphism}{
+	\tikz[baseline=(a.base)] \node (a) at (0,0) {$\longleftarrow$} node[above=-0.25ex] {\tiny $\sim$};}
+\newcommand{\morphism}[1][]{\overset{#1}{\longto}}
+\newcommand{\lmorphism}[1][]{\overset{#1}{\longot}}
+\newcommand{\lrmorphism}[1][]{\overset{#1}{\leftrightarrow}}
+
+\newcommand{\ldotspam}{,\ldots,}
+\newcommand{\ordinalst}{^{\text{st}}}
+\newcommand{\ordinalrd}{^{\text{rd}}}
+\newcommand{\ordinalth}{^{\text{th}}}
+\newcommand{\st}{\ \middle|\ }
+%\newcommand{\dashed}{dash pattern = on 2pt off 2pt}
+
+\renewcommand{\phi}{\varphi}
+\renewcommand{\epsilon}{\varepsilon}
+
+%nice sqrt
+\LetLtxMacro{\oldsqrt}{\sqrt} 
+\renewcommand{\sqrt}[1][\ ]{%
+	\def\DHLindex{#1}\mathpalette\DHLhksqrt}
+\def\DHLhksqrt#1#2{%
+	\setbox0=\hbox{$#1\oldsqrt[\DHLindex]{#2\,}$}\dimen0=\ht0
+	\advance\dimen0-0.2\ht0
+	\setbox2=\hbox{\vrule height\ht0 depth -\dimen0}%
+	{\box0\lower0.71pt\box2}}

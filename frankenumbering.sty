@@ -1,0 +1,100 @@
+\usepackage{chngcntr}
+\counterwithout{equation}{chapter}
+\usepackage{amsthm}
+\usepackage{xstring}
+\usepackage[shortlabels]{enumitem}
+\setlist[description]{font={\bfseries\rmfamily}}
+\usepackage[colorlinks=true,linkcolor=blue]{hyperref}
+
+\newenvironment{alphanumerate}{\begin{enumerate}[label={$(\alph*)$},ref=\curthm]}{\end{enumerate}}       
+%\newenvironment{rmnumerate}{\begin{enumerate}[label={\upshape(\roman*)},ref=\curthm]}{\end{enumerate}}   
+\renewenvironment{itemize}{\begin{enumerate}[label={$\bullet$},ref=\curthm]}{\end{enumerate}}
+\def\newnewtheorem#1#2[#3]{\newtheorem{#1}{#2}[#3]\expandafter\def\csname thmcaption#1\endcsname{#2}}%erstellt zusätzlich ein Makro, das den Umgebungsnamen enthält                               
+
+\newtheoremstyle{cthm}
+{12pt}
+{0pt}
+{\itshape}
+{}
+{\bfseries}
+{.}
+{ }
+{\thmname{#1}\thmnumber{ \IfBeginWith{#2}{\thesection.}{\StrBehind{#2}{\thesection.}}{#2}}\thmnote{ \textmd{(#3)}}\xdef\curthm{#2}}
+
+\newtheoremstyle{cvarthm}
+{12pt}
+{0pt}
+{\itshape}
+{}
+{\bfseries}
+{.}
+{ }
+{\edef\curthmnumber{\csname the\thmenv\endcsname}\thmname{\csname thmcaption\thmenv\endcsname}\thmnumber{ \IfBeginWith{\curthmnumber}{\thesection.}{\StrBehind{\curthmnumber a}{\thesection.}}{\curthmnumber a}}\thmnote{ \textmd{(#3)}}\xdef\curthm{\curthmnumber a}}%für Varianten von Theoremen
+
+\newtheoremstyle{cdef}
+{12pt}
+{0pt}
+{}
+{}
+{\bfseries}
+{.}
+{ }
+{\thmname{#1}\thmnumber{ \IfBeginWith{#2}{\thesection.}{\StrBehind{#2}{\thesection.}}{#2}}\thmnote{ \textmd{(#3)}}\xdef\curthm{#2}}
+
+\theoremstyle{cthm}
+\newnewtheorem{thm}{Theorem}[]
+\newnewtheorem{lem}{Lemma}[section]
+\newnewtheorem{sat}{Satz}[section]
+\newnewtheorem{exc}{Exercise}[section]
+\newnewtheorem{cor}{Corollary}[section]
+\newnewtheorem{prop}{Proposition}[section]
+
+\theoremstyle{cdef}
+\newtheorem{defi}{Definition}[section]
+\newtheorem*{defi*}{Definition}
+\newtheorem{example}{Example}[section]
+\newtheorem{example*}{Example}
+\newtheorem{rem}{Remark}[section]
+\newtheorem*{rem*}{Remark}
+\newtheorem{fact}{Fact}[section]
+\newtheorem*{fact*}{Fact}
+
+\theoremstyle{cvarthm}
+\newtheorem{varthmcontainer}{May differ}
+\renewcommand{\thevarthmcontainer}{\csname the\thmenv\endcsname a}
+
+\newenvironment{varthm}[1]{\gdef\thmenv{#1}\begin{varthmcontainer}}{\end{varthmcontainer}}
+
+\renewenvironment{proof}[1][\proofname]
+{\pushQED{\qed}\topsep0pt \partopsep0pt\trivlist\item[\hskip\labelsep\itshape #1.] }{\popQED\endtrivlist\addvspace{6pt plus 6pt}}
+
+
+\renewcommand{\qedsymbol}{\textit{q.e.d.}}
+
+
+
+\newcommand{\lbl}[1]{
+	\label{#1}
+	\ifmmode
+	\expandafter\xdef\csname eqsubsec#1\endcsname{\thesection}
+	\fi
+}
+
+%\newcommand{\reff}[1]{%
+%	\edef\temp{\getrefnumber{#1}}%
+%	\StrBehind{\temp}{\thesubsection.}[\tempcropped]%
+%	\IfBeginWith{\temp}{\thesubsection}{\hyperref[#1]{\tempcropped}}{\hyperref[#1]{\temp}}%
+%}
+
+\newcommand{\reff}[1]{%
+	\edef\pretemp{\getrefnumber{#1}}%this is an
+	\StrLeft{\pretemp}{1}[\dummy]%incredibly nasty
+	\IfInteger{\dummy}{\def\temp{\pretemp}}{\def\temp{\detokenize\pretemp}}%kinda
+	\StrBehind{\temp}{\thesection.}[\tempcropped]%hacky workaround
+	\IfBeginWith{\temp}{\thesection}{\hyperref[#1]{\tempcropped}} {\hyperref[#1]{\temp}}%for some seriously weird bug
+}
+
+\newcommand{\eqreff}[1]{%
+	\edef\temp{\csname eqsubsec#1\endcsname}%
+	\IfBeginWith{\temp}{\thesection}{\hyperref[#1]{\upshape(\getrefnumber{#1})}}{\hyperref[#1]{\upshape(\temp .\getrefnumber{#1})}}%	
+}
