@@ -2,13 +2,10 @@
 \counterwithout{equation}{chapter}
 \usepackage{amsthm}
 \usepackage{xstring}
-\usepackage[shortlabels]{enumitem}
 \setlist[description]{font={\bfseries\rmfamily}}
 \usepackage[colorlinks=true,linkcolor=blue]{hyperref}
 
-\newenvironment{alphanumerate}{\begin{enumerate}[label={$(\alph*)$},ref=\curthm]}{\end{enumerate}}       
-%\newenvironment{rmnumerate}{\begin{enumerate}[label={\upshape(\roman*)},ref=\curthm]}{\end{enumerate}}   
-\renewenvironment{itemize}{\begin{enumerate}[label={$\bullet$},ref=\curthm]}{\end{enumerate}}
+
 \def\newnewtheorem#1#2[#3]{\newtheorem{#1}{#2}[#3]\expandafter\def\csname thmcaption#1\endcsname{#2}}%erstellt zusätzlich ein Makro, das den Umgebungsnamen enthält                               
 
 \newtheoremstyle{cthm}
@@ -98,3 +95,6 @@
 	\edef\temp{\csname eqsubsec#1\endcsname}%
 	\IfBeginWith{\temp}{\thesection}{\hyperref[#1]{\upshape(\getrefnumber{#1})}}{\hyperref[#1]{\upshape(\temp .\getrefnumber{#1})}}%	
 }
+\newenvironment{alphanumerate}{\begin{enumerate}[label={$(\alph*)$},ref=\curthm]}{\end{enumerate}}       
+%\newenvironment{rmnumerate}{\begin{enumerate}[label={\upshape(\roman*)},ref=\curthm]}{\end{enumerate}}   
+%\renewenvironment{itemize}{\begin{enumerate}[label={$\bullet$},ref=\curthm]}{\end{enumerate}}

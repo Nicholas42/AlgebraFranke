@@ -1,4 +1,4 @@
-\documentclass[a4paper,10pt]{scrreprt}
+\documentclass[a4paper,10pt,parskip=full,numbers=enddot]{scrreprt}
 \usepackage[utf8]{inputenc}
 
 \usepackage{../header}
@@ -8,14 +8,45 @@
 % Title Page
 \title{Algebra II}
 \author{Nicholas Schwab \& Ferdinand Wagner}
-\date{Wintersemester 2016/17}
+\date{Wintersemester 2017/18}
 
 \widowpenalty=10000
 \clubpenalty=10000
 
 \begin{document}
+\pagenumbering{Alph}
 \maketitle
+\pagenumbering{roman}
+ 
+This text consists of notes of the lecture Algebra II taught at the University of Bonn by Professor Jens Franke in the winter term (Wintersemester) 2017/18. 
+
+Please report bugs, typos etc. through the \emph{Issues} feature of github.
+
 \tableofcontents
 
+\chapter{Introduction}
+After a slight delay due to the Professor being confused by the large attendance to his lecture, Franke recaps briefly the topics of his lecture Algebra I. Our notes to this lecture can be found \href{https://github.com/Nicholas42/AlgebraFranke/tree/master/AlgebraI}{here}\footnote{\url{https://github.com/Nicholas42/AlgebraFranke/tree/master/AlgebraI}}. He mentions specifically
+%footnote is required since there are pdfreaders which have problems with clickable links
+\begin{itemize}
+ \item Hilbert's Basissatz and Nullstellensatz,
+ \item the Noether Normalization Theorem,
+ \item the Zariski-topology on $k^n$,
+ \item irreducible topological spaces and their correspondence to the prime ideals of $k[X_1, \ldots, X_n]$,
+ \item Noetherian topological spaces and their unique decomposition into irreducible subsets,
+ \item the dimension of topological spaces and codimension of their irreducible subsets,
+ \item catenary topological spaces,
+ \item the fact that $k^n$ is catenary and $\dim(k^n) = n$,
+ \item quasi-affine varieties,
+ \item structure sheaves,
+ \item the fact that quasi-affine varieties $X$ are catenary and $\dim(X) = \deg\tr(K(X)/k)$, where $K(X)$ is the quotient field of $\Oo(X)$,
+ \item going up and going down for integral ring extensions,
+ \item localizations.
+\end{itemize}
+\begin{defi}[Scheme] \lbl{def:scheme}
+    A \emph{(pre)scheme} is a \emph{locally ringed space} $X$ with a structure sheaf $\Oo_X$ such that we have locally $X\simeq \Spec R$ for some ring $R$.
+\end{defi}
 
+Exercises will be held on Wednesday from 16 to 18 and Friday from 12 to 14 in Room 0.008. It is necessary to have achieved at least half the points on the exercise sheets in order to attend the exams.
+
+\pagenumbering{arabic}
 \end{document}          
