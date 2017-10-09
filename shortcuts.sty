@@ -85,3 +85,19 @@
 	\advance\dimen0-0.2\ht0
 	\setbox2=\hbox{\vrule height\ht0 depth -\dimen0}%
 	{\box0\lower0.71pt\box2}}
+
+%inductive limit
+\newcommand\colimit[1][]{
+	\mathchoice{\underset{\substack{\displaystyle{\longrightarrow}\\#1}}{\lim}}%displaystyle
+	{\underset{\textstyle\rightarrow\scriptstyle#1}{\lim}}%textstyle
+	{\underset{\scriptstyle\rightarrow\scriptscriptstyle#1}{\lim}}
+	{\underset{\rightarrow#1}{\lim}}
+	}
+%projective limit
+%inductive limit
+\newcommand\limit[1][]{
+	\mathchoice{\underset{\substack{\displaystyle{\longleftarrow}\\#1}}{\lim}}%displaystyle
+	{\underset{\textstyle\leftarrow\scriptstyle#1}{\lim}}%textstyle
+	{\underset{\scriptstyle\leftarrow\scriptscriptstyle#1}{\lim}}
+	{\underset{\leftarrow#1}{\lim}}
+}

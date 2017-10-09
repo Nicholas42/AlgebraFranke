@@ -2,11 +2,14 @@
 \counterwithout{equation}{chapter}
 \usepackage{amsthm}
 \usepackage{xstring}
+
 \setlist[description]{font={\bfseries\rmfamily}}
 \usepackage[colorlinks=true,linkcolor=blue]{hyperref}
 
 
 \def\newnewtheorem#1#2[#3]{\newtheorem{#1}{#2}[#3]\expandafter\def\csname thmcaption#1\endcsname{#2}}%erstellt zusätzlich ein Makro, das den Umgebungsnamen enthält                               
+
+\def \curthm{Blub}%sadly, this is the easiest way ...
 
 \newtheoremstyle{cthm}
 {12pt}
@@ -96,5 +99,5 @@
 	\IfBeginWith{\temp}{\thesection}{\hyperref[#1]{\upshape(\getrefnumber{#1})}}{\hyperref[#1]{\upshape(\temp .\getrefnumber{#1})}}%	
 }
 \newenvironment{alphanumerate}{\begin{enumerate}[label={$(\alph*)$},ref=\curthm]}{\end{enumerate}}       
-%\newenvironment{rmnumerate}{\begin{enumerate}[label={\upshape(\roman*)},ref=\curthm]}{\end{enumerate}}   
-%\renewenvironment{itemize}{\begin{enumerate}[label={$\bullet$},ref=\curthm]}{\end{enumerate}}
+\newenvironment{rmnumerate}{\begin{enumerate}[label={\upshape(\roman*)},ref=\curthm]}{\end{enumerate}}   
+\renewenvironment{itemize}{\begin{enumerate}[label={$\bullet$},ref=\curthm]}{\end{enumerate}}
