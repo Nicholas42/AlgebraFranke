@@ -5,6 +5,9 @@
 \usepackage{../frankenumbering}
 \usepackage{../shortcuts}
 
+\usepackage[backend=biber,style=numeric,sorting=none]{biblatex}
+\addbibresource{../literatur.bib}
+
 % Title Page
 \title{Algebraic Geometry I}
 \author{Nicholas Schwab \& Ferdinand Wagner}
@@ -18,7 +21,7 @@
 \maketitle
 \pagenumbering{roman}
  
-This text consists of notes of the lecture Algebraic Geometry taught at the University of Bonn by Professor Jens Franke in the winter term (Wintersemester) 2017/18. 
+This text consists of notes on the lecture Algebraic Geometry I taught at the University of Bonn by Professor Jens Franke in the winter term (Wintersemester) 2017/18. 
 
 Please report bugs, typos etc. through the \emph{Issues} feature of github.
 
@@ -34,64 +37,75 @@ Professor Franke said the lecture requires a firm knowledge of commutative algeb
  \item Matsumura, H.: Commutative Ring Theory,
  \item Hartshorne, R.: Algebraic Geometry,
  \item Mumford, D.: The Red Book of Varieties and Schemes,
- \item Schwab, N. \& Wagner, F.: \href{https://github.com/Nicholas42/AlgebraFranke/tree/master/AlgebraI}{Algebra I by Jens Franke}\footnote{\url{https://github.com/Nicholas42/AlgebraFranke/tree/master/AlgebraI}}.
+ \item Schwab, N. \& Wagner, F.: \href{https://github.com/Nicholas42/AlgebraFranke/tree/master/AlgebraI}{Algebra I by Jens Franke} \cite{alg1}\footnote{\url{https://github.com/Nicholas42/AlgebraFranke/tree/master/AlgebraI}}.
 \end{itemize}
 Let it be said that the first three recommendations are from Professor Franke while the last one is from the (not so) humble authors of these notes.
 
 \chapter{Varieties and Schemes}\lbl{ch:varietiesAndSchemes}
 \begin{defi}[Sheaf and Presheaf]\lbl{def:preSheaf}
-    A \emph{presheaf} $\Ff_X$ (the $X$ is often omitted, if it is clear from the context) of rings on a topological space $X$ associates to any open subset $U\subseteq X$ a ring $\Ff_X(U)$ called the ring of sections of $\Ff_X$ on $U$ and to any inclusion of open subsets $V\subseteq U$ a ring homomorphism 
-    \begin{align*}
-        |_V: \Ff_X(U) &\longto \Ff_X(V)
-    \end{align*}
-    such that $f|_V = f$ for all $f\in\Ff_X(V)$ and $(f|_V)|_W = f|_W$ for any inclusion $W\subseteq V\subseteq U$ of open subsets. Note that while this notation reminds of the restriction of functions, behaves similarly and often the restriction is indeed used for this homomorphism, the elements of the rings are not always functions. 
+    A \defemph{presheaf $\Ff$ of rings} on a topological space $X$ associates 
+    \begin{itemize}
+    	\item to any open subset $U\subseteq X$ a ring $\Ff(U)$ called the \emph{ring of sections} of $\Ff$ on $U$
+    	\item and to any inclusion of open subsets $V\subseteq U$ a ring homomorphism 
+    	\begin{align*}
+    	(-)|_V\colon \Ff(U) &\longto \Ff(V)
+    	\end{align*}
+    	such that $f|_V = f$ for all $f\in\Ff(V)$ and $(f|_V)|_W = f|_W$ for any inclusion $W\subseteq V\subseteq U$ of open subsets.
+    \end{itemize}  Note that while this notation (intentionally) reminds of the restriction of functions, behaves similarly and often the restriction is indeed used for this homomorphism, the elements of the rings $\Ff(U)$ are not always functions. 
     
-    A so defined presheaf is furthermore are \emph{sheaf} if additionally, the following condition called \emph{sheaf axiom} holds:
+    A so defined presheaf is furthermore a \defemph{sheaf} if additionally, the following condition, called \emph{sheaf axiom}, holds:
     \begin{quote}
-     For every open covering $U = \bigcup_{\lambda\in \Lambda} U_i$ of any open subset $U\subseteq X$ the function
+     For every open covering $U = \bigcup_{i\in I} U_i$ of an open subset $U\subseteq X$ the map
         \begin{align*}\lbl{eq:sheafAxiom}
-			\Ff_X(U) &\longto \left\{(f_\lambda)\in \prod_{\lambda\in\Lambda} \Ff_X (U_\lambda)\st f_\lambda|_{U_\lambda\cap U_\vartheta} = f_\vartheta|_{U_\lambda\cap U_\vartheta} \text{ for }\lambda,\vartheta\in \Lambda\right\}\\
-			f &\longmapsto (f|_{U_\lambda})_{\lambda\in\Lambda}
+			\Ff(U) &\longto \left\{(f_i)_{i\in I}\in \prod_{i\in I} \Ff (U_i)\st f_i|_{U_i\cap U_j} = f_j|_{U_i\cap U_j} \text{ for }i,j\in I\right\}\\
+			f &\longmapsto \left(f|_{U_i}\right)_{i\in I}
         \end{align*}
         is bijective.
     \end{quote}
 \begin{rem}
-    When $U=\emptyset$ one can take $I=\emptyset$ and obtains $\Ff_X(\emptyset) = \{0\}$.
+    When $U=\emptyset$ one can take $I=\emptyset$ and obtains $\Ff(\emptyset) = \{0\}$.
 \end{rem}
 \begin{rem}
-    Sheaves of groups, sets, etc. are defined in a similar way. A sheaf of rings $\Rr_X$ on $X$ defines two sheaves of groups on $X$: $U\mapsto (\Rr_X(U), +)$ and $U\mapsto ((\Rr_X(U))^\times, \cdot)$
+    Sheaves of groups, sets, etc. are defined in a similar way. A sheaf of rings $\Rr$ on $X$ defines two sheaves of groups on $X$, namely $U\mapsto (\Rr(U), +)$ and $U\mapsto (\Rr(U)^\times, \cdot)$.
 \end{rem}
 \begin{rem}
-    Elements of $\Rr_X(U)$ are called sections, elements of $\Rr_X(X)$ are called global sections.
+    Elements of $\Rr(U)$ are called \emph{sections}, elements of $\Rr(X)$ are called \emph{global sections}.
 \end{rem}
 \begin{example}
-    Let $R$ be a ring. The sheaf $\Oo_X$ of $R$-valued functions on $X$ associates to any open subset $U\subseteq X$ the ring of $R$-valued functions $f: U \to R$ with the inclusion morphism being the restriction of functions to subsets.
+    Let $R$ be a ring. The sheaf $\Ff_X$ of $R$-valued functions on $X$ associates to any open subset $U\subseteq X$ the ring of $R$-valued functions $f\colon U \to R$ with the inclusion morphism being the restriction of functions to subsets.
 \end{example}
-
 \begin{rem*}
-  If $\Gg$ is any (pre)sheaf on $X$ and $U\subseteq X$ an open subset. We get a a sheaf $\Gg_U$ on $U$ by $\Gg_U(V) = \Gg_X(V)$ for the open subsets $V\subseteq U$ equipped with the same restriction morphisms.
+  If $\Gg$ is any (pre)sheaf on $X$ and $U\subseteq X$ an open subset, we get a a sheaf $\Gg|_U$ on $U$ by $\Gg|_U(V) = \Gg(V)$ for the open subsets $V\subseteq U$ equipped with the same restriction morphisms.
 \end{rem*}
 \begin{defi}[Algebraic (Pre)Varieties] \lbl{def:preVarieties}
-    Let $\kk$ be an algebraic closed field. An \emph{algebraic (pre)variety} over $\kk$ is a pair $(X,\Oo_X)$, where $X$ is an irreducible Noetherian topological space together with a sheaf $\Oo_X$ of rings on $X$ such that the following property is satisfied.
+    Let $k$ be an algebraically closed field. An \defemph{algebraic (pre)variety} over $k$ is a pair $(X,\Oo_X)$, where $X$ is an irreducible Noetherian topological space together with a sheaf $\Oo_X$ of rings on $X$ such that the following property is satisfied.
     \begin{quote}
-        Any $x\in X$ has an open neighbourhood $U$ such that there is a homeomorphism $U\isomorphism[\phi] V$ where $V\subseteq k^n$ is a Zariski-closed (and since $X$ is irreducible, an irreducible) subset such that $\phi$ identifies $\Oo_X|_U$ with the structure sheaf $\Oo_V$. I.e. if $W \subseteq V$ is open and $f: W\to \kk$ any $k$-valued function it is regular if and only if 
+        Any $x\in X$ has an open neighbourhood $U$ such that there is a homeomorphism $U\isomorphism[\phi] V$ where $V\subseteq k^n$ is a Zariski-closed subset such that $\phi$ identifies $\Oo_X|_U$ with the structure sheaf $\Oo_V$ of $V$. That is, if $W \subseteq V$ is open then any $k$-valued function $f\colon W\to k$ is regular (i.e. an element of $\Oo_V(W)$) if and only if 
         \begin{align*}
-            g: \phi^{-1}(W) &\longto \kk\\
+            g\colon \phi^{-1}(W) &\longto k\\
             x&\longmapsto f(\phi(x))
         \end{align*}
-        is an element of $\Oo_X(\phi^{-1}(W))$. 
+        is an element of $\Oo_X(\phi^{-1}(W))$. One denotes $g=\phi^*f$ in this case.
     \end{quote}
-    A morphism of varieties $(X,\Oo_X) \to (Y,\Oo_Y)$ is a continous map $X\morphism[\phi] Y$ such that $U\subseteq Y$ and $\lambda \in \Oo_Y(U)$ implies $\phi^\ast \lambda \in \Oo(\phi^{-1}(U))$. Here $\phi^\ast\lambda$ is defined as $(\phi^\ast\lambda)(x) = \lambda(\phi(x))$.
-
+    A \defemph{morphism of varieties} $(X,\Oo_X) \to (Y,\Oo_Y)$ is a continous map $X\morphism[\phi] Y$ such that for all $U\subseteq Y$ and $\lambda \in \Oo_Y(U)$ we have $\phi^\ast \lambda \in \Oo(\phi^{-1}(U))$. As above, $\phi^\ast\lambda$ is defined as $(\phi^\ast\lambda)(x) = \lambda(\phi(x))$. In particular, $\phi^*$ induces a \emph{morphism of sheaves} $\phi^*\colon \Oo_Y\to\Oo_X$.
 \end{defi}
 \begin{rem*}
+	In fact, the $V\subseteq k^n$ in the above definition of varieties is even \emph{irreducible}, as $V$ is homeomorphic to an open (and hence irreducible) subset $U$ of the irreducible space $X$. In particular, $V$ is an \emph{affine algebraic variety} (in the sense of \cite[Definition 2.2.1]{alg1}) and one can think of varieties as irreducible spaces which are locally isomorphic to affine varieties.
+\end{rem*}
+\begin{rem*}
     \begin{alphanumerate}
-     \item Let $V\subseteq k^n$ be Zariski-closed, $W\subseteq V$ open. The ring $\Oo_V(W)$ of regular functions on $W$ is the ring of functions $\lambda: W\to k$ such that for any $x\in W$ there is an open neighbourhood $\Omega$ of $x$ and polynomials $p,q\in R= k[X_1,\ldots,X_n]$ such that $q$ does not vanish on $\Omega\cap W$ and such that we have $\lambda(y) = \frac{p(y)}{q(y)}$ for every $y\in \Omega\cap W$. The sheaf $\Oo_V$ defined by $W\mapsto \Oo_V(W)$ is called the \emph{structure sheaf} on $V$. If $W=V$ it can be shown that any $f\in \Oo(W)$ can be written as $f=p|_V$ where $p\in R$.
-     \item Let $\IP(V)$, where $V$ is a $k$-vector space, be the set of one-dimensional subspaces of $V$. Let $\IP^n(k) = \IP(k^n+1)$. If $(x_0,\ldots,x_n)\in k^n\setminus\{0\}$, let $[x_0,\ldots,x_n]$ denote the subspace generated by $(x_1,\ldots, x_n)$.
+     \item Let $V\subseteq k^n$ be Zariski-closed, $W\subseteq V$ open. The ring $\Oo_V(W)$ of \emph{regular functions} on $W$ is the ring of functions $\lambda\colon W\to k$ such that for any $x\in W$ there is an open neighbourhood $\Omega$ of $x$ and polynomials $p,q\in R= k[X_1,\ldots,X_n]$ such that $q$ does not vanish on $\Omega\cap W$ and such that we have $\lambda(y) = \frac{p(y)}{q(y)}$ for every $y\in \Omega\cap W$. (cf. \cite[Definition 2.2.2]{alg1}).
      
-     Recall that an ideal $I\subseteq R$ is called homogenous if it is generated by homogenous elements (i.e. polynomials where every monomial has the same total degree). Let $I$ be homogenous, let $V(I)\subseteq \IP^n(k)$ be the set of all $[x_0, \ldots, x_n]\in\IP^n(k)$ such that $f(x_0,\ldots, x_n)$ vanishes for all $f\in I$. Let a subset $A$ of $\IP^n(k)$ be called Zariski-closed if there is a homogenous ideal $I$ such that $A= V(I)$. This turns $\IP^n(k)$ into an irreducible, $n$-dimensional, Noetherian topological space.
+     The sheaf $\Oo_V$ defined by $W\mapsto \Oo_V(W)$ is called the \emph{structure sheaf} on $V$. If $W=V$ it can be shown that any $f\in \Oo_V(V)$ can be written as $f=p|_V$ where $p\in R$ (cf. \cite[Proposition 2.2.2]{alg1}).
+     \item Let $\IP(V)$, where $V$ is a $k$-vector space, be the set of one-dimensional subspaces of $V$. Let $\IP^n(k) = \IP(k^{n+1})$. If $(x_0,\ldots,x_n)\in k^{n+1}\setminus\{0\}$, let $[x_0,\ldots,x_n]$ denote the subspace generated by $(x_1,\ldots, x_n)$.
      
-     Let $V\subset \IP^n(k)$ be closed, $W\subseteq V$ open and $\lambda: W\to k$ any function. We call $\lambda$ regular on $W$ or $\lambda \in \Oo_V(W)$, if any $x\in W$ has an open neighbourhood $\Omega$ such that there are two polynomials $p,q\in k[X_1,\ldots,X_{n+1}]$ being homogenous of the same degree such that $q(y_0,\ldots,y_n) \neq 0$ and $\lambda([y_0,\ldots,y_n]) = \frac{p(y_0,\ldots,y_n}{q(y_0,\ldots,y_n)}$ for all $[y_0,\ldots,y_n]\in W\cap \Omega$.
+     Recall that an ideal $I\subseteq R=k[X_0,\ldots,X_n]$ is called \emph{homogenous} if it is generated by homogenous elements (i.e. polynomials in which every monomial has the same total degree). Let $I$ be homogenous, let $V(I)\subseteq \IP^n(k)$ be the set of all $[x_0, \ldots, x_n]\in\IP^n(k)$ such that $f(x_0,\ldots, x_n)$ vanishes for all $f\in I$. Call a subset $A\subseteq\IP^n(k)$ \emph{Zariski-closed} if there is a homogenous ideal $I$ such that $A= V(I)$. This turns $\IP^n(k)$ into an irreducible, $n$-dimensional, Noetherian topological space.
+     
+     Let $V\subset \IP^n(k)$ be closed, $W\subseteq V$ open and $\lambda\colon W\to k$ any function. We call $\lambda$ \emph{regular} on $W$, or $\lambda \in \Oo_V(W)$, if any $x\in W$ has an open neighbourhood $\Omega$ such that there are two polynomials $p,q\in k[X_0,\ldots,X_n]$ homogenous of the same degree such that $q(y_0,\ldots,y_n) \neq 0$ and 
+     \begin{align*}
+     	\lambda([y_0,\ldots,y_n]) = \frac{p(y_0,\ldots,y_n)}{q(y_0,\ldots,y_n)}
+     \end{align*}
+     for all $[y_0,\ldots,y_n]\in W\cap \Omega$.
     \end{alphanumerate}
 
 \end{rem*}
@@ -104,5 +118,7 @@ Let it be said that the first three recommendations are from Professor Franke wh
     
 
 \end{defi}
+
+\printbibliography
 
 \end{document}          

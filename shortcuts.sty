@@ -1,4 +1,11 @@
+%---- ENVIRONMENTS ----
+%
 \newenvironment{diagram}{\begin{center}\begin{tikzpicture}}{\end{tikzpicture}\end{center}}  
+
+%---- MANY ALPHABETS ----
+%
+\renewcommand{\phi}{\varphi}
+\renewcommand{\epsilon}{\varepsilon}
 
 \newcommand{\Aa}{\mathcal{A}}
 \newcommand{\Bb}{\mathcal{B}}
@@ -54,8 +61,7 @@
 \newcommand{\IY}{\mathbb{Y}}
 \newcommand{\IZ}{\mathbb{Z}}
 
-
-%\newcommand{\AA}{\mathfrak{A}}
+\renewcommand{\AA}{\mathfrak{A}}
 \newcommand{\BB}{\mathfrak{B}}
 \newcommand{\CC}{\mathfrak{C}}
 \newcommand{\DD}{\mathfrak{D}}
@@ -73,7 +79,7 @@
 \newcommand{\PP}{\mathfrak{P}}
 \newcommand{\QQ}{\mathfrak{Q}}
 \newcommand{\RR}{\mathfrak{R}}
-%\newcommand{\SS}{\mathfrak{S}}
+\renewcommand{\SS}{\mathfrak{S}}
 \newcommand{\TT}{\mathfrak{T}}
 \newcommand{\UU}{\mathfrak{U}}
 \newcommand{\VV}{\mathfrak{V}}
@@ -82,8 +88,7 @@
 \newcommand{\YY}{\mathfrak{Y}}
 \newcommand{\ZZ}{\mathfrak{Z}}
 
-
-%\newcommand{\aa}{\mathfrak{a}}
+\renewcommand{\aa}{\mathfrak{a}}
 \newcommand{\bb}{\mathfrak{b}}
 \newcommand{\cc}{\mathfrak{c}}
 \newcommand{\dd}{\mathfrak{d}}
@@ -110,52 +115,69 @@
 \newcommand{\yy}{\mathfrak{y}}
 \newcommand{\zz}{\mathfrak{z}}
 
-
-\renewcommand{\AA}{\mathfrak A}
-
+%---- OPERATORS
+%
 \newcommand{\newoperator}[1]{\expandafter\def\csname #1\endcsname{\operatorname{#1}}}
 
-\renewcommand{\Im}{\operatorname{Im}}
-\newcommand{\Hom}{\operatorname{Hom}}
 \newcommand{\Ann}{\operatorname{Ann}}
-\newcommand{\End}{\operatorname{End}}
 \newcommand{\Aut}{\operatorname{Aut}}
-\newcommand{\Gal}{\operatorname{Gal}}
-\newcommand{\codim}{\operatorname{codim}}
-\newcommand{\Spec}{\operatorname{Spec}}
-\newoperator{sep}
-\newcommand{\tr}{\operatorname{tr}}
-%\newoperator{ht}
-%\newoperator{char}
-\newcommand{\id}{\operatorname{id}}
 \newcommand{\cha}{\operatorname{char}}
+\newcommand{\codim}{\operatorname{codim}}
+\newcommand{\End}{\operatorname{End}}
+\newcommand{\Gal}{\operatorname{Gal}}
+\newcommand{\Hom}{\operatorname{Hom}}
 \newcommand{\hoehe}{\operatorname{ht}}
-\newoperator{Ob}
+\newcommand{\id}{\operatorname{id}}
 \newoperator{lcm}
-\newcommand{\op}{^{\operatorname{op}}}
+\renewcommand{\Im}{\operatorname{Im}}
 \newcommand{\mSpec}{\mm\operatorname{-Spec}}
-%\newcommand{\multiline}[1]{#1}
+\newoperator{Ob}
+\newcommand{\op}{^{\operatorname{op}}}
+\newoperator{sep}
+\newcommand{\Spec}{\operatorname{Spec}}
+\newcommand{\tr}{\operatorname{tr}}
+%inductive limit
+\newcommand\colimit[1][]{
+	\mathchoice{\underset{\substack{\displaystyle{\longrightarrow}\\#1}}{\lim}}%displaystyle
+	{\underset{\textstyle\rightarrow\scriptstyle#1}{\lim}}%textstyle
+	{\underset{\scriptstyle\rightarrow\scriptscriptstyle#1}{\lim}}
+	{\underset{\rightarrow#1}{\lim}}
+}
+%projective limit
+\newcommand\limit[1][]{
+	\mathchoice{\underset{\substack{\displaystyle{\longleftarrow}\\#1}}{\lim}}%displaystyle
+	{\underset{\textstyle\leftarrow\scriptstyle#1}{\lim}}%textstyle
+	{\underset{\scriptstyle\leftarrow\scriptscriptstyle#1}{\lim}}
+	{\underset{\leftarrow#1}{\lim}}
+}
+
+%---- FANCY ARROWS ----
+%
 \newcommand{\longto}{\longrightarrow}
 \newcommand{\longot}{\longleftarrow}
-\newcommand{\ov}{\overline}
-\newcommand{\snake}[1]{\widetilde{#1}\vphantom{\overrightarrow{#1}}}%space adjusting hack
-\newcommand{\isomorphism}{
-	\tikz[baseline=(a.base)] \node (a) at (0,0) {$\longrightarrow$} node[above=-0.25ex] {\tiny $\sim$};}
-\newcommand{\lisomorphism}{
-	\tikz[baseline=(a.base)] \node (a) at (0,0) {$\longleftarrow$} node[above=-0.25ex] {\tiny $\sim$};}
+\newcommand{\isomorphism}[1][]{
+	\tikz[baseline=(a.base)] \node (a) at (0,0) {$\longrightarrow$} node[above=-0.25ex] {\tiny $\sim$} node[below=-0.25ex] {$\scriptstyle #1$};}
+\newcommand{\lisomorphism}[1][]{
+	\tikz[baseline=(a.base)] \node (a) at (0,0) {$\longleftarrow$} node[above=-0.25ex] {\tiny $\sim$} node[below=-0.25ex] {$\scriptstyle #1$};}
 \newcommand{\morphism}[1][]{\overset{#1}{\longto}}
 \newcommand{\lmorphism}[1][]{\overset{#1}{\longot}}
 \newcommand{\lrmorphism}[1][]{\overset{#1}{\leftrightarrow}}
 
+%---- MODIFIERS ----
+%
+\newcommand{\ov}{\overline}
+\newcommand{\snake}[1]{\widetilde{#1}\vphantom{\overrightarrow{#1}}}%space adjusting hack
+
+
+%---- MISCELLANEOUS ----
+%
+\newcommand{\defemph}[1]{\textbf{#1}}
 \newcommand{\ldotspam}{,\ldots,}
 \newcommand{\ordinalst}{^{\text{st}}}
 \newcommand{\ordinalrd}{^{\text{rd}}}
 \newcommand{\ordinalth}{^{\text{th}}}
 \newcommand{\st}{\ \middle|\ }
 %\newcommand{\dashed}{dash pattern = on 2pt off 2pt}
-
-\renewcommand{\phi}{\varphi}
-\renewcommand{\epsilon}{\varepsilon}
 
 %nice sqrt
 \LetLtxMacro{\oldsqrt}{\sqrt} 
@@ -167,18 +189,4 @@
 	\setbox2=\hbox{\vrule height\ht0 depth -\dimen0}%
 	{\box0\lower0.71pt\box2}}
 
-%inductive limit
-\newcommand\colimit[1][]{
-	\mathchoice{\underset{\substack{\displaystyle{\longrightarrow}\\#1}}{\lim}}%displaystyle
-	{\underset{\textstyle\rightarrow\scriptstyle#1}{\lim}}%textstyle
-	{\underset{\scriptstyle\rightarrow\scriptscriptstyle#1}{\lim}}
-	{\underset{\rightarrow#1}{\lim}}
-	}
-%projective limit
-%inductive limit
-\newcommand\limit[1][]{
-	\mathchoice{\underset{\substack{\displaystyle{\longleftarrow}\\#1}}{\lim}}%displaystyle
-	{\underset{\textstyle\leftarrow\scriptstyle#1}{\lim}}%textstyle
-	{\underset{\scriptstyle\leftarrow\scriptscriptstyle#1}{\lim}}
-	{\underset{\leftarrow#1}{\lim}}
-}
+
