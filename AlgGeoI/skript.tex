@@ -92,7 +92,10 @@ Let it be said that the first three recommendations are from Professor Franke wh
     A \defemph{morphism of varieties} $(X,\Oo_X) \to (Y,\Oo_Y)$ is a continous map $X\morphism[\phi] Y$ such that for all $U\subseteq Y$ and $\lambda \in \Oo_Y(U)$ we have $\phi^\ast \lambda \in \Oo(\phi^{-1}(U))$. As above, $\phi^\ast\lambda$ is defined as $(\phi^\ast\lambda)(x) = \lambda(\phi(x))$. In particular, $\phi^*$ induces a \emph{morphism of sheaves} $\phi^*\colon \Oo_Y\to\Oo_X$.
 \end{defi}
 \begin{rem*}
-	In fact, the $V\subseteq k^n$ in the above definition of varieties is even \emph{irreducible}, as $V$ is homeomorphic to an open (and hence irreducible) subset $U$ of the irreducible space $X$. In particular, $V$ is an \emph{affine algebraic variety} (in the sense of \cite[Definition 2.2.1]{alg1}) and one can think of varieties as irreducible spaces which are locally isomorphic to affine varieties.
+	\begin{alphanumerate}
+		\item In fact, the $V\subseteq k^n$ in the above definition of varieties is even \emph{irreducible}, as $V$ is homeomorphic to an open (and hence irreducible) subset $U$ of the irreducible space $X$. In particular, $V$ is an \emph{affine algebraic variety} (in the sense of \cite[Definition~2.2.1]{alg1}) and one can think of varieties as irreducible spaces which are locally isomorphic to (or glued together from) affine varieties.
+		\item The $n$ in the above definition is \emph{not} required to be constant, not even for a single $x\in X$. In fact, this wouldn't be a sensible thing to ask for, as e.g. $k\subseteq k^1$ and $k\times\{0\}\subseteq k^2$ are isomorphic affine varieties. However, the \emph{Krull dimension} $\dim X$ (in the sense of \cite[Definition~2.1.4]{alg1}) is a well-defined thing and one can show that $\dim X=\dim V$ in the above situation (this is a consequence of \cite[Theorem~6]{alg1} and the \emph{locality of codimension}, cf. \cite[Remark~2.1.3]{alg1}).
+	\end{alphanumerate}
 \end{rem*}
 \begin{rem*}
     \begin{alphanumerate}
