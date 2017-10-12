@@ -5,6 +5,9 @@
 \usepackage{../frankenumbering}
 \usepackage{../shortcuts}
 
+\usepackage{csquotes}
+\usepackage[backend=biber,style=numeric,sorting=none]{biblatex}
+\addbibresource{../literatur.bib}
 % Title Page
 \title{Algebra II}
 \author{Nicholas Schwab \& Ferdinand Wagner}
@@ -27,8 +30,7 @@ Please report bugs, typos etc. through the \emph{Issues} feature of github.
 \chapter*{Introduction}
 \addcontentsline{toc}{chapter}{Introduction}
 \pagenumbering{arabic}
-After a slight delay due to the Professor being confused by the large attendance to his lecture, Franke briefly recaps the contents of his lecture course Algebra I. Our notes to this lecture can be found \href{https://github.com/Nicholas42/AlgebraFranke/tree/master/AlgebraI}{here}\footnote{\url{https://github.com/Nicholas42/AlgebraFranke/tree/master/AlgebraI}}. He mentions specifically
-%footnote is required since there are pdfreaders which have problems with clickable links
+After a slight delay due to the Professor being confused by the large attendance to his lecture, Franke briefly recaps the contents of his lecture course Algebra I. Our notes to this lecture can be found \href{https://github.com/Nicholas42/AlgebraFranke/tree/master/AlgebraI}{here}\cite{alg1}. He mentions specifically
 \begin{itemize}
  \item Hilbert's Basissatz and Nullstellensatz,
  \item the Noether Normalization Theorem,
@@ -54,4 +56,115 @@ The following definition won't appear in the lecture, but in Algebraic Geometry 
 
 Exercises will be held on Wednesday from 16 to 18 and Friday from 12 to 14 in Room 0.008. It is necessary to have achieved at least half the points on the exercise sheets in order to attend the exams.
 
+Professor Franke recapitulated on some topics of his previous lecture, Algebra I.
+\begin{defi}
+ A topological spcae $X$ is called quasi-compact if every open covering $X = \bigcup_{\lambda\in\Lambda} U_\lambda$ admits a finite subcovering.
+ 
+ X is Noetherian if it satisifies the following equivalent conditions:
+ \begin{alphanumerate}
+    \item Every open subset is quasi-compact.
+    \item There is no infinite properly descending chain of closed subsets.
+    \item Every set of closed subsets of $X$ has a $\subseteq$-minimal element.
+ \end{alphanumerate}
+
+\end{defi}
+
+\begin{defi}[Irreducible Space]
+ A topological space $X$ is \defemph{irreducible} if it satisifies the following equivalent conditions:
+ \begin{alphanumerate}
+    \item 
+        If $X= \bigcup_{i=1}^n X_i$ is a finite covering by closed subsets, there is $i$ such that $1\leq i\leq n$ and $X=X_i$.
+    \item
+        If $X = X_1\cup X_2$ where $X_1$ and $X_2$ are closed subsets, then $X=X_1$ or $X=X_2$. Also, $X\neq\emptyset$.
+ \end{alphanumerate}
+
+\end{defi}
+\begin{prop}
+ \begin{alphanumerate}
+    \item 
+        Any open or closed subset of a Noetherian topological space is Noetherian.
+    \item 
+        If $X$ is Noetherian, there is a unique (up to permutation of the $X_i$) decomposition $X = \bigcup_{i=1}^n X_i$ where the $X_i\subseteq X$ are irreducible and closed and $X_i\not\subseteq X_J$ for $i\neq j$.
+ \end{alphanumerate}
+
+\end{prop}
+\begin{defi}
+ Let $X$ be a topological space, $Z\subseteq X$ irreducible. We put 
+ \begin{align*}
+    \codim(Z,X) &= \sup\left\{\ell\st \text{There are irreducible } Z_i\subseteq X \text{ such that } Z=Z_0 \subsetneq Z_1\subsetneq \subsetneq \ldots \subsetneq Z_\ell\right\}\\
+    \dim(X) &= \sup\left\{\codim(Z,X)\st Z\subseteq X \text{ irreducible}\right\}
+ \end{align*}
+
+\end{defi}
+\begin{example}
+  Let $k =\overline{k}$. For any ideal $I\subseteq R = k[X_1,\ldots,X_n]$ let $V(I) = \left\{x\in k^n\st f(x) \forall f\in I\right\}$ be the set of zeroes of $I$. By the Hilbert Nullstellensatz, $V(I) \neq \emptyset$ when $I\subsetneq R$. Moreover 
+  \begin{align*}
+    V(I)& = V(\sqrt{I})\\
+    V(I\cdot J ) &= V(I) \cup V(J)\\
+    V\left(\sum_{\lambda\in\Lambda} I_\lambda\right) &\bigcap_{\lambda\in\Lambda} V(I_\lambda).
+ \end{align*}
+ It follows that there is a topology (called the \emph{Zariski topology}) on $k^n$ containing precisely the subsets of the form $V(I)$ as closed subsets. By a version of the Nullstellensatz follows
+ \begin{align*}
+  \left\{f\in R\st f(x) = 0\forall f\in I\right\} = \left\{f\in R\st V(f)\supseteq V(I)\right\} = \sqrt{I}.
+ \end{align*}
+ This means that there is strictly antimonotonic bijective correspondence between the ideals $I$ of $R$ with $I\sqrt{I}$ and the Zariski-closed subsets $A\subseteq k^n$ by
+ \begin{align*}
+    \left\{f\in R\st V(f)\supseteq A\right\} &\longot A\\
+    I&\longto V(I)
+ \end{align*}
+ A $R$ is Noetherian, any strictly ascending chain of ideals in $R$ terminates, implying that $k^n$ is a Noetherian topological space. Under the above correspondence the prime ideals correspond to the irreducible subsets.  
+\end{example}
+\begin{rem}
+ In general for $A\subseteq B\subseteq C\subseteq X$
+ \begin{align*}\lbl{eq:codimIneq}
+    \codim(A,B) +\codim(B,C) &\leq \codim(A,C) \tag{@1}\\ 
+    \codim(A,X)+\dim A &\leq \dim X.\lbl{eq:codimIneq2}\tag{@2}
+ \end{align*}
+ may be strict. A Noetherian topological space is called \emph{catenary} if \eqreff{eq:codimIneq} is an equality whenever $A$, $B$ and $C$ are irreducible.
+
+\end{rem}
+\begin{thm}
+ The space $X=k^n$ is catenary and equality will always occur in \eqreff{eq:codimIneq2} for this $X$.
+\end{thm}
+\begin{example}
+ For $k^1$, the closed subsets are $k$ and the finite subsets. Since $k$ is infinite, the points and $k$ are the irreducible subsets, implying $\dim(k) = 1 $ and the other assertions for $n=1$.
+\end{example}
+\begin{example}
+ The irreducible subsets are $k^2$, points and $V(f)$ where $f\in k[X,Y]$ is a prime element.
+\end{example}
+
+
+
+
+
+
+
+
+\chapter{Krull's Principal Ideal Theorm}\lbl{ch:krullPrincipalIdealThm}
+\section{Formulation}
+\begin{thm}\lbl{thm:krullPrincipalIdeal}
+    %Should be Theorem 11, because we continue from Algebra I, Ferdi, that's your job
+    Let $R$ be Noetherian, $f\in R$, $\pp\in \Spec R$ minimal among all prime ideals containing $f$, then $\hoehe(\pp) \leq 1$. In other words, $\pp$ is a minimal prime ideal ($\hoehe(\pp) =0$) or all prime ideals strictly contained in $\pp$ are minimal.
+\end{thm}
+\begin{rem*}
+    \begin{alphanumerate}
+    \item
+        By definition
+        \begin{align*}
+            \hoehe(\pp) = \sup\left\{\ell\in\IN\st \exists \pp_1,\ldots,\pp_\ell \in \Spec R: \pp \supsetneq\pp_1\supsetneq\ldots\supsetneq \pp_\ell\right\}.
+        \end{align*}
+    \item
+        Recall the Zariski topology on $\Spec R$: 
+        
+        For any ideal $I\subseteq R$ let $V(I) = \left\{\pp\in\Spec R\st I\subseteq \pp\right\}$. We have 
+        \begin{align*}
+            V(I)& = V(\sqrt{I})\\
+            V(I\cdot J ) &= V(I) \cup V(J)\\
+            V\left(\sum_{\lambda\in\Lambda} I_\lambda\right) &= \bigcap_{\lambda\in\Lambda} V(I_\lambda).
+        \end{align*}
+        This implies (together with $V(O) = \Spec R$ and $V(R) = \emptyset$) that $\Spec R$ can be equipped with a topology in which the closed subsets are precisely the subsets of them form $V(I)$ where $I$ is some ideal in $R$. This topology is Noetherian when $R$ is, hence any closed subset can be decomposed into irreducible components. For $V(f) = V(f\cdot R)$, there are $V(\pp)$ where $\pp$ is minimal among all prime ideals containing $f$. The Theorem \reff{thm:krullPrincipalIdeal} thus states that all irreducible components of $V(f)$ have codimension smaller or equal to 1 in $\Spec R$.
+    \end{alphanumerate}
+\end{rem*}
+
+\printbibliography
 \end{document}          
