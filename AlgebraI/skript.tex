@@ -681,7 +681,7 @@
 	
 \subsection{Some operations on ideals}\lbl{sec:operationsOnIdeals}
 	\begin{defi}\lbl{def:variety}
-		For $k=\overline{k}$ and $I\subseteq R = k[X_1,\ldots,X_n]$ we denote the of zeros of $I$ by $V(I)$ called the \emph{variety} of $I$. If $I=(f_1,\ldots,f_k)_R$ we write $V(f_1,\ldots,f_k)$ for $V(I)$.
+		For $k=\overline{k}$ and $I\subseteq R = k[X_1,\ldots,X_n]$ we denote the of zeros of $I$ by $V(I)$ called the \emph{variety} or \emph{vanishing set} of $I$. If $I=(f_1,\ldots,f_k)_R$ we write $V(f_1,\ldots,f_k)$ for $V(I)$.
 	\end{defi}
 	
 	\begin{rem}\lbl{rem:variety}
@@ -918,9 +918,9 @@
 		\begin{align*}
 		Y= (Y\cap V(f))\cup (Y\cap V(g))
 		\end{align*}
-		where the two members are closed. As $Y$ is irreducible, at least one member equals $Y$, corresponding to $Y\subseteq V(f)$ or $Y\subseteq V(g)$ which, by the Nullstellensatz as Proposition~\reff{prop:varietyOfRadical} implies $f\in I$ or $g\in I$. Hence $I$ is a prime ideal.
+		is a cover of $Y$ by two closed subsets. As $Y$ is irreducible, at least one of them equals $Y$, corresponding to $Y\subseteq V(f)$ or $Y\subseteq V(g)$ which, by the Nullstellensatz (in the form of Proposition~\reff{prop:varietyOfRadical}) implies $f\in I$ or $g\in I$. Hence $I$ is a prime ideal.
 		
-		Let $I$ be a prime ideal. Then $I\subsetneq R$ hence $Y=V(I)$ is not empty by the Nullstellensatz. Assume $Y=Y_1\cup Y_2$ a proper decomposition. In particular $Y_1\not \subseteq Y_2$ and $Y_1\not\supseteq Y_2$. Let $J_k\subseteq R$ be the ideal of polynomials vanishing on $Y_k$. Then $J_1\not \subseteq J_2$ and $J_1\not \supseteq J_2$ by Remark~\reff{rem:ZariskiBijectiveToRadicals}. Let $f\in J_1\setminus J_2$ and $g\in J_2\setminus J_1$, then $f_1$ vanishes on $Y_1$ but not on $Y_2$ and $g$ vanishes on $Y_2$ but not on $Y_1$, $fg\in I$ (by Proposition~\reff{prop:varietyOfRadical}, as it vanishes on $Y$ and $I=\sqrt{I}$) but $f\not \in I$ as it does not vanish identically on $Y_2$ and $g\not\in I$ as it does not vanish on $Y_1$. So $I$ is not prime.
+		Let $I$ be a prime ideal. Then $I\subsetneq R$, hence $Y=V(I)$ is not empty by the Nullstellensatz. Assume that $Y=Y_1\cup Y_2$ is a decomposition into closed proper subsets $Y_1,Y_2\subsetneq Y$. In particular $Y_1\not \subseteq Y_2$ and $Y_1\not\supseteq Y_2$. Let $J_k\subseteq R$ be the ideal of polynomials vanishing on $Y_k$. Then $J_1\not \subseteq J_2$ and $J_1\not \supseteq J_2$ by Remark~\reff{rem:ZariskiBijectiveToRadicals}. Let $f\in J_1\setminus J_2$ and $g\in J_2\setminus J_1$, then $f_1$ vanishes on $Y_1$ but not on $Y_2$ and $g$ vanishes on $Y_2$ but not on $Y_1$, $fg\in I$ (by Proposition~\reff{prop:varietyOfRadical}, as it vanishes on $Y$ and $I=\sqrt{I}$) but $f\not \in I$ as it does not vanish identically on $Y_2$ and $g\not\in I$ as it does not vanish on $Y_1$. But then $I$ couldn't be prime, a contradiction.
 	\end{proof}
 	\begin{rem*}
 		In $R=k[X,Y]$, $(X)=X\cdot R$ and $(Y)=Y\cdot R$ are prime ideals because e.g. $R/(Y)\simeq k[X]$ which is a domain. Hence $k\times\{0\}$ and $\{0\}\times k$ are indeed irreducible as was claimed in Example~\reff{ex:SomeIrreducibleSets}. In particular, they are connected and since they have a non-empty intersection, their union is connected as well.
@@ -2145,7 +2145,7 @@
 		\end{align*}
 		of prime ideals of $B$ by applying going-up successively to $\qq_i$ over $\pp_i\subsetneq \pp_{i+1}$. Corresponding to this strictly increasing chain of prime ideals in $B$ we have a strictly decreasing chain of irreducible subsets $V(\qq_i)\subsetneq X$ of length $d$, establishing $\dim(X)\geq d$.
 	\end{proof}
-	\paragraph{Problem with this proof}
+	\paragraph{Problem with this proof.}
 	If equality is to hold in $\dim Z +\codim(Z,X)\leq \dim X$ we must have (with $Z=\{x\}$) $\codim(x,X) = d$ for any point $x\in X$. Let $\mm = \mm_x$ and $\nn = \mm_x\cap A$ its preimage $A$, then $\nn$ is a maximal ideal (Theorem~\reff{thm:goingupInIntegralRingExtensions}) hence $\nn = \left(X_1-\xi_1,\ldots, X_d-\xi_d\right)_A$ and without loss of generality we may assume that the $\xi_i$ are 0. Then we are in the situation from \eqreff{eq:idealchain} but $\qq_d = \mm$ is given and the descending chain has to be found, which requires going-down. 
 	
 	The situation for proving going-down in this situation is as follows: Let $K=K(X)$. Assume first that $K/k(X_1,\ldots,X_d)$ is Galois and $B=\Oo(X)$ is $G=\Gal\big(K/k(X_1,\ldots,X_d)\big)$-invariant and that for any $\pp\in\Spec A$ the group $G$ acts transitively upon the prime ideals of $B$ lying above $\pp$ (i.e. if $\qq|\pp$ is a prime ideal above $\pp$ and  $\sigma\in G$, then $\sigma\qq$ is a prime ideal of $B$ lying above $\pp$; conversely, each prime ideal $\qq'|\pp$ of $B$ can be obtained as $\qq'=\sigma\qq$ for a suitable $\sigma\in G$), then the maximal length of a chain in \eqreff{eq:idealchain} ending on $\pp_d$ does not depend on the choice of $\pp_d$ lying above $\left(X_1,\ldots, X_d\right)_A$. Since for at least one such $\pp_d$ this length is $d$, by the above construction, the same holds for the others.
@@ -2318,7 +2318,7 @@
 	\begin{proof}
 		For affine $X$, this follows from the geometric interpretation of $\hoehe(\pp)$. The quasi-affine case can be reduced to the affine as in the proof of Corollary~\reff{cor:dimIneqQuasiAffine}.
 		
-		For the sake of completeness, we give a proof of the quasi-affine case. Let $X\subseteq k^n$ be a quasi-affine variety, $\ov X$ it's closure. Let us first prove, that $\dim X=\dim\ov X$. Since $\Oo(X)$ and $\Oo(\ov X)$ have the same quotient field $K$ (as was shown in the proof of Proposition~\reff{cor:dimIneqQuasiAffine}), this will establish $\dim X=\deg\tr(K/k)$. As was done in the proof of Corollary~\reff{cor:dimIneqQuasiAffine}, we take $f\in \Oo(\ov X)$ such that $W\coloneqq\ov X\setminus V(f)\subseteq X$. Let $A=\Oo(\ov X)$, $B=\Oo(W)$, then $A\subseteq\Oo(X)\subseteq B$ and $B=A_f$. In particular, $B=A[f^{-1}]$ is of finite type over $k$ since so is $A$. By Theorem~\reff{thm:catenaryRings}, $\dim B=\dim A_f=\deg\tr(K/k)=\dim A$, hence there is a chain $\snake \pp_0\supsetneq\snake \pp_1\supsetneq\ldots\supsetneq\snake \pp_n$ of prime ideals in $B$ such that $n=\dim A$. The one-to-one correspondence provided by Corollary~\reff{cor:localizations} shows that this corresponds to a chain $\pp_0\supsetneq\pp_1\supsetneq\ldots\supsetneq\pp_n$ of prime ideals $\pp_i=\snake{\pp_i}\cap A\in\Spec A$ satisfying $f\not\in\pp_i$. Then
+		For the sake of completeness, we give a proof of the quasi-affine case. Let $X\subseteq k^n$ be a quasi-affine variety, $\ov X$ it's closure. Let us first prove, that $\dim X=\dim\ov X$. Since $\Oo(X)$ and $\Oo(\ov X)$ have the same quotient field $K$ (as was shown in the proof of Proposition~\reff{cor:dimIneqQuasiAffine}), this will establish $\dim X=\deg\tr(K/k)$. As was done in the proof of Corollary~\reff{cor:dimIneqQuasiAffine}, we take $f\in \Oo(\ov X)$ such that $W\coloneqq\ov X\setminus V(f)\subseteq X$. Let $A=\Oo(\ov X)$, $B=\Oo(W)$, then $A\subseteq\Oo(X)\subseteq B$ and $B=A_f$. In particular, $B=A[f^{-1}]$ is of finite type over $k$ since so is $A$. By Theorem~\reff{thm:catenaryRings}, $\dim B=\dim A_f=\deg\tr(K/k)=\dim A$, hence there is a chain $\snake \pp_0\supsetneq\snake \pp_1\supsetneq\ldots\supsetneq\snake \pp_n$ of prime ideals in $B$ such that $n=\dim A$. The one-to-one correspondence provided by Corollary~\reff{cor:localizations} shows that this corresponds to a chain $\pp_0\supsetneq\pp_1\supsetneq\ldots\supsetneq\pp_n$ of prime ideals $\pp_i=\snake{\pp}_i\cap A\in\Spec A$ satisfying $f\not\in\pp_i$. Then
 		\begin{align*}
 			V(\pp_0)\subsetneq V(\pp_1)\subsetneq\ldots\subsetneq V(\pp_n)\subseteq W\subseteq X\;,
 		\end{align*}
