@@ -141,14 +141,14 @@
 	\mathchoice{\underset{\substack{\displaystyle{\longrightarrow}\\#1}}{\lim}}%displaystyle
 	{\underset{\textstyle\rightarrow\scriptstyle#1}{\lim}}%textstyle
 	{\underset{\scriptstyle\rightarrow\scriptscriptstyle#1}{\lim}}
-	{\underset{\rightarrow#1}{\lim}}
+	{\underset{\rightarrow#1}{\lim}}\ %
 }
 %projective limit
 \newcommand\limit[1][]{
 	\mathchoice{\underset{\substack{\displaystyle{\longleftarrow}\\#1}}{\lim}}%displaystyle
 	{\underset{\textstyle\leftarrow\scriptstyle#1}{\lim}}%textstyle
 	{\underset{\scriptstyle\leftarrow\scriptscriptstyle#1}{\lim}}
-	{\underset{\leftarrow#1}{\lim}}
+	{\underset{\leftarrow#1}{\lim}}\ %
 }
 
 %---- FANCY ARROWS ----
@@ -159,6 +159,8 @@
 	\tikz[baseline=(a.base)] \node (a) at (0,0) {$\longrightarrow$} node[above=-0.25ex] {\tiny $\sim$} node[below=-0.25ex] {$\scriptstyle #1$};}
 \newcommand{\lisomorphism}[1][]{
 	\tikz[baseline=(a.base)] \node (a) at (0,0) {$\longleftarrow$} node[above=-0.25ex] {\tiny $\sim$} node[below=-0.25ex] {$\scriptstyle #1$};}
+\NewDocumentCommand{\doublemorphism}{O{} O{}}{\mathrel{\overset{#1}{\underset{#2}{\substack{\textstyle\longrightarrow\\[-0.67ex]
+			\textstyle\longrightarrow}}}}}
 \newcommand{\morphism}[1][]{\overset{#1}{\longto}}
 \newcommand{\lmorphism}[1][]{\overset{#1}{\longot}}
 \newcommand{\lrmorphism}[1][]{\overset{#1}{\leftrightarrow}}
@@ -167,6 +169,7 @@
 %
 \newcommand{\ov}{\overline}
 \newcommand{\snake}[1]{\widetilde{#1}\vphantom{\overrightarrow{#1}}}%space adjusting hack
+
 
 
 %---- MISCELLANEOUS ----

@@ -1,15 +1,39 @@
 \usepackage{chngcntr}
 \counterwithout{equation}{chapter}
 \usepackage{amsthm}
+\def\@ynthm#1[#2]#3{%
+	\@xp\gdef\csname thmcaptionof#1\endcsname{#3}%
+	\@xp\xdef\csname thmstyleof#1\endcsname{\the\thm@style}%
+	\ifx\relax#2\relax
+	\def\@tempa{\@oparg{\@xthm{#1}{#3}}[]}%
+	\else
+	\@ifundefined{c@#2}{%
+		\def\@tempa{\@nocounterr{#2}}%
+	}{%
+	\@xp\xdef\csname the#1\endcsname{\@xp\@nx\csname the#2\endcsname}%
+	\toks@{#3}%
+	\@xp\xdef\csname#1\endcsname{%
+		\@nx\@thm{%
+			\let\@nx\thm@swap
+			\if S\thm@swap\@nx\@firstoftwo\else\@nx\@gobble\fi
+			\@xp\@nx\csname th@\the\thm@style\endcsname}%
+		{#2}{\the\toks@}}%
+	\let\@tempa\relax
+}%
+\fi
+\@tempa
+}
+
 \usepackage{xstring}
+\usepackage{xparse}
 
 \setlist[description]{font={\bfseries\rmfamily}}
-\usepackage[colorlinks=true,linkcolor=blue]{hyperref}
+\usepackage[colorlinks=true,linkcolor=blue]{hyperref}                          
 
 
-\def\newnewtheorem#1#2[#3]{\newtheorem{#1}{#2}[#3]\expandafter\def\csname thmcaption#1\endcsname{#2}}%erstellt zusätzlich ein Makro, das den Umgebungsnamen enthält                               
 
 \def \curthm{Blub}%sadly, this is the easiest way ...
+\def\varthmmodifier{a}
 
 \newtheoremstyle{cthm}
 {12pt}
@@ -21,7 +45,7 @@
 { }
 {\thmname{#1}\thmnumber{ \IfBeginWith{#2}{\thesection.}{\StrBehind{#2}{\thesection.}}{#2}}\thmnote{ \textmd{(#3)}}\xdef\curthm{#2}}
 
-\newtheoremstyle{cvarthm}
+\newtheoremstyle{cvarcthm}
 {12pt}
 {0pt}
 {\itshape}
@@ -29,7 +53,7 @@
 {\bfseries}
 {.}
 { }
-{\edef\curthmnumber{\csname the\thmenv\endcsname}\thmname{\csname thmcaption\thmenv\endcsname}\thmnumber{ \IfBeginWith{\curthmnumber}{\thesection.}{\StrBehind{\curthmnumber a}{\thesection.}}{\curthmnumber a}}\thmnote{ \textmd{(#3)}}\xdef\curthm{\curthmnumber a}}%für Varianten von Theoremen
+{\edef\curthmnumber{\csname the\thmenv\endcsname}\thmname{\csname thmcaptionof\thmenv\endcsname}\thmnumber{ \IfBeginWith{\curthmnumber}{\thesection.}{\StrBehind{\curthmnumber\varthmmodifier}{\thesection.}}{\curthmnumber\varthmmodifier}}\thmnote{ \textmd{(#3)}}\xdef\curthm{\curthmnumber\varthmmodifier}}%für Varianten von Theoremen
 
 \newtheoremstyle{cdef}
 {12pt}
@@ -41,13 +65,23 @@
 { }
 {\thmname{#1}\thmnumber{ \IfBeginWith{#2}{\thesection.}{\StrBehind{#2}{\thesection.}}{#2}}\thmnote{ \textmd{(#3)}}\xdef\curthm{#2}}
 
+\newtheoremstyle{cvarcdef}
+{12pt}
+{0pt}
+{}
+{}
+{\bfseries}
+{.}
+{ }
+{\edef\curthmnumber{\csname the\thmenv\endcsname}\thmname{\csname thmcaptionof\thmenv\endcsname}\thmnumber{ \IfBeginWith{\curthmnumber}{\thesection.}{\StrBehind{\curthmnumber\varthmmodifier}{\thesection.}}{\curthmnumber\varthmmodifier}}\thmnote{ \textmd{(#3)}}\xdef\curthm{\curthmnumber\varthmmodifier}}%für Varianten von Theoremen
+
 \theoremstyle{cthm}
-\newnewtheorem{thm}{Theorem}[]
-\newnewtheorem{lem}{Lemma}[section]
-\newnewtheorem{sat}{Satz}[section]
-\newnewtheorem{exc}{Exercise}[section]
-\newnewtheorem{cor}{Corollary}[section]
-\newnewtheorem{prop}{Proposition}[section]
+\newtheorem{thm}{Theorem}[]
+\newtheorem{lem}{Lemma}[section]
+\newtheorem{sat}{Satz}[section]
+\newtheorem{exc}{Exercise}[section]
+\newtheorem{cor}{Corollary}[section]
+\newtheorem{prop}{Proposition}[section]
 
 \theoremstyle{cdef}
 \newtheorem{defi}{Definition}[section]
@@ -59,11 +93,15 @@
 \newtheorem{fact}{Fact}[section]
 \newtheorem*{fact*}{Fact}
 
-\theoremstyle{cvarthm}
-\newtheorem{varthmcontainer}{May differ}
-\renewcommand{\thevarthmcontainer}{\csname the\thmenv\endcsname a}
+\theoremstyle{cvarcthm}
+\newtheorem{varcthmcontainer}{May differ}
+\renewcommand{\thevarcthmcontainer}{\csname the\thmenv\endcsname a}
 
-\newenvironment{varthm}[1]{\gdef\thmenv{#1}\begin{varthmcontainer}}{\end{varthmcontainer}}
+\theoremstyle{cvarcdef}
+\newtheorem{varcdefcontainer}{May differ}
+\renewcommand{\thevarcdefcontainer}{\csname the\thmenv\endcsname\varthmmodifier}
+
+\NewDocumentEnvironment{varthm}{O{a} m}{\xdef\varthmmodifier{#1}\edef\ytflatex{var\csname thmstyleof#2\endcsname container}\gdef\thmenv{#2}\@xp\def\csname the\ytflatex\endcsname{\csname the\thmenv\endcsname\varthmmodifier}\begin{\ytflatex}}{\end{\ytflatex}}
 
 \renewenvironment{proof}[1][\proofname]
 {\pushQED{\qed}\topsep0pt \partopsep0pt\trivlist\item[\hskip\labelsep\itshape #1.] }{\popQED\endtrivlist\addvspace{6pt plus 6pt}}
