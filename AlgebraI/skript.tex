@@ -790,7 +790,7 @@
 		We have the following rather obvious relations between these operations on ideals
 		\begin{align}
 		J \cdot \sum_{\lambda\in\Lambda} I_\lambda &= \sum_{\lambda\in \Lambda}J\cdot I_\lambda\\
-		\sqrt{I\cap J}& = \sqrt{I\cdot J} = \sqrt{I}\cdot \sqrt{J}\;.
+		\sqrt{I\cap J}& = \sqrt{I\cdot J} = \sqrt{I}\cap \sqrt{J}\;.
 		\end{align}
 		For infinite $\Lambda$ we have $\sqrt{\bigcap_{\lambda\in\Lambda}I_\lambda} \subseteq \bigcap_{\lambda\in\Lambda} \sqrt{I_\lambda}$ but equality may fail (e.g. $R=K[T]$, $\Lambda = \IN$, $I_\lambda = T^\lambda \cdot R$). Moreover we have the inclusions 
 		\begin{align}
@@ -1130,7 +1130,7 @@
 	\begin{rem*}\begin{alphanumerate}
 			\item The subset $X\subseteq k^n$ occurring here are precisely the affine algebraic varieties in $k^n$.
 			\item In particular, the ring extension $\Oo(X)/k$ is of finite type for such $X$.
-			\item If $X$ is a quasi-affine algebraic variety, $\Oo(X)/k$ may fail to be of finite type (see Nagata (the Lord of the Rings), \emph{Lectures on Hilberts 13$^{\text{th}}$ problem}).
+			\item If $X$ is a quasi-affine algebraic variety, $\Oo(X)/k$ may fail to be of finite type (see Nagata (the Lord of the Rings), \emph{Lecture on the fourteenth problem of Hilbert}).
 		\end{alphanumerate}
 	\end{rem*}
 	\begin{proof}[Proof of Proposition~\reff{prop:primeIdealIso}]
@@ -1499,7 +1499,7 @@
 		As the $(g_j)_{j=1}^b$ are $k$-linearly independent in $\Oo(Y)$ is follows that $\sum_{i=1}^a c_{i,j}f_i(x) = 0$ for all $x\in X$ and $j\leq b$. The $f_i$ being $k$-linearly independent in $\Oo(X)$, this implies $c_{i,j}=0$ for $i\leq a$ and $j \leq b$ and therefore $h=0$.
 	\end{proof}
 	\begin{defi}\lbl{def:germ}
-		Let $X$ be a quasi-affine algebraic variety, $x\in X$. A \emph{germ} (German: \emph{Keim}) at $x$ of a regular function on $X\times Y$ is an equivalence class of pairs $(f,U)$ where $U$ is an open neighbourhood of $x$ and $f\in\Oo(U)$ and where $(f,U)\sim (g,V)$ if $f|_W = g|_W$ for some open neighbourhood $W\subseteq U\cap V$ of $x$ in $X$. The set of such germs is denoted by $\Oo_{X,x}$ (the \emph{local ring} or \emph{stalk} (German: \emph{Keim}) of $X$ at $x$) and it is a ring with ring operations
+		Let $X$ be a quasi-affine algebraic variety, $x\in X$. A \emph{germ} (German: \emph{Keim}) at $x\in X$ of a regular functions on $X$ is an equivalence class of pairs $(f,U)$ where $U$ is an open neighbourhood of $x$ and $f\in\Oo(U)$ and where $(f,U)\sim (g,V)$ if $f|_W = g|_W$ for some open neighbourhood $W\subseteq U\cap V$ of $x$ in $X$. The set of such germs is denoted by $\Oo_{X,x}$ (the \emph{local ring} or \emph{stalk} (German: \emph{Keim}) of $X$ at $x$) and it is a ring with ring operations
 		\begin{align*}
 			\big[(f,U)/_\sim\big] \circ \big[(g,V)/_\sim\big] = \big[(f|_{U\cap V} \circ g|_{U\cap V}, U\cap V)\big]/_\sim
 		\end{align*}
