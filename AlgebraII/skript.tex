@@ -139,11 +139,51 @@ Professor Franke recapitulated on some topics of his previous lecture, Algebra I
 \begin{example}
  The irreducible subsets of $k^2$ are $k^2$ itself, single points, and $V(f)$ where $f\in k[X,Y]$ is a prime element.
 \end{example}
+\begin{defi}[Transcendence Degree]\lbl{def:degTr}
+    Let $K\subseteq L$ be a field extension. A set $S\subseteq L$ is \emph{algebraically independent} over $K$ if $P\in K[X_1,\ldots,X_n]$ and pairwise different $s_1,\ldots, s_n\in S$ with $P(s_1,\ldots, s_n) =0$ implies $P=0$. A \emph{transcendence base} of $L/K$ is a subset $S\subseteq L$ which is algebraically independent over $K$ and such that $L/K(s_1,\ldots,s_n)$ is algebraic. The \defemph{transcendence degree} $\deg\tr L/K$ of $L/K$ is the cardinality of any transcendence base.
+\end{defi}
+\begin{example*}
+ The empty set is a transcendence base of $K/K$. 
+ \end{example*}
+\begin{defi}[Regular Functions] \lbl{def:regularFunctions}
+    Let $X\subseteq k^n$ be closed, $U\subseteq X$ open. A function $f\colon U\to k$ is called \emph{regular at $x\in U$} if $x$ has a neighbourhood $V\subseteq k^n$ such that there are polynomials $p,q\in k[X_1,\ldots,X_n]$ such that $q(y) \neq 0$ and $f(y) = \frac{p(y)}{q(y)}$ for all $y\in U\cap V$. The ring $\Oo(U)$ of \defemph{regular functions} on $U$ consists of all functions $U\morphism[f] k$ which are regular at every $x\in U$.
+\end{defi}
+\begin{prop}
+    If $X\subseteq k^n$ is closed then $R= k[X_1,\ldots, X_n] \to \Oo(X)$ is surjective.
+\end{prop}
+\begin{rem}
+    When $X\subseteq k^n$ is an irreducible open-closed subset then $\Oo(X)$ is a domain. 
+\end{rem}
+\begin{rem}
+    Let T be any topological space, $A\subseteq T$ such that every $t\in T$ has an open neighbourhood $U\subseteq T$ such that $A\cap U$ is closed in $U$, then $A$ is closed in $T$.
+\end{rem}
+If $X$ is irreducible, let $K(X)$ be the quotient field of $\Oo(X)$. This is called the field of rational functions on $X$.
+\begin{thm}
+    If $X\subseteq k^n$ is locally closed and irreducible, then $\dim(X) = \deg\tr (K(X)/k)$ and $X$ is catenary and equality always holds in \eqreff{eq:codimIneq2}, i.e. $\dim Y +\codim(Y,X) = \dim X$ whenever $Y\subseteq X$ is closed, irreducible.
+\end{thm}
+\begin{rem}
+    It is easy to see that $\dim k^n \geq n$ by $\{0\}^n \subseteq k\times\{0\}^{n-1} \subseteq\ldots\subseteq k^{n-1}\times\{0\} \subseteq k^n$. To prove $\dim(k^n) \leq n$, and $\dim(X) \leq\deg\tr(K(X)/k)$, one proves $\deg\tr(K(\pp)/k) > \deg\tr(K(\qq)/k)$ whenever $A/k$ is an algebra of finite type over $k$, $\qq\supsetneq \pp$ are prime ideals and $k(\rr)$ denotes the quotient field of $A/\rr$. 
+    
+    For general affine $X$ one uses the Noether Normalization theorem to get a finite morphism $X\xrightarrow{(f_1,\ldots,f_d)} \IA^d$ (i.e., $\Oo(X)$ is integral over $k[f_1,\ldots,f_d]$) and $f_1,\ldots,f_d$ are $k$-algebraically independent. One then uses the going-up (going-down) for (certain) integral ring extensions to lift chains of irreducible subsets of $\IA^d$ to chains of irreducible subsets of $X$.
+    
+    Professor Franke at this point recommends the books \emph{Algebraic Geometry} by R. Hartshorne, \emph{The Red Book of Varieties and Schemes} by D. Mumford, \emph{Commutative Ring Theory} by H. Matsumura and \emph{Introduction to Commutative Algebra} by M. Atiyah and I. MacDonald. The oh-so-humble authors of these notes want to use this opportunity to recommend also \emph{Algebra I by Jens Franke (lecture notes)} by N. Schwab and F. Wagner \cite{alg1}.
+\end{rem}
+\paragraph{Localization of Rings}
+\begin{defi}[Multiplicative Subsets]
+    Let $R$ be any ring (commutative, with 1). A subset $S\subseteq R$ is called a \defemph{multiplicative subset} of $R$ if it is closed under finite products (in particular $\prod_{s\in\emptyset} s = 1 \in S$).
+\end{defi}
+\begin{defi}[Localization of a Ring]
+    A \defemph{localization} $R_S$ of $R$ with respect to $S$ is a ring $R_S$ with a ring morphism $R\morphism[\psi_S] R_S$ such that $\psi_S(S)\subseteq R_S^\times$ (the group of units of $R_S$) and such that $\psi_S$ has the universal property (on the left) for such ring morphisms. If $R\morphism[\alpha] A$ is any ring morphism such that $\alpha(S) \subseteq A^\times$ then there is a unique ring morphism $R_S\morphism[\mu] A$ such that $\alpha = \mu\circ \psi_S$. 
+\end{defi}
 
-
-
-
-
+    It turns out (by a Yoneda-style argument) thet this universal property characterizes $R_S$ uniquely up to unique isomorphism. One constructs $R_S$ (and thereby proves its existence) by $R_S = R\times S/_\sim$ where $(r,s)\sim (\rho, \gamma)$ iff there is $t\in S$ such that $t\cdot r\cdot \gamma = t\cdot\rho\cdot s$ (note that since $R$ is not necessarily a domain the factor $t$ on both sides cannot be omitted). One thinks of $(r,s)/_\sim$ as $\frac{r}{s}$ and introduces the ring operations in an obvious way. 
+    
+    If $I\subseteq R$ is any ideal then $I_S = I\cdot R_S = \left\{\frac{i}{s}\st i\in I, s\in S\right\}$ is an ideal in $R_S$, and any ideal in $R_S$ can be obtained in this ways: $J= (J\sqcap R)\cdot R_S$ for any ideal $J\subseteq R_S$ where $J\sqcap R$ denotes the preimage of $J$ in $R$ under $\psi_S$. It follows then $R_S$ is Noetherian when $R$ is. For prime ideals one has a bijection between $\Spec R_S$ and the prime ideals $\qq\in \Spec R$ with $\qq\cap S = \emptyset$:
+    \begin{align*}
+        \pp &\longmapsto \pp\sqcap R\\
+        \qq\cdot R_S &\longmapsfrom \qq    
+    \end{align*}
+    We have an equivalence of categories between the category of $R_S$-modules and the category of $R$-modules $M$ on which $M \morphism[s\cdot] M$ acts bijectively for every $s\in S$. For every $R$-module $M$ there is an $R$-module $M_S$ belonging to the right hand side together with a morphism of $R$-modules $M\morphism M_S$, which has the universal property (on the left) for morphisms $M\morphism N$ where $N$ is an $R_S$-module. It can be constructed as $\left\{\frac{m}{s}\st m \in M a, s\in S\right\}/_\sim$ with $\frac{m}{s}\sim \frac{\mu}{\gamma}$ iff $m\gamma t = \mu s t$ for some $t\in S$. When $M=I$ is an ideal in $R$, one can take $M_S = I_S = I\cdot R$.
 
 
 
