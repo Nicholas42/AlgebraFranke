@@ -64,6 +64,8 @@ Let it be said that the first three recommendations are from Professor Franke wh
         \end{align*}
         is bijective.
     \end{quote}
+\end{defi}
+
 \begin{rem}
     When $U=\emptyset$ one can take $I=\emptyset$ and obtains $\Ff(\emptyset) = \{0\}$.
 \end{rem}
@@ -178,7 +180,7 @@ Let it be said that the first three recommendations are from Professor Franke wh
 \end{example}
 \begin{example}
     \begin{alphanumerate}
-    \item
+    \item \lbl{ex:affineIsVariety}
         Any affine algebraic variety is a variety in the sense of Definition \reff{def:variety}.
     \item
         In particular, $\IA^0 = \{0\}$ is a variety, as is any one-point prevariety.
@@ -220,20 +222,80 @@ Let it be said that the first three recommendations are from Professor Franke wh
 \begin{proof}
     Let $a,b\colon T\to X$ as in Definition \reff{def:variety} and $t\in T$ and let $U\subseteq X$ be an affine open subset of $X$ containing both $a(t)$ and $b(t)$. Let $V = a^{-1}(U) \cap b^{-1}(U)\subseteq T$. This is an open subset of $T$ containing $t$. It is easily seen that $a|_V$ and $b|_V$ are morphisms $V\to U$. By the previous example, $K\cap V = \left\{t\in U\st a(t) = b(t)\right\}$ is closed in $V$. Because such a neighbourhood can be found for any $t\in T$, $K$ is closed in $T$ by the previous remark.
 \end{proof}
+\begin{cor}
+    Quasi-projective and quasi-affine algebraic varieties are varieties.
+\end{cor}
+\begin{proof}
+    \begin{description}
+      \item[Step 1]
+        Let $X\subseteq k^n$ be irreducible and closed. Recall that for any $f\in \Oo_X(X)\setminus\{0\}$, $X\setminus V(f)$ is affine:
+        \begin{align*}
+            \left\{(x,t)\in k^{n+1}\st x\in X, t\cdot f(x) = 1\right\} &\isomorphism X\setminus V(f)\\
+            (x,t) &\longmapsto x \\
+            (x,f(x)^{-1}) &\longmapsfrom x
+        \end{align*}
+        Let $U\subseteq X$ be open and $F\subseteq U$ be finite. Let $X\setminus U = V(I)$ with $I\subseteq R=k[X_1,\ldots, X_n]$. If $n=0$, $U = \{0\}$ is affine and we have nothing to prove. Because $k$ is infinite, the $k$-vector space $I$ cannot be the union of its finitely many subspaces $\left\{p\in I\st p(f) = 0\right\}$ of codimension one over $f\in F$. Therefore, there is $p\in I$ such that $F\subseteq X\setminus V(p)$. By our initial remark, $X\setminus V(p)$ is affine. As $p\in I$, $X\setminus V(p)\subseteq U$ and our claim follows.
+     \item[Step 2]
+        Let $X\subseteq \IP^n(k)$ be quasi-projective and let $F\subseteq X$ be finite. We can write $F=\left\{\left[f_0^{(i)},\ldots, f_n^{(i)}\right]\st 1\leq i \leq K\right\}$. As $k^{n+1}$ is larger than the union of the $K$ subspaces $\left\{(\xi_j)_{j=0}^n\st \sum_{j=0}^n \xi_j f_j^{(i)} = 0\right\}_{i=1}^K$ of codimension 1, there is a homogenous polynomial $P\neq 0$ of degree 1 such that $P(f_0^{(i)},\ldots, f_n^{(i)}) \neq 0$ for all $1\leq i\leq K$. Then $F\subseteq X\setminus V(p)$. But $\IP^n(k)\setminus V(P)$ is isomorphic to $k^n$ as this is the case when $P= X_0$ and $\GL_{n+1}(k)$ transitively acts on $k^{n+1}\setminus\{0\}$. Thus, $F\subseteq X\setminus V(p)$ and $X\setminus V(p)$ is isomorphic to a quasi-affine variety. The assertion follows from Step 1.
+    \end{description}
+\end{proof}
+    \begin{rem*}
+        \begin{itemize}
+          \item 
+            Let $X$ be a prevariety. If two arbitrary points have a common neighbourhood which is a variety, then $X$ is a variety.
+          \item 
+            We have actually seen that arbitrary finite subsets of quasi-projective algebraic varieties have open neighbourhoods which are affine. This is usefull, e.g., when forming quotients by finite groups.
+          \item
+            Hironaka (see Hartshorne for examples of a non-quasi-projective variety) has an example of a variety where there are two points without a common affine neighbourhood.
+        \end{itemize}
+        
+    \end{rem*}
 
+\section{Categories}
+A category $\Aa$ is a class $\Ob(\Aa)$ of objects of $\Aa$ together with:
+\begin{alphanumerate}
+    \item 
+        For two arbitrary $X,Y\in \Ob(\Aa)$, a set $\Hom_\Aa(X,Y)$ of \emph{morphisms} from $X$ to $Y$ in $\Aa$.
+    \item 
+        For $X,Y,Z\in\Ob(\Aa)$, a map 
+        \begin{align*}
+            \Hom_\Aa(X,Y)\times \Hom_\Aa(Y,Z) &\longto \Hom_\Aa(X,Z)\\
+            (f,g) &\longmapsto g\circ f
+        \end{align*}
+        called the \emph{composition of morphisms} in $\Aa$.
+\end{alphanumerate}
+The following assumptions must be satisfied:
+\begin{alphanumerate}
+    \item
+        If $A\morphism[f] B \morphism[g] C\morphism[h] D$ are morphisms in $\Aa$, then $h\circ(g\circ f) = (h\circ g)\circ f$.
+    \item
+        For any $A\in\Ob(\Aa)$ there is a unique morphism $A\morphism[\id_A] A$ in $\Hom_\Aa(A,A)$ such that $\id_A \circ f = f$ and $g\circ \id_A = g$ for any $f\in \Hom_\Aa(B,A)$ and any $g\in \Hom_\Aa(A,C)$ for arbitrary $B,C\in \Ob(\Aa)$.
+\end{alphanumerate}
+\begin{example}
+    \begin{itemize}
+        \item 
+            The category \emph{Set} of sets where $\Ob(\Aa)$ is the class of sets, $\Hom_\Aa(X,Y)$ is the set of maps from $X$ to $Y$ and the composition of morphism is the composition of maps.
+        \item 
+            The category \emph{Grp} of groups where $\Ob(\Aa)$ is the class of groups, $\Hom_\Aa(X,Y)$ is the set of group morphisms from $X$ to $Y$ and the composition of morphisms is the composition of maps.
+        \item 
+            The categories of rings (\emph{Ring}), commutative rings (\emph{CRing}) and abelian groups (\emph{Ab}) are all similar.
+        \item 
+            The topological spaces with the continous maps (\emph{Top}).
+        \item 
+            The Banach spaces with bounded (continous) maps.
+        \item 
+            The $k$-vector spaces with $k$-linear maps (\emph{$Vect_K$}) or $R$-modules with $R$-linear maps (\emph{$R$-Mod}).
+    \end{itemize}
+\end{example}
+A category is called \emph{small} if its class of objects is a set.
 
+A \emph{subcategory} $\Bb$ of $\Aa$ has $\Ob(\Bb) \subseteq \Ob(\Aa)$ and $\Hom_\Bb(X,Y) \subseteq \Hom_\Aa(X,Y)$ and for arbitrary objects $X,Y$ of $\Bb$, the identity $\id_X$ of $X$ in $\Aa$ is a morphism in $\Hom_\Bb(X,X)$.
 
+We call $\Bb$ a \emph{full subcategory} of $\Aa$ if $\Hom_\Aa(X,Y) = \Hom_\Bb(X,Y)$ for arbitrary objects $X,Y\in\Ob(\Bb)$.
 
+We call $\Bb$ a \emph{equivalent subcategory} of $\Aa$ if it is a full subcategory and every object $X\in \Ob(\Aa)$ is isomorphic to some $Y\in\Ob(\Bb)$ (where a morphism $X\morphism[f] Y$ is an isomorphism iff there  is a (unique) $Y\morphism[g] X$ such that $f\circ g = \id_Y$ and $g\circ f= \id_X$.
 
-
-
-
-
-
-
-    
-
-\end{defi}
+A further example is the category of prevarieties (with morphisms according to Definition \reff{def:preVarieties}) and its full subcategory of varieties, containing all varieties as objects.
 
 \printbibliography
 
