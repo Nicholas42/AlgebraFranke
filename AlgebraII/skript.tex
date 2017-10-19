@@ -75,9 +75,9 @@ Professor Franke recapitulated on some topics of his previous lecture, Algebra I
 \end{defi}
 Condition (a) implies, by induction, the following more general property: 
 For any finite cover $X= \bigcup_{i=1}^n X_i$ by closed subsets, there is $1\leq i\leq n$ such that $X=X_i$.
-\begin{prop}\lbl{prop:irreducibleDecomposition}
+\begin{prop}
  \begin{alphanumerate}
-    \item 
+    \item \lbl{prop:irreducibleDecomposition}
         Any subset of a Noetherian topological space is Noetherian with it's induced subspace topology \emph{(cf. \cite[Remark~2.2.1]{alg1})}.
     \item 
         If $X$ is Noetherian, there is a unique (that is, up to permutation of the $X_i$) decomposition $X = \bigcup_{i=1}^n X_i$ into irreducible closed subsets $X_i\subseteq X$ such that $X_i\not\subseteq X_j$ for $i\neq j$ \emph{(cf. \cite[Proposition~2.1.1]{alg1})}.
@@ -215,7 +215,45 @@ One may check that locally closed sets are precisely the open subsets of closed 
         \qq\cdot R_S &\longmapsfrom \qq\;.
     \end{align*}
     We have an equivalence of categories between the category of $R_S$-modules and the category of $R$-modules $M$ on which $M \morphism[s\cdot] M$ acts bijectively for every $s\in S$. For every $R$-module $M$ there is an $R$-module $M_S$ belonging to the right hand side together with a morphism of $R$-modules $M\to M_S$, which has the universal property (on the left) for all morphisms from $M$ to some $R_S$-module. It can be constructed as $\left\{\frac{m}{s}\st m \in M a, s\in S\right\}/_\sim$ with $\frac{m}{s}\sim \frac{\mu}{\sigma}$ iff $m\cdot\sigma\cdot t = \mu\cdot s\cdot t$ for some $t\in S$. $M=I$ is an ideal in $R$, one can take $M_S = I_S = I\cdot R_S$. As for rings, we call $M_S$  the \emph{localization} of $M$ (cf. \cite[Proposition~2.3.2]{alg1}).
-
+\section*{``Advanced'' Galois Theory: Trace and Norm}
+    Let $L/K$ be a finite field extension, $\overline{L}$ an algebraic closure of $L$.
+    \begin{defi}[Characteristic Polynomial, Trace and Norm]
+        Let $x\in L$, $\Min_{x/K} = T^d +\sum_{i=0}^{d-1} m_i  T^i$ the unique normed generator of $\left\{P\in K[T]\st P(x) = 0\right\}$. Recall that $d=[K(x):K]$ is called the \emph{degree} and $\Min_{x/K}$ the \emph{minimal polynomial} of $x$. The \defemph{characteristic polynomial} of $x$ with respect to $L$ is $P_{x,L} = \det(T\cdot \id -x) = T^D +\sum_{i=0}^{D-1} p_iT^i$. The Trace and Norm $\Tr_{L/K}(x)$ and $N_{L/K}(x)$ are $-p_{D-1}$ and $(-1)^Dp_0$, respectively. In other words, there are the trace and norm of the endomorphism $L\morphism[x\cdot] L$ of the $K$-vector space $L$.
+    \end{defi}
+    \begin{thm}
+        \begin{alphanumerate}
+            \item
+                If $V$ is any finite dimensional $L$-vector space and $f\in \End_L(V)$, then $\det_K(f) = N_{L/K}( \det_L(f))$ and $\Tr_K(f) = \Tr_{L/K}(\Tr_L(f))$ where $\Tr_M(f)$ and $\det_M(f)$ are trace and determinant of the endomorphism of the $M$-vector space $V$.
+            \item 
+                If $M/L$ is a finite field extension and $m\in M$ the $\Tr_{M/K}(m) = \Tr_{L/K}(\Tr_{M/L}(m))$ and $N_{M/K}(m) = N_{L/K}(N_{M/L}(m))$.
+        \end{alphanumerate}
+        Let $x\in L$ and let $x=x_1,\ldots, x_e$ be the pairwise different images of $x$ under the $K$-linear embeddings $L\morphism \overline{L}$. Also, let $d=\deg(x/K)$ and $D= [L:K]$ as before.
+        \begin{alphanumerate}
+            \item[(c)]
+                If $e=1$ there is a positive integer $a$ which is a power of the characteristic of $K$ such that $x^a\in K$. In particular $x\in K$ for $\cha K = 0$.
+            \item[(d)]
+                $\Min_{x/K} = \prod_{i=1}^e (T-x_i)^{d/e}$ and $P_{x,L/K} = \prod_{i=1}^e (T-x_i)^{D/e} = \prod_{\chi}(T-\chi(x))^{D/E}$ where $\chi$ runs over the different embeddings $L\morphism \overline{L}$ and $E$ is their number.
+            \item[(e)]
+                We have $P_{x,L/K}=\Min_{x/K}^{[L/K(x)]}$. More general, if $K\subseteq F \subseteq L$ and $x\in F$ then $P_{x,L/K} = P_{x,L/E}^{[L:E]}$.
+        \end{alphanumerate}
+    \end{thm}
+    \begin{proof}
+        \begin{alphanumerate}
+        \item[(e)]
+            Let $m_1,\ldots,m_k$ be a base of $L/E$ and $e_1,\ldots,e_\ell$ a base of $E/K$ and $M$ be the matrix of $E\morphism[x\cdot] E$ for thar base. Then it is known from basic Galois theory that $\left\{e_i\cdot m_j\st 1\leq i \leq \ell, 1\leq j \leq k\right\}$ is a base of $L/K$. The representation of $L\morphism[x\cdot] L$ in that base is a block matrix with $k$ times the block $M$ on the diagonal. This shows that $P_{x,L/K} = P_{x,E/K}^k$ as stated. If $E=K(x)$ then $P_{x,E/K} = \Min_{x/K}$ since $x$ is zero of the left hand side by Cayley-Hamiltion and $\deg P_{x,E/K} = [E:K] = [K(x):K] = \deg(x/K) = \deg \Min_{x/K}$ and both polynomials are normed.
+        \item[(a)]
+            If $C=(\ell_1,\ldots, \ell_k)$ is a base of $L/K$ and $B=(v_1,\ldots,v_m)$ a base of $V$ as an $L$-vector space and $\Mat_B(f) = \{f_{i,j}\}{i,j=1}^m$ the matrix representing $f$ to the base of $B$. Then $\snake B = \left\{\ell_i\cdot v_j\st 1\leq i\leq k, 1\leq j\leq m\right\}$ is a base of $V$ and 
+            
+            Matrix under construction, please stand by
+            
+            Since the trace of a matrix is the sum of its diagonal, the assertion about traces follows. The assertion about determinants also follows in the case $f_{i,j}=0$ when $i>j$ because $\det X = \prod_{i=1}^m \det(\Mat_C(f_{i,i})) = \prod_{i=1}^m N_{L/K} (f_{i,i}) = N_{L/K}(\prod_{i=1}^m f_{i,i}) = N_{l/K}(\det\Mat_B(f)) = N_{L/K} \det_L f$. Moreover, the assertion is trivial when $\Mat_B(f)$ is a permutation matrix, and that it holds forr $f\times g$ when it holds for both $f$ and $g$. By Gaussian elimination, $f$ can be turned into upper triangular form by permutation of rows and addtion of multiples of a row vector tor another row, corresponding to left multiplication by endomorphisms of a type dealt with before. Therefore (a) and (b) follow.
+        \item[(c)]
+            Induction on $d=\deg(x/K)$. When $d=1$, $e=1$, all assertions are trivial. Let $d>1$ and let the assertion be proven for elements of $L$ of degree strictly less then $d$. If $d=e$ we have $\Min_{x/K} = \prod_{i=1}^e (T-x_i)$ by a comparison of degree and highest coefficient as all $x_i$ must be zeroes of the left hand side. Assertion $c$ is also trivial in this case. It is known from basic Galois theory that all zeroes of the $\Min_{x,K}$ are simple unless $\cha K =p > 0$ and $\Min_{x/K} = Q(T^p)$ for some $Q\in K[T]$. In the first case it is known from basic Galois theory that every zero of $\Min_{x/K}$ is $\psi(x)$ where $\psi\colon K(x) \morphism \overline{L}$ is some $K$-linear embedding and that all such $\psi$ extend to some $L\morphism \overline{L}$ ($K$-linear embedding of fields). Thus $e=d$ in the first case. Let thus be $p>0$ and $\Min_{x/K}=Q(T^p)$. Thus $d=p\cdot\delta$. It follows that $Q$ is the minimal polynomial of $x^p$. Moreover, $x_1^p,\ldots, x_e^p$ are the pairwise different images of $x$ under the $K$-linear $L\morphism \overline{L}$ (since $x_i^p-x_j^p = (x_i-x_j)^p \neq 0$ when $i\neq j$). By the induction assumption, $Q= \Min_{x^p/K} = \prod_{i=1}^e(T-x_i^p)^{d/(pe)}$ and $\Min_{x/K} = Q(T^p) = \prod_{i=1}^e(T^p-x^p)^{d/(pe)} = \prod_{i=1}^e (T-x_i)^{d/e}$. Also, when $e=1$ the induction assumption implies $(x^p)^\alpha\in K$ where $\alpha\in p^\IN$. Thus, $x^a\in K$ with $a=p\cdot\alpha\in p^\IN$. Part (d), $P_{x,L/K}=\prod_{i=1}^e (T-x_i)^{D/e}$ follows from (e) and the assertion just shown.
+        \item[(d)]
+            Let $\psi_1,\ldots,\psi_e$ be the different $K$-linear embeddings of $K(x)\morphism \overline{L}$. It is easy to see, that each of the $\psi_i$ has the same number $n$ of extensions to a $K$-linear embedding $L\morphism \overline{L}$. Then by the previous step the left hand side is $\prod_{i=1}^e(T-x_i)^{D/e} = \prod_\chi (T-\chi(x))^{D/(ne)} = \prod_\chi (T-\chi(x))^{D/E}$.
+        \end{alphanumerate}
+    \end{proof}
+    
 
 
 \chapter{Krull's Principal Ideal Theorm}\lbl{ch:krullPrincipalIdealThm}
@@ -247,9 +285,24 @@ One may check that locally closed sets are precisely the open subsets of closed 
             V(I\cdot J ) &= V(I) \cup V(J)\\
             V\bigg(\sum_{\lambda\in\Lambda} I_\lambda\bigg) &= \bigcap_{\lambda\in\Lambda} V(I_\lambda).
         \end{align*}
-        This implies (together with $V(0) = \Spec R$ and $V(R) = \emptyset$) that $\Spec R$ can be equipped with a topology in which the closed subsets are precisely the subsets of them for $V(I)$ where $I$ is some ideal in $R$. This topology is Noetherian when $R$ is, hence any closed subset can be decomposed into irreducible components. For $V(f) = V(f\cdot R)$, they are precisely those $V(\pp)$ for which $\pp$ is minimal among all prime ideals containing $f$. Theorem~\reff{thm:krullPrincipalIdeal} thus states that all irreducible components of $V(f)$ have codimension smaller or equal to 1 in $\Spec R$.
+        This implies (together with $V(0) = \Spec R$ and $V(R) = \emptyset$) that $\Spec R$ can be equipped with a topology in which the closed subsets are precisely the subsets of them for $V(I)$ where $I$ is some ideal in $R$. This topology is Noetherian when $R$ is, hence any closed subset can be decomposed into irreducible components. For $V(f) = V(f\cdot R)$, they are precisely those $V(\pp)$ for which $\pp$ is minimal among all prime ideals containing $f$. Theorem~\reff{thm:krullPrincipalIdeal} thus states that all irreducible components of $V(f)$ have codimension smaller or equal to 1 in $\Spec R$. 
     \end{alphanumerate}
 \end{rem*}
-
+\begin{cor}
+    If $X\subseteq k^n$ is quasi-affine in $k^n$ (with $k$ algebraically closed) and $f\in\Oo(X)\setminus\{0\}$ then every irreducible component of $V(f)$ has codimension 1 in $X$.
+\end{cor}
+\begin{rem*}
+    \begin{alphanumerate}
+    \item 
+        It is possible, without losing generality, to assume that $X\subseteq k^n$ is Zariski-closed (thus affine, thus isomorphic to an affine variety in some $k^n$). This is so by (b) and (d) below. It is thus possible, while proving the corollary, to assume that $X$ is isomorphic to some affine algebraic variety in some $k^n$.
+    \item
+        Let $U\subseteq X$ be open, then there is a bijective correspondence between the irreducible closed subsets of $U$ and the irreducible closed subsets $A\subseteq X$ not disjoint from $U$:
+        \begin{align*}
+            A\cap U &\longmapsfrom A\\
+            B&\longmapsto \overline{B}
+        \end{align*}
+        This shows that $\codim (A\cap U, U)  = \codim(A,X)$ whenever $A\subseteq X$ is irreducible, closed and $U\subseteq X$ open and not disjoint from $A$.
+    \end{alphanumerate}
+\end{rem*}
 \printbibliography
 \end{document}          
