@@ -1,4 +1,4 @@
-\documentclass[a4paper,parskip=full,numbers=enddot]{scrreprt}
+\documentclass[a4paper,parskip=full,numbers=enddot, DIV=12]{scrreprt}
 \usepackage[utf8]{inputenc}
 
 \usepackage{../header}
@@ -30,7 +30,7 @@ Please report bugs, typos etc. through the \emph{Issues} feature of github.
 \chapter*{Introduction}
 \addcontentsline{toc}{chapter}{Introduction}
 \pagenumbering{arabic}
-After a slight delay due to the Professor being confused by the large attendance to his lecture, Franke briefly recaps the contents of his lecture course Algebra I. Our notes to this lecture can be found \href{https://github.com/Nicholas42/AlgebraFranke/tree/master/AlgebraI}{here}\cite{alg1}. He mentions specifically
+After a slight delay due to the Professor being confused by the large attendance to his lecture, Franke briefly recaps the contents of his lecture course Algebra I. Our notes to this lecture can be found \href{https://github.com/Nicholas42/AlgebraFranke/tree/master/AlgebraI}{here} \cite{alg1}. He mentions specifically
 \begin{itemize}
  \item Hilbert's Basissatz and Nullstellensatz,
  \item the Noether Normalization Theorem,
@@ -51,210 +51,18 @@ After a slight delay due to the Professor being confused by the large attendance
 \end{itemize}
 Exercises will be held on Wednesday from 16 to 18 and Friday from 12 to 14 in Room 0.008. It is necessary to have achieved at least half the points on the exercise sheets in order to attend the exams.
 
-\section*{Introduction to Krull dimension and all that}
-\addcontentsline{toc}{section}{Introduction to Krull dimension and all that}
-Professor Franke recapitulated on some topics of his previous lecture, Algebra I (of which detailed lecture notes may be found in \cite{alg1}). Note that although the numbering of theorems in the following might seem messy, it is \emph{intentionally} messy at least.
-\begin{defi}[{\cite[Definition~2.1.2]{alg1}}]
- A topological space $X$ is called \defemph{quasi-compact} if every open cover $X = \bigcup_{\lambda\in\Lambda} U_\lambda$ admits a finite subcover.
- 
- $X$ is \defemph{Noetherian} if it satisifies the following equivalent conditions:
- \begin{alphanumerate}
-    \item Every open subset is quasi-compact.
-    \item There is no infinite properly descending chain of closed subsets.
-    \item Every set of closed subsets of $X$ has a $\subseteq$-minimal element.
- \end{alphanumerate}
-\end{defi}
-
-\begin{defi}[{\cite[Definition~2.1.3]{alg1}}]
- A topological space $X\not=\emptyset$ is \defemph{irreducible} if it satisifies the following equivalent conditions:
- \begin{alphanumerate}
-    \item If $X = X_1\cup X_2$ where $X_1$ and $X_2$ are closed subsets, then $X=X_1$ or $X=X_2$. Also, $X\neq\emptyset$.
-    \item Any two non-empty open subsets of $X$ have non-empty intersection.
-    \item Every non-empty open subset of $X$ is dense.
- \end{alphanumerate}
-\end{defi}
-Condition (a) implies, by induction, the following more general property: 
-For any finite cover $X= \bigcup_{i=1}^n X_i$ by closed subsets, there is $1\leq i\leq n$ such that $X=X_i$.
-\begin{prop}
- \begin{alphanumerate}
-    \item \lbl{prop:irreducibleDecomposition}
-        Any subset of a Noetherian topological space is Noetherian with it's induced subspace topology \emph{(cf. \cite[Remark~2.2.1]{alg1})}.
-    \item 
-        If $X$ is Noetherian, there is a unique (that is, up to permutation of the $X_i$) decomposition $X = \bigcup_{i=1}^n X_i$ into irreducible closed subsets $X_i\subseteq X$ such that $X_i\not\subseteq X_j$ for $i\neq j$ \emph{(cf. \cite[Proposition~2.1.1]{alg1})}.
- \end{alphanumerate}
-
-\end{prop}
-\begin{defi}[{\cite[Definition~2.1.4]{alg1}}]
- Let $X$ be a topological space, $Z\subseteq X$ irreducible. We put 
- \begin{align*}
-    \codim(Z,X) &= \sup\left\{\ell\st 
-    \begin{array}{c}
-	    \text{there is a strictly descending chain }\\
-	    Z_0 \subsetneq Z_1\subsetneq \ldots \subsetneq Z_\ell\subseteq X\text{ of irreducible }Z_i\subseteq X
-    \end{array}\right\}\\
-    \dim(X) &= \sup\left\{\codim(Z,X)\st Z\subseteq X \text{ irreducible}\right\}
- \end{align*}
-\end{defi}
-\begin{example}[{\cite[Section~1.7 and 2.1]{alg1}}]\lbl{ex:vanishingSetOfIdeal}
-  Let $k =\overline{k}$ be an algebraically closed field. For an ideal $I\subseteq R = k[X_1,\ldots,X_n]$ let 
-  \begin{align*}
-  	V(I) = \left\{x\in k^n\st f(x)=0\ \forall f\in I\right\}
-  \end{align*}
-  be the set of zeroes of $I$. By the Hilbert Nullstellensatz, $V(I) \neq \emptyset$ when $I\subsetneq R$. Moreover 
-  \begin{align*}
-    V(I)& = V\left(\sqrt{I}\right)\\
-    V(I\cdot J ) &= V(I) \cup V(J)\\
-    V\bigg(\sum_{\lambda\in\Lambda} I_\lambda\bigg) &=\bigcap_{\lambda\in\Lambda} V(I_\lambda)\;.
- \end{align*}
- It follows that there is a topology (called the \emph{Zariski topology}) on $k^n$ containing precisely the subsets of the form $V(I)$ as closed subsets. A version of the Nullstellensatz (\cite[Proposition~1.7.1]{alg1}) says
- \begin{align*}
-  \left\{f\in R\st f(x) = 0\ \forall f\in I\right\} = \left\{f\in R\st V(f)\supseteq V(I)\right\} = \sqrt{I}\;.
- \end{align*}
- This means that there is strictly antimonotonic bijective correspondence between the ideals $I$ of $R$ with $I=\sqrt{I}$ and the Zariski-closed subsets $A\subseteq k^n$ via
- \begin{align*}
-	 \left\{\text{ideals }I\subseteq R\text{ such that }I=\sqrt I\right\}&\isomorphism\left\{\text{Zariski-closed subsets }A\subseteq k^n\right\}\\
-    \left\{f\in R\st V(f)\supseteq A\right\} &\longmapsfrom A\\
-    I&\longmapsto V(I)\;.
- \end{align*}
- (cf. \cite[Remark~2.1.1]{alg1}). As $R$ is Noetherian, any strictly ascending chain of ideals in $R$ terminates, implying that $k^n$ is a Noetherian topological space. Under the above correspondence prime ideals correspond to irreducible subsets and vice versa (cf. \cite[Proposition~2.1.2]{alg1}).  
-\end{example}
-\begin{rem}[{\cite[Remark~2.1.3]{alg1}}]
- In general for $A\subseteq B\subseteq C\subseteq X$
- \begin{align}\lbl{eq:codimIneq}
-    \codim(A,B) +\codim(B,C) &\leq \codim(A,C) \\ 
-    \codim(A,X)+\dim A &\leq \dim X.\lbl{eq:codimIneq2}
- \end{align}
- may be strict. A Noetherian topological space is called \emph{catenary} if \eqreff{eq:codimIneq} is an equality whenever $A$, $B$ and $C$ are irreducible.
-
-\end{rem}
-\setcounter{thm}{4}
-\begin{thm}[{\cite[Theorem~5]{alg1}}]
- The space $X=k^n$ is catenary and in this case equality always occurs in \eqreff{eq:codimIneq2}.
-\end{thm}
-\begin{example}
- For $n=1$, the closed subsets of $k$ are $k$ itself and the finite subsets. Since $k$ is infinite, the points and $k$ are the irreducible subsets, implying $\dim(k) = 1 $ and the other assertions for $n=1$.
-\end{example}
-\begin{example}
- The irreducible subsets of $k^2$ are $k^2$ itself, single points, and $V(f)$ where $f\in k[X,Y]$ is a prime element.
-\end{example}
-\begin{defi}[transcendence degree]\lbl{def:degTr}
-    Let $K\subseteq L$ be a field extension. A set $S\subseteq L$ is called \emph{algebraically independent} over $K$ if for all polynomials $P\in K[X_1,\ldots,X_n]$ and pairwise different $s_1,\ldots, s_n\in S$, 
-    \begin{align*}
-    	P(s_1,\ldots, s_n) =0\quad\text{implies}\quad P=0\;. 
-    \end{align*}
-    A \emph{transcendence base} of $L/K$ is a subset $S\subseteq L$ which is algebraically independent over $K$ and such that $L/K(s_1,\ldots,s_n)$ is algebraic. The \defemph{transcendence degree} $\deg\tr L/K$ of $L/K$ is the cardinality of any transcendence base.
-\end{defi}
-\begin{example*}
- The empty set is a transcendence base of $K/K$. 
- \end{example*}
-\begin{defi}[regular functions, {\cite[Definition~2.2.2]{alg1}}] \lbl{def:regularFunctions}
-    Let $X\subseteq k^n$ be closed, $U\subseteq X$ open. A function $f\colon U\to k$ is called \emph{regular} at $x\in U$ if $x$ has a neighbourhood $\Omega\subseteq k^n$ for which there are polynomials $p,q\in k[X_1,\ldots,X_n]$ such that $V(q)\cap \Omega=\emptyset$ and 
-    \begin{align*}
-    	f(y) = \frac{p(y)}{q(y)}\quad\text{for all }y\in U\cap \Omega
-    \end{align*}
-    The ring $\Oo(U)$ of \defemph{regular functions} on $U$ consists of all functions $U\morphism[f] k$ which are regular at every $x\in U$.
-\end{defi}
-\begin{prop}\lbl{prop:RtoO(X)}
-	If $X\subseteq k^n$ is closed then $R= k[X_1,\ldots, X_n] \to \Oo(X)$ is surjective.
-\end{prop}
-In \cite[Proposition~2.2.2]{alg1}, we actually proved a stronger result: If $X\subseteq k^n$ is irreducible closed, i.e. $X=V(\pp)$ for some prime ideal $\pp\subseteq R$, then $\Oo(X)\simeq R/\pp$. Proposition~\reff{prop:RtoO(X)} immediately follows from this, as any closed subset decomposes into irreducible closed subsets according to Proposition~\reff{prop:irreducibleDecomposition} (it is crucial that each $X_i$ occuring in such a contains a non-empty open subset of $X$, cf. \cite[Proposition~2.1.1]{alg1}).
-
-\begin{rem}
-    When $X\subseteq k^n$ is an irreducible open-closed subset (that is, an open subset of an irreducible closed subset -- a.k.a. a \emph{quasi-affine variety}, cf. \cite[Definition~2.2.1]{alg1}) then $\Oo(X)$ is a domain. 
-\end{rem}
-\begin{rem}
-    Let $T$ be any topological space, $A\subseteq T$ such that every $t\in T$ has an open neighbourhood $U\subseteq T$ such that $A\cap U$ is closed in $U$, then $A$ is closed in $T$ (we suspect that this is mentioned only because Professor Franke \sout{mistook this class for Algebraic Geometry I} recently used this in Algebraic Geometry I). If the condition is required only for $t\in A$, then $A$ is called \emph{locally closed}.
-\end{rem}
-If $X$ is irreducible, let $K(X)$ be the quotient field of $\Oo(X)$. This is called the \emph{field of rational functions} on $X$.
-\begin{thm}[{\cite[Theorem~6]{alg1}}]
-	If $X\subseteq k^n$ is locally closed and irreducible, then
-	\begin{align*}
-		\dim(X) = \deg\tr (K(X)/k)\;.
-	\end{align*}
-	Moreover, $X$ is catenary and equality always holds in \eqreff{eq:codimIneq2}, i.e. $\dim Y +\codim(Y,X) = \dim X$ whenever $Y\subseteq X$ is closed, irreducible.
-\end{thm}
-One may check that locally closed sets are precisely the open subsets of closed sets. In particular, $X$ from the above theorem is a quasi-affine variety, as we used to call it in Algebra I.
-\begin{rem}
-	It is easy to see that $\dim k^n \geq n$ since we have the chain
-	\begin{align*}
-		\{0\}^n \subsetneq k\times\{0\}^{n-1} \subsetneq\ldots\subsetneq k^{n-1}\times\{0\} \subsetneq k^n
-	\end{align*} of irreducible closed subsets. To prove $\dim(k^n) \leq n$, and $\dim(X) \leq\deg\tr(K(X)/k)$, one proves $\deg\tr(\KK(\pp)/k) > \deg\tr(\KK(\qq)/k)$ whenever $A/k$ is an algebra of finite type over $k$, $\qq\supsetneq \pp$ are prime ideals and $\KK(\pp)$ denotes the quotient field of $A/\pp$. 
-    
-    For general affine $X$ one uses the Noether Normalization theorem to get a finite morphism $X\xrightarrow{(f_1,\ldots,f_d)} \IA^d(k)=k^d$ (i.e., $\Oo(X)$ is integral over $k[f_1,\ldots,f_d]$) and $f_1,\ldots,f_d$ are $k$-algebraically independent). One then uses the going-up (going-down) for (certain) integral ring extensions to lift chains of irreducible subsets of $\IA^d(k)=d^d$ to chains of irreducible subsets of $X$ (all of this may be found in much more detail in \cite[Section~2.4-2.6]{alg1}).
-    
-    Professor Franke at this point recommends the books \emph{Algebraic Geometry} by R. Hartshorne, \emph{The Red Book of Varieties and Schemes} by D. Mumford, \emph{Commutative Ring Theory} by H. Matsumura and \emph{Introduction to Commutative Algebra} by M. Atiyah and I. MacDonald. The oh-so-humble authors of these notes want to use this opportunity to recommend \emph{Algebra I by Jens Franke (lecture notes)} by N. Schwab and F. Wagner \cite{alg1} as well.
-\end{rem}
-\section*{Localization of rings}
-\addcontentsline{toc}{section}{Localization of rings}
-\begin{defi}[Multiplicative Subsets]
-    Let $R$ be any ring (commutative, with 1). A subset $S\subseteq R$ is called a \defemph{multiplicative subset} of $R$ if it is closed under finite products (in particular $\prod_{s\in\emptyset} s = 1 \in S$).
-\end{defi}
-\begin{defi}[Localization of a ring]
-    A \defemph{localization} $R_S$ of $R$ with respect to $S$ is a ring $R_S$ with a ring morphism $R\morphism[\psi_S] R_S$ such that $\psi_S(S)\subseteq R_S^\times$ (the group of units of $R_S$) and such that $\psi_S$ has the universal property (on the left) for such ring morphisms:
-    \begin{quote}		
-	If $R\morphism[\alpha] A$ is any ring morphism such that $\alpha(S) \subseteq A^\times$ then there is a unique ring morphism $R_S\morphism[\mu] A$ such that the diagram
-	\begin{diagram}
-		\node (R) at (0,1.25) {$R$};
-		\node (A) at (2.5,1.25) {$A$};
-		\node (RS) at (1.25,0) {$R_S$};
-		\scriptsize
-		\draw[->] (R) -- (A) node[pos=0.5, above] {$\alpha$};
-		\draw[->] (R) -- (RS) node[pos=0.5, below left] {$\psi_S$};
-		\draw[->, dashed] (RS) -- (A) node[pos=0.5, below right] {$\exists!\ \mu$};
-	\end{diagram}
-	commutes.
-    \end{quote}
-\end{defi}
-
-    It turns out (by a Yoneda-style argument) that this universal property characterizes $R_S$ uniquely up to unique isomorphism. One constructs $R_S$ (and thereby proves its existence) by $R_S = (R\times S)/_\sim$ where $(r,s)\sim (\rho, \sigma)$ iff there is $t\in S$ such that $t\cdot r\cdot \sigma = t\cdot\rho\cdot s$ (note that since $R$ is not necessarily a domain the factor $t$ on both sides cannot be omitted). One thinks of $(r,s)/_\sim$ as $\frac{r}{s}$ and introduces the ring operations in an obvious way. 
-    
-    If $I\subseteq R$ is any ideal then $I_S = I\cdot R_S = \left\{\frac{i}{s}\st i\in I, s\in S\right\}$ is an ideal in $R_S$, and any ideal in $R_S$ can be obtained in this way: $J= (J\sqcap R)\cdot R_S$ for any ideal $J\subseteq R_S$ where $J\sqcap R$ denotes the preimage of $J$ in $R$ under $\psi_S$. It follows then $R_S$ is Noetherian when $R$ is. For prime ideals one obtains a bijection (cf. \cite[Corollary~2.3.1(e)]{alg1})
-    \begin{align*}
-	\Spec R_S & \isomorphism\left\{\qq\in\Spec R\st \qq\cap S=\emptyset\right\}\\
-        \pp &\longmapsto \pp\sqcap R\\
-        \qq\cdot R_S &\longmapsfrom \qq\;.
-    \end{align*}
-    We have an equivalence of categories between the category of $R_S$-modules and the category of $R$-modules $M$ on which $M \morphism[s\cdot] M$ acts bijectively for every $s\in S$. For every $R$-module $M$ there is an $R$-module $M_S$ belonging to the right hand side together with a morphism of $R$-modules $M\to M_S$, which has the universal property (on the left) for all morphisms from $M$ to some $R_S$-module. It can be constructed as $\left\{\frac{m}{s}\st m \in M a, s\in S\right\}/_\sim$ with $\frac{m}{s}\sim \frac{\mu}{\sigma}$ iff $m\cdot\sigma\cdot t = \mu\cdot s\cdot t$ for some $t\in S$. $M=I$ is an ideal in $R$, one can take $M_S = I_S = I\cdot R_S$. As for rings, we call $M_S$  the \emph{localization} of $M$ (cf. \cite[Proposition~2.3.2]{alg1}).
-\section*{``Advanced'' Galois Theory: Trace and Norm}
-    Let $L/K$ be a finite field extension, $\overline{L}$ an algebraic closure of $L$.
-    \begin{defi}[Characteristic Polynomial, Trace and Norm]
-        Let $x\in L$, $\Min_{x/K} = T^d +\sum_{i=0}^{d-1} m_i  T^i$ the unique normed generator of $\left\{P\in K[T]\st P(x) = 0\right\}$. Recall that $d=[K(x):K]$ is called the \emph{degree} and $\Min_{x/K}$ the \emph{minimal polynomial} of $x$. The \defemph{characteristic polynomial} of $x$ with respect to $L$ is $P_{x,L} = \det(T\cdot \id -x) = T^D +\sum_{i=0}^{D-1} p_iT^i$. The Trace and Norm $\Tr_{L/K}(x)$ and $N_{L/K}(x)$ are $-p_{D-1}$ and $(-1)^Dp_0$, respectively. In other words, there are the trace and norm of the endomorphism $L\morphism[x\cdot] L$ of the $K$-vector space $L$.
-    \end{defi}
-    \begin{thm}
-        \begin{alphanumerate}
-            \item
-                If $V$ is any finite dimensional $L$-vector space and $f\in \End_L(V)$, then $\det_K(f) = N_{L/K}( \det_L(f))$ and $\Tr_K(f) = \Tr_{L/K}(\Tr_L(f))$ where $\Tr_M(f)$ and $\det_M(f)$ are trace and determinant of the endomorphism of the $M$-vector space $V$.
-            \item 
-                If $M/L$ is a finite field extension and $m\in M$ the $\Tr_{M/K}(m) = \Tr_{L/K}(\Tr_{M/L}(m))$ and $N_{M/K}(m) = N_{L/K}(N_{M/L}(m))$.
-        \end{alphanumerate}
-        Let $x\in L$ and let $x=x_1,\ldots, x_e$ be the pairwise different images of $x$ under the $K$-linear embeddings $L\morphism \overline{L}$. Also, let $d=\deg(x/K)$ and $D= [L:K]$ as before.
-        \begin{alphanumerate}
-            \item[(c)]
-                If $e=1$ there is a positive integer $a$ which is a power of the characteristic of $K$ such that $x^a\in K$. In particular $x\in K$ for $\cha K = 0$.
-            \item[(d)]
-                $\Min_{x/K} = \prod_{i=1}^e (T-x_i)^{d/e}$ and $P_{x,L/K} = \prod_{i=1}^e (T-x_i)^{D/e} = \prod_{\chi}(T-\chi(x))^{D/E}$ where $\chi$ runs over the different embeddings $L\morphism \overline{L}$ and $E$ is their number.
-            \item[(e)]
-                We have $P_{x,L/K}=\Min_{x/K}^{[L/K(x)]}$. More general, if $K\subseteq F \subseteq L$ and $x\in F$ then $P_{x,L/K} = P_{x,L/E}^{[L:E]}$.
-        \end{alphanumerate}
-    \end{thm}
-    \begin{proof}
-        \begin{alphanumerate}
-        \item[(e)]
-            Let $m_1,\ldots,m_k$ be a base of $L/E$ and $e_1,\ldots,e_\ell$ a base of $E/K$ and $M$ be the matrix of $E\morphism[x\cdot] E$ for thar base. Then it is known from basic Galois theory that $\left\{e_i\cdot m_j\st 1\leq i \leq \ell, 1\leq j \leq k\right\}$ is a base of $L/K$. The representation of $L\morphism[x\cdot] L$ in that base is a block matrix with $k$ times the block $M$ on the diagonal. This shows that $P_{x,L/K} = P_{x,E/K}^k$ as stated. If $E=K(x)$ then $P_{x,E/K} = \Min_{x/K}$ since $x$ is zero of the left hand side by Cayley-Hamiltion and $\deg P_{x,E/K} = [E:K] = [K(x):K] = \deg(x/K) = \deg \Min_{x/K}$ and both polynomials are normed.
-        \item[(a)]
-            If $C=(\ell_1,\ldots, \ell_k)$ is a base of $L/K$ and $B=(v_1,\ldots,v_m)$ a base of $V$ as an $L$-vector space and $\Mat_B(f) = \{f_{i,j}\}{i,j=1}^m$ the matrix representing $f$ to the base of $B$. Then $\snake B = \left\{\ell_i\cdot v_j\st 1\leq i\leq k, 1\leq j\leq m\right\}$ is a base of $V$ and 
-            
-            Matrix under construction, please stand by
-            
-            Since the trace of a matrix is the sum of its diagonal, the assertion about traces follows. The assertion about determinants also follows in the case $f_{i,j}=0$ when $i>j$ because $\det X = \prod_{i=1}^m \det(\Mat_C(f_{i,i})) = \prod_{i=1}^m N_{L/K} (f_{i,i}) = N_{L/K}(\prod_{i=1}^m f_{i,i}) = N_{l/K}(\det\Mat_B(f)) = N_{L/K} \det_L f$. Moreover, the assertion is trivial when $\Mat_B(f)$ is a permutation matrix, and that it holds forr $f\times g$ when it holds for both $f$ and $g$. By Gaussian elimination, $f$ can be turned into upper triangular form by permutation of rows and addtion of multiples of a row vector tor another row, corresponding to left multiplication by endomorphisms of a type dealt with before. Therefore (a) and (b) follow.
-        \item[(c)]
-            Induction on $d=\deg(x/K)$. When $d=1$, $e=1$, all assertions are trivial. Let $d>1$ and let the assertion be proven for elements of $L$ of degree strictly less then $d$. If $d=e$ we have $\Min_{x/K} = \prod_{i=1}^e (T-x_i)$ by a comparison of degree and highest coefficient as all $x_i$ must be zeroes of the left hand side. Assertion $c$ is also trivial in this case. It is known from basic Galois theory that all zeroes of the $\Min_{x,K}$ are simple unless $\cha K =p > 0$ and $\Min_{x/K} = Q(T^p)$ for some $Q\in K[T]$. In the first case it is known from basic Galois theory that every zero of $\Min_{x/K}$ is $\psi(x)$ where $\psi\colon K(x) \morphism \overline{L}$ is some $K$-linear embedding and that all such $\psi$ extend to some $L\morphism \overline{L}$ ($K$-linear embedding of fields). Thus $e=d$ in the first case. Let thus be $p>0$ and $\Min_{x/K}=Q(T^p)$. Thus $d=p\cdot\delta$. It follows that $Q$ is the minimal polynomial of $x^p$. Moreover, $x_1^p,\ldots, x_e^p$ are the pairwise different images of $x$ under the $K$-linear $L\morphism \overline{L}$ (since $x_i^p-x_j^p = (x_i-x_j)^p \neq 0$ when $i\neq j$). By the induction assumption, $Q= \Min_{x^p/K} = \prod_{i=1}^e(T-x_i^p)^{d/(pe)}$ and $\Min_{x/K} = Q(T^p) = \prod_{i=1}^e(T^p-x^p)^{d/(pe)} = \prod_{i=1}^e (T-x_i)^{d/e}$. Also, when $e=1$ the induction assumption implies $(x^p)^\alpha\in K$ where $\alpha\in p^\IN$. Thus, $x^a\in K$ with $a=p\cdot\alpha\in p^\IN$. Part (d), $P_{x,L/K}=\prod_{i=1}^e (T-x_i)^{D/e}$ follows from (e) and the assertion just shown.
-        \item[(d)]
-            Let $\psi_1,\ldots,\psi_e$ be the different $K$-linear embeddings of $K(x)\morphism \overline{L}$. It is easy to see, that each of the $\psi_i$ has the same number $n$ of extensions to a $K$-linear embedding $L\morphism \overline{L}$. Then by the previous step the left hand side is $\prod_{i=1}^e(T-x_i)^{D/e} = \prod_\chi (T-\chi(x))^{D/(ne)} = \prod_\chi (T-\chi(x))^{D/E}$.
-        \end{alphanumerate}
-    \end{proof}
-    
-
+Professor Franke recommends the following literature:
+\begin{itemize}
+	\item Hartshorne, R.: \emph{Algebraic Geometry}
+	\item Mumford, D.: \emph{The Red Book of Varieties and Schemes}
+	\item Matsumura, H.: \emph{Commutative Ring Theory}
+	\item Atiyah, M. \& MacDonald, I.: \emph{Introduction to Commutative Algebra}
+\end{itemize}
+The oh-so-humble authors of these notes want to use this opportunity to recommend
+\begin{itemize}
+	\item Schwab , N. \& Wagner, F.:  \href{https://github.com/Nicholas42/AlgebraFranke/tree/master/AlgebraI}{\emph{Algebra I by Jens Franke}} \cite{alg1}.
+\end{itemize}
+as well. \textbf{Warning!} Somewhere in the middle of the last-mentioned text, the term \emph{irreducible} is redefined as irreducible \emph{and closed}. So don't let yourself get confused.
 
 \chapter{Krull's Principal Ideal Theorm}\lbl{ch:krullPrincipalIdealThm}
 \section{Formulation}
@@ -288,7 +96,7 @@ One may check that locally closed sets are precisely the open subsets of closed 
         This implies (together with $V(0) = \Spec R$ and $V(R) = \emptyset$) that $\Spec R$ can be equipped with a topology in which the closed subsets are precisely the subsets of them for $V(I)$ where $I$ is some ideal in $R$. This topology is Noetherian when $R$ is, hence any closed subset can be decomposed into irreducible components. For $V(f) = V(f\cdot R)$, they are precisely those $V(\pp)$ for which $\pp$ is minimal among all prime ideals containing $f$. Theorem~\reff{thm:krullPrincipalIdeal} thus states that all irreducible components of $V(f)$ have codimension smaller or equal to 1 in $\Spec R$. 
     \end{alphanumerate}
 \end{rem*}
-\begin{cor}
+\begin{cor}\lbl{importanttest}
     If $X\subseteq k^n$ is quasi-affine in $k^n$ (with $k$ algebraically closed) and $f\in\Oo(X)\setminus\{0\}$ then every irreducible component of $V(f)$ has codimension 1 in $X$.
 \end{cor}
 \begin{rem*}
@@ -298,11 +106,267 @@ One may check that locally closed sets are precisely the open subsets of closed 
     \item
         Let $U\subseteq X$ be open, then there is a bijective correspondence between the irreducible closed subsets of $U$ and the irreducible closed subsets $A\subseteq X$ not disjoint from $U$:
         \begin{align*}
+	        \big\{\text{irreducible closed subsets }B\subseteq U\big\}&\isomorphism\left\{
+	        \begin{array}{c}
+		        \text{irreducible closed subsets }A\subseteq X\\
+		        \text{such that }A\cap U\not=\emptyset
+	        \end{array}
+	        \right\}\\
             A\cap U &\longmapsfrom A\\
             B&\longmapsto \overline{B}
         \end{align*}
-        This shows that $\codim (A\cap U, U)  = \codim(A,X)$ whenever $A\subseteq X$ is irreducible, closed and $U\subseteq X$ open and not disjoint from $A$.
+        This shows that $\codim (A\cap U, U)  = \codim(A,X)$ whenever $A\subseteq X$ is 		irreducible, closed and $U\subseteq X$ open and not disjoint from $A$. Eh, actually it doesn't. But the correspondence from \cite[Remark~2.1.3]{alg1} does.
     \end{alphanumerate}
 \end{rem*}
+
+
+
+
+
+
+\appendix
+\chapter{Appendix}
+\setcounter{thm}{0}
+\renewcommand*{\thethm}{\Alph{thm}}
+\section{Introduction to Krull dimension and all that}
+Professor Franke recapitulated on some topics of his previous lecture, Algebra I (of which detailed lecture notes may be found in \cite{alg1}). Note that although the numbering of theorems in the following might seem messy, it is \emph{intentionally} messy at least.
+\begin{defi}[{\cite[Definition~2.1.2]{alg1}}]
+	A topological space $X$ is called \defemph{quasi-compact} if every open cover $X = \bigcup_{\lambda\in\Lambda} U_\lambda$ admits a finite subcover.
+	
+	$X$ is \defemph{Noetherian} if it satisifies the following equivalent conditions:
+	\begin{alphanumerate}
+		\item Every open subset is quasi-compact.
+		\item There is no infinite properly descending chain of closed subsets.
+		\item Every set of closed subsets of $X$ has a $\subseteq$-minimal element.
+	\end{alphanumerate}
+\end{defi}
+
+\begin{defi}[{\cite[Definition~2.1.3]{alg1}}]
+	A topological space $X\not=\emptyset$ is \defemph{irreducible} if it satisifies the following equivalent conditions:
+	\begin{alphanumerate}
+		\item If $X = X_1\cup X_2$ where $X_1$ and $X_2$ are closed subsets, then $X=X_1$ or $X=X_2$. Also, $X\neq\emptyset$.
+		\item Any two non-empty open subsets of $X$ have non-empty intersection.
+		\item Every non-empty open subset of $X$ is dense.
+	\end{alphanumerate}
+\end{defi}
+Condition (a) implies, by induction, the following more general property: 
+For any finite cover $X= \bigcup_{i=1}^n X_i$ by closed subsets, there is $1\leq i\leq n$ such that $X=X_i$.
+\begin{prop}
+	\begin{alphanumerate}
+		\item 
+		Any subset of a Noetherian topological space is Noetherian with it's induced subspace topology \emph{(cf. \cite[Remark~2.2.1]{alg1})}. \lbl{prop:irreducibleDecomposition}
+		\item 
+		If $X$ is Noetherian, there is a unique (that is, up to permutation of the $X_i$) decomposition $X = \bigcup_{i=1}^n X_i$ into irreducible closed subsets $X_i\subseteq X$ such that $X_i\not\subseteq X_j$ for $i\neq j$ \emph{(cf. \cite[Proposition~2.1.1]{alg1})}.
+	\end{alphanumerate}
+	
+\end{prop}
+\begin{defi}[{\cite[Definition~2.1.4]{alg1}}]
+	Let $X$ be a topological space, $Z\subseteq X$ irreducible. We put 
+	\begin{align*}
+	\codim(Z,X) &= \sup\left\{\ell\st 
+	\begin{array}{c}
+	\text{there is a strictly descending chain }\\
+	Z_0 \subsetneq Z_1\subsetneq \ldots \subsetneq Z_\ell\subseteq X\text{ of irreducible }Z_i\subseteq X
+	\end{array}\right\}\\
+	\dim(X) &= \sup\left\{\codim(Z,X)\st Z\subseteq X \text{ irreducible}\right\}
+	\end{align*}
+\end{defi}
+\begin{example}[{\cite[Section~1.7 and 2.1]{alg1}}]\lbl{ex:vanishingSetOfIdeal}
+	Let $k =\overline{k}$ be an algebraically closed field. For an ideal $I\subseteq R = k[X_1,\ldots,X_n]$ let 
+	\begin{align*}
+	V(I) = \left\{x\in k^n\st f(x)=0\ \forall f\in I\right\}
+	\end{align*}
+	be the set of zeroes of $I$. By the Hilbert Nullstellensatz, $V(I) \neq \emptyset$ when $I\subsetneq R$. Moreover 
+	\begin{align*}
+	V(I)& = V\left(\sqrt{I}\right)\\
+	V(I\cdot J ) &= V(I) \cup V(J)\\
+	V\bigg(\sum_{\lambda\in\Lambda} I_\lambda\bigg) &=\bigcap_{\lambda\in\Lambda} V(I_\lambda)\;.
+	\end{align*}
+	It follows that there is a topology (called the \emph{Zariski topology}) on $k^n$ containing precisely the subsets of the form $V(I)$ as closed subsets. A version of the Nullstellensatz (\cite[Proposition~1.7.1]{alg1}) says
+	\begin{align*}
+	\left\{f\in R\st f(x) = 0\ \forall f\in I\right\} = \left\{f\in R\st V(f)\supseteq V(I)\right\} = \sqrt{I}\;.
+	\end{align*}
+	This means that there is strictly antimonotonic bijective correspondence between the ideals $I$ of $R$ with $I=\sqrt{I}$ and the Zariski-closed subsets $A\subseteq k^n$ via
+	\begin{align*}
+	\left\{\text{ideals }I\subseteq R\text{ such that }I=\sqrt I\right\}&\isomorphism\left\{\text{Zariski-closed subsets }A\subseteq k^n\right\}\\
+	\left\{f\in R\st V(f)\supseteq A\right\} &\longmapsfrom A\\
+	I&\longmapsto V(I)\;.
+	\end{align*}
+	(cf. \cite[Remark~2.1.1]{alg1}). As $R$ is Noetherian, any strictly ascending chain of ideals in $R$ terminates, implying that $k^n$ is a Noetherian topological space. Under the above correspondence prime ideals correspond to irreducible subsets and vice versa (cf. \cite[Proposition~2.1.2]{alg1}).  
+\end{example}
+\begin{rem}[{\cite[Remark~2.1.3]{alg1}}]
+	In general for $A\subseteq B\subseteq C\subseteq X$
+	\begin{align}\lbl{eq:codimIneq}
+	\codim(A,B) +\codim(B,C) &\leq \codim(A,C) \\ 
+	\codim(A,X)+\dim A &\leq \dim X.\lbl{eq:codimIneq2}
+	\end{align}
+	may be strict. A Noetherian topological space is called \emph{catenary} if \eqreff{eq:codimIneq} is an equality whenever $A$, $B$ and $C$ are irreducible.
+	
+\end{rem}
+\begin{thm}[{\cite[Theorem~5]{alg1}}]
+	The space $X=k^n$ is catenary and in this case equality always occurs in \eqreff{eq:codimIneq2}.
+\end{thm}
+\begin{example}
+	For $n=1$, the closed subsets of $k$ are $k$ itself and the finite subsets. Since $k$ is infinite, the points and $k$ are the irreducible subsets, implying $\dim(k) = 1 $ and the other assertions for $n=1$.
+\end{example}
+\begin{example}
+	The irreducible subsets of $k^2$ are $k^2$ itself, single points, and $V(f)$ where $f\in k[X,Y]$ is a prime element.
+\end{example}
+\begin{defi}[transcendence degree]\lbl{def:degTr}
+	Let $K\subseteq L$ be a field extension. A set $S\subseteq L$ is called \emph{algebraically independent} over $K$ if for all polynomials $P\in K[X_1,\ldots,X_n]$ and pairwise different $s_1,\ldots, s_n\in S$, 
+	\begin{align*}
+	P(s_1,\ldots, s_n) =0\quad\text{implies}\quad P=0\;. 
+	\end{align*}
+	A \emph{transcendence base} of $L/K$ is a subset $S\subseteq L$ which is algebraically independent over $K$ and such that $L/K(s_1,\ldots,s_n)$ is algebraic. The \defemph{transcendence degree} $\deg\tr L/K$ of $L/K$ is the cardinality of any transcendence base.
+\end{defi}
+\begin{example*}
+	The empty set is a transcendence base of $K/K$. 
+\end{example*}
+\begin{defi}[regular functions, {\cite[Definition~2.2.2]{alg1}}] \lbl{def:regularFunctions}
+	Let $X\subseteq k^n$ be closed, $U\subseteq X$ open. A function $f\colon U\to k$ is called \emph{regular} at $x\in U$ if $x$ has a neighbourhood $\Omega\subseteq k^n$ for which there are polynomials $p,q\in k[X_1,\ldots,X_n]$ such that $V(q)\cap \Omega=\emptyset$ and 
+	\begin{align*}
+	f(y) = \frac{p(y)}{q(y)}\quad\text{for all }y\in U\cap \Omega
+	\end{align*}
+	The ring $\Oo(U)$ of \defemph{regular functions} on $U$ consists of all functions $U\morphism[f] k$ which are regular at every $x\in U$.
+\end{defi}
+\begin{prop}\lbl{prop:RtoO(X)}
+	If $X\subseteq k^n$ is closed then $R= k[X_1,\ldots, X_n] \to \Oo(X)$ is surjective.
+\end{prop}
+In \cite[Proposition~2.2.2]{alg1}, we actually proved a stronger result: If $X\subseteq k^n$ is irreducible closed, i.e. $X=V(\pp)$ for some prime ideal $\pp\subseteq R$, then $\Oo(X)\simeq R/\pp$. Proposition~\reff{prop:RtoO(X)} immediately follows from this, as any closed subset decomposes into irreducible closed subsets according to Proposition~\reff{prop:irreducibleDecomposition} (it is crucial that each $X_i$ occuring in such a contains a non-empty open subset of $X$, cf. \cite[Proposition~2.1.1]{alg1}).
+
+\begin{rem}
+	When $X\subseteq k^n$ is an irreducible open-closed subset (that is, an open subset of an irreducible closed subset -- a.k.a. a \emph{quasi-affine variety}, cf. \cite[Definition~2.2.1]{alg1}) then $\Oo(X)$ is a domain. 
+\end{rem}
+\begin{rem}
+	Let $T$ be any topological space, $A\subseteq T$ such that every $t\in T$ has an open neighbourhood $U\subseteq T$ such that $A\cap U$ is closed in $U$, then $A$ is closed in $T$ (we suspect that this is mentioned only because Professor Franke \sout{mistook this class for Algebraic Geometry I} recently used this in Algebraic Geometry I). If the condition is required only for $t\in A$, then $A$ is called \emph{locally closed}.
+\end{rem}
+If $X$ is irreducible, let $K(X)$ be the quotient field of $\Oo(X)$. This is called the \emph{field of rational functions} on $X$.
+\begin{thm}[{\cite[Theorem~6]{alg1}}]
+	If $X\subseteq k^n$ is locally closed and irreducible, then
+	\begin{align*}
+	\dim(X) = \deg\tr (K(X)/k)\;.
+	\end{align*}
+	Moreover, $X$ is catenary and equality always holds in \eqreff{eq:codimIneq2}, i.e. $\dim Y +\codim(Y,X) = \dim X$ whenever $Y\subseteq X$ is closed, irreducible.
+\end{thm}
+One may check that locally closed sets are precisely the open subsets of closed sets. In particular, $X$ from the above theorem is a quasi-affine variety, as we used to call it in Algebra I.
+\begin{rem}
+	It is easy to see that $\dim k^n \geq n$ since we have the chain
+	\begin{align*}
+	\{0\}^n \subsetneq k\times\{0\}^{n-1} \subsetneq\ldots\subsetneq k^{n-1}\times\{0\} \subsetneq k^n
+	\end{align*} of irreducible closed subsets. To prove $\dim(k^n) \leq n$, and $\dim(X) \leq\deg\tr(K(X)/k)$, one proves $\deg\tr(\KK(\pp)/k) > \deg\tr(\KK(\qq)/k)$ whenever $A/k$ is an algebra of finite type over $k$, $\qq\supsetneq \pp$ are prime ideals and $\KK(\pp)$ denotes the quotient field of $A/\pp$. 
+	
+	For general affine $X$ one uses the Noether Normalization theorem to get a finite morphism $X\xrightarrow{(f_1,\ldots,f_d)} \IA^d(k)=k^d$ (i.e., $\Oo(X)$ is integral over $k[f_1,\ldots,f_d]$) and $f_1,\ldots,f_d$ are $k$-algebraically independent). One then uses the going-up (going-down) for (certain) integral ring extensions to lift chains of irreducible subsets of $\IA^d(k)=k^d$ to chains of irreducible subsets of $X$ (all of this may be found in much more detail in \cite[Section~2.4-2.6]{alg1}).
+\end{rem}
+\section{Localization of rings}
+\begin{defi}[multiplicative subsets]
+	Let $R$ be any ring (commutative, with 1). A subset $S\subseteq R$ is called a \defemph{multiplicative subset} of $R$ if it is closed under finite products (in particular $\prod_{s\in\emptyset} s = 1 \in S$).
+\end{defi}
+\begin{defi}[localization of a ring]
+	A \defemph{localization} $R_S$ of $R$ with respect to $S$ is a ring $R_S$ with a ring morphism $R\morphism[\psi_S] R_S$ such that $\psi_S(S)\subseteq R_S^\times$ (the group of units of $R_S$) and such that $\psi_S$ has the universal property (on the left) for such ring morphisms:
+	\begin{quote}		
+		If $R\morphism[\alpha] A$ is any ring morphism such that $\alpha(S) \subseteq A^\times$ then there is a unique ring morphism $R_S\morphism[\mu] A$ such that the diagram
+		\begin{diagram}
+			\node (R) at (0,1.25) {$R$};
+			\node (A) at (2.5,1.25) {$A$};
+			\node (RS) at (1.25,0) {$R_S$};
+			\scriptsize
+			\draw[->] (R) -- (A) node[pos=0.5, above] {$\alpha$};
+			\draw[->] (R) -- (RS) node[pos=0.5, below left] {$\psi_S$};
+			\draw[->, dashed] (RS) -- (A) node[pos=0.5, below right] {$\exists!\ \mu$};
+		\end{diagram}
+		commutes.
+	\end{quote}
+\end{defi}
+
+It turns out (by a Yoneda-style argument) that this universal property characterizes $R_S$ uniquely up to unique isomorphism. One constructs $R_S$ (and thereby proves its existence) by $R_S = (R\times S)/_\sim$ where $(r,s)\sim (\rho, \sigma)$ iff there is $t\in S$ such that $t\cdot r\cdot \sigma = t\cdot\rho\cdot s$ (note that since $R$ is not necessarily a domain the factor $t$ on both sides cannot be omitted). One thinks of $(r,s)/_\sim$ as $\frac{r}{s}$ and introduces the ring operations in an obvious way. 
+
+If $I\subseteq R$ is any ideal then $I_S = I\cdot R_S = \left\{\frac{i}{s}\st i\in I, s\in S\right\}$ is an ideal in $R_S$, and any ideal in $R_S$ can be obtained in this way: $J= (J\sqcap R)\cdot R_S$ for any ideal $J\subseteq R_S$ where $J\sqcap R$ denotes the preimage of $J$ in $R$ under $\psi_S$. It follows then $R_S$ is Noetherian when $R$ is. For prime ideals one obtains a bijection (cf. \cite[Corollary~2.3.1(e)]{alg1})
+\begin{align*}
+\Spec R_S & \isomorphism\left\{\qq\in\Spec R\st \qq\cap S=\emptyset\right\}\\
+\pp &\longmapsto \pp\sqcap R\\
+\qq\cdot R_S &\longmapsfrom \qq\;.
+\end{align*}
+We have an equivalence of categories between the category of $R_S$-modules and the category of $R$-modules $M$ on which $M \morphism[s\cdot] M$ acts bijectively for every $s\in S$. For every $R$-module $M$ there is an $R$-module $M_S$ belonging to the right hand side together with a morphism of $R$-modules $M\to M_S$, which has the universal property (on the left) for all morphisms from $M$ to some $R_S$-module. It can be constructed as $\left\{\frac{m}{s}\st m \in M a, s\in S\right\}/_\sim$ with $\frac{m}{s}\sim \frac{\mu}{\sigma}$ iff $m\cdot\sigma\cdot t = \mu\cdot s\cdot t$ for some $t\in S$. $M=I$ is an ideal in $R$, one can take $M_S = I_S = I\cdot R_S$. As for rings, we call $M_S$  the \emph{localization} of $M$ (cf. \cite[Proposition~2.3.2]{alg1}).
+
+\section{``Advanced'' Galois Theory: Trace and Norm}
+Let $L/K$ be a finite field extension, $\overline{L}$ an algebraic closure of $L$. Let $x\in L$. There is a unique monic generator $\Min_{x/K}$ of the ideal $\left\{P\in K[T]\st P(x) = 0\right\}$ in the principal ideal domain $K[T]$. Recall that 
+\begin{align*}
+	d=[K(x):K]=\deg\Min_{x/K}\eqqcolon\deg(x/K)
+\end{align*}
+is called the \emph{degree} and $\Min_{x/K}$ the \emph{minimal polynomial} of $x$ over $K$.
+\begin{defi}[characteristic polynomial, trace and norm]
+	Let $x\in L$. Consider the corresponding endomorphism $L\xrightarrow{x\cdot(-)} L$ of the $K$-vector space $L$. Then the \defemph{characteristic polynomial} $P_{x,L}$, the \defemph{trace} $\Tr_{L/K}(x)$ and the \defemph{norm} $N_{L/K}(x)$ of $x$ with respect to $L/K$ are defined as the corresponding invariants of the endomorphism $x\cdot(-)$. In particular,
+	\begin{align*}
+		P_{x,L/K} &= \det(T\cdot \id -x) = T^n+\sum_{i=0}^{n-1} p_iT^i\;,\\
+		\Tr_{L/K}(x)&=-p_{n-1}\;,\quad\text{and}\quad N_{L/K}(x)=(-1)^{n}p_0\;.
+	\end{align*}
+\end{defi}
+\begin{thm}
+	\begin{alphanumerate}
+		\item
+		If $V$ is any finite dimensional $L$-vector space and $f\in \End_L(V)$, then
+		\begin{align*}
+			\det_K(f) = N_{L/K}\big(\det_L(f)\big)\quad\text{and}\quad\Tr_K(f) = \Tr_{L/K}\big(\Tr_L(f)\big)\;,
+		\end{align*}
+		where, for $M$ a field, $\Tr_M(f)$ and $\det_M(f)$ are trace and determinant of the $f$ regarded as an endomorphism of the $M$-vector space $V$.
+		\item 
+		If $M/L$ is a finite field extension and $x\in M$, then
+		\begin{align*}
+			\Tr_{M/K}(x) = \Tr_{L/K}\big(\Tr_{M/L}(x)\big)\quad\text{and}\quad N_{M/K}(x) = N_{L/K}\big(N_{M/L}(x)\big)\;.
+		\end{align*}
+	\end{alphanumerate}
+	Let $x\in L$ and let $x=x_1,\ldots, x_e$ be the pairwise different images of $x$ under the $K$-linear embeddings $L\hookrightarrow\overline{L}$. Also, let $d=\deg(x/K)$ and $n= [L:K]$ as before.
+	\begin{alphanumerate}\setcounter{enumi}{2}
+		\item Suppose that $e=1$. If $\cha K=0$, then $x\in K$. If $\cha K=p>0$, then $x^{p^k}\in K$ for some non-negative integer $k$.
+		\item We have 
+		\begin{align*}
+			\Min_{x/K} = \prod_{i=1}^e \left(T-x_i\right)^{d/e}\quad\text{and}\quad P_{x,L/K} = \prod_{i=1}^e \left(T-x_i\right)^{n/e} = \prod_{\sigma}\left(T-\sigma(x)\right)^{n/r}
+		\end{align*}
+		where $\sigma$ runs over the different embeddings $L\hookrightarrow \overline{L}$ and $r$ is their number.
+		\item We have $P_{x,L/K}=\Min_{x/K}^{[L:K(x)]}$. More general, for any intermediate field $K\subseteq E \subseteq L$ we have $P_{x,L/K} = P_{x,L/E}^{[L:E]}\ \forall x\in E$.
+	\end{alphanumerate}
+\end{thm}
+\begin{proof}
+		Let's prove \itememph{e} first. Choose bases $(\ell_1,\ldots,\ell_k)$ of $L/E$ and $(e_1,\ldots,e_m)$ of $E/K$ and let $M$ be the matrix representation of $E\morphism[x\cdot] E$ in that base. It is known from basic Galois theory that $(e_im_j)_{i,j}$ form a base of $L/K$. The matrix representation of $L\morphism[x\cdot] L$ in that base is a block diagonal matrix 
+		\begin{align*}
+			\begin{pmatrix}
+				M & & \\
+				 & \ddots & \\
+				  & & M
+			\end{pmatrix}
+		\end{align*}
+		with $k=[L:E]$ times the block $M$ on the diagonal. This shows that $P_{x,L/K} = P_{x,E/K}^k$ as stated. If $E=K(x)$ then $P_{x,E/K} = \Min_{x/K}$ since $x$ is a zero of the left hand side by Cayley-Hamiltion and $\deg P_{x,E/K} = [E:K] = [K(x):K] = \deg(x/K) = \deg \Min_{x/K}$ and both polynomials are normed. This shows \itememph{e}.
+		
+		Now we prove part \itememph{a}. Let $\Cc=(\ell_1,\ldots, \ell_k)$ is a base of $L/K$ and $\Bb=(v_1,\ldots,v_m)$ a base of $V$ as an $L$-vector space. Denote by $\Mat_\Bb(f) =\left(f_{i,j}\right)_{i,j=1}^m$ the matrix representing $f$ in base $\Bb$. Then $\snake \Bb= (\ell_iv_j)_{i,j}$ is a base of $V$ as a $K$-vector space and 
+		\begin{align*}
+			\Mat_{\snake{\Bb}}(f)=
+			\begin{pmatrix}
+				\Mat_{\Cc}(f_{1,1}) & \cdots & \Mat_\Cc(f_{1,m}) \\
+				\vdots & \ddots & \vdots \\
+				\Mat_\Cc(f_{m,1}) & \cdots & \Mat_\Cc(f_{m,m})
+			\end{pmatrix}\;.
+		\end{align*}		
+		Since the trace of a matrix is the sum of its diagonal elements, the assertion about traces follows. The assertion about determinants would be immediate too by
+		\begin{align*}
+			\det_K(f)&=\det\Mat_{\snake \Bb}(f)=\prod_{i=1}^{m}\det\Mat_\Cc(f_{i,i})=\prod_{i=1}^{m}N_{L/K}(f_{i,i})=N_{L/K}\bigg(\prod_{i=1}^{m}f_{i,i}\bigg)\\
+			&=N_{L/K}\det_L(f)
+		\end{align*}
+		if $f_{i,j}=0$ for all $i>j$, as in that case, $\Mat_\Bb(f)$ and hence also $\Mat_{\snake \Bb}(f)$ are upper triangular (block) matrices . But that's no problem since we can always choose $\Bb$ in such a way that $\Mat_\Bb(f)$ is upper triangular. Part \itememph{b} is just the special case $V=M$, so we proved \itememph{a} and \itememph{b}.
+		
+		Let's prove the first assertion of \itememph{d}. If $\cha K=0$, then $\Min_{x/K}$ is separable. Thus, $d=e$ and $\Min_{x/K}=(T-x_1)\cdots(T-x_e)$ since the zeros of $\Min_{x/K}$ are precisely the possible images of $x$ under the $K$-linear embeddings $L\hookrightarrow \ov L$.
+		
+		Now let $\cha K=p>0$. There is a separable polynomial $\mu\in K[T]$ and a non-negative integer $k$ such that $\Min_{x/K}=\mu\big(T^{p^k}\big)$. Indeed, if $\Min_{x/K}$ is irreducible but not separable, then its derivative must be the zero polynomial, hence each monomial of $\Min_{x/K}$ is a power of $T^p$ and $\Min_{x/K}=\mu_1(T^p)$ for some polynomial $\mu\in K[T]$. Iterating this argument, we finally arrive at a separable polynomial $\mu$ (note that in each step the degree strictly decreases). 
+		
+		Let $y_1,\ldots,y_{e'}$ be the zeros of $\mu$ in $\ov L$.  Then $0=\Min_{x/K}(x_i)=\mu\big(x_i^{p^k}\big)$, hence $x_i^{p^k}$ must be some of the $y_j$ for each $i\leq e$. Note that $x_i^{p^k}-x_j^{p^k}=\big(x_i-x_j\big)^{p^k}\not=0$ for $i\not=j$, hence $x_1^{p^k},\ldots,x_e^{p^k}$ are pairwise different. On the other hand, $\ov L$ being algebraically closed, each $y_i$ has a ${p^k}\ordinalth$ root $\eta\in\ov L$. Then $\Min_{x/K}(\eta)=\mu(y_i)=0$ and $\eta$ must be among the $x_i$. Summarizing, we get $e=e'$ and $x_1^{p^k},\ldots,x_e^{p^k}$ are $y_1,\ldots,y_e$ in some order.  Since $\mu$ factorizes into linear factors,
+		\begin{align*}
+			\Min_{x/K}=\mu\left(T^{p^k}\right)=\prod_{i=1}^{e}\left(T^{p^k}-y_i\right)=\prod_{i=1}^{e}\left(T^{p^k}-x_i^{p^k}\right)=\prod_{i=1}^{e}\left(T-x_i\right)^{p^k}
+		\end{align*}
+		and comparison of degrees yields $p^k=\frac{d}{e}$. This shows the first assertion of \itememph{d}. The second one immediately follows from this and \itememph{e}. For the third one, let $\psi_1,\ldots,\psi_e$ be the different $K$-linear embeddings $K(x)\hookrightarrow\overline{L}$, $\psi_i(x)=x_i$. It is easy to see, that each of the $\psi_i$ has the same number $b$ of extensions to a $K$-linear embedding $\sigma\colon L\hookrightarrow \overline{L}$. Then by the previous step the left hand side is 
+		\begin{align*}
+			\prod_{i=1}^e(T-x_i)^{n/e} = \prod_\sigma \big(T-\sigma(x)\big)^{n/(be)} = \prod_\sigma \big(T-\sigma(x)\big)^{n/r}\;.
+		\end{align*}
+		Last thing we have to do is part \itememph{c}. If $\cha K=0$, then $\Min_{x/K}$ is separable and thus $\Min_{x/K}=T-x$ as $e=1$. Then $x\in K$.  By \itememph{d}, in characteristic $p>0$, there is a non-negative integer $k$ such that $\Min_{x/K}=(T-x)^{p^k}=T^{p^k}-x^{p^k}$, hence $x^{p^k}\in K$.
+\end{proof}
+
 \printbibliography
 \end{document}          
