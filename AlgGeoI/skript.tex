@@ -1,10 +1,9 @@
-\documentclass[a4paper,parskip=full,numbers=enddot]{scrreprt}
+\documentclass[a4paper,parskip=half,numbers=enddot, DIV=12]{scrreprt}
 \usepackage[utf8]{inputenc}
 
 \usepackage{../header}
 \usepackage{../frankenumbering}
 \usepackage{../shortcuts}
-
 
 \usepackage{csquotes}
 \usepackage[backend=biber,style=numeric,sorting=none]{biblatex}
@@ -32,37 +31,37 @@ Please report bugs, typos etc. through the \emph{Issues} feature of github.
 \chapter*{Introduction}
 \addcontentsline{toc}{chapter}{Introduction}
 \pagenumbering{arabic}
-The lecture will mainly be about the concept of \emph{schemes}. The topics include but are not limited to the category of (pre-)schemes, properties of schemes, morphisms of schemes, sheaves of $\Oo_X$-modules and cohomology of quasi-coherent sheaves.
+The lecture will be an introduction to the language of \emph{schemes}. The topics include but are not limited to the category of (pre-)schemes, properties of schemes, morphisms of schemes, sheaves of $\Oo_X$-modules and cohomology of quasi-coherent sheaves.
 
-Professor Franke said the lecture requires a firm knowledge of commutative algebra and affine and projective varieties. If you are not familiar with this terms you may want to think again about visiting this lecture. If you want to brush up your knowledge about these topics the following literature is recommended
+Professor Franke said the lecture requires a firm knowledge of commutative algebra and affine and projective varieties. If you are not familiar with this terms you may want to think again about visiting this lecture. If you want to brush up your knowledge about these topics the following literature is recommended:
 \begin{itemize}
- \item Matsumura, H.: Commutative Ring Theory,
- \item Hartshorne, R.: Algebraic Geometry,
- \item Mumford, D.: The Red Book of Varieties and Schemes,
- \item Schwab, N. \& Wagner, F.: \href{https://github.com/Nicholas42/AlgebraFranke/tree/master/AlgebraI}{Algebra I by Jens Franke} \cite{alg1}\footnote{\url{https://github.com/Nicholas42/AlgebraFranke/tree/master/AlgebraI}}.
+ \item Matsumura, H.: \emph{Commutative Ring Theory},
+ \item Hartshorne, R.: \emph{Algebraic Geometry},
+ \item Mumford, D.: \emph{The Red Book of Varieties and Schemes},
+ \item Schwab, N. \& Wagner, F.: \href{https://github.com/Nicholas42/AlgebraFranke/tree/master/AlgebraI}{\emph{Algebra I by Jens Franke}} \cite{alg1}. \textbf{Warning!} Somewhere in the middle of this text, the term \emph{irreducible} is redefined as irreducible \emph{and closed}. So don't let yourself get confused.
 \end{itemize}
 Let it be said that the first three recommendations are from Professor Franke while the last one is from the (not so) humble authors of these notes.
 
 \chapter{Varieties and Schemes}\lbl{ch:varietiesAndSchemes}
-\begin{defi}[Sheaf and Presheaf]\lbl{def:preSheaf}
+\begin{defi}[sheaf and presheaf]\lbl{def:preSheaf}
     A \defemph{presheaf $\Ff$ of rings} on a topological space $X$ associates 
     \begin{itemize}
     	\item to any open subset $U\subseteq X$ a ring $\Ff(U)$ called the \emph{ring of sections} of $\Ff$ on $U$
     	\item and to any inclusion of open subsets $V\subseteq U$ a ring homomorphism 
     	\begin{align*}
-    	(-)|_V\colon \Ff(U) &\longto \Ff(V)
+	    	\cdot|_V\colon \Ff(U) &\longto \Ff(V)
     	\end{align*}
     	such that $f|_V = f$ for all $f\in\Ff(V)$ and $(f|_V)|_W = f|_W$ for any inclusion $W\subseteq V\subseteq U$ of open subsets.
     \end{itemize}  Note that while this notation (intentionally) reminds of the restriction of functions, behaves similarly and often the restriction is indeed used for this homomorphism, the elements of the rings $\Ff(U)$ are not always functions. 
     
     A so defined presheaf is furthermore a \defemph{sheaf} if additionally, the following condition, called \emph{sheaf axiom}, holds:
-    \begin{quote}
+    \begin{quote}\lbl{sheafAxiom}
      For every open covering $U = \bigcup_{i\in I} U_i$ of an open subset $U\subseteq X$ the map
         \begin{align*}\lbl{eq:sheafAxiom}
 			\Ff(U) &\longto \left\{(f_i)_{i\in I}\in \prod_{i\in I} \Ff (U_i)\st f_i|_{U_i\cap U_j} = f_j|_{U_i\cap U_j} \text{ for }i,j\in I\right\}\\
 			f &\longmapsto \left(f|_{U_i}\right)_{i\in I}
         \end{align*}
-        is bijective.
+        is bijective. 
     \end{quote}
 \end{defi}
 
@@ -81,7 +80,7 @@ Let it be said that the first three recommendations are from Professor Franke wh
 \begin{rem*}
 	  If $\Gg$ is any (pre)sheaf on $X$ and $U\subseteq X$ an open subset, we get a a sheaf $\Gg|_U$ on $U$ by $\Gg|_U(V) = \Gg(V)$ for the open subsets $V\subseteq U$ equipped with the same restriction morphisms.
 \end{rem*}
-\begin{defi}[Algebraic Prevarieties] \lbl{def:preVarieties}
+\begin{defi}[algebraic prevarieties] \lbl{def:preVarieties}
 	    Let $k$ be an algebraically closed field. An \defemph{algebraic prevariety} over $k$ is a pair $(X,\Oo_X)$, where $X$ is an irreducible Noetherian topological space together with a sheaf $\Oo_X$ of rings on $X$ such that the following property is satisfied.
 	    \begin{quote}
 	        Any $x\in X$ has an open neighbourhood $U$ such that there is a homeomorphism $U\isomorphism[\phi] V$ where $V\subseteq k^n$ is a Zariski-closed subset such that $\phi$ identifies $\Oo_X|_U$ with the structure sheaf $\Oo_V$ of $V$. That is, if $W \subseteq V$ is open then any $k$-valued function $f\colon W\to k$ is regular (i.e. an element of $\Oo_V(W)$) if and only if 
@@ -161,7 +160,7 @@ Let it be said that the first three recommendations are from Professor Franke wh
 \end{rem*}
 
 
-\begin{defi}[Variety]\lbl{def:variety}
+\begin{defi}[variety]\lbl{def:variety}
     Let $X$ be a prevariety over $k$ in the sense of Definitions \reff{def:preVarieties}. We call $X$ \defemph{separated} or a \defemph{variety} over $k$ if and only if $\left\{t\in T\st a(t)=b(t)\right\}$ is closed in $T$ whenever $a$ and $b$ are a pair of \emph{morphisms of prevarieties} $T\doublemorphism[a][b] X$. 
 \end{defi}
 
@@ -189,20 +188,20 @@ Let it be said that the first three recommendations are from Professor Franke wh
     \end{alphanumerate}
 \end{example}
 \begin{proof}
-    \begin{itemize}
-	\item[$(c)$] The inclusion $Y\morphism[\iota] X$ (together with $\iota^*\colon \Oo_X\to\Oo_Y$) is a morphism of prevarieties, and for a pair $a,b\colon T\to A$ of morphisms of prevarieties we have $\left\{t\in T\st a(t) = b(t) \right\} = \left\{t \in T\st(\iota a)(t) = (\iota b)(t) \right\}$. The latter is closed in $T$ because $X$ is a variety.
-        \item[$(a)$]  Let $X\subseteq k^n$ be closed, irreducible and $a,b\colon T\to X$ morphisms of prevarieties and $K= \left\{t\in T\st a(t) = b(t)\right\}$. To show that $K$ is closed in $T$, it is sufficient to show that any $t\in T$ has a neighbourhood $\Omega$ such that $K\cap \Omega$ is closed in $\Omega$. Choosing $\Omega$ such that it is isomorphic to an affine algebraic variety, which is possible because $T$ is a prevariety, we may assume without loss of generality that $T\subseteq k^n$ is an affine algebraic variety in (i.e.  an irreducible subset of) $k^n$. Let 
-        \begin{align*}
-	    X_i\colon X&\longrightarrow k\\
-	    (x_1,\ldots,x_n)&\longmapsto x_i
-	\end{align*}
-	denote the projection to the $i\ordinalth$ coordinate. Then $X_i\in\Oo_X(X)$, hence $\alpha_i = a^\ast X_i$ and $\beta_i = b^\ast X_i$ are in $\Oo_T(T)$ and 
-	\begin{align}
-	    K= \left\{ t\in T\st \alpha_i(t) = \beta_i(t)\ \forall i\right\} = \bigcap_{i=1}^n V(\alpha_i-\beta_i)\;.
-	\end{align}
-	But we proved in Algebra I that $V(\phi)$ is closed in $T$ whenever $T$ is an affine algebraic variety and $\phi\in  \Oo_T(T)$ (cf. \cite[Proposition 2.2.1]{alg1}).
-	\item Trivial from (a).
-    \end{itemize}
+		For part \itememph{c} note that the inclusion $Y\morphism[\iota] X$ (together with $\iota^*\colon \Oo_X\to\Oo_Y$) is a morphism of prevarieties, and for a pair $a,b\colon T\to A$ of morphisms of prevarieties we have $\left\{t\in T\st a(t) = b(t) \right\} = \left\{t \in T\st(\iota a)(t) = (\iota b)(t) \right\}$. The latter is closed in $T$ because $X$ is a variety.
+	
+        For part \itememph{a} let $X\subseteq k^n$ be closed and irreducible, $a,b\colon T\to X$ be morphisms of prevarieties and $K= \left\{t\in T\st a(t) = b(t)\right\}$. To show that $K$ is closed in $T$, it is sufficient to show that any $t\in T$ has a neighbourhood $\Omega$ such that $K\cap \Omega$ is closed in $\Omega$. Choosing $\Omega$ such that it is isomorphic to an affine algebraic variety, which is possible because $T$ is a prevariety, we may assume without loss of generality that $T\subseteq k^n$ is an affine algebraic variety in (i.e.  an irreducible subset of) $k^n$. Let 
+	        \begin{align*}
+		    X_i\colon X&\longrightarrow k\\
+		    (x_1,\ldots,x_n)&\longmapsto x_i
+		\end{align*}
+		denote the projection to the $i\ordinalth$ coordinate. Then $X_i\in\Oo_X(X)$, hence $\alpha_i = a^\ast X_i$ and $\beta_i = b^\ast X_i$ are in $\Oo_T(T)$ and 
+		\begin{align}
+		    K= \left\{ t\in T\st \alpha_i(t) = \beta_i(t)\ \forall i\right\} = \bigcap_{i=1}^n V(\alpha_i-\beta_i)\;.
+		\end{align}
+		But we proved in Algebra I that $V(\phi)$ is closed in $T$ whenever $T$ is an affine algebraic variety and $\phi\in  \Oo_T(T)$ (cf. \cite[Proposition 2.2.1]{alg1}).
+		
+		Part \itememph{b} is trivial from \itememph{a}.	
 \end{proof}
 \begin{rem*}
     \begin{alphanumerate}
@@ -243,7 +242,7 @@ Let it be said that the first three recommendations are from Professor Franke wh
 	As $k^{n+1}$ is larger than the union of the $N$ codimension one subspaces \begin{align*}
 		V_i=\left\{(\xi_j)_{j=0}^n\st \sum_{j=0}^n \xi_j f_j^{(i)} = 0\right\}\quad\text{for }i=1,\ldots,N\;,
 	\end{align*} 
-	there is a homogenous polynomial $p\neq 0$ of degree 1 such that $p\big(f_0^{(i)},\ldots, f_n^{(i)}\big) \neq 0$ for all $1\leq i\leq N$. Then $F\subseteq X\setminus V(p)$. But $\IP^n(k)\setminus V(p)$ is isomorphic to $k^n$ as this is the case when $p= X_0$ and $\GL_{n+1}(k)$ transitively acts on $k^{n+1}\setminus\{0\}$. Thus, $F\subseteq X\setminus V(p)$ and $X\setminus V(p)$ is isomorphic to a quasi-affine variety. The assertion now follows from Step 1.
+	there is a homogenous polynomial $p\neq 0$ of degree 1 such that $p\big(f_0^{(i)},\ldots, f_n^{(i)}\big) \neq 0$ for all $1\leq i\leq N$. Then $F\subseteq X\setminus V(p)$. But $\IP^n(k)\setminus V(p)$ is isomorphic to $k^n$ as this is the case when $p= X_0$ and $\GL_{n+1}(k)$ transitively acts on $k^{n+1}\setminus\{0\}$. Thus, $F\subseteq X\setminus V(p)$ and $X\setminus V(p)$ is isomorphic to a quasi-affine variety. The assertion now follows from Step~1.
 \end{proof}
     \begin{rem*}
         \begin{itemize}
@@ -258,53 +257,156 @@ Let it be said that the first three recommendations are from Professor Franke wh
     \end{rem*}
 
     \appendix
-    \chapter{Appendix}
-\section{Things you should know about categories}
-A category $\Aa$ is a class $\Ob(\Aa)$ of \emph{objects} of $\Aa$ together with:
-\begin{alphanumerate}
-    \item 
-        For two arbitrary $X,Y\in \Ob(\Aa)$, a set $\Hom_\Aa(X,Y)$ of \emph{morphisms} from $X$ to $Y$ in $\Aa$.
-    \item 
-        For $X,Y,Z\in\Ob(\Aa)$, a map 
-        \begin{align*}
-            \Hom_\Aa(X,Y)\times \Hom_\Aa(Y,Z) &\longto \Hom_\Aa(X,Z)\\
-            (f,g) &\longmapsto g\circ f
-        \end{align*}
-        called the \emph{composition of morphisms} in $\Aa$.
-\end{alphanumerate}
-The following assumptions must be satisfied:
-\begin{rmnumerate}
-    \item
-        If $A\morphism[f] B \morphism[g] C\morphism[h] D$ are morphisms in $\Aa$, then $h\circ(g\circ f) = (h\circ g)\circ f$.
-    \item
-        For any $A\in\Ob(\Aa)$ there is a unique morphism $A\morphism[\id_A] A$ in $\Hom_\Aa(A,A)$ such that $\id_A \circ f = f$ and $g\circ \id_A = g$ for any $f\in \Hom_\Aa(B,A)$ and any $g\in \Hom_\Aa(A,C)$ for arbitrary $B,C\in \Ob(\Aa)$.
-\end{rmnumerate}
+    \chapter{Useful stuff from category theory}
+\section{Fundamental concepts}
+\begin{defi}[category]
+	A \defemph{category} $\Aa$ is a class $\Ob(\Aa)$ of \emph{objects} of $\Aa$ together with:
+	\begin{alphanumerate}
+	    \item 
+	        For two arbitrary $X,Y\in \Ob(\Aa)$, a set $\Hom_\Aa(X,Y)$ of \emph{morphisms} from $X$ to $Y$ in $\Aa$.
+	    \item 
+	        For $X,Y,Z\in\Ob(\Aa)$, a map 
+	        \begin{align*}
+	            \Hom_\Aa(X,Y)\times \Hom_\Aa(Y,Z) &\longto \Hom_\Aa(X,Z)\\
+	            (f,g) &\longmapsto g\circ f
+	        \end{align*}
+	        called the \emph{composition of morphisms} in $\Aa$.
+	\end{alphanumerate}
+	The following assumptions must be satisfied:
+	\begin{rmnumerate}
+	    \item
+	        If $A\morphism[f] B \morphism[g] C\morphism[h] D$ are morphisms in $\Aa$, then $h\circ(g\circ f) = (h\circ g)\circ f$.
+	    \item
+	        For any $A\in\Ob(\Aa)$ there is a unique morphism $A\morphism[\id_A] A$ in $\Hom_\Aa(A,A)$ such that $\id_A \circ f = f$ and $g\circ \id_A = g$ for any $f\in \Hom_\Aa(B,A)$ and any $g\in \Hom_\Aa(A,C)$ for arbitrary $B,C\in \Ob(\Aa)$.
+	\end{rmnumerate}
+\end{defi}
 \begin{example}
     \begin{itemize}
         \item 
-            The category (\emph{Set}) of sets where $\Ob(\Aa)$ is the class of sets, $\Hom_\Aa(X,Y)$ is the set of maps from $X$ to $Y$ and the composition of morphism is the composition of maps.
+            The category $\cat{Set}$ of sets where $\Ob(\Aa)$ is the class of sets, $\Hom_\Aa(X,Y)$ is the set of maps from $X$ to $Y$ and the composition of morphism is the composition of maps.
         \item 
-            The category (\emph{Grp}) of groups where $\Ob(\Aa)$ is the class of groups, $\Hom_\Aa(X,Y)$ is the set of group morphisms from $X$ to $Y$ and the composition of morphisms is the composition of maps.
+            The category $\cat{Grp}$ of groups where $\Ob(\Aa)$ is the class of groups, $\Hom_\Aa(X,Y)$ is the set of group morphisms from $X$ to $Y$ and the composition of morphisms is the composition of maps.
         \item 
-            The categories of rings (\emph{Ring}), commutative rings (\emph{CRing}) and abelian groups (\emph{Ab}) are all similar.
+            The categories of rings $\cat{Ring}$, commutative rings $\cat{Ab}$ and abelian groups $\cat{Ab}$ are all defined similarly.
         \item 
-            The topological spaces with the continous maps (\emph{Top}).
+            The topological spaces with the continous maps $\cat{Top}$.
         \item 
             The Banach spaces with bounded (continous) maps.
         \item 
-            The $k$-vector spaces with $k$-linear maps (\emph{Vect}$_K$) or $R$-modules with $R$-linear maps (\emph{$R$-Mod}).
+            The $k$-vector spaces with $k$-linear maps $\cat{Vect}_K$ or $R$-modules with $R$-linear maps $R\cat{-Mod}$.
     \end{itemize}
 \end{example}
 A category is called \emph{small} if its class of objects is a set.
 
-A \emph{subcategory} $\Bb$ of $\Aa$ has $\Ob(\Bb) \subseteq \Ob(\Aa)$ and $\Hom_\Bb(X,Y) \subseteq \Hom_\Aa(X,Y)$ and for arbitrary objects $X,Y$ of $\Bb$, the identity $\id_X$ of $X$ in $\Aa$ is a morphism in $\Hom_\Bb(X,X)$.
+\begin{defi}
+	Let $\Aa$ and $\Bb$ be categories. We call $\Bb$
+	\begin{itemize}
+		\item a \defemph{subcategory} of $\Aa$ if $\Ob(\Bb) \subseteq \Ob(\Aa)$ and $\Hom_\Bb(X,Y) \subseteq \Hom_\Aa(X,Y)$ and for arbitrary objects $X,Y$ of $\Bb$, the identity $\id_X$ of $X$ in $\Aa$ is a morphism in $\Hom_\Bb(X,X)$.
+		\item a \defemph{full subcategory} of $\Aa$ if additionally $\Hom_\Aa(X,Y) = \Hom_\Bb(X,Y)$ for arbitrary objects $X,Y\in\Ob(\Bb)$.
+		\item an \defemph{equivalent subcategory} of $\Aa$ if it is a full subcategory and every object $X\in \Ob(\Aa)$ is isomorphic to some $Y\in\Ob(\Bb)$ (where a morphism $X\morphism[f] Y$ is an isomorphism iff there  is a (unique) $Y\morphism[g] X$ such that $f\circ g = \id_Y$ and $g\circ f= \id_X$.
+	\end{itemize}
+\end{defi}
 
-We call $\Bb$ a \emph{full subcategory} of $\Aa$ if $\Hom_\Aa(X,Y) = \Hom_\Bb(X,Y)$ for arbitrary objects $X,Y\in\Ob(\Bb)$.
-
-We call $\Bb$ a \emph{equivalent subcategory} of $\Aa$ if it is a full subcategory and every object $X\in \Ob(\Aa)$ is isomorphic to some $Y\in\Ob(\Bb)$ (where a morphism $X\morphism[f] Y$ is an isomorphism iff there  is a (unique) $Y\morphism[g] X$ such that $f\circ g = \id_Y$ and $g\circ f= \id_X$.
-
-A further example is the category of prevarieties (with morphisms according to Definition \reff{def:preVarieties}) and its full subcategory of varieties, containing all varieties as objects.
-
+  A further example is the category of prevarieties (with morphisms according to Definition \reff{def:preVarieties}) and its full subcategory of varieties, containing all varieties as objects.
+  
+  \begin{defi}
+  	A (covariant) \defemph{functor} $\Aa\morphism[F]\Bb$ consists of the following data:
+  	\begin{itemize}
+  		\item a map $F\colon \Ob(\Aa)\to\Ob(\Bb)$,
+  		\item for $X,Y\in\Ob(\Aa)$ a map $F\colon\Hom_\Aa(X,Y)\to\Hom_\Bb(FX,FY)$ such that $F(\id_X)=\id_{FX}$ whenever $X\in\Ob(\Aa)$ and $F(\psi\phi)=F(\psi)F(\phi)$ when $X\morphism[\phi]Y\morphism[\psi]Z$ are morphisms in $\Aa$.
+  	\end{itemize}
+  	A functor is called \emph{faithful} if $F:\Hom_\Aa(X,Y)\to\Hom_\Bb(FX,FY)$ is injective and \emph{fully faithful} if it's bijective.
+  \end{defi}
+    
+  Professor Franke would like to draw a line here. We hope, this one will do: \tikz\draw(0,0) -- (2.6,0);.
+  
+  \begin{example*}
+  	We have \emph{forgetful} functors like $\cat{Vect}_k\to\cat{Ab}$ or $\cat{Ab}\to\cat{Set}$. These functors are faithful (at least for the two examples).
+  \end{example*}
+  
+  \section{Products and equalizers}
+  Our goal is to formulate a notion of \emph{sheaf} that allows to define sheafs for arbitrary target categories. Recall that the sheaf axiom (\hyperref[sheafAxiom]{this one}) requires
+  \begin{align}\lbl{eq:sheafAxiom}
+  	\Gg(U)\longrightarrow\left\{(g_i)_{i\in I}\in\prod_{i\in I}\Gg(U_i)\st g_i|_{U_{ij}}=g_j|_{U_{ij}}\ \forall i,j\in I\right\}\tag{$*$}
+  \end{align}
+  to be bijective (i.e. an isomorphism) for any open cover $U=\bigcup_{i\in I}\Gg(U_i)$, where we set $U_{ij}=U_i\cap U_j$ for convenience.
+  
+  \begin{defi}[products]
+  	A \defemph{product} of objects $(A_i)_{i\in I}$ of $\Aa$ is an object $\prod_{i\in I}A_i$ together with morphisms $\prod_{i\in I}A_i\morphism[\pi_i]A_i$ for each $i\in I$ such that the following \emph{universal property} holds:
+  	\begin{quote}
+  		If $T\in\Ob(\Aa)$ comes with morphisms $T\morphism[\tau_i]A_i$ for each $i\in I$, then there is a unique morhism $T\morphism[\exists!\ f]\prod_{i\in I}A_i$ such that $\tau_i=\pi_i\circ f$.
+  	\end{quote}
+  	In other words, $\prod_{i\in I}A_i=\limit[i\in I]{A_i}$ is the \emph{limiting cone} over the trivial diagram consisting only of the $A_i$ without any arrows.
+  \end{defi}
+  Note that nobody ever guaranteed that products exist in general.
+  \begin{rem*}
+  	\begin{alphanumerate}
+  		\item Compare this to e.g. the universal property of localizations where the universal object is on the left -- here it is on the right.
+  		\item In the case of sets, (abelian) groups, $R$-modules, and rings, one can take $\prod_{i\in I}A_i$ to be the set-theoretic product equipped with the respective product structure and the set-theoretic projections $\prod_{i\in I}A_i\morphism[\pi_i]A_i$, $\pi_i\big((a_j)_{j\in I}\big)=a_i$.
+  		\item The above definition characterizes $\prod_{i\in I}A_i$ up to \emph{unique isomorphism}: If the $T$ above satisfies the same universal property, then $f$ is an isomorphism.
+  		\item If $I=\emptyset$, the empty product is the \emph{final object}, i.e. an object $F\in\Ob(\Aa)$ such that for any $T\in\Ob(\Aa)$ there is precisely one morphism $T\to F$ in $\Aa$. We have the following dual notion: $I$ (now an object and no indexing set anymore) is called \emph{initial object} if $\Hom_\Aa(I,T)$ has precisely one element for each $T\in\Ob(\Aa)$.
+  	\end{alphanumerate}
+  \end{rem*}
+  \begin{rem*}
+  	In $\cat{Set}$, $\emptyset$ is the only initial object and the one-point sets are the final objects. For the \emph{abelian} categories $R\cat{-Mod}$, the canonical morphisms from the (only) initial to the (only) final object is an isomorphism.
+  \end{rem*}
+	Let $X$ be a topological space. A \emph{presheaf} on $X$ with values in $\Aa$ is a map associating
+	\begin{itemize}
+		\item to each open subset $U\subseteq X$ an object $\Gg(U)\in\Ob(\Aa)$
+		\item and to each inclusion $V\subseteq U$ a morphism $\cdot|_V^U\in\Hom_\Aa(\Gg(U), \Gg(V))$ which equals $\id_{\Gg(U)}$ if $U=V$ and such that $\cdot|_W^U=\cdot|_W^V\circ\cdot|_V^U$ whenever $W\subseteq V\subseteq U$ is an inclusion of open sets.
+	\end{itemize}
+	To formulate the sheaf axiom, it is convenient to assume that $\prod_{i\in I}\Gg(U_i)$ exists, i.e. that $\Aa$ has arbitrary products.
+	
+	Recall our convention that $U_{ij}=U_i\cap U_j$. There are unique morphisms
+	\begin{align*}
+		\alpha,\beta\colon \prod_{i\in I}\Gg(U_i)\longrightarrow\prod_{(i,j)\in I\times I}\Gg(U_{ij})
+	\end{align*}
+	characterized by $\pi_{ij}\circ\alpha=\cdot|_{U_{ij}}^{U_i}\circ\pi_i$ and $\pi_{ij}\circ\beta=\cdot|_{U_{ij}}^{U_j}\circ\pi_j$, where $\prod_{i\in I}\Gg(U_i)\morphism[\pi_i]\Gg(U_i)$ and $\prod_{(i,j)\in I\times I}\Gg(U_{ij})\morphism[\pi_{ij}]\Gg(U_{ij})$ are the morphisms defining the product structure.
+	
+	In the example of presheaves of sets, rings, etc. we have 
+	\begin{align*}
+		\alpha\big((g_i)_{i\in I}\big)=\left(g_i|_{U_{ij}}\right)_{(i,j)\in I\times I}\quad\text{and}\quad\beta\big((g_i)_{i\in I}\big)=\left(g_j|_{U_{ij}}\right)_{(i,j)\in I\times I}\;,
+	\end{align*}
+	such that \eqreff{eq:sheafAxiom} is the ``largest subobject on which $\alpha$ and $\beta$ coincide".
+	\begin{defi}[equalizer]
+		Let $A\doublemorphism[\alpha][\beta]B$ be a pair of morphisms. An \defemph{equalizer} of this pair is an object $E\in\Ob(\Aa)$ together with a morphism $E\morphism[\epsilon]A$ such that $\alpha\epsilon=\beta\epsilon$ and such that the following universal property holds:
+		\begin{quote}
+			If $T\morphism[\tau]A$ is any morphism in $\Aa$ such that $\alpha\tau=\beta\tau$, then there's a unique $T\morphism[t]E$ such that the following diagram commutes.
+			\begin{diagram}
+				\node (A) at (0,0) {$A$};
+				\node (B) at (3,0) {$B$};
+				\node (E) at (1.5,1.5) {$E$};
+				\node (T) at (1.5,3) {$T$};
+				\scriptsize
+				\draw[->,dashed] (T) -- (E) node[pos=0.5, right] {$\exists!\ t$};
+				\draw[->, bend left] (A) to node[pos=0.5, below] {$\alpha$} (B) ;				
+				\draw[->, bend right] (A) to node[pos=0.5, above] {$\beta$} (B) ;
+				\draw[->] (E) -- (A) node[pos=0.5, above left] {$\epsilon$};
+				\draw[->] (E) -- (B);
+				\draw[->, bend right] (T) to node[pos=0.5, left] {$\tau$} (A);
+				\draw[->, bend left] (T) to (B);
+			\end{diagram}
+			In other word, $E$ is the \emph{limiting cone} over the diagram $A\doublemorphism[\alpha][\beta]B$.
+		\end{quote}
+		\begin{rem*}
+			\begin{alphanumerate}
+				\item By the usual Yoneda argument one sees that the universal property characterizes $E$ up to unique isomorphism.
+				\item The sheaf axiom for presheaves with values in an arbitrary category with products now translates into the condition that $\Gg(U)\to\prod_{i\in I}\Gg(U_i)$ is, for any open cover $U=\bigcup_{i\in I}U_i$, an equalizer of the above pair of morphisms $\prod_{i\in I}\Gg(U_i)\doublemorphism[\alpha][\beta]\prod_{(i,j)\in I\times I}\Gg(U_{ij})$. 
+				
+				By merging the universal properties, the notion of a sheaf can be generalized to arbitrary target categories.
+				\item For sets, abelian groups etc. the equalizer is 
+				\begin{align*}
+					\ker\Big(A\doublemorphism[\alpha][\beta]B\Big)=\left\{a\in A\st \alpha(a)=\beta(a)\right\}\;.
+				\end{align*}
+				\item For the \emph{abelian} category $R\cat{-Mod}$, 
+				\begin{align*}
+					\ker\Big(M\morphism[f]N\Big)=\ker\Big(M\doublemorphism[f][0]N\Big)\quad\text{and}\quad\ker\Big(M\doublemorphism[f][g]N\Big)=\ker\Big(M\xrightarrow{f-g}N\Big)\;.
+				\end{align*}
+			\end{alphanumerate}
+		\end{rem*}
+	\end{defi}
+	
+	
 \printbibliography
 
 \end{document}          
