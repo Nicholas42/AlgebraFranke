@@ -134,6 +134,7 @@
 \newoperator{Ob}
 \newoperator{GL}
 \newoperator{Min}
+\renewcommand{\det}{\operatorname{det}}%otherwise, det_K behaves strangely in displaymode
 \newoperator{Mat}
 \newoperator{Tr}
 \newcommand{\norm}{\operatorname{N}}
@@ -141,6 +142,7 @@
 \newoperator{sep}
 \newcommand{\Spec}{\operatorname{Spec}}
 \newcommand{\tr}{\operatorname{tr}}
+\newcommand{\cat}[1]{\operatorname{#1}}%style of categories
 %inductive limit
 \newcommand\colimit[1][]{
 	\mathchoice{\underset{\substack{\displaystyle{\longrightarrow}\\#1}}{\lim}}%displaystyle
@@ -179,7 +181,8 @@
 
 %---- MISCELLANEOUS ----
 %
-\newcommand{\defemph}[1]{\textbf{#1}}
+\newcommand{\defemph}[1]{\textbf{#1}} %emphasize style of a to-be-defined object in a definition
+\newcommand{\itememph}[1]{$(#1)$} %style of alphabetically ordered items
 \newcommand{\ldotspam}{,\ldots,}
 \newcommand{\ordinalst}{^{\text{st}}}
 \newcommand{\ordinalrd}{^{\text{rd}}}

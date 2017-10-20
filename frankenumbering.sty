@@ -1,5 +1,6 @@
 \usepackage{chngcntr}
 \counterwithout{equation}{chapter}
+\@addtoreset{equation}{section}
 \usepackage{amsthm}
 \def\@ynthm#1[#2]#3{%
 	\@xp\gdef\csname thmcaptionof#1\endcsname{#3}%
@@ -36,8 +37,8 @@
 \def\varthmmodifier{a}
 
 \newtheoremstyle{cthm}
-{12pt}
-{0pt}
+{11pt}
+{\parskip}
 {\itshape}
 {}
 {\bfseries}
@@ -46,8 +47,8 @@
 {\thmname{#1}\thmnumber{ \IfBeginWith{#2}{\thesection.}{\StrBehind{#2}{\thesection.}}{#2}}\thmnote{ \textmd{(#3)}}\xdef\curthm{#2}}
 
 \newtheoremstyle{cvarcthm}
-{12pt}
-{0pt}
+{11pt}
+{\parskip}
 {\itshape}
 {}
 {\bfseries}
@@ -56,8 +57,8 @@
 {\edef\curthmnumber{\csname the\thmenv\endcsname}\thmname{\csname thmcaptionof\thmenv\endcsname}\thmnumber{ \IfBeginWith{\curthmnumber}{\thesection.}{\StrBehind{\curthmnumber\varthmmodifier}{\thesection.}}{\curthmnumber\varthmmodifier}}\thmnote{ \textmd{(#3)}}\xdef\curthm{\curthmnumber\varthmmodifier}}%für Varianten von Theoremen
 
 \newtheoremstyle{cdef}
-{12pt}
-{0pt}
+{11pt}
+{\parskip}
 {}
 {}
 {\bfseries}
@@ -66,8 +67,8 @@
 {\thmname{#1}\thmnumber{ \IfBeginWith{#2}{\thesection.}{\StrBehind{#2}{\thesection.}}{#2}}\thmnote{ \textmd{(#3)}}\xdef\curthm{#2}}
 
 \newtheoremstyle{cvarcdef}
-{12pt}
-{0pt}
+{11pt}
+{\parskip}
 {}
 {}
 {\bfseries}
@@ -79,13 +80,13 @@
 \newtheorem{thm}{Theorem}[]
 \newtheorem{lem}{Lemma}[section]
 \newtheorem{sat}{Satz}[section]
-\newtheorem{exc}{Exercise}[section]
 \newtheorem{cor}{Corollary}[section]
 \newtheorem{prop}{Proposition}[section]
 
 \theoremstyle{cdef}
 \newtheorem{defi}{Definition}[section]
 \newtheorem*{defi*}{Definition}
+\newtheorem{exc}{Exercise}[section]
 \newtheorem{example}{Example}[section]
 \newtheorem*{example*}{Example}
 \newtheorem{rem}{Remark}[section]
@@ -126,16 +127,18 @@
 
 \newcommand{\reff}[1]{%
 	\edef\pretemp{\getrefnumber{#1}}%this is an
-	\StrLeft{\pretemp}{1}[\dummy]%incredibly nasty
-	\IfInteger{\dummy}{\def\temp{\pretemp}}{\def\temp{\detokenize\pretemp}}%kinda
-	\StrBehind{\temp}{\thesection.}[\tempcropped]%hacky workaround
-	\IfBeginWith{\temp}{\thesection}{\hyperref[#1]{\tempcropped}} {\hyperref[#1]{\temp}}%for some seriously weird bug
+	\StrRight{\pretemp}{1}[\dummy]%incredibly nasty
+	\IfInteger{\dummy}{\def\strangetoken{f}}{\def\strangetoken{t}}%
+	\IfSubStr{ABCDEFGHIJKLMNOPQRSTUVWXYZ}{\dummy}{\def\strangetoken{false}}{}%
+	\IfStrEq{\strangetoken}{f}{\def\temp{\pretemp}}{\def\temp{\detokenize\pretemp}}%kinda
+	\StrBehind*{\temp}{\thesection.}[\tempcropped]%hacky workaround
+	\IfBeginWith*{\temp}{\thesection}{\hyperref[#1]{\tempcropped}} {\hyperref[#1]{\temp}}%for some seriously weird bug
 }
 
 \newcommand{\eqreff}[1]{%
 	\edef\temp{\csname eqsubsec#1\endcsname}%
 	\IfBeginWith{\temp}{\thesection}{\hyperref[#1]{\upshape(\getrefnumber{#1})}}{\hyperref[#1]{\upshape(\temp .\getrefnumber{#1})}}%	
 }
-\newenvironment{alphanumerate}{\begin{enumerate}[label={$(\alph*)$},ref=\curthm]}{\end{enumerate}}       
+\newenvironment{alphanumerate}{\begin{enumerate}[label={\itememph{\alph*}},ref=\curthm]}{\end{enumerate}}       
 \newenvironment{rmnumerate}{\begin{enumerate}[label={\upshape(\roman*)},ref=\curthm]}{\end{enumerate}}   
 \renewenvironment{itemize}{\begin{enumerate}[label={$\bullet$},ref=\curthm]}{\end{enumerate}}
