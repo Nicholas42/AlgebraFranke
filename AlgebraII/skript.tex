@@ -1,4 +1,4 @@
-\documentclass[a4paper,parskip=full,numbers=enddot, DIV=12]{scrreprt}
+\documentclass[a4paper,parskip=half,numbers=enddot, DIV=12]{scrreprt}
 \usepackage[utf8]{inputenc}
 
 \usepackage{../header}
@@ -64,11 +64,12 @@ The oh-so-humble authors of these notes want to use this opportunity to recommen
 \end{itemize}
 as well. \textbf{Warning!} Somewhere in the middle of the last-mentioned text, the term \emph{irreducible} is redefined as irreducible \emph{and closed}. So don't let yourself get confused.
 
-\chapter{Krull's Principal Ideal Theorm}\lbl{ch:krullPrincipalIdealThm}
+\chapter{Krull's principal ideal theorem}\lbl{ch:krullPrincipalIdealThm}
 \section{Formulation}
 \setcounter{thm}{10}
 \begin{thm}\lbl{thm:krullPrincipalIdeal}
     %Should be Theorem 11, because we continue from Algebra I, Ferdi, that's your job
+    %done
     Let $R$ be Noetherian, $f\in R$, $\pp\in \Spec R$ minimal among all prime ideals containing $f$. Then $\hoehe(\pp) \leq 1$. In other words, $\pp$ is a minimal prime ideal (if $\hoehe(\pp) =0$) or all prime ideals strictly contained in $\pp$ are minimal.
 \end{thm}
 \begin{rem*}
@@ -87,24 +88,22 @@ as well. \textbf{Warning!} Somewhere in the middle of the last-mentioned text, t
         \begin{align*}
         	V(I) = \left\{\pp\in\Spec R\st I\subseteq \pp\right\}\;.
         \end{align*}
-        We have
+        We have the following relations (which we are supposed to prove on exercise sheet \#1)
         \begin{align*}
             V(I)& = V\left(\sqrt{I}\right)\\
             V(I\cdot J ) &= V(I) \cup V(J)\\
-            V\bigg(\sum_{\lambda\in\Lambda} I_\lambda\bigg) &= \bigcap_{\lambda\in\Lambda} V(I_\lambda).
+            V\bigg(\sum_{\lambda\in\Lambda} I_\lambda\bigg) &= \bigcap_{\lambda\in\Lambda} V(I_\lambda)\;.
         \end{align*}
         This implies (together with $V(0) = \Spec R$ and $V(R) = \emptyset$) that $\Spec R$ can be equipped with a topology in which the closed subsets are precisely the subsets of them for $V(I)$ where $I$ is some ideal in $R$. This topology is Noetherian when $R$ is, hence any closed subset can be decomposed into irreducible components. For $V(f) = V(f\cdot R)$, they are precisely those $V(\pp)$ for which $\pp$ is minimal among all prime ideals containing $f$. Theorem~\reff{thm:krullPrincipalIdeal} thus states that all irreducible components of $V(f)$ have codimension smaller or equal to 1 in $\Spec R$. 
     \end{alphanumerate}
 \end{rem*}
-\begin{cor}\lbl{importanttest}
+\begin{cor}\lbl{cor:V(f)codimension1}
     If $X\subseteq k^n$ is quasi-affine in $k^n$ (with $k$ algebraically closed) and $f\in\Oo(X)\setminus\{0\}$ then every irreducible component of $V(f)$ has codimension 1 in $X$.
 \end{cor}
-\begin{rem*}
+
+\begin{rem}\lbl{rem:proofPreparations}
     \begin{alphanumerate}
-    \item 
-        It is possible, without losing generality, to assume that $X\subseteq k^n$ is Zariski-closed (thus affine, thus isomorphic to an affine variety in some $k^n$). This is so by (b) and (d) below. It is thus possible, while proving the corollary, to assume that $X$ is isomorphic to some affine algebraic variety in some $k^n$.
-    \item
-        Let $U\subseteq X$ be open, then there is a bijective correspondence between the irreducible closed subsets of $U$ and the irreducible closed subsets $A\subseteq X$ not disjoint from $U$:
+	   \item Let $U\subseteq X$ be open, then there is a bijective correspondence 
         \begin{align*}
 	        \big\{\text{irreducible closed subsets }B\subseteq U\big\}&\isomorphism\left\{
 	        \begin{array}{c}
@@ -115,10 +114,54 @@ as well. \textbf{Warning!} Somewhere in the middle of the last-mentioned text, t
             A\cap U &\longmapsfrom A\\
             B&\longmapsto \overline{B}
         \end{align*}
-        This shows that $\codim (A\cap U, U)  = \codim(A,X)$ whenever $A\subseteq X$ is 		irreducible, closed and $U\subseteq X$ open and not disjoint from $A$. Eh, actually it doesn't. But the correspondence from \cite[Remark~2.1.3]{alg1} does.
+        (this is more or less a tedious calculation -- and guess what: we have the pleasure to do it on exercise sheet \#2). This shows that $\codim (A\cap U, U)  = \codim(A,X)$ whenever $A\subseteq X$ is irreducible, closed and $U\subseteq X$ open and not disjoint from $A$. This is known as the \emph{locality of codimension} (cf. \cite[Remark~2.1.3]{alg1}).
+        \item In particular, the $X$ from Corollary~\reff{cor:V(f)codimension1} may be replaced by any open subset meeting the irreducible component under consideration.
+        \item If $Y\subseteq k^n$ is an affine algebraic variety in $k^n$ and $\lambda\in\Oo_Y(Y)$, then $Y\setminus V(\lambda)$ is affine (that is, isomorphic to an affine algebraic variety, cf. \cite[Proposition~2.2.4]{alg1} for more details and a proof). Because of this, we may assume $X$ to be affine: Let $Y=\ov X\subseteq k^n$ and let $C$ be the irreducible component of $V(f)$ under consideration. Then there is a $\lambda\in k[X_1,\ldots,X_n]$ vanishing on $Y\setminus X$, but not on all of $C$. Indeed, $A=Y\setminus X$ and $B= Y\setminus X\cup\ov C$ are closed subsets and $A\subsetneq B$. Then we may choose $\lambda$ such that it vanishes on $A$ but not on all of $B$, hence not on all of $\ov C$. But then $\lambda$ can't be identically zero on $C$ since otherwise $\lambda=0$ on $\ov C$ by continuity. Replacing $X$ by $Y\setminus V(\lambda)$ we may then assume $X$ to be affine according to \itememph{b}.
+        \item Let now $X$ be an affine variety. We saw in Algebra I (cf. \cite[Corollary~2.2.2]{alg1}) that there is a bijection
+        \begin{align}\lbl{eq:bijectiveCorrespondenceO(X)}
+	        \begin{split}
+		        \{\text{closed subsets }A\subseteq X\}&\isomorphism\left\{\text{ideals }I\subseteq \Oo(X)\text{ such that }I\sqrt{I}\right\}\\
+		        A&\longmapsto I=\left\{f\in \Oo(X)\st f|_A=0\right\}\\
+		        V(I)&\longmapsfrom I\;.
+	        \end{split}\tag{$*$}
+        \end{align}
+        Under this correspondence, $A$ is irreducible iff the corresponding ideal is prime. \eqreff{eq:bijectiveCorrespondenceO(X)} follows from the special case $X=k^n$, $\Oo(X)=k[X_1,\ldots,X_n]\eqqcolon R$ using the (nontrivial!) fact that, for closed $X=V(I)\subseteq k^n$ (with $I=\sqrt{I}\subseteq R$ an ideal), $\Oo(X)=R/I$. For $I$ a prime ideal, this was proved in \cite[Proposition~2.2.2]{alg1}. For arbitrary $I$, one can just copy-paste the proof given there (the primality condition is not used at all) or expand the idea outlined after Proposition~\reff{prop:RtoO(X)} using that $R\to\Oo(X)$ (by the Nullstellensatz, cf. \cite[Proposition~1.7.1]{alg1}) has kernel $I$.
     \end{alphanumerate}
-\end{rem*}
-
+\end{rem}
+\begin{proof}[Proof Corollary~\reff{cor:V(f)codimension1} (using Theorem~\reff{thm:krullPrincipalIdeal})]
+	Let $C_1,\ldots,C_m$ be the irreducible components of $V(f)$ and $\pp_i\in\Oo(X)$ the corresponding prime ideals. Then $f\in\pp_i$ (as $\pp_i$ is the ideal of functions vanishing on $C_i\subseteq V(f)$). Let $\qq\in\Spec\Oo(X)$ such that $f\in\qq\subseteq\pp_i$, then $V(f)\supseteq V(\qq)\supseteq V(\pp_i)$, hence $\qq=\pp_i$ because the decomposition of $X$ into maximal irreducible subsets is unique (Proposition~\reff{prop:irreducibleDecomposition} or (recommended) \cite[Proposition~2.1.1]{alg1}). Hence, each $\pp_i$ is a minimal prime ideal containing $f$.
+	
+	On the other hand (this was missing in the lecture), if $\qq\ni f$ is a minimal prime ideal containing $f$, then $V(\qq)\subseteq V(f)$ is a maximal irreducible subset, hence among the $C_i$ by \cite[Proposition~2.1.1]{alg1}, hence $\qq$ is among the the $\pp_i$. We conclude that the $\pp_i$ are the minimal prime ideals containing $f$. By \eqreff{eq:bijectiveCorrespondenceO(X)} and the principal ideal theorem, $\codim(C_i,X)=\hoehe(\pp_i)\leq1$. But $\codim(C_i,X)>0$ as $X$ is irreducible and $f\not=0$.
+\end{proof}
+\begin{proof}[Standalone proof of Corollary~\reff{cor:V(f)codimension1}]
+	\emph{Step 1.} We reduce to the case where $X$ is affine and $V(f)$ is irreducible. Indeed, by Remark~\reff{rem:proofPreparations}\itememph{c}, $X$ may be assumed to be affine. Let $V(f)=C_1\cup\cdots\cup C_m$ be its decomposition into irreducible components. Since $C_1\not\subseteq B\coloneqq C_2\cup\cdots\cup C_m$, there is a $\lambda\in\Oo(X)$ vanishing on $B$ but not on $C_1$. By Remark~\reff{rem:proofPreparations}\itememph{b}, we may replace $X$ by $\snake X=X\setminus V(\lambda)$. Denote $\snake f=f|_{\snake X}\in\Oo\big(\snake X\big)$, then $V(f)\cap \snake X=V(\snake f)=C_1\setminus V(\lambda)$ is irreducible and we may replace $X$ and $f$ by their tilded versions $\snake X$ and $\snake f$.
+	
+	\emph{Step 2.} Let $R$ be a factorial domain and $p\in R$ prime. Then $\hoehe(p)=1$. Indeed, $\hoehe(p)>0$ as $(0)\in\Spec R$ and $p\not=0$. Suppose there is a prime ideal $(0)\subsetneq\qq\subsetneq(p)$. Let $g\in\qq\setminus\{0\}$ and $g=q_1\cdots q_k$ its decomposition into prime factors. We may assume that $k$ is minimal. Since $p\mid q_1\cdots q_k$, we have w.l.o.g. $p\mid q_1$, hence $p$ and $q$ differ only by a unit of $R$ as they are both primes. But $q_2\cdots q_k\not\in\qq$ by minimality of $k$, hence $q_1\in\qq$ as $\qq$ is prime. Then also $p\in\qq$, hence $(p)\subseteq\qq$, contradiction!
+	
+	\emph{Step 3.} The principal ideal theorem holds when $R$ is factorial. Indeed, let $f\in R\setminus\{0\}$ and $f=p_1\cdots p_k$ its prime factorization. Then any prime ideal containing $f$ contains some $p_i$, hence the $(p_i)$ are the minimal prime ideals containing $f$. Step 2 does the rest.
+	
+	\emph{Step 4.} To reduce Corollary~\reff{cor:V(f)codimension1} to a situation where Step 3 can be applied, one uses the \emph{Noether normalization theorem} (cf. \cite[Theorem~3]{alg1}). Suppose that $V(f)$ is irreducible (we can do that by Step 1) and let $\pp=\sqrt{(f)}$ be the prime ideal of functions vanishing on $V(f)$. By Noether normalization, the finite-type $k$-algebra $A=\Oo(X)$ contains algebraically independent elements $\lambda_1,\ldots,\lambda_n$ such that $A$ is integral over $B=k[\lambda_1,\ldots,\lambda_n]$. The latter is factorial, because $B\simeq k[X_1,\ldots,X_n]$, the $\lambda_i$ being algebraically independent. Denote by $L$ and $K$ the quotient fields of $A$ and $B$ and let $\qq=\pp\cap B$, $f_0=N_{L/K}(f)$. We claim
+	\begin{align}\lbl{eq:GoingUp2Bapplied}
+		f_0\in B\quad\text{and}\quad \qq=\sqrt{(f_0)}\;.\tag{\#}
+	\end{align}
+	Note that $\qq=\sqrt{(f_0)}$ is a (actually, \emph{the}) minimal prime ideal containing $f_0$ since prime ideals coincide with their radicals. By Step 3 and Step 2, this implies $\hoehe(\qq)=1$. But $\hoehe(\pp)\leq\hoehe(\qq)$ holds by the \emph{going-up theorem} (cf. \cite[Theorem~7]{alg1} or \cite[Fact~2.6.2]{alg1} for this particular result), hence $\codim(V(f), X)\leq 1$. However, as $f\not=0$ and $X$ is irreducible, $V(f)$ cannot have codimension 0. 
+	
+	\emph{Step 5.} We are left to prove \eqreff{eq:GoingUp2Bapplied}. Let $B$ be a domain integrally closed in its field of quotients $K$ (i.e. $x\in K$ is integral over $B$ iff $x\in B$). Such $B$ are called \emph{normal}. For instance, factorial rings are always normal and we may apply the following to the situation of Step 4. 
+	
+	If $L/K$ is a finite field extension and $f\in L$ is integral over $B$, then so are all its images under the $K$-linear embeddings $L\hookrightarrow \ov L$ (they satisfy the same equation as $f$). As the elements of $\ov L$ which are integral over $B$ form a subring of $\ov L$, all coefficients of the characteristic polynomial $P_{f,L/K}$ (cf. Definition~\reff{def:characteristicPolynomial}) and the minimal polynomial $\Min_{f/K}$ are integral over $B$ by Theorem~\reff{thm:TraceNormAndStuff}\itememph{d}. But, by definition, these two have their coefficients in $K$ as well, hence $P_{f,L/K},\Min_{f/K}\in B[T]$. In particular, $f_0=N_{L/K}(f)\in B$.
+	
+	Now let $\sigma=\sigma_1,\sigma_2,\ldots,\sigma_r$ be the different $K$-embeddings and $n=[L:K]$. Then 
+	\begin{align*}
+		f_0=\pm \bigg(\prod_{i=1}^{r}\sigma_i(f)\bigg)^{n/r}
+	\end{align*}
+	by Theorem~\reff{thm:TraceNormAndStuff}\itememph{d}. We know that $f$ is among the $\sigma_i(f)$, say, $f=\sigma_1(f)$. Replacing $A$ by the integral closure $\snake A$ of $B$ in $L$ (which is possible thanks to the going-up theorem), we may assume $\sigma_2(f)\cdots\sigma_r(f)\in A$, hence $f_0\in \pp$ as it contains $f\in\pp$ as a factor. Then $f_0\in\pp\cap B$, hence also $\sqrt{(f_0)}\subseteq\qq$, as prime ideals coincide with their radicals. 
+	
+	To prove $\qq\subseteq\sqrt{(f_0)}$ let $q\in\qq$. Then $q^m\in (f)$ for sufficiently large $m$ as $q\in\pp=\sqrt{(f)}$. Let $q^m=fa$, $a\in A$. Since $q^m\in B$, we have 
+	\begin{align*}
+		q^{mn}=N_{L/K}(q^m)=N_{L/K}(f)N_{L/K}(a)=f_0b\in(f_0)
+	\end{align*}
+	for some $b=N_{L/K}(a)\in B$. This proves $q\in\sqrt{(f_0)}$.
+\end{proof}
 
 
 
@@ -294,7 +337,7 @@ Let $L/K$ be a finite field extension, $\overline{L}$ an algebraic closure of $L
 	d=[K(x):K]=\deg\Min_{x/K}\eqqcolon\deg(x/K)
 \end{align*}
 is called the \emph{degree} and $\Min_{x/K}$ the \emph{minimal polynomial} of $x$ over $K$.
-\begin{defi}[characteristic polynomial, trace and norm]
+\begin{defi}[characteristic polynomial, trace and norm]\lbl{def:characteristicPolynomial}
 	Let $x\in L$. Consider the corresponding endomorphism $L\xrightarrow{x\cdot(-)} L$ of the $K$-vector space $L$. Then the \defemph{characteristic polynomial} $P_{x,L}$, the \defemph{trace} $\Tr_{L/K}(x)$ and the \defemph{norm} $N_{L/K}(x)$ of $x$ with respect to $L/K$ are defined as the corresponding invariants of the endomorphism $x\cdot(-)$. In particular,
 	\begin{align*}
 		P_{x,L/K} &= \det(T\cdot \id -x) = T^n+\sum_{i=0}^{n-1} p_iT^i\;,\\
@@ -303,7 +346,7 @@ is called the \emph{degree} and $\Min_{x/K}$ the \emph{minimal polynomial} of $x
 \end{defi}
 \begin{thm}
 	\begin{alphanumerate}
-		\item
+		\item \lbl{thm:TraceNormAndStuff}
 		If $V$ is any finite dimensional $L$-vector space and $f\in \End_L(V)$, then
 		\begin{align*}
 			\det_K(f) = N_{L/K}\big(\det_L(f)\big)\quad\text{and}\quad\Tr_K(f) = \Tr_{L/K}\big(\Tr_L(f)\big)\;,
