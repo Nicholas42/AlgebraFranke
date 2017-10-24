@@ -43,6 +43,7 @@ Professor Franke said the lecture requires a firm knowledge of commutative algeb
 Let it be said that the first three recommendations are from Professor Franke while the last one is from the (not so) humble authors of these notes.
 
 \chapter{Varieties and Schemes}\lbl{ch:varietiesAndSchemes}
+\section{Introductory definitions}
 \begin{defi}[sheaf and presheaf]\lbl{def:preSheaf}
     A \defemph{presheaf $\Ff$ of rings} on a topological space $X$ associates 
     \begin{itemize}
@@ -57,7 +58,7 @@ Let it be said that the first three recommendations are from Professor Franke wh
     A so defined presheaf is furthermore a \defemph{sheaf} if additionally, the following condition, called \emph{sheaf axiom}, holds:
     \begin{quote}\lbl{sheafAxiom}
      For every open covering $U = \bigcup_{i\in I} U_i$ of an open subset $U\subseteq X$ the map
-        \begin{align*}\lbl{eq:sheafAxiom}
+        \begin{align*}
 			\Ff(U) &\longto \left\{(f_i)_{i\in I}\in \prod_{i\in I} \Ff (U_i)\st f_i|_{U_i\cap U_j} = f_j|_{U_i\cap U_j} \text{ for }i,j\in I\right\}\\
 			f &\longmapsto \left(f|_{U_i}\right)_{i\in I}
         \end{align*}
@@ -255,7 +256,71 @@ Let it be said that the first three recommendations are from Professor Franke wh
         \end{itemize}
         
     \end{rem*}
+\section{General propositions and constructions for sheaves}
+\begin{defi}[Stalk]\lbl{def:stalk}
+    Let $\Gg$ be a presheaf on the topological space $X$ and $x\in X$. Let $\Gg_x = \colimit[U] \Gg(U)$, where $\colimit$ is taken over the open neighbourhoods $U$ of $x$, denote the \defemph{stalk} of $\Gg$ at $x$.
+\end{defi}
+\begin{rem*}
+    In general, $\colimit$ is the colimit in the target category. For the target categories of abelian groups, sets or rings we have
+    \begin{align*}
+        \Gg_x = \left\{(U,g) \st x\in U \text{ open }, g\in \Gg(U)\right\}/_\sim,
+    \end{align*}
+    where $(U,g)\sim (V,h)$ iff there is an open neighbourhood $W\subseteq U\cap V$ of $x$ such that $g|_W = h|_W$. 
+\end{rem*}
+\begin{example}
+    The stalk at $x$ of the structure sheaf of a prevariety $X$ is called the local ring $\Oo_X$ of $X$ at $x$.
+\end{example}
+\begin{rem*}
+    A set $\Bb$ of open subsets of a topological space $X$ is called a base of the topology if every open subset of $X$ may be written as a union of elements of $\Bb$. A set of subsets of some set $X$ is the base of a (uniquely determined) topology on $X$ iff the intersection of two arbitrary elements of $\Bb$ can be written as the union of elements of $\Bb$ and $\Bb$ covers $X$.
+\end{rem*}
+\begin{defi}[Presheaves on a topological Base]\lbl{def:presheafOnBase}
+    Let $\Bb$ be a base of the topology on $X$. A presheaf on $\Bb$ associates a set (group, ring,...) $\Gg(U)$ to any $U\in \Bb$ and a restriction morphism $\Gg(U) \morphism \Gg(V)$ for each inclusion of elements of $\Bb$, such that $\Gg(U) \morphism[\_|_U]\Gg(U)$ equals $\id_{\Gg(U)}$ and such that $f|_W = (f|_V)|_W$ for all $f\in \Gg(U)$ and inclusions $W\subseteq V\subseteq U$ of elements of $\Bb$. If $\Gg$ is a presheaf on $\Bb$ and $x\in X$ we put $\Gg_x = \colimit_U \Gg(U)$ where the direct limit is taken over alle $U\in \Bb$ containing $x$.
+\end{defi}
+\begin{rem*}
+    Equip $\Bb$ with partial order where $V\preceq U$ iff $V\supseteq U$. Any partially ordered set $(\XX, \preceq)$ defines a category where there is a morphism $X\morphism Y$ precisely if $X\preceq Y$. Then, a presheaf on $\Bb$ is a functor on $\Bb$.
+\end{rem*}
+\begin{varthm}{defi}
+    A morphism $\Gg\morphism[f] \Hh$ of presheaves on $\Bb$ is a collection $\Gg(U)\morphism[f_U] \Hh(U)$ in the target category such that
+    
+    This cool diagram which will be here soon\texttrademark.
+    
+    commutes. We will often write $\Gg(U) \morphism[f] \Hh(U)$ instead of $\Gg(U)\morphism[f_U] \Hh(U)$.
+\end{varthm}
+\begin{fact}
+    If $\snake \Bb \subseteq \Bb$ is a smaller base of the same topology there is an obvious restriction $\snake \Gg = \Gg|_{\snake \Bb}$. We have a canonical isomorphism $\snake \Gg_x \isomorphism \Gg_x$ sending $(U,g)/_\sim \in \snake \Gg_x$ (where $U\in \snake \Bb$, $g\in\Gg(U)$, $x\in U$) to $(U,g)/_\sim\in \Gg_x$. It is easy to see that this is well defined and an isomorphism.
+\end{fact}
+\begin{defi}[Sheafification]\lbl{def:sheafification}
+    Let $\Bb$ be a topology base on $X$, $\Gg$ a presheaf on $\Bb$. We define the \defemph{sheafification} (german: \defemph{Garbifizierung}) $\Garb(\Gg)$ of $\Gg$ as follows:
+    \begin{align}\lbl{eq:sheafification}
+        (\Garb(\Gg))(U) = \left\{ (g_x)\in \prod_{x\in U}\Gg_x\st \forall y\in U \exists y\in V\subseteq X \text{ open and } \gamma \in \Gg(V) \text{ such that } g_x\sim (V,\gamma) \forall x\in U\cap V\right\}
+    \end{align}
+    Moreover, let $(g_x)_{x\in U}|_V = (g_x)_{x\in V}$.
+\end{defi}
+\begin{rem*}    
+    \begin{alphanumerate}
+      \item 
+        The definition \eqreff{eq:sheafification} obviously does not change if the coherence condition on its right hand side is replaced by 
+        \begin{quote}
+            For every $y\in U$, there are an open neighbourhood $V$ of $y$ in $X$ and $\gamma\in \Gg(U)$ such that $V\subseteq U$ and $V\in\Bb$ and such that $g_x \sim (V,\gamma)$ for all $x\in V$.
+        \end{quote}
+      \item 
+        It is easy to see that $\Hh=\Garb(\Gg)$ satisfies the sheaf axiom: If $U = \cup_{i\in I} U_i$ and $g^{(i)} = (g^{(i)}_x)_{x\in U_i}\in \Hh(U_i)$ as on the right hand side of the sheaf axiom, define $g\in \Hh(U)$ by $g_x = g_x^{(i)}$ where is is chosen such that $x\in U_i$. This depends on $x$ only. It is easy to see that $g\in \Hh(U)$ and that this is the only element of $\Hh(U)$ with $g|_{U_i} = g_i$.
+      \item
+        It is easy to see that for every $x\in X$, $\Gg\morphism \Gg_x$ is a functor from the category of presheaves to the respective target category, provided that the colimits occuring in the definition of $\Gg_x$ exist in that category. Moreover $\Garb$ is a functor from the category of presheaves with values in sets, groups, or rings to the respective category of sheaves.
+    \end{alphanumerate}
+\end{rem*}
+We define a canonical morphism
+\begin{align*}
+    \Gg&\morphism (\Garb(\Gg))|_\Bb\\
+    g\in \Gg(U) &\longmapsto (g_x)_{x\in U}
+\end{align*}
+of presheaves on $\Bb$.
 
+    
+    
+    
+    
+    
     \appendix
     \chapter{Useful stuff from category theory}
 \section{Fundamental concepts}
@@ -405,7 +470,26 @@ A category is called \emph{small} if its class of objects is a set.
 			\end{alphanumerate}
 		\end{rem*}
 	\end{defi}
-	
+	Let $\Aa$ be a category, $X\morphism[f] Y$ a morphism in $\Aa$. We say that $f$ is monomorphism (epismorphism) if for any object $T$ and any pair $T \doublemorphism[\alpha][\beta] X$ (respectively $Y\doublemorphism[\alpha][\beta] T$) with $f\alpha = f\beta$ (respectively $\alpha f= \beta f$) implies $\alpha =\beta$.
+	\begin{rem*}
+        \begin{itemize}
+          \item 
+            If $\Aa\morphism[F] \operatorname{Set}$ is a faithful functor, then any morphism $f$ such that $Ff$ is injective (respectively surjective) then $f$ is a monomorphism (respectively epismorphism). 
+          \item
+            In the categories of sets or $R$-modules, $f$ is a monomorphism (epimorphism) iff $f$ is injective (surjective).
+          \item
+            In the category of Banach spaces and bounded linear maps, $f$ is a epimorphism iff its image is dense.
+          \item
+            The map from a domain to its field of quotients is an epimorphism in the category of rings.
+        \end{itemize}
+	\end{rem*}
+	\begin{defi}[Canonical morphism]
+        Let $\Aa\doublemorphism[F][G] \Bb$ be functors. A \defemph{functor morphism} or \defemph{canonical morphism} from $F$ to $G$ is a collection of morphisms $F(A) \morphism[\phi_A] G(A)$, for all $A\in \Ob \Aa$ such that
+        
+        this other cool diagram
+        
+        commutes for arbitrary morphisms $A\morphism[\alpha] \Bb$ in $\Aa$.
+    \end{defi}
 	
 \printbibliography
 
