@@ -111,12 +111,15 @@
 
 \renewcommand{\qedsymbol}{\textit{q.e.d.}}
 
-
+\def\labelWithSpecificText#1#2{\@bsphack
+	\protected@write\@auxout{}%
+	{\string\newlabel{#1}{{#2}{\thepage}{#2}{FerdisTeXHack}{}}}%
+	\@esphack}
 
 \newcommand{\lbl}[1]{
 	\label{#1}
 	\ifmmode
-	\expandafter\xdef\csname eqsubsec#1\endcsname{\thesection}
+		\labelWithSpecificText{eqsubsec#1}{\thesection}
 	\fi
 }
 
@@ -130,14 +133,14 @@
 	\edef\pretemp{\getrefnumber{#1}}%this is an
 	\StrRight{\pretemp}{1}[\dummy]%incredibly nasty
 	\IfInteger{\dummy}{\def\strangetoken{f}}{\def\strangetoken{t}}%
-	\IfSubStr{ABCDEFGHIJKLMNOPQRSTUVWXYZ}{\dummy}{\def\strangetoken{false}}{}%
+	\IfSubStr{ABCDEFGHIJKLMNOPQRSTUVWXYZ}{\dummy}{\def\strangetoken{f}}{}%
 	\IfStrEq{\strangetoken}{f}{\def\temp{\pretemp}}{\def\temp{\detokenize\pretemp}}%kinda
 	\StrBehind*{\temp}{\thesection.}[\tempcropped]%hacky workaround
 	\IfBeginWith*{\temp}{\thesection}{\hyperref[#1]{\tempcropped}} {\hyperref[#1]{\temp}}%for some seriously weird bug
 }
 
 \newcommand{\eqreff}[1]{%
-	\edef\temp{\csname eqsubsec#1\endcsname}%
+	\edef\temp{\getrefnumber{eqsubsec#1}}%
 	\IfBeginWith{\temp}{\thesection}{\hyperref[#1]{\upshape(\getrefnumber{#1})}}{\hyperref[#1]{\upshape(\temp .\getrefnumber{#1})}}%	
 }
 \newenvironment{alphanumerate}{\begin{enumerate}[label={\itememph{\alph*}},ref=\curthm]}{\end{enumerate}}       

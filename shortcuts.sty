@@ -134,29 +134,31 @@
 \newoperator{Ob}
 \newoperator{GL}
 \newoperator{Min}
-\newoperator{Garb}
+\newoperator{Sheaf}
+\newcommand{\sh}{\mathrm{sh}}
 \renewcommand{\det}{\operatorname{det}}%otherwise, det_K behaves strangely in displaymode
 \newoperator{Mat}
 \newoperator{Tr}
 \newcommand{\norm}{\operatorname{N}}
 \newcommand{\op}{^{\operatorname{op}}}
 \newoperator{sep}
+\newcommand{\nil}{\operatorname{nil}}
 \newcommand{\Spec}{\operatorname{Spec}}
 \newcommand{\tr}{\operatorname{tr}}
 \newcommand{\cat}[1]{\operatorname{#1}}%style of categories
 %inductive limit
 \newcommand\colimit[1][]{
 	\mathchoice{\underset{\substack{\displaystyle{\longrightarrow}\\#1}}{\lim}}%displaystyle
-	{\underset{\textstyle\rightarrow\scriptstyle#1}{\lim}}%textstyle
-	{\underset{\scriptstyle\rightarrow\scriptscriptstyle#1}{\lim}}
-	{\underset{\rightarrow#1}{\lim}}\ %
+	{\underset{\textstyle\longrightarrow}{\lim}\underset{#1}{}}%textstyle
+	{\underset{\scriptstyle\longrightarrow}{\lim}\underset{#1}{}}
+	{\underset{\longrightarrow}{\lim}\underset{#1}{}}\ %
 }
 %projective limit
 \newcommand\limit[1][]{
 	\mathchoice{\underset{\substack{\displaystyle{\longleftarrow}\\#1}}{\lim}}%displaystyle
-	{\underset{\textstyle\leftarrow\scriptstyle#1}{\lim}}%textstyle
-	{\underset{\scriptstyle\leftarrow\scriptscriptstyle#1}{\lim}}
-	{\underset{\leftarrow#1}{\lim}}\ %
+	{\underset{\textstyle\longleftarrow}{\lim}\underset{#1}{}}%textstyle
+	{\underset{\scriptstyle\longleftarrow}{\lim}\underset{#1}{}}
+	{\underset{\longleftarrow}{\lim}\underset{#1}{}}\ %
 }
 
 %---- FANCY ARROWS ----
