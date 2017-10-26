@@ -100,9 +100,9 @@ as well. \textbf{Warning!} Somewhere in the middle of the last-mentioned text, t
     If $X\subseteq k^n$ is quasi-affine in $k^n$ (with $k$ algebraically closed) and $f\in\Oo(X)\setminus\{0\}$ then every irreducible component of $V(f)$ has codimension 1 in $X$.
 \end{cor}
 
-\begin{rem}\lbl{rem:proofPreparations}
+\begin{rem}
     \begin{alphanumerate}
-	   \item Let $U\subseteq X$ be open, then there is a bijective correspondence 
+	   \item\lbl{rem:proofPreparations} Let $U\subseteq X$ be open, then there is a bijective correspondence 
         \begin{align*}
 	        \big\{\text{irreducible closed subsets }B\subseteq U\big\}&\isomorphism\left\{
 	        \begin{array}{c}
@@ -161,11 +161,76 @@ as well. \textbf{Warning!} Somewhere in the middle of the last-mentioned text, t
 	\end{align*}
 	for some $b=N_{L/K}(a)\in B$. This proves $q\in\sqrt{(f_0)}$.
 \end{proof}
+\begin{thm}[Krull]\lbl{thm:krullIdeal}
+    Let $A$ be a Noetherian ring, $f_1,\ldots,f_k\in A$ and $\pp$ any prime ideal minimal among the prime ideals containing all the $f_i$. Then $\hoehe(\pp)\leq k$.
+\end{thm}    
+The following corollary can be derived in the same way as Corollary \reff{cor:V(f)codimension1} from Theorem \reff{thm:krullPrincipalIdeal} in Step a) of the previous remark.
+\begin{cor}\lbl{cor:capV(f)codimension}
+    Let $X$ be a quasi-affine variety in $k^n$, and let $f_1,\ldots,f_\kappa\in \Oo(X)$ and let $Z$ be any irreducible component of $\bigcap_{i=1}^\kappa V(f_i)$. Then $\codim(Z,X)\leq \kappa$.
+\end{cor}
+The derivation from Corollary \reff{cor:V(f)codimension1} by induction on $k$ is a bit easier then the similar derivation of Theorem \reff{thm:krullIdeal} from Theorem \reff{thm:krullPrincipalIdeal} by induction as $k^n$ is catenary. We will eventually prove Theorem \reff{thm:krullIdeal} by Hilbert polynomial arguments.
+\begin{proof}[Proof of Corollary \reff{cor:capV(f)codimension}]
+    We use Corollary \reff{cor:V(f)codimension1} and induction on $\kappa$. Let the assertion be true for for fewer than $\kappa$ equations and $\kappa>0$ ($\kappa=0$ being trivial). If $f_\kappa=0$ we drop $f_\kappa$ and apply the induction assumption: $\codim(Z,X) \leq \kappa-1< \kappa $. Otherwise, let $V(f_\kappa) = \bigcup_{i=1}^N Y_i$, be the decomposition into irreducible components. Then $Z=\bigcup_{i=1}^N (Z\cap Y_i)$ and as $Z$ is irreducible there is $i$ with $1\leq i \leq N$ and $Z\subseteq Y_i$. By Corollary \reff{cor:V(f)codimension1} $\codim(Y_i,X) = 1$. Now $Z$ is an irreducible component of $ \bigcap_{j=1}^{\kappa-1} V(f_j|_{Y_i})$ (It is possible to obtain a decomposition of $\bigcap_{j=1}^\kappa V(f_j)$ into irreducible subsets by forming the union over $1\leq i\leq N$ of the decompositions of $ \bigcap_{j=1}^{\kappa-1} V(f_j|_{Y_i})$. Removing the non-maximal elements gives the decomposition of $\bigcap_{j=1}^\kappa V(f_j)$ into irreducible components, which is unique. As $Z$ occurs in it, it is not a strict subset of any irreducible component of $ \bigcap_{j=1}^{\kappa-1} V(f_j|_{Y_i})$, hence is an irreducible component of that). Applying the induction assumption we obtain $\codim(Z,Y_i)\leq \kappa-1$. As $X$ is catenary, we have
+    \begin{align*}
+        \codim(Z,X) = \codim(Z,Y_i) +\codim(Y_i, X) \leq \kappa-1+1 = \kappa
+    \end{align*}
+\end{proof}
+\begin{cor}
+    If $R$ is any Noetherian ring and $\pp\in\Spec R$, then $\hoehe(\pp) < \infty$. In particular, any local Noetherian ring is finite-dimensional.
+\end{cor}
+\begin{rem*}
+    The dimension of $R$ (or $\Spec R$) may still be infinite for lack of a finite common bound for the heights of the maximal ideals.
+\end{rem*}
+\begin{prop}\lbl{prop:codimensionProduct}
+    Let $X\subseteq k^m$ and $Y\subseteq k^n$ be irreducible closed subsets of codimensions $a$ and $b$. Then $X\times Y$ is irreducible, closed and of codimension $a+b$ in $k^{m+n}$.
+\end{prop}
+\begin{proof}
+    \begin{description}
+      \item[Proof of irreducibility:]
+        Let $X\times Y = Z_1\cup Z_2$ where $Z_{1,2}$ are closed. For every $x\in X$, $\{x\}\times Y\subseteq Z_1$ or $\{x\}\times Y\subseteq Z_2$. Thus $X= X_1\cup X_2$ where $X_i=\left\{x\in X\st \{x\}\times Y\subseteq Z_i\right\} = \bigcap_{y\in Y}\left\{x\in X\st (x,y)\in Z_i\right\}$ are closed, hence $X=X_1$ or $X=X_2$ and $X\times Y = Z_1$ or $X\times Y=Z_2$.
+      \item[$\codim(X\times Y,k^{m+n}) \geq a+b$:]
+        Let $X= X_0\subsetneq \ldots\subsetneq X_a=k^m$ and $Y= Y_0\subsetneq \ldots\subsetneq Y_b=k^n$ be chains of irreducible subsets, then 
+        \begin{align*}
+            X\times Y = X_0\times Y_0 \subsetneq X_0\times Y_1\subsetneq\ldots\subsetneq X_0\times Y_b\subsetneq X_1\times Y_b\subsetneq \ldots\subsetneq X_a\times Y_b = k^{m+n}
+        \end{align*}
+        is a similar chain, showing $\codim(X\times Y,k^{m+n})\geq a+b$.
+      \item[$\dim(X\times Y)\geq d+e$ where $d=\dim X$, $e=\dim Y$:] 
+        Let $X_0\subsetneq X_1\subsetneq \ldots\subsetneq X_d=X$ and $Y_0\subsetneq Y_1\subsetneq \ldots\subsetneq Y_d=Y$ be chains of irreducible subsets, then 
+        \begin{align*}
+            X_0\times Y_0 \subsetneq X_0\times Y_1\subsetneq\ldots\subsetneq X_0\times Y_e\subsetneq X_1\times Y_e\subsetneq \ldots\subsetneq X_d\times Y_e =X \times Y
+        \end{align*}
+        is a similar chain.
+      \item[Proof of $\codim(X\times Y),k^n) = a+b$:]
+        By Algebra I, $a+d=m$, $b+e=n$ and $\dim(X\times Y)+\codim(X\times Y,k^{m+n}) = m+n$ hence
+        \begin{align*}
+            m+n = a+d+b+e \leq \dim(X\times Y) +\codim(X\times Y,k^{m+n}) = m+n
+        \end{align*}
+        showing that the inequalities of the previous two steps are actually equalities.
+    \end{description}
+\end{proof}
+\begin{cor*}
+    Also $\dim(X\times Y) = \dim X +\dim Y$.
+\end{cor*}
+\begin{thm}
+    Let $X,Y\subseteq k^n$ be irreducible and closed, then any irreducible component of $X\cap Y$ has codimension less then or equal to $\codim(X,k^n) +\codim(Y,k^n)$.
+\end{thm}
+\begin{rem*}
+    It follows that the dimension of any irreducible component of $X\cap Y$ is greater then or equal to $\dim X+\dim Y -n$. The assumption does not imply $X\cap Y = \emptyset$ unless $X=k^n$ or $Y=k^n$ (or, unless one takes the intersection in $\IP^n$) (Something is fishy in the last sentence i.e. $X\cap Y \neq \emptyset$ if $X=k^n$).
+\end{rem*}
+\begin{proof}
+    The intersection $X\cap Y$ is homeomorphic to $(X\times Y)\cap \Delta$ where $\Delta = \left\{(x,y)\in k^{n+n}\st x=y\right\} = \bigcap_{i=1}^n V(D_i)$, where $D_i = X_i -Y_i \in \Oo(k^{n+n})$. Thus, if $Z$ is any irreducible component of $(X\times Y)\cap \Delta$ we have $\codim(Z,X\times Y) \leq n$ by Corollary \reff{cor:capV(f)codimension}. Thus, $\dim(Z) = \dim(X\times Y) -\codim(Z,X\times Y) \geq \dim(X)+\dim(Y) -n$ by Proposition \reff{prop:codimensionProduct} and $\codim(Z,k^n) = n-\dim(Z) \leq 2n -\dim X -\dim X = \codim(X,k^n)+\codim(Y,k^n)$.
+\end{proof}
 
+\section{The nil-radical, the Jacobian radical and the Lemma of Nakayama, Azumaya-Krull}
 
-
-
-
+\begin{prop}
+    If $R$ is any ring, then $\bigcap_{\pp\in\Spec R} \pp = \operatorname{nil} (R) = \left\{f\in R\st f^n=0 \text{ for some } n\in\IN\right\} = \sqrt{\{0\}}$.
+\end{prop}
+\begin{proof}
+    It follows by induction on $n$ that $f^n$ implies, that $f$ belongs to every prime ideal. 
+    
+    Let $f^n\neq 0$ for all $n\in \IN$, then $R_f$ (the localization of $R$ at $f^\IN$) is not the null ring, hence there is $\qq\in\Spec(R_S)$ and $\pp=\qq\sqcap R$ is in $\Spec(R)$ and $f\not \in\pp$ as f becomes a unit in $R_f$.
+\end{proof}
 \appendix
 \chapter{Appendix}
 \setcounter{thm}{0}
