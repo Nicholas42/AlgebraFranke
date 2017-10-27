@@ -171,9 +171,45 @@
 	\tikz[baseline=(a.base)] \node (a) at (0,0) {$\longleftarrow$} node[above=-0.25ex] {\tiny $\sim$} node[below=-0.25ex] {$\scriptstyle #1$};}
 \NewDocumentCommand{\doublemorphism}{O{} O{}}{\mathrel{\overset{#1}{\underset{#2}{\substack{\textstyle\longrightarrow\\[-0.67ex]
 			\textstyle\longrightarrow}}}}}
-\newcommand{\morphism}[1][]{\overset{#1}{\longto}}
-\newcommand{\lmorphism}[1][]{\overset{#1}{\longot}}
-\newcommand{\lrmorphism}[1][]{\overset{#1}{\leftrightarrow}}
+			
+\newcommand{\SelfAdjustingRightarrow}[1]{
+	\if\relax\detokenize{#1}\relax%
+		\rightarrow%
+	\else%
+		\longrightarrow%
+	\fi}
+	
+\newcommand{\SelfAdjustingLeftarrow}[1]{
+	\if\relax\detokenize{#1}\relax%
+		\leftarrow%
+	\else%
+		\longleftarrow%
+	\fi}
+	
+\newcommand{\SelfAdjustingLeftrightarrow}[1]{
+	\if\relax\detokenize{#1}\relax%
+		\leftrightarrow%
+	\else%
+		\longleftrightarrow%
+	\fi}
+\newcommand{\morphism}[1][]{%
+	\mathchoice{\overset{#1}{\longto}}%
+	{\overset{#1}{\SelfAdjustingRightarrow{#1}}}%
+	{\overset{#1}{\SelfAdjustingRightarrow{#1}}}%
+	{\overset{#1}{\SelfAdjustingRightarrow{#1}}}%
+}
+\newcommand{\lmorphism}[1][]{%
+	\mathchoice{\overset{#1}{\longot}}%
+	{\overset{#1}{\SelfAdjustingLeftarrow{#1}}}%
+	{\overset{#1}{\SelfAdjustingLeftarrow{#1}}}%
+	{\overset{#1}{\SelfAdjustingLeftarrow{#1}}}%
+}
+\newcommand{\lrmorphism}[1][]{%
+	\mathchoice{\overset{#1}{\longleftrightarrow}}%
+	{\overset{#1}{\SelfAdjustingLeftrightarrow{#1}}}%
+	{\overset{#1}{\SelfAdjustingLeftrightarrow{#1}}}%
+	{\overset{#1}{\SelfAdjustingLeftrightarrow{#1}}}%
+}
 
 %---- MODIFIERS ----
 %

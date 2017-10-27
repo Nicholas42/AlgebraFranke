@@ -333,50 +333,63 @@ Let it be said that the first three recommendations are from Professor Franke wh
 \end{rem*}
 We define a \emph{canonical morphism} (cf. Definition~\reff{def:canonicalMorphism})
 \begin{align*}
-    \Gg&\morphism \Gg^\sh|_\Bb\\
+    \Gamma_\Gg\colon\Gg&\morphism \Gg^\sh|_\Bb\\
     g\in \Gg(U) &\longmapsto (g_x)_{x\in U}
 \end{align*}
 of presheaves on $\Bb$.
 
 \begin{prop}\lbl{prop:sheafificationMorphisms}
-    We consider sheaves of sets, (abelian) groups or rings.
+    We consider (pre-)sheaves of sets, (abelian) groups or rings.
     \begin{alphanumerate}
       \item 
-        The morphism $\Gg_x \morphism (\Gg^\sh)_x$ defined by $x$ is an isomorphism, for arbitrary $x\in X$.
+        The morphism $\Gg_x \morphism \Gg^\sh_x$ induced by $\Gamma_\Gg$ is an isomorphism, for arbitrary $x\in X$.
       \item
-        If $\Gg$ and $\Hh$ are presheaves on $\Bb$ and $\Gg\morphism[\phi] \Hh$ is a morphism between them such that $\Gg_x\morphism \Hh_x$ is injective (respectively bijective) for arbitrary $x\in X$, then  
+        If $\Gg$ and $\Hh$ are presheaves on $\Bb$ and $\Gg\morphism[\phi] \Hh$ is a morphism between them such that the induced morphism $\Gg_x\morphism[\phi_x] \Hh_x$ is injective (respectively bijective) for arbitrary $x\in X$, then  
         \begin{align*}
-            \Gg^\sh(U) \xrightarrow{\phi^\sh(U)} \Hh^\sh(U)
+            \Gg^\sh(U) \xrightarrow{\phi_U^\sh} \Hh^\sh(U)
         \end{align*}
-        is injective (respectively) bijective for every open subset $U$ of $X$.
+        is injective (respectively bijective) for every open subset $U$ of $X$.
       \item 
-        If $\snake \Bb \subseteq \Bb$ is a topology base then the canonical morphism (defined using $(\Gg|_{\snake\Bb})_x \isomorphism \Gg_x$) $\Gg^\sh|_{\snake\Bb} \morphism \Gg^\sh$ is an isomorphism.
+        If $\snake \Bb \subseteq \Bb$ is a topology base then the canonical morphism \begin{align*}
+        	\big(\Gg|_{\snake\Bb}\big) ^\sh\morphism \Gg^\sh
+        \end{align*}
+        (defined using $\big(\Gg|_{\snake\Bb}\big)_x \isomorphism \Gg_x$)  is an isomorphism.
       \item 
-        If $\Bb$ is closed under intersections and $\Gg$ satisfies the sheaf axiom for coverings of elements of $\Bb$ by elements of $\Bb$, then $\Gg\isomorphism[\gamma_\Gg] \Gg^\sh|_\Bb$.
+        If $\Bb$ is closed under intersections and $\Gg$ satisfies the sheaf axiom for coverings of elements of $\Bb$ by elements of $\Bb$, then 
+        \begin{align*}
+        	\Gamma_\Gg\colon \Gg\isomorphism \Gg^\sh|_\Bb\;.
+        \end{align*}
     \end{alphanumerate}
 \end{prop}
 \begin{proof}
-    \begin{alphanumerate}
-      \item[(c)] 
-        This is rather obvious from the definitions.
-      \item[(a)]
-        We prove surjectivity first: Let $g\in\Gg^\sh(U)$ and $x\in U$, we have to finde an open neighbourhood $V$ of $x$ such that $V\in \Bb$ and $\gamma\in \Gg(V)$ such that the images of $\Gamma_\Gg(\gamma)\in \Gg^\sh(V)$ and of $g$ in $(\Gg^\sh)_x$ coincide. We chose $V$ and $\gamma$ as on the right hand of \eqreff{eq:sheafification}. As $\Bb$ is a topology base there is $W\in\Bb$ sucht that $x\in W\subseteq U\cap V$. It follows from the definition of $\Gamma_\Gg$ and the coherence condition that $g|_W = \Gamma_\Gg(\gamma)|_W$. Consequently, their images in the stalk at $x$ coincide, as asserted.
-        
-        To show injectivity define
-        \begin{align*}
-            \iota_x: (\Gg^\sh)_x &\morphism \Gg_x\\
-            \text{Image of } (g_y)_{y\in U} \in \Gg^\sh(U) \text{ in } (\Gg^\sh)_x &\longmapsto g_x.
-        \end{align*}
-        It is easy to see that this is well-defined and that it is a left inverse to the map $\Gg_x\morphism[(\Gamma_{\Gg})_x] (\Gg^\sh)_x$ studied. Therefore this map is also injective.
-      \item[(b)]
-        For injectivity the assertion is trivial. Let us assume that $\Gg_x\morphism[\phi_x]\Hh_x$ is an isomorphism for arbitrary $x\in X$ and let $h=(h_x)_{x\in U}\in \Hh^\sh(U)$. We put $g=(g_x)_{x\in U} \in \prod_{x\in U}\Gg_x$ where $g_x = \phi^{-1} (h_x)$. If $g\in \Gg^\sh(U)$ then it is obvious from the definitions that $\phi^\sh(g) = h$ proving the bijectivity of $\Gg^\sh(U) \morphism[\phi^\sh] \Hh^\sh(U)$.
-        
-        To verify the coherence condition for $g$, fix $x\in U$. As $h$ satisfies the coherence condition there are an open neighbourhood $V\in\Bb$ of $x$ and $\eta\in\Hh(V)$ such that $h_y$ equals the image of $\eta$ in $\Hh_y$ for all $y\in U\cap V$. As the image of $\eta$ in $\Hh_x$ is in the image of $\Gg_x\morphism[\phi_x]\Hh_x$ there are a neighbourhood $W\in\Bb$ of $x$ and $\gamma\in\Gg(W)$ such that $\phi_x$ maps the image of $\gamma$ in $\Gg_x$ to the image of $\eta$ in $\Hh_x$. By the definition of stalks and of $\phi_x$ this means that there is an open neighbourhood $\Omega\in\Bb$ of $x$ such that $\Omega\subseteq V\cap W$ and such that $ \phi(\gamma)|_\Omega = \eta|_\Omega$. Replacing $V$ by $\Omega$ and $\gamma$ and $\eta$ by their restrictions to $\Omega$ we may assume that there is $\gamma\in\Gg(V)$ such that $\phi(\gamma) = \eta$. For $y\in V$, $\phi_y(g_y) = h_y=(\Omega,\eta)/_\sim = (\Omega,\phi(\gamma))/_\sim = \phi_y((\Omega,\gamma)/_\sim)$. Since $\phi_y$ is an isomorphism, this implies $g_y = (\Omega,\gamma)/_\sim$. Thus $g\in \Gg^\sh(U)$.
-      \item[(d)]
-         We first show injectivity of $\Gg(U)\morphism[\Gamma_\Gg] \Gg^\sh(U)$, for $U\in \Bb$. Let $g^{(1)}\in \Gg(U)$ and $g^{(2)}\in \Gg(U)$ have the same image in $\Gg^\sh(U)$. By definition, this means for every $x\in U$ their imagas $g^{(1)}_x$ and $g^{(2)}_x$ in $\Gg_x$ coincide. By the definition of $\Gg_x$ this means that there is $V_x\in\Bb$, an open neighbourhood of $x$, such that $g^{(1)}_x|_{V_x}=g^{(2)}_x|_{V_x}$ as the $V_x$ cover $U$, $g^{(1)}|_{V_x} = g^{(2)}|_{V_x}$ for all those $x$ implies $g^{(1)}=g^{(2)}$ by the sheaf axiom.
-        
-        For surjectivity, let $g=(g_x)\in \Gg^\sh(U)$. For every $x\in U$ there are, by the coherence condition on the right hand side of \eqreff{eq:sheafification}, an open neighbourhood $V_x\in\Bb$ and $\gamma^{(x)}\in \Gg(V_x)$ such that $g_y$ equals the image of $\gamma^{(x)}$ in $\Gg_y$ for all $y\in U\cap V_x$. Replacing $V_x$ by $U\cap V_x$ and $\gamma^{(x)}$ by its restriction we may assume $V_x\subseteq U$. If $x,\xi\in U$ and $y\in V_x\cap V_\xi$ then the images of $\gamma^{(x)}$ and $\gamma^{(\xi)}$ in $\Gg_y$ coincide (they are $g_y$). Thus the images of $\gamma^{(x)}|_{V_x\cap V_\xi}$ and $ \gamma^{(\xi)}|_{V_x\cap V_\xi}$ under $\Gg(V_x\cap V_\xi ) \morphism[\Gamma_\Gg] \Gg^\sh(V_x\cap V_\xi)$ coincide. As injectivity has already been shown, $\gamma^{(x)}|_{V_x\cap V_\xi} = \gamma^{(\xi)}|_{V_x\cap V_\xi}$. By the sheaf axiom for $\Gg$, there is $\gamma\in \Gg(U)$ such that $\gamma^{(x)}=\gamma|_{V_x}$. Then $g_x=(V_x, \gamma^{(x)})/_\sim = (V_x,\gamma|_{V_x})/_\sim = (U,\gamma)/_\sim$ for all $x\in U$. Thus, $\Gamma_\Gg(\gamma) = g$.
-    \end{alphanumerate}
+	\itememph{c} If you think about it for a while, this becomes rather obvious from the definitions.
+	
+	For part \itememph{a}, we prove surjectivity first: Let $g\in\Gg^\sh(U)$ and $x\in U$, we need to find an open neighbourhood $V\in \Bb$ of $x$ and $\gamma\in \Gg(V)$ such that the images of $\Gamma_\Gg(\gamma)\in \Gg^\sh(V)$ and of $g$ in $\Gg^\sh_x$ coincide. We chose $V$ and $\gamma$ as on the right hand of \eqreff{eq:sheafification}. As $\Bb$ is a topology base there is $W\in\Bb$ sucht that $x\in W\subseteq U\cap V$. It follows from the definition of $\Gamma_\Gg$ and the coherence condition that $g|_W = \Gamma_\Gg(\gamma)|_W$. Consequently, their images in the stalk at $x$ coincide, as asserted.
+	
+	To show injectivity define
+	\begin{align*}
+	    \iota_x\colon \Gg^\sh_x &\morphism \Gg_x\\
+	    \bigg(\begin{array}{c}
+		    \text{image of}\\
+		    (g_y)_{y\in U} \in \Gg^\sh(U) \text{ in } \Gg^\sh_x 
+	    \end{array}\bigg) &\longmapsto g_x\;.
+	\end{align*}
+	It is easy to see that this is well-defined and that it is a left inverse to the map $\Gg_x\morphism[(\Gamma_{\Gg})_x] \Gg^\sh_x$ studied. Therefore, $(\Gamma_\Gg)_x$  is also injective.
+	
+	Let's prove \itememph{b}. The assertion about injectivity is trivial. Let us assume that $\Gg_x\morphism[\phi_x]\Hh_x$ is an isomorphism for arbitrary $x\in X$ and let $h=(h_x)_{x\in U}\in \Hh^\sh(U)$. We put $g=(g_x)_{x\in U} \in \prod_{x\in U}\Gg_x$ where $g_x = \phi^{-1} (h_x)$. If $g\in \Gg^\sh(U)$ then it is obvious from the definitions that $\phi_U^\sh(g) = h$, proving the bijectivity of $\Gg^\sh(U) \morphism[\phi_U^\sh] \Hh^\sh(U)$.
+	
+	To verify the coherence condition for $g$, fix $x\in U$. As $h$ satisfies the coherence condition there are an open neighbourhood $V\in\Bb$ of $x$ and $\eta\in\Hh(V)$ such that $h_y$ equals the image of $\eta$ in $\Hh_y$ for all $y\in U\cap V$. As the image of $\eta$ in $\Hh_x$ is in the image of $\Gg_x\morphism[\phi_x]\Hh_x$, there are a neighbourhood $W\in\Bb$ of $x$ and $\gamma\in\Gg(W)$ such that $\phi_x$ maps the image $(W,\gamma)/_\sim$ of $\gamma$ in $\Gg_x$ to the image $(V,\eta)/_\sim$ of $\eta$ in $\Hh_x$. By definition of stalks and $\phi_x$, this means that there is an open neighbourhood $\Omega\in\Bb$ of $x$ such that $\Omega\subseteq V\cap W$ and $ \phi_W(\gamma)|_\Omega = \eta|_\Omega$. Replacing $V$ by $\Omega$ and $\gamma$ and $\eta$ by their restrictions to $V$ (which equals $\Omega$ now), we may assume that there is $\gamma\in\Gg(V)$ such that $\phi(\gamma) = \eta$. For $y\in V$, \begin{align*}
+		\phi_y(g_y) = h_y=(V,\eta)/_\sim = \big(V,\phi(\gamma)\big)/_\sim = \phi_y\big((V,\gamma)/_\sim\big)\;.
+	\end{align*}
+	Since $\phi_y$ is an isomorphism, this implies $g_y = (V,\gamma)/_\sim$. Thus $g\in \Gg^\sh(U)$.
+	
+	And finally part \itememph{d}. We first show injectivity of $\Gg(U)\morphism[\Gamma_\Gg] \Gg^\sh(U)$, for $U\in \Bb$. Let $g,g'\in \Gg(U)$ have the same image in $\Gg^\sh(U)$, i.e. for every $x\in U$ their images $g_x$ and $g'_x$ in $\Gg_x$ coincide. By definition of $\Gg_x$, this means that for every $x\in U$ there is an open neighbourhood $V_x\in\Bb$ of $x$, such that $g|_{V_x}=g'|_{V_x}$. As the $V_x$ cover $U$, this implies $g=g'$ by the sheaf axiom.
+	
+	For surjectivity, let $g=(g_x)_{x\in U}\in \Gg^\sh(U)$. For every $x\in U$ there are, by the coherence condition on the right hand side of \eqreff{eq:sheafification}, an open neighbourhood $V_x\in\Bb$ and $\gamma^{(x)}\in \Gg(V_x)$ such that $g_y$ equals the image of $\gamma^{(x)}$ in $\Gg_y$ for all $y\in U\cap V_x$. Replacing $V_x$ by $U\cap V_x$ and $\gamma^{(x)}$ by its restriction we may assume $V_x\subseteq U$. If $x,\xi\in U$ and $y\in V_x\cap V_\xi$, then the images of $\gamma^{(x)}$ and $\gamma^{(\xi)}$ in $\Gg_y$ coincide (they are $g_y$). Thus, the images of $\gamma^{(x)}|_{V_x\cap V_\xi}$ and $ \gamma^{(\xi)}|_{V_x\cap V_\xi}$ under $\Gg(V_x\cap V_\xi ) \morphism[\Gamma_\Gg] \Gg^\sh(V_x\cap V_\xi)$ coincide. Consequently,  $\gamma^{(x)}|_{V_x\cap V_\xi} = \gamma^{(\xi)}|_{V_x\cap V_\xi}$, as injectivity has already been shown. By the sheaf axiom for $\Gg$, there is $\gamma\in \Gg(U)$ such that $\gamma^{(x)}=\gamma|_{V_x}$ simultaneously for all $x\in U$ (note that in all of this we silently used that $\Bb$ is closed under intersections). Then 
+	\begin{align*}
+		g_x=\big(V_x, \gamma^{(x)}\big)/_\sim = \big(V_x,\gamma|_{V_x}\big)/_\sim = \big(U,\gamma\big)/_\sim\quad\text{for all }x\in U\;. 
+	\end{align*}
+	Thus, $\Gamma_\Gg(\gamma) = g$.
 \end{proof}
 \begin{cor}
     The following assertions hold in the categories of sets, (abelian) groups or rings.
@@ -386,29 +399,36 @@ of presheaves on $\Bb$.
         \begin{align*}
             \Ff(U) \morphism \prod_{x\in U} \Ff_x
         \end{align*}
-        defined in this ways is the set of all $(f_x)\in\prod_{x\in U}\Ff_x$ such that for every $x\in U$ there are an open neighbourhood $V$ of $x$ and $\phi\in \Ff(V)$ such that $f_y$ equals the image $\phi_y$ of $\phi$ under $\Ff(U)\morphism \Ff_y$ for all $y\in U\cap V$. This is proven by Proposition \reff{prop:sheafificationMorphisms}(d).
+        defined in this ways is the set of all $(f_x)_{x\in U}\in\prod_{x\in U}\Ff_x$ such that for every $x\in U$ there are an open neighbourhood $V$ of $x$ and $\phi\in \Ff(V)$ such that $f_y$ equals the image $\phi_y$ of $\phi$ under $\Ff(U)\morphism \Ff_y$ for all $y\in U\cap V$. %This is proven by Proposition \reff{prop:sheafificationMorphisms}(d).
       \item 
-        A morphism of sheaves which defines isomorphisms (respectively injective maps) on stalks defines isomorphisms (respectively injective maps) on sections of open subsets. This follows from Proposition \reff{prop:sheafificationMorphisms}(b) as 
-        
-        \begin{diagram}
-            \node (a) at (0,1.5) {$\Ff(U)$};
-            \node (c) at (0,0) {$\Ff^\sh(U)$};
-            \node (b) at (2.5,1.5) {$\Gg(U)$};
-            \node (d) at (2.5,0) {$\Gg^\sh(U)$};
-            \scriptsize
-            \draw[->] (a) -- (b) node[pos=0.5, above] {$\alpha$};
-            \draw[->] (a) -- (c) node[pos=0.5, left] {$\Gamma_\Ff$};
-            \draw[->] (c) -- (d) node[pos=0.5, above] {$\alpha$};
-            \draw[->] (b) -- (d) node[pos=0.5, right] {$\Gamma_\Gg$};
-        \end{diagram}
-        
-        commutes. Here the vertical arrows are isomorphisms by Proposition \reff{prop:sheafificationMorphisms}(d).
+        A morphism of sheaves inducing isomorphisms (respectively injective maps) on stalks defines isomorphisms (respectively injective maps) on sections of open subsets. %This follows from Proposition \reff{prop:sheafificationMorphisms}(b) as 
       \item
-        If $\Gg\morphism[\alpha] \Hh$ is a morphism such that $\Gg_x\morphism[\alpha_x] \Hh_x$ is injective for all $x$, then $\alpha$ is a monomorphism. This follows from Proposition \reff{prop:sheafificationMorphisms}.
-      
+        If $\Gg\morphism[\alpha] \Hh$ is a morphism of sheaves such that $\Gg_x\morphism[\alpha_x] \Hh_x$ is injective for all $x$, then $\alpha$ is a monomorphism. %This follows from Proposition \reff{prop:sheafificationMorphisms}.
     \end{alphanumerate}
-    
 \end{cor}
+    \begin{proof}
+    	\itememph{a} is an immediate consequence of Proposition~\reff{prop:sheafificationMorphisms}\itememph{d}.
+    	
+    	Part \itememph{b} follows from Proposition~\reff{prop:sheafificationMorphisms}\itememph{b} as
+    	\begin{diagram}
+    		\node (a) at (0,1.5) {$\Ff(U)$};
+    		\node (c) at (0,0) {$\Ff^\sh(U)$};
+    		\node (b) at (2.5,1.5) {$\Gg(U)$};
+    		\node (d) at (2.5,0) {$\Gg^\sh(U)$};
+    		\scriptsize
+    		\draw[->] (a) -- (b) node[pos=0.5, above] {$\alpha$};
+    		\draw[->] (a) -- (c) node[pos=0.5, sloped, above] {$\sim$} node[pos=0.5, left] {$\Gamma_\Ff$};
+    		\draw[->] (c) -- (d) node[pos=0.5, above] {$\alpha$};
+    		\draw[->] (b) -- (d) node[pos=0.5, sloped, above] {$\sim$} node[pos=0.5, left] {$\Gamma_\Gg$};
+    	\end{diagram}        
+    	commutes. Here the vertical arrows are isomorphisms by Proposition~\reff{prop:sheafificationMorphisms}\itememph{d}.
+    	
+    	Part \itememph{c} is quite obvious. However, in fancyspeak (and for the sake of a rigid argument), one can consider the \emph{functor} $F\colon\cat{PreShv}(X)\morphism\cat{Set}$ from the category of presheaves on $X$ to the category of sets given by
+    	\begin{align*}
+    		F(\Gg)=\prod_{U\subseteq X\text{ open}}\Gg(U)
+    	\end{align*}
+    	(we regard the $\Gg(U)$ as sets). Then $F$ is faithful. Hence, if $\alpha$ is stalk-wise injective then also section-wise (by \itememph{b}), hence $F(\alpha)$ is injective. Faithfulness of $F$ finally shows that $\alpha$ must be a monomorphism.
+    \end{proof}
     
     
     
