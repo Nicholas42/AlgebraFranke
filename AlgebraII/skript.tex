@@ -21,7 +21,7 @@
 \maketitle
 \pagenumbering{roman}
  \thispagestyle{plain}
-This text consists of notes of the lecture Algebra II taught at the University of Bonn by Professor Jens Franke in the winter term (Wintersemester) 2017/18. 
+This text consists of notes of the lecture Algebra II, taught at the University of Bonn by Professor Jens Franke in the winter term (Wintersemester) 2017/18. 
 
 Please report bugs, typos etc. through the \emph{Issues} feature of github.
 
@@ -55,7 +55,7 @@ Professor Franke recommends the following literature:
 	\item Hartshorne, R.: \emph{Algebraic Geometry}
 	\item Mumford, D.: \emph{The Red Book of Varieties and Schemes}
 	\item Matsumura, H.: \emph{Commutative Ring Theory}
-	\item Atiyah, M. \& MacDonald, I.: \emph{Introduction to Commutative Algebra}
+	\item Atiyah, M. \& MacDonald, I.: \emph{Introduction to Commutative Algebra} \cite{matsumuraCRT}
 \end{itemize}
 The oh-so-humble authors of these notes want to use this opportunity to recommend
 \begin{itemize}
@@ -245,16 +245,16 @@ The derivation from Corollary~\reff{cor:V(f)codimension1} by induction on $r$ is
  Let $R$ be a Noetherian domain. 
  \begin{alphanumerate}
     \item 
-        Every $r\in R\setminus (R^\times \cup\{0\})$ can be written $r = \prod_{i=1}^k r_i$ where the $r_i$ are irreducible. 
+        Every $r\in R\setminus (R^\times \cup\{0\})$ can be written as a product $r = \prod_{i=1}^k r_i$ of irreducible factors $r_i$. 
     \item 
         The following conditions are equivalent:
         \begin{itemize}
             \item[$(\alpha)$]
                 The above decomposition is unique up to permutation and multiplicative equivalence of the factors.
             \item[$(\beta)$]
-                For any irreducible $p\in R$, $pR$ is a prime ideal.
+                For any irreducible $p\in R$, $(p)=pR$ is a prime ideal.
             \item[$(\gamma)$]
-                Any $\pp\in\Spec R$ such that $\hoehe(\pp) = 1$ is principal $\pp = pR$ for some $p\in R$.
+                Any $\pp\in\Spec R$ such that $\hoehe(\pp) = 1$ is principal, i.e. $\pp = (p)$ for some $p\in R$.
         \end{itemize}
  \end{alphanumerate}
 \end{thm}
@@ -274,57 +274,82 @@ The derivation from Corollary~\reff{cor:V(f)codimension1} by induction on $r$ is
     Let $f^n\neq 0$ for all $n\in \IN$, then $R_f$ (the localization of $R$ at $f^\IN=\left\{1,f,f^2,\ldots\right\}$) is not the null ring, hence there is a prime ideal $\qq\in\Spec(R_f)$. Its preimage $\pp=\qq\sqcap R$ is in $\Spec(R)$ and $f\not \in\pp$ as $f$ becomes a unit in $R_f$.
 \end{proof}
 \begin{cor}
-    There is a canonical bijection between closed subsets of $\Spec R$ and  the ideals $I\subseteq R$ such that $I = \sqrt{I}$ by
+    There is a canonical bijection 
     \begin{align*}
+	    \left\{\text{Zariski-closed subsets }A\subseteq \Spec R\right\}&\isomorphism \left\{\text{ideals }I\subseteq R\text{ such that }I=\sqrt{I}\right\}\\
         A \subseteq \Spec R &\longmapsto I = \bigcap_{\pp\in A} \pp\\
-        V(I) = \left\{\pp\in \Spec R\st I\subseteq \pp\right\}&\longmapsfrom I
+        \left\{\pp\in \Spec R\st I\subseteq \pp\right\}=V(I)&\longmapsfrom I
     \end{align*}
-    with the irreducible sets corresponding to the prime ideals.
+    in which the irreducible sets correspond to the prime ideals.
 \end{cor}
 \begin{proof}
-    For the first assertion, the only non-trivial part is that going from the right to the left and back again equals the identity. This follows from 
+    For the first assertion, the only non-trivial part is that going from the right to the left and back again equals the identity. This can be seen from 
     \begin{align}\lbl{eq:PrimeCapRadical}
-        \bigcap_{\pp\in V(I)} = \sqrt{I} 
+        \bigcap_{\pp\in V(I)}\pp = \sqrt{I}\;,
     \end{align}
-    which follows from applying Proposition \reff{prop:nilradicalCapPrimeIdeals} to $R/I$. The final assertion is left as an exercise.
+    which follows from applying Proposition~reff{prop:nilradicalCapPrimeIdeals} to $R/I$. The assertion about prime ideals is left as an exercise (and you should have done this on exercise sheet \#2!).
 \end{proof}
 \begin{prop}
-    The intersection of the maximal ideals of $R$, called the \emph{Jacobson-radical}, is
+    The intersection of the maximal ideals of $R$, called the \defemph{Jacobson-radical}, is
     \begin{align}\lbl{eq:JacobsonRadical}
         \bigcap_{\mm \in\mSpec R} \mm = \rad(R) = \left\{r\in R\st1+xr\in R^\times \text{ for all } x\in R\right\}.
     \end{align}
 \end{prop}
 \begin{proof}
-    Let $r\in \bigcap_{\mm\in\mSpec} \mm$ and $x\in R$. If $1+xr\not\in R^\times$ it must be contained in some maximal ideal $\mm$ or $R$. Since $r\in\mm$ and $1 = 1+xr - xr\in\mm$, which is a contradiction. Conversely, let $\mm$ be maximal and $r\not\in\mm$. Then $k(\mm) = R/\mm$ is a field. Let $-x\mod \mm$ be inverse to $r\mod\mm$ (that being non-zero due to $r\not\in\mm$) in that field. Then $xr+1\in\mm$ and $xr+1\not\in R^\times$, so $r$ is not an element of the right hand side.
+    Let $r\in \bigcap_{\mm\in\mSpec} \mm$ and $x\in R$. If $1+xr\not\in R^\times$ it must be contained in some maximal ideal $\mm$ or $R$. Since $r\in\mm$ and $1 = 1+xr - xr\in\mm$, which is a contradiction. 
+    
+    Conversely, let $\mm$ be maximal and $r\not\in\mm$. Then $\KK(\mm) = R/\mm$ is a field. Let $-x\mod \mm$ be inverse to $r\mod\mm$ (that being non-zero due to $r\not\in\mm$) in that field. Then $xr+1\in\mm$ and $xr+1\not\in R^\times$, so $r$ is not an element of the right hand side.
 \end{proof}
 \begin{example}
     If $R$ is a local ring and $\mm$ its maximal ideal, then $\rad (R) = \mm = R\setminus R^\times$.
 \end{example}
-\begin{prop}[Nakayama-Lemma, Nakayama/Azumaya/Krull, {[NAK]} in Matsumura, commutative ring theory]\lbl{prop:NAK}
+The following is usually known under the name \emph{Nakayama's lemma}. However, Professor Franke rather would like to attribute it to Azumaya and Krull (as Matsumura does in \cite{matsumuraCRT}). Making a compromise, it will, from now on, be cited as \NAK.
+\begin{prop}[Nakayama's lemma]\lbl{prop:NAK}
         Let $R$ ba any ring, $M$ a finitely generated $R$-module such that $\rad(R)\cdot M = M$. Then $M=0$.
 \end{prop}
 \begin{proof}
-    Let $m=(m_1,\ldots,m_k)$ be generators of $M$. As $M=\rad(R) \cdot M$ there are $\rho_{i,j}\in\rad(R)$ such that $m_i = \sum_{j=1}^k \rho_{i,j} m_j$. In other words $(\id_k -\rho)\cdot m=0$ where $\rho$ is the matrix formed by the $\rho_{i,j}$. But $\det(\id_k - \rho) \in (1+\rad(R)$ by Leibniz as $\rad(R)$ is an ideal containing the $\rho_{i,j}$. By \eqreff{eq:JacobsonRadical} we have $\det(\id_k -\rho)\in R^\times$. By Cramers rule $\id_k-\rho$ has an inverse matrix. Therefore $(\id_k \rho) \cdot m = 0$ implies $m=0$ and so $M=0$.
+    Let $m=(m_1,\ldots,m_k)^t$ be generators of $M$. As $M=\rad(R) \cdot M$ there are $\rho_{i,j}\in\rad(R)$ such that $m_i = \sum_{j=1}^k \rho_{i,j} m_j$. In other words $(\id_k -\rho)\cdot m=0$ where $\rho$ is the matrix formed by the $\rho_{i,j}$. But $\det(\id_k - \rho) \equiv 1\mod \rad(R)$ by the Leibniz formula as $\rad(R)$ is an ideal containing the $\rho_{i,j}$. By \eqreff{eq:JacobsonRadical}, we conclude $\det(\id_k -\rho)\in R^\times$. Hence, by Cramers rule, $\id_k-\rho$ has an inverse matrix. Therefore $(\id_k -\rho) \cdot m = 0$ implies $m=0$ and thus $M=0$.
 \end{proof}
+Applying Proposition~\reff{prop:NAK} to $M/N$, we obtain the following corollary.
 \begin{cor}\lbl{cor:NAK}
-    If $M$ is finitely generated $R$-module and $N\subseteq M$ any submodule such that $M = N+\rad(R)\cdot M$ then $M=N$. This is proven by applying Proposition \reff{prop:NAK} to $M/N$.
+    If $M$ is finitely generated $R$-module and $N\subseteq M$ any submodule such that $M = N+\rad(R)\cdot M$ then $M=N$ (actually, it suffices $M/N$ to be finitely generated).
 \end{cor}
 \begin{rem*}
-    he principle is typically applied to local rings $R$: If $\mm$ denotes the maximal ideal, $M= \mm\cdot M +N$ implies $M=N$, where $M$ is always finitely generated.
+    {\NAK} is typically applied to local rings $R$: If $\mm$ denotes the maximal ideal, then $M= \mm\cdot M +N$ implies $M=N$ if $M$ is finitely generated.
 \end{rem*}
 
 \section{Regular rings}
 \begin{prop}
-    Let $R$ ba a Noetherian local ring with maximal ideal $\mm$, then $\mm/\mm^2$ is a ($k=R/\mm$)-vector space of finite dimension and $\dim(R) \leq \dim_k(\mm/\mm^2)$.
+    Let $R$ be a Noetherian local ring with maximal ideal $\mm$ and residue field $k=R/\mm$, then $\mm/\mm^2$ is a $k$-vector space of finite dimension and 
+    \begin{align*}
+    	\dim(R) \leq \dim_k(\mm/\mm^2)\;.
+    \end{align*}
 \end{prop}
 \begin{proof}
-    If $\mu_1,\ldots,\mu_n$ generate the ideal $\mm$ they generate $\mm/\mm^2$ as a $k$-vector space, proving finite dimensionality. Conversely, let $\mu_1,\ldots,\mu_n\in\mm$ such that their images in $\mm/\mm^2$ form a base as a $k$-vector space. Then $\mm \subseteq \left(\sum_{i=1}^n x_iR\right)+\mm^2$ hence $\mm = \sum_{i=1}^nx_iR$ by \reff{cor:NAK} applied to $M = \mm$, $N = \sum_{i=1}^n x_i R$. By Theorem \reff{thm:krullIdeal}, $\hoehe(\mm) \leq n$. Thus $\dim R = \hoehe(\mm) \leq n = \dim_k \mm/\mm^2$.
+    If $\mu_1,\ldots,\mu_n$ generate the ideal $\mm$, then their images $\ov{\mu}_1,\ldots,\ov{\mu}_n$ generate $\mm/\mm^2$ as a $k$-vector space, proving finite dimensionality. 
+    
+    Conversely, let $\mu_1,\ldots,\mu_n\in\mm$ such that their images $\ov{\mu}_1,\ldots,\ov{\mu}_n$ generate $\mm/\mm^2$ as a $k$-vector space. Then $\mm \subseteq \mu_1R+\ldots+\mu_nR+\mm^2$ hence $\mm = \mu_1R+\ldots+\mu_nR$ by Corollary~\reff{cor:NAK} applied to $M = \mm$, $N = \mu_1R+\ldots+\mu_nR$. By Theorem~\reff{thm:krullIdeal}, $\hoehe(\mm) \leq n$. Thus,
+    \begin{align*}
+    	\dim R = \hoehe(\mm) \leq n = \dim_k \mm/\mm^2\;,
+    \end{align*}
+    finishing the proof.
 \end{proof}
-\begin{defi}[Regular]\lbl{def:regular}
-    A Noetherian local ring is called \defemph{regular} if equality occurs in $\dim R \leq\dim_k(\mm/\mm^2)$. For algebraic varieties $X$, we call $X$ regular at $x\in X$ if $\Oo_{X,x}$ is regular. $X$ is called regular if it is regular at all $x\in X$.
+\begin{defi}[regularity]\lbl{def:regular}
+	\begin{alphanumerate}
+		\item A Noetherian local ring is called \defemph{regular} if equality occurs in $\dim R \leq\dim_k(\mm/\mm^2)$. 
+		\item For algebraic varieties $X$, we call $X$ \defemph{regular at} $\boldsymbol{x\in X}$ if $\Oo_{X,x}$ is regular. $X$ is called \defemph{regular} if it is regular at all $x\in X$.
+	\end{alphanumerate}
 \end{defi}
 \begin{rem}
-    If $R$ is any Noetherian ring and $\pp\in \Spec R$, then $(\pp R_\pp)/(\pp R_\pp)^2 \simeq (\pp/\pp^2)_\pp$ and $R_\pp$ is regular (or $R$ is regular at $\pp$) iff $\pp/\pp^2$ has dimension $\hoehe(\pp)$ as a $k(\pp)$-vector space. In particular, $R$ is regular at $\mm\in\mSpec R$ iff $\dim(R_\mm) = \hoehe(\mm)$ equals $\dim_{R/\mm} (\mm/\mm^2)$. By a result by Serre (which has an easier proof in the classical situation $R=\Oo_{X,x}$), a regular local ring is regular at all of its prime ideals. If $R$ is a regular local ring, then so is $R_\pp$ for any $\pp\in \Spec R$. A Noetherian ring $R$ is called regular iff $R_\pp$ is regular for all $\pp\in\Spec R$ or iff $R_\mm$ is regular for any $\mm\in\mm-\Spec R$. Note that despite Serre's theorem there are Noetherian rings $R$ such that $\left\{\pp\in\Spec R\st R_\pp\text{ is regular}\right\}$ fails to be closed in $\Spec R$.
+    If $R$ is any Noetherian ring and $\pp\in \Spec R$, then $(\pp R_\pp)/(\pp R_\pp)^2 \simeq (\pp/\pp^2)_\pp$ and $R_\pp$ is regular (or $R$ is regular at $\pp$) iff $\pp/\pp^2$ has dimension $\hoehe(\pp)$ as a $k(\pp)$-vector space. In particular, $R$ is regular at $\mm\in\mSpec R$ iff $\dim(R_\mm) = \hoehe(\mm)$ equals $\dim_{R/\mm} (\mm/\mm^2)$. By a result by Serre (which has an easier proof in the classical situation $R=\Oo_{X,x}$), a regular local ring is regular at all of its prime ideals, i.e. if $R$ is a regular local ring, then so is $R_\pp$ for any $\pp\in \Spec R$. 
+    
+    A Noetherian ring $R$ is called \emph{regular} iff $R_\pp$ is regular for all $\pp\in\Spec R$ or (equivalently) iff $R_\mm$ is regular for any $\mm\in\mSpec R$. These two definitions are equivalent as $R_\pp\simeq (R_\mm)_\pp$ if $\pp\in\Spec R$ is prime and $\mm$ a maximal ideal containing $\pp$. Hence, if $R_\mm$ is regular then so is $R_\pp$ by Serre's result. 
+    
+    Note that despite Serre's theorem there are Noetherian rings $R$ such that 
+    \begin{align*}
+    	\left\{\pp\in\Spec R\st R_\pp\text{ is \emph{not} regular}\right\}
+    \end{align*}
+    fails to be closed in $\Spec R$.
 \end{rem}
 \appendix
 \chapter{Appendix}
