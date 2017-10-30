@@ -119,7 +119,7 @@ as well. \textbf{Warning!} Somewhere in the middle of the last-mentioned text, t
         \item Let now $X$ be an affine variety. We saw in Algebra I (cf. \cite[Corollary~2.2.2]{alg1}) that there is a bijection
         \begin{align}\lbl{eq:bijectiveCorrespondenceO(X)}
 	        \begin{split}
-		        \{\text{closed subsets }A\subseteq X\}&\isomorphism\left\{\text{ideals }I\subseteq \Oo(X)\text{ such that }I\sqrt{I}\right\}\\
+		        \{\text{closed subsets }A\subseteq X\}&\isomorphism\left\{\text{ideals }I\subseteq \Oo(X)\text{ such that }I=\sqrt{I}\right\}\\
 		        A&\longmapsto I=\left\{f\in \Oo(X)\st f|_A=0\right\}\\
 		        V(I)&\longmapsfrom I\;.
 	        \end{split}\tag{$*$}
@@ -241,10 +241,27 @@ The derivation from Corollary~\reff{cor:V(f)codimension1} by induction on $r$ is
    \end{align*}
    proving the assertion.
 \end{proof}
+\begin{thm}
+ Let $R$ be a Noetherian domain. 
+ \begin{alphanumerate}
+    \item 
+        Every $r\in R\setminus (R^\times \cup\{0\})$ can be written $r = \prod_{i=1}^k r_i$ where the $r_i$ are irreducible. 
+    \item 
+        The following conditions are equivalent:
+        \begin{itemize}
+            \item[$(\alpha)$]
+                The above decomposition is unique up to permutation and multiplicative equivalence of the factors.
+            \item[$(\beta)$]
+                For any irreducible $p\in R$, $pR$ is a prime ideal.
+            \item[$(\gamma)$]
+                Any $\pp\in\Spec R$ such that $\hoehe(\pp) = 1$ is principal $\pp = pR$ for some $p\in R$.
+        \end{itemize}
+ \end{alphanumerate}
+\end{thm}
 
 \section{The nilradical, the Jacobson radical and the Lemma of Nakayama(-Azumaya-Krull)}
 
-\begin{prop}
+\begin{prop}\lbl{prop:nilradicalCapPrimeIdeals}
     If $R$ is any ring, then 
     \begin{align*}
     	\bigcap_{\substack{\pp\in\Spec R\\}} \pp =\nil(R) \coloneqq \left\{f\in R\st f^n=0 \text{ for some } n\in\IN\right\} = \sqrt{(0)}\;.
@@ -256,6 +273,59 @@ The derivation from Corollary~\reff{cor:V(f)codimension1} by induction on $r$ is
     
     Let $f^n\neq 0$ for all $n\in \IN$, then $R_f$ (the localization of $R$ at $f^\IN=\left\{1,f,f^2,\ldots\right\}$) is not the null ring, hence there is a prime ideal $\qq\in\Spec(R_f)$. Its preimage $\pp=\qq\sqcap R$ is in $\Spec(R)$ and $f\not \in\pp$ as $f$ becomes a unit in $R_f$.
 \end{proof}
+\begin{cor}
+    There is a canonical bijection between closed subsets of $\Spec R$ and  the ideals $I\subseteq R$ such that $I = \sqrt{I}$ by
+    \begin{align*}
+        A \subseteq \Spec R &\longmapsto I = \bigcap_{\pp\in A} \pp\\
+        V(I) = \left\{\pp\in \Spec R\st I\subseteq \pp\right\}&\longmapsfrom I
+    \end{align*}
+    with the irreducible sets corresponding to the prime ideals.
+\end{cor}
+\begin{proof}
+    For the first assertion, the only non-trivial part is that going from the right to the left and back again equals the identity. This follows from 
+    \begin{align}\lbl{eq:PrimeCapRadical}
+        \bigcap_{\pp\in V(I)} = \sqrt{I} 
+    \end{align}
+    which follows from applying Proposition \reff{prop:nilradicalCapPrimeIdeals} to $R/I$. The final assertion is left as an exercise.
+\end{proof}
+\begin{prop}
+    The intersection of the maximal ideals of $R$, called the \emph{Jacobson-radical}, is
+    \begin{align}\lbl{eq:JacobsonRadical}
+        \bigcap_{\mm \in\mSpec R} \mm = \rad(R) = \left\{r\in R\st1+xr\in R^\times \text{ for all } x\in R\right\}.
+    \end{align}
+\end{prop}
+\begin{proof}
+    Let $r\in \bigcap_{\mm\in\mSpec} \mm$ and $x\in R$. If $1+xr\not\in R^\times$ it must be contained in some maximal ideal $\mm$ or $R$. Since $r\in\mm$ and $1 = 1+xr - xr\in\mm$, which is a contradiction. Conversely, let $\mm$ be maximal and $r\not\in\mm$. Then $k(\mm) = R/\mm$ is a field. Let $-x\mod \mm$ be inverse to $r\mod\mm$ (that being non-zero due to $r\not\in\mm$) in that field. Then $xr+1\in\mm$ and $xr+1\not\in R^\times$, so $r$ is not an element of the right hand side.
+\end{proof}
+\begin{example}
+    If $R$ is a local ring and $\mm$ its maximal ideal, then $\rad (R) = \mm = R\setminus R^\times$.
+\end{example}
+\begin{prop}[Nakayama-Lemma, Nakayama/Azumaya/Krull, {[NAK]} in Matsumura, commutative ring theory]\lbl{prop:NAK}
+        Let $R$ ba any ring, $M$ a finitely generated $R$-module such that $\rad(R)\cdot M = M$. Then $M=0$.
+\end{prop}
+\begin{proof}
+    Let $m=(m_1,\ldots,m_k)$ be generators of $M$. As $M=\rad(R) \cdot M$ there are $\rho_{i,j}\in\rad(R)$ such that $m_i = \sum_{j=1}^k \rho_{i,j} m_j$. In other words $(\id_k -\rho)\cdot m=0$ where $\rho$ is the matrix formed by the $\rho_{i,j}$. But $\det(\id_k - \rho) \in (1+\rad(R)$ by Leibniz as $\rad(R)$ is an ideal containing the $\rho_{i,j}$. By \eqreff{eq:JacobsonRadical} we have $\det(\id_k -\rho)\in R^\times$. By Cramers rule $\id_k-\rho$ has an inverse matrix. Therefore $(\id_k \rho) \cdot m = 0$ implies $m=0$ and so $M=0$.
+\end{proof}
+\begin{cor}\lbl{cor:NAK}
+    If $M$ is finitely generated $R$-module and $N\subseteq M$ any submodule such that $M = N+\rad(R)\cdot M$ then $M=N$. This is proven by applying Proposition \reff{prop:NAK} to $M/N$.
+\end{cor}
+\begin{rem*}
+    he principle is typically applied to local rings $R$: If $\mm$ denotes the maximal ideal, $M= \mm\cdot M +N$ implies $M=N$, where $M$ is always finitely generated.
+\end{rem*}
+
+\section{Regular rings}
+\begin{prop}
+    Let $R$ ba a Noetherian local ring with maximal ideal $\mm$, then $\mm/\mm^2$ is a ($k=R/\mm$)-vector space of finite dimension and $\dim(R) \leq \dim_k(\mm/\mm^2)$.
+\end{prop}
+\begin{proof}
+    If $\mu_1,\ldots,\mu_n$ generate the ideal $\mm$ they generate $\mm/\mm^2$ as a $k$-vector space, proving finite dimensionality. Conversely, let $\mu_1,\ldots,\mu_n\in\mm$ such that their images in $\mm/\mm^2$ form a base as a $k$-vector space. Then $\mm \subseteq \left(\sum_{i=1}^n x_iR\right)+\mm^2$ hence $\mm = \sum_{i=1}^nx_iR$ by \reff{cor:NAK} applied to $M = \mm$, $N = \sum_{i=1}^n x_i R$. By Theorem \reff{thm:krullIdeal}, $\hoehe(\mm) \leq n$. Thus $\dim R = \hoehe(\mm) \leq n = \dim_k \mm/\mm^2$.
+\end{proof}
+\begin{defi}[Regular]\lbl{def:regular}
+    A Noetherian local ring is called \defemph{regular} if equality occurs in $\dim R \leq\dim_k(\mm/\mm^2)$. For algebraic varieties $X$, we call $X$ regular at $x\in X$ if $\Oo_{X,x}$ is regular. $X$ is called regular if it is regular at all $x\in X$.
+\end{defi}
+\begin{rem}
+    If $R$ is any Noetherian ring and $\pp\in \Spec R$, then $(\pp R_\pp)/(\pp R_\pp)^2 \simeq (\pp/\pp^2)_\pp$ and $R_\pp$ is regular (or $R$ is regular at $\pp$) iff $\pp/\pp^2$ has dimension $\hoehe(\pp)$ as a $k(\pp)$-vector space. In particular, $R$ is regular at $\mm\in\mSpec R$ iff $\dim(R_\mm) = \hoehe(\mm)$ equals $\dim_{R/\mm} (\mm/\mm^2)$. By a result by Serre (which has an easier proof in the classical situation $R=\Oo_{X,x}$), a regular local ring is regular at all of its prime ideals. If $R$ is a regular local ring, then so is $R_\pp$ for any $\pp\in \Spec R$. A Noetherian ring $R$ is called regular iff $R_\pp$ is regular for all $\pp\in\Spec R$ or iff $R_\mm$ is regular for any $\mm\in\mm-\Spec R$. Note that despite Serre's theorem there are Noetherian rings $R$ such that $\left\{\pp\in\Spec R\st R_\pp\text{ is regular}\right\}$ fails to be closed in $\Spec R$.
+\end{rem}
 \appendix
 \chapter{Appendix}
 \setcounter{thm}{0}
@@ -386,7 +456,7 @@ One may check that locally closed sets are precisely the open subsets of closed 
 	\{0\}^n \subsetneq k\times\{0\}^{n-1} \subsetneq\ldots\subsetneq k^{n-1}\times\{0\} \subsetneq k^n
 	\end{align*} of irreducible closed subsets. To prove $\dim(k^n) \leq n$, and $\dim(X) \leq\deg\tr(K(X)/k)$, one proves $\deg\tr(\KK(\pp)/k) > \deg\tr(\KK(\qq)/k)$ whenever $A/k$ is an algebra of finite type over $k$, $\qq\supsetneq \pp$ are prime ideals and $\KK(\pp)$ denotes the quotient field of $A/\pp$. 
 	
-	For general affine $X$ one uses the Noether Normalization theorem to get a finite morphism $X\xrightarrow{(f_1,\ldots,f_d)} \IA^d(k)=k^d$ (i.e., $\Oo(X)$ is integral over $k[f_1,\ldots,f_d]$) and $f_1,\ldots,f_d$ are $k$-algebraically independent). One then uses the going-up (going-down) for (certain) integral ring extensions to lift chains of irreducible subsets of $\IA^d(k)=k^d$ to chains of irreducible subsets of $X$ (all of this may be found in much more detail in \cite[Section~2.4-2.6]{alg1}).
+	For general affine $X$ one uses the Noether Normalization theorem to get a finite morphism $X\xrightarrow{(f_1,\ldots,f_d)} \IA^d(k)=k^d$ (i.e., $\Oo(X)$ is integral over $k[f_1,\ldots,f_d]$ and $f_1,\ldots,f_d$ are $k$-algebraically independent). One then uses the going-up (going-down) for (certain) integral ring extensions to lift chains of irreducible subsets of $\IA^d(k)=k^d$ to chains of irreducible subsets of $X$ (all of this may be found in much more detail in \cite[Section~2.4-2.6]{alg1}).
 \end{rem}
 \section{Localization of rings}
 \begin{defi}[multiplicative subsets]
