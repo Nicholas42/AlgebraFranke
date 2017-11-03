@@ -300,7 +300,7 @@ Let it be said that the first three recommendations are from Professor Franke wh
     \end{diagram}
     commutes. We will often write $\Gg(U) \morphism[f] \Hh(U)$ instead of $\Gg(U)\morphism[f_U] \Hh(U)$.
 \end{varthm}
-\begin{fact}
+\begin{fact}\lbl{fact:smallerBaseSheaf}
     If $\snake \Bb \subseteq \Bb$ is a smaller base of the same topology there is an obvious restriction $\snake \Gg = \Gg|_{\snake \Bb}$. We have a canonical isomorphism
     \begin{align*}
     	\snake \Gg_x \isomorphism \Gg_x
@@ -391,19 +391,23 @@ of presheaves on $\Bb$.
 	\end{align*}
 	Thus, $\Gamma_\Gg(\gamma) = g$.
 \end{proof}
-\begin{cor}
+\begin{cor}\lbl{cor:sheafDefinedByStalks}
     The following assertions hold in the categories of sets, (abelian) groups or rings.
     \begin{alphanumerate}
       \item 
         If $\Ff$ is a sheaf of the given type, then any $f\in\Ff(U)$ is uniquely determined by the family of its images in $\Ff_x$ for $x\in U$. The image of the injection 
-        \begin{align*}
+        \begin{align}\lbl{eq:sheafDefinedByStalks}
             \Ff(U) \morphism \prod_{x\in U} \Ff_x
-        \end{align*}
+        \end{align}
         defined in this ways is the set of all $(f_x)_{x\in U}\in\prod_{x\in U}\Ff_x$ such that for every $x\in U$ there are an open neighbourhood $V$ of $x$ and $\phi\in \Ff(V)$ such that $f_y$ equals the image $\phi_y$ of $\phi$ under $\Ff(U)\morphism \Ff_y$ for all $y\in U\cap V$. %This is proven by Proposition \reff{prop:sheafificationMorphisms}(d).
       \item 
         A morphism of sheaves inducing isomorphisms (respectively injective maps) on stalks defines isomorphisms (respectively injective maps) on sections of open subsets. %This follows from Proposition \reff{prop:sheafificationMorphisms}(b) as 
+      \item 
+        If two morphism $\Ff \doublemorphism[\alpha][\beta] \Gg$ define identical maps $\Ff_x \doublemorphism[\alpha_x][\beta_x] \Gg_x$ for each $x\in X$, then $\alpha= \beta$.
       \item
-        If $\Gg\morphism[\alpha] \Hh$ is a morphism of sheaves such that $\Gg_x\morphism[\alpha_x] \Hh_x$ is injective for all $x$, then $\alpha$ is a monomorphism. %This follows from Proposition \reff{prop:sheafificationMorphisms}.
+        If $\Gg\morphism[\alpha] \Hh$ is a morphism of sheaves such that $\Gg_x\morphism[\alpha_x] \Hh_x$ is injective (respectively surjective) for all $x$, then $\alpha$ is a monomorphism (respectively an epimorphism). %This follows from Proposition \reff{prop:sheafificationMorphisms}.
+      \item
+        Let $\Rr$ be a sheaf of rings on $x$ and $\rho\in\Rr(U)$, then $\rho\in \Rr(U)^\times$ iff for eacht $x\in U$ the image $\rho_x$ of $\rho$ in $\Rr_x$ is in $\Rr_x^\times$.
     \end{alphanumerate}
 \end{cor}
     \begin{proof}
@@ -423,12 +427,49 @@ of presheaves on $\Bb$.
     	\end{diagram}        
     	commutes. Here the vertical arrows are isomorphisms by Proposition~\reff{prop:sheafificationMorphisms}\itememph{d}.
     	
-    	Part \itememph{c} is quite obvious. However, in fancyspeak (and for the sake of a rigid argument), one can consider the \emph{functor} $F\colon\cat{PreShv}(X)\morphism\cat{Set}$ from the category of presheaves on $X$ to the category of sets given by
-    	\begin{align*}
-    		F(\Gg)=\prod_{U\subseteq X\text{ open}}\Gg(U)
-    	\end{align*}
-    	(we regard the $\Gg(U)$ as sets). Then $F$ is faithful. Hence, if $\alpha$ is stalk-wise injective then also section-wise (by \itememph{b}), hence $F(\alpha)$ is injective. Faithfulness of $F$ finally shows that $\alpha$ must be a monomorphism.
+    	Part \itememph{d} is quite obvious. Let $\alpha_x$ be injective for arbitrary $x\in X$, and let $T\doublemorphism[\tau][\theta] \Ff$ be morphisms such that $\alpha \tau= \alpha \theta$. Then $\alpha_x \tau_x = \alpha_x \theta_x$ for all $x\in X$. As $\alpha_x$ is an injective map this implies $\tau_x = \theta_x$. By \itememph{c} we have $\tau = \theta$. Hence $\alpha$ is a monomorphism.
+    	
+    	Let $\alpha_x$ be surjective for arbitrary $x\in X$, and let $\Ff\doublemorphism[\tau][\theta] T$ be morphisms such that $ \tau\alpha=  \theta\alpha$. Then $\tau_x\alpha_x = \theta_x\alpha_x$ for all $x\in X$. As $\alpha_x$ is a surjective map this implies $\tau_x = \theta_x$. By \itememph{c} we have $\tau = \theta$. Hence $\alpha$ is a epimorphism.
+    	
+    	%However, in fancyspeak (and for the sake of a rigid argument), one can consider the \emph{functor} $F\colon\cat{PreShv}(X)\morphism\cat{Set}$ from the category of presheaves on $X$ to the category of sets given by
+    	%\begin{align*}
+    	%	F(\Gg)=\prod_{U\subseteq X\text{ open}}\Gg(U)
+    	%\end{align*}
+    	%(we regard the $\Gg(U)$ as sets). Then $F$ is faithful. Hence, if $\alpha$ is stalk-wise injective then also section-wise (by \itememph{b}), hence $F(\alpha)$ is injective. Faithfulness of $F$ finally shows that $\alpha$ must be a monomorphism.
+    	
+    	Proving the ``only if''-part of \itememph{e} is quite trivial since $\Rr(U) \morphism \Rr_x$ is a ring homeomorphism, thus maps units to units. Conversely, let $\rho_x$ be a unit for every $x\in U$. We consider the morphism $\Rr|_U \morphism[\rho\cdot]\Rr|_U$ (of sheaves of sets). On stalks it defines the map $\Rr_x \morphism[\rho_x\cdot] \Rr_x$, which is bijective. By \itememph{b} it is an isomorphism, hence there is $\sigma \in \Rr(U)$ such that $\rho \sigma = 1$ and $\rho\in \Rr(U)^\times$.
     \end{proof}
+    \begin{fact}
+        Proposition~\reff{prop:sheafificationMorphisms}\itememph{c}.
+    \end{fact}
+    \begin{proof}
+        By Fact \reff{fact:smallerBaseSheaf}, $(\Ff|_{\snake \Bb} \isomorphism \Ff_x$ for all $x\in X$. If is clear that $(f_x)\in \prod_{x\in U} \Ff_x \simeq \prod_{x\in U} (\Ff|_{\snake\Bb})_x$ satisfies the coherence condition for $\Ff^\sh$ if it satisfies it for $(\Ff|_{\snake \Bb})^sh$. Conversely, let it satisfy the coherence condition for $\Ff^\sh$. For every $x\in U$, this means that there is $V\in \Bb$ and $\phi\in \Ff(V)$ such that $\phi_y = f_y$ for $y\in U\cap V$. As $\snake\Bb$ is a topology base there is $W\in \snake \Bb$ such that $x\in W\subseteq V$. Let $\snake\phi = \phi|_W$, then $\snake\phi_y = f_y$ when $y\in U\cap W$. Hence $f\in (\Ff|_{\snake\Bb})^\sh(U)$.
+    \end{proof}
+    \begin{prop}
+        The following holds for sheaves of sets, rings and (abelian) groups. Let $\Bb$ be a topology base and $\Ff$ a presheaf on $\Bb$. Any morphism $\Ff\morphism[\alpha] \Gg|_\Bb$, where $\Gg$ is a sheaf on $X$, has the form 
+        \begin{align*}
+            \Ff\morphism[\Gamma_\Ff] \Ff^\sh|_\Bb \morphism[\beta|_\Bb] \Gg|_\Bb,
+        \end{align*}
+        where $\Ff^\sh\morphism[\beta] \Gg$ is a uniquely determined morphism of sheaves.
+    \end{prop}
+    \begin{proof}
+        If $\beta$ is as above then $\alpha_x$ equals 
+        \begin{align*}
+            \Ff_x \morphism[(\Gamma_\Ff)_x] (\Ff^\sh|_\Bb)_x \isomorphism \Ff^\sh_x \morphism[\beta_x] \Gg_x \isomorphism (\Gg|_\Bb)_x
+        \end{align*}
+        where the first arrow is an isomorphism by Proposition~\reff{prop:sheafificationMorphisms}.  It follows that $\beta_x$ is uniquely determined by $\alpha_x$, hence by $\alpha$. By Corollary~\reff{cor:sheafDefinedByStalks}\itememph{c} this means that $\beta$ is uniquely determined by $\alpha$.
+        
+        To show its existence we construct it as 
+        \begin{align*}
+            \Ff^\sh \morphism{\alpha^\sh} (\Gg|_\Bb)^\sh \isomorphism \Gg^\sh  = \Gg.
+        \end{align*}
+        It is easy to verify that this has the required properties.
+    \end{proof}
+    \begin{rem*}
+        By the usual Yoneda-type argument, it is clear that the above universal property characterizes $\Ff^\sh$ uniquely up to unique isomorphism. For other target categories the above universal property should be taken as the definition of $\Ff^\sh$. It may or may not exist, but it is unique.
+    \end{rem*}
+    
+    
     
     
     
@@ -613,7 +654,50 @@ A category is called \emph{small} if its class of objects is a set.
        \end{diagram}
        commutes for arbitrary morphisms $A\morphism[\alpha] \Bb$ in $\Aa$.
     \end{defi}
-	
+    \begin{defi}[Adjoint functors]\lbl{def:adjointFunctors}
+        Let $\Aa$ and $\Bb$ be categories. An \defemph{adjoint pair of functors} $\Aa\morphism[L] \Bb$ and $\Aa\lmorphism[R]\Bb$ is a pair of functors of the specified type together with an isomorphism $\Hom_\Bb(LX, Y) \isomorphism \Hom_\Aa(X, RY)$ which in functorial in $X$ and $Y$. We may say that $L$ is left-adjoined to $R$ and that  $R$ is right adjoined to $L$. By Yoneda-type arguments, $RY$ is uniquely determined (up to unique morphism) by $L$ (and $Y$) if it exists, and $LX$ is uniquely determined by $R$ (and $X$) if it exists.
+    \end{defi}
+	\begin{lem}[Yoneda lemma for covariant functors]\lbl{lem:yoneda}
+        For every $M\in\Ob \Aa$, let $\Cov_M:\Aa \morphism \cat{Set}$ be the functor defined by 
+        \begin{align*}
+            (\Cov_M(X)) = \Hom_\Aa(M,X).
+        \end{align*}
+        Then 
+        \begin{align*}
+            \Hom_\Aa(M,N) \morphism[Y] \Hom_\Ff (\Cov_N, \Cov_M),
+        \end{align*}
+        where $\Ff$ is the category of functors from $\Aa$ to $\cat{Set}$, is bijective.
+        
+        We say that a functor $\Aa\morphism[F] \cat{Set}$ is \emph{representable} if there is a functor-isomorphism $F\simeq \Cov_M$, in other words $F(X) \simeq \Hom_\Aa(M,X)$. The Yoneda-Lemma shows that $M$ is unique up to unique isomorphism. For instance, $LX$ exists iff the covariant functor $\Bb\morphism\cat{Set}$, $Y \mapsto \Hom_\Aa(X, RY)$ is representable.
+	\end{lem}
+	\begin{defi}[Contravariant functor]\lbl{defi:contravariantFunctor}
+        A \defemph{contravariant functor} $\Aa\morphism[F]\Bb$ is a functor $\Aa^\op\morphism \Bb$, where $\Ob(\Aa^\op) = \Ob(\Aa)$ and $\Hom_{\Aa^\op}(X,Y) = \Hom_\Aa(Y,X)$. In other words, it consists of maps $\Ob(\Aa)\morphism[F]\Ob(\Bb)$ and $\Hom_\Aa(X,Y) \morphism[F] \Hom_\Bb(FY, FX)$.such that $F(\id_X) = \id_{F(X)}$ and such that $F(\beta\alpha)  = F(\alpha)F(\beta)$ where $X\morphism[\alpha]Y\morphism[\beta] Z$ are composable morphisms in $\Aa$.
+	\end{defi}
+	\begin{rem*}
+        \begin{itemize}
+          \item 
+            Equivalently, a contravariant functor $\Aa\morphism \Bb$ is a covariant functor $\Aa\morphism \Bb^\op$.
+          \item
+            The map $V\morphism V^\ast$ (to the dual vector space) on the category of vector spaces over some fixed field $k$ is an example.
+        \end{itemize}
+	\end{rem*}
+	\begin{lem}[Yoneda lemma, contravariant case] \lbl{lem:contraYoneda}
+        For any $M\in\Ob \Aa$, $\Con_M(X) = \Hom_\Aa(X,M)$ defines a contravariant functor $\Con_M: \Aa\morphism \cat{Set}$ and 
+        \begin{align*}
+            \Hom_\Aa(M,N) \morphism \Hom_\Ff (\Con_M,\Con_N)
+        \end{align*}
+        is bijective, where $F$ is the category of functors from $\Aa^\op$ to $\cat{Set}$.
+	\end{lem}
+	\begin{rem*}
+        \begin{alphanumerate}
+          \item
+            We say that a contravariant functor $\Aa\morphism[F]\cat{Set}$ is \emph{representable} iff $F\simeq \Con_M$ for some $M\in\Ob\Aa$ in which case we say that $M$ represents $F$. In the above definition, $RY$ exists iff $\Aa^\op\morphism\cat{Set}$, $X\mapsto \Hom_\Bb(LX,Y)$ is representable.
+          \item 
+            Many important constructions in algebraic topology (classifying spaces) and algebraic geometry (Module space, Picard/Hilbert schemes) amount to representing certain functors.
+          \item 
+            $\cat{PreShv}(\Bb) \morphism[L=\_^\sh] \cat{Shv}(X)$ and $\cat{Shv} (X) \morphism[R=\_|_\Bb] \cat{PreShv}(\Bb)$ is a pair of adjoint functors.
+        \end{alphanumerate}
+	\end{rem*}
 \printbibliography
 
 \end{document}          
