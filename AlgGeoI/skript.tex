@@ -50,7 +50,7 @@ Let it be said that the first three recommendations are from Professor Franke wh
     	\item to any open subset $U\subseteq X$ a ring $\Ff(U)$ called the \emph{ring of sections} of $\Ff$ on $U$
     	\item and to any inclusion of open subsets $V\subseteq U$ a ring homomorphism 
     	\begin{align*}
-	    	\cdot|_V\colon \Ff(U) &\longto \Ff(V)
+	    	(-)|_V\colon \Ff(U) &\longto \Ff(V)
     	\end{align*}
     	such that $f|_V = f$ for all $f\in\Ff(V)$ and $(f|_V)|_W = f|_W$ for any inclusion $W\subseteq V\subseteq U$ of open subsets.
     \end{itemize}  Note that while this notation (intentionally) reminds of the restriction of functions, behaves similarly and often the restriction is indeed used for this homomorphism, the elements of the rings $\Ff(U)$ are not always functions. 
@@ -91,7 +91,7 @@ Let it be said that the first three recommendations are from Professor Franke wh
 	        \end{align*}
 	        is an element of $\Oo_X(\phi^{-1}(W))$. One denotes $g=\phi^*f$ in this case.
 	    \end{quote}
-	    A \defemph{morphism of prevarieties} $(X,\Oo_X) \to (Y,\Oo_Y)$ is a continous map $X\morphism[\phi] Y$ such that for all $U\subseteq Y$ and $\lambda \in \Oo_Y(U)$ we have $\phi^\ast \lambda \in \Oo(\phi^{-1}(U))$. As above, $\phi^\ast\lambda$ is defined as $(\phi^\ast\lambda)(x) = \lambda(\phi(x))$. In particular, $\phi^*$ induces a \emph{morphism of sheaves} $\phi^*\colon \Oo_Y\to\Oo_X$.
+	    A \defemph{morphism of prevarieties} $(X,\Oo_X) \to (Y,\Oo_Y)$ is a continous map $X\morphism[\phi] Y$ such that for all $U\subseteq Y$ and $\lambda \in \Oo_Y(U)$ we have $\phi^\ast \lambda \in \Oo_X(\phi^{-1}(U))$. As above, $\phi^\ast\lambda$ is defined as $(\phi^\ast\lambda)(x) = \lambda(\phi(x))$. In particular, $\phi^*$ induces a \emph{morphism of sheaves} $\phi^*\colon \Oo_Y\to\Oo_X$ (cf. Definition~\reff{def:morphismOfPresheaves}).
 	\end{defi}
 	\begin{rem*}
 		\begin{alphanumerate}
@@ -277,15 +277,15 @@ Let it be said that the first three recommendations are from Professor Franke wh
     Let $\Bb$ be a base of the topology on $X$. A \defemph{presheaf} on $\Bb$ associates
     \begin{itemize}
     	\item a set (group, ring, \ldots) $\Gg(U)$ to any $U\in \Bb$
-    	\item and to each inclusion of elements of $\Bb$ a \emph{restriction morphism}  		$\cdot|_V\colon\Gg(U) \morphism \Gg(V)$
-    	such that $\Gg(U) \morphism[\cdot|_U]\Gg(U)$ equals $\id_{\Gg(U)}$ and $f|_W = (f|_V)|_W$ for all $f\in \Gg(U)$ if $W\subseteq V\subseteq U$ is a inclusion of elements of $\Bb$. 
+    	\item and to each inclusion of elements of $\Bb$ a \emph{restriction morphism}  		$(-)|_V\colon\Gg(U) \morphism \Gg(V)$
+    	such that $\Gg(U) \morphism[(-)|_U]\Gg(U)$ equals $\id_{\Gg(U)}$ and $f|_W = (f|_V)|_W$ for all $f\in \Gg(U)$ if $W\subseteq V\subseteq U$ is a inclusion of elements of $\Bb$. 
     \end{itemize}
 	 If $\Gg$ is a presheaf on $\Bb$ and $x\in X$ we put $\Gg_x = \colimit[U] \Gg(U)$ where the direct limit (\emph{direct limit} means the same as \emph{colimit}) is taken over alle $U\in \Bb$ containing $x$.
 \end{defi}
 \begin{rem*}
     Equip $\Bb$ with partial order $\preceq$ where $V\preceq U$ iff $V\supseteq U$. Any partially ordered set $(\XX, \preceq)$ defines a category in which there is a morphism $X\to Y$ precisely if $X\preceq Y$. Then, a presheaf on $\Bb$ is a functor from (the category made out of) $\Bb$ and the target category.
 \end{rem*}
-\begin{varthm}{defi}
+\begin{varthm}{defi}\lbl{def:morphismOfPresheaves}
     A morphism $\Gg\morphism[f] \Hh$ of presheaves on $\Bb$ is a collection $\Gg(U)\morphism[f_U] \Hh(U)$ in the target category such that
     \begin{diagram}
     	\node (a) at (0,1.5) {$\Gg(U)$};
@@ -293,9 +293,9 @@ Let it be said that the first three recommendations are from Professor Franke wh
     	\node (b) at (2.5,1.5) {$\Gg(V)$};
     	\node (d) at (2.5,0) {$\Hh(V)$};
     	\scriptsize
-    	\draw[->] (a) -- (b) node[pos=0.5, above] {$\cdot|_V$};
+    	\draw[->] (a) -- (b) node[pos=0.5, above] {$(-)|_V$};
     	\draw[->] (a) -- (c) node[pos=0.5, left] {$f_U$};
-    	\draw[->] (c) -- (d) node[pos=0.5, above] {$\cdot|_V$};
+    	\draw[->] (c) -- (d) node[pos=0.5, above] {$(-)|_V$};
     	\draw[->] (b) -- (d) node[pos=0.5, right] {$f_V$};
     \end{diagram}
     commutes. We will often write $\Gg(U) \morphism[f] \Hh(U)$ instead of $\Gg(U)\morphism[f_U] \Hh(U)$.
@@ -599,7 +599,7 @@ A category is called \emph{small} if its class of objects is a set.
 	Let $X$ be a topological space. A \emph{presheaf} on $X$ with values in $\Aa$ is a map associating
 	\begin{itemize}
 		\item to each open subset $U\subseteq X$ an object $\Gg(U)\in\Ob(\Aa)$
-		\item and to each inclusion $V\subseteq U$ a morphism $\cdot|_V^U\in\Hom_\Aa(\Gg(U), \Gg(V))$ which equals $\id_{\Gg(U)}$ if $U=V$ and such that $\cdot|_W^U=\cdot|_W^V\circ\cdot|_V^U$ whenever $W\subseteq V\subseteq U$ is an inclusion of open sets.
+		\item and to each inclusion $V\subseteq U$ a morphism $(-)|_V^U\in\Hom_\Aa(\Gg(U), \Gg(V))$ which equals $\id_{\Gg(U)}$ if $U=V$ and such that $(-)|_W^U=(-)|_W^V\circ(-)|_V^U$ whenever $W\subseteq V\subseteq U$ is an inclusion of open sets.
 	\end{itemize}
 	To formulate the sheaf axiom, it is convenient to assume that $\prod_{i\in I}\Gg(U_i)$ exists, i.e. that $\Aa$ has arbitrary products.
 	
@@ -607,7 +607,7 @@ A category is called \emph{small} if its class of objects is a set.
 	\begin{align*}
 		\alpha,\beta\colon \prod_{i\in I}\Gg(U_i)\longrightarrow\prod_{(i,j)\in I\times I}\Gg(U_{ij})
 	\end{align*}
-	characterized by $\pi_{ij}\circ\alpha=\cdot|_{U_{ij}}^{U_i}\circ\pi_i$ and $\pi_{ij}\circ\beta=\cdot|_{U_{ij}}^{U_j}\circ\pi_j$, where $\prod_{i\in I}\Gg(U_i)\morphism[\pi_i]\Gg(U_i)$ and $\prod_{(i,j)\in I\times I}\Gg(U_{ij})\morphism[\pi_{ij}]\Gg(U_{ij})$ are the morphisms defining the product structure.
+	characterized by $\pi_{ij}\circ\alpha=(-)|_{U_{ij}}^{U_i}\circ\pi_i$ and $\pi_{ij}\circ\beta=(-)|_{U_{ij}}^{U_j}\circ\pi_j$, where $\prod_{i\in I}\Gg(U_i)\morphism[\pi_i]\Gg(U_i)$ and $\prod_{(i,j)\in I\times I}\Gg(U_{ij})\morphism[\pi_{ij}]\Gg(U_{ij})$ are the morphisms defining the product structure.
 	
 	In the example of presheaves of sets, rings, etc. we have 
 	\begin{align*}
@@ -632,7 +632,7 @@ A category is called \emph{small} if its class of objects is a set.
 				\draw[->, bend right] (T) to node[pos=0.5, left] {$\tau$} (A);
 				\draw[->, bend left] (T) to (B);
 			\end{diagram}
-			In other word, $E$ is the \emph{limiting cone} over the diagram $A\doublemorphism[\alpha][\beta]B$.
+			In other words, $E$ is the \emph{limiting cone} over the diagram $A\doublemorphism[\alpha][\beta]B$.
 		\end{quote}
 	\end{defi}
 	\begin{rem*}
@@ -708,7 +708,12 @@ A category is called \emph{small} if its class of objects is a set.
     \begin{rem*}
     	\begin{alphanumerate}
     		\item The image $\Yy(M\morphism[\mu]N)$ of $\mu\in\Hom_\Aa(M,N)$ under the Yoneda map $\Yy$ maps $N\morphism[\xi]X$ to $M\morphism[\mu]N\morphism[\xi]X$.
-    		\item  We say that a functor $\Aa\morphism[F] \cat{Set}$ is \emph{representable} if there is a functor-isomorphism $F\simeq \Cov_M$, in other words $F(X) \simeq \Hom_\Aa(M,X)$. The Yoneda-Lemma shows that $M$ is unique up to unique isomorphism. For instance, $LX$ exists iff the covariant functor $\Bb\morphism\cat{Set}$, $Y \mapsto \Hom_\Aa(X, RY)$ is representable.
+    		\item  We say that a functor $\Aa\morphism[F] \cat{Set}$ is \emph{representable} if there is a functor-isomorphism $F\simeq \Cov_M$, in other words $F(X) \simeq \Hom_\Aa(M,X)$. The Yoneda-Lemma shows that $M$ is unique up to unique isomorphism. For instance, $LX$ exists iff the covariant functor 
+    		\begin{align*}
+    			\Hom_\Aa(X,R(-))\colon\Bb&\morphism\cat{Set}\\
+    			Y &\longmapsto \Hom_\Aa(X, RY)
+    		\end{align*}
+    		is representable.
     	\end{alphanumerate}
     \end{rem*}
 	\begin{defi}\lbl{defi:contravariantFunctor}
@@ -730,18 +735,23 @@ A category is called \emph{small} if its class of objects is a set.
         \begin{align*}
             \Hom_\Aa(M,N) \morphism[\Yy] \Hom_{[\Aa^\op,\cat{Set}]}(\Con_M,\Con_N)
         \end{align*}
-        is bijective, where $[\Aa^\op],\cat{Set}]$ is the category of functors from $\Aa^\op$ to $\cat{Set}$.
+        is bijective, where $[\Aa^\op,\cat{Set}]$ is the category of functors from $\Aa^\op$ to $\cat{Set}$.
 	\end{lem}
 	\begin{rem*}
         \begin{alphanumerate}
 	       \item 
 	        The image $\Yy(M\morphism[\mu]N)$ of $\mu\in\Hom_\Aa(M,N)$ under the Yoneda map $\Yy$ maps $X\morphism[\xi]M\in\Con_M(X)$ to $X\morphism[\xi]M\morphism[\mu]N\in\Con_N(X)$.
           \item
-            We say that a contravariant functor $\Aa\morphism[F]\cat{Set}$ is \emph{representable} iff $F\simeq \Con_M$ for some $M\in\Ob\Aa$ in which case we say that $M$ represents $F$. In the above definition, $RY$ exists iff $\Aa^\op\morphism\cat{Set}$, $X\mapsto \Hom_\Bb(LX,Y)$ is representable.
+            We say that a contravariant functor $\Aa\morphism[F]\cat{Set}$ is \emph{representable} iff $F\simeq \Con_M$ for some $M\in\Ob\Aa$ in which case we say that $M$ represents $F$. In the above Definition~\reff{def:adjointFunctors}, $RY$ exists iff 
+            \begin{align*}
+            	\Hom_\Bb(L(-), Y)\colon\Aa^\op&\morphism\cat{Set}\\
+            	X&\mapsto \Hom_\Bb(LX,Y)
+            \end{align*}
+            is representable.
           \item 
-            Many important constructions in algebraic topology (classifying spaces) and algebraic geometry (Module space, Picard/Hilbert schemes) amount to representing certain functors.
+            Many important constructions in algebraic topology (classifying spaces) and algebraic geometry (Moduli space, Picard/Hilbert schemes) amount to representing certain functors.
           \item 
-            $\cat{PreShv}(\Bb) \morphism[L=\_^\sh] \cat{Shv}(X)$ and $\cat{Shv} (X) \morphism[R=\_|_\Bb] \cat{PreShv}(\Bb)$ is a pair of adjoint functors.
+            $L\colon\cat{PreShv}(\Bb) \morphism[(-)^\sh] \cat{Shv}(X)$ and $R\colon\cat{Shv} (X) \morphism[(-)|_\Bb] \cat{PreShv}(\Bb)$ is a pair of adjoint functors.
         \end{alphanumerate}
 	\end{rem*}
 \printbibliography

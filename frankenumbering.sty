@@ -131,7 +131,7 @@
 
 \newcommand{\reff}[1]{%
 	\edef\pretemp{\getrefnumber{#1}}%this is an
-	\StrRight{\pretemp}{1}[\dummy]%incredibly nasty
+	\StrLeft{\pretemp}{1}[\dummy]%incredibly nasty (even more)
 	\IfInteger{\dummy}{\def\strangetoken{f}}{\def\strangetoken{t}}%
 	\IfSubStr{ABCDEFGHIJKLMNOPQRSTUVWXYZ}{\dummy}{\def\strangetoken{f}}{}%
 	\IfStrEq{\strangetoken}{f}{\def\temp{\pretemp}}{\def\temp{\detokenize\pretemp}}%kinda
