@@ -332,7 +332,7 @@ Applying Proposition~\reff{prop:NAK} to $M/N$, we obtain the following corollary
 \begin{proof}
     If $\mu_1,\ldots,\mu_n$ generate the ideal $\mm$, then their images $\ov{\mu}_1,\ldots,\ov{\mu}_n$ generate $\mm/\mm^2$ as a $k$-vector space, proving finite dimensionality. 
     
-    Conversely, let $\mu_1,\ldots,\mu_n\in\mm$ such that their images $\ov{\mu}_1,\ldots,\ov{\mu}_n$ generate $\mm/\mm^2$ as a $k$-vector space. Then $\mm \subseteq \mu_1R+\ldots+\mu_nR+\mm^2$ hence $\mm = \mu_1R+\ldots+\mu_nR$ by Corollary~\reff{cor:NAK} applied to $M = \mm$, $N = \mu_1R+\ldots+\mu_nR$. By Theorem~\reff{thm:krullIdeal}, $\hoehe(\mm) \leq n$. Thus,
+    Conversely, let $\mu_1,\ldots,\mu_n\in\mm$ such that their images $\ov{\mu}_1,\ldots,\ov{\mu}_n$ form a basis of $\mm/\mm^2$ as a $k$-vector space. Then $\mm \subseteq \mu_1R+\ldots+\mu_nR+\mm^2$ hence $\mm = \mu_1R+\ldots+\mu_nR$ by Corollary~\reff{cor:NAK} applied to $M = \mm$, $N = \mu_1R+\ldots+\mu_nR$. By Theorem~\reff{thm:krullIdeal}, $\hoehe(\mm) \leq n$. Thus,
     \begin{align*}
     	\dim R = \hoehe(\mm) \leq n = \dim_k \mm/\mm^2\;,
     \end{align*}
@@ -405,25 +405,13 @@ Applying Proposition~\reff{prop:NAK} to $M/N$, we obtain the following corollary
 \begin{center}
 	\begin{minipage}{0.42\textwidth}
 		\centering
-		\begin{tikzpicture}
-			\draw[->, line width=1] (-2.25,0) -- (2.25, 0) node[below] {$X$};
-			\draw[->, line width=1] (0,-2.25) -- (0,2.25) node[right] {$Y$};
-			\draw[domain=0:1.59,variable=\x] plot[quick hobby] (\x, {\x *sqrt(\x)});
-			\draw[domain=0:1.59,variable=\x] plot[quick hobby] (\x, {-\x *sqrt(\x)});
-			\fill (0,0) circle (3pt);
-		\end{tikzpicture}
+		\includegraphics{Curve1.pdf}
 		
 		$Y^2=X^3$
 	\end{minipage}
 	\begin{minipage}{0.42\textwidth}
 		\centering
-		\begin{tikzpicture}
-		\draw[->, line width=1] (-2.25,0) -- (2.25, 0) node[below] {$X$};
-		\draw[->, line width=1] (0,-2.25) -- (0,2.25) node[right] {$Y$};
-		\draw[domain=-1.25:1.25,variable=\x] plot[quick hobby] (\x, {\x *sqrt(\x*\x +1)});
-		\draw[domain=-1.25:1.25,variable=\x] plot[quick hobby] (\x, {-\x *sqrt(\x*\x +1)});
-		\fill (0,0) circle (3pt);
-		\end{tikzpicture}
+		\includegraphics{Curve2.pdf}
 		
 		$Y^2=X^4+X^2$
 	\end{minipage}
@@ -458,44 +446,53 @@ Applying Proposition~\reff{prop:NAK} to $M/N$, we obtain the following corollary
     are irreducible closed subsets of codimension 1 and (thus) dimension 2. But $Y\cap Z = \{0\}$ has codimension 3 in $X$.
 \end{rem}
 \begin{proof}[Proof of Theorem \reff{thm:codimIneqRegular}]
-    We will show the following: If $f_1,\ldots, f_d\in\Oo_{X,x}$ generate $\mm_{X,x}$, then there exists an affine open neighbourhood $U$ of $x$ in $X$ and preimages of the $f_i$ in $\Oo(U)$ (which we will also call $f_i$) such that 
+	First of all, passing to the respective closures (which doesn't change codimension, e.g. by the \emph{locality of codimension}, cf. Remark~\reff{rem:proofPreparations}\itememph{a}), we may assume that $X,Y,Z$ are affine.
+	
+    \emph{Step 1.} As in the proof of Theorem~\reff{thm:codimIneq}, let $\Delta$ be the diagonal in $k^{2n}$. We will show the following: If $f_1,\ldots, f_d\in\Oo_{X,x}$ generate the maximal ideal $\mm_{X,x}$ of $\Oo_{X,x}$, then there exists an affine open neighbourhood $U$ of $x$ in $X$ and preimages of the $f_i$ in $\Oo(U)$ (which we will also call $f_i$) such that 
+    \begin{align}\lbl{eq:conditionOnUxU}
+        \Delta \cap (U\times U) = \left\{(y,z)\in U\times U \st f_i(y) = f_i(z) \text{ for } 1\leq i \leq d\right\}= V(g_1,\ldots,g_d)\tag{$*$}
+    \end{align}
+    (where $g_i(y,z)=f_i(y)-f_i(z)$), possibly after shrinking $U$. As $U$ is required to be \emph{affine open}, i.e. $U=X\setminus V(h)$ for some $h\in\Oo(X)$, we obtain that $Y\cap U=Y\setminus V(h|_Y)\eqqcolon Y'$ and $Z\cap U=Z\setminus V(h|_Z)\eqqcolon Z'$ are affine open as well, hence isomorphic to affine varieties (\cite[Proposition~2.2.4]{alg1}) and it makes sense to talk about vanishing sets of regular functions on $Y'$ and $Z'$ -- which we will do now. 
+    
+    Consider $\gamma_1,\ldots, \gamma_d\in\Oo(Y'\times Z')$, $\gamma_i(y,z)=f_i|_{Y'}(y)-f_i|_{Z'}(z)$ (this essentially restricts $g_1,\ldots, g_d$ to $Y'\times Z'$). We identify $Y\cap Z$ with $\Delta\cap (Y\times Z)$ and thus $C$ with its respective image, as we did in the proof of Theorem~\reff{thm:codimIneq}. Hence $C$ is an irreducible component of $\Delta\cap (Y\times Z)$. Then $C'=C\cap (U\times U)$ is an irreducible component of $\Delta\cap (Y'\times Z')=V(\gamma_1,\ldots,\gamma_d)$ (here we used \eqreff{eq:conditionOnUxU}) and Theorem~\reff{thm:krullIdeal} together with \emph{locality of codimension} yields
     \begin{align*}
-        \Delta \cap (U\times U) &= \left\{(x,y)\in U\times U \st f_i(x) = f_i(y) \text{ for } 1\leq i \leq d\right\}\\
-        &= V((f_1(x)-f_1(y)),\ldots, (f_d(x)-f_d(y)))
+    	\codim(C,Y\times Z)=\codim(C',Y'\times Z')\leqslant d\;.
     \end{align*}
-    (possibly after shrinking $U$), then we obtain $\codim(C, U\times U) \leq \codim(Y,X) +\codim(Z,X)+d$ by Corollary \reff{cor:capV(f)codimension} and Proposition \reff{prop:codimensionProduct} where we use the identification of $Y\cap Z$ with $\Delta \cap (Y\times Z)$ as in the proof of Theorem \reff{thm:codimIneq}. Hence, 
+    We silently went over an important detail: $U\times U\subseteq X\times X$ is open again. This is easily seen as $(X\setminus U)\times X$ and $X\times (X\setminus U)$ are closed (using e.g. the argument from the proof of Proposition~\reff{prop:codimensionProduct}), but don't be fooled: this \emph{does not} follow from \emph{product topology stuff}; the Zariski topology on $k^{2n}$ and $X\times X$ is \emph{not} the product of the Zariski topologies on $k^n$ or $X$. 
+    
+    Enough of that. From Proposition~\reff{prop:codimensionProduct} we get
+    \begin{align*}
+    	\codim(Y\times Z,X\times X)&=\dim(X\times X)-\dim(Y\times Z)=(\dim X-\dim Y)+(\dim X-\dim Z)\\
+    	&=\codim(Y,X)+\codim(Z,X)
+    \end{align*}
+    and hence, 
     \begin{align*}
         \codim(C,X)& = \dim(X) -\dim(C)\\
         &= \dim (X) - (\dim(X)+\dim(X) -\codim(C,X\times X))\\
-        &= \codim(C\cap(U\times U),U\times U) -\dim X\\
+        &= \codim(C,X\times X) -\dim X\\
+        &=\codim(C,Y\times Z)+\codim(Y\times Z,X\times X)-\dim X\\
         &\leq \codim(Y,X) +\codim(Z,X) +d-\dim(X) \\
         &=\codim(Y,X) +\codim(Z,X),
     \end{align*}
-    provided that $d=\dim(X)$, which is possible for an appropriate choice of the $f_i$ when $X$ is regular at $x$.
+    provided that $d=\dim(X)$, which is possible for an appropriate choice of the $f_i$ when $X$ is regular at $x$ (by \NAK, $\mm_{X,x}$ can be generated by $\dim X$ elements, cf. the proof of Proposition~\reff{prop:dimLeqGeneratorsMaximal} or \cite[Concluding remarks, Lemma~1\itememph{c}]{alg1}).
     
-    Let $R= k[X_1,\ldots, X_m]$ and $I\subseteq R$ (respectively $\mm\subseteq R$) be the prime (respectively maximal) ideal defining $k^\ell \times \{0\}^{m-\ell}$ (respectively $\{0\}^m$) then $\mm^2 \cap I \subseteq \mm\cdot I$. This can be shown as follows. We have 
-    \begin{align*}
-        \mm^2 = \left\{\sum_{\alpha\in M } p_\alpha X^\alpha \st p_\alpha\in k, \text{ only finitely many } p_\alpha\neq 0\right\},
-    \end{align*}
-    where $M = \left\{(\alpha_1,\ldots, \alpha_m) \st |\alpha| \sum_{i=1}^m \alpha_i \geq 2\right\}$ and 
-    \begin{align*}
-        I = \left\{\sum_{\alpha\in N} p_\alpha X^\alpha \st p_\alpha\in k, \text{ only finitely many } p_\alpha\neq 0\right\},
-    \end{align*}
-    with $N = \left\{(\alpha_1,\ldots, \alpha_m) \st \exists i: \ell< i \leq m: \alpha_i \leq 1\right\}$. When $f\in \mm^2\cap I$ it follows that $f= \sum_{\alpha\in \IN^m} p_\alpha X^\alpha$ where $p_\alpha = 0$ unless $\alpha \in M\cap N$, i.e. there is an $i$ with $\ell < i\leq m$ and $p_{\alpha_i}>0$. Let $\beta = (\delta_{j,i})_{j=1}^m $ then $\gamma = \alpha-\beta\in \IN^m$ and $|\gamma| \geq |\alpha|-|\beta| = |\alpha| -1 > 0$, such that $X^\gamma\in\mm$ and $X^\beta\in I$.
+    \emph{Step 2.} Let $R= k[X_1,\ldots, X_m]$ and $\pp,\mm\subseteq R$ be the prime ideal defining $k^\ell \times \{0\}^{m-\ell}$ respectively the maximal ideal defining $\{0\}^m$. Then $\mm^2 \cap \pp \subseteq \mm\cdot\pp$. This can be shown as follows. Since $\mm$ is generated by $X_1,\ldots,X_m$, $\mm^2$ is generated by the $X_iX_j$ (with $i,j$ not necessarily distinct). Similarly, $\pp$ is the ideal generated by $X_{\ell+1},\ldots, X_m$. If $f\in R$ lies in both $\mm^2$ and $\pp$, each monomial of $f$ must be divisible by some $X_iX_j$ as well as by some $X_{\ell+r}$. Then this monomial is divisible by $X_iX_{\ell+r}$ or $X_jX_{\ell+r}$, hence contained in $\mm\cdot\pp$. Now $f\in\mm\cdot\pp$ because each monomial lies in that ideal.
+       
+   \emph{Step 3.} Let $\xi\in k^m$, $L\subseteq k^m$ an affine subspace containing $\xi$. Let $\pp$ be the prime ideal defining $L$ and $\mm$ the maximal ideal defining $\{\xi\}$. Then $\pp\cap \mm^2 \subseteq I\cdot \mm$. This can be reduced to the previous step by an affine automorphism of $k^m$.
     
-    Let $\xi\in k^m$, $L\subseteq k^m$ an affine subspace containing $\xi$. Let $I$ (respectively $\mm$) be the prime (respectively maximal) ideal defining $L$ (respectively $\{\xi\}$). Then $I\cap \mm^2 \subseteq I\cdot \mm$. This can be reduced to the previous step by an affine automorphism of $k^m$.
-    
-    Let $x\in k^n$, $\mm_x \subseteq S = k[X_1,\ldots, X_n]$ the maximal ideal defined by $x$, $f_1,\ldots, f_n\in S$ such that their images generate $\mm_x/(\mm_x^2)$. Then there is $h\in R = k[X_1,\ldots, X_n,Y_1,\ldots Y_n]$ sucht that $h(x,x) \neq 0$ and $h\cdot I_\Delta \subseteq \langle g_1,\ldots, g_n\rangle_S$ where $g_i(x,y) = f_i(x)-f_i(y)$ and $I_\Delta\subseteq S$ is the prime ideal of functions vanishing on $\Delta = \left\{(x,x)\st x\in k^n\right\}$. To see this, let $\xi = (x,x)$ and $J = I_\Delta \cdot S_{\mm_\xi}$. Let $\nn = \mm_xi\cdot S_{\mm_\xi}$ denote the maximal ideal of $S_{\mm_xi}$. From the previous step it follows that 
+    \emph{Step 4.} Let $x\in k^n$, $\mm_x \subseteq S= k[X_1,\ldots, X_n]$ the maximal ideal defined by $x$, $f_1,\ldots, f_n\in S$ such that their images generate $\mm_x/\mm_x^2$. Then there is $h\in R = k[X_1,\ldots, X_n,Y_1,\ldots Y_n]$ such that $h(x,x) \neq 0$ and $h\cdot \pp_\Delta \subseteq (g_1,\ldots, g_n)_R$ where $g_i(y,z) = f_i(y)-f_i(z)$ and $\pp_\Delta\subseteq R$ is the prime ideal of functions vanishing on $\Delta = \left\{(y,y)\st y\in k^n\right\}$. To see this, let $\xi = (x,x)$ and $\qq = \pp_\Delta \cdot R_{\mm_\xi}$, where $\mm_\xi\subseteq R$ denotes the maximal ideal of functions vanishing on $\xi$. Let $\nn = \mm_\xi\cdot R_{\mm_\xi}$ denote the maximal ideal of the local ring $R_{\mm_\xi}$. From the previous step it follows that 
     \begin{align}\lbl{eq:thm15}
-        \nn^2\cap J \subseteq J\cdot \mm .
+        \nn^2\cap \qq\subseteq \qq\cdot \nn .
     \end{align}
-    Let $\gamma \subseteq J$ be the ideal generated by the images of the $g_i$. If $f\in J$ then there are $(c_i)_{i=1}^n$ such that $f-\sum_{i=1}^n c_i g_i\in \nn^2$. We have $\phi = f-\sum_{i=1}^n c_ig_i\in \nn^2$ iff $(\nabla g)(\xi) = 0$. Since $f|_\Delta = 0$, $\frac{\partial f}{\partial x_i} + \frac{\partial f}{\partial y_i} = 0$ at $\xi\in \Delta$. Thus, it is sufficient to have 
+    Let $\gg\subseteq \qq$ be the ideal generated by the images of the $g_i$. Our long-term goal is to show $\gg=\pp$. Let $f\in \pp_\Delta$. We claim that there are $c_1,\ldots,c_n$ such that $g=f-\sum_{i=1}^n c_i g_i$ is in $\mm_\xi^2$. Indeed, by the isomorphism \eqreff{eq:modToNabla} this is equivalent to $\nabla g(\xi)=0$. Since $f|_\Delta = 0$, we have $\frac{\partial f}{\partial X_i}(\xi) + \frac{\partial f}{\partial Y_i}(\xi) = 0$ at $\xi\in \Delta$ and the same for the $g_i$. Thus, it is sufficient to have 
     \begin{align*}
-        \frac{\partial f}{\partial x_i}(\xi) = \sum_{j=1}^n c_j \frac{\partial g_j}{\partial x_i}(\xi) = \sum_{j=1}^n c_j \frac{\partial f_j}{\partial x_i}(x)
+        \frac{\partial f}{\partial X_i}(\xi) = \sum_{j=1}^n c_j \frac{\partial g_j}{\partial X_i}(\xi) = \sum_{j=1}^n c_j \frac{\partial f_j}{\partial X_i}(x)\quad\text{for all }i=1,\ldots,n
     \end{align*}
-    which is possible since the $f_i$ generate $\mm_x/\mm_x^2$. It follows that $J \subseteq \gamma + (J\cap \nn^2) = \gamma + J\cdot \nn$. By Corollary \reff{cor:NAK}, we have $J= \gamma$. Now let $(\phi_i)_{i=1}^N$ generate $I_\Delta$. Since $J = I\cdot S_{\mm_\xi}$ equals $\gamma = \langle g_1, \ldots, g_n\rangle_{S_{\mm_\xi}}$, there are $h\not\in \mm_xi$ and $\rho_{i,j}$ such that $h\cdot \phi_i = \sum_{j=1}^n \rho_{i,j}g_j$, showing our claim.
+    (the second equality is tautological), which is possible since the $f_i$ generate $\mm_x/\mm_x^2$, hence the $\nabla f_i(x)$ generate $k^n$ by the isomorphism \eqreff{eq:modToNabla}. It follows that $\pp_\Delta\subseteq (g_1,\ldots,g_n)_R + (\pp_\Delta\cap \mm_\xi^2) = (g_1,\ldots,g_n) + \pp_\Delta\cdot \mm_\xi$ (the second equality follows from Step 3). This is still true in the localization at $\mm_\xi$, i.e. $\qq\subseteq \gg +\qq\cdot\nn$. By Corollary \reff{cor:NAK}, we have $\qq= \gg$. 
     
-    Let $f_1,\ldots, f_d$ be elements of $S= k[X_1,\ldots, X_n]$ such that their images in $\Oo_{X,x}$ form a base of $\mm_{X,x}/\mm_{X,x}^2$ ($\mm_{X,x} \coloneqq \rad \Oo_{X,x}$). Let $f_{d+1},\ldots, f_n$ be chosen in such a way that the images of $f_1,\ldots, f_n$ form a base of $\mm_x/\mm_x^2$. If $h$ is as in the previous step, $U= X\setminus V(h)$ has the required property.
+    Now let $\phi_1,\ldots,\phi_N$ generate $\pp_\Delta$. Since $\qq =\pp_\Delta\cdot R_{\mm_\xi}$ is generated by the images of the $g_i$, there are $h_i\not\in \mm_\xi$ and such that $h_i\cdot \phi_i \in(g_1,\ldots,g_n)_R$. Then $h=h_1\cdots h_N$ fulfills $h(\xi)=h(x,x)\not=0$ and $h\cdot\pp_\Delta\subseteq(g_1,\ldots,g_n)_R$.
+    
+    \emph{Step 5.} Let $f_1,\ldots, f_d$ be elements of $S= k[X_1,\ldots, X_n]$ such that their images in $\Oo_{X,x}$ form a base of $\mm_{X,x}/\mm_{X,x}^2$ (again, $\mm_{X,x}$ is the maximal ideal of the local ring $\Oo_{X,x}$, which Professor Franke would like to express as $\mm_{X,x}=\rad \Oo_{X,x}$). Let $f_{d+1},\ldots, f_n$ be chosen in such a way that the images of $f_1,\ldots, f_n$ form a base of $\mm_x/\mm_x^2$. Why is this possible? We have $\mm_{X,x}/\mm_{X,x}^2=\nn/\nn^2$, $\nn\subseteq\Oo(X)$ denoting the maximal ideal of $\Oo(X)$ of functions vanishing at $x$. Then $\nn/\nn^2$ is a quotient of $\mm_x/\mm_x^2$ (as we saw in the proof of Proposition~\reff{prop:Jacobian}). If $h$ is as in the previous step, $U= X\setminus V(h)$ has the required property.
 \end{proof}
 \begin{rem}[on \eqreff{eq:thm15}]
     Let $R$ be an arbitrary ring, $S\subseteq R$ a multiplicative subset, $I$ and $J$ ideals in $R$. Then 
@@ -507,36 +504,29 @@ Applying Proposition~\reff{prop:NAK} to $M/N$, we obtain the following corollary
     \end{align*}
 \end{rem}
 \begin{proof}
-    Since $(I\cap J) \sqsubseteq I\cdot R_S$ and $(I\cap J) \sqsubseteq J\cdot R_S$, $(I\cap J) \cdot R_S\subseteq I\cdot R_S$ and $(I\cap J)\cdot R_S \subseteq I\cdot R_S$, proving $(I\cap J) \cdot R_S \subseteq I\cdot R_S \cap J\cdot R_S$. Conversely, let $\rho \in (I \cdot R_S)\cap (J\cdot R_S)$. Since $\rho\in I\cdot R_S$, $\rho = \frac{i}{s}$ where $i\in I$ and $s\in S$. Since $\rho\in J\cdot R_S$, $\rho = \frac{j}{t}$ where $j\in J$ and $t\in S$. Since $\frac{i}{s}=\frac{j}{t}$ in $R_S$, there is $\sigma \in S$ such that $\sigma \cdot i\cdot t = \sigma \cdot j \cdot s$. Then $\rho = \frac{\sigma \cdot i\cdot t}{\sigma \cdot s\cdot t} = \frac{\sigma \cdot j\cdot s}{\sigma \cdot s\cdot t}\in (I\cap J)\cdot R_S$.
+    We will only prove the second equality, they are all quite similar. The image of $I\cap J$ is contained in both $I\cdot R_S$ and $J\cdot R_S$, hence so is $(I\cap J)\cdot R_S$, proving $(I\cap J) \cdot R_S \subseteq I\cdot R_S \cap J\cdot R_S$. Conversely, let $\rho \in (I \cdot R_S)\cap (J\cdot R_S)$. Since $\rho\in I\cdot R_S$, $\rho = \frac{i}{s}$ where $i\in I$ and $s\in S$. Since $\rho\in J\cdot R_S$, $\rho = \frac{j}{t}$ where $j\in J$ and $t\in S$. Since $\frac{i}{s}=\frac{j}{t}$ in $R_S$, there is $\sigma \in S$ such that $\sigma i t = \sigma  j  s$. Then $\rho = \frac{\sigma  i t}{\sigma  s t} = \frac{\sigma  j s}{\sigma  s t}\in (I\cap J)\cdot R_S$.
 \end{proof}
 
 
 
 \section{The module of Kähler differentials}
 \begin{defi}[Derivations]\lbl{def:derivation}
-    Let $A$ be a ring, $M$ an $A$-module, $d: A\to M$  a homomorphism of the additive group. We say that $d$ is a \defemph{derivation} of $A$ with values in $M$ if the \emph{Leibniz rule} $d(a\cdot b) = b\cdot d(a) + a\cdot d(b)$ holds.
-    
-    If $A$ is an $R$-algebra and $A\morphism[d] M$ a derivation of $A$, we call $d$ \emph{$R$-linear} if the following equivalence conditions hold:
+    Let $A$ be a ring, $M$ an $A$-module, $d\colon A\to M$  a homomorphism of the additive group. We say that $d$ is a \defemph{derivation} of $A$ with values in $M$ if it satisfies the \emph{Leibniz rule} 
+    \begin{align*}
+    	 d(a\cdot b) = b\cdot d(a) + a\cdot d(b)\;.
+    \end{align*}
+     If $A$ is an $R$-algebra and $A\morphism[d] M$ a derivation of $A$, we call $d$ \emph{$R$-linear} if the following equivalence conditions hold:
     \begin{alphanumerate}
         \item 
             $d(r) = 0$ for all $r\in R$.
         \item
             $d(r\cdot a) = r\cdot d(a)$ for all $r\in R, a\in A$.
     \end{alphanumerate}
-    Let $\Der(A,M)$ denote the set of derivations with values in $M$. This is an $A$-module by $(a\cdot d)(b) = a\cdot d(b)$.
-    
+    Let $\Der(A,M)$ denote the set of derivations with values in $M$. This can be given a canonical $A$-module structure via $(a\cdot d)(b) = a\cdot d(b)$.
 \end{defi}
-\begin{rem*}
-    Let $d\in \Der(A,M)$ 
-    \begin{alphanumerate}
-        \item 
-            $d(1) =0$ as $d(1) = d(1\cdot 1) = d(1) + d(1)$.
-        \item
-            Assuming $d(r\cdot a) = r\cdot d(a)$ we obtain $d(r) = d(r\cdot 1) = 0$.
-        \item 
-            Assuming $d(r) = 0$ we obtain $d(a\cdot r) = a\cdot d(r) + r\cdot d(a) = r\cdot d(a)$.
-    \end{alphanumerate}
-\end{rem*}
+\begin{proof}
+    Let $d\in \Der(A,M)$. Note that we always have $d(1)=0$ as $d(1)=d(1\cdot1)=d(1)+d(1)$ by the Leibniz rule. Now, assuming $d(r\cdot a)=r\cdot d(a)$ for all $r\in R, a\in A$, we obtain $d(r)=d(r\cdot1)=0$. Conversely, if $d(r)=0$ for all $r\in R$, then $d(a\cdot r) = a\cdot d(r) + r\cdot d(a) = r\cdot d(a)$ by the Leibniz rule. Hence, \itememph{a} and \itememph{b} are indeed equivalent.
+\end{proof}
 
 
 
