@@ -376,7 +376,7 @@ of presheaves on $\Bb$.
 	\end{align*}
 	It is easy to see that this is well-defined and that it is a left inverse to the map $\Gg_x\morphism[(\Gamma_{\Gg})_x] \Gg^\sh_x$ studied. Therefore, $(\Gamma_\Gg)_x$  is also injective.
 	
-	Let's prove \itememph{b}. The assertion about injectivity is trivial. Let us assume that $\Gg_x\morphism[\phi_x]\Hh_x$ is an isomorphism for arbitrary $x\in X$ and let $h=(h_x)_{x\in U}\in \Hh^\sh(U)$. We put $g=(g_x)_{x\in U} \in \prod_{x\in U}\Gg_x$ where $g_x = \phi^{-1} (h_x)$. If $g\in \Gg^\sh(U)$ then it is obvious from the definitions that $\phi_U^\sh(g) = h$, proving the bijectivity of $\Gg^\sh(U) \morphism[\phi_U^\sh] \Hh^\sh(U)$.
+	Let's prove \itememph{b}. The assertion about injectivity is trivial. Let us assume that $\Gg_x\morphism[\phi_x]\Hh_x$ is an isomorphism for arbitrary $x\in X$ and let $h=(h_x)_{x\in U}\in \Hh^\sh(U)$. We put $g=(g_x)_{x\in U} \in \prod_{x\in U}\Gg_x$ where $g_x = \phi_x^{-1} (h_x)$. If $g\in \Gg^\sh(U)$ then it is obvious from the definitions that $\phi_U^\sh(g) = h$, proving the bijectivity of $\Gg^\sh(U) \morphism[\phi_U^\sh] \Hh^\sh(U)$.
 	
 	To verify the coherence condition for $g$, fix $x\in U$. As $h$ satisfies the coherence condition there are an open neighbourhood $V\in\Bb$ of $x$ and $\eta\in\Hh(V)$ such that $h_y$ equals the image of $\eta$ in $\Hh_y$ for all $y\in U\cap V$. As the image of $\eta$ in $\Hh_x$ is in the image of $\Gg_x\morphism[\phi_x]\Hh_x$, there are a neighbourhood $W\in\Bb$ of $x$ and $\gamma\in\Gg(W)$ such that $\phi_x$ maps the image $(W,\gamma)/_\sim$ of $\gamma$ in $\Gg_x$ to the image $(V,\eta)/_\sim$ of $\eta$ in $\Hh_x$. By definition of stalks and $\phi_x$, this means that there is an open neighbourhood $\Omega\in\Bb$ of $x$ such that $\Omega\subseteq V\cap W$ and $ \phi_W(\gamma)|_\Omega = \eta|_\Omega$. Replacing $V$ by $\Omega$ and $\gamma$ and $\eta$ by their restrictions to $V$ (which equals $\Omega$ now), we may assume that there is $\gamma\in\Gg(V)$ such that $\phi(\gamma) = \eta$. For $y\in V$, \begin{align*}
 		\phi_y(g_y) = h_y=(V,\eta)/_\sim = \big(V,\phi(\gamma)\big)/_\sim = \phi_y\big((V,\gamma)/_\sim\big)\;.
@@ -441,19 +441,19 @@ of presheaves on $\Bb$.
     	
     	Proving the \emph{only if} part of \itememph{e} is quite trivial since $\Rr(U) \morphism \Rr_x$ is a ring homomorphism, thus maps units to units. Conversely, let $\rho_x$ be a unit for every $x\in U$. We consider the morphism $\Rr|_U \morphism[\rho\cdot]\Rr|_U$ (of sheaves of \emph{sets}, multipliying by $\rho$ is no ring homomorphism!). On stalks it defines the map $\Rr_x \morphism[\rho_x\cdot] \Rr_x$, which is bijective. By \itememph{b} it is an isomorphism, hence there is $\sigma \in \Rr(U)$ such that $\rho \sigma = 1$ and $\rho\in \Rr(U)^\times$.
     \end{proof}
-    \begin{fact}
+    \begin{fact}\lbl{fact:smallerBaseSheafification}
         If $\Ff$ is a presheaf on $\Bb$ and $\snake{\Bb}\subseteq \Bb$ is another topology base, then $\big(\Ff|_{\snake \Bb}\big)^\sh\simeq \Ff^\sh$.
     \end{fact}
     \begin{proof}
     	 This is Proposition~\reff{prop:sheafificationMorphisms}\itememph{c} and we proved it there. Ok, actually \hyperref[thisIsNotAProofCozWeAreLazy]{this} doesn't count as a proof, so let's do it now.
     	
-        By Fact \reff{fact:smallerBaseSheaf}, $\big(\Ff|_{\snake \Bb}\big)_x \isomorphism \Ff_x$ is an isomorphism for all $x\in X$. It is clear that 
+        By Fact~\reff{fact:smallerBaseSheaf}, $\big(\Ff|_{\snake \Bb}\big)_x \isomorphism \Ff_x$ is an isomorphism for all $x\in X$. It is clear that 
         \begin{align*}
         	f=(f_x)\in \prod_{x\in U} \Ff_x \simeq \prod_{x\in U} (\Ff|_{\snake\Bb})_x
         \end{align*}
         satisfying the coherence condition for $(\Ff|_{\snake \Bb})^\sh$ also satisfies it for $\Ff^\sh$. Conversely, let $f$ satisfy the coherence condition for $\Ff^\sh$. For every $x\in U$, this means that there is $V\in \Bb$ and $\phi\in \Ff(V)$ such that $\phi_y = f_y$ for $y\in U\cap V$. As $\snake\Bb$ is a topology base there is $W\in \snake \Bb$ such that $x\in W\subseteq V$. Let $\snake\phi = \phi|_W$, then $\snake\phi_y = f_y$ when $y\in U\cap W$. Hence $f\in (\Ff|_{\snake\Bb})^\sh(U)$.
     \end{proof}
-    \begin{prop}\lbl{fact:smallerBaseSheafification}
+    \begin{prop}\lbl{prop:sheafificationAdjointFunctor}
         The following holds for sheaves of sets, rings and (abelian) groups. Let $\Bb$ be a topology base and $\Ff$ a presheaf on $\Bb$. Any morphism $\Ff\morphism[\alpha] \Gg|_\Bb$, where $\Gg$ is a sheaf on $X$, has the form 
         \begin{diagram}
         	\node (F) at (0,1.25) {$\Ff$};
@@ -496,42 +496,82 @@ of presheaves on $\Bb$.
         By the usual Yoneda-type argument, it is clear that the above universal property characterizes $\Ff^\sh$ uniquely up to unique isomorphism. For other target categories the above universal property should be taken as the definition of $\Ff^\sh$. It may or may not exist, but is unique if it does.
     \end{rem}
     \begin{rem}
-        In other words, $L=\_^\sh\colon \cat{PreShv}(\Bb) \to \cat{Shv}(X)$ and $R\colon \cat{Shv}(X) \to \cat{PreShv}(\Bb)$, $R(F)\coloneqq F|_\Bb$ is an adjoint pair of functors.
+        Proposition~\reff{prop:sheafificationAdjointFunctor} essentially says, that, for $\Ff$ a presheaf and $\Gg$ a sheaf of sets, (commutative) rings or (abelian) groups, we have a bijection
+        \begin{align*}
+        	\Hom_{\cat{Shv}(X)}(\Ff^\sh,\Gg)\simeq\Hom_{\cat{PreShv}(\Bb)}(\Ff,\Gg|_\Bb)\;.
+        \end{align*}
+        In other words, $L=(-)^\sh\colon \cat{PreShv}(\Bb) \to \cat{Shv}(X)$ and $R=(-)|_\Bb\colon \cat{Shv}(X) \to \cat{PreShv}(\Bb)$ is an adjoint pair of functors.
     \end{rem}
     \begin{defi}[direct image] \lbl{def:directImage}
         Let $X\morphism[f] Y$ be a continous map and $\Gg$ a presheaf on $X$. By $f_*\Gg$ we denote the presheaf on $Y$ defined by 
         \begin{align*}
-            (f_*\Gg)(W) = \Gg(f^{-1}(W))
+            f_*\Gg(W) = \Gg(f^{-1}(W))
         \end{align*}
-        for open subsets $W\subseteq Y$, where $\_|_V$ in $f_*\Gg$ is defined as $\_|_{f^{-1}(V)}$ in $\Gg$. If $\Ff\morphism[\alpha] \Gg$ is a morphism of presheaves on $X$, we define $f_*\alpha\colon f_*\Ff\morphism f_*\Gg$ by $(f_*\Ff)(W) = \Ff(f^{-1}(W)) \morphism[\alpha] \Gg(f^{-1}(W)) = (f_*\Gg)(W)$
+        for open subsets $W\subseteq Y$, where the restriction $(-)|_V$ in $f_*\Gg$ is defined as $(-)|_{f^{-1}(V)}$ in $\Gg$. If $\Ff\morphism[\alpha] \Gg$ is a morphism of presheaves on $X$, we define $f_*\alpha\colon f_*\Ff\morphism f_*\Gg$ by 
+        \begin{align*}
+        	f_*\Ff(W) = \Ff(f^{-1}(W)) \morphism[\alpha] \Gg(f^{-1}(W)) = f_*\Gg(W)\;.
+        \end{align*}
     \end{defi}
     \begin{fact}
-        It is easy to see that the axioms of a presheaf hold $f_*\Ff$ that $f_*\alpha$ is indeed a morphism of presheaves, that $f_*$ is a functor and $g_*f_* = (gf)_*$. Also, $(\id_*)_*$ is the identity functor.
+        It is easy to see that the axioms of a presheaf hold for $f_*\Gg$ that $f_*\alpha$ is indeed a morphism of presheaves, that $f_*$ is a functor and $g_*f_* = (gf)_*$. Also, $\id_*$ is the identity functor.
     \end{fact}
     \begin{rem*}
-        If $\Bb_Y$ is a topology base for $Y$ and $\Bb_X\supseteq f^*(\Bb_Y) = \left\{f^{-1}(U) \st U\in\Bb\right\}$, then we have $\cat{PreShv}(\Bb_X) \morphism[f_*]\cat{PreShv}(\Bb_X)$ defined in the same way and with similar properties.
+        If $\Bb_Y$ is a topology base for $Y$ and $\Bb_X\supseteq f^{-1}(\Bb_Y) = \left\{f^{-1}(U) \st U\in\Bb\right\}$ (we possibly need to extend $f^{-1}(\Bb_Y)$ to obtain a topology base of $X$), then we have $\cat{PreShv}(\Bb_X) \morphism[f_*]\cat{PreShv}(\Bb_X)$ defined in the same way and with similar properties.
     \end{rem*}
     \begin{rem}
         Obviously we have a morphism
-        \begin{align}
-            f_x^*\colon (f_* \Ff)_{f(x)} \morphism[f] \Ff_x \lbl{eq:four}
+        \begin{align} \lbl{eq:four}
+	        \begin{split}
+		        f_x^*\colon (f_* \Ff)_{f(x)} &\morphism \Ff_x\\
+		        \left(
+		        \begin{array}{c}
+			        \text{image of }(W,\phi)\text{, where}\\
+			        \phi\in f_*\Ff(W)\text{, in }(f_*\Ff)_{f(x)}
+		        \end{array}\right)&\longmapsto\left(
+		        \begin{array}{c}
+			        \text{image of}\\
+			        \big(f^{-1}(W),\phi\big)\text{ in }\Ff_x
+		        \end{array}\right)
+	        \end{split}            
         \end{align}
         defined by mapping the image of $(W,\phi(f_*\Ff)(W))$ in $(f_* \Ff)(W)$ to the image of $(f^{-1}(W),\phi)$ in $\Ff_x$. This is a natural transformation, since
-        
-        DIAGRAMM
-        
+        \begin{diagram}
+        	\node (f*F) at (0,1.5) {$(f_*\Ff)_{f(x)}$};
+        	\node (Fx) at (0,0) {$\Ff_x$};
+        	\node (f*G) at (3,1.5) {$(f_*\Gg)_{f(x)}$};
+        	\node (Gx) at (3,0) {$\Gg_x$};
+        	\scriptsize
+        	\draw[->] (f*F) -- (Fx) node[pos=0.5, left] {$f_x^*$};
+        	\draw[->] (f*F) -- (f*G) node[pos=0.5, above] {$(f_*\alpha)_{f(x)}$};
+        	\draw[->] (f*G) -- (Gx) node[pos=0.5, right] {$f_x^*$};
+        	\draw[->] (Fx) -- (Gx) node[pos=0.5, above] {$\alpha_x$};
+        \end{diagram}
         commutes for any morphism $\Ff\morphism[\alpha] \Gg$ of presheaves. Also, the diagram
-        
-        DIAGRAMM
-        
+        \begin{diagram}
+        	\node (f*F) at (0,1.5) {$(g_*f_*\Ff)_{g(f(x))}$};
+        	\node (Fx) at (0,0) {$(f_*\Ff)_{f(x)}$};
+        	\node (f*G) at (3.5,1.5) {$\big((gf)_*\Ff\big)_{(gf)(x)}$};
+        	\node (Gx) at (3.5,0) {$\Ff_x$};
+        	\scriptsize
+        	\draw[transform canvas={yshift=1pt}] (f*F) -- (f*G);
+        	\draw[transform canvas={yshift=-1pt}] (f*F) -- (f*G);
+        	\draw[->] (f*F) -- (Fx) node[pos=0.5, left] {$g_{f(x)}^*$};
+        	\draw[->] (f*G) -- (Gx) node[pos=0.5, right] {$(gf)_x^*$};
+        	\draw[->] (Fx) -- (Gx) node[pos=0.5, above] {$f_x^*$};
+        \end{diagram}
         commutes. And $(f_*\Ff)_{f(x)} \morphism[f^*] \Ff_x$ equals $\id_{\Ff_x}$ when $f=\id_X$.
     \end{rem}
     \begin{rem*}[about $f^\flat/f^*$]
         If $X\morphism[f] Y$ is continuous and $\Gg$ a presheaf (of sets, (abelian) groups, (commutative) rings) on $Y$ one defines
         \begin{align*}
-            (f^\flat(\Gg))(U) = \colimit[W\supseteq f(U)] \Gg(W) .
+            f^\flat(\Gg)(U) = \colimit[W\supseteq f(U)] \Gg(W)=\left\{(W,\gamma)/_\sim\st
+            \begin{array}{c}
+	            W\subseteq Y\text{ open, }W\supseteq f(U)\text{, }\gamma\in \Gg(W)\\
+	            \text{and }(W,\gamma)\sim (V,\eta)\text{ iff there's an open set }\Omega\\
+	            \text{such that }f(U)\subseteq \Omega\subseteq V\cap W\text{ and }\gamma|_\Omega=\eta|_\Omega
+            \end{array}\right\}
         \end{align*}
-        Restriction to $U_1\subseteq U$ maps $(W,\gamma)/_\sim$ to $(W,\gamma)/_\approx$ where $\approx$ is the equivalence relation for the definition of $(f^\flat \Gg)(U_1)$. If turns out $\cat{PreShv}(Y)  \morphism[f^\flat] \cat{PreShv}(X)$ is left adjoint $\cat{PreShv}(X) \morphism[f_*] \cat{PreShv}(Y)$ and $\cat{Shv}(Y)  \morphism[f^* = \cat{Shv}f^\flat] \cat{Shv}(X)$ is left adjoint $\cat{Shv}(X) \morphism[f_*] \cat{Shv}(Y)$.
+        Restriction to $V\subseteq U$ maps $(W,\gamma)/_\sim$ to $(W,\gamma)/_\approx$ where $\approx$ is the equivalence relation for the definition of $f^\flat \Gg(V)$. If turns out that $\cat{PreShv}(Y)  \morphism[f^\flat] \cat{PreShv}(X)$ is left-adjoint to $\cat{PreShv}(X) \morphism[f_*] \cat{PreShv}(Y)$ and $\cat{Shv}(Y)  \xrightarrow{f^* = f^\flat(-)^\sh} \cat{Shv}(X)$ is a left-adjoint functor to $\cat{Shv}(X) \morphism[f_*] \cat{Shv}(Y)$.
     \end{rem*}
     
     
@@ -717,7 +757,7 @@ A category is called \emph{small} if its class of objects is a set.
 	       	\draw[->] (GA) -- (GB) node[pos=0.5, right] {$G(\alpha)$};
 	       	\draw[->] (FB) -- (GB) node[pos=0.5, above] {$\phi_B$};
        \end{diagram}
-       commutes for arbitrary morphisms $A\morphism[\alpha] \Bb$ in $\Aa$.
+       commutes for arbitrary morphisms $A\morphism[\alpha] \Bb$ in $\Aa$. The functors $\Aa\morphism[F]\Bb$ as objects with canonical morphisms as morphisms thus form a category, the \emph{functor category} $\Funct(\Aa,\Bb)$. Also cf. \cite[page~26]{alg1}.
     \end{defi}
     \begin{defi}[adjoint functors]\lbl{def:adjointFunctors}
         Let $\Aa$ and $\Bb$ be categories. An \defemph{adjoint pair of functors} 
@@ -730,96 +770,122 @@ A category is called \emph{small} if its class of objects is a set.
         \end{align*}
         which in functorial in $X$ and $Y$. We may say that $L$ is left-adjoined to $R$ and that  $R$ is right adjoined to $L$. By Yoneda-style arguments, $RY$ is uniquely determined (up to unique morphism) by $L$ (and $Y$) if it exists, and $LX$ is uniquely determined by $R$ (and $X$) if it exists.
     \end{defi}
+    \begin{defi}\lbl{defi:contravariantFunctor}
+    	\begin{alphanumerate}
+    		\item If $\Aa$ is a category, its \defemph{opposite} or \defemph{dual category} $\Aa^\op$ is defined by  $\Ob(\Aa^\op) = \Ob(\Aa)$ and $\Hom_{\Aa^\op}(X,Y) = \Hom_\Aa(Y,X)$.
+    		\item A \defemph{contravariant functor} $\Aa\morphism[F]\Bb$ is a functor $\Aa^\op\morphism \Bb$. In other words, it consists of maps $\Ob(\Aa)\morphism[F]\Ob(\Bb)$ and $\Hom_\Aa(X,Y) \morphism[F] \Hom_\Bb(FY, FX)$ such that $F(\id_X) = \id_{F(X)}$ and $F(\beta\alpha)  = F(\alpha)F(\beta)$ where $X\morphism[\alpha]Y\morphism[\beta] Z$ are composable morphisms in $\Aa$.
+    	\end{alphanumerate}
+    \end{defi}
+    \begin{rem*}
+    	\begin{itemize}
+    		\item 
+    		Equivalently, a contravariant functor $\Aa\morphism \Bb$ is a covariant functor $\Aa\morphism \Bb^\op$.
+    		\item
+    		The map $V\morphism V^\ast$ (to the dual vector space) on the category of vector spaces over some fixed field $k$ is an example.
+    	\end{itemize}
+    \end{rem*}
 	\begin{lem}[Yoneda lemma for covariant functors]\lbl{lem:yoneda}
-        For every $M\in\Ob \Aa$, let $\Cov_M\colon\Aa \morphism \cat{Set}$ be the functor defined by 
-        \begin{align*}
-            (\Cov_M(X)) = \Hom_\Aa(M,X)
-        \end{align*}
-        (one could write $\Cov_M=\Hom_\Aa(M,-)$ as well). Then 
+         For any $M\in\Ob \Aa$, $\Cov_M(X) = \Hom_\Aa(M,X)$ defines a covariant functor $\Cov_M=\Hom_\Aa(M,-)\colon \Aa\morphism \cat{Set}$ and 
         \begin{align*}
             \Hom_\Aa(M,N) \morphism[\Yy] \Hom_{\Funct(\Aa,\cat{Set})} (\Cov_N, \Cov_M),
         \end{align*}
-        where $\Funct(\Aa,\cat{Set})$ denotes the category of functors from $\Aa$ to $\cat{Set}$ \emph{(cf. \cite[page~26]{alg1})}, is bijective. 
+        is bijective. The image $\Yy(M\morphism[\mu]N)$ of $\mu\in\Hom_\Aa(M,N)$ under the Yoneda map $\Yy$ maps $N\morphism[\xi]X$ to $M\morphism[\mu]N\morphism[\xi]X$.
     \end{lem}
+    \begin{lem}[Yoneda lemma, contravariant case] \lbl{lem:contraYoneda}
+    	For any $M\in\Ob \Aa$, $\Con_M(X) = \Hom_\Aa(X,M)$ defines a contravariant functor $\Con_M=\Hom_\Aa(-,M)\colon \Aa\morphism \cat{Set}$ and 
+    	\begin{align*}
+    	\Hom_\Aa(M,N) \morphism[\Yy] \Hom_{\Funct(\Aa^\op,\cat{Set})}(\Con_M,\Con_N)
+    	\end{align*}
+    	is bijective. The image $\Yy(M\morphism[\mu]N)$ of $\mu\in\Hom_\Aa(M,N)$ under the Yoneda map $\Yy$ maps $X\morphism[\xi]M\in\Con_M(X)$ to $X\morphism[\xi]M\morphism[\mu]N\in\Con_N(X)$.
+    \end{lem}
+    \begin{defi}
+    	\begin{alphanumerate}
+    		\item We say that a functor $\Aa\morphism[F] \cat{Set}$ is \defemph{representable} if there is a functor-isomorphism $F\simeq \Cov_M$, i.e. $F(X) \simeq \Hom_\Aa(M,X)$ for all $X\in\Ob\Aa$. In this case, we say that $M$ \emph{represents} $F$. The Yoneda-Lemma shows that $M$ is unique up to unique isomorphism.
+    		\item We say that a contravariant functor $\Aa\morphism[F]\cat{Set}$ is \defemph{representable} iff $F\simeq \Con_M$ for some $M\in\Ob\Aa$ in which case we say that $M$ \emph{represents} $F$.
+    	\end{alphanumerate}
+    \end{defi}
     \begin{rem*}
     	\begin{alphanumerate}
-    		\item The image $\Yy(M\morphism[\mu]N)$ of $\mu\in\Hom_\Aa(M,N)$ under the Yoneda map $\Yy$ maps $N\morphism[\xi]X$ to $M\morphism[\mu]N\morphism[\xi]X$.
-    		\item  We say that a functor $\Aa\morphism[F] \cat{Set}$ is \emph{representable} if there is a functor-isomorphism $F\simeq \Cov_M$, in other words $F(X) \simeq \Hom_\Aa(M,X)$. The Yoneda-Lemma shows that $M$ is unique up to unique isomorphism. For instance, $LX$ exists iff the covariant functor 
+    		\item  For instance, $LX$ exists in Definition~\reff{def:adjointFunctors} iff the covariant functor 
     		\begin{align*}
     			\Hom_\Aa(X,R(-))\colon\Bb&\morphism\cat{Set}\\
     			Y &\longmapsto \Hom_\Aa(X, RY)
     		\end{align*}
     		is representable.
-    	\end{alphanumerate}
-    \end{rem*}
-	\begin{defi}\lbl{defi:contravariantFunctor}
-		\begin{alphanumerate}
-			\item If $\Aa$ is a category, its \defemph{opposite} or \defemph{dual category} $\Aa^\op$ is defined by  $\Ob(\Aa^\op) = \Ob(\Aa)$ and $\Hom_{\Aa^\op}(X,Y) = \Hom_\Aa(Y,X)$.
-			\item A \defemph{contravariant functor} $\Aa\morphism[F]\Bb$ is a functor $\Aa^\op\morphism \Bb$. In other words, it consists of maps $\Ob(\Aa)\morphism[F]\Ob(\Bb)$ and $\Hom_\Aa(X,Y) \morphism[F] \Hom_\Bb(FY, FX)$ such that $F(\id_X) = \id_{F(X)}$ and $F(\beta\alpha)  = F(\alpha)F(\beta)$ where $X\morphism[\alpha]Y\morphism[\beta] Z$ are composable morphisms in $\Aa$.
-		\end{alphanumerate}
-	\end{defi}
-	\begin{rem*}
-        \begin{itemize}
-          \item 
-            Equivalently, a contravariant functor $\Aa\morphism \Bb$ is a covariant functor $\Aa\morphism \Bb^\op$.
           \item
-            The map $V\morphism V^\ast$ (to the dual vector space) on the category of vector spaces over some fixed field $k$ is an example.
-        \end{itemize}
-	\end{rem*}
-	\begin{lem}[Yoneda lemma, contravariant case] \lbl{lem:contraYoneda}
-        For any $M\in\Ob \Aa$, $\Con_M(X) = \Hom_\Aa(X,M)$ defines a contravariant functor $\Con_M=\Hom_\Aa(-,M)\colon \Aa\morphism \cat{Set}$ and 
-        \begin{align*}
-            \Hom_\Aa(M,N) \morphism[\Yy] \Hom_{\Funct(\Aa^\op,\cat{Set})}(\Con_M,\Con_N)
-        \end{align*}
-        is bijective, where $\Funct(\Aa^\op,\cat{Set})$ is the category of functors from $\Aa^\op$ to $\cat{Set}$.
-	\end{lem}
-	\begin{rem*}
-        \begin{alphanumerate}
-	       \item 
-	        The image $\Yy(M\morphism[\mu]N)$ of $\mu\in\Hom_\Aa(M,N)$ under the Yoneda map $\Yy$ maps $X\morphism[\xi]M\in\Con_M(X)$ to $X\morphism[\xi]M\morphism[\mu]N\in\Con_N(X)$.
-          \item
-            We say that a contravariant functor $\Aa\morphism[F]\cat{Set}$ is \emph{representable} iff $F\simeq \Con_M$ for some $M\in\Ob\Aa$ in which case we say that $M$ represents $F$. In the above Definition~\reff{def:adjointFunctors}, $RY$ exists iff 
+             In the above Definition~\reff{def:adjointFunctors}, $RY$ exists iff 
             \begin{align*}
             	\Hom_\Bb(L(-), Y)\colon\Aa^\op&\morphism\cat{Set}\\
-            	X&\mapsto \Hom_\Bb(LX,Y)
+            	X&\longmapsto \Hom_\Bb(LX,Y)
             \end{align*}
             is representable.
           \item 
             Many important constructions in algebraic topology (classifying spaces) and algebraic geometry (Moduli space, Picard/Hilbert schemes) amount to representing certain functors.
-          \item 
-            $L\colon\cat{PreShv}(\Bb) \morphism[(-)^\sh] \cat{Shv}(X)$ and $R\colon\cat{Shv} (X) \morphism[(-)|_\Bb] \cat{PreShv}(\Bb)$ is a pair of adjoint functors.
         \end{alphanumerate}
 	\end{rem*}
-	\begin{lem}[Yoneda Lemma, functor case or something]\lbl{lem:functorYoneda}
-        Let $\Hom_{\Funct(\Aa,\Bb)}(F,G)$ denote the ''class`` of functor-morphisms between covariant functors $\Aa\doublemorphism[F][G] \Bb$.
+	\begin{lem}[Yoneda Lemma, $3\ordinalrd$ try or something]\lbl{lem:functorYoneda}
+        Let $\Hom_{\Funct(\Aa,\Bb)}(F,G)$ denote the ``class'' of functor-morphisms between covariant functors $\Aa\doublemorphism[F][G] \Bb$.
         \begin{alphanumerate}
-          \item 
+          \item The Yoneda map
             \begin{align*}
-                \Hom_{\Funct(\Aa,\cat{Set})}(\Cov_M, F) &\longto F(M)\\
-                \alpha &\longmapsto \alpha(\id_M)\\
-                \alpha = (F(\_))(\mu) &\longmapsfrom \mu
+                \Yy\colon\Hom_{\Funct(\Aa,\cat{Set})}(\Cov_M, F) &\longto F(M)\\
+                \alpha &\longmapsto \alpha_M(\id_M)\\
+                F(-)(\mu) = \alpha &\longmapsfrom \mu
             \end{align*}
-            is bijective.
-          \item 
+            is bijective. Herein, $\alpha=F(-)(\mu)$ should be read as follows: A morphism ${(M\morphism[\xi]X)}\in \Cov_M(X)$ induces a morphism $F(M)\morphism[F(\xi)]F(X)$. Evaluating at $\mu\in F(M)$, we get an element $F(\xi)(\mu)\in F(X)$. Now, $\Cov_M\morphism[\alpha]F$ is given by 
             \begin{align*}
-                \Hom_{\Funct(\Aa^\op,\cat{Set})}(\Con_M, F) &\longto F(M)\\
-                \alpha &\longmapsto \alpha(\id_M)\\
-                \alpha = (F(\_))(\mu) &\longmapsfrom \mu
+            	\alpha_X\colon\Cov_M(X)&\morphism F(X)\\
+            	\xi&\longmapsto F(\xi)(\mu)\;.
             \end{align*}
-            is bijective.
+          \item The Yoneda map
+            \begin{align*}
+                \Yy\colon\Hom_{\Funct(\Aa^\op,\cat{Set})}(\Con_M, F) &\longto F(M)\\
+                \alpha &\longmapsto \alpha_M(\id_M)\\
+                F(-)(\mu) = \alpha &\longmapsfrom \mu
+            \end{align*}
+            is bijective. Herein, $\alpha=F(-)(\mu)$ should be read as follows: A morphism ${(X\morphism[\xi]M)}\in \Con_M(X)$ induces a morphism $F(M)\morphism[F(\xi)]F(X)$ (remember that this time $F$ is contravariant). Evaluating at $\mu\in F(M)$, we get an element $F(\xi)(\mu)\in F(X)$. Now, $\Con_M\morphism[\alpha]F$ is given by 
+            \begin{align*}
+            \alpha_X\colon\Con_M(X)&\morphism F(X)\\
+            \xi&\longmapsto F(\xi)(\mu)\;.
+            \end{align*}
         \end{alphanumerate}
 	\end{lem}
 	\begin{proof}
-        We prove \itememph{a}, \itememph{b} being the dual assertion. The well-definedness of $\mapsto$ is obvious. For $\mapsfrom$ is is necessary to show that $\alpha$ is a natural transformation. For this, let $X\morphism[\nu] Y$ be a morphism in $\Aa$ and $\xi\in\Cov_M(X)$, we have to show $\alpha_Y((\Cov_M(\nu))(\xi)) = F(\nu)(\alpha_X(\xi))$:
+        We prove only \itememph{a}, \itememph{b} being the dual assertion. The well-definedness of $\mapsto$ is obvious. For $\mapsfrom$ is is necessary to show that $\alpha$ is a natural transformation. For this, let $X\morphism[\nu] Y$ be a morphism in $\Aa$ and $\xi\in\Cov_M(X)$, we have to show that
+         \begin{diagram}
+         	\node (CovMX) at (0,1.5) {$\Cov_M(X)$};
+         	\node (CovMY) at (0,0) {$\Cov_M(Y)$};
+         	\node (FX) at (2.5,1.5) {$F(X)$};
+         	\node (FY) at (2.5,0) {$F(Y)$};
+         	\scriptsize
+         	\draw[->] (CovMX) -- (CovMY) node[pos=0.5, left] {$\Cov_M(\nu)$};
+         	\draw[->] (CovMX) -- (FX) node[pos=0.5, above] {$\alpha_X$};
+         	\draw[->] (FX) -- (FY) node[pos=0.5, right] {$F(\nu)$};
+         	\draw[->] (CovMY) -- (FY) node[pos=0.5, above] {$\alpha_Y$};
+         \end{diagram}
+        commutes. Let $M\morphism[\xi]X$. As $F$ is a functor and $M\morphism[\xi]X\morphism[\nu]Y$, we have $F(\nu)F(\xi)=F(\nu\xi)$. Also, $\Cov_M(\nu)(\xi)=\nu\xi\in\Cov_M(Y)$. Hence,
         \begin{align*}
-            \alpha_Y((\Cov_M(\nu))(M\morphism[\xi] N)) = \alpha_Y(M\morphism[\nu \xi] X) = (F(\nu\xi))(\mu) = F(\nu)(F(\xi)\mu) = F(\nu)(\alpha_X(\xi))
+            F(\nu)\big(\alpha_X(\xi)\big)=F(\nu)F(\xi)(\mu)=F(\nu\xi)(\mu)=F\big(\Cov_M(\nu)(\xi)\big)(\mu)=\alpha_Y\big(\Cov_M(\nu)(\xi)\big)
         \end{align*}
+        and that's exactly what we wanted to show.
         
-        To show that the maps are inverse to each other first look at $\mu\in F(M)$ and its image $\alpha\in\Hom_{\Funct(\Aa,\cat{Set})}(\Cov_M, F)$. Then we have $\alpha(\id_M) = F(\id_X)\mu = \id_{F(X)}(\mu)=\mu$. Conversely, let $\beta\colon \Cov_M\morphism F$ be a natural transformation and $\mu = \beta(\id_X)$ and let $\alpha$ be defined by $\mu$ as above:
+        To show that the maps are inverse to each other first look at $\mu\in F(M)$ and its image $\alpha\in\Hom_{\Funct(\Aa,\cat{Set})}(\Cov_M, F)$. Then we have $\alpha_M(\id_M) = F(\id_M)(\mu) = \id_{F(M)}(\mu)=\mu$. Conversely, let $\beta\colon \Cov_M\morphism F$ be a natural transformation and $\mu = \beta_M(\id_M)$ and let $\alpha$ be defined by $\mu$ as above. Let $M\morphism[\xi]X$. As $\beta$ is a natural transformation, the diagram
+        \begin{diagram}
+        	\node (CovMM) at (0,1.5) {$\Cov_M(M)$};
+        	\node (CovMX) at (0,0) {$\Cov_M(X)$};
+        	\node (FM) at (2.5,1.5) {$F(X)$};
+        	\node (FX) at (2.5,0) {$F(Y)$};
+        	\scriptsize
+        	\draw[->] (CovMM) -- (CovMX) node[pos=0.5, left] {$\Cov_M(\xi)$};
+        	\draw[->] (CovMM) -- (FM) node[pos=0.5, above] {$\beta_M$};
+        	\draw[->] (FM) -- (FX) node[pos=0.5, right] {$F(\xi)$};
+        	\draw[->] (CovMX) -- (FX) node[pos=0.5, above] {$\beta_X$};
+        \end{diagram}
+        commutes, i.e. $F(\xi)\beta_M=\beta_X\Cov_M(\xi)$. Hence,
         \begin{align*}
-            \alpha(M\morphism[\xi] X) = (F(\xi))(\mu) = (F(\xi))(\beta_M(\id_M)) = \beta_X((\Cov_M(\xi))(\id_M)) = \beta_X(M\morphism[\xi]X)
+            \alpha_X(\xi) = F(\xi)(\mu) = F(\xi)\big(\beta_M(\id_M)\big) = \beta_X\big(\Cov_M(\xi)(\id_M)\big) = \beta_X(\xi)\;,
         \end{align*}
-        Hence $\alpha = \beta$.
+        and thus $\alpha = \beta$, as we wanted to show.
 	\end{proof}
 	Putting $F= \Cov_N$ respectively $F=\Con_N$ we obtain the above special cases.
 \printbibliography
