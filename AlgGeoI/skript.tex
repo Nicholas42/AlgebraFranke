@@ -492,11 +492,47 @@ of presheaves on $\Bb$.
         \end{align*}
         (the first isomorphism follows from Fact~\reff{fact:smallerBaseSheafification} and the latter from Proposition~\reff{prop:sheafificationMorphisms}\itememph{d}). It is easily verified that this has the required properties.
     \end{proof}
-    \begin{rem*}
+    \begin{rem}
         By the usual Yoneda-type argument, it is clear that the above universal property characterizes $\Ff^\sh$ uniquely up to unique isomorphism. For other target categories the above universal property should be taken as the definition of $\Ff^\sh$. It may or may not exist, but is unique if it does.
+    \end{rem}
+    \begin{rem}
+        In other words, $L=\_^\sh\colon \cat{PreShv}(\Bb) \to \cat{Shv}(X)$ and $R\colon \cat{Shv}(X) \to \cat{PreShv}(\Bb)$, $R(F)\coloneqq F|_\Bb$ is an adjoint pair of functors.
+    \end{rem}
+    \begin{defi}[direct image] \lbl{def:directImage}
+        Let $X\morphism[f] Y$ be a continous map and $\Gg$ a presheaf on $X$. By $f_*\Gg$ we denote the presheaf on $Y$ defined by 
+        \begin{align*}
+            (f_*\Gg)(W) = \Gg(f^{-1}(W))
+        \end{align*}
+        for open subsets $W\subseteq Y$, where $\_|_V$ in $f_*\Gg$ is defined as $\_|_{f^{-1}(V)}$ in $\Gg$. If $\Ff\morphism[\alpha] \Gg$ is a morphism of presheaves on $X$, we define $f_*\alpha\colon f_*\Ff\morphism f_*\Gg$ by $(f_*\Ff)(W) = \Ff(f^{-1}(W)) \morphism[\alpha] \Gg(f^{-1}(W)) = (f_*\Gg)(W)$
+    \end{defi}
+    \begin{fact}
+        It is easy to see that the axioms of a presheaf hold $f_*\Ff$ that $f_*\alpha$ is indeed a morphism of presheaves, that $f_*$ is a functor and $g_*f_* = (gf)_*$. Also, $(\id_*)_*$ is the identity functor.
+    \end{fact}
+    \begin{rem*}
+        If $\Bb_Y$ is a topology base for $Y$ and $\Bb_X\supseteq f^*(\Bb_Y) = \left\{f^{-1}(U) \st U\in\Bb\right\}$, then we have $\cat{PreShv}(\Bb_X) \morphism[f_*]\cat{PreShv}(\Bb_X)$ defined in the same way and with similar properties.
     \end{rem*}
-    
-    
+    \begin{rem}
+        Obviously we have a morphism
+        \begin{align}
+            f_x^*\colon (f_* \Ff)_{f(x)} \morphism[f] \Ff_x \lbl{eq:four}
+        \end{align}
+        defined by mapping the image of $(W,\phi(f_*\Ff)(W))$ in $(f_* \Ff)(W)$ to the image of $(f^{-1}(W),\phi)$ in $\Ff_x$. This is a natural transformation, since
+        
+        DIAGRAMM
+        
+        commutes for any morphism $\Ff\morphism[\alpha] \Gg$ of presheaves. Also, the diagram
+        
+        DIAGRAMM
+        
+        commutes. And $(f_*\Ff)_{f(x)} \morphism[f^*] \Ff_x$ equals $\id_{\Ff_x}$ when $f=\id_X$.
+    \end{rem}
+    \begin{rem*}[about $f^\flat/f^*$]
+        If $X\morphism[f] Y$ is continuous and $\Gg$ a presheaf (of sets, (abelian) groups, (commutative) rings) on $Y$ one defines
+        \begin{align*}
+            (f^\flat(\Gg))(U) = \colimit[W\supseteq f(U)] \Gg(W) .
+        \end{align*}
+        Restriction to $U_1\subseteq U$ maps $(W,\gamma)/_\sim$ to $(W,\gamma)/_\approx$ where $\approx$ is the equivalence relation for the definition of $(f^\flat \Gg)(U_1)$. If turns out $\cat{PreShv}(Y)  \morphism[f^\flat] \cat{PreShv}(X)$ is left adjoint $\cat{PreShv}(X) \morphism[f_*] \cat{PreShv}(Y)$ and $\cat{Shv}(Y)  \morphism[f^* = \cat{Shv}f^\flat] \cat{Shv}(X)$ is left adjoint $\cat{Shv}(X) \morphism[f_*] \cat{Shv}(Y)$.
+    \end{rem*}
     
     
     
@@ -701,9 +737,9 @@ A category is called \emph{small} if its class of objects is a set.
         \end{align*}
         (one could write $\Cov_M=\Hom_\Aa(M,-)$ as well). Then 
         \begin{align*}
-            \Hom_\Aa(M,N) \morphism[\Yy] \Hom_{[\Aa,\cat{Set}]} (\Cov_N, \Cov_M),
+            \Hom_\Aa(M,N) \morphism[\Yy] \Hom_{\Funct(\Aa,\cat{Set})} (\Cov_N, \Cov_M),
         \end{align*}
-        where $[\Aa,\cat{Set}]$ denotes the category of functors from $\Aa$ to $\cat{Set}$ \emph{(cf. \cite[page~26]{alg1})}, is bijective. 
+        where $\Funct(\Aa,\cat{Set})$ denotes the category of functors from $\Aa$ to $\cat{Set}$ \emph{(cf. \cite[page~26]{alg1})}, is bijective. 
     \end{lem}
     \begin{rem*}
     	\begin{alphanumerate}
@@ -733,9 +769,9 @@ A category is called \emph{small} if its class of objects is a set.
 	\begin{lem}[Yoneda lemma, contravariant case] \lbl{lem:contraYoneda}
         For any $M\in\Ob \Aa$, $\Con_M(X) = \Hom_\Aa(X,M)$ defines a contravariant functor $\Con_M=\Hom_\Aa(-,M)\colon \Aa\morphism \cat{Set}$ and 
         \begin{align*}
-            \Hom_\Aa(M,N) \morphism[\Yy] \Hom_{[\Aa^\op,\cat{Set}]}(\Con_M,\Con_N)
+            \Hom_\Aa(M,N) \morphism[\Yy] \Hom_{\Funct(\Aa^\op,\cat{Set})}(\Con_M,\Con_N)
         \end{align*}
-        is bijective, where $[\Aa^\op,\cat{Set}]$ is the category of functors from $\Aa^\op$ to $\cat{Set}$.
+        is bijective, where $\Funct(\Aa^\op,\cat{Set})$ is the category of functors from $\Aa^\op$ to $\cat{Set}$.
 	\end{lem}
 	\begin{rem*}
         \begin{alphanumerate}
@@ -754,6 +790,38 @@ A category is called \emph{small} if its class of objects is a set.
             $L\colon\cat{PreShv}(\Bb) \morphism[(-)^\sh] \cat{Shv}(X)$ and $R\colon\cat{Shv} (X) \morphism[(-)|_\Bb] \cat{PreShv}(\Bb)$ is a pair of adjoint functors.
         \end{alphanumerate}
 	\end{rem*}
+	\begin{lem}[Yoneda Lemma, functor case or something]\lbl{lem:functorYoneda}
+        Let $\Hom_{\Funct(\Aa,\Bb)}(F,G)$ denote the ''class`` of functor-morphisms between covariant functors $\Aa\doublemorphism[F][G] \Bb$.
+        \begin{alphanumerate}
+          \item 
+            \begin{align*}
+                \Hom_{\Funct(\Aa,\cat{Set})}(\Cov_M, F) &\longto F(M)\\
+                \alpha &\longmapsto \alpha(\id_M)\\
+                \alpha = (F(\_))(\mu) &\longmapsfrom \mu
+            \end{align*}
+            is bijective.
+          \item 
+            \begin{align*}
+                \Hom_{\Funct(\Aa^\op,\cat{Set})}(\Con_M, F) &\longto F(M)\\
+                \alpha &\longmapsto \alpha(\id_M)\\
+                \alpha = (F(\_))(\mu) &\longmapsfrom \mu
+            \end{align*}
+            is bijective.
+        \end{alphanumerate}
+	\end{lem}
+	\begin{proof}
+        We prove \itememph{a}, \itememph{b} being the dual assertion. The well-definedness of $\mapsto$ is obvious. For $\mapsfrom$ is is necessary to show that $\alpha$ is a natural transformation. For this, let $X\morphism[\nu] Y$ be a morphism in $\Aa$ and $\xi\in\Cov_M(X)$, we have to show $\alpha_Y((\Cov_M(\nu))(\xi)) = F(\nu)(\alpha_X(\xi))$:
+        \begin{align*}
+            \alpha_Y((\Cov_M(\nu))(M\morphism[\xi] N)) = \alpha_Y(M\morphism[\nu \xi] X) = (F(\nu\xi))(\mu) = F(\nu)(F(\xi)\mu) = F(\nu)(\alpha_X(\xi))
+        \end{align*}
+        
+        To show that the maps are inverse to each other first look at $\mu\in F(M)$ and its image $\alpha\in\Hom_{\Funct(\Aa,\cat{Set})}(\Cov_M, F)$. Then we have $\alpha(\id_M) = F(\id_X)\mu = \id_{F(X)}(\mu)=\mu$. Conversely, let $\beta\colon \Cov_M\morphism F$ be a natural transformation and $\mu = \beta(\id_X)$ and let $\alpha$ be defined by $\mu$ as above:
+        \begin{align*}
+            \alpha(M\morphism[\xi] X) = (F(\xi))(\mu) = (F(\xi))(\beta_M(\id_M)) = \beta_X((\Cov_M(\xi))(\id_M)) = \beta_X(M\morphism[\xi]X)
+        \end{align*}
+        Hence $\alpha = \beta$.
+	\end{proof}
+	Putting $F= \Cov_N$ respectively $F=\Con_N$ we obtain the above special cases.
 \printbibliography
 
 \end{document}          
