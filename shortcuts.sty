@@ -182,44 +182,60 @@
 					\textstyle\longleftarrow}}}}}
 \NewDocumentCommand{\doublelrmorphism}{O{} O{}}{\mathrel{\overset{#1}{\underset{#2}{\substack{\textstyle\longrightarrow\\[-0.67ex]
 					\textstyle\longleftarrow}}}}}
-			
-\newcommand{\SelfAdjustingRightarrow}[1]{
+
+\newcommand{\IsArgEmpty}[3]{%
 	\if\relax\detokenize{#1}\relax%
-		\rightarrow%
+		#2%
 	\else%
-		\longrightarrow%
+		#3%
 	\fi}
-	
-\newcommand{\SelfAdjustingLeftarrow}[1]{
-	\if\relax\detokenize{#1}\relax%
-		\leftarrow%
-	\else%
-		\longleftarrow%
-	\fi}
-	
-\newcommand{\SelfAdjustingLeftrightarrow}[1]{
-	\if\relax\detokenize{#1}\relax%
-		\leftrightarrow%
-	\else%
-		\longleftrightarrow%
-	\fi}
+
+\DeclareRobustCommand\longtwoheadrightarrow
+{\relbar\joinrel\twoheadrightarrow}
+\DeclareRobustCommand\longtwoheadleftarrow
+{\twoheadleftarrow\joinrel\relbar}
+
 \newcommand{\morphism}[1][]{%
 	\mathchoice{\overset{#1}{\longto}}%
-	{\overset{#1}{\SelfAdjustingRightarrow{#1}}}%
-	{\overset{#1}{\SelfAdjustingRightarrow{#1}}}%
-	{\overset{#1}{\SelfAdjustingRightarrow{#1}}}%
+	{\IsArgEmpty{#1}{\rightarrow}{\overset{#1}{\longrightarrow}}}%
+	{\IsArgEmpty{#1}{\rightarrow}{\overset{#1}{\longrightarrow}}}%
+	{\IsArgEmpty{#1}{\rightarrow}{\overset{#1}{\longrightarrow}}}%
 }
 \newcommand{\lmorphism}[1][]{%
 	\mathchoice{\overset{#1}{\longot}}%
-	{\overset{#1}{\SelfAdjustingLeftarrow{#1}}}%
-	{\overset{#1}{\SelfAdjustingLeftarrow{#1}}}%
-	{\overset{#1}{\SelfAdjustingLeftarrow{#1}}}%
+	{\IsArgEmpty{#1}{\leftarrow}{\overset{#1}{\longleftarrow}}}%
+	{\IsArgEmpty{#1}{\leftarrow}{\overset{#1}{\longleftarrow}}}%
+	{\IsArgEmpty{#1}{\leftarrow}{\overset{#1}{\longleftarrow}}}%
 }
 \newcommand{\lrmorphism}[1][]{%
 	\mathchoice{\overset{#1}{\longleftrightarrow}}%
-	{\overset{#1}{\SelfAdjustingLeftrightarrow{#1}}}%
-	{\overset{#1}{\SelfAdjustingLeftrightarrow{#1}}}%
-	{\overset{#1}{\SelfAdjustingLeftrightarrow{#1}}}%
+	{\IsArgEmpty{#1}{\leftrightarrow}{\overset{#1}{\longleftrightarrow}}}%
+	{\IsArgEmpty{#1}{\leftrightarrow}{\overset{#1}{\longleftrightarrow}}}%
+	{\IsArgEmpty{#1}{\leftrightarrow}{\overset{#1}{\longleftrightarrow}}}%
+}
+\newcommand{\monomorphism}[1][]{%
+	\mathchoice{\overset{#1}{\smash{\longhookrightarrow}\vphantom{\rightarrow}}}%
+	{\IsArgEmpty{#1}{\hookrightarrow}{\overset{#1}{\smash{\longhookrightarrow}\vphantom{\rightarrow}}}}%
+	{\IsArgEmpty{#1}{\hookrightarrow}{\overset{#1}{\smash{\longhookrightarrow}\vphantom{\rightarrow}}}}%
+	{\IsArgEmpty{#1}{\hookrightarrow}{\overset{#1}{\smash{\longhookrightarrow}\vphantom{\rightarrow}}}}%
+}
+\newcommand{\lmonomorphism}[1][]{%
+	\mathchoice{\overset{#1}{\smash{\longhookleftarrow}\vphantom{\rightarrow}}}%
+	{\IsArgEmpty{#1}{\hookleftarrow}{\overset{#1}{\smash{\longhookleftarrow}\vphantom{\rightarrow}}}}%
+	{\IsArgEmpty{#1}{\hookleftarrow}{\overset{#1}{\smash{\longhookleftarrow}\vphantom{\rightarrow}}}}%
+	{\IsArgEmpty{#1}{\hookleftarrow}{\overset{#1}{\smash{\longhookleftarrow}\vphantom{\rightarrow}}}}%
+}
+\newcommand{\epimorphism}[1][]{%
+	\mathchoice{\overset{#1}{\smash{\longtwoheadrightarrow}\vphantom{\rightarrow}}}%
+	{\IsArgEmpty{#1}{\twoheadrightarrow}{\overset{#1}{\smash{\longtwoheadrightarrow}\vphantom{\rightarrow}}}}%
+	{\IsArgEmpty{#1}{\twoheadrightarrow}{\overset{#1}{\smash{\longtwoheadrightarrow}\vphantom{\rightarrow}}}}%
+	{\IsArgEmpty{#1}{\twoheadrightarrow}{\overset{#1}{\smash{\longtwoheadrightarrow}}}}%
+}
+\newcommand{\lepimorphism}[1][]{%
+	\mathchoice{\overset{#1}{\smash{\longtwoheadleftarrow}\vphantom{\rightarrow}}}%
+	{\IsArgEmpty{#1}{\twoheadleftarrow}{\overset{#1}{\smash{\longtwoheadleftarrow}\vphantom{\rightarrow}}}}%
+	{\IsArgEmpty{#1}{\twoheadleftarrow}{\overset{#1}{\smash{\longtwoheadleftarrow}\vphantom{\rightarrow}}}}%
+	{\IsArgEmpty{#1}{\twoheadleftarrow}{\overset{#1}{\smash{\longtwoheadleftarrow}\vphantom{\rightarrow}}}}%
 }
 
 %---- MODIFIERS ----
