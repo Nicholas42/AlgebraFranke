@@ -44,7 +44,7 @@ Let it be said that the first three recommendations are from Professor Franke wh
 
 \chapter{Varieties and Schemes}\lbl{ch:varietiesAndSchemes}
 \section{Introductory definitions}
-\begin{defi}[sheaf and presheaf]\lbl{def:preSheaf}
+\begin{defi}[Sheaf and presheaf]\lbl{def:preSheaf}
     A \defemph{presheaf $\Ff$ of rings} on a topological space $X$ associates 
     \begin{itemize}
     	\item to any open subset $U\subseteq X$ a ring $\Ff(U)$ called the \emph{ring of sections} of $\Ff$ on $U$
@@ -81,7 +81,7 @@ Let it be said that the first three recommendations are from Professor Franke wh
 \begin{rem*}
 	  If $\Gg$ is any (pre)sheaf on $X$ and $U\subseteq X$ an open subset, we get a a sheaf $\Gg|_U$ on $U$ by $\Gg|_U(V) = \Gg(V)$ for the open subsets $V\subseteq U$ equipped with the same restriction morphisms.
 \end{rem*}
-\begin{defi}[algebraic prevarieties] \lbl{def:preVarieties}
+\begin{defi}[Algebraic prevarieties] \lbl{def:preVarieties}
 	    Let $k$ be an algebraically closed field. An \defemph{algebraic prevariety} over $k$ is a pair $(X,\Oo_X)$, where $X$ is an irreducible Noetherian topological space together with a sheaf $\Oo_X$ of rings on $X$ such that the following property is satisfied.
 	    \begin{quote}
 	        Any $x\in X$ has an open neighbourhood $U$ such that there is a homeomorphism $U\isomorphism[\phi] V$ where $V\subseteq k^n$ is a Zariski-closed subset such that $\phi$ identifies $\Oo_X|_U$ with the structure sheaf $\Oo_V$ of $V$. That is, if $W \subseteq V$ is open then any $k$-valued function $f\colon W\to k$ is regular (i.e. an element of $\Oo_V(W)$) if and only if 
@@ -161,7 +161,7 @@ Let it be said that the first three recommendations are from Professor Franke wh
 \end{rem*}
 
 
-\begin{defi}[variety]\lbl{def:variety}
+\begin{defi}[Variety]\lbl{def:variety}
     Let $X$ be a prevariety over $k$ in the sense of Definitions \reff{def:preVarieties}. We call $X$ \defemph{separated} or a \defemph{variety} over $k$ if and only if $\left\{t\in T\st a(t)=b(t)\right\}$ is closed in $T$ whenever $a$ and $b$ are a pair of \emph{morphisms of prevarieties} $T\doublemorphism[a][b] X$. 
 \end{defi}
 
@@ -273,7 +273,7 @@ Let it be said that the first three recommendations are from Professor Franke wh
 \begin{rem*}
     A set $\Bb$ of open subsets of a topological space $X$ is called a \emph{base} of the topology if every open subset of $X$ may be written as a union of elements of $\Bb$. A set of subsets of some set $X$ is the base of a (uniquely determined) topology on $X$ iff the intersection of two arbitrary elements of $\Bb$ can be written as the union of elements of $\Bb$ and $\Bb$ covers $X$.
 \end{rem*}
-\begin{defi}[presheaves defined on a topological base]\lbl{def:presheafOnBase}
+\begin{defi}[Presheaves defined on a topological base]\lbl{def:presheafOnBase}
     Let $\Bb$ be a base of the topology on $X$. A \defemph{presheaf} on $\Bb$ associates
     \begin{itemize}
     	\item a set (group, ring, \ldots) $\Gg(U)$ to any $U\in \Bb$
@@ -307,7 +307,7 @@ Let it be said that the first three recommendations are from Professor Franke wh
     \end{align*}
     sending $(U,g)/_\sim \in \snake \Gg_x$ (where $U\in \snake \Bb$, $g\in\Gg(U)$, $x\in U$) to $(U,g)/_\sim\in \Gg_x$. It is easy to see that this is well-defined and an isomorphism.
 \end{fact}
-\begin{defi}[sheafification]\lbl{def:sheafification}
+\begin{defi}[Sheafification]\lbl{def:sheafification}
     Let $\Bb$ be a topology base on $X$, $\Gg$ a presheaf on $\Bb$. We define the \defemph{sheafification} (German: \defemph{Garbifizierung}) $\Gg^{\sh}$ (Professor Franke uses the notation $\Sheaf(\Gg)$) of $\Gg$ as follows:
     \begin{align}\lbl{eq:sheafification}
         \Gg^ \sh(U) = \left\{ (g_x)\in \prod_{x\in U}\Gg_x\st 
@@ -502,7 +502,7 @@ of presheaves on $\Bb$.
         \end{align*}
         In other words, $L=(-)^\sh\colon \cat{PreShv}(\Bb) \to \cat{Shv}(X)$ and $R=(-)|_\Bb\colon \cat{Shv}(X) \to \cat{PreShv}(\Bb)$ is an adjoint pair of functors.
     \end{rem}
-    \begin{defi}[direct image] \lbl{def:directImage}
+    \begin{defi}[Direct image] \lbl{def:directImage}
         Let $X\morphism[f] Y$ be a continuous map and $\Gg$ a presheaf on $X$. By $f_*\Gg$ we denote the presheaf on $Y$ defined by 
         \begin{align*}
             f_*\Gg(W) = \Gg(f^{-1}(W))
@@ -518,7 +518,7 @@ of presheaves on $\Bb$.
     \begin{rem*}
         If $\Bb_Y$ is a topology base for $Y$ and $\Bb_X\supseteq f^{-1}(\Bb_Y) = \left\{f^{-1}(U) \st U\in\Bb\right\}$ (we possibly need to extend $f^{-1}(\Bb_Y)$ to obtain a topology base of $X$), then we have $\cat{PreShv}(\Bb_X) \morphism[f_*]\cat{PreShv}(\Bb_X)$ defined in the same way and with similar properties.
     \end{rem*}
-    \begin{rem}
+    \begin{rem}\lbl{rem:pullbackthingyAtStalks}
         Obviously we have a morphism
         \begin{align} \lbl{eq:four}
 	        \begin{split}
@@ -561,73 +561,85 @@ of presheaves on $\Bb$.
         \end{diagram}
         commutes. And $(f_*\Ff)_{f(x)} \morphism[f^*] \Ff_x$ equals $\id_{\Ff_x}$ when $f=\id_X$.
     \end{rem}
-    \begin{rem*}[about $f^\flat/f^*$]
+    \begin{rem*}[about $f^\flat/f^\sharp$]
         If $X\morphism[f] Y$ is continuous and $\Gg$ a presheaf (of sets, (abelian) groups, (commutative) rings) on $Y$ one defines
         \begin{align*}
-            f^\flat(\Gg)(U) = \colimit[W\supseteq f(U)] \Gg(W)=\left\{(W,\gamma)/_\sim\st
+            f^\flat\Gg(U) = \colimit[W\supseteq f(U)] \Gg(W)=\left\{(W,\gamma)/_\sim\st
             \begin{array}{c}
 	            W\subseteq Y\text{ open, }W\supseteq f(U)\text{, }\gamma\in \Gg(W)\\
 	            \text{and }(W,\gamma)\sim (V,\eta)\text{ iff there's an open set }\Omega\\
 	            \text{such that }f(U)\subseteq \Omega\subseteq V\cap W\text{ and }\gamma|_\Omega=\eta|_\Omega
             \end{array}\right\}
         \end{align*}
-        Restriction to $V\subseteq U$ maps $(W,\gamma)/_\sim$ to $(W,\gamma)/_\approx$ where $\approx$ is the equivalence relation for the definition of $f^\flat \Gg(V)$. If turns out that $\cat{PreShv}(Y)  \morphism[f^\flat] \cat{PreShv}(X)$ is left-adjoint to $\cat{PreShv}(X) \morphism[f_*] \cat{PreShv}(Y)$ and $\cat{Shv}(Y)  \xrightarrow{f^\sharp = f^\flat(-)^\sh} \cat{Shv}(X)$ is a left-adjoint functor to $\cat{Shv}(X) \morphism[f_*] \cat{Shv}(Y)$.
+        Restriction to $V\subseteq U$ maps $(W,\gamma)/_\sim$ to $(W,\gamma)/_\approx$ where $\approx$ is the equivalence relation for the definition of $f^\flat \Gg(V)$. 
+        
+        Let $f^\sharp \Gg=(f^\flat\Gg)^\sh$. If turns out that $\cat{PreShv}(Y)  \morphism[f^\flat] \cat{PreShv}(X)$ is left-adjoint to $\cat{PreShv}(X) \morphism[f_*] \cat{PreShv}(Y)$ and $\cat{Shv}(Y)  \xrightarrow{f^\sharp = f^\flat(-)^\sh} \cat{Shv}(X)$ is a left-adjoint functor to $\cat{Shv}(X) \morphism[f_*] \cat{Shv}(Y)$.
     \end{rem*}
     \begin{example}
         \begin{alphanumerate}
           \item 
             If $f(U)$ is open in $Y$, then $(f^\flat\Gg)(U) = \Gg(f(U))$.
           \item 
-            If $f(U)$ is open for any open subset $U$ (i.e. if $f$ is an open map) then this a complete description of $f^\flat$.
+            If $f(U)$ is open for any open subset $U$ (i.e. if $f$ is an open map) then \itememph{a} is a complete description of $f^\flat$.
           \item 
-            If $f\colon X\to \{*\}$ is the projection to the one-point space and the category $\cat{Shv}(*)$ of sheaves on $\{*\}$ with values in the category $\Aa$ of sets, abelian groups, rings, etc, is identified with $\Aa$ and $A\in\Ob(\Aa)$ then 
+            If $f\colon X\to \{*\}$ is the projection to the one-point space and the category $\cat{Shv}(\{*\})$ of sheaves on $\{*\}$ with values in the category $\Aa$ of sets, abelian groups, rings, etc, is identified with $\Aa$ and $A\in\Ob(\Aa)$, then 
             \begin{align*}
-                (f^\flat(A))(U) &= \begin{cases} A &U\neq\emptyset\\ \{0\} & U= \emptyset \end{cases}\\
-                (f^\sharp(A))(U) &= \left\{f\colon U \to A\st f \text{ is locally constant}\right\}
+                \big(f^\flat(A)\big)(U) &= \begin{cases} A &\text{if }U\neq\emptyset\\ \{0\} &\text{if } U= \emptyset \end{cases}\\
+                \big(f^\sharp(A)\big)(U) &= \left\{f\colon U \to A\st f \text{ is locally constant}\right\}\;.
             \end{align*}
           \item 
-            If $V\morphism[f] Y$ is the embedding of an open subset then $(f^\flat \Gg)(U) = \Gg(U)$ for open $U\subseteq V$. In other words, $f^\flat \Gg = \Gg|_V$ and the sheaf property is preserved. Thus, $f^\sharp \Gg = \Gg|_V$.
+            If $V\morphism[f] Y$ is the embedding of an open subset then $f^\flat \Gg(U) = \Gg(U)$ for open $U\subseteq V$. In other words, $f^\flat \Gg = \Gg|_V$ and the sheaf property is preserved. Thus, $f^\sharp \Gg = \Gg|_V$ if $\Gg$ is a sheaf.
           \item 
             If $\{x\} \morphism[\iota] X$ is the inclusion of a point then 
             \begin{align*}
-                (\iota^\flat\Gg)(U) = \begin{cases} \Gg(\emptyset) & U = \emptyset \\ \Gg_x&U = \{x\}\end{cases}
+                \iota^\flat\Gg(U) = \begin{cases} \Gg(\emptyset) & \text{if }U = \emptyset \\ \Gg_x&\text{if }U = \{x\}\end{cases}
             \end{align*}
-            which is a sheaf if $\Gg$ is. Thus, $\iota^\sharp\Gg$ can be identified, under the identification of $\{x\}^\sh$ with $\Aa$ made in \itememph{c}, with $\Gg_x$.
+            which is a sheaf if $\Gg$ is. Thus, $\iota^\sharp\Gg$ can be identified, under the identification of $\cat{Shv}(\{x\})$ with $\Aa$ made in \itememph{c}, with $\Gg_x$.
         \end{alphanumerate}
     \end{example}
 
 \section{Locally ringed spaces}
 \begin{defi}[Ringed space]\lbl{def:ringedSpace}
-    A \defemph{ringed space} is a pair $(X,\Oo_X$ consisting of a topological space $X$ and a \emph{structure sheaf} which is a sheaf of rings. A \defemph{locally ringed space} is ringed space $(X,\Oo_X)$ such that for any $x\in X$, the stalk $\Oo_{X,x}$ is a local ring, called the local ring of $X$ at $x$. Its maximal ideal is called $\mm_{X,x}\subseteq \Oo_{X,x}$, which is sometimes abbreviated to $\mm_x$. Let $\kk(x) = \Oo_{X,x}/\mm_x$ be the residue field.
+    A \defemph{ringed space} is a pair $(X,\Oo_X)$ consisting of a topological space $X$ and a \emph{structure sheaf} which is a sheaf of rings. A \defemph{locally ringed space} is ringed space $(X,\Oo_X)$ such that for any $x\in X$, the stalk $\Oo_{X,x}$ is a local ring, called the \emph{local ring of $X$ at} $x$. Its maximal ideal is denoted $\mm_{X,x}\subseteq \Oo_{X,x}$, or sometimes just $\mm_x$. Finally, let $\KK(x) = \Oo_{X,x}/\mm_x$ be the residue field.
 \end{defi}
 \begin{rem}
     Obviously, prevarieties (in the sense of Definition \reff{def:preVarieties}) are locally ringed spaces, $\Oo_{X,x}$ is the ring of germs of regular functions at $x$ and $\mm_x = \left\{f\in \Oo_{X,x} \st f(x) = 0 \right\}$.
 \end{rem}
 \begin{defi}[Morphism of ringed spaces] \lbl{def:ringedSpaceMorphism}
-    A \defemph{morphism of ringed spaces} $X\morphism[f] Y$ is a pair $(f_{\cat{Top}}, f^*)$ where $X\morphism[f_{\cat{Top}}] Y$ is a continuous map and $\Oo_Y \morphism[f^*] f_*\Oo_X$ is a morphism of sheaves of rings. The identity of $(X,\Oo_X)$ is $\id_{(X,\Oo_X)} = (\id_X, \id_{\Oo_X})$. The composition $gf$ is given by $(gf)_{\cat{Top}} = g_{\cat{Top}} f_{\cat{Top}}$ and $(gf)^*$ is the composition 
+    A \defemph{morphism of ringed spaces} $X\morphism[f] Y$ is a pair $(f_{\cat{Top}}, f^*)$ where $X\morphism[f_{\cat{Top}}] Y$ is a continuous map and $\Oo_Y \morphism[f^*] f_*\Oo_X$ is a morphism of sheaves of rings. We call $f_{\cat{Top}}$ the \emph{topological} and $f^*$ the \emph{algebraical component} of $f$. 
+    
+    The identity on $(X,\Oo_X)$ is $\id_{(X,\Oo_X)} = (\id_X, \id_{\Oo_X})$. If $Y\morphism[g]Z$ is another morphism of ringed spaces, the composition $gf$ is given by $(gf)_{\cat{Top}} = g_{\cat{Top}} f_{\cat{Top}}$ and $(gf)^*$ is the composition 
     \begin{align*}
         \Oo_Z \morphism[g^*] g_*\Oo_Y \morphism[g_*(f^*)] g_*f_*\Oo_X = (gf)_*\Oo_X
     \end{align*} 
-    It is easy to see that this defines a category of ringed spaces.
+    It is easy to see that this defines a \emph{category of ringed spaces}.
 \end{defi}
 
 \begin{rem*}
-    Locally ringed spaces will be a subcategory of it, but not a full subcategory.
+    Locally ringed spaces will be a subcategory of it, but not a \emph{full} subcategory.
 \end{rem*}
 \begin{rem*}
-    As $f^\sharp$ is left-adjoint to $f_*$ giving $f^*\colon \Oo_Y\to f_*\Oo_X$ is equivalent to giving a morphism $f^\sharp \Oo_Y \to \Oo_X$ which is also denoted by $f^*$. Using this type of $f^*$ we would still arrive at the same category, up to unique isomorphism of the sets of morphisms. In particular, we have $\Oo_{Y,f(x)} \simeq \iota_{f(x)}^\sharp \Oo_Y = \iota_{X}^\sharp f^\sharp \Oo_Y  \morphism[i^\sharp_xf^*] \iota^\sharp_{x} \Oo_X \simeq \Oo_{X,x}$. This morphism $\Oo_{Y,f(x)} \morphism[f^*] \Oo_{X,x}$. This may be described directly in terms of structures occurring in Definition \reff{def:ringedSpace}:
+    As $f^\sharp$ is left-adjoint to $f_*$ (to be precise, we're actually considering  $(f_{\cat{Top}})_*$ and $(f_{\cat{Top}})^\sharp$), giving $f^*\colon \Oo_Y\to f_*\Oo_X$ is equivalent to giving a morphism $f^\sharp \Oo_Y \to \Oo_X$ which is also denoted by $f^*$. Using this type of $f^*$ we would still arrive at the same category, up to unique isomorphism of the sets of morphisms. In particular, we have 
+    \begin{align*}
+    	\Oo_{Y,f_{\cat{Top}}(x)} \simeq \iota_{\{f_{\cat{Top}}(x)\}}^\sharp \Oo_Y = \iota_{\{x\}}^\sharp \left(f^\sharp \Oo_Y\right)  \xrightarrow{i^\sharp_{\{x\}}f^*} \iota^\sharp_{\{x\}} \Oo_X \simeq \Oo_{X,x}\;. 
+    \end{align*}
+    This yields a morphism $\Oo_{Y,f_{\cat{Top}}(x)} \morphism[f^*] \Oo_{X,x}$. Herein, $\iota_{\{x\}}$ and $\iota_{\{f_{\cat{Top}}(x)\}}$ denote the inclusions $\{x\}\monomorphism X$ respectively $\{f_{\cat{Top}}(x)\}\monomorphism Y$. The equality $\iota_{\{f_{\cat{Top}}(x)\}}^\sharp \Oo_Y = \iota_{\{x\}}^\sharp \big(f^\sharp \Oo_Y\big)$ follows from the fact that $\Oo_Y$ and $f^\sharp\Oo_Y$ have the same stalk at $f_{\cat{Top}}(x)$, namely $\Oo_{Y,f(x)}$ (quite easy to check). The arrow $\iota_{\{x\}}^\sharp f^*$ should be read as the functor $\iota_{\{x\}}^\sharp\colon\cat{Shv}(X)\morphism\cat{Shv}(\{x\})$ applied to the morphism $f^*\colon f^\sharp\Oo_Y\morphism\Oo_X$.
+    
+    This may be described directly in terms of structures occurring in Definition~\reff{def:ringedSpace}:
 \end{rem*}
 \begin{varthm}{defi}
-    If $f\colon X\to Y$ is a morphism of ringed spaces, we define $\Oo_{Y,f(x)} \morphism[f^*]\Oo_{X,x}$ as the composition
+    If $f\colon X\to Y$ is a morphism of ringed spaces, we define $\Oo_{Y,f_{\cat{Top}}(x)} \morphism[f^*]\Oo_{X,x}$ as the composition
     \begin{align*}
-        (\Oo_Y)_{f(x)} \morphism[(f^*)_{f(x)}] (f_*\Oo_X)_{f(x)}\morphism[f^*] \Oo_{X,f(x)}
+        \Oo_{Y,f_{\cat{Top}}(x)} \xrightarrow{(f^*)_{f_{\cat{Top}}(x)}} (f_*\Oo_X)_{f_{\cat{Top}}(x)}\xrightarrow{(f_{\cat{Top}})_x^*} \Oo_{X,x}\;.
     \end{align*}
-    where the left arrow is the stalk at $x$ of the algebraic component of $f$ and the right arrow is \eqreff{eq:four}.
+    As you might have noticed, the symbol $*$ is \emph{massively} overloaded and deserves a careful explanation: The left arrow in the above composition means the stalk at $f_{\cat{Top}}(x)$ of the \emph{algebraical component} $f^*$ of $f$. The right arrow is the kind of morphism of stalks we defined in Remark~\reff{rem:pullbackthingyAtStalks}, \eqreff{eq:four}.
+    
+    The symbol $*$ in the index, however, always means the \emph{direct image} from Definition~\reff{def:directImage}.
 \end{varthm}
 \begin{defi}[Vanishing set]\lbl{def:vanishingSet}
     Let $X$ be a locally ringed space, $f\in \Oo_X(U)$, then we define its \defemph{vanishing set} by 
     \begin{align*}
-        V(f) = \left\{x\in U\st \text{image of } f \text{ under } \Oo(U) \to \Oo_{X,x} \text{ is in } \mm_x\right\}.
+        V(f) = \left\{x\in U\st \text{image of } f \text{ under } \Oo_X(U) \to \Oo_{X,x} \text{ is in } \mm_x\right\}.
     \end{align*}
 \end{defi}
 \begin{rem*}
@@ -642,7 +654,7 @@ of presheaves on $\Bb$.
     $V(f)$ is closed. When $f$ is nilpotent, $V(f) = U$.
 \end{fact}
 \begin{proof}
-    Let $x\in U\setminus V(f)$. The image of $\phi$ of $f$ in $\Oo_{X,x}$ has an inverse $\epsilon$ which is the image of $e\in \Oo_X(W)$ where $W$ is an open neighbourhood of $x$. Replacing $W$ by $W\cap U$ and $e$ by $e|{W\cap U}$  we may assume $W\subseteq U$, and shrinking $W$ further (using the definition of stalk) we may assume $(f|_W) e = 1$ in $\Oo_X(W)$. For $y\in W$ the image of $f$ in $\Oo_{X,y}$ has an inverse given $e$, hence it is not in $\mm_y$. Thus, $W\cap V(f) = \emptyset$. Since such $W$ may be found for any $x\in U\setminus V(f)$, $U\setminus V(f)$ is open.
+    Let $x\in U\setminus V(f)$. The image of $\phi$ of $f$ in $\Oo_{X,x}$ has an inverse $\psi$ which is the image of $g\in \Oo_X(W)$ where $W$ is an open neighbourhood of $x$. Replacing $W$ by $W\cap U$ and $g$ by $g|_{W\cap U}$  we may assume $W\subseteq U$, and shrinking $W$ further (using the definition of stalk) we may assume $f|_W\cdot g = 1$ in $\Oo_X(W)$. For $y\in W$ the image of $f$ in $\Oo_{X,y}$ has an inverse given by $g$, hence it is not in $\mm_y$. Thus, $W\cap V(f) = \emptyset$. Since such $W$ may be found for any $x\in U\setminus V(f)$, $U\setminus V(f)$ is open.
 \end{proof}
 
     
@@ -651,7 +663,7 @@ of presheaves on $\Bb$.
     \appendix
     \chapter{Useful stuff from category theory}
 \section{Fundamental concepts}
-\begin{defi}[category]
+\begin{defi}[Category]
 	A \defemph{category} $\Aa$ is a class $\Ob(\Aa)$ of \emph{objects} of $\Aa$ together with:
 	\begin{alphanumerate}
 	    \item 
@@ -723,7 +735,7 @@ A category is called \emph{small} if its class of objects is a set.
   \end{align}
   to be bijective (i.e. an isomorphism) for any open cover $U=\bigcup_{i\in I}\Gg(U_i)$, where we set $U_{ij}=U_i\cap U_j$ for convenience.
   
-  \begin{defi}[products]
+  \begin{defi}[Products]
   	A \defemph{product} of objects $(A_i)_{i\in I}$ of $\Aa$ is an object $\prod_{i\in I}A_i$ together with morphisms $\prod_{i\in I}A_i\morphism[\pi_i]A_i$ for each $i\in I$ such that the following \emph{universal property} holds:
   	\begin{quote}
   		If $T\in\Ob(\Aa)$ comes with morphisms $T\morphism[\tau_i]A_i$ for each $i\in I$, then there is a unique morhism $T\morphism[\exists!\ f]\prod_{i\in I}A_i$ such that $\tau_i=\pi_i\circ f$.
@@ -760,7 +772,7 @@ A category is called \emph{small} if its class of objects is a set.
 		\alpha\big((g_i)_{i\in I}\big)=\left(g_i|_{U_{ij}}\right)_{(i,j)\in I\times I}\quad\text{and}\quad\beta\big((g_i)_{i\in I}\big)=\left(g_j|_{U_{ij}}\right)_{(i,j)\in I\times I}\;,
 	\end{align*}
 	such that \eqreff{eq:sheafAxiom} is the ``largest subobject on which $\alpha$ and $\beta$ coincide".
-	\begin{defi}[equalizer]
+	\begin{defi}[Equalizer]
 		Let $A\doublemorphism[\alpha][\beta]B$ be a pair of morphisms. An \defemph{equalizer} of this pair is an object $E\in\Ob(\Aa)$ together with a morphism $E\morphism[\epsilon]A$ such that $\alpha\epsilon=\beta\epsilon$ and such that the following universal property holds:
 		\begin{quote}
 			If $T\morphism[\tau]A$ is any morphism in $\Aa$ such that $\alpha\tau=\beta\tau$, then there's a unique $T\morphism[t]E$ such that the following diagram commutes.
@@ -797,7 +809,7 @@ A category is called \emph{small} if its class of objects is a set.
 			\end{align*}
 		\end{alphanumerate}
 	\end{rem*}
-	\begin{defi}[mono- and epimorphism]
+	\begin{defi}[Mono- and epimorphism]
 		Let $\Aa$ be a category, $X\morphism[f] Y$ a morphism in $\Aa$. We say that $f$ is \defemph{monomorphism} (\defemph{epimorphism}) if for any object $T$ and any pair $T \doublemorphism[\alpha][\smash{\beta}] X$ (respectively $Y\doublemorphism[\smash{\alpha}][\beta] T$) with $f\alpha = f\beta$ (respectively $\alpha f= \beta f$) we get $\alpha =\beta$.
 	\end{defi}
 	
@@ -814,7 +826,7 @@ A category is called \emph{small} if its class of objects is a set.
             The map from a domain to its field of quotients is an epimorphism in the category of rings.
         \end{itemize}
 	\end{rem*}
-	\begin{defi}[canonical morphism]\lbl{def:canonicalMorphism}
+	\begin{defi}[Canonical morphism]\lbl{def:canonicalMorphism}
         Let $\Aa\doublemorphism[F][\smash{G}] \Bb$ be functors. A \defemph{functor morphism} or \defemph{canonical morphism} from $F$ to $G$ is a collection of morphisms $\smash{F(A) \morphism[\phi_A]G(A)}$, for all $A\in \Ob \Aa$ such that
        \begin{diagram}
 	       	\node (FA) at (0,1.5) {$F(A)$};
@@ -829,7 +841,7 @@ A category is called \emph{small} if its class of objects is a set.
        \end{diagram}
        commutes for arbitrary morphisms $A\morphism[\alpha] \Bb$ in $\Aa$. The functors $\Aa\morphism[F]\Bb$ as objects with canonical morphisms as morphisms thus form a category, the \emph{functor category} $\Funct(\Aa,\Bb)$. Also cf. \cite[page~26]{alg1}.
     \end{defi}
-    \begin{defi}[adjoint functors]\lbl{def:adjointFunctors}
+    \begin{defi}[Adjoint functors]\lbl{def:adjointFunctors}
         Let $\Aa$ and $\Bb$ be categories. An \defemph{adjoint pair of functors} 
         \begin{align*}
         	\Aa\doublelrmorphism[L][R]\Bb
@@ -840,7 +852,7 @@ A category is called \emph{small} if its class of objects is a set.
         \end{align*}
         which in functorial in $X$ and $Y$. We may say that $L$ is left-adjoined to $R$ and that  $R$ is right adjoined to $L$. By Yoneda-style arguments, $RY$ is uniquely determined (up to unique morphism) by $L$ (and $Y$) if it exists, and $LX$ is uniquely determined by $R$ (and $X$) if it exists.
     \end{defi}
-    \begin{defi}\lbl{defi:contravariantFunctor}
+    \begin{defi}\lbl{def:contravariantFunctor}
     	\begin{alphanumerate}
     		\item If $\Aa$ is a category, its \defemph{opposite} or \defemph{dual category} $\Aa^\op$ is defined by  $\Ob(\Aa^\op) = \Ob(\Aa)$ and $\Hom_{\Aa^\op}(X,Y) = \Hom_\Aa(Y,X)$.
     		\item A \defemph{contravariant functor} $\Aa\morphism[F]\Bb$ is a functor $\Aa^\op\morphism \Bb$. In other words, it consists of maps $\Ob(\Aa)\morphism[F]\Ob(\Bb)$ and $\Hom_\Aa(X,Y) \morphism[F] \Hom_\Bb(FY, FX)$ such that $F(\id_X) = \id_{F(X)}$ and $F(\beta\alpha)  = F(\alpha)F(\beta)$ where $X\morphism[\alpha]Y\morphism[\beta] Z$ are composable morphisms in $\Aa$.
