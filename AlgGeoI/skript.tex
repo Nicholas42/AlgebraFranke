@@ -606,7 +606,7 @@ of presheaves on $\Bb$.
     Obviously, prevarieties (in the sense of Definition \reff{def:preVarieties}) are locally ringed spaces, $\Oo_{X,x}$ is the ring of germs of regular functions at $x$ and $\mm_x = \left\{f\in \Oo_{X,x} \st f(x) = 0 \right\}$.
 \end{rem}
 \begin{defi}[Morphism of ringed spaces] \lbl{def:ringedSpaceMorphism}
-    A \defemph{morphism of ringed spaces} $X\morphism[f] Y$ is a pair $(f_{\cat{Top}}, f^*)$ where $X\morphism[f_{\cat{Top}}] Y$ is a continuous map and $\Oo_Y \morphism[f^*] f_*\Oo_X$ is a morphism of sheaves of rings. We call $f_{\cat{Top}}$ the \emph{topological} and $f^*$ the \emph{algebraical component} of $f$. 
+    A \defemph{morphism of ringed spaces} $X\morphism[f] Y$ is a pair $(f_{\cat{Top}}, f^*)$ where $X\morphism[f_{\cat{Top}}] Y$ is a continuous map and $\Oo_Y \morphism[f^*] (f_{\cat{Top}})_*\Oo_X$ is a morphism of sheaves of rings (the index $_{\cat{Top}}$ will be dropped very soon so that $(f_{\cat{Top}})_*$ becomes only $f_*$). We call $f_{\cat{Top}}$ the \emph{topological} and $f^*$ the \emph{algebraical component} of $f$. 
     
     The identity on $(X,\Oo_X)$ is $\id_{(X,\Oo_X)} = (\id_X, \id_{\Oo_X})$. If $Y\morphism[g]Z$ is another morphism of ringed spaces, the composition $gf$ is given by $(gf)_{\cat{Top}} = g_{\cat{Top}} f_{\cat{Top}}$ and $(gf)^*$ is the composition 
     \begin{align*}
@@ -623,7 +623,7 @@ of presheaves on $\Bb$.
     \begin{align*}
     	\Oo_{Y,f_{\cat{Top}}(x)} \simeq \iota_{\{f_{\cat{Top}}(x)\}}^\sharp \Oo_Y = \iota_{\{x\}}^\sharp \left(f^\sharp \Oo_Y\right)  \xrightarrow{i^\sharp_{\{x\}}f^*} \iota^\sharp_{\{x\}} \Oo_X \simeq \Oo_{X,x}\;. 
     \end{align*}
-    This yields a morphism $\Oo_{Y,f_{\cat{Top}}(x)} \morphism[f^*] \Oo_{X,x}$. Herein, $\iota_{\{x\}}$ and $\iota_{\{f_{\cat{Top}}(x)\}}$ denote the inclusions $\{x\}\monomorphism X$ respectively $\{f_{\cat{Top}}(x)\}\monomorphism Y$. The equality $\iota_{\{f_{\cat{Top}}(x)\}}^\sharp \Oo_Y = \iota_{\{x\}}^\sharp \big(f^\sharp \Oo_Y\big)$ follows from the fact that $\Oo_Y$ and $f^\sharp\Oo_Y$ have the same stalk at $f_{\cat{Top}}(x)$, namely $\Oo_{Y,f(x)}$ (quite easy to check). The arrow $\iota_{\{x\}}^\sharp f^*$ should be read as the functor $\iota_{\{x\}}^\sharp\colon\cat{Shv}(X)\morphism\cat{Shv}(\{x\})$ applied to the morphism $f^*\colon f^\sharp\Oo_Y\morphism\Oo_X$.
+    This yields a morphism $\Oo_{Y,f_{\cat{Top}}(x)} \morphism[f^*] \Oo_{X,x}$. Herein, $\iota_{\{x\}}$ and $\iota_{\{f_{\cat{Top}}(x)\}}$ denote the inclusions $\{x\}\monomorphism X$ respectively $\{f_{\cat{Top}}(x)\}\monomorphism Y$. The equality $\iota_{\{f_{\cat{Top}}(x)\}}^\sharp \Oo_Y = \iota_{\{x\}}^\sharp \big(f^\sharp \Oo_Y\big)$ follows from the fact that $\Oo_Y$ and $f^\sharp\Oo_Y$ have the same stalk at $f_{\cat{Top}}(x)$, namely $\Oo_{Y,f_{\cat{Top}}(x)}$ (quite easy to check). The arrow $\iota_{\{x\}}^\sharp f^*$ should be read as the functor $\iota_{\{x\}}^\sharp\colon\cat{Shv}(X)\morphism\cat{Shv}(\{x\})$ applied to the morphism $f^*\colon f^\sharp\Oo_Y\morphism\Oo_X$.
     
     This may be described directly in terms of structures occurring in Definition~\reff{def:ringedSpace}:
 \end{rem*}
