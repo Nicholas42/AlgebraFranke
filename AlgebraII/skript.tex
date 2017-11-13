@@ -531,7 +531,7 @@ Applying Proposition~\reff{prop:NAK} to $M/N$, we obtain the following corollary
     The set $\Der_R(A,M)$ of $R$-linear derivations forms an $A$-submodule of $\Der(A,M)$.
 \end{rem}
 \begin{example}\lbl{ex:universalDerivationPolynomialRing}
-    A derivation $d\in\Der_R(R[X_1,\ldots,X_n], M)$ is uniquely determined by $(m_1,\ldots,m_n)\in M^n$ via
+    A derivation $d\in\Der_R(R[X_1,\ldots,X_n], M)$ is uniquely determined by the tuple $(m_1,\ldots,m_n)\in M^n$ via
     \begin{align*}
         d&\longmapsto (dX_1,\ldots,dX_m)\\
         \bigg(P\mapsto \sum_{i=1}^n\frac{\partial P}{\partial X_i}\cdot m_i \bigg) &\longmapsfrom (m_1,\ldots,m_n)\;.
@@ -631,7 +631,7 @@ Applying Proposition~\reff{prop:NAK} to $M/N$, we obtain the following corollary
       \item 
         $c(a\delta_b+b\delta_a -\delta_{ab}) = a\cdot d(b) + b\cdot d(a) - d(ab) = 0$ by the Leibniz rule.
     \end{itemize}
-    Consequently, by the universal property of quotient modules, there is a unique $\delta\in \Hom_A(F_A/K , M)$ such that 
+    Consequently, due to the universal property of quotient modules, there is a unique $\delta\in \Hom_A(F_A/K , M)$ such that 
     \begin{diagram}
     	\node (FA) at (0,1.25) {$F_A$};
     	\node (M) at (2.5,1.25) {$M$};
@@ -648,14 +648,68 @@ In many cases, the module of Kähler differentials can be calculated using $\Ome
     Let $R$ be a ring, $A$ an $R$-algebra.
     \begin{alphanumerate}
         \item 
-            Let $I\subseteq A$ be any ideal, $M$ any $A$-module, $A\morphism[\pi]A/I$ the projection, then 
-            \begin{align*}
-                0\morphism \Der_R(A/I,M) \morphism \Der_R(A,M) \morphism \Hom_{A/I}(I^2/I, M)
-            \end{align*}
-            is exact. Herein, the morphism $\Der_R(A/I,M) \morphism \Der_R(A,M)$ is defined by $d\mapsto d\circ\pi$ and $\Der_R(A,M) \morphism \Hom_{A/I}(I^2/I, M)$ by $\delta\mapsto\left(i\mod I^2\mapsto\delta(i)\right)$.
+            Let $I\subseteq A$ be any ideal, $M$ any $A/I$-module, $A\morphism[\pi]A/I$ the projection, then 
+            \begin{align}\lbl{eq:derExactSequence1}
+                0\morphism \Der_R(A/I,M) \morphism \Der_R(A,M) \morphism \Hom_{A/I}(I/I^2, M) 
+            \end{align}
+            is exact. Herein, the morphism $\Der_R(A/I,M) \morphism \Der_R(A,M)$ is defined by $d\mapsto d\circ\pi$ and $\Der_R(A,M) \morphism \Hom_{A/I}(I/I^2, M)$ by $\delta\mapsto\phi = \left(i\mod I^2\mapsto\delta(i)\right)$.
+        \item 
+            Let $B$ be an $A$-algebra, $M$ an $B$-module, then we have the exact sequence
+            \begin{align}\lbl{eq:derExactSequence2}
+                0 \morphism \Der_A(B,M) \monomorphism \Der_R(B,M) &\morphism \Der_R(A,M)\\
+                d&\longmapsto d|_A.\notag
+            \end{align}
     \end{alphanumerate}
 \end{fact}
-
+\begin{proof}
+    We will first proof \itememph{b}. The exactness on the left end is obvious, as is the vanishing of the composition $\Der_A(B,M) \monomorphism \Der_R(B,M) \morphism \Der_R(A,M)$. Let $d\in \Der_R(B,M)$ such that $0 = d|_A$, then $d$ is $A$-linear: $d\in \Der_A(B,M)$.
+    
+    Now to \itememph{a}. That $\Der_R(A/I,M) \morphism \Der_R(A,M)$ is well-defined is obvious, as derivations are compatible with applying ring homomorphisms on the right. Let $j\in I^2$, it must be writeable as $j = \sum_{k=1}^\ell j_k\iota_k$ with $j_k,\iota_k\in I$. Then $\delta(j) = \sum_{k=1}^\ell (\iota_k\cdot \delta(j_k) +j_k\cdot \delta(\iota_k)) = 0$, since $I\cdot M = 0$. It follows that $\phi$ is a well-defined homomorphism of abelian groups. Let $\alpha = a\mod I\in A/I$ and $i\in I$, then $\phi(\alpha \cdot (i\mod I^2)) = \delta(a\cdot i) = i\cdot \delta(a) + a\cdot \delta(i) = 0$ showing that $\phi$ is $(A/I)$-linear as stated. Exactness on the left end follows from the surjective of $A\morphism[\pi] A/I$. The fact tat the composition $d\morphism\delta\morphism\phi$ is zero is also obvious: $\phi(i\mod I^2) = \delta(i) = d(\pi(i)) = d(0) = 0$. Finally, let $\delta$ be such that $\phi = 0$. For $i\in I$, $\delta(i) = \phi(i\mod I^2) = 0$. Hence there exists a unique group homomorphism $A/I \morphism[d] M$ such that $\delta = d\circ \pi$. The Leibniz rule for $d$ follows from the analogous rule for $\delta$ and the surjectivity of $\pi$.
+\end{proof}
+\begin{fact*}
+    Let $A$ be any ring, $M'\morphism M\morphism M''\morphism 0$ a sequence of $A$-homomorphisms, then this sequence is exact iff $0\morphism\Hom_A(M'',T) \morphism \Hom_A(M,T) \morphism(M',T)$ is exact for any $A$-module $T$.
+\end{fact*}
+\begin{cor}
+    Let $R$ be a ring, $A$ an $R$-algebra. 
+    \begin{alphanumerate}
+        \item 
+            If $I\subseteq A$ is any ideal, we have a canonical short exact sequence of $(A/I)$-modules
+            \begin{align}\lbl{eq:tensorDerSpam1}
+                I/I^2\morphism[\alpha] \Omega_{A/R} \otimes_A A/I \morphism[\beta] \Omega_{(A/I)/R} \morphism 0.
+            \end{align}
+        \item 
+            If $B$ is any $A$-algebra, we have a canonical short exact sequence
+            \begin{align}\lbl{eq:tensorDerSpam2}
+                \Omega_{A/R}\otimes_A B \morphism[\kappa] \Omega_{B/R} \morphism[\lambda] \Omega_{B/A} \morphism 0.
+            \end{align}
+    \end{alphanumerate}
+\end{cor}
+\begin{rem*}
+    \begin{alphanumerate}
+        \item 
+            By the universal property of $d_{B/R}$, the derivation $d_{B/A}\colon B\morphism \Omega_{B/A}$ (which is $R$-linear) hence has a unique representation 
+            \begin{align*}
+                d_{B/A} = \lambda \circ d_{B/R}.
+            \end{align*}
+        \item 
+            Tensor products as occuring above are used for change of base: $M\otimes_A B$ is a $B$-module together with a morphism $M\morphism M\otimes_A B$, $m \mapsto m \otimes_A 1$ with the following universal property: If $T$ is any $B$-module and $M\morphism[\tau] T$ any $A$-linear homomorphism, then there is a unique homomorphism $M\otimes_A B \morphism[t] T$ such that $\tau(m) = t(m\otimes_A 1)$. For instance, $V\otimes_\IR \IC$ is the complexification of the $\IR$-vector space $V$. We put $m\otimes_A b= b\cdot (m\otimes_A 1)$. One easy special case is $B=A/I$ in which case $M/(I\cdot M)$, $m\otimes_A (a\mod I) \coloneqq (a\cdot m) \mod (I \cdot M)$ has the desired universal property.
+        \item 
+            Composing $d_{B/R}: B \morphism \Omega_{B/R}$ with $A\morphism B$ gives us an element of $\Der_R(A, \Omega_{B/R})$ which by the universal property of $\Omega_{A/R}$ is given by a unique $A$-module-homomorphism $\Omega_{A/R} \morphism[\kappa'] \Omega_{B/R}$. By the universal property of $-\otimes_A B$, $\kappa'$ is given by a unique $B$-module-homomorphism $\Omega_{A/R} \otimes_A B \morphism[\kappa] \Omega_{B/R}$. In other words, $\kappa$ is the unique $B$-module-homomorphism such that $\kappa(d_{A/R}(a)\otimes_A b) = b\cdot d_{B/R}(a)$.
+        \item 
+            $\beta$ is uniquely determined by $\beta(d_{A/R}(a) \mod (I\cdot \Omega_{A/R})) = d_{(A/I)/R}(a)$. In other words, this is the special case $B=A/I$ of $\kappa$.
+        \item 
+            We put $\alpha(i\mod I^2) = d_{A/R} \mod (I\cdot \Omega_{A/R})$. In other words, it is obtained by applying $\Der_R(A,M) \morphism \Hom_{A/I} (I/I^2, M)$ from above to the derivation $A\morphism[d_{A/R}] \Omega_{A/R} \morphism \Omega_{A/R}/I \cdot \Omega_{A/R} \eqqcolon M$.
+        \item 
+            Exactness is shown by applying the previous fact and identifying the resulting sequences of $\Hom(\Omega_{-}, T)$ with the sequences from the previous fact.
+        \item
+            Using and \reff{eq:tensorDerSpam1} the calculation of $\Omega_{R[T_1,\ldots,T_n]/R}$ it is possible to calculate $\Omega_{(A/I)/R}$ (where $A=R[T_1,\ldots, T_n]$) as the cokernel of 
+            
+            
+            THIS DIAGRAM (ferdi, i got you a picture)
+            
+            Since any $R$-algebra of finite type has the form $A/I$, this gives way to calculate $\Omega_{B/R}$ for such $R$-algebras $B$. Since Example \reff{ex:universalDerivationPolynomialRing} is not (really) limited to case of finitely many variables, other $R$-algebras could be treated as well.
+    \end{alphanumerate}
+\end{rem*}
 
 
 
