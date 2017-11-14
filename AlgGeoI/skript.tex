@@ -606,7 +606,7 @@ of presheaves on $\Bb$.
     Obviously, prevarieties (in the sense of Definition \reff{def:preVarieties}) are locally ringed spaces, $\Oo_{X,x}$ is the ring of germs of regular functions at $x$ and $\mm_x = \left\{f\in \Oo_{X,x} \st f(x) = 0 \right\}$.
 \end{rem}
 \begin{defi}[Morphism of ringed spaces] \lbl{def:ringedSpaceMorphism}
-    A \defemph{morphism of ringed spaces} $X\morphism[f] Y$ is a pair $(f_{\cat{Top}}, f^*)$ where $X\morphism[f_{\cat{Top}}] Y$ is a continuous map and $\Oo_Y \morphism[f^*] (f_{\cat{Top}})_*\Oo_X$ is a morphism of sheaves of rings (the index $_{\cat{Top}}$ will be dropped very soon so that $(f_{\cat{Top}})_*$ becomes only $f_*$). We call $f_{\cat{Top}}$ the \emph{topological} and $f^*$ the \emph{algebraical component} of $f$. 
+    A \defemph{morphism of ringed spaces} $X\morphism[f] Y$ is a pair $(f_{\cat{Top}}, f^*)$ where $X\morphism[f_{\cat{Top}}] Y$ is a continuous map and $\Oo_Y \morphism[f^*] (f_{\cat{Top}})_*\Oo_X$ is a morphism of sheaves of rings (the index $_{\cat{Top}}$ will be dropped very soon so that $(f_{\cat{Top}})_*$ becomes only $f_*$). We call $f_{\cat{Top}}$ the \emph{topological} and $f^*$ the \emph{algebraic component} of $f$. 
     
     The identity on $(X,\Oo_X)$ is $\id_{(X,\Oo_X)} = (\id_X, \id_{\Oo_X})$. If $Y\morphism[g]Z$ is another morphism of ringed spaces, the composition $gf$ is given by $(gf)_{\cat{Top}} = g_{\cat{Top}} f_{\cat{Top}}$ and $(gf)^*$ is the composition 
     \begin{align*}
@@ -621,18 +621,30 @@ of presheaves on $\Bb$.
 \begin{rem*}
     As $f^\sharp$ is left-adjoint to $f_*$ (to be precise, we're actually considering  $(f_{\cat{Top}})_*$ and $(f_{\cat{Top}})^\sharp$), giving $f^*\colon \Oo_Y\to f_*\Oo_X$ is equivalent to giving a morphism $f^\sharp \Oo_Y \to \Oo_X$ which is also denoted by $f^*$. Using this type of $f^*$ we would still arrive at the same category, up to unique isomorphism of the sets of morphisms. In particular, we have 
     \begin{align*}
-    	\Oo_{Y,f_{\cat{Top}}(x)} \simeq \iota_{\{f_{\cat{Top}}(x)\}}^\sharp \Oo_Y = \iota_{\{x\}}^\sharp \left(f^\sharp \Oo_Y\right)  \xrightarrow{i^\sharp_{\{x\}}f^*} \iota^\sharp_{\{x\}} \Oo_X \simeq \Oo_{X,x}\;. 
+    	\Oo_{Y,f_{\cat{Top}}(x)} \simeq \iota_{\{f_{\cat{Top}}(x)\}}^\sharp \Oo_Y = \iota_{\{x\}}^\sharp \big(f^\sharp \Oo_Y\big)  \xrightarrow{i^\sharp_{\{x\}}f^*} \iota^\sharp_{\{x\}} \Oo_X \simeq \Oo_{X,x}\;. 
     \end{align*}
     This yields a morphism $\Oo_{Y,f_{\cat{Top}}(x)} \morphism[f^*] \Oo_{X,x}$. Herein, $\iota_{\{x\}}$ and $\iota_{\{f_{\cat{Top}}(x)\}}$ denote the inclusions $\{x\}\monomorphism X$ respectively $\{f_{\cat{Top}}(x)\}\monomorphism Y$. The equality $\iota_{\{f_{\cat{Top}}(x)\}}^\sharp \Oo_Y = \iota_{\{x\}}^\sharp \big(f^\sharp \Oo_Y\big)$ follows from the fact that $\Oo_Y$ and $f^\sharp\Oo_Y$ have the same stalk at $f_{\cat{Top}}(x)$, namely $\Oo_{Y,f_{\cat{Top}}(x)}$ (quite easy to check). The arrow $\iota_{\{x\}}^\sharp f^*$ should be read as the functor $\iota_{\{x\}}^\sharp\colon\cat{Shv}(X)\morphism\cat{Shv}(\{x\})$ applied to the morphism $f^*\colon f^\sharp\Oo_Y\morphism\Oo_X$.
     
     This may be described directly in terms of structures occurring in Definition~\reff{def:ringedSpace}:
 \end{rem*}
-\begin{varthm}{defi}
-    If $f\colon X\to Y$ is a morphism of ringed spaces, we define $\Oo_{Y,f_{\cat{Top}}(x)} \morphism[f^*]\Oo_{X,x}$ as the composition
+\begin{varthm}{defi}\lbl{def:f*onStalks}
+    For $f\colon X\to Y$ a morphism of ringed spaces, we define $\Oo_{Y,f_{\cat{Top}}(x)} \morphism[f^*]\Oo_{X,x}$ as the unique morphism such that
+    \begin{diagram}
+    	\node (a) at (0,1.5) {$\Oo_Y(U)$};
+    	\node (c) at (0,0) {$\Oo_{Y,f_{\cat{Top}}(x)}$};
+    	\node (b) at (3,1.5) {$f_*\Oo_X(U)\ \rlap{$\left(=\Oo_X\big(f^{-1}U\big)\right)$}$};
+    	\node (d) at (3,0) {$\Oo_{X,x}$};
+    	\scriptsize
+    	\draw[->] (a) -- (b) node[pos=0.5, above] {$f^*$};
+    	\draw[->] (a) -- (c);
+    	\draw[->] (c) -- (d) node[pos=0.5, above] {$f^*$};
+    	\draw[->] (b) -- (d);
+    \end{diagram}  
+    commutes. We can characterize $\Oo_{Y,f_{\cat{Top}}(x)} \morphism[f^*]\Oo_{X,x}$ explicitly as the composition
     \begin{align*}
         \Oo_{Y,f_{\cat{Top}}(x)} \xrightarrow{(f^*)_{f_{\cat{Top}}(x)}} (f_*\Oo_X)_{f_{\cat{Top}}(x)}\xrightarrow{(f_{\cat{Top}})_x^*} \Oo_{X,x}\;.
     \end{align*}
-    As you might have noticed, the symbol $*$ is \emph{massively} overloaded and deserves a careful explanation: The left arrow in the above composition means the stalk at $f_{\cat{Top}}(x)$ of the \emph{algebraical component} $f^*$ of $f$. The right arrow is the kind of morphism of stalks we defined in Remark~\reff{rem:pullbackthingyAtStalks}, \eqreff{eq:four}.
+    As you might have noticed, the symbol $*$ is \emph{massively} overloaded and deserves a careful explanation: The left arrow in the above composition means the stalk at $f_{\cat{Top}}(x)$ of the \emph{algebraic component} $f^*$ of $f$. The right arrow is the kind of morphism of stalks we defined in Remark~\reff{rem:pullbackthingyAtStalks}, \eqreff{eq:four}.
     
     The symbol $*$ in the index, however, always means the \emph{direct image} from Definition~\reff{def:directImage}.
 \end{varthm}
@@ -642,99 +654,116 @@ of presheaves on $\Bb$.
         V(f) = \left\{x\in U\st \text{image of } f \text{ under } \Oo_X(U) \to \Oo_{X,x} \text{ is in } \mm_x\right\}.
     \end{align*}
 \end{defi}
-\begin{rem*}
+\begin{rem*}\lbl{rem:stuffAboutV(f)}
     \begin{alphanumerate}
       \item 
         In view of what was recalled for prevarieties, this extends our previous definition of $V(f)$ in that case.
       \item 
-        $V(f)\cap V(g) \subseteq V(f+g)$ (as $\mm_x\subseteq \Oo_{X,x}$ is an ideal) and $V(fg)= V(f) \cup V(g)$ (as $\mm_x$ is a prime ideal). 
+        $V(f)\cap V(g) \subseteq V(f+g)$ (as $\mm_x\subseteq \Oo_{X,x}$ is an ideal) and $V(fg)= V(f) \cup V(g)$ (as $\mm_x$ is a prime ideal) and $V(f|_W)=V(f)\cap W$ if $W\subseteq U$ is open (pretty obvious). 
     \end{alphanumerate}
 \end{rem*}
 \begin{fact}
-    $V(f)$ is closed. When $f$ is nilpotent, $V(f) = U$.
+    For $f\in\Oo_X(U)$, $V(f)\subseteq U$ is closed. When $f$ is nilpotent, $V(f) = U$.
 \end{fact}
 \begin{proof}
     Let $x\in U\setminus V(f)$. The image of $\phi$ of $f$ in $\Oo_{X,x}$ has an inverse $\psi$ which is the image of $g\in \Oo_X(W)$ where $W$ is an open neighbourhood of $x$. Replacing $W$ by $W\cap U$ and $g$ by $g|_{W\cap U}$  we may assume $W\subseteq U$, and shrinking $W$ further (using the definition of stalk) we may assume $f|_W\cdot g = 1$ in $\Oo_X(W)$. For $y\in W$ the image of $f$ in $\Oo_{X,y}$ has an inverse given by $g$, hence it is not in $\mm_y$. Thus, $W\cap V(f) = \emptyset$. Since such $W$ may be found for any $x\in U\setminus V(f)$, $U\setminus V(f)$ is open.
+    
+    If $f$ is nilpotent, say, $f^n=0$, then $U=V(0)=V(f^n)=\bigcup_{i=1}^nV(f)=V(f)$ by \itememph{b} of the \hyperref[rem:stuffAboutV(f)]{previous remark}.
 \end{proof}
-\begin{defi}[morphisms of local rings and locally ringed spaces]
+\begin{defi}\lbl{def:localMorphisms}
     \begin{alphanumerate}
         \item 
-            Let $(R,\mm)$ and $(S,\nn)$ be local rings with their maximal ideals. A ring homomorphism $R\morphism[\phi] S$ is \defemph{local} iff $\phi^{-1}(\nn) = \mm$.
+            Let $(R,\mm_R)$ and $(S,\mm_S)$ be local rings with their respective maximal ideals. A ring homomorphism $R\morphism[\phi] S$ is \defemph{local} iff $\phi^{-1}(\mm_S) = \mm_R$.
         \item 
             A \defemph{morphism of locally ringed spaces} is a morphism $X\morphism[f] Y$ of ringed spaces such that $X$ and $Y$ are locally ringed spaces and such that the following equivalent conditions hold
             \begin{itemize}
               \item[\itememph{\alpha}]
-                For any open subset $U\subseteq Y$ and $\lambda\in \Oo_Y(U)$ we have $V(f^*\lambda) = f^{-1}(V(\lambda))$.
+                For any open subset $U\subseteq Y$ and $\lambda\in \Oo_Y(U)$ we have $V(f^*\lambda) = f^{-1}\big(V(\lambda)\big)$.
               \item[\itememph{\beta}]
                 For arbitrary $x\in X$, the ring morphism $\Oo_{y,f(x)} \morphism[f^*]\Oo_{X,x}$ is local in the sense of \itememph{a}.
             \end{itemize}
 
     \end{alphanumerate}
 \end{defi}
-\begin{fact*}
+\begin{rem*}
     \begin{alphanumerate}
-      \item 
-        \begin{align*}
-            V(\lambda+\theta) &\supseteq V(\lambda)+V(\theta)\\
-            V(\lambda\theta) &= V(\lambda)\cup V(\theta)\\
-            V(\lambda|_V) &= V(\lambda)\cap V
-        \end{align*}
       \item 
         A composition of local ring morphisms is local.
       \item 
-        \begin{proof}
-            Let \itememph{\beta} hold for given $X\morphism[f] Y$ of ringed spaces, with $X$ and $Y$ locally ringed, then in the situation of \itememph{\alpha} we have
-            \begin{align*}
-                V(f^*\lambda) &= \left\{x\in f^{-1}(U) \st (\text{image of } f^*\lambda \text{ in } \Oo_{X,x}) \in \mm_{X,x}\right\}\\
-                &= \left\{x\in f^{-1}(U) \st f^*(\text{image of }\lambda \text{ in } \Oo_{X,x})  \in \mm_{X,x}\right\}\\
-                &= \left\{x\in f^{-1}(U) \st (\text{image of }\lambda \text{ in } \Oo_{Y,f(x)})  \in (f^*)^{-1}(\mm_{X,x})\right\}\\
-                &= \left\{x\in f^{-1}(U) \st (\text{image of }\lambda \text{ in } \Oo_{Y,f(x)})  \in \mm_{Y,f(x)}\right\}\\
-                &= \left\{x\in f^{-1}(U)\st f(x)\in V(\lambda) \right\}\\
-                &= f^{-1}(V(\lambda))                
-            \end{align*}
-        \end{proof}
-      \item 
         Note that for a ring morphism $R\morphism[\phi]S$ where $R$ and $S$ are local, we automatically have that $\phi^{-1}(\mm_S) \subseteq \mm_R$ as $\phi$ maps $R^\times = R\setminus \mm_R$ to $S^\times = S\setminus \mm_S$. Thus, to verify that $\phi$ is local it is only necessary to show $\phi(\mm_R) \subseteq \mm_S$.
-      \item 
-        \begin{proof}
-            Let $x\in X$, $y=f(x)$, $l\in\mm_{Y,y}$. we have to show $f^*\ell\in\mm_{X,x}$. There are an open neighbourhood $U$ of $y$ and $\lambda\in \Oo_Y(U)$ such that $\ell$ is the image of $\lambda$ in $\Oo_{Y,y}$. Then $y\in V(\lambda)$, hence $x\in f^{-1}(V(\lambda)) = V(f^*\lambda)$. Thus $f^*\ell$ is in $\mm_{X,x}$ as it is the image of $f^*\lambda$ in $\Oo_{X,x}$.
-        \end{proof}
       \item 
         It is obvious that a composition of morphisms of locally ringed spaces is a morphism of locally ringed spaces. Also, $\id_X$ is a morphism of locally ringed spaces. Thus, locally ringed spaces form a subcategory (but not a full subcategory) of the category of ringed spaces.
     \end{alphanumerate}
-\end{fact*}
+\end{rem*}
+\begin{proof}[Proof of Definition~\reff{def:localMorphisms}]
+	We first prove $(\beta)\rightarrow(\alpha)$.  Let \itememph{\beta} hold for given $X\morphism[f] Y$ of ringed spaces, with $X$ and $Y$ locally ringed, then in the situation of \itememph{\alpha} we have
+	\begin{align*}
+		V(f^*\lambda) &\overset{\hphantom{\text{Def.~\reff{def:f*onStalks}}}}{=} \left\{x\in f^{-1}(U) \st (\text{image of } f^*\lambda \text{ in } \Oo_{X,x}) \in \mm_{X,x}\right\}\\
+		&\overset{\text{Def.~\reff{def:f*onStalks}}}{=} \left\{x\in f^{-1}(U) \st f^*(\text{image of }\lambda \text{ in } \Oo_{X,x})  \in \mm_{X,x}\right\}\\
+		&\overset{\hphantom{\text{Def.~\reff{def:f*onStalks}}}}{\overset{\text{\itememph{\beta}}}{=}}\left\{x\in f^{-1}(U) \st (\text{image of }\lambda \text{ in } \Oo_{Y,f(x)})  \in \mm_{Y,f(x)}\right\}\\
+		&\overset{\hphantom{\text{Def.~\reff{def:f*onStalks}}}}{=} \left\{x\in f^{-1}(U)\st f(x)\in V(\lambda) \right\}\\
+		&\overset{\hphantom{\text{Def.~\reff{def:f*onStalks}}}}{=} f^{-1}(V(\lambda))\;.              
+	\end{align*}
+	To prove $(\alpha)\rightarrow(\beta)$, let $x\in X$, $y=f(x)$, $\ell\in\mm_{Y,y}$. We need to show $f^*\ell\in\mm_{X,x}$. There are an open neighbourhood $U$ of $y$ and $\lambda\in \Oo_Y(U)$ such that $\ell$ is the image of $\lambda$ in $\Oo_{Y,y}$. Then $y\in V(\lambda)$, hence $x\in f^{-1}(V(\lambda)) = V(f^*\lambda)$. Thus $f^*\ell$ is in $\mm_{X,x}$ as it is the image of $f^*\lambda$ in $\Oo_{X,x}$.
+\end{proof}
 \begin{fact}
     \begin{alphanumerate}
         \item 
-            $f^{-1}(V(\lambda)) = V(f^*\lambda)$ when $f$ is a morphism of locally ringed spaces.
+            We have $f^{-1}(V(\lambda)) = V(f^*\lambda)$ when $f$ is a morphism of locally ringed spaces.
         \item 
-            Let $f\colon X\morphism Y$ be a morphism in $\cat{LRS}$ (the category of locally ringed spaces), $x\in X$, $y=f(x)$, since $f^*(\mm_{Y,y})\subseteq \mm_{X,x}$ we have a ring morphism of the residue fields $\kk(y) \morphism[f^*]\kk(x)$ induced by $\Oo_{Y,y}\morphism[f^*] \Oo_{X,x}$. If $Y\morphism[g] Z$ is another morphism in $\cat{LRS}$ then 
-            
-            this diagram
-            
-            commutes, where $z =f(x)$.
+            Let $f\colon X\morphism Y$ be a morphism in $\cat{LRS}$ (the category of locally ringed spaces), $x\in X$, $y=f(x)$. Since $f^*(\mm_{Y,y})\subseteq \mm_{X,x}$, we have a ring morphism of the residue fields 
+            \begin{align*}
+            	\KK(y) \morphism[f^*]\KK(x)
+            \end{align*}
+            induced by $\Oo_{Y,y}\morphism[f^*] \Oo_{X,x}$. If $Y\morphism[g] Z$ is another morphism in $\cat{LRS}$ and $z=g(y)$, then 
+            \begin{diagram}
+            	\node (kz) at (0,1.25) {$\KK(z)$};
+            	\node (kx) at (1.25,0) {$\KK(x)$};
+            	\node (ky) at (2.5,1.25) {$\KK(y)$};
+            	\scriptsize
+            	\draw[->] (kz) -- (kx) node[pos=0.5,below left] {$(gf)^*$};
+            	\draw[->] (kz) -- (ky) node[pos=0.5,above] {$g^*$};
+            	\draw[->] (ky) -- (kx) node[pos=0.5,below right] {$f^*$};
+            \end{diagram}
+            commutes.
         \item 
             If $X\morphism[f]Y\morphism[g] Z$ are morphisms of ringed spaces, where $X$, $Y$ and $Z$ are locally ringed and $gf$ and $g$ are morphisms of locally ringed spaces, then $f$ is a morphism of locally ringed spaces.
         \item 
-            If $R\morphism[\phi] S \morphism[\psi] T$ are ring morphisms such that $R$, $S$ and $T$ are local rings and $\psi\phi$ and $\psi$ are local, then $\phi$ is local:
-            \begin{align*}
-                \phi^{-1}(\mm_S) = \phi^{-1}(\psi^{-1}(\mm_T)) = (\psi\phi)^{-1} (\mm_T) = \mm_R
-            \end{align*}
+            If $R\morphism[\phi] S \morphism[\psi] T$ are ring morphisms such that $R$, $S$ and $T$ are local rings and $\psi\phi$ and $\psi$ are local, then $\phi$ is local.
     \end{alphanumerate}
 \end{fact}
+\begin{proof}
+	\itememph{a} is just \itememph{\alpha} from Definition~\reff{def:localMorphisms}\itememph{b}. We got it, ok?
+	
+	Part \itememph{b} is immediately follows from the fact that $\Oo_{Z,z}\morphism[g^*]\Oo_{Y,y}\morphism[f^*]\Oo_{X,x}$ equals $\Oo_{Z,z}\morphism[(gf)^*]\Oo_{X,x}$ by Remark~\reff{rem:pullbackthingyAtStalks}.
+	
+	Part \itememph{c} is an easy consequence of \itememph{d}, which we will prove now. We have
+	\begin{align*}
+		\phi^{-1}(\mm_S) = \phi^{-1}\big(\psi^{-1}(\mm_T)\big) = (\psi\phi)^{-1} (\mm_T) = \mm_R\;,
+	\end{align*}
+	proving the assertion.
+\end{proof}
 \begin{fact}
-    If $R\morphism[\phi]S$ is a surjective ring homomorphism where $R$ and $S$ are local rings, then $\phi$ is local.
+    If $R\morphism[\phi]S$ is a surjective ring homomorphism where $(R,\mm_R)$ and $(S,\mm_S)$ are local rings, then $\phi$ is local.
 \end{fact}
+\begin{proof}
+	Since $\phi$ is surjective, it induces an isomorphism $\ov{\phi}\colon R/\ker\phi\isomorphism S$. As local rings are forbidden to be the zero ring, $\ker\phi$ must be a proper ideal of $R$ and hence contained in $\mm_R$. Then $\phi$ maps $\mm_R$ to $\mm_R/\ker\phi=\mm_S$.
+\end{proof}
 \begin{example}
-    Let $U\subseteq X$ be an open subset, let $\iota\colon U\morphism X$ its embedding, where $(X,\Oo_X)$ is a locally ringed space, and let $\Oo_U = \Oo_X|U$. Let $\iota^*\colon \Oo_X(V)\morphism \Oo_X(U\cap V) = \Oo_X(\iota^{-1}(V))$ be given by $-|_{U\cap V}\colon \Oo_X(V) \morphism \Oo_X(U\cap V)$. It follows that $\Oo_{X,x}\morphism[\iota^*]\Oo_{U,x}$, for $x\in U$, is an isomorphism (the canonical isomorphism $(\Oo_X|_U)_x \isomorphism \Oo_{X,x}$), hence local. Hence $\iota$ is a morphism in $\cat{LRS}$, and 
-    \begin{align*}\lbl{eq:fact5}
-        \Hom_{\cat{LRS}}(T,U)  &\isomorphism\left\{g\in \Hom_{\cat{LRS}} (T,X) \st g(T)\subseteq U\right\} \tag{Fact 5}\\
-        f&\longmapsto g=\iota f
-    \end{align*}
+    Let $U\subseteq X$ be an open subset, let $\iota\colon U\morphism X$ its embedding, where $(X,\Oo_X)$ is a locally ringed space, and let $\Oo_U = \Oo_X|_U$. Let $\iota^*\colon \Oo_X(V)\morphism \Oo_X(U\cap V) = \Oo_X(\iota^{-1}(V))$ be given by $(-)|_{U\cap V}\colon \Oo_X(V) \morphism \Oo_X(U\cap V)$. It follows that $\Oo_{X,x}\morphism[\iota^*]\Oo_{U,x}$, for $x\in U$, is an isomorphism (the canonical isomorphism $(\Oo_X|_U)_x \isomorphism \Oo_{X,x}$), hence local. Hence $\iota$ is a morphism in $\cat{LRS}$, and \labelWithSpecificText{eq:fact5}{Fact~5}
+    \begin{align}\lbl{eq:fact5}
+	    \begin{split}
+		    \Hom_{\cat{LRS}}(T,U)  &\isomorphism\left\{g\in \Hom_{\cat{LRS}} (T,X) \st g(T)\subseteq U\right\}\\
+		    f&\longmapsto g=\iota f
+	    \end{split}\tag{Fact 5}
+    \end{align}
 \end{example}
 \begin{fact}
     If $X\morphism[\iota] Y$ is a morphism in $\cat{LRS}$ such that $\iota_{\cat{Top}}$ is an injective map and such that for any $x\in X$, $\iota_x^*\colon \Oo_{Y,\iota(x)} \morphism \Oo_{X,x}$ is surjective, then $\iota$ is a monomorphism in $\cat{LRS}$.
 \end{fact}
+\begin{proof}
+	It suffices to note that $\iota_{\cat{Top}}$ is a monomorphism of topological spaces and $\iota^*$ an epimorphism of sheaves on $Y$ (since it stalk-wise an epimorphism).
+\end{proof}
 
     
     
@@ -812,7 +841,7 @@ A category is called \emph{small} if its class of objects is a set.
   	We have \emph{forgetful} functors like $\cat{Vect}_k\to\cat{Ab}$ or $\cat{Ab}\to\cat{Set}$. These functors are faithful (at least for the two examples).
   \end{example*}
   
-  \section{Products and equalizers}
+  \section{Products and (co-)equalizers}
   Our goal is to formulate a notion of \emph{sheaf} that allows to define sheafs for arbitrary target categories. Recall that the sheaf axiom (\hyperref[sheafAxiom]{this one}) requires
   \begin{align}\lbl{eq:sheafAxiom}
   	\Gg(U)\longrightarrow\left\{(g_i)_{i\in I}\in\prod_{i\in I}\Gg(U_i)\st g_i|_{U_{ij}}=g_j|_{U_{ij}}\ \forall i,j\in I\right\}\tag{$*$}
@@ -897,15 +926,34 @@ A category is called \emph{small} if its class of objects is a set.
 		Let $\Aa$ be a category, $X\morphism[f] Y$ a morphism in $\Aa$. We say that $f$ is \defemph{monomorphism} (\defemph{epimorphism}) if for any object $T$ and any pair $T \doublemorphism[\alpha][\smash{\beta}] X$ (respectively $Y\doublemorphism[\smash{\alpha}][\beta] T$) with $f\alpha = f\beta$ (respectively $\alpha f= \beta f$) we get $\alpha =\beta$.
 	\end{defi}
 	\begin{defi}[Coequalizer]
-        Moreover, $Y\morphism[c] C$ is a \defemph{coequalizer} in $\Aa$ (of $X\doublemorphism[a][b] Y$) iff $C^\op\morphism[c^\op] X^\op$ is an equalizer of $Y^\op\doublemorphism[a^\op][b^\op]X^\op$ in $\Aa^\op$. In other words,
+        Moreover, $Y\morphism[c] C$ is a \defemph{coequalizer} in $\Aa$ (of $X\doublemorphism[a][\smash{b}] Y$) iff $C^\op\morphism[\smash{c^\op}] X^\op$ is an equalizer of $Y^\op\doublemorphism[\smash{a^\op}][\smash{b^\op}]X^\op$ in $\Aa^\op$. In other words, 
         \begin{align*}
-            \Hom_\Aa(C,T) &\isomorphism \left\{g\in \Hom_\Aa(Y,T)\st ga = gb\right\}\\
-            f &\longmapsto fc
-        \end{align*}
-        must be bijective.
+	        \Hom_\Aa(C,T) &\isomorphism \left\{g\in \Hom_\Aa(Y,T)\st ga = gb\right\}\\
+	        f &\longmapsto fc
+        \end{align*}must be bijective. In even more other words $C$ is a coequalizer iff it fulfills the following universal property:
+        \begin{quote}
+        	 If $Y\morphism[\tau]T$ is any morphism in $\Aa$ such that $\tau a=\tau b$, then there's a unique $C\morphism[t]T$ such that the following diagram commutes.
+        	 \begin{diagram}
+        	 	\node (X) at (0,0) {$X$};
+        	 	\node (Y) at (3,0) {$Y$};
+        	 	\node (C) at (1.5,-1.5) {$C$};
+        	 	\node (T) at (1.5,-3) {$T$};
+        	 	\scriptsize
+        	 	\draw[->,dashed] (C) -- (T) node[pos=0.5, right] {$\exists!\ t$};
+        	 	\draw[->, bend left] (X) to node[pos=0.5, below] {$a$} (Y) ;				
+        	 	\draw[->, bend right] (X) to node[pos=0.5, above] {$a$} (Y) ;
+        	 	\draw[->] (Y) -- (C) node[pos=0.5, below right] {$c$};
+        	 	\draw[->] (X) -- (C);
+        	 	\draw[->, bend left] (Y) to node[pos=0.5, right] {$\tau$} (T);
+        	 	\draw[->, bend right] (X) to (T);
+        	 \end{diagram}
+        	 In yet another other words, $C$ is the \emph{colimiting co-cone} below the diagram $X\doublemorphism[a][b]Y$.
+        \end{quote}
 	\end{defi}
 	\begin{fact*}
-        Let $A\doublemorphism[\alpha][\beta] B$ be a ring morphism. Then a coequalizer is given by $B/I$ where $I$ is the ideal generated by $\left\{\alpha(a)-\beta(a)\st a\in A\right\}$. When $A$, $B$, $\alpha$ and $\beta$ are local ring morphisms, this is a local ring iff $\alpha$ and $\beta$ induce the same morphism on residue fields, $\{0\}$ otherwise. Let us denote this by $\Coeq(A\doublemorphism[\alpha][\beta] B)$.
+        Let $A\doublemorphism[\alpha][\beta] B$ be a ring morphism. Then a coequalizer is given by $B/I$ where $I$ is the ideal generated by $\left\{\alpha(a)-\beta(a)\st a\in A\right\}$. When $A,B$ are local rings and $\alpha,\beta$ local ring morphisms, this is a local ring iff $\alpha$ and $\beta$ induce the same morphism on the residue fields, and $\{0\}$ otherwise. 
+        
+        Let us denote this by $\Coeq(A\doublemorphism[\alpha][\beta] B)$.
 	\end{fact*}
 	\begin{proof}
         Let $C = B/I \lepimorphism[\pi] B$. Obviously, $\pi \alpha = \pi\beta$. Let $B\morphism[t] T$ be a ring homomorphism such that $t\alpha = t\beta$. Then $t(\alpha(a)-\beta(a)) = 0$ hence $\left\{\alpha(a)-\beta(a)\st a\in A\right\} \subseteq \ker(t)$ hence $I\subseteq \ker(t)$ as $\ker(t)$ is an ideal, and $t$ has a unique representation as $t=\tau\pi$ for $C\morphism[\tau] T$, by the universal property of the quotient ring.
