@@ -656,7 +656,91 @@ of presheaves on $\Bb$.
 \begin{proof}
     Let $x\in U\setminus V(f)$. The image of $\phi$ of $f$ in $\Oo_{X,x}$ has an inverse $\psi$ which is the image of $g\in \Oo_X(W)$ where $W$ is an open neighbourhood of $x$. Replacing $W$ by $W\cap U$ and $g$ by $g|_{W\cap U}$  we may assume $W\subseteq U$, and shrinking $W$ further (using the definition of stalk) we may assume $f|_W\cdot g = 1$ in $\Oo_X(W)$. For $y\in W$ the image of $f$ in $\Oo_{X,y}$ has an inverse given by $g$, hence it is not in $\mm_y$. Thus, $W\cap V(f) = \emptyset$. Since such $W$ may be found for any $x\in U\setminus V(f)$, $U\setminus V(f)$ is open.
 \end{proof}
+\begin{defi}[morphisms of local rings and locally ringed spaces]
+    \begin{alphanumerate}
+        \item 
+            Let $(R,\mm)$ and $(S,\nn)$ be local rings with their maximal ideals. A ring homomorphism $R\morphism[\phi] S$ is \defemph{local} iff $\phi^{-1}(\nn) = \mm$.
+        \item 
+            A \defemph{morphism of locally ringed spaces} is a morphism $X\morphism[f] Y$ of ringed spaces such that $X$ and $Y$ are locally ringed spaces and such that the following equivalent conditions hold
+            \begin{itemize}
+              \item[\itememph{\alpha}]
+                For any open subset $U\subseteq Y$ and $\lambda\in \Oo_Y(U)$ we have $V(f^*\lambda) = f^{-1}(V(\lambda))$.
+              \item[\itememph{\beta}]
+                For arbitrary $x\in X$, the ring morphism $\Oo_{y,f(x)} \morphism[f^*]\Oo_{X,x}$ is local in the sense of \itememph{a}.
+            \end{itemize}
 
+    \end{alphanumerate}
+\end{defi}
+\begin{fact*}
+    \begin{alphanumerate}
+      \item 
+        \begin{align*}
+            V(\lambda+\theta) &\supseteq V(\lambda)+V(\theta)\\
+            V(\lambda\theta) &= V(\lambda)\cup V(\theta)\\
+            V(\lambda|_V) &= V(\lambda)\cap V
+        \end{align*}
+      \item 
+        A composition of local ring morphisms is local.
+      \item 
+        \begin{proof}
+            Let \itememph{\beta} hold for given $X\morphism[f] Y$ of ringed spaces, with $X$ and $Y$ locally ringed, then in the situation of \itememph{\alpha} we have
+            \begin{align*}
+                V(f^*\lambda) &= \left\{x\in f^{-1}(U) \st (\text{image of } f^*\lambda \text{ in } \Oo_{X,x}) \in \mm_{X,x}\right\}\\
+                &= \left\{x\in f^{-1}(U) \st f^*(\text{image of }\lambda \text{ in } \Oo_{X,x})  \in \mm_{X,x}\right\}\\
+                &= \left\{x\in f^{-1}(U) \st (\text{image of }\lambda \text{ in } \Oo_{Y,f(x)})  \in (f^*)^{-1}(\mm_{X,x})\right\}\\
+                &= \left\{x\in f^{-1}(U) \st (\text{image of }\lambda \text{ in } \Oo_{Y,f(x)})  \in \mm_{Y,f(x)}\right\}\\
+                &= \left\{x\in f^{-1}(U)\st f(x)\in V(\lambda) \right\}\\
+                &= f^{-1}(V(\lambda))                
+            \end{align*}
+        \end{proof}
+      \item 
+        Note that for a ring morphism $R\morphism[\phi]S$ where $R$ and $S$ are local, we automatically have that $\phi^{-1}(\mm_S) \subseteq \mm_R$ as $\phi$ maps $R^\times = R\setminus \mm_R$ to $S^\times = S\setminus \mm_S$. Thus, to verify that $\phi$ is local it is only necessary to show $\phi(\mm_R) \subseteq \mm_S$.
+      \item 
+        \begin{proof}
+            Let $x\in X$, $y=f(x)$, $l\in\mm_{Y,y}$. we have to show $f^*\ell\in\mm_{X,x}$. There are an open neighbourhood $U$ of $y$ and $\lambda\in \Oo_Y(U)$ such that $\ell$ is the image of $\lambda$ in $\Oo_{Y,y}$. Then $y\in V(\lambda)$, hence $x\in f^{-1}(V(\lambda)) = V(f^*\lambda)$. Thus $f^*\ell$ is in $\mm_{X,x}$ as it is the image of $f^*\lambda$ in $\Oo_{X,x}$.
+        \end{proof}
+      \item 
+        It is obvious that a composition of morphisms of locally ringed spaces is a morphism of locally ringed spaces. Also, $\id_X$ is a morphism of locally ringed spaces. Thus, locally ringed spaces form a subcategory (but not a full subcategory) of the category of ringed spaces.
+    \end{alphanumerate}
+\end{fact*}
+\begin{fact}
+    \begin{alphanumerate}
+        \item 
+            $f^{-1}(V(\lambda)) = V(f^*\lambda)$ when $f$ is a morphism of locally ringed spaces.
+        \item 
+            Let $f\colon X\morphism Y$ be a morphism in $\cat{LRS}$ (the category of locally ringed spaces), $x\in X$, $y=f(x)$, since $f^*(\mm_{Y,y})\subseteq \mm_{X,x}$ we have a ring morphism of the residue fields $\kk(y) \morphism[f^*]\kk(x)$ induced by $\Oo_{Y,y}\morphism[f^*] \Oo_{X,x}$. If $Y\morphism[g] Z$ is another morphism in $\cat{LRS}$ then 
+            
+            this diagram
+            
+            commutes, where $z =f(x)$.
+        \item 
+            If $X\morphism[f]Y\morphism[g] Z$ are morphisms of ringed spaces, where $X$, $Y$ and $Z$ are locally ringed and $gf$ and $g$ are morphisms of locally ringed spaces, then $f$ is a morphism of locally ringed spaces.
+        \item 
+            If $R\morphism[\phi] S \morphism[\psi] T$ are ring morphisms such that $R$, $S$ and $T$ are local rings and $\psi\phi$ and $\psi$ are local, then $\phi$ is local:
+            \begin{align*}
+                \phi^{-1}(\mm_S) = \phi^{-1}(\psi^{-1}(\mm_T)) = (\psi\phi)^{-1} (\mm_T) = \mm_R
+            \end{align*}
+    \end{alphanumerate}
+\end{fact}
+\begin{fact}
+    If $R\morphism[\phi]S$ is a surjective ring homomorphism where $R$ and $S$ are local rings, then $\phi$ is local.
+\end{fact}
+\begin{example}
+    Let $U\subseteq X$ be an open subset, let $\iota\colon U\morphism X$ its embedding, where $(X,\Oo_X)$ is a locally ringed space, and let $\Oo_U = \Oo_X|U$. Let $\iota^*\colon \Oo_X(V)\morphism \Oo_X(U\cap V) = \Oo_X(\iota^{-1}(V))$ be given by $-|_{U\cap V}\colon \Oo_X(V) \morphism \Oo_X(U\cap V)$. It follows that $\Oo_{X,x}\morphism[\iota^*]\Oo_{U,x}$, for $x\in U$, is an isomorphism (the canonical isomorphism $(\Oo_X|_U)_x \isomorphism \Oo_{X,x}$), hence local. Hence $\iota$ is a morphism in $\cat{LRS}$, and 
+    \begin{align*}\lbl{eq:fact5}
+        \Hom_{\cat{LRS}}(T,U)  &\isomorphism\left\{g\in \Hom_{\cat{LRS}} (T,X) \st g(T)\subseteq U\right\} \tag{Fact 5}\\
+        f&\longmapsto g=\iota f
+    \end{align*}
+\end{example}
+\begin{fact}
+    If $X\morphism[\iota] Y$ is a morphism in $\cat{LRS}$ such that $\iota_{\cat{Top}}$ is an injective map and such that for any $x\in X$, $\iota_x^*\colon \Oo_{Y,\iota(x)} \morphism \Oo_{X,x}$ is surjective, then $\iota$ is a monomorphism in $\cat{LRS}$.
+\end{fact}
+
+    
+    
+    
+    
+    
     
     
     
@@ -812,6 +896,20 @@ A category is called \emph{small} if its class of objects is a set.
 	\begin{defi}[Mono- and epimorphism]
 		Let $\Aa$ be a category, $X\morphism[f] Y$ a morphism in $\Aa$. We say that $f$ is \defemph{monomorphism} (\defemph{epimorphism}) if for any object $T$ and any pair $T \doublemorphism[\alpha][\smash{\beta}] X$ (respectively $Y\doublemorphism[\smash{\alpha}][\beta] T$) with $f\alpha = f\beta$ (respectively $\alpha f= \beta f$) we get $\alpha =\beta$.
 	\end{defi}
+	\begin{defi}[Coequalizer]
+        Moreover, $Y\morphism[c] C$ is a \defemph{coequalizer} in $\Aa$ (of $X\doublemorphism[a][b] Y$) iff $C^\op\morphism[c^\op] X^\op$ is an equalizer of $Y^\op\doublemorphism[a^\op][b^\op]X^\op$ in $\Aa^\op$. In other words,
+        \begin{align*}
+            \Hom_\Aa(C,T) &\isomorphism \left\{g\in \Hom_\Aa(Y,T)\st ga = gb\right\}\\
+            f &\longmapsto fc
+        \end{align*}
+        must be bijective.
+	\end{defi}
+	\begin{fact*}
+        Let $A\doublemorphism[\alpha][\beta] B$ be a ring morphism. Then a coequalizer is given by $B/I$ where $I$ is the ideal generated by $\left\{\alpha(a)-\beta(a)\st a\in A\right\}$. When $A$, $B$, $\alpha$ and $\beta$ are local ring morphisms, this is a local ring iff $\alpha$ and $\beta$ induce the same morphism on residue fields, $\{0\}$ otherwise. Let us denote this by $\Coeq(A\doublemorphism[\alpha][\beta] B)$.
+	\end{fact*}
+	\begin{proof}
+        Let $C = B/I \lepimorphism[\pi] B$. Obviously, $\pi \alpha = \pi\beta$. Let $B\morphism[t] T$ be a ring homomorphism such that $t\alpha = t\beta$. Then $t(\alpha(a)-\beta(a)) = 0$ hence $\left\{\alpha(a)-\beta(a)\st a\in A\right\} \subseteq \ker(t)$ hence $I\subseteq \ker(t)$ as $\ker(t)$ is an ideal, and $t$ has a unique representation as $t=\tau\pi$ for $C\morphism[\tau] T$, by the universal property of the quotient ring.
+	\end{proof}
 	
 	\section{Functors, functor morphisms, and the Yoneda lemma}
 	\begin{rem*}
