@@ -765,24 +765,25 @@ In many cases, the module of Kähler differentials can be calculated using $\Ome
 	\end{align*}
 	by the universal properties of $\Omega_{A/R}$ and $-\otimes_AB$. Hence, applying $\Hom_B(-,T)$ transforms \eqreff{eq:tensorDerSpam1} and \eqreff{eq:tensorDerSpam2} into \eqreff{eq:derExactSequence1} and \eqreff{eq:derExactSequence2} respectively, thus showing exactness by Fact~\reff{fact:DerExactSequences}. 
 \end{proof}
-\begin{varthm}{fact}This should actually be in Fact~\reff{fact:DerExactSequences}, but I refuse to change a fact that was stated two lectures ago.
+\begin{varthm}{fact}\lbl{fact:DerLocalization}
+	This should actually be in Fact~\reff{fact:DerExactSequences}, but we refuse to change a fact that was stated two lectures ago.
     \begin{itemize}
       \item[\itememph{c}]
-        When $X\subseteq R$ is multiplicative and $M$ an $A_X$-module, then we have
+        When $X\subseteq R$ is multiplicative and $M$ an $A_X$-module, then we have an isomorphism of $A_X$-modules
         \begin{align}\lbl{eq:DerLocalizationIso1}
             \Der_{R_X}(A_X,M) \isomorphism \Der_R(A,M).
         \end{align}
       \item[\itememph{d}]
-        When $S\subseteq A$ is multiplicative and $M$ an $A_S$-module, then we have
+        When $S\subseteq A$ is multiplicative and $M$ an $A_S$-module, then we have an isomorphism of $A_S$-modules
         \begin{align}\lbl{eq:DerLocalizationIso2}
             \Der_R(A_S,M)\isomorphism \Der_R(A,M).
         \end{align}
     \end{itemize}
 \end{varthm} 
 \begin{proof}
-    Both maps are defined by composition of derivations with the ring homomorphism $A\morphism A_X$ or $A\morphism A_S$, so this is well-defined.
+    Both maps are defined by composition of derivations with the ring homomorphisms $A\morphism A_X$ respectively $A\morphism A_S$, so they are well-defined.
     
-    To proof \itememph{c}, take any element $d\in \Der_R(A,M)$. This is $R$-linear and hence defines a unique homomorphism $A_X\morphism[d] M$ of $R_X$ modules, by our assumption on $M$ and the universal property of the localization. To confirm Leibniz rule, look at
+    To prove \itememph{c}, take any element $d\in \Der_R(A,M)$. This is $R$-linear and hence defines a unique homomorphism $A_X\morphism[d] M$ of $R_X$ modules, by our assumption on $M$ and the universal property of the localization. To confirm the Leibniz rule, look at
     \begin{align*}
         d\left(\frac{a}{x}\cdot \frac{\alpha}{\xi}\right) = \frac{d(a\cdot\alpha)}{x\cdot \xi} = \frac{\alpha\cdot d(a) +a\cdot d(\alpha)}{x\cdot \xi} = \frac{\alpha}{\xi}\frac{d(a)}{x} +\frac{a}{x}\frac{d(\alpha)}{\xi} = \frac{\alpha}{\xi}d\left(\frac{a}{x}\right) +\frac{a}{x}d\left(\frac{\alpha}{\xi}\right).
     \end{align*}
@@ -792,26 +793,102 @@ In many cases, the module of Kähler differentials can be calculated using $\Ome
     \begin{align*}
         0 = d(\sigma\cdot \alpha) = \sigma \cdot d(\alpha) + \alpha\cdot d(\sigma) = \sigma\cdot d(\alpha)
     \end{align*}
-    implies $d(\alpha) = 0$ since $\sigma\in (A_S)^\times$. This shows injectivity of the map. For surjectivity, let $\delta\in \Der_R(A,M)$ and put $d\left(\frac{a}{s}\right) = \frac{s\cdot\delta(a) - a\cdot\delta(s)}{s^2}$. We have
+    implies $d(\alpha) = 0$ since $\sigma\in (A_S)^\times$. This shows injectivity of the map. For surjectivity, let $\delta\in \Der_R(A,M)$ and put $d\left(\frac{a}{s}\right) = \frac{s\cdot\delta(a) - a\cdot\delta(s)}{s^2}$ (the \emph{quotient rule}). We have
     \begin{align*}
         d\left(\frac{\sigma\cdot a}{\sigma \cdot s}\right) = \frac{\sigma\cdot s\cdot \delta(\sigma\cdot a) - \sigma \cdot a \cdot \delta(\sigma\cdot s)}{\sigma^2\cdot s^2} = \frac{s\cdot \delta(a)-a\cdot\delta(s)}{s^2}
     \end{align*}
     showing that $d\colon A_S\morphism M$ is well-defined. That $d(R)=0$ is trivial, as is the additivity and the Leibniz rule is easily verified.
 \end{proof}
 \begin{varthm}{cor}
+	Same as Fact~\reff{fact:DerLocalization}, this should have been stated a long time ago.
     \begin{alphanumerate}
         \item[\itememph{c}]
-            As $A\morphism A_X \xrightarrow{d_{A_X/R_X}} \Omega_{A_X/R_X}$ is an $R$-linear derivative of $A$, there is a unique $\Omega_{A/R}\morphism[\alpha] \Omega_{A_X/R_X}$ of $A$-modules such that $d_{A_X/R_X} (a) = \alpha(d_{A/R}(a))$ for any $a\in A$. By the universal property of the localization $\Omega_{A/R}\morphism[\lambda](\Omega_{A/R})_X$ there is a unique $\iota$ such that $\alpha = \iota \lambda$. Thereby we obtain
-            \begin{align*}
-                \Omega_{A_X/R_X} \lisomorphism[\iota] (\Omega_{A/R})_X.
-            \end{align*}
+	        When $X\subseteq R$ is multiplicative, there is a canonical isomorphism of $A_X$-modules
+	        \begin{align}\lbl{eq:KahlerLocalizationIso1}
+		        \Omega_{A_X/R_X} \lisomorphism[\iota] (\Omega_{A/R})_X=\Omega_{A/R}\otimes _AA_X
+	        \end{align}
+	        (as $A_X=A\otimes R_X$, we could have taken the tensor product $-\otimes_RR_X$ as well).           
         \item[\itememph{d}]
-            Since $A\morphism A_S\xrightarrow{d_{A_S/R}} \Omega_{A_S/R}$ is an element of $\Der_R(A,\Omega_{A_S/R})$ there is a unique $\Omega_{A/R} \morphism[\alpha]\Omega_{A_S/R}$ of $A$-modules such that $d_{A_S/R}(a) = \alpha(d_{A/R}(a))$. By the universal property of $\Omega_{A/R}\morphism[\lambda](\Omega_{A/R})_S$ there is a unique $\iota$ such that $\alpha=\iota \lambda$. This gives us
-            \begin{align*}
-                \Omega_{A_S/R} \lisomorphism(\Omega_{A/R})_S.
-            \end{align*}
+	        When $S\subseteq A$ is multiplicative, there is a canonical isomorphism of $A_S$-modules
+	        \begin{align}\lbl{eq:KahlerLocalizationIso2}
+		        \Omega_{A_S/R} \lisomorphism(\Omega_{A/R})_S=\Omega_{A/R}\otimes_A A_S\;.
+	        \end{align}
     \end{alphanumerate}
 \end{varthm}
+\begin{proof}
+	As in the proof of Corollary~\reff{cor:kahlerExactSequences}, we should first agree on how the morphisms are supposed to look like.
+	\begin{itemize}
+		\item As $A\morphism A_X \xrightarrow{d_{A_X/R_X}} \Omega_{A_X/R_X}$ is an $R$-linear derivative of $A$, there is a unique morphism $\Omega_{A/R}\morphism[\alpha] \Omega_{A_X/R_X}$ of $A$-modules such that the left of the below diagrams commutes. By the universal property of the localization $\Omega_{A/R}\morphism(\Omega_{A/R})_X=\Omega_{A/R}\otimes_AA_X$ there is a unique $A_X$-module homomorphism $\iota$ such that the right diagram commutes.
+		\begin{center}
+			\begin{minipage}{0.4\textwidth}
+				\centering				
+				\begin{diagram}
+					\node (A) at (0,1.5) {$A$};
+					\node (AX) at (2.5,1.5) {$A_X$};
+					\node (OX) at (2.5,0) {$\Omega_{A_X/R_X}$};
+					\node (O) at (0,0) {$\Omega_{A/R}$};
+					\scriptsize
+					\draw[->] (A) -- (AX);
+					\draw[->] (AX) -- (OX) node[pos=0.5, right] {$d_{A_X/R_X}$};
+					\draw[->] (A) -- (O) node[pos=0.5, left] {$d_{A/R}$};
+					\draw[->, dashed] (O) -- (OX) node[pos=0.5, above] {$\exists!\ \alpha$};
+				\end{diagram}
+			\end{minipage}
+			\begin{minipage}{0.4\textwidth}
+				\centering				
+				\begin{diagram}
+					\node (A) at (0,1.5) {$\Omega_{A/R}$};
+					\node (OX) at (3,1.5) {$\Omega_{A_X/R_X}$};
+					\node (O) at (1.5,0) {$\Omega_{A/R}\otimes_AA_X$};
+					\scriptsize
+					\draw[->] (A) -- (OX) node[pos=0.5, above] {$\alpha$};
+					\draw[->] (A) -- (O) node[pos=0.5, below left] {$-\otimes_A1$};
+					\draw[->, dashed] (O) -- (OX) node[pos=0.5, below right] {$\exists!\ \iota$};
+				\end{diagram}
+			\end{minipage}
+		\end{center}
+		\item Similarly, since $A\morphism A_S\xrightarrow{d_{A_S/R}} \Omega_{A_S/R}$ is an element of $\Der_R(A,\Omega_{A_S/R})$ there is a unique morphism $\Omega_{A/R} \morphism[\alpha]\Omega_{A_S/R}$ of $A$-modules such that the left of the below diagrams commutes. By the universal property of $\Omega_{A/R}\morphism(\Omega_{A/R})_S=\Omega_{A/R}\otimes_AA_S$ there is a unique $\iota$ such that the tight diagram commutes. 
+		\begin{center}
+			\begin{minipage}{0.4\textwidth}
+				\centering				
+				\begin{diagram}
+					\node (A) at (0,1.5) {$A$};
+					\node (AX) at (2.5,1.5) {$A_S$};
+					\node (OX) at (2.5,0) {$\Omega_{A_S/R}$};
+					\node (O) at (0,0) {$\Omega_{A/R}$};
+					\scriptsize
+					\draw[->] (A) -- (AX);
+					\draw[->] (AX) -- (OX) node[pos=0.5, right] {$d_{A_S/R}$};
+					\draw[->] (A) -- (O) node[pos=0.5, left] {$d_{A/R}$};
+					\draw[->, dashed] (O) -- (OX) node[pos=0.5, above] {$\exists!\ \alpha$};
+				\end{diagram}
+			\end{minipage}
+			\begin{minipage}{0.4\textwidth}
+				\centering				
+				\begin{diagram}
+					\node (A) at (0,1.5) {$\Omega_{A/R}$};
+					\node (OX) at (3,1.5) {$\Omega_{A_S/R}$};
+					\node (O) at (1.5,0) {$\Omega_{A/R}\otimes_AA_S$};
+					\scriptsize
+					\draw[->] (A) -- (OX) node[pos=0.5, above] {$\alpha$};
+					\draw[->] (A) -- (O) node[pos=0.5, below left] {$-\otimes_A1$};
+					\draw[->, dashed] (O) -- (OX) node[pos=0.5, below right] {$\exists!\ \iota$};
+				\end{diagram}
+			\end{minipage}
+		\end{center}
+	\end{itemize}
+	 To show that $\iota$ is an isomorphism in \itememph{c}, it is sufficient to show that we have an isomorphism after applying $\Hom_{A_X}(-,T)$ to both sides for every $A_X$--module $T$. This is so because of \hyperref[fact:HomRightExact]{this} unfortunately unnamed fact applied to the sequence $0\morphism \Omega_{A/R}\otimes_AA_X\morphism[\iota]\Omega_{A_X/R_X}\to0$ (which is exact iff $\iota$ is an isomorphism). But
+	 \begin{align*}
+	 	\Hom_{A_X}(\Omega_{A_X/R_X},T)\simeq\Der_{R_X}(A_X,T)
+	 \end{align*}
+	 and
+	 \begin{align*}
+	 	\Hom_{A_X}(\Omega_{A/R}\otimes_AA_X,T)\simeq\Hom_A(\Omega_{A/R},T)\simeq\Der_R(A,T)
+	 \end{align*}
+	 by various universal properties, hence \itememph{c} reduces to Fact~\reff{fact:DerLocalization}\itememph{c}.
+	 
+	 Part \itememph{d} works just the same.
+\end{proof}
 
 
 
@@ -1074,7 +1151,20 @@ is called the \emph{degree} and $\Min_{x/K}$ the \emph{minimal polynomial} of $x
         M\times N &\morphism M \otimes_R N \\
         (m,n) &\longmapsto m\otimes_R n = m\otimes n
     \end{align*}
-    which has the universal property for $R$-bilinear maps $M\times N \morphism[\tau] T$: If $\tau$ is any such map, there is a unique $t\in \Hom_R(M\otimes_R N , T)$ such that $\tau(a,b) = t(a\otimes b)$.
+    which has the \emph{universal property} for $R$-bilinear maps $M\times N \morphism[\tau] T$:
+    \begin{quote}
+    	If $\tau$ is any such map, there is a unique $t\in \Hom_R(M\otimes_R N , T)$ such that the following diagram commutes.
+    	\begin{diagram}
+    		\node (M) at (0,1.25) {$M\times N$};
+    		\node (T) at (2.5,1.25) {$T $};
+    		\node (tensor) at (1.25,0) {$M\otimes_RN$};
+    		\scriptsize
+    		\draw[->] (M) -- (T) node[pos=0.5, above] {$\tau$};
+    		\draw[->] (M) -- (tensor) node[pos=0.5, below left] {$-\otimes-$};
+    		\draw[->] (tensor) -- (T) node[pos=0.5, below right] {$t$};
+    	\end{diagram}
+    \end{quote}
+    
 \end{defi}
 
 \begin{rem}
@@ -1082,44 +1172,42 @@ is called the \emph{degree} and $\Min_{x/K}$ the \emph{minimal polynomial} of $x
         \item 
             It is easy to see that this characteristizes $M\otimes_R N$ uniquely up to unique isomorphism.
         \item 
-            $M\otimes_R N$ is generated as an $R$-module by $\left\{m\otimes n \st m\in M, n\in N\right\}$. In fact, let $T$ be the quotient by elements of this form, $\tau = 0$, $t_1=0$, $t_2$ the projection $M\otimes_R N \morphism T$. Thus, a morphism $M\otimes_R N \morphism[f] X$ of $R$-modules is uniquely determined by giving $f(m\otimes n)$ for $m\in M$, $n\in N$. Existence is guaranteed by the universal property, provided that the expression given for $f(m\otimes n)$ is bilinear in $m$ and $n$.
+            $M\otimes_R N$ is generated as an $R$-module by $\left\{m\otimes n \st m\in M, n\in N\right\}$. To see this, let $T$ be the quotient of $M\otimes_RN$ by the submodule generated by elements of this form, and consider $\tau = 0$. Then both $t_1=0$, and $t_2$ the projection $M\otimes_R N \epimorphism T$ would make the above diagram commute, which forces $0=t_1=t_2$, hence the quotient is $0$. 
+            
+            Thus, a morphism $M\otimes_R N \morphism[f] X$ of $R$-modules is uniquely determined by giving $f(m\otimes n)$ for $m\in M$, $n\in N$. Existence is guaranteed by the universal property, provided that the expression given for $f(m\otimes n)$ is bilinear in $m$ and $n$.
     \end{alphanumerate}
 \end{rem}
 \begin{prop}
     $M\otimes_R N$ exists.
 \end{prop}
 \begin{proof}
-    $M\otimes_R N$ can be constructed by $F/K$ and $m\otimes n$ by the image of $\delta_{(m,n)}$ in $F/K$. Here $F$ is the free $R$-module generated by $M\times N$ and $K$ the submodule generated by elements of the form 
+    $M\otimes_R N$ can be constructed by $F/K$ and $m\otimes n$ by the image of $\delta_{(m,n)}$ in $F/K$. Here $F=\bigoplus_{(m,n)\in M\times N}R$ is the free $R$-module generated by $M\times N$ and $K$ the submodule generated by elements of the form 
     \begin{align*}
-        &\delta_{(m+m',n)}-\delta_{(m,n)}-\delta_{(m',n)}\\
-        &\delta_{(m,n+n')}-\delta_{(m,n)}-\delta_{(m,n')}\\
-        &\delta_{(rm,n)}-r\delta_{(m,n)}\\
-        &\delta_{(m,rn)}-r\delta_{(m,n)}.
+        \delta_{(m+m',n)}-\delta_{(m,n)}-\delta_{(m',n)}\;,\quad&\delta_{(m,n+n')}-\delta_{(m,n)}-\delta_{(m,n')}\;,\\
+        \delta_{(rm,n)}-r\delta_{(m,n)}\;,\quad&\delta_{(m,rn)}-r\delta_{(m,n)}\;.
     \end{align*}
-    
+    It's easy to check that this works.
 \end{proof}
-\subsection{Use of the tensor product to base-change a module}
+\subsection{Use of the tensor product to basis-change a module}
 Let $R$ be a ring, $A$ an $R$-algebra, $M$ an $R$-module. Then $A\otimes_RM$ has a unique structure of an $A$-module such that
 \begin{align*}
     \alpha\cdot (a\otimes m) = (\alpha \cdot a)\otimes m.
 \end{align*}
-In fact, the right hand side is $R$-bilinear in a and $m$, showing the existence. There is a unique morphism $\alpha\cdot = \mu_\alpha\colon A\otimes_R M \morphism A\otimes_R M$ such that $\mu_\alpha(a\otimes m) = (\alpha\cdot a) \otimes m$ for all $a\in A$, $m\in M$. We have $\mu_{\alpha+\alpha'} = \mu_{\alpha}+\mu_{\alpha'}$. Also, $\mu_\alpha = \rho\cdot$ (in the $R$-module structure) when $\alpha$ is the image of $\rho\in R$ in $A$. In particular, $\mu_1 = \id_{A\otimes_R M}$. It follows that we have obtained an $A$-module-structure on $A\otimes_R M$.
+In fact, the right hand side is $R$-bilinear in a and $m$, showing the existence. There is a unique morphism $\alpha\cdot(-) = \mu_\alpha\colon A\otimes_R M \morphism A\otimes_R M$ such that $\mu_\alpha(a\otimes m) = (\alpha\cdot a) \otimes m$ for all $a\in A$, $m\in M$. We have $\mu_{\alpha+\alpha'} = \mu_{\alpha}+\mu_{\alpha'}$. Also, $\mu_\alpha = \rho\cdot(-)$ (in the $R$-module structure) when $\alpha$ is the image of $\rho\in R$ in $A$. In particular, $\mu_1 = \id_{A\otimes_R M}$. It follows that we have obtained an $A$-module-structure on $A\otimes_R M$.
 
-We have a homomorphism $M\morphism A\otimes_R M$ sending $m$ to $1\otimes m$, a morphism of $R$-modules by the $R$-bilinearity of $\otimes$. Let $T$ be any $A$-module and $\tau\in \Hom_R(M,T)$, then there is a unique homomorphism $t\colon A\otimes_R M \morphism T$ of $R$-modules such that $t(a\otimes m) = a\tau(m)$. And thus $\tau$ makes
-
+We have a homomorphism $M\morphism A\otimes_R M$ sending $m$ to $1\otimes m$. This is a morphism of $R$-modules by the $R$-bilinearity of $-\otimes-$. Let $T$ be any $A$-module and $\tau\in \Hom_R(M,T)$, then there is a unique homomorphism $t\colon A\otimes_R M \morphism T$ of $R$-modules such that $t(a\otimes m) = a\tau(m)$, i.e.
 \begin{diagram}
     \node (M) at (0,1.25) {$M$};
-    \node (tensor) at (2.5,1.25) {$A\otimes_R M $};
-    \node (T) at (1.25,0) {$T$};
+    \node (tensor) at (1.25,0) {$A\otimes_R M $};
+    \node (T) at (2.5,1.25) {$T$};
     \scriptsize
-    \draw[->] (M) -- (tensor) node[pos=0.5, above] {$1\otimes - $};
-    \draw[->] (M) -- (T) node[pos=0.5, below left] {$\tau$};
-    \draw[->] (tensor) -- (T) node[pos=0.5, below right] {$t$};
+    \draw[->] (M) -- (tensor) node[pos=0.5, below left] {$1\otimes - $};
+    \draw[->] (M) -- (T) node[pos=0.5, above] {$\tau$};
+    \draw[->, dashed] (tensor) -- (T) node[pos=0.5, below right] {$\exists!\ t$};
 \end{diagram}
-
-commutative, and is $A$-linear:
+commutes. Also, $t$ is $A$-linear:
 \begin{align*}
-    \alpha\cdot t(a\otimes m) = \alpha\cdot(a\cdot\tau(m)) = t((\alpha\cdot a)\otimes m) = t(\alpha\cdot(a\otimes m))
+    \alpha\cdot t(a\otimes m) = \alpha\cdot(a\cdot\tau(m)) = t((\alpha\cdot a)\otimes m) = t(\alpha\cdot(a\otimes m))\;.
 \end{align*}    
 As the $a\otimes m$ generate $A\otimes M$ as an $R$-module this implies $A$-linearity of $\tau$. Also, if $t$ makes the above diagram commutative and is $A$-linear then $t$ is $R$-linear and $t(a\otimes m) = a\cdot t(1\otimes m) = a\otimes \tau(m)$ hence $t$ is uniquely determined.
 \printbibliography
