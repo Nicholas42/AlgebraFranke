@@ -670,9 +670,9 @@ of presheaves on $\Bb$.
     
     If $f$ is nilpotent, say, $f^n=0$, then $U=V(0)=V(f^n)=\bigcup_{i=1}^nV(f)=V(f)$ by \itememph{b} of the \hyperref[rem:stuffAboutV(f)]{previous remark}.
 \end{proof}
-\begin{defi}\lbl{def:localMorphisms}
+\begin{defi}
     \begin{alphanumerate}
-        \item 
+        \item \lbl{def:localMorphisms}
             Let $(R,\mm_R)$ and $(S,\mm_S)$ be local rings with their respective maximal ideals. A ring homomorphism $R\morphism[\phi] S$ is \defemph{local} iff $\phi^{-1}(\mm_S) = \mm_R$.
         \item 
             A \defemph{morphism of locally ringed spaces} is a morphism $X\morphism[f] Y$ of ringed spaces such that $X$ and $Y$ are locally ringed spaces and such that the following equivalent conditions hold
@@ -750,7 +750,7 @@ of presheaves on $\Bb$.
 	Since $\phi$ is surjective, it induces an isomorphism $\ov{\phi}\colon R/\ker\phi\isomorphism S$. As local rings are forbidden to be the zero ring, $\ker\phi$ must be a proper ideal of $R$ and hence contained in $\mm_R$. Then $\phi$ maps $\mm_R$ to $\mm_R/\ker\phi=\mm_S$.
 \end{proof}
 \begin{example}
-    Let $U\subseteq X$ be an open subset, let $\iota\colon U\morphism X$ its embedding, where $(X,\Oo_X)$ is a locally ringed space, and let $\Oo_U = \Oo_X|_U$. Let $\iota^*\colon \Oo_X(V)\morphism \Oo_X(U\cap V) = \Oo_X(\iota^{-1}(V))$ be given by $(-)|_{U\cap V}\colon \Oo_X(V) \morphism \Oo_X(U\cap V)$. It follows that $\Oo_{X,x}\morphism[\iota^*]\Oo_{U,x}$, for $x\in U$, is an isomorphism (the canonical isomorphism $(\Oo_X|_U)_x \isomorphism \Oo_{X,x}$), hence local. Hence $\iota$ is a morphism in $\cat{LRS}$, and \labelWithSpecificText{eq:fact5}{Fact~5}
+    Let $U\subseteq X$ be an open subset, let $\iota\colon U\morphism X$ its embedding, where $(X,\Oo_X)$ is a locally ringed space, and let $\Oo_U = \Oo_X|_U$. Let $\iota^*\colon \Oo_X(V)\morphism \Oo_X(U\cap V) = \Oo_X(\iota^{-1}(V))$ be given by $(-)|_{U\cap V}\colon \Oo_X(V) \morphism \Oo_X(U\cap V)$. It follows that $\Oo_{X,x}\morphism[\iota^*]\Oo_{U,x}$, for $x\in U$, is an isomorphism (the canonical isomorphism $(\Oo_X|_U)_x \isomorphism \Oo_{X,x}$), hence local. Hence $\iota$ is a morphism in $\cat{LRS}$, and
     \begin{align}\lbl{eq:fact5}
 	    \begin{split}
 		    \Hom_{\cat{LRS}}(T,U)  &\isomorphism\left\{g\in \Hom_{\cat{LRS}} (T,X) \st g(T)\subseteq U\right\}\\
@@ -764,8 +764,69 @@ of presheaves on $\Bb$.
 \begin{proof}
 	It suffices to note that $\iota_{\cat{Top}}$ is a monomorphism of topological spaces and $\iota^*$ an epimorphism of sheaves on $Y$ (since it stalk-wise an epimorphism).
 \end{proof}
+\begin{prop}\lbl{prop:equalizerLRS}
+    Let $X\doublemorphism[a][b] Y$ be morphisms in $\cat{LRS}$. Then an equalizer of these morphisms is given as follows
+    \begin{itemize}
+      \item 
+        Let $K = \left\{ x\in X\st y= a(x) = b(x) \text{ and } a*=b*\right\}$, where $\KK(y) \doublemorphism[a^*][b^*] \KK(x)$ are the morphisms defined by $a$ and $b$ on the residue fields. Let $K$ be equipped with the subspace topology induced from $X$.
+      \item 
+        Let $\Oo_{K,[k]} = \Coeq\left(\Oo_{Y,y} \doublemorphism[a^*][b^*] \Oo_{X,k}\right)$ where $y=a(k) = b(k)$.
+      \item 
+        Let for open $U\subseteq K$ 
+        \begin{align*}
+            \Oo_K(U) = \left\{(f_k)\in \prod_{k\in U} \Oo_{K,[k]} \st \begin{array}{c}
+                \text{for every } \ell\in U, \text{ there are an open neighbourhood } \\
+                \ell\in V \subseteq X \text{ and } \phi\in\Oo_X(V) \text{ such that for every } \\
+                k\in U\cap V, f_k \text{ is equal to the image of }\phi\text{ under }\\
+                \Oo_X(V) \morphism \Oo_{X,k} \morphism\Oo_{K,[k]}
+            \end{array}
+            \right\}
+        \end{align*}
+        where 
+        \begin{align*}
+            (f_x)_{x\in U} \circ (g_x)_{x\in U} = (f_x\circ g_x)_{x\in U}
+        \end{align*}
+        for $\circ \in\{+,\cdot\}$.
+        
+        The morphism $K\morphism[\kappa] X$ is given by the inclusion $K\morphism X$ of the subset $K\subseteq X$ and by $\kappa^*$ mapping $\phi$ to the image of $\phi$ und $\Oo_X(U) \morphism \prod_{x\in U\cap K} \Oo_{X,x} \morphism \prod_{x\in (U\cap K)} \Oo_{K,[x]}$.
+        
+        Moreover,
+        \begin{align*}
+            \Oo_{K,k} &\isomorphism \Oo_{K,[k]}\\
+            (U,(f_\ell)_{\ell\in U})/_\sim &\longmapsto f_k
+        \end{align*}
+    \end{itemize}
+\end{prop}
+\begin{proof}
+    The following steps are rather trivial:
+    \begin{itemize}
+      \item 
+        $K$ is a topological space, $\kappa$ is continuous, $\Oo_{K,[k]}$ is a local ring (by a basic fact about coequalizers of local ring morphisms, see the exercise sheet 5), $\Oo_{X,k} \morphism \Oo_{K,[k]}$ is local (it is, in fact, surjective).
+      \item 
+        $\Oo_K$ is a sheaf of rings, $\Oo_X \morphism[\kappa^*] \kk_*\Oo_K$ is a morphism of sheaves of rings.
+      \item 
+        Once $\Oo_{K,k} \isomorphism \Oo_{K,[k]}$ (as given above) is shown, it follows that $K$ is a locally ringed space. 
+        
+        To show injectivity, let $U\subseteq K$ be an open neighbourhood of $k$ and let $f= (f_\ell)_{\ell\in U} \in \Oo_K(U) \subseteq \prod_{\ell\in U} \Oo_{K,[\ell]}$ be such that $f_k$ vanishes. We have to show that the image if $f$ in $\Oo_{K,k}$ vanishes. By the coherence condition for sections of $\Oo_K$, there are an open neighbourhood $V$ of $k$ in $X$ and $\phi\in \Oo_X(V)$ such that $f_\ell$ is the image of $\phi$ under $\Oo_X(V) \morphism\Oo_{X,\ell} \morphism\Oo_{K,[\ell]}$ for $\ell\in U\cap V$. Shrinking $U$ if necessary, we may assume $V\cap K \supseteq U$. Since $0 = f_k$ is the image of $\phi_k$ in $\Oo_{X,k}/\left\langle a^*(v)-b^*(v)\st v\in \Oo_{Y,y}\right\rangle$, where $y=a(k)=b(k)$ and $\phi_k$ is the image of $\phi$ in $\Oo_{K,k}$, we have $(\rho_i)_{i=1}^N\in \Oo_{X,k}^N$ and $(v_i)_{i=1}^N\in \Oo_{Y,y}^N$ such that
+        \begin{align*}
+            \phi_k = \sum_{i=1}^N \rho_i(a^*(v_i) -b^*(v_i)).
+        \end{align*}
+        By the definitions of $\Oo_{X,k}$ and $\Oo_{Y,y}$ there are open neighbourhoods $W$ and $(\Omega_i)_{i=1}^N$ of $k$ in $X$ and $r_i \in \Oo_X(\Omega_i)$ such that $\rho_i = (r_i)_k$ and $(\Theta_i)_{i=1}^N$ of $y$ in $Y$ and $y_i \in \Oo_Y(\Theta_i)$ such that $(y_i)_y = v_i$ and such that 
+        \begin{align*}
+            W\subseteq V\cap \bigcap_{i=1}^N \Omega_i \cap\bigcap_{i=1}^N \left(a^{-1}(\Theta_i) \cap b^{-1}(\Theta_i)\right)
+        \end{align*}
+        and such that 
+        \begin{align*}
+            \phi|_W = \sum_{i=1}^N r_i|_W \cdot \left(a^*(y_i)|_W -b^*(y_i)|_W\right).
+        \end{align*}
+        For $\ell\in W\cap K$, $\phi_\ell$ is the image of the above expression in $\Oo_{X,\ell}$, hence 
+        \begin{align*}
+            \phi_\ell\in \left\langle a^*(v) -b^*(v)\st v\in \Oo_{Y,a(\ell)} = \Oo_{Y,b(\ell)}\right\rangle_{\Oo_{X,\ell}}
+        \end{align*}
+        and $f_\ell =0$ as $\Oo_{K,[\ell]}$ is the quotient of $\Oo_{X,\ell}$ by the ideal on the right hand side. Thus, $f|_{U\cap W} =0$, proving the injectivity claim.
+    \end{itemize}
 
-    
+\end{proof}
     
     
     
