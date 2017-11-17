@@ -14,6 +14,8 @@
 \author{Nicholas Schwab \& Ferdinand Wagner}
 \date{Wintersemester 2017/18}
 
+\displaywidowpenalty=10000
+%\postdisplaypenalty=10000
 \widowpenalty=10000
 \clubpenalty=10000
 
@@ -91,7 +93,7 @@ Let it be said that the first three recommendations are from Professor Franke wh
 	        \end{align*}
 	        is an element of $\Oo_X(\phi^{-1}(W))$. One denotes $g=\phi^*f$ in this case.
 	    \end{quote}
-	    A \defemph{morphism of prevarieties} $(X,\Oo_X) \to (Y,\Oo_Y)$ is a continuous map $X\morphism[\phi] Y$ such that for all $U\subseteq Y$ and $\lambda \in \Oo_Y(U)$ we have $\phi^\ast \lambda \in \Oo_X(\phi^{-1}(U))$. As above, $\phi^\ast\lambda$ is defined as $(\phi^\ast\lambda)(x) = \lambda(\phi(x))$. In particular, $\phi^*$ induces a \emph{morphism of sheaves} $\phi^*\colon \Oo_Y\to\Oo_X$ (cf. Definition~\reff{def:morphismOfPresheaves}).
+	    A \defemph{morphism of prevarieties} $(X,\Oo_X) \to (Y,\Oo_Y)$ is a continuous map $X\morphism[\phi] Y$ such that for all $U\subseteq Y$ and $\lambda \in \Oo_Y(U)$ we have $\phi^\ast \lambda \in \Oo_X(\phi^{-1}(U))$. As above, $\phi^\ast\lambda$ is defined as $(\phi^\ast\lambda)(x) = \lambda(\phi(x))$. In particular, $\phi^*$ induces a \emph{morphism of sheaves} $\phi^*\colon \Oo_Y\to\phi_*\Oo_X$ (cf. Definition~\reff{def:morphismOfPresheaves} and Definition~\reff{def:directImage}).
 	\end{defi}
 	\begin{rem*}
 		\begin{alphanumerate}
@@ -685,7 +687,7 @@ of presheaves on $\Bb$.
 
     \end{alphanumerate}
 \end{defi}
-\begin{rem*}
+\begin{rem*}\lbl{rem:localMorphismStuff}
     \begin{alphanumerate}
       \item 
         A composition of local ring morphisms is local.
@@ -726,10 +728,18 @@ of presheaves on $\Bb$.
             	\draw[->] (ky) -- (kx) node[pos=0.5,below right] {$f^*$};
             \end{diagram}
             commutes.
-        \item 
-            If $X\morphism[f]Y\morphism[g] Z$ are morphisms of ringed spaces, where $X$, $Y$ and $Z$ are locally ringed and $gf$ and $g$ are morphisms of locally ringed spaces, then $f$ is a morphism of locally ringed spaces.
-        \item 
-            If $R\morphism[\phi] S \morphism[\psi] T$ are ring morphisms such that $R$, $S$ and $T$ are local rings and $\psi\phi$ and $\psi$ are local, then $\phi$ is local.
+            \item Let $R,S,T$ be local rings with maximal ideals $\mm_R,\mm_S,\mm_T$ and $R\morphism[\rho]S\morphism[\sigma]T$ (not necessarily local) morphism of rings.
+            \begin{rmnumerate}
+            	\item If $\rho$ and $\sigma$ are local, then so is $\sigma\rho$.
+            	\item If $\sigma\rho$ is local, then so is $\rho$. Note that in the lecture we made the additional but \emph{unnecessary} assumption that $\sigma$ must be local as well.
+            	\item If $\sigma\rho$ is local and $\rho$ is surjective, then $\sigma$ is local.
+            \end{rmnumerate}
+            \item Let $X\morphism[f]Y\morphism[g]Z$ be morphisms in the category of ringed spaces, where $X,Y,Z$ are locally ringed.
+            \begin{rmnumerate}
+            	\item If $f$ and $g$ are morphisms of locally ringed spaces, then so is $gf$.
+            	\item If $gf$ is a morphism of locally ringed spaces and $X\morphism[f_{\cat{Top}}] Y$ is surjective, then $g$ is a morphism of locally ringed spaces. As in \itememph{c}, in the lecture we made the unnecessary assumption that $f$ is a morphism of locally ringed spaces as well.
+            	\item If $gf$ is a morphism of locally ringed spaces and $g^*\colon\Oo_{Z,z}\morphism\Oo_{Y,y}$ is surjective for all $y\in Y$ and $z=g(y)$, then $f$ is a morphism of locally ringed spaces.
+            \end{rmnumerate}
     \end{alphanumerate}
 \end{fact}
 \begin{proof}
@@ -737,11 +747,19 @@ of presheaves on $\Bb$.
 	
 	Part \itememph{b} is immediately follows from the fact that $\Oo_{Z,z}\morphism[g^*]\Oo_{Y,y}\morphism[f^*]\Oo_{X,x}$ equals $\Oo_{Z,z}\morphism[(gf)^*]\Oo_{X,x}$ by Remark~\reff{rem:pullbackthingyAtStalks}.
 	
-	Part \itememph{c} is an easy consequence of \itememph{d}, which we will prove now. We have
+	Now about part \itememph{c}. Point (i) is trivial. For (ii), note that $\sigma^{-1}(\mm_T)\subseteq\mm_S$ by \hyperref[rem:localMorphismStuff]{this} remark, hence
 	\begin{align*}
-		\phi^{-1}(\mm_S) = \phi^{-1}\big(\psi^{-1}(\mm_T)\big) = (\psi\phi)^{-1} (\mm_T) = \mm_R\;,
+		\rho^{-1}(\mm_S) \supseteq \rho^{-1}\big(\sigma^{-1}(\mm_T)\big) = (\sigma\rho)^{-1} (\mm_T) = \mm_R
 	\end{align*}
-	proving the assertion.
+	since $\sigma\rho$ is local. On the other hand, $\rho^{-1}(\mm_S)\subseteq \mm_R$ (again by \hyperref[rem:localMorphismStuff]{this} remark), proving $\rho^{-1}(\mm_S)=\mm_R$, that is, $\rho$ is local.
+	
+	For point (iii), we may assume that $S=R/I$ for some proper ideal $I\subseteq R$. Then $I\subseteq\mm_R$, hence $\mm_R\morphism \mm_S=\mm_R/I$ is surjective. We thus obtain
+	\begin{align*}
+		\sigma(\mm_S)=\sigma\big(\rho(\mm_R)\big)\subseteq\mm_T\;,
+	\end{align*}
+	the inclusion due to the fact that $\sigma\rho$ is local. This shows that $\sigma$ is local as well.
+	
+	Part \itememph{e} now reduces to \itememph{d} by considering $\Oo_{Z,z}\morphism[g^*]\Oo_{Y,y}\morphism[f^*]\Oo_{X,x}$, where $y=f(x)$, $z=g(y)$. Note that for (ii) we do need the extra condition that $X\morphism[\smash{f}_{\cat{Top}}]Y$ is surjective, otherwise we wouldn't know anything about the $y\not\in f_{\cat{Top}}(X)$.
 \end{proof}
 \begin{fact}
     If $R\morphism[\phi]S$ is a surjective ring homomorphism where $(R,\mm_R)$ and $(S,\mm_S)$ are local rings, then $\phi$ is local.
@@ -765,12 +783,20 @@ of presheaves on $\Bb$.
 	It suffices to note that $\iota_{\cat{Top}}$ is a monomorphism of topological spaces and $\iota^*$ an epimorphism of sheaves on $Y$ (since it stalk-wise an epimorphism).
 \end{proof}
 \begin{prop}\lbl{prop:equalizerLRS}
-    Let $X\doublemorphism[a][b] Y$ be morphisms in $\cat{LRS}$. Then an equalizer of these morphisms is given as follows
+    Let $X\doublemorphism[a][\smash{b}] Y$ be morphisms in $\cat{LRS}$. Then an equalizer of these morphisms is given as follows
     \begin{itemize}
       \item 
-        Let $K = \left\{ x\in X\st y= a(x) = b(x) \text{ and } a*=b*\right\}$, where $\KK(y) \doublemorphism[a^*][b^*] \KK(x)$ are the morphisms defined by $a$ and $b$ on the residue fields. Let $K$ be equipped with the subspace topology induced from $X$.
+        Let 
+        \begin{align*}
+        	K = \left\{ x\in X\st 
+        	\begin{array}{c}
+	        	a(x) = b(x) \text{ and }\KK(y) \doublemorphism[a^*][b^*] \KK(x)\text{ (the morphisms induced}\\
+	        	\text{on the residue fields) coincide, where }y\coloneqq a(x)=b(x)
+        	\end{array}\right\}\;,
+        \end{align*}
+        equipped with the subspace topology induced from $X$.
       \item 
-        Let $\Oo_{K,[k]} = \Coeq\left(\Oo_{Y,y} \doublemorphism[a^*][b^*] \Oo_{X,k}\right)$ where $y=a(k) = b(k)$.
+        Let $\Oo_{K,[k]} = \Coeq\Big(\Oo_{Y,y} \doublemorphism[a^*][b^*] \Oo_{X,k}\Big)$ where $y=a(k) = b(k)$. The square brackets are to indicate that we do not yet know if $\Oo_{K,[k]}$ is really the stalk at $k$ of the yet-to-define sheaf $\Oo_K$ (spoiler: it is).
       \item 
         Let for open $U\subseteq K$ 
         \begin{align*}
@@ -780,51 +806,54 @@ of presheaves on $\Bb$.
                 k\in U\cap V, f_k \text{ is equal to the image of }\phi\text{ under }\\
                 \Oo_X(V) \morphism \Oo_{X,k} \morphism\Oo_{K,[k]}
             \end{array}
-            \right\}
+            \right\}\;.
         \end{align*}
-        where 
+        The ring operations $*\in\{+,\cdot\}$ on $\Oo_K(U)$ are defined component-wise via  
         \begin{align*}
-            (f_x)_{x\in U} \circ (g_x)_{x\in U} = (f_x\circ g_x)_{x\in U}
-        \end{align*}
-        for $\circ \in\{+,\cdot\}$.
-        
-        The morphism $K\morphism[\kappa] X$ is given by the inclusion $K\morphism X$ of the subset $K\subseteq X$ and by $\kappa^*$ mapping $\phi$ to the image of $\phi$ und $\Oo_X(U) \morphism \prod_{x\in U\cap K} \Oo_{X,x} \morphism \prod_{x\in (U\cap K)} \Oo_{K,[x]}$.
-        
-        Moreover,
-        \begin{align*}
-            \Oo_{K,k} &\isomorphism \Oo_{K,[k]}\\
-            (U,(f_\ell)_{\ell\in U})/_\sim &\longmapsto f_k
-        \end{align*}
+            (f_x)_{x\in U} * (g_x)_{x\in U} = (f_x* g_x)_{x\in U}\;.
+        \end{align*}        
+        \item The morphism $K\morphism[\kappa] X$ is given by the inclusion $K\subseteq X$ and $\kappa^*\colon \Oo_X\morphism\kappa_*\Oo_K$ is defined as follows: For $\phi\in\Oo_X(U)$, define
+       \begin{align*}
+       	\kappa^*(\phi)=\left(
+       	\begin{array}{c}
+	       	\text{image of }\phi\text{ under the composition}\\
+	       	\Oo_X(U) \morphism \prod_{x\in U\cap K} \Oo_{X,x} \morphism \prod_{x\in (U\cap K)} \Oo_{K,[x]}
+       	\end{array}\right)\in\Oo_K(K\cap U)=\kappa_*\Oo_K(U)\;.
+       \end{align*} 
     \end{itemize}
+    Moreover, we have an isomorphism
+    \begin{align*}
+    \Oo_{K,k} &\isomorphism \Oo_{K,[k]}\\
+    (U,(f_\ell)_{\ell\in U})/_\sim &\longmapsto f_k
+    \end{align*}
 \end{prop}
 \begin{proof}
     The following steps are rather trivial:
     \begin{itemize}
       \item 
-        $K$ is a topological space, $\kappa$ is continuous, $\Oo_{K,[k]}$ is a local ring (by a basic fact about coequalizers of local ring morphisms, see the exercise sheet 5), $\Oo_{X,k} \morphism \Oo_{K,[k]}$ is local (it is, in fact, surjective).
+        $K$ is a topological space, $\kappa$ is continuous, $\Oo_{K,[k]}$ is a local ring (by \hyperref[fact:coequalizerOfRings]{this} basic fact about coequalizers of local ring morphisms, also see exercise sheet \#5), and $\Oo_{X,k} \morphism \Oo_{K,[k]}$ is local (it is, in fact, surjective).
       \item 
-        $\Oo_K$ is a sheaf of rings, $\Oo_X \morphism[\kappa^*] \kk_*\Oo_K$ is a morphism of sheaves of rings.
+        $\Oo_K$ is a sheaf of rings, $\Oo_X \morphism[\kappa^*] \kappa_*\Oo_K$ is a morphism of sheaves of rings.
       \item 
         Once $\Oo_{K,k} \isomorphism \Oo_{K,[k]}$ (as given above) is shown, it follows that $K$ is a locally ringed space. 
-        
-        To show injectivity, let $U\subseteq K$ be an open neighbourhood of $k$ and let $f= (f_\ell)_{\ell\in U} \in \Oo_K(U) \subseteq \prod_{\ell\in U} \Oo_{K,[\ell]}$ be such that $f_k$ vanishes. We have to show that the image if $f$ in $\Oo_{K,k}$ vanishes. By the coherence condition for sections of $\Oo_K$, there are an open neighbourhood $V$ of $k$ in $X$ and $\phi\in \Oo_X(V)$ such that $f_\ell$ is the image of $\phi$ under $\Oo_X(V) \morphism\Oo_{X,\ell} \morphism\Oo_{K,[\ell]}$ for $\ell\in U\cap V$. Shrinking $U$ if necessary, we may assume $V\cap K \supseteq U$. Since $0 = f_k$ is the image of $\phi_k$ in $\Oo_{X,k}/\left\langle a^*(v)-b^*(v)\st v\in \Oo_{Y,y}\right\rangle$, where $y=a(k)=b(k)$ and $\phi_k$ is the image of $\phi$ in $\Oo_{K,k}$, we have $(\rho_i)_{i=1}^N\in \Oo_{X,k}^N$ and $(v_i)_{i=1}^N\in \Oo_{Y,y}^N$ such that
-        \begin{align*}
-            \phi_k = \sum_{i=1}^N \rho_i(a^*(v_i) -b^*(v_i)).
-        \end{align*}
-        By the definitions of $\Oo_{X,k}$ and $\Oo_{Y,y}$ there are open neighbourhoods $W$ and $(\Omega_i)_{i=1}^N$ of $k$ in $X$ and $r_i \in \Oo_X(\Omega_i)$ such that $\rho_i = (r_i)_k$ and $(\Theta_i)_{i=1}^N$ of $y$ in $Y$ and $y_i \in \Oo_Y(\Theta_i)$ such that $(y_i)_y = v_i$ and such that 
-        \begin{align*}
-            W\subseteq V\cap \bigcap_{i=1}^N \Omega_i \cap\bigcap_{i=1}^N \left(a^{-1}(\Theta_i) \cap b^{-1}(\Theta_i)\right)
-        \end{align*}
-        and such that 
-        \begin{align*}
-            \phi|_W = \sum_{i=1}^N r_i|_W \cdot \left(a^*(y_i)|_W -b^*(y_i)|_W\right).
-        \end{align*}
-        For $\ell\in W\cap K$, $\phi_\ell$ is the image of the above expression in $\Oo_{X,\ell}$, hence 
-        \begin{align*}
-            \phi_\ell\in \left\langle a^*(v) -b^*(v)\st v\in \Oo_{Y,a(\ell)} = \Oo_{Y,b(\ell)}\right\rangle_{\Oo_{X,\ell}}
-        \end{align*}
-        and $f_\ell =0$ as $\Oo_{K,[\ell]}$ is the quotient of $\Oo_{X,\ell}$ by the ideal on the right hand side. Thus, $f|_{U\cap W} =0$, proving the injectivity claim.
-    \end{itemize}
+    \end{itemize} 
+    To show injectivity of $\Oo_{K,k}\morphism\Oo_{K,[k]}$, let $U\subseteq K$ be an open neighbourhood of $k$ and let $f= (f_\ell)_{\ell\in U} \in \Oo_K(U) \subseteq \prod_{\ell\in U} \Oo_{K,[\ell]}$ be such that $f_k$ vanishes. We have to show that the image if $f$ in $\Oo_{K,k}$ vanishes. By the coherence condition for sections of $\Oo_K$, there are an open neighbourhood $V$ of $k$ in $X$ and $\phi\in \Oo_X(V)$ such that $f_\ell$ is the image of $\phi$ under $\Oo_X(V) \morphism\Oo_{X,\ell} \morphism\Oo_{K,[\ell]}$ for $\ell\in U\cap V$. Shrinking $U$ if necessary, we may assume $V\cap K \supseteq U$. Since $0 = f_k$ is the image of $\phi_k$ in $\Oo_{X,k}/\left(a^*(v)-b^*(v)\st v\in \Oo_{Y,y}\right)$, where $y=a(k)=b(k)$ and $\phi_k$ is the image of $\phi$ in $\Oo_{K,k}$, we have $\rho_1,\ldots,\rho_N\in \Oo_{X,k}$ and $v_1,\ldots,v_N\in \Oo_{Y,y}$ such that
+    \begin{align*}
+        \phi_k = \sum_{i=1}^N \rho_i\big(a^*(v_i) -b^*(v_i)\big)\;.
+    \end{align*}
+    By the definitions of $\Oo_{X,k}$ and $\Oo_{Y,y}$ there are open neighbourhoods $W$ and $\Omega_1,\ldots,\Omega_N$ of $k$ in $X$ and $r_i \in \Oo_X(\Omega_i)$ such that $\rho_i = (r_i)_k$. Moreover, there are open neighbourhoods $\Theta_1,\ldots,\Theta_N$ of $y$ in $Y$ and $y_i \in \Oo_Y(\Theta_i)$ satisfying $(y_i)_y = v_i$, such that 
+    \begin{align*}
+        W\subseteq V\cap \bigcap_{i=1}^N \Omega_i \cap\bigcap_{i=1}^N \left(a^{-1}(\Theta_i) \cap b^{-1}(\Theta_i)\right)
+    \end{align*}
+    and finally
+    \begin{align*}
+        \phi|_W = \sum_{i=1}^N r_i|_W \cdot \left(a^*(y_i)|_W -b^*(y_i)|_W\right).
+    \end{align*}
+    For $\ell\in W\cap K$, $\phi_\ell$ is the image of the above expression in $\Oo_{X,\ell}$, hence 
+    \begin{align*}
+        \phi_\ell\in \left(a^*(v) -b^*(v)\st v\in \Oo_{Y,a(\ell)} = \Oo_{Y,b(\ell)}\right)_{\Oo_{X,\ell}}
+    \end{align*}
+    and $f_\ell =0$ as $\Oo_{K,[\ell]}$ is the quotient of $\Oo_{X,\ell}$ by the ideal on the right hand side. Thus, $f|_{U\cap W} =0$, proving the injectivity claim.
 
 \end{proof}
     
@@ -1011,13 +1040,15 @@ A category is called \emph{small} if its class of objects is a set.
         	 In yet another other words, $C$ is the \emph{colimiting co-cone} below the diagram $X\doublemorphism[a][b]Y$.
         \end{quote}
 	\end{defi}
-	\begin{fact*}
+	\begin{fact*}\lbl{fact:coequalizerOfRings}
         Let $A\doublemorphism[\alpha][\beta] B$ be a ring morphism. Then a coequalizer is given by $B/I$ where $I$ is the ideal generated by $\left\{\alpha(a)-\beta(a)\st a\in A\right\}$. When $A,B$ are local rings and $\alpha,\beta$ local ring morphisms, this is a local ring iff $\alpha$ and $\beta$ induce the same morphism on the residue fields, and $\{0\}$ otherwise. 
         
-        Let us denote this by $\Coeq(A\doublemorphism[\alpha][\beta] B)$.
+        Let us denote this by $\Coeq\Big(A\doublemorphism[\alpha][\beta] B\Big)$.
 	\end{fact*}
 	\begin{proof}
         Let $C = B/I \lepimorphism[\pi] B$. Obviously, $\pi \alpha = \pi\beta$. Let $B\morphism[t] T$ be a ring homomorphism such that $t\alpha = t\beta$. Then $t(\alpha(a)-\beta(a)) = 0$ hence $\left\{\alpha(a)-\beta(a)\st a\in A\right\} \subseteq \ker(t)$ hence $I\subseteq \ker(t)$ as $\ker(t)$ is an ideal, and $t$ has a unique representation as $t=\tau\pi$ for $C\morphism[\tau] T$, by the universal property of the quotient ring.
+        
+        The second assertion is also easy: Denote the maximal ideals by $\mm_A$ and $\mm_B$, then $I$ is a proper ideal iff $\alpha(a)-\beta(a)\in\mm_B$ for all $a\in A$, i.e. if the induced morphisms $\KK(\mm_A)\doublemorphism[\alpha][\smash{\beta}]\KK(\mm_B)$ coincide. In this case, $B/I$ is local with maximal ideal $\mm_B/I$, and $\{0\}$ otherwise.
 	\end{proof}
 	
 	\section{Functors, functor morphisms, and the Yoneda lemma}
@@ -1034,7 +1065,7 @@ A category is called \emph{small} if its class of objects is a set.
         \end{itemize}
 	\end{rem*}
 	\begin{defi}[Canonical morphism]\lbl{def:canonicalMorphism}
-        Let $\Aa\doublemorphism[F][\smash{G}] \Bb$ be functors. A \defemph{functor morphism} or \defemph{canonical morphism} from $F$ to $G$ is a collection of morphisms $\smash{F(A) \morphism[\phi_A]G(A)}$, for all $A\in \Ob \Aa$ such that
+        Let $\Aa\doublemorphism[F][\smash{G}] \Bb$ be functors. A \defemph{functor morphism} or \defemph{canonical morphism} from $F$ to $G$ is a collection of morphisms $\smash{F(A) \morphism[\phi_A]G(A)}$, for all $A\in \Ob \Aa$ such that the diagram
        \begin{diagram}
 	       	\node (FA) at (0,1.5) {$F(A)$};
 	       	\node (FB) at (0,0) {$F(B)$};
