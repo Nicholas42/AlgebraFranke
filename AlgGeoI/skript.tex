@@ -708,7 +708,7 @@ of presheaves on $\Bb$.
 	\end{align*}
 	To prove $(\alpha)\rightarrow(\beta)$, let $x\in X$, $y=f(x)$, $\ell\in\mm_{Y,y}$. We need to show $f^*\ell\in\mm_{X,x}$. There are an open neighbourhood $U$ of $y$ and $\lambda\in \Oo_Y(U)$ such that $\ell$ is the image of $\lambda$ in $\Oo_{Y,y}$. Then $y\in V(\lambda)$, hence $x\in f^{-1}(V(\lambda)) = V(f^*\lambda)$. Thus $f^*\ell$ is in $\mm_{X,x}$ as it is the image of $f^*\lambda$ in $\Oo_{X,x}$.
 \end{proof}
-\begin{fact}
+\begin{fact}\lbl{fact:localMorphisms}
     \begin{alphanumerate}
         \item 
             We have $f^{-1}(V(\lambda)) = V(f^*\lambda)$ when $f$ is a morphism of locally ringed spaces.
@@ -761,7 +761,7 @@ of presheaves on $\Bb$.
 	
 	Part \itememph{e} now reduces to \itememph{d} by considering $\Oo_{Z,z}\morphism[g^*]\Oo_{Y,y}\morphism[f^*]\Oo_{X,x}$, where $y=f(x)$, $z=g(y)$. Note that for (ii) we do need the extra condition that $X\morphism[\smash{f}_{\cat{Top}}]Y$ is surjective, otherwise we wouldn't know anything about the $y\not\in f_{\cat{Top}}(X)$.
 \end{proof}
-\begin{fact}
+\begin{fact}\lbl{fact:surjectiveImpliesLocal}
     If $R\morphism[\phi]S$ is a surjective ring homomorphism where $(R,\mm_R)$ and $(S,\mm_S)$ are local rings, then $\phi$ is local.
 \end{fact}
 \begin{proof}
@@ -796,7 +796,7 @@ of presheaves on $\Bb$.
         \end{align*}
         equipped with the subspace topology induced from $X$.
       \item 
-        Let $\Oo_{K,[k]} = \Coeq\Big(\Oo_{Y,y} \doublemorphism[a^*][b^*] \Oo_{X,k}\Big)$ where $y=a(k) = b(k)$. The square brackets are to indicate that we do not yet know if $\Oo_{K,[k]}$ is really the stalk at $k$ of the yet-to-define sheaf $\Oo_K$ (spoiler: it is).
+        Let $\Oo_{K,[k]} = \Coeq\Big(\Oo_{Y,y} \doublemorphism[a^*][b^*] \Oo_{X,k}\Big)$ where $y=a(k) = b(k)$. The square brackets are to indicate that we do not yet know if the pretender stalk $\Oo_{K,[k]}$ is really the stalk at $k$ of the yet-to-define structure sheaf $\Oo_K$ (spoiler: it is).
       \item 
         Let for open $U\subseteq K$ 
         \begin{align*}
@@ -831,13 +831,25 @@ of presheaves on $\Bb$.
     The following steps are rather trivial:
     \begin{itemize}
       \item 
-        $K$ is a topological space, $\kappa$ is continuous, $\Oo_{K,[k]}$ is a local ring (by \hyperref[fact:coequalizerOfRings]{this} basic fact about coequalizers of local ring morphisms, also see exercise sheet \#5), and $\Oo_{X,k} \morphism \Oo_{K,[k]}$ is local (it is, in fact, surjective).
+        $K$ is a topological space, $\kappa$ is continuous, $\Oo_{K,[k]}$ is a local ring (by Fact~\reff{fact:coequalizerOfRings} about coequalizers of local ring morphisms, also see exercise sheet \#5), and $\Oo_{X,k} \morphism \Oo_{K,[k]}$ is local (it is, in fact, a quotient projection, i.e. surjective).
       \item 
         $\Oo_K$ is a sheaf of rings, $\Oo_X \morphism[\kappa^*] \kappa_*\Oo_K$ is a morphism of sheaves of rings.
-      \item 
-        Once $\Oo_{K,k} \isomorphism \Oo_{K,[k]}$ (as given above) is shown, it follows that $K$ is a locally ringed space. 
     \end{itemize} 
-    To show injectivity of $\Oo_{K,k}\morphism\Oo_{K,[k]}$, let $U\subseteq K$ be an open neighbourhood of $k$ and let $f= (f_\ell)_{\ell\in U} \in \Oo_K(U) \subseteq \prod_{\ell\in U} \Oo_{K,[\ell]}$ be such that $f_k$ vanishes. We have to show that the image if $f$ in $\Oo_{K,k}$ vanishes. By the coherence condition for sections of $\Oo_K$, there are an open neighbourhood $V$ of $k$ in $X$ and $\phi\in \Oo_X(V)$ such that $f_\ell$ is the image of $\phi$ under $\Oo_X(V) \morphism\Oo_{X,\ell} \morphism\Oo_{K,[\ell]}$ for $\ell\in U\cap V$. Shrinking $U$ if necessary, we may assume $V\cap K \supseteq U$. Since $0 = f_k$ is the image of $\phi_k$ in $\Oo_{X,k}/\left(a^*(v)-b^*(v)\st v\in \Oo_{Y,y}\right)$, where $y=a(k)=b(k)$ and $\phi_k$ is the image of $\phi$ in $\Oo_{K,k}$, we have $\rho_1,\ldots,\rho_N\in \Oo_{X,k}$ and $v_1,\ldots,v_N\in \Oo_{Y,y}$ such that
+    \emph{Step 1.} We start proving that $\Oo_{K,k}\isomorphism\Oo_{K,[k]}$ is indeed an isomorphism. 
+    
+    To show injectivity of $\Oo_{K,k}\morphism\Oo_{K,[k]}$, let $U\subseteq K$ be an open neighbourhood of $k$ and let $f= (f_\ell)_{\ell\in U} \in \Oo_K(U) \subseteq \prod_{\ell\in U} \Oo_{K,[\ell]}$ be such that $f_k$ vanishes. We have to show that the image if $f$ in $\Oo_{K,k}$ vanishes. By the coherence condition for sections of $\Oo_K$, there are an open neighbourhood $V$ of $k$ in $X$ and $\phi\in \Oo_X(V)$ such that 
+    \begin{align*}
+    	f_\ell=\left(
+    	\begin{array}{c}
+	    	\text{image of }\phi\text{ under }\\
+	    	\Oo_X(V) \morphism\Oo_{X,\ell} \morphism\Oo_{K,[\ell]} 
+    	\end{array}\right)\quad\text{for }\ell\in U\cap V\;.
+    \end{align*}
+    Shrinking $U$ if necessary, we may assume $V\cap K \supseteq U$. Let $\phi_k$ be the image of $\phi$ in $\Oo_{X,k}$ and  $y=a(k)=b(k)$. By  Fact~\reff{fact:coequalizerOfRings} we have $\Oo_{K,[k]}=\Oo_{X,k}/I$, where $I$ is the ideal $I=\left(a^*(v)-b^*(v)\st v\in \Oo_{Y,y}\right)\subseteq\Oo_{X,k}$. As we assume that $f_k$ vanishes,
+    \begin{align*}
+    	0 = f_k=(\phi_k\mod I)\in\Oo_{K,[k]}=\Oo_{X,k}/I\;, 
+    \end{align*}
+    hence we have $\rho_1,\ldots,\rho_N\in \Oo_{X,k}$ and $v_1,\ldots,v_N\in \Oo_{Y,y}$ such that
     \begin{align*}
         \phi_k = \sum_{i=1}^N \rho_i\big(a^*(v_i) -b^*(v_i)\big)\;.
     \end{align*}
@@ -854,7 +866,146 @@ of presheaves on $\Bb$.
         \phi_\ell\in \left(a^*(v) -b^*(v)\st v\in \Oo_{Y,a(\ell)} = \Oo_{Y,b(\ell)}\right)_{\Oo_{X,\ell}}
     \end{align*}
     and $f_\ell =0$ as $\Oo_{K,[\ell]}$ is the quotient of $\Oo_{X,\ell}$ by the ideal on the right hand side. Thus, $f|_{U\cap W} =0$, proving the injectivity claim.
-
+	
+	Surjectivity is somewhat easier. Let $\gamma\in\Oo_{K,[k]}$, and choose a pre-image $\gamma'\in\Oo_{X,k}$ of $\gamma$ under the quotient projection $\Oo_{X,k}\morphism\Oo_{K,[k]}=\Oo_{X,k}/I$. There are an open neighbourhood $k\in V\subseteq X$ and $\phi\in\Oo_X(V)$ such that $\gamma'$ is the image of $\phi$ in $\Oo_{X,k}$. Let $U=V\cap K$ and $f=\kappa^*\phi\in\kappa_*\Oo_K(V)=\Oo_K(V\cap K)\Oo_K(U)$, then the component $f_k$ of $f$ at $k$ equals
+	\begin{align*}
+		f_k=\left(
+		\begin{array}{c}
+			\text{image of }\phi\text{ under}\\
+			\Oo_X(V)\morphism\Oo_{X,k}\morphism\Oo_{K,[k]}
+		\end{array}\right)=\left(
+		\begin{array}{c}
+			\text{image of }\gamma'\text{ under}\\
+			\Oo_{X,k}\morphism\Oo_{K,[k]}
+		\end{array}\right)=\gamma\;,
+	\end{align*}
+	proving surjectivity.
+	
+	Hence, $(K,\Oo_K)$ is a locally ringed space and $\kappa$ is a morphism of locally ringed spaces. Indeed, $\kappa$ is a morphism of ringed spaces and $\Oo_{X,k}\morphism[\kappa^*]\Oo_{K,k}\simeq\Oo_{X,k}/I$ is surjective and thus local by Fact~\reff{fact:surjectiveImpliesLocal}.
+	
+	\emph{Step 2.} We check that $K\morphism[\kappa]X$ equalizes $X\doublemorphism[a][\smash{b}]Y$.
+	
+	The fact that $a\kappa=b\kappa$ is a trivial consequence of the definition of $K$ as far as only the topological component is concernced. For the algebraic component, let $V\subseteq Y$ be open, $U=a^{-1}(V)\cap K=b^{-1}(V)\cap K$ and let $\lambda\in\Oo_K(V)$. We need to show that $\kappa^*a^*\lambda=\kappa^*b^*\lambda$. Indeed, let $y=a(k)=b(k)$. Using that
+	\begin{diagram}
+		\node (a) at (0,1.5) {$\Oo_Y(V)$};
+		\node (c) at (0,0) {$\Oo_{Y,y}$};
+		\node (b) at (3,1.5) {$\Oo_X(a^{-1}V)\,\rlap{$=a_*\Oo_X(V)$}$};
+		\node (d) at (3,0) {$\Oo_{X,k}$};
+		\scriptsize
+		\draw[->] (a) -- (b) node[pos=0.5, above] {$a^*$};
+		\draw[->] (a) -- (c);
+		\draw[->] (c) -- (d) node[pos=0.5, above] {$a^*$};
+		\draw[->] (b) -- (d);
+	\end{diagram}  
+	commutes (analogously for $b$) and the fact that $\Oo_{Y,y}\doublemorphism[\smash{a^*}][\smash{b^*}]\Oo_{X,k}$ is coequalized by $\Oo_{X,k}\morphism\Oo_{K,[k]}$ we get
+	\begin{align*}
+		\kappa^*a^*\lambda&=\left(
+		\begin{array}{c}
+			\text{image of }a^*\lambda\text{ under}\\
+			\Oo_X(a^{-1}V)\morphism\Oo_{X,k}\morphism\Oo_{K,[k]}
+		\end{array}\right)_{k\in U}=\left(
+		\begin{array}{c}
+		\text{image of }\lambda\text{ under}\\
+			\Oo_Y(V)\morphism\Oo_{Y,y}\morphism[a^*]\Oo_{X,k}\morphism\Oo_{K,[k]}
+		\end{array}\right)_{k\in U}\\
+		&=\left(
+		\begin{array}{c}
+		\text{image of }\lambda\text{ under}\\
+		\Oo_Y(V)\morphism\Oo_{Y,y}\morphism[b^*]\Oo_{X,k}\morphism\Oo_{K,[k]}
+		\end{array}\right)_{k\in U}=\left(
+		\begin{array}{c}
+		\text{image of }b^*\lambda\text{ under}\\
+		\Oo_X(b^{-1}V)\morphism\Oo_{X,k}\morphism\Oo_{K,[k]}
+		\end{array}\right)_{k\in U}\\
+		&=\kappa^*b^*\lambda\;.
+	\end{align*}
+	
+	\emph{Step 3.} The last thing to check is the universal property.
+	
+	Let $T\morphism[\tau]X$ be a morphism in the category of locally ringed spaces such that $a\tau=b\tau$. For $t\in T$ put $k=\tau(t)$ and we have $a(k)=b(k)\eqqcolon y$. Moreover, the compositions of pull-backs on residue fields
+	\begin{align*}
+		\KK(y)\doublemorphism[\smash{a^*}][\smash{b^*}]\KK(k)\morphism[\tau^*]\KK(t)
+	\end{align*}
+	must coincide with
+	\begin{align*}
+		\KK(y)\xrightarrow{(a\tau)^*=(b\tau)^*}\KK(t)\;.
+	\end{align*}
+	As $\KK(k)\morphism[\tau^*]\KK(t)$ is injective (any ring morphism between fields is injective), it follows that $\KK(y)\doublemorphism[a^*][b^*]\KK(k)$ coincide. Thus $k\in K$ by definition of $K$ and we obtain a map $T\morphism[\vartheta]K$ such that $\kappa(\vartheta(t))=\tau(t)$ and $a(\vartheta(t))=b(\vartheta(t))$ for $t\in T$. This map is continuous because $K$ carries the induced topology with respect to $X$ and for open subsets $V\subseteq X$, $\theta^{-1}(V\cap K)=\tau^{-1}(V)$ is open in $T$.
+	
+	Let $U\subseteq K$ be an open subset and $\lambda=(\lambda_k)_{k\in U}\in\Oo_K(U)\subseteq\prod_{k\in U}\Oo_{K,[k]}$. For $t\in T$ and $y=a(\vartheta(t))=b(\vartheta(t))$, the morphism $\Oo_{X,\vartheta(t)}\morphism[\tau^*]\Oo_{T,t}$ coequalizes the pair $\Oo_{Y,y}\doublemorphism[\smash{a^*}][\smash{b^*}]\Oo_{X,\vartheta(t)}$, hence factors over
+	\begin{align*}
+		\Oo_{X,\vartheta(t)}\morphism\Oo_{K,[\vartheta(t)]}\morphism[\snake{\tau}_t]\Oo_{T,t}\;.
+	\end{align*}
+	We claim that
+	\begin{align}\lbl{eq:bruteForcePullback}
+		\snake{\tau}^*\lambda=\left(\snake{\tau}_t\left(\lambda_{\vartheta(t)}\right)\right)_{t\in\vartheta^{-1}U}\in\prod_{t\in\vartheta^{-1}U}\Oo_{T,t}\tag{$*$}
+	\end{align}
+	belongs to the image of $\Oo_T(\vartheta^{-1}U)$ in $\prod_{t\in\vartheta^{-1}U}\Oo_{T,t}$. Believing this for the moment, we finish the rest of the proof. From \eqreff{eq:bruteForcePullback} we obtain a morphism $\vartheta^*\colon\Oo_K(U)\morphism\Oo_T(\vartheta^{-1}U)$ such that the image of $\vartheta^*\lambda$ in $\prod_{t\in\vartheta^{-1}U}\Oo_{T,t}$ equals $\snake{\tau}^*\lambda$. It is rather easy to show that $\vartheta^*\colon\Oo_K\morphism\vartheta_*\Oo_T$ is a morphism of sheaves of rings, thus turning $\vartheta$ into a morphism of ringed spaces satisfying $\tau=\kappa\vartheta$ (which may be easily checked on stalks). Since $\Oo_{X,k}\morphism[\kappa^*]\Oo_{K,k}\simeq\Oo_{X,k}/I$ is surjective, Fact~\reff{fact:localMorphisms}\itememph{d}(iii) tells us that $\vartheta$ is indeed a morphism of locally ringed spaces.
+	
+	We need to show that $\vartheta$ is unique. As before, the topological component is easy: As $K\morphism[\kappa_{\cat{Top}}]X$ is injective, it follows that $\vartheta_{\cat{Top}}$ is uniquely determined by $\tau=\kappa\vartheta$. Now for the algebraic component. As $\Oo_{X,\kappa(\vartheta(t))}\morphism[\smash{\kappa^*}]\Oo_{K,\vartheta(t)}=\Oo_{K,\tau(t)}$ is surjective, it follows that $\vartheta^*\colon \Oo_{K,\vartheta(t)}\morphism\Oo_{T,t}$ is uniquely determined by $\tau$ and the commutativity of
+	\begin{diagram}
+	   	\node (kz) at (0,1.25) {$\Oo_{X,\kappa(\vartheta(t))}$};
+	   	\node (kx) at (1.25,0) {$\Oo_{T,t}$};
+	   	\node (ky) at (2.5,1.25) {$\Oo_{K,\tau(t)}$};
+	   	\scriptsize
+	   	\draw[->] (kz) -- (kx) node[pos=0.5,below left] {$\tau^*$};
+	   	\draw[->] (kz) -- (ky) node[pos=0.5,above] {$\kappa^*$};
+	   	\draw[->] (ky) -- (kx) node[pos=0.5,below right] {$\vartheta^*$};
+	\end{diagram}
+	which again follows from $\tau=\kappa\vartheta$. As 
+	\begin{diagram}
+		\node (a) at (0,1.5) {$\Oo_K(U)$};
+		\node (c) at (0,0) {$\displaystyle\vphantom{\prod}\smash{\prod\limits_{k\in U}}\Oo_{K,k}$};
+		\node (b) at (3,1.5) {$\Oo_T(\vartheta^{-1}U)$};
+		\node (d) at (3,0) {$\displaystyle\vphantom{\prod}\smash{\prod\limits_{t\in \vartheta^{-1}U}}\Oo_{T,t}$};
+		\scriptsize
+		\draw[->] (a) -- (b) node[pos=0.5, above] {$\vartheta^*$};
+		\draw[->] (a) -- (c);
+		\draw[->] (c) -- (d) node[pos=0.5, above] {$\vartheta^*$};
+		\draw[->] (b) -- (d);
+	\end{diagram}  
+	commutes, it follows that $\vartheta^*\colon\Oo_K(U)\morphism\Oo_T(\vartheta^{-1}U)$ is also uniquely determined by this condition. Therefore, the algebraic component $\vartheta^*\colon\Oo_K\morphism\vartheta_*\Oo_T$ is also uniquely determined, which proves the universal property.
+	
+	\emph{Step 4.} It remains to verify \eqreff{eq:bruteForcePullback}, i.e. that the coherence condition characterizing the image of $\Oo_T(\vartheta^{-1}U)$ in $\prod_{t\in\vartheta^{-1}U}\Oo_{T,t}$ is satisfied. For this purpose let $z\in\vartheta^{-1}U$. By the coherence condition for $\lambda\in\Oo_K(U)$, there are an open neighbourhood $V$ of $\kappa(\vartheta(z))=\tau(z)$ in $X$ and $\ell\in\Oo_X(V)$ such that
+	\begin{align*}
+		\lambda_k=\left(
+		\begin{array}{c}
+			\text{image of }\ell\text{ under}\\
+			\Oo_X(V)\morphism\Oo_{X,k}\morphism\Oo_{K,[k]}
+		\end{array}\right)\quad\text{for all }k\in U\cap V\;.
+	\end{align*}
+	When $t\in\vartheta^{-1}U\cap\tau^{-1}V\eqqcolon W$ (which is an open neighbourhood of $z$ in $T$), this may be applied to $k=\vartheta(t)=\tau(t)$ and gives
+	\begin{align*}
+		\snake{\tau}_t(\lambda_k)=\left(
+		\begin{array}{c}
+			\text{image of }\tau^*\ell\text{ under}\\
+			\Oo_T(\tau^{-1}V)\morphism\Oo_T(W)\morphism\Oo_{T,t}
+		\end{array}\right)
+	\end{align*}
+	by the commutativity of
+	\begin{diagram}
+		\node (kz) at (0,0) {$\Oo_{X,k}$};
+		\node (kx) at (3,0) {$\Oo_{T,t}$};
+		\node (ky) at (1.5,-1.25) {$\Oo_{K,k}$};
+		\node (OX) at (0,1.25) {$\Oo_X(V)$};
+		\node (OT) at (3,1.25) {$\Oo_T(\tau^{-1}V)$\rlap{$\,=\tau_*\Oo_T(V)$}};
+		\scriptsize
+		\draw[->] (kz) -- (kx) node[pos=0.5, above] {$\tau^*$};
+		\draw[->] (kz) -- (ky) node[pos=0.5, below left] {$\kappa^*$};
+		\draw[->] (ky) -- (kx) node[pos=0.5,below right] {$\snake\tau_k$};
+		\draw[->] (OX) -- (OT) node[pos=0.5, above] {$\tau^*$};
+		\draw[->] (OX) -- (kz);
+		\draw[->] (OT) -- (kx);
+	\end{diagram}
+	It follows that
+	\begin{align*}
+		\snake{\tau}^*\lambda=\left(
+		\begin{array}{c}
+			\text{image of }\tau^*\ell\text{ under}\\
+			\Oo_T(\tau^{-1}V)\morphism\Oo_T(W)\morphism\prod_{t\in W}\Oo_{T,t}
+		\end{array}\right)\;.
+	\end{align*}
+	Since such a neighbourhood $W$ may be found for any $z\in\vartheta^{-1}U$, $\snake{\tau}^*\lambda$ desires the satisfied coherence condition.
 \end{proof}
     
     
@@ -1031,7 +1182,7 @@ A category is called \emph{small} if its class of objects is a set.
         	 	\scriptsize
         	 	\draw[->,dashed] (C) -- (T) node[pos=0.5, right] {$\exists!\ t$};
         	 	\draw[->, bend left] (X) to node[pos=0.5, below] {$a$} (Y) ;				
-        	 	\draw[->, bend right] (X) to node[pos=0.5, above] {$a$} (Y) ;
+        	 	\draw[->, bend right] (X) to node[pos=0.5, above] {$b$} (Y) ;
         	 	\draw[->] (Y) -- (C) node[pos=0.5, below right] {$c$};
         	 	\draw[->] (X) -- (C);
         	 	\draw[->, bend left] (Y) to node[pos=0.5, right] {$\tau$} (T);
@@ -1040,11 +1191,11 @@ A category is called \emph{small} if its class of objects is a set.
         	 In yet another other words, $C$ is the \emph{colimiting co-cone} below the diagram $X\doublemorphism[a][b]Y$.
         \end{quote}
 	\end{defi}
-	\begin{fact*}\lbl{fact:coequalizerOfRings}
+	\begin{fact}\lbl{fact:coequalizerOfRings}
         Let $A\doublemorphism[\alpha][\beta] B$ be a ring morphism. Then a coequalizer is given by $B/I$ where $I$ is the ideal generated by $\left\{\alpha(a)-\beta(a)\st a\in A\right\}$. When $A,B$ are local rings and $\alpha,\beta$ local ring morphisms, this is a local ring iff $\alpha$ and $\beta$ induce the same morphism on the residue fields, and $\{0\}$ otherwise. 
         
         Let us denote this by $\Coeq\Big(A\doublemorphism[\alpha][\beta] B\Big)$.
-	\end{fact*}
+	\end{fact}
 	\begin{proof}
         Let $C = B/I \lepimorphism[\pi] B$. Obviously, $\pi \alpha = \pi\beta$. Let $B\morphism[t] T$ be a ring homomorphism such that $t\alpha = t\beta$. Then $t(\alpha(a)-\beta(a)) = 0$ hence $\left\{\alpha(a)-\beta(a)\st a\in A\right\} \subseteq \ker(t)$ hence $I\subseteq \ker(t)$ as $\ker(t)$ is an ideal, and $t$ has a unique representation as $t=\tau\pi$ for $C\morphism[\tau] T$, by the universal property of the quotient ring.
         
