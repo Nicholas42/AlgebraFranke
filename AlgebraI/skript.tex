@@ -948,7 +948,7 @@
 			\begin{align}\lbl{eq:codimIneqs}
 			\begin{split}
 			\codim(C,B) +\codim(B,A) &\leq \codim(C,A) \\
-			\dim(A) + \codim(A,X) &\leq \dim(X)
+			\dim (A) + \codim(A,X) &\leq \dim (X)
 			\end{split}\;.
 			\end{align}\lbl{rem:codimIneqs}
 			\item Let $Y$ be irreducible and $U\subseteq X$ open such that $Y\cap U\neq\emptyset$. Then there is a bijection% between the irreducible subsets $A$ of $X$ with $A\supseteq Y$ and the irreducible subsets $M$ of $U$ with $M\supseteq U\cap Y$
@@ -973,7 +973,7 @@
 		
 	\end{rem}
 	\begin{thm}\lbl{thm:k^nIsCatenary}
-		For $X=k^n$ with the Zariski-topology, $\dim(X) = n$ and equality occurs in \eqreff{eq:codimIneqs}. In particular, $X$ is catenary.
+		For $X=k^n$ with the Zariski-topology, $\dim (X) = n$ and equality occurs in \eqreff{eq:codimIneqs}. In particular, $X$ is catenary.
 	\end{thm}
 	\begin{rem}[a.k.a. Remark 5]\lbl{rem:chainOfIrreducibles}
 		Obviously $\codim(\{0\}^n, k^n) \geq n$ because of the chain 
@@ -1112,7 +1112,7 @@
 		By Proposition~\reff{prop:vectorOfRegularFunctionsContinuous}, $Z\morphism[f]k$ is continuous. Since $\{0\}\subseteq k$ is Zariski-closed, so is its preimage $V(f)$.
 	\end{proof}
 	\begin{thm}\lbl{thm:quotienFieldOfRegularFunctions}
-		If $X$ is a quasi-affine algebraic variety, $K$ the quotient field of $\Oo(X)$ (the field of rational functions on $X$) then $\dim(X) = \deg\tr(K/k)$ and equality always occurs in equation \eqreff{eq:codimIneqs}. In particular, $X$ is catenary.
+		If $X$ is a quasi-affine algebraic variety, $K$ the quotient field of $\Oo(X)$ (the field of rational functions on $X$) then $\dim (X) = \deg\tr(K/k)$ and equality always occurs in equation \eqreff{eq:codimIneqs}. In particular, $X$ is catenary.
 	\end{thm}
 	\begin{rem*}
 		\begin{alphanumerate}
@@ -1950,7 +1950,7 @@
 	\begin{cor}\lbl{cor:transcendenceDegreeDimension}
 		If $X$ is an affine algebraic variety in some $k^n$ (with $k$ an algebraically closed field) and $K(X)$ its ring of rational functions (i.e. the quotient field of $\Oo(X)$), then 
 		\begin{align*}
-			\dim X\leq \deg\tr(K(X)/k)\;.
+			\dim (X)\leq \deg\tr(K(X)/k)\;.
 		\end{align*}
 	\end{cor}
 	\begin{proof}
@@ -1967,14 +1967,14 @@
 		The fact that $\dim (k^n) \geq n$ follows from $k^n\supsetneq k^{n-1}\times\{0\}\supsetneq \ldots\supseteq k\times\{0\}^{n-1}\supsetneq \{0\}^n$ being irreducible subsets (Remark~\reff{rem:chainOfIrreducibles}). Putting $X=k^n$ we have $\Oo(X)=k[X_1,\ldots,X_n]$ by Proposition~\reff{prop:primeIdealIso}, hence $K(X) = k(X_1,\ldots,X_n)$ has transcendence degree $n$ over $k$ and thus $\dim(k^n)\leq n$  by Corollary~\reff{cor:transcendenceDegreeDimension}.
 	\end{proof}
 	\begin{cor}\lbl{cor:dimIneqQuasiAffine}
-		Let $X$ be a quasi-affine algebraic variety in $k^n$ and $K(X)$ the quotient field of $\Oo(X)$. Then $\dim(X)\leq \deg\tr (K(X)/k)$.
+		Let $X$ be a quasi-affine algebraic variety in $k^n$ and $K(X)$ the quotient field of $\Oo(X)$. Then $\dim (X)\leq \deg\tr (K(X)/k)$.
 	\end{cor}
 	\begin{rem*}
 		If algebraic varietes in general are defined as on the exercise sheet, one has to define (for irreducible $X$)
 		\begin{align*}
 			K(X)=\{(f,U)\}/_\sim\quad\text{where }U\subseteq X\text{ open, }f\in\Oo(U)\;,
 		\end{align*}
-		and we set $(f,U)\sim(g,U)$ iff $f|_{U\cap V}=g|_{U\cap V}$ (This can be weakened to $f|_W=g|_W$ on an open subset $W\subseteq U\cap V$. If $f-g$ vanishes on the open and thus dense subset $W\subseteq U\cap V$, it must vanish on all of $U\cap V$ since $f$ and $g$ are continuous.), which turns out to be an equivalence relation. Then (it can be shown that) $\dim(X)=\deg\tr(K(X)/k)$ and $\codim(Z,X)=\dim(X)-\dim(Z)$ for any irreducible $Z\subseteq X$.
+		and we set $(f,U)\sim(g,U)$ iff $f|_{U\cap V}=g|_{U\cap V}$ (This can be weakened to $f|_W=g|_W$ on an open subset $W\subseteq U\cap V$. If $f-g$ vanishes on the open and thus dense subset $W\subseteq U\cap V$, it must vanish on all of $U\cap V$ since $f$ and $g$ are continuous.), which turns out to be an equivalence relation. Then (it can be shown that) $\dim (X)=\deg\tr(K(X)/k)$ and $\codim(Z,X)=\dim (X)-\dim (Z)$ for any irreducible $Z\subseteq X$.
 	\end{rem*}
 	\begin{proof}[Proof of Corollary~\reff{cor:dimIneqQuasiAffine}]
 		Let $X\subseteq\ov X\subseteq k^n$. The closure $\ov X$ of $X$ is irreducible, hence so is $X$ and there is a bijection
@@ -1987,7 +1987,7 @@
 			A=B\cap X&\longmapsfrom B\\
 			A&\longmapsto B=\ov A
 		\end{align*}
-		(somewhere on an exercise sheet (on \#6, that is)), hence $\dim(X)\leq\dim(\ov X)$. We want to show that $K(X)\simeq K(\ov X)$. To do so, we use the fact that there is some $f\in\Oo(\ov X)\setminus\{0\}$ such that $W\coloneqq \ov X\setminus V(f)\subseteq X$ (by Fact~\reff{fact:complemntOfVarietiesFormBase}, the open subsets $\ov X\setminus\{0\}$, $f\in\Oo(\ov X)$ form a topology base of $\ov X$). Since $W$ is dense in $X$ and $\ov X$, we may identify $\Oo(X)$ and $\Oo(\ov X)$ with subrings $B$ and $A$ of $\Oo(W)$, where $A\subseteq B\subseteq \Oo(W)$. By Proposition~\reff{prop:regFunctionsLocalization} we have $\Oo(W)=A_f$, hence $A$ and $\Oo(W)$ have the same quotient fields. But then the quotient field of $B$ must coincide with $K(\ov X)=K(W)$ as well.
+		(somewhere on an exercise sheet (on \#6, that is)), hence $\dim (X)\leq\dim (\ov X)$. We want to show that $K(X)\simeq K(\ov X)$. To do so, we use the fact that there is some $f\in\Oo(\ov X)\setminus\{0\}$ such that $W\coloneqq \ov X\setminus V(f)\subseteq X$ (by Fact~\reff{fact:complemntOfVarietiesFormBase}, the open subsets $\ov X\setminus\{0\}$, $f\in\Oo(\ov X)$ form a topology base of $\ov X$). Since $W$ is dense in $X$ and $\ov X$, we may identify $\Oo(X)$ and $\Oo(\ov X)$ with subrings $B$ and $A$ of $\Oo(W)$, where $A\subseteq B\subseteq \Oo(W)$. By Proposition~\reff{prop:regFunctionsLocalization} we have $\Oo(W)=A_f$, hence $A$ and $\Oo(W)$ have the same quotient fields. But then the quotient field of $B$ must coincide with $K(\ov X)=K(W)$ as well.
 	\end{proof}
 	\begin{rem*} 
 		In particular, we proved that if $X$ is affine in $k^n$ and $U\subseteq X$ is open and nonempty, then $K(X)\simeq K(U)$.
@@ -2146,10 +2146,10 @@
 		\begin{align*}
 			\qq_0 = \{0\}\subsetneq \qq_1\subsetneq\qq_2\subsetneq\ldots\subsetneq \qq_d \subsetneq B = \Oo(X)
 		\end{align*}
-		of prime ideals of $B$ by applying going-up successively to $\qq_i$ over $\pp_i\subsetneq \pp_{i+1}$. Corresponding to this strictly increasing chain of prime ideals in $B$ we have a strictly decreasing chain of irreducible subsets $V(\qq_i)\subsetneq X$ of length $d$, establishing $\dim(X)\geq d$.
+		of prime ideals of $B$ by applying going-up successively to $\qq_i$ over $\pp_i\subsetneq \pp_{i+1}$. Corresponding to this strictly increasing chain of prime ideals in $B$ we have a strictly decreasing chain of irreducible subsets $V(\qq_i)\subsetneq X$ of length $d$, establishing $\dim (X)\geq d$.
 	\end{proof}
 	\paragraph{Problem with this proof.}
-	If equality is to hold in $\dim Z +\codim(Z,X)\leq \dim X$ we must have (with $Z=\{x\}$) $\codim(x,X) = d$ for any point $x\in X$. Let $\mm = \mm_x$ and $\nn = \mm_x\cap A$ its preimage $A$, then $\nn$ is a maximal ideal (Theorem~\reff{thm:goingupInIntegralRingExtensions}) hence $\nn = \left(X_1-\xi_1,\ldots, X_d-\xi_d\right)_A$ and without loss of generality we may assume that the $\xi_i$ are 0. Then we are in the situation from \eqreff{eq:idealchain} but $\qq_d = \mm$ is given and the descending chain has to be found, which requires going-down. 
+	If equality is to hold in $\dim (Z) +\codim(Z,X)\leq \dim (X)$ we must have (with $Z=\{x\}$) $\codim(x,X) = d$ for any point $x\in X$. Let $\mm = \mm_x$ and $\nn = \mm_x\cap A$ its preimage $A$, then $\nn$ is a maximal ideal (Theorem~\reff{thm:goingupInIntegralRingExtensions}) hence $\nn = \left(X_1-\xi_1,\ldots, X_d-\xi_d\right)_A$ and without loss of generality we may assume that the $\xi_i$ are 0. Then we are in the situation from \eqreff{eq:idealchain} but $\qq_d = \mm$ is given and the descending chain has to be found, which requires going-down. 
 	
 	The situation for proving going-down in this situation is as follows: Let $K=K(X)$. Assume first that $K/k(X_1,\ldots,X_d)$ is Galois and $B=\Oo(X)$ is $G=\Gal\big(K/k(X_1,\ldots,X_d)\big)$-invariant and that for any $\pp\in\Spec A$ the group $G$ acts transitively upon the prime ideals of $B$ lying above $\pp$ (i.e. if $\qq|\pp$ is a prime ideal above $\pp$ and  $\sigma\in G$, then $\sigma\qq$ is a prime ideal of $B$ lying above $\pp$; conversely, each prime ideal $\qq'|\pp$ of $B$ can be obtained as $\qq'=\sigma\qq$ for a suitable $\sigma\in G$), then the maximal length of a chain in \eqreff{eq:idealchain} ending on $\pp_d$ does not depend on the choice of $\pp_d$ lying above $\left(X_1,\ldots, X_d\right)_A$. Since for at least one such $\pp_d$ this length is $d$, by the above construction, the same holds for the others.
 	
@@ -2242,7 +2242,7 @@
 		\end{align*}
 		Furthermore we have, let
 		\begin{align*}
-			\dim R = \sup\left\{\hoehe(\pp)\st\pp\in\Spec R\right\} = \dim\Spec R\;.
+			\dim (R) = \sup\left\{\hoehe(\pp)\st\pp\in\Spec R\right\} = \dim\Spec R\;.
 		\end{align*}
 
 	\end{defi}
@@ -2253,7 +2253,7 @@
 		\item 
 			By the correspondence between the irreducible subsets of $\Spec A$ and the prime ideals of $A$, we have $\hoehe(\pp) = \codim(V(\pp), \Spec A)$ and $\hoehe(\pp/\qq) = \codim(V(\pp),V(\qq))$.
 		\item 
-			By a theorem of Krull, $\hoehe(\pp)$ is finite when $A$ is Noetherian, but nevertheless $\dim(A) = \sup\left\{\hoehe(\pp)\st\pp\in\Spec A \right\}$ may be infinite, even when $A$ is Noetherian.
+			By a theorem of Krull, $\hoehe(\pp)$ is finite when $A$ is Noetherian, but nevertheless $\dim (A) = \sup\left\{\hoehe(\pp)\st\pp\in\Spec A \right\}$ may be infinite, even when $A$ is Noetherian.
 		\item 
 			Obviously, we have the following inequalities for prime ideals $\rr\subseteq\qq\subseteq\pp\subseteq A$
 			\begin{align}\lbl{eq:heightIneqs}
@@ -2266,24 +2266,24 @@
 		\end{alphanumerate}
 	\end{rem}
 	\begin{fact}
-		Obviously, $\dim R = \hoehe(\mm)$ when $R$ is local with maximal ideal $\mm$. If $S\subseteq R$ is multiplicative, we have a bijection $\Spec R_S \simeq \left\{\pp\in\Spec R \st\pp\cap S = \emptyset\right\}$. In particular, 
+		Obviously, $\dim (R) = \hoehe(\mm)$ when $R$ is local with maximal ideal $\mm$. If $S\subseteq R$ is multiplicative, we have a bijection $\Spec R_S \simeq \left\{\pp\in\Spec R \st\pp\cap S = \emptyset\right\}$. In particular, 
 		\begin{align*}
-			\hoehe(\pp ) = \hoehe(\pp R_S)\quad\text{and (for }S=R\setminus\pp)\quad \hoehe(\pp) = \dim(R_\pp)\;.
+			\hoehe(\pp ) = \hoehe(\pp R_S)\quad\text{and (for }S=R\setminus\pp)\quad \hoehe(\pp) = \dim (R_\pp)\;.
 		\end{align*}
 	\end{fact}
 	\begin{rem}
-		If $X$ is an affine variety, $R=\Oo_X(X)$, $\pp,\qq\in\Spec R$ prime ideals corresponding to irreducible subsets $A$ and $B$, then $\hoehe(\pp) = \codim(A,X)$, $\hoehe(\qq) = \codim(B,X)$, $\hoehe(\pp/\qq) = \codim(A,B)$ and $\dim R = \dim X$ by the one-to-one correspondence between irreducible subsets of $X$ and $\Spec R$.
+		If $X$ is an affine variety, $R=\Oo_X(X)$, $\pp,\qq\in\Spec R$ prime ideals corresponding to irreducible subsets $A$ and $B$, then $\hoehe(\pp) = \codim(A,X)$, $\hoehe(\qq) = \codim(B,X)$, $\hoehe(\pp/\qq) = \codim(A,B)$ and $\dim (R) = \dim (X)$ by the one-to-one correspondence between irreducible subsets of $X$ and $\Spec R$.
 	\end{rem}
 	\begin{fact}
-		Let $B\supseteq A$ be an integral ring extension. Then $\dim B = \dim A$, and $\hoehe(\qq\cap A) \geq \hoehe(\qq)$ for every $\qq\in\Spec B$. If going-down holds for $B/A$, the last inequality becomes an equality.
+		Let $B\supseteq A$ be an integral ring extension. Then $\dim (B) = \dim (A)$, and $\hoehe(\qq\cap A) \geq \hoehe(\qq)$ for every $\qq\in\Spec B$. If going-down holds for $B/A$, the last inequality becomes an equality.
 	\end{fact}
 	\begin{proof}
-		If $\qq_0\subsetneq\ldots\subsetneq \qq_\ell$ is a strictly increasing chain of prime ideals in $B$, $\qq_0\cap A\subsetneq\ldots\subsetneq \qq_\ell\cap A$ is such a chain in $A$, the inclusions being proper by Theorem~\reff{thm:goingupInIntegralRingExtensions}(b). Thus $\dim B\leq \dim A$ and the same argument shows $\hoehe(\qq\cap A) \geq \hoehe(\qq)$.
+		If $\qq_0\subsetneq\ldots\subsetneq \qq_\ell$ is a strictly increasing chain of prime ideals in $B$, $\qq_0\cap A\subsetneq\ldots\subsetneq \qq_\ell\cap A$ is such a chain in $A$, the inclusions being proper by Theorem~\reff{thm:goingupInIntegralRingExtensions}(b). Thus $\dim (B)\leq \dim (A)$ and the same argument shows $\hoehe(\qq\cap A) \geq \hoehe(\qq)$.
 		
-		 If $\pp_0\subsetneq\ldots\subsetneq \pp_d$ is a strictly increasing chain of prime ideals in $A$ it is possible to find $\qq_0\subsetneq\ldots\subsetneq \qq_d$ a chain  of prime ideals in $B$ by going-up (Theorem~\reff{thm:goingupInIntegralRingExtensions}(c)). Thus, $d\leq \dim B$ and $\dim A \leq \dim B$. If going down holds, any increasing chain of prime ideals of $A$ ending in $\qq\cap A$ can be lifted to a similar chain for $B$ ending in $\qq$, establishing $\hoehe(\qq)\geq\hoehe(\qq\cap A)$.
+		 If $\pp_0\subsetneq\ldots\subsetneq \pp_d$ is a strictly increasing chain of prime ideals in $A$ it is possible to find $\qq_0\subsetneq\ldots\subsetneq \qq_d$ a chain  of prime ideals in $B$ by going-up (Theorem~\reff{thm:goingupInIntegralRingExtensions}(c)). Thus, $d\leq \dim (B)$ and $\dim (A) \leq \dim (B)$. If going down holds, any increasing chain of prime ideals of $A$ ending in $\qq\cap A$ can be lifted to a similar chain for $B$ ending in $\qq$, establishing $\hoehe(\qq)\geq\hoehe(\qq\cap A)$.
 	\end{proof}
 	\begin{thm}\lbl{thm:catenaryRings}
-		If $B$ is a domain which is of finite type over a field $k$ and $K$ denotes the field of quotients of $B$, then $\dim B = \deg\tr(K/k)$. Moreover 
+		If $B$ is a domain which is of finite type over a field $k$ and $K$ denotes the field of quotients of $B$, then $\dim (B) = \deg\tr(K/k)$. Moreover 
 		\begin{align*}\tag{1} \lbl{eq:thm10eq1}
 			\hoehe(\mm) = \deg\tr(K/k)
 		\end{align*}
@@ -2294,7 +2294,7 @@
 		In particular, this implies that $B$ is catenary.
 	\end{thm}
 	\begin{proof}
-		The fact that $\dim B=\deg\tr(K/k)$ will follow trivially from \eqreff{eq:thm10eq1} and \eqreff{eq:thm10eq2}. 
+		The fact that $\dim (B)=\deg\tr(K/k)$ will follow trivially from \eqreff{eq:thm10eq1} and \eqreff{eq:thm10eq2}. 
 		
 		Let $\pp_\ell\subsetneq\pp_{\ell-1}\subsetneq\ldots\subsetneq\pp_0=\mm$ be a chain of prime ideals. By Proposition~\reff{prop:transcendenceDegreeMonotonic},
 		\begin{align*}
@@ -2316,16 +2316,16 @@
 		by \eqreff{eq:thm10eq2}. From this, \eqreff{eq:heightIneqs} is immediate. 
 	\end{proof}
 	\begin{cor}
-		Let $X\subseteq k^n$ be a quasi-affine algebraic variety over an algebraically closed field $k$ and let $K$ be its field of rational functions, then $\dim X = \deg\tr(K/k)$. For any irreducible subset $Z\subseteq X$ we have $\codim(Z,X) = \dim X-\dim Z$. In particular, Theorems~\reff{thm:k^nIsCatenary} and~\reff{thm:quotienFieldOfRegularFunctions} hold.
+		Let $X\subseteq k^n$ be a quasi-affine algebraic variety over an algebraically closed field $k$ and let $K$ be its field of rational functions, then $\dim (X) = \deg\tr(K/k)$. For any irreducible subset $Z\subseteq X$ we have $\codim(Z,X) = \dim (X)-\dim (Z)$. In particular, Theorems~\reff{thm:k^nIsCatenary} and~\reff{thm:quotienFieldOfRegularFunctions} hold.
 	\end{cor}
 	\begin{proof}
 		For affine $X$, this follows from the geometric interpretation of $\hoehe(\pp)$. The quasi-affine case can be reduced to the affine as in the proof of Corollary~\reff{cor:dimIneqQuasiAffine}.
 		
-		For the sake of completeness, we give a proof of the quasi-affine case. Let $X\subseteq k^n$ be a quasi-affine variety, $\ov X$ its closure. Let us first prove, that $\dim X=\dim\ov X$. Since $\Oo(X)$ and $\Oo(\ov X)$ have the same quotient field $K$ (as was shown in the proof of Proposition~\reff{cor:dimIneqQuasiAffine}), this will establish $\dim X=\deg\tr(K/k)$. As was done in the proof of Corollary~\reff{cor:dimIneqQuasiAffine}, we take $f\in \Oo(\ov X)$ such that $W\coloneqq\ov X\setminus V(f)\subseteq X$. Let $A=\Oo(\ov X)$, $B=\Oo(W)$, then $A\subseteq\Oo(X)\subseteq B$ and $B=A_f$. In particular, $B=A[f^{-1}]$ is of finite type over $k$ since so is $A$. By Theorem~\reff{thm:catenaryRings}, $\dim B=\dim A_f=\deg\tr(K/k)=\dim A$, hence there is a chain $\snake \pp_0\supsetneq\snake \pp_1\supsetneq\ldots\supsetneq\snake \pp_n$ of prime ideals in $B$ such that $n=\dim A$. The one-to-one correspondence provided by Corollary~\reff{cor:localizations} shows that this corresponds to a chain $\pp_0\supsetneq\pp_1\supsetneq\ldots\supsetneq\pp_n$ of prime ideals $\pp_i=\snake{\pp}_i\cap A\in\Spec A$ satisfying $f\not\in\pp_i$. Then
+		For the sake of completeness, we give a proof of the quasi-affine case. Let $X\subseteq k^n$ be a quasi-affine variety, $\ov X$ its closure. Let us first prove, that $\dim (X)=\dim(\ov X)$. Since $\Oo(X)$ and $\Oo(\ov X)$ have the same quotient field $K$ (as was shown in the proof of Proposition~\reff{cor:dimIneqQuasiAffine}), this will establish $\dim (X)=\deg\tr(K/k)$. As was done in the proof of Corollary~\reff{cor:dimIneqQuasiAffine}, we take $f\in \Oo(\ov X)$ such that $W\coloneqq\ov X\setminus V(f)\subseteq X$. Let $A=\Oo(\ov X)$, $B=\Oo(W)$, then $A\subseteq\Oo(X)\subseteq B$ and $B=A_f$. In particular, $B=A[f^{-1}]$ is of finite type over $k$ since so is $A$. By Theorem~\reff{thm:catenaryRings}, $\dim (B)=\dim (A_f)=\deg\tr(K/k)=\dim (A)$, hence there is a chain $\snake \pp_0\supsetneq\snake \pp_1\supsetneq\ldots\supsetneq\snake \pp_n$ of prime ideals in $B$ such that $n=\dim (A)$. The one-to-one correspondence provided by Corollary~\reff{cor:localizations} shows that this corresponds to a chain $\pp_0\supsetneq\pp_1\supsetneq\ldots\supsetneq\pp_n$ of prime ideals $\pp_i=\snake{\pp}_i\cap A\in\Spec A$ satisfying $f\not\in\pp_i$. Then
 		\begin{align*}
 			V(\pp_0)\subsetneq V(\pp_1)\subsetneq\ldots\subsetneq V(\pp_n)\subseteq W\subseteq X\;,
 		\end{align*}
-		 hence $\dim X\geq n$. The reverse inequality was shown in Corollary~\reff{cor:dimIneqQuasiAffine}.
+		 hence $\dim (X)\geq n$. The reverse inequality was shown in Corollary~\reff{cor:dimIneqQuasiAffine}.
 		 
 		 If $A\supseteq B\supseteq C$ are irreducible subsets of $X$, then consider $\ov A\supseteq\ov B\supseteq \ov C$. These guys are irreducible subsets of $\ov X$ (cf. the proof of Corollary~\reff{cor:dimIneqQuasiAffine} or exercise sheet \#6), hence equation \eqreff{eq:codimIneqs} reduces to the affine case by the \emph{locality of codimension} (cf. Remark~\reff{rem:codimIneqs}(b), equation \eqreff{eq:localityOfCodim}).
 	\end{proof}
@@ -2343,7 +2343,7 @@
 	\begin{cor}
 		Let $R$ be a Noetherian local ring with maximal ideal $\mm$. Then
 		\begin{align*}
-			\dim R\leq\dim_{\KK(\mm)}(\mm/\mm^2)=\text{minimal number of generators of }\mm\;. 
+			\dim (R)\leq\dim_{\KK(\mm)}(\mm/\mm^2)=\text{minimal number of generators of }\mm\;. 
 		\end{align*}
 		 %$\dim_{\KK(\mm)}(\mm/\mm^2)$ equals the minimal number of generators for $\mm$ and is greater or equal to $\dim R$.
 	\end{cor}
@@ -2379,7 +2379,7 @@
 	\begin{prop}\lbl{prop:dimXxY}
 		If $X\subseteq k^m$ and $Y\subseteq k^n$ are affine algebraic varieties, then 
 		\begin{align*}
-			\dim(X\times Y) = \dim X +\dim Y\;.
+			\dim(X\times Y) = \dim (X) +\dim (Y)\;.
 		\end{align*}
 	\end{prop}
 	\begin{proof}
@@ -2387,14 +2387,14 @@
 		\begin{align*}
 			X_0\times Y_0\subsetneq X_1\times Y_0\subsetneq \ldots\subsetneq X_d\times Y_0\subsetneq X_d\times Y_1 \subsetneq \ldots\subsetneq X_d\times Y_d = X\times Y
 		\end{align*}
-		is a chain of irreducible subsets of $X\times Y$ of length $d+e$. Thus, $\dim(X\times Y) \geq \dim X+\dim Y$. If $X= X_0\subsetneq X_1\subsetneq\ldots \subsetneq X_{d'} = k^m$ and $Y = Y_0\subsetneq Y_1\subsetneq \ldots\subsetneq Y_{e'}=k^n$ are chains of irreducible subsets, then 
+		is a chain of irreducible subsets of $X\times Y$ of length $d+e$. Thus, $\dim(X\times Y) \geq \dim (X)+\dim (Y)$. If $X= X_0\subsetneq X_1\subsetneq\ldots \subsetneq X_{d'} = k^m$ and $Y = Y_0\subsetneq Y_1\subsetneq \ldots\subsetneq Y_{e'}=k^n$ are chains of irreducible subsets, then 
 		\begin{align*}
 			X\times Y = X_0\times Y_0\subsetneq X_1\times Y_0\subsetneq \ldots\subsetneq X_{d'}\times Y_0\subsetneq X_{d'}\times Y_1 \subsetneq \ldots\subsetneq X_{d'}\times Y_{e'} = k^m \times k^n
 		\end{align*}
 		is a chain of length $d'+e'$. Thus, $\codim(X\times Y, k^{m+n}) \geq \codim(X, k^m) +\codim(Y, k^n)$. Because of Theorem \reff{thm:k^nIsCatenary},
 		\begin{align*}
-			\dim X + \codim(X,k^m) &= m \\
-			\dim Y +\codim (Y, k^n) &= n\\
+			\dim (X) + \codim(X,k^m) &= m \\
+			\dim (Y) +\codim (Y, k^n) &= n\\
 			\dim (X\times Y) +\codim(X\times Y, k^{m+n}) &= m+n
 		\end{align*}
 		which implies the equality of the both inequalities.
@@ -2424,7 +2424,7 @@
 		\begin{align*}
 			\Delta =\left\{(x_1,\ldots,x_n,y_1,\ldots,y_n)\in k^{2n}\st x_i= y_i\ \forall i\right\} \subseteq k^{2n}\;.
 		\end{align*}
-		We have $I\simeq X\cap Y$ since the maps $I\ni(x,y) \mapsto x$ and $X\cap Y\ni x\mapsto (x,x)$ are clearly morphisms of algebraic varieties and inverse to each other. Hence it is sufficient to show $\dim(C) \leq \dim(X)+\dim (Y) - n$, or equivalently, $\codim(C,k^{2n}) \leq \codim(X,k^n)+\codim(Y,k^n) +n$ for any irreducible component $C\subseteq I$. From Step 2 and Proposition~\reff{prop:dimXxY},
+		We have $I\simeq X\cap Y$ since the maps $I\ni(x,y) \mapsto x$ and $X\cap Y\ni x\mapsto (x,x)$ are clearly morphisms of algebraic varieties and inverse to each other. Hence it is sufficient to show $\dim (C) \leq \dim (X)+\dim (Y) - n$, or equivalently, $\codim(C,k^{2n}) \leq \codim(X,k^n)+\codim(Y,k^n) +n$ for any irreducible component $C\subseteq I$. From Step 2 and Proposition~\reff{prop:dimXxY},
 		\begin{align*}
 			\codim(C,I)\leq\codim(X\times Y,k^{2n})+\codim(\Delta,k^{2n})=\codim(X,k^n)+\codim(Y,k^n)+n\;,
 		\end{align*}
@@ -2468,18 +2468,18 @@
 	\begin{thm}[Bezout]
 		If $C,D\subseteq \IP^2(k)$ are curves of degrees $a$ and $b$, then $C\cap D$ is infinite or has cardinality $a\cdot b$.
 	\end{thm}
-	We will prove this (in Algebra II) considering the Hilbert Polynomial $P_H(\ell) = \dim_k (R_\ell/I_\ell)$ where $I$ is the ideal defining $X$, and $\ell$ is large enough. The degree of $P_H$ equals $\dim X$.
+	We will prove this (in Algebra II) considering the Hilbert Polynomial $P_H(\ell) = \dim_k (R_\ell/I_\ell)$ where $I$ is the ideal defining $X$, and $\ell$ is large enough. The degree of $P_H$ equals $\dim (X)$.
 	
 	\begin{proof}[Sketch of a proof of Theorem~\reff{thm:principalIdealTheorem}]
 		The modern proof of the principal ideal theorem uses Hilbert Polynomial arguments.
 		
 		Let $R$ be a Noetherian local ring with maximal ideal $\mm$, $M$ a finitely generated $R$-module, then
 		\begin{align*}
-		\dim(M ) &\coloneqq  \dim \operatorname{supp} M = \dim \left\{\pp\in \Spec R\st M_\pp\neq 0\right\}\\
+		\dim (M)&\coloneqq  \dim( \operatorname{supp} M) = \dim \left\{\pp\in \Spec R\st M_\pp\neq 0\right\}\\
 		d(M) &\coloneqq \deg P\;,\quad\text{where }  P(\ell)=  \dim_{\KK(\mm)} \left(\mm^\ell M /\mm^{\ell+1}M\right)\\
 		\delta(M) &\coloneqq \min\big\{\ell\ \big|\ \text{there are } f_1,\ldots,f_\ell\in \mm, \text{ such that } l\left(M/\left\langle f_1,\ldots,f_\ell\right\rangle_R\right)<\infty\big\}
 		\end{align*}
-		where the \emph{length} $l(N)$ of an $R$-module $N$ is the largest length of a strictly increasing chain of submodules. It can be shown that $\dim(M) \leq d(M)\leq  \delta(M)\leq \dim(M)$, which implies the principal ideal theorem.
+		where the \emph{length} $l(N)$ of an $R$-module $N$ is the largest length of a strictly increasing chain of submodules. It can be shown that $\dim (M) \leq d(M)\leq  \delta(M)\leq \dim (M)$, which implies the principal ideal theorem.
 	\end{proof}
 	
 	
