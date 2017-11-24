@@ -540,7 +540,7 @@ of presheaves on $\Bb$.
         \begin{diagram}
         	\node (f*F) at (0,1.5) {$(f_*\Ff)_{f(x)}$};
         	\node (Fx) at (0,0) {$\Ff_x$};
-        	\node (f*G) at (3,1.5) {$(f_*\Gg)_{f(x)}$};
+        	\node (f*G) at (3,1.5) {$(f_*\Gg)$\rlap{$_{f(x)}$}};
         	\node (Gx) at (3,0) {$\Gg_x$};
         	\scriptsize
         	\draw[->] (f*F) -- (Fx) node[pos=0.5, left] {$f_x^*$};
@@ -552,8 +552,8 @@ of presheaves on $\Bb$.
         \begin{diagram}
         	\node (f*F) at (0,1.5) {$(g_*f_*\Ff)_{g(f(x))}$};
         	\node (Fx) at (0,0) {$(f_*\Ff)_{f(x)}$};
-        	\node (f*G) at (3.5,1.5) {$\big((gf)_*\Ff\big)_{(gf)(x)}$};
-        	\node (Gx) at (3.5,0) {$\Ff_x$};
+        	\node (f*G) at (3,1.5) {$\big((gf)_*\Ff\big)$\rlap{$_{(gf)(x)}$}};
+        	\node (Gx) at (3,0) {$\Ff_x$};
         	\scriptsize
         	\draw[transform canvas={yshift=1pt}] (f*F) -- (f*G);
         	\draw[transform canvas={yshift=-1pt}] (f*F) -- (f*G);
@@ -634,8 +634,8 @@ of presheaves on $\Bb$.
     \begin{diagram}
     	\node (a) at (0,1.5) {$\Oo_Y(U)$};
     	\node (c) at (0,0) {$\Oo_{Y,f_{\cat{Top}}(x)}$};
-    	\node (b) at (3,1.5) {$f_*\Oo_X(U)\ \rlap{$\left(=\Oo_X\big(f^{-1}U\big)\right)$}$};
-    	\node (d) at (3,0) {$\Oo_{X,x}$};
+    	\node (b) at (2.5,1.5) {$f_*\Oo_X(U)\ \rlap{$\left(=\Oo_X\big(f^{-1}U\big)\right)$}$};
+    	\node (d) at (2.5,0) {$\Oo_{X,x}$};
     	\scriptsize
     	\draw[->] (a) -- (b) node[pos=0.5, above] {$f^*$};
     	\draw[->] (a) -- (c);
@@ -682,7 +682,7 @@ of presheaves on $\Bb$.
               \item[\itememph{\alpha}]
                 For any open subset $U\subseteq Y$ and $\lambda\in \Oo_Y(U)$ we have $V(f^*\lambda) = f^{-1}\big(V(\lambda)\big)$.
               \item[\itememph{\beta}]
-                For arbitrary $x\in X$, the ring morphism $\Oo_{y,f(x)} \morphism[f^*]\Oo_{X,x}$ is local in the sense of \itememph{a}.
+                For arbitrary $x\in X$, the ring morphism $\Oo_{Y,f(x)} \morphism[f^*]\Oo_{X,x}$ is local in the sense of \itememph{a}.
             \end{itemize}
 
     \end{alphanumerate}
@@ -889,8 +889,8 @@ of presheaves on $\Bb$.
 	\begin{diagram}
 		\node (a) at (0,1.5) {$\Oo_Y(V)$};
 		\node (c) at (0,0) {$\Oo_{Y,y}$};
-		\node (b) at (3,1.5) {$\Oo_X(a^{-1}V)\,\rlap{$=a_*\Oo_X(V)$}$};
-		\node (d) at (3,0) {$\Oo_{X,k}$};
+		\node (b) at (2.5,1.5) {$\Oo_X(a^{-1}V)\,\rlap{$=a_*\Oo_X(V)$}$};
+		\node (d) at (2.5,0) {$\Oo_{X,k}$};
 		\scriptsize
 		\draw[->] (a) -- (b) node[pos=0.5, above] {$a^*$};
 		\draw[->] (a) -- (c);
@@ -985,10 +985,10 @@ of presheaves on $\Bb$.
 	by the commutativity of
 	\begin{diagram}
 		\node (kz) at (0,0) {$\Oo_{X,k}$};
-		\node (kx) at (3,0) {$\Oo_{T,t}$};
-		\node (ky) at (1.5,-1.25) {$\Oo_{K,k}$};
+		\node (kx) at (2.5,0) {$\Oo_{T,t}$};
+		\node (ky) at (1.25,-1.25) {$\Oo_{K,k}$};
 		\node (OX) at (0,1.25) {$\Oo_X(V)$};
-		\node (OT) at (3,1.25) {$\Oo_T(\tau^{-1}V)$\rlap{$\,=\tau_*\Oo_T(V)$}};
+		\node (OT) at (2.5,1.25) {$\Oo_T(\tau^{-1}V)$\rlap{$\,=\tau_*\Oo_T(V)$}};
 		\scriptsize
 		\draw[->] (kz) -- (kx) node[pos=0.5, above] {$\tau^*$};
 		\draw[->] (kz) -- (ky) node[pos=0.5, below left] {$\kappa^*$};
@@ -1008,7 +1008,7 @@ of presheaves on $\Bb$.
 	Since such a neighbourhood $W$ may be found for any $z\in\vartheta^{-1}U$, $\snake{\tau}^*\lambda$ desires the satisfied coherence condition.
 \end{proof}
 \begin{cor}
-    Let $X\doublemorphism[f][g] Y$ be a pair of morphisms in $\cat{LRS}$ and $K\morphism[\kappa] X$ be an equalizer of that pair:
+    Let $X\doublemorphism[f][\smash{g}] Y$ be a pair of morphisms of locally ringed spaces and $K\morphism[\kappa] X$ be an equalizer of that pair:
     \begin{alphanumerate}
       \item 
         $\kappa$ is a homeomorphism of $K$ onto a subset of $X$ which is equipped with the induced topology.
@@ -1018,21 +1018,41 @@ of presheaves on $\Bb$.
         If $U\subseteq X$ is open, then $\kappa^{-1} (U) \morphism[\kappa|_U] U$ is an equalizer of $U \doublemorphism[f|_U][g|_U] Y$.
     \end{alphanumerate}
 \end{cor}
+\begin{proof}
+	All of this is rather trivial.
+\end{proof}
 \begin{rem*}
     If $Y\morphism[j] Z$ is a monomorphism, then the equalizers of $jf$ with $jg$ and of $f$ with $g$ are canonically isomorphic. This holds in any category as the equalizer represents
     \begin{align*}
         \left\{\tau \in \Hom(T,X) \st  f\tau =  g\tau \right\} = \left\{\tau \in \Hom(T,X) \st jf\tau = jg\tau\right\}.
     \end{align*}
 \end{rem*}
-The fibre product of locally ringed spaces $X$ and $Y$ over $S$ is given by
-\begin{align*}
-    X\times_S Y = \left\{(x,y,\pp)\st x\in X, y\in Y, s\coloneqq \xi(x) \upsilon(y), \pp\in \Spec\left(\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y}\right), \alpha^{-1}(\pp) = \mm_{X,x}, \beta^{-1}(\pp) = \mm_{Y,y}\right\}
-\end{align*}
-where $\alpha(\lambda) =\lambda \otimes 1$ and $\beta(\theta) = 1\otimes \theta$. 
+\paragraph{Fibre products.} Our goal now is to characterize fibre products of locally ringed spaces. Let $X\morphism[\xi]S\lmorphism[\upsilon]Y$ be morphisms of locally ringed spaces. Then the fibre product $F=X\times_SY$ can be described as follows:
+\begin{itemize}
+	\item \emph{Underlying set.} Set-theoretically, $F=X\times_SY$ is given by
+	\begin{align*}
+	F=X\times_S Y = \left\{(x,y,\pp)\st 
+	\begin{array}{c}
+		x\in X\text{, }y\in Y\text{ such that }\xi(x)=\upsilon(y)\eqqcolon s\text{ and the}\\
+		\text{ prime ideal }\pp\in \Spec\left(\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y}\right)\text{ satisfies}\\
+		\alpha^{-1}(\pp) = \mm_{X,x}\text{ and }\beta^{-1}(\pp) = \mm_{Y,y}
+	\end{array}\right\}
+	\end{align*}
+	Herein, as usual $\mm_{X,x}$ and $\mm_{Y,y}$ denote the maximal ideals of $\Oo_{X,x}$ respectively $\Oo_{Y,y}$ and the morphisms $\alpha,\beta$ are given by $\alpha(\lambda)=\lambda\otimes 1$ for $\lambda\in\Oo_{X,x}$ and $\beta(\vartheta)=1\otimes\vartheta$ for $\vartheta\in\Oo_{Y,y}$.
+	\item \emph{Topology.} Let $U\subseteq X$, $V\subseteq Y$, $W\subseteq S$ be subsets which are open in their respective space and such that $\xi(U) \cup \upsilon(V)\subseteq W$. Let $\lambda \in\Oo_X(U)\otimes_{\Oo_S(W)} \Oo_Y(V)$. Then the sets of the form
+	\begin{align*}
+		\Omega(U,V,W,\lambda)\coloneqq\left\{(x,y,\pp)\st
+		\begin{array}{c}
+			x\in U\text{, }y\in V\text{ and }\pp\text{ doesn't contain the image of }\lambda\\
+			\text{under }\Oo_X(U) \otimes_{\Oo_S(W)} \Oo_Y(V) \morphism \Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y}
+		\end{array}\right\}
+	\end{align*}
+	form a topology base of $F$.
+	\item \emph{Structure sheaf.} Let $\Oo_{F,[(x,y,\pp)]} = (\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y})_\pp$. This \emph{pretender stalk} eventually will turn out to be the actual stalk of $\Oo_F$ at $(x,y,\pp)$. A section of $\Oo_F(U)$ with $U\subseteq F$ open is an element of $\prod_{(x,y,\pp)\in U}\Oo_{F,[(x,y,\pp)]}$ satisfying a \emph{coherence condition}, i.e.  locally the family must come from a $\lambda$ as above.
+\end{itemize}
 
-We obtain a topology base $\Omega(U,V,W,\lambda)$ where $U\subseteq X$, $V\subseteq Y$, $W\subseteq S$ such that $\xi(U) \cup \upsilon(V)\subseteq W$ and $\lambda \Oo_X(U)\otimes_{\Oo_S(W)} \Oo_Y(V)$. Its elements are triples $(x,y,\pp)$ such that $x\in U$, $y\in V$ such that $\pp$ contains the image of $\lambda$ under $\Oo_X(U) \otimes_{\Oo_S(W)} \Oo_Y(V) \morphism \Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y}$.
 
-The structure sheaf is given by $\Oo_{F,[(x,y,\pp)]} = (\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y})_\pp$. We can show the coherence condition locally, the family must come from a $\lambda$ as above.
+
 
 
 
@@ -1101,7 +1121,8 @@ A category is called \emph{small} if its class of objects is a set.
 \end{defi}
 
   A further example is the category of prevarieties (with morphisms according to Definition \reff{def:preVarieties}) and its full subcategory of varieties, containing all varieties as objects.
-  
+    
+\section{Functors, functor morphisms, and the Yoneda lemma}
   \begin{defi}
   	A (covariant) \defemph{functor} $\Aa\morphism[F]\Bb$ consists of the following data:
   	\begin{itemize}
@@ -1116,6 +1137,164 @@ A category is called \emph{small} if its class of objects is a set.
   \begin{example*}
   	We have \emph{forgetful} functors like $\cat{Vect}_k\to\cat{Ab}$ or $\cat{Ab}\to\cat{Set}$. These functors are faithful (at least for the two examples).
   \end{example*}
+  
+
+  \begin{rem*}
+  	\begin{itemize}
+  		\item 
+  		If $\Aa\morphism[F] \operatorname{Set}$ is a faithful functor, then any morphism $f$ such that $Ff$ is injective (respectively surjective) then $f$ is a monomorphism (respectively epismorphism). 
+  		\item
+  		In the categories of sets or $R$-modules, $f$ is a monomorphism (epimorphism) iff $f$ is injective (surjective).
+  		\item
+  		In the category of Banach spaces and bounded linear maps, $f$ is a epimorphism iff its image is dense.
+  		\item
+  		The map from a domain to its field of quotients is an epimorphism in the category of rings.
+  	\end{itemize}
+  \end{rem*}
+  \begin{defi}[Canonical morphism]\lbl{def:canonicalMorphism}
+  	Let $\Aa\doublemorphism[F][\smash{G}] \Bb$ be functors. A \defemph{functor morphism} or \defemph{canonical morphism} from $F$ to $G$ is a collection of morphisms $\smash{F(A) \morphism[\phi_A]G(A)}$, for all $A\in \Ob \Aa$ such that the diagram
+  	\begin{diagram}
+  		\node (FA) at (0,1.5) {$F(A)$};
+  		\node (FB) at (0,0) {$F(B)$};
+  		\node (GA) at (2.5,1.5) {$G(A)$};
+  		\node (GB) at (2.5,0) {$G(B)$};
+  		\scriptsize
+  		\draw[->] (FA) -- (FB) node[pos=0.5, left] {$F(\alpha)$};
+  		\draw[->] (FA) -- (GA) node[pos=0.5, above] {$\phi_A$};
+  		\draw[->] (GA) -- (GB) node[pos=0.5, right] {$G(\alpha)$};
+  		\draw[->] (FB) -- (GB) node[pos=0.5, above] {$\phi_B$};
+  	\end{diagram}
+  	commutes for arbitrary morphisms $A\morphism[\alpha] \Bb$ in $\Aa$. The functors $\Aa\morphism[F]\Bb$ as objects with canonical morphisms as morphisms thus form a category, the \emph{functor category} $\Funct(\Aa,\Bb)$. Also cf. \cite[page~26]{alg1}.
+  \end{defi}
+  \begin{defi}[Adjoint functors]\lbl{def:adjointFunctors}
+  	Let $\Aa$ and $\Bb$ be categories. An \defemph{adjoint pair of functors} 
+  	\begin{align*}
+  	\Aa\doublelrmorphism[L][R]\Bb
+  	\end{align*}
+  	is a pair of functors of the specified type together with an isomorphism 
+  	\begin{align*}
+  	\Hom_\Bb(LX, Y) \isomorphism \Hom_\Aa(X, RY)
+  	\end{align*}
+  	which in functorial in $X$ and $Y$. We may say that $L$ is left-adjoined to $R$ and that  $R$ is right adjoined to $L$. By Yoneda-style arguments, $RY$ is uniquely determined (up to unique morphism) by $L$ (and $Y$) if it exists, and $LX$ is uniquely determined by $R$ (and $X$) if it exists.
+  \end{defi}
+  \begin{defi}\lbl{def:contravariantFunctor}
+  	\begin{alphanumerate}
+  		\item If $\Aa$ is a category, its \defemph{opposite} or \defemph{dual category} $\Aa^\op$ is defined by  $\Ob(\Aa^\op) = \Ob(\Aa)$ and $\Hom_{\Aa^\op}(X,Y) = \Hom_\Aa(Y,X)$.
+  		\item A \defemph{contravariant functor} $\Aa\morphism[F]\Bb$ is a functor $\Aa^\op\morphism \Bb$. In other words, it consists of maps $\Ob(\Aa)\morphism[F]\Ob(\Bb)$ and $\Hom_\Aa(X,Y) \morphism[F] \Hom_\Bb(FY, FX)$ such that $F(\id_X) = \id_{F(X)}$ and $F(\beta\alpha)  = F(\alpha)F(\beta)$ where $X\morphism[\alpha]Y\morphism[\beta] Z$ are composable morphisms in $\Aa$.
+  	\end{alphanumerate}
+  \end{defi}
+  \begin{rem*}
+  	\begin{itemize}
+  		\item 
+  		Equivalently, a contravariant functor $\Aa\morphism \Bb$ is a covariant functor $\Aa\morphism \Bb^\op$.
+  		\item
+  		The map $V\morphism V^\ast$ (to the dual vector space) on the category of vector spaces over some fixed field $k$ is an example.
+  	\end{itemize}
+  \end{rem*}
+  \begin{lem}[Yoneda lemma for covariant functors]\lbl{lem:yoneda}
+  	For any $M\in\Ob \Aa$, the map $\Cov_M(X) = \Hom_\Aa(M,X)$ defines a covariant functor $\Cov_M=\Hom_\Aa(M,-)\colon \Aa\morphism \cat{Set}$ and 
+  	\begin{align*}
+  	\Hom_\Aa(M,N) \morphism[\Yy] \Hom_{\Funct(\Aa,\cat{Set})} (\Cov_N, \Cov_M),
+  	\end{align*}
+  	is bijective. The image $\Yy(M\morphism[\mu]N)$ of $\mu\in\Hom_\Aa(M,N)$ under the Yoneda map $\Yy$ maps $N\morphism[\xi]X$ to $M\morphism[\mu]N\morphism[\xi]X$.
+  \end{lem}
+  \begin{lem}[Yoneda lemma, contravariant case] \lbl{lem:contraYoneda}
+  	For any $M\in\Ob \Aa$, $\Con_M(X) = \Hom_\Aa(X,M)$ defines a contravariant functor $\Con_M=\Hom_\Aa(-,M)\colon \Aa\morphism \cat{Set}$ and 
+  	\begin{align*}
+  	\Hom_\Aa(M,N) \morphism[\Yy] \Hom_{\Funct(\Aa^\op,\cat{Set})}(\Con_M,\Con_N)
+  	\end{align*}
+  	is bijective. The image $\Yy(M\morphism[\mu]N)$ of $\mu\in\Hom_\Aa(M,N)$ under the Yoneda map $\Yy$ maps $X\morphism[\xi]M\in\Con_M(X)$ to $X\morphism[\xi]M\morphism[\mu]N\in\Con_N(X)$.
+  \end{lem}
+  \begin{defi}
+  	\begin{alphanumerate}
+  		\item We say that a functor $\Aa\morphism[F] \cat{Set}$ is \defemph{representable} if there is a functor-isomorphism $F\simeq \Cov_M$, i.e. $F(X) \simeq \Hom_\Aa(M,X)$ for all $X\in\Ob\Aa$. In this case, we say that $M$ \emph{represents} $F$. The Yoneda-Lemma shows that $M$ is unique up to unique isomorphism.
+  		\item We say that a contravariant functor $\Aa\morphism[F]\cat{Set}$ is \defemph{representable} iff $F\simeq \Con_M$ for some $M\in\Ob\Aa$ in which case we say that $M$ \emph{represents} $F$.
+  	\end{alphanumerate}
+  \end{defi}
+  \begin{rem*}
+  	\begin{alphanumerate}
+  		\item  For instance, $LX$ exists in Definition~\reff{def:adjointFunctors} iff the covariant functor 
+  		\begin{align*}
+  		\Hom_\Aa(X,R(-))\colon\Bb&\morphism\cat{Set}\\
+  		Y &\longmapsto \Hom_\Aa(X, RY)
+  		\end{align*}
+  		is representable.
+  		\item
+  		In the above Definition~\reff{def:adjointFunctors}, $RY$ exists iff 
+  		\begin{align*}
+  		\Hom_\Bb(L(-), Y)\colon\Aa^\op&\morphism\cat{Set}\\
+  		X&\longmapsto \Hom_\Bb(LX,Y)
+  		\end{align*}
+  		is representable.
+  		\item 
+  		Many important constructions in algebraic topology (classifying spaces) and algebraic geometry (Moduli space, Picard/Hilbert schemes) amount to representing certain functors.
+  	\end{alphanumerate}
+  \end{rem*}
+  \begin{lem}[Yoneda Lemma, $3\ordinalrd$ try or something]\lbl{lem:functorYoneda}
+  	Let $\Hom_{\Funct(\Aa,\Bb)}(F,G)$ denote the ``class'' of functor-morphisms between covariant functors $\Aa\doublemorphism[F][G] \Bb$.
+  	\begin{alphanumerate}
+  		\item The Yoneda map
+  		\begin{align*}
+  		\Yy\colon\Hom_{\Funct(\Aa,\cat{Set})}(\Cov_M, F) &\longto F(M)\\
+  		\alpha &\longmapsto \alpha_M(\id_M)\\
+  		F(-)(\mu) = \alpha &\longmapsfrom \mu
+  		\end{align*}
+  		is bijective. Herein, $\alpha=F(-)(\mu)$ should be read as follows: A morphism ${(M\morphism[\xi]X)}\in \Cov_M(X)$ induces a morphism $F(M)\morphism[F(\xi)]F(X)$. Evaluating at $\mu\in F(M)$, we get an element $F(\xi)(\mu)\in F(X)$. Now, $\Cov_M\morphism[\alpha]F$ is given by 
+  		\begin{align*}
+  		\alpha_X\colon\Cov_M(X)&\morphism F(X)\\
+  		\xi&\longmapsto F(\xi)(\mu)\;.
+  		\end{align*}
+  		\item The Yoneda map
+  		\begin{align*}
+  		\Yy\colon\Hom_{\Funct(\Aa^\op,\cat{Set})}(\Con_M, F) &\longto F(M)\\
+  		\alpha &\longmapsto \alpha_M(\id_M)\\
+  		F(-)(\mu) = \alpha &\longmapsfrom \mu
+  		\end{align*}
+  		is bijective. Herein, $\alpha=F(-)(\mu)$ should be read as follows: A morphism ${(X\morphism[\xi]M)}\in \Con_M(X)$ induces a morphism $F(M)\morphism[F(\xi)]F(X)$ (remember that this time $F$ is contravariant). Evaluating at $\mu\in F(M)$, we get an element $F(\xi)(\mu)\in F(X)$. Now, $\Con_M\morphism[\alpha]F$ is given by 
+  		\begin{align*}
+  		\alpha_X\colon\Con_M(X)&\morphism F(X)\\
+  		\xi&\longmapsto F(\xi)(\mu)\;.
+  		\end{align*}
+  	\end{alphanumerate}
+  \end{lem}
+  \begin{proof}
+  	We prove only \itememph{a}, \itememph{b} being the dual assertion. The well-definedness of $\mapsto$ is obvious. For $\mapsfrom$ is is necessary to show that $\alpha$ is a natural transformation. For this, let $X\morphism[\nu] Y$ be a morphism in $\Aa$ and $\xi\in\Cov_M(X)$, we have to show that
+  	\begin{diagram}
+  		\node (CovMX) at (0,1.5) {$\Cov_M(X)$};
+  		\node (CovMY) at (0,0) {$\Cov_M(Y)$};
+  		\node (FX) at (2.5,1.5) {$F(X)$};
+  		\node (FY) at (2.5,0) {$F(Y)$};
+  		\scriptsize
+  		\draw[->] (CovMX) -- (CovMY) node[pos=0.5, left] {$\Cov_M(\nu)$};
+  		\draw[->] (CovMX) -- (FX) node[pos=0.5, above] {$\alpha_X$};
+  		\draw[->] (FX) -- (FY) node[pos=0.5, right] {$F(\nu)$};
+  		\draw[->] (CovMY) -- (FY) node[pos=0.5, above] {$\alpha_Y$};
+  	\end{diagram}
+  	commutes. Let $M\morphism[\xi]X$. As $F$ is a functor and $M\morphism[\xi]X\morphism[\nu]Y$, we have $F(\nu)F(\xi)=F(\nu\xi)$. Also, $\Cov_M(\nu)(\xi)=\nu\xi\in\Cov_M(Y)$. Hence,
+  	\begin{align*}
+  	F(\nu)\big(\alpha_X(\xi)\big)=F(\nu)F(\xi)(\mu)=F(\nu\xi)(\mu)=F\big(\Cov_M(\nu)(\xi)\big)(\mu)=\alpha_Y\big(\Cov_M(\nu)(\xi)\big)
+  	\end{align*}
+  	and that's exactly what we wanted to show.
+  	
+  	To show that the maps are inverse to each other first look at $\mu\in F(M)$ and its image $\alpha\in\Hom_{\Funct(\Aa,\cat{Set})}(\Cov_M, F)$. Then we have $\alpha_M(\id_M) = F(\id_M)(\mu) = \id_{F(M)}(\mu)=\mu$. Conversely, let $\beta\colon \Cov_M\morphism F$ be a natural transformation and $\mu = \beta_M(\id_M)$ and let $\alpha$ be defined by $\mu$ as above. Let $M\morphism[\xi]X$. As $\beta$ is a natural transformation, the diagram
+  	\begin{diagram}
+  		\node (CovMM) at (0,1.5) {$\Cov_M(M)$};
+  		\node (CovMX) at (0,0) {$\Cov_M(X)$};
+  		\node (FM) at (2.5,1.5) {$F(X)$};
+  		\node (FX) at (2.5,0) {$F(Y)$};
+  		\scriptsize
+  		\draw[->] (CovMM) -- (CovMX) node[pos=0.5, left] {$\Cov_M(\xi)$};
+  		\draw[->] (CovMM) -- (FM) node[pos=0.5, above] {$\beta_M$};
+  		\draw[->] (FM) -- (FX) node[pos=0.5, right] {$F(\xi)$};
+  		\draw[->] (CovMX) -- (FX) node[pos=0.5, above] {$\beta_X$};
+  	\end{diagram}
+  	commutes, i.e. $F(\xi)\beta_M=\beta_X\Cov_M(\xi)$. Hence,
+  	\begin{align*}
+  	\alpha_X(\xi) = F(\xi)(\mu) = F(\xi)\big(\beta_M(\id_M)\big) = \beta_X\big(\Cov_M(\xi)(\id_M)\big) = \beta_X(\xi)\;,
+  	\end{align*}
+  	and thus $\alpha = \beta$, as we wanted to show.
+  \end{proof}
+  Putting $F= \Cov_N$ respectively $F=\Con_N$ we obtain the above special cases.
   
   \section{Products and (co-)equalizers}
   Our goal is to formulate a notion of \emph{sheaf} that allows to define sheafs for arbitrary target categories. Recall that the sheaf axiom (\hyperref[sheafAxiom]{this one}) requires
@@ -1162,7 +1341,7 @@ A category is called \emph{small} if its class of objects is a set.
 	\end{align*}
 	such that \eqreff{eq:sheafAxiom} is the ``largest subobject on which $\alpha$ and $\beta$ coincide".
 	\begin{defi}[Equalizer]
-		Let $A\doublemorphism[\alpha][\beta]B$ be a pair of morphisms. An \defemph{equalizer} of this pair is an object $E\in\Ob(\Aa)$ together with a morphism $E\morphism[\epsilon]A$ such that $\alpha\epsilon=\beta\epsilon$ and such that the following universal property holds:
+		Let $A\doublemorphism[\alpha][\beta]B$ be a pair of morphisms. An \defemph{equalizer} of this pair is an object $E\in\Ob(\Aa)$ together with a morphism $E\morphism[\smash{\epsilon}]A$ such that $\alpha\epsilon=\beta\epsilon$ and such that the following universal property holds:
 		\begin{quote}
 			If $T\morphism[\tau]A$ is any morphism in $\Aa$ such that $\alpha\tau=\beta\tau$, then there's a unique $T\morphism[t]E$ such that the following diagram commutes.
 			\begin{diagram}
@@ -1179,7 +1358,7 @@ A category is called \emph{small} if its class of objects is a set.
 				\draw[->, bend right] (T) to node[pos=0.5, left] {$\tau$} (A);
 				\draw[->, bend left] (T) to (B);
 			\end{diagram}
-			In other words, $E$ is the \emph{limiting cone} over the diagram $A\doublemorphism[\alpha][\beta]B$.
+			In other words, $E$ is the \emph{limit} over the diagram $A\doublemorphism[\alpha][\beta]B$.
 		\end{quote}
 	\end{defi}
 	\begin{rem*}
@@ -1223,7 +1402,7 @@ A category is called \emph{small} if its class of objects is a set.
         	 	\draw[->, bend left] (Y) to node[pos=0.5, right] {$\tau$} (T);
         	 	\draw[->, bend right] (X) to (T);
         	 \end{diagram}
-        	 In yet another other words, $C$ is the \emph{colimiting co-cone} below the diagram $X\doublemorphism[a][b]Y$.
+        	 In yet another other words, $C$ is the \emph{colimit} below the diagram $X\doublemorphism[a][b]Y$.
         \end{quote}
 	\end{defi}
 	\begin{fact}\lbl{fact:coequalizerOfRings}
@@ -1237,172 +1416,31 @@ A category is called \emph{small} if its class of objects is a set.
         The second assertion is also easy: Denote the maximal ideals by $\mm_A$ and $\mm_B$, then $I$ is a proper ideal iff $\alpha(a)-\beta(a)\in\mm_B$ for all $a\in A$, i.e. if the induced morphisms $\KK(\mm_A)\doublemorphism[\alpha][\smash{\beta}]\KK(\mm_B)$ coincide. In this case, $B/I$ is local with maximal ideal $\mm_B/I$, and $\{0\}$ otherwise.
 	\end{proof}
 	
-	\section{Functors, functor morphisms, and the Yoneda lemma}
-	\begin{rem*}
-        \begin{itemize}
-          \item 
-            If $\Aa\morphism[F] \operatorname{Set}$ is a faithful functor, then any morphism $f$ such that $Ff$ is injective (respectively surjective) then $f$ is a monomorphism (respectively epismorphism). 
-          \item
-            In the categories of sets or $R$-modules, $f$ is a monomorphism (epimorphism) iff $f$ is injective (surjective).
-          \item
-            In the category of Banach spaces and bounded linear maps, $f$ is a epimorphism iff its image is dense.
-          \item
-            The map from a domain to its field of quotients is an epimorphism in the category of rings.
-        \end{itemize}
-	\end{rem*}
-	\begin{defi}[Canonical morphism]\lbl{def:canonicalMorphism}
-        Let $\Aa\doublemorphism[F][\smash{G}] \Bb$ be functors. A \defemph{functor morphism} or \defemph{canonical morphism} from $F$ to $G$ is a collection of morphisms $\smash{F(A) \morphism[\phi_A]G(A)}$, for all $A\in \Ob \Aa$ such that the diagram
-       \begin{diagram}
-	       	\node (FA) at (0,1.5) {$F(A)$};
-	       	\node (FB) at (0,0) {$F(B)$};
-	       	\node (GA) at (2.5,1.5) {$G(A)$};
-	       	\node (GB) at (2.5,0) {$G(B)$};
-	       	\scriptsize
-	       	\draw[->] (FA) -- (FB) node[pos=0.5, left] {$F(\alpha)$};
-	       	\draw[->] (FA) -- (GA) node[pos=0.5, above] {$\phi_A$};
-	       	\draw[->] (GA) -- (GB) node[pos=0.5, right] {$G(\alpha)$};
-	       	\draw[->] (FB) -- (GB) node[pos=0.5, above] {$\phi_B$};
-       \end{diagram}
-       commutes for arbitrary morphisms $A\morphism[\alpha] \Bb$ in $\Aa$. The functors $\Aa\morphism[F]\Bb$ as objects with canonical morphisms as morphisms thus form a category, the \emph{functor category} $\Funct(\Aa,\Bb)$. Also cf. \cite[page~26]{alg1}.
-    \end{defi}
-    \begin{defi}[Adjoint functors]\lbl{def:adjointFunctors}
-        Let $\Aa$ and $\Bb$ be categories. An \defemph{adjoint pair of functors} 
-        \begin{align*}
-        	\Aa\doublelrmorphism[L][R]\Bb
-        \end{align*}
-        is a pair of functors of the specified type together with an isomorphism 
-        \begin{align*}
-        	\Hom_\Bb(LX, Y) \isomorphism \Hom_\Aa(X, RY)
-        \end{align*}
-        which in functorial in $X$ and $Y$. We may say that $L$ is left-adjoined to $R$ and that  $R$ is right adjoined to $L$. By Yoneda-style arguments, $RY$ is uniquely determined (up to unique morphism) by $L$ (and $Y$) if it exists, and $LX$ is uniquely determined by $R$ (and $X$) if it exists.
-    \end{defi}
-    \begin{defi}\lbl{def:contravariantFunctor}
-    	\begin{alphanumerate}
-    		\item If $\Aa$ is a category, its \defemph{opposite} or \defemph{dual category} $\Aa^\op$ is defined by  $\Ob(\Aa^\op) = \Ob(\Aa)$ and $\Hom_{\Aa^\op}(X,Y) = \Hom_\Aa(Y,X)$.
-    		\item A \defemph{contravariant functor} $\Aa\morphism[F]\Bb$ is a functor $\Aa^\op\morphism \Bb$. In other words, it consists of maps $\Ob(\Aa)\morphism[F]\Ob(\Bb)$ and $\Hom_\Aa(X,Y) \morphism[F] \Hom_\Bb(FY, FX)$ such that $F(\id_X) = \id_{F(X)}$ and $F(\beta\alpha)  = F(\alpha)F(\beta)$ where $X\morphism[\alpha]Y\morphism[\beta] Z$ are composable morphisms in $\Aa$.
-    	\end{alphanumerate}
-    \end{defi}
-    \begin{rem*}
-    	\begin{itemize}
-    		\item 
-    		Equivalently, a contravariant functor $\Aa\morphism \Bb$ is a covariant functor $\Aa\morphism \Bb^\op$.
-    		\item
-    		The map $V\morphism V^\ast$ (to the dual vector space) on the category of vector spaces over some fixed field $k$ is an example.
-    	\end{itemize}
-    \end{rem*}
-	\begin{lem}[Yoneda lemma for covariant functors]\lbl{lem:yoneda}
-         For any $M\in\Ob \Aa$, the map $\Cov_M(X) = \Hom_\Aa(M,X)$ defines a covariant functor $\Cov_M=\Hom_\Aa(M,-)\colon \Aa\morphism \cat{Set}$ and 
-        \begin{align*}
-            \Hom_\Aa(M,N) \morphism[\Yy] \Hom_{\Funct(\Aa,\cat{Set})} (\Cov_N, \Cov_M),
-        \end{align*}
-        is bijective. The image $\Yy(M\morphism[\mu]N)$ of $\mu\in\Hom_\Aa(M,N)$ under the Yoneda map $\Yy$ maps $N\morphism[\xi]X$ to $M\morphism[\mu]N\morphism[\xi]X$.
-    \end{lem}
-    \begin{lem}[Yoneda lemma, contravariant case] \lbl{lem:contraYoneda}
-    	For any $M\in\Ob \Aa$, $\Con_M(X) = \Hom_\Aa(X,M)$ defines a contravariant functor $\Con_M=\Hom_\Aa(-,M)\colon \Aa\morphism \cat{Set}$ and 
-    	\begin{align*}
-    	\Hom_\Aa(M,N) \morphism[\Yy] \Hom_{\Funct(\Aa^\op,\cat{Set})}(\Con_M,\Con_N)
-    	\end{align*}
-    	is bijective. The image $\Yy(M\morphism[\mu]N)$ of $\mu\in\Hom_\Aa(M,N)$ under the Yoneda map $\Yy$ maps $X\morphism[\xi]M\in\Con_M(X)$ to $X\morphism[\xi]M\morphism[\mu]N\in\Con_N(X)$.
-    \end{lem}
-    \begin{defi}
-    	\begin{alphanumerate}
-    		\item We say that a functor $\Aa\morphism[F] \cat{Set}$ is \defemph{representable} if there is a functor-isomorphism $F\simeq \Cov_M$, i.e. $F(X) \simeq \Hom_\Aa(M,X)$ for all $X\in\Ob\Aa$. In this case, we say that $M$ \emph{represents} $F$. The Yoneda-Lemma shows that $M$ is unique up to unique isomorphism.
-    		\item We say that a contravariant functor $\Aa\morphism[F]\cat{Set}$ is \defemph{representable} iff $F\simeq \Con_M$ for some $M\in\Ob\Aa$ in which case we say that $M$ \emph{represents} $F$.
-    	\end{alphanumerate}
-    \end{defi}
-    \begin{rem*}
-    	\begin{alphanumerate}
-    		\item  For instance, $LX$ exists in Definition~\reff{def:adjointFunctors} iff the covariant functor 
-    		\begin{align*}
-    			\Hom_\Aa(X,R(-))\colon\Bb&\morphism\cat{Set}\\
-    			Y &\longmapsto \Hom_\Aa(X, RY)
-    		\end{align*}
-    		is representable.
-          \item
-             In the above Definition~\reff{def:adjointFunctors}, $RY$ exists iff 
-            \begin{align*}
-            	\Hom_\Bb(L(-), Y)\colon\Aa^\op&\morphism\cat{Set}\\
-            	X&\longmapsto \Hom_\Bb(LX,Y)
-            \end{align*}
-            is representable.
-          \item 
-            Many important constructions in algebraic topology (classifying spaces) and algebraic geometry (Moduli space, Picard/Hilbert schemes) amount to representing certain functors.
-        \end{alphanumerate}
-	\end{rem*}
-	\begin{lem}[Yoneda Lemma, $3\ordinalrd$ try or something]\lbl{lem:functorYoneda}
-        Let $\Hom_{\Funct(\Aa,\Bb)}(F,G)$ denote the ``class'' of functor-morphisms between covariant functors $\Aa\doublemorphism[F][G] \Bb$.
-        \begin{alphanumerate}
-          \item The Yoneda map
-            \begin{align*}
-                \Yy\colon\Hom_{\Funct(\Aa,\cat{Set})}(\Cov_M, F) &\longto F(M)\\
-                \alpha &\longmapsto \alpha_M(\id_M)\\
-                F(-)(\mu) = \alpha &\longmapsfrom \mu
-            \end{align*}
-            is bijective. Herein, $\alpha=F(-)(\mu)$ should be read as follows: A morphism ${(M\morphism[\xi]X)}\in \Cov_M(X)$ induces a morphism $F(M)\morphism[F(\xi)]F(X)$. Evaluating at $\mu\in F(M)$, we get an element $F(\xi)(\mu)\in F(X)$. Now, $\Cov_M\morphism[\alpha]F$ is given by 
-            \begin{align*}
-            	\alpha_X\colon\Cov_M(X)&\morphism F(X)\\
-            	\xi&\longmapsto F(\xi)(\mu)\;.
-            \end{align*}
-          \item The Yoneda map
-            \begin{align*}
-                \Yy\colon\Hom_{\Funct(\Aa^\op,\cat{Set})}(\Con_M, F) &\longto F(M)\\
-                \alpha &\longmapsto \alpha_M(\id_M)\\
-                F(-)(\mu) = \alpha &\longmapsfrom \mu
-            \end{align*}
-            is bijective. Herein, $\alpha=F(-)(\mu)$ should be read as follows: A morphism ${(X\morphism[\xi]M)}\in \Con_M(X)$ induces a morphism $F(M)\morphism[F(\xi)]F(X)$ (remember that this time $F$ is contravariant). Evaluating at $\mu\in F(M)$, we get an element $F(\xi)(\mu)\in F(X)$. Now, $\Con_M\morphism[\alpha]F$ is given by 
-            \begin{align*}
-            \alpha_X\colon\Con_M(X)&\morphism F(X)\\
-            \xi&\longmapsto F(\xi)(\mu)\;.
-            \end{align*}
-        \end{alphanumerate}
-	\end{lem}
-	\begin{proof}
-        We prove only \itememph{a}, \itememph{b} being the dual assertion. The well-definedness of $\mapsto$ is obvious. For $\mapsfrom$ is is necessary to show that $\alpha$ is a natural transformation. For this, let $X\morphism[\nu] Y$ be a morphism in $\Aa$ and $\xi\in\Cov_M(X)$, we have to show that
-         \begin{diagram}
-         	\node (CovMX) at (0,1.5) {$\Cov_M(X)$};
-         	\node (CovMY) at (0,0) {$\Cov_M(Y)$};
-         	\node (FX) at (2.5,1.5) {$F(X)$};
-         	\node (FY) at (2.5,0) {$F(Y)$};
-         	\scriptsize
-         	\draw[->] (CovMX) -- (CovMY) node[pos=0.5, left] {$\Cov_M(\nu)$};
-         	\draw[->] (CovMX) -- (FX) node[pos=0.5, above] {$\alpha_X$};
-         	\draw[->] (FX) -- (FY) node[pos=0.5, right] {$F(\nu)$};
-         	\draw[->] (CovMY) -- (FY) node[pos=0.5, above] {$\alpha_Y$};
-         \end{diagram}
-        commutes. Let $M\morphism[\xi]X$. As $F$ is a functor and $M\morphism[\xi]X\morphism[\nu]Y$, we have $F(\nu)F(\xi)=F(\nu\xi)$. Also, $\Cov_M(\nu)(\xi)=\nu\xi\in\Cov_M(Y)$. Hence,
-        \begin{align*}
-            F(\nu)\big(\alpha_X(\xi)\big)=F(\nu)F(\xi)(\mu)=F(\nu\xi)(\mu)=F\big(\Cov_M(\nu)(\xi)\big)(\mu)=\alpha_Y\big(\Cov_M(\nu)(\xi)\big)
-        \end{align*}
-        and that's exactly what we wanted to show.
-        
-        To show that the maps are inverse to each other first look at $\mu\in F(M)$ and its image $\alpha\in\Hom_{\Funct(\Aa,\cat{Set})}(\Cov_M, F)$. Then we have $\alpha_M(\id_M) = F(\id_M)(\mu) = \id_{F(M)}(\mu)=\mu$. Conversely, let $\beta\colon \Cov_M\morphism F$ be a natural transformation and $\mu = \beta_M(\id_M)$ and let $\alpha$ be defined by $\mu$ as above. Let $M\morphism[\xi]X$. As $\beta$ is a natural transformation, the diagram
-        \begin{diagram}
-        	\node (CovMM) at (0,1.5) {$\Cov_M(M)$};
-        	\node (CovMX) at (0,0) {$\Cov_M(X)$};
-        	\node (FM) at (2.5,1.5) {$F(X)$};
-        	\node (FX) at (2.5,0) {$F(Y)$};
-        	\scriptsize
-        	\draw[->] (CovMM) -- (CovMX) node[pos=0.5, left] {$\Cov_M(\xi)$};
-        	\draw[->] (CovMM) -- (FM) node[pos=0.5, above] {$\beta_M$};
-        	\draw[->] (FM) -- (FX) node[pos=0.5, right] {$F(\xi)$};
-        	\draw[->] (CovMX) -- (FX) node[pos=0.5, above] {$\beta_X$};
-        \end{diagram}
-        commutes, i.e. $F(\xi)\beta_M=\beta_X\Cov_M(\xi)$. Hence,
-        \begin{align*}
-            \alpha_X(\xi) = F(\xi)(\mu) = F(\xi)\big(\beta_M(\id_M)\big) = \beta_X\big(\Cov_M(\xi)(\id_M)\big) = \beta_X(\xi)\;,
-        \end{align*}
-        and thus $\alpha = \beta$, as we wanted to show.
-	\end{proof}
-	Putting $F= \Cov_N$ respectively $F=\Con_N$ we obtain the above special cases.
 
 \section{Fibre products}
 
 \begin{defi}[Fibre product]\lbl{def:fibreProduct}
-    Let $X\morphism[\xi] S\lmorphism[\upsilon] Y$ be morphisms in $\Aa$. A \defemph{fibre product} of $X$ with $Y$ over $S$ is an object $P$ with morphisms $X\lmorphism[p] P \morphism[q] Y$ satisfying $\xi p = \upsilon q$ and enjoying the universal property for such diagrams 
-    
-    DIAGRAM
-    
-    If this diagram satisfies $\xi\tau_X = \upsilon \tau_Y$ then there exists a unique morphism $T\morphism[t] P$ in $\Aa$ such that $\tau_X = pt$ and $\tau_Y = qt$. Often we will write $P = X\times_S Y$. By the typical Yoneda-style argument the fibre product is unique up to unique isomorphism.
+    Given morphisms $X\morphism[\xi] S\lmorphism[\upsilon] Y$ in some category $\Aa$, a \defemph{fibre product} of $X$ with $Y$ over $S$ is an object $P\in\Ob(\Aa)$ with morphisms $X\lmorphism[p] P \morphism[q] Y$ satisfying $\xi p = \upsilon q$ and enjoying the following universal property:
+    \begin{quote}
+    	Whenever $T\in\Ob(\Aa)$ comes with morphisms $X\lmorphism[\tau_X]T\morphism[\tau_Y]Y$ such that $\xi\tau_X=\upsilon\tau_Y$, then there is a unique morphism $T\morphism[t]P$ such that the below diagram commutes.
+    	\begin{diagram}
+    		\node (P) at (0,1.5) {$P$};
+    		\node (X) at (0,0) {$X$};
+    		\node (Y) at (2,1.5) {$Y$};
+    		\node (S) at (2,0) {$S$};
+    		\node (T) at (-1.25, 2.75) {$T$};
+    		\scriptsize
+    		\draw[->] (P) -- (X) node[pos=0.5, left] {$p$};
+    		\draw[->] (P) -- (Y) node[pos=0.5, above] {$q$};
+    		\draw[->] (X) -- (S) node[pos=0.5, above] {$\xi$};
+    		\draw[->] (Y) -- (S) node[pos=0.5, right] {$\upsilon$};
+    		\draw[->, bend right] (T) to node[pos=0.5, below left] {$\tau_X$} (X); 
+    		\draw[->, bend left] (T) to node[pos=0.5, above right] {$\tau_Y$} (Y); 
+    		\draw[->, dashed] (T) -- (P) node[pos=0.5, above right] {$\exists!\ t$};
+    	\end{diagram}
+    	That is, in terms of limits, $P$ is the \emph{limit} over the diagram $X\morphism[\xi]S\lmorphism[\upsilon]Y$.
+    \end{quote}
+    Often we will write $P = X\times_S Y$. By the typical Yoneda-style argument the fibre product is unique up to unique isomorphism.
 \end{defi}
 \begin{rem*}
     \begin{alphanumerate}
@@ -1416,10 +1454,10 @@ A category is called \emph{small} if its class of objects is a set.
       \item 
         If $S$ is arbitrary and $X\lmorphism[\pi_X] X\times Y \morphism[\pi_Y] Y$ is a product of $X$ and $Y$ in $\Aa$ then 
         \begin{align*}
-            \Eq\left(X\times Y \doublemorphism[\xi\pi_X][\upsilon \pi_Y] S\right) \simeq X\times_S Y.
+            \Eq\Big(X\times Y \doublemorphism[\xi\pi_X][\upsilon \pi_Y] S\Big) \simeq X\times_S Y.
         \end{align*}
       \item 
-        Let the \emph{comma category} $\Aa\morphism S$ (or $\Aa/S$) the category whose objects are the pairs $(X,\xi)$ where $X$ is an object and $X\morphism[\xi] S$ is a morphism in $\Aa$, and where a morphism $(X,\xi) \morphism (Y,\upsilon)$ is a morphism $X\morphism[f]$ in $\Aa$ such that we have $\upsilon f= \xi$ i.e. 
+        Let the \emph{comma category} $\Aa\morphism S$ (or $\Aa/S$) be the category whose objects are pairs $(X,\xi)$ with $X\in\Ob(\Aa)$ an object and $X\morphism[\xi] S$ a morphism in $\Aa$, and where a morphism $(X,\xi) \morphism[f] (Y,\upsilon)$ is a morphism $X\morphism[f]Y$ in $\Aa$ such that we have $\upsilon f= \xi$, i.e. 
     
         \begin{diagram}
             	\node (x) at (0,1.25) {$X$};
@@ -1435,91 +1473,95 @@ A category is called \emph{small} if its class of objects is a set.
       \item 
         Fibre products with any (possibly cardinal) number of factors can be defined in the same way or as products in $A\morphism S$.
       \item 
-        The smallest square in the diagram above defining the fibre product is called \emph{cartesian} if $P$ is a fibre product. If is also often useful to think of $p$ as morphism such that the fibre $p^{-1}(x)$ is isomorphic to $\upsilon^{-1}(\xi(x))$. Then one prefers a terminology
-        
+        The smallest square in the diagram above illustrating the universal property of fibre products is called \emph{cartesian} if $P$ is a fibre product. If is also often useful to think of $p$ as morphism such that the \emph{fibre} $p^{-1}(x)$ is isomorphic to $\upsilon^{-1}(\xi(x))$. Then one prefers a terminology
         \begin{diagram}
     	\node (a) at (0,1.5) {$P$};
-    	\node (c) at (0,0) {$Y$};
-    	\node (b) at (2.5,1.5) {$X$};
-    	\node (d) at (2.5,0) {$S$};
+    	\node (c) at (0,0) {$X$};
+    	\node (b) at (2,1.5) {$Y$};
+    	\node (d) at (2,0) {$S$};
     	\scriptsize
-    	\draw[->] (a) -- (b) node[pos=0.5, above] {$\upsilon'$};
-    	\draw[->] (a) -- (c) node[pos=0.5, left] {$\xi'$};
-    	\draw[->] (c) -- (d) node[pos=0.5, above] {$\upsilon$};
-    	\draw[->] (b) -- (d) node[pos=0.5, right] {$\xi$};
-    \end{diagram}
-        
-        and calls $\upsilon'$ a \emph{base change} of $\upsilon$ with respect to $\xi$ and $\xi'$ a base change of $\xi$ with respect to $\upsilon$.
+    	\draw[->] (a) -- (b) node[pos=0.5, above] {$\xi'$};
+    	\draw[->] (a) -- (c) node[pos=0.5, left] {$\upsilon'$};
+    	\draw[->] (c) -- (d) node[pos=0.5, above] {$\xi$};
+    	\draw[->] (b) -- (d) node[pos=0.5, right] {$\upsilon$};
+    \end{diagram}        
+        and calls $\upsilon'$ a \emph{base change} of $\upsilon$ with respect to $\xi$ and likewise $\xi'$ a base change of $\xi$ with respect to $\upsilon$.
       \item 
         In a number of easy cases (sets, (abelian) groups, (commutative) rings, topological spaces) fibre products may be constructed as 
         \begin{align*}
             X\times_S Y = \left\{(x,y)\in X\times Y\st  \xi(x) = \upsilon(y)\right\},
         \end{align*}
-        equipped with $(x,y)\circ(\snake x, \snake y) = (x\circ \snake x, y\circ\snake y)$ and (possibly) the induced topology from $X\times Y$.
+        equipped with component-wise operations $(x,y)\circ(\snake x, \snake y) = (x\circ \snake x, y\circ\snake y)$ and (possibly) the induced topology from $X\times Y$.
     \end{alphanumerate}
 \end{rem*}
 \begin{defi}[Cofibre product] \lbl{def:cofibreProduct}
-    A \defemph{dual fibre product} or \defemph{cofibre product} is a commutative diagram 
+    A \defemph{dual fibre product} or \defemph{cofibre product} or also \defemph{push-out} of morphisms $X\lmorphism B\morphism Y$ in some category $\Aa$ is a commutative diagram 
     \begin{diagram}
     	\node (a) at (0,1.5) {$B$};
-    	\node (c) at (0,0) {$Y$};
-    	\node (b) at (2.5,1.5) {$X$};
-    	\node (d) at (2.5,0) {$P$};
+    	\node (c) at (0,0) {$X$};
+    	\node (b) at (2,1.5) {$Y$};
+    	\node (d) at (2,0) {$P$};
     	\scriptsize
     	\draw[->] (a) -- (b) node[pos=0.5, above] {};
     	\draw[->] (a) -- (c) node[pos=0.5, left] {};
-    	\draw[->] (c) -- (d) node[pos=0.5, above] {$k$};
-    	\draw[->] (b) -- (d) node[pos=0.5, right] {$j$};
+    	\draw[->] (c) -- (d) node[pos=0.5, above] {$j$};
+    	\draw[->] (b) -- (d) node[pos=0.5, right] {$k$};
     \end{diagram}
-    such that for any diagram 
-    \begin{diagram}
-    	\node (a) at (0,1.5) {$B$};
-    	\node (c) at (0,0) {$Y$};
-    	\node (b) at (2.5,1.5) {$X$};
-    	\node (d) at (2.5,0) {$T$};
-    	\scriptsize
-    	\draw[->] (a) -- (b) node[pos=0.5, above] {};
-    	\draw[->] (a) -- (c) node[pos=0.5, left] {};
-    	\draw[->] (c) -- (d) node[pos=0.5, above] {};
-    	\draw[->] (b) -- (d) node[pos=0.5, right] {};
-    \end{diagram}
-    there is a unique dotted arrow (a.k.a. a morphism) in  
-    
-    THIS HAPPY LITTLE DIAGRAM
-    
-    making that diagram commute.
+    enjoying the universal property for such diagrams, that is: 
+    \begin{quote}
+    	Whenever $T\in\Ob(\Aa)$ comes with morphisms $X\morphism T\lmorphism Y$ such that the left of the below diagrams commutes, there is a unique (dashed) morphism $P\morphism T$ in the right diagram making it commute.
+    	
+    	\begin{center}
+    		\begin{minipage}{0.4\textwidth}
+    			\centering		
+    			\begin{diagram}
+    				\node (B) at (0,1.5) {$B$};
+    				\node (X) at (0,0) {$X$};
+    				\node (Y) at (2,1.5) {$Y$};
+    				\node (T) at (3.25, -1.25) {$T$};
+    				\scriptsize
+    				\draw[->] (B) -- (X);
+    				\draw[->] (B) -- (Y);
+    				\draw[->, bend right] (X) to (T); 
+    				\draw[->, bend left] (Y) to (T); 
+    			\end{diagram}
+    		\end{minipage}
+    		\begin{minipage}{0.4\textwidth}
+    			\centering	
+    			\begin{diagram}
+    				\node (B) at (0,1.5) {$B$};
+    				\node (X) at (0,0) {$X$};
+    				\node (Y) at (2,1.5) {$Y$};
+    				\node (P) at (2,0) {$P$};
+    				\node (T) at (3.25, -1.25) {$T$};
+    				\scriptsize
+    				\draw[->] (B) -- (X);
+    				\draw[->] (B) -- (Y);
+    				\draw[->] (X) -- (P) node[pos=0.5, above] {$j$};
+    				\draw[->] (Y) -- (P) node[pos=0.5, right] {$k$};
+    				\draw[->, bend right] (X) to (T); 
+    				\draw[->, bend left] (Y) to (T); 
+    				\draw[->, dashed] (P) -- (T) node[pos=0.5, above right] {$\exists!$};
+    			\end{diagram}
+    		\end{minipage}
+    	\end{center}
+    	In colimited language, $P$ is the \emph{colimit} below the diagram $X\lmorphism B\morphism Y$.
+    \end{quote}
 \end{defi}
 \begin{example}
-    Let $R$ be a ring, $A$ and $B$ be $R$-algebras. Then the tensor product is an $R$-module $A\otimes_R B$ and a map 
-    \begin{align*}
-        A\times B &\morphism A\otimes_R B\\
-        (a,b) &\longmapsto a\otimes b
-    \end{align*}
-    such that the map
-    \begin{align*}
-        \Hom_R(A\otimes_R B, T) &\morphism \Bil_R(A,B; T)\\
-        \tau &\longmapsto ((a,b)\mapsto \tau(a\otimes b))
-    \end{align*}
-    must be bijective. Also 
-    \begin{align*}
-        \Hom_{\cat{Ab}} (A\otimes_R B, T)&\morphism \left\{ t\in \Bil_\IZ(A,B;T)\st (t(ra,b) = t(a,rb))\right\}\\
-        \tau &\longmapsto (t\colon (a,b)\mapsto \tau(a\otimes b))
-    \end{align*}
-    is bijective. 
-    
-    Then $A\otimes_R B$ has a unique ring structure such that $(a\otimes b)\cdot(\alpha\otimes \beta) = (a\cdot \alpha)\otimes(b \cdot \beta)$. Then $A\morphism A\otimes_R \lmorphism B$ sending $a$ to $a\otimes 1$ and $b$ to $1\otimes b$ are ring morphisms such that
+    Let $R$ be a ring, $A$ and $B$ be $R$-algebras. Then their tensor product $A\otimes_R B$ over $R$ has a unique ring structure such that $(a\otimes b)\cdot(\alpha\otimes \beta) = (a\cdot \alpha)\otimes(b \cdot \beta)$. Then $A\morphism A\otimes_R \lmorphism B$ sending $a\in A$ to $a\otimes 1$ and $b\in B$ to $1\otimes b$ are ring morphisms such that
     \begin{diagram}
     	\node (a) at (0,1.5) {$R$};
-    	\node (c) at (0,0) {$B$};
-    	\node (b) at (2.5,1.5) {$A$};
+    	\node (c) at (0,0) {$A$};
+    	\node (b) at (2.5,1.5) {$B$};
     	\node (d) at (2.5,0) {$A\otimes_R B$};
     	\scriptsize
-    	\draw[->] (a) -- (b) node[pos=0.5, above] {};
-    	\draw[->] (a) -- (c) node[pos=0.5, left] {};
-    	\draw[->] (c) -- (d) node[pos=0.5, above] {};
-    	\draw[->] (b) -- (d) node[pos=0.5, right] {};
+    	\draw[->] (a) -- (b);
+    	\draw[->] (a) -- (c);
+    	\draw[->] (c) -- (d) node[pos=0.5, above] {$-\otimes 1$};
+    	\draw[->] (b) -- (d) node[pos=0.5, right] {$1\otimes-$};
     \end{diagram}
-    is \emph{cocartesian} in the category of rings.
+    is \emph{cocartesian} in the category of rings, i.e. a cofibre product of $A$ and $B$ over $R$.
 \end{example}
 
 
