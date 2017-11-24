@@ -708,9 +708,9 @@ of presheaves on $\Bb$.
 	\end{align*}
 	To prove $(\alpha)\rightarrow(\beta)$, let $x\in X$, $y=f(x)$, $\ell\in\mm_{Y,y}$. We need to show $f^*\ell\in\mm_{X,x}$. There are an open neighbourhood $U$ of $y$ and $\lambda\in \Oo_Y(U)$ such that $\ell$ is the image of $\lambda$ in $\Oo_{Y,y}$. Then $y\in V(\lambda)$, hence $x\in f^{-1}(V(\lambda)) = V(f^*\lambda)$. Thus $f^*\ell$ is in $\mm_{X,x}$ as it is the image of $f^*\lambda$ in $\Oo_{X,x}$.
 \end{proof}
-\begin{fact}\lbl{fact:localMorphisms}
+\begin{fact}
     \begin{alphanumerate}
-        \item 
+        \item \lbl{fact:localMorphisms}
             We have $f^{-1}(V(\lambda)) = V(f^*\lambda)$ when $f$ is a morphism of locally ringed spaces.
         \item 
             Let $f\colon X\morphism Y$ be a morphism in $\cat{LRS}$ (the category of locally ringed spaces), $x\in X$, $y=f(x)$. Since $f^*(\mm_{Y,y})\subseteq \mm_{X,x}$, we have a ring morphism of the residue fields 
@@ -1007,10 +1007,45 @@ of presheaves on $\Bb$.
 	\end{align*}
 	Since such a neighbourhood $W$ may be found for any $z\in\vartheta^{-1}U$, $\snake{\tau}^*\lambda$ desires the satisfied coherence condition.
 \end{proof}
+\begin{cor}
+    Let $X\doublemorphism[f][g] Y$ be a pair of morphisms in $\cat{LRS}$ and $K\morphism[\kappa] X$ be an equalizer of that pair:
+    \begin{alphanumerate}
+      \item 
+        $\kappa$ is a homeomorphism of $K$ onto a subset of $X$ which is equipped with the induced topology.
+      \item 
+        $\kappa^*\colon \Oo_{X,\kappa(k)} \morphism \Oo_{K,k}$ is surjective for all $k\in K$.
+      \item 
+        If $U\subseteq X$ is open, then $\kappa^{-1} (U) \morphism[\kappa|_U] U$ is an equalizer of $U \doublemorphism[f|_U][g|_U] Y$.
+    \end{alphanumerate}
+\end{cor}
+\begin{rem*}
+    If $Y\morphism[j] Z$ is a monomorphism, then the equalizers of $jf$ with $jg$ and of $f$ with $g$ are canonically isomorphic. This holds in any category as the equalizer represents
+    \begin{align*}
+        \left\{\tau \in \Hom(T,X) \st  f\tau =  g\tau \right\} = \left\{\tau \in \Hom(T,X) \st jf\tau = jg\tau\right\}.
+    \end{align*}
+\end{rem*}
+The fibre product of locally ringed spaces $X$ and $Y$ over $S$ is given by
+\begin{align*}
+    X\times_S Y = \left\{(x,y,\pp)\st x\in X, y\in Y, s\coloneqq \xi(x) \upsilon(y), \pp\in \Spec\left(\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y}\right), \alpha^{-1}(\pp) = \mm_{X,x}, \beta^{-1}(\pp) = \mm_{Y,y}\right\}
+\end{align*}
+where $\alpha(\lambda) =\lambda \otimes 1$ and $\beta(\theta) = 1\otimes \theta$. 
+
+We obtain a topology base $\Omega(U,V,W,\lambda)$ where $U\subseteq X$, $V\subseteq Y$, $W\subseteq S$ such that $\xi(U) \cup \upsilon(V)\subseteq W$ and $\lambda \Oo_X(U)\otimes_{\Oo_S(W)} \Oo_Y(V)$. Its elements are triples $(x,y,\pp)$ such that $x\in U$, $y\in V$ such that $\pp$ contains the image of $\lambda$ under $\Oo_X(U) \otimes_{\Oo_S(W)} \Oo_Y(V) \morphism \Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y}$.
+
+The structure sheaf is given by $\Oo_{F,[(x,y,\pp)]} = (\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y})_\pp$. We can show the coherence condition locally, the family must come from a $\lambda$ as above.
+
+
+
+
+
+
+
+
+
+
     
     
-    
-    
+     
     
     
     
@@ -1359,6 +1394,136 @@ A category is called \emph{small} if its class of objects is a set.
         and thus $\alpha = \beta$, as we wanted to show.
 	\end{proof}
 	Putting $F= \Cov_N$ respectively $F=\Con_N$ we obtain the above special cases.
+
+\section{Fibre products}
+
+\begin{defi}[Fibre product]\lbl{def:fibreProduct}
+    Let $X\morphism[\xi] S\lmorphism[\upsilon] Y$ be morphisms in $\Aa$. A \defemph{fibre product} of $X$ with $Y$ over $S$ is an object $P$ with morphisms $X\lmorphism[p] P \morphism[q] Y$ satisfying $\xi p = \upsilon q$ and enjoying the universal property for such diagrams 
+    
+    DIAGRAM
+    
+    If this diagram satisfies $\xi\tau_X = \upsilon \tau_Y$ then there exists a unique morphism $T\morphism[t] P$ in $\Aa$ such that $\tau_X = pt$ and $\tau_Y = qt$. Often we will write $P = X\times_S Y$. By the typical Yoneda-style argument the fibre product is unique up to unique isomorphism.
+\end{defi}
+\begin{rem*}
+    \begin{alphanumerate}
+      \item 
+        In other words, $P$ must represent the functor 
+        \begin{align}\lbl{eq:fibreProductAsFunctor}
+            T \longmapsto \left\{(\tau_X,\tau_Y) \in \Hom_\Aa(T,X) \times \Hom_\Aa(T,Y)\st \xi\tau_X = \upsilon \tau_Y\right\}
+        \end{align}
+      \item 
+        If $S=F$ is a final object, then the equality $\xi \tau_X = \upsilon \tau_Y $ is automatic and we obtain $X\times_F Y = X\times Y$.
+      \item 
+        If $S$ is arbitrary and $X\lmorphism[\pi_X] X\times Y \morphism[\pi_Y] Y$ is a product of $X$ and $Y$ in $\Aa$ then 
+        \begin{align*}
+            \Eq\left(X\times Y \doublemorphism[\xi\pi_X][\upsilon \pi_Y] S\right) \simeq X\times_S Y.
+        \end{align*}
+      \item 
+        Let the \emph{comma category} $\Aa\morphism S$ (or $\Aa/S$) the category whose objects are the pairs $(X,\xi)$ where $X$ is an object and $X\morphism[\xi] S$ is a morphism in $\Aa$, and where a morphism $(X,\xi) \morphism (Y,\upsilon)$ is a morphism $X\morphism[f]$ in $\Aa$ such that we have $\upsilon f= \xi$ i.e. 
+    
+        \begin{diagram}
+            	\node (x) at (0,1.25) {$X$};
+            	\node (s) at (1.25,0) {$S$};
+            	\node (y) at (2.5,1.25) {$Y$};
+            	\scriptsize
+            	\draw[->] (x) -- (s) node[pos=0.5,below left] {$\xi$};
+            	\draw[->] (x) -- (y) node[pos=0.5,above] {$f$};
+            	\draw[->] (y) -- (s) node[pos=0.5,below right] {$\upsilon$};
+            \end{diagram}
+        
+        commutes. Then $X\times_S Y$ is the product of $(X,\xi)$ and $(Y,\upsilon)$ in $\Aa\morphism S$.
+      \item 
+        Fibre products with any (possibly cardinal) number of factors can be defined in the same way or as products in $A\morphism S$.
+      \item 
+        The smallest square in the diagram above defining the fibre product is called \emph{cartesian} if $P$ is a fibre product. If is also often useful to think of $p$ as morphism such that the fibre $p^{-1}(x)$ is isomorphic to $\upsilon^{-1}(\xi(x))$. Then one prefers a terminology
+        
+        \begin{diagram}
+    	\node (a) at (0,1.5) {$P$};
+    	\node (c) at (0,0) {$Y$};
+    	\node (b) at (2.5,1.5) {$X$};
+    	\node (d) at (2.5,0) {$S$};
+    	\scriptsize
+    	\draw[->] (a) -- (b) node[pos=0.5, above] {$\upsilon'$};
+    	\draw[->] (a) -- (c) node[pos=0.5, left] {$\xi'$};
+    	\draw[->] (c) -- (d) node[pos=0.5, above] {$\upsilon$};
+    	\draw[->] (b) -- (d) node[pos=0.5, right] {$\xi$};
+    \end{diagram}
+        
+        and calls $\upsilon'$ a \emph{base change} of $\upsilon$ with respect to $\xi$ and $\xi'$ a base change of $\xi$ with respect to $\upsilon$.
+      \item 
+        In a number of easy cases (sets, (abelian) groups, (commutative) rings, topological spaces) fibre products may be constructed as 
+        \begin{align*}
+            X\times_S Y = \left\{(x,y)\in X\times Y\st  \xi(x) = \upsilon(y)\right\},
+        \end{align*}
+        equipped with $(x,y)\circ(\snake x, \snake y) = (x\circ \snake x, y\circ\snake y)$ and (possibly) the induced topology from $X\times Y$.
+    \end{alphanumerate}
+\end{rem*}
+\begin{defi}[Cofibre product] \lbl{def:cofibreProduct}
+    A \defemph{dual fibre product} or \defemph{cofibre product} is a commutative diagram 
+    \begin{diagram}
+    	\node (a) at (0,1.5) {$B$};
+    	\node (c) at (0,0) {$Y$};
+    	\node (b) at (2.5,1.5) {$X$};
+    	\node (d) at (2.5,0) {$P$};
+    	\scriptsize
+    	\draw[->] (a) -- (b) node[pos=0.5, above] {};
+    	\draw[->] (a) -- (c) node[pos=0.5, left] {};
+    	\draw[->] (c) -- (d) node[pos=0.5, above] {$k$};
+    	\draw[->] (b) -- (d) node[pos=0.5, right] {$j$};
+    \end{diagram}
+    such that for any diagram 
+    \begin{diagram}
+    	\node (a) at (0,1.5) {$B$};
+    	\node (c) at (0,0) {$Y$};
+    	\node (b) at (2.5,1.5) {$X$};
+    	\node (d) at (2.5,0) {$T$};
+    	\scriptsize
+    	\draw[->] (a) -- (b) node[pos=0.5, above] {};
+    	\draw[->] (a) -- (c) node[pos=0.5, left] {};
+    	\draw[->] (c) -- (d) node[pos=0.5, above] {};
+    	\draw[->] (b) -- (d) node[pos=0.5, right] {};
+    \end{diagram}
+    there is a unique dotted arrow (a.k.a. a morphism) in  
+    
+    THIS HAPPY LITTLE DIAGRAM
+    
+    making that diagram commute.
+\end{defi}
+\begin{example}
+    Let $R$ be a ring, $A$ and $B$ be $R$-algebras. Then the tensor product is an $R$-module $A\otimes_R B$ and a map 
+    \begin{align*}
+        A\times B &\morphism A\otimes_R B\\
+        (a,b) &\longmapsto a\otimes b
+    \end{align*}
+    such that the map
+    \begin{align*}
+        \Hom_R(A\otimes_R B, T) &\morphism \Bil_R(A,B; T)\\
+        \tau &\longmapsto ((a,b)\mapsto \tau(a\otimes b))
+    \end{align*}
+    must be bijective. Also 
+    \begin{align*}
+        \Hom_{\cat{Ab}} (A\otimes_R B, T)&\morphism \left\{ t\in \Bil_\IZ(A,B;T)\st (t(ra,b) = t(a,rb))\right\}\\
+        \tau &\longmapsto (t\colon (a,b)\mapsto \tau(a\otimes b))
+    \end{align*}
+    is bijective. 
+    
+    Then $A\otimes_R B$ has a unique ring structure such that $(a\otimes b)\cdot(\alpha\otimes \beta) = (a\cdot \alpha)\otimes(b \cdot \beta)$. Then $A\morphism A\otimes_R \lmorphism B$ sending $a$ to $a\otimes 1$ and $b$ to $1\otimes b$ are ring morphisms such that
+    \begin{diagram}
+    	\node (a) at (0,1.5) {$R$};
+    	\node (c) at (0,0) {$B$};
+    	\node (b) at (2.5,1.5) {$A$};
+    	\node (d) at (2.5,0) {$A\otimes_R B$};
+    	\scriptsize
+    	\draw[->] (a) -- (b) node[pos=0.5, above] {};
+    	\draw[->] (a) -- (c) node[pos=0.5, left] {};
+    	\draw[->] (c) -- (d) node[pos=0.5, above] {};
+    	\draw[->] (b) -- (d) node[pos=0.5, right] {};
+    \end{diagram}
+    is \emph{cocartesian} in the category of rings.
+\end{example}
+
+
+
 \printbibliography
 
 \end{document}          
