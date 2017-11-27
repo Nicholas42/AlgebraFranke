@@ -462,7 +462,8 @@ Applying Proposition~\reff{prop:NAK} to $M/N$, we obtain the following corollary
     
     Enough of that. From Proposition~\reff{prop:codimensionProduct} we get
     \begin{align*}
-    	\codim(Y\times Z,X\times X)&=\dim(X\times X)-\dim(Y\times Z)=(\dim (X)-\dim (Y))+(\dim (X)-\dim (Z))\\
+    	\codim(Y\times Z,X\times X)&=\dim(X\times X)-\dim(Y\times Z)\\
+    	&=(\dim (X)-\dim (Y))+(\dim (X)-\dim (Z))\\
     	&=\codim(Y,X)+\codim(Z,X)
     \end{align*}
     and hence, 
@@ -1029,7 +1030,7 @@ In many cases, the module of Kähler differentials can be calculated using $\Ome
     	\node (o3) at (6, 1.5) {$\Omega_{R/k}\otimes_Rk$};
     	\node (o4) at (8.25, 1.5) {$0$};    	
     	\node (u1) at (0, 0) {$I/(\mm_x I+I^2)$};
-    	\node (u2) at (3, 0) {$\vphantom{k^m}\scriptsize\hphantom{\nabla f(x)}$};    	
+    	\node (u2) at (3, 0) {$\vphantom{k^m}$\scriptsize$\hphantom{\nabla f(x)}$};    	
     	\node at (3, 0) {$k^m$};
     	\node (u3) at (6, 0) {$\Omega_{R/k}\otimes_Rk$};
     	\node (u4) at (8.25, 0) {$0$};
@@ -1063,8 +1064,96 @@ In many cases, the module of Kähler differentials can be calculated using $\Ome
     If $L/K$ is an extension of fields of characteristic 0 and $B\subseteq L$ a transcendence base then $\left\{ d_{L/K} b\st b\in B\right\}$ is a basis of the $L$-vector space $\Omega_{L/K}$ (and $b\in B$ uniquely determined by $d_{L/K} b$). In particular, the extension is algebraic if and only if $\Omega_{L/K}$ vanishes.
 \end{prop}
 \begin{rem*}
-    If $K = k$, $L = K(X)$ (the field of rational functions, where $X$ is an affine algebraic variety of dimension $n$ over $k$) this implies that $\Omega_{K(X)/k} \simeq \Omega_{\Oo(X)/k} \otimes_{\Oo(X)} K(X) $ (note that $\Omega$ commutes with localization) has dimension $\deg\tr(K(X)/k) = \dim (X)$. Hence $\Omega_{R/k}$ must be locally free of rank $\dim(X)$ if it is locally free at all.
+    If $K = k$, $L = K(X)$ (the field of rational functions, where $X$ is an affine algebraic variety of dimension $n$ over $k$) this implies that $\Omega_{K(X)/k} \simeq \Omega_{\Oo(X)/k} \otimes_{\Oo(X)} K(X) $ (note that $\Omega$ commutes with localization) has dimension $\deg\tr(K(X)/k) = \dim (X)$. Hence $\Omega_{\Oo(X)/k}$ must be locally free of rank $\dim(X)$ if it is locally free at all.
 \end{rem*}
+\begin{prop}
+    Let $L/K$ be a finitely generated field extension of char $p>0$. 
+    \begin{alphanumerate}
+      \item 
+        $\Omega_{L/K} =0$ iff $L/K$ is algebraic seperable.
+      \item 
+        If $K^p = K$ then $\dim_L\Omega_{L/K} = \deg\tr(L/K)$.
+    \end{alphanumerate}
+\end{prop}
+\begin{prop}
+    If $A$ is a finitely generated algebra over a perfect field $k$ and $\mm\in\mSpec A$ then the following conditions are equivalent:
+    \begin{alphanumerate}
+      \item 
+        $A_\mm$ is regular, i.e. $A$ is regular at $\mm$.
+      \item 
+        $\Omega_{A/k}$ locally free at $\mm$.
+      \item 
+        $\Omega_{A/k}$ is locally free of rank $\dim(A_\mm)$ at $\mm$.
+    \end{alphanumerate}
+\end{prop}
+
+
+
+
+\chapter{Projective spaces and graded rings}
+
+
+\section{The projective space of a vector space}
+
+\begin{defi}[Projective space]\lbl{def:projectiveSpace}
+    Let $V$ be a vector space over a field $k$, the \defemph{projective space} $\IP(V)$ is the set of one-dimensional subspaces of $V$. Let $\IP^n(k) \coloneqq \IP(k^{n+1})$. An alternative definition is $(V\setminus\{0\})/_\sim$ where $x\sim y$ iff $x=\lambda y$ for some $\lambda\in k^\times$. In particular
+    \begin{align*}
+        \IP^n(k) = \left\{[x_0,\ldots, x_n]\st x_i\in k, \text{ not all } x_i=0\right\}
+    \end{align*}
+    where $[x_0,\ldots, x_n] = [y_0,\ldots,y_n]$ iff there is $\lambda\in k^\times$ such that $x_i=\lambda y_i$ for $0\leq i\leq n$. The tuple $(x_0,\ldots, x_n)$ is called a \emph{tuple of homogenous coordinates} for $[x_0,\ldots,x_n]$. Let $V(X_i) = \left\{[x_0,\ldots, x_n]\st x_i=0 \right\}$, or more generally $V(\ell) = \left\{ x/_\sim \st x\in V\setminus\{0\}, \ell(x) = 0\right\}\subseteq \IP(V)$ for some linear function $\ell$ on $V$. We have $\IP^n(k) = \cup_{i=0}^n (\IP^n(k) \setminus V(X_i))$ and we have a bijection
+    \begin{align*}
+        V(X_i) &\isomorphism \IP^{n-1} (k)\\
+        [x_0,\ldots, x_{i-1},0,x_{i+1}, \ldots, x_n] &\longmapsto [x_0,\ldots, x_{i-1},x_{i+1}, \ldots, x_n]
+    \end{align*}
+    and 
+    \begin{align*}
+        \IP^n(k)\setminus V(X_0) &\isomorphism k^n = \IA^n(k)\\
+        [1,y_1,\ldots, y_n] &\longmapsfrom (y_1,\ldots, y_n)\\
+        [x_0,\ldots, x_n] &\longmapsto \left(\frac{x_1}{x_0}, \ldots, \frac{x_n}{x_0}\right).
+    \end{align*}
+    In this sense, one can view $\IP^n(k)$ as a compactification of $\IA^n$. 
+    
+    As a more geometric description of this construction one can look at it as follows: Let $H\subseteq V$ be a hyperplane, $\snake H\subseteq V$ be an affine subspace parallel to $H$ such that $0\in \snake H$. Then $\IP(H) \subseteq \IP(V)$ and $\IP(V)\setminus \IP(H) \to \snake H$, where we map a line $\ell$ to its intersection (a single point) with $\snake H$. This is a bijection (a central projection, the reason why it has been called \emph{projective space}).
+    
+    Elements of $\GL(V)$ operate onv $\IP(V)$, with $g\in \GL(V)$ sending $\ell\in \IP(V)$ to $g\ell = \left\{g(v)\st v\in \ell\right\}$. On homogenous coordinates the action is given by matrix multiplication (where we treat $(x_0,\ldots,x_n)$ as a column vector). 
+\end{defi}
+
+\begin{example}
+    Let $k=\IC$, $V$ a two-dimensional $k$-vector space, $L$ a one-dimensional subspace, $W\supseteq L$ a real subspace of real dimension 3, $S$ a sphere in $W$ containing $0$ and having $L$ as the tangent plane there. Then 
+    \begin{align*}
+        \IP(V) &\morphism S\\
+        \ell &\longmapsto \begin{cases} 0 &\text{if } \ell= L\\
+        \text{the non-zero element of }\ell\cap S &\text{otherwise}\end{cases}.
+    \end{align*}    
+    $S$ is the Riemann sphere of classical complex function theory.
+\end{example}
+
+
+\section{Graded rings and homogenous ideals}
+
+To have an unambiguous definition of the vanishing set in $\IP^n(k)$ of $P\in R=k[X_0,\ldots,X_n]$ (i.e. a definition of \emph{vanishing} which does not depend on the choice of homogenous coordinates) one has to restrict to the case where $P$ is homogenous of some degree $d\in\IN$. This leads to
+
+\begin{defi}[Graded ring]\lbl{def:gradedRing}
+    A $(\IN)$-\defemph{graded ring} is a ring $R$ with a decomposition $R = \oplus_{i=0}^\infty R_i$ of its additive group as a direct sum of subgroups $R_i$, such that $R_i\cdot R_j \subseteq R_{i+j}$. Every $r\in R$ thus has a unique decomposition $r=\sum_{i=0}^\infty r_i$ where $r_i\in R_i$ and only finitely many $r_i$ are non-zero.  The $r_i$ are called the \emph{homogenous components} of $r$. An element $r\in R$ is \emph{homogenous} of degree $n$ iff $r\in R_n$.
+\end{defi}
+\begin{example}
+    For $\alpha, \beta\in \IN^{n+1}$, let 
+    \begin{align*}
+        \alpha+\beta &= (\alpha_i+\beta_i)_{i=0}^n\\
+        \alpha! &= \prod_{i=0}^n \alpha_i!\\
+        |\alpha| &= \sum_{i=0}^n \alpha_i\\
+        x^\alpha &= \prod_{i=0}^n x_i^{\alpha_i}. 
+    \end{align*}
+    Let $R=k[X_0,\ldots, X_n]$, $R_k = \left\{\sum_{|\alpha| = k} p_\alpha X^\alpha\st p_\alpha \in k\right\}$. Then $R$ is a graded ring and the corresponding notion of \emph{homogenous element} (i.e. \emph{homogenous polynomial}) is the well-known one.
+\end{example}
+\begin{rem*}
+    Sometimes $\IZ$-graded rings are also considered. The definitions are unchanged unless indicated otherwise.
+\end{rem*}
+\begin{defi}[Homogenous ideals]\lbl{def:homogenousIdeal}
+    Let $R$ be a ($\IN$-, $\IZ$-) graded ring, $I\subseteq R$ and ideal. We say that $I$ is \defemph{homogenous} if for every $f\in I$ the homogenous components $f_i$ of $f$ all belong to $I$.
+\end{defi}
+
+
 
 
 
@@ -1390,7 +1479,7 @@ As the $a\otimes m$ generate $A\otimes M$ as an $R$-module this implies $A$-line
 
 It can be shown that
 \begin{align*}
-    (M\otimes_R A)\otimes_A(A\otimes_R N)&\isomorphism (M\otimes_R N) \otimes_R\\
+    (M\otimes_R A)\otimes_A(A\otimes_R N)&\isomorphism (M\otimes_R N) \otimes_R A\\
     (m\otimes a)\otimes(1\otimes n) = (m\otimes 1)\otimes(a\otimes n) &\longmapsfrom (m\otimes n)\otimes a\\
     (m\otimes a')\otimes(a''\otimes n) &\longmapsto (m\otimes n)\otimes(a'\cdot a'').
 \end{align*}
