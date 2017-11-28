@@ -1039,7 +1039,7 @@ of presheaves on $\Bb$.
 	\end{array}\right\}
 	\end{align*}
 	Herein, as usual $\mm_{X,x}$ and $\mm_{Y,y}$ denote the maximal ideals of $\Oo_{X,x}$ respectively $\Oo_{Y,y}$ and the morphisms $\alpha,\beta$ are given by $\alpha(\lambda)=\lambda\otimes 1$ for $\lambda\in\Oo_{X,x}$ and $\beta(\vartheta)=1\otimes\vartheta$ for $\vartheta\in\Oo_{Y,y}$.
-	\item \emph{Topology.} Let $U\subseteq X$, $V\subseteq Y$, $W\subseteq S$ be subsets which are open in their respective space and such that $\xi(U) \cup \upsilon(V)\subseteq W$. Let $\lambda \in\Oo_X(U)\otimes_{\Oo_S(W)} \Oo_Y(V)$. Then the sets of the form
+	\item \emph{Topology.} Let $U\subseteq X$, $V\subseteq Y$, $W\subseteq S$ be subsets which are open in their respective space and such that $\xi(U) \cup \upsilon(V)\subseteq W$. Let $\lambda \in\Rr(U,V,W) \coloneqq \Oo_X(U)\otimes_{\Oo_S(W)} \Oo_Y(V)$. Let $\Rr(U,V) \coloneqq  \Rr(U,V,S)$. Then the sets of the form
 	\begin{align*}
 		\Omega(U,V,W,\lambda)\coloneqq\left\{(x,y,\pp)\st
 		\begin{array}{c}
@@ -1048,8 +1048,49 @@ of presheaves on $\Bb$.
 		\end{array}\right\}
 	\end{align*}
 	form a topology base of $F$.
-	\item \emph{Structure sheaf.} Let $\Oo_{F,[(x,y,\pp)]} = (\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y})_\pp$. This \emph{pretender stalk} eventually will turn out to be the actual stalk of $\Oo_F$ at $(x,y,\pp)$. A section of $\Oo_F(U)$ with $U\subseteq F$ open is an element of $\prod_{(x,y,\pp)\in U}\Oo_{F,[(x,y,\pp)]}$ satisfying a \emph{coherence condition}, i.e.  locally the family must come from a $\lambda$ as above.
+	\item \emph{Structure sheaf.} Let $\Oo_{F,[(x,y,\pp)]} = (\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y})_\pp$. This \emph{pretender stalk} eventually will turn out to be the actual stalk of $\Oo_F$ at $(x,y,\pp)$. A section of $\Oo_F(U)$ with $U\subseteq F$ open is an element of $\prod_{(x,y,\pp)\in U}\Oo_{F,[(x,y,\pp)]}$ satisfying a \emph{coherence condition}, i.e.  locally the family must come from a $\lambda$ as above. If $\snake U \subseteq U$, $\snake V \subseteq V$ and $\snake W\subseteq W$ we have a ring homomorphism
+	\begin{align*}
+        \Rr(U,V,W) = \Oo_X(U) \otimes_{\Oo_S(W)} \Oo_Y(V)&\morphism \Oo_X(\snake U) \otimes_{\Oo_S(\snake W)} \Oo_Y(\snake V) = R(\snake U, \snake V, \snake W)\\
+        f\otimes g &\longmapsto (f|_{\snake U}) \otimes (g|_{\snake V})
+	\end{align*}
+	denoted by $-|_{\snake U, \snake V, \snake W}$ or $-|_{\snake U, \snake V}$.
+	\item \emph{Projections.} We obtain projections $X\lmorphism[p]F\morphism[p] Y$ by $p(x,y,\pp) = x$ and $q(x,y\pp) = y$ which are obviously continuous. For $f\in\Oo_X(U)$, $g\in \Oo_Y(V)$:
+	\begin{align*}
+        p^*f&= (\text{image of } f\text{ under } \Oo_X(U) \morphism\Oo_{X,x} \morphism[\alpha] \Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y} \morphism (\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y})_\pp)_{(x,y,\pp) \in p^{-1}(U)}\\
+        q^*f&= (\text{image of } g\text{ under } \Oo_Y(V) \morphism\Oo_{Y,y} \morphism[\beta] \Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y} \morphism (\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y})_\pp)_{(x,y,\pp) \in q^{-1}(U)}
+	\end{align*}
 \end{itemize}
+\begin{rem*}
+    If $U=\snake U$, $V= \snake V$ then $-|_{U,V,\snake W}$ is surjective and $\colimit \Rr(U,V, W) = \Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y}$ where we take the colimit over triples $(U,V,W)$ such that $x\in U$, $y\in V$ and $s\in W$.
+\end{rem*}
+\begin{prop}
+    The above is the correct description of an object $F$ and of morphisms $X\lmorphism[p] F\morphism[q] Y$ in $\cat{LRS}$ defining the structure of a fibre product of $X$ with $Y$ over $S$ on $F$. Moreover, the morphism
+    \begin{align*}
+        \Oo_{F,(x,y,\pp)} \morphism \Oo_{F,[x,y,\pp]}
+    \end{align*}
+    mapping the image of $\lambda_{\snake x, \snake y, \snake\pp} \in \prod_{(\snake x, \snake y, \snake \pp)\in \Omega} \Oo_{F,[\snake x, \snake y, \snake \pp]}$ to $\lambda_{x,y,\pp} \in \Oo_{F,[x,y,\pp]}$ is an isomorphism.
+\end{prop}
+\begin{proof}
+    First we show that the $\Omega(U,V,\theta)$ form a topology base. We have $F = \Omega(X,Y,1)$ and $\Omega(U,V,\theta)\cap \Omega(\snake U, \snake V, \snake \theta) = \Omega(U\cap \snake U, V\cap \snake V, (\theta|_\Gamma)\cdot (\snake \theta_\Gamma))$ where $\Gamma = (U\cap \snake U, V\cap \snake V)$.
+    
+    We have furtermore a sheaf of rings. If $\ell\in \Rr(U,V)_\theta$ and $\snake \ell \in \Rr(\snake U, \snake V)_{\snake\theta}$ verify the coherence condition for $(\lambda_{x,y,\pp}) \in \Oo_F(\Omega)$ at $\omega\in \Omega$, then we only have to show that $\lambda\cdot \snake \lambda$ is in $\Oo_F(\Omega)$ which can be done in a very ugly equation.
+    
+    In order to show that $\Oo_{F,(x,y,\pp)}\morphism \Oo_{F,[x,y,\pp]}$ is an isomorphism, let $\lambda \in \Oo_{F,[x,y,\pp]} = (\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y})_\pp$ be given as $\frac{\phi}{\sigma}$ where $\phi$ and $\sigma$ are elements of this tensor product and $\sigma\not\in \pp$. Then there exist open neighbourhoods $U$ of $x$, $V$ of $y$, $f\in \Rr(U,V)$ and $t\in \Rr(U,V)$ such that the images of $f$ and $t$ in $\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y}$ equal $\phi$ and $\sigma$. Then $\frac{f}{t}$ defines an element of $\Oo_F(\Omega_(U,V,t))$ with image $\lambda$. 
+    
+    For injectivity, let $\lambda = (\lambda_\omega)\in \Oo_F(\Omega) \subseteq \prod_{\omega\in \Omega}\Oo_{F,[\omega]}$ and let $(x,y,\pp)\in \Omega$ such that $\lambda_{x,y,\pp}$ vanishes in $\Omega_{F,[x,y,\pp]}$. We must show that $\lambda$ vanishes in some neighbourhood of $(x,y,\pp)$. By the coherence condition there are $U\subseteq X$, $V\subseteq Y$ open and $\theta\in \Rr(U,V)$ such that $(x,y,\pp)\in\Omega(U,V,\theta)$ and $\ell\in \Rr(U,V)_\theta$ such that the image of $\ell$ under $\Rr(U,V)_\theta\morphism \Oo_F(\Omega(U,V,\theta)) \morphism \Oo_F(\Omega \cap \Omega(U,V,\theta))$ equals the restriction of $\lambda$. Replacing $\Omega$ by $\Omega \cap \Omega(U,V, \theta)$ and $\lambda$ by its restriction, we achieve that lambda itself equals this image. Now $\lambda_{x,y,\pp}$ equals the image of $\ell$ under
+    \begin{align*}
+        \Rr(U,V)_\theta = (\Oo_{X}(U)\otimes_{\Oo_S(S)}\Oo_{Y}(V)) \morphism (\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y})_\pp,
+    \end{align*}
+    where $\ell = \frac{n}{\theta}$ with $n\in \Rr(U,V)$. Since this is zero, there is $h\in (\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y})\setminus \pp$ such that $n \cdot h = 0$ in $\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y} \simeq \colimit \Oo_{X}(\snake U) \otimes_{\Oo_S(W)}\Oo_{Y}(\snake V)$. We may assume that $h$ is the image of $\eta\in \Rr(\snake U, \snake V)$ in $\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y}$ and that $n\cdot \eta = 0$ in $\Rr(\snake U, \snake V, W)$. Replacing $\theta$ by $\eta\cdot \theta$ and replacing $U$ by $\snake U$ and $V$ by $\snake V$, we may assume $U=\snake U$, $V=\snake V$ and $\eta = \theta$. The the image of $\ell = \frac{n}{\theta}$ under $\Rr(U,V)_\theta \morphism \Rr(U,V,W)_\theta$ vanishes. By the map $R(U,V)_\theta\morphism \Oo_F(\Omega(U,V,\theta))$ factors over $\Rr(U,V,W)$ as this is the case for the maps
+    \begin{align*}
+        (\Oo_X(U) \otimes_{\Oo_S(W)} \Oo_Y(V))_\theta \morphism (\Oo_{X,\snake x}\otimes_{\Oo_{S,\snake s}}\Oo_{Y,\snake y})_\theta \morphism \Oo_{F,[\snake x, \snake y, \snake \pp]}
+    \end{align*}
+    from which it is made up. It follows that the image of $\ell$ under this map vanishes and $\lambda$ als vanishes.
+    
+    We have to show that $p$ and $q$ are morphisms of locally ringed spaces. Only the locality of $\Oo_{X,x}\morphism[p^*] \Oo_{F,(x,y,p)}$ is not totally trivial. By the previous step, this can be identified with $\Oo_{X,x}\morphism[\alpha]\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y} \morphism \Oo_{F,[x,y,p]} = (\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y})_\pp$. By well-known facts the preimage of the maximal ideal $\pp\cdot (\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y})_\pp$ in $\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y}$ equals $\pp$. The preimage of $\pp$ under $\alpha$ equals $\mm_x$ by our definition of $F$ as a set. The case for $q$ is similar.
+\end{proof}
+
+
 
 
 
