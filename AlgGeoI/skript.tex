@@ -6,6 +6,7 @@
 \usepackage{../shortcuts}
 
 \usepackage{csquotes}
+\usepackage{tikz-cd}%I cannot draw diagrams without it - Felix.
 \usepackage[backend=biber,style=numeric,sorting=none]{biblatex}
 \addbibresource{../literatur.bib}
 
@@ -1094,7 +1095,7 @@ We're now prepared to describe the fibre product $F=X\times_SY$:
 	\end{align*}
 \end{itemize}
 \begin{prop}
-    The above is the correct description of a fibre product $F=X\times_SY$ of $X\morphism[\xi]S.\lmorphism[\upsilon]Y$. Moreover, the morphism
+    The above is the correct description of a fibre product $F=X\times_SY$ of $X\morphism[\xi]S\lmorphism[\upsilon]Y$. Moreover, the morphism
     \begin{align*}
         \Oo_{F,(x,y,\pp)} &\morphism \Oo_{F,[x,y,\pp]}\\
         \text{image of }(\lambda_\omega)\in\prod_{\omega\in\Omega}\Oo_{F,[\omega]}&\longmapsto\lambda_{(x,y,\pp)}\in\Oo_{F,[x,y,\pp]}
@@ -1104,7 +1105,7 @@ We're now prepared to describe the fibre product $F=X\times_SY$:
 \begin{proof}
     \emph{Step 1.} First we show that the $\Omega(U,V,\theta)$ form a base of a topology. We have $F = \Omega(X,Y,1)$ and $\emptyset=\Omega(X,Y,0)$ and $\Omega(U,V,\theta)\cap \Omega(\snake U, \snake V, \snake \theta) = \Omega(U\cap \snake U, V\cap \snake V, (\theta|_\Gamma)\cdot (\snake \theta_\Gamma))$ where $\Gamma = (U\cap \snake U, V\cap \snake V)$ for short. This suffices.
     
-    \emph{Step 2.} Furtermore, $\Oo_F$ is a sheaf of rings. Let $\lambda=(\lambda_\omega)$ and $\snake{\lambda}=(\snake{\lambda}_\omega)$ be sections in $\Oo_F(\Omega)$. We have to show that $\lambda *\snake{\lambda}\in\Oo_F(\Omega)$ for $*\in\{+,\cdot\}$. If $\ell\in \Rr(U,V)_\theta$ and $\snake \ell \in \Rr(\snake U, \snake V)_{\snake\theta}$ verify the coherence condition for $\lambda$ respectively $\smash{\snake{\lambda}}$ at $\omega\in \Omega$, then 
+    \emph{Step 2.} Furthermore, $\Oo_F$ is a sheaf of rings. Let $\lambda=(\lambda_\omega)$ and $\snake{\lambda}=(\snake{\lambda}_\omega)$ be sections in $\Oo_F(\Omega)$. We have to show that $\lambda *\snake{\lambda}\in\Oo_F(\Omega)$ for $*\in\{+,\cdot\}$. If $\ell\in \Rr(U,V)_\theta$ and $\snake \ell \in \Rr(\snake U, \snake V)_{\snake\theta}$ verify the coherence condition for $\lambda$ respectively $\smash{\snake{\lambda}}$ at $\omega\in \Omega$, then 
     \begin{align*}
 	   \left(
 	   \begin{array}{c}
@@ -1143,8 +1144,145 @@ We're now prepared to describe the fibre product $F=X\times_SY$:
     	 \Oo_{X,x}\morphism[\alpha]\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y} \morphism \Oo_{F,[x,y,p]} = (\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y})_\pp
     \end{align*}
    and this is local since the pre-image of the maximal ideal $\pp (\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y})_\pp$ in $\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y}$ equals $\pp$ and that of $\pp$ under $\alpha$ equals $\alpha^{-1}(\pp)=\mm_{X,x}$ by our definition of $F$ as a set. For $q^*$ it's just the same.
-\end{proof}
 
+%The following was written by Felix, so probably not maches perfectly with the conventions of the other script.
+\emph{Step 5.} We show $\xi p = \upsilon q$. On the level of points, $\xi(p(x,y,\pp)) = \xi(x) = s = \upsilon(y) = \upsilon(q(x,y,\pp))$.
+Before we continue, recall the following
+\begin{fact*}
+If $X$ is a locally ringed space, $U\subseteq X$ and $f\in \Oo_X(U)$, then there is a unique dotted arrow making the following diagram commute:
+\begin{align*}
+\begin{tikzcd}[ampersand replacement=\&]
+\Oo_X(U)\ar[r]\ar[dr]\&\Oo_X(U)_f\ar[d,dotted]\\
+\&\Oo_X(U\setminus V(f)).
+\end{tikzcd}
+\end{align*}
+\end{fact*}
+Now we show that $\xi p = \upsilon q$ holds in the algebraic components: If $W\subseteq S$ is open and $\sigma\in \Oo_S(W)$, then
+\begin{align*}
+&p^\ast \xi^\ast \sigma =\left(\begin{array}{c}\text{images of }\\\xi^\ast\sigma\text{ under }\end{array}
+\begin{tikzcd}[ampersand replacement=\&,row sep=1ex,column sep={3.4em,between origins}]
+\&R(\xi^{-1} W,Y)\ar[dr]\\
+\Oo_X(\xi^{-1}W)\ar[ru]\ar[rd]\&\& \Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y}\ar[rr]\&\&\Oo_{F,[x,y,\pp]}\\
+\&\Oo_{X,x}\ar[ru,"\alpha"]\end{tikzcd}\right)_{(x,y,\pp)\in F\text{ st. }x\in \xi^{-1}(W)}
+\\&=\left(\text{images of }\sigma\text{ under }\Oo_S(W)\rightarrow\Oo_{S,s}\xrightarrow{\xi^\ast}\Oo_{X,x}\xrightarrow{\alpha}\Oo_{X,x}\otimes_{\Oo_{S,s}}
+\Oo_{Y,y}\rightarrow\Oo_{F,[x,y,\pp]}\right)_{(x,y,\pp)\in (\xi p)^{-1}W}
+\\&=\left(\text{images of }\sigma\text{ under }\Oo_S(W)\rightarrow\Oo_{S,s}\xrightarrow{\upsilon^\ast}\Oo_{Y,y}\xrightarrow{\beta}\Oo_{X,x}\otimes_{\Oo_{S,s}}
+\Oo_{Y,y}\rightarrow\Oo_{F,[x,y,\pp]}\right)_{(x,y,\pp)\in (\upsilon q)^{-1}W}
+\end{align*}\begin{align*}
+&=\left(\text{images of }\upsilon^\ast\sigma\text{ under }\Oo_Y(\upsilon^{-1}W)\rightarrow \Oo_{Y,y}\xrightarrow{\beta}\Oo_{X,x}\otimes_{\Oo_{S,s}}
+\Oo_{Y,y}\rightarrow\Oo_{F,[x,y,\pp]}\right)_{(x,y,\pp)\in (\upsilon q)^{-1}W}
+\\&=q^\ast\upsilon^\ast \sigma
+\end{align*}
+since we  have, for $t\in \Oo_{S,s}$, $\alpha(\xi^\ast t) = \xi^\ast(t)\otimes 1 = 1\otimes \upsilon^\ast(t) = \beta(\upsilon^\ast t)$
+by the $\Oo_{S,s}$-bilinearity of $\otimes_{\Oo_{S,s}}$.
+
+\emph{Step 6.} We show the universal property. Let $X\xleftarrow{\tau_X}T\xrightarrow{\tau_Y}Y$ be morphisms of locally ringed spaces such that
+$\xi\tau_X = \upsilon \tau_Y$: We define a map $T\xrightarrow\tau F$ as follows:
+For $t\in T$, we put $x = \tau_X(t), y = \tau_Y(t), s = \xi(x) = \xi(\tau_X(t)) = \upsilon(\tau_Y(t)) = \upsilon(y)$. By the universal property of
+the cofibre product of rings $\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y}$, there is a unique ring homomorphism
+$\tau^\ast$ from this ring to $\Oo_{T,t}$ such that
+\begin{align*}\lbl{eq:fibreproducts-lrs-proof-tau-ast}
+\begin{tikzcd}[ampersand replacement=\&]
+\Oo_{X,x}\ar[r,"\alpha"]\ar[d,"{\tau_X^\ast}"]\&\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y}\ar[ld,dotted,"{\tau^\ast}"]\\
+\Oo_{T,t}\&\Oo_{Y,y}\ar[l,"{\tau_Y^\ast}"]\ar[u,"\beta"]
+\end{tikzcd}\tag{@}
+\end{align*}
+commutes.
+It is given by $\tau^\ast(f\otimes g) = \tau_X^\ast(f)\cdot\tau^\ast_Y(g)$. Let $\pp = \left(\tau^\ast\right)^{-1}(\mm_{T,t})$.
+By the above diagram,
+\begin{align*}
+\alpha^{-1}\pp = \alpha^{-1}\left(\tau^\ast\right)^{-1}\mm_{T,t} = \tau^\ast_X\mm_{T,t} = \mm_{X,x},
+\end{align*}
+as $\tau_X$ is a morphism of locally ringed spaces. Similarly, $\beta^{-1}\pp = \mm_{Y,y}$ Thus
+\begin{align*}
+\tau(t) := (x,y,\pp)\in F.
+\end{align*}
+Clearly, we have $p\tau = \tau_X$ and $q\tau = \tau_Y$ as maps of topological spaces.
+
+\emph{Continuity of $\tau$}: Let $U\subseteq X, V\subseteq Y$ be open and $f\in R(U,V)$. As the last ring is a cofibre product
+$\Oo_X(V)\otimes_{\Oo_S(S)} \Oo_{Y}(V)$, there is a unique ring homomorphism $\tau^\sharp$ from that ring 
+to $\Oo_T(\theta)$, where $\theta = \tau_X^{-1}(U)\cap \tau_Y^{-1}(Y)$, such that
+\begin{align*}
+\begin{tikzcd}[ampersand replacement=\&,column sep=2em,row sep=2em]
+\Oo_{X}(U)\ar[r,"{f\mapsto f\otimes 1}"]\ar[d,"{\tau_X^\ast}"]\&R(U,V)\ar[ld,dotted,"{\tau^\sharp}"]\\
+\Oo_{T}(\theta)\&\Oo_{Y}(V)\ar[l,"{\tau_Y^\ast}"]\ar[u,"{g\mapsto 1\otimes g}"']
+\end{tikzcd}
+\end{align*}
+commutes, and $\tau^\sharp(f\otimes g) = \tau_X^\ast(f)\cdot \tau_Y^\ast(g)$. Then, for $\lambda\in R(U,V)$,
+\begin{align*}
+\lbl{eq:fibreproducts-lrs-proof-tau-preimage}
+\tau^{-1}\Omega(U,V,\lambda) =&\{t\in T \mid \tau_X(t)\in U, \tau_Y(t), \left(\text{image of }\lambda\text{ under }\Oo_{X,x}\otimes_{\Oo_{S,s}}
+\Oo_{Y,y}\right) \notin \left(\tau^\ast\right)^{-1}(\mm_{T,t}) \}
+\\=&\{t\in \theta \mid \left(\text{image of }\lambda\text{ under }\Oo_{X,x}\otimes_{\Oo_{S,s}}
+\Oo_{Y,y}\right) \notin \left(\tau^\ast\right)^{-1}(\mm_{T,t}) \}
+\\=&\{t\in \theta\mid\left(\text{image of }\tau^\sharp\lambda\text{ under }\Oo_T(\theta)\rightarrow \Oo_{T,t}\right)\notin\mm_{T,t}\}
+=\Oo_T(\theta)\setminus V(\tau^\sharp \lambda),\tag{$!$}
+\end{align*}
+which is open. The transition from the middle line to the last line uses the commutativity of the following diagram:
+\begin{align*}
+\begin{tikzcd}[ampersand replacement=\&]
+R(U,V)\ar[r,"\tau^\sharp"]\ar[d]\&\Oo_T(\theta)\ar[d]\\
+\Oo_{X,x}\otimes_{\Oo_{S,s}}\OO_{Y,y}\ar[r,"\tau^\ast"]\&\Oo_{T,t}
+\end{tikzcd}
+\end{align*}
+The element $f\otimes g$ in the upper-left corner $\Oo_X(V)\otimes_{\Oo_S(S)} \Oo_Y(V)$ is mapped to via the upper-right corner to
+\begin{align*}
+&\left(\text{image of }\tau^\sharp(f\otimes g)\text{ under }\Oo_T(\theta)\rightarrow \Oo_{T,t}\right)
+\\=&\left(\text{image of }\tau_X^\ast(f)\cdot\tau_Y^\ast(g)\text{ under }\Oo_T(\theta)\rightarrow \Oo_{T,t}\right)
+\\=&\left(\text{image of }\tau_X^\ast(f)\text{ in } \Oo_{T,t}\right)\cdot\left(\text{ image of }\tau_Y^\ast(g)\text{ in } \Oo_{T,t}\right)
+\\=&\tau_X^\ast\left(\text{image of }f\text{ in }\Oo_{X,x}\right)
+\cdot \tau_Y^\ast\left(\text{image of }g\text{ in }\Oo_{Y,y}\right)
+\\=&\tau^\ast\left(\left(\text{image of }f\text{ in }\Oo_{X,x}\right) \otimes 
+\left(\text{image of }g\text{ in }\Oo_{Y,y}\right)\right),
+\end{align*}
+which is the image of $f\otimes g$ via the lower-left corner. As these pure tensor products generate
+$R(U,V)$ as an abelian group, the stated commutativity of the diagram follows.
+
+\emph{Definition of the algebraic component $\tau^\ast$ of $\tau$}:
+Fix an open subset $\Omega\subseteq F$. We define
+$\tau\left( (\varphi_\omega)_{\omega\in \Omega}\right),$
+where $(\varphi_\omega)_{\omega\in \Omega} \in \prod_{\omega\in \Omega} \Oo_{F,[\omega]}$ must satisfy the coherence condition for sections of $\Oo_F$,
+to be the preimage of $(\tau^\flat \varphi_{\tau(t)})_{t\in \tau^{-1}(\Omega)}$ under $\Oo_T\left(\tau^{-1}\Omega\right)\rightarrow \prod_{t\in \tau^{-1}(
+\Omega)} \Oo_{T,t}$. Here, $\tau^\flat$ is the unique ring homomorphism $\Oo_{F,[\tau(t)]} \rightarrow \Oo_{T,t}$ making the diagram
+\begin{align*}
+\begin{tikzcd}[ampersand replacement=\&]
+\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y}\ar[r]\ar[dr,"\tau^\ast"]\&\Oo_{F,[x,y,\pp]} =
+\left(\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y}\right)_{\pp}\ar[d,dotted,"\tau^\flat"]\\
+\&\Oo_{T,t}
+\end{tikzcd}
+\end{align*}
+commute. It exists by the universal property of localizations, as $\pp = \left(\tau^\ast\right)^{-1} \mm_{T,t}$.
+To confirm that $\left(\tau^\flat \varphi_{\tau(t)}\right)_{t\in \tau^{-1}(\Omega)}$ has the coherence condition characterizing the
+image of $\Oo_T(\tau^{-1}\Omega)$, let $\tilde\Omega = \Omega(U,V,\lambda)$ be an open neighbourhood in $F$ of
+$\tau(t)$ such that on $\tilde\Omega\cap \Omega$, $\varphi$ is given by $f\in R(U,V)_\lambda$. By
+\eqreff{eq:fibreproducts-lrs-proof-tau-preimage}, $\tau^{-1}\left(\tilde\Omega\right) = \left(\tau_x^{-1}(V)\cap \tau_Y^{-1}(V)\right)\setminus
+V(\tau^\sharp(\lambda))$ is an open neighbourhood of $t$ on which $\frac{\tau^\sharp(g)}{\tau^\sharp(\lambda)^k}$ defines a section of $\Oo_T$,
+for $g\in R(U,V)$ such that $f=\frac g{\lambda^k}$. Then
+\begin{align*}
+\tau^\flat\left(\varphi_{\tau(t)}\right) = \frac{\tau^\ast(g_{\tau(t)})}{\tau^\ast(\lambda_{T(t)})^k} = \left(\text{image of }\frac{\tau^\sharp(g)}
+{\tau^\sharp(\lambda)^k}\text{ in }\Oo_{T,t}\right)
+\end{align*}
+for $t,\in \tau^{-1}(\Omega)\cap \tau^{-1}(\tilde\Omega)$, using the same equality as in the proof of 
+\eqreff{eq:fibreproducts-lrs-proof-tau-preimage}.
+This completes the description of the algebraic component $\tau^\ast$ of $\tau$. It is clear that it makes $\tau$ a morphism of ringed spaces,
+that $\tau^\ast p^\ast = \tau_X^\ast$ and that $\tau^\ast q^\ast = \tau_Y^\ast$ hold (this follows from the commutativity of the triangles in
+in \eqreff{eq:fibreproducts-lrs-proof-tau-ast} (and the fact that the map $\tau^\ast$ defined there coincides with
+the map on stalks induced by the new $\tau^\ast$)).
+
+\emph{Locality of $\tau^\ast : \Oo_{F,\tau(t)}\rightarrow \Oo_{T,t}$}
+\begin{align*}
+\begin{tikzcd}[ampersand replacement=\&]
+\Oo_{F,\tau(t)}\ar[r]\ar[d,dash,"\simeq"]\&\Oo_{T,t}\\
+\Oo_{F,[\tau(t)]}\simeq \left(\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y}\right)_{\pp}\ar[ru,"\tau^\flat"]\&\ar{u}\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y} =:\mathcal L
+\ar[l]\ar[u,"\tau^\ast"]
+\end{tikzcd}
+\end{align*}
+and $\tau^\flat$ maps $\pp \mathcal L_{\pp}$ to $\mm_{T,t}$ as $\tau^\ast(\pp)\subseteq \mm_{T,t}$ as
+$\pp = \left(\tau^\ast\right)^{-1}\mm_{T,t}$ by the definition of $T$.
+
+Due to the lecture being over, we do without proving the uniqueness part of the universal property.
+%End of the part written by Felix.
+\end{proof}
 
 
 
