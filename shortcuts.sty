@@ -1,6 +1,12 @@
 %---- ENVIRONMENTS ----
 %
-\newenvironment{diagram}{\begin{center}\begin{tikzpicture}[line join=round, line cap=round]}{\end{tikzpicture}\end{center}}  
+\newenvironment{diagram*}[1][]{\begin{center}\begin{tikzpicture}[line join=round, line cap=round,#1]}{\end{tikzpicture}\end{center}}  
+
+
+\NewDocumentEnvironment{diagram}{O{} O{}}{\diagramenv{#1}{#2}}{\enddiagramenv}
+\NewEnviron{diagramenv}[2]{\begin{align}#2\begin{tikzpicture}[line cap=round, line join=round,#1]\BODY\end{tikzpicture}\end{align}}
+%\NewDocumentEnvironment{diagram*}{O{} O{}}{\diagramenvv{#1}{#2}}{\enddiagramenvv}
+%\NewEnviron{diagramenvv}[2]{\begin{align*}#2\begin{tikzpicture}[line cap=round, line join=round,#1]\BODY\end{tikzpicture}\end{align*}}
 
 %---- MANY ALPHABETS ----
 %
@@ -153,6 +159,8 @@
 \newoperator{Eq}
 \newoperator{Bil}
 \newoperator{coker}
+\newcommand{\proj}{\mathrm{proj}}
+\newcommand{\aff}{\mathrm{aff}}
 \newcommand{\nil}{\operatorname{nil}}
 \newcommand{\Spec}{\operatorname{Spec}}
 \newcommand{\tr}{\operatorname{tr}}
