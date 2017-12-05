@@ -1340,9 +1340,96 @@ $\pp = \left(\tau^\ast\right)^{-1}\mm_{T,t}$ by the definition of $T$.
 
 Due to the lecture being over, we do without proving the uniqueness part of the universal property.
 %End of the part written by Felix.
+
+This follows now. Let $X\lmorphism[p] F\morphism[q] Y$ be the claimed fibre product of $X\morphism[\xi] S\lmorphism[\upsilon] Y$ constructed before, $T$ a locally ringed space, $X\lmorphism[\tau_X] T\morphism[\tau_Y] Y$ morphisms of locally ringed spaces such that $\xi\tau_X = \upsilon \tau_Y$. We already have shown that there exists $T\morphism[\tau] F$ such that $\tau_X = p\tau$ and $\tau_Y = q\tau$ and still have to proof that it is unique with this property. Let $t\in T$, $\tau(t) = (x,y,\pp)$, then obviously $x= \tau_X(t)$ and $y=\tau_Y(t)$. In the above diagram, the dashed arrow $\tau^\flat$ is uniquely determined by the co-cartesianess of the lower right corner. Because $\tau$ is a morphism of locally ringed spaces, the dotted arrow $\tau^*$ must be a local ring morphism, hence
+\begin{align*}
+    (\tau^*)^{-1}(m_{T,t}) = \pp\Oo_{F,[x,y,\pp]} = \pp\left(\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y}\right)_\pp\;.
+\end{align*}
+Since the preimage of this ideal in $\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y}$ equals $\pp$ and the diagram commutes, $\pp=(\tau^\flat)^{-1}(\mm_{T,t})$ is uniquely determined. By the universal property of localization, the dotted arrow is also unique. Thus $\tau^*$ is unique at stalks, hence unique. 
 \end{proof}
 
+\begin{cor}
+    \begin{alphanumerate}
+        \item 
+            Let $X_{\cat{Top}}$ be the topological space underlying $X$, then the map
+            \begin{align*}
+                (X\times_SY)_{\cat{Top}} \morphism X_{\cat{Top}}\times_{S_{\cat{Top}}} Y_{\cat{Top}}
+            \end{align*}
+            (determined by the diagram on the right) is surjective.
+        \item 
+            If $U\subseteq X$, $V\subseteq Y$ and $W\subseteq S$ are open subsets then $p^{-1}(U)\cap q^{-1}(V) \subseteq F$ together with the restrictions of $p$ and $q$ is a fibre product of $U$ and $V$ over $W$.
+    \end{alphanumerate}
+\end{cor}
 
+\begin{proof}
+    To prove \itememph{a} we use that for all $x\in X_{\cat{Top}}$ and $y\in Y_{\cat{Top}}$ such that $s=\xi(x) = \upsilon(y)$ there is an appropriate $\pp$. We must thus show that there is $\pp\in \Spec\left(\Oo_{X,x} \otimes_{\Oo_{S,s}}\Oo_{Y,y}\right)$ such that $\alpha^{-1}(\pp) = \mm_{X,x}$, $\beta^{-1}(\pp) = \mm_{Y,y}$. Consider the ring homomorphism
+    \begin{align*}
+        \Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y} &\morphism[\phi] \KK(x) \otimes_{\KK(s)}\KK(y) = A\\
+        f\otimes g &\longmapsto (f\mod \mm_{X,x}) \otimes (g\mod \mm_{Y,y})\;.
+    \end{align*}
+    If $\mm$ is any maximal ideal of $A$, then $\pp = \phi^{-1}(\mm)$ has the required property. For instance,
+    \begin{align*}
+        (f\otimes 1)\in\pp \Leftrightarrow \phi(f\otimes 1)\in \mm \Leftrightarrow ((f\mod\mm_{X,x})\otimes 1) \in\mm\;.
+    \end{align*}
+    When $f\in \mm_{X,x}$ the right hand side vanishes, otherwise $f$ and the right hand side are units.
+    
+    The part \itememph{b} is a straightforward consequence of our construction of $\Rr(U,V) \morphism \Rr(U,V,W)$.
+\end{proof}
+
+\begin{rem}
+    The proof would work with infinitely many factors as well, with some modifications. When $S$ and $X_\lambda$ are preschemes, the fibre product may fail to be a prescheme unless all but finitely many of the morphisms $X_\lambda \morphism S$ are affine.
+\end{rem}
+
+\begin{defi}[Immersive morphisms] \lbl{def:immersiveMorphism}
+    A morphism $Y\morphism[\upsilon] S$ of locally ringed spaces is called \defemph{immersive} if, topologically, $\upsilon$ is a homeomorphism to its image (equipped with the induced topology by $S$), and for every $y\in Y$ the map $\Oo_{S,\upsilon(y)} \morphism[\upsilon^*]\Oo_{Y,y}$ is surjective. If $\upsilon(Y)\subseteq S$ is a closed subset, $\upsilon$ is called a closed immersion.
+\end{defi}
+
+\begin{cor}
+    The base change $F\morphism[\snake \upsilon] X$ of an immersive morphism is immersive, and its image is $\xi^{-1}(\upsilon(Y))$. In particular, the base change of a closed immersion is itself closed.
+\end{cor}
+\begin{proof}
+    For $(x,y,\pp)$ and in the description of $F$, let $I_S\subseteq \Oo_{S,s}$ be the kernel of $\Oo_{S,s}\morphism[\upsilon^*] \Oo_{Y,y}$. Then $\Oo_{Y,y}\simeq \Oo_{S,s}/I_s$, hence $\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y} \simeq \Oo_{X,x}/(\xi^*(I_s) \cdot \Oo_{X,x}) \eqqcolon \Oo_{X,x}/(I_s\cdot \Oo_{X,x}$. Since $\alpha^{-1}(\pp)$ must be $\mm_{X,x}$, $\pp\supseteq \mm_{X,x}/(I_s\cdot \Oo_{X,x}$ which must be an equality as the right hand side is the maximal ideal of local ring $\Oo_{X,x}/(I_s\cdot \Oo_{X,x})$. Thus, $\pp$ and $y$ are uniquely determined by $x$, $\Oo_{F,[x,y,\pp]}\simeq \Oo_{X,x}/(I_s\cdot \Oo_{X,x})$ is a quotient of $\Oo_{X,x}$ implying surjectivity of $\xi^*$ on stalks. It remains to confirm that the topology is the induced topology. Note that
+    \begin{align}\lbl{eq:omegaCover}
+        \Omega(U,V,f) = \bigcup_{\lambda\in \Lambda} \Omega(U,V_\lambda, f_{U,V_\lambda})
+    \end{align}
+    when $V=\bigcup_{\lambda\in \Lambda} V_\lambda$. Let $f\in \Rr(U,V)$, $f=\sum_{i=1}^n g_i\otimes h_i$, $g_i\in \Oo_X(U)$, $h_i\in\Oo_Y(V)$. As $Y$ carries the induced topology and $\upsilon^*$ is surjective on stalks, $V$ may be covered by open subsets of the form $V_\lambda = Y\cap W_\lambda$, $W_\lambda \subseteq S$ open, such that there are $\eta_{i,\lambda}\in \Oo_S(W_\lambda)$ such that $h_i|_{V_\lambda} = \upsilon^*(\eta_{i,\lambda})$. Then
+    \begin{align*}
+        f_{U,V_\lambda} = \sum_{i=1}^n g_i\otimes \upsilon^*(\eta_{i,\lambda}) = \sum_{i=1}^n (\xi^*(\eta_{i})\cdot g_i) \otimes 1 = \phi\otimes 1
+    \end{align*}
+    in $\Rr(\xi^{-1}(W_\lambda)\cap U, V_\lambda, W_\lambda)$. Thus $\Omega(U,V_\lambda, f|_{U,V_\lambda}) = ((U\cap \xi^{-1}(W_\lambda)\setminus V(\phi))\cap F$ is open in the induced topology. By \eqreff{eq:omegaCover}, $\Omega(U,V,f)$ is open in that topology.
+\end{proof}
+\begin{defi}[Sheaf of modules]\lbl{def:sheafOfModules}
+    Let $\Rr$ be a sheaf of rings on $X$. A \defemph{sheaf of modules} over $\Rr$, or simply an $\Rr$-module, is a sheaf $\Mm$ of abelian groups on $X$ with multiplications
+    \begin{align*}
+        \Rr(U)\times \Mm(U) \morphism \Mm(U)
+    \end{align*}
+    giving $\Mm(U)$ the structure of an $\Rr(U)$-module and such that $(\rho\cdot \mu)|_V = (\rho|_V)\cdot (\mu|_V)$ when $V\subseteq U$ is open. In the case where $\Mm(U) \subseteq \Rr(U)$ is an ideal in that ring, with module operations and $|_V$ are the restrictions of the ring operations in $\Rr(U)$ and of $|_V$ for $\Rr$ to $\Mm(U)$, we call $\Mm$ a \defemph{sheaf of ideals} in $\Rr$.
+\end{defi}
+
+\begin{prop}
+    If $(I_{[x]})_{x\in X}$ is a family of ideals in the stalks $\Rr_x$, then the following conditions are equivalent.
+    \begin{alphanumerate}
+        \item 
+            There is a sheaf of ideals $I$ on $X$ such that $I_{[x]}$ equals the (isomorphic) image $I_x$ in $\Rr_x$.
+        \item  
+            For every $x\in X$, every $\iota\in I_{[x]}$ is the image of some $i\in\Rr(U)$ for some open neighbourhood $U$ of $x$, such that $i_y\in I_{[y]}$ for all $y\in U$.
+    \end{alphanumerate}
+    In this case $I$ is determined uniquely.
+\end{prop}
+
+\begin{cor}
+    $U=\left\{x\in X\st I_{[x]}=\Rr_x\right\}$ is open in $X$.
+\end{cor}
+
+\begin{prop}
+    For a locally ringed space $X$, let two immersions $K_1\morphism[\kappa_1] X\lmorphism[\kappa_2] K_2$ be called equivalent if there is an isomorphism $K_1\morphism[\iota] K_2$ of locally ringed spaces such that $\kappa_2\iota = \kappa_1$. Then there is a bijection from the closed immersions up to equivalence and the sheaves of ideals $I\subseteq\Oo_X$ by 
+    \begin{align*}
+        (K\morphism[\kappa]X)/_\sim \longmapsto I = \ker(\Oo_X\morphism[\kappa^*]\kappa_* \Oo_K)\;.
+    \end{align*}
+\end{prop}
+\begin{rem*}
+    When $X$ is a prescheme, $K$ will fail to be a prescheme unless $I$ is quasi-coherent.
+\end{rem*}
 
 
 
