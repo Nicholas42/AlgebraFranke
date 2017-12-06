@@ -1346,128 +1346,139 @@ For now on let $k$ be an algebraically closed field.
 \end{rem*}
 %The following is written by Felix.
 \begin{prop}\lbl{prop:projectiveZariskiIdealCorrespondence}
-There is a bijective correspondence between the closed subsets of $\IP^n(k)$ and the homogeneous ideals $I=\sqrt I\subseteq R_+$
- given by
+There is a bijective correspondence
 \begin{align*}
-&Z \mapsto \{I\in R_+ \mid f(x_0,\dotsc,x_n) = 0\text{ when } [x_0,\dotsc,x_n]\in Z\}
-\\&I \mapsto Z = V(I).
+\left\{\text{closed subsets }Z\subseteq\IP^n(k)\right\}&\isomorphism\left\{\text{homogeneous ideals }I\subseteq R_+\text{ such that }I=\sqrt{I}\right\}\\
+Z &\longmapsto \left\{f\in R_+ \st f(x_0,\ldots,x_n) = 0\text{ when } [x_0,\ldots,x_n]\in Z\right\}\\
+Z=V(I) &\longmapsfrom I\;.
 \end{align*}
 \end{prop}
-This is an immediate consequence of Proposition \reff{prop:projectiveNullstellensatz}.
+\begin{proof}
+	This is an immediate consequence of Proposition \reff{prop:projectiveNullstellensatz}.
+\end{proof}
 \begin{rem*}[Separation axioms for topological spaces]Recall the following separation axioms for a topological space $X$:
 \begin{itemize}
 \item $T_0$:
 For all $x\neq y\in X$ we have $\overline x\neq\overline y$ (in other words, $x$ has a neighbourhood
-not containing $y$ or $y$ has a neighbourhood not containing $x$) (occasionally attributed to Kolmogorov).
+not containing $y$ or $y$ has a neighbourhood not containing $x$). This is occasionally attributed to Kolmogorov.
 \item $T_1$: For all $x\neq y\in X$, $y\notin\overline x$ (in other words, $x$ has a neighbourhood not containing $y$;
 resp. $\{x\}$ is closed).
-\item $T_2$: Two points $x\neq y\in X$ have disjoint neighbourhoods (inother words, $\Delta\subseteq X\times X$ is closed) (the Hausdorff axiom).
+\item $T_2$: Two points $x\neq y\in X$ have disjoint neighbourhoods (equivalently, $\Delta\subseteq X\times X$ is closed). Such spaces $X$ are called \emph{Hausdorff}.
 \end{itemize}
 \end{rem*}
 \begin{prop}\lbl{prop:projectiveZariskiIdealSpecialCorrespondence}
-$\IP^n(k)$ is a Noetherian $T_1$-space. There is a bijection between the points of $\IP^n(k)$ and the homogeneous
-ideals $I=\sqrt I\subsetneqq R_+$ maximal with this property, obtained as a special case of Proposition \reff{prop:projectiveZariskiIdealCorrespondence}
-applied to closed subsets with precisely one point. Under the coorespondence of Proposition \reff{prop:projectiveZariskiIdealCorrespondence},
-the irreducible closed subsets correpond to the homogeneous prime ideals $\pp\neq R_+$.
+$\IP^n(k)$ is a Noetherian $T_1$-space. The correspondence from  Proposition~\reff{prop:projectiveZariskiIdealCorrespondence} induces a bijection between the points of $\IP^n(k)$ and the homogeneous
+ideals $I=\sqrt I\subsetneq R_+$ maximal with this property as well as between irreducible closed subsets and homogeneous prime ideals $\pp\subsetneq R_+$.
 \end{prop}
 \begin{proof}
-$\{\xi\} = \{[\xi_0,\dotsc,\xi_n]\}$ is closed as it equals $\bigcap\limits_{0\leq i<j\leq n} V( \xi_i X_j - \xi_j X_i)$.
-The fact that $\IP^n(k)$ is Noetherian follows from $R$ from Proposition \reff{prop:projectiveZariskiIdealCorrespondence}
-as an infinite strictly decreasing chain of closed subsets becomes a strictly increasing chain of ideals in $R$. But $R$ is Noetherian
+A point $\{\xi\} = \{[\xi_0,\ldots,\xi_n]\}$ is closed as 
+\begin{align*}
+	\{\xi\}=\bigcap_{0\leq i<j\leq n} V( \xi_i X_j - \xi_j X_i)\;.
+\end{align*}
+The fact that $\IP^n(k)$ is Noetherian follows from Noetherianness of $R$ and Proposition~\reff{prop:projectiveZariskiIdealCorrespondence}
+as an infinite strictly decreasing chain of closed subsets becomes a strictly increasing chain of ideals in $R$.
 
-The correspondence between points and ideals also follows from Proposition \reff{prop:projectiveZariskiIdealCorrespondence},
-and the last is checked as in the affine case.
+The correspondence between points and ideals also follows from Proposition~\reff{prop:projectiveZariskiIdealCorrespondence}. For the last one, note that a homogeneous ideal $I$ is prime iff $fg\in I$ implies $f\in I$ or $g\in I$ for all \emph{homogeneous} elements $f,g\in R$. Indeed, suppose that $I$ has this property and $f,g\in R$ (not necessarily homogeneous) are such that $fg\in I$. Assume that $f,g\notin I$. Hence, if $f_i,g_i\in R_i$ are their homogeneous components, there are minimal indices $k$ and $\ell$ such that $f_k,g_\ell\notin I$. Since $I$ is homogeneous, the $(k+\ell)\ordinalth$-degree homogeneous component of $fg$ must be contained in $I$ as well. However, $(fg)_{k+\ell}=\sum_{i+j=k+\ell}f_ig_j\notin I$ as only $f_kg_\ell$ in this sum is not contained in $I$. Having established this, the arguments from the affine case may be used.
 \end{proof}
 \begin{cor*}
 $\IP^n(k) = V(\{0\})$ is irreducible.
 \end{cor*}
 \begin{prop}\lbl{prop:projectiveAffineTopology}
-The topology on $\IA^n \simeq \IP^n\setminus V(X_0)$ induced fro the Zariski topology on $\IP^n(k)$ is the Zariski topology on $k^n$.
+The topology on $\IA^n(k) \simeq \IP^n\setminus V(X_0)$ induced from the Zariski topology on $\IP^n(k)$ is the Zariski topology on $k^n$.
 \end{prop}
 \begin{rem*}
 The same, of course, holds for $\IP^n\setminus V(X_j)$.
 \end{rem*}
 \begin{proof}[Proof of Proposition \reff{prop:projectiveAffineTopology}]
-Let $k^n\xrightarrow i\IP^n(k)$, $i(x_1,\dotsc,x_n) = [1,x_1,\dotsc,x_n]$, be the inclusion to investigate. Since $i^{-1}(V(I))
-=\{(x_1,\dotsc,x_n) \mid f(1,x_1,\dotsc,x_n) = 0\text{ for all }f\in I\}$, it is continuous.
-To show that any closed $A\subseteq k^n$ can be represented as $i^{-1}(B)$ for some closed $B\subseteq k^{n+1}$, we first construct,
-for any $f\in S = k[X_1,\dotsc,X_n]$, a homogeneous polynomial $\tilde f\in R$ such that $i^{-1}(V_\proj(\tilde f)) = V_\aff(f)$.
-This can be done by putting \begin{align*}
-\tilde f (X_0,\dotsc,X_n)  = X_0^d f\left(\frac{X_1}{X_0},\dotsc,\frac{X_n}{X_0}\right) \in R_d
+Let $k^n\morphism[i]\IP^n(k)$, $i(x_1,\ldots,x_n) = [1,x_1,\ldots,x_n]$, be the inclusion to investigate. Let $k[X_0,\ldots,X_n]\morphism[\pi]k[X_1,\ldots,X_n]$ be the ring homomorphism induced by $X_0\mapsto 1$. Then 
+\begin{align*}
+	i^{-1}\big(V(I)\big)=\left\{(x_1,\ldots,x_n) \st f(1,x_1,\ldots,x_n) = 0\text{ for all }f\in I\right\}=V\big(\pi(I)\big)
 \end{align*}
-where $d$ is large enough. If $A = V_\aff(I)$ and $J$ denotes the ideal generated by the $\tilde f$, for all $f\in I$,
+and $\pi(I)\subseteq k[X_1,\ldots,X_n]$ is an ideal by surjectivity of $\pi$, hence $i$ is continuous.
+
+To show that any closed $A\subseteq k^n$ can be represented as $i^{-1}(B)$ for some closed $B\subseteq k^{n+1}$, we first construct,
+for any $f\in S = k[X_1,\ldots,X_n]$, a homogeneous polynomial $\snake f\in R$ such that $i^{-1}\big(V_\proj(\snake f)\big) = V_\aff(f)$.
+This can be done by putting \begin{align*}
+\snake f (X_0,\ldots,X_n)  = X_0^d f\left(\frac{X_1}{X_0},\ldots,\frac{X_n}{X_0}\right) \in R_d
+\end{align*}
+where $d$ is large enough. If $A = V_\aff(I)$ and $J$ denotes the ideal generated by the $\snake f$, for all $f\in I$,
 then $B = V_\proj(J)$ has the desired property.
 \end{proof}
 \begin{cor}
-\begin{itemize}
+\begin{alphanumerate}
 \item The closed subsets of $\IP^1(k)$ are $\IP^1(k)$ and the finite subsets.
-\item $\codim(x,\IP^n(k)) = n$ for any $x\in \IP^n(k)$ (use the bijection between irreducible closed
-$B\subseteq \IP^n(k)$ such that $B\cap \IA^n\neq \emptyset$
-and irreducible closed $A\subseteq k^n$, by $A = B\cap \IA^n$, resp. $B$ being the closure of $A$ in $\IP^n(k)$).
+\item $\codim(x,\IP^n(k)) = n$ for any $x\in \IP^n(k)$.
 \item $\dim(\IP^n)=n$.
-\item $\IP^n(k)$ is catenary ($\codim(Y,Z) = \codim(Y\cap \IA^n, Z\cap \IA^n)$ when $Y\cap \IA^n\neq\emptyset$
-by the argument used before, i.e. locality of codimension).
-\end{itemize}
+\item $\IP^n(k)$ is catenary.
+\end{alphanumerate}
 \end{cor}
+\begin{proof}
+	For \itememph{a}, let $Z\subseteq\IP^1(k)$ be closed, then $Z\cap\IP^1(k)\setminus V(X_0)$ and $Z\cap \IP^1(k)\cap V(X_1)$ are closed, hence finite (by the affine case), thus so is $Z$. Conversely, if $Z$ is finite, then it is closed by Remark~\reff{rem:closednessCondition}.
+	
+	Parts \itememph{b}, \itememph{c}, and \itememph{d} follow from the \emph{locality of codimension} (cf. Remark~\reff{rem:proofPreparations}) and the corresponding results in the affine case.
+\end{proof}
 \begin{defi}
-The \emph{affine cone} $C(Z)$ over a closed subset $Z\subseteq \IP^n(k)$ is \begin{align*}C(Z):=\{0\} \cup \{(x_0,\dotsc,x_n)\neq (0,\dotsc,0) \mid
-[x_0,\dotsc,x_n]\in Z\}.\end{align*}
+The \defemph{affine cone} $C(Z)$ over a closed subset $Z\subseteq \IP^n(k)$ is \begin{align*}C(Z)\coloneqq\{0\} \cup \left\{(x_0,\ldots,x_n)\neq 0 \st
+[x_0,\ldots,x_n]\in Z\right\}\;.
+\end{align*}
 \end{defi}
 \begin{prop}\lbl{prop:affineConeCorrespondence}
 $C(Z)$ is Zariski-closed in $k^{n+1}$ and homogeneous in the sense that $\lambda z\in C(Z)$ for all $z\in C(Z)$ and $\lambda\in k$.
 One obtains a correspondence as follows:
 \begin{align*}
-\begin{array}{ccc}
-(\text{closed homogeneous non-empty }C\subseteq k^{n+1})&\xleftrightarrow{~\sim~}&(\text{closed }Z\subseteq \IP^n)\\
-C=C(Z)&\longmapsfrom&Z\\
-C&\longmapsto&Z = \{[x_0,\dotsc,x_n] \mid (x_0,\dotsc,x_n)\in C\setminus \{0\}\}
+\left\{
+\begin{array}{c}
+\text{non-empty closed homogeneous}\\
+ \text{subsets }C\subseteq k^{n+1}
 \end{array}
+\right\}&\isomorphism\left\{\text{closed subsets }Z\subseteq \IP^n(k)\right\}\\
+C=C(Z)&\longmapsfrom Z\\
+C&\longmapsto Z = \left\{[x_0,\ldots,x_n] \st (x_0,\ldots,x_n)\in C\setminus \{0\}\right\}\;.
 \end{align*}
-$Z$ is irreducible $\iff$ $C(Z)$ is irreducible and $\neq\{0\}$. Moreover, $\dim(C(Z)) = \dim(Z)+1$
-%picture of a circle, to be interpreted as a projective space, and a cone, which has the shape of a pizza slice.
-and $\codim(C(Y),C(Z)) = \codim(Y,Z)$ when $Y\subseteq Z$ is irreducible.
+Under this correspondence, $Z$ is irreducible iff $C(Z)$ is irreducible and $\neq\{0\}$. Moreover, 
+\begin{align*}
+	\dim(C(Z)) = \dim(Z)+1\quad\text{and}\quad\codim(C(Y),C(Z)) = \codim(Y,Z)
+\end{align*}
+ when $Y\subseteq Z$ is irreducible.
 \end{prop}
 \begin{proof}
-The assertions about the correspondences (everything except \enquote{Moreover}) all follow from Propositions
-\reff{prop:projectiveZariskiIdealCorrespondence}
-and \reff{prop:projectiveZariskiIdealSpecialCorrespondence} and the correspondence
+The assertions about the correspondences (everything before \emph{moreover}) all follow from Propositions~\reff{prop:projectiveZariskiIdealCorrespondence}
+and~\reff{prop:projectiveZariskiIdealSpecialCorrespondence} and the correspondence
 \begin{align*}
-\begin{array}{ccc}
-(\text{ideals }I = \sqrt I\subseteq R)&\xleftrightarrow{~\sim~}&(\text{closed }C\subseteq k^{n+1})\\
-I = \{f\mid f\equiv 0\text{ on }C\}&\longmapsfrom& C\\
-I&\longmapsto&C=V(I)
-\end{array}.
+\left\{\text{ideals }I\subseteq R\text{ such that }I=\sqrt I\right\}&\isomorphism\left\{\text{Zariski-closed subsets }C\subseteq k^{n+1}\right\}\\
+\left\{f\in R\st f(x)=0\text{ for all }x\in C\right\} &\longmapsfrom C\\
+I&\longmapsto C=V(I)\;.
 \end{align*}
-One must of course check that an ideal $I=\sqrt I\subseteq R$ is homogeneous iff $V(I)$ is homogeneous, but this is easy.
-(In particular, $C(Z)$ is irreducible as it equals $V_\aff(\pp)$ for some $\pp \in \Spec R$ with $Z=V_\proj(\pp)$).
+One must of course check that an ideal $I=\sqrt I\subseteq R$ is homogeneous iff $V_\aff(I)$ is homogeneous, but this is easy. In particular, $C(Z)$ is irreducible iff it equals $V_\aff(\pp)$ for some $\pp \in \Spec R$ with $Z=V_\proj(\pp)$.
 
-We have $\dim(C(Z))\geq \dim(Z)+1$ because every chain $Z = Z_0 \supsetneqq Z_1\supsetneqq \cdots\supsetneqq Z_d$
-of irreducible subsets yields a chain\begin{align*}
-C(Z) = C(Z_0) \supsetneqq \cdots\supsetneqq C(Z_d)\supsetneqq \{0\}.
+We have $\dim(C(Z))\geq \dim(Z)+1$ because every chain $Z = Z_0 \supsetneqq Z_1\supsetneq \cdots\supsetneq Z_d$
+of irreducible subsets yields a chain
+\begin{align*}
+C(Z) = C(Z_0) \supsetneq \cdots\supsetneq C(Z_d)\supsetneq \{0\}.
 \end{align*}
-We have $\codim(C(Y),C(Z)) \geq \codim(Y,Z)$ by applying the cone construction of irreducibles between $Y$ and $Z$.
-As $\IP^n(k)$ is catenary of dimension $n$, we have $\dim(Z) + \codim(Z,\IP^n) = n$, hence we obtain
+Similarly, $\codim(C(Y),C(Z)) \geq \codim(Y,Z)$ by applying the same cone construction of irreducibles between $Y$ and $Z$.
+As $\IP^n(k)$ is catenary of dimension $n$, we have $\dim(Z) + \codim(Z,\IP^n(k)) = n$, hence we obtain
 \begin{align*}\lbl{eq:proofAffineConeCorrespondenceAst}
-&n+1\leq \dim(C(Z)) + \codim(C(Z),C(\IP^n)) = \dim(C(Z)) + \codim(C(Z),\IA^{n+1}) = n+1\tag{$\ast$}
+&n+1\leq \dim(C(Z)) + \codim\big(C(Z),C(\IP^n)\big) = \dim(C(Z)) + \codim\big(C(Z),k^{n+1}\big) = n+1\tag{$\ast$}
 \end{align*}
-by affine dimension theory from Algebra 1, cf. \cite{alg1}.
+by affine dimension theory from Algebra 1, cf. \cite[Theorem~5]{alg1}.
 If one of the inequalities $\dim(C(Z))\geq \dim(Z)+1$ or $\codim(Z,\IP^n) \leq \codim(C(Z), C(\IP^n))$ was strict,
-the above inequality \eqref{eq:proofAffineConeCorrespondenceAst} would be strict, which is impossible. It follows that
+the above inequality \eqreff{eq:proofAffineConeCorrespondenceAst} would be strict, which is impossible. It follows that
 \begin{align*}
 \codim(Y,Z) = \dim(Y)-\dim(Z) = \dim(C(Y)) - \dim(C(Z)) = \codim(C(Y),C(Z)),
 \end{align*}
-as both $\IP^n$ and $\IA^{n+1}$ are catenary.
+as both $\IP^n(k)$ and $k^{n+1}$ are catenary.
 \end{proof}
 \begin{cor}
 Every irreducible %and closed
-subset of codimension $1$ in $\IP^n$ has the form $Z = V(P)$ where $P\neq 0$ is a homogeneous polynomial of positive degree.
+subset of codimension $1$ in $\IP^n(k)$ has the form $Z = V(p)$ where $p\neq 0$ is a homogeneous polynomial of positive degree.
 \end{cor}
 \begin{proof}
-If $Z$ is ireducible of codimension $1$ in $\IP^n$, then $C(Z)$ has codimension $1$ in $\IA^{n+1}$. Hence $C(Z) = V(P)$ for some prime element
-$P\in R = k[X_0,\dotsc,X_n]$, where $P$ is uniquely determined up to multiplicative equivalence in $R$, i.e., up to $k^\times$
-(existence was shown in Proposition 2.1.3 in \cite{alg1}, uniqueness up to multiplicative equivalence is rather clear). 
-Since $P$ and $P(\lambda\cdot)$, for any $\lambda\in K^\times$, have the same vanishing set, it follows that $P(z) = c_\lambda P(\lambda z)$ for any $\lambda\in k^\times$. But any such polynomial must be homogeneous (choose $\lambda\in k^\times \bigcup\limits_{d\leq\deg P} \mu_d$,
-i.e. $\lambda$ not a root of unity).
+If $Z$ is ireducible of codimension $1$ in $\IP^n$, then $C(Z)$ has codimension $1$ in $\IA^{n+1}$. Hence $C(Z) = V(p)$ for some prime element
+$p\in R = k[X_0,\ldots,X_n]$, where $p$ is uniquely determined up to multiplicative equivalence in $R$, i.e., up to $k^\times$
+(existence was shown in \cite[Proposition~2.1.3]{alg1}, uniqueness up to multiplicative equivalence is rather clear). 
+Since $p(X)$ and $p(\lambda X)$, for any $\lambda\in k^\times$, have the same vanishing set $C(Z)$ (since this is homogeneous), it follows that for any $\lambda\in k^\times$ there is some $c_\lambda\in k^\times$ such that $p(X) = c_\lambda p(\lambda X)$. But any such polynomial must be homogeneous (choose $\lambda\in k^\times \setminus\bigcup_{d\leq\deg p} \mu_d$,
+i.e. $\lambda$ not a $d\ordinalth$ root of unity for all $d\leq\deg p$).
 \end{proof}
 %end of the section written by Felix
 
@@ -1587,7 +1598,7 @@ In \cite[Proposition~2.2.2]{alg1}, we actually proved a stronger result: If $X\s
 \begin{rem}
 	When $X\subseteq k^n$ is an irreducible open-closed subset (that is, an open subset of an irreducible closed subset -- a.k.a. a \emph{quasi-affine variety}, cf. \cite[Definition~2.2.1]{alg1}) then $\Oo(X)$ is a domain. 
 \end{rem}
-\begin{rem}
+\begin{rem}\lbl{rem:closednessCondition}
 	Let $T$ be any topological space, $A\subseteq T$ such that every $t\in T$ has an open neighbourhood $U\subseteq T$ such that $A\cap U$ is closed in $U$, then $A$ is closed in $T$ (we suspect that this is mentioned only because Professor Franke \sout{mistook this class for Algebraic Geometry I} recently used this in Algebraic Geometry I). If the condition is required only for $t\in A$, then $A$ is called \emph{locally closed}.
 \end{rem}
 If $X$ is irreducible, let $K(X)$ be the quotient field of $\Oo(X)$. This is called the \emph{field of rational functions} on $X$.
