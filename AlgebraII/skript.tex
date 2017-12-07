@@ -710,7 +710,7 @@ In many cases, the module of Kähler differentials can be calculated using $\Ome
             \begin{align*}
             	M\otimes_A(A/I)=M/(I\cdot M)\;, \quad m\otimes_A (a\mod I) \coloneqq (a\cdot m) \mod (I \cdot M)
             \end{align*}
-            has the desired universal property.
+            has the desired universal property. More about tensor products may be found in the appendix, section~\reff{sec:tensorProducts}.
         \item
             Using and \reff{eq:tensorDerSpam1} the calculation of $\Omega_{R[T_1,\ldots,T_n]/R}$ it is possible to calculate $\Omega_{(A/I)/R}$ (where $A=R[T_1,\ldots, T_n]$) as the cokernel of 
             \begin{diagram}
@@ -1489,7 +1489,11 @@ i.e. $\lambda$ not a $d\ordinalth$ root of unity for all $d\leq\deg p$).
 \end{defi}
 
 \begin{defi}[Regular function]\lbl{def:regularFunction}
-    Let $Z\subseteq \overline{Z}\subseteq \IP^n$ be a quasi-projective algebraic variety in $\IP^n(k)$. A function $Z\morphism[f] k$ is called \defemph{regular} at $x\in Z$ if $x$ has an open neighbourhood $U$ in $\IP^n(k)$ such that there are $p,q\in R = k[X_0,\ldots,X_n]$ which are homogeneous of the same degree, such that $q(y_0,\ldots,y_n) \neq 0$ for $[y_0,\ldots,y_n]\in U$ and such that $f([y_0,\ldots,y_n]) = \frac{p(y_0,\ldots,y_n)}{q(y_0,\ldots,y_n)}$ whenever $[y_0,\ldots, y_n]\in U\cap Z$. We say that $f$ is regular, or $f\in \Oo(Z)$, if it is regular at every $x\in Z$.
+    Let $Z\subseteq\IP^n(k)$ be a quasi-projective algebraic variety in $\IP^n(k)$. A function $Z\morphism[f] k$ is called \defemph{regular} at $x\in Z$ if $x$ has an open neighbourhood $U$ in $\IP^n(k)$ such that there are $p,q\in R = k[X_0,\ldots,X_n]$ which are homogeneous of the same degree, such that $q(y_0,\ldots,y_n) \neq 0$ for $[y_0,\ldots,y_n]\in U$ and
+    \begin{align*}
+    	f([y_0,\ldots,y_n]) = \frac{p(y_0,\ldots,y_n)}{q(y_0,\ldots,y_n)}\quad\text{whenever}\quad[y_0,\ldots, y_n]\in U\cap Z\; 
+    \end{align*}
+    We say that $f$ is regular, or $f\in \Oo(Z)$, if it is regular at every $x\in Z$.
 \end{defi}
 \begin{rem*}
     \begin{alphanumerate}
@@ -1498,20 +1502,23 @@ i.e. $\lambda$ not a $d\ordinalth$ root of unity for all $d\leq\deg p$).
         \item 
             The condition $U\cap V(q) = \emptyset$ could be weakened to $Z\cap U\cap V(q) = \emptyset$ or strengthened to $U=\IP^n(k)\setminus V(q)$ without altering the definition.
         \item 
-            $\Oo(Z)$ is a $k$-algebra, where $+$ and $\cdot$ are defined pointwise. If $(U,p,q)$ above are for $f$ and $(\snake U, \snake p, \snake q)$ for $\snake f$, then
+            $\Oo(Z)$ is a $k$-algebra, where $+$ and $\cdot$ are defined pointwise. If $(U,p,q)$ above are for $f$, and $(\snake U, \snake p, \snake q)$ for $\snake f$ witness their respective regularity condition at $[x]$, then
             \begin{align*}
-                (f+\snake f)[y] &= \frac{p(y)\snake q(y) + q(y)\snake p(y)}{(\snake p\snake q)(y)}\\
-                (f\cdot\snake f)[y] &= \frac{(p\snake p)(y)}{(q\snake q)(y)}
+                (f+\snake f)\big([y]\big) = \frac{p(y)\snake q(y) + q(y)\snake p(y)}{(q\snake q)(y)}\;,\quad
+                (f\cdot\snake f)\big([y]\big) = \frac{(p\snake p)(y)}{(q\snake q)(y)}\quad\text{for }[y]\in Z\cap U\cap\snake U\;.
             \end{align*}
-            on $Z\cap U\cap\snake U$.
         \item 
-            The set of units $\Oo(Z)^\times$ is $\left\{f\in \Oo(Z)\st V(f)\cap Z = \emptyset\right\}$. If this happens, then in the above situation, $p(y)\neq0$ when $y\in U\cap Z$. Let $\snake U = U\setminus V(p)$, then $\snake U \cap Z = U\cap Z$ and $\frac{1}{f} = \frac{q}{p}$ there.
+            The set of units $\Oo(Z)^\times$ is $\left\{f\in \Oo(Z)\st V(f)\cap Z = \emptyset\right\}$. Indeed, if this happens, then in the above situation we have $p(y)\neq0$ for all $y\in U\cap Z$. Let $\snake U = U\setminus V(p)$, then $\snake U \cap Z = U\cap Z$ and the equality $\frac{1}{f} = \frac{q}{p}$ holds there.
         \item 
-            Let $\pi\colon k^{n+1}\setminus \{0\} \morphism \IP^n(k)$ be the projection and let, for $d\in \IZ$, $(\Oo(d))(Z)$ be the set of all functions $f\colon \pi^{-1}(Z) = C(Z)\setminus\{0\}\morphism k$ which are homogeneous of degree $d$:
+            Let $\pi\colon k^{n+1}\setminus \{0\} \morphism \IP^n(k)$ be the projection and let, for $d\in \IZ$, $\Oo^d(Z)$ be the set of all functions $f\colon \pi^{-1}(Z) = C(Z)\setminus\{0\}\morphism k$ which are homogeneous of degree $d$, i.e.
             \begin{align*}
-                f(\lambda y_0,\ldots, \lambda y_n) = \lambda^d f(y_0,\ldots, y_n)
+                f(\lambda y_0,\ldots, \lambda y_n) = \lambda^d f(y_0,\ldots, y_n)\quad \text{for all }y\in C(Z)\setminus\{0\}\text{ and }\lambda \in k^\times\;, 
             \end{align*}
-            (for all $y\in C(Z)\setminus\{0\}$ and $\lambda \in k^\times$) and such that for every $x\in Z$, there are an open neighbourhood $U$ and $p\in R_{d+e}$, $q\in R_e$ (for some $e\in \IN$) such that $U\cap V(q) = \emptyset$ and such that $f([y_0,\ldots, y_n]) = \frac{p(y_0,\ldots, y_n)}{q(y_0,\ldots, y_n)}$. If $f\in (\Oo(d))(Z)$ and $\phi\in (\Oo(\delta))(Z)$ then $(f+\phi)\in (\Oo(d))(Z)$ if $d=\delta$ and $f\phi \in (\Oo(d+\delta))(Z)$ in general and $\frac{1}{f}\in (\Oo(-d))(Z)$ if $f(y) \neq 0$ for $y\in Z$. The $\Oo(d)$ are \emph{line bundles} (locally free modules of rank 1) over the sheaf of rings $\Oo$.
+            and such that for every $x\in Z$, there are an open neighbourhood $U$ and $p\in R_{d+e}$, $q\in R_e$ (for some $e\in \IN$) such that $U\cap V(q) = \emptyset$ and such that 
+            \begin{align*}
+            	f([y_0,\ldots, y_n]) = \frac{p(y_0,\ldots, y_n)}{q(y_0,\ldots, y_n)}\;. 
+            \end{align*}
+            If $f\in \Oo^d(Z)$ and $\phi\in\Oo^\delta(Z)$ then $f\phi \in \Oo^{d+\delta}(Z)$ and $\frac{1}{f}\in \Oo^{-d}(Z)$ if $f(y) \neq 0$ for $y\in Z$. Moreover, $(f+\phi)\in \Oo^d(Z)$ if $d=\delta$. The $\Oo^d$ are \emph{line bundles} (locally free modules of rank 1) over the \emph{sheaf of rings} $\Oo$ (cf. Definition~\reff{def:sheaf} and~\reff{def:sheafOfModules}).
     \end{alphanumerate}
 \end{rem*}
 
@@ -1782,7 +1789,7 @@ is called the \emph{degree} and $\Min_{x/K}$ the \emph{minimal polynomial} of $x
 \end{proof}
 
 
-\section{Construction and basic properties of tensor products of modules over a ring}
+\section{Construction and basic properties of tensor products of modules over a ring}\lbl{sec:tensorProducts}
 
 \begin{defi}
     Let $M$ and $N$ be modules over the (commutative) ring $R$. Let $\Bil_R(M,N;T)$ be the $R$-module of $R$-bilinear maps $f\colon M\times N \morphism T$. A \defemph{tensor product} $M\otimes_R N$ is an $R$-module together with an $R$-bilinear map 
@@ -1903,24 +1910,23 @@ hold for any $A$-algebra $S$ and any $B$-algebra $T$.
 \section{Sheaves}
 
 \begin{defi}[Presheaf]\lbl{def:presheaf}
-    A \defemph{presheaf} $\Aa$ (of sets, groups, rings, etc.) on a topological space $X$ associates every open subset $U\subseteq X$ with an object (set, group, ring, etc.) $\Aa(U)$ (called the set (group, ring, etc.) of sections of $\Aa$ on  $U$) and for every inclusion $V\subseteq U$ of open subsets, a morphism $-|_V\colon \Aa(U)\morphism \Aa(V)$ such that $a|_U = a$ when $a\in \Aa(U)$ and such that $(a|_V)|_W = a|_W$ for open $W\subseteq V\subseteq U$ and $a\in \Aa(U)$. This can also be expressed as $\Aa$ being a functor from the category of open subsets of $X$ (the inclusions being the morphisms) to the given category.
-\end{defi}
-\begin{defi}[Separated presheaf]\lbl{def:separated}
-    A presheaf is called \defemph{separated} iff for any open covering $U = \bigcup_{i\in I} U_i$ of an open subset of $X$, the map
-    \begin{align*}
-        \Aa(U) &\morphism \prod_{i\in I} \Aa(U_i)\\
-        a &\longmapsto (a|_{U_i})_{i\in I}
-    \end{align*}
-    is injective.
+    A \defemph{presheaf} $\Gg$ (with values in the category $\Aa$ of sets, groups, rings, etc.) on a topological space $X$ associates
+    \begin{itemize}
+    	\item every open subset $U\subseteq X$ with an object $\Gg(U)\in\Ob(\Aa)$ (called the set (group, ring, etc.) of \emph{sections} of $\Gg$ on  $U$)
+    	\item and for every inclusion $V\subseteq U$ of open subsets, a morphism $(-)|_V\colon \Gg(U)\morphism \Gg(V)$ such that $g|_U = g$ when $g\in \Gg(U)$ and such that $(g|_V)|_W = g|_W$ for open $W\subseteq V\subseteq U$ and $g\in \Gg(U)$. 
+    \end{itemize}
+    This can also be expressed as $\Gg$ being a \emph{functor} from the category of open subsets of $X$ (the inclusions being the morphisms) to the given category.
 \end{defi}
 
 \begin{defi}[Sheaf]\lbl{def:sheaf}
-    A presheaf is called \defemph{sheaf} if it fulfills the so called \emph{sheaf axiom}, i.e. if 
+    A presheaf $\Gg$ is called \defemph{sheaf} if it fulfills the so called \emph{sheaf axiom}, i.e. if for any open cover $U = \bigcup_{i\in I} U_i$ of an open subset $U\subseteq X$,
     \begin{align*}
-        \Aa(U) &\morphism \left\{(a_i)_{i\in I}\in \prod_{i\in I} \Aa(U_i)\st a_i|_{U_i\cap U_j} = a_j|_{U_i\cap U_j} \text{ for } i,j\in I\right\}\\
-        a& \longmapsto (a|_{U_i})_{i\in I}
+        \Gg(U) &\morphism \left\{(g_i)_{i\in I}\in \prod_{i\in I} \Gg(U_i)\st g_i|_{U_i\cap U_j} = g_j|_{U_i\cap U_j} \text{ for } i,j\in I\right\}\\
+        g& \longmapsto (g|_{U_i})_{i\in I}
     \end{align*}
-    is bijective for any open covering $U = \bigcup_{i\in I} U_i$ of any open subset $U\subseteq X$. 
+    is bijective. 
+    
+    In general, this map is always well-defined but may fail to be bijective. If it is injective at least, $\Gg$ is called a \defemph{separated} presheaf.
 \end{defi}
 \begin{rem}
     \begin{alphanumerate}
@@ -1929,7 +1935,7 @@ hold for any $A$-algebra $S$ and any $B$-algebra $T$.
         \item
             A typical example is the sheaf of $k$-valued functions on $X$, associating to any $U\subseteq X$ the rings of $k$-valued functions on $U$. Normally, one considers \emph{subsheaves} defined by conditions like being locally constant, $C^\infty$, holomorphic, regular in some sense and so on.
         \item 
-            Our definitions of $\Oo(Z)$ or $(\Oo(d))(Z)$ can be applied to any subset $Z\subseteq \IP^n(k)$. When $Z=\emptyset$, it gives $\Oo(Z) = \{0\}$ (or $(\Oo(d))(Z) = \{0\}$) with the empty function as the only element. When $Z$ is quasi-projective, $\Oo$ is sheaf of rings (a subsheaf of the sheaf of $k$-valued functions on $Z$) and $\Oo(d)\colon U\mapsto (\Oo(d))(U)$ is a sheaf of modules.
+            Our definitions of $\Oo(Z)$ or $\Oo^d(Z)$ can be applied to any subset $Z\subseteq \IP^n(k)$. When $Z=\emptyset$, it gives $\Oo(Z) = \{0\}$ (or $\Oo^d(Z) = \{0\}$) with the empty function as the only element. When $Z$ is quasi-projective, $\Oo$ is sheaf of rings (a subsheaf of the sheaf of $k$-valued functions on $Z$) and $\Oo(d)\colon U\mapsto \Oo^d(U)$ is a sheaf of modules.
     \end{alphanumerate}
 \end{rem}
 \begin{defi}[Sheaf of modules]\lbl{def:sheafOfModules}
@@ -1938,7 +1944,7 @@ hold for any $A$-algebra $S$ and any $B$-algebra $T$.
         \Rr(U) \times \Mm(U) &\morphism \Mm(U)\\
         (\rho,\mu) &\longmapsto \rho\cdot\mu
     \end{align*}
-    defining the structure of an $\Rr(U)$-module on $\Mm(U)$ and such that $(\rho\cdot \mu)|_V = (\rho|_V)\cdot (\mu|_V)$ when $V\subseteq U$ are open subsets of $X$, $\mu\in \Mm(U)$, $\rho \in \Rr(U)$. A sheaf of modules is \emph{locally free} of rank $n$ if every $x\in X$ has a neighbourhood $U$ such that $\Mm|_U\simeq(R|_U)^n$. When $n=1$ this is called a line bundle.
+    defining the structure of an $\Rr(U)$-module on $\Mm(U)$ and such that $(\rho\cdot \mu)|_V = (\rho|_V)\cdot (\mu|_V)$ when $V\subseteq U$ are open subsets of $X$, $\mu\in \Mm(U)$, $\rho \in \Rr(U)$. A sheaf of modules is \defemph{locally free} of rank $n$ if every $x\in X$ has a neighbourhood $U$ such that $\Mm|_U\simeq(R|_U)^n$. When $n=1$ this is called a \emph{line bundle}.
 \end{defi}
 \printbibliography
 \end{document}          
