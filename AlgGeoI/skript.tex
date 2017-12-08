@@ -259,7 +259,7 @@ Let it be said that the first three recommendations are from Professor Franke wh
         \end{itemize}
         
     \end{rem*}
-\section{General properties and sheaf constructions}
+\section{General properties and sheaf constructions}\lbl{sec:SheafConstructions}
 \begin{defi}[Stalk]\lbl{def:stalk}
     Let $\Gg$ be a presheaf on the topological space $X$ and $x\in X$. Let $\Gg_x = \colimit[U] \Gg(U)$, denote the \defemph{stalk} of $\Gg$ at $x$, where $\colimit$ is taken over the open neighbourhoods $U$ of $x$.
 \end{defi}
@@ -1492,13 +1492,90 @@ $\!$\begin{tikzpicture}
 	    \left\{\text{closed immersions }K\morphism[\kappa]X\right\}/_\sim&\isomorphism\left\{\text{sheaves of ideals }\Ii\subseteq \Oo_X\right\}\\
         (K\morphism[\kappa]X)/_\sim &\longmapsto \Ii = \ker(\Oo_X\morphism[\kappa^*]\kappa_* \Oo_K)\;.
     \end{align*}
+    If $K\morphism[\kappa] X$ belongs to the sheaf of ideals $\Ii$,
+    \begin{align*}
+        \Hom(T,K) \isomorphism\left\{ g\in \Hom(T,X) \st \Ii\subseteq \ker(\Oo_X \morphism[g^*]g_*\Oo_T)\right\}
+    \end{align*}
+    is bijective for any test object $T$.
 \end{prop}
 \begin{rem*}
     When $X$ is a prescheme, $K$ will fail to be a prescheme unless $\Ii$ is \emph{quasi-coherent}.
 \end{rem*}
+\begin{proof}
+    Let $\Ii\subseteq \Oo_x$ be a sheaf of ideals. We put 
+    \begin{align*}
+        K = \left\{x\in X\st\Ii_x\subsetneq \Oo_{X,x}\right\} \morphism[k] X\;,
+    \end{align*}
+    which is closed by the last corollary, equipped with the induced topology, 
+    \begin{align*}
+        \Oo_{K,[x]} = \Oo_{X,x} / \Ii_x
+    \end{align*}
+    and $\Oo_K$ be the $(f_x)_{x\in U}\in \prod_{x\in U}\Oo_{K,[x]}$ such that for every $x\in U$ there exist an open neighbourhood $V$ of $x$ in $X$ and $\phi\in \Oo_X(V)$ such that for every $y\in U\cap V$, $f_y$ equals the image of $\phi$ under 
+    \begin{align}\lbl{eq:stalkProj1.3.4}
+        \Oo_X(V) \morphism \Oo_{X,y} \morphism \Oo_{K,[y]}\;.
+    \end{align}
+    In an argument similar to the proof of Proposition \reff{prop:equalizerLRS} one shows $\Oo_{K,x}\isomorphism \Oo_{K,[x]}$. Let $\Oo_X \morphism[k^*]k_* \Oo_K$ send $f\in \Oo_X(V)$ to its images under \eqreff{eq:stalkProj1.3.4}, with $y$ running over $V\cap K$. It is easy to see that this is a locally ringed space $K$. It is easy to see that the claimed description of $\Hom(T,K)$ holds, and that $\Ii = \ker(\Oo_X \morphism[k^*] k_* \Oo_K)$. If $L\morphism[\ell] K$ is any closed immersion and $\Ii= \ker (\Oo_X \morphism[\ell^*] \ell_* \Oo_L)$ then we have a morphism $L \morphism[\iota] K$ such that $\ell = k\iota$. The image of $L$ in $X$ coincides with $K$ because it equals $\left\{ x\in X\st (\ell_*\Oo_L)_x \neq 0\right\} = \left\{ x\in X\st \Ii_x \subsetneq \Oo_{X,x}\right\}$. Since both sets carry the induced topology, $\iota$ is a homeomorphism. For $\lambda \in L$ we have a commutative diagram where the two slated arrows are surjections with kernel $\Ii_{\ell(x)}$. It follows that the right vertical arrow $\iota^*$ is an isomorphism, and $\iota$ induces isomorphisms on stalks in addition to being a homeomorphism. It is thus an isomorphism and $(K\morphism[k] X)$ is equivalent to $(L\morphism[\ell] X)$.
+\end{proof}
+\begin{defi}
+    If $X\morphism[f] Y$ is a morphism of ringed spaces and $\Mm$ an $\Oo_X$-module, we equip $f_* \Mm$ with the following structure of an $\Oo_Y$-module. $f_*\Mm$ is an $f_*\Oo_X$-module using multiplications
+    \begin{align*}
+        (f_*\Oo_X)(V)\times (f_*\Mm)(U)  = \Oo_X(f^{-1}(V))\times \Mm(f^{-1}(V)) \morphism[\cdot] \Mm(f^{-1}(V)) = (f_*\Mm)(V)
+    \end{align*}
+    and the morphism $\Oo_Y\morphism[f^*] f_* \Oo_X$ of sheaves of rings.
+\end{defi}
+\begin{fact}
+    Let $X$ be a locally ringed space and $U\subseteq X$ open and $f\in \Oo_X(U)$, we have morphisms 
+    \begin{align*}
+        \Oo_X(U)_f \morphism \Oo_X(U\setminus V(f))
+    \end{align*}
+    and, for any $\Oo_X$-module $\Mm$,
+    \begin{align}\lbl{eq:moduleLoc}
+        \Mm(U)_f \morphism \Mm(U\setminus V(f))
+    \end{align}
+    using the universal property of localization and these happy little diagrams:
+\end{fact}
 
 
+\section{The structure sheaf and quasi-coherent sheaf of modules on \texorpdfstring{$\Spec R$}{Spec R}}
+Let $R$ be a ring, $\Bb = \left\{ (\Spec R)\setminus V(f)\st f\in R\right\}$. This is a base of topology of $\Spec R$ equipped with the Zariski-topology, which is closed under intersection since $((\Spec R)\setminus V(f))\cap ((\Spec R)\setminus V(g)) = (\Spec R)\setminus V(fg)$. The localization $R_f$ depends, up to unique isomorphism of $R$-algebras only on $(\Spec R)\setminus V(f)$. To see this, we claim that when $(\Spec R)\setminus V(g)\subseteq (\Spec R)\setminus V(f)$ there is a unique homomorphism $R_f\morphism R_g$ of $R$-algebras. In fact, $V(g)\supseteq V(f)$ implies $g\in \sqrt{f\cdot R}$ which shows that some of $g$ is divisible by $f$ and $f$ is a unit in $R_g$. The universal property of localization thus establishes our claim.
 
+From these considerations, we have a presheaf of rings on $\Bb$:
+\begin{align}\lbl{eq:SpecRingLoc}
+    (\Spec R)\setminus V(f) \morphism R_f\;.
+\end{align}
+If $M$ is an $R$-module, we have a similar presheaf (of abelian groups or of modules over the former presheaf of rings)
+\begin{align} \lbl{eq:SpecModuleLoc}
+    (\Spec R)\setminus V(f) \morphism M_f
+\end{align}
+\begin{defi}
+    Let $\Oo_{\Spec R}$ and $\snake M$ be the sheafifications of these presheaves on $\Bb$.
+\end{defi}
+\begin{rem*}
+    Note that the stalks of the presheaves are easily calculated: The stalk of \eqreff{eq:SpecRingLoc} at $\pp$ is 
+    \begin{align*}
+        \colimit[f\not \in \pp] R_f \isomorphism R_\pp
+    \end{align*}
+    while the stalk of \eqreff{eq:SpecModuleLoc} is $M_\pp$. Thus
+    \begin{align*}
+        (\Oo_{\Spec R})(U) &\simeq \left\{(r_\pp)_{\pp\in U}\in \prod_{\pp\in U} R_\pp \st \text{every } \qq\in U \text{ has an open neighbourhood } (\Spec R)\setminus V(f) \text{ such that there is } \rho \in R_f \text{ such that } r_\pp \text{ is the image of } \rho \text{ under } R_f\morphism R_\pp\right\}\\
+        \snake M(U) &\simeq \left\{(m_\pp)_{\pp\in U}\in \prod_{\pp\in U} M_\pp \st \text{every } \qq\in U \text{ has an open neighbourhood } (\Spec R)\setminus V(f) \text{ such that there is } \mu \in M_f \text{ such that } m_\pp \text{ is the image of } \mu \text{ under } M_f\morphism M_\pp\right\}
+    \end{align*}
+    by our construction of the sheafification in subsection \reff{sec:SheafConstructions}, and by the calculation of stalks in that subsection. $(\Oo_{\Spec R})_\pp \isomorphism R_\pp$ and $(\snake M_\pp)\isomorphism M_\pp$.
+\end{rem*}
+\begin{fact}
+    $\Oo_{\Spec R}|_{(\Spec R)\setminus V(f)}$ is isomorphic to $\Oo_{\Spec R_f}$ und the identification $\Spec R_f\isomorphism (\Spec R)\setminus V(f)$ sending $\qq\in \Spec R_f$ to its preimage in $R$ and $\pp\in \Spec R$ to $\qq = \pp R_f$. In the following conditions we identify $\Spec R_f$ with $(\Spec R)\setminus V(f)$, for the sake of convenience.
+\end{fact}
+\begin{prop}
+    The maps $R\morphism \Oo_{\Spec R}(\Spec R)$ and $M\morphism \snake M (\Spec R)$, sending $r$ and $m$ (which are global sections of the presheaves \eqreff{eq:SpecRingLoc} and \eqreff{eq:SpecModuleLoc}) to their images in the sheafifications, are isomorphisms.
+\end{prop}
+\begin{rem*}
+    By the previous fact in its analogue $\snake M|_{\Spec R_f} \simeq \snake{M_f}$, we also have
+    \begin{align*}
+        (\Oo_{\Spec R})((\Spec R)\setminus V(f)) &\isomorphism R_f\\
+        (\snake M)((\Spec R)\setminus V(f)) &\isomorphism M_f\;.
+    \end{align*}
+    However our proof of the Proposition will yield this directly.
+\end{rem*}
 
 
 
