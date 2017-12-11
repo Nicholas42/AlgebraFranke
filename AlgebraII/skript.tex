@@ -65,7 +65,7 @@ The oh-so-humble authors of these notes want to use this opportunity to recommen
 \begin{itemize}
 	\item Schwab, N. \& Wagner, F.:  \href{https://github.com/Nicholas42/AlgebraFranke/tree/master/AlgebraI}{\emph{Algebra I by Jens Franke}} \cite{alg1}.
 \end{itemize}
-as well. \textbf{Warning!} Somewhere in the middle of the last-mentioned text, the term \emph{irreducible} is redefined as irreducible \emph{and closed}. So don't let yourself get confused. 
+as well. \textbf{Warning!} Somewhere in the middle of the last-mentioned text, the term \emph{irreducible} is redefined as irreducible \emph{and closed}. So don't let yourself get confused. Also, this lecture is intended by Professor Franke to be a continuation of Algebra~I and that's why our theorem numbering will start with 11 on the next page. 
 
 \chapter{Krull's principal ideal theorem}\lbl{ch:krullPrincipalIdealThm}
 \section{Formulation}
@@ -370,13 +370,13 @@ Applying Proposition~\reff{prop:NAK} to $M/N$, we obtain the following corollary
 \end{example*}
 
 \begin{prop}[Jacobian criterion of regularity]\lbl{prop:Jacobian}
-    Let $X\subseteq k^n$ be  a quasi-affine variety in $k^n$. Let $\pp\subseteq R=k[X_1,\ldots,X_n]$ be the ideal of functions vanishing on $X$. Then $X$ is regular at $x\in X$ iff 
+    Let $X\subseteq k^n$ be  a quasi-affine variety in $k^n$. Let $I\subseteq R=k[X_1,\ldots,X_n]$ be the ideal of functions vanishing on $X$. Then $X$ is regular at $x\in X$ iff 
     \begin{align*}
-        \dim_k \left\{\nabla f(x) = \left(\frac{\partial f}{\partial X_i}(x)\right)_{i=1}^n \st f\in \pp\right\} = \codim(X,k^n)\;.
+        \dim_k \left\{\nabla f(x) = \left(\frac{\partial f}{\partial X_i}(x)\right)_{i=1}^n \st f\in I\right\} = \codim(X,k^n)\;.
     \end{align*}
 \end{prop}
 \begin{proof}
-    Since $\dim (\overline{X}) = \dim (X)$ and $\Oo_{\overline{X},x} = \Oo_{X,x}$, we may replace $X$ by its closure $\ov{X}=V(\pp)$ and assume $X$ to be affine. Let $R=k[X_1,\ldots,X_n]$, $\mm\subseteq R$ the ideal of functions vanishing at $x$. The homomorphism
+    Since $\dim (\overline{X}) = \dim (X)$ and $\Oo_{\overline{X},x} = \Oo_{X,x}$, we may replace $X$ by its closure $\ov{X}=V(I)$ and assume $X$ to be affine. Let $R=k[X_1,\ldots,X_n]$, $\mm\subseteq R$ the ideal of functions vanishing at $x$. The homomorphism
     \begin{align*}
     	\phi\colon\mm&\morphism k^n\\
     	f&\longmapsto\nabla f(x)
@@ -388,9 +388,9 @@ Applying Proposition~\reff{prop:NAK} to $M/N$, we obtain the following corollary
 		    (f\mod \mm^2)&\longmapsto \nabla f(x)
 	    \end{split}
     \end{align}
-    is (well-defined and) an isomorphism of $k$-vector spaces. Under this isomorphism, the image of $\pp$ in $\mm/\mm^2$ is mapped to $\Nn=\left\{\nabla f(x) \st f\in \pp\right\}$.
+    is (well-defined and) an isomorphism of $k$-vector spaces. Under this isomorphism, the image of $I$ in $\mm/\mm^2$ is mapped to $\Nn=\left\{\nabla f(x) \st f\in I\right\}$.
     
-     Denote by $\nn\subseteq \Oo(X)=R/\pp$ the ideal of regular functions on $X$ vanishing at $x$. Then $\nn = \mm/\pp$. We have $\Oo_{X,x} \simeq \Oo(X)_\nn$, hence $X$ is regular at $x$ iff $\dim_k(\nn/\nn^2) = \dim (X)$. As $\nn/\nn^2\simeq \mm/(\pp+\mm^2)$, this implies that \eqreff{eq:modToNabla} maps $\nn/\nn^2$ isomorphically to $k^n/\Nn$ (as a quotient of $k$-vector spaces) and $X$ is regular at $x$ iff 
+     Denote by $\nn\subseteq \Oo(X)=R/I$ the ideal of regular functions on $X$ vanishing at $x$. Then $\nn = \mm/I$. We have $\Oo_{X,x} \simeq \Oo(X)_\nn$, hence $X$ is regular at $x$ iff $\dim_k(\nn/\nn^2) = \dim (X)$. As $\nn/\nn^2\simeq \mm/(I+\mm^2)$, this implies that \eqreff{eq:modToNabla} maps $\nn/\nn^2$ isomorphically to $k^n/\Nn$ (as a quotient of $k$-vector spaces) and $X$ is regular at $x$ iff 
      \begin{align*}
      	n-\dim\Nn = \dim (X)\;,\quad\text{or equivalently}\quad\dim \Nn =n-\dim (X) = \codim(X,k^n)\;.
      \end{align*}
@@ -421,13 +421,13 @@ Applying Proposition~\reff{prop:NAK} to $M/N$, we obtain the following corollary
 \begin{rem*}
     By Proposition~\reff{prop:dimLeqGeneratorsMaximal} and the proof of Proposition~\reff{prop:Jacobian}, 
     \begin{align*}
-        \dim\left\{\nabla f(x)\st f\in\pp\right\} \leq \codim(X,k^n)\;.
+        \dim\left\{\nabla f(x)\st f\in I\right\} \leq \codim(X,k^n)\;.
     \end{align*}
 \end{rem*}
 \begin{rem}
-    The $k$-vector space $\Nn = \left\{\nabla f(x) \st f\in \pp\right\}$ may be viewed as the \emph{conormal space} to $X$ at $x$ (at least if $X$ is regular at $x$) and its complement 
+    The $k$-vector space $\Nn = \left\{\nabla f(x) \st f\in I\right\}$ may be viewed as the \emph{conormal space} to $X$ at $x$ (at least if $X$ is regular at $x$) and its complement 
     \begin{align*}
-        \Nn^\perp = \left\{ \xi = (\xi_i)_{i=1}^n \in k^n \st \sum_{i=1}^{n}\frac{\partial f}{\partial X_i}(x)\cdot\xi_i=0 \text{ for all } f\in \pp\right\}
+        \Nn^\perp = \left\{ \xi = (\xi_i)_{i=1}^n \in k^n \st \sum_{i=1}^{n}\frac{\partial f}{\partial X_i}(x)\cdot\xi_i=0 \text{ for all } f\in I\right\}
     \end{align*}
     as the \emph{tangent space} at $x$ of $X$.
 \end{rem}
@@ -1415,7 +1415,7 @@ then $B = V_\proj(J)$ has the desired property.
 \begin{proof}
 	For \itememph{a}, let $Z\subseteq\IP^1(k)$ be closed, then $Z\cap\IP^1(k)\setminus V(X_0)$ and $Z\cap \IP^1(k)\cap V(X_1)$ are closed, hence finite (by the affine case), thus so is $Z$. Conversely, if $Z$ is finite, then it is closed by Remark~\reff{rem:closednessCondition}.
 	
-	Parts \itememph{b}, \itememph{c}, and \itememph{d} follow from the \emph{locality of codimension} (cf. Remark~\reff{rem:proofPreparations}) and the corresponding results in the affine case.
+	Parts \itememph{b}, \itememph{c}, and \itememph{d} follow from the \emph{locality of codimension} (cf. Remark~\reff{rem:proofPreparations}\itememph{a}) and the corresponding results in the affine case.
 \end{proof}
 \begin{defi}
 The \defemph{affine cone} $C(Z)$ over a closed subset $Z\subseteq \IP^n(k)$ is \begin{align*}C(Z)\coloneqq\{0\} \cup \left\{(x_0,\ldots,x_n)\neq 0 \st
@@ -1524,22 +1524,22 @@ i.e. $\lambda$ not a $d\ordinalth$ root of unity for all $d\leq\deg p$).
 \begin{example}
     Let $Y\subseteq \IP^n(k)$ be a quasi-projective variety. We have $Y = \bigcup_{i=0}^n (Y\setminus V(X_i))$ and for $U\subseteq Y\setminus V(X_i)$
     \begin{align*}
-        \Oo(U) &\morphism (\Oo^\ell)(U)\\
-        f&\longmapsto ((x_0,\ldots, x_n) \mapsto x_i^\ell f([x_0,\ldots, x_n])
+        \Oo(U) &\morphism \Oo^\ell(U)\\
+        f&\longmapsto \big((x_0,\ldots, x_n) \mapsto x_i^\ell f([x_0,\ldots, x_n]\big)
     \end{align*}
-    defines an isomorphism of sheaves of abelian groups or $\Oo$-modules by $\Oo|_U \morphism[\cdot x_0^\ell] \Oo^\ell|_U$. Thus, $\Oo^\ell$ is a line bundle on $Y$. 
+    defines an isomorphism $\Oo|_U \morphism[\cdot x_0^\ell] \Oo^\ell|_U$ of sheaves of (abelian groups or) $\Oo$-modules. Thus, $\Oo^\ell$ is a line bundle on $Y$. 
 \end{example}
 \begin{prop}
-    Let $Z\subseteq \IP^n(k)$ be a quasi-projective algebraic variety, then $Z\cap \IA^n(k) = Z \setminus V(X_0)$ is quasi-affine or empty, and a function $f\colon Z\cap \IA^n(k)\morphism k$ is regular in the sense of Definition \reff{def:regularFunction} if and only if it is regular in the sense of the quasi-affine counterpart of that definition. 
+    Let $Z\subseteq \IP^n(k)$ be a quasi-projective algebraic variety, then $Z\cap \IA^n(k) = Z \setminus V(X_0)$ is quasi-affine or empty, and a function $f\colon Z\cap \IA^n(k)\morphism k$ is regular in the sense of Definition~\reff{def:regularFunction} if and only if it is regular in the sense of the quasi-affine counterpart of that definition. 
 \end{prop}
 \begin{proof}
-    The first part is obvious by Proposition \reff{prop:projectiveAffineTopology}. The comparison of the structure sheaves will be left as an exercise.
+    The first part is obvious by Proposition \reff{prop:projectiveAffineTopology}. For the comparison of the structure sheaves use $X_0$ to homogenize (quasi-affine) regular functions; the details will be left as an exercise.
 \end{proof}
 \begin{cor*}
     Quasi-projective varieties are prevarieties in the sense Definition \reff{def:prevariety}.
 \end{cor*}
 \begin{cor}\lbl{cor:tupleRegularContiuous}
-    If $f_1,\ldots, f_n\in \Oo(Z)$ then $Z\morphism[(f_1,\ldots, f_n)]\IA^n$.
+    If $f_1,\ldots, f_n\in \Oo(Z)$ then $Z\xrightarrow{(f_1,\ldots, f_n)}\IA^n(k)$ is Zariski-continous.
 \end{cor}
 \begin{rem*}
     This holds when $Z$ is any prevariety, and follows from the corresponding assertion about quasi-affine varieties.
@@ -1551,18 +1551,18 @@ i.e. $\lambda$ not a $d\ordinalth$ root of unity for all $d\leq\deg p$).
     If $f\in \Oo(Z)$, $V(f) = \left\{z\in Z\st f(z)=0\right\}$ is closed in $Z$. If $f|_U=0$, then $U\subseteq V(f)$. As $Z$ is irreducible, $U$ is dense in it. Hence $V(f)$ is closed and dense in $Z$, which implies $V(f)=Z$ and $f=0$.
 \end{proof}
 \begin{defi}[Field of rational functions]
-    If $Z$ is any prevariety, let the \defemph{field of rational functions} $K$ be the set of all pairs $(f,U)$ where $U$ is a non-empty open subset, $f\in\Oo_Z(U)$ modulo the equivalence relation $(f,U)\sim (\phi, W)$ iff there is a non-empty $V\subseteq U\cap W$ such that $f|_V = \phi|_V$.
+    If $Z$ is any prevariety, let the \defemph{field of rational functions} $K$ be the set of all pairs $(U,f)$ where $U$ is a non-empty open subset, $f\in\Oo_Z(U)$ modulo the equivalence relation $(U,f)\sim (V,\phi)$ iff there is a non-empty $W\subseteq U\cap V$ such that $f|_W= \phi|_W$.
 \end{defi}
 \begin{rem*}
     \begin{alphanumerate}
         \item 
-            By Corollary \reff{cor:restrictionInjective}, $f|_V = \phi|_V$ is equivalent to $f|_{U\cap W} = \phi|_{U\cap W}$. One may think of $K=\bigcup_{U\neq\emptyset,\text{ open}} \Oo(U)$ but of course that would be imprecise. However, by the sheaf axiom and Corollary \reff{cor:restrictionInjective} it follows that for any $f\in K$ there are a largest open subset $U$ and $\phi \in \Oo_Z(U)$ such that $f=(U,\phi)/_\sim$, and $\phi$ is uniquely determined by $f$. This $U$ is called the \emph{domain of definition} of the rational function $f$.
+            By Corollary \reff{cor:restrictionInjective}, $f|_W = \phi|_W$ is equivalent to $f|_{U\cap V} = \phi|_{U\cap V}$. One may think of $K=\bigcup_{U\neq\emptyset,\text{ open}} \Oo(U)$ but of course that would be imprecise. However, by the sheaf axiom and Corollary \reff{cor:restrictionInjective} it follows that for any $f\in K$ there are a largest open subset $U$ and $\phi \in \Oo_Z(U)$ such that $f=(U,\phi)/_\sim$, and $\phi$ is uniquely determined by $f$. This $U$ is called the \emph{domain of definition} of the rational function $f$.
         \item 
-            If $Z$ had a point $\eta_Z$ which is dense in $Z$, we would have $K = \Oo_{Z,\eta_Z}$ as any open $U\neq \emptyset$ must contain $\eta_Z$.
+            If $Z$ had a point $\eta_Z$ which is dense in $Z$ (a \emph{generic} point), we would have $K = \Oo_{Z,\eta_Z}$ as any open $U\neq \emptyset$ must contain $\eta_Z$.
         \item
             To show that $K$ is a field, let $f\in K\setminus \{0\}$. Let $f=(U,\phi)/_\sim$, then $\phi\neq 0$. By Corollary \reff{cor:tupleRegularContiuous}, $V(\phi)\subseteq U$ is closed and $\left(U\setminus V(\phi), \frac{1}{\phi}\right)/_\sim \in K$ is an inverse to $f$ in $K$.
         \item 
-            If $U\subseteq Z$ is non-empty, the fields $K_U$ and $K_Z$ of rational functions on the respective spaces are canonically isomorphic as any $f\in K_Z$ has a representative $(\phi, W)$ with $W\subseteq U$) (if $(\snake\phi, V)$ is any representative of $f$, $W=V\cap U$ and $\phi=\snake \phi|_W$ will do).
+            If $U\subseteq Z$ is non-empty, the fields $K_U$ and $K_Z$ of rational functions on the respective spaces are canonically isomorphic as any $f\in K_Z$ has a representative $(W,\phi)$ with $W\subseteq U$ (if $(V,\snake\phi)$ is any representative of $f$, $W=V\cap U$ and $\phi=\snake \phi|_W$ will do).
     \end{alphanumerate}
 \end{rem*}
 This enables us to derive the relation between dimension and transcendence degree from the quasi-affine case.
@@ -1605,7 +1605,7 @@ This enables us to derive the relation between dimension and transcendence degre
 \setcounter{thm}{0}
 \renewcommand*{\thethm}{\Alph{thm}}
 \section{Introduction to Krull dimension and all that}
-Professor Franke recapitulated on some topics of his previous lecture, Algebra I (of which detailed lecture notes may be found in \cite{alg1}). Note that although the numbering of theorems in the following might seem messy, it is \emph{intentionally} messy at least.
+Professor Franke recapitulated on some topics of his previous lecture, Algebra I (of which detailed lecture notes may be found in \cite{alg1}).
 \begin{defi}[{\cite[Definition~2.1.2]{alg1}}]
 	A topological space $X$ is called \defemph{quasi-compact} if every open cover $X = \bigcup_{\lambda\in\Lambda} U_\lambda$ admits a finite subcover.
 	
@@ -1636,7 +1636,7 @@ For any finite cover $X= \bigcup_{i=1}^n X_i$ by closed subsets, there is $1\leq
 	\end{alphanumerate}
 	
 \end{prop}
-\begin{defi}[{\cite[Definition~2.1.4]{alg1}}]
+\begin{defi}[{\cite[Definition~2.1.4]{alg1}}]\lbl{def:KrullDimension}
 	Let $X$ be a topological space, $Z\subseteq X$ irreducible and closed. We put 
 	\begin{align*}
 	\codim(Z,X) &= \sup\left\{\ell\st 
@@ -1644,8 +1644,9 @@ For any finite cover $X= \bigcup_{i=1}^n X_i$ by closed subsets, there is $1\leq
 	\text{there is a strictly ascending chain}\\
 	Z=Z_0 \subsetneq Z_1\subsetneq \ldots \subsetneq Z_\ell\subseteq X\text{ of irreducible closed }Z_i\subseteq X
 	\end{array}\right\}\\
-	\dim(X) &= \sup\left\{\codim(Z,X)\st Z\subseteq X \text{ irreducible and closed}\right\}
+	\dim(X) &= \sup\left\{\codim(Z,X)\st Z\subseteq X \text{ irreducible and closed}\right\}\;.
 	\end{align*}
+	The number $\dim(X)$ is known as the \defemph{Krull dimension} of $X$.
 \end{defi}
 \begin{example}[{\cite[Section~1.7 and 2.1]{alg1}}]\lbl{ex:vanishingSetOfIdeal}
 	Let $k =\overline{k}$ be an algebraically closed field. For an ideal $I\subseteq R = k[X_1,\ldots,X_n]$ let 
@@ -2005,35 +2006,42 @@ Professor Franke would like to point out that the following definition being giv
     defining the structure of an $\Rr(U)$-module on $\Mm(U)$ and such that $(\rho\cdot \mu)|_V = (\rho|_V)\cdot (\mu|_V)$ when $V\subseteq U$ are open subsets of $X$, $\mu\in \Mm(U)$, $\rho \in \Rr(U)$. A sheaf of modules is \defemph{locally free} of rank $n$ if every $x\in X$ has a neighbourhood $U$ such that $\Mm|_U\simeq(R|_U)^n$. When $n=1$ this is called a \emph{line bundle}.
 \end{defi}
 \begin{defi}[Prevariety]\lbl{def:prevariety}
-    A \defemph{prevariety} over an algebraically closed field $k$ is Noetherian, irreducible topological space $X$ together with a subsheaf $\Oo_X$ of the sheaf of $k$-valued functions on $X$ such that any $x\in X$ has an open neighbourhood $U$ for which there is a homeomorphism $U\isomorphism[\phi] V\subseteq k^n$ where $V$ is a quasi-affine variety in $k^n$ and such that a $k$-valued function $\lambda$ on the open subset $W$ satisfies $\lambda \in \Oo_X(W)$ if and only if $\phi^*\lambda = (y\mapsto \lambda(\phi(y))$ defines an element of $\Oo(\phi(W))$. 
+    A \defemph{prevariety} over an algebraically closed field $k$ is a Noetherian, irreducible topological space $X$ together with a subsheaf $\Oo_X$ of the sheaf of $k$-valued functions on $X$ such that 
+    \begin{itemize}
+    	\item any $x\in X$ has an open neighbourhood $U$ for which there is a homeomorphism $U\smash{\isomorphism[\phi]} V\subseteq k^n$ where $V$ is a quasi-affine variety in $k^n$
+    	\item and such that a $k$-valued function $\lambda$ on the open subset $W$ satisfies $\lambda \in \Oo_X(W)$ if and only if $\phi^*\lambda = (y\mapsto \lambda(\phi(y))$ defines an element of $\Oo(\phi(W))$. 
+    \end{itemize}
     
     A \defemph{morphism} $X\morphism[f] Y$ of prevarieties is a continuous map such that for any open $V\subseteq Y$ and any $\lambda \in\Oo_Y(V)$, $f^*\lambda$ is an element of $\Oo_X(f^{-1}V)$.
     
     A \defemph{variety} is a prevariety $X$ with the additional property that for any prevariety and any pair $X\doublemorphism[a][b] Y$ or morphisms, $\Eq(a,b) = \left\{x\in X\st a(x) = b(x)\right\}$ is a closed subset of $X$.
 \end{defi}
 \begin{rem}
-The $n$ in the above definition is \emph{not} required to be constant, not even for a single $x\in X$. In fact, this wouldn't be a sensible thing to ask for, as e.g. $k\subseteq k^1$ and $k\times\{0\}\subseteq k^2$ are isomorphic affine varieties. However, the \emph{Krull dimension} $\dim X$ (in the sense of \cite[Definition~2.1.4]{alg1}) is a well-defined thing and one can show that $\dim X=\dim V$ in the above situation (this is a consequence of \cite[Theorem~6]{alg1} and the \emph{locality of codimension}, cf. \cite[Remark~2.1.3]{alg1}).
+The $n$ in the above definition is \emph{not} required to be constant, not even for a single $x\in X$. In fact, this wouldn't be a sensible thing to ask for, as e.g. $k\subseteq k^1$ and $k\times\{0\}\subseteq k^2$ are isomorphic affine varieties. However, the \emph{Krull dimension} $\dim X$ (in the sense of Definition~\reff{def:KrullDimension}) is a well-defined thing and one can show that $\dim X=\dim V$ in the above situation (this is a consequence of \cite[Theorem~6]{alg1} and the \emph{locality of codimension}, cf. Remark~\reff{rem:proofPreparations}\itememph{a} or \cite[Remark~2.1.3]{alg1}).
 \end{rem}
 \begin{rem}
-    Recall that a topological space $T$ is  Hausdorff (of $T_2$ iff the following equivalent conditions hold
+    Recall that a topological space $T$ is  Hausdorff (of $T_2$) iff the following equivalent conditions hold
     \begin{alphanumerate}
         \item 
             Any two different points in $T$ have disjoint open neighbourhoods.
         \item 
             The \emph{diagonal} $\Delta = \left\{ (t,t)\st t\in T\right\}$ is a closed subset of $T\times T$.
         \item 
-            For any pair $S\doublemorphism T$ of continuous maps, $K = \Eq(a,b) =\left\{t\in T\st a(t) = b(t)\right\}$ is closed in $T$.
+            For any pair $S\doublemorphism[a][\smash{b}] T$ of continuous maps, $K = \Eq(a,b) =\left\{t\in T\st a(t) = b(t)\right\}$ is closed in $T$.
     \end{alphanumerate}
+    Note that \itememph{c} reminds strongly of the \emph{separateness} condition for varieties in Definition~\reff{def:prevariety}, except that we restrict $S$ to be a prevariety and $a,b$ morphisms of prevarieties there.
 \end{rem}
 \begin{defi}[Stalk]\lbl{def:stalk}
-    The \defemph{stalk} at $x\in X$ of a presheaf $\Ff$ on the topological space $X$ is $\Ff_x$ is the set of pairs $(U,\alpha)$ of open neighbourhoods $U$ of $x$ and $\alpha\in \Ff(U)$ modulo the equivalence relation $\sim$. This relation is defined by $(U,\alpha)\sim (V, \beta)$ iff there is an open neighbourhood $W\subseteq U\cap V$ of $x$ such that $\alpha|_W = \beta|_W$. The group (ring) operations $\circ\in \{+,\cdot\}$ are given as follows: If $a= (U,\alpha)/_\sim$ and $b= (V,\beta)/_\sim$ are elements of $\Ff_x$, then 
+    The \defemph{stalk} at $x\in X$ of a presheaf $\Ff$ on the topological space $X$ is $\Ff_x$ is the set of pairs $(U,\alpha)$ of open neighbourhoods $U$ of $x$ and $\alpha\in \Ff(U)$ modulo the equivalence relation $\sim$. This relation is defined by $(U,\alpha)\sim (V, \beta)$ iff there is an open neighbourhood $W\subseteq U\cap V$ of $x$ such that $\alpha|_W = \beta|_W$. The group (ring) operations $*\in \{+,\cdot\}$ are given as follows: If $a= (U,\alpha)/_\sim$ and $b= (V,\beta)/_\sim$ are elements of $\Ff_x$, then 
     \begin{align*}
-        a\circ b = (W, (\alpha|_W)\circ(\beta|_W))/_\sim
+        a* b = (W, (\alpha|_W)*(\beta|_W))/_\sim
     \end{align*}
     where $W$ is any open neighbourhood of $x$ contained in $U\cap V$. This gives $\Ff_x$ a structure of a group (ring, etc.) if $\Ff$ is of the appropriate type of sheaves. When $\Mm$ is an $\Rr$-module, $\Mm_x$ gets the structure of an $\Rr_x$-module in the same way.
 \end{defi}
 \begin{rem}
-    Let $X\subseteq k^n$ be quasi-affine and $\Oo$ be its structure sheaf. When $f=(U,\phi)/_\sim\in \Oo_x$, $f(x)\coloneqq \phi(x)$ is independent of its representative. When $f(x)\neq 0$, $f\in \Oo_x^\times$ as $U\setminus V(\phi)$ is an open neighbourhood of $x$ in $U$ and $\phi|_{U\setminus V(\phi)} \in \Oo(U\setminus V(\phi))^\times$. It follows that $\Oo_x\setminus\Oo_x^\times$ is the kernels of the homomorphism $\Oo_x \morphism k$, $f\mapsto f(x)$ an hence an ideal. It follows that $\Oo_x$ is a local ring. As the construction of stalks is local\footnote{Pun not intended}, $\Oo_{X,x}$ is a local ring with maximal ideal $\mm_{X,x} = \left\{f\in \Oo_{X,x}\st f(x) = 0\right\}$ for any prevariety $X$ and any $x\in X$. 
+    Let $X\subseteq k^n$ be quasi-affine and $\Oo$ be its structure sheaf. When $f=(U,\phi)/_\sim\in \Oo_x$, $f(x)\coloneqq \phi(x)$ is independent of its representative. When $f(x)\neq 0$, $f\in \Oo_x^\times$ as $U\setminus V(\phi)$ is an open neighbourhood of $x$ in $U$ and $\phi|_{U\setminus V(\phi)} \in \Oo(U\setminus V(\phi))^\times$. It follows that $\Oo_x\setminus\Oo_x^\times$ is the kernels of the homomorphism $\Oo_x \morphism k$, $f\mapsto f(x)$ an hence an ideal, i.e. $\Oo_x$ is a local ring. 
+    
+    As the construction of stalks is local\footnote{Pun not intended.}, $\Oo_{X,x}$ is a local ring with maximal ideal $\mm_{X,x} = \left\{f\in \Oo_{X,x}\st f(x) = 0\right\}$ for any prevariety $X$ and any $x\in X$. 
 \end{rem}
 \begin{rem}
     It turns out that the quasi-affine and quasi-projective varieties are varieties in the sens of Definition \reff{def:prevariety}.
