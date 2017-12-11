@@ -1521,6 +1521,61 @@ i.e. $\lambda$ not a $d\ordinalth$ root of unity for all $d\leq\deg p$).
             If $f\in \Oo^d(Z)$ and $\phi\in\Oo^\delta(Z)$ then $f\phi \in \Oo^{d+\delta}(Z)$ and $\frac{1}{f}\in \Oo^{-d}(Z)$ if $f(y) \neq 0$ for $y\in Z$. Moreover, $(f+\phi)\in \Oo^d(Z)$ if $d=\delta$. The $\Oo^d$ are \emph{line bundles} (locally free modules of rank 1) over the \emph{sheaf of rings} $\Oo$ (cf. Definition~\reff{def:sheaf} and~\reff{def:sheafOfModules}).
     \end{alphanumerate}
 \end{rem*}
+\begin{example}
+    Let $Y\subseteq \IP^n(k)$ be a quasi-projective variety. We have $Y = \bigcup_{i=0}^n (Y\setminus V(X_i))$ and for $U\subseteq Y\setminus V(X_i)$
+    \begin{align*}
+        \Oo(U) &\morphism (\Oo^\ell)(U)\\
+        f&\longmapsto ((x_0,\ldots, x_n) \mapsto x_i^\ell f([x_0,\ldots, x_n])
+    \end{align*}
+    defines an isomorphism of sheaves of abelian groups or $\Oo$-modules by $\Oo|_U \morphism[\cdot x_0^\ell] \Oo^\ell|_U$. Thus, $\Oo^\ell$ is a line bundle on $Y$. 
+\end{example}
+\begin{prop}
+    Let $Z\subseteq \IP^n(k)$ be a quasi-projective algebraic variety, then $Z\cap \IA^n(k) = Z \setminus V(X_0)$ is quasi-affine or empty, and a function $f\colon Z\cap \IA^n(k)\morphism k$ is regular in the sense of Definition \reff{def:regularFunction} if and only if it is regular in the sense of the quasi-affine counterpart of that definition. 
+\end{prop}
+\begin{proof}
+    The first part is obvious by Proposition \reff{prop:projectiveAffineTopology}. The comparison of the structure sheaves will be left as an exercise.
+\end{proof}
+\begin{cor*}
+    Quasi-projective varieties are prevarieties in the sense Definition \reff{def:prevariety}.
+\end{cor*}
+\begin{cor}\lbl{cor:tupleRegularContiuous}
+    If $f_1,\ldots, f_n\in \Oo(Z)$ then $Z\morphism[(f_1,\ldots, f_n)]\IA^n$.
+\end{cor}
+\begin{rem*}
+    This holds when $Z$ is any prevariety, and follows from the corresponding assertion about quasi-affine varieties.
+\end{rem*}
+\begin{cor}\lbl{cor:restrictionInjective}
+    If $U\subseteq Z$ is a non-empty open subset, $\Oo(Z)\morphism \Oo(U)$, $f\mapsto f|_U$ is injective.
+\end{cor}
+\begin{proof}
+    If $f\in \Oo(Z)$, $V(f) = \left\{z\in Z\st f(z)=0\right\}$ is closed in $Z$. If $f|_U=0$, then $U\subseteq V(f)$. As $Z$ is irreducible, $U$ is dense in it. Hence $V(f)$ is closed and dense in $Z$, which implies $V(f)=Z$ and $f=0$.
+\end{proof}
+\begin{defi}[Field of rational functions]
+    If $Z$ is any prevariety, let the \defemph{field of rational functions} $K$ be the set of all pairs $(f,U)$ where $U$ is a non-empty open subset, $f\in\Oo_Z(U)$ modulo the equivalence relation $(f,U)\sim (\phi, W)$ iff there is a non-empty $V\subseteq U\cap W$ such that $f|_V = \phi|_V$.
+\end{defi}
+\begin{rem*}
+    \begin{alphanumerate}
+        \item 
+            By Corollary \reff{cor:restrictionInjective}, $f|_V = \phi|_V$ is equivalent to $f|_{U\cap W} = \phi|_{U\cap W}$. One may think of $K=\bigcup_{U\neq\emptyset,\text{ open}} \Oo(U)$ but of course that would be imprecise. However, by the sheaf axiom and Corollary \reff{cor:restrictionInjective} it follows that for any $f\in K$ there are a largest open subset $U$ and $\phi \in \Oo_Z(U)$ such that $f=(U,\phi)/_\sim$, and $\phi$ is uniquely determined by $f$. This $U$ is called the \emph{domain of definition} of the rational function $f$.
+        \item 
+            If $Z$ had a point $\eta_Z$ which is dense in $Z$, we would have $K = \Oo_{Z,\eta_Z}$ as any open $U\neq \emptyset$ must contain $\eta_Z$.
+        \item
+            To show that $K$ is a field, let $f\in K\setminus \{0\}$. Let $f=(U,\phi)/_\sim$, then $\phi\neq 0$. By Corollary \reff{cor:tupleRegularContiuous}, $V(\phi)\subseteq U$ is closed and $\left(U\setminus V(\phi), \frac{1}{\phi}\right)/_\sim \in K$ is an inverse to $f$ in $K$.
+        \item 
+            If $U\subseteq Z$ is non-empty, the fields $K_U$ and $K_Z$ of rational functions on the respective spaces are canonically isomorphic as any $f\in K_Z$ has a representative $(\phi, W)$ with $W\subseteq U$) (if $(\snake\phi, V)$ is any representative of $f$, $W=V\cap U$ and $\phi=\snake \phi|_W$ will do).
+    \end{alphanumerate}
+\end{rem*}
+This enables us to derive the relation between dimension and transcendence degree from the quasi-affine case.
+\begin{prop}\lbl{prop:prevarietyCatenary}
+    If $Z\subseteq \IP^n(k)$ is quasi-projective (or, more generally, if $Z$ is any prevariety) then $\dim(Z) = \deg\tr(K_Z/k)$, $\codim(z,Z) = \dim(Z)$ for any point $z\in Z$. Moreover, $Z$ is catenary:
+    \begin{align*}
+        \codim(A,B) +\codim(B,C) = \codim(A,C)
+    \end{align*}
+    when $A\subseteq B\subseteq C$ are irreducible closed subsets of $Z$. Furthermore we have
+    \begin{align*}
+        \dim(A) +\codim(A,B) = \dim(B)\;.
+    \end{align*}
+\end{prop}
 
 
 
@@ -1949,5 +2004,39 @@ Professor Franke would like to point out that the following definition being giv
     \end{align*}
     defining the structure of an $\Rr(U)$-module on $\Mm(U)$ and such that $(\rho\cdot \mu)|_V = (\rho|_V)\cdot (\mu|_V)$ when $V\subseteq U$ are open subsets of $X$, $\mu\in \Mm(U)$, $\rho \in \Rr(U)$. A sheaf of modules is \defemph{locally free} of rank $n$ if every $x\in X$ has a neighbourhood $U$ such that $\Mm|_U\simeq(R|_U)^n$. When $n=1$ this is called a \emph{line bundle}.
 \end{defi}
+\begin{defi}[Prevariety]\lbl{def:prevariety}
+    A \defemph{prevariety} over an algebraically closed field $k$ is Noetherian, irreducible topological space $X$ together with a subsheaf $\Oo_X$ of the sheaf of $k$-valued functions on $X$ such that any $x\in X$ has an open neighbourhood $U$ for which there is a homeomorphism $U\isomorphism[\phi] V\subseteq k^n$ where $V$ is a quasi-affine variety in $k^n$ and such that a $k$-valued function $\lambda$ on the open subset $W$ satisfies $\lambda \in \Oo_X(W)$ if and only if $\phi^*\lambda = (y\mapsto \lambda(\phi(y))$ defines an element of $\Oo(\phi(W))$. 
+    
+    A \defemph{morphism} $X\morphism[f] Y$ of prevarieties is a continuous map such that for any open $V\subseteq Y$ and any $\lambda \in\Oo_Y(V)$, $f^*\lambda$ is an element of $\Oo_X(f^{-1}V)$.
+    
+    A \defemph{variety} is a prevariety $X$ with the additional property that for any prevariety and any pair $X\doublemorphism[a][b] Y$ or morphisms, $\Eq(a,b) = \left\{x\in X\st a(x) = b(x)\right\}$ is a closed subset of $X$.
+\end{defi}
+\begin{rem}
+The $n$ in the above definition is \emph{not} required to be constant, not even for a single $x\in X$. In fact, this wouldn't be a sensible thing to ask for, as e.g. $k\subseteq k^1$ and $k\times\{0\}\subseteq k^2$ are isomorphic affine varieties. However, the \emph{Krull dimension} $\dim X$ (in the sense of \cite[Definition~2.1.4]{alg1}) is a well-defined thing and one can show that $\dim X=\dim V$ in the above situation (this is a consequence of \cite[Theorem~6]{alg1} and the \emph{locality of codimension}, cf. \cite[Remark~2.1.3]{alg1}).
+\end{rem}
+\begin{rem}
+    Recall that a topological space $T$ is  Hausdorff (of $T_2$ iff the following equivalent conditions hold
+    \begin{alphanumerate}
+        \item 
+            Any two different points in $T$ have disjoint open neighbourhoods.
+        \item 
+            The \emph{diagonal} $\Delta = \left\{ (t,t)\st t\in T\right\}$ is a closed subset of $T\times T$.
+        \item 
+            For any pair $S\doublemorphism T$ of continuous maps, $K = \Eq(a,b) =\left\{t\in T\st a(t) = b(t)\right\}$ is closed in $T$.
+    \end{alphanumerate}
+\end{rem}
+\begin{defi}[Stalk]\lbl{def:stalk}
+    The \defemph{stalk} at $x\in X$ of a presheaf $\Ff$ on the topological space $X$ is $\Ff_x$ is the set of pairs $(U,\alpha)$ of open neighbourhoods $U$ of $x$ and $\alpha\in \Ff(U)$ modulo the equivalence relation $\sim$. This relation is defined by $(U,\alpha)\sim (V, \beta)$ iff there is an open neighbourhood $W\subseteq U\cap V$ of $x$ such that $\alpha|_W = \beta|_W$. The group (ring) operations $\circ\in \{+,\cdot\}$ are given as follows: If $a= (U,\alpha)/_\sim$ and $b= (V,\beta)/_\sim$ are elements of $\Ff_x$, then 
+    \begin{align*}
+        a\circ b = (W, (\alpha|_W)\circ(\beta|_W))/_\sim
+    \end{align*}
+    where $W$ is any open neighbourhood of $x$ contained in $U\cap V$. This gives $\Ff_x$ a structure of a group (ring, etc.) if $\Ff$ is of the appropriate type of sheaves. When $\Mm$ is an $\Rr$-module, $\Mm_x$ gets the structure of an $\Rr_x$-module in the same way.
+\end{defi}
+\begin{rem}
+    Let $X\subseteq k^n$ be quasi-affine and $\Oo$ be its structure sheaf. When $f=(U,\phi)/_\sim\in \Oo_x$, $f(x)\coloneqq \phi(x)$ is independent of its representative. When $f(x)\neq 0$, $f\in \Oo_x^\times$ as $U\setminus V(\phi)$ is an open neighbourhood of $x$ in $U$ and $\phi|_{U\setminus V(\phi)} \in \Oo(U\setminus V(\phi))^\times$. It follows that $\Oo_x\setminus\Oo_x^\times$ is the kernels of the homomorphism $\Oo_x \morphism k$, $f\mapsto f(x)$ an hence an ideal. It follows that $\Oo_x$ is a local ring. As the construction of stalks is local\footnote{Pun not intended}, $\Oo_{X,x}$ is a local ring with maximal ideal $\mm_{X,x} = \left\{f\in \Oo_{X,x}\st f(x) = 0\right\}$ for any prevariety $X$ and any $x\in X$. 
+\end{rem}
+\begin{rem}
+    It turns out that the quasi-affine and quasi-projective varieties are varieties in the sens of Definition \reff{def:prevariety}.
+\end{rem}
 \printbibliography
 \end{document}          
