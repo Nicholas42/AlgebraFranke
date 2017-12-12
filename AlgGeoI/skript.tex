@@ -1571,7 +1571,7 @@ Since the preimage of this ideal in $\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y}$ equ
 
 
 \section{The structure sheaf and quasi-coherent sheaf of modules on \texorpdfstring{$\Spec R$}{Spec R}}
-Let $R$ be a ring, $\Bb = \left\{ \Spec R\setminus V(f)\st f\in R\right\}$. This is a topology base of $\Spec R$ equipped with the Zariski-topology. Moreover, $\Bb$ is closed under intersection since $(\Spec R\setminus V(f))\cap (\Spec R\setminus V(g)) = \Spec R\setminus V(fg)$. The localization $R_f$ depends, up to unique isomorphism of $R$-algebras, only on $(\Spec R)\setminus V(f)$. To see this, we claim that when $\Spec R\setminus V(g)\subseteq \Spec R\setminus V(f)$ there is a unique homomorphism $R_f\morphism R_g$ of $R$-algebras. In fact, $V(g)\supseteq V(f)$ implies $g\in \sqrt{(f)}=\bigcap_{\pp\in V(f)}$ which shows that some power of $g$ is divisible by $f$ and so $f$ is a unit in $R_g$. The universal property of localization thus establishes our claim.
+Let $R$ be a ring, $\Bb = \left\{ \Spec R\setminus V(f)\st f\in R\right\}$. This is a topology base of $\Spec R$ equipped with the Zariski-topology. Moreover, $\Bb$ is closed under intersection since $(\Spec R\setminus V(f))\cap (\Spec R\setminus V(g)) = \Spec R\setminus V(fg)$. The localization $R_f$ depends, up to unique isomorphism of $R$-algebras, only on $(\Spec R)\setminus V(f)$. To see this, we claim that when $\Spec R\setminus V(g)\subseteq \Spec R\setminus V(f)$ there is a unique homomorphism $R_f\morphism R_g$ of $R$-algebras. In fact, $V(g)\supseteq V(f)$ implies $g\in \sqrt{(f)}=\bigcap_{\pp\in V(f)}\pp$ which shows that some power of $g$ is divisible by $f$ and so $f$ is a unit in $R_g$. The universal property of localization thus establishes our claim.
 
 From these considerations, we have a presheaf of rings on $\Bb$ via
 \begin{align}\lbl{eq:SpecRingLoc}
@@ -1615,8 +1615,73 @@ If $M$ is an $R$-module, we have a similar presheaf (of abelian groups or of mod
     \end{align*}
     However our proof of Proposition~\reff{prop:RequalsGlobalSection} will yield this directly.
 \end{rem*}
-
-
+\begin{proof}
+    We show that the presheaves $\Spec R_f\morphism R_f$ or $\Spec M_f\morphism M_f$ satisfy the sheaf axiom for covers of elements of $\Bb= \left\{\Spec R_f\st f\in R\right\}$ by elements of $\Bb$. If $\Spec R_f = \bigcup_{\lambda\in\Lambda} \Spec R_{g_\lambda}$ we may replace $R$ by $R_f$.
+\end{proof}
+\begin{lem}\lbl{lem:finCover}
+    For every finite cover $\Spec R = \bigcup_{i=1}^n \Spec R_{f_i}$ we have
+    \begin{align*}
+        R &\isomorphism\left\{(r_i)_{i=1}^n \in \prod_{i=1}^n R_{f_i}\st \text{the images of } r_i \text{ and } r_j \text{ in } R_{f_if_j} \text{ coincide}\right\}\\
+        M &\isomorphism\left\{(m_i)_{i=1}^n \in \prod_{i=1}^n M_{f_i}\st \text{the images of } m_i \text{ and } m_j \text{ in } M_{f_if_j} \text{ coincide}\right\}
+    \end{align*}
+\end{lem}
+\begin{proof}
+    The first assertion being the special case $M=R$ of the second, we prove the second. For injectivity, assume that $m$ is in the kernel of this map, we have $f^{k_i}_i m_i = 0$ for all $1\leq i\leq n$. Since $\emptyset = \bigcap_{i=1}^n V(f_i) = \bigcap_{i=1}^n V(f^{k_i}_i) = V(\langle f_1^{k_1},\ldots, f_n^{k_n}\rangle_R)$ it follows that there are $g_i\in R$ such that $\sum_{i=1}^n f_i^{k_i}g_i = 1$ in $R$. Then $0 = m$.
+    
+    To prove surjectivity, let $(m_i)_{i=1}^n$ be an element of the right hand side, then $m_i=\frac{\mu_i}{f_i^{k_i}}$. Replacing $f_i$ by $f_i^{k_i}$ we may assume $m_i = \frac{\mu_i}{f_i}$. If the tuple $\left(\frac{\mu_i}{f_i}\right)_{i=1}^n$ is in the right hand side, there are $k_{i,j}\in \IN$ such that $(f_if_j)^{k_{i,j}}(f_i\mu_j - f_j\mu_i) = 0$ in $M$. Putting $k= \max\left\{ k_{i,j}\st 1\leq i <j\leq n\right\}$ we have 
+    \begin{align*}
+        f_i^{k+1}f_j^k\mu_j = f_i^k f_j^{k+1}\mu_i
+    \end{align*}
+    in $M$ or $\snake f_i\snake \mu_j = \snake f_j \snake \mu_i$ where $\snake f_i = f_i^{k+1}$, $\snake f_j = f_j^{k+1}$, $\snake \mu_i = f_i^k\mu_i$, $\snake \mu_j = f_j^k\mu_j$ satisfy $R_{\snake f_i} \simeq R_{f_i}$, $\frac{\mu_i}{f_i} = \frac{\snake \mu_i}{\snake f_i}$ in $M_{f_i} \simeq M_{\snake f_i}$. Thus we may assume $f_i\mu_j = f_j\mu_i$ in $M$. As in the first step there are $(g_i)_{i=1}^n\in R^n$ such that $\sum_{i=1}^n f_i g_i = 1$. Let $m = \sum_{i=1}^n g_i\mu_i$, then $f_jm = \sum_{i=1}^n g_if_j\mu_i = \sum_{i=1}^n g_i f_i\mu_j = \mu_j$. Thus $m_j$ is the image of $m$ in $M_{f_j}$.
+\end{proof}
+\begin{lem}
+    Let $\Bb$ be a topology base of any topological space $X$ which is closed under intersection and $\Ff$ a presheaf on $\Bb$. If the elements of $\Bb$ are quasi-compact and $\Ff$ satisfies the sheaf axiom for finite covers of elements of $\Bb$ by elements of $\Bb$, then it also satisfies the sheaf axiom for arbitrary covers of elements of $\Bb$ by elements of $\Bb$. Thus, $\Ff\isomorphism \Ff^\sh|_\Bb$ is an isomorphism.
+\end{lem}
+\begin{proof}
+    Let $U\in \Bb$ be covered by $U = \bigcup_{\lambda\in \Lambda} U_\lambda$ with $U_\lambda \in \Bb$. As $U$ is quasi-compact, there are $(\lambda_i)_{i=1}^n$, $n\in \IN$, $\lambda_i\in \Lambda$ such that $U= \bigcup_{i=1}^n U_{\lambda_i}$. By the assumptions $\Ff(U)\morphism \prod_{i=1}^n \Ff(U_{\lambda_i})$, $f\mapsto (f|_{U_{\lambda_i}})_{i=1}^n$ is injective. Hence so is $\Ff(U)\morphism \prod_{\lambda\in \Lambda} \Ff(U_\lambda)$, $f\mapsto(f|_{U_\lambda})_{\lambda\in\Lambda}$. Let $(f_\lambda)_{\lambda\in \Lambda}\in \prod_{\lambda\in U}\Ff(U_\lambda)$ such that $f_\lambda|_{U_\lambda\cap U_\theta} = f_\theta|_{U_\lambda\cap U_\theta}$. Then there is $f\in \Ff(U)$ such that $f|_{U_{\lambda_i}} = f_{\lambda_i}$. We claim that $f|_\lambda = f_\lambda$. 
+    \begin{align*}
+        (f|_{U_\lambda})|_{U_\lambda \cap U_{\lambda_i}} = (f|_{U_{\lambda_i}})|_{U_\lambda \cap U_{\lambda_i}} = a_{\lambda_i}|_{U_\lambda \cap U_{\lambda_i}} = a_\lambda|_{U\lambda\cap U_{\lambda_i}}.
+    \end{align*}
+    As $U_\lambda = \bigcup_{i=1}^n(U_\lambda\cap U_{\lambda_i}$ the map $\Ff(U_\lambda) \morphism \prod_{i=1}^n \Ff(U_\lambda\cap U_{\lambda_i})$, $f\mapsto (f|_{U_\lambda\cap U_{\lambda_i}})_{i=1}^n$ is injective by our assumptions, this implies $f|_{U_\lambda}=f_\lambda$ as stated.
+\end{proof}
+\begin{rem*}
+    Another way to apply the principle of the proof of \reff{lem:finCover} is to use the fact that when $\bigcap_{i=1}^n V(f_i) = \emptyset$ the Korzul complex
+    
+    is contracted by $(g_i)_{i=1}^n$ such that $\sum_{i=1}^n g_if_i = 1$, $(m_i)_{i=1}^n \mapsto \sum_{i=1}^n g_im_i$, $(m_{i,j})\mapsto \left(\sum_{j=1}^n g_j m_{i,j}\right)_{i=1}^n$, where $m_{i,j}=-1$ if $i>j$ and $0$ otherwise. But if $U \coloneqq \Spec R = \bigcup_{i=1}^n \Spec R_{f_i}$ then $0\morphism M\morphism \check{C}^*(U,\text{the presheaf giving } \snake M)\lisomorphism \colimit_{k\in\IN} K((f_1^k, \ldots, f_n^k),M)$ which is the argument used in EGA to show Proposition \reff{prop:RequalsGlobalSection} and the vanishing of higher cohomologies.
+\end{rem*}
+\begin{example}
+    \begin{alphanumerate}
+        \item 
+            When $\nil(R)\in \Spec R$, $\Oo_{\Spec R}$ is already uniquely described by $\Oo_{\Spec R} (U) = R$ if $U=\nil(R)$ and $\emptyset$ otherwise. 
+        \item 
+            When $R$ is a PID, the same is done by $\Oo_{\Spec R} (\Spec R\setminus V(f)) = R_f$ and $\Oo_{\Spec R} (\emptyset) = 0$. In particular this holds for $R=\IZ$.
+    \end{alphanumerate}
+\end{example}
+\begin{rem}
+    Proposition \reff{prop:RequalsGlobalSection} would have failed if we had defined $\Oo_{\Spec R}$ as a sheaf of functions $\pp\morphism k(\pp)$ as $R$ may have nilpotent elements.
+\end{rem}
+\begin{prop}
+    If $R$ is a ring and $X$ a locally ringed space, we have a canonical bijection:
+    \begin{align*}
+        \Hom_{\cat{LRS}}(X,\Spec R) &\isomorphism \Hom_{\cat{Ring}}(R,\Oo_X(X))\\
+        (X\morphism[\xi] \Spec R) &\longmapsto (R\isomorphism \Oo_{\Spec R}(\Spec R) \morphism[\xi^*] \Oo_X(X))
+    \end{align*}
+\end{prop}
+\begin{rem*}
+    Thus, $(\cat{Ring})^\op \morphism[\Spec(-)] \cat{LRS}$ is right adjoint to $\cat{LRS} \morphism[\Oo_-(-)] \cat{Ring}$.
+\end{rem*}
+\begin{proof}
+    Let $X\morphism[f] \Spec R$ be a morphism in $\cat{LRS}$. We want to show that it is uniquely determined by $\phi\colon R \isomorphism (\Oo_{\Spec R})(\Spec R) \morphism[f^*]\Oo_X(X)$. Let $x\in X$, $\pp=f(x)$. We have a commutative diagram. As the arrow $(\Oo_{\Spec R})_\pp\morphism \Oo_{X,x}$ is local and the preimages of the maximal ideal in $R_\pp$ and $R$ are $\pp R_\pp$ and $\pp$, $\pp$ is uniquely determined as the preimage of $\mm_{X,x}\subseteq \Oo_{X,x}$ under $R\morphism[\phi] \Oo_X(X)\morphism \Oo_{X,x}$. By the universal property of the localization $R\morphism R_\pp$, the lower horizontal right arrow is also uniquely determined by $\phi$ and the commutativity of the diagram. Thus, the maps $\Oo_{\Spec R, f(x)}\morphism[f^*]\Oo_{X,x}$ are uniquely determined by $\phi$. It follows by the following fact that $f$ is uniquely determined.
+\end{proof}
+\begin{fact}
+    Let $X\doublemorphism[a][b] Y$ are morphisms in $\cat{LRS}$ such that $a(x)=b(x)$ for all points in $x\in X$ and such that for all $x\in X$, $\Oo_{Y,a(x)} = \Oo_{Y,b(x)} \doublemorphism[a^*][b^*] \Oo_{X,x}$, coincide, then $a=b$.
+\end{fact}
+\begin{proof}
+    It is only necessary to show this for the pull-backs of $\upsilon\in \Oo_Y(U)$ under $a^*$ and $b^*$, for $U\subseteq Y$ open. But the images of $a^*\upsilon$ and $b^*\upsilon$ in $\Oo_{X,x}$, for $x\in f^{-1}U$, coincide with the images under $\upsilon$ under $\Oo_Y(U) \morphism \Oo_{Y,y}\doublemorphism[a^*][b^*] \Oo_{X,x}$, hence are equal. But $\Oo_X(f^{-1}U) \morphism \prod_{x\in f^{-1}U} \Oo_{X,x}$ is injective by results of Section 1.2. Thus $a^*\upsilon = b^*\upsilon$.
+\end{proof}
+\begin{cor}
+    If $X\morphism[\iota] Y$ is a morphism in $\cat{LRS}$ such that $\iota$ is injective on points and such that $\Oo_{Y,\iota(x)} \morphism[\iota^*] \Oo_{X,x}$ is surjective, then $\iota$ is a monomorphism.
+\end{cor}
 
 
 
