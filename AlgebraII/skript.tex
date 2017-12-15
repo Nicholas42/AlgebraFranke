@@ -1562,12 +1562,12 @@ i.e. $\lambda$ not a $d\ordinalth$ root of unity for all $d\leq\deg p$).
         \item
             To show that $K$ is a field, let $f\in K\setminus \{0\}$. Let $f=(U,\phi)/_\sim$, then $\phi\neq 0$. By Corollary \reff{cor:tupleRegularContiuous}, $V(\phi)\subseteq U$ is closed and $\left(U\setminus V(\phi), \frac{1}{\phi}\right)/_\sim \in K$ is an inverse to $f$ in $K$.
         \item 
-            If $U\subseteq Z$ is non-empty, the fields $K_U$ and $K_Z$ of rational functions on the respective spaces are canonically isomorphic as any $f\in K_Z$ has a representative $(W,\phi)$ with $W\subseteq U$ (if $(V,\snake\phi)$ is any representative of $f$, $W=V\cap U$ and $\phi=\snake \phi|_W$ will do).
+            If $U\subseteq Z$ is non-empty, the fields $K(U)$ and $K(Z)$ of rational functions on the respective spaces are canonically isomorphic as any $f\in K(Z)$ has a representative $(W,\phi)$ with $W\subseteq U$ (if $(V,\snake\phi)$ is any representative of $f$, $W=V\cap U$ and $\phi=\snake \phi|_W$ will do).
     \end{alphanumerate}
 \end{rem*}
 This enables us to derive the relation between dimension and transcendence degree from the quasi-affine case.
 \begin{prop}\lbl{prop:prevarietyCatenary}
-    If $Z\subseteq \IP^n(k)$ is quasi-projective (or, more generally, if $Z$ is any prevariety) then $\dim(Z) = \deg\tr(K_Z/k)$, $\codim(z,Z) = \dim(Z)$ for any point $z\in Z$. Moreover, $Z$ is catenary:
+    If $Z\subseteq \IP^n(k)$ is quasi-projective (or, more generally, if $Z$ is any prevariety) then $\dim(Z) = \deg\tr(K(Z)/k)$, $\codim(z,Z) = \dim(Z)$ for any point $z\in Z$. Moreover, $Z$ is catenary, i.e.
     \begin{align*}
         \codim(A,B) +\codim(B,C) = \codim(A,C)
     \end{align*}
@@ -1577,7 +1577,7 @@ This enables us to derive the relation between dimension and transcendence degre
     \end{align*}
 \end{prop}
 \begin{proof}
-    By a permutation of the $X_i$, we may assume $z\in Z\cap (\IP^n(k)\setminus V(X_0)) = Z\cap \IA^n\neq \emptyset$. Then $U=Z\cap \IA^n$ is an open subset of $Z$, then $K(U)\simeq K(Z)$ and $\codim(z,U) = \codim(z,Z)$ (and moreover $\codim(X\cap U, Y\cap U) = \codim(X,Y)$ whenever $X\subseteq Y\subseteq Z$ are irreducible and $X\cap U\neq \emptyset$) by the correspondence between the irreducible closed subsets $X\subseteq Z$ such that $X\cap U\neq \emptyset$ and the irreducible closed subsets $\Xi\subseteq Z\cap U$. By the results of Algebra I $\codim (z,Z) = \codim(z,U) = \deg\tr K(U)/k = \deg\tr K(Z)/k$ and the other assertions also follow from their counterparts in the affine case.
+    By permutation of the $X_i$, we may assume $z\in Z\cap \big(\IP^n(k)\setminus V(X_0)\big) = Z\cap \IA^n(k)\neq \emptyset$. Then $U=Z\cap \IA^n(k)$ is an open subset of $Z$, thus $K(U)\simeq K(Z)$ and $\codim(z,U) = \codim(z,Z)$ (and moreover $\codim(X\cap U, Y\cap U) = \codim(X,Y)$ whenever $X\subseteq Y\subseteq Z$ are irreducible and $X\cap U\neq \emptyset$) by \emph{locality of codimension}, cf. Remark~\reff{rem:proofPreparations}\itememph{a} or \cite[Remark~2.1.3]{alg1}). By \cite[Theorem~6]{alg1}, $\codim (z,Z) = \codim(z,U) = \deg\tr K(U)/k = \deg\tr K(Z)/k$ and the other assertions also follow from their counterparts in the affine case.
 \end{proof}
 \begin{cor}
     The Krull dimension of $\IP^n(k)$ equals $n$.
@@ -1585,61 +1585,75 @@ This enables us to derive the relation between dimension and transcendence degre
 \begin{prop}
     Let $Z$ be quasi-projective variety and $Y\subseteq Z$ irreducible closed, then 
     \begin{align*}
-        \dim(C(Z)) &= \dim(Z) +1\\
-        \dim(Y,Z) &= \dim(C(Y), C(Z))\;.
+        \dim(C(Z)) = \dim(Z) +1\quad\text{and}\quad
+        \dim(Y,Z) = \dim(C(Y), C(Z))\;.
     \end{align*}
 \end{prop}
-\begin{thm}[B\'ezout] \lbl{thm:bezout}
+\begin{proof}
+	Hello there. I'm Proposition~\reff{prop:affineConeCorrespondence} again.
+\end{proof}
+\begin{thm}\lbl{thm:projectiveIntersection}
     When $X$ and $Y$ are irreducible closed subsets of $\IP^n(k)$, of codimension $\xi$ and $\upsilon$ in $\IP^n(k)$, then every irreducible component of $X\cap Y$ has codimension smaller or equal to $\xi +\upsilon$ in $\IP^n(k)$. If we have $\xi+\upsilon \leq n$, it follows $X\cap Y \neq \emptyset$.
 \end{thm}
 \begin{rem*}
     For instance, if $C$ and $D$ are curves in $\IP^2(k)$ (given by $P(x,y,z) = 0$ or $Q(x,y,z)= 0$ where $P$ and $Q$ are homogeneous of degree $c$ and $d$) it follows that $C\cap D \neq \emptyset$. When the intersection is finite, it has $c\cdot d$ elements counted by multiplicity, by B\'ezout's Theorem.
 \end{rem*}
-\begin{proof}[Proof of Theorem \reff{thm:bezout}]
-    We have $C(X)\cap C(Y) = C(X\cap Y)$. If $X\cap Y= \bigcup_{i=1}^n C_i$ is the decomposition of $X\cap Y$ into irreducible components, $C(X)\cap C(Y) = \bigcup_{i=1}^n C(C_i)$ or $C(X) \cap C(Y) = \{0\}$ (depending on the vanishing of $n$). By the previous Proposition and Theorem \reff{thm:codimIneq}, $\codim(C_i, \IP^n(k)) = \codim(C(C_i), \IA^{n+1}) \leq \codim(C(X), \IA^{n+1}) +\codim(C(Y), \IA^{n+1}) = \xi+\upsilon$ and the first assertion follows. Also, in the case $X\cap Y =\emptyset$ we have $n+1 = \codim(\{0\}, \IA^{n+1}) \leq \codim(C(X),\IA^{n+1})+\codim(X(Y), \IA^{n+1}) = \xi +\upsilon$. 
+\begin{proof}[Proof of Theorem \reff{thm:projectiveIntersection}]
+    We have $C(X)\cap C(Y) = C(X\cap Y)$. If $X\cap Y= \bigcup_{i=1}^\ell C_i$ is the decomposition of $X\cap Y$ into irreducible components, $C(X)\cap C(Y) = \bigcup_{i=1}^\ell C(C_i)$ or $C(X) \cap C(Y) = \{0\}$ (if $X\cap Y=\emptyset$, i.e. $\ell=0$). By the previous Proposition and Theorem \reff{thm:codimIneq}, 
+    \begin{align*}
+    	 \codim(C_i, \IP^n(k)) &= \codim\big(C(C_i), \IA^{n+1}(k)\big)\\
+    	 & \leq \codim\big(C(X), \IA^{n+1}(k)\big) +\codim\big(C(Y), \IA^{n+1}(k)\big)= \xi+\upsilon 
+    \end{align*}
+   and the first assertion follows. Also, in the case $X\cap Y =\emptyset$ we have 
+   \begin{align*}
+	   	n+1 = \codim\big(\{0\}, \IA^{n+1}(k)\big) \leq \codim\big(C(X),\IA^{n+1}(k)\big)+\codim\big(X(Y), \IA^{n+1}(k)\big) = \xi +\upsilon\;, 
+   \end{align*}
+   proving the second assertion.
 \end{proof}
 \begin{defi}
-    The graded ring defined by a projective variety $Z = V(\pp) \subseteq \IP^n(k)$ is defined as $S.(Z) = k[X_0,\ldots, X_n]/\pp$. We would like to compare this to the structure sheaf, or of the line bundles $\Oo(k)$ on $Z$. 
+    The graded ring defined by a projective variety $Z = V(\pp) \subseteq \IP^n(k)$ is defined as $S_\bullet(Z) = k[X_0,\ldots, X_n]/\pp$. We would like to compare this to the structure sheaf, or of the line bundles $\Oo^\ell$ on $Z$. 
 \end{defi}
 \begin{thm}
-    Let $Z$ be a projective algebraic variety. For any $f\in S.(Z)$ which is homogeneous of positive degree,
+    Let $Z$ be a projective algebraic variety. For any $f\in S_\bullet(Z)$ which is homogeneous of positive degree,
     \begin{align*}
-        (S.(X)_f)_0 &\isomorphism \Oo(Z\setminus V(f))\\
-        \frac{g}{f^k} &\longmapsto \left([x_0,\ldots,x_n] \mapsto \frac{g(x_0,\ldots,x_n)}{f(x_0,\ldots, x_n)^k}\right)
+        (S_\bullet(Z)_f)_0 &\isomorphism \Oo(Z\setminus V(f))\\
+        \frac{g}{f^s} &\longmapsto \left([x_0,\ldots,x_n] \mapsto \frac{g(x_0,\ldots,x_n)}{f(x_0,\ldots, x_n)^s}\right)\;.
     \end{align*}
-    moreover
+    Moreover
     \begin{align*}
-        (S.(X)_f)_\ell &\isomorphism \Oo^\ell(Z\setminus V(f)) \\
-        \frac{g}{f^k} &\longmapsto \left([x_0,\ldots,x_n] \mapsto \frac{g(x_0,\ldots,x_n)}{f(x_0,\ldots, x_n)^k}\right)
+        (S_\bullet(Z)_f)_\ell &\isomorphism \Oo^\ell(Z\setminus V(f)) \\
+        \frac{g}{f^s} &\longmapsto \left([x_0,\ldots,x_n] \mapsto \frac{g(x_0,\ldots,x_n)}{f(x_0,\ldots, x_n)^s}\right)\;.
     \end{align*}
-    We have $\Oo(Z) = \left\{k\right\}$ (given by the constant function). For general $\ell$, $S_\ell(Z)\monomorphism \Oo^\ell(Z)$ and for every $f\in \Oo^\ell(Z)$ there is $k_0\in \IN$ such that $f\cdot S_k(Z)\subseteq S_{k+l}(Z) \subseteq \Oo^{k+\ell} (Z)$.
+    Moreover again, we have $\Oo(Z) = k$ (given by the constant functions). For general $\ell$, $S_\ell(Z)\monomorphism \Oo^\ell(Z)$ and for every $f\in \Oo^\ell(Z)$ there is $m\in \IN$ such that $f\cdot S_k(Z)\subseteq S_{m+\ell}(Z) \subseteq \Oo^{m+\ell} (Z)$.
 \end{thm}
 \begin{rem*}
     \begin{alphanumerate}
         \item 
-            The grading of $(S.(Z)_f)_d =\left\{\frac{g}{f^k}\st g\in S_{d+k\cdot \delta}\right\}$ when $f\in S_\delta(Z)$. When $\delta>0$, we obtain a $\IZ$-graded ring.
+            The grading is given by $(S_\bullet(Z)_f)_d =\left\{gf^{-s}\st g\in S_{d+s\cdot \delta}(Z)\right\}$ when $f\in S_\delta(Z)$. For $\delta>0$ we obtain a $\IZ$-graded ring.
         \item 
-            When $f\in S_\delta(Z)$ has the form $f=\phi \mod \pp$ where $\phi \in R = k[X_0,\ldots, X_n]$ is homogeneous of degree $\delta$ and $V(f)\coloneqq V(\phi)\cap Z$ does not depend on the choice of $\phi$.
+            When $f\in S_\delta(Z)$ has the form $f=\phi \mod \pp$ for $\phi \in R = k[X_0,\ldots, X_n]$ homogeneous of degree $\delta$, then $V(f)\coloneqq V(\phi)\cap Z$ does not depend on the choice of $\phi$.
     \end{alphanumerate}
 \end{rem*}
 \begin{proof}
-    The proof is similar to what was done in the affine case. Let $\eta\in \Oo^\ell(X\setminus V(f))$, where $f\neq 0$ is homogeneous of degree $\delta >0$ (the case $\ell=0$ corresponds to the study of $\Oo_Z(Z\setminus V(f))$). By Definition \reff{def:regularFunction}, every $z\in Z$ has an open neighbourhood $U_z$ such that there are $p_z,q_z\in R=k[X_0,\ldots, X_n]$ where $q_z$ is homogeneous of degree $b_z$, $p_z$ of degree $a_z = b_z+\ell$ and $V(q_z)\cap U_z = \emptyset$ and such that 
+    The proof is similar to what was done in the affine case, that is, in \cite[Proposition~2.2.2]{alg1}. As they were before, well-definedness and injectivity are easy again so surjectivity is what we need to worry about. 
+    
+    Let $\eta\in \Oo^\ell(X\setminus V(f))$ (the case $\ell=0$ corresponds to the study of $\Oo(Z\setminus V(f))$), where $f\neq 0$ is homogeneous of degree $\delta >0$. By Definition~\reff{def:regularFunction}, every $z\in Z$ has an open neighbourhood $U_z$ such that there are polynomials $p_z,q_z\in R=k[X_0,\ldots, X_n]$ where $q_z$ is homogeneous of degree $b_z$, $p_z$ of degree $a_z = b_z+\ell$ and $V(q_z)\cap U_z = \emptyset$ and such that 
     \begin{align*}
         \eta(x_0,\ldots, x_n) = \frac{b_z(x_0,\ldots, x_n)}{q_z(x_0,\ldots, x_n)}
     \end{align*}
-    when $[x_0,\ldots, x_n]\in U_z\subseteq Z\setminus V(f)$. Replacing $p_z$ by $p_z\cdot r$, $q_z$ by $q_z\cdot r$, and $U_z$ by $U_z\setminus(r) = Z\setminus V(r)$ where $r$ is homogeneous and $\IP^n(k)\setminus U_z \subseteq V(r)$ and $z\not \in V(R)$, we may assume that $U_z\cap Z = Z\setminus V(q_z)\subseteq Z\setminus V(f)$. The topological space $\IP^n(k)$ being Noetherian, $Z\setminus V(f)$ is quasi-compact, hence is covered by finitely many $Z\setminus V(q_{z_i})$, $1\leq i \leq n$. Let $p_i= p_{z_i}$ and $q_i = q_{z_i}$. Then 
+    when $[x_0,\ldots, x_n]\in U_z\subseteq Z\setminus V(f)$. Replacing $p_z$ by $p_z\cdot r$, $q_z$ by $q_z\cdot r$, and $U_z$ by $U_z\setminus V(r) = Z\setminus V(r)$ with $r$ homogeneous and $\IP^n(k)\setminus U_z \subseteq V(r)$ and $z\not \in V(r)$, we may assume that $U_z\cap Z = Z\setminus V(q_z)\subseteq Z\setminus V(f)$. The topological space $\IP^n(k)$ (and thus also $Z$) being Noetherian, $Z\setminus V(f)$ is quasi-compact, hence is covered by finitely many $Z\setminus V(q_{z_i})$, $i=1,\ldots,N$. Let $p_i= p_{z_i}$ and $q_i = q_{z_i}$. Then 
     \begin{align*}
-        V(f) \supseteq Z\cap \bigcap_{i=1}^n V(q_i) = V(\langle \pp, q_1,\ldots, q_n\rangle)
+        V(\phi) \supseteq Z\cap \bigcap_{i=1}^n V(q_i) = V\big(\pp+ (q_1,\ldots, q_N)_R\big)
     \end{align*}
-    where $\pp$ is the prime ideal corresponding to $Z$ and $f$ is some homogeneous representative of $f\in S.(Z) = R/\pp$. Since $\delta >0$, $f\in R_+$ and by the projective version of Hilbert's Nullstellensatz, 
+    where $\pp$ is the homogeneous prime ideal corresponding to $Z$ and $\phi$ is some homogeneous representative of $f\in S_\bullet(Z) = R/\pp$. Since $\delta >0$, $\phi\in R_+$ and by the projective version of Hilbert's Nullstellensatz, 
     \begin{align*}
-        f^k \in  \pp+\sum_{i=1}^n R\cdot q_i
+        \phi^s \in  \pp+(q_1,\ldots,q_N)_R\quad\text{ for some }s\geq 1 
     \end{align*}
-    In other words, there are $h_i\in R_{k\cdot \delta-b_i}$  such that $f^k\equiv \sum_{i=1}^n h_i \mod\pp$. Let $h= \frac{\sum_{i=1}^n h_ip_i}{f^k}$. We have $(p_i q_j)(x) = (p_jq_i)(x)$, when $x=[x_0,\ldots,x_n]\in Z$ because this holds on the dense open subset $C(Z)\setminus V(q_iq_j)$. For $[x0,\ldots, x_n]\in Z\setminus V(f)$ 
+    In other words, there are $h_i\in R_{s\cdot \delta-b_i}$ such that $\phi^k\equiv \sum_{i=1}^N q_ih_i \mod\pp$. Let $h= f^{-s}\sum_{i=1}^N h_ip_i\in (S_\bullet(Z)_f)_\ell$. We have $(p_i q_j)(x) = (p_jq_i)(x)$ for all $x=[x_0,\ldots,x_n]\in Z$ because this holds as an equation in $\IA^{n+1}(k)$ on the dense open subset $C(Z)\setminus V(q_iq_j)$ of $C(Z)$ and thus by continuity on all of $C(Z)$. Then, for $[x_0,\ldots, x_n]\in Z\setminus V(f)$ 
     \begin{align*}
-        (g_jh)(x_0,\ldots, x_n) = \frac{\sum_{i=1}^n (h_ip_iq_j)(x)}{f(x)^k} = \frac{\sum_{i=1}^n (h_iq_ip_j)(x)}{f(x)^k} = p_j(x)
+        (g_jh)(x_0,\ldots, x_n) = f^{-s}\sum_{i=1}^N (h_ip_iq_j)(x)= f^{-s}\sum_{i=1}^N (h_iq_ip_j)(x) = p_j(x)
     \end{align*}
-    and $\eta(x) = h(x)$ when $x\in Z\setminus V(q_j)$. As the sets cover $Z\setminus V(f)$, the assertions about $\Oo(Z\setminus V(f))$ and $\Oo^\ell (Z\setminus V(f))$ follow, as far as surjectivity is concerned. injectivity is easy.
+    and thus $\eta(x) = h(x)$ when $x\in Z\setminus V(q_j)$. As the sets cover $Z\setminus V(f)$, surjectivity follows.
 \end{proof}
 
 
