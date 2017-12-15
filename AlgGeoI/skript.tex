@@ -266,7 +266,7 @@ Let it be said that the first three recommendations are from Professor Franke wh
 \begin{rem*}
     In general, $\colimit$ is the colimit in the target category. For the target categories of abelian groups, sets or rings we have
     \begin{align*}
-        \Gg_x = \left\{(U,g) \st x\in U \text{ open }, g\in \Gg(U)\right\}/_\sim\;,
+        \Gg_x = \left\{(U,g) \st x\in U \text{ open, } g\in \Gg(U)\right\}/_\sim\;,
     \end{align*}
     where $(U,g)\sim (V,h)$ iff there is an open neighbourhood $W\subseteq U\cap V$ of $x$ such that $g|_W = h|_W$. 
 \end{rem*}
@@ -1599,13 +1599,13 @@ If $M$ is an $R$-module, we have a similar presheaf (of abelian groups or of mod
         \end{array}\right\}\\        
         \snake M(U) &\simeq \left\{(m_\pp)_{\pp\in U}\in \prod_{\pp\in U} M_\pp \st\text{ the analogous coherence condition}\right\}
     \end{align*}
-    by our construction of the sheafification in Definition~\reff{def:sheafification}. Moreover, by Proposition~\reff{prop:sheafificationMorphisms}\itememph{a}, $(\Oo_{\Spec R})_\pp\simeq R_\pp$ and $(\snake M_\pp)\simeq M_\pp$.
+    by our construction of the sheafification in Definition~\reff{def:sheafification}. Moreover, by Proposition~\reff{prop:sheafificationMorphisms}\itememph{a}, $\Oo_{\Spec R,\pp}\simeq R_\pp$ and $(\snake M_\pp)\simeq M_\pp$.
 \end{rem*}
 \begin{fact}
     The restricted sheaf $\Oo_{\Spec R}|_{\Spec R\setminus V(f)}$ is isomorphic to $\Oo_{\Spec R_f}$ under the identification $\Spec R_f\isomorphism \Spec R\setminus V(f)$ sending $\qq\in \Spec R_f$ to its preimage in $R$ and $\pp\in \Spec R$ to $\qq = \pp R_f$. In the following conditions we identify $\Spec R_f$ with $\Spec R\setminus V(f)$, for the sake of convenience.
 \end{fact}
 \begin{prop}\lbl{prop:RequalsGlobalSection}
-    The maps $R\morphism \Oo_{\Spec R}(\Spec R)$ and $M\morphism \snake M (\Spec R)$, sending $r$ and $m$ (which are global sections of the presheaves \eqreff{eq:SpecRingLoc} and \eqreff{eq:SpecModuleLoc}) to their images in the sheafifications, are isomorphisms.
+    The maps $R\morphism \Oo_{\Spec R}(\Spec R)$ and $M\morphism \snake M (\Spec R)$, sending $r$ and $m$ (which are global sections of the in \eqreff{eq:SpecRingLoc} and \eqreff{eq:SpecModuleLoc} defined presheaves) to their images in the sheafifications, are isomorphisms.
 \end{prop}
 \begin{rem*}
     By the previous fact in its analogue $\snake M|_{\Spec R_f} \simeq \snake{M}_f$, we also have
@@ -1616,7 +1616,9 @@ If $M$ is an $R$-module, we have a similar presheaf (of abelian groups or of mod
     However our proof of Proposition~\reff{prop:RequalsGlobalSection} will yield this directly.
 \end{rem*}
 \begin{proof}
-    We show that the presheaves $\Spec R_f\morphism R_f$ or $\Spec M_f\morphism M_f$ satisfy the sheaf axiom for covers of elements of $\Bb= \left\{\Spec R_f\st f\in R\right\}$ by elements of $\Bb$. If $\Spec R_f = \bigcup_{\lambda\in\Lambda} \Spec R_{g_\lambda}$ we may replace $R$ by $R_f$.
+    We show that the presheaves $\Spec R_f\mapsto R_f$ or $\Spec M_f\mapsto M_f$ satisfy the sheaf axiom for covers of elements of $\Bb= \left\{\Spec R_f\st f\in R\right\}$ by elements of $\Bb$. Having established this, the claim follows from Proposition~\reff{prop:sheafificationMorphisms}\itememph{d} (note that $\Bb$ is closed under intersections as we pointed out at the beginning of the section).  If $\Spec R_f = \bigcup_{\lambda\in\Lambda} \Spec R_{g_\lambda}$ is a cover of $\Spec R_f$, we may replace $R$ by $R_f$ so it's enough to consider covers of $\Spec R$ only.
+    
+    The following Lemma~\reff{lem:finCover} deals with the case of finite covers. The case of arbitrary covers will then be deduced from this special case in a more general setting in Lemma~\reff{lem:finiteCompactSheafAxiom}.
 \end{proof}
 \begin{lem}\lbl{lem:finCover}
     For every finite cover $\Spec R = \bigcup_{i=1}^n \Spec R_{f_i}$ we have
@@ -1626,41 +1628,101 @@ If $M$ is an $R$-module, we have a similar presheaf (of abelian groups or of mod
     \end{align*}
 \end{lem}
 \begin{proof}
-    The first assertion being the special case $M=R$ of the second, we prove the second. For injectivity, assume that $m$ is in the kernel of this map, we have $f^{k_i}_i m_i = 0$ for all $1\leq i\leq n$. Since $\emptyset = \bigcap_{i=1}^n V(f_i) = \bigcap_{i=1}^n V(f^{k_i}_i) = V(\langle f_1^{k_1},\ldots, f_n^{k_n}\rangle_R)$ it follows that there are $g_i\in R$ such that $\sum_{i=1}^n f_i^{k_i}g_i = 1$ in $R$. Then $0 = m$.
+    The first assertion being the special case $M=R$ of the second, we prove the second. For injectivity, assume that $m$ is in the kernel of this map. Then $m$ must be killed be the localizations, hence there are $k_i\geq0$ such that $f^{k_i}_i m_i = 0$ for all $i\leq n$. Since $\emptyset = \bigcap_{i=1}^n V(f_i) = \bigcap_{i=1}^n V\big(f^{k_i}_i\big) = V\big(f_1^{k_1},\ldots, f_n^{k_n}\big)$ it follows that there are $g_i\in R$ such that $\sum_{i=1}^n f_i^{k_i}g_i = 1$ in $R$. Then 
+    \begin{align*}
+    	0=\sum_{i=1}^{n}f_i^{k_i}g_i\cdot m=1\cdot m=m\;.
+    \end{align*}
     
-    To prove surjectivity, let $(m_i)_{i=1}^n$ be an element of the right hand side, then $m_i=\frac{\mu_i}{f_i^{k_i}}$. Replacing $f_i$ by $f_i^{k_i}$ we may assume $m_i = \frac{\mu_i}{f_i}$. If the tuple $\left(\frac{\mu_i}{f_i}\right)_{i=1}^n$ is in the right hand side, there are $k_{i,j}\in \IN$ such that $(f_if_j)^{k_{i,j}}(f_i\mu_j - f_j\mu_i) = 0$ in $M$. Putting $k= \max\left\{ k_{i,j}\st 1\leq i <j\leq n\right\}$ we have 
+	    To prove surjectivity, let $(m_i)_{i=1}^n$ be an element of the right-hand side and $m_i=\mu_if_i^{-k_i}$ for some $\mu_i\in M$ and $k_i\geq0$. We may always choose $k_i\geq1$ (or arbitrarily large). Replacing $f_i$ by $f_i^{k_i}$ then doesn't change the localization $R_{f_i}$), hence we may assume $m_i = \mu_if_i^{-1}$. If the tuple $(m_i)_{i=1}^n=\big(\mu_if_i^{-1}\big)_{i=1}^n$ is in the right-hand side, then the images of $\mu_if_i^{-1}$ and $\mu_jf_j^{-1}$ in $M_{f_if_j}$ coincide, i.e. there are $k_{i,j}\geq 0$ such that $(f_if_j)^{k_{i,j}}(f_i\mu_j - f_j\mu_i) = 0$ in $M$. Putting $k= \max\left\{ k_{i,j}\st 1\leq i <j\leq n\right\}$ we have 
     \begin{align*}
         f_i^{k+1}f_j^k\mu_j = f_i^k f_j^{k+1}\mu_i
     \end{align*}
-    in $M$ or $\snake f_i\snake \mu_j = \snake f_j \snake \mu_i$ where $\snake f_i = f_i^{k+1}$, $\snake f_j = f_j^{k+1}$, $\snake \mu_i = f_i^k\mu_i$, $\snake \mu_j = f_j^k\mu_j$ satisfy $R_{\snake f_i} \simeq R_{f_i}$, $\frac{\mu_i}{f_i} = \frac{\snake \mu_i}{\snake f_i}$ in $M_{f_i} \simeq M_{\snake f_i}$. Thus we may assume $f_i\mu_j = f_j\mu_i$ in $M$. As in the first step there are $(g_i)_{i=1}^n\in R^n$ such that $\sum_{i=1}^n f_i g_i = 1$. Let $m = \sum_{i=1}^n g_i\mu_i$, then $f_jm = \sum_{i=1}^n g_if_j\mu_i = \sum_{i=1}^n g_i f_i\mu_j = \mu_j$. Thus $m_j$ is the image of $m$ in $M_{f_j}$.
+    in $M$ or $\snake f_i\snake \mu_j = \snake f_j \snake \mu_i$ where $\snake f_i = f_i^{k+1}$, $\snake f_j = f_j^{k+1}$, $\snake \mu_i = f_i^k\mu_i$, $\snake \mu_j = f_j^k\mu_j$ satisfy $R_{\snake f_i} \simeq R_{f_i}$ and $\mu_if_i^{-1} = \smash{\snake \mu_i\snake f_i^{-1}}$ in $M_{f_i} \simeq M_{\snake f_i}$. Thus we may assume $f_i\mu_j = f_j\mu_i$ in $M$. As in the injectivity step there are $g_i\in R$ such that $\sum_{i=1}^n f_i g_i = 1$. Let $m = \sum_{i=1}^n g_i\mu_i$, then 
+    \begin{align*}
+    	f_jm = \sum_{i=1}^n g_if_j\mu_i = \sum_{i=1}^n g_i f_i\mu_j = \mu_j\;. 
+    \end{align*}
+    Thus $m_j$ is the image of $m$ in $M_{f_j}$.
 \end{proof}
-\begin{lem}
-    Let $\Bb$ be a topology base of any topological space $X$ which is closed under intersection and $\Ff$ a presheaf on $\Bb$. If the elements of $\Bb$ are quasi-compact and $\Ff$ satisfies the sheaf axiom for finite covers of elements of $\Bb$ by elements of $\Bb$, then it also satisfies the sheaf axiom for arbitrary covers of elements of $\Bb$ by elements of $\Bb$. Thus, $\Ff\isomorphism \Ff^\sh|_\Bb$ is an isomorphism.
+\begin{lem}\lbl{lem:finiteCompactSheafAxiom}
+    Let $\Bb$ be a topology base of any topological space $X$ which is closed under intersection and $\Ff$ a presheaf on $\Bb$. If the elements of $\Bb$ are quasi-compact and $\Ff$ satisfies the sheaf axiom for finite covers of elements of $\Bb$ by elements of $\Bb$, then it also satisfies the sheaf axiom for arbitrary covers of elements of $\Bb$ by elements of $\Bb$.
 \end{lem}
 \begin{proof}
-    Let $U\in \Bb$ be covered by $U = \bigcup_{\lambda\in \Lambda} U_\lambda$ with $U_\lambda \in \Bb$. As $U$ is quasi-compact, there are $(\lambda_i)_{i=1}^n$, $n\in \IN$, $\lambda_i\in \Lambda$ such that $U= \bigcup_{i=1}^n U_{\lambda_i}$. By the assumptions $\Ff(U)\morphism \prod_{i=1}^n \Ff(U_{\lambda_i})$, $f\mapsto (f|_{U_{\lambda_i}})_{i=1}^n$ is injective. Hence so is $\Ff(U)\morphism \prod_{\lambda\in \Lambda} \Ff(U_\lambda)$, $f\mapsto(f|_{U_\lambda})_{\lambda\in\Lambda}$. Let $(f_\lambda)_{\lambda\in \Lambda}\in \prod_{\lambda\in U}\Ff(U_\lambda)$ such that $f_\lambda|_{U_\lambda\cap U_\theta} = f_\theta|_{U_\lambda\cap U_\theta}$. Then there is $f\in \Ff(U)$ such that $f|_{U_{\lambda_i}} = f_{\lambda_i}$. We claim that $f|_\lambda = f_\lambda$. 
+    Let $U\in \Bb$ be covered by $U = \bigcup_{\lambda\in \Lambda} U_\lambda$ with $U_\lambda \in \Bb$. As $U$ is quasi-compact, there are $\lambda_1,\ldots,\lambda_n\in \Lambda$ such that $U= \bigcup_{i=1}^n U_{\lambda_i}$. By the assumptions $\Ff(U)\morphism \prod_{i=1}^n \Ff(U_{\lambda_i})$, $f\mapsto \big(f|_{U_{\lambda_i}}\big)_{i=1}^n$ is injective. Hence so is $\Ff(U)\morphism \prod_{\lambda\in \Lambda} \Ff(U_\lambda)$, $f\mapsto\big(f|_{U_\lambda}\big)_{\lambda\in\Lambda}$. 
+    
+    For surjectivity, let $(f_\lambda)_{\lambda\in \Lambda}\in \prod_{\lambda\in U}\Ff(U_\lambda)$ such that $f_\lambda|_{U_{\lambda,\vartheta}} = f_\vartheta|_{U_{\lambda,\vartheta}}$ where we put $U_{\lambda,\vartheta}=U_\lambda\cap U_\vartheta$ for short. As the sheaf axiom holds for finite covers, there is $f\in \Ff(U)$ such that $f|_{U_{\lambda_i}} = f_{\lambda_i}$. We claim that $f|_\lambda = f_\lambda$. Indeed,
     \begin{align*}
-        (f|_{U_\lambda})|_{U_\lambda \cap U_{\lambda_i}} = (f|_{U_{\lambda_i}})|_{U_\lambda \cap U_{\lambda_i}} = a_{\lambda_i}|_{U_\lambda \cap U_{\lambda_i}} = a_\lambda|_{U\lambda\cap U_{\lambda_i}}.
+        (f|_{U_\lambda})|_{U_{\lambda,\lambda_i}} = (f|_{U_{\lambda_i}})|_{U_{\lambda,\lambda_i}} = f_{\lambda_i}|_{U_{\lambda,\lambda_i}} = f_\lambda|_{U_{\lambda,\lambda_i}}\;.
     \end{align*}
-    As $U_\lambda = \bigcup_{i=1}^n(U_\lambda\cap U_{\lambda_i}$ the map $\Ff(U_\lambda) \morphism \prod_{i=1}^n \Ff(U_\lambda\cap U_{\lambda_i})$, $f\mapsto (f|_{U_\lambda\cap U_{\lambda_i}})_{i=1}^n$ is injective by our assumptions, this implies $f|_{U_\lambda}=f_\lambda$ as stated.
+    As $U_\lambda = \bigcup_{i=1}^n(U_\lambda\cap U_{\lambda_i})$ the map $\Ff(U_\lambda) \morphism \prod_{i=1}^n \Ff(U_\lambda\cap U_{\lambda_i})$, $f\mapsto (f|_{U_{\lambda,\lambda_i}})_{i=1}^n$ is injective by our assumptions. This implies $f|_{U_\lambda}=f_\lambda$ as stated.
 \end{proof}
 \begin{rem*}
-    Another way to apply the principle of the proof of \reff{lem:finCover} is to use the fact that when $\bigcap_{i=1}^n V(f_i) = \emptyset$ the Korzul complex
-    
-    is contracted by $(g_i)_{i=1}^n$ such that $\sum_{i=1}^n g_if_i = 1$, $(m_i)_{i=1}^n \mapsto \sum_{i=1}^n g_im_i$, $(m_{i,j})\mapsto \left(\sum_{j=1}^n g_j m_{i,j}\right)_{i=1}^n$, where $m_{i,j}=-1$ if $i>j$ and $0$ otherwise. But if $U \coloneqq \Spec R = \bigcup_{i=1}^n \Spec R_{f_i}$ then $0\morphism M\morphism \check{C}^*(U,\text{the presheaf giving } \snake M)\lisomorphism \colimit_{k\in\IN} K((f_1^k, \ldots, f_n^k),M)$ which is the argument used in EGA to show Proposition \reff{prop:RequalsGlobalSection} and the vanishing of higher cohomologies.
+    Another way to apply the principle of the proof of Lemma~\reff{lem:finCover} is to use the fact that when $\bigcap_{i=1}^n V(f_i) = \emptyset$ the \emph{Koszul complex} $K\big((f_1,\ldots,f_n),M\big)$
+    \begin{diagram*}
+    	\node (0) at (0,0) {$0$};
+    	\node (M) [right=0.75cm of 0] {$M$};
+    	\node (M1) [right=0.75cm of M] {$\displaystyle\smash{\bigoplus_{1\leq i\leq n}}M$};
+    	\node (m) [below=0.75cm of M] {$\hphantom{M}$};
+    	\node (f) [right=0.75cm of m] {$\hphantom{\displaystyle\smash{\bigoplus_{1\leq i\leq n}}M}$};
+    	\node (m1) [below=0.5cm of f] {$\hphantom{\displaystyle\smash{\bigoplus_{1\leq i\leq n}}M}$};
+    	\scriptsize
+    	\node at (m) {$m$};
+    	\node at (m1) {$\big(m_i\big)_{\smash{i=1}}^{\smash{n}}$};    	
+    	\node at (f) {$\big(f_im\big)_{\smash{i=1}}^{\smash{n}}$};
+    	\node (m2) [right=0.75cm of f] {$\hphantom{\big(f_im_i-f_jm_j\big)_{\rlap{$\scriptstyle i<j$}}}$};
+    	\node at (m2) {$\big(m_{i,j}\big)_{\smash{\rlap{$\scriptstyle i<j$}}}$};
+    	\node (M2) [right=0.75cm of M1] {$\hphantom{\big(f_im_i-f_jm_j\big)_{\rlap{$\scriptstyle i<j$}}}$};
+    	\node (M3) [right=0.75cm of M2] {$\hphantom{\big(f_km_{i,j}+f_im_{j,k}-f_jm_{i,k}\big)_{\rlap{$\scriptstyle i<j<k$}}}$};
+    	\node (f3) [right=0.75cm of m2] {$\big(f_km_{i,j}+f_im_{j,k}-f_jm_{i,k}\big)_{\smash{\rlap{$\scriptstyle i<j<k$}}}$};
+    	\node (f2) [right=0.75cm of m1] {$\big(f_im_i-f_jm_j\big)_{\smash{\rlap{$\scriptstyle i<j$}}}$};
+    	\normalsize
+    	\node at (M2) {$\displaystyle\smash{\bigoplus_{1\leq i<j\leq n}}M$};
+    	\node at (M3) {$\displaystyle\smash{\bigoplus_{1\leq i<j<k\leq n}}M$};
+    	\node (dots) [right=0.75cm of M3] {$\quad\cdots$};
+    	\draw[->] (0) -- (M);
+    	\draw[->] (M) -- (M1);
+    	\draw[->] (M1) -- (M2);
+    	\draw[->] (M2) -- (M3);
+    	\draw[|->] (m) -- (f);
+    	\draw[|->] (m1) -- (f2);
+    	\draw[|->] (m2) -- (f3);
+    	\draw[->] (M3) -- (dots);
+    \end{diagram*}
+    is \emph{contracted} by $(g_i)_{i=1}^n$ such that $\sum_{i=1}^n g_if_i = 1$ via
+    \begin{align*}
+    	(m_i)_{i=1}^n \mapsto \sum_{i=1}^n g_im_i\;,\quad (m_{i,j})_{i<j}\mapsto \bigg(\sum_{j=1}^n g_j m_{i,j}\bigg)_{i=1}^n\;,\quad\ldots
+    \end{align*}
+     (where $m_{i,j}=-m_{j,i}$ if $i>j$ and $m_{i,i}=0$). But if $\Uu$ denotes te cover $\Spec R = \bigcup_{i=1}^n \Spec R_{f_i}$ then 
+     \begin{align*}
+     	0\morphism M\morphism \check{C}^\bullet\big(\Uu,\text{the presheaf giving } \snake M\big)\lisomorphism \colimit[k\in\IN] K\big((f_1^k, \ldots, f_n^k),M\big)
+     \end{align*}
+     which is the argument used in EGA to show Proposition~\reff{prop:RequalsGlobalSection} and the vanishing of higher cohomologies (if anyone of you who is proficient in sheaf and Koszul cohomology notices that part of the above doesn't make any sense, please tell us).
 \end{rem*}
 \begin{example}
     \begin{alphanumerate}
         \item 
-            When $\nil(R)\in \Spec R$, $\Oo_{\Spec R}$ is already uniquely described by $\Oo_{\Spec R} (U) = R$ if $U=\nil(R)$ and $\emptyset$ otherwise. 
+            When $\nil(R)\in \mSpec R$ (this is Frankespeak for ``$R$ has only one prime ideal''), $\Oo_{\Spec R}$ is already uniquely described by 
+            \begin{align*}
+            	\Oo_{\Spec R} (U) = 
+            	\begin{cases}
+	            	R& \text{if }U=\nil(R)\\
+	            	0 & \text{if }U=\emptyset
+            	\end{cases}\;.
+            \end{align*}
         \item 
-            When $R$ is a PID, the same is done by $\Oo_{\Spec R} (\Spec R\setminus V(f)) = R_f$ and $\Oo_{\Spec R} (\emptyset) = 0$. In particular this holds for $R=\IZ$.
+            When $R$ is a a principal ideal domain (or more generally, a Dedekind domain with finite class group $\Pic R$, as in this case $\pp^{\#\Pic R}=(\pi)$ is a principal ideal for every prime ideal $\pp$ and $V(\pp)=V(\pi)$), the same is done by 
+            \begin{align*}
+            	\Oo_{\Spec R}(U)= \big(\Spec R\setminus V(f)\big) =
+            	\begin{cases}
+	            	R_f&\text{if }U=\Spec R\setminus V(f)\\
+	            	0 &\text{if }U=\emptyset
+            	\end{cases} \;.
+            \end{align*}
     \end{alphanumerate}
 \end{example}
 \begin{rem}
     Proposition \reff{prop:RequalsGlobalSection} would have failed if we had defined $\Oo_{\Spec R}$ as a sheaf of functions $\pp\morphism k(\pp)$ as $R$ may have nilpotent elements.
 \end{rem}
-\begin{prop}
+\begin{prop}\lbl{prop:affineSchemeAdjunction}
     If $R$ is a ring and $X$ a locally ringed space, we have a canonical bijection:
     \begin{align*}
         \Hom_{\cat{LRS}}(X,\Spec R) &\isomorphism \Hom_{\cat{Ring}}(R,\Oo_X(X))\\
@@ -1668,21 +1730,42 @@ If $M$ is an $R$-module, we have a similar presheaf (of abelian groups or of mod
     \end{align*}
 \end{prop}
 \begin{rem*}
-    Thus, $(\cat{Ring})^\op \morphism[\Spec(-)] \cat{LRS}$ is right adjoint to $\cat{LRS} \morphism[\Oo_-(-)] \cat{Ring}$.
+    Thus, $(\cat{Ring})^\op \xrightarrow{\Spec(-)} \cat{LRS}$ is right adjoint to $\cat{LRS} \xrightarrow{\Oo_-(-)} \cat{Ring}$.
 \end{rem*}
-\begin{proof}
-    Let $X\morphism[f] \Spec R$ be a morphism in $\cat{LRS}$. We want to show that it is uniquely determined by $\phi\colon R \isomorphism (\Oo_{\Spec R})(\Spec R) \morphism[f^*]\Oo_X(X)$. Let $x\in X$, $\pp=f(x)$. We have a commutative diagram. As the arrow $(\Oo_{\Spec R})_\pp\morphism \Oo_{X,x}$ is local and the preimages of the maximal ideal in $R_\pp$ and $R$ are $\pp R_\pp$ and $\pp$, $\pp$ is uniquely determined as the preimage of $\mm_{X,x}\subseteq \Oo_{X,x}$ under $R\morphism[\phi] \Oo_X(X)\morphism \Oo_{X,x}$. By the universal property of the localization $R\morphism R_\pp$, the lower horizontal right arrow is also uniquely determined by $\phi$ and the commutativity of the diagram. Thus, the maps $\Oo_{\Spec R, f(x)}\morphism[f^*]\Oo_{X,x}$ are uniquely determined by $\phi$. It follows by the following fact that $f$ is uniquely determined.
-\end{proof}
+\begin{proof}[Proof of Proposition~\reff{prop:affineSchemeAdjunction}]
+    Let $X\morphism[f] \Spec R$ be a morphism in $\cat{LRS}$. We want to show that it is uniquely determined by the composition 
+    \begin{align*}
+    	\phi\colon R \isomorphism (\Oo_{\Spec R})(\Spec R) \morphism[f^*]\Oo_X(X)=\Oo_X\big(f^{-1}(\Spec R)\big)=f_*\Oo_X(\Spec R)\;. 
+    \end{align*}
+    Let $x\in X$, $\pp=f(x)$. We have a commutative diagram
+    \begin{diagram*}
+    	\node (R) at (0,1.5) {$R$};
+    	\node (OR) at (2.5,1.5) {$\Oo_{\Spec R}(\Spec R)$};
+    	\node (OX) at (5.5,1.5) {$\Oo_X(X)$};
+    	\node (Rp) at (0,0) {$R_\pp$};
+    	\node (ORp) at (2.5,0) {$\Oo_{\Spec R,\pp}$};
+    	\node (OXx) at (5.5,0) {$\Oo_{X,x}$};
+    	\scriptsize
+    	\draw[->] (R) -- (Rp);
+    	\draw[->] (R) -- (OR) node[pos=0.5,above=-0.25ex] {$\sim$};
+    	\draw[->] (Rp) -- (ORp) node[pos=0.5,above=-0.25ex] {$\sim$};
+    	\draw[->] (OR) -- (ORp);
+    	\draw[->] (OX) -- (OXx);
+    	\draw[->] (OR) -- (OX) node[pos=0.5, above] {$f^*$};
+    	\draw[->] (ORp) -- (OXx) node[pos=0.5, above] {$f^*$};
+    \end{diagram*}
+     As the arrow $\Oo_{\Spec R,\pp}\morphism \Oo_{X,x}$ is local and the preimages of the maximal ideal $\mm_{X,x}$ of $\Oo_{X,x}$ in $R_\pp$ and $R$ are $\pp R_\pp$ and $\pp$, the prime ideal $\pp$ is uniquely determined as the preimage of $\mm_{X,x}\subseteq \Oo_{X,x}$ under $R\morphism[\phi] \Oo_X(X)\morphism \Oo_{X,x}$. By the universal property of the localization $R\morphism R_\pp$, the arrow $\Oo_{\Spec R,\pp}\morphism \Oo_{X,x}$ is also uniquely determined by $\phi$ and the commutativity of the diagram. Thus, for all $x\in X$, the maps $\Oo_{\Spec R, f(x)}\morphism[f^*]\Oo_{X,x}$ are uniquely determined by $\phi$. It follows by the following fact that $f$ is uniquely determined.
 \begin{fact}
-    Let $X\doublemorphism[a][b] Y$ are morphisms in $\cat{LRS}$ such that $a(x)=b(x)$ for all points in $x\in X$ and such that for all $x\in X$, $\Oo_{Y,a(x)} = \Oo_{Y,b(x)} \doublemorphism[a^*][b^*] \Oo_{X,x}$, coincide, then $a=b$.
+    If $X\doublemorphism[a][\smash{b}] Y$ are morphisms in $\cat{LRS}$ such that $a(x)=b(x)$ for all points in $x\in X$ and such that $\Oo_{Y,a(x)} = \Oo_{Y,b(x)} \doublemorphism[\smash{a^*}][b^*] \Oo_{X,x}$ coincide for all $x\in X$, then $a=b$.
 \end{fact}
 \begin{proof}
-    It is only necessary to show this for the pull-backs of $\upsilon\in \Oo_Y(U)$ under $a^*$ and $b^*$, for $U\subseteq Y$ open. But the images of $a^*\upsilon$ and $b^*\upsilon$ in $\Oo_{X,x}$, for $x\in f^{-1}U$, coincide with the images under $\upsilon$ under $\Oo_Y(U) \morphism \Oo_{Y,y}\doublemorphism[a^*][b^*] \Oo_{X,x}$, hence are equal. But $\Oo_X(f^{-1}U) \morphism \prod_{x\in f^{-1}U} \Oo_{X,x}$ is injective by results of Section 1.2. Thus $a^*\upsilon = b^*\upsilon$.
+    It is only necessary to show this for the pull-backs of $\upsilon\in \Oo_Y(U)$ under $a^*$ and $b^*$, for $U\subseteq Y$ open. But the images of $a^*\upsilon$ and $b^*\upsilon$ in $\Oo_{X,x}$, for $x\in f^{-1}U$, coincide with the images under $\upsilon$ under $\Oo_Y(U) \morphism \Oo_{Y,y}\doublemorphism[a^{\smash{*}}][b^*] \Oo_{X,x}$, hence are equal. But $\Oo_X(f^{-1}U) \morphism \prod_{x\in f^{-1}U} \Oo_{X,x}$ is injective by Corollary~\reff{cor:sheafDefinedByStalks}\itememph{a}. Thus $a^*\upsilon = b^*\upsilon$.
 \end{proof}
 \begin{cor}
     If $X\morphism[\iota] Y$ is a morphism in $\cat{LRS}$ such that $\iota$ is injective on points and such that $\Oo_{Y,\iota(x)} \morphism[\iota^*] \Oo_{X,x}$ is surjective, then $\iota$ is a monomorphism.
 \end{cor}
-
+We are left to prove surjectivity.
+\end{proof}
 
 
 
