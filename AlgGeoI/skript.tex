@@ -291,10 +291,10 @@ Let it be said that the first three recommendations are from Professor Franke wh
 \begin{varthm}{defi}\lbl{def:morphismOfPresheaves}
     A morphism $\Gg\morphism[f] \Hh$ of presheaves on $\Bb$ is a collection $\Gg(U)\morphism[f_U] \Hh(U)$ in the target category such that
     \begin{diagram*}
-    	\node (a) at (0,1.5) {$\Gg(U)$};
-    	\node (c) at (0,0) {$\Hh(U)$};
-    	\node (b) at (2.5,1.5) {$\Gg(V)$};
-    	\node (d) at (2.5,0) {$\Hh(V)$};
+    	\node[ob](a) at (0,1.5) {$\Gg(U)$};
+    	\node[ob](c) at (0,0) {$\Hh(U)$};
+    	\node[ob](b) at (2.5,1.5) {$\Gg(V)$};
+    	\node[ob](d) at (2.5,0) {$\Hh(V)$};
     	\scriptsize
     	\draw[->] (a) -- (b) node[pos=0.5, above] {$(-)|_V$};
     	\draw[->] (a) -- (c) node[pos=0.5, left] {$f_U$};
@@ -418,10 +418,10 @@ of presheaves on $\Bb$.
     	
     	Part \itememph{b} follows from Proposition~\reff{prop:sheafificationMorphisms}\itememph{b} as
     	\begin{diagram*}
-    		\node (a) at (0,1.5) {$\Ff(U)$};
-    		\node (c) at (0,0) {$\Ff^\sh(U)$};
-    		\node (b) at (2.5,1.5) {$\Gg(U)$};
-    		\node (d) at (2.5,0) {$\Gg^\sh(U)$};
+    		\node[ob](a) at (0,1.5) {$\Ff(U)$};
+    		\node[ob](c) at (0,0) {$\Ff^\sh(U)$};
+    		\node[ob](b) at (2.5,1.5) {$\Gg(U)$};
+    		\node[ob](d) at (2.5,0) {$\Gg^\sh(U)$};
     		\scriptsize
     		\draw[->] (a) -- (b) node[pos=0.5, above] {$\alpha$};
     		\draw[->] (a) -- (c) node[pos=0.5, sloped, above=-0.25ex] {$\sim$} node[pos=0.5, left] {$\Gamma_\Ff$};
@@ -459,9 +459,9 @@ of presheaves on $\Bb$.
     \begin{prop}\lbl{prop:sheafificationAdjointFunctor}
         The following holds for sheaves of sets, rings and (abelian) groups. Let $\Bb$ be a topology base and $\Ff$ a presheaf on $\Bb$. Any morphism $\Ff\morphism[\alpha] \Gg|_\Bb$, where $\Gg$ is a sheaf on $X$, has the form 
         \begin{diagram*}
-        	\node (F) at (0,1.25) {$\Ff$};
-        	\node (FB) at (1.25,0) {$\Ff^\sh|_\Bb$};
-        	\node (GB) at (2.5,1.25) {$\Gg|_\Bb$};
+        	\node[ob](F) at (0,1.25) {$\Ff$};
+        	\node[ob](FB) at (1.25,0) {$\Ff^\sh|_\Bb$};
+        	\node[ob](GB) at (2.5,1.25) {$\Gg|_\Bb$};
         	\scriptsize
         	\draw[->] (F) -- (FB) node[pos=0.5,below left] {$\Gamma_\Ff$};
         	\draw[->] (F) -- (GB) node[pos=0.5,above] {$\alpha$};
@@ -472,11 +472,11 @@ of presheaves on $\Bb$.
     \begin{proof}
         If $\beta$ is as above then $\alpha_x$ equals 
         \begin{diagram*}
-	       	\node (F) at (0,1.5) {$\Ff$};
-	       	\node (FB) at (1.5,0) {$\big(\Ff^\sh|_\Bb\big)_x$};
-	       	\node (Fsh) at (3.5,0) {$\Ff^\sh_x$};
-	       	\node (GB) at (3,1.5) {$\big(\Gg|_\Bb\big)_x$};
-	       	\node (G) at (5, 1.5) {$\Gg_x$};
+	       	\node[ob](F) at (0,1.5) {$\Ff$};
+	       	\node[ob](FB) at (1.5,0) {$\big(\Ff^\sh|_\Bb\big)_x$};
+	       	\node[ob](Fsh) at (3.5,0) {$\Ff^\sh_x$};
+	       	\node[ob](GB) at (3,1.5) {$\big(\Gg|_\Bb\big)_x$};
+	       	\node[ob](G) at (5, 1.5) {$\Gg_x$};
 	       	%\path (FB) -- (Fsh) node[pos=0.5] {$\simeq$};	       	
 	       	%\path (GB) -- (G) node[pos=0.5] {$\simeq$};
 	       	\scriptsize
@@ -539,10 +539,10 @@ of presheaves on $\Bb$.
         \end{align}
         defined by mapping the image of $(W,\phi(f_*\Ff)(W))$ in $(f_* \Ff)(W)$ to the image of $(f^{-1}(W),\phi)$ in $\Ff_x$. This is a natural transformation, since
         \begin{diagram*}
-        	\node (f*F) at (0,1.5) {$(f_*\Ff)_{f(x)}$};
-        	\node (Fx) at (0,0) {$\Ff_x$};
-        	\node (f*G) at (3,1.5) {$(f_*\Gg)$\rlap{$_{f(x)}$}};
-        	\node (Gx) at (3,0) {$\Gg_x$};
+        	\node[ob](f*F) at (0,1.5) {$(f_*\Ff)_{f(x)}$};
+        	\node[ob](Fx) at (0,0) {$\Ff_x$};
+        	\node[ob](f*G) at (3,1.5) {$(f_*\Gg)$\rlap{$_{f(x)}$}};
+        	\node[ob](Gx) at (3,0) {$\Gg_x$};
         	\scriptsize
         	\draw[->] (f*F) -- (Fx) node[pos=0.5, left] {$f_x^*$};
         	\draw[->] (f*F) -- (f*G) node[pos=0.5, above] {$(f_*\alpha)_{f(x)}$};
@@ -551,10 +551,10 @@ of presheaves on $\Bb$.
         \end{diagram*}
         commutes for any morphism $\Ff\morphism[\alpha] \Gg$ of presheaves. Also, the diagram
         \begin{diagram*}
-        	\node (f*F) at (0,1.5) {$(g_*f_*\Ff)_{g(f(x))}$};
-        	\node (Fx) at (0,0) {$(f_*\Ff)_{f(x)}$};
-        	\node (f*G) at (3,1.5) {$\big((gf)_*\Ff\big)$\rlap{$_{(gf)(x)}$}};
-        	\node (Gx) at (3,0) {$\Ff_x$};
+        	\node[ob](f*F) at (0,1.5) {$(g_*f_*\Ff)_{g(f(x))}$};
+        	\node[ob](Fx) at (0,0) {$(f_*\Ff)_{f(x)}$};
+        	\node[ob](f*G) at (3,1.5) {$\big((gf)_*\Ff\big)$\rlap{$_{(gf)(x)}$}};
+        	\node[ob](Gx) at (3,0) {$\Ff_x$};
         	\scriptsize
         	\draw[transform canvas={yshift=1pt}] (f*F) -- (f*G);
         	\draw[transform canvas={yshift=-1pt}] (f*F) -- (f*G);
@@ -633,10 +633,10 @@ of presheaves on $\Bb$.
 \begin{varthm}{defi}\lbl{def:f*onStalks}
     For $f\colon X\to Y$ a morphism of ringed spaces, we define $\Oo_{Y,f_{\cat{Top}}(x)} \morphism[f^*]\Oo_{X,x}$ as the unique morphism such that
     \begin{diagram*}
-    	\node (a) at (0,1.5) {$\Oo_Y(U)$};
-    	\node (c) at (0,0) {$\Oo_{Y,f_{\cat{Top}}(x)}$};
-    	\node (b) at (2.5,1.5) {$f_*\Oo_X(U)\ \rlap{$\left(=\Oo_X\big(f^{-1}U\big)\right)$}$};
-    	\node (d) at (2.5,0) {$\Oo_{X,x}$};
+    	\node[ob](a) at (0,1.5) {$\Oo_Y(U)$};
+    	\node[ob](c) at (0,0) {$\Oo_{Y,f_{\cat{Top}}(x)}$};
+    	\node[ob](b) at (2.5,1.5) {$f_*\Oo_X(U)\ \rlap{$\left(=\Oo_X\big(f^{-1}U\big)\right)$}$};
+    	\node[ob](d) at (2.5,0) {$\Oo_{X,x}$};
     	\scriptsize
     	\draw[->] (a) -- (b) node[pos=0.5, above] {$f^*$};
     	\draw[->] (a) -- (c);
@@ -699,7 +699,7 @@ of presheaves on $\Bb$.
     \end{alphanumerate}
 \end{rem*}
 \begin{proof}[Proof of Definition~\reff{def:localMorphisms}]
-	We first prove $(\beta)\rightarrow(\alpha)$.  Let \itememph{\beta} hold for given $X\morphism[f] Y$ of ringed spaces, with $X$ and $Y$ locally ringed, then in the situation of \itememph{\alpha} we have
+	We first prove \itememph{\beta} $\Rightarrow$ \itememph{\alpha}.  Let \itememph{\beta} hold for given $X\morphism[f] Y$ of ringed spaces, with $X$ and $Y$ locally ringed, then in the situation of \itememph{\alpha} we have
 	\begin{align*}
 		V(f^*\lambda) &\overset{\hphantom{\text{Def.~\reff{def:f*onStalks}}}}{=} \left\{x\in f^{-1}(U) \st (\text{image of } f^*\lambda \text{ in } \Oo_{X,x}) \in \mm_{X,x}\right\}\\
 		&\overset{\text{Def.~\reff{def:f*onStalks}}}{=} \left\{x\in f^{-1}(U) \st f^*(\text{image of }\lambda \text{ in } \Oo_{X,x})  \in \mm_{X,x}\right\}\\
@@ -707,7 +707,7 @@ of presheaves on $\Bb$.
 		&\overset{\hphantom{\text{Def.~\reff{def:f*onStalks}}}}{=} \left\{x\in f^{-1}(U)\st f(x)\in V(\lambda) \right\}\\
 		&\overset{\hphantom{\text{Def.~\reff{def:f*onStalks}}}}{=} f^{-1}(V(\lambda))\;.              
 	\end{align*}
-	To prove $(\alpha)\rightarrow(\beta)$, let $x\in X$, $y=f(x)$, $\ell\in\mm_{Y,y}$. We need to show $f^*\ell\in\mm_{X,x}$. There are an open neighbourhood $U$ of $y$ and $\lambda\in \Oo_Y(U)$ such that $\ell$ is the image of $\lambda$ in $\Oo_{Y,y}$. Then $y\in V(\lambda)$, hence $x\in f^{-1}(V(\lambda)) = V(f^*\lambda)$. Thus $f^*\ell$ is in $\mm_{X,x}$ as it is the image of $f^*\lambda$ in $\Oo_{X,x}$.
+	To prove \itememph{\alpha} $\Rightarrow$ \itememph{\beta}, let $x\in X$, $y=f(x)$, $\ell\in\mm_{Y,y}$. We need to show $f^*\ell\in\mm_{X,x}$. There are an open neighbourhood $U$ of $y$ and $\lambda\in \Oo_Y(U)$ such that $\ell$ is the image of $\lambda$ in $\Oo_{Y,y}$. Then $y\in V(\lambda)$, hence $x\in f^{-1}(V(\lambda)) = V(f^*\lambda)$. Thus $f^*\ell$ is in $\mm_{X,x}$ as it is the image of $f^*\lambda$ in $\Oo_{X,x}$.
 \end{proof}
 \begin{fact}
     \begin{alphanumerate}
@@ -720,9 +720,9 @@ of presheaves on $\Bb$.
             \end{align*}
             induced by $\Oo_{Y,y}\morphism[f^*] \Oo_{X,x}$. If $Y\morphism[g] Z$ is another morphism in $\cat{LRS}$ and $z=g(y)$, then 
             \begin{diagram*}
-            	\node (kz) at (0,1.25) {$\KK(z)$};
-            	\node (kx) at (1.25,0) {$\KK(x)$};
-            	\node (ky) at (2.5,1.25) {$\KK(y)$};
+            	\node[ob](kz) at (0,1.25) {$\KK(z)$};
+            	\node[ob](kx) at (1.25,0) {$\KK(x)$};
+            	\node[ob](ky) at (2.5,1.25) {$\KK(y)$};
             	\scriptsize
             	\draw[->] (kz) -- (kx) node[pos=0.5,below left] {$(gf)^*$};
             	\draw[->] (kz) -- (ky) node[pos=0.5,above] {$g^*$};
@@ -888,10 +888,10 @@ of presheaves on $\Bb$.
 	
 	The fact that $a\kappa=b\kappa$ is a trivial consequence of the definition of $K$ as far as only the topological component is concernced. For the algebraic component, let $V\subseteq Y$ be open, $U=a^{-1}(V)\cap K=b^{-1}(V)\cap K$ and let $\lambda\in\Oo_K(V)$. We need to show that $\kappa^*a^*\lambda=\kappa^*b^*\lambda$. Indeed, let $y=a(k)=b(k)$. Using that
 	\begin{diagram*}
-		\node (a) at (0,1.5) {$\Oo_Y(V)$};
-		\node (c) at (0,0) {$\Oo_{Y,y}$};
-		\node (b) at (2.5,1.5) {$\Oo_X(a^{-1}V)\,\rlap{$=a_*\Oo_X(V)$}$};
-		\node (d) at (2.5,0) {$\Oo_{X,k}$};
+		\node[ob](a) at (0,1.5) {$\Oo_Y(V)$};
+		\node[ob](c) at (0,0) {$\Oo_{Y,y}$};
+		\node[ob](b) at (2.5,1.5) {$\Oo_X(a^{-1}V)\,\rlap{$=a_*\Oo_X(V)$}$};
+		\node[ob](d) at (2.5,0) {$\Oo_{X,k}$};
 		\scriptsize
 		\draw[->] (a) -- (b) node[pos=0.5, above] {$a^*$};
 		\draw[->] (a) -- (c);
@@ -945,9 +945,9 @@ of presheaves on $\Bb$.
 	
 	We need to show that $\vartheta$ is unique. As before, the topological component is easy: As $K\morphism[\kappa_{\cat{Top}}]X$ is injective, it follows that $\vartheta_{\cat{Top}}$ is uniquely determined by $\tau=\kappa\vartheta$. Now for the algebraic component. As $\Oo_{X,\kappa(\vartheta(t))}\morphism[\smash{\kappa^*}]\Oo_{K,\vartheta(t)}=\Oo_{K,\tau(t)}$ is surjective, it follows that $\vartheta^*\colon \Oo_{K,\vartheta(t)}\morphism\Oo_{T,t}$ is uniquely determined by $\tau$ and the commutativity of
 	\begin{diagram*}
-	   	\node (kz) at (0,1.25) {$\Oo_{X,\kappa(\vartheta(t))}$};
-	   	\node (kx) at (1.25,0) {$\Oo_{T,t}$};
-	   	\node (ky) at (2.5,1.25) {$\Oo_{K,\tau(t)}$};
+	   	\node[ob](kz) at (0,1.25) {$\Oo_{X,\kappa(\vartheta(t))}$};
+	   	\node[ob](kx) at (1.25,0) {$\Oo_{T,t}$};
+	   	\node[ob](ky) at (2.5,1.25) {$\Oo_{K,\tau(t)}$};
 	   	\scriptsize
 	   	\draw[->] (kz) -- (kx) node[pos=0.5,below left] {$\tau^*$};
 	   	\draw[->] (kz) -- (ky) node[pos=0.5,above] {$\kappa^*$};
@@ -955,10 +955,10 @@ of presheaves on $\Bb$.
 	\end{diagram*}
 	which again follows from $\tau=\kappa\vartheta$. As 
 	\begin{diagram*}
-		\node (a) at (0,1.5) {$\Oo_K(U)$};
-		\node (c) at (0,0) {$\displaystyle\vphantom{\prod}\smash{\prod\limits_{k\in U}}\Oo_{K,k}$};
-		\node (b) at (3,1.5) {$\Oo_T(\vartheta^{-1}U)$};
-		\node (d) at (3,0) {$\displaystyle\vphantom{\prod}\smash{\prod\limits_{t\in \vartheta^{-1}U}}\Oo_{T,t}$};
+		\node[ob](a) at (0,1.5) {$\Oo_K(U)$};
+		\node[ob](c) at (0,0) {$\displaystyle\vphantom{\prod}\smash{\prod\limits_{k\in U}}\Oo_{K,k}$};
+		\node[ob](b) at (3,1.5) {$\Oo_T(\vartheta^{-1}U)$};
+		\node[ob](d) at (3,0) {$\displaystyle\vphantom{\prod}\smash{\prod\limits_{t\in \vartheta^{-1}U}}\Oo_{T,t}$};
 		\scriptsize
 		\draw[->] (a) -- (b) node[pos=0.5, above] {$\vartheta^*$};
 		\draw[->] (a) -- (c);
@@ -985,11 +985,11 @@ of presheaves on $\Bb$.
 	\end{align*}
 	by the commutativity of
 	\begin{diagram*}
-		\node (kz) at (0,0) {$\Oo_{X,k}$};
-		\node (kx) at (2.5,0) {$\Oo_{T,t}$};
-		\node (ky) at (1.25,-1.25) {$\Oo_{K,k}$};
-		\node (OX) at (0,1.25) {$\Oo_X(V)$};
-		\node (OT) at (2.5,1.25) {$\Oo_T(\tau^{-1}V)$\rlap{$\,=\tau_*\Oo_T(V)$}};
+		\node[ob](kz) at (0,0) {$\Oo_{X,k}$};
+		\node[ob](kx) at (2.5,0) {$\Oo_{T,t}$};
+		\node[ob](ky) at (1.25,-1.25) {$\Oo_{K,k}$};
+		\node[ob](OX) at (0,1.25) {$\Oo_X(V)$};
+		\node[ob](OT) at (2.5,1.25) {$\Oo_T(\tau^{-1}V)$\rlap{$\,=\tau_*\Oo_T(V)$}};
 		\scriptsize
 		\draw[->] (kz) -- (kx) node[pos=0.5, above] {$\tau^*$};
 		\draw[->] (kz) -- (ky) node[pos=0.5, below left] {$\kappa^*$};
@@ -1127,10 +1127,10 @@ We're now prepared to describe the fibre product $F=X\times_SY$:
     \end{align*}
     Since $\lambda_{(x,y,\pp)}=0$, there is $h\in (\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y})\setminus \pp$ such that $n \cdot h = 0$ in $\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y} \simeq \colimit \Oo_{X}(\snake U) \otimes_{\Oo_S(W)}\Oo_{Y}(\snake V)$. We may assume that $h$ is the image of $\eta\in \Rr(\snake U, \snake V)$ in $\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y}$ and that $n\cdot \eta = 0$ in $\Rr\smash{(\snake U, \snake V};W)$. Replacing both $\eta$ and $\theta$ by $\eta\cdot \theta$ as well as $U$ by $\snake U$ and $V$ by $\snake V$, we may assume $U=\snake U$, $V=\snake V$ and $\eta = \theta$. Then the image of $\ell = \frac{n}{\theta}$ under $\Rr(U,V)_\theta \morphism \Rr(U,V;W)_\theta$ vanishes. But the map $\Rr(U,V)_\theta\morphism \Oo_F(\Omega(U,V,\theta))$ factors over $\Rr(U,V;W)_\theta$ as this is the case for the maps
     \begin{diagram*}
-    	\node (a) at (0,1.5) {$\left(\Oo_X(U)\otimes_{\Oo_S(S)}\Oo_Y(V)\right)_\theta$};
-    	\node (c) at (2.5,0) {$\Big(\Oo_X(U)\otimes_{\Oo_S(W)}\Oo_Y(V)\Big)_{\theta|_{U,V;W}}$};
-    	\node (b) at (5,1.5) {$\left(\Oo_{X,x'}\otimes_{\Oo_{S,s'}}\Oo_{Y,y'}\right)_\theta$};
-    	\node (d) at (8.5,1.5) {$\Oo_{F,\left[x',y',\pp'\right]}$};
+    	\node[ob](a) at (0,1.5) {$\left(\Oo_X(U)\otimes_{\Oo_S(S)}\Oo_Y(V)\right)_\theta$};
+    	\node[ob](c) at (2.5,0) {$\Big(\Oo_X(U)\otimes_{\Oo_S(W)}\Oo_Y(V)\Big)_{\theta|_{U,V;W}}$};
+    	\node[ob](b) at (5,1.5) {$\left(\Oo_{X,x'}\otimes_{\Oo_{S,s'}}\Oo_{Y,y'}\right)_\theta$};
+    	\node[ob](d) at (8.5,1.5) {$\Oo_{F,\left[x',y',\pp'\right]}$};
     	\scriptsize
     	\draw[->] (a) -- (b);
     	\draw[->] (a) -- (c);
@@ -1152,9 +1152,9 @@ Before we continue, recall the following
 \begin{fact*}\lbl{fact:O_X(U)Localization}
 If $X$ is a locally ringed space, $U\subseteq X$ and $f\in \Oo_X(U)$, then there is a unique dotted arrow making the following diagram commute:
 \begin{diagram*}
-	\node (OXU) at (0,1.25) {$\Oo_X(U)$};
-	\node (OXUV) at (3,1.25) {$\Oo_X(U\setminus V(f))$};
-	\node (OXUf) at (1.5, 0) {$\Oo_X(U)_f$};
+	\node[ob](OXU) at (0,1.25) {$\Oo_X(U)$};
+	\node[ob](OXUV) at (3,1.25) {$\Oo_X(U\setminus V(f))$};
+	\node[ob](OXUf) at (1.5, 0) {$\Oo_X(U)_f$};
 	\scriptsize
 	\draw [->] (OXU) -- (OXUV);
 	\draw [->] (OXU) -- (OXUf);
@@ -1203,10 +1203,10 @@ For $t\in T$, we put $x = \tau_X(t), y = \tau_Y(t), s = \xi(x) = \xi(\tau_X(t)) 
 as a cofibre product in the category of rings, there is a unique ring homomorphism
 $\tau^\ast$ from this ring to $\Oo_{T,t}$ such that
 \begin{diagram}[baseline=0.75cm-0.5ex][\lbl{diag:fibreProduct}]
-	\node (OXx) at (0,1.5) {$\Oo_{X,x}$};
-	\node (OTt) at (0,0) {$\Oo_{T,t}$};
-	\node (Tensor) at (3,1.5 ) {$\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y}$};
-	\node (OYy) at (3,0) {$\Oo_{Y,y}$};
+	\node[ob](OXx) at (0,1.5) {$\Oo_{X,x}$};
+	\node[ob](OTt) at (0,0) {$\Oo_{T,t}$};
+	\node[ob](Tensor) at (3,1.5 ) {$\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y}$};
+	\node[ob](OYy) at (3,0) {$\Oo_{Y,y}$};
 	\scriptsize
 	\draw [->] (OXx) -- (OTt) node[pos=0.5,left] {$\tau_X^*$};
 	\draw [->] (OYy) -- (OTt) node[pos=0.5, below] {$\tau_Y^*$};
@@ -1232,10 +1232,10 @@ Clearly, we have $p\tau = \tau_X$ and $q\tau = \tau_Y$ as maps of underlying set
 $\Oo_X(V)\otimes_{\Oo_S(S)} \Oo_{Y}(V)$, there is a unique ring homomorphism $\tau^\sharp$ from that ring 
 to $\Oo_T(\Theta)$, where $\Theta = \tau_X^{-1}(U)\cap \tau_Y^{-1}(Y)$, such that the diagram
 \begin{diagram*}
-	\node (OX) at (0,1.5) {$\Oo_X(U)$};
-	\node (OT) at (0,0) {$\Oo_T(\Theta)$};
-	\node (R) at (3,1.5 ) {$\Rr(U,V)$};
-	\node (OY) at (3,0) {$\Oo_Y(V)$};
+	\node[ob](OX) at (0,1.5) {$\Oo_X(U)$};
+	\node[ob](OT) at (0,0) {$\Oo_T(\Theta)$};
+	\node[ob](R) at (3,1.5 ) {$\Rr(U,V)$};
+	\node[ob](OY) at (3,0) {$\Oo_Y(V)$};
 	\scriptsize
 	\draw [->] (OX) -- (OT) node[pos=0.5,left] {$\tau_X^*$};
 	\draw [->] (OY) -- (OT) node[pos=0.5, below] {$\tau_Y^*$};
@@ -1259,10 +1259,10 @@ commutes, and $\tau^\sharp(f\otimes g) = \tau_X^\ast(f)\cdot \tau_Y^\ast(g)$. Th
 \end{align*}
 which is open. The transition from the second line to the third line uses the commutativity of the following diagram:
 \begin{diagram*}
-	\node (R) at (0,1.5) {$\Rr(U,V)$};
-	\node (OT) at (3,1.5) {$\Oo_T(\Theta)$};
-	\node (Tensor) at (0,0) {$\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y}$};
-	\node (OTt) at (3, 0) {$\Oo_{T,t}$};
+	\node[ob](R) at (0,1.5) {$\Rr(U,V)$};
+	\node[ob](OT) at (3,1.5) {$\Oo_T(\Theta)$};
+	\node[ob](Tensor) at (0,0) {$\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y}$};
+	\node[ob](OTt) at (3, 0) {$\Oo_{T,t}$};
 	\scriptsize
 	\draw [->] (R) -- (Tensor);
 	\draw [->] (R) -- (OT) node[pos=0.5,above] {$\tau^\sharp$};
@@ -1296,9 +1296,9 @@ where $\phi=(\phi_\omega)_{\omega\in \Omega} \in \prod_{\omega\in \Omega} \Oo_{F
 to be the preimage of $(\tau^\flat \varphi_{\tau(t)})_{t\in \tau^{-1}(\Omega)}$ under $\Oo_T\left(\tau^{-1}\Omega\right)\morphism \prod_{t\in \tau^{-1}(
 \Omega)} \Oo_{T,t}$. Here, $\tau^\flat$ is the unique ring homomorphism $\Oo_{F,[\tau(t)]} \rightarrow \Oo_{T,t}$ making the diagram
 \begin{diagram*}
-	\node (Tensor) at (0,1.5) {$\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y}$};
-	\node (OF) at (4.5,1.5) {$\left(\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y}\right)_{\pp}$\rlap{$\,=\Oo_{F,[x,y,\pp]}$}};
-	\node (OT) at (4.5, 0) {$\Oo_{T,t}$};
+	\node[ob](Tensor) at (0,1.5) {$\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y}$};
+	\node[ob](OF) at (4.5,1.5) {$\left(\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y}\right)_{\pp}$\rlap{$\,=\Oo_{F,[x,y,\pp]}$}};
+	\node[ob](OT) at (4.5, 0) {$\Oo_{T,t}$};
 	\scriptsize
 	\draw[->] (Tensor) -- (OF);
 	\draw[->] (Tensor) -- (OT) node[pos=0.5, below left] {$\tau^*$};
@@ -1324,10 +1324,10 @@ the map on stalks induced by the new $\tau^\ast$).
 
 \emph{Locality of $\tau^\ast\colon \Oo_{F,\tau(t)}\rightarrow \Oo_{T,t}$.} We have a commutative diagram
 \begin{diagram*}
-	\node (OF) at (0, 1.5) {$\Oo_{F,\tau(t)}$};
-	\node (OTt) at (4.5, 1.5) {$\Oo_{T,t}$};
-	\node (Tensor) at (0,0) {\llap{$\Oo_{F,[\tau(t)]}=\,$}$\left(\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y}\right)_{\pp}$};
-	\node (L) at (4.5, 0) {$\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y}$\rlap{$\,\eqqcolon\Ll$}};
+	\node[ob](OF) at (0, 1.5) {$\Oo_{F,\tau(t)}$};
+	\node[ob](OTt) at (4.5, 1.5) {$\Oo_{T,t}$};
+	\node[ob](Tensor) at (0,0) {\llap{$\Oo_{F,[\tau(t)]}=\,$}$\left(\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y}\right)_{\pp}$};
+	\node[ob](L) at (4.5, 0) {$\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y}$\rlap{$\,\eqqcolon\Ll$}};
 	\path (Tensor) -- (OF) node[pos=0.5, sloped] {$\simeq$};
 	\scriptsize
 	\draw[->] (OF) -- (OTt);
@@ -1340,12 +1340,12 @@ $\pp = \left(\tau^\ast\right)^{-1}\mm_{T,t}$ by the definition of $T$.
 
 \emph{Uniqueness of $\tau$.} Let $t\in T$, $\tau(t) = (x,y,\pp)$, then obviously $x= \tau_X(t)$ and $y=\tau_Y(t)$. In the diagram
 \begin{diagram*}
-	\node (Tensor) at (0,1.5) {$\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y}$};
-	\node (OX) at (0,0) {$\Oo_{X,x}$};
-	\node (OY) at (3,1.5) {$\Oo_{Y,y}$};
-	\node (OS) at (3,0) {$\Oo_{S,s}$};
-	\node (OT) at (-5.75, 2.75) {$\Oo_{T,t}$};
-	\node (OF) at (-3,1.5) {$\Oo_{F,[x,y,\pp]}$};
+	\node[ob](Tensor) at (0,1.5) {$\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y}$};
+	\node[ob](OX) at (0,0) {$\Oo_{X,x}$};
+	\node[ob](OY) at (3,1.5) {$\Oo_{Y,y}$};
+	\node[ob](OS) at (3,0) {$\Oo_{S,s}$};
+	\node[ob](OT) at (-5.75, 2.75) {$\Oo_{T,t}$};
+	\node[ob](OF) at (-3,1.5) {$\Oo_{F,[x,y,\pp]}$};
 	\scriptsize
 	\draw[->] (OX) -- (Tensor) node[pos=0.5, left] {$\alpha$};
 	\draw[->] (OY) -- (Tensor) node[pos=0.5, above] {$\beta$};
@@ -1373,11 +1373,11 @@ Since the preimage of this ideal in $\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y}$ equ
             \end{align*}
             (determined by the diagram
             \begin{diagram*}
-            	\node (P) at (0,1.5) {$X_{\cat{Top}}\times_{S_{\cat{Top}}}Y_{\cat{Top}}$};
-            	\node (X) at (0,0) {$X$};
-            	\node (Y) at (2.75,1.5) {$Y$};
-            	\node (S) at (2.75,0) {$S$};
-            	\node (T) at (-2, 3) {$(X\times_SY)_{\cat{Top}}$};
+            	\node[ob](P) at (0,1.5) {$X_{\cat{Top}}\times_{S_{\cat{Top}}}Y_{\cat{Top}}$};
+            	\node[ob](X) at (0,0) {$X$};
+            	\node[ob](Y) at (2.75,1.5) {$Y$};
+            	\node[ob](S) at (2.75,0) {$S$};
+            	\node[ob](T) at (-2, 3) {$(X\times_SY)_{\cat{Top}}$};
             	\scriptsize
             	\draw[->] (P) -- (X);
             	\draw[->] (P) -- (Y);
@@ -1513,9 +1513,9 @@ Since the preimage of this ideal in $\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y}$ equ
     
     If $L\morphism[\lambda] K$ is another closed immersion satisfying $\Ii= \ker \big(\Oo_X \morphism[\lambda^*] \lambda_* \Oo_L\big)$, then, by the description of $\Hom_{\cat{LRS}}(T,K)$, we have a morphism $L \morphism[\iota] K$ such that $\lambda = \kappa\iota$. The image of $L$ in $X$ coincides with $K$ because it equals $\left\{ x\in X\st (\lambda_*\Oo_L)_x \neq 0\right\} = \left\{ x\in X\st \Ii_x \subsetneq \Oo_{X,x}\right\}$. Indeed, if $x$ is not in the image of $L$, then it has some open neighbourhood not contained in the image of $L$, as $\lambda$ is a closed immersion, hence the stalk of $\lambda_*\Oo_L$ at $x$ has to be $0$. Conversely, if $x$ is in that image, then $(\lambda_*\Oo_L)_x$ contains $1$, proving it can't be $0$. Since both sets carry the induced topology, $\iota$ is a homeomorphism. For $\ell \in L$ and $x=\lambda(\ell)$ we have a commutative diagram
     \begin{diagram*}
-    	\node (OX) at (0,0) {$\Oo_{X,x}$};
-    	\node (OK) at (2,0.75) {$\Oo_{K,x}$\rlap{$\,\simeq\Oo_{K,[x]}$}};
-    	\node (OL) at (2,-0.75) {$\Oo_{L,\ell}$};
+    	\node[ob](OX) at (0,0) {$\Oo_{X,x}$};
+    	\node[ob](OK) at (2,0.75) {$\Oo_{K,x}$\rlap{$\,\simeq\Oo_{K,[x]}$}};
+    	\node[ob](OL) at (2,-0.75) {$\Oo_{L,\ell}$};
     	\scriptsize 
     	\draw[->] (OX) -- (OK) node[pos=0.5, above left] {$\kappa^*$};
     	\draw[->] (OX) -- (OL) node[pos=0.5, below left] {$\lambda^*$};
@@ -1531,7 +1531,7 @@ Since the preimage of this ideal in $\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y}$ equ
     and the morphism $\Oo_Y\morphism[f^*] f_* \Oo_X$ of sheaves of rings does the rest.
 \end{defi}
 \begin{fact}
-    Let $X$ be a locally ringed space and $U\subseteq X$ open and $f\in \Oo_X(U)$, we have morphisms 
+    Let $X$ be a locally ringed space and $U\subseteq X$ open and $f\in \Oo_X(U)$. Then there are uniquely determined morphisms 
     \begin{align}\lbl{eq:moduleLoc}
         \Oo_X(U)_f \morphism \Oo_X(U\setminus V(f))\;,\quad\text{and}\quad
         \Mm(U)_f \morphism \Mm(U\setminus V(f))
@@ -1544,9 +1544,9 @@ Since the preimage of this ideal in $\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y}$ equ
 		\begin{minipage}{0.425\textwidth}
 			\centering			
 			\begin{diagram*}
-				\node (OXU) at (0,1.25) {$\Oo_X(U)$};
-				\node (OXUV) at (3,1.25) {$\Oo_X(U\setminus V(f))$};
-				\node (OXUf) at (1.5, 0) {$\Oo_X(U)_f$};
+				\node[ob](OXU) at (0,1.25) {$\Oo_X(U)$};
+				\node[ob](OXUV) at (3,1.25) {$\Oo_X(U\setminus V(f))$};
+				\node[ob](OXUf) at (1.5, 0) {$\Oo_X(U)_f$};
 				\scriptsize
 				\draw [->] (OXU) -- (OXUV);
 				\draw [->] (OXU) -- (OXUf);
@@ -1556,9 +1556,9 @@ Since the preimage of this ideal in $\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y}$ equ
 		\begin{minipage}{0.425\textwidth}
 			\centering			
 			\begin{diagram*}
-				\node (MXU) at (0,1.25) {$\Mm_X(U)$};
-				\node (MXUV) at (3,1.25) {$\Mm_X(U\setminus V(f))$};
-				\node (MXUf) at (1.5, 0) {$\Mm_X(U)_f$};
+				\node[ob](MXU) at (0,1.25) {$\Mm_X(U)$};
+				\node[ob](MXUV) at (3,1.25) {$\Mm_X(U\setminus V(f))$};
+				\node[ob](MXUf) at (1.5, 0) {$\Mm_X(U)_f$};
 				\scriptsize
 				\draw [->] (MXU) -- (MXUV);
 				\draw [->] (MXU) -- (MXUf);
@@ -1730,7 +1730,7 @@ If $M$ is an $R$-module, we have a similar presheaf (of abelian groups or of mod
     \end{align*}
 \end{prop}
 \begin{rem*}
-    Thus, $(\cat{Ring})^\op \xrightarrow{\Spec(-)} \cat{LRS}$ is right adjoint to $\cat{LRS} \xrightarrow{\Oo_-(-)} \cat{Ring}$.
+    Thus, $\cat{Ring}^\op \xrightarrow{\Spec(-)} \cat{LRS}$ is right-adjoint to $\cat{LRS} \xrightarrow{\Oo_-(-)} \cat{Ring}^\op$.
 \end{rem*}
 \begin{proof}[Proof of Proposition~\reff{prop:affineSchemeAdjunction}]
     Let $X\morphism[f] \Spec R$ be a morphism in $\cat{LRS}$. We want to show that it is uniquely determined by the composition 
@@ -1739,12 +1739,12 @@ If $M$ is an $R$-module, we have a similar presheaf (of abelian groups or of mod
     \end{align*}
     Let $x\in X$, $\pp=f(x)$. We have a commutative diagram
     \begin{diagram*}
-    	\node (R) at (0,1.5) {$R$};
-    	\node (OR) at (2.5,1.5) {$\Oo_{\Spec R}(\Spec R)$};
-    	\node (OX) at (5.5,1.5) {$\Oo_X(X)$};
-    	\node (Rp) at (0,0) {$R_\pp$};
-    	\node (ORp) at (2.5,0) {$\Oo_{\Spec R,\pp}$};
-    	\node (OXx) at (5.5,0) {$\Oo_{X,x}$};
+    	\node[ob] (R) at (0,1.5) {$R$};
+    	\node[ob] (OR) at (2.5,1.5) {$\Oo_{\Spec R}(\Spec R)$};
+    	\node[ob] (OX) at (5.5,1.5) {$\Oo_X(X)$};
+    	\node[ob] (Rp) at (0,0) {$R_\pp$};
+    	\node[ob] (ORp) at (2.5,0) {$\Oo_{\Spec R,\pp}$};
+    	\node[ob] (OXx) at (5.5,0) {$\Oo_{X,x}$};
     	\scriptsize
     	\draw[->] (R) -- (Rp);
     	\draw[->] (R) -- (OR) node[pos=0.5,above=-0.25ex] {$\sim$};
@@ -1766,135 +1766,177 @@ If $M$ is an $R$-module, we have a similar presheaf (of abelian groups or of mod
 \end{cor}
     We are left to prove surjectivity. Let $R\morphism[\phi] \Oo_X(X)$ be given. We put 
     \begin{align}\lbl{eq:prop1.4.2surj}
-        f(x) = \left\{r\in R\st x\in V(\phi(r)) \right\}
+        f(x) = \left\{r\in R\st x\in V\big(\phi(r)\big) \right\}\;.\tag{$*$}
     \end{align}
-    this is the preimage of $\mm_{X,x} \subseteq \Oo_{X,x}$ under $R\morphism[\phi] \Oo_X(X) \morphism \Oo_{X,x}$. Let $\Bb$ be the topology base $\left\{\Spec R_\lambda\st \lambda\in R\right\}$ of $\Spec R$. If $U\in \Bb$, we have a morphism 
+    Note that $f(x)$ is a prime ideal as it's the preimage of $\mm_{X,x} \subseteq \Oo_{X,x}$ under $R\morphism[\phi] \Oo_X(X) \morphism \Oo_{X,x}$. As before, let $\Bb$ be the topology base $\left\{\Spec R_\lambda\st \lambda\in R\right\}$ of $\Spec R$. If $U\in \Bb$, we have a morphism 
     \begin{align*}
-        f^*\colon \Oo_{\Spec R}(U) \simeq R_\lambda  \morphism[\phi] \Oo_X(X)_{\phi(\lambda)} \morphism \Oo_X(X\setminus V(\phi(\lambda))) = \Oo_X(f^{-1} U)
+        f^*\colon \Oo_{\Spec R}(U) \simeq R_\lambda  \morphism[\phi] \Oo_X(X)_{\phi(\lambda)} \xrightarrow{\text{\eqreff{eq:moduleLoc}}} \Oo_X\big(X\setminus V(\phi(\lambda))\big) = \Oo_X(f^{-1} U)
     \end{align*}
-    defining a homomorphism of presheaves on $\Bb$ with target $f_*\Oo_X|_\Bb$. Sheafifying gives 
+    defining a homomorphism of presheaves on $\Bb$ with target $f_*\Oo_X|_\Bb$. Sheafifying gives
     \begin{align*}
-        f^*\colon \Oo_{\Spec R}\simeq (\Oo_{\Spec R}|_\Bb)^\sh \morphism (f_*\Oo_X|_\Bb)^\sh \isomorphism f_*\Oo_X\;.
+        f^*\colon \Oo_{\Spec R}\simeq (\Oo_{\Spec R}|_\Bb)^\sh \morphism (f_*\Oo_X|_\Bb)^\sh \simeq f_*\Oo_X\;.
     \end{align*}
-    In particular for $\lambda = 1$, we have $R\simeq  \Oo_{\Spec R}(\Spec R) \morphism[f^*] \Oo_X(X)$ equals $\phi$. The morphism induced on stalks by $f$ is thus uniquely determined morphism $R_\pp \morphism \Oo_{X,x}$ (where $\pp=f(x)$) such that its composition with $R\morphism R_\pp$ equals the map $R\morphism \Oo_X(X) \morphism \Oo_{X,x}$. By \eqreff{eq:prop1.4.2surj}, the later morphism maps $\pp$ to $\mm_{X,x}$, hence the former maps $\pp\cdot R_\pp$ to $\mm_{X,x}$, hence is local. Thus $f$ is a morphism of locally ringed spaces.
+    In particular, for $\lambda = 1$, we have that $R\simeq  \Oo_{\Spec R}(\Spec R) \morphism[f^*] \Oo_X(X)$ equals $\phi$. The morphism induced on stalks by $f$ is thus uniquely determined morphism $R_\pp \morphism \Oo_{X,x}$ (where $\pp=f(x)$) such that 
+    \begin{diagram*}
+    	\node[ob] (a) at (0,1.5) {$R$};
+    	\node[ob][ob] (c) at (0,0) {$R_\pp$};
+    	\node[ob] (b) at (2.5,1.5) {$\Oo_X(X)$};
+    	\node[ob][ob] (d) at (2.5,0) {$\Oo_{X,k}$};
+    	\scriptsize
+    	\draw[->] (a) -- (b) node[pos=0.5, above] {$\phi$};
+    	\draw[->] (a) -- (c);
+    	\draw[->] (c) -- (d);
+    	\draw[->] (b) -- (d);
+    \end{diagram*}  
+    commutes. $R\morphism R_\pp$ equals the map . By \eqreff{eq:prop1.4.2surj}, the morphism $R\morphism[\phi] \Oo_X(X) \morphism \Oo_{X,x}$ maps $\pp$ to $\mm_{X,x}$, hence $R_\pp \morphism \Oo_{X,x}$ maps $\pp\cdot R_\pp$ to $\mm_{X,x}$ and therefore is local. Thus $f$ is a morphism of locally ringed spaces.
 \end{proof}
 \begin{rem*}
-    In particular ($X=\Spec S$) any ring morphism $R\morphism[\phi] S$ defines
+    In particular, for $X=\Spec S$ any ring morphism $R\morphism[\phi] S$ defines a morphism of locally ringed spaces
     \begin{align}\lbl{eq:specFunctor}
-    \begin{split}
-        \Spec \phi \colon \Spec S &\morphism \Spec R\\
-        (\Spec \phi)(\qq) &= \phi^{-1}\qq\\
-        (\Spec \phi)^*\left(\frac{r}{f}\right) &= \frac{\phi(r)}{\phi(f)} \in S_{\phi(f)} \simeq \Oo_{\Spec S}(\Spec S_f)
-    \end{split}
+    \begin{gathered}[m]
+          \Spec \phi \colon \Spec S \morphism \Spec R\\
+        (\Spec \phi)(\qq) = \phi^{-1}\qq\in\Spec R\;,\quad
+        (\Spec \phi)^*\left(\frac{r}{f}\right) = \frac{\phi(r)}{\phi(f)} \in S_{\phi(f)} \simeq \Oo_{\Spec S}(\Spec S_f)
+        \end{gathered}
     \end{align}
-    turning $\Spec$ to a covariant functor from $\cat{Ring}^\op$ to $\cat{LRS}$ which is right adjoint to the global sections. 
+    (with $\qq\in\Spec S$ and $\frac{r}{f}\in R_f$) turning $\Spec$ to a covariant functor from $\cat{Ring}^\op$ to $\cat{LRS}$ which is right-adjoint to the global sections functor. 
 \end{rem*}
 \begin{cor}
-    $\Spec \IZ$ is a finite object in $\cat{LRS}$. The unique morphism $X\morphism \Spec \IZ$ in $\cat{LRS}$ sends any $x\in X$ to the ideal in $\IZ$ generated by the characteristic of $k(x)$ and any fraction $\frac{a}{b}\in \Oo_{\Spec \IZ}(\IZ_b)$ to $\frac{a}{b} \in \Oo_X(X\setminus V(b))$.
+    $\Spec \IZ$ is a final object in $\cat{LRS}$. The unique morphism $X\morphism \Spec \IZ$ in $\cat{LRS}$ sends any $x\in X$ to the ideal in $\IZ$ generated by the characteristic of the residue field $\KK(x)$ and any fraction $\frac{a}{b}\in \Oo_{\Spec \IZ}(\IZ_b)$ to $\frac{a}{b} \in \Oo_X(X\setminus V(b))$.
 \end{cor}
 \begin{cor}
-    If $R\doublemorphism[a][b] S$ is a pair of ring homomorphisms and $I$ the ideal $\left\langle a(r)-b(r)\st r\in R\right\rangle_S$ then 
+    If $R\doublemorphism[a][\smash{b}] S$ is a pair of ring homomorphisms and $I\subseteq S$ denotes the ideal $I=\left(a(r)-b(r)\st r\in R\right)_S$ then 
     \begin{align*}
-        \Spec S/I \morphism[\Spec \pi] \Spec S
+        \Spec S/I \xrightarrow{\Spec \pi} \Spec S
     \end{align*}
-    is an equalizer of 
+    ($\pi$ denoting the projection $S\morphism S/I$) is an equalizer of 
     \begin{align*}
         \Spec S\doublemorphism[\Spec a][\Spec b] \Spec R\;.
     \end{align*}
-    This follows from the fact that right adjoint functors preserve equalizers.
 \end{cor}
+\begin{proof}    	
+	Right-adjoint functors preserve arbitrary limits, in particular, equalizers.
+\end{proof}
 \begin{cor}
     Let $R$ be a ring, $A$ and $B$ be $R$-algebras, and let 
     \begin{align*}
-        A\morphism[\iota_A] A\otimes_R B \lmorphism[\iota_B] B
+        A\morphism[\alpha] A\otimes_R B \lmorphism[\beta] B
     \end{align*}
-    given by $\iota_A(a) = a\otimes 1$ and $\iota_B(b) = 1\otimes b$. Then 
-    \begin{align*}
-        \Spec A \lmorphism[\Spec \iota_A] \Spec(A\otimes_R B) \morphism[\Spec \iota_B] \Spec B
-    \end{align*}
-    is a fibre product of $\Spec A$ with $\Spec B$ over $\Spec R$ in $\cat{LRS}$. This follows from the fact that $A\otimes_R B$ is a cofibre product of $A$ with $B$ over $R$ and the right adjoint functor $\Spec R$ preserves fibre products.
+    given by $\alpha(a) = a\otimes 1$ and $\beta(b) = 1\otimes b$. Then     
+    \begin{diagram*}
+    	\node[ob] (a) at (0,1.5) {$\Spec\left(A\otimes_R B\right)$};
+    	\node[ob](c) at (0,0) {$\Spec A$};
+    	\node[ob](b) at (3,1.5) {$\Spec B$};
+    	\node[ob](d) at (3,0) {$\Spec R$};
+    	\scriptsize
+    	\draw[->] (a) -- (b) node[pos=0.5, above] {$\Spec \beta$};
+    	\draw[->] (a) -- (c) node[pos=0.5, left] {$\Spec \alpha$};
+    	\draw[->] (c) -- (d);
+    	\draw[->] (b) -- (d);
+    \end{diagram*}       
+    is a fibre product of $\Spec A$ with $\Spec B$ over $\Spec R$ in $\cat{LRS}$. 
 \end{cor}
+\begin{proof}
+	This follows from the fact that $A\otimes_R B$ is a cofibre product of $A$ with $B$ over $R$ hence a fibre product in $\cat{Ring}^\op$ and the right-adjoint functor $\Spec(-)$ preserves arbitrary limits, in particular, fibre products.
+\end{proof}
 \begin{prop}\lbl{prop:affineSchemeAdjunctionModules}
     Let $M$ be an $R$-module and $\Nn$ an $\Oo_{\Spec R}$-module, then we have a canonical bijection 
     \begin{align*}
-        \Hom_{\Oo_{\Spec R}} (\snake M, \Nn) \morphism \Hom_R(M, \Nn(\Spec R))
+        \Hom_{\Oo_{\Spec R}} (\snake M, \Nn) \morphism \Hom_R\big(M, \Nn(\Spec R)\big)
     \end{align*}
     sending $\snake M \morphism[f] \Nn$ to the composition 
     \begin{align*}
-        \phi\colon M\isomorphism \snake M (\Spec R) \morphism[f] \Nn(\Spec R)\;.
+        \phi\colon M\simeq \snake M (\Spec R) \morphism[f] \Nn(\Spec R)\;.
     \end{align*}
 \end{prop}
 \begin{proof}
-    If $f$ and $\phi$ are as above, then we have a canonical diagram 
+    If $f$ and $\phi$ are as above, then we have a commutative diagram
     \begin{diagram*}
-	\node (M) at (0,1.5) {$M$};
-	\node (N) at (3,1.5) {$\Nn(\Spec R)$};
-	\node (Mp) at (0,0) {$M_\pp$};
-	\node (Np) at (3, 0) {$\Nn_\pp$};
-	\scriptsize
-	\draw [->] (M) -- (Mp);
-	\draw [->] (M) -- (N) node[pos=0.5,above] {$\phi$};
-	\draw [->] (Mp) -- (Np) node[pos=0.5,above] {$f$};
-	\draw [->] (N) -- (Np);
-\end{diagram*}
-in which the lower horizontal arrow is, in view of the universal property of $M\morphism M_\pp$ uniquely determined by $\phi$. Therefore, the morphism induced by $f$ on stalks, and hence $f$ itself, are uniquely determined by $\phi$. If $\phi$ is given and $\Bb$ denotes the topology base $\left\{\Spec R_\lambda\st \lambda\in R\right\}$ as before, we have for any such $U=\Spec R_\lambda$ a unique morphism $M_\lambda\morphism \Nn(U)$ given as the composition $M_\lambda \morphism[\phi] \Nn(\Spec R)_\lambda \morphism \Nn(U)$. Sheafifying gives
-\begin{align*}
-    \snake M = (\Spec R_\lambda \mapsto M_\lambda)^\sh \morphism (\Nn|_\Bb)^\sh \simeq \Nn
-\end{align*}
-which induces $\phi$ on global sections. 
+		\node[ob](M) at (0,1.5) {$M\simeq \snake{M}( \Spec R)$};
+		\node[ob](N) at (3.5,1.5) {$\Nn(\Spec R)$};
+		\node[ob](Mp) at (0,0) {$M_\pp\simeq \snake M_\pp$};
+		\node[ob](Np) at (3.5, 0) {$\Nn_\pp$};
+		\scriptsize
+		\draw [->] (M) -- (Mp);
+		\draw [->] (M) -- (N) node[pos=0.5,above] {$\phi$};
+		\draw [->] (Mp) -- (Np) node[pos=0.5,above] {$f$};
+		\draw [->] (N) -- (Np);
+	\end{diagram*}
+	in which the lower horizontal arrow is, in view of the universal property of $M\morphism M_\pp$, uniquely determined by $\phi$. Therefore, the morphism induced by $f$ on stalks, and hence $f$ itself, are uniquely determined by $\phi$. 
+	
+	If conversely $\phi$ is given and $\Bb$ denotes the topology base $\left\{\Spec R_\lambda\st \lambda\in R\right\}$ as before, we have for any such $U=\Spec R_\lambda$ a unique morphism $M_\lambda\morphism \Nn(U)$ given as the composition 
+	\begin{align*}
+		M_\lambda \morphism[\phi] \Nn(\Spec R)_\lambda \morphism \Nn(U)\;. 
+	\end{align*}
+	Sheafifying gives
+	\begin{align*}
+	    \snake M = (\Spec R_\lambda \mapsto M_\lambda)^\sh \morphism (\Nn|_\Bb)^\sh \simeq \Nn
+	\end{align*}
+	which induces $\phi$ on global sections. 
 \end{proof}
 \begin{defi}[Quasi-coherence]\lbl{def:quasicoherent}
     Let $X=\Spec R$. An $\Oo_X$-module $\Mm$ is called \defemph{quasi-coherent} if it satisfies the following equivalent conditions:
-    \begin{alphanumerate}
-        \item
+    \begin{itemize}
+        \item[$(\alpha)$]
             $\Mm \simeq\snake M$ for some $R$-module $M$.
-        \item 
+        \item[$(\beta)$] 
             The morphism $\Mm(X)_\lambda \morphism \Mm(X\setminus V(\lambda))$ is an isomorphism for all $\lambda\in R$. 
-        \item 
+        \item[$(\gamma)$]
             The canonical morphism $\snake M \morphism[c] \Mm$ (with $M = \Mm(X)$) associated by Proposition~\reff{prop:affineSchemeAdjunctionModules} to $\id_M$ is an isomorphism.
-    \end{alphanumerate} 
+    \end{itemize} 
 \end{defi}
+A Franke lecture is no Franke lecture without a definition being proved.
 \begin{proof}
-    By Proposition~\reff{prop:RequalsGlobalSection} and its first corollary $\snake M(X\setminus V(\lambda)) \lisomorphism M_\lambda$, \itememph{b} follows from \itememph{a}.  
+    For \itememph{\alpha} $\Rightarrow$ \itememph{\beta} note that $\snake M(X\setminus V(\lambda)) \lisomorphism M_\lambda$ by Proposition~\reff{prop:RequalsGlobalSection} and its first remark.
     
-    Our construction and \itememph{b} imply that $c$ induces an isomorphism on sections on any element of the topology base $\Bb$, hence everywhere. 
+    Our construction and \itememph{\beta} imply that $c$ induces an isomorphism on sections on any element of the topology base $\Bb$, hence everywhere. This shows \itememph{\beta} $\Rightarrow$ \itememph{\gamma}. 
     
-    The last implication is obvious.
+    The last implication \itememph{\gamma} $\Rightarrow$ \itememph{\alpha} is obvious.
 \end{proof}
 \begin{cor}
     There is a canonical bijection from the quasi-coherent ideals $\Jj$ on $X=\Spec R$ to the ideals $I\subseteq R$ by 
     \begin{align*}
+    \left\{
+    \begin{array}{c}
+	    \text{quasi-coherent sheafs of}\\
+	    \text{ideals }\Jj\text{ on }X=\Spec R
+    \end{array}\right\}&\isomorphism \left\{\text{ideals }I\subseteq R\right\} \\
         \Jj&\longmapsto \Jj(X) \subseteq \Oo_X(X) \simeq R\\
-        \text{image of } \snake I \text{ under } \snake I \morphism \snake R \simeq\Oo_X &\longmapsfrom I\;.
+        \left(
+        \begin{array}{c}
+	        \text{image of } \snake I \text{ under}\\
+	         \snake I \morphism \snake R \simeq\Oo_X
+        \end{array}\right)
+         &\longmapsfrom I\;.
     \end{align*}
 \end{cor}
 
 
-\section{Preschemes \texorpdfstring{\sout{of}}{of} and schemes}
-YAY, FINALLY.
-
-\begin{defi}[Prescheme] \lbl{def:prescheme}
-    A locally ringend space $X$ is a \defemph{prescheme} if every $x\in X$ has an open neighbourhood $U$ such that the locally ringed space $(U,\Oo_X|U)$ is isomorphic to $\Spec R$ in $\cat{LRS}$, for some ring $R$. The category of preschemes is a full subcategory of $\cat{LRS}$, i.e. every morphism of locally ringed spaces between two preschemes is a morphism of preschemes.
+\section{Preschemes and schemes}
+\begin{defi}[Prescheme. \textsc{Yay, finally!}] \lbl{def:prescheme}
+    A locally ringend space $X$ is a \defemph{prescheme} if every $x\in X$ has an open neighbourhood $U$ such that the locally ringed space $(U,\Oo_X|_U)$ is isomorphic to $\Spec R$ in $\cat{LRS}$, for some ring $R$. 
+    
+    The category of preschemes is a full subcategory of $\cat{LRS}$, i.e. every morphism of locally ringed spaces between two preschemes is a morphism of preschemes.
 \end{defi}
 \begin{example}
-    $\Spec R$ is a prescheme.
+    For every ring $R$, $\Spec R$ is a prescheme.
 \end{example}
 \begin{example}
-    If $X$ is a prescheme and $U\subseteq X$ an open subset, $(U, \Oo_X|U)$ is a prescheme (called an open subprescheme of $X$).
+    If $X$ is a prescheme and $U\subseteq X$ an open subset, $(U, \Oo_X|_U)$ is a prescheme (called an \emph{open subprescheme} of $X$). This follows from Fact~\reff{fact:affineSchemesTopologyBase}.
 \end{example}
 \begin{example*}
-    The empty set is a prescheme and is the initial object in both $\cat{Prescheme}$ and $\cat{LRS}$.
+    The empty set is a prescheme and is the initial object in both $\cat{PreSch}$, the category of preschemes, and $\cat{LRS}$.
 \end{example*}
 \begin{defi}[Affine prescheme]\lbl{def:affinePrescheme}
-    A prescheme $X$ is called \defemph{affine} if $X\simeq \Spec R$ in $\cat{LRS}$, for some ring $R$. An open subset $U\subseteq X$ is called affine if $(U,\Oo_X|_U)$ is affine prescheme.
+    A prescheme $X$ is called \defemph{affine} if $X\simeq \Spec R$ in $\cat{LRS}$, for some ring $R$. An open subset $U\subseteq X$ is called \emph{affine} if $(U,\Oo_X|_U)$ is affine prescheme.
 \end{defi}
 \begin{rem*}
     By Proposition~\reff{prop:affineSchemeAdjunction} $X$ is affine iff $X\morphism \Spec R$ (with $R=\Oo_X(X)$, the morphism being the one associated to $\id_R$ by that proposition) is an isomorphism. 
 \end{rem*}
 \begin{rem*}
-    By well-known facts, $\Spec R$ is quasi-coherent. Hence, any affine open subset is quasi-coherent. Schemes will be preschemes with an additional separation condition implying but not equivalent to the proper the intersection of two affine open subsets is affine, hence quasi-coherent. Also, recall the well-known fact $\left\{\Spec R\setminus V(f)\right\}$ is a topology base on $\Spec R$ consisting of affine open subsets. 
+    By well-known facts, $\Spec R$ is quasi-compact. Hence, any affine open subset is quasi-compact. Schemes will be preschemes with an additional separation condition implying but not equivalent to the proper the intersection of two affine open subsets is affine, hence quasi-compact. Also, recall the well-known fact $\left\{\Spec R\setminus V(f)\right\}$ is a topology base on $\Spec R$ consisting of affine open subsets. 
 \end{rem*}
-\begin{fact}
+\begin{fact}\lbl{fact:affineSchemesTopologyBase}
     The affine open subsets of a prescheme $X$ form a topology aye on $X$. More precisely if $X=\bigcup_{\lambda\in \Lambda} U_\lambda$ is a cover of $X$ by affine open subsets $U_\lambda$, $\left\{U_\lambda\setminus V(f)\st \lambda\in \Lambda, f\in \Oo_X(U_\lambda)\right\}$ is a topology base on $X$ consisting of affine open subsets.
 \end{fact}
 \begin{rem*}
@@ -2003,10 +2045,10 @@ A category is called \emph{small} if its class of objects is a set.
   \begin{defi}[Canonical morphism]\lbl{def:canonicalMorphism}
   	Let $\Aa\doublemorphism[F][\smash{G}] \Bb$ be functors. A \defemph{functor morphism} or \defemph{canonical morphism} from $F$ to $G$ is a collection of morphisms $\smash{F(A) \morphism[\phi_A]G(A)}$, for all $A\in \Ob \Aa$ such that the diagram
   	\begin{diagram*}
-  		\node (FA) at (0,1.5) {$F(A)$};
-  		\node (FB) at (0,0) {$F(B)$};
-  		\node (GA) at (2.5,1.5) {$G(A)$};
-  		\node (GB) at (2.5,0) {$G(B)$};
+  		\node[ob](FA) at (0,1.5) {$F(A)$};
+  		\node[ob](FB) at (0,0) {$F(B)$};
+  		\node[ob](GA) at (2.5,1.5) {$G(A)$};
+  		\node[ob](GB) at (2.5,0) {$G(B)$};
   		\scriptsize
   		\draw[->] (FA) -- (FB) node[pos=0.5, left] {$F(\alpha)$};
   		\draw[->] (FA) -- (GA) node[pos=0.5, above] {$\phi_A$};
@@ -2109,10 +2151,10 @@ A category is called \emph{small} if its class of objects is a set.
   \begin{proof}
   	We prove only \itememph{a}, \itememph{b} being the dual assertion. The well-definedness of $\mapsto$ is obvious. For $\mapsfrom$ is is necessary to show that $\alpha$ is a natural transformation. For this, let $X\morphism[\nu] Y$ be a morphism in $\Aa$ and $\xi\in\Cov_M(X)$, we have to show that
   	\begin{diagram*}
-  		\node (CovMX) at (0,1.5) {$\Cov_M(X)$};
-  		\node (CovMY) at (0,0) {$\Cov_M(Y)$};
-  		\node (FX) at (2.5,1.5) {$F(X)$};
-  		\node (FY) at (2.5,0) {$F(Y)$};
+  		\node[ob](CovMX) at (0,1.5) {$\Cov_M(X)$};
+  		\node[ob](CovMY) at (0,0) {$\Cov_M(Y)$};
+  		\node[ob](FX) at (2.5,1.5) {$F(X)$};
+  		\node[ob](FY) at (2.5,0) {$F(Y)$};
   		\scriptsize
   		\draw[->] (CovMX) -- (CovMY) node[pos=0.5, left] {$\Cov_M(\nu)$};
   		\draw[->] (CovMX) -- (FX) node[pos=0.5, above] {$\alpha_X$};
@@ -2127,10 +2169,10 @@ A category is called \emph{small} if its class of objects is a set.
   	
   	To show that the maps are inverse to each other first look at $\mu\in F(M)$ and its image $\alpha\in\Hom_{\Funct(\Aa,\cat{Set})}(\Cov_M, F)$. Then we have $\alpha_M(\id_M) = F(\id_M)(\mu) = \id_{F(M)}(\mu)=\mu$. Conversely, let $\beta\colon \Cov_M\morphism F$ be a natural transformation and $\mu = \beta_M(\id_M)$ and let $\alpha$ be defined by $\mu$ as above. Let $M\morphism[\xi]X$. As $\beta$ is a natural transformation, the diagram
   	\begin{diagram*}
-  		\node (CovMM) at (0,1.5) {$\Cov_M(M)$};
-  		\node (CovMX) at (0,0) {$\Cov_M(X)$};
-  		\node (FM) at (2.5,1.5) {$F(X)$};
-  		\node (FX) at (2.5,0) {$F(Y)$};
+  		\node[ob](CovMM) at (0,1.5) {$\Cov_M(M)$};
+  		\node[ob](CovMX) at (0,0) {$\Cov_M(X)$};
+  		\node[ob](FM) at (2.5,1.5) {$F(X)$};
+  		\node[ob](FX) at (2.5,0) {$F(Y)$};
   		\scriptsize
   		\draw[->] (CovMM) -- (CovMX) node[pos=0.5, left] {$\Cov_M(\xi)$};
   		\draw[->] (CovMM) -- (FM) node[pos=0.5, above] {$\beta_M$};
@@ -2194,10 +2236,10 @@ A category is called \emph{small} if its class of objects is a set.
 		\begin{quote}
 			If $T\morphism[\tau]A$ is any morphism in $\Aa$ such that $\alpha\tau=\beta\tau$, then there's a unique $T\morphism[t]E$ such that the following diagram commutes.
 			\begin{diagram*}
-				\node (A) at (0,0) {$A$};
-				\node (B) at (3,0) {$B$};
-				\node (E) at (1.5,1.5) {$E$};
-				\node (T) at (1.5,3) {$T$};
+				\node[ob](A) at (0,0) {$A$};
+				\node[ob](B) at (3,0) {$B$};
+				\node[ob](E) at (1.5,1.5) {$E$};
+				\node[ob](T) at (1.5,3) {$T$};
 				\scriptsize
 				\draw[->,dashed] (T) -- (E) node[pos=0.5, right] {$\exists!\ t$};
 				\draw[->, bend left] (A) to node[pos=0.5, below] {$\alpha$} (B) ;				
@@ -2238,10 +2280,10 @@ A category is called \emph{small} if its class of objects is a set.
         \begin{quote}
         	 If $Y\morphism[\tau]T$ is any morphism in $\Aa$ such that $\tau a=\tau b$, then there's a unique $C\morphism[t]T$ such that the following diagram commutes.
         	 \begin{diagram*}
-        	 	\node (X) at (0,0) {$X$};
-        	 	\node (Y) at (3,0) {$Y$};
-        	 	\node (C) at (1.5,-1.5) {$C$};
-        	 	\node (T) at (1.5,-3) {$T$};
+        	 	\node[ob](X) at (0,0) {$X$};
+        	 	\node[ob](Y) at (3,0) {$Y$};
+        	 	\node[ob](C) at (1.5,-1.5) {$C$};
+        	 	\node[ob](T) at (1.5,-3) {$T$};
         	 	\scriptsize
         	 	\draw[->,dashed] (C) -- (T) node[pos=0.5, right] {$\exists!\ t$};
         	 	\draw[->, bend left] (X) to node[pos=0.5, below] {$a$} (Y) ;				
@@ -2273,11 +2315,11 @@ A category is called \emph{small} if its class of objects is a set.
     \begin{quote}
     	Whenever $T\in\Ob(\Aa)$ comes with morphisms $X\lmorphism[\tau_X]T\morphism[\tau_Y]Y$ such that $\xi\tau_X=\upsilon\tau_Y$, then there is a unique morphism $T\morphism[t]P$ such that the below diagram commutes.
     	\begin{diagram*}
-    		\node (P) at (0,1.5) {$P$};
-    		\node (X) at (0,0) {$X$};
-    		\node (Y) at (2,1.5) {$Y$};
-    		\node (S) at (2,0) {$S$};
-    		\node (T) at (-1.25, 2.75) {$T$};
+    		\node[ob](P) at (0,1.5) {$P$};
+    		\node[ob](X) at (0,0) {$X$};
+    		\node[ob](Y) at (2,1.5) {$Y$};
+    		\node[ob](S) at (2,0) {$S$};
+    		\node[ob](T) at (-1.25, 2.75) {$T$};
     		\scriptsize
     		\draw[->] (P) -- (X) node[pos=0.5, left] {$p$};
     		\draw[->] (P) -- (Y) node[pos=0.5, above] {$q$};
@@ -2309,9 +2351,9 @@ A category is called \emph{small} if its class of objects is a set.
         Let the \emph{comma category} $\Aa\morphism S$ (or $\Aa/S$) be the category whose objects are pairs $(X,\xi)$ with $X\in\Ob(\Aa)$ an object and $X\morphism[\xi] S$ a morphism in $\Aa$, and where a morphism $(X,\xi) \morphism[f] (Y,\upsilon)$ is a morphism $X\morphism[f]Y$ in $\Aa$ such that we have $\upsilon f= \xi$, i.e. 
     
         \begin{diagram*}
-            	\node (x) at (0,1.25) {$X$};
-            	\node (s) at (1.25,0) {$S$};
-            	\node (y) at (2.5,1.25) {$Y$};
+            	\node[ob](x) at (0,1.25) {$X$};
+            	\node[ob](s) at (1.25,0) {$S$};
+            	\node[ob](y) at (2.5,1.25) {$Y$};
             	\scriptsize
             	\draw[->] (x) -- (s) node[pos=0.5,below left] {$\xi$};
             	\draw[->] (x) -- (y) node[pos=0.5,above] {$f$};
@@ -2324,10 +2366,10 @@ A category is called \emph{small} if its class of objects is a set.
       \item 
         The smallest square in the diagram above illustrating the universal property of fibre products is called \emph{cartesian} if $P$ is a fibre product. If is also often useful to think of $p$ as morphism such that the \emph{fibre} $p^{-1}(x)$ is isomorphic to $\upsilon^{-1}(\xi(x))$. Then one prefers a terminology
         \begin{diagram*}
-    	\node (a) at (0,1.5) {$P$};
-    	\node (c) at (0,0) {$X$};
-    	\node (b) at (2,1.5) {$Y$};
-    	\node (d) at (2,0) {$S$};
+    	\node[ob](a) at (0,1.5) {$P$};
+    	\node[ob](c) at (0,0) {$X$};
+    	\node[ob](b) at (2,1.5) {$Y$};
+    	\node[ob](d) at (2,0) {$S$};
     	\scriptsize
     	\draw[->] (a) -- (b) node[pos=0.5, above] {$\xi'$};
     	\draw[->] (a) -- (c) node[pos=0.5, left] {$\upsilon'$};
@@ -2346,10 +2388,10 @@ A category is called \emph{small} if its class of objects is a set.
 \begin{defi}[Cofibre product] \lbl{def:cofibreProduct}
     A \defemph{dual fibre product} or \defemph{cofibre product} or also \defemph{push-out} of morphisms $X\lmorphism B\morphism Y$ in some category $\Aa$ is a commutative diagram 
     \begin{diagram*}
-    	\node (a) at (0,1.5) {$B$};
-    	\node (c) at (0,0) {$X$};
-    	\node (b) at (2,1.5) {$Y$};
-    	\node (d) at (2,0) {$P$};
+    	\node[ob](a) at (0,1.5) {$B$};
+    	\node[ob](c) at (0,0) {$X$};
+    	\node[ob](b) at (2,1.5) {$Y$};
+    	\node[ob](d) at (2,0) {$P$};
     	\scriptsize
     	\draw[->] (a) -- (b) node[pos=0.5, above] {};
     	\draw[->] (a) -- (c) node[pos=0.5, left] {};
@@ -2364,10 +2406,10 @@ A category is called \emph{small} if its class of objects is a set.
     		\begin{minipage}{0.4\textwidth}
     			\centering		
     			\begin{diagram*}
-    				\node (B) at (0,1.5) {$B$};
-    				\node (X) at (0,0) {$X$};
-    				\node (Y) at (2,1.5) {$Y$};
-    				\node (T) at (3.25, -1.25) {$T$};
+    				\node[ob](B) at (0,1.5) {$B$};
+    				\node[ob](X) at (0,0) {$X$};
+    				\node[ob](Y) at (2,1.5) {$Y$};
+    				\node[ob](T) at (3.25, -1.25) {$T$};
     				\scriptsize
     				\draw[->] (B) -- (X);
     				\draw[->] (B) -- (Y);
@@ -2378,11 +2420,11 @@ A category is called \emph{small} if its class of objects is a set.
     		\begin{minipage}{0.4\textwidth}
     			\centering	
     			\begin{diagram*}
-    				\node (B) at (0,1.5) {$B$};
-    				\node (X) at (0,0) {$X$};
-    				\node (Y) at (2,1.5) {$Y$};
-    				\node (P) at (2,0) {$P$};
-    				\node (T) at (3.25, -1.25) {$T$};
+    				\node[ob](B) at (0,1.5) {$B$};
+    				\node[ob](X) at (0,0) {$X$};
+    				\node[ob](Y) at (2,1.5) {$Y$};
+    				\node[ob](P) at (2,0) {$P$};
+    				\node[ob](T) at (3.25, -1.25) {$T$};
     				\scriptsize
     				\draw[->] (B) -- (X);
     				\draw[->] (B) -- (Y);
@@ -2400,10 +2442,10 @@ A category is called \emph{small} if its class of objects is a set.
 \begin{example}
     Let $R$ be a ring, $A$ and $B$ be $R$-algebras. Then their tensor product $A\otimes_R B$ over $R$ has a unique ring structure such that $(a\otimes b)\cdot(\alpha\otimes \beta) = (a\cdot \alpha)\otimes(b \cdot \beta)$. Then $A\morphism A\otimes_R \lmorphism B$ sending $a\in A$ to $a\otimes 1$ and $b\in B$ to $1\otimes b$ are ring morphisms such that
     \begin{diagram*}
-    	\node (a) at (0,1.5) {$R$};
-    	\node (c) at (0,0) {$A$};
-    	\node (b) at (2.5,1.5) {$B$};
-    	\node (d) at (2.5,0) {$A\otimes_R B$};
+    	\node[ob](a) at (0,1.5) {$R$};
+    	\node[ob](c) at (0,0) {$A$};
+    	\node[ob](b) at (2.5,1.5) {$B$};
+    	\node[ob](d) at (2.5,0) {$A\otimes_R B$};
     	\scriptsize
     	\draw[->] (a) -- (b);
     	\draw[->] (a) -- (c);
