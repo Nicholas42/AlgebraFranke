@@ -562,15 +562,15 @@ Applying Proposition~\reff{prop:NAK} to $M/N$, we obtain the following corollary
     Let $A$ be an $R$-algebra. A \defemph{module of Kähler differentials} for $A/R$ is an $A$-module $\Omega_{A/R}$ together with $d_{A/R} \in \Der_R(A,\Omega_{A/R})$ satisfying the following universal property: 
     \begin{quote}
     	For any $A$-module $M$ and any $\delta \in \Der_R(A,M)$ there is a unique $A$-homomorphism $\Omega_{A/R}\morphism[\epsilon] M$ such that
-    	\begin{diagram}
-    		\node (A) at (0,1.25) {$A$};
-    		\node (M) at (2.5,1.25) {$M$};
-    		\node (O) at (1.25,0) {$\Omega_{A/R}$};
+    	\begin{diagram*}
+    		\node[ob](A) at (0,1.25) {$A$};
+    		\node[ob](M) at (2.5,1.25) {$M$};
+    		\node[ob](O) at (1.25,0) {$\Omega_{A/R}$};
     		\scriptsize
     		\draw[->] (A) -- (M) node[pos=0.5, above] {$\delta$};
     		\draw[->] (A) -- (O) node[pos=0.5, below left] {$d_{A/R}$};
     		\draw[->, dashed] (O) -- (M) node[pos=0.5, below right] {$\exists!\ \epsilon$};
-    	\end{diagram}
+    	\end{diagram*}
     \end{quote}
      It is worth pointing out that we thus defined $\Omega_{A/R}$ by an \emph{$(\epsilon,\delta)$-definition}!
 \end{defi}
@@ -633,15 +633,15 @@ Applying Proposition~\reff{prop:NAK} to $M/N$, we obtain the following corollary
         $c(a\delta_b+b\delta_a -\delta_{ab}) = a\cdot d(b) + b\cdot d(a) - d(ab) = 0$ by the Leibniz rule.
     \end{itemize}
     Consequently, due to the universal property of quotient modules, there is a unique $\delta\in \Hom_A(F_A/K , M)$ such that 
-    \begin{diagram}
-    	\node (FA) at (0,1.25) {$F_A$};
-    	\node (M) at (2.5,1.25) {$M$};
-    	\node (O) at (1.25,0) {$F_A/K$};
+    \begin{diagram*}
+    	\node[ob](FA) at (0,1.25) {$F_A$};
+    	\node[ob](M) at (2.5,1.25) {$M$};
+    	\node[ob](O) at (1.25,0) {$F_A/K$};
     	\scriptsize
     	\draw[->] (FA) -- (M) node[pos=0.5, above] {$d$};
     	\draw[->] (FA) -- (O) node[pos=0.5, below left] {$\pi$};
     	\draw[->, dashed] (O) -- (M) node[pos=0.5, below right] {$\exists!\ \delta$};
-    \end{diagram}
+    \end{diagram*}
     commutes. Therefore, $F_A/K=\Omega_{A/R}$ satisfies the universal property.
 \end{proof}
 In many cases, the module of Kähler differentials can be calculated using $\Omega_{R[X_1,\ldots,X_n]}\simeq \bigoplus_{i=1}^n R[X_1,\ldots, X_n] dX_i$ and two exact sequences which follow in a straight forward way from
@@ -695,15 +695,15 @@ In many cases, the module of Kähler differentials can be calculated using $\Ome
             Tensor products as occuring above are used for change of base: $M\otimes_A B$ is a $B$-module together with a morphism $M\morphism M\otimes_A B$, $m \mapsto m \otimes_A 1$ with the following universal property: 
             \begin{quote}
             	If $T$ is any $B$-module and $M\morphism[\tau] T$ any $A$-linear homomorphism, then there is a unique homomorphism $M\otimes_A B \morphism[t] T$ such that
-            	\begin{diagram}
-            		\node (M) at (0,1.25) {$M$};
-            		\node (T) at (2.5,1.25) {$T$};
-            		\node (MB) at (1.25,0) {$M\otimes_AB$};
+            	\begin{diagram*}
+            		\node[ob](M) at (0,1.25) {$M$};
+            		\node[ob](T) at (2.5,1.25) {$T$};
+            		\node[ob](MB) at (1.25,0) {$M\otimes_AB$};
             		\scriptsize
             		\draw[->] (M) -- (T) node[pos=0.5, above] {$\tau$};
             		\draw[->] (M) -- (MB) node[pos=0.5, below left] {$-\otimes_A1$};
             		\draw[->, dashed] (MB) -- (T) node[pos=0.5, below right] {$\exists!\ t$};
-            	\end{diagram}
+            	\end{diagram*}
             	 commutes, i.e. $\tau(m) = t(m\otimes_A 1)$. In particular, there is an isomorphism $\Hom_A(M,T)\simeq\Hom_B(M\otimes_AB,T)$ of $B$-modules.
             \end{quote}
             For instance, $V\otimes_\IR \IC$ is the complexification of the $\IR$-vector space $V$. We put $m\otimes_A b= b\cdot (m\otimes_A 1)$. One easy special case is $B=A/I$ in which case 
@@ -713,10 +713,10 @@ In many cases, the module of Kähler differentials can be calculated using $\Ome
             has the desired universal property. More about tensor products may be found in the appendix, section~\reff{sec:tensorProducts}.
         \item
             Using and \reff{eq:tensorDerSpam1} the calculation of $\Omega_{R[T_1,\ldots,T_n]/R}$ it is possible to calculate $\Omega_{(A/I)/R}$ (where $A=R[T_1,\ldots, T_n]$) as the cokernel of 
-            \begin{diagram}
-            	\node (I) at (0,1.25) {$I/I^2$};
-            	\node (O) at (2,1.25) {$\Omega_{A/R}\rlap{$/(I\cdot\Omega_{A/R})$}$};
-            	\node (A) at (2, 0) {$(A/I)^n$};
+            \begin{diagram*}
+            	\node[ob](I) at (0,1.25) {$I/I^2$};
+            	\node[ob](O) at (2,1.25)  {$\Omega_{A/R}\rlap{$/(I\cdot\Omega_{A/R})$}$};
+            	\node[ob](A) at (2, 0) {$(A/I)^n$};
             	\path (A) -- (O) node[pos=0.5, sloped] {$\simeq$};
             	\scriptsize
             	\path (I) ++ (-1.75,-0.25) node (i) {$f\mod I^2$};
@@ -724,7 +724,7 @@ In many cases, the module of Kähler differentials can be calculated using $\Ome
             	\draw[->] (I) -- (O);
             	\draw[->] (I) -- (A);
             	\draw[|->] (i) -- (a);
-            \end{diagram}
+            \end{diagram*}
             Since any $R$-algebra of finite type has the form $A/I$, this provides a way to calculate $\Omega_{B/R}$ for such $R$-algebras $B$. Since Example \reff{ex:universalDerivationPolynomialRing} is not (really) limited to case of finitely many variables, other $R$-algebras could be treated as well.
     \end{alphanumerate}
 \end{rem*}
@@ -823,58 +823,58 @@ In many cases, the module of Kähler differentials can be calculated using $\Ome
 		\begin{center}
 			\begin{minipage}{0.4\textwidth}
 				\centering				
-				\begin{diagram}
-					\node (A) at (0,1.5) {$A$};
-					\node (AX) at (2.5,1.5) {$A_X$};
-					\node (OX) at (2.5,0) {$\Omega_{A_X/R_X}$};
-					\node (O) at (0,0) {$\Omega_{A/R}$};
+				\begin{diagram*}
+					\node[ob](A) at (0,1.5) {$A$};
+					\node[ob](AX) at (2.5,1.5) {$A_X$};
+					\node[ob](OX) at (2.5,0) {$\Omega_{A_X/R_X}$};
+					\node[ob](O) at (0,0) {$\Omega_{A/R}$};
 					\scriptsize
 					\draw[->] (A) -- (AX);
 					\draw[->] (AX) -- (OX) node[pos=0.5, right] {$d_{A_X/R_X}$};
 					\draw[->] (A) -- (O) node[pos=0.5, left] {$d_{A/R}$};
 					\draw[->, dashed] (O) -- (OX) node[pos=0.5, above] {$\exists!\ \alpha$};
-				\end{diagram}
+				\end{diagram*}
 			\end{minipage}
 			\begin{minipage}{0.4\textwidth}
 				\centering				
-				\begin{diagram}
-					\node (A) at (0,1.5) {$\Omega_{A/R}$};
-					\node (OX) at (3,1.5) {$\Omega_{A_X/R_X}$};
-					\node (O) at (1.5,0) {$\Omega_{A/R}\otimes_AA_X$};
+				\begin{diagram*}
+					\node[ob](A) at (0,1.5) {$\Omega_{A/R}$};
+					\node[ob](OX) at (3,1.5) {$\Omega_{A_X/R_X}$};
+					\node[ob](O) at (1.5,0) {$\Omega_{A/R}\otimes_AA_X$};
 					\scriptsize
 					\draw[->] (A) -- (OX) node[pos=0.5, above] {$\alpha$};
 					\draw[->] (A) -- (O) node[pos=0.5, below left] {$-\otimes_A1$};
 					\draw[->, dashed] (O) -- (OX) node[pos=0.5, below right] {$\exists!\ \iota$};
-				\end{diagram}
+				\end{diagram*}
 			\end{minipage}
 		\end{center}
 		\item Similarly, since $A\morphism A_S\xrightarrow{d_{A_S/R}} \Omega_{A_S/R}$ is an element of $\Der_R(A,\Omega_{A_S/R})$ there is a unique morphism $\Omega_{A/R} \morphism[\alpha]\Omega_{A_S/R}$ of $A$-modules such that the left of the below diagrams commutes. By the universal property of $\Omega_{A/R}\morphism(\Omega_{A/R})_S=\Omega_{A/R}\otimes_AA_S$ there is a unique $\iota$ such that the tight diagram commutes. 
 		\begin{center}
 			\begin{minipage}{0.4\textwidth}
 				\centering				
-				\begin{diagram}
-					\node (A) at (0,1.5) {$A$};
-					\node (AX) at (2.5,1.5) {$A_S$};
-					\node (OX) at (2.5,0) {$\Omega_{A_S/R}$};
-					\node (O) at (0,0) {$\Omega_{A/R}$};
+				\begin{diagram*}
+					\node[ob](A) at (0,1.5) {$A$};
+					\node[ob](AX) at (2.5,1.5) {$A_S$};
+					\node[ob](OX) at (2.5,0) {$\Omega_{A_S/R}$};
+					\node[ob](O) at (0,0) {$\Omega_{A/R}$};
 					\scriptsize
 					\draw[->] (A) -- (AX);
 					\draw[->] (AX) -- (OX) node[pos=0.5, right] {$d_{A_S/R}$};
 					\draw[->] (A) -- (O) node[pos=0.5, left] {$d_{A/R}$};
 					\draw[->, dashed] (O) -- (OX) node[pos=0.5, above] {$\exists!\ \alpha$};
-				\end{diagram}
+				\end{diagram*}
 			\end{minipage}
 			\begin{minipage}{0.4\textwidth}
 				\centering				
-				\begin{diagram}
-					\node (A) at (0,1.5) {$\Omega_{A/R}$};
-					\node (OX) at (3,1.5) {$\Omega_{A_S/R}$};
-					\node (O) at (1.5,0) {$\Omega_{A/R}\otimes_AA_S$};
+				\begin{diagram*}
+					\node[ob](A) at (0,1.5) {$\Omega_{A/R}$};
+					\node[ob](OX) at (3,1.5) {$\Omega_{A_S/R}$};
+					\node[ob](O) at (1.5,0) {$\Omega_{A/R}\otimes_AA_S$};
 					\scriptsize
 					\draw[->] (A) -- (OX) node[pos=0.5, above] {$\alpha$};
 					\draw[->] (A) -- (O) node[pos=0.5, below left] {$-\otimes_A1$};
 					\draw[->, dashed] (O) -- (OX) node[pos=0.5, below right] {$\exists!\ \iota$};
-				\end{diagram}
+				\end{diagram*}
 			\end{minipage}
 		\end{center}
 	\end{itemize}
@@ -1035,23 +1035,23 @@ The following wasn't treated in the lecture but we include it anyway (at the pri
         I/I^2 \morphism \Omega_{S/k}\otimes_kR \morphism \Omega_{R/k} \morphism 0,
     \end{align*}
     where $\Omega_{S/k}\otimes_k R\simeq S^m\otimes_k R \simeq R^m$. Denote by $\mm_x\subseteq R$ the maximal ideals of functions vanishing at $x$. Taking tensor products over $R$ with $\KK(\mm_x)\simeq k$ (as we pointed out before: although $\KK(\mm_x)$ is canonically isomorphic to $k$, the $k$-vector space structures involved do depend on $\mm_x$) gives a sequence
-    \begin{diagram}
-    	\node (o1) at (0, 1.5) {$I/I^2\otimes_Rk$};
-    	\node (o2) at (3, 1.5) {$R^m\otimes_Rk$};
-    	\node (o3) at (6, 1.5) {$\Omega_{R/k}\otimes_Rk$};
-    	\node (o4) at (8.25, 1.5) {$0$};    	
-    	\node (u1) at (0, 0) {$I/(\mm_x I+I^2)$};
-    	\node (u2) at (3, 0) {$\vphantom{k^m}$\scriptsize$\hphantom{\nabla f(x)}$};    	
-    	\node at (3, 0) {$k^m$};
-    	\node (u3) at (6, 0) {$\Omega_{R/k}\otimes_Rk$};
-    	\node (u4) at (8.25, 0) {$0$};
+    \begin{diagram*}
+    	\node[ob](o1) at (0, 1.5) {$I/I^2\otimes_Rk$};
+    	\node[ob](o2) at (3, 1.5) {$R^m\otimes_Rk$};
+    	\node[ob](o3) at (6, 1.5) {$\Omega_{R/k}\otimes_Rk$};
+    	\node[ob](o4) at (8.25, 1.5) {$0$};    	
+    	\node[ob](u1) at (0, 0) {$I/(\mm_x I+I^2)$};
+    	\node[ob](u2) at (3, 0) {$\vphantom{k^m}$\scriptsize$\hphantom{\nabla f(x)}$};    	
+    	\node[ob]at (3, 0) {$k^m$};
+    	\node[ob](u3) at (6, 0) {$\Omega_{R/k}\otimes_Rk$};
+    	\node[ob](u4) at (8.25, 0) {$0$};
     	\scriptsize
     	\draw[->] (o1) -- (u1) node[pos=0.5, above, sloped] {$\sim$};
     	\draw[->] (o2) -- (u2) node[pos=0.5, above, sloped] {$\sim$};
     	\draw[transform canvas={xshift=1pt}] (o3) -- (u3);
     	\draw[transform canvas={xshift=-1pt}] (o3) -- (u3);
-    	\node (uu1) at ($(u1.east)+(0,-0.5)$) [left] {$f$};
-    	\node (uu2) at ($(u2.west)+(0,-0.5)$) [right] {$\nabla f(x)$};
+    	\node[ob](uu1) at ($(u1.east)+(0,-0.5)$) [left] {$f$};
+    	\node[ob](uu2) at ($(u2.west)+(0,-0.5)$) [right] {$\nabla f(x)$};
     	\draw[|->] (uu1) -- (uu2);
     	\draw[->] (o1) -- (o2);
     	\draw[->] (o2) -- (o3);
@@ -1059,7 +1059,7 @@ The following wasn't treated in the lecture but we include it anyway (at the pri
     	\draw[->] (u1) -- (u2);
     	\draw[->] (u2) -- (u3);
     	\draw[->] (u3) -- (u4);
-    \end{diagram}
+    \end{diagram*}
     which is exact since the functor $-\otimes_RM$ is \emph{right-exact} for any $R$-module $M$ (cf. Fact~\reff{fact:tensorProductRightExact}). By Proposition~\reff{prop:locallyFreeDim} $\Omega_{R/k}$ being locally free is equivalent to $\dim_k(\Omega_{R/k}/\mm_x\Omega_{R/k}) =\dim_k(\Omega_{R/k}\otimes k) = n$ for all $x\in X$. By exactness of the above sequences of $k$-vector spaces, this is equivalent to the image of $I/I^2\otimes_R k\morphism k^n$ having dimension $m-n$. But by the bottom row, this image is given by $\Nn=\left\{\nabla f(x) \st f\in I\right\}$ and by the Jacobian criterion (Proposition~\reff{prop:Jacobian}), $X$ is regular at $x\in X$ iff $\dim_k\Nn= m-n$, thus proving the assertion.
 \end{proof}
 
@@ -1819,15 +1819,15 @@ One may check that locally closed sets are precisely the open subsets of closed 
 	A \defemph{localization} $R_S$ of $R$ with respect to $S$ is a ring $R_S$ with a ring morphism $R\morphism[\psi_S] R_S$ such that $\psi_S(S)\subseteq R_S^\times$ (the group of units of $R_S$) and such that $\psi_S$ has the universal property (on the left) for such ring morphisms:
 	\begin{quote}		
 		If $R\morphism[\alpha] A$ is any ring morphism such that $\alpha(S) \subseteq A^\times$ then there is a unique ring morphism $R_S\morphism[\mu] A$ such that the diagram
-		\begin{diagram}
-			\node (R) at (0,1.25) {$R$};
-			\node (A) at (2.5,1.25) {$A$};
-			\node (RS) at (1.25,0) {$R_S$};
+		\begin{diagram*}
+			\node[ob](R) at (0,1.25) {$R$};
+			\node[ob](A) at (2.5,1.25) {$A$};
+			\node[ob](RS) at (1.25,0) {$R_S$};
 			\scriptsize
 			\draw[->] (R) -- (A) node[pos=0.5, above] {$\alpha$};
 			\draw[->] (R) -- (RS) node[pos=0.5, below left] {$\psi_S$};
 			\draw[->, dashed] (RS) -- (A) node[pos=0.5, below right] {$\exists!\ \mu$};
-		\end{diagram}
+		\end{diagram*}
 		commutes.
 	\end{quote}
 \end{defi}
@@ -1934,15 +1934,15 @@ is called the \emph{degree} and $\Min_{x/K}$ the \emph{minimal polynomial} of $x
     which has the \emph{universal property} for $R$-bilinear maps $M\times N \morphism[\tau] T$:
     \begin{quote}
     	If $\tau$ is any such map, there is a unique $t\in \Hom_R(M\otimes_R N , T)$ such that the following diagram commutes.
-    	\begin{diagram}
-    		\node (M) at (0,1.25) {$M\times N$};
-    		\node (T) at (2.5,1.25) {$T $};
-    		\node (tensor) at (1.25,0) {$M\otimes_RN$};
+    	\begin{diagram*}
+    		\node[ob](M) at (0,1.25) {$M\times N$};
+    		\node[ob](T) at (2.5,1.25) {$T $};
+    		\node[ob](tensor) at (1.25,0) {$M\otimes_RN$};
     		\scriptsize
     		\draw[->] (M) -- (T) node[pos=0.5, above] {$\tau$};
     		\draw[->] (M) -- (tensor) node[pos=0.5, below left] {$-\otimes-$};
     		\draw[->] (tensor) -- (T) node[pos=0.5, below right] {$t$};
-    	\end{diagram}
+    	\end{diagram*}
     \end{quote}
     
 \end{defi}
@@ -1976,15 +1976,15 @@ Let $R$ be a ring, $A$ an $R$-algebra, $M$ an $R$-module. Then $A\otimes_RM$ has
 In fact, the right hand side is $R$-bilinear in a and $m$, showing the existence. There is a unique morphism $\alpha\cdot(-) = \mu_\alpha\colon A\otimes_R M \morphism A\otimes_R M$ such that $\mu_\alpha(a\otimes m) = (\alpha\cdot a) \otimes m$ for all $a\in A$, $m\in M$. We have $\mu_{\alpha+\alpha'} = \mu_{\alpha}+\mu_{\alpha'}$. Also, $\mu_\alpha = \rho\cdot(-)$ (in the $R$-module structure) when $\alpha$ is the image of $\rho\in R$ in $A$. In particular, $\mu_1 = \id_{A\otimes_R M}$. It follows that we have obtained an $A$-module-structure on $A\otimes_R M$.
 
 We have a homomorphism $M\morphism A\otimes_R M$ sending $m$ to $1\otimes m$. This is a morphism of $R$-modules by the $R$-bilinearity of $-\otimes-$. Let $T$ be any $A$-module and $\tau\in \Hom_R(M,T)$, then there is a unique homomorphism $t\colon A\otimes_R M \morphism T$ of $R$-modules such that $t(a\otimes m) = a\tau(m)$, i.e.
-\begin{diagram}
-    \node (M) at (0,1.25) {$M$};
-    \node (tensor) at (1.25,0) {$A\otimes_R M $};
-    \node (T) at (2.5,1.25) {$T$};
+\begin{diagram*}
+    \node[ob](M) at (0,1.25) {$M$};
+    \node[ob](tensor) at (1.25,0) {$A\otimes_R M $};
+    \node[ob](T) at (2.5,1.25) {$T$};
     \scriptsize
     \draw[->] (M) -- (tensor) node[pos=0.5, below left] {$1\otimes - $};
     \draw[->] (M) -- (T) node[pos=0.5, above] {$\tau$};
     \draw[->, dashed] (tensor) -- (T) node[pos=0.5, below right] {$\exists!\ t$};
-\end{diagram}
+\end{diagram*}
 commutes. Also, $t$ is $A$-linear:
 \begin{align*}
     \alpha\cdot t(a\otimes m) = \alpha\cdot(a\cdot\tau(m)) = t((\alpha\cdot a)\otimes m) = t(\alpha\cdot(a\otimes m))\;.
