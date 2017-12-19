@@ -1475,7 +1475,7 @@ Since the preimage of this ideal in $\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y}$ equ
     $U=\left\{x\in X\st \Ii_{[x]}=\Rr_x\right\}$ is open in $X$.
 \end{cor*}
 
-\begin{prop}
+\begin{prop}\lbl{prop:closedImmersionSheaves}
     For a locally ringed space $X$, let two immersions $K_1\morphism[\kappa_1] X\lmorphism[\kappa_2] K_2$ be called equivalent (write $\kappa_1\sim\kappa_2$) if there is an isomorphism $K_1\morphism[\iota] K_2$ of locally ringed spaces such that $\kappa_2\iota = \kappa_1$. Then there is a bijection 
     \begin{align*}
 	    \left\{\text{closed immersions }K\morphism[\kappa]X\right\}/_\sim&\isomorphism\left\{\text{sheaves of ideals }\Ii\subseteq \Oo_X\right\}\\
@@ -1942,6 +1942,160 @@ A Franke lecture is no Franke lecture without a definition being proved.
 \begin{rem*}
     In particular, if $U\subseteq X$ is open, if can be covered by affine open subsets of $X$. 
 \end{rem*}
+\begin{proof}
+    It is sufficient to show the second part. Let $V\subseteq X$ be open. As $\left\{\Spec R\setminus V(g)\st g\in R\right\}$ is a topology base on $\Spec R$, $V\cap U_\lambda = \bigcup_{\xi\in\Xi_\lambda} U_\lambda \setminus V(f_{\lambda,\xi})$, with $f_{\lambda,\xi}\in \Oo_X(U_\lambda)$. Then $V= \bigcup_{\lambda\in\Lambda} = \bigcup_{\lambda\in \Lambda} \bigcup_{\xi\in\Xi_\lambda} U_\lambda\setminus V(f_{\lambda,\xi}$.
+\end{proof}
+\begin{defi}[Quasi-compact]\lbl{def:quasicompact}
+    A prescheme $X$ is called \defemph{quasi-compact} if it satisfies the following equivalent criteria:
+    \begin{alphanumerate}
+        \item 
+            The topological Space $X$ is quasi-compact.
+        \item 
+            $X$ may be covered by finitely many affine open subsets. 
+        \item 
+            $X$ may be covered by finitely many quasi-compact open subsets.
+    \end{alphanumerate}
+    A prescheme $X$ is called quasi-seperated, if it satisfies the following equivalent conditions:
+    \begin{alphanumerate}\setcounter{enumi}{3}
+        \item 
+            The intersection of two affine open subsets is quasi-compact.
+        \item 
+            The intersection of two quasi-compact subsets is quasi-compact. 
+        \item 
+            $X$ has a topology base $\Bb$ such that the intersection of two elements of $\Bb$ is quasi-compact.
+    \end{alphanumerate}
+\end{defi}
+\begin{proof}
+    The union $U$ of finitely many quasi-compact open subsets $(U_i)_{i=1}^n$ of a topological space $X$ is again quasi-compact. For any cover $U= \bigcup_{\lambda\in\Lambda} V_{\lambda}$ by open subsets, each $U_i = \bigcup_{\lambda\in \Lambda} U_i\cap V_\lambda$ has a finite subcover $(U_i\cap V_{\lambda_{i,j}})_{j=1}^{n_i}$ and all these finite subcovers give us a finite subcover $U = \bigcup_{i=1}^n \bigcup_{j=1}^{n_i} U_{\lambda_{i,j}}$. 
+    
+    So \itememph{a} implies \itememph{b} by the definition, \itememph{b} implies \itememph{c} since $\Spec R$ is quasi-compact and \itememph{c} implies \itememph{a} by the above fact. 
+    
+    We obtain \itememph{d} from \itememph{e} since affine open subsets are quasi-compact and \itememph{f} from \itememph{d} by Fact \reff{fact:affineSchemesTopologyBase}. To see that \itememph{f} implies \itememph{e}, let $\Bb$ be as in \itememph{f} and $V$ and $W$ be quasi-compact open subsets. Then $V= \bigcup_{i=1}^m B_i$, $W=\bigcup_{j=1}^n C_j$ with $B_i,C_j\in \Bb$. Then $V\cap W = \bigcup_{i=1}^m \bigcup_{j=1}^n B_i\cap C_j$ is quasi compact since all $B_i\cap C_j$ are quasi-compact by assumption.
+\end{proof}
+\begin{fact}
+    \begin{alphanumerate}
+        \item
+            $\Spec R$ is quasi-compact and quasi-separated. 
+        \item   
+            If $Y\morphism X$ is a morphism of preschemes which is a homeomorphism onto a closed subset of $X$ carrying the induced topology. Then $x$ being quasi-compact implies $Y$ being quasi-compact, and $X$ being quasi-separated implies $Y$ being quasi-separated.
+    \end{alphanumerate}
+\end{fact}
+\begin{proof}
+    The assertions about quasi-compactness are well-known. For quasi-separatedness in \itememph{a}, we take $\Bb=\left\{\Spec R_f\st f\in R\right\}$, which elements are quasi-compact and which is closed under intersection. For \itememph{b} take $\Bb= \left\{V\cap Y\st V\subseteq X \text{ affine}\right\}$.
+\end{proof}
+\begin{prop}\lbl{prop:coherentDef}
+    Let $X$ be a prescheme, $\Mm$ an $\Oo_X$-module. The following conditions are equivalent:
+    \begin{alphanumerate}
+        \item 
+            $X$ may be covered by affine subsets $U$ such that $\Mm|_U$ is quasi-coherent.
+        \item 
+            $X$ has a topology base consisting of affine open subsets $U$ such that $\Mm|_U$ is quasi-coherent.
+        \item   
+            When $U\subseteq X$ is quasi-compact, the morphism
+            \begin{align}\lbl{eq:bijectiveQCQS}
+                \Mm(U)_\lambda \morphism \Mm(U\setminus V(\lambda))
+            \end{align}
+            is, for all $\lambda\in \Oo_X(U)$, injective when $U$ is quasi-compact and bijective when $U$ is quasi-compact and quasi-seperated.
+        \item 
+            \eqreff{eq:bijectiveQCQS} is bijective when $U$ is quasi-compact and quasi-coherent.
+        \item 
+            \eqreff{eq:bijectiveQCQS} is bijective when $U$ is affine.
+        \item 
+            For arbitrary affine open $U$, $\Mm|_U$ is quasi-coherent.
+    \end{alphanumerate}
+\end{prop}
+\begin{proof}
+    Assume \itememph{a}. Since $\snake M|_{\Spec R_f} \simeq \snake M_f$, when $X = \bigcup_{\lambda\in\Lambda}$ with $U_\lambda$ affine and $\Mm|_{U_\lambda}$ quasi-coherent, then $\Mm|_{U_\lambda\setminus V(f)}$ is quasi-coherent. By Fact 1\itememph{b}, \itememph{b} follows.
+    
+    Now let \itememph{b} be given. Let $\Bb$ be a topology base of affine open subsets such that $\Mm|_U$ is quasi-coherent when $U\in\Bb$. By the definition of quasi-coherent, \eqreff{eq:bijectiveQCQS} is an isomorphism for $U\in\Bb$. Now let $V$ be a quasi-compact open subset, $f\in \Oo_X(B)$, $m=\frac{\mu}{f^\ell}\in \Mm(V)_f$ such that the image of $m$ under \eqreff{eq:bijectiveQCQS} vanishes. Then $\mu|_{U\setminus V(f)} = 0$. As $V$ is quasi-compact it can be represented $V=\bigcup_{i=1}^n V_i$ with $V_i\in\Bb$. As \eqreff{eq:bijectiveQCQS} is bijective for $V_i$, we have $k_i\in\IN$ such that $f^{k_i}(\mu|_{V_i}) = 0$ in $\Mm(V_i)$. Let $k=\max_{i=1}^n k_i$, then $f^k(\mu|_{V_i}) = 0$, hence $f^k\mu = 0$ in $\Mm(V)$ as $\Mm$ is a sheaf. Thus, $m = \frac{\mu}{f^\ell}\in M(V)_f$ is zero, which shows injectivity.
+    
+    To show bijectivity, let $\Bb$ be as before, $V\subseteq X$ be open, quasi-compact, quasi-seperated, and let $m\in \Mm(V\setminus V(f))$ be given. As before we have $V=\bigcup_{i=1}^n V_i$ with $V_i\in\Bb$. As \eqreff{eq:bijectiveQCQS} is an isomorphism on $V_i$ and there are only finitely many $V_i$, $m|_{V\setminus V(f)} = \frac{\mu_i}{f^k}$ with $\mu_\in \Mm(V_i)$. Let $\mu_{i,j} = \mu_i|_{V_i\cap V_j} - \mu_j|_{V_i\cap V_j}$, then $\mu_{i,j}|_{(V_i\cap V_j)\setminus V(f)} = 0$. As $V$ is quasi-separated and the $V_i$ are affine, this implies $f^{\ell_{i,j}} \mu_{i,j} = 0$ in $\Mm(V_i\cap V_j)$ by the previous step. Taking $\ell = \max\left\{ \ell_{i,j} \st 1\leq i\leq j \leq n\right\}$ we have $f^\ell\mu_u |_{V_i\cap V_j} = f^\ell\mu_j|_{V_i\cap V_j}$ and replacing $k$ by $k+\ell$, $\mu_i$ by $f^\ell \mu_i$, we achieve $\mu_i|_{V_i\cap V_j} = \mu_j|_{V_i\cap V_j}$. As $\Mm$ is a sheaf, there is $\mu\in\Mm(V)$ such that $\mu|_{V_i} = \mu_i$. Then $\frac{\mu}{f^k}|_{V\setminus V(f)} = m$ as the restriction of the left hand side to $V_i\setminus V(f)$ equals $\frac{\mu_i}{f^k} = m|_{V_i\setminus V(f)}$. 
+    
+    Now \itememph{c} trivially implies \itememph{d}. We obtain \itememph{e} from \itememph{d} by Fact 2, \itememph{f} form \itememph{e} by the Definition~\reff{def:quasicoherent} and \itememph{a} from \itememph{f} by Definition~\reff{def:prescheme}.
+\end{proof}
+\begin{cor}
+    The morphism \reff{eq:bijectiveQCQS} $\Oo_X(V)_\lambda\morphism \Oo_X(V\setminus V(\lambda))$ is injective when $V$ is quasi-compact and bijective, when $V$ is quasi-compact and quasi-separated. 
+\end{cor}
+\begin{cor}
+    When $V$ is quasi-compact and $\lambda\in \Oo_X(V)$ such that $V(\lambda) = V$ then $\lambda$ is nilpotent. Vice versa, $V(f) = V$ if $f$ is nilpotent, even if $V$ is not quasi-compact.
+\end{cor}
+\begin{defi}[Quasi-coherence]\lbl{def:preschemeQuasiCoherent}
+    Let $X$ be a prescheme, an $\Oo_X$-module is called \defemph{quasi-coherent}, if it satisfies the equivalent conditions of Proposition~\reff{prop:coherentDef}.
+\end{defi}
+As kernels of module morphisms commute with localization, we have
+\begin{fact}
+    If $\Mm\morphism[\mu] \Nn$ is a morphism of $\Oo_X$-modules, with $\Mm$ and $\Nn$ quasi-coherent, then $\ker(\mu)$ is quasi-coherent.
+\end{fact}
+\begin{example*}
+    $\Oo_X$ is quasi-coherent.
+\end{example*}
+\begin{defi}
+    Let $X\morphism[f] Y$ be a morphism between preschemes. We say that $f$:
+    \begin{alphanumerate}
+        \item
+            a closed embedding, if it is a closed immersion in the sense of \reff{def:immersiveMorphism}.
+        \item 
+            quasi-compact when it satisfies the following equivalent conditions:
+            \begin{itemize}
+              \item 
+                When $U\subseteq Y$ is affine $f^{-1}(U)$ is quasi-compact.
+              \item 
+                When $U$ is quasi-compact, $f^{-1}(U)$ is quasi-compact.
+              \item 
+                $Y$ has a topology base $\Bb$ such that $f^{-1}(U)$ is quasi-compact for $U\in \Bb$.
+            \end{itemize}
+        \item 
+            quasi-seperated if the preimage of any open subset of $Y$ is quasi-separated.
+    \end{alphanumerate}
+\end{defi}
+\begin{rem*}
+    \begin{alphanumerate}
+        \item 
+            The equivalence is as the proof of Definition~\reff{def:quasicompact}, which is a special case of it. 
+        \item 
+            $X$ is quasi-seperated iff for any quasi-compact open subset $V$, $V\monomorphism X$ is quasi-compact.
+        \item 
+            Open embeddings are quasi-seperated for trivial reasons.
+    \end{alphanumerate}
+\end{rem*}
+\begin{prop}\lbl{prop:closedEmbeddingPrescheme}
+    \begin{alphanumerate}
+        \item 
+            A closed embedding of preschemes is quasi-compact and quasi-seperated.
+        \item 
+            Let $X\morphism[f] Y$ be a morphism of preschemes which is quasi-compact and quasi-separated and $\Mm$ a quasi-coherent $\Oo_X$-module, then $f_*\Mm$ is a quasi-coherent $\Oo_Y$-module.
+    \end{alphanumerate}
+\end{prop}
+\begin{proof}
+    \itememph{a} follows from Fact 2.
+    
+    For \itememph{b} take $V\subseteq Y$ affine. Then \eqreff{eq:bijectiveQCQS} for $f_*\Mm$ and $V$ is an isomorphism by the diagram
+    
+    DIAGRAM
+    
+\end{proof}
+\begin{prop}
+    Let $X$ be a prescheme and $K$ a locally ringed space and $K\morphism[\iota] X$ a closed embedding in the sense of Definition~\reff{def:immersiveMorphism}. Then $K$ is a prescheme if and only if the sheaf of ideals $\Jj=\ker(\Oo_X\morphism[\iota^*]\iota_*\Oo_K)$ associated to $\iota$ by Proposition~\reff{prop:closedImmersionSheaves} is quasi-coherent.
+\end{prop}
+\begin{proof}
+    Let $K$ be a prescheme. By Proposition~\reff{prop:closedEmbeddingPrescheme} and Fact 3, $\Jj$ is quasi-coherent. Conversely, let $\Jj$ be quasi-coherent. As the correspondence between $K$ and $\Jj$ is compatible with restriction to open subsets, it is sufficient to show that $K$ is a prescheme, when $X$ is affine. In this case ($X=\Spec R$), any quasi-coherent $\Jj\subseteq \Oo_X$ has the from $\Jj = \snake I$. But $\Spec R/I \morphism \Spec R$ is a closed embedding and our correspondence associates $\snake I$ to i. Thus, $K\simeq \Spec(R/I)$ is affine in this case.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
