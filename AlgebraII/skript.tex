@@ -1613,18 +1613,25 @@ This enables us to derive the relation between dimension and transcendence degre
 \begin{defi}
     The graded ring defined by a projective variety $Z = V(\pp) \subseteq \IP^n(k)$ is defined as $S_\bullet(Z) = k[X_0,\ldots, X_n]/\pp$. We would like to compare this to the structure sheaf, or of the line bundles $\Oo^\ell$ on $Z$. 
 \end{defi}
-\begin{thm}
-    Let $Z$ be a projective algebraic variety. For any $f\in S_\bullet(Z)$ which is homogeneous of positive degree,
-    \begin{align*}
-        (S_\bullet(Z)_f)_0 &\isomorphism \Oo(Z\setminus V(f))\\
-        \frac{g}{f^s} &\longmapsto \left([x_0,\ldots,x_n] \mapsto \frac{g(x_0,\ldots,x_n)}{f(x_0,\ldots, x_n)^s}\right)\;.
-    \end{align*}
-    Moreover
-    \begin{align*}
-        (S_\bullet(Z)_f)_\ell &\isomorphism \Oo^\ell(Z\setminus V(f)) \\
-        \frac{g}{f^s} &\longmapsto \left([x_0,\ldots,x_n] \mapsto \frac{g(x_0,\ldots,x_n)}{f(x_0,\ldots, x_n)^s}\right)\;.
-    \end{align*}
-    Moreover again, we have $\Oo(Z) = k$ (given by the constant functions). For general $\ell$, $S_\ell(Z)\monomorphism \Oo^\ell(Z)$ and for every $f\in \Oo^\ell(Z)$ there is $m\in \IN$ such that $f\cdot S_k(Z)\subseteq S_{m+\ell}(Z) \subseteq \Oo^{m+\ell} (Z)$.
+\begin{thm}\lbl{thm:gradedRing}
+    Let $Z$ be a projective algebraic variety. 
+    \begin{alphanumerate}    
+      \item 
+        For any $f\in S_\bullet(Z)$ which is homogeneous of positive degree,
+        \begin{align*}
+            (S_\bullet(Z)_f)_0 &\isomorphism \Oo(Z\setminus V(f))\\
+            \frac{g}{f^s} &\longmapsto \left([x_0,\ldots,x_n] \mapsto \frac{g(x_0,\ldots,x_n)}{f(x_0,\ldots, x_n)^s}\right)\;.
+        \end{align*}
+        Moreover
+        \begin{align*}
+            (S_\bullet(Z)_f)_\ell &\isomorphism \Oo^\ell(Z\setminus V(f)) \\
+            \frac{g}{f^s} &\longmapsto \left([x_0,\ldots,x_n] \mapsto \frac{g(x_0,\ldots,x_n)}{f(x_0,\ldots, x_n)^s}\right)\;.
+        \end{align*}
+      \item 
+        For general $\ell$, $S_\ell(Z)\monomorphism \Oo^\ell(Z)$ and for every $f\in \Oo^\ell(Z)$ there is $m\in \IN$ such that $f\cdot S_m(Z)\subseteq S_{m+\ell}(Z) \subseteq \Oo^{m+\ell} (Z)$.
+      \item 
+         We have $\Oo(Z) = k$ (given by the constant functions).
+    \end{alphanumerate}
 \end{thm}
 \begin{rem*}
     \begin{alphanumerate}
@@ -1635,7 +1642,7 @@ This enables us to derive the relation between dimension and transcendence degre
     \end{alphanumerate}
 \end{rem*}
 \begin{proof}
-    The proof is similar to what was done in the affine case, that is, in \cite[Proposition~2.2.2]{alg1}. As they were before, well-definedness and injectivity are easy again so surjectivity is what we need to worry about. 
+    The proof of \itememph{a} is similar to what was done in the affine case, that is, in \cite[Proposition~2.2.2]{alg1}. As they were before, well-definedness and injectivity are easy again so surjectivity is what we need to worry about. 
     
     Let $\eta\in \Oo^\ell(X\setminus V(f))$ (the case $\ell=0$ corresponds to the study of $\Oo(Z\setminus V(f))$), where $f\neq 0$ is homogeneous of degree $\delta >0$. By Definition~\reff{def:regularFunction}, every $z\in Z$ has an open neighbourhood $U_z$ such that there are polynomials $p_z,q_z\in R=k[X_0,\ldots, X_n]$ where $q_z$ is homogeneous of degree $b_z$, $p_z$ of degree $a_z = b_z+\ell$ and $V(q_z)\cap U_z = \emptyset$ and such that 
     \begin{align*}
@@ -1654,10 +1661,70 @@ This enables us to derive the relation between dimension and transcendence degre
         (g_jh)(x_0,\ldots, x_n) = f^{-s}\sum_{i=1}^N (h_ip_iq_j)(x)= f^{-s}\sum_{i=1}^N (h_iq_ip_j)(x) = p_j(x)
     \end{align*}
     and thus $\eta(x) = h(x)$ when $x\in Z\setminus V(q_j)$. As the sets cover $Z\setminus V(f)$, surjectivity follows.
+    
+    For \itememph{b}, apply $f=X_i$. We thereby obtain the existence of $m_i\in\IN$ such that $\lambda X_i^{m_i}\in S_{m_i+\ell}(Z)$. If $m = \sum_{i=0}^n m_i$ the assertion follows as any monomial $X^\alpha$ of degree greater or equal to $m$ contains an exponent $\alpha_i\geq m_i$.
+    
+    To see \itememph{c}, let $\lambda\in \Oo(Z)$. By \itememph{b} there is $m\geq 0$ such that $\lambda\cdot S_m(Z) \subseteq S_m(X)$ in $\Oo^m(Z)$. Let $P = \prod_{j=1}^d (T-\lambda_j)^{e_j}$, $\lambda_j\in k$, all $e_j>0$, be the characteristic polynomial of $\lambda$ on $S_m(Z)$. Then $\theta(x)\cdot\prod_{j=1}^d (\lambda(x)-\lambda_j)^{e_j} = 0$ for all $\theta\in S_m(Z)$ and all $x\in C(Z)\setminus \{0\}$ by Caley-Hamiltion. As it is always possible to chose $\theta$ (for a given $x\in C(Z)\setminus\{0\}$) such that $\theta(x)=0$ we have $\prod_{j=1}^d (\lambda(x)-\lambda_j) = 0$, hence $C(Z)\setminus \{0\} = \bigcup_{j=1}^d (\lambda-\lambda_j)$. As $C(Z)\setminus \{0\}$ is irreducible, there is $j$ such that $C(Z)\setminus\{0\} = V(\lambda-\lambda_j)$. Then $\lambda=\lambda_j$ is a constant on $Z$. 
 \end{proof}
+\begin{cor}
+    When $\dim(Z) >0$ and $\ell<0$ we have $\Oo^\ell(Z) = 0$.
+\end{cor}
+\begin{proof}
+    First consider $\ell=-1$. Let $\lambda\in \Oo^{-1}(Z)$. By Theorem \reff{thm:gradedRing}\itememph{c} there are constants $c_j$ such that $x_j\cdot \lambda(x) = c_j$ for $x\in C(Z)\setminus\{0\}$. If $\lambda\neq 0$ then not all $c_i$ are $0$. We have $x_ic_j = x_ix_j\lambda(x) = x_jc_i$ for $[x_0,\ldots, x_n]\in X$. If follows that the vectors $(x_0,\ldots, x_n)$ and $(c_0,\ldots, c_n)$ are proportional, $[x_0,\ldots, x_n] = [c_0,\ldots, c_n]$. Hence $X$ has only one point, a contradiction to our assumption. If $\ell<-1$ we use $X_i^{-1-\ell}\lambda\in \Oo^{-1}(Z)$ must vanish by the previous consideration. As for all $[x_0,\ldots,x_n]\in Z$ one $x_i$ must be non-zero, it follows that $\lambda = 0$.
+\end{proof}
+\begin{rem*}
+    \begin{alphanumerate}
+        \item 
+            When $Z=\{x\}$ with $x_i\neq 0$ then $X_i^\ell$ gives a non-vanishing global section of $\Oo^\ell$, for arbitrary $\ell$. Thus $\dim(Z)>0$ is necessary in the corollary.
+        \item 
+            Theorem \reff{thm:gradedRing}\itememph{c} may be motivated from Liouville's Theorem from function theory.
+        \item   
+            It is clear that $\lambda\in \Oo^\ell(Z)$ defines an element of $\Oo(C(Z)\setminus\{0\})$. If it extends to all of $C(Z)$ then it is given by a polynomial in $X_0,\ldots, X_n$ by results of Algebra I. It follows that $\lambda\in S_\lambda(X)$.
+            
+            One would expect that for sufficiently large $\ell$ $\lambda$ ``vanishes to a very high order'' at $0$, hence extends to an element of $\Oo(C(Z))$ and this turns out to be correct, as is shown on the 10th exercise sheet. It follows that $S_m(Z) \isomorphism \Oo^m(Z)$ when $m$ is sufficiently large.
+        \item 
+            In general $\pp$ defines a sheaf of ideals $\Jj$ on $\IP^n(k)$ and $\Oo^\ell_X$ can be identified with $\Oo^\ell_{\IP^n(k)}/\Jj\Oo^\ell_{\IP^n}$ and one obtains a part of a long exact cohomology sequence
+            \begin{align*}
+                0&\morphism H^0(\Jj\Oo^\ell) \morphism H^0(\IP^n, \Oo^\ell) \morphism H^0(\IP^n, \Oo^\ell_X) \morphism[\delta] H^1(\IP^n, \Jj\Oo^\ell)\\
+                0 &\morphism \pp_\ell \morphism k[X_0,\ldots, X_n]_\ell \morphism \Oo^\ell(Z)
+            \end{align*}
+            where the right end can be shown to be finite-dimensional and to vanish when $\ell$ is sufficiently large.
+        \item 
+            When $n+1>1$ it follows that $\Oo(k^{n+1}\setminus\{0\}) \simeq \Oo(k^{n+1})$ as shown in Algebra I. It follows that $\Oo^\ell(\IP^n(k)) \simeq (k[X_0,\ldots, X_n])_\ell$. Another argument is that when $\lambda\in \Oo^\ell(\IP^n(k))$ there there is $m\in \IN$ such that $X_i^m\lambda = f_i\in R= k[X_0,\ldots, X_n]$. We have $X_i^mf_j = X_j^mf_i$. It follows that $f_i$ is divisible by $X_i^m$ (taking $j\neq i$). The same argument only works for general $Z$ if $S_\bullet(Z)$ is factorial, which is not often the case. 
+        \item
+            It can be shown that $\Oo^\ell(Z)$ is finite-dimensional when $Z\subseteq \IP^n(k)$ is closed (and irreducible). 
+    \end{alphanumerate}
+\end{rem*}
+\begin{rem*}
+    When $Z=\{x\}$, $\dim(\Oo^\ell(Z)) = 1$ is given by a polynomial of degree $0$ in $\ell$. 
+    \begin{align*}
+        \Oo^\ell(\IP^1(k)) = \bigoplus_{i=0}^\ell k\cdot(X_0^iX_1^{\ell-1})
+    \end{align*}
+    has dimension $\ell+1$ when $\ell\geq -1$ hence is given by by a polynomial of degree $1$ in $\ell$. Is $\dim(\Oo^\ell(X))$ given by a polynomial of degree $\dim(X)$ when $\ell \gge 0$? This brings us to Hilbert polynomials.  $\sum_{i=0}^{\dim (X)} H^i(X,\Oo^\ell) = P(\ell)$ for all $\ell$.
+\end{rem*}
 
 
 
+\chapter{Applications of the Hilbert polynomial}
+
+\begin{lem}
+    For a field $k$ the dimension of the space of homogeneous polynomials in degree $d$ in $\ell$ variables is given by $\binom{n+d-1}{n-1}$.
+\end{lem}
+\begin{cor}
+    \begin{align*}
+        \dim_k(\Oo^\ell(\IP^m)) = \binom{m+\ell}{m} = \frac{(m+\ell)\cdot\ldots\cdot (1+\ell)}{m!}
+    \end{align*}
+    when $\ell\geq m$.
+\end{cor}
+\begin{proof}
+    Putting $n-1$ separators into $\IZ\cap [0,n+d-1)$ produces $n$ intervals of integers of total cardinality $d$ and sending such a set of intervals to $\prod_{i=1}^n X_i^{\alpha_i}$ is a bijection between the set of sets of separators an the monomials of degree $d$ in $n$ variables. Thus their number is $\binom{n+d-1}{n-1}$.
+\end{proof}
+\begin{proof}[Another proof]
+    Induction on $n$, the case $n=1$ being trivial. Let $n>1$ and the assertion be true for in smaller than $n$ variables. For $n$ variables we use induction on $d$. When $d=0$, both sides equal $1$. Otherwise a monomial of degree $d$ in $n$ variables has the form $X^\alpha = X^\beta X_n$ or $\alpha_n 0$ in which case it is a monomial in $n-1$ variables. Thus their number is 
+    \begin{align*}
+         \binom{n+d-2}{n-1} +\binom{n+d-2}{n-2} = \binom{n+d-1}{n-1}\;.
+    \end{align*}
+\end{proof}
 
 
 
