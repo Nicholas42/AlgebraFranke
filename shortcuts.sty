@@ -196,6 +196,12 @@
 					\textstyle\longleftarrow}}}}}
 \NewDocumentCommand{\doublelrmorphism}{O{} O{}}{\mathrel{\overset{#1}{\underset{#2}{\substack{\textstyle\longrightarrow\\[-0.67ex]
 					\textstyle\longleftarrow}}}}}
+\NewDocumentCommand{\xdoublemorphism}{O{} O{}}{\mathrel{\substack{\textstyle\xrightarrow[\hphantom{#2}]{#1}\\[-2.45ex]
+					\textstyle\xrightarrow[#2]{\hphantom{#1}}}}}
+\NewDocumentCommand{\xdoublelmorphism}{O{} O{}}{\mathrel{\substack{\textstyle\xleftarrow{#1}\\[-0.67ex]
+			\textstyle\xleftarrow[#2]{}}}}
+\NewDocumentCommand{\xdoublelrmorphism}{O{} O{}}{\mathrel{\substack{\textstyle\xleftrightarrow{#1}\\[-0.67ex]
+			\textstyle\xleftrightarrow[#2]{}}}}
 
 \newcommand{\IsArgEmpty}[3]{%
 	\if\relax\detokenize{#1}\relax%

@@ -209,14 +209,14 @@ Let it be said that the first three recommendations are from Professor Franke wh
 \end{proof}
 \begin{rem*}
     \begin{alphanumerate}
-    \item 
+    \item \lbl{rem:localClosedness}
         $K\subseteq T$ is closed iff for all $t\in T$ there is an open neighbourhood $\Omega_t$ such that $\Omega_t\cap K$ is closed in $\Omega_t$, since 
         \begin{align*}
             T\setminus K = \bigcup_{t\in T} \big(\Omega_t\setminus (K\cap \Omega_t)\big)
         \end{align*}
-        is open as a union of open subsets.
+        is open as a union of open subsets. It is even sufficient to have $\Omega_t$ a neighbourhood of $t$ (that is, not necessarily open) as in that case $\Omega_t$ contains a suitable open neighbourhood.
     \item
-        It is \emph{not} sufficient to require this just for all $t\in K$.
+        It is \emph{not} sufficient to require this just for all $t\in K$. If only this holds, $K$ is called \emph{locally closed}
     \end{alphanumerate}
 \end{rem*}
 \begin{prop}\lbl{prop:commonNeighbourhoodVariety}
@@ -890,7 +890,7 @@ of presheaves on $\Bb$.
 	\begin{diagram*}
 		\node[ob](a) at (0,1.5) {$\Oo_Y(V)$};
 		\node[ob](c) at (0,0) {$\Oo_{Y,y}$};
-		\node[ob](b) at (2.5,1.5) {$\Oo_X(a^{-1}V)\,\rlap{$=a_*\Oo_X(V)$}$};
+		\node[ob](b) at (2.5,1.5) {$\Oo_X(a^{-1}V)\:\rlap{$=a_*\Oo_X(V)$}$};
 		\node[ob](d) at (2.5,0) {$\Oo_{X,k}$};
 		\scriptsize
 		\draw[->] (a) -- (b) node[pos=0.5, above] {$a^*$};
@@ -989,7 +989,7 @@ of presheaves on $\Bb$.
 		\node[ob](kx) at (2.5,0) {$\Oo_{T,t}$};
 		\node[ob](ky) at (1.25,-1.25) {$\Oo_{K,k}$};
 		\node[ob](OX) at (0,1.25) {$\Oo_X(V)$};
-		\node[ob](OT) at (2.5,1.25) {$\Oo_T(\tau^{-1}V)$\rlap{$\,=\tau_*\Oo_T(V)$}};
+		\node[ob](OT) at (2.5,1.25) {$\Oo_T(\tau^{-1}V)$\rlap{$\:=\tau_*\Oo_T(V)$}};
 		\scriptsize
 		\draw[->] (kz) -- (kx) node[pos=0.5, above] {$\tau^*$};
 		\draw[->] (kz) -- (ky) node[pos=0.5, below left] {$\kappa^*$};
@@ -1297,7 +1297,7 @@ to be the preimage of $(\tau^\flat \varphi_{\tau(t)})_{t\in \tau^{-1}(\Omega)}$ 
 \Omega)} \Oo_{T,t}$. Here, $\tau^\flat$ is the unique ring homomorphism $\Oo_{F,[\tau(t)]} \rightarrow \Oo_{T,t}$ making the diagram
 \begin{diagram*}
 	\node[ob](Tensor) at (0,1.5) {$\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y}$};
-	\node[ob](OF) at (4.5,1.5) {$\left(\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y}\right)_{\pp}$\rlap{$\,=\Oo_{F,[x,y,\pp]}$}};
+	\node[ob](OF) at (4.5,1.5) {$\left(\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y}\right)_{\pp}$\rlap{$\:=\Oo_{F,[x,y,\pp]}$}};
 	\node[ob](OT) at (4.5, 0) {$\Oo_{T,t}$};
 	\scriptsize
 	\draw[->] (Tensor) -- (OF);
@@ -1326,8 +1326,8 @@ the map on stalks induced by the new $\tau^\ast$).
 \begin{diagram*}
 	\node[ob](OF) at (0, 1.5) {$\Oo_{F,\tau(t)}$};
 	\node[ob](OTt) at (4.5, 1.5) {$\Oo_{T,t}$};
-	\node[ob](Tensor) at (0,0) {\llap{$\Oo_{F,[\tau(t)]}=\,$}$\left(\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y}\right)_{\pp}$};
-	\node[ob](L) at (4.5, 0) {$\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y}$\rlap{$\,\eqqcolon\Ll$}};
+	\node[ob](Tensor) at (0,0) {\llap{$\Oo_{F,[\tau(t)]}=\:$}$\left(\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y}\right)_{\pp}$};
+	\node[ob](L) at (4.5, 0) {$\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y}$\rlap{$\:\eqqcolon\Ll$}};
 	\path (Tensor) -- (OF) node[pos=0.5, sloped] {$\simeq$};
 	\scriptsize
 	\draw[->] (OF) -- (OTt);
@@ -1366,7 +1366,7 @@ Since the preimage of this ideal in $\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y}$ equ
 
 \begin{cor}
     \begin{alphanumerate}
-        \item 
+        \item \lbl{cor:fibreProductsInLRS}
             Let $X_{\cat{Top}}$ be the topological space underlying $X$, then the map
             \begin{align*}
                 (X\times_SY)_{\cat{Top}} \morphism X_{\cat{Top}}\times_{S_{\cat{Top}}} Y_{\cat{Top}}
@@ -1415,13 +1415,16 @@ Since the preimage of this ideal in $\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y}$ equ
 \begin{defi}[Immersive morphisms] \lbl{def:immersiveMorphism}
     A morphism $Y\morphism[\upsilon] S$ of locally ringed spaces is called \defemph{immersive} if, topologically, $\upsilon$ is a homeomorphism onto its image (equipped with the induced topology with respect to $S$), and for every $y\in Y$ the map $\Oo_{S,\upsilon(y)} \morphism[\upsilon^*]\Oo_{Y,y}$ is surjective. 
        
-    If $\upsilon(Y)\subseteq S$ is a closed subset, $\upsilon$ is called a \defemph{closed immersion}.
+    If $\upsilon(Y)\subseteq S$ is a closed subset, $\upsilon$ is called a \defemph{closed immersion}. If it is open, $\upsilon$ is an \defemph{open immersion}.
 \end{defi}
 
-\begin{cor}
-    The base change $F\morphism[\snake \upsilon] X$ of an immersive morphism is immersive, and its image is $\xi^{-1}(\upsilon(Y))$. In particular, the base change of a closed immersion is itself closed.
+\begin{cor}\lbl{cor:immersionBaseChange}
+    Let $Y\morphism[\upsilon]S$ be a immersive morphism. Then its base change (cf. \hyperref[rem:baseChange]{this} remark) $F=X\times_SY\morphism[\snake \upsilon] X$ is immersive, and its image is $\xi^{-1}(\upsilon(Y))$.
 \end{cor}
-\begin{proof}
+\begin{rem*}
+	 In particular, the base change of a closed immersion is itself closed and likewise the base change of an open immersion is open again.
+\end{rem*}
+\begin{proof}[Proof of Corollary~\reff{cor:immersionBaseChange}]
     For $(x,y,\pp)$ and $s$ as in the description of $F$, let $I_s\subseteq \Oo_{S,s}$ be the kernel of $\Oo_{S,s}\morphism[\upsilon^*] \Oo_{Y,y}$. Then $\Oo_{Y,y}\simeq \Oo_{S,s}/I_s$ (as $\upsilon^*$ is assumed surjective), hence 
     \begin{align*}
     	\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y} \simeq \Oo_{X,x}/(\xi^*(I_s) \cdot \Oo_{X,x}) \eqqcolon \Oo_{X,x}/(I_s\Oo_{X,x})\;. 
@@ -1479,11 +1482,11 @@ Since the preimage of this ideal in $\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y}$ equ
     For a locally ringed space $X$, let two immersions $K_1\morphism[\kappa_1] X\lmorphism[\kappa_2] K_2$ be called equivalent (write $\kappa_1\sim\kappa_2$) if there is an isomorphism $K_1\morphism[\iota] K_2$ of locally ringed spaces such that $\kappa_2\iota = \kappa_1$. Then there is a bijection 
     \begin{align*}
 	    \left\{\text{closed immersions }K\morphism[\kappa]X\right\}/_\sim&\isomorphism\left\{\text{sheaves of ideals }\Ii\subseteq \Oo_X\right\}\\
-        (K\morphism[\kappa]X)/_\sim &\longmapsto \Ii = \ker(\Oo_X\morphism[\kappa^*]\kappa_* \Oo_K)\;.
+        \big(K\morphism[\kappa]X\big)/_\sim &\longmapsto \Ii = \ker\big(\Oo_X\morphism[\kappa^*]\kappa_* \Oo_K\big)\;.
     \end{align*}
     If $K\morphism[\kappa] X$ belongs to the sheaf of ideals $\Ii$,
     \begin{align*}
-        \Hom_{\cat{LRS}}(T,K) \isomorphism\left\{ g\in \Hom_{\cat{LRS}}(T,X) \st \Ii\subseteq \ker(\Oo_X \morphism[g^*]g_*\Oo_T)\right\}
+        \Hom_{\cat{LRS}}(T,K) \isomorphism\left\{ g\in \Hom_{\cat{LRS}}(T,X) \st \Ii\subseteq \ker\big(\Oo_X \morphism[g^*]g_*\Oo_T\big)\right\}
     \end{align*}
     is bijective for any test object $T$.
 \end{prop}
@@ -1514,7 +1517,7 @@ Since the preimage of this ideal in $\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y}$ equ
     If $L\morphism[\lambda] K$ is another closed immersion satisfying $\Ii= \ker \big(\Oo_X \morphism[\lambda^*] \lambda_* \Oo_L\big)$, then, by the description of $\Hom_{\cat{LRS}}(T,K)$, we have a morphism $L \morphism[\iota] K$ such that $\lambda = \kappa\iota$. The image of $L$ in $X$ coincides with $K$ because it equals $\left\{ x\in X\st (\lambda_*\Oo_L)_x \neq 0\right\} = \left\{ x\in X\st \Ii_x \subsetneq \Oo_{X,x}\right\}$. Indeed, if $x$ is not in the image of $L$, then it has some open neighbourhood not contained in the image of $L$, as $\lambda$ is a closed immersion, hence the stalk of $\lambda_*\Oo_L$ at $x$ has to be $0$. Conversely, if $x$ is in that image, then $(\lambda_*\Oo_L)_x$ contains $1$, proving it can't be $0$. Since both sets carry the induced topology, $\iota$ is a homeomorphism. For $\ell \in L$ and $x=\lambda(\ell)$ we have a commutative diagram
     \begin{diagram*}
     	\node[ob](OX) at (0,0) {$\Oo_{X,x}$};
-    	\node[ob](OK) at (2,0.75) {$\Oo_{K,x}$\rlap{$\,\simeq\Oo_{K,[x]}$}};
+    	\node[ob](OK) at (2,0.75) {$\Oo_{K,x}$\rlap{$\:\simeq\Oo_{K,[x]}$}};
     	\node[ob](OL) at (2,-0.75) {$\Oo_{L,\ell}$};
     	\scriptsize 
     	\draw[->] (OX) -- (OK) node[pos=0.5, above left] {$\kappa^*$};
@@ -1693,7 +1696,7 @@ If $M$ is an $R$-module, we have a similar presheaf (of abelian groups or of mod
     \end{align*}
      (where $m_{i,j}=-m_{j,i}$ if $i>j$ and $m_{i,i}=0$). But if $\Uu$ denotes the cover $\Spec R = \bigcup_{i=1}^n \Spec R_{f_i}$ then 
      \begin{align*}
-     	0\morphism M\morphism \check{C}^\bullet\big(\Uu,\text{the presheaf giving } \snake M\big)\lisomorphism \colimit[k\in\IN] K\big((f_1^k, \ldots, f_n^k),M\big)
+     	0\morphism M\morphism \check{C}^\bullet\Big(\Uu,\text{the presheaf giving } \snake M\Big)\lisomorphism \colimit[k\in\IN] K\big((f_1^k, \ldots, f_n^k),M\big)
      \end{align*}
      which is the argument used in EGA to show Proposition~\reff{prop:RequalsGlobalSection} and the vanishing of higher cohomologies (if anyone of you who is proficient in sheaf and Koszul cohomology notices that part of the above doesn't make any sense, please tell us).
 \end{rem*}
@@ -1726,7 +1729,7 @@ If $M$ is an $R$-module, we have a similar presheaf (of abelian groups or of mod
     If $R$ is a ring and $X$ a locally ringed space, we have a canonical bijection:
     \begin{align*}
         \Hom_{\cat{LRS}}(X,\Spec R) &\isomorphism \Hom_{\cat{Ring}}(R,\Oo_X(X))\\
-        (X\morphism[\xi] \Spec R) &\longmapsto (R\isomorphism \Oo_{\Spec R}(\Spec R) \morphism[\xi^*] \Oo_X(X))
+        \big(X\morphism[\xi] \Spec R\big) &\longmapsto \Big(R\isomorphism \Oo_{\Spec R}(\Spec R) \morphism[\xi^*] \Oo_X(X)\Big)
     \end{align*}
 \end{prop}
 \begin{rem*}
@@ -1811,13 +1814,13 @@ If $M$ is an $R$-module, we have a similar presheaf (of abelian groups or of mod
     \end{align*}
     ($\pi$ denoting the projection $S\morphism S/I$) is an equalizer of 
     \begin{align*}
-        \Spec S\doublemorphism[\Spec a][\Spec b] \Spec R\;.
+        \Spec S\xdoublemorphism[\Spec a][\Spec b] \Spec R\;.
     \end{align*}
 \end{cor}
 \begin{proof}    	
 	Right-adjoint functors preserve arbitrary limits, in particular, equalizers.
 \end{proof}
-\begin{cor}
+\begin{cor}\lbl{cor:affineSchemesFibreProduct}
     Let $R$ be a ring, $A$ and $B$ be $R$-algebras, and let 
     \begin{align*}
         A\morphism[\alpha] A\otimes_R B \lmorphism[\beta] B
@@ -1842,7 +1845,7 @@ If $M$ is an $R$-module, we have a similar presheaf (of abelian groups or of mod
 \begin{prop}\lbl{prop:affineSchemeAdjunctionModules}
     Let $M$ be an $R$-module and $\Nn$ an $\Oo_{\Spec R}$-module, then we have a canonical bijection 
     \begin{align*}
-        \Hom_{\Oo_{\Spec R}} (\snake M, \Nn) \morphism \Hom_R\big(M, \Nn(\Spec R)\big)
+        \Hom_{\Oo_{\Spec R}} \big(\snake M, \Nn\big) \morphism \Hom_R\big(M, \Nn(\Spec R)\big)
     \end{align*}
     sending $\snake M \morphism[f] \Nn$ to the composition 
     \begin{align*}
@@ -1876,22 +1879,22 @@ If $M$ is an $R$-module, we have a similar presheaf (of abelian groups or of mod
 \end{proof}
 \begin{defi}[Quasi-coherence]\lbl{def:quasicoherent}
     Let $X=\Spec R$. An $\Oo_X$-module $\Mm$ is called \defemph{quasi-coherent} if it satisfies the following equivalent conditions:
-    \begin{itemize}
-        \item[$(\alpha)$]
+    \begin{alphanumerate}
+        \item 
             $\Mm \simeq\snake M$ for some $R$-module $M$.
-        \item[$(\beta)$] 
-            The morphism $\Mm(X)_\lambda \morphism \Mm(X\setminus V(\lambda))$ is an isomorphism for all $\lambda\in R$. 
-        \item[$(\gamma)$]
+        \item 
+            The morphism $\Mm(X)_\lambda \xrightarrow{\text{\eqreff{eq:moduleLoc}}} \Mm(X\setminus V(\lambda))$ is an isomorphism for all $\lambda\in R$. 
+        \item 
             The canonical morphism $\snake M \morphism[c] \Mm$ (with $M = \Mm(X)$) associated by Proposition~\reff{prop:affineSchemeAdjunctionModules} to $\id_M$ is an isomorphism.
-    \end{itemize} 
+    \end{alphanumerate} 
 \end{defi}
 A Franke lecture is no Franke lecture without a definition being proved.
 \begin{proof}
-    For \itememph{\alpha} $\Rightarrow$ \itememph{\beta} note that $\snake M(X\setminus V(\lambda)) \lisomorphism M_\lambda$ by Proposition~\reff{prop:RequalsGlobalSection} and its first remark.
+    For \itememph{a} $\Rightarrow$ \itememph{b} note that $\snake M(X\setminus V(\lambda)) \lisomorphism M_\lambda$ by Proposition~\reff{prop:RequalsGlobalSection} and its first remark.
     
-    Our construction and \itememph{\beta} imply that $c$ induces an isomorphism on sections on any element of the topology base $\Bb$, hence everywhere. This shows \itememph{\beta} $\Rightarrow$ \itememph{\gamma}. 
+    Our construction and \itememph{b} imply that $c$ induces an isomorphism on sections on any element of the topology base $\Bb$, hence everywhere. This shows \itememph{b} $\Rightarrow$ \itememph{c}. 
     
-    The last implication \itememph{\gamma} $\Rightarrow$ \itememph{\alpha} is obvious.
+    The last implication \itememph{c} $\Rightarrow$ \itememph{a} is obvious.
 \end{proof}
 \begin{cor}
     There is a canonical bijection from the quasi-coherent ideals $\Jj$ on $X=\Spec R$ to the ideals $I\subseteq R$ by 
@@ -1928,22 +1931,37 @@ A Franke lecture is no Franke lecture without a definition being proved.
     The empty set is a prescheme and is the initial object in both $\cat{PreSch}$, the category of preschemes, and $\cat{LRS}$.
 \end{example*}
 \begin{defi}[Affine prescheme]\lbl{def:affinePrescheme}
-    A prescheme $X$ is called \defemph{affine} if $X\simeq \Spec R$ in $\cat{LRS}$, for some ring $R$. An open subset $U\subseteq X$ is called \emph{affine} if $(U,\Oo_X|_U)$ is affine prescheme.
+    A prescheme $X$ is called \defemph{affine} if $X\simeq \Spec R$ in $\cat{LRS}$, for some ring $R$. An open subset $U\subseteq X$ is called \emph{affine} if $(U,\Oo_X|_U)$ is an affine prescheme.
 \end{defi}
 \begin{rem*}
     By Proposition~\reff{prop:affineSchemeAdjunction} $X$ is affine iff $X\morphism \Spec R$ (with $R=\Oo_X(X)$, the morphism being the one associated to $\id_R$ by that proposition) is an isomorphism. 
 \end{rem*}
 \begin{rem*}
-    By well-known facts, $\Spec R$ is quasi-compact. Hence, any affine open subset is quasi-compact. Schemes will be preschemes with an additional separation condition implying but not equivalent to the proper the intersection of two affine open subsets is affine, hence quasi-compact. Also, recall the well-known fact $\left\{\Spec R\setminus V(f)\right\}$ is a topology base on $\Spec R$ consisting of affine open subsets. 
+    By well-known facts, $\Spec R$ is quasi-compact. Hence, any affine open subset is quasi-compact. Schemes will be preschemes with an additional separation condition implying but not equivalent to the proper the intersection of two affine open subsets is affine, hence quasi-compact. Also, recall the well-known fact that $\left\{\Spec R\setminus V(f)\right\}$ is a topology base on $\Spec R$ consisting of affine open subsets. 
 \end{rem*}
-\begin{fact}\lbl{fact:affineSchemesTopologyBase}
-    The affine open subsets of a prescheme $X$ form a topology aye on $X$. More precisely if $X=\bigcup_{\lambda\in \Lambda} U_\lambda$ is a cover of $X$ by affine open subsets $U_\lambda$, $\left\{U_\lambda\setminus V(f)\st \lambda\in \Lambda, f\in \Oo_X(U_\lambda)\right\}$ is a topology base on $X$ consisting of affine open subsets.
+\begin{fact}
+	\begin{alphanumerate}
+		\item\lbl{fact:affineSchemesTopologyBase} The affine open subsets of a prescheme $X$ form a topology base on $X$.
+		\item More precisely if $X=\bigcup_{\lambda\in \Lambda} U_\lambda$ is a cover of $X$ by affine open subsets $U_\lambda$, then 
+		\begin{align*}
+		\left\{U_\lambda\setminus V(f)\st \lambda\in \Lambda\text{, }f\in \Oo_X(U_\lambda)\right\}
+		\end{align*}
+		is a topology base on $X$ consisting of affine open subsets.
+	\end{alphanumerate}
 \end{fact}
 \begin{rem*}
     In particular, if $U\subseteq X$ is open, if can be covered by affine open subsets of $X$. 
 \end{rem*}
-\begin{proof}
-    It is sufficient to show the second part. Let $V\subseteq X$ be open. As $\left\{\Spec R\setminus V(g)\st g\in R\right\}$ is a topology base on $\Spec R$, $V\cap U_\lambda = \bigcup_{\xi\in\Xi_\lambda} U_\lambda \setminus V(f_{\lambda,\xi})$, with $f_{\lambda,\xi}\in \Oo_X(U_\lambda)$. Then $V= \bigcup_{\lambda\in\Lambda} = \bigcup_{\lambda\in \Lambda} \bigcup_{\xi\in\Xi_\lambda} U_\lambda\setminus V(f_{\lambda,\xi}$.
+\begin{proof}[Proof of Fact~\reff{fact:affineSchemesTopologyBase}]
+    It is sufficient to show the second part. Let $V\subseteq X$ be open. As the sets $\left\{\Spec R\setminus V(g)\st g\in R\right\}$ form a topology base on $\Spec R$, we have
+    \begin{align*}
+    	V\cap U_\lambda = \bigcup_{\xi\in\Xi_\lambda} U_\lambda \setminus V(f_{\lambda,\xi})\;, 
+    \end{align*}
+    for some indexing sets $\Xi_\lambda$ and $f_{\lambda,\xi}\in \Oo_X(U_\lambda)$. Then 
+    \begin{align*}
+    	V= \bigcup_{\lambda\in\Lambda} V\cap U_\lambda= \bigcup_{\lambda\in \Lambda} \bigcup_{\xi\in\Xi_\lambda} U_\lambda\setminus V(f_{\lambda,\xi})\;,
+    \end{align*}
+    proving that $V$ can be covered by elements of the above set.
 \end{proof}
 \begin{defi}[Quasi-compact]\lbl{def:quasicompact}
     A prescheme $X$ is called \defemph{quasi-compact} if it satisfies the following equivalent criteria:
@@ -1955,7 +1973,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
         \item 
             $X$ may be covered by finitely many quasi-compact open subsets.
     \end{alphanumerate}
-    A prescheme $X$ is called quasi-seperated, if it satisfies the following equivalent conditions:
+    A prescheme $X$ is called \defemph{quasi-separated}, if it satisfies the following equivalent conditions:
     \begin{alphanumerate}\setcounter{enumi}{3}
         \item 
             The intersection of two affine open subsets is quasi-compact.
@@ -1965,139 +1983,377 @@ A Franke lecture is no Franke lecture without a definition being proved.
             $X$ has a topology base $\Bb$ such that the intersection of two elements of $\Bb$ is quasi-compact.
     \end{alphanumerate}
 \end{defi}
-\begin{proof}
-    The union $U$ of finitely many quasi-compact open subsets $(U_i)_{i=1}^n$ of a topological space $X$ is again quasi-compact. For any cover $U= \bigcup_{\lambda\in\Lambda} V_{\lambda}$ by open subsets, each $U_i = \bigcup_{\lambda\in \Lambda} U_i\cap V_\lambda$ has a finite subcover $(U_i\cap V_{\lambda_{i,j}})_{j=1}^{n_i}$ and all these finite subcovers give us a finite subcover $U = \bigcup_{i=1}^n \bigcup_{j=1}^{n_i} U_{\lambda_{i,j}}$. 
+\begin{proof}[Aaand another definition demanding to be proved]
+    The union $U$ of finitely many quasi-compact open subsets $U_1,\ldots,U_n$ of a topological space $X$ is again quasi-compact. Indeed, for any cover $U= \bigcup_{\lambda\in\Lambda} V_{\lambda}$ by open subsets, each $U_i = \bigcup_{\lambda\in \Lambda} U_i\cap V_\lambda$ has a finite subcover $U_i=\bigcup_{j=1}^{n_i}U_i\cap V_{\lambda_{i,j}}$ and all these finite subcovers give us a finite subcover $U = \bigcup_{i=1}^n \bigcup_{j=1}^{n_i} U_{\lambda_{i,j}}$. 
     
-    So \itememph{a} implies \itememph{b} by the definition, \itememph{b} implies \itememph{c} since $\Spec R$ is quasi-compact and \itememph{c} implies \itememph{a} by the above fact. 
+    So \itememph{a} implies \itememph{b} definition of quasi-compactness and Fact~\reff{fact:affineSchemesTopologyBase}, \itememph{b} implies \itememph{c} since $\Spec R$ is quasi-compact and \itememph{c} implies \itememph{a} by the above considerations. 
     
-    We obtain \itememph{d} from \itememph{e} since affine open subsets are quasi-compact and \itememph{f} from \itememph{d} by Fact \reff{fact:affineSchemesTopologyBase}. To see that \itememph{f} implies \itememph{e}, let $\Bb$ be as in \itememph{f} and $V$ and $W$ be quasi-compact open subsets. Then $V= \bigcup_{i=1}^m B_i$, $W=\bigcup_{j=1}^n C_j$ with $B_i,C_j\in \Bb$. Then $V\cap W = \bigcup_{i=1}^m \bigcup_{j=1}^n B_i\cap C_j$ is quasi compact since all $B_i\cap C_j$ are quasi-compact by assumption.
+    We obtain \itememph{e} $\Rightarrow$ \itememph{d} since affine open subsets are quasi-compact and \itememph{d} $\Rightarrow$ \itememph{f} by Fact \reff{fact:affineSchemesTopologyBase}. To see that \itememph{f} implies \itememph{e}, let $\Bb$ be as in \itememph{f} and $V$ and $W$ be quasi-compact open subsets. Then $V= \bigcup_{i=1}^m B_i$, $W=\bigcup_{j=1}^n C_j$ with $B_i,C_j\in \Bb$. Then $V\cap W = \bigcup_{i=1}^m \bigcup_{j=1}^n B_i\cap C_j$ is quasi-compact since all $B_i\cap C_j$ are quasi-compact by assumption.
 \end{proof}
 \begin{fact}
     \begin{alphanumerate}
         \item
-            $\Spec R$ is quasi-compact and quasi-separated. 
+            $\Spec R$ is quasi-compact and quasi-separated. \lbl{fact:SpecRqcqs}
         \item   
-            If $Y\morphism X$ is a morphism of preschemes which is a homeomorphism onto a closed subset of $X$ carrying the induced topology. Then $x$ being quasi-compact implies $Y$ being quasi-compact, and $X$ being quasi-separated implies $Y$ being quasi-separated.
+            Suppose that $Y\morphism X$ is a morphism of preschemes which is a homeomorphism onto a closed subset of $X$ carrying the induced topology. Then $X$ being quasi-compact implies $Y$ being quasi-compact, and $X$ being quasi-separated implies $Y$ being quasi-separated.
     \end{alphanumerate}
 \end{fact}
 \begin{proof}
-    The assertions about quasi-compactness are well-known. For quasi-separatedness in \itememph{a}, we take $\Bb=\left\{\Spec R_f\st f\in R\right\}$, which elements are quasi-compact and which is closed under intersection. For \itememph{b} take $\Bb= \left\{V\cap Y\st V\subseteq X \text{ affine}\right\}$.
+    The assertions about quasi-compactness are well-known. For quasi-separatedness in \itememph{a}, we take $\Bb=\left\{\Spec R_f\st f\in R\right\}$, whose elements are quasi-compact and which is closed under intersection, hence Definition~\reff{def:quasicompact}\itememph{f} applies. For \itememph{b} take $\Bb= \left\{V\cap Y\st V\subseteq X \text{ affine}\right\}$.
 \end{proof}
 \begin{prop}\lbl{prop:coherentDef}
     Let $X$ be a prescheme, $\Mm$ an $\Oo_X$-module. The following conditions are equivalent:
     \begin{alphanumerate}
         \item 
-            $X$ may be covered by affine subsets $U$ such that $\Mm|_U$ is quasi-coherent.
+            $X$ may be covered by affine open subsets $U$ such that $\Mm|_U$ is quasi-coherent.
         \item 
             $X$ has a topology base consisting of affine open subsets $U$ such that $\Mm|_U$ is quasi-coherent.
         \item   
-            When $U\subseteq X$ is quasi-compact, the morphism
+            When $U\subseteq X$ is open and quasi-compact, the morphism
             \begin{align}\lbl{eq:bijectiveQCQS}
-                \Mm(U)_\lambda \morphism \Mm(U\setminus V(\lambda))
+                \Mm(U)_\lambda \xrightarrow{\text{\eqreff{eq:moduleLoc}}} \Mm\big(U\setminus V(\lambda)\big)\tag{$*$}
             \end{align}
-            is, for all $\lambda\in \Oo_X(U)$, injective when $U$ is quasi-compact and bijective when $U$ is quasi-compact and quasi-seperated.
+            is injective for all $\lambda\in \Oo_X(U)$. It is bijective when $U$ is open, quasi-compact and quasi-separated.
         \item 
-            \eqreff{eq:bijectiveQCQS} is bijective when $U$ is quasi-compact and quasi-coherent.
+            \eqreff{eq:bijectiveQCQS} is bijective when $U$ is open, quasi-compact and quasi-separated.
         \item 
-            \eqreff{eq:bijectiveQCQS} is bijective when $U$ is affine.
+            \eqreff{eq:bijectiveQCQS} is bijective when $U$ is affine open.
         \item 
             For arbitrary affine open $U$, $\Mm|_U$ is quasi-coherent.
     \end{alphanumerate}
 \end{prop}
 \begin{proof}
-    Assume \itememph{a}. Since $\snake M|_{\Spec R_f} \simeq \snake M_f$, when $X = \bigcup_{\lambda\in\Lambda}$ with $U_\lambda$ affine and $\Mm|_{U_\lambda}$ quasi-coherent, then $\Mm|_{U_\lambda\setminus V(f)}$ is quasi-coherent. By Fact 1\itememph{b}, \itememph{b} follows.
+    Assume \itememph{a}. Recall that $\snake M|_{\Spec R_f} \simeq \snake M_f$ for $M$ an $R$-module and $f\in R$. In particular, when $X = \bigcup_{\lambda\in\Lambda}U_\lambda$ is a cover with $U_\lambda$ affine and $\Mm|_{U_\lambda}$ quasi-coherent, then $\Mm|_{U_\lambda\setminus V(f)}$ is quasi-coherent. By Fact~\reff{fact:affineSchemesTopologyBase}\itememph{b}, \itememph{b} follows.
     
-    Now let \itememph{b} be given. Let $\Bb$ be a topology base of affine open subsets such that $\Mm|_U$ is quasi-coherent when $U\in\Bb$. By the definition of quasi-coherent, \eqreff{eq:bijectiveQCQS} is an isomorphism for $U\in\Bb$. Now let $V$ be a quasi-compact open subset, $f\in \Oo_X(B)$, $m=\frac{\mu}{f^\ell}\in \Mm(V)_f$ such that the image of $m$ under \eqreff{eq:bijectiveQCQS} vanishes. Then $\mu|_{U\setminus V(f)} = 0$. As $V$ is quasi-compact it can be represented $V=\bigcup_{i=1}^n V_i$ with $V_i\in\Bb$. As \eqreff{eq:bijectiveQCQS} is bijective for $V_i$, we have $k_i\in\IN$ such that $f^{k_i}(\mu|_{V_i}) = 0$ in $\Mm(V_i)$. Let $k=\max_{i=1}^n k_i$, then $f^k(\mu|_{V_i}) = 0$, hence $f^k\mu = 0$ in $\Mm(V)$ as $\Mm$ is a sheaf. Thus, $m = \frac{\mu}{f^\ell}\in M(V)_f$ is zero, which shows injectivity.
+    Now let \itememph{b} be given. Let $\Bb$ be a topology base of affine open subsets such that $\Mm|_U$ is quasi-coherent when $U\in\Bb$. By Definition~\reff{def:quasicoherent}\itememph{b}, \eqreff{eq:bijectiveQCQS} is an isomorphism for $U\in\Bb$. Now let $U$ be a quasi-compact open subset, $f\in \Oo_X(U)$, $m=\mu f^{-s}\in \Mm(U)_f$ (with $\mu\in \Mm(U)$ and $s\geq0$) such that the image of $m$ under \eqreff{eq:bijectiveQCQS} vanishes. Then $\mu|_{U\setminus V(f)} = 0$. As $U$ is quasi-compact it can be represented $U=\bigcup_{i=1}^n U_i$ with $U_i\in\Bb$. As \eqreff{eq:bijectiveQCQS} is bijective for $U_i$, we have $k_i\in\IN$ such that $f^{k_i}\mu|_{U_i}= 0$ in $\Mm(V_i)$. Let $k=\max_{i=1,\ldots,n} k_i$, then $f^k\mu|_{U_i} = 0$, hence $f^k\mu = 0$ in $\Mm(U)$ as $\Mm$ is a sheaf. Thus, $m = \mu f^{-s}\in M(U)_f$ is zero, which shows injectivity.
     
-    To show bijectivity, let $\Bb$ be as before, $V\subseteq X$ be open, quasi-compact, quasi-seperated, and let $m\in \Mm(V\setminus V(f))$ be given. As before we have $V=\bigcup_{i=1}^n V_i$ with $V_i\in\Bb$. As \eqreff{eq:bijectiveQCQS} is an isomorphism on $V_i$ and there are only finitely many $V_i$, $m|_{V\setminus V(f)} = \frac{\mu_i}{f^k}$ with $\mu_\in \Mm(V_i)$. Let $\mu_{i,j} = \mu_i|_{V_i\cap V_j} - \mu_j|_{V_i\cap V_j}$, then $\mu_{i,j}|_{(V_i\cap V_j)\setminus V(f)} = 0$. As $V$ is quasi-separated and the $V_i$ are affine, this implies $f^{\ell_{i,j}} \mu_{i,j} = 0$ in $\Mm(V_i\cap V_j)$ by the previous step. Taking $\ell = \max\left\{ \ell_{i,j} \st 1\leq i\leq j \leq n\right\}$ we have $f^\ell\mu_u |_{V_i\cap V_j} = f^\ell\mu_j|_{V_i\cap V_j}$ and replacing $k$ by $k+\ell$, $\mu_i$ by $f^\ell \mu_i$, we achieve $\mu_i|_{V_i\cap V_j} = \mu_j|_{V_i\cap V_j}$. As $\Mm$ is a sheaf, there is $\mu\in\Mm(V)$ such that $\mu|_{V_i} = \mu_i$. Then $\frac{\mu}{f^k}|_{V\setminus V(f)} = m$ as the restriction of the left hand side to $V_i\setminus V(f)$ equals $\frac{\mu_i}{f^k} = m|_{V_i\setminus V(f)}$. 
+    To show the asserted bijectivity, let $\Bb$ be as before, $U\subseteq X$ be open, quasi-compact and quasi-separated, and let $m\in \Mm(U\setminus V(f))$ be given. As before we have $U=\bigcup_{i=1}^n U_i$ with $U_i\in\Bb$. As \eqreff{eq:bijectiveQCQS} is an isomorphism on $U_i$ and there are only finitely many $U_i$, we find $\mu_i\in\Mm(U_i)$ and an exponent $k\geq0$ such that $m|_{U_i\setminus V(f)} = \mu_if^{-k}$. For brevity, denote $U_{i,j}=U_i\cap U_j$. Let $\mu_{i,j} = \mu_i|_{U_{i,j}} - \mu_j|_{U_{i,j}}$, then $\mu_{i,j}|_{U_{i,j}\setminus V(f)} = 0$. As $U$ is quasi-separated and the $U_i$ are affine, this implies $f^{\ell_{i,j}} \mu_{i,j} = 0$ in $\Mm(U_{i,j})$ (for some exponents $\ell_{i,j}\geq0$) by the injectivity step, which applies here since $U_{i,j}$ is quasi-compact by Definition~\reff{def:quasicompact}\itememph{d}. Taking $\ell = \max_{i,j}\ell_{i,j}$ we have $f^\ell\mu_i |_{U_{i,j}} = f^\ell\mu_j|_{U_{i,j}}$ and replacing $k$ by $k+\ell$ and $\mu_i$ by $f^\ell \mu_i$, we achieve $\mu_i|_{U_{i,j}} = \mu_j|_{U_{i,j}}$. As $\Mm$ is a sheaf, there is $\mu\in\Mm(U)$ such that $\mu|_{U_i} = \mu_i$. Then $\big(\mu f^{-k}\big)|_{U\setminus V(f)} = m$ as the restriction of the left hand side to $U_i\setminus V(f)$ equals $\mu_if^{-k} = m|_{U_i\setminus V(f)}$. 
     
-    Now \itememph{c} trivially implies \itememph{d}. We obtain \itememph{e} from \itememph{d} by Fact 2, \itememph{f} form \itememph{e} by the Definition~\reff{def:quasicoherent} and \itememph{a} from \itememph{f} by Definition~\reff{def:prescheme}.
+    The hard work being done, \itememph{c} trivially implies \itememph{d}. We obtain \itememph{d} $\Rightarrow$ \itememph{e} by Fact~\reff{fact:SpecRqcqs}\itememph{a}, \itememph{e} $\Rightarrow$ \itememph{f} by Definition~\reff{def:quasicoherent}\itememph{b} and \itememph{f} $\Rightarrow$ \itememph{a} by Definition~\reff{def:prescheme}.
 \end{proof}
-\begin{cor}
-    The morphism \reff{eq:bijectiveQCQS} $\Oo_X(V)_\lambda\morphism \Oo_X(V\setminus V(\lambda))$ is injective when $V$ is quasi-compact and bijective, when $V$ is quasi-compact and quasi-separated. 
+\begin{cor}\lbl{cor:OXInjectiveQuasiCompact}
+    The morphism $\Oo_X(U)_\lambda\xrightarrow{\text{\eqreff{eq:moduleLoc}}} \Oo_X\big(U\setminus V(\lambda)\big)$ is injective when $U$ is quasi-compact and bijective, when $V$ is quasi-compact and quasi-separated. 
 \end{cor}
 \begin{cor}
-    When $V$ is quasi-compact and $\lambda\in \Oo_X(V)$ such that $V(\lambda) = V$ then $\lambda$ is nilpotent. Vice versa, $V(f) = V$ if $f$ is nilpotent, even if $V$ is not quasi-compact.
+    When $U$ is quasi-compact and $\lambda\in \Oo_X(U)$ such that $V(\lambda) = U$ then $\lambda$ is nilpotent. (Vice versa, we clearly have $V(f) = U$ when $\lambda$ is nilpotent, even when $U$ is not quasi-compact.)
 \end{cor}
+\begin{proof}
+	By Corollary~\reff{cor:OXInjectiveQuasiCompact}, $\Oo_X(U)_\lambda \morphism\Oo_X(\emptyset)$ is injective, hence $\Oo_X(U)_\lambda$ is the zero ring and $\lambda$ must be nilpotent.
+\end{proof}
 \begin{defi}[Quasi-coherence]\lbl{def:preschemeQuasiCoherent}
-    Let $X$ be a prescheme, an $\Oo_X$-module is called \defemph{quasi-coherent}, if it satisfies the equivalent conditions of Proposition~\reff{prop:coherentDef}.
+    Let $X$ be a prescheme. An $\Oo_X$-module is called \defemph{quasi-coherent}, if it satisfies the equivalent conditions of Proposition~\reff{prop:coherentDef}.
 \end{defi}
-As kernels of module morphisms commute with localization, we have
-\begin{fact}
+\begin{fact}\lbl{fact:kernelQC}
     If $\Mm\morphism[\mu] \Nn$ is a morphism of $\Oo_X$-modules, with $\Mm$ and $\Nn$ quasi-coherent, then $\ker(\mu)$ is quasi-coherent.
 \end{fact}
+\begin{proof}
+	Let $U\subseteq X$ be affine open. As $\Mm$ and $\Nn$ are quasi-coherent, there are $\Oo_X(U)$-modules $M$ and $N$ such that $\Mm|_U=\snake{M}$, $\Nn|_U=\snake{N}$. By Proposition~\reff{prop:affineSchemeAdjunctionModules}, $\Mm|_U\morphism[\mu]\Nn|_U$ corresponds to a morphism $M\morphism[\mu_U]N$. If intuition is worth anything in this world, we should have $\ker(\mu)|_U=\snake{P}$ with $P=\ker(\mu_U)$. Indeed, it's enough to check that $\snake{P}$ has the right stalks and it has, as $P_\pp=\ker\left(M_\pp\morphism[\mu_U]N_\pp\right)=\ker(\mu)_\pp$, using that localization is an exact functor and thus preserves kernels.
+\end{proof}
 \begin{example*}
     $\Oo_X$ is quasi-coherent.
 \end{example*}
 \begin{defi}
-    Let $X\morphism[f] Y$ be a morphism between preschemes. We say that $f$:
+    Let $X\morphism[f] Y$ be a morphism between preschemes. We say that $f$ is
     \begin{alphanumerate}
         \item
-            a closed embedding, if it is a closed immersion in the sense of \reff{def:immersiveMorphism}.
+            a \defemph{closed embedding} if it is a \emph{closed immersion} in the sense of Definition~\reff{def:immersiveMorphism}.
         \item 
-            quasi-compact when it satisfies the following equivalent conditions:
+            \defemph{quasi-compact} when it satisfies the following equivalent conditions:
             \begin{itemize}
-              \item 
-                When $U\subseteq Y$ is affine $f^{-1}(U)$ is quasi-compact.
-              \item 
+              \item[\itememph{\alpha}]
+                When $U\subseteq Y$ is affine, $f^{-1}(U)$ is quasi-compact.
+              \item[\itememph{\beta}]
                 When $U$ is quasi-compact, $f^{-1}(U)$ is quasi-compact.
-              \item 
+              \item[\itememph{\gamma}]
                 $Y$ has a topology base $\Bb$ such that $f^{-1}(U)$ is quasi-compact for $U\in \Bb$.
             \end{itemize}
         \item 
-            quasi-seperated if the preimage of any open subset of $Y$ is quasi-separated.
+            \defemph{quasi-separated} if the preimage of any affine open subset of $Y$ is quasi-separated.
     \end{alphanumerate}
 \end{defi}
 \begin{rem*}
     \begin{alphanumerate}
         \item 
-            The equivalence is as the proof of Definition~\reff{def:quasicompact}, which is a special case of it. 
+            The equivalence of the three conditions in \itememph{b} can be seen via \itememph{\beta} $\Rightarrow$ \itememph{\alpha} $\Rightarrow$ \itememph{\gamma} $\Rightarrow$ \itememph{\beta} as in the proof of Definition~\reff{def:quasicompact} (which actually is a special case of this). 
         \item 
-            $X$ is quasi-seperated iff for any quasi-compact open subset $V$, $V\monomorphism X$ is quasi-compact.
+            $X$ is quasi-separated iff for any quasi-compact open subset $U$ the embedding $U\monomorphism X$ is quasi-compact (preimages in this case are just intersections with $U$ and we obtain Definition~\reff{def:quasicompact}\itememph{e}).
         \item 
-            Open embeddings are quasi-seperated for trivial reasons.
+            Open embeddings are quasi-separated for trivial reasons.
     \end{alphanumerate}
 \end{rem*}
-\begin{prop}\lbl{prop:closedEmbeddingPrescheme}
+\begin{prop}
     \begin{alphanumerate}
+        \item\lbl{prop:closedEmbeddingPrescheme}
+            A closed embedding of preschemes is quasi-compact and quasi-separated.
         \item 
-            A closed embedding of preschemes is quasi-compact and quasi-seperated.
-        \item 
-            Let $X\morphism[f] Y$ be a morphism of preschemes which is quasi-compact and quasi-separated and $\Mm$ a quasi-coherent $\Oo_X$-module, then $f_*\Mm$ is a quasi-coherent $\Oo_Y$-module.
+            Let $X\morphism[\smash{f}] Y$ be a morphism of preschemes which is quasi-compact and quasi-separated and $\Mm$ a quasi-coherent $\Oo_X$-module, then $f_*\Mm$ is a quasi-coherent $\Oo_Y$-module.
     \end{alphanumerate}
 \end{prop}
 \begin{proof}
-    \itememph{a} follows from Fact 2.
+    Part \itememph{a} follows from Fact~\reff{fact:SpecRqcqs}.
     
-    For \itememph{b} take $V\subseteq Y$ affine. Then \eqreff{eq:bijectiveQCQS} for $f_*\Mm$ and $V$ is an isomorphism by the diagram
-    
-    DIAGRAM
-    
+    For \itememph{b} take $U\subseteq Y$ affine. Then \eqreff{eq:bijectiveQCQS} for $f_*\Mm$ and $U$ is an isomorphism by the diagram
+    \begin{diagram*}
+    	\node[ob] (a) at (0,1.5) {$\big(f_*\Mm(U)\big)_\lambda$};
+    	\node[ob] (b) at (4,1.5) {$f_*\Mm\big(U\setminus V(\lambda)\big)$};
+    	\node[ob] (c) at (0,0) {$\Mm\left(f^{-1}U\right)_\lambda$};
+    	\node[ob] (d) at (4,0) {$\Mm\left(f^{-1}U\setminus V(f^*\lambda)\right)$};
+    	\scriptsize
+    	\draw[->] (a) -- (b) node[pos=0.5, above] {\eqreff{eq:bijectiveQCQS}};
+    	\draw[->] (c) -- (d) node[pos=0.5, above=-0.25ex] {$\sim$};
+    	\draw[transform canvas={xshift=1pt}] (a) -- (c);
+    	\draw[transform canvas={xshift=-1pt}] (a) -- (c);
+    	\draw[transform canvas={xshift=1pt}] (b) -- (d);
+    	\draw[transform canvas={xshift=-1pt}] (b) -- (d);
+    \end{diagram*}
+    in which the lower horizontal arrow is an isomorphism by Proposition~\reff{prop:coherentDef}\itememph{d} because $\Mm$ is quasi-coherent and $f^{-1}U$ is quasi-compact and quasi-separated by the assumptions on $f$.
 \end{proof}
-\begin{prop}
-    Let $X$ be a prescheme and $K$ a locally ringed space and $K\morphism[\iota] X$ a closed embedding in the sense of Definition~\reff{def:immersiveMorphism}. Then $K$ is a prescheme if and only if the sheaf of ideals $\Jj=\ker(\Oo_X\morphism[\iota^*]\iota_*\Oo_K)$ associated to $\iota$ by Proposition~\reff{prop:closedImmersionSheaves} is quasi-coherent.
+\begin{prop}\lbl{prop:closedImmersionCoherentSheaves}
+    Let $X$ be a prescheme and $K$ a locally ringed space and $K\morphism[\iota] X$ a closed immersion in the sense of Definition~\reff{def:immersiveMorphism}. Then $K$ is a prescheme if and only if the sheaf of ideals $\Jj=\ker\big(\Oo_X\morphism[\iota^{\smash{*}}]\iota_*\Oo_K\big)$ associated to $\iota$ by Proposition~\reff{prop:closedImmersionSheaves} is quasi-coherent.
 \end{prop}
 \begin{proof}
-    Let $K$ be a prescheme. By Proposition~\reff{prop:closedEmbeddingPrescheme} and Fact 3, $\Jj$ is quasi-coherent. Conversely, let $\Jj$ be quasi-coherent. As the correspondence between $K$ and $\Jj$ is compatible with restriction to open subsets, it is sufficient to show that $K$ is a prescheme, when $X$ is affine. In this case ($X=\Spec R$), any quasi-coherent $\Jj\subseteq \Oo_X$ has the from $\Jj = \snake I$. But $\Spec R/I \morphism \Spec R$ is a closed embedding and our correspondence associates $\snake I$ to i. Thus, $K\simeq \Spec(R/I)$ is affine in this case.
+    Let $K$ be a prescheme. By Proposition~\reff{prop:closedEmbeddingPrescheme} and Fact~\reff{fact:kernelQC}, $\Jj$ is quasi-coherent. 
+    
+    Conversely, let $\Jj$ be quasi-coherent. As the correspondence between $K$ and $\Jj$ is compatible with restriction to open subsets (being a closed immersion, being a kernel, and quasi-coherence are all local properties), it is sufficient to show that $K$ is a prescheme, when $X$ is affine. In this case ($X=\Spec R$), any quasi-coherent $\Jj\subseteq \Oo_X$ has the from $\Jj = \snake I$. But $\Spec R/I \morphism \Spec R$ is a closed embedding and our correspondence associates $\snake I$ to $\iota$. Thus, $K\simeq \Spec(R/I)$ is affine in this case.
 \end{proof}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\begin{defi}
+	A \defemph{closed subprescheme} of a prescheme $X$ is an equivalence class of closed immersions $K\monomorphism[i]X$ of preschemes $K$, where two such closed immersions $K\monomorphism[i]X$ and $L\monomorphism[j]X$ are considered equivalent iff there is an isomorphism $K\isomorphism[\iota]L$ such that $i=j\iota$.
+\end{defi}
+\begin{rem}
+	The isomorphism above is unique as $i$ and $j$ are monomorphisms.
+\end{rem}
+\begin{cor}
+	\begin{alphanumerate}
+		\item For a prescheme $X$, there is a one-to-one correspondence 
+		\begin{align*}
+			\left\{\text{closed subpreschemes }K\monomorphism[i]X\right\}&\isomorphism\left\{\text{quasi-coherent sheaves of ideals }\Jj\subseteq\Oo_X\right\}\\
+			\big(K\monomorphism[i]X\big)&\longmapsto\ker\big(\Oo_X\morphism[i^*]i_*\Oo_K\big)\;.
+		\end{align*}
+		\item Any closed subprescheme of an affine scheme is affine.
+	\end{alphanumerate}
+\end{cor}
+\begin{proof}
+	Part \itememph{a} follows from Proposition~\reff{prop:closedImmersionCoherentSheaves} and Proposition~\reff{prop:closedImmersionSheaves}.
+	
+	Part \itememph{b}. On $\Spec R$, every quasi-coherent sheaf of ideals is of the form $\snake{I}$ for an ideal $I\subseteq R$, corresponding to $\Spec(R/I)\morphism\Spec R$.
+\end{proof}
+\begin{cor}
+	For any prescheme $X$ and any ring $R$, the following map is bijective:
+	\begin{align*}
+		\Hom_{\cat{Ring}}\big(R,\Oo_X(X)\big)&\isomorphism\Hom_{\cat{PreSch}}(X,\Spec R)\\
+		\Big(R\simeq \Oo_{\Spec R}(\Spec R)\morphism[f^*]\Oo_X(X)\Big)&\longmapsfrom \big(X\morphism[f]\Spec R\big)
+	\end{align*}
+\end{cor}
+\begin{proof}
+	This is a special case of Proposition~\reff{prop:affineSchemeAdjunction}.
+\end{proof}
+\begin{cor}
+	$\Spec\IZ$ is a final object in the category of preschemes.
+\end{cor}
+\begin{cor}\lbl{cor:preschemesEqualizers}
+	\begin{alphanumerate}
+		\item The category of preschemes has equalizers.
+		\item If $Y\morphism[\upsilon]Z$ is a monomorphism (e.q. an open/closed/arbitrary immersion), then
+		\begin{align*}
+			\Eq\Big(X\doublemorphism[a][b]Y\Big)\simeq\Eq\Big(X\doublemorphism[\upsilon a][\upsilon b]Z\Big)\;.
+		\end{align*}
+		\item If $U\subseteq X$ is open and $X\doublemorphism[\smash{a}][b]Y$ a pair of morphisms of preschemes, then
+		\begin{align*}
+			\Eq\Big(U\doublemorphism[a|_U][b|_U]Y\Big)=\Eq\Big(X\doublemorphism[a][b]Y\Big)\cap U\;.
+		\end{align*}
+		\item If $R\doublemorphism[\smash{\alpha}][\smash{\beta}]S$ are morphisms of rings, then
+		\begin{align*}
+			\Eq\Big(\Spec S\xdoublemorphism[\Spec \alpha][\Spec \beta]\Spec R\Big)\simeq \Spec\Big(\Coeq\big(R\doublemorphism[\smash{\alpha}][\smash{\beta}]S\big)\Big)\;.
+		\end{align*}
+		\item The morphism $\Eq\Big(X\doublemorphism[a][b]Y\Big)\morphism X$ is immersive.
+	\end{alphanumerate}
+\end{cor}
+\begin{proof}
+	Part \itememph{b} is true in any category an can be easily proved by abstract nonsense.
+	
+	Part \itememph{c} follows from our explicit construction of equalizers in $\cat{LRS}$ in Proposition~\reff{prop:equalizerLRS} as long as only equalizers in $\cat{LRS}$ are concerned. That the occuring equalizers are indeed preschemes will follow from the proof of \itememph{a}. Part \itememph{d} is a consequence of Proposition~\reff{prop:affineSchemeAdjunction} and the fact that $\Spec(-)$ is a contravariant functor. 
+	
+	Together, \itememph{b}, \itememph{c} (that is, what we proved of it so far) and \itememph{d} imply \itememph{a}. Indeed, let $E\subseteq X$ be the equalizer of $X\doublemorphism[a][b]Y$ in the category of locally ringed spaces, where $X$ and $Y$ are preschemes; we need to show that $E$ is a prescheme as well. Let $x\in E$. Choose an affine open neighbourhood $V$ of $a(x)=b(x)$ in $Y$ and an affine open neighbourhood of $U\subseteq a^{-1}(V)\cap b^{-1}(V)$ of $x$ in $X$. Then 
+	\begin{align*}
+		\Eq\Big(U\doublemorphism[a|_U][b|_U]V\Big)=\Eq\Big(U\doublemorphism[a|_U][b|_U]Y\Big)=\Eq\Big(X\doublemorphism[a][b]Y\Big)\cap U
+	\end{align*}
+	in which the first equality follows from \itememph{b} and the fact that $V\monomorphism Y$ is a monomorphism, whereas the second equality is due to \itememph{c}. By \itememph{d}, the left-hand side is an affine prescheme, thus providing us with an affine open neighbourhood of $x$ in $E$.
+	
+	For \itememph{e}, note by our explicit construction in Proposition~\reff{prop:equalizerLRS} the considered morphism of preschemes is a homeomorphism onto the subset
+	\begin{align}\lbl{eq:equalizer1.5}
+		K=\left\{x\in X\st a(x)=b(x)\eqqcolon y\text{ and }\KK(y) \doublemorphism[a^*][b^*] \KK(x)\text{ coincide}\right\}\subseteq X\tag{$*$}
+	\end{align}
+	and induces surjections on stalks of the structure sheaf.
+\end{proof}
+\begin{cor}
+	\begin{alphanumerate}
+		\item The category of preschemes has fibre products.
+		\item Let the diagram
+		\begin{diagram*}
+			\node[ob](a) at (0,1.5) {$X\times_SY$};
+			\node[ob](c) at (0,0) {$X$};
+			\node[ob](b) at (2.5,1.5) {$Y$};
+			\node[ob](d) at (2.5,0) {$S$};
+			\scriptsize
+			\draw[->] (a) -- (b) node[pos=0.5, above] {$p_Y$};
+			\draw[->] (a) -- (c) node[pos=0.5, left] {$p_X$};
+			\draw[->] (c) -- (d) node[pos=0.5, above] {$\xi$};
+			\draw[->] (b) -- (d) node[pos=0.5, right] {$\upsilon$};
+		\end{diagram*}        
+		be a fibre product in $\cat{PreSch}$. If $U\subseteq X$, $V\subseteq Y$ and $W\subseteq S$ are open subsets, then
+		\begin{align*}
+			U\times_WV=p_X^{-1}(U)\cap p_Y^{-1}(V)\subseteq X\times_SY\;.
+		\end{align*}
+		\item $\Spec A\times_{\Spec R}\Spec B\simeq \Spec(A\otimes_RB)$.
+		\item If $S\morphism T$ is a monomorphism, then $X\times_SY\simeq X\times_TY$.
+	\end{alphanumerate}
+\end{cor}
+\begin{proof}
+	Assertion \itememph{d} again holds in any category and admits a pure abstract nonsense proof.
+	
+	Part \itememph{b} follows from Proposition~\reff{cor:fibreProductsInLRS}\itememph{b} except for the fact that the involved fibre products are preschemes, which will follow from the proof of \itememph{a}. Part \itememph{c} follows from Corollary~\reff{cor:affineSchemesFibreProduct} and together, \itememph{b}, \itememph{c} and \itememph{d} imply \itememph{a} by a technical argument as in the proof of Corollary~\reff{cor:preschemesEqualizers}.
+\end{proof}
+\begin{defi}
+	Let $S$ be a prescheme. The category of \defemph{$S$-preschemes} has morphisms $X\morphism[\xi]S$ of preschemes as objects and diagrams  
+	\begin{diagram*}
+		\node[ob](x) at (0,1.25) {$X$};
+		\node[ob](s) at (1.25,0) {$S$};
+		\node[ob](y) at (2.5,1.25) {$Y$};
+		\scriptsize
+		\draw[->] (x) -- (s) node[pos=0.5,below left] {$\xi$};
+		\draw[->] (x) -- (y) node[pos=0.5,above] {$f$};
+		\draw[->] (y) -- (s) node[pos=0.5,below right] {$\upsilon$};
+	\end{diagram*}
+	as morphisms. Compositions are given by 
+	\begin{diagram*}
+		\node[ob](x) at (0,1.5) {$X$};
+		\node[ob](s) at (2,0) {$S$};
+		\node[ob](y) at (2,1.5) {$Y$};
+		\node[ob] (z) at (4,1.5) {$Z$};
+		\scriptsize
+		\draw[->] (x) -- (s) node[pos=0.5,below left] {$\xi$};
+		\draw[->] (x) -- (y) node[pos=0.5,above] {$f$};
+		\draw[->] (y) -- (s) node[pos=0.5,left] {$\upsilon$};
+		\draw[->] (y) -- (z) node[pos=0.5, above] {$g$};
+		\draw[->] (z) -- (s) node[pos=0.5, below right] {$\zeta$};
+	\end{diagram*}
+	and the identity on $X\morphism[\xi]S$ is $\id_X$.
+\end{defi}
+\begin{rem*}
+	\begin{alphanumerate}
+		\item This is a special case of the \emph{comma category} construction, cf. \hyperref[rem:commaCategory]{this} remark.
+		\item Products in the category of $S$-preschemes (which has $S\morphism[\id_S]S$ as a final object) are given by $X\times_SY$.
+		\item The category of $\Spec\IZ$-preschemes is canonically isomorphic to the category of preschemes.
+	\end{alphanumerate}
+\end{rem*}
+\begin{defi}
+	A class $\Cc$ of morphisms in the category of preschemes is called
+	\begin{alphanumerate}
+		\item \defemph{stable under base-change} if in any fibre product diagram
+		\begin{diagram*}
+			\node[ob](a) at (0,1.5) {$X\times_YY'$};
+			\node[ob](c) at (0,0) {$X$};
+			\node[ob](b) at (2.5,1.5) {$Y'$};
+			\node[ob](d) at (2.5,0) {$Y$};
+			\scriptsize
+			\draw[->] (a) -- (b) node[pos=0.5, above] {$\xi'$};
+			\draw[->] (a) -- (c) node[pos=0.5, left] {$\upsilon'$};
+			\draw[->] (c) -- (d) node[pos=0.5, above] {$\xi$};
+			\draw[->] (b) -- (d) node[pos=0.5, right] {$\upsilon$};
+		\end{diagram*}        
+		we have $\xi'\in\Cc$ if $\xi\in\Cc$.
+		\item \defemph{base local} if for a morphism $X\morphism[\xi]Y$ the following conditions are equivalent:
+		\begin{itemize}
+			\item[\itememph{\alpha}] $\xi\in\Cc$.
+			\item[\itememph{\beta}] For any open subset $U\subseteq Y$ the morphism $\xi^{-1}(U)\morphism U$ is $\in\Cc$.
+			\item[\itememph{\gamma}] $Y$ may be covered by open subsets $U$ such that $\xi^{-1}(U)\morphism U$ is $\in \Cc$.
+		\end{itemize}
+	\end{alphanumerate}
+\end{defi}
+\begin{fact}\lbl{fact:immersionsBaseChangeStable}
+	The classes $\Cc$ of open or closed or general immersions (homeomorphisms onto their images and surjective on stalks) are closed under composition, stable under base-change and base local. Moreover, they have the following cancellation property: $ij\in\Cc$ and $i\in C$ implies $j\in\Cc$.
+\end{fact}
+\begin{proof}
+	Closedness under composition holds because homeomorphisms work that way and compositions of surjections are surjective. Stability under base-change follows from Corollary~\reff{cor:immersionBaseChange}. Base locality is clear as both being a homeomorphism and being surjective on stalks are local properties. Finally, the cancellation property is due to the fact that if $ij$ and $i$ are homeomorphisms onto their image, then so is $j$, and if the morphisms $j^*i^*$ and $i^*$ induced on stalks are surjective, then so is $j^*$.
+\end{proof}
+\begin{fact}\lbl{fact:equalizerImmersive}
+	For a pair $X\doublemorphism[a][b]Y$ of morphisms of preschemes, the morphism $\Eq\Big(X\doublemorphism[a][b]Y\Big)\morphism X$ is immersive and its image is locally closed. It is a closed immersion if and only if the above set $K$ (described in \eqreff{eq:equalizer1.5}) is closed.
+	
+	When $Y$ has the property that arbitrary points $x,y\in Y$ have a common affine neighbourhood (this is e.g. the case when $Y$ is affine), then $K$ is always closed.
+\end{fact}
+\begin{proof}
+	With the possible exception of local closedness and the last assertion, this follows from our construction of equalizers in Proposition~\reff{prop:equalizerLRS}. 
+	
+	Let $x\in X$ and suppose that $W\subseteq Y$ is an affine open neighbourhood of $a(x)$ and $b(x)$. We claim that $x$ has an open neighbourhood $U$ (namely $U=a^{-1}(W)\cap b^{-1}(W)$) such that $K\cap U$ is closed in $U$. This implies local closedness (if $x\in K$, take any affine open neighbourhood $W$ of $a(x)=b(x)$) and also the other assertion, cf. \hyperref[rem:localClosedness]{this} remark. To show the claim about $U$, note that
+	\begin{align*}
+		K\cap U=\bigcap_{\lambda\in\Oo_Y(W)}V\big(a^*\lambda|_W-b^*\lambda|_W\big)
+	\end{align*}
+	by our description of $K$.
+\end{proof}
+\begin{fact}\lbl{fact:separatedDef}
+	For any morphism $X\morphism[f]Y$ of preschemes, the following conditions are equivalent:
+	\begin{alphanumerate}
+		\item For every morphism pair $T\doublemorphism[a][b] X$ such that $fa=fb$, the equalizer $\Eq\Big(T\doublemorphism[a][b]X\Big)$ is a closed subprescheme of $T$.
+		\item For $T\doublemorphism[a][b] X$ as in \itememph{a}, $\Eq\Big(T\doublemorphism[a][b]X\Big)$ is a closed subset of $T$.
+		\item The conditions \itememph{a} or \itememph{b} hold when $T$ is affine.
+	\end{alphanumerate}
+\end{fact}
+\begin{proof}
+	\itememph{a} $\Leftrightarrow$ \itememph{b} follows from Fact~\reff{fact:equalizerImmersive}. The implication \itememph{a} $\Rightarrow$ \itememph{c} is trivial. It remains to show \itememph{c} $\Rightarrow$ \itememph{a}. Let $T$ be an arbitrary prescheme, $T\doublemorphism[a][b]X$ a pair of morphisms and $K$ the subset of $T$ on which $\Eq\Big(T\doublemorphism[\smash{a}][b]X\Big)$ maps homeomorphically. By Corollary~\reff{cor:preschemesEqualizers}\itememph{c} and the assumption, $K\cap U$ is closed in $U$ for any affine open $U\subseteq T$. As the affine open subsets cover $T$, this shows that $K$ is closed.
+\end{proof}
+\begin{defi}
+	\begin{alphanumerate}
+		\item A morphism of preschemes is called \defemph{separated} if it satisfies the equivalent conditions from Fact~\reff{fact:separatedDef}.
+		\item A prescheme $X$ is \defemph{separated} (or a \defemph{scheme}) if the morphism $X\morphism\Spec \IZ$ is separated; in other words, if $\Eq\Big(T\doublemorphism[a][b]X\Big)$ is always closed in $T$ for $T$ a prescheme.
+	\end{alphanumerate}
+\end{defi}
+\begin{rem*}
+	Maybe Grothendieck should have dropped the \emph{pre}fix \emph{pre} and rather have used the term \emph{scheme} instead of \emph{prescheme} in the first place, and indeed, in \emph{pre}sent days, this other notation is \emph{pre}dominating. However, Prefessor Franke \emph{pre}sumably \emph{pre}fers Grothendieck's \emph{pre}existing terminology.
+\end{rem*}
+\begin{fact}
+	\begin{alphanumerate}
+		\item Any affine prescheme (in fact, any prescheme such that two arbitrary points have a common affine neighbourhood) is a scheme.
+		\item Any monomorphism (e.g. open/closed/arbitrary immersions) of preschemes is separated.
+		\item If $gf$ is separated, then so is $f$. In particular, any morphism between schemes is separated.
+		\item The class of separated morphisms is closed under composition and stable under base change.
+		\item A morphism $X\morphism[f]Y$ is separated iff the embedding of the \emph{diagonal} 
+		\begin{align*}
+			\Delta=\text{image of }X\xrightarrow{(\id_X,\id_X)}X\times_YX
+		\end{align*}
+		is a closed immersion.
+	\end{alphanumerate}
+\end{fact}
+\begin{proof}
+	Part \itememph{a} follows from Fact~\reff{fact:separatedDef}. Part \itememph{b} is obvious: If $X\morphism[f]Y$ is a monomorphism and $T\doublemorphism[a][b]X$ are such that $fa=fb$, then $a=b$ and the equalizer under consideration equals $T$. Part \itememph{c} is also trivial, as any $T\doublemorphism[\smash{a}][b]X$ such that $fa=fb$ also satisfies $gfa=gfb$.
+	
+	Let's prove \itememph{e}. If $f$ is separated, then $\Delta=\Eq\Big(X\times_YX\doublemorphism[p_1][p_2]X\Big)\monomorphism X\times_YX$ is a closed immersion. Conversely, if $\Delta$ is closed and $T\doublemorphism[\smash{a}][b]$ is such that $fa=fb$, then we have a morphism $\tau\colon T\xrightarrow{\smash{(a,b)}}X\times_YX$ and 
+	\begin{align*}
+		K=\Eq\Big(T\doublemorphism[a][b]X\Big)\simeq T\times_{X\times_YX}\Delta\;.
+	\end{align*} 
+	The morphism $K\monomorphism T$ is thus a base change of $\Delta\monomorphism X\times_YX$ and hence a closed embedding by base change stability (Fact~\reff{fact:immersionsBaseChangeStable}).
+	
+	Now for \itememph{d}. For closednesss under composition, consider $X\morphism[f]Y\morphism[g]Z$ with $f,g$ separated. Let $T\doublemorphism[\smash{a}][b]X$ such that $gfa=gfb$. Then $K=\Eq\Big(T\doublemorphism[fa][fb]Y\Big)$ is a closed subprescheme of $T$ as $g$ is separated and 
+	\begin{align*}
+		\Eq\Big(T\doublemorphism[a][b]X\Big)\simeq\Eq\Big(K\morphism T\doublemorphism[a][b]X\Big)
+	\end{align*}
+	is a closed subprescheme of $K$ as $f$ is separated. And finally closedness under base change. Consider a cocartesian square (i.e. a fibre product diagram)
+	\begin{diagram*}
+		\node[ob](a) at (0,1.5) {\llap{$X\times_SY=\:$}$X'$};
+		\node[ob](c) at (0,0) {$X$};
+		\node[ob](b) at (2,1.5) {$Y'$};
+		\node[ob](d) at (2,0) {$Y$};
+		\scriptsize
+		\draw[->] (a) -- (b) node[pos=0.5, above] {$\xi'$};
+		\draw[->] (a) -- (c) node[pos=0.5, left] {$\upsilon'$};
+		\draw[->] (c) -- (d) node[pos=0.5, above] {$\xi$};
+		\draw[->] (b) -- (d) node[pos=0.5, right] {$\upsilon$};
+	\end{diagram*}   
+	in which $\xi$ is separated. If $T\doublemorphism[a][b]X'$ is such that $\xi'a=\xi'b$, then
+	\begin{align*}
+		\Eq\Big(T\doublemorphism[a][b]X'\Big)\simeq\Eq\Big(T\doublemorphism[\upsilon'a][\upsilon'b]X\Big)
+	\end{align*}
+	by the universal property of the fibre product. As $\xi$ is separated, thus is a closed subprescheme of $T$.
+\end{proof}
 
 
 
@@ -2344,9 +2600,9 @@ A category is called \emph{small} if its class of objects is a set.
   \section{Products and (co-)equalizers}
   Our goal is to formulate a notion of \emph{sheaf} that allows to define sheafs for arbitrary target categories. Recall that the sheaf axiom (\hyperref[sheafAxiom]{this one}) requires
   \begin{align}\lbl{eq:sheafAxiom}
-  	\Gg(U)\longrightarrow\left\{(g_i)_{i\in I}\in\prod_{i\in I}\Gg(U_i)\st g_i|_{U_{ij}}=g_j|_{U_{ij}}\ \forall i,j\in I\right\}\tag{$*$}
+  	\Gg(U)\longrightarrow\left\{(g_i)_{i\in I}\in\prod_{i\in I}\Gg(U_i)\st g_i|_{U_{i,j}}=g_j|_{U_{i,j}}\ \forall i,j\in I\right\}\tag{$*$}
   \end{align}
-  to be bijective (i.e. an isomorphism) for any open cover $U=\bigcup_{i\in I}\Gg(U_i)$, where we set $U_{ij}=U_i\cap U_j$ for convenience.
+  to be bijective (i.e. an isomorphism) for any open cover $U=\bigcup_{i\in I}\Gg(U_i)$, where we set $U_{i,j}=U_i\cap U_j$ for convenience.
   
   \begin{defi}[Products]
   	A \defemph{product} of objects $(A_i)_{i\in I}$ of $\Aa$ is an object $\prod_{i\in I}A_i$ together with morphisms $\prod_{i\in I}A_i\morphism[\pi_i]A_i$ for each $i\in I$ such that the following \emph{universal property} holds:
@@ -2374,15 +2630,15 @@ A category is called \emph{small} if its class of objects is a set.
 	\end{itemize}
 	To formulate the sheaf axiom, it is convenient to assume that $\prod_{i\in I}\Gg(U_i)$ exists, i.e. that $\Aa$ has arbitrary products.
 	
-	Recall our convention that $U_{ij}=U_i\cap U_j$. There are unique morphisms
+	Recall our convention that $U_{i,j}=U_i\cap U_j$. There are unique morphisms
 	\begin{align*}
-		\alpha,\beta\colon \prod_{i\in I}\Gg(U_i)\longrightarrow\prod_{(i,j)\in I\times I}\Gg(U_{ij})
+		\alpha,\beta\colon \prod_{i\in I}\Gg(U_i)\longrightarrow\prod_{(i,j)\in I\times I}\Gg(U_{i,j})
 	\end{align*}
-	characterized by $\pi_{ij}\circ\alpha=(-)|_{U_{ij}}^{U_i}\circ\pi_i$ and $\pi_{ij}\circ\beta=(-)|_{U_{ij}}^{U_j}\circ\pi_j$, where $\prod_{i\in I}\Gg(U_i)\morphism[\pi_i]\Gg(U_i)$ and $\prod_{(i,j)\in I\times I}\Gg(U_{ij})\morphism[\pi_{ij}]\Gg(U_{ij})$ are the morphisms defining the product structure.
+	characterized by $\pi_{ij}\circ\alpha=(-)|_{U_{i,j}}^{U_i}\circ\pi_i$ and $\pi_{ij}\circ\beta=(-)|_{U_{i,j}}^{U_j}\circ\pi_j$, where $\prod_{i\in I}\Gg(U_i)\morphism[\pi_i]\Gg(U_i)$ and $\prod_{(i,j)\in I\times I}\Gg(U_{i,j})\morphism[\pi_{ij}]\Gg(U_{i,j})$ are the morphisms defining the product structure.
 	
 	In the example of presheaves of sets, rings, etc. we have 
 	\begin{align*}
-		\alpha\big((g_i)_{i\in I}\big)=\left(g_i|_{U_{ij}}\right)_{(i,j)\in I\times I}\quad\text{and}\quad\beta\big((g_i)_{i\in I}\big)=\left(g_j|_{U_{ij}}\right)_{(i,j)\in I\times I}\;,
+		\alpha\big((g_i)_{i\in I}\big)=\left(g_i|_{U_{i,j}}\right)_{(i,j)\in I\times I}\quad\text{and}\quad\beta\big((g_i)_{i\in I}\big)=\left(g_j|_{U_{i,j}}\right)_{(i,j)\in I\times I}\;,
 	\end{align*}
 	such that \eqreff{eq:sheafAxiom} is the ``largest subobject on which $\alpha$ and $\beta$ coincide".
 	\begin{defi}[Equalizer]
@@ -2409,16 +2665,16 @@ A category is called \emph{small} if its class of objects is a set.
 	\begin{rem*}
 		\begin{alphanumerate}
 			\item By the usual Yoneda argument one sees that the universal property characterizes $E$ up to unique isomorphism.
-			\item The sheaf axiom for presheaves with values in an arbitrary category with products now translates into the condition that $\Gg(U)\to\prod_{i\in I}\Gg(U_i)$ is, for any open cover $U=\bigcup_{i\in I}U_i$, an equalizer of the above pair of morphisms $\prod_{i\in I}\Gg(U_i)\doublemorphism[\alpha][\beta]\prod_{(i,j)\in I\times I}\Gg(U_{ij})$. 
+			\item The sheaf axiom for presheaves with values in an arbitrary category with products now translates into the condition that $\Gg(U)\to\prod_{i\in I}\Gg(U_i)$ is, for any open cover $U=\bigcup_{i\in I}U_i$, an equalizer of the above pair of morphisms $\prod_{i\in I}\Gg(U_i)\doublemorphism[\alpha][\beta]\prod_{(i,j)\in I\times I}\Gg(U_{i,j})$. 
 			
 			By merging the universal properties, the notion of a sheaf can be generalized to arbitrary target categories.
 			\item For sets, abelian groups etc. the equalizer is 
 			\begin{align*}
-				\ker\Big(A\doublemorphism[\alpha][\beta]B\Big)=\left\{a\in A\st \alpha(a)=\beta(a)\right\}\;.
+				\Eq\Big(A\doublemorphism[\alpha][\beta]B\Big)=\left\{a\in A\st \alpha(a)=\beta(a)\right\}\;.
 			\end{align*}
 			\item For the \emph{abelian} category $R\cat{-Mod}$, 
 			\begin{align*}
-				\ker\Big(M\morphism[f]N\Big)=\ker\Big(M\doublemorphism[f][0]N\Big)\quad\text{and}\quad\ker\Big(M\doublemorphism[f][g]N\Big)=\ker\Big(M\xrightarrow{f-g}N\Big)\;.
+				\ker\Big(M\morphism[f]N\Big)=\Eq\Big(M\doublemorphism[f][0]N\Big)\quad\text{and}\quad\Eq\Big(M\doublemorphism[f][g]N\Big)=\ker\Big(M\xrightarrow{f-g}N\Big)\;.
 			\end{align*}
 		\end{alphanumerate}
 	\end{rem*}
@@ -2501,7 +2757,7 @@ A category is called \emph{small} if its class of objects is a set.
         \begin{align*}
             \Eq\Big(X\times Y \doublemorphism[\xi\pi_X][\upsilon \pi_Y] S\Big) \simeq X\times_S Y.
         \end{align*}
-      \item 
+      \item \lbl{rem:commaCategory}
         Let the \emph{comma category} $\Aa\morphism S$ (or $\Aa/S$) be the category whose objects are pairs $(X,\xi)$ with $X\in\Ob(\Aa)$ an object and $X\morphism[\xi] S$ a morphism in $\Aa$, and where a morphism $(X,\xi) \morphism[f] (Y,\upsilon)$ is a morphism $X\morphism[f]Y$ in $\Aa$ such that we have $\upsilon f= \xi$, i.e. 
     
         \begin{diagram*}
@@ -2517,7 +2773,7 @@ A category is called \emph{small} if its class of objects is a set.
         commutes. Then $X\times_S Y$ is the product of $(X,\xi)$ and $(Y,\upsilon)$ in $\Aa\morphism S$.
       \item 
         Fibre products with any (possibly cardinal) number of factors can be defined in the same way or as products in $A\morphism S$.
-      \item 
+      \item \lbl{rem:baseChange}
         The smallest square in the diagram above illustrating the universal property of fibre products is called \emph{cartesian} if $P$ is a fibre product. If is also often useful to think of $p$ as morphism such that the \emph{fibre} $p^{-1}(x)$ is isomorphic to $\upsilon^{-1}(\xi(x))$. Then one prefers a terminology
         \begin{diagram*}
     	\node[ob](a) at (0,1.5) {$P$};
