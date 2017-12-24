@@ -25,7 +25,7 @@
 \maketitle
 \pagenumbering{roman}
  \thispagestyle{plain}
-This text consists of notes of the lecture Algebra II, taught at the University of Bonn by Professor Jens Franke in the winter term (Wintersemester) 2017/18. 
+This text consists of notes of the lecture Algebra~II, taught at the University of Bonn by Professor Jens Franke in the winter term (Wintersemester) 2017/18. 
 
 Please report bugs, typos etc. through the \emph{Issues} feature of github.
 
@@ -33,7 +33,7 @@ Please report bugs, typos etc. through the \emph{Issues} feature of github.
 
 \addchap{Introduction}
 \pagenumbering{arabic}
-After a slight delay due to the Professor being confused by the large attendance to his lecture, Franke briefly recaps the contents of his lecture course Algebra I. Our notes to this lecture can be found \href{https://github.com/Nicholas42/AlgebraFranke/tree/master/AlgebraI}{here} \cite{alg1}. He mentions specifically
+After a slight delay due to the Professor being confused by the large attendance to his lecture, Franke briefly recaps the contents of his lecture course Algebra~I. Our notes to this lecture can be found \href{https://github.com/Nicholas42/AlgebraFranke/tree/master/AlgebraI}{here} \cite{alg1}. He mentions specifically
 \begin{itemize}
  \item Hilbert's Basissatz and Nullstellensatz,
  \item the Noether Normalization Theorem,
@@ -63,7 +63,7 @@ Professor Franke recommends the following literature:
 \end{itemize}
 The oh-so-humble authors of these notes want to use this opportunity to recommend
 \begin{itemize}
-	\item Schwab, N. \& Wagner, F.:  \href{https://github.com/Nicholas42/AlgebraFranke/tree/master/AlgebraI}{\emph{Algebra I by Jens Franke}} \cite{alg1}.
+	\item Schwab, N. \& Wagner, F.:  \href{https://github.com/Nicholas42/AlgebraFranke/tree/master/AlgebraI}{\emph{Algebra~I by Jens Franke}} \cite{alg1}.
 \end{itemize}
 as well. \textbf{Warning!} Somewhere in the middle of the last-mentioned text, the term \emph{irreducible} is redefined as irreducible \emph{and closed}. So don't let yourself get confused. Also, this lecture is intended by Professor Franke to be a continuation of Algebra~I and that's why our theorem numbering will start with 11 on the next page. 
 
@@ -120,7 +120,7 @@ as well. \textbf{Warning!} Somewhere in the middle of the last-mentioned text, t
         (this is more or less a tedious calculation -- and guess what: we have the pleasure to do it on exercise sheet \#2). This shows that $\codim (A\cap U, U)  = \codim(A,X)$ whenever $A\subseteq X$ is irreducible, closed and $U\subseteq X$ open and not disjoint from $A$. This is known as the \emph{locality of codimension} (cf. \cite[Remark~2.1.3]{alg1}).
         \item In particular, the $X$ from Corollary~\reff{cor:V(f)codimension1} may be replaced by any open subset meeting the irreducible component under consideration.
         \item If $Y\subseteq k^n$ is an affine algebraic variety in $k^n$ and $\lambda\in\Oo_Y(Y)$, then $Y\setminus V(\lambda)$ is affine (that is, isomorphic to an affine algebraic variety, cf. \cite[Proposition~2.2.4]{alg1} for more details and a proof). Because of this, we may assume $X$ to be affine: Let $Y=\ov X\subseteq k^n$ and let $C$ be the irreducible component of $V(f)$ under consideration. Then there is a $\lambda\in k[X_1,\ldots,X_n]$ vanishing on $Y\setminus X$, but not on all of $C$. Indeed, $A=Y\setminus X$ and $B= Y\setminus X\cup\ov C$ are closed subsets and $A\subsetneq B$. Then we may choose $\lambda$ such that it vanishes on $A$ but not on all of $B$, hence not on all of $\ov C$. But then $\lambda$ can't be identically zero on $C$ since otherwise $\lambda=0$ on $\ov C$ by continuity. Replacing $X$ by $Y\setminus V(\lambda)$ we may then assume $X$ to be affine according to \itememph{b}.
-        \item Let now $X$ be an affine variety. We saw in Algebra I (cf. \cite[Corollary~2.2.2]{alg1}) that there is a bijection
+        \item Let now $X$ be an affine variety. We saw in Algebra~I (cf. \cite[Corollary~2.2.2]{alg1}) that there is a bijection
         \begin{align}\lbl{eq:bijectiveCorrespondenceO(X)}
 	        \begin{split}
 		        \{\text{closed subsets }A\subseteq X\}&\isomorphism\left\{\text{ideals }I\subseteq \Oo(X)\text{ such that }I=\sqrt{I}\right\}\\
@@ -1611,135 +1611,184 @@ This enables us to derive the relation between dimension and transcendence degre
    proving the second assertion.
 \end{proof}
 \begin{defi}
-    The graded ring defined by a projective variety $Z = V(\pp) \subseteq \IP^n(k)$ is defined as $S_\bullet(Z) = k[X_0,\ldots, X_n]/\pp$. We would like to compare this to the structure sheaf, or of the line bundles $\Oo^\ell$ on $Z$. 
+    The graded ring defined by a projective variety $X= V(\pp) \subseteq \IP^n(k)$ is defined as $S_*(X) = k[X_0,\ldots, X_n]/\pp$. We would like to compare this to the structure sheaf, or of the line bundles $\Oo^\ell$ on $X$. 
 \end{defi}
 \begin{thm}\lbl{thm:gradedRing}
-    Let $Z$ be a projective algebraic variety. 
+    Let $X$ be a projective algebraic variety. 
     \begin{alphanumerate}    
       \item 
-        For any $f\in S_\bullet(Z)$ which is homogeneous of positive degree,
+        For any $f\in S_*(X)$ which is homogeneous of positive degree,
         \begin{align*}
-            (S_\bullet(Z)_f)_0 &\isomorphism \Oo(Z\setminus V(f))\\
+            (S_*(X)_f)_0 &\isomorphism \Oo(X\setminus V(f))\\
             \frac{g}{f^s} &\longmapsto \left([x_0,\ldots,x_n] \mapsto \frac{g(x_0,\ldots,x_n)}{f(x_0,\ldots, x_n)^s}\right)\;.
         \end{align*}
         Moreover
         \begin{align*}
-            (S_\bullet(Z)_f)_\ell &\isomorphism \Oo^\ell(Z\setminus V(f)) \\
+            (S_*(X)_f)_\ell &\isomorphism \Oo^\ell(X\setminus V(f)) \\
             \frac{g}{f^s} &\longmapsto \left([x_0,\ldots,x_n] \mapsto \frac{g(x_0,\ldots,x_n)}{f(x_0,\ldots, x_n)^s}\right)\;.
         \end{align*}
       \item 
-        For general $\ell$, $S_\ell(Z)\monomorphism \Oo^\ell(Z)$ and for every $f\in \Oo^\ell(Z)$ there is $m\in \IN$ such that $f\cdot S_m(Z)\subseteq S_{m+\ell}(Z) \subseteq \Oo^{m+\ell} (Z)$.
+        If $\lambda\in\Oo^\ell(X)$, then for sufficiently large $N$ we have $\lambda\cdot S_N(X)\subseteq S_{N+\ell}(X)\subseteq \Oo^{N+\ell}(X)$ where the product should be viewed as a product of homogeneous functions on $C(X)\setminus \{0\}$.
       \item 
-         We have $\Oo(Z) = k$ (given by the constant functions).
+         We have $k\simeq S_0(X)\simeq\Oo(X)$.
     \end{alphanumerate}
 \end{thm}
 \begin{rem*}
     \begin{alphanumerate}
         \item 
-            The grading is given by $(S_\bullet(Z)_f)_d =\left\{gf^{-s}\st g\in S_{d+s\cdot \delta}(Z)\right\}$ when $f\in S_\delta(Z)$. For $\delta>0$ we obtain a $\IZ$-graded ring.
+            The grading is given by $(S_*(X)_f)_d =\left\{gf^{-s}\st g\in S_{d+s\cdot \delta}(X)\right\}$ when $f\in S_\delta(X)$. For $\delta>0$ we obtain a $\IZ$-graded ring.
         \item 
-            When $f\in S_\delta(Z)$ has the form $f=\phi \mod \pp$ for $\phi \in R = k[X_0,\ldots, X_n]$ homogeneous of degree $\delta$, then $V(f)\coloneqq V(\phi)\cap Z$ does not depend on the choice of $\phi$.
+            When $f\in S_\delta(X)$ has the form $f=\phi \mod \pp$ for $\phi \in R = k[X_0,\ldots, X_n]$ homogeneous of degree $\delta$, then $V(f)\coloneqq V(\phi)\cap X$ does not depend on the choice of $\phi$.
     \end{alphanumerate}
 \end{rem*}
 \begin{proof}
     The proof of \itememph{a} is similar to what was done in the affine case, that is, in \cite[Proposition~2.2.2]{alg1}. As they were before, well-definedness and injectivity are easy again so surjectivity is what we need to worry about. 
     
-    Let $\eta\in \Oo^\ell(X\setminus V(f))$ (the case $\ell=0$ corresponds to the study of $\Oo(Z\setminus V(f))$), where $f\neq 0$ is homogeneous of degree $\delta >0$. By Definition~\reff{def:regularFunction}, every $z\in Z$ has an open neighbourhood $U_z$ such that there are polynomials $p_z,q_z\in R=k[X_0,\ldots, X_n]$ where $q_z$ is homogeneous of degree $b_z$, $p_z$ of degree $a_z = b_z+\ell$ and $V(q_z)\cap U_z = \emptyset$ and such that 
+    Let $\eta\in \Oo^\ell(X\setminus V(f))$ (the case $\ell=0$ corresponds to the study of $\Oo(X\setminus V(f))$), where $f\neq 0$ is homogeneous of degree $\delta >0$. By Definition~\reff{def:regularFunction}, every $x\in X$ has an open neighbourhood $U_x$ such that there are polynomials $p_x,q_x\in R=k[X_0,\ldots, X_n]$ where $q_x$ is homogeneous of degree $b_x$, $p_x$ of degree $a_x = b_x+\ell$ and $V(q_x)\cap U_x = \emptyset$ and such that 
     \begin{align*}
-        \eta(x_0,\ldots, x_n) = \frac{b_z(x_0,\ldots, x_n)}{q_z(x_0,\ldots, x_n)}
+        \eta(y_0,\ldots, y_n) = \frac{b_x(y_0,\ldots, y_n)}{q_x(y_0,\ldots, y_n)}
     \end{align*}
-    when $[x_0,\ldots, x_n]\in U_z\subseteq Z\setminus V(f)$. Replacing $p_z$ by $p_z\cdot r$, $q_z$ by $q_z\cdot r$, and $U_z$ by $U_z\setminus V(r) = Z\setminus V(r)$ with $r$ homogeneous and $\IP^n(k)\setminus U_z \subseteq V(r)$ and $z\not \in V(r)$, we may assume that $U_z\cap Z = Z\setminus V(q_z)\subseteq Z\setminus V(f)$. The topological space $\IP^n(k)$ (and thus also $Z$) being Noetherian, $Z\setminus V(f)$ is quasi-compact, hence is covered by finitely many $Z\setminus V(q_{z_i})$, $i=1,\ldots,N$. Let $p_i= p_{z_i}$ and $q_i = q_{z_i}$. Then 
+    when $[y_0,\ldots, y_n]\in U_x\subseteq X\setminus V(f)$. Replacing $p_x$ by $p_x\cdot r$, $q_x$ by $q_x\cdot r$, and $U_x$ by $U_x\setminus V(r) = X\setminus V(r)$ with $r$ homogeneous and $\IP^n(k)\setminus U_x \subseteq V(r)$ and $x\not \in V(r)$, we may assume that $U_x\cap X = X\setminus V(q_x)\subseteq X\setminus V(f)$. The topological space $\IP^n(k)$ (and thus also $X$) being Noetherian, $X\setminus V(f)$ is quasi-compact, hence is covered by finitely many $X\setminus V(q_{x_i})$, $i=1,\ldots,N$. Let $p_i= p_{x_i}$ and $q_i = q_{x_i}$. Then 
     \begin{align*}
-        V(\phi) \supseteq Z\cap \bigcap_{i=1}^n V(q_i) = V\big(\pp+ (q_1,\ldots, q_N)_R\big)
+        V(\phi) \supseteq X\cap \bigcap_{i=1}^n V(q_i) = V\big(\pp+ (q_1,\ldots, q_N)_R\big)
     \end{align*}
-    where $\pp$ is the homogeneous prime ideal corresponding to $Z$ and $\phi$ is some homogeneous representative of $f\in S_\bullet(Z) = R/\pp$. Since $\delta >0$, $\phi\in R_+$ and by the projective version of Hilbert's Nullstellensatz, 
+    where $\pp$ is the homogeneous prime ideal corresponding to $X$ and $\phi$ is some homogeneous representative of $f\in S_*(X) = R/\pp$. Since $\delta >0$, $\phi\in R_+$ and by the projective version of Hilbert's Nullstellensatz, 
     \begin{align*}
         \phi^s \in  \pp+(q_1,\ldots,q_N)_R\quad\text{ for some }s\geq 1\;.
     \end{align*}
-    In other words, there are $h_i\in R_{s\cdot \delta-b_i}$ such that $\phi^k\equiv \sum_{i=1}^N q_ih_i \mod\pp$. Let $h= f^{-s}\sum_{i=1}^N h_ip_i\in (S_\bullet(Z)_f)_\ell$. We have $(p_i q_j)(x) = (p_jq_i)(x)$ for all $x=[x_0,\ldots,x_n]\in Z$ because this holds as an equation in $\IA^{n+1}(k)$ on the dense open subset $C(Z)\setminus V(q_iq_j)$ of $C(Z)$ and thus by continuity on all of $C(Z)$. Then, for $[x_0,\ldots, x_n]\in Z\setminus V(f)$ 
+    In other words, there are $h_i\in R_{s\cdot \delta-b_i}$ such that $\phi^k\equiv \sum_{i=1}^N h_iq_i \mod\pp$. Let 
+    \begin{align*}
+    	h= f^{-s}\sum_{i=1}^N h_ip_i\in (S_*(X)_f)_\ell\;.
+    \end{align*}
+    We have $(p_i q_j)(x) = (p_jq_i)(x)$ for all $x=[x_0,\ldots,x_n]\in X$ because this holds as an equation in $\IA^{n+1}(k)$ on the dense open subset $C(X)\setminus V(q_iq_j)$ of $C(X)$ and thus by continuity on all of $C(X)$. Then, for $[x_0,\ldots, x_n]\in X\setminus V(f)$ 
     \begin{align*}
         (g_jh)(x_0,\ldots, x_n) = f^{-s}\sum_{i=1}^N (h_ip_iq_j)(x)= f^{-s}\sum_{i=1}^N (h_iq_ip_j)(x) = p_j(x)
     \end{align*}
-    and thus $\eta(x) = h(x)$ when $x\in Z\setminus V(q_j)$. As the sets cover $Z\setminus V(f)$, surjectivity follows.
+    and thus $\eta(x) = h(x)$ when $x\in X\setminus V(q_j)$. As the sets cover $X\setminus V(f)$, surjectivity follows.
     
-    For \itememph{b}, apply $f=X_i$. We thereby obtain the existence of $m_i\in\IN$ such that $\lambda X_i^{m_i}\in S_{m_i+\ell}(Z)$. If $m = \sum_{i=0}^n m_i$ the assertion follows as any monomial $X^\alpha$ of degree greater or equal to $m$ contains an exponent $\alpha_i\geq m_i$.
+    For \itememph{b}, apply \itememph{a} in the case $f=X_i$. We thereby obtain the existence of $N_i\in\IN$ such that $\lambda X_i^{N_i}\in S_{N_i+\ell}(X)$. If $N = \sum_{i=0}^n N_i$ the assertion follows as any monomial $X^\alpha=X_1^{\alpha_1}\cdots X_n^{\alpha_n}$ of degree greater or equal to $N$ contains an exponent $\alpha_i\geq N_i$.
     
-    To see \itememph{c}, let $\lambda\in \Oo(Z)$. By \itememph{b} there is $m\geq 0$ such that $\lambda\cdot S_m(Z) \subseteq S_m(X)$ in $\Oo^m(Z)$. Let $P = \prod_{j=1}^d (T-\lambda_j)^{e_j}$, $\lambda_j\in k$, all $e_j>0$, be the characteristic polynomial of $\lambda$ on $S_m(Z)$. Then $\theta(x)\cdot\prod_{j=1}^d (\lambda(x)-\lambda_j)^{e_j} = 0$ for all $\theta\in S_m(Z)$ and all $x\in C(Z)\setminus \{0\}$ by Caley-Hamiltion. As it is always possible to chose $\theta$ (for a given $x\in C(Z)\setminus\{0\}$) such that $\theta(x)=0$ we have $\prod_{j=1}^d (\lambda(x)-\lambda_j) = 0$, hence $C(Z)\setminus \{0\} = \bigcup_{j=1}^d (\lambda-\lambda_j)$. As $C(Z)\setminus \{0\}$ is irreducible, there is $j$ such that $C(Z)\setminus\{0\} = V(\lambda-\lambda_j)$. Then $\lambda=\lambda_j$ is a constant on $Z$. 
+    To see \itememph{c}, let $\lambda\in \Oo(X)$. By \itememph{b} there is $N\geq 0$ such that $\lambda\cdot S_N(X) \subseteq S_N(X)$ in $\Oo^N(X)$. Let $P = \prod_{j=1}^d (T-\lambda_j)^{e_j}$, with $\lambda_j\in k$ and all $e_j>0$, be the characteristic polynomial of $\lambda\cdot$ (the linear map given by multiplication with $\lambda$) on $S_N(X)$. Then 
+    \begin{align*}
+    	 \vartheta(x)\cdot\prod_{j=1}^d (\lambda(x)-\lambda_j)^{e_j} = 0
+    \end{align*}
+   for all $\vartheta\in S_N(X)$ and all $x\in C(X)\setminus \{0\}$ by Cayley-Hamilton. As it is always possible to choose $\vartheta\in S_N(X)$ such that $\vartheta(x)=0$ for a given $x\in C(X)\setminus\{0\}$ (indeed, if the $i\ordinalth$ coordinate of $x$ is non-zero, then $X_i^N\mod\pp$ will do) we have $\prod_{j=1}^d (\lambda(x)-\lambda_j) = 0$, hence 
+   \begin{align*}
+   	C(X)\setminus \{0\} = \bigcup_{j=1}^d (\lambda-\lambda_j)\;. 
+   \end{align*}
+   As $C(X)\setminus \{0\}$ is irreducible, there is $j$ such that $C(X)\setminus\{0\} = V(\lambda-\lambda_j)$. Then $\lambda=\lambda_j$ is constant on $X$. 
 \end{proof}
 \begin{cor}
-    When $\dim(Z) >0$ and $\ell<0$ we have $\Oo^\ell(Z) = 0$.
+    When $\dim(X) >0$ and $\ell<0$ we have $\Oo^\ell(X) = 0$.
 \end{cor}
 \begin{proof}
-    First consider $\ell=-1$. Let $\lambda\in \Oo^{-1}(Z)$. By Theorem \reff{thm:gradedRing}\itememph{c} there are constants $c_j$ such that $x_j\cdot \lambda(x) = c_j$ for $x\in C(Z)\setminus\{0\}$. If $\lambda\neq 0$ then not all $c_i$ are $0$. We have $x_ic_j = x_ix_j\lambda(x) = x_jc_i$ for $[x_0,\ldots, x_n]\in X$. If follows that the vectors $(x_0,\ldots, x_n)$ and $(c_0,\ldots, c_n)$ are proportional, $[x_0,\ldots, x_n] = [c_0,\ldots, c_n]$. Hence $X$ has only one point, a contradiction to our assumption. If $\ell<-1$ we use $X_i^{-1-\ell}\lambda\in \Oo^{-1}(Z)$ must vanish by the previous consideration. As for all $[x_0,\ldots,x_n]\in Z$ one $x_i$ must be non-zero, it follows that $\lambda = 0$.
+    First consider $\ell=-1$. Let $\lambda\in \Oo^{-1}(X)$. By Theorem \reff{thm:gradedRing}\itememph{c} there are constants $c_j$ such that $x_j \lambda(x) = c_j$ for $x\in C(X)\setminus\{0\}$ as all functions $X_j\lambda$ must be constant. If $\lambda\neq 0$ then not all $c_i$ are $0$. We have $x_ic_j = x_ix_j\lambda(x) = x_jc_i$ for $[x_0,\ldots, x_n]\in X$. If follows that the vectors $(x_0,\ldots, x_n)$ and $(c_0,\ldots, c_n)$ are proportional, $[x_0,\ldots, x_n] = [c_0,\ldots, c_n]$. Hence $X$ has only one point, a contradiction to our assumption. 
+    
+    If $\ell<-1$ we use $X_i^{-1-\ell}\lambda\in \Oo^{-1}(X)$ must vanish by the previous consideration. As for all $[x_0,\ldots,x_n]\in X$ one $x_i$ must be non-zero, it follows that $\lambda = 0$.
 \end{proof}
 \begin{rem*}
     \begin{alphanumerate}
         \item 
-            When $Z=\{x\}$ with $x_i\neq 0$ then $X_i^\ell$ gives a non-vanishing global section of $\Oo^\ell$, for arbitrary $\ell$. Thus $\dim(Z)>0$ is necessary in the corollary.
+            When $X=\{x\}$ with $x_i\neq 0$ then $X_i^\ell$ gives a non-vanishing global section of $\Oo^\ell$, for arbitrary $\ell$. Thus $\dim(X)>0$ is necessary in the corollary.
         \item 
             Theorem \reff{thm:gradedRing}\itememph{c} may be motivated from Liouville's Theorem from function theory.
         \item   
-            It is clear that $\lambda\in \Oo^\ell(Z)$ defines an element of $\Oo(C(Z)\setminus\{0\})$. If it extends to all of $C(Z)$ then it is given by a polynomial in $X_0,\ldots, X_n$ by results of Algebra I. It follows that $\lambda\in S_\lambda(X)$.
+            It is clear that $\lambda\in \Oo^\ell(X)$ defines an element of $\Oo(C(X)\setminus\{0\})$. If it extends to all of $C(X)$ then it is given by a polynomial in $X_0,\ldots, X_n$ by results of Algebra~I, cf. \cite[Proposition~2.2.2]{alg1}. In this case, it follows that $\lambda\in S_\ell(X)$.
             
-            One would expect that for sufficiently large $\ell$ $\lambda$ ``vanishes to a very high order'' at $0$, hence extends to an element of $\Oo(C(Z))$ and this turns out to be correct, as is shown on the 10th exercise sheet. It follows that $S_m(Z) \isomorphism \Oo^m(Z)$ when $m$ is sufficiently large.
+            One would expect that for $\ell$ sufficiently large, $\lambda$ ``vanishes to a very high order'' at $0$, hence extends to an element of $\Oo(C(X))$ and this turns out to be correct, as is shown on the 10$\ordinalth$ exercise sheet. It follows that $S_N(X) \isomorphism \Oo^N(X)$ when $N$ is sufficiently large.
         \item 
-            In general $\pp$ defines a sheaf of ideals $\Jj$ on $\IP^n(k)$ and $\Oo^\ell_X$ can be identified with $\Oo^\ell_{\IP^n(k)}/\Jj\Oo^\ell_{\IP^n}$ and one obtains a part of a long exact cohomology sequence
-            \begin{align*}
-                0&\morphism H^0(\Jj\Oo^\ell) \morphism H^0(\IP^n, \Oo^\ell) \morphism H^0(\IP^n, \Oo^\ell_X) \morphism[\delta] H^1(\IP^n, \Jj\Oo^\ell)\\
-                0 &\morphism \pp_\ell \morphism k[X_0,\ldots, X_n]_\ell \morphism \Oo^\ell(Z)
-            \end{align*}
+            In general, $\pp$ defines a sheaf of ideals $\Jj$ on $\IP^n=\IP^n(k)$ and $\Oo^\ell_X$ can be identified with $\Oo^\ell_{\IP}/\Jj\Oo^\ell_{\IP^n}$ and one obtains a part of a long exact cohomology sequence
+            \begin{diagram*}
+            	\node[ob] (0o) at (0,1.5) {$0$};
+            	\node[ob]  (H0J) [right=0.75cm of 0o] {$H^0\left(\IP^n,\Jj\Oo_{\IP^n}^\ell\right)$};
+            	\node[ob]  (H0O) [right=0.75cm of H0J] {$H^0\left(\IP^n,\Oo_{\IP^n}^\ell\right)$};
+            	\node[ob]  (H0OX) [right=0.75cm of H0O] {$H^0\left(\IP^n,\Oo_X^\ell\right)$};
+            	\node[ob]  (H1J) [right=0.75cm of H0OX]  {$H^1\left(\IP^n,\Jj\Oo_{\IP^n}^\ell\right)$};
+            	\node[ob]  (0u) at (0,0) {$0$};
+            	\node[ob]  (p) at (0u -| H0J) {$\pp_\ell$};
+            	\node[ob]  (kX) at (0u -| H0O) {$k[X_0,\ldots,X_n]_\ell$};
+            	\node[ob]  (Ol) at (0u -| H0OX) {$\Oo_X^\ell(X)$};
+            	\scriptsize
+            	\draw[->] (0o) -- (H0J);
+            	\draw[->] (H0J) -- (H0O);
+            	\draw[->] (H0O) -- (H0OX);
+            	\draw[->] (H0OX) -- (H1J) node[pos=0.5, above] {$\delta$};
+            	\draw[->] (0u) -- (p);
+            	\draw[->] (p) -- (kX);
+            	\draw[->] (kX) -- (Ol);
+            	\draw[->] (H0J) -- (p) node[pos=0.5, sloped, above=-0.25ex] {$\sim$};
+            	\draw[->] (H0O) -- (kX) node[pos=0.5, sloped, above=-0.25ex] {$\sim$};
+            	\draw[->] (H0OX) -- (Ol) node[pos=0.5, sloped, above=-0.25ex] {$\sim$};
+            \end{diagram*}
             where the right end can be shown to be finite-dimensional and to vanish when $\ell$ is sufficiently large.
         \item 
-            When $n+1>1$ it follows that $\Oo(k^{n+1}\setminus\{0\}) \simeq \Oo(k^{n+1})$ as shown in Algebra I. It follows that $\Oo^\ell(\IP^n(k)) \simeq (k[X_0,\ldots, X_n])_\ell$. Another argument is that when $\lambda\in \Oo^\ell(\IP^n(k))$ there there is $m\in \IN$ such that $X_i^m\lambda = f_i\in R= k[X_0,\ldots, X_n]$. We have $X_i^mf_j = X_j^mf_i$. It follows that $f_i$ is divisible by $X_i^m$ (taking $j\neq i$). The same argument only works for general $Z$ if $S_\bullet(Z)$ is factorial, which is not often the case. 
+            When $n+1>1$ it follows that $\Oo(k^{n+1}\setminus\{0\}) \simeq \Oo(k^{n+1})$ as shown in Algebra~I, cf. \cite[Proposition~2.2.5]{alg1}. Then $\Oo^\ell\big(\IP^n(k)\big) \simeq k[X_0,\ldots, X_n]_\ell$. Another argument to see this is that when $\lambda\in \Oo^\ell(\IP^n(k))$ there there is $N\in \IN$ such that $X_i^N\lambda = f_i\in R= k[X_0,\ldots, X_n]$ for $i=0,\ldots,n$. We have $X_i^Nf_j = X_j^Nf_i$. It follows that $f_i$ is divisible by $X_i^N$ (taking $j\neq i$, that's what we need $n\geq 1$ for), then $\lambda\in R$ (and thus $\in R_\ell$). The same argument only works for general $X$ if $S_*(X)$ is factorial, which is usually not the case. 
         \item
-            It can be shown that $\Oo^\ell(Z)$ is finite-dimensional when $Z\subseteq \IP^n(k)$ is closed (and irreducible). 
+            It can be shown that $\Oo_X^\ell(X)$ is finite-dimensional over $k$ when $X\subseteq \IP^n(k)$ is closed (and irreducible). 
     \end{alphanumerate}
 \end{rem*}
 \begin{rem*}
-    When $Z=\{x\}$, $\dim(\Oo^\ell(Z)) = 1$ is given by a polynomial of degree $0$ in $\ell$. 
+    When $X=\{x\}$, $\dim_k \Oo_X^\ell(X) = 1$ is given by a polynomial of degree $0$ in $\ell$. 
     \begin{align*}
-        \Oo^\ell(\IP^1(k)) = \bigoplus_{i=0}^\ell k\cdot(X_0^iX_1^{\ell-1})
+        \Oo^\ell\big(\IP^1(k)\big) = k[X_0,X_1]_\ell=\bigoplus_{i=0}^\ell \left(k\cdot X_0^iX_1^{\ell-1}\right)
     \end{align*}
-    has dimension $\ell+1$ when $\ell\geq -1$ hence is given by by a polynomial of degree $1$ in $\ell$. Is $\dim(\Oo^\ell(X))$ given by a polynomial of degree $\dim(X)$ when $\ell \gge 0$? This brings us to Hilbert polynomials.  $\sum_{i=0}^{\dim (X)} H^i(X,\Oo^\ell) = P(\ell)$ for all $\ell$.
+    has dimension $\ell+1$ over$k$ when $\ell\geq -1$, hence the dimension is given by by a polynomial of degree $1$ in $\ell$. Is $\dim_k\big(\Oo_X^\ell(X)\big)$ always given by a polynomial of degree $\dim(X)$ when $\ell \gge 0$? The answer is \emph{yes} and this brings us to \emph{Hilbert polynomials}.
+    
+    It may be remarked that the seemingly artificial condition $\ell\gge0$ can be removed (thus unfolding the deeper truth behind this) considering cohomology. There is always a polynomial $P$ such that 
+    \begin{align*}
+	    \sum_{i=0}^{\dim (X)} \dim_kH^i(X,\Oo_X^\ell) = P(\ell)\quad\text{for all }\ell\;.
+    \end{align*}
 \end{rem*}
 
 
 
 \chapter{Applications of the Hilbert polynomial}
 
-\begin{lem}
-    For a field $k$ the dimension of the space of homogeneous polynomials in degree $d$ in $\ell$ variables is given by $\binom{n+d-1}{n-1}$.
+\begin{lem}\lbl{lem:homogeneousPolynomials}
+    For a field $k$ the dimension of the space of homogeneous polynomials of degree $d$ in $n$ variables is given by $\binom{n+d-1}{n-1}$.
 \end{lem}
 \begin{cor}
+	For $\ell\geq -m$,
     \begin{align*}
-        \dim_k(\Oo^\ell(\IP^m)) = \binom{m+\ell}{m} = \frac{(m+\ell)\cdot\ldots\cdot (1+\ell)}{m!}
+        \dim_k\Oo_{\IP^m(k)}^\ell\big(\IP^m(k)\big) = \binom{m+\ell}{m} = \frac{(m+\ell)\cdots (1+\ell)}{m!}\;.
     \end{align*}
-    when $\ell\geq m$.
 \end{cor}
-\begin{proof}
-    Putting $n-1$ separators into $\IZ\cap [0,n+d-1)$ produces $n$ intervals of integers of total cardinality $d$ and sending such a set of intervals to $\prod_{i=1}^n X_i^{\alpha_i}$ is a bijection between the set of sets of separators an the monomials of degree $d$ in $n$ variables. Thus their number is $\binom{n+d-1}{n-1}$.
+\begin{rem*}
+	Again, there is a deeper cohomological truth behind this, and that deeper truth is
+	\begin{align*}
+		\dim_kH^p\left(\IP^m(k),\Oo_{\IP^m(k)}^\ell\right)=
+		\begin{cases}
+			\text{the above (or $0$ for $\ell<0$)} & \text{if }p=0\\
+			0 & \text{if }0<p<m\\
+			\dim_kH^0\left(\IP^m(k),\Oo_{\IP^m(k)}^{-1-m-\ell}\right) & \text{if }p=m
+		\end{cases}\;.
+	\end{align*}
+\end{rem*}
+\begin{proof}[Proof of Lemma~\reff{lem:homogeneousPolynomials}]
+    Putting $n-1$ separators into $\{1,2,\ldots,n+d-1\}$ produces $n$ intervals of integers of lengths $\alpha_1,\ldots,\alpha_n$ (possibly $0$) such that $\alpha_1+\ldots+\alpha_n=d$. Sending such a set of intervals to $\prod_{i=1}^n X_i^{\alpha_i}$ is a bijection between the set of sets of separators an the monomials of degree $d$ in $n$ variables. Thus their number is $\binom{n+d-1}{n-1}$.
 \end{proof}
 \begin{proof}[Another proof]
-    Induction on $n$, the case $n=1$ being trivial. Let $n>1$ and the assertion be true for in smaller than $n$ variables. For $n$ variables we use induction on $d$. When $d=0$, both sides equal $1$. Otherwise a monomial of degree $d$ in $n$ variables has the form $X^\alpha = X^\beta X_n$ or $\alpha_n 0$ in which case it is a monomial in $n-1$ variables. Thus their number is 
+    Induction on $n$, the case $n=1$ being trivial. Let $n>1$ and the assertion be true for less than $n$ variables. For $n$ variables we use induction on $d$. When $d=0$, both sides equal $1$. Otherwise a monomial of degree $d$ in $n$ variables has the form $X^\alpha = X^\beta X_n$ or $\alpha_n= 0$ in which case it is a monomial in $n-1$ variables. Thus their number is 
     \begin{align*}
-         \binom{n+d-2}{n-1} +\binom{n+d-2}{n-2} = \binom{n+d-1}{n-1}\;.
+         \binom{n+d-2}{n-1} +\binom{n+d-2}{n-2} = \binom{n+d-1}{n-1}\;,
     \end{align*}
+    as claimed
 \end{proof}
-%[sic!] @definition without number
-\begin{defi*}[Graded module]\lbl{def:gradedModule}
-    A \defemph{graded module} $M$ over a graded ring $R$ is an $R$-module $M$ with a decomposition $M=\bigoplus_{d=-\infty}^\infty M_d$ of its additive group such that $R_k\cdot M_\ell \subseteq M_{k+\ell}$. We call $M$ finitely generated (respectively Noetherian) if it is finitely generated (respectively Noetherian) as an ungraded $R$-module. 
-\end{defi*}
-\begin{rem*}
+%[sic!] @definition without number %but that's retarded, I am going to change that
+\begin{defi}[Graded module]\lbl{def:gradedModule}
+    A \defemph{graded module} $M$ over a graded ring $R$ is an $R$-module $M$ with a decomposition $M=\bigoplus_{d=-\infty}^\infty M_d$ of its additive group such that $R_k\cdot M_\ell \subseteq M_{k+\ell}$. We call $M$ \emph{finitely generated} (respectively \emph{Noetherian}) if it is finitely generated (respectively Noetherian) as an ungraded $R$-module. 
+\end{defi}
+\begin{rem}
     If $M$ is finitely generated, it may be generated by finitely many homogeneous elements.
-\end{rem*}
-\begin{defi*}[Graded submodule]\lbl{def:gradedSubmodule}
+\end{rem}
+\begin{defi}[Graded submodule]\lbl{def:gradedSubmodule}
     \begin{alphanumerate}
         \item
-            If $N\subseteq M$ is a graded submodule of a graded $R$-module $M$ (i.e. for $n\in N$, the decomposition $n=\sum_{i=-\infty}^\infty h_i$ into elements of $M$ is a decomposition into elements of $N$.), then $M//N$ is the graded quotient with the grading $(M/N)_d) = M_d/N_d$.
+            If $N\subseteq M$ is a \defemph{graded submodule} of a graded $R$-module $M$ (i.e. for $n\in N$, the decomposition $n=\sum_{i=-\infty}^\infty h_i$ into homogeneous elements of $M$ is a decomposition into elements of $N$), then $M/N$ is the \defemph{graded quotient} with the grading $(M/N)_d = M_d/N_d$.
         \item   
-            $M[k]_\ell \coloneqq M_{k+l}$, $M[k]$ is called the \emph{shift} of $M$ by $k$.
+            The graded $R$-module $M[k]$ with $M[k]_\ell \coloneqq M_{k+l}$ is called the \emph{shift} of $M$ by $k$.
     \end{alphanumerate}
-\end{defi*}
+\end{defi}
 
 \section{The Hilbert polynomial of a module over a graded ring}
 
@@ -1754,18 +1803,30 @@ This enables us to derive the relation between dimension and transcendence degre
 
 \begin{rem}
     \begin{alphanumerate}
+    \item \lbl{rem:ArtinSchreier}
+        By a theorem of Artin-Schreier, the number $\ell$ is determined uniquely by $M$, as are the isomorphism classes of $M_i/M_{i-1}$ up to permutation. We did not prove this in the lecture, but the proof is not too hard so it shall be sketched here.
+        
+        Let $\{0\}=M_0\subsetneq \ldots\subsetneq M_\ell=M$ and $\{0\}=N_0\subsetneq\ldots\subsetneq N_k=M$ be two filtrations with simple quotients. We do induction on $\ell+k$. The case $\ell+k=0$ is trivial. Now let w.l.o.g. $\ell\geq1$ and choose  a minimal $m$ such that $M_1\subseteq N_m$. Clearly $m\geq 1$, and using that $M_1\not\subseteq N_{m-1}$ and that $M_1$ is simple as well as $N_m/N_{m-1}$ we deduce that $N_{m-1}+M_1=N_m$ and $N_{m-1}\cap M_1=\{0\}$. Then $N_m\simeq N_{m-1}\oplus M_1$. In particular, $N_m/N_{m-1}\simeq M_1$.
+        
+        Now replace $M$ by $M'=M/M_1$, each $M_i$ for $i=1,\ldots,\ell$ by $M_{i-1}'=M_i/M_1$, each $N_j$ for $j= m+1,\ldots,k$ by $N_{j-1}'=N_j/M_1$ and finally each $N_j$ for $j=0,\ldots, m-1$ by $N_j'=(N_j+M_1)/M_1\simeq (N_j\oplus M_1)/M_1\simeq N_j$. Then $\{0\}=M_0'\subsetneq\ldots \subsetneq M_{\ell-1}'=M'$ and $\{0\}=N_0'\subsetneq \ldots\subsetneq N_{k-1}'=M'$ are filtrations of $M'$ with the same quotients as the original filtrations of $M$ except for a quotient isomorphic to $M_1$ we deleted from both filtrations. Induction does the rest.\qed
     \item 
-        By a theorem of Artin-Schreier, the number $\ell$ is determined uniquely by $M$, as are the isomorphism classes of $M_i/M_{i-1}$ up to permutation.
-    \item 
-        The length of a $k$-vector space is its dimension. 
+        The length of a $k$-vector space is its dimension. Indeed, as the quotients mustn't be $0$, the dimension must strictly increase in each step of a filtration with simple quotients. Conversely, if the quotients are to be simple, it can only increase by $1$ in each step.
     \item
-        The length of $\IZ/N\IZ$ is the number of prime factors of $N$ with respect to their multiplicity.
+        The length of $\IZ/N\IZ$ is the number of prime factors of $N$ with respect to their multiplicity. Indeed, if $N=p_1\cdots p_n$ is its decomposition into (not necessarily distinct) prime factors, then
+        \begin{align*}
+        	\{0\}= \left(p_1\cdots p_n\IZ\right)/N\IZ\subsetneq \left(p_1\cdots p_{n-1}\IZ\right)/N\IZ\subsetneq\ldots\subsetneq p_1\IZ/N\IZ\subsetneq\IZ/N\IZ
+        \end{align*}
+        is a filtration with simple quotients, hence the claim follows from Artin-Schreier.
     \item 
         The zero-module has length 0.
     \item 
         Any submodule or quotient module of an $R$-module $M$ of finite length has again finite length, and for any strictly increasing chain $M_0\subsetneq M_1\subsetneq\ldots\subsetneq M_d$ of submodules of $M$, the sequence $\ell(M_i)$ is strictly increasing. Thus $d\leq \ell(M)$, and any module of finite length is Noetherian.
     \item 
-        If $0\morphism M' \morphism M\morphism M'' \morphism 0$ is a short exact sequence ten $\ell(M) = \ell(M') +\ell(M'')$.
+        If $0\morphism M' \morphism[\alpha] M\morphism[\beta] M'' \morphism 0$ is a short exact sequence then $\ell(M) = \ell(M') +\ell(M'')$. This is an easy consequence of Artin-Schreier. Indeed, if $\{0\}=M_0'\subsetneq\ldots M_{\ell'}'=M'$ and $\{0\}=M_0''\subsetneq\ldots\subsetneq M_{\ell''}''=M''$ are filtrations of $M'$ and $M''$ with simple quotients $M_i'/M_{i-1}'$ and $M_j''/M_{j-1}''$, then 
+        \begin{align*}
+        	\{0\}=\alpha(M_0')\subsetneq\ldots\subsetneq \alpha(M_{\ell'}')=\beta^{-1}(M_0'')\subsetneq\ldots\subsetneq \beta^{-1}(M_{\ell''}'')=M
+        \end{align*}
+        is a filtration of $M$ of length $\ell'+\ell''$ with simple quotients.
     \end{alphanumerate}
 \end{rem}
 \begin{prop}[Akizuki-Hopkins] \lbl{prop:Akizuki-Hopkins}
@@ -1783,53 +1844,68 @@ This enables us to derive the relation between dimension and transcendence degre
         In any finitely generated $R$-module $M$, there is not infinite strictly decreasing infinite chain $M_0\supsetneq M_1\supsetneq \ldots$ of submodules.
     \end{alphanumerate}
 \end{prop}
+We postpone the quite lengthy proof of Proposition~\reff{prop:Akizuki-Hopkins} to after Proposition~\reff{prop:filtrationByPrimeIdeals}.
 \begin{prop}
     \begin{alphanumerate}
     \item \lbl{prop:filtrationByPrimeIdeals}
         Let $R$ be a Noetherian ring, $M$ a finitely generated $R$-module. Then there is a finite filtration $\{0\} = M_0\subsetneq M_1\subsetneq\ldots\subsetneq M_k = M$ such that $M_i/M_{i-1} \simeq R/\pp_i$ for some $\pp_i\in \Spec R$.
     \item  
-        If $R$ and $M$ are graded ($R$ being $\IN$-graded), we may chose this filtration in such a way that the $M_i$ are graded submodules and the $\pp_i$ homogeneous and $M_i/M_{i-1} \simeq (R/\pp_i)[t_i]$, where $t_i\in \IN$ and the isomorphism respects the grading.
+        If $R$ and $M$ are graded ($R$ being $\IN$-graded), we may chose this filtration in such a way that the $M_i$ are graded submodules and the $\pp_i$ homogeneous and $M_i/M_{i-1} \simeq (R/\pp_i)[t_i]$ (this is the shift from Definition~\reff{def:gradedSubmodule} and not some polynomial ring thingy), where $t_i\in \IN$ and the isomorphism respects the grading.
     \end{alphanumerate}
 \end{prop}
-\begin{lem}
-    Let $M\neq\{0\}$ be a module over a Noetherian ring,  then it contains a submodule isomorphic to $R/\pp$ for some $\pp\in \Spec R$.
+\begin{lem}\lbl{lem:submoduleRp}
+    Let $M\neq\{0\}$ be a module over a Noetherian ring $R$,  then it contains a submodule isomorphic to $R/\pp$ for some $\pp\in \Spec R$. If $M$ and $R$ are graded, then $\pp$ may be chosen homogeneous and such that the isomorphism respects the grading up to shift.
 \end{lem}
 \begin{proof}
-    The set of ideals $\left\{\Ann_R(m) = \left\{r\in R\st r\cdot m = 0\right\} \st m\in M\setminus \{0\}\right\}$ in $R$ has a $\subseteq$-maximal element, as $R$ is Noetherian. Let $m\neq 0$ and $\Ann_r(m) = \pp$ is maximal. Then the submodule $R\cdot m \subseteq M$ is isomorphic to $R/\pp$. We have $1\not\in \pp$ as $m\neq 0$. Let $ab\in \pp$. If $a\not\in\pp$, then $a\cdot m \neq 0$ and $\Ann_R(a\cdot m)\supsetneq \Ann_R(m)$, and equality mus occur by our choice of $m$. Thus $b\in \Ann_R(a\cdot m)$ implies $b\in \Ann_R(m)$, and $\pp$ is prime.
+    The set of ideals $\left\{\Ann_R(m) = \left\{r\in R\st r\cdot m = 0\right\} \st m\in M\setminus \{0\}\right\}$ in $R$ has a $\subseteq$-maximal element, as $R$ is Noetherian. Let $m\neq 0$ such that $\Ann_R(m) = \pp$ is $\subseteq$-maximal in the above set of ideals. Then the submodule $R\cdot m \subseteq M$ is isomorphic to $R/\pp$. We have $1\not\in \pp$ as $m\neq 0$. Let $ab\in \pp$. If $a\not\in\pp$, then $a\cdot m \neq 0$ and $\Ann_R(a\cdot m)\supseteq \Ann_R(m)$, and equality must occur by our choice of $m$. Thus $b\in \Ann_R(a\cdot m)$ implies $b\in \Ann_R(m)$, and $\pp$ is prime.
+    
+    In the graded case, consider $\left\{\Ann_R(m)\st m\in M\setminus\{0\}\text{ homogeneous}\right\}$, then the ideals of this set are automatically homogeneous and thanks to Proposition~\reff{prop:gradedNoetherian}, the arguments for the ungraded can be recycled.
 \end{proof}
 \begin{proof}[Proof of Proposition~\reff{prop:filtrationByPrimeIdeals}]
-    By our assumption, $M$ is Noetherian. Hence the set $\MM$ of submodules of $M$ with such a filtration has an $\subseteq$-maximal element $M'$. If $M'\neq M$ we could find $Q\subseteq M/M'$ which is isomorphic to $R/\pp$. The the preimages of $Q$ in $M$ has a filtration of the desired kind.
+    Part \itememph{a}. By our assumption, $M$ is Noetherian. Hence the set $\MM$ of submodules of $M$ with such a filtration has an $\subseteq$-maximal element $M'$. If $M'\neq M$ we could find $Q\subseteq M/M'$ which is isomorphic to $R/\pp$. The the preimages of $Q$ in $M$ has a filtration of the desired kind.
+    
+    The graded version \itememph{b} follows in the exact same way from the graded case of Lemma~\reff{lem:submoduleRp}.
 \end{proof}
 \begin{rem*}
     \begin{alphanumerate}
     \item 
         Note that $R/\pp$ is simple iff $\pp$ is maximal. Otherwise $\ell(R/\pp) = \infty$.
     \item 
-        In particular, $M$ in Proposition~\reff{prop:filtrationByPrimeIdeals} is of finite length iff the $\pp_i$ are maximal. In this case, the length of the filtration equals $\ell(M)$ and the $\pp_i$ are unique up to permutation. Otherwise, the length of the filtration may be non-unique, e.g. $\{0\}\subsetneq \IZ$ or $\{0\}\subsetneq 2\IZ \subsetneq \IZ$ when $M=R=\IZ$.
+        In particular, $M$ in Proposition~\reff{prop:filtrationByPrimeIdeals} is of finite length iff the $\pp_i$ are maximal. In this case, the length of the filtration equals $\ell(M)$ and the $R/\pp_i$ are unique up to permutation and isomorphism. Otherwise, the length of the filtration may be non-unique, e.g. $\{0\}\subsetneq \IZ$ or $\{0\}\subsetneq 2\IZ \subsetneq \IZ$ when $M=R=\IZ$.
     \end{alphanumerate}
 \end{rem*}
 \begin{proof}[Proof of Proposition~\reff{prop:Akizuki-Hopkins}]
-    Given the Krull dimension is $0$, the prime ideals are maximal an so $R/\pp_i$ is simple and has finite length by Proposition~\reff{prop:filtrationByPrimeIdeals}.
+    Assume \itememph{a} and consider a filtration of the finitely generated $R$-module $R$ as in Proposition~\reff{prop:filtrationByPrimeIdeals}. Given the Krull dimension is $0$, the prime ideals $\pp_i$ occuring there are maximal and so $R/\pp_i$ is simple and thus $R$ has finite length by Artin-Schreier. This shows that \itememph{a} $\Rightarrow$ \itememph{b}.
     
-    Let $R$ be of finite length as an $R$-module. We use induction on the number of generators of $M$ to prove \itememph{d}. If $M$ is generated by one element, it is isomorphic to $R/I$ and its length is smaller or equal to $\ell(R)$. If it is generated by $m_1,\ldots, m_k$ and the assertion is known for $k-1$ generators, then, if $M'\subseteq M$ denotes the submodule generated by $m_1,\ldots, m_{k-1}$, $\ell(M') < \infty$ by the induction assumption and $M/M'$ is generated by the image of $m_k$, hence has finite length by the previous consideration. 
+    Let $R$ be of finite length as an $R$-module, i.e. \itememph{b} holds. We use induction on the minimal number $k$ of generators of $M$ to prove \itememph{d}. If $k=1$, $M$ is isomorphic to $R/I$ for some ideal $I\subseteq R$ and its length is smaller or equal to $\ell(R)$. Now let $k\geq 2$. If $M$ is generated by $m_1,\ldots, m_k$ and the assertion is known for $k-1$ generators, then, if $M'\subseteq M$ denotes the submodule generated by $m_1,\ldots, m_{k-1}$, we have $\ell(M') < \infty$ by the induction assumption and $M/M'$ is generated by the image of $m_k$, hence has finite length by the previous consideration. By Remark~\reff{rem:ArtinSchreier}\itememph{f}, $\ell(M)=\ell(M')+\ell(M/M')$ is finite.
     
-    The length of the members of such sequence as in \itememph{e} form a strictly decreasing sequence. Hence the length of the sequence is bounded by $\ell(M)$ assuming that $M$ is of finite length, which is given by \itememph{d}.
+    To show \itememph{d} $\Rightarrow$ \itememph{e}, note that the length of the members of such sequence as in \itememph{e} form a strictly decreasing sequence. Hence the length of the sequence is bounded by $\ell(M)$ assuming that $M$ is of finite length, which is given by \itememph{d}.
     
     Taking $M=R$, \itememph{c} is a special case of \itememph{e}.
     
     To close the circle we have to proof that \itememph{c} implies \itememph{a}. For this we will not need the famous prime avoidance lemma, but it is pretty neat so I will let it stand here:
     
     \begin{lem}[Prime avoidance]\lbl{lem:primeAvoidance}
-        Let $\pp_1,\ldots, \pp_r$ be ideals of a ring $R$ such that there at most two among them who are not prime. If $I$ is an ideal of $R$ not contained in an $\pp_i$, then it is also not contained in the union of all the $\pp_i$. Professor Franke does not want to proof this here and recommends the appropriate chapter in a book by Eisenbud. You can also find a proof by Franke himself in \cite[Lemma~2.5.1]{alg1}.
+        Let $\pp_1,\ldots, \pp_r$ be ideals of a ring $R$ such that there at most two among them who are not prime. If $I$ is an ideal of $R$ not contained in an $\pp_i$, then it is also not contained in the union of all the $\pp_i$. 
     \end{lem}
+    Professor Franke does not want to prove this here and recommends the appropriate chapter in a book by Eisenbud. You can also find a proof by Franke himself in \cite[Lemma~2.5.1]{alg1}.
     
-    First we prove that any prime ideal is maximal, i.e. the Krull dimension is $0$. If $x\in R/\pp$ and $x\neq 0$, $x^n\cdot(R/\pp)$ would form a strictly descending chain of ideals in $R/\pp$ if $x$ failed to be a unit, so any $x\in R/\pp\setminus\{0\}$ is a unit. If $R$ had infinitely many prime ideals (in other words, infinitely many maximal ideals), there would be a sequence $(\mm_i)_{i=1}^\infty$ of maximal ideals an the sequence
+    Back to \itememph{c} $\Rightarrow$ \itememph{a}. First we prove that any prime ideal is maximal, i.e. the Krull dimension is $0$. If $x\in R/\pp$ and $x\neq 0$, $x^n\cdot(R/\pp)$ would form a strictly descending chain of ideals in the domain $R/\pp$ if $x$ failed to be a unit, so any $x\in R/\pp\setminus\{0\}$ is a unit, hence $R/\pp$ a field and $\pp$ thus maximal. 
+    
+    If $R$ had infinitely many prime ideals (in other words, infinitely many maximal ideals), there would be a sequence $\mm_1,\mm_2,\ldots$ of distinct maximal ideals and the sequence
     \begin{align*}
         \mm_1 \supsetneq \mm_1\cap\mm_2\supsetneq \ldots\supsetneq \bigcap_{i=1}^k \mm_i \supsetneq \ldots
     \end{align*}
-    is strictly descending, a contradiction to \itememph{c}. ($f_i\in\mm_i\setminus\mm_{k+1}$, $\prod_{i=1}^k f_i \in \bigcap_{i=1}^k \mm_i$ but not in $\mm_{k+1}$).
+    is strictly descending, a contradiction to \itememph{c}. Indeed, by maximality and distinctness, no $\mm_{k+1}$ can be contained in $\bigcup_{i=1}^k\mm_i$.
     
-    Now assume there are only finitely many prime ideals $\mm_1, \ldots,\mm_k$ distinct prime ideals of $R$. Then $\nil(R) = \bigcap_{i=1}^k \mm_i$, the sequence $\nil(R)^i \supsetneq \ldots\supsetneq \nil(R)^{i+1}$ mus terminate at some point by \itememph{c}. Thus, let $n\in\IN$ such that $\nil(R)^n = \nil(R)^i$ for all $i\geq n$. Let $N = \nil(R)^n$. If $N\neq 0$, the annihilator $K$ of $N$ would be an ideal of $R$ strictly contained in $R$. From \itememph{c} and the axiom of choice it follows that any set of ideals of $R$ contains a $\subseteq$-minimal element. Thus, there is an ideal $K\subsetneq I\subseteq R$ minimal among all such ideals. If $x\in I\setminus K$ we have $I= K+x\cdot R$ by the minimality of $I$. We have $K\subseteq x\cdot \nil(R) + K \subseteq I$, hence $x\cdot  \nil(R) + K = K$ or $x\cdot \nil(R) +K = I$ by the minimality of $I$. In the second case $(I/K) = \nil(R)\cdot(I/K)$ and $I=K$ by \NAK, a contradiction to our choice of $I$. In the first case, $x\cdot \nil(R) \subseteq K$, hence $x\cdot \nil(R)^{n+1}\subset K\cdot N = 0$. But $\nil(R)^{n+1}= \nil(R)^n = N$, hence $x\in K$. A contradiction to our choice of $I$. Now $\nil(R)^i/\nil(R)^{i+1}$ has a filtration $\nil(R)^{i+1}(\pp_1\cap \ldots\cap \pp_k)$ with simple quotients, hence finite length.
+    Now assume there are only finitely many prime ideals $\mm_1, \ldots,\mm_k$ distinct prime ideals of $R$. Then the nilradical $\nil(R) = \bigcap_{i=1}^k \mm_i=\rad(R)$ equals the Jacobson radical, the sequence 
+    \begin{align*}
+    	\nil(R)\supsetneq\nil(R)^2\subsetneq \ldots\supsetneq \nil(R)^i\supsetneq\ldots 
+    \end{align*}
+    must terminate at some point by \itememph{c}. Thus, let $n\in\IN$ such that $\nil(R)^n = \nil(R)^i$ for all $i\geq n$. Let $N = \nil(R)^n$. We would like to show $N=0$. If $N\neq 0$, the annihilator $K$ of $N$ would be an ideal of $R$ strictly contained in $R$. From \itememph{c} and Zorn's lemma it follows that any set of ideals of $R$ contains a $\subseteq$-minimal element. Thus, there is an ideal $K\subsetneq I\subseteq R$ minimal among all such ideals. If $x\in I\setminus K$ we have $I= K+x\cdot R$ by the minimality of $I$. We have $K\subseteq x\cdot \nil(R) + K \subseteq I$, hence $x\cdot  \nil(R) + K = K$ or $x\cdot \nil(R) +K = I$ by the minimality of $I$. In the second case $(I/K) = \nil(R)\cdot(I/K)$ and $I=K$ by \NAK, a contradiction to our choice of $I$. In the first case, $x\cdot \nil(R) \subseteq K$, hence $x\cdot \nil(R)^{n+1}\subseteq K\cdot N = 0$. But $\nil(R)^{n+1}= \nil(R)^n = N$, hence $x\in K$, a contradiction to our choice of $I$. 
+    
+    The proof will be completed in the next lecture.    
+    %Now $\nil(R)^i/\nil(R)^{i+1}$ has a filtration $\nil(R)^{i+1}(\pp_1\cap \ldots\cap \pp_k)$ with simple quotients, hence finite length. %This doesn't make any sense.
 \end{proof}
 
 
@@ -1854,7 +1930,7 @@ This enables us to derive the relation between dimension and transcendence degre
 \setcounter{thm}{0}
 \renewcommand*{\thethm}{\Alph{thm}}
 \section{Introduction to Krull dimension and all that}
-Professor Franke recapitulated on some topics of his previous lecture, Algebra I (of which detailed lecture notes may be found in \cite{alg1}).
+Professor Franke recapitulated on some topics of his previous lecture, Algebra~I (of which detailed lecture notes may be found in \cite{alg1}).
 \begin{defi}[{\cite[Definition~2.1.2]{alg1}}]
 	A topological space $X$ is called \defemph{quasi-compact} if every open cover $X = \bigcup_{\lambda\in\Lambda} U_\lambda$ admits a finite subcover.
 	
@@ -1973,7 +2049,7 @@ If $X$ is irreducible, let $K(X)$ be the quotient field of $\Oo(X)$. This is cal
 	\end{align*}
 	Moreover, $X$ is catenary and equality always holds in \eqreff{eq:codimIneq2}, i.e. $\dim (Y) +\codim(Y,X) = \dim (X)$ whenever $Y\subseteq X$ is closed, irreducible.
 \end{thm}
-One may check that locally closed sets are precisely the open subsets of closed sets. In particular, $X$ from the above theorem is a quasi-affine variety, as we used to call it in Algebra I.
+One may check that locally closed sets are precisely the open subsets of closed sets. In particular, $X$ from the above theorem is a quasi-affine variety, as we used to call it in Algebra~I.
 \begin{rem}
 	It is easy to see that $\dim k^n \geq n$ since we have the chain
 	\begin{align*}
