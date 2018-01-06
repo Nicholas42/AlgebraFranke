@@ -1458,11 +1458,12 @@ C(Z) = C(Z_0) \supsetneq \cdots\supsetneq C(Z_d)\supsetneq \{0\}.
 \end{align*}
 Similarly, $\codim(C(Y),C(Z)) \geq \codim(Y,Z)$ by applying the same cone construction of irreducibles between $Y$ and $Z$.
 As $\IP^n(k)$ is catenary of dimension $n$, we have $\dim(Z) + \codim(Z,\IP^n(k)) = n$, hence we obtain
-\begin{align*}\lbl{eq:proofAffineConeCorrespondenceAst}
-&n+1\leq \dim(C(Z)) + \codim\big(C(Z),C(\IP^n)\big) = \dim(C(Z)) + \codim\big(C(Z),k^{n+1}\big) = n+1\tag{$\ast$}
-\end{align*}
+\begin{align}\lbl{eq:proofAffineConeCorrespondenceAst}
+n+1\leq \dim(C(Z)) + \codim\big(C(Z),C(\IP^n(k))\big) = \dim(C(Z)) + \codim\big(C(Z),k^{n+1}\big)
+= n+1\tag{$\ast$}
+\end{align}
 by affine dimension theory from Algebra 1, cf. \cite[Theorem~5]{alg1}.
-If one of the inequalities $\dim(C(Z))\geq \dim(Z)+1$ or $\codim(Z,\IP^n) \leq \codim(C(Z), C(\IP^n))$ was strict,
+If one of the inequalities $\dim(C(Z))\geq \dim(Z)+1$ or $\codim\big(Z,\IP^n(k)\big) \leq \codim\big(C(Z), C(\IP^n(k))\big)$ was strict,
 the above inequality \eqreff{eq:proofAffineConeCorrespondenceAst} would be strict, which is impossible. It follows that
 \begin{align*}
 \codim(Y,Z) = \dim(Y)-\dim(Z) = \dim(C(Y)) - \dim(C(Z)) = \codim(C(Y),C(Z)),
@@ -1474,7 +1475,7 @@ Every irreducible %and closed
 subset of codimension $1$ in $\IP^n(k)$ has the form $Z = V(p)$ where $p\neq 0$ is a homogeneous polynomial of positive degree.
 \end{cor}
 \begin{proof}
-If $Z$ is ireducible of codimension $1$ in $\IP^n$, then $C(Z)$ has codimension $1$ in $\IA^{n+1}$. Hence $C(Z) = V(p)$ for some prime element
+If $Z$ is ireducible of codimension $1$ in $\IP^n(k)$, then $C(Z)$ has codimension $1$ in $\IA^{n+1}(k)$. Hence $C(Z) = V(p)$ for some prime element
 $p\in R = k[X_0,\ldots,X_n]$, where $p$ is uniquely determined up to multiplicative equivalence in $R$, i.e., up to $k^\times$
 (existence was shown in \cite[Proposition~2.1.3]{alg1}, uniqueness up to multiplicative equivalence is rather clear). 
 Since $p(X)$ and $p(\lambda X)$, for any $\lambda\in k^\times$, have the same vanishing set $C(Z)$ (since this is homogeneous), it follows that for any $\lambda\in k^\times$ there is some $c_\lambda\in k^\times$ such that $p(X) = c_\lambda p(\lambda X)$. But any such polynomial must be homogeneous (choose $\lambda\in k^\times \setminus\bigcup_{d\leq\deg p} \mu_d$,
@@ -1641,7 +1642,7 @@ This enables us to derive the relation between dimension and transcendence degre
             When $f\in S_\delta(X)$ has the form $f=\phi \mod \pp$ for $\phi \in R = k[X_0,\ldots, X_n]$ homogeneous of degree $\delta$, then $V(f)\coloneqq V(\phi)\cap X$ does not depend on the choice of $\phi$.
     \end{alphanumerate}
 \end{rem*}
-\begin{proof}
+\begin{proof}[Proof of Theorem~\reff{thm:gradedRing}]
     The proof of \itememph{a} is similar to what was done in the affine case, that is, in \cite[Proposition~2.2.2]{alg1}. As they were before, well-definedness and injectivity are easy again so surjectivity is what we need to worry about. 
     
     Let $\eta\in \Oo^\ell(X\setminus V(f))$ (the case $\ell=0$ corresponds to the study of $\Oo(X\setminus V(f))$), where $f\neq 0$ is homogeneous of degree $\delta >0$. By Definition~\reff{def:regularFunction}, every $x\in X$ has an open neighbourhood $U_x$ such that there are polynomials $p_x,q_x\in R=k[X_0,\ldots, X_n]$ where $q_x$ is homogeneous of degree $b_x$, $p_x$ of degree $a_x = b_x+\ell$ and $V(q_x)\cap U_x = \emptyset$ and such that 
