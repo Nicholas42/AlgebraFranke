@@ -1646,11 +1646,11 @@ As $\pp$ is homogeneous, $S_*(X)$ inherits a grading $S_*(X)=\bigoplus_{d\geq 0}
 \begin{proof}[Proof of Theorem~\reff{thm:gradedRing}]
     The proof of \itememph{a} is similar to what was done in the affine case, that is, in \cite[Proposition~2.2.2]{alg1}. As they were before, well-definedness and injectivity are easy again so surjectivity is what we need to worry about. 
     
-    Let $\eta\in \Oo^\ell(X\setminus V(f))$ (the case $\ell=0$ corresponds to the study of $\Oo(X\setminus V(f))$), where $f\neq 0$ is homogeneous of degree $\delta >0$. By Definition~\reff{def:regularFunction}, every $x\in X$ has an open neighbourhood $U_x$ such that there are polynomials $p_x,q_x\in R=k[X_0,\ldots, X_n]$ where $q_x$ is homogeneous of degree $b_x$, $p_x$ of degree $a_x = b_x+\ell$ and $V(q_x)\cap U_x = \emptyset$ and such that 
+    Let $\eta\in \Oo^\ell(X\setminus V(f))$ (the case $\ell=0$ corresponds to the study of $\Oo(X\setminus V(f))$), where $f\neq 0$ is homogeneous of degree $\delta >0$. By Definition~\reff{def:regularFunction}, every $x\in X\setminus V(f)$ has an open neighbourhood $U_x\subseteq X\setminus V(f)$ such that there are polynomials $p_x,q_x\in R=k[X_0,\ldots, X_n]$ where $q_x$ is homogeneous of degree $b_x$, $p_x$ of degree $a_x = b_x+\ell$ and $V(q_x)\cap U_x = \emptyset$ and such that 
     \begin{align*}
         \eta(y_0,\ldots, y_n) = \frac{b_x(y_0,\ldots, y_n)}{q_x(y_0,\ldots, y_n)}
     \end{align*}
-    when $[y_0,\ldots, y_n]\in U_x\subseteq X\setminus V(f)$. Replacing $p_x$ by $p_x\cdot r$, $q_x$ by $q_x\cdot r$, and $U_x$ by $U_x\setminus V(r) = X\setminus V(r)$ with $r$ homogeneous and $\IP^n(k)\setminus U_x \subseteq V(r)$ and $x\not \in V(r)$, we may assume that $U_x\cap X = X\setminus V(q_x)\subseteq X\setminus V(f)$. The topological space $\IP^n(k)$ (and thus also $X$) being Noetherian, $X\setminus V(f)$ is quasi-compact, hence is covered by finitely many $X\setminus V(q_{x_i})$, $i=1,\ldots,N$. Let $p_i= p_{x_i}$ and $q_i = q_{x_i}$. Then 
+    when $[y_0,\ldots, y_n]\in U_x\subseteq X\setminus V(f)$. Let $U\subseteq \IP^n(k)$ be open such that $U\cap X=U_x$. The set $\IP^n(k)\setminus U$ is closed, hence the vanishing set of some homogeneous ideal $J\subseteq k[X_0,\ldots,X_n]$. As $x\notin V(J)$, there is some generator $r$ of $J$ such that $x\notin V(r)$ and we may even choose $r$ homogeneous. Replacing $p_x$ by $p_x\cdot r$, $q_x$ by $q_x\cdot r$, and $U_x$ by $U_x\setminus V(r) = X\setminus V(r)$, we may assume that $U_x= X\setminus V(q_x)\subseteq X\setminus V(f)$. The topological space $\IP^n(k)$ (and thus also $X$) being Noetherian, $X\setminus V(f)$ is quasi-compact, hence is covered by finitely many $X\setminus V(q_{x_i})$, $i=1,\ldots,N$. Let $p_i= p_{x_i}$ and $q_i = q_{x_i}$. Then 
     \begin{align*}
         V(\phi) \supseteq X\cap \bigcap_{i=1}^n V(q_i) = V\big(\pp+ (q_1,\ldots, q_N)_R\big)
     \end{align*}
@@ -1666,7 +1666,7 @@ As $\pp$ is homogeneous, $S_*(X)$ inherits a grading $S_*(X)=\bigoplus_{d\geq 0}
     \begin{align*}
         (g_jh)(x_0,\ldots, x_n) = f^{-s}\sum_{i=1}^N (h_ip_iq_j)(x)= f^{-s}\sum_{i=1}^N (h_iq_ip_j)(x) = p_j(x)
     \end{align*}
-    and thus $\eta(x) = h(x)$ when $x\in X\setminus V(q_j)$. As the sets cover $X\setminus V(f)$, surjectivity follows.
+    and thus $\eta(x) = h(x)$ when $x\in X\setminus V(q_j)$. As the sets $X\setminus V(q_j)$ cover $X\setminus V(f)$, the asserted surjectivity follows.
     
     For \itememph{b}, apply \itememph{a} in the case $f=X_i$. We thereby obtain the existence of $N_i\in\IN$ such that $\lambda X_i^{N_i}\in S_{N_i+\ell}(X)$. If $N = \sum_{i=0}^n N_i$ the assertion follows as any monomial $X^\alpha=X_1^{\alpha_1}\cdots X_n^{\alpha_n}$ of degree greater or equal to $N$ contains an exponent $\alpha_i\geq N_i$.
     
