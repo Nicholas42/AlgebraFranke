@@ -1612,13 +1612,14 @@ This enables us to derive the relation between dimension and transcendence degre
    proving the second assertion.
 \end{proof}
 \begin{defi}
-    The graded ring defined by a projective variety $X= V(\pp) \subseteq \IP^n(k)$ is defined as $S_*(X) = k[X_0,\ldots, X_n]/\pp$. We would like to compare this to the structure sheaf, or of the line bundles $\Oo^\ell$ on $X$. 
+    The graded ring defined by a projective variety $X= V(\pp) \subseteq \IP^n(k)$ with $\pp\subseteq k[X_0,\ldots,X_n]$ a homogeneous prime ideal is defined as $S_*(X) = k[X_0,\ldots, X_n]/\pp$. 
 \end{defi}
+As $\pp$ is homogeneous, $S_*(X)$ inherits a grading $S_*(X)=\bigoplus_{d\geq 0}S_d(X)$ (and we think this is what the asterisk in the index is meant to indicate). Unlike to the affine case, we don't have $\Oo(X)\simeq k[X_0,\ldots,X_n]/\pp=S_*(X)$ here, but nevertheless we would like to compare $S_*(X)$ to the structure sheaf or the line bundles $\Oo^\ell$ on $X$.
 \begin{thm}\lbl{thm:gradedRing}
     Let $X$ be a projective algebraic variety. 
     \begin{alphanumerate}    
       \item 
-        For any $f\in S_*(X)$ which is homogeneous of positive degree,
+        For any $f\in S_*(X)$ which is homogeneous of positive degree, the localization $S_*(X)_f$ admits a grading $S_*(X)_f=\bigoplus_{d\geq 0}(S_*(X)_f)_d$  and we have
         \begin{align*}
             (S_*(X)_f)_0 &\isomorphism \Oo(X\setminus V(f))\\
             \frac{g}{f^s} &\longmapsto \left([x_0,\ldots,x_n] \mapsto \frac{g(x_0,\ldots,x_n)}{f(x_0,\ldots, x_n)^s}\right)\;.
