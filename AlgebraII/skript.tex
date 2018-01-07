@@ -1489,12 +1489,25 @@ i.e. $\lambda$ not a $d\ordinalth$ root of unity for all $d\leq\deg p$).
     A \defemph{projective algebraic variety} in $\IP^n(k)$ is an irreducible closed subset $Z$ of $\IP^n(k)$. A \defemph{quasi-projective algebraic variety} is a non-empty open subset in a projective variety.
 \end{defi}
 
-\begin{defi}[Regular function]\lbl{def:regularFunction}
-    Let $Z\subseteq\IP^n(k)$ be a quasi-projective algebraic variety in $\IP^n(k)$. A function $Z\morphism[f] k$ is called \defemph{regular} at $x\in Z$ if $x$ has an open neighbourhood $U$ in $\IP^n(k)$ such that there are $p,q\in R = k[X_0,\ldots,X_n]$ which are homogeneous of the same degree, such that $q(y_0,\ldots,y_n) \neq 0$ for $[y_0,\ldots,y_n]\in U$ and
-    \begin{align*}
-    	f([y_0,\ldots,y_n]) = \frac{p(y_0,\ldots,y_n)}{q(y_0,\ldots,y_n)}\quad\text{whenever}\quad[y_0,\ldots, y_n]\in U\cap Z\; 
-    \end{align*}
-    We say that $f$ is regular, or $f\in \Oo(Z)$, if it is regular at every $x\in Z$.
+\begin{defi}[Regular functions]\lbl{def:regularFunction}
+    Let $Z\subseteq\IP^n(k)$ be a quasi-projective algebraic variety. 
+    \begin{alphanumerate}
+    	\item A function $Z\morphism[f] k$ is called \defemph{regular} at $x\in Z$ if $x$ has an open neighbourhood $U$ in $\IP^n(k)$ such that there are $p,q\in R = k[X_0,\ldots,X_n]$ which are homogeneous of the same degree, such that $q(y_0,\ldots,y_n) \neq 0$ for $[y_0,\ldots,y_n]\in U$ and
+    	\begin{align*}
+	    	f([y_0,\ldots,y_n]) = \frac{p(y_0,\ldots,y_n)}{q(y_0,\ldots,y_n)}\quad\text{whenever}\quad[y_0,\ldots, y_n]\in U\cap Z\;.
+    	\end{align*}
+    	We say that $f$ is regular, or $f\in \Oo(Z)$, if it is regular at every $x\in Z$.
+    	\item  Let $\pi\colon k^{n+1}\setminus \{0\} \morphism \IP^n(k)$ be the projection and let, for $d\in \IZ$, $\Oo^d(Z)$ be the set of all functions $f\colon \pi^{-1}(Z) = C(Z)\setminus\{0\}\morphism k$ which are homogeneous of degree $d$, i.e.
+    	\begin{align*}
+	    	f(\lambda y_0,\ldots, \lambda y_n) = \lambda^d f(y_0,\ldots, y_n)\quad \text{for all }y\in C(Z)\setminus\{0\}\text{ and }\lambda \in k^\times\;, 
+    	\end{align*}
+    	and such that for every $x\in Z$, there are an open neighbourhood $U$ and $p\in R_{d+e}$, $q\in R_e$ (for some $e\in \IN$) such that $U\cap V(q) = \emptyset$ and such that 
+    	\begin{align*}
+	    	f([y_0,\ldots, y_n]) = \frac{p(y_0,\ldots, y_n)}{q(y_0,\ldots, y_n)}\quad\text{whenever}\quad[y_0,\ldots, y_n]\in U\cap Z\;. 
+    	\end{align*}
+    \end{alphanumerate}
+    
+    
 \end{defi}
 \begin{rem*}
     \begin{alphanumerate}
@@ -1510,16 +1523,7 @@ i.e. $\lambda$ not a $d\ordinalth$ root of unity for all $d\leq\deg p$).
             \end{align*}
         \item 
             The set of units $\Oo(Z)^\times$ is $\left\{f\in \Oo(Z)\st V(f)\cap Z = \emptyset\right\}$. Indeed, if this happens, then in the above situation we have $p(y)\neq0$ for all $y\in U\cap Z$. Let $\snake U = U\setminus V(p)$, then $\snake U \cap Z = U\cap Z$ and the equality $\frac{1}{f} = \frac{q}{p}$ holds there.
-        \item 
-            Let $\pi\colon k^{n+1}\setminus \{0\} \morphism \IP^n(k)$ be the projection and let, for $d\in \IZ$, $\Oo^d(Z)$ be the set of all functions $f\colon \pi^{-1}(Z) = C(Z)\setminus\{0\}\morphism k$ which are homogeneous of degree $d$, i.e.
-            \begin{align*}
-                f(\lambda y_0,\ldots, \lambda y_n) = \lambda^d f(y_0,\ldots, y_n)\quad \text{for all }y\in C(Z)\setminus\{0\}\text{ and }\lambda \in k^\times\;, 
-            \end{align*}
-            and such that for every $x\in Z$, there are an open neighbourhood $U$ and $p\in R_{d+e}$, $q\in R_e$ (for some $e\in \IN$) such that $U\cap V(q) = \emptyset$ and such that 
-            \begin{align*}
-            	f([y_0,\ldots, y_n]) = \frac{p(y_0,\ldots, y_n)}{q(y_0,\ldots, y_n)}\;. 
-            \end{align*}
-            If $f\in \Oo^d(Z)$ and $\phi\in\Oo^\delta(Z)$ then $f\phi \in \Oo^{d+\delta}(Z)$ and $\frac{1}{f}\in \Oo^{-d}(Z)$ if $f(y) \neq 0$ for $y\in Z$. Moreover, $(f+\phi)\in \Oo^d(Z)$ if $d=\delta$. The $\Oo^d$ are \emph{line bundles} (locally free modules of rank 1) over the \emph{sheaf of rings} $\Oo$ (cf. Definition~\reff{def:sheaf} and~\reff{def:sheafOfModules}).
+        \item We have $\Oo^0=\Oo$. If $f\in \Oo^d(Z)$ and $\phi\in\Oo^\delta(Z)$ then $f\phi \in \Oo^{d+\delta}(Z)$ and $\frac{1}{f}\in \Oo^{-d}(Z)$ if $f(y) \neq 0$ for $y\in Z$. Moreover, $(f+\phi)\in \Oo^d(Z)$ if $d=\delta$. The $\Oo^d$ are \emph{line bundles} (locally free modules of rank 1) over the \emph{sheaf of rings} $\Oo$ (cf. Definition~\reff{def:sheaf} and~\reff{def:sheafOfModules}).
     \end{alphanumerate}
 \end{rem*}
 \begin{example}
@@ -1531,7 +1535,7 @@ i.e. $\lambda$ not a $d\ordinalth$ root of unity for all $d\leq\deg p$).
     defines an isomorphism $\Oo|_U \morphism[\cdot x_0^\ell] \Oo^\ell|_U$ of sheaves of (abelian groups or) $\Oo$-modules. Thus, $\Oo^\ell$ is a line bundle on $Y$. 
 \end{example}
 \begin{prop}
-    Let $Z\subseteq \IP^n(k)$ be a quasi-projective algebraic variety, then $Z\cap \IA^n(k) = Z \setminus V(X_0)$ is quasi-affine or empty, and a function $f\colon Z\cap \IA^n(k)\morphism k$ is regular in the sense of Definition~\reff{def:regularFunction} if and only if it is regular in the sense of the quasi-affine counterpart of that definition. 
+    Let $Z\subseteq \IP^n(k)$ be a quasi-projective algebraic variety, then $Z\cap \IA^n(k) = Z \setminus V(X_0)$ is quasi-affine or empty, and a function $f\colon Z\cap \IA^n(k)\morphism k$ is regular in the sense of Definition~\reff{def:regularFunction}\itememph{a} if and only if it is regular in the sense of the quasi-affine counterpart of that definition. 
 \end{prop}
 \begin{proof}
     The first part is obvious by Proposition \reff{prop:projectiveAffineTopology}. For the comparison of the structure sheaves use $X_0$ to homogenize (quasi-affine) regular functions; the details will be left as an exercise.
@@ -1646,7 +1650,7 @@ As $\pp$ is homogeneous, $S_*(X)$ inherits a grading $S_*(X)=\bigoplus_{d\geq 0}
 \begin{proof}[Proof of Theorem~\reff{thm:gradedRing}]
     The proof of \itememph{a} is similar to what was done in the affine case, that is, in \cite[Proposition~2.2.2]{alg1}. As they were before, well-definedness and injectivity are easy again so surjectivity is what we need to worry about. 
     
-    Let $\eta\in \Oo^\ell(X\setminus V(f))$ (the case $\ell=0$ corresponds to the study of $\Oo(X\setminus V(f))$), where $f\neq 0$ is homogeneous of degree $\delta >0$. By Definition~\reff{def:regularFunction}, every $x\in X\setminus V(f)$ has an open neighbourhood $U_x\subseteq X\setminus V(f)$ such that there are polynomials $p_x,q_x\in R=k[X_0,\ldots, X_n]$ where $q_x$ is homogeneous of degree $b_x$, $p_x$ of degree $a_x = b_x+\ell$ and $V(q_x)\cap U_x = \emptyset$ and such that 
+    Let $\eta\in \Oo^\ell(X\setminus V(f))$ (the case $\ell=0$ corresponds to the study of $\Oo(X\setminus V(f))$), where $f\neq 0$ is homogeneous of degree $\delta >0$. By Definition~\reff{def:regularFunction}\itememph{b}, every $x\in X\setminus V(f)$ has an open neighbourhood $U_x\subseteq X\setminus V(f)$ such that there are polynomials $p_x,q_x\in R=k[X_0,\ldots, X_n]$ where $q_x$ is homogeneous of degree $b_x$, $p_x$ of degree $a_x = b_x+\ell$ and $V(q_x)\cap U_x = \emptyset$ and such that 
     \begin{align*}
         \eta(y_0,\ldots, y_n) = \frac{b_x(y_0,\ldots, y_n)}{q_x(y_0,\ldots, y_n)}
     \end{align*}
