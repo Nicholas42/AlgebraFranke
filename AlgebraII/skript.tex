@@ -1497,7 +1497,7 @@ i.e. $\lambda$ not a $d\ordinalth$ root of unity for all $d\leq\deg p$).
 	    	f([y_0,\ldots,y_n]) = \frac{p(y_0,\ldots,y_n)}{q(y_0,\ldots,y_n)}\quad\text{whenever}\quad[y_0,\ldots, y_n]\in U\cap Z\;.
     	\end{align*}
     	We say that $f$ is regular, or $f\in \Oo(Z)$, if it is regular at every $x\in Z$.
-    	\item  Let $\pi\colon k^{n+1}\setminus \{0\} \morphism \IP^n(k)$ be the projection and let, for $d\in \IZ$, $\Oo^d(Z)$ be the set of all functions $f\colon \pi^{-1}(Z) = C(Z)\setminus\{0\}\morphism k$ which are homogeneous of degree $d$, i.e.
+    	\item  Let $\pi\colon k^{n+1}\setminus \{0\} \morphism \IP^n(k)$ be the projection and let, for $d\in \IZ$, $\Oo(d)(Z)$ be the set of all functions $f\colon \pi^{-1}(Z) = C(Z)\setminus\{0\}\morphism k$ which are homogeneous of degree $d$, i.e.
     	\begin{align*}
 	    	f(\lambda y_0,\ldots, \lambda y_n) = \lambda^d f(y_0,\ldots, y_n)\quad \text{for all }y\in C(Z)\setminus\{0\}\text{ and }\lambda \in k^\times\;, 
     	\end{align*}
@@ -1523,16 +1523,16 @@ i.e. $\lambda$ not a $d\ordinalth$ root of unity for all $d\leq\deg p$).
             \end{align*}
         \item 
             The set of units $\Oo(Z)^\times$ is $\left\{f\in \Oo(Z)\st V(f)\cap Z = \emptyset\right\}$. Indeed, if this happens, then in the above situation we have $p(y)\neq0$ for all $y\in U\cap Z$. Let $\snake U = U\setminus V(p)$, then $\snake U \cap Z = U\cap Z$ and the equality $\frac{1}{f} = \frac{q}{p}$ holds there.
-        \item We have $\Oo^0=\Oo$. If $f\in \Oo^d(Z)$ and $\phi\in\Oo^\delta(Z)$ then $f\phi \in \Oo^{d+\delta}(Z)$ and $\frac{1}{f}\in \Oo^{-d}(Z)$ if $f(y) \neq 0$ for $y\in Z$. Moreover, $(f+\phi)\in \Oo^d(Z)$ if $d=\delta$. The $\Oo^d$ are \emph{line bundles} (locally free modules of rank 1) over the \emph{sheaf of rings} $\Oo$ (cf. Definition~\reff{def:sheaf} and~\reff{def:sheafOfModules}).
+        \item We have $\Oo(0)=\Oo$. If $f\in \Oo(d)(Z)$ and $\phi\in\Oo(\delta)(Z)$ then $f\phi \in \Oo(d+\delta)(Z)$ and $\frac{1}{f}\in \Oo(-d)(Z)$ if $f(y) \neq 0$ for $y\in Z$. Moreover, $(f+\phi)\in \Oo(d)(Z)$ if $d=\delta$. The $\Oo(d)$ are \emph{line bundles} (locally free modules of rank 1) over the \emph{sheaf of rings} $\Oo$ (cf. Definition~\reff{def:sheaf} and~\reff{def:sheafOfModules}).
     \end{alphanumerate}
 \end{rem*}
 \begin{example}
     Let $Y\subseteq \IP^n(k)$ be a quasi-projective variety. We have $Y = \bigcup_{i=0}^n (Y\setminus V(X_i))$ and for $U\subseteq Y\setminus V(X_i)$
     \begin{align*}
-        \Oo(U) &\morphism \Oo^\ell(U)\\
+        \Oo(U) &\morphism \Oo(\ell)(U)\\
         f&\longmapsto \big((x_0,\ldots, x_n) \mapsto x_i^\ell f([x_0,\ldots, x_n]\big)
     \end{align*}
-    defines an isomorphism $\Oo|_U \morphism[\cdot x_0^\ell] \Oo^\ell|_U$ of sheaves of (abelian groups or) $\Oo$-modules. Thus, $\Oo^\ell$ is a line bundle on $Y$. 
+    defines an isomorphism $\Oo|_U \morphism[\cdot x_0^\ell] \Oo(\ell)|_U$ of sheaves of (abelian groups or) $\Oo$-modules. Thus, $\Oo(\ell)$ is a line bundle on $Y$. 
 \end{example}
 \begin{prop}
     Let $Z\subseteq \IP^n(k)$ be a quasi-projective algebraic variety, then $Z\cap \IA^n(k) = Z \setminus V(X_0)$ is quasi-affine or empty, and a function $f\colon Z\cap \IA^n(k)\morphism k$ is regular in the sense of Definition~\reff{def:regularFunction}\itememph{a} if and only if it is regular in the sense of the quasi-affine counterpart of that definition. 
@@ -1618,7 +1618,7 @@ This enables us to derive the relation between dimension and transcendence degre
 \begin{defi}
     The graded ring defined by a projective variety $X= V(\pp) \subseteq \IP^n(k)$ with $\pp\subseteq k[X_0,\ldots,X_n]$ a homogeneous prime ideal is defined as $S_*(X) = k[X_0,\ldots, X_n]/\pp$. 
 \end{defi}
-As $\pp$ is homogeneous, $S_*(X)$ inherits a grading $S_*(X)=\bigoplus_{d\geq 0}S_d(X)$ (and we think this is what the asterisk in the index is meant to indicate). Unlike to the affine case, we don't have $\Oo(X)\simeq k[X_0,\ldots,X_n]/\pp=S_*(X)$ here, but nevertheless we would like to compare $S_*(X)$ to the structure sheaf or the line bundles $\Oo^\ell$ on $X$.
+As $\pp$ is homogeneous, $S_*(X)$ inherits a grading $S_*(X)=\bigoplus_{d\geq 0}S_d(X)$ (and we think this is what the asterisk in the index is meant to indicate). Unlike to the affine case, we don't have $\Oo(X)\simeq k[X_0,\ldots,X_n]/\pp=S_*(X)$ here, but nevertheless we would like to compare $S_*(X)$ to the structure sheaf or the line bundles $\Oo(\ell)$ on $X$.
 \begin{thm}\lbl{thm:gradedRing}
     Let $X$ be a projective algebraic variety. 
     \begin{alphanumerate}    
@@ -1630,11 +1630,11 @@ As $\pp$ is homogeneous, $S_*(X)$ inherits a grading $S_*(X)=\bigoplus_{d\geq 0}
         \end{align*}
         Moreover
         \begin{align*}
-            (S_*(X)_f)_\ell &\isomorphism \Oo^\ell(X\setminus V(f)) \\
+            (S_*(X)_f)_\ell &\isomorphism \Oo(\ell)(X\setminus V(f)) \\
             \frac{g}{f^s} &\longmapsto \left([x_0,\ldots,x_n] \mapsto \frac{g(x_0,\ldots,x_n)}{f(x_0,\ldots, x_n)^s}\right)\;.
         \end{align*}
       \item 
-        If $\lambda\in\Oo^\ell(X)$, then for sufficiently large $N$ we have $\lambda\cdot S_N(X)\subseteq S_{N+\ell}(X)\subseteq \Oo^{N+\ell}(X)$ where the product should be viewed as a product of homogeneous functions on $C(X)\setminus \{0\}$.
+        If $\lambda\in\Oo(\ell)(X)$, then for sufficiently large $N$ we have $\lambda\cdot S_N(X)\subseteq S_{N+\ell}(X)\subseteq \Oo(N+\ell)(X)$ where the product should be viewed as a product of homogeneous functions on $C(X)\setminus \{0\}$.
       \item 
          We have $k\simeq S_0(X)\simeq\Oo(X)$.
     \end{alphanumerate}
@@ -1650,7 +1650,7 @@ As $\pp$ is homogeneous, $S_*(X)$ inherits a grading $S_*(X)=\bigoplus_{d\geq 0}
 \begin{proof}[Proof of Theorem~\reff{thm:gradedRing}]
     The proof of \itememph{a} is similar to what was done in the affine case, that is, in \cite[Proposition~2.2.2]{alg1}. As they were before, well-definedness and injectivity are easy again so surjectivity is what we need to worry about. 
     
-    Let $\eta\in \Oo^\ell(X\setminus V(f))$ (the case $\ell=0$ corresponds to the study of $\Oo(X\setminus V(f))$), where $f\neq 0$ is homogeneous of degree $\delta >0$. By Definition~\reff{def:regularFunction}\itememph{b}, every $x\in X\setminus V(f)$ has an open neighbourhood $U_x\subseteq X\setminus V(f)$ such that there are polynomials $p_x,q_x\in R=k[X_0,\ldots, X_n]$ where $q_x$ is homogeneous of degree $b_x$, $p_x$ of degree $a_x = b_x+\ell$ and $V(q_x)\cap U_x = \emptyset$ and such that 
+    Let $\eta\in \Oo(\ell)(X\setminus V(f))$ (the case $\ell=0$ corresponds to the study of $\Oo(X\setminus V(f))$), where $f\neq 0$ is homogeneous of degree $\delta >0$. By Definition~\reff{def:regularFunction}\itememph{b}, every $x\in X\setminus V(f)$ has an open neighbourhood $U_x\subseteq X\setminus V(f)$ such that there are polynomials $p_x,q_x\in R=k[X_0,\ldots, X_n]$ where $q_x$ is homogeneous of degree $b_x$, $p_x$ of degree $a_x = b_x+\ell$ and $V(q_x)\cap U_x = \emptyset$ and such that 
     \begin{align*}
         \eta(y_0,\ldots, y_n) = \frac{b_x(y_0,\ldots, y_n)}{q_x(y_0,\ldots, y_n)}
     \end{align*}
@@ -1674,7 +1674,7 @@ As $\pp$ is homogeneous, $S_*(X)$ inherits a grading $S_*(X)=\bigoplus_{d\geq 0}
     
     For \itememph{b}, apply \itememph{a} in the case $f=X_i$. We thereby obtain the existence of $N_i\in\IN$ such that $\lambda X_i^{N_i}\in S_{N_i+\ell}(X)$. If $N = \sum_{i=0}^n N_i$ the assertion follows as any monomial $X^\alpha=X_1^{\alpha_1}\cdots X_n^{\alpha_n}$ of degree greater or equal to $N$ contains an exponent $\alpha_i\geq N_i$.
     
-    To see \itememph{c}, let $\lambda\in \Oo(X)$. By \itememph{b} there is $N\geq 0$ such that $\lambda\cdot S_N(X) \subseteq S_N(X)$ in $\Oo^N(X)$. Let $P = \prod_{j=1}^d (T-\lambda_j)^{e_j}$, with $\lambda_j\in k$ and all $e_j>0$, be the characteristic polynomial of $\lambda\cdot$ (the linear map given by multiplication with $\lambda$) on $S_N(X)$. Then 
+    To see \itememph{c}, let $\lambda\in \Oo(X)$. By \itememph{b} there is $N\geq 0$ such that $\lambda\cdot S_N(X) \subseteq S_N(X)$ in $\Oo(N)(X)$. Let $P = \prod_{j=1}^d (T-\lambda_j)^{e_j}$, with $\lambda_j\in k$ and all $e_j>0$, be the characteristic polynomial of $\lambda\cdot$ (the linear map given by multiplication with $\lambda$) on $S_N(X)$. Then 
     \begin{align*}
     	 \vartheta(x)\cdot\prod_{j=1}^d (\lambda(x)-\lambda_j)^{e_j} = 0
     \end{align*}
@@ -1685,35 +1685,35 @@ As $\pp$ is homogeneous, $S_*(X)$ inherits a grading $S_*(X)=\bigoplus_{d\geq 0}
    As $C(X)\setminus \{0\}$ is irreducible, there is $j$ such that $C(X)\setminus\{0\} = V(\lambda-\lambda_j)$. Then $\lambda=\lambda_j$ is constant on $X$. 
 \end{proof}
 \begin{cor}
-    When $\dim(X) >0$ and $\ell<0$ we have $\Oo^\ell(X) = 0$.
+    When $\dim(X) >0$ and $\ell<0$ we have $\Oo(\ell)(X) = 0$.
 \end{cor}
 \begin{proof}
-    First consider $\ell=-1$. Let $\lambda\in \Oo^{-1}(X)$. By Theorem \reff{thm:gradedRing}\itememph{c} there are constants $c_j$ such that $x_j \lambda(x) = c_j$ for $x\in C(X)\setminus\{0\}$ as all functions $X_j\lambda$ must be constant. If $\lambda\neq 0$ then not all $c_i$ are $0$. We have $x_ic_j = x_ix_j\lambda(x) = x_jc_i$ for $[x_0,\ldots, x_n]\in X$. If follows that the vectors $(x_0,\ldots, x_n)$ and $(c_0,\ldots, c_n)$ are proportional, $[x_0,\ldots, x_n] = [c_0,\ldots, c_n]$. Hence $X$ has only one point, a contradiction to our assumption. 
+    First consider $\ell=-1$. Let $\lambda\in \Oo(-1)(X)$. By Theorem \reff{thm:gradedRing}\itememph{c} there are constants $c_j$ such that $x_j \lambda(x) = c_j$ for $x\in C(X)\setminus\{0\}$ as all functions $X_j\lambda$ must be constant. If $\lambda\neq 0$ then not all $c_i$ are $0$. We have $x_ic_j = x_ix_j\lambda(x) = x_jc_i$ for $[x_0,\ldots, x_n]\in X$. If follows that the vectors $(x_0,\ldots, x_n)$ and $(c_0,\ldots, c_n)$ are proportional, $[x_0,\ldots, x_n] = [c_0,\ldots, c_n]$. Hence $X$ has only one point, a contradiction to our assumption. 
     
-    If $\ell<-1$ we use $X_i^{-1-\ell}\lambda\in \Oo^{-1}(X)$ must vanish by the previous consideration. As for all $[x_0,\ldots,x_n]\in X$ one $x_i$ must be non-zero, it follows that $\lambda = 0$.
+    If $\ell<-1$ we use $X_i^{-1-\ell}\lambda\in \Oo(-1)(X)$ must vanish by the previous consideration. As for all $[x_0,\ldots,x_n]\in X$ one $x_i$ must be non-zero, it follows that $\lambda = 0$.
 \end{proof}
 \begin{rem*}
     \begin{alphanumerate}
         \item 
-            When $X=\{x\}$ with $x_i\neq 0$ then $X_i^\ell$ gives a non-vanishing global section of $\Oo^\ell$, for arbitrary $\ell$. Thus $\dim(X)>0$ is necessary in the corollary.
+            When $X=\{x\}$ with $x_i\neq 0$ then $X_i^\ell$ gives a non-vanishing global section of $\Oo(\ell)$, for arbitrary $\ell$. Thus $\dim(X)>0$ is necessary in the corollary.
         \item 
             Theorem \reff{thm:gradedRing}\itememph{c} may be motivated from Liouville's Theorem from function theory.
         \item   
-            It is clear that $\lambda\in \Oo^\ell(X)$ defines an element of $\Oo(C(X)\setminus\{0\})$. If it extends to all of $C(X)$ then it is given by a polynomial in $X_0,\ldots, X_n$ by results of Algebra~I, cf. \cite[Proposition~2.2.2]{alg1}. In this case, it follows that $\lambda\in S_\ell(X)$.
+            It is clear that $\lambda\in \Oo(\ell)(X)$ defines an element of $\Oo(C(X)\setminus\{0\})$. If it extends to all of $C(X)$ then it is given by a polynomial in $X_0,\ldots, X_n$ by results of Algebra~I, cf. \cite[Proposition~2.2.2]{alg1}. In this case, it follows that $\lambda\in S_\ell(X)$.
             
-            One would expect that for $\ell$ sufficiently large, $\lambda$ ``vanishes to a very high order'' at $0$, hence extends to an element of $\Oo(C(X))$ and this turns out to be correct, as is shown on the 10$\ordinalth$ exercise sheet. It follows that $S_N(X) \isomorphism \Oo^N(X)$ when $N$ is sufficiently large.
+            One would expect that for $\ell$ sufficiently large, $\lambda$ ``vanishes to a very high order'' at $0$, hence extends to an element of $\Oo(C(X))$ and this turns out to be correct, as is shown on the 10$\ordinalth$ exercise sheet. It follows that $S_\ell(X) \isomorphism \Oo(\ell)(X)$ when $\ell$ is sufficiently large.
         \item 
-            In general, $\pp$ defines a sheaf of ideals $\Jj$ on $\IP^n=\IP^n(k)$ and $\Oo^\ell_X$ can be identified with $\Oo^\ell_{\IP}/\Jj\Oo^\ell_{\IP^n}$ and one obtains a part of a long exact cohomology sequence
+            In general, $\pp$ defines a sheaf of ideals $\Jj$ on $\IP^n=\IP^n(k)$ and $\Oo_X(\ell)$ can be identified with $\Oo_{\IP^n}(\ell)/\Jj\Oo_{\IP^n}(\ell)$ and one obtains a part of a long exact cohomology sequence
             \begin{diagram*}
             	\node[ob] (0o) at (0,1.5) {$0$};
-            	\node[ob]  (H0J) [right=0.75cm of 0o] {$H^0\left(\IP^n,\Jj\Oo_{\IP^n}^\ell\right)$};
-            	\node[ob]  (H0O) [right=0.75cm of H0J] {$H^0\left(\IP^n,\Oo_{\IP^n}^\ell\right)$};
-            	\node[ob]  (H0OX) [right=0.75cm of H0O] {$H^0\left(\IP^n,\Oo_X^\ell\right)$};
-            	\node[ob]  (H1J) [right=0.75cm of H0OX]  {$H^1\left(\IP^n,\Jj\Oo_{\IP^n}^\ell\right)$};
+            	\node[ob]  (H0J) [right=0.5cm of 0o] {$H^0\left(\IP^n,\Jj\Oo_{\IP^n}(\ell)\right)$};
+            	\node[ob]  (H0O) [right=0.5cm of H0J] {$H^0\left(\IP^n,\Oo_{\IP^n}(\ell)\right)$};
+            	\node[ob]  (H0OX) [right=0.5cm of H0O] {$H^0\left(\IP^n,\Oo_X(\ell)\right)$};
+            	\node[ob]  (H1J) [right=0.5cm of H0OX]  {$H^1\left(\IP^n,\Jj\Oo_{\IP^n}(\ell)\right)$};
             	\node[ob]  (0u) at (0,0) {$0$};
             	\node[ob]  (p) at (0u -| H0J) {$\pp_\ell$};
             	\node[ob]  (kX) at (0u -| H0O) {$k[X_0,\ldots,X_n]_\ell$};
-            	\node[ob]  (Ol) at (0u -| H0OX) {$\Oo_X^\ell(X)$};
+            	\node[ob]  (Ol) at (0u -| H0OX) {$\Oo_X(\ell)(X)$};
             	\scriptsize
             	\draw[->] (0o) -- (H0J);
             	\draw[->] (H0J) -- (H0O);
@@ -1728,21 +1728,21 @@ As $\pp$ is homogeneous, $S_*(X)$ inherits a grading $S_*(X)=\bigoplus_{d\geq 0}
             \end{diagram*}
             where the right end can be shown to be finite-dimensional and to vanish when $\ell$ is sufficiently large.
         \item 
-            When $n+1>1$ it follows that $\Oo(k^{n+1}\setminus\{0\}) \simeq \Oo(k^{n+1})$ as shown in Algebra~I, cf. \cite[Proposition~2.2.5]{alg1}. Then $\Oo^\ell\big(\IP^n(k)\big) \simeq k[X_0,\ldots, X_n]_\ell$. Another argument to see this is that when $\lambda\in \Oo^\ell(\IP^n(k))$ there there is $N\in \IN$ such that $X_i^N\lambda = f_i\in R= k[X_0,\ldots, X_n]$ for $i=0,\ldots,n$. We have $X_i^Nf_j = X_j^Nf_i$. It follows that $f_i$ is divisible by $X_i^N$ (taking $j\neq i$, that's what we need $n\geq 1$ for), then $\lambda\in R$ (and thus $\in R_\ell$). The same argument only works for general $X$ if $S_*(X)$ is factorial, which is usually not the case. 
+            When $n+1>1$ it follows that $\Oo(k^{n+1}\setminus\{0\}) \simeq \Oo(k^{n+1})$ as shown in Algebra~I, cf. \cite[Proposition~2.2.5]{alg1}. Then $\Oo(\ell)\big(\IP^n(k)\big) \simeq k[X_0,\ldots, X_n]_\ell$. Another argument to see this is that when $\lambda\in \Oo(\ell)(\IP^n(k))$ there there is $N\in \IN$ such that $X_i^N\lambda = f_i\in R= k[X_0,\ldots, X_n]$ for $i=0,\ldots,n$. We have $X_i^Nf_j = X_j^Nf_i$. It follows that $f_i$ is divisible by $X_i^N$ (taking $j\neq i$, that's what we need $n\geq 1$ for), then $\lambda\in R$ (and thus $\in R_\ell$). The same argument only works for general $X$ if $S_*(X)$ is factorial, which is usually not the case. 
         \item
-            It can be shown that $\Oo_X^\ell(X)$ is finite-dimensional over $k$ when $X\subseteq \IP^n(k)$ is closed (and irreducible). 
+            It can be shown that $\Oo_X(\ell)(X)$ is finite-dimensional over $k$ when $X\subseteq \IP^n(k)$ is closed (and irreducible). 
     \end{alphanumerate}
 \end{rem*}
 \begin{rem*}
-    When $X=\{x\}$, $\dim_k \Oo_X^\ell(X) = 1$ is given by a polynomial of degree $0$ in $\ell$. 
+    When $X=\{x\}$, $\dim_k \Oo_X(\ell)(X) = 1$ is given by a polynomial of degree $0$ in $\ell$. 
     \begin{align*}
-        \Oo^\ell\big(\IP^1(k)\big) = k[X_0,X_1]_\ell=\bigoplus_{i=0}^\ell \left(k\cdot X_0^iX_1^{\ell-1}\right)
+        \Oo(\ell)\big(\IP^1(k)\big) = k[X_0,X_1]_\ell=\bigoplus_{i=0}^\ell \left(k\cdot X_0^iX_1^{\ell-1}\right)
     \end{align*}
-    has dimension $\ell+1$ over$k$ when $\ell\geq -1$, hence the dimension is given by by a polynomial of degree $1$ in $\ell$. Is $\dim_k\big(\Oo_X^\ell(X)\big)$ always given by a polynomial of degree $\dim(X)$ when $\ell \gge 0$? The answer is \emph{yes} and this brings us to \emph{Hilbert polynomials}.
+    has dimension $\ell+1$ over$k$ when $\ell\geq -1$, hence the dimension is given by by a polynomial of degree $1$ in $\ell$. Is $\dim_k\big(\Oo_X(\ell)(X)\big)$ always given by a polynomial of degree $\dim(X)$ when $\ell \gge 0$? The answer is \emph{yes} and this brings us to \emph{Hilbert polynomials}.
     
     It may be remarked that the seemingly artificial condition $\ell\gge0$ can be removed (thus unfolding the deeper truth behind this) considering cohomology. There is always a polynomial $P$ such that 
     \begin{align*}
-	    \sum_{i=0}^{\dim (X)} \dim_kH^i(X,\Oo_X^\ell) = P(\ell)\quad\text{for all }\ell\;.
+	    \sum_{i=0}^{\dim (X)} \dim_kH^i(X,\Oo_X(\ell)) = P(\ell)\quad\text{for all }\ell\;.
     \end{align*}
 \end{rem*}
 
@@ -2322,7 +2322,7 @@ hold for any $A$-algebra $S$ and any $B$-algebra $T$.
         \item
             A typical example is the sheaf of $k$-valued functions on $X$, associating to any $U\subseteq X$ the rings of $k$-valued functions on $U$. Normally, one considers \emph{subsheaves} defined by conditions like being locally constant, $C^\infty$, holomorphic, regular in some sense and so on.
         \item 
-            Our definitions of $\Oo(Z)$ or $\Oo^d(Z)$ can be applied to any subset $Z\subseteq \IP^n(k)$. When $Z=\emptyset$, it gives $\Oo(Z) = \{0\}$ (or $\Oo^d(Z) = \{0\}$) with the empty function as the only element. When $Z$ is quasi-projective, $\Oo$ is sheaf of rings (a subsheaf of the sheaf of $k$-valued functions on $Z$) and $\Oo(d)\colon U\mapsto \Oo^d(U)$ is a sheaf of modules.
+            Our definitions of $\Oo(Z)$ or $\Oo(d)(Z)$ can be applied to any subset $Z\subseteq \IP^n(k)$. When $Z=\emptyset$, it gives $\Oo(Z) = \{0\}$ (or $\Oo(d)(Z) = \{0\}$) with the empty function as the only element. When $Z$ is quasi-projective, $\Oo$ is sheaf of rings (a subsheaf of the sheaf of $k$-valued functions on $Z$) and $\Oo(d)\colon U\mapsto \Oo(d)(U)$ is a sheaf of modules.
     \end{alphanumerate}
 \end{rem}
 
