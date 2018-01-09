@@ -154,7 +154,7 @@ Let it be said that the first three recommendations are from Professor Franke wh
  The following conditions on a topological space $X$ are equivalent:
  \begin{alphanumerate}
   \item
-    If $x\neq y$ are points of $X$, there are open neighbourhoods $V,W\subseteq X$ seperating them, i.e. $x\in V$, $y\in W$ and $V\cap W= \emptyset$. This is the usual definition for $X$ being \emph{Hausdorff}.
+    If $x\neq y$ are points of $X$, there are open neighbourhoods $V,W\subseteq X$ separating them, i.e. $x\in V$, $y\in W$ and $V\cap W= \emptyset$. This is the usual definition for $X$ being \emph{Hausdorff}.
   \item
     The diagonal $\Delta = \left\{(x,x)\st x\in X\right\}\subseteq X\times X$ is a closed subset.
   \item 
@@ -2124,7 +2124,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
 \end{rem}
 \begin{cor}
 	\begin{alphanumerate}
-		\item For a prescheme $X$, there is a one-to-one correspondence 
+		\item \lbl{cor:closedSubpreschemes} For a prescheme $X$, there is a one-to-one correspondence 
 		\begin{align*}
 			\left\{\text{closed subpreschemes }K\monomorphism[i]X\right\}&\isomorphism\left\{\text{quasi-coherent sheaves of ideals }\Jj\subseteq\Oo_X\right\}\\
 			\big(K\monomorphism[i]X\big)&\longmapsto\ker\big(\Oo_X\morphism[i^*]i_*\Oo_K\big)\;.
@@ -2150,9 +2150,9 @@ A Franke lecture is no Franke lecture without a definition being proved.
 \begin{cor}
 	$\Spec\IZ$ is a final object in the category of preschemes.
 \end{cor}
-\begin{cor}\lbl{cor:preschemesEqualizers}
+\begin{cor}
 	\begin{alphanumerate}
-		\item The category of preschemes has equalizers.
+		\item \lbl{cor:preschemesEqualizers}The category of preschemes has equalizers.
 		\item If $Y\morphism[\upsilon]Z$ is a monomorphism (e.q. an open/closed/arbitrary immersion), then
 		\begin{align*}
 			\Eq\Big(X\doublemorphism[a][b]Y\Big)\simeq\Eq\Big(X\doublemorphism[\upsilon a][\upsilon b]Z\Big)\;.
@@ -2312,7 +2312,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
 \end{rem*}
 \begin{fact}
 	\begin{alphanumerate}
-		\item Any affine prescheme (in fact, any prescheme such that two arbitrary points have a common affine neighbourhood) is a scheme.
+		\item \lbl{fact:separationStuff} Any affine prescheme (in fact, any prescheme such that two arbitrary points have a common affine neighbourhood) is a scheme.
 		\item Any monomorphism (e.g. open/closed/arbitrary immersions) of preschemes is separated.
 		\item If $gf$ is separated, then so is $f$. In particular, any morphism between schemes is separated.
 		\item The class of separated morphisms is closed under composition and stable under base change.
@@ -2324,9 +2324,9 @@ A Franke lecture is no Franke lecture without a definition being proved.
 	\end{alphanumerate}
 \end{fact}
 \begin{proof}
-	Part \itememph{a} follows from Fact~\reff{fact:separatedDef}. Part \itememph{b} is obvious: If $X\morphism[f]Y$ is a monomorphism and $T\doublemorphism[a][b]X$ are such that $fa=fb$, then $a=b$ and the equalizer under consideration equals $T$. Part \itememph{c} is also trivial, as any $T\doublemorphism[\smash{a}][b]X$ such that $fa=fb$ also satisfies $gfa=gfb$.
+	Part \itememph{a} follows from Fact~\reff{fact:equalizerImmersive}. Part \itememph{b} is obvious: If $X\morphism[f]Y$ is a monomorphism and $T\doublemorphism[a][b]X$ are such that $fa=fb$, then $a=b$ and the equalizer under consideration equals $T$. Part \itememph{c} is also trivial, as any $T\doublemorphism[\smash{a}][b]X$ such that $fa=fb$ also satisfies $gfa=gfb$.
 	
-	Let's prove \itememph{e}. If $f$ is separated, then $\Delta=\Eq\Big(X\times_YX\doublemorphism[p_1][p_2]X\Big)\monomorphism X\times_YX$ is a closed immersion. Conversely, if $\Delta$ is closed and $T\doublemorphism[\smash{a}][b]$ is such that $fa=fb$, then we have a morphism $\tau\colon T\xrightarrow{\smash{(a,b)}}X\times_YX$ and 
+	Let's prove \itememph{e}. If $f$ is separated, then $\Delta=\Eq\Big(X\times_YX\doublemorphism[p_1][p_2]X\Big)\monomorphism X\times_YX$ is a closed immersion. Conversely, if $\Delta$ is closed and $T\doublemorphism[\smash{a}][b]X$ is such that $fa=fb$, then we have a morphism $\tau\colon T\xrightarrow{\smash{(a,b)}}X\times_YX$ and 
 	\begin{align*}
 		K=\Eq\Big(T\doublemorphism[a][b]X\Big)\simeq T\times_{X\times_YX}\Delta\;.
 	\end{align*} 
@@ -2352,8 +2352,146 @@ A Franke lecture is no Franke lecture without a definition being proved.
 	\begin{align*}
 		\Eq\Big(T\doublemorphism[a][b]X'\Big)\simeq\Eq\Big(T\doublemorphism[\upsilon'a][\upsilon'b]X\Big)
 	\end{align*}
-	by the universal property of the fibre product. As $\xi$ is separated, thus is a closed subprescheme of $T$.
+	by the universal property of the fibre product. As $\xi$ is separated, this is a closed subprescheme of $T$.
 \end{proof}
+\begin{fact}\lbl{fact:schemeConditions}
+    For a prescheme $X$ the following conditions are equivalent:
+    \begin{alphanumerate}
+    \item 
+        $X$ is a scheme.
+    \item 
+        For every pair, $T\doublemorphism[a][b] X$, $K = \Eq\left(T\doublemorphism[a][b] X\right)$ is a closed subprescheme of $T$.
+    \item 
+        Under the same assumptions, $K$ is a closed subset of $T$.
+    \item 
+        The same, under the additional assumption that $T$ is affine. 
+    \item 
+        $X\morphism[\Delta_X] X\times X$ is a closed embedding. 
+    \end{alphanumerate}
+\end{fact}
+
+\begin{fact}
+    \begin{alphanumerate}
+    \item 
+        Every affine prescheme is a scheme.
+    \item 
+        The class of schemes is closed under forming equalizers of pair of morphisms and fibre products.
+    \item 
+        Every open or closed subprescheme of a scheme is a scheme.
+    \item 
+        If $X$ is a scheme, any morphism $X\morphism Y$ of preschemes is separated.
+    \item 
+        If for any two points of a prescheme $X$ there is an affine open subset of $X$ containing both of them, then $X$ is a scheme.
+    \end{alphanumerate}
+\end{fact}
+\begin{proof}
+    To show \itememph{a}, let $X$ be affine, say $X=\Spec R$, then any pair of morphisms $T\doublemorphism[a][b]X$ with affine $T=\Spec A$ has the form $\Spec\left(\Coeq \left(R\doublemorphism[\alpha][\beta] A\right)\right)$, in which case $K=\Spec(A/I)$ where $I=\left\langle\alpha(r) -\beta(r)\st r\in R\right\rangle_A$, by the results of Section 1.4. This is a closed subprescheme of $\Spec A$. The assertion follows from Fact~\reff{fact:schemeConditions}
+    
+    The point \itememph{d} is trivial from the definitions or Fact~\reff{fact:separationStuff}
+    
+    If $X$, $Y$ and $S$ are schemes then any morphism $X\morphism S$ is separated by \itememph{d}, hence its base-change $X\times_S Y \morphism Y$ is separated, as is $X\times_S Y \morphism Y\morphism \Spec \IZ$ by Fact~\reff{fact:separationStuff}. Thus $X\times_S Y$ is scheme. If $X$ is a scheme and $X\doublemorphism[a][b] Y$ a pair of morphisms, then $K = \Eq\left(X\doublemorphism[a][b] Y\right) \morphism X$ is a monomorphism, hence separated, and $K\morphism X\morphism \Spec \IZ$ is separated. This proves \itememph{b}.
+    
+    If $Y\morphism X$ is any immersion, it is a monomorphism, hence separated and $Y\morphism X\morphism \Spec \IZ$ is separated, proving \itememph{c}.
+    
+    Finally, as a prove for \itememph{e}, let $T\doublemorphism[a][b] X$ be a pair of morphisms, where $X$ has the property of \itememph{e}. We show that any $t\in T$ has an open neighbourhood $V$ such that $C\cap K$ is closed in $V$, implying the closedness of $K$ in $T$. Let $U\subseteq X$ be an affine open subset containing both $a(t)$ and $b(t)$. Then $V=a^{-1}(U)\cap b^{-1}(U)$ is an open neighbourhood of $t$ in $T$ and $K\cap V = \Eq\left(V\doublemorphism[a|_V][b|_V] U\right)$ is closed in $V$ as $U$ is a scheme, by \itememph{a}.
+\end{proof}
+
+\begin{prop}\lbl{prop:intersectionAffine}
+    The intersection of two affine open subsets of a scheme is affine.
+\end{prop}
+\begin{rem*}
+    In particular, schemes are quasi-separated.
+\end{rem*}
+\begin{proof}
+    $U\times V = p^{-1}(U) \cap q^{-1} (V)\subseteq X\times X$ (where $X\times X\doublemorphism[p][q] X$ are the projections to the factors) is affine, by Corollary~\reff{cor:affineSchemesFibreProduct}. Thus $\Delta^{-1}(U\times V)$ is affine as a closed subprescheme of the affine scheme $U\times V$, by Corollary~\reff{cor:closedSubpreschemes}. But $\Delta^{-1}(U\times V) = \Delta^{-1}(p^{-1}(U)\cap q^{-1}(V)) = \Delta^{-1}(p^{-1}U) \cap \Delta^{-1}(q^{-1}V) = U\cap V$.
+\end{proof}
+
+\begin{fact}
+    For a morphism $X\morphism[f] Y$ of preschemes, the following conditions are equivalent:
+    \begin{alphanumerate}
+    \item 
+        $f$ is separated.
+    \item 
+        If $U\subseteq Y$ is an open subset which is scheme, then $f^{-1}(U)$ is a scheme.
+    \item 
+        It is possible to cover $Y$ by open subsets $U$ which are schemes such that $f^{-1}(U)$ is a scheme
+    \end{alphanumerate}
+\end{fact}
+\begin{proof}
+    \itememph{a} implies \itememph{b}, since for $U$ as in \itememph{b}, $f^{-1}(U)\morphism U$ is separated by Fact~\reff{fact:separationStuff} as it is the base change of $f$ by $U\morphism Y$. Thus $f^{-1}(U)\morphism U\morphism \Spec\IZ$ is separated.
+    
+    The implication from \itememph{b} to \itememph{c} is trivial.
+    
+    Let $T\doublemorphism[a][b] X$ be such that $fa = fb$. If $Y=\bigcup_{i\in I} U_i$ is a covering by open subsets such that $f^{-1}(U_i)$ is a scheme, then $V_i = a^{-1}f^{-1}U_i = b^{-1}f^{-1} U_i$ form an open cover of $T$, and $\Eq(a,b) \cap V_i = \Eq\left(V_i\doublemorphism[a|_{V_i}][b|_{V_i}]f^{-1}(U_i) \right)$ is closed in $V_i$ as $f^{-1}(U_i) $ is a scheme.
+\end{proof}
+\begin{rem*}
+    In fact, the condition
+    \begin{quote}
+        $Y$ may be covered by open subsets $U$ such that $f^{-1}(U)$ is a scheme.
+    \end{quote}
+    is also equivalent to these conditions.
+\end{rem*}
+\begin{prop}\lbl{prop:separatedMorphismEmbedding}
+    Any section $s$ of a separated morphism is a closed embedding. 
+\end{prop}
+\begin{proof}
+    Let $X\morphism[f] S$ be separated and $S\morphism[s] X$ be such that $fs = \id_s$. Then $S\morphism[s] X$ is $\Eq\left(X\doublemorphism[a][b] X\right)$ where $a=\id_X$ and $b= sf$: If $T\morphism[g] X$ such that $ag = bg$ then $g = ag = bg = s\gamma$ with $\gamma = fg$. Thus, $g = s\gamma$ factors over $s$. Moreover, if $\gamma$ is such that $g= s\gamma$, then $\gamma = fs\gamma = fg$ is unique. But $fa = f = fsf = fb$. Thus, by Fact~\reff{fact:separatedDef} $S\morphism[s] X$ is a closed immersion.
+\end{proof}
+
+\begin{prop}[Graph of a morphism]\lbl{prop:graphOfMorphism}
+    If DIAGRAM is a morphism of $S$-preschemes and $\upsilon$ is separated, then $\Gamma_f\colon X\morphism[(\id_X,f)] X\times_S Y$ is a closed embedding.
+\end{prop}
+\begin{proof}
+    In fact, $\Gamma_f$ is a section of the projection $X\times_S Y \morphism X$ which is a base change of $\upsilon$, thus separated.
+\end{proof}
+
+
+\chapter{Properties of (pre)schmes and their morphisms}
+
+\section{(Mostly) topological properties}
+
+\subsection{Compactness properties}
+\begin{fact}\lbl{fact:qcmorphism}
+    For a morphism $X\morphism[f] Y$ of preschemes, the following conditions are equivalent
+    \begin{alphanumerate}
+    \item 
+        For any affine open $U\subseteq X$, $f^{-1}U$ is quasi-compact
+    \item 
+        For any quasi-compact open $U\subseteq Y$, $f^{-1}U$ is quasi-compact.
+    \end{alphanumerate}
+\end{fact}
+\begin{defi}[Quasi-compact morphism] \lbl{def:qcmorphism}
+    A morphism with these properties is called \defemph{quasicompact}.
+\end{defi}
+\begin{fact}
+    The class of quasi-compact morphisms is base-local and closed under composition and base-change. 
+\end{fact}
+
+\begin{fact}
+    If $X$ is a quasi-compact prescheme and $f\in \Oo_X(X)$ then $X\setminus V(f)$ is quasi-compact.
+\end{fact}
+\begin{proof}
+    If $X$ is affine (e.g. $X=\Spec R$), $X\setminus V(f) \simeq \Spec R_f$ is affine, thus quasi-compact. If $X$ is quasi-compact, $X=\bigcup_{i=1}^n U_i$ with $U_i$ affine. Then $X\setminus V(f) = \bigcup_{i=1}^n(U_i\setminus V(f))$ is a finite union of quasi-compact open subsets, so quasi-compact.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
