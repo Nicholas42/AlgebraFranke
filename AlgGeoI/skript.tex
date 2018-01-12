@@ -1692,7 +1692,7 @@ If $M$ is an $R$-module, we have a similar presheaf (of abelian groups or of mod
     \end{diagram*}
     is \emph{contracted} by $(g_i)_{i=1}^n$ such that $\sum_{i=1}^n g_if_i = 1$ via
     \begin{align*}
-    	(m_i)_{i=1}^n \mapsto \sum_{i=1}^n g_im_i\;,\quad (m_{i,j})_{i<j}\mapsto \bigg(\sum_{j=1}^n g_j m_{i,j}\bigg)_{i=1}^n\;,\quad\ldots
+    	(m_i)_{i=1}^n \longmapsto \sum_{i=1}^n g_im_i\;,\quad (m_{i,j})_{i<j}\longmapsto \bigg(\sum_{j=1}^n g_j m_{i,j}\bigg)_{i=1}^n\;,\quad\ldots
     \end{align*}
      (where $m_{i,j}=-m_{j,i}$ if $i>j$ and $m_{i,i}=0$). But if $\Uu$ denotes the cover $\Spec R = \bigcup_{i=1}^n \Spec R_{f_i}$ then 
      \begin{align*}
@@ -2068,7 +2068,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
                 $Y$ has a topology base $\Bb$ such that $f^{-1}(U)$ is quasi-compact for $U\in \Bb$.
             \end{itemize}
         \item 
-            \defemph{quasi-separated} if the preimage of any affine open subset of $Y$ is quasi-separated.
+            \defemph{quasi-separated} if the preimage of any affine open subset of $Y$ is quasi-separated (two more equivalent conditions are given in Lemma~\reff{lem:qsmorphism}).
     \end{alphanumerate}
 \end{defi}
 \begin{rem*}
@@ -2187,7 +2187,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
 \end{proof}
 \begin{cor}
 	\begin{alphanumerate}
-		\item The category of preschemes has fibre products.
+		\item \lbl{cor:preschemesFibreProduct}The category of preschemes has fibre products. 
 		\item Let the diagram
 		\begin{diagram*}
 			\node[ob](a) at (0,1.5) {$X\times_SY$};
@@ -2246,10 +2246,10 @@ A Franke lecture is no Franke lecture without a definition being proved.
 		\item The category of $\Spec\IZ$-preschemes is canonically isomorphic to the category of preschemes.
 	\end{alphanumerate}
 \end{rem*}
-\begin{defi}
+\begin{defi}\lbl{def:baseLocal}
 	A class $\Cc$ of morphisms in the category of preschemes is called
 	\begin{alphanumerate}
-		\item \defemph{stable under base-change} if in any fibre product diagram
+		\item \defemph{stable} (or \defemph{closed}) \defemph{under base-change} if in any fibre product diagram
 		\begin{diagram*}
 			\node[ob](a) at (0,1.5) {$X\times_YY'$};
 			\node[ob](c) at (0,0) {$X$};
@@ -2262,7 +2262,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
 			\draw[->] (b) -- (d) node[pos=0.5, right] {$\upsilon$};
 		\end{diagram*}        
 		we have $\xi'\in\Cc$ if $\xi\in\Cc$.
-		\item \defemph{base local} if for a morphism $X\morphism[\xi]Y$ the following conditions are equivalent:
+		\item \defemph{base-local} if for a morphism $X\morphism[\xi]Y$ the following conditions are equivalent:
 		\begin{itemize}
 			\item[\itememph{\alpha}] $\xi\in\Cc$.
 			\item[\itememph{\beta}] For any open subset $U\subseteq Y$ the morphism $\xi^{-1}(U)\morphism U$ is $\in\Cc$.
@@ -2271,10 +2271,10 @@ A Franke lecture is no Franke lecture without a definition being proved.
 	\end{alphanumerate}
 \end{defi}
 \begin{fact}\lbl{fact:immersionsBaseChangeStable}
-	The classes $\Cc$ of open or closed or general immersions (homeomorphisms onto their images and surjective on stalks) are closed under composition, stable under base-change and base local. Moreover, they have the following cancellation property: $ij\in\Cc$ and $i\in C$ implies $j\in\Cc$.
+	The classes $\Cc$ of open or closed or general immersions (homeomorphisms onto their images and surjective on stalks) are closed under composition, stable under base-change and base-local. Moreover, they have the following cancellation property: $ij\in\Cc$ and $i\in C$ implies $j\in\Cc$.
 \end{fact}
 \begin{proof}
-	Closedness under composition holds because homeomorphisms work that way and compositions of surjections are surjective. Stability under base-change follows from Corollary~\reff{cor:immersionBaseChange}. Base locality is clear as both being a homeomorphism and being surjective on stalks are local properties. Finally, the cancellation property is due to the fact that if $ij$ and $i$ are homeomorphisms onto their image, then so is $j$, and if the morphisms $j^*i^*$ and $i^*$ induced on stalks are surjective, then so is $j^*$.
+	Closedness under composition holds because homeomorphisms work that way and compositions of surjections are surjective. Stability under base-change follows from Corollary~\reff{cor:immersionBaseChange}. Base-locality is clear as both being a homeomorphism and being surjective on stalks are local properties. Finally, the cancellation property is due to the fact that if $ij$ and $i$ are homeomorphisms onto their image, then so is $j$, and if the morphisms $j^*i^*$ and $i^*$ induced on stalks are surjective, then so is $j^*$.
 \end{proof}
 \begin{fact}\lbl{fact:equalizerImmersive}
 	For a pair $X\doublemorphism[a][b]Y$ of morphisms of preschemes, the morphism $\Eq\Big(X\doublemorphism[a][b]Y\Big)\morphism X$ is immersive and its image is locally closed. It is a closed immersion if and only if the above set $K$ (described in \eqreff{eq:equalizer1.5}) is closed.
@@ -2399,10 +2399,10 @@ A Franke lecture is no Franke lecture without a definition being proved.
 \begin{rem*}
     In particular, schemes are quasi-separated.
 \end{rem*}
-\begin{proof}
-    Let $U,V\subseteq X$ be affine open subsets of a scheme $X$. By Corollary~\reff{cor:fibreProductsInLRS}, their product $U\times V$ equals $p^{-1}(U) \cap q^{-1} (V)\subseteq X\times X$ (where $X\times X\doublemorphism[p][q] X$ are the projections to the factors) and is affine by Corollary~\reff{cor:affineSchemesFibreProduct}. The diagonal $\Delta=\text{image of }X\xrightarrow{(\id_X,\id_X)}X\times X$ is closed by Fact~\reff{fact:schemeConditions}\itememph{e} and isomorphic to $X$, as $\Delta\xrightarrow{p|_\Delta=q|_\Delta}X$ is inverse to $X\morphism \Delta$. Then $\Delta\cap U\times V$ is affine as a closed subprescheme of the affine scheme $U\times V$ by Corollary~\reff{cor:closedSubpreschemes}. Then its preimage under the isomorphism $X\isomorphism\Delta$
+\begin{proof}[Proof of Proposition~\reff{prop:intersectionAffine}]
+    Let $U,V\subseteq X$ be affine open subsets of a scheme $X$. By Corollary~\reff{cor:fibreProductsInLRS}, their product $U\times V$ equals $p^{-1}(U) \cap q^{-1} (V)\subseteq X\times X$ (where $X\times X\doublemorphism[p][q] X$ are the projections to the factors) and is affine by Corollary~\reff{cor:affineSchemesFibreProduct}. The diagonal $\Delta=\text{image of }X\xrightarrow{\smash{(\id_X,\id_X)}}X\times X$ is closed by Fact~\reff{fact:schemeConditions}\itememph{e} and isomorphic to $X$, as $\Delta\xrightarrow{p|_\Delta=q|_\Delta}X$ is inverse to $X\morphism \Delta$. Then $\Delta\cap (U\times V)$ is affine as a closed subprescheme of the affine scheme $U\times V$ by Corollary~\reff{cor:closedSubpreschemes}. Then its preimage under the isomorphism $X\isomorphism\Delta$
     \begin{align*}
-    	p|_\Delta(\Delta\cap U\times V)&=p|_\Delta\big(\Delta\cap p^{-1}(U)\cap q^{-1}(V)\big)\\
+    	p|_\Delta\big(\Delta\cap (U\times V)\big)&=p|_\Delta\big(\Delta\cap p^{-1}(U)\cap q^{-1}(V)\big)\\
     	&=p|_\Delta\big(\Delta\cap p^{-1}(U)\big)\cap q|_\Delta\big(\Delta\cap q^{-1}(V)\big)=U\cap V
     \end{align*}
      is affine as well, as we wanted to show.
@@ -2468,9 +2468,9 @@ A Franke lecture is no Franke lecture without a definition being proved.
     For a morphism $X\morphism[f] Y$ of preschemes, the following conditions are equivalent
     \begin{alphanumerate}
     \item 
-        For any affine open $U\subseteq X$, $f^{-1}U$ is quasi-compact
+        For any affine open $U\subseteq X$, $f^{-1}(U)$ is quasi-compact
     \item 
-        For any quasi-compact open $U\subseteq Y$, $f^{-1}U$ is quasi-compact.
+        For any quasi-compact open $U\subseteq Y$, $f^{-1}(U)$ is quasi-compact.
     \item 
         The open subsets $U\subseteq Y$ such that $f^{-1}(U)$ is quasi-compact form a topology base.
     \item 
@@ -2478,7 +2478,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
     \end{alphanumerate}
 \end{fact}
 \begin{proof}
-	The equivalence of \itememph{a} to \itememph{c} was proved in Definition~\reff{def:qcqs}\itememph{b}. It is easy to see that \itememph{b} implies \itememph{d}. Assuming \itememph{d}, if $U\subseteq Y$ is affine and $f^{-1}(U)$ is quasi-compact, then for $\lambda\in \Oo_Y(U)$, we have $f^{-1}(U\setminus V(\lambda)) = f^{-1}(U) - V(f^*\lambda)$ being quasi-compact by Fact~\reff{fact:complementClosedQC}. By Fact~\reff{fact:affineSchemesTopologyBase}, such $U\setminus V(\lambda)$ form a topology base.
+	The equivalence of \itememph{a}, \itememph{b}, and \itememph{c} was proved in Definition~\reff{def:qcqs}\itememph{b}. It is easy to see that \itememph{b} implies \itememph{d}. Assuming \itememph{d}, if $U\subseteq Y$ is affine and $f^{-1}(U)$ is quasi-compact, then for $\lambda\in \Oo_Y(U)$, we have $f^{-1}(U\setminus V(\lambda)) = f^{-1}(U) \setminus  V(f^*\lambda)$ being quasi-compact by Fact~\reff{fact:complementClosedQC}. By Fact~\reff{fact:affineSchemesTopologyBase}\itememph{b}, such $U\setminus V(\lambda)$ form a topology base.
 \end{proof}
 \begin{defi}[Quasi-compact morphism] \lbl{def:qcmorphism}
     A morphism with these properties is called \defemph{quasicompact}.
@@ -2489,17 +2489,20 @@ A Franke lecture is no Franke lecture without a definition being proved.
 \begin{proof}
     If $X$ is affine, say $X=\Spec R$, then $X\setminus V(f) \simeq \Spec R_f$ is affine, thus quasi-compact. If $X$ is quasi-compact, $X=\bigcup_{i=1}^n U_i$ with $U_i$ affine. Then $X\setminus V(f) = \bigcup_{i=1}^n(U_i\setminus V(f))$ is a finite union of quasi-compact open subsets, thus quasi-compact.
 \end{proof}
-\begin{fact}
-    The class of quasi-compact morphisms is base local and closed under composition and base change. 
+\begin{fact}\lbl{fact:qcIsBaseLocalAndStuff}
+    The class of quasi-compact morphisms is base-local (cf. Definition~\reff{def:baseLocal}\itememph{b}) and closed under composition and base change. 
 \end{fact}
 \begin{proof}
-    Closedness under composition is obvious from Fact~\reff{fact:qcmorphism}\itememph{a} and base locality is obvious from Fact~\reff{fact:qcmorphism}\itememph{c}. Closedness under base-change may, by base locality reduced to the case where $Y$ is affine and the change is by $\snake Y\morphism Y$ with $\snake Y$ affine. In this case, $X$ is quasi-compact, hence $X=\bigcup_{i=1}^nX_i$, where $X_i\subseteq X$ is affine and open and $\snake X= X\times_Y\snake Y$ is $\bigcup_{i=1}^n \snake X_i$ with $\snake X_i = X_i\times_Y \snake Y$ is affine as was seen at the end of section 1.4. By the following fact $\snake X_i \morphism \snake Y$ is quasi-compact. When $U\subseteq Y$ is a quasi-compact open subset this means that $\snake f^{-1}(U) \cap \snake X_i = (\snake f|_{\snake X_i})^{-1} (U)$ is quasi-compact and $\snake f^{-1}(U)$ being the finite union of these subsets, is quasi-compact as well. 
+    Closedness under composition is obvious from Fact~\reff{fact:qcmorphism}\itememph{a} and base-locality is obvious from Fact~\reff{fact:qcmorphism}\itememph{c}. Closedness under base-change may, by base-locality, be reduced to the case $X\morphism[f]Y$ where $Y$ is affine and the base change is along $\snake Y\morphism Y$ with $\snake Y$ affine. In this case, $X=f^{-1}(Y)$ is quasi-compact, hence $X=\bigcup_{i=1}^nX_i$ with $X_i\subseteq X$ is affine open and $X\times_Y\snake Y=\bigcup_{i=1}^n \snake X_i$ in which the factors $\snake X_i = X_i\times_Y \snake Y$ are affine (as was seen in Corollary~\reff{cor:affineSchemesFibreProduct}) and thus quasi-compact. 
+    
+    Denote by $\snake f$ the base change $X\times_Y\snake Y\morphism[\snake f]\snake Y$ of $f$.    
+    By the following Fact~\reff{fact:qcToAffineIsQc}, the restriction $\snake X_i \morphism \snake Y$ is quasi-compact. When $U\subseteq Y$ is a quasi-compact open subset this means that $\snake f^{-1}(U) \cap \snake X_i = (\snake f|_{\snake X_i})^{-1} (U)$ is quasi-compact and $\snake f^{-1}(U)$, being the finite union of these subsets, is quasi-compact as well. 
 \end{proof}
-\begin{fact}
+\begin{fact}\lbl{fact:qcToAffineIsQc}
     Let $X$ be quasi-compact and $Y$ affine, any morphism $X\morphism Y$ is quasi-compact.
 \end{fact}
 \begin{proof}\lbl{fact:qcmorphismBetweenQcAndAffine}
-    By Fact~\reff{fact:complementClosedQC} $f^{-1}(Y\setminus V(\lambda)) = X\setminus V(f^*\lambda)$ is quasi-compact, for $\lambda\in \Oo_Y(Y)$. As sich $Y\setminus V(\lambda)$ form a topology base on $Y$, Fact~\reff{fact:qcmorphism}\itememph{c} holds.
+    By Fact~\reff{fact:complementClosedQC}, $f^{-1}(Y\setminus V(\lambda)) = X\setminus V(f^*\lambda)$ is quasi-compact, for $\lambda\in \Oo_Y(Y)$. As such $Y\setminus V(\lambda)$ form a topology base on $Y$, Fact~\reff{fact:qcmorphism}\itememph{c} may be applied.
 \end{proof}
 
 \begin{prop}
@@ -2508,10 +2511,10 @@ A Franke lecture is no Franke lecture without a definition being proved.
 \begin{proof}
     Induction on the minimal number of affine open subsets of $X$ needed to cover $Y$. When that number is $1$, we may assume $X$ to be affine, e.g. $X= \Spec R$, $Y=V(I)$ with $I\subsetneq R$ as $Y\neq\emptyset$. Then $I$ is contained in some maximal ideal $\mm$ of $R$ and $\{\mm\} = V(\mm)$ is closed and $\mm\in V(I)$.
     
-    Let $(U_i)_{i=1}^n$ be affine open subsets covering $X$ and the assertion hold for closed subsets of $X$ which may be covered by fewer than $n$ affine open subsets of $X$. If $Y\subset U_1$ we are in the previous situation, otherwise $\snake Y = Y\setminus U_1$ is a non-empty closed subset of $Y$ which can be covered by $n-1$ affine open subsets and thus containing a closed point.
+    Let $(U_i)_{i=1}^n$ be affine open subsets covering $X$ and the assertion hold for closed subsets of $X$ which may be covered by fewer than $n$ affine open subsets of $X$. If $Y\subseteq U_1$ we are in the previous situation, otherwise $\snake Y = Y\setminus U_1$ is a non-empty closed subset of $Y$ which can be covered by $n-1$ affine open subsets and thus contains a closed point.
 \end{proof}
 \begin{example}
-    IN $X=\Spec k\left[X_i \st i\in \IN\right]$, the open subset $X\setminus \{m\}$ with $\mm= \left\langle X_i\st i\in\IN \right\rangle$ fails to be quasi-compact as $X\setminus \{\mm\} = \bigcup_{i=1}^\infty X\setminus V(X_i)$ has no finite subcover. Then $X\setminus \{\mm\}\morphism X$ is a morphism which fails to be quasi-compact.
+    In $X=\Spec \big(k\left[X_i \st i\in \IN\right]\big)$, the open subset $X\setminus \{m\}$ with $\mm= \left( X_i\st i\in\IN \right)$ fails to be quasi-compact as $X\setminus \{\mm\} = \bigcup_{i=1}^\infty X\setminus V(X_i)$ has no finite subcover. Then $X\setminus \{\mm\}\morphism X$ is a morphism which fails to be quasi-compact.
 \end{example}
 \begin{lem}\lbl{lem:qsmorphism}
     For a morphism $X\morphism Y$ of preschemes, the following conditions are equivalent:
@@ -2521,11 +2524,11 @@ A Franke lecture is no Franke lecture without a definition being proved.
     \item 
         For any quasi-separated open subset $U\subseteq Y$, $f^{-1}(U)$ is quasi-separated.
     \item 
-        The diagonal $X \morphism[\Delta] X\times_Y X$ is a quasi-compact morphism.
+        The diagonal $X \xrightarrow{\Delta=(\id_X,\id_X)} X\times_Y X$ is a quasi-compact morphism.
     \end{alphanumerate}
 \end{lem}
 \begin{proof}
-    Let \itememph{a} be satisfied and $U\subseteq Y$ be quasi-separated, we have to show that $f^{-1}(U)$ is quasi-separated. Without losing generality we may assume $U=Y$ is quasi-separated and have to show that $X$ is quasi-separated. For two arbitrary quasi-compact open subsets $V$ and $W$ of $X$, $V\cap W$ is quasi-compact. If is sufficient to show this when $f(V)$ and $f(w)$ are contained in affine open subsets $\Omega$ and $\Theta$ of $Y$. Every $x\in V$ has some affine open neighbourhood $V_x\subseteq V$ with $f(V_x)\subseteq \Omega_x$ where $\Omega_x \subseteq Y$ is affine. Similarly, every $x\in W$ has a neighbourhood $W_x\subseteq W$ such that $f(W_x)\subseteq \Theta_x$ which is affine. The for every $x\in V$, $\xi \in W$, $V_x\cap W_\xi$ is quasi-compact by the special case, and $V=\bigcup_{i=1}^m V_{x_i}$ and $W = \bigcup_{j=1}^n W_{x_j}$ and 
+    Let's start proving \itememph{a} $\Rightarrow$ \itememph{b}. Let \itememph{a} be satisfied and $U\subseteq Y$ be quasi-separated, we have to show that $f^{-1}(U)$ is quasi-separated. Without losing generality we may assume $U=Y$ is quasi-separated and have to show that $X$ is quasi-separated, i.e. for two arbitrary quasi-compact open subsets $V$ and $W$ of $X$, $V\cap W$ is quasi-compact. We claim that it is sufficient to show this when $f(V)$ and $f(W)$ are contained in affine open subsets $\Omega$ and $\Theta$ of $Y$. Indeed, every $x\in V$ has some affine open neighbourhood $V_x\subseteq V$ with $f(V_x)\subseteq \Omega_x$ where $\Omega_x \subseteq Y$ is affine. Similarly, every $x\in W$ has a neighbourhood $W_x\subseteq W$ such that $f(W_x)\subseteq \Theta_x$ which is affine. Then for every $x\in V$ and $\xi \in W$, $V_x\cap W_\xi$ is quasi-compact by the special case we have yet to prove, and by quasi-compactness of $V,W$ there are $x_i\in V$, $\xi_j\in W$ such that $V=\bigcup_{i=1}^m V_{x_i}$ and $W = \bigcup_{j=1}^n W_{x_j}$. Then
     \begin{align*}
         V\cap W = \bigcup_{i=1}^m \bigcup_{j=1}^n (V_{x_i}\cap W_{\xi_j})
     \end{align*}
@@ -2535,24 +2538,30 @@ A Franke lecture is no Franke lecture without a definition being proved.
     \begin{align*}
         \Omega\cap \Theta = \bigcup_{j=1}^n(\Theta \setminus V(\vartheta_j))
     \end{align*}
-    with $\vartheta_j\in \Oo_Y(\Theta)$. Then $V\setminus V(f^*\omega_i)$ and $W\setminus V(f^* \vartheta_j)$ are quasi-compact and have image contained in $\Omega$, and $f^{-1}(\Omega)$ is quasi-separated,
+    with $\vartheta_j\in \Oo_Y(\Theta)$. Then $V\setminus V(f^*\omega_i)$ and $W\setminus V(f^* \vartheta_j)$ are quasi-compact by Fact~\reff{fact:complementClosedQC} and have image contained in $\Omega$, and $f^{-1}(\Omega)$ is quasi-separated (since we are assuming \itememph{a}), hence
     \begin{align*}
         (V\setminus V(f^*\omega_i))\cap (W\setminus V(f^* \vartheta_j))
     \end{align*}
     is quasi-compact, and so is their finite union $V\cap W$. This implies \itememph{b}.
     
-    Now assume \itememph{c}. Let $\Delta$ be quasi-compact. If $U\subseteq Y$ is affine and $V$ and $W$ are affine open subsets of $f^{-1}(U)$, $V\times_Y W = V\times_U W$ as $U\morphism Y$ is monic. As $U$, $V$, and $W$ are affine, so is $V\times_U W$ by Corollary~\reff{cor:affineSchemesFibreProduct}. But $V\cap W$ equals $\Delta^{-1}(V\times_Y W)$ which is quasi-compact as $\Delta$ is a quasi-compact morphism. This shows \itememph{b}.
+    Now assume \itememph{c} for showing that \itememph{c} $\Rightarrow$ \itememph{b}. Let $\Delta$ be quasi-compact. If $U\subseteq Y$ is affine and $V$ and $W$ are affine open subsets of $f^{-1}(U)$, $V\times_Y W = V\times_U W$ as $U\morphism Y$ is monic (Corollary~\reff{cor:preschemesFibreProduct}\itememph{c}). As $U$, $V$, and $W$ are affine, so is $V\times_U W$ by Corollary~\reff{cor:affineSchemesFibreProduct}. But $V\cap W$ equals $\Delta^{-1}(V\times_Y W)$ (by an argument like in the proof of Proposition~\reff{prop:intersectionAffine}) which is quasi-compact as $\Delta$ is a quasi-compact morphism. This shows \itememph{b}.
     
-    Consider \itememph{a} to be true. Let $V, W\subseteq X$ be affine open subsets of $X$ such that $f(V)\cup f(W) \subseteq U$ where $U\subseteq Y$ is affine. Note that such $V\times_U W = V\times_Y W$ cover $X\times_Y X$. As quasi-compactness of morphisms is a base-local property, it suffices to show that $\Delta^{-1}(V\times_Y W)\morphism V\times_Y W$ is quasi-compact. This however, follows from Fact~\reff{fact:qcmorphismBetweenQcAndAffine} as $\Delta^{-1}(V\times_Y) = V\cap W$ is quasi-compact by our assumption and $V\times_Y W= V\times_U W$ is affine. This implies \itememph{c}.
+    We show that \itememph{a} $\Rightarrow$ \itememph{c}. Consider \itememph{a} to be true. Let $V, W\subseteq X$ be affine open subsets of $X$ such that $f(V)\cup f(W) \subseteq U$ where $U\subseteq Y$ is affine. Note that such $V\times_U W = V\times_Y W$ cover $X\times_Y X$. As quasi-compactness of morphisms is a base-local property, it suffices to show that $\Delta^{-1}(V\times_Y W)\morphism V\times_Y W$ is quasi-compact. This however, follows from Fact~\reff{fact:qcToAffineIsQc} as $\Delta^{-1}(V\times_YW) = V\cap W$ is quasi-compact by our assumption and $V\times_Y W= V\times_U W$ is affine. This implies \itememph{c}.
+    
+    Ah right, and \itememph{b} $\Rightarrow$ \itememph{a} is trivial, closing the circle.
 \end{proof}
 \begin{defi}[Quasi-separated morphisms]\lbl{def:qsmorphism}
-    Such morphisms are called quasi-separated.
+    Such morphisms are called \defemph{quasi-separated}.
 \end{defi}
 \begin{fact}\lbl{fact:qsmorphismProperties}
-    Any separated morphism is quasi-separated, since Lemma~\reff{lem:qsmorphism}\itememph{c} holds as any closed immersion is quasi-compact. The class of quasi-separated morphisms is base-local and closed under base change, composition and fibre products.
+    Any separated morphism is quasi-separated. The class of quasi-separated morphisms is base-local and closed under base change, composition, and fibre products.
 \end{fact}
 \begin{proof}
-    The closedness under composition follows from condition \itememph{b} of Lemma~\reff{lem:qsmorphism}. Base locality follows from \itememph{c} of the same lemma, since quasi-compactness of morphisms is base-local, for $U\subseteq Y$ open and $X_U = f^{-1}(U)$ the $X_U\times_U W_U$ are open subsets of $X\times_Y X$ and $\Delta^{-1}(X_U\times_U X_U) = X_U$. Closedness under base change $\snake \morphism Y$ is also a consequence of condition \itememph{c} of Lemma~\reff{lem:qsmorphism} as, for $\snake Y\morphism Y$ and $\snake X = X\times_Y \snake Y$, $\snake X \morphism[\Delta] \snake X\times_{\snake Y}\snake X$ is a base change of $X\morphism[\Delta] X\times_Y X$ with respect to $\snake X\times_{\snake Y} \snake X \morphism X\times_Y X$.
+    For the first assertion note that Lemma~\reff{lem:qsmorphism}\itememph{c} holds as any closed immersion is quasi-compact. The closedness under composition follows from condition \itememph{b} of Lemma~\reff{lem:qsmorphism}. Base-locality follows from Lemma~\reff{lem:qsmorphism}\itememph{c}, since quasi-compactness of morphisms is base-local, for $U\subseteq Y$ open and $X_U = f^{-1}(U)$ the $X_U\times_U X_U$ are open subsets of $X\times_Y X$ and $\Delta^{-1}(X_U\times_U X_U) = X_U$. Closedness under base change is also a consequence of Lemma~\reff{lem:qsmorphism}\itememph{c} as, for $\snake Y\morphism Y$ and $\snake X = X\times_Y \snake Y$ we have that 
+    \begin{align*}
+    	\snake X \xrightarrow{\snake\Delta=\left(\id_{\snake X},\id_{\snake X}\right)} \snake X\times_{\snake Y}\snake X\;
+    \end{align*}
+    is a base change of $X\morphism[\Delta] X\times_Y X$ with respect to $\snake X\times_{\snake Y} \snake X \morphism X\times_Y X$ and quasi-compactness is stable under base change (Fact~\reff{fact:qcIsBaseLocalAndStuff}).
 \end{proof}
 
 \subsection{Generic points}
@@ -2570,12 +2579,12 @@ A Franke lecture is no Franke lecture without a definition being proved.
     A topological space is $T_0$ (or Kolmogorov) iff any irreducible closed subset of $X$ has at most one generic point.
 \end{fact}
 \begin{defi}[Sober space] \lbl{def:soberSpace}
-    A topological space is called \defemph{sober} if any irreducible subset has precisely one generic point (which is often denoted by $n_Z$).
+    A topological space is called \defemph{sober} if any irreducible closed subset has precisely one generic point (which is often denoted by $n_Z$).
 \end{defi}
 \begin{rem*}
     Ever sober space is $T_0$ and every $T_2$ (Hausdorff) space is sober. There exist spaces which are sober but not $T_1$ and spaces which are $T_1$ but not sober.
 \end{rem*}
-\begin{fact}
+\begin{fact}\lbl{fact:soberConditions}
     For a topological space $X$, the following are equivalent:
     \begin{alphanumerate}
     \item   
@@ -2586,9 +2595,15 @@ A Franke lecture is no Franke lecture without a definition being proved.
         $X$ may be covered by open subsets which are sober.
     \end{alphanumerate}
 \end{fact}
+\begin{proof}
+	The implications \itememph{b} $\Rightarrow$ \itememph{a} and \itememph{a} $\Rightarrow$ \itememph{c} are trivial. Let's prove \itememph{c} $\Rightarrow$ \itememph{b}. Let $X=\bigcup_{i\in I}U_i$ be an open cover by sober subsets and $U\subseteq X$ open. Let $Z\subseteq U$ be irreducible closed and $i\in I$ such that $U_i\cap Z\neq 0$. Let $\eta_{Z\cap U_i}$ be the unique generic point of $Z\cap U_i$ (which is an open subset of $Z$ and thus irreducible again). Then the closure of $\eta_{Z\cap U_i}$ in $U$ equals $Z$ as $Z\cap U_i\subseteq Z$ is a nonempty open subset and thus dense, $Z$ being irreducible. Conversely, if $\eta_Z$ is a generic point of $Z$, then $\eta_Z\in U_i$ (as otherwise $\ov{\{\eta_Z\}}\subseteq Z\setminus U_i$) and the closure of $\eta_Z$ in $U_i$ equals $Z\cap U_i$, hence $\eta_Z=\eta_{Z\cap U_i}$.
+\end{proof}
 \begin{fact}
     The underlying topological space of any prescheme is sober.
 \end{fact}
+\begin{proof}
+	By Fact~\reff{fact:soberConditions}\itememph{c}, it is enough to show that $\Spec R$ is sober for any ring $R$. Any irreducible closed subset of $\Spec R$ has the form $V(\pp)$ for some $\pp\in\Spec R$ and $\pp$ is a generic point.
+\end{proof}
 \begin{thm}[M. Hochster]\lbl{thm:hochster}
     A topological space $X$ is isomorphic to the spectrum of some ring $R$ iff $X$ is quasi-compact, quasi-separated, sober and the quasi-compact subsets form a topology base.
 \end{thm}
