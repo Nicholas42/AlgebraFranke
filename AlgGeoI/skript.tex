@@ -1941,7 +1941,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
 \end{rem*}
 \begin{fact}
 	\begin{alphanumerate}
-		\item\lbl{fact:affineSchemesTopologyBase} The affine open subsets of a prescheme $X$ form a topology base on $X$.
+		\item \lbl{fact:affineSchemesTopologyBase} The affine open subsets of a prescheme $X$ form a topology base on $X$.
 		\item More precisely if $X=\bigcup_{\lambda\in \Lambda} U_\lambda$ is a cover of $X$ by affine open subsets $U_\lambda$, then 
 		\begin{align*}
 		\left\{U_\lambda\setminus V(f)\st \lambda\in \Lambda\text{, }f\in \Oo_X(U_\lambda)\right\}
@@ -2471,28 +2471,127 @@ A Franke lecture is no Franke lecture without a definition being proved.
         For any affine open $U\subseteq X$, $f^{-1}U$ is quasi-compact
     \item 
         For any quasi-compact open $U\subseteq Y$, $f^{-1}U$ is quasi-compact.
+    \item 
+        The open subsets $U\subseteq Y$ such that $f^{-1}(U)$ is quasi-compact form a topology base.
+    \item 
+        $X$ may be covered by affine open subsets such that $f^{-1}(U)$ is quasi-compact.
     \end{alphanumerate}
 \end{fact}
 \begin{proof}
-	This was proved in Definition~\reff{def:qcqs}\itememph{b}.
+	The equivalence of \itememph{a} to \itememph{c} was proved in Definition~\reff{def:qcqs}\itememph{b}. It is easy to see that \itememph{b} implies \itememph{d}. Assuming \itememph{d}, if $U\subseteq Y$ is affine and $f^{-1}(U)$ is quasi-compact, then for $\lambda\in \Oo_Y(U)$, we have $f^{-1}(U\setminus V(\lambda)) = f^{-1}(U) - V(f^*\lambda)$ being quasi-compact by Fact~\reff{fact:complementClosedQC}. By Fact~\reff{fact:affineSchemesTopologyBase}, such $U\setminus V(\lambda)$ form a topology base.
 \end{proof}
 \begin{defi}[Quasi-compact morphism] \lbl{def:qcmorphism}
     A morphism with these properties is called \defemph{quasicompact}.
 \end{defi}
-\begin{fact}
-    The class of quasi-compact morphisms is base local and closed under composition and base change. 
-\end{fact}
-To prove this, we first need another fact.
-\begin{fact}
+\begin{fact}\lbl{fact:complementClosedQC}
     If $X$ is a quasi-compact prescheme and $f\in \Oo_X(X)$ then $X\setminus V(f)$ is quasi-compact.
 \end{fact}
 \begin{proof}
     If $X$ is affine, say $X=\Spec R$, then $X\setminus V(f) \simeq \Spec R_f$ is affine, thus quasi-compact. If $X$ is quasi-compact, $X=\bigcup_{i=1}^n U_i$ with $U_i$ affine. Then $X\setminus V(f) = \bigcup_{i=1}^n(U_i\setminus V(f))$ is a finite union of quasi-compact open subsets, thus quasi-compact.
 \end{proof}
+\begin{fact}
+    The class of quasi-compact morphisms is base local and closed under composition and base change. 
+\end{fact}
+\begin{proof}
+    Closedness under composition is obvious from Fact~\reff{fact:qcmorphism}\itememph{a} and base locality is obvious from Fact~\reff{fact:qcmorphism}\itememph{c}. Closedness under base-change may, by base locality reduced to the case where $Y$ is affine and the change is by $\snake Y\morphism Y$ with $\snake Y$ affine. In this case, $X$ is quasi-compact, hence $X=\bigcup_{i=1}^nX_i$, where $X_i\subseteq X$ is affine and open and $\snake X= X\times_Y\snake Y$ is $\bigcup_{i=1}^n \snake X_i$ with $\snake X_i = X_i\times_Y \snake Y$ is affine as was seen at the end of section 1.4. By the following fact $\snake X_i \morphism \snake Y$ is quasi-compact. When $U\subseteq Y$ is a quasi-compact open subset this means that $\snake f^{-1}(U) \cap \snake X_i = (\snake f|_{\snake X_i})^{-1} (U)$ is quasi-compact and $\snake f^{-1}(U)$ being the finite union of these subsets, is quasi-compact as well. 
+\end{proof}
+\begin{fact}
+    Let $X$ be quasi-compact and $Y$ affine, any morphism $X\morphism Y$ is quasi-compact.
+\end{fact}
+\begin{proof}\lbl{fact:qcmorphismBetweenQcAndAffine}
+    By Fact~\reff{fact:complementClosedQC} $f^{-1}(Y\setminus V(\lambda)) = X\setminus V(f^*\lambda)$ is quasi-compact, for $\lambda\in \Oo_Y(Y)$. As sich $Y\setminus V(\lambda)$ form a topology base on $Y$, Fact~\reff{fact:qcmorphism}\itememph{c} holds.
+\end{proof}
 
+\begin{prop}
+    When $X$ is quasi-compact, every closed subset $\emptyset\subsetneq Y\subseteq X$ contains a closed point.
+\end{prop}
+\begin{proof}
+    Induction on the minimal number of affine open subsets of $X$ needed to cover $Y$. When that number is $1$, we may assume $X$ to be affine, e.g. $X= \Spec R$, $Y=V(I)$ with $I\subsetneq R$ as $Y\neq\emptyset$. Then $I$ is contained in some maximal ideal $\mm$ of $R$ and $\{\mm\} = V(\mm)$ is closed and $\mm\in V(I)$.
+    
+    Let $(U_i)_{i=1}^n$ be affine open subsets covering $X$ and the assertion hold for closed subsets of $X$ which may be covered by fewer than $n$ affine open subsets of $X$. If $Y\subset U_1$ we are in the previous situation, otherwise $\snake Y = Y\setminus U_1$ is a non-empty closed subset of $Y$ which can be covered by $n-1$ affine open subsets and thus containing a closed point.
+\end{proof}
+\begin{example}
+    IN $X=\Spec k\left[X_i \st i\in \IN\right]$, the open subset $X\setminus \{m\}$ with $\mm= \left\langle X_i\st i\in\IN \right\rangle$ fails to be quasi-compact as $X\setminus \{\mm\} = \bigcup_{i=1}^\infty X\setminus V(X_i)$ has no finite subcover. Then $X\setminus \{\mm\}\morphism X$ is a morphism which fails to be quasi-compact.
+\end{example}
+\begin{lem}\lbl{lem:qsmorphism}
+    For a morphism $X\morphism Y$ of preschemes, the following conditions are equivalent:
+    \begin{alphanumerate}
+    \item 
+        For any affine open subset $U\subseteq Y$, $f^{-1}(U)$ is quasi-separated.
+    \item 
+        For any quasi-separated open subset $U\subseteq Y$, $f^{-1}(U)$ is quasi-separated.
+    \item 
+        The diagonal $X \morphism[\Delta] X\times_Y X$ is a quasi-compact morphism.
+    \end{alphanumerate}
+\end{lem}
+\begin{proof}
+    Let \itememph{a} be satisfied and $U\subseteq Y$ be quasi-separated, we have to show that $f^{-1}(U)$ is quasi-separated. Without losing generality we may assume $U=Y$ is quasi-separated and have to show that $X$ is quasi-separated. For two arbitrary quasi-compact open subsets $V$ and $W$ of $X$, $V\cap W$ is quasi-compact. If is sufficient to show this when $f(V)$ and $f(w)$ are contained in affine open subsets $\Omega$ and $\Theta$ of $Y$. Every $x\in V$ has some affine open neighbourhood $V_x\subseteq V$ with $f(V_x)\subseteq \Omega_x$ where $\Omega_x \subseteq Y$ is affine. Similarly, every $x\in W$ has a neighbourhood $W_x\subseteq W$ such that $f(W_x)\subseteq \Theta_x$ which is affine. The for every $x\in V$, $\xi \in W$, $V_x\cap W_\xi$ is quasi-compact by the special case, and $V=\bigcup_{i=1}^m V_{x_i}$ and $W = \bigcup_{j=1}^n W_{x_j}$ and 
+    \begin{align*}
+        V\cap W = \bigcup_{i=1}^m \bigcup_{j=1}^n (V_{x_i}\cap W_{\xi_j})
+    \end{align*}
+    is quasi-compact.
+    
+    Now, if $f(V)\subseteq \Omega$ and $f(W)\subseteq \Theta$ are as above, then $\Omega\cap \Theta$ is quasi-compact as $Y$ is quasi-separated. Since open subsets of that form form a topology base on $\Omega$, $\Omega\cap \Theta = \bigcup_{i=1}^m (\Omega\setminus V(\omega_i))$ with $\omega_i\in \Oo_Y(\Omega)$ and 
+    \begin{align*}
+        \Omega\cap \Theta = \bigcup_{j=1}^n(\Theta \setminus V(\vartheta_j))
+    \end{align*}
+    with $\vartheta_j\in \Oo_Y(\Theta)$. Then $V\setminus V(f^*\omega_i)$ and $W\setminus V(f^* \vartheta_j)$ are quasi-compact and have image contained in $\Omega$, and $f^{-1}(\Omega)$ is quasi-separated,
+    \begin{align*}
+        (V\setminus V(f^*\omega_i))\cap (W\setminus V(f^* \vartheta_j))
+    \end{align*}
+    is quasi-compact, and so is their finite union $V\cap W$. This implies \itememph{b}.
+    
+    Now assume \itememph{c}. Let $\Delta$ be quasi-compact. If $U\subseteq Y$ is affine and $V$ and $W$ are affine open subsets of $f^{-1}(U)$, $V\times_Y W = V\times_U W$ as $U\morphism Y$ is monic. As $U$, $V$, and $W$ are affine, so is $V\times_U W$ by Corollary~\reff{cor:affineSchemesFibreProduct}. But $V\cap W$ equals $\Delta^{-1}(V\times_Y W)$ which is quasi-compact as $\Delta$ is a quasi-compact morphism. This shows \itememph{b}.
+    
+    Consider \itememph{a} to be true. Let $V, W\subseteq X$ be affine open subsets of $X$ such that $f(V)\cup f(W) \subseteq U$ where $U\subseteq Y$ is affine. Note that such $V\times_U W = V\times_Y W$ cover $X\times_Y X$. As quasi-compactness of morphisms is a base-local property, it suffices to show that $\Delta^{-1}(V\times_Y W)\morphism V\times_Y W$ is quasi-compact. This however, follows from Fact~\reff{fact:qcmorphismBetweenQcAndAffine} as $\Delta^{-1}(V\times_Y) = V\cap W$ is quasi-compact by our assumption and $V\times_Y W= V\times_U W$ is affine. This implies \itememph{c}.
+\end{proof}
+\begin{defi}[Quasi-separated morphisms]\lbl{def:qsmorphism}
+    Such morphisms are called quasi-separated.
+\end{defi}
+\begin{fact}\lbl{fact:qsmorphismProperties}
+    Any separated morphism is quasi-separated, since Lemma~\reff{lem:qsmorphism}\itememph{c} holds as any closed immersion is quasi-compact. The class of quasi-separated morphisms is base-local and closed under base change, composition and fibre products.
+\end{fact}
+\begin{proof}
+    The closedness under composition follows from condition \itememph{b} of Lemma~\reff{lem:qsmorphism}. Base locality follows from \itememph{c} of the same lemma, since quasi-compactness of morphisms is base-local, for $U\subseteq Y$ open and $X_U = f^{-1}(U)$ the $X_U\times_U W_U$ are open subsets of $X\times_Y X$ and $\Delta^{-1}(X_U\times_U X_U) = X_U$. Closedness under base change $\snake \morphism Y$ is also a consequence of condition \itememph{c} of Lemma~\reff{lem:qsmorphism} as, for $\snake Y\morphism Y$ and $\snake X = X\times_Y \snake Y$, $\snake X \morphism[\Delta] \snake X\times_{\snake Y}\snake X$ is a base change of $X\morphism[\Delta] X\times_Y X$ with respect to $\snake X\times_{\snake Y} \snake X \morphism X\times_Y X$.
+\end{proof}
 
+\subsection{Generic points}
 
-
+\begin{fact}\lbl{fact:closureOfPointIrreducible}
+    Let $X$ be any topological space, $x\in X$, then $\ov{\{x\}}$ is irreducible.
+\end{fact}
+\begin{defi}[Generic point]\lbl{def:genericPoint}
+    Let $Z\subseteq X$ be closed. A \defemph{generic point} of $Z$ is any $\eta_Z\in Z$ such that $\ov{\{\eta_Z\}} = Z$.
+\end{defi}
+\begin{rem*}
+    By Fact~\reff{fact:closureOfPointIrreducible}, $Z$ must be irreducible.
+\end{rem*}
+\begin{fact}
+    A topological space is $T_0$ (or Kolmogorov) iff any irreducible closed subset of $X$ has at most one generic point.
+\end{fact}
+\begin{defi}[Sober space] \lbl{def:soberSpace}
+    A topological space is called \defemph{sober} if any irreducible subset has precisely one generic point (which is often denoted by $n_Z$).
+\end{defi}
+\begin{rem*}
+    Ever sober space is $T_0$ and every $T_2$ (Hausdorff) space is sober. There exist spaces which are sober but not $T_1$ and spaces which are $T_1$ but not sober.
+\end{rem*}
+\begin{fact}
+    For a topological space $X$, the following are equivalent:
+    \begin{alphanumerate}
+    \item   
+        $X$ is sober.
+    \item 
+        Any open subset $U$ of $X$ is sober.
+    \item 
+        $X$ may be covered by open subsets which are sober.
+    \end{alphanumerate}
+\end{fact}
+\begin{fact}
+    The underlying topological space of any prescheme is sober.
+\end{fact}
+\begin{thm}[M. Hochster]\lbl{thm:hochster}
+    A topological space $X$ is isomorphic to the spectrum of some ring $R$ iff $X$ is quasi-compact, quasi-separated, sober and the quasi-compact subsets form a topology base.
+\end{thm}
 
 
 
