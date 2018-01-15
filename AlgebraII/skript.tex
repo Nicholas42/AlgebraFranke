@@ -2090,7 +2090,7 @@ We postpone the quite lengthy proof of Proposition~\reff{prop:Akizuki-Hopkins} t
     is an isomorphism of algebraic varieties. But the left hand side has degree $1$ while the right hand side has degree $2$.
 \end{rem*}
 \begin{rem*}
-    Bezouts Theorem in the general from states 
+    B\'ezout's Theorem in the general from states 
     \begin{align*}
     	\deg Z\cdot \deg p = \sum_{i=1}^\ell i(Z,p; Y_i) \cdot \deg(Y_i)
     \end{align*}
@@ -2147,16 +2147,97 @@ We postpone the quite lengthy proof of Proposition~\reff{prop:Akizuki-Hopkins} t
             (M_S)_d = \left\{\frac{m}{s}\st s\in S\cap R_e, r\in M_{e+d}\right\}\;.
         \end{align*}
         The functor $M\mapsto M_S$ commutes with kernels of morphisms, quotients, direct sums and the shift operator $[-]$, i.e.  $M[t]_S \simeq M_S[t]$ for any $t\in\IZ$.
+    \item 
+        Under the correspondence from \itememph{b}, the homogeneous ideals correspond to each other.
     \end{alphanumerate}
 \end{prop}
 \begin{proof}
     Tedious calculation. We are too lazy to copy them and you should be \emph{grateful} we are!	
 \end{proof}
+\begin{rem}
+    If $R$ is a graded ring and $\pp$ a homogeneous prime ideal, $R_\pp$ is defined as the graded localization of $R$ with respect to $S=\bigcup_{i\in\IZ} (R_i\setminus \pp)$. The same convention is applied to $M_\pp$ where $M$ is a graded $R$-module.
+\end{rem}
+
+\section{Intersection multiplicities and B\'ezout's theorem}
 
 
+\begin{defi}
+    Let $X$ be an algebraic variety (e.g. quasi-affine or quasi-projective), $\Oo_X$ its structure sheaf and $Z\subseteq X$ irreducible closed. We put 
+    \begin{align*}
+        \Oo_{X,Z}\coloneqq \colimit[\substack{U\subseteq X \text{ open}\\U\cap Z\neq \emptyset}] \Oo_X(U) =\left\{(U,f)\right\}/_\sim\;,
+    \end{align*}
+    where $(U,f)\sim (V,g)$ iff there is $W\subseteq U\cap V$ such that $Z\cap W\neq \emptyset$ and $f|_W = g|_W$, by the irreducibility of $X$, this is equivalent to $W = U\cap V$. The operations $+$ and $\cdot$ are defined by 
+    \begin{align*}
+        ((U,f)/_\sim) * ((V,g)/_\sim) = (U\cap V, (f|_{U\cap V})* (g|_{U\cap V}))/_\sim\;.
+    \end{align*}
+    This is a local ring with maximal ideal
+    \begin{align*}
+        \mm = \left\{(U,f)/_\sim \st f|_{U\cap Z} = 0\right\}\;.
+    \end{align*}
+    When $\Ll$ is a line bundle on $X$ (e.g. $\Oo_X(\ell)$ when $X\subseteq \IP^n(k)$ is projective) we put
+    \begin{align*}
+        \Ll_{X,Z}=\colimit[\substack{U\subseteq X \text{ open}\\U\cap Z\neq \emptyset}] \Ll(U)
+    \end{align*}
+    which is a free $\Oo_{X,Z}$ module of rank 1.
+\end{defi}
+\begin{prop}
+    \begin{alphanumerate}
+    \item 
+        When $Z=\{x\}$, $\Oo_{X,Z} = \Oo_{X,x}$ and $\Ll_{X,Z} = \Ll_x$.
+    \item   
+        The prime ideals of $\Oo_{X,Z}$ are in a bijective correspondence to the irreducible closed subsets $Y$ containing $Z$, by    
+        \begin{align*}
+            Y\longmapsto \pp = \left\{(U,f)/_\sim\st f_{U\cap V} = 0\right\}\;.
+        \end{align*}
+    \item 
+        When $X$ is a projective algebraic variety and $Z= V(q)$ where $\qq\subseteq S(X) = k[X_0,\ldots, X_n]/\pp$ (with $X= V(\pp)$) then
+        \begin{align*}
+            (S(X)_\qq)_0 &\isomorphism \Oo_{X,Z}\\
+            \frac{f}{s} &\longmapsto \left(X\setminus V(S) , \frac{f}{s}|_{X\setminus V(S)}\right)_\sim\\
+            (S(X)_\qq)_\ell &\isomorphism (\Oo_X(\ell))_Z
+        \end{align*}
+    \end{alphanumerate}
+\end{prop}
+\begin{proof}
+Point \itememph{a} follows directly from the definitions.
 
+\itememph{c} follows from Theorem 7 as the open subsets $X\setminus V(f)$ considered there form a topology base on $X$, as $X\setminus V(I)$ is the union of all $X\setminus V(f)$ where $f$ goes over all homogeneous $f\in I$. Therefore, open subsets $U= X\setminus V(f)$ with $\deg f>0$ such that $U\cap Z \neq \emptyset$ are cofinal in the set of open subsets over which the direct limit is taken in the Definition and it does not change if the direct limit is instead taken over all homogeneous $f$ of positive degree ordered by divisibility. Then one obtains $\colimit[f] (S(X)_f)_\ell \simeq (S(X)_\qq)_\ell$.
 
+The question \itememph{b} is local because for any open subset $U\subseteq X$, we have a bijection between the irreducible closed subsets $A\subseteq U$ and the irreducible closed subsets $B\subseteq X$ such that $B\cap U\neq\emptyset$ and because $(\Oo_V)_Z) \simeq \Oo_{X,Z}$ when $V\cap Z\neq \emptyset$, as the open $U\subseteq V$ such that $U\cap Z$ are cofinal in the open subsets over which the direct limit is taken.
 
+Therefore it is possible to assume without loss of generality that $X$ is affine [...]
+We have a bijection between the $\pp\in\Spec \Oo_X(X)$ and the irreducible closed subsets of $Y\subseteq X$ by
+\begin{align*}
+    \pp &\longmapsto Y = V(\pp)\\
+    \pp =\left\{f\in \Oo_X(X)\st f|_Y = 0\right\} &\longmapsfrom Y\;.
+\end{align*}
+Under this correspondence, $Z$ belongs to some prime ideal $\qq\subseteq \Oo_X(X)$. As $\Oo_X(X\setminus V(f)) \simeq \Oo_X(X)_f$ by Algebra I, we have $\Oo_{X,Z} \simeq \Oo_X(X)_\qq$ and we have bijections 
+
+IN THIS LOVELY DIAGRAM
+\end{proof}
+\begin{defi}[Intersection multiplicity]\lbl{def:intersectionMultiplicity}
+    Let $X\subseteq \IP^n(k)$ be a projective algebraic variety over $k=\ov k$ $H\in k[X_0,\ldots, X_n]$ a homogeneous polynomial of degree $d>0$ not identically zero on $X$, and $Z$ an irreducible component of $X\cap V(H)$. We define the intersection multiplicity $i(X,H,Z)$ by
+    \begin{align*}
+        i(X,H,Z) = \ell\left(\Oo_{X,Z} / \left\langle \frac{H}{F}\right\rangle_{\Oo_{X,Z}}\right) = \ell(\Oo_X(d)_Z/H\cdot \Oo_{X,Z})
+    \end{align*}
+    where the length is of $\Oo_{X,Z}$-modules and in the middle term $F$ is any element of $k[X_0,\ldots, X_n]_d$ not identically vanishing on $Z$.
+\end{defi}
+\begin{cor}
+    \begin{alphanumerate}
+    \item
+        The equality of the middle term and the right term holds as the image of $F$ in $\Oo_X(d)_Z$ is a free generator ($F$ being a free generator of $\Oo_X(d)|_{X\setminus V(F)}$, and $X\setminus V(F)$ intersects $Z$). Therefore, multiplicity by $F$ defines an iso 
+            \begin{align*}
+                \Oo_{X,Z}/\left\langle\frac{H}{F}\right\rangle \isomorphism[\cdot F] \Oo_X(\ell)_Z/H\cdot \Oo_{X,Z}\;.
+            \end{align*}
+            This shows the middle term is independent of $F$.
+    \item 
+        When $Z = V(\qq)$ we have
+        \begin{align*}
+            i(X,H,Z) = \ell\left((S(X)_\qq)_0/\left\langle\frac{F}{H}\right\rangle_{(S(X)_q)_0}\right) = \ell\left(((S(X)_\qq)_d)/H\cdot (S(X)_q)_0\right)
+        \end{align*}
+        where the length is of $(S(X)_\qq)_0$-modules.
+    \end{alphanumerate}
+\end{cor}
 
 
 
