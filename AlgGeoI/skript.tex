@@ -2602,13 +2602,115 @@ A Franke lecture is no Franke lecture without a definition being proved.
     The underlying topological space of any prescheme is sober.
 \end{fact}
 \begin{proof}
-	By Fact~\reff{fact:soberConditions}\itememph{c}, it is enough to show that $\Spec R$ is sober for any ring $R$. Any irreducible closed subset of $\Spec R$ has the form $V(\pp)$ for some $\pp\in\Spec R$ and $\pp$ is a generic point.
+	By Fact~\reff{fact:soberConditions}\itememph{c}, it is enough to show that $\Spec R$ is sober for any ring $R$. For any $\pp\in \Spec R$, $V(\pp)$ is the smallest closed subset, that contains $\pp$, hence the closure of $\pp$. Since the map $V(-)$ from $\Spec R$ to the irreducible closed subsets of $\Spec R$ is bijective, every irreducible closed subset $V(\pp)$ contains exactly one generic point $\pp$.
 \end{proof}
 \begin{thm}[M. Hochster]\lbl{thm:hochster}
     A topological space $X$ is isomorphic to the spectrum of some ring $R$ iff $X$ is quasi-compact, quasi-separated, sober and the quasi-compact subsets form a topology base.
 \end{thm}
 
 
+\subsection{Irreducibility, reducedness and integrality}
+
+\begin{fact}
+    Let $X$ be a topological space, $\Rr$ a sheaf of rings on it. Let $U\subseteq X$ be open. Then the following conditions to $r\in\Rr(U)$ are equivalent:
+    \begin{alphanumerate}
+    \item   
+        For every $x\in U$, the image of $r\in \Rr_x$ is nilpotent.
+    \item 
+        It is possible to cover $U$ by open subsets $U_i$ such that $r|_{U_i}$ is nilpotent.
+    \end{alphanumerate}
+        When $U$ is quasi-compact this is equivalent to $r$ being nilpotent.
+\end{fact}
+
+\begin{defi}
+    Such $r\in \Rr(U)$ is called \defemph{locally nilpotent} on $U$. If $(\nil \Rr)(U) \subseteq \Rr(U)$ denotes the ideal of locally nilpotent elements, then $\nil(\Rr)$ is a sheaf of ideals in $\Rr$ called the nil-radical of $\Rr$.
+\end{defi}
+
+\begin{fact}
+    For a prescheme $X$ we have
+    \begin{align*}
+        (\nil(\Oo_X))(U) = \left\{f\in \Oo_X(U) \st V(f) = U\right\}\;.
+    \end{align*}
+\end{fact}
+\begin{proof}
+    If $U$ is quasi-compact, this follows from corollary 1.5.2. The question being local, the assertion follows in general.
+\end{proof}
+\begin{prop}\lbl{prop:reduced}
+    For a prescheme $X$, $\nil(\Oo_X)$ is quasi-coherent, and the following conditions are equivalent:
+    \begin{alphanumerate}
+    \item 
+        $\nil(\Oo_X) = 0$
+    \item 
+        $X$ is the only closed subprescheme of $X$ containing all points of $X$.
+    \end{alphanumerate}
+\end{prop}
+\begin{proof}
+    First, we show that $\nil(\Oo_X)$ is quasi-coherent. It suffices to show that $\nil(\Oo_X) = \snake{\nil(R)}$ when $X=\Spec R$. Since these open subsets form a topology base, it is sufficient to show $(\nil(\Oo_X))(\Spec R_f) = \nil(R)_f$. As $\Spec R_f$ is quasi-compact the left hand side is $\nil(R_f)$ hence we have to show $\nil(R)_f \isomorphism \nil(R_f)$. Injectivity follows from the injectivity of $\nil(R)\morphism R$. For surjectivity, let $\frac{r}{f^k}\in \nil(R_f)$, then $\frac{r^m}{f^{km}} = 0$ in $R_f$ for appropriate $m$, hence $f^\ell r^m = 0$ in $R$ for some $\ell\in\IN$, and $(rf^\ell) = 0$ in $R$, hence $f^\ell r\in \nil(R)$ but $\frac{r}{f^k}=\frac{f^\ell r}{f^{\ell+k}}\in \nil(R)_f$.
+    
+    Assume \itememph{a}. If $Y\subseteq X$ is a closed subprescheme containing all points of $X$, it is given by a quasi-coherent sheaf of ideals $I$. For $x\in X=Y$, we have $\Oo_{Y,x}= \Oo_{X,x}/I_x$ hence for any $f\in \Oo_X(U)$ we have $V(f) = V(f|_{U\cap Y})$. For $f\in I(U)$, $f|_{Y\cap U} = 0$ hence $V(f) = U$ hence $f\in (\nil(\Oo_X))(U)$ hence $f=0$ by \itememph{a}. Hence $I=0$ and $X=Y$.
+    
+    In the other direction, one can easily see, that $\nil(\Oo_X) \neq 0$ defines a closed subprescheme containing all the points of $X$.
+\end{proof}
+\begin{defi}[Reduced prescheme] \lbl{def:reduced}
+    A prescheme with these properties is called \defemph{reduced}. For any prescheme $X$, let $X^{\red}$ be the closed subprescheme of $X$ be defined by $\nil(\Oo_X)$.
+\end{defi}
+\begin{rem}
+    $X^{\red}$ is the smallest closed subprescheme of $X$ containing all points of $X$, and is reduced.
+\end{rem}
+\begin{fact}
+    Let $X$ be a reduced prescheme, $Y$ a scheme and $X\doublemorphism[f][g] Y$ two morphisms of preschemes coinciding on a dense open subset $U\subseteq X$. Then they coincide on $X$. In fact, $Y$ being a scheme can be weakend to the existence of a separated morphism $Y\morphism[\upsilon] S$ such that $\upsilon f = \upsilon g$.
+\end{fact}
+\begin{proof}
+    Under our assumptions on $Y$, the equalizer $\Eq\left(X\doublemorphism[f][g] Y\right)$ is a closed subprescheme of $X$ containing all points of $U$, hence of $X$. By Proposition~\reff{prop:reduced} $f$ and $g$ coincide on $X$.
+\end{proof}
+\begin{rem}
+    It is easy to see that the scheme property of a prescheme $Y$ or the separateness of the morphisms $Y\morphism[\upsilon] S$, can be characteristized by the validity of the above assertion for reduced $X$. In fact, it is sufficient to take $X=\Spec R$ where $R$ is a domain, or a general valuation ring, or, when $Y$ is Noetherian, a discrete valuation ring.
+\end{rem}
+\begin{prop}
+    \begin{alphanumerate}
+    \item
+        Let $X$ be a prescheme. For $x\in X$, we have a bijection:
+        \begin{align*}
+            \Spec(\Oo_{X,x}) &\lisomorphism \left\{y\in X\st x\in \ov{\{y\}}\right\}\\
+            \left\{(U,f)/_\sim \in \Oo_{X,x}\st y\in V(f)\right\} &\longmapsfrom y\;.
+        \end{align*}
+        Under this bijection, the generic points of the irreducible components (i.e. the maximal irreducible subsets) of $X$ containing $x$ correspond to the minimal prime ideals of $\Oo_{X,x}$.
+    \item
+        The morphism $\Spec (\Oo_{X,x}) \morphism X$ defined by 
+        \begin{align*}
+            \Spec(\Oo_{X,x} ) = \Spec(\Oo_X(U)_{\pp_x}) \morphism \Spec(\Oo_X(U)) = U \morphism X
+        \end{align*}
+        for an affine open neighbourhood $U$ of $x$ ($\pp_x\in \Spec(\Oo_X(U))$ being the ideal of $f\in \Oo_X(U)$ such that $x\in V(f)$) is independent of $U$ and defines the bijection of \itememph{a} on the level of points.
+    \end{alphanumerate}
+\end{prop}
+\begin{proof}
+    For \itememph{a}, we may assume $X$ to be affine because any affine open neighbourhood of $x$ contains all $y$ occuring on the right hand side. When $X=\Spec R$, and $x$ is given by $\pp$ and $y$ by $\qq$ then $\ov{\{y\}} = V(\qq)$ hence $\qq$ defines an element of the right hand side iff $\qq\supseteq \pp$. In this case, the image of $y$ in the left hand side $\Spec(\Oo_{X,x})\simeq \Spec R_\pp$ is the set of all $\frac{r}{f}\in R_\pp$ such that $\qq R_f$ is an element of the vanishing set of $\frac{r}{f}$ in $R_f$, hence $\frac{r}{f}\in \qq R_f$, hence the ideal of $R_\pp$ associated to $y$ is $\qq R_\pp$. This is indeed a bijection onto $\Spec R_\pp$, the inverse map being given by $\Spec R_\pp \morphism \Spec R$, $\gamma\mapsto \qq= \gamma\sqcap R$.
+    
+    Now we prove \itememph{b}. The fact that the map on points defined by that morphism is the inverse to $\lmorphism$ in \itememph{a} follows from the last remark. In particular, it is unique on the level of points. On the level of stalks of sections of the structure sheaf it is given by the canonical morphism (for a $y\in X$ such that $x\in\ov{\{y\}}$)
+    \begin{align*}
+        \Oo_{X,x} = \colimit[U\ni x] \Oo_X(U) \morphism \colimit[V\ni y] \Oo_X(U)
+    \end{align*}
+    mapping the complement of the prime ideal defined by $y$ to units, hence defining $(\Oo_{X,x})_\qq\morphism \Oo_{X,y}$ ($\qq$ being the image of $y$ under $\lmorphism$) by the universal property of the localization. This is the $(\Oo_{X,x})_\qq \simeq (\Oo_{\Spec \Oo_{X,x}})_\qq \morphism \Oo_{X,y}$ defined by the morphisms of \itememph{b}.
+\end{proof}
+
+\begin{prop}
+    For a prescheme $X$, the following conditions are equivalent:
+    \begin{alphanumerate}
+    \item 
+        $X$ (i.e., its underlying topological space) is irreducible and reduced.
+    \item 
+        $X\neq \emptyset$ and $\Oo_X(U)$ is a domain for all open $U\subseteq X$.
+    \item 
+        As \itememph{b}, but $U$ must be affine.
+    \end{alphanumerate}
+    If the underlying topological space is Noetherian, this is equivalent 
+    \begin{alphanumerate}
+    \item[\itememph{d}]
+        $X$ is connected and $X\neq \emptyset$ and the stalks $\Oo_{X,x}$ for all $x\in X$ are domains.
+    \item[\itememph{d'}]
+        $X$ is connected and $X\neq \emptyset$ and the stalks $\Oo_{X,x}$ for all closed $x\in X$ are domains.
+    \end{alphanumerate}
+\end{prop}
 
 
 
