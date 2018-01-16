@@ -1046,8 +1046,8 @@ The following wasn't treated in the lecture but we include it anyway (at the pri
     	\node[ob](u3) at (6, 0) {$\Omega_{R/k}\otimes_Rk$};
     	\node[ob](u4) at (8.25, 0) {$0$};
     	\scriptsize
-    	\draw[->] (o1) -- (u1) node[pos=0.5, above, sloped] {$\sim$};
-    	\draw[->] (o2) -- (u2) node[pos=0.5, above, sloped] {$\sim$};
+    	\draw[->] (o1) -- (u1) node[pos=0.5, above=-0.25ex, sloped] {$\sim$};
+    	\draw[->] (o2) -- (u2) node[pos=0.5, above=-0.25ex, sloped] {$\sim$};
     	\draw[transform canvas={xshift=1pt}] (o3) -- (u3);
     	\draw[transform canvas={xshift=-1pt}] (o3) -- (u3);
     	\node[ob](uu1) at ($(u1.east)+(0,-0.5)$) [left] {$f$};
@@ -1526,7 +1526,7 @@ i.e. $\lambda$ not a $d\ordinalth$ root of unity for all $d\leq\deg p$).
         \item We have $\Oo(0)=\Oo$. If $f\in \Oo(d)(Z)$ and $\phi\in\Oo(\delta)(Z)$ then $f\phi \in \Oo(d+\delta)(Z)$ and $\frac{1}{f}\in \Oo(-d)(Z)$ if $f(y) \neq 0$ for $y\in Z$. Moreover, $(f+\phi)\in \Oo(d)(Z)$ if $d=\delta$. The $\Oo(d)$ are \emph{line bundles} (locally free modules of rank 1) over the \emph{sheaf of rings} $\Oo$ (cf. Definition~\reff{def:sheaf} and~\reff{def:sheafOfModules}).
     \end{alphanumerate}
 \end{rem*}
-\begin{example}
+\begin{example}\lbl{ex:O(l)LineBundle}
     Let $Y\subseteq \IP^n(k)$ be a quasi-projective variety. We have $Y = \bigcup_{i=0}^n (Y\setminus V(X_i))$ and for $U\subseteq Y\setminus V(X_i)$
     \begin{align*}
         \Oo(U) &\morphism \Oo(\ell)(U)\\
@@ -1616,21 +1616,21 @@ This enables us to derive the relation between dimension and transcendence degre
    proving the second assertion.
 \end{proof}
 \begin{defi}
-    The graded ring defined by a projective variety $X= V(\pp) \subseteq \IP^n(k)$ with $\pp\subseteq k[X_0,\ldots,X_n]$ a homogeneous prime ideal is defined as $S_*(X) = k[X_0,\ldots, X_n]/\pp$. 
+    The graded ring defined by a projective variety $X= V(\pp) \subseteq \IP^n(k)$ with $\pp\subseteq k[X_0,\ldots,X_n]$ a homogeneous prime ideal is defined as $S(X) = k[X_0,\ldots, X_n]/\pp$. 
 \end{defi}
-As $\pp$ is homogeneous, $S_*(X)$ inherits a grading $S_*(X)=\bigoplus_{d\geq 0}S_d(X)$ (and we think this is what the asterisk in the index is meant to indicate). Unlike to the affine case, we don't have $\Oo(X)\simeq k[X_0,\ldots,X_n]/\pp=S_*(X)$ here, but nevertheless we would like to compare $S_*(X)$ to the structure sheaf or the line bundles $\Oo(\ell)$ on $X$.
+As $\pp$ is homogeneous, $S(X)$ inherits a grading $S(X)=\bigoplus_{d\geq 0}S_d(X)$ (Professor Franke puts a dot in the index to indicate this, but we think this is ugly). Unlike to the affine case, we don't have $\Oo(X)\simeq k[X_0,\ldots,X_n]/\pp=S(X)$ here, but nevertheless we would like to compare $S(X)$ to the structure sheaf or the line bundles $\Oo(\ell)$ on $X$.
 \begin{thm}\lbl{thm:gradedRing}
     Let $X$ be a projective algebraic variety. 
     \begin{alphanumerate}    
       \item 
-        For any $f\in S_*(X)$ which is homogeneous of positive degree, the localization $S_*(X)_f$ admits a grading $S_*(X)_f=\bigoplus_{d\geq 0}(S_*(X)_f)_d$  and we have
+        For any $f\in S(X)$ which is homogeneous of positive degree, the localization $S(X)_f$ admits a grading $S(X)_f=\bigoplus_{d\geq 0}(S(X)_f)_d$  and we have
         \begin{align*}
-            (S_*(X)_f)_0 &\isomorphism \Oo(X\setminus V(f))\\
+            (S(X)_f)_0 &\isomorphism \Oo(X\setminus V(f))\\
             \frac{g}{f^s} &\longmapsto \left([x_0,\ldots,x_n] \mapsto \frac{g(x_0,\ldots,x_n)}{f(x_0,\ldots, x_n)^s}\right)\;.
         \end{align*}
         Moreover
         \begin{align*}
-            (S_*(X)_f)_\ell &\isomorphism \Oo(\ell)(X\setminus V(f)) \\
+            (S(X)_f)_\ell &\isomorphism \Oo(\ell)(X\setminus V(f)) \\
             \frac{g}{f^s} &\longmapsto \left([x_0,\ldots,x_n] \mapsto \frac{g(x_0,\ldots,x_n)}{f(x_0,\ldots, x_n)^s}\right)\;.
         \end{align*}
       \item 
@@ -1642,7 +1642,7 @@ As $\pp$ is homogeneous, $S_*(X)$ inherits a grading $S_*(X)=\bigoplus_{d\geq 0}
 \begin{rem*}
     \begin{alphanumerate}
         \item 
-            The grading is given by $(S_*(X)_f)_d =\left\{gf^{-s}\st g\in S_{d+s\cdot \delta}(X)\right\}$ when $f\in S_\delta(X)$. For $\delta>0$ we obtain a $\IZ$-graded ring.
+            The grading is given by $(S(X)_f)_d =\left\{gf^{-s}\st g\in S_{d+s\cdot \delta}(X)\right\}$ when $f\in S_\delta(X)$. For $\delta>0$ we obtain a $\IZ$-graded ring.
         \item 
             When $f\in S_\delta(X)$ has the form $f=\phi \mod \pp$ for $\phi \in R = k[X_0,\ldots, X_n]$ homogeneous of degree $\delta$, then $V(f)\coloneqq V(\phi)\cap X$ does not depend on the choice of $\phi$.
     \end{alphanumerate}
@@ -1658,13 +1658,13 @@ As $\pp$ is homogeneous, $S_*(X)$ inherits a grading $S_*(X)=\bigoplus_{d\geq 0}
     \begin{align*}
         V(\phi) \supseteq X\cap \bigcap_{i=1}^n V(q_i) = V\big(\pp+ (q_1,\ldots, q_N)_R\big)
     \end{align*}
-    where $\pp$ is the homogeneous prime ideal corresponding to $X$ and $\phi$ is some homogeneous representative of $f\in S_*(X) = R/\pp$. Since $\delta >0$, $\phi\in R_+$ and by the projective version of Hilbert's Nullstellensatz, 
+    where $\pp$ is the homogeneous prime ideal corresponding to $X$ and $\phi$ is some homogeneous representative of $f\in S(X) = R/\pp$. Since $\delta >0$, $\phi\in R_+$ and by the projective version of Hilbert's Nullstellensatz, 
     \begin{align*}
         \phi^s \in  \pp+(q_1,\ldots,q_N)_R\quad\text{ for some }s\geq 1\;.
     \end{align*}
     In other words, there are $h_i\in R_{s\cdot \delta-b_i}$ (with $b_i=b_{x_i}$) such that $\phi^s\equiv \sum_{i=1}^N h_iq_i \mod\pp$. Let 
     \begin{align*}
-    	h= f^{-s}\sum_{i=1}^N h_ip_i\in (S_*(X)_f)_\ell\;.
+    	h= f^{-s}\sum_{i=1}^N h_ip_i\in (S(X)_f)_\ell\;.
     \end{align*}
     We have $(p_i q_j)(x) = (p_jq_i)(x)$ for all $x=[x_0,\ldots,x_n]\in X$ because this holds as an equation in $\IA^{n+1}(k)$ on the dense open subset $C(X)\setminus V(q_iq_j)$ of $C(X)$ and thus by continuity on all of $C(X)$. Then, for $[x_0,\ldots, x_n]\in X\setminus V(f)$ 
     \begin{align*}
@@ -1728,7 +1728,7 @@ As $\pp$ is homogeneous, $S_*(X)$ inherits a grading $S_*(X)=\bigoplus_{d\geq 0}
             \end{diagram*}
             where the right end can be shown to be finite-dimensional and to vanish when $\ell$ is sufficiently large.
         \item 
-            When $n+1>1$ it follows that $\Oo(k^{n+1}\setminus\{0\}) \simeq \Oo(k^{n+1})$ as shown in Algebra~I, cf. \cite[Proposition~2.2.5]{alg1}. Then $\Oo(\ell)\big(\IP^n(k)\big) \simeq k[X_0,\ldots, X_n]_\ell$. Another argument to see this is that when $\lambda\in \Oo(\ell)(\IP^n(k))$ there there is $N\in \IN$ such that $X_i^N\lambda = f_i\in R= k[X_0,\ldots, X_n]$ for $i=0,\ldots,n$. We have $X_i^Nf_j = X_j^Nf_i$. It follows that $f_i$ is divisible by $X_i^N$ (taking $j\neq i$, that's what we need $n\geq 1$ for), then $\lambda\in R$ (and thus $\in R_\ell$). The same argument only works for general $X$ if $S_*(X)$ is factorial, which is usually not the case. 
+            When $n+1>1$ it follows that $\Oo(k^{n+1}\setminus\{0\}) \simeq \Oo(k^{n+1})$ as shown in Algebra~I, cf. \cite[Proposition~2.2.5]{alg1}. Then $\Oo(\ell)\big(\IP^n(k)\big) \simeq k[X_0,\ldots, X_n]_\ell$. Another argument to see this is that when $\lambda\in \Oo(\ell)(\IP^n(k))$ there there is $N\in \IN$ such that $X_i^N\lambda = f_i\in R= k[X_0,\ldots, X_n]$ for $i=0,\ldots,n$. We have $X_i^Nf_j = X_j^Nf_i$. It follows that $f_i$ is divisible by $X_i^N$ (taking $j\neq i$, that's what we need $n\geq 1$ for), then $\lambda\in R$ (and thus $\in R_\ell$). The same argument only works for general $X$ if $S(X)$ is factorial, which is usually not the case. 
         \item
             It can be shown that $\Oo_X(\ell)(X)$ is finite-dimensional over $k$ when $X\subseteq \IP^n(k)$ is closed (and irreducible). 
     \end{alphanumerate}
@@ -2070,9 +2070,9 @@ We postpone the quite lengthy proof of Proposition~\reff{prop:Akizuki-Hopkins} t
       \item 
         For $Z=\IP^n(k)$ we have $P_Z(T) = \binom{T+n}n$ which has leading coefficient $\frac{1}{n!}$. Hence $\deg \IP^n(k) = 1$.
     \item 
-        Let $Z= V(p)$ where $p\in R = k[X_0,\ldots, X_n]$ be an irreducible homogeneous polynomial of degree $d$. Then $S_*(Z) = R/pR$ admits an obvious grading and by the short exact sequence
+        Let $Z= V(p)$ where $p\in R = k[X_0,\ldots, X_n]$ be an irreducible homogeneous polynomial of degree $d$. Then $S(Z) = R/pR$ admits an obvious grading and by the short exact sequence
         \begin{align*}
-            0\morphism R[-d]\morphism[\cdot p] R\morphism S_* (Z) \morphism 0
+            0\morphism R[-d]\morphism[\cdot p] R\morphism S (Z) \morphism 0
         \end{align*}
         we have $P_R(T) - P_R(T-d) = P_{S_\bullet(Z)}(T)$. But $P_R(T) = \binom{T+n}n$ hence 
         \begin{align*}
@@ -2144,100 +2144,145 @@ We postpone the quite lengthy proof of Proposition~\reff{prop:Akizuki-Hopkins} t
         \end{quote}
          As an ungraded module, $M_S$ is the ordinary localization, and the grading is 
         \begin{align*}
-            (M_S)_d = \left\{\frac{m}{s}\st s\in S\cap R_e, r\in M_{e+d}\right\}\;.
+            (M_S)_d = \left\{\frac{m}{s}\st s\in S\cap R_e\text{, }r\in M_{e+d}\right\}\;.
         \end{align*}
         The functor $M\mapsto M_S$ commutes with kernels of morphisms, quotients, direct sums and the shift operator $[-]$, i.e.  $M[t]_S \simeq M_S[t]$ for any $t\in\IZ$.
     \item 
-        Under the correspondence from \itememph{b}, the homogeneous ideals correspond to each other.
+        Under the correspondence from \itememph{b}, the homogeneous prime ideals correspond to each other.
     \end{alphanumerate}
 \end{prop}
 \begin{proof}
-    Tedious calculation. We are too lazy to copy them and you should be \emph{grateful} we are!	
+    Part \itememph{a} to \itememph{d} are tedious calculation. We are too lazy to copy them and you should be \emph{grateful} we are!
+    
+    Let's prove \itememph{e}. Let $\pp\in\Spec R$ be homogeneous and $f\in\pp R_S$. Then $f=\frac{\phi}{\sigma}$ for some $\phi\in\pp$, $\sigma\in S$. As the elements of $S$ are homogeneous, $\sigma\in S\cap R_e$ for some $e\in\IZ$. As $\pp$ is homogeneous, we have $\phi=\sum_{i=-\infty}^{\infty}\phi_i$ with $\phi_i\in \pp\cap R_i$ (and all but finitely many $\phi_i=0$). Put $f_i=\frac{\phi_{i+e}}{\sigma}$, then $f=\sum_{i=-\infty}^{\infty}f_i$ and $f_i\in\pp R_S\cap (R_S)_i$. Hence $\pp R_S$ is homogeneous.
+    
+    Conversely, let $\qq\in\Spec R_S$ be homogeneous and $f\in\pp=\lambda^{-1}(\qq)$. Let $f=\sum_{i=-\infty}^{\infty}f_i$ with $f_i\in R_i$ (and only finitely many $f_i\neq 0$) be its decomposition into homogeneous components in $R$. Then $\lambda(f)=\sum_{i=-\infty}^{\infty}\lambda(f_i)$ and $\lambda(f_i)\in(R_S)_i$. By homogeneousness of $\qq$ we obtain $\lambda(f_i)\in \qq$ and thus $f_i\in\pp$, proving that $\pp$ is homogeneous.
 \end{proof}
-\begin{rem}
-    If $R$ is a graded ring and $\pp$ a homogeneous prime ideal, $R_\pp$ is defined as the graded localization of $R$ with respect to $S=\bigcup_{i\in\IZ} (R_i\setminus \pp)$. The same convention is applied to $M_\pp$ where $M$ is a graded $R$-module.
+\begin{rem}\lbl{rem:conventionOnGradedLocalization}
+    If $R$ is a graded ring and $\pp$ a homogeneous prime ideal, $R_\pp$ is defined as the graded localization of $R$ with respect to $S=\bigcup_{i\in\IZ} (R_i\setminus \pp)$. That is, we only localize only at the \emph{homogeneous} elements and \emph{not} at all of $R\setminus\pp$. The same convention is applied to $M_\pp$ where $M$ is a graded $R$-module.
 \end{rem}
 
 \section{Intersection multiplicities and B\'ezout's theorem}
 
 
-\begin{defi}
-    Let $X$ be an algebraic variety (e.g. quasi-affine or quasi-projective), $\Oo_X$ its structure sheaf and $Z\subseteq X$ irreducible closed. We put 
+\begin{defi}\lbl{def:pseudoStalk}
+    Let $X$ be an algebraic variety (e.g. quasi-affine or quasi-projective, cf. Definition~\reff{def:prevariety}), $\Oo_X$ its structure sheaf and $Z\subseteq X$ irreducible closed. We put 
     \begin{align*}
-        \Oo_{X,Z}\coloneqq \colimit[\substack{U\subseteq X \text{ open}\\U\cap Z\neq \emptyset}] \Oo_X(U) =\left\{(U,f)\right\}/_\sim\;,
+        \Oo_{X,Z}\coloneqq \colimit[U] \Oo_X(U)\;,
     \end{align*}
-    where $(U,f)\sim (V,g)$ iff there is $W\subseteq U\cap V$ such that $Z\cap W\neq \emptyset$ and $f|_W = g|_W$, by the irreducibility of $X$, this is equivalent to $W = U\cap V$. The operations $+$ and $\cdot$ are defined by 
+    where the colimit is taken over all open subsets $U\subseteq X$ such that $U\cap Z\neq\emptyset$, ordered by inclusion. Similarly, when $\Ll$ is a line bundle on $X$ (e.g. $\Oo_X(\ell)$ when $X\subseteq \IP^n(k)$ is projective) we put
     \begin{align*}
-        ((U,f)/_\sim) * ((V,g)/_\sim) = (U\cap V, (f|_{U\cap V})* (g|_{U\cap V}))/_\sim\;.
+    \Ll_Z\coloneqq\colimit[U] \Ll(U)
     \end{align*}
-    This is a local ring with maximal ideal
-    \begin{align*}
-        \mm = \left\{(U,f)/_\sim \st f|_{U\cap Z} = 0\right\}\;.
-    \end{align*}
-    When $\Ll$ is a line bundle on $X$ (e.g. $\Oo_X(\ell)$ when $X\subseteq \IP^n(k)$ is projective) we put
-    \begin{align*}
-        \Ll_{X,Z}=\colimit[\substack{U\subseteq X \text{ open}\\U\cap Z\neq \emptyset}] \Ll(U)
-    \end{align*}
-    which is a free $\Oo_{X,Z}$ module of rank 1.
+    ($U$ running over the same subsets as above) which is a free $\Oo_{X,Z}$-module of rank $1$.
 \end{defi}
+    
+    Explicitely, $\Oo_{X,Z}$ can be described as
+    \begin{align*}
+    	\Oo_{X,Z}=\left\{(U,f)/_\sim\st
+    	\begin{array}{c}
+    	U\subseteq X\text{ open, }U\cap Z\neq\emptyset\text{, }f\in\Oo_X(U)\text{ and }(U,f)\sim (V,g)\text{ iff there is}\\
+    	\text{an open subset }W\subseteq U\cap V\text{ such that }W\cap Z\neq\emptyset\text{ and }f|_W=g|_W
+    	\end{array}
+    	\right\}\;.
+    \end{align*}
+    By  irreducibility of $X$ (which is, after all, a variety), any open subsets $U$ and $V$ as above intersect (even inside $Z$ by irreducibility of $Z$). Moreover, $U\cap V\subseteq X$ is nonempty open and thus irreducible as well, hence the $W$ from above is dense in $U\cap V$ and by Zariski-continuity we may as well require that $W=U\cap V$. Also, we don't need $Z$ to be closed, as replacing an irreducible set $Z$ by its closure in $X$ doesn't change the above definition.
+    
+    $\Oo_{X,Z}$ has a natural ring structure (it is, in fact, a colimit in the category of rings). The operations $+$ and $\cdot$ are defined representative-wise, i.e. via 
+    \begin{align*}
+        \big((U,f)/_\sim\big) * \big((V,g)/_\sim\big) = \big(U\cap V, (f|_{U\cap V})* (g|_{U\cap V})\big)/_\sim
+    \end{align*}
+    for $*\in\{+,\cdot\}$ (one may check that this is well-defined). $\Oo_{X,Z}$ is a local ring with maximal ideal
+    \begin{align*}
+        \mm = \left\{(U,f)/_\sim \st f\text{ doesn't vanish identically on }U\cap Z\right\}\;.
+    \end{align*}
 \begin{prop}
     \begin{alphanumerate}
-    \item 
-        When $Z=\{x\}$, $\Oo_{X,Z} = \Oo_{X,x}$ and $\Ll_{X,Z} = \Ll_x$.
+    \item \lbl{prop:pseudoStalkStuff}
+        When $Z=\{x\}$, $\Oo_{X,Z} = \Oo_{X,x}$ and $\Ll_Z = \Ll_x$.
     \item   
-        The prime ideals of $\Oo_{X,Z}$ are in a bijective correspondence to the irreducible closed subsets $Y$ containing $Z$, by    
+	    We have a bijective correspondence
         \begin{align*}
-            Y\longmapsto \pp = \left\{(U,f)/_\sim\st f_{U\cap V} = 0\right\}\;.
+	        \left\{
+	        \begin{array}{c}
+		        \text{irreducible closed subsets}\\
+		        Y\subseteq X\text{ such that }Z\subseteq Y
+	        \end{array}\right\}&\isomorphism\Spec \Oo_{X,Z}\\
+            Y&\longmapsto \pp = \left\{(U,f)/_\sim\st f_{U\cap V} = 0\right\}\;.
         \end{align*}
     \item 
-        When $X$ is a projective algebraic variety and $Z= V(q)$ where $\qq\subseteq S(X) = k[X_0,\ldots, X_n]/\pp$ (with $X= V(\pp)$) then
+        When $X\subseteq \IP^n(k)$ is a projective algebraic variety (over the algebraically closed field $k$), $X=V(\pp)$ for some homogeneous prime ideal $\pp\subseteq k[X_0,\ldots,X_n]$, and $Z= V(\qq)$ where $\qq\subseteq S(X) = k[X_0,\ldots, X_n]/\pp$ is a homogeneous prime ideal, then
         \begin{align*}
             (S(X)_\qq)_0 &\isomorphism \Oo_{X,Z}\\
-            \frac{f}{s} &\longmapsto \left(X\setminus V(S) , \frac{f}{s}|_{X\setminus V(S)}\right)_\sim\\
-            (S(X)_\qq)_\ell &\isomorphism (\Oo_X(\ell))_Z
+            \frac{f}{s} &\longmapsto \left(X\setminus V(s) , \frac{f}{s}\big|_{X\setminus V(s)}\right)/_\sim
+           \end{align*}
+           is an isomorphism. More generally,
+           \begin{align*}
+            (S(X)_\qq)_\ell &\isomorphism \Oo_X(\ell)_Z\\
+            \frac{f}{s} &\longmapsto \left(X\setminus V(s) , \frac{f}{s}\big|_{X\setminus V(s)}\right)/_\sim
         \end{align*}
+        is an isomorphism for all $\ell\in \IZ$.
     \end{alphanumerate}
 \end{prop}
 \begin{proof}
 Point \itememph{a} follows directly from the definitions.
 
-\itememph{c} follows from Theorem 7 as the open subsets $X\setminus V(f)$ considered there form a topology base on $X$, as $X\setminus V(I)$ is the union of all $X\setminus V(f)$ where $f$ goes over all homogeneous $f\in I$. Therefore, open subsets $U= X\setminus V(f)$ with $\deg f>0$ such that $U\cap Z \neq \emptyset$ are cofinal in the set of open subsets over which the direct limit is taken in the Definition and it does not change if the direct limit is instead taken over all homogeneous $f$ of positive degree ordered by divisibility. Then one obtains $\colimit[f] (S(X)_f)_\ell \simeq (S(X)_\qq)_\ell$.
-
-The question \itememph{b} is local because for any open subset $U\subseteq X$, we have a bijection between the irreducible closed subsets $A\subseteq U$ and the irreducible closed subsets $B\subseteq X$ such that $B\cap U\neq\emptyset$ and because $(\Oo_V)_Z) \simeq \Oo_{X,Z}$ when $V\cap Z\neq \emptyset$, as the open $U\subseteq V$ such that $U\cap Z$ are cofinal in the open subsets over which the direct limit is taken.
-
-Therefore it is possible to assume without loss of generality that $X$ is affine [...]
-We have a bijection between the $\pp\in\Spec \Oo_X(X)$ and the irreducible closed subsets of $Y\subseteq X$ by
+Part \itememph{c} follows from Theorem~\reff{thm:gradedRing} as the open subsets $X\setminus V(\lambda)$ for homogeneous $\lambda\in S(X)$ form a topology base on $X$. Indeed, an open set $X\setminus V(I)$ (for $I\subseteq S(X)$ a homogeneous ideal) is the union of all $X\setminus V(\lambda)$ where $\lambda$ goes over all homogeneous $\lambda\in I$. Therefore, open subsets $U= X\setminus V(s)$ non-constant homogeneous $s$ such that $U\cap Z \neq \emptyset$ (or equivalently, $s\notin\pp$) are \emph{cofinal} in the set of open subsets over which the direct limit is taken in Definition~\reff{def:pseudoStalk} and it does not change if the direct limit is instead taken over all such homogeneous $s\in R\setminus\pp$ of positive degree ordered by divisibility. Then one obtains 
 \begin{align*}
-    \pp &\longmapsto Y = V(\pp)\\
-    \pp =\left\{f\in \Oo_X(X)\st f|_Y = 0\right\} &\longmapsfrom Y\;.
+	\Oo_{X,Z}=\colimit[s]\Oo_X(\ell)\big(X\setminus V(s)\big)\simeq\colimit[s] (S(X)_s)_\ell \simeq (S(X)_\qq)_\ell
 \end{align*}
-Under this correspondence, $Z$ belongs to some prime ideal $\qq\subseteq \Oo_X(X)$. As $\Oo_X(X\setminus V(f)) \simeq \Oo_X(X)_f$ by Algebra I, we have $\Oo_{X,Z} \simeq \Oo_X(X)_\qq$ and we have bijections 
+(recall our convention on localizations in the graded case from Remark~\reff{rem:conventionOnGradedLocalization}).
 
-IN THIS LOVELY DIAGRAM
+The question \itememph{b} is local because for any open subset $U\subseteq X$, we have a bijection between the irreducible closed subsets $A\subseteq U$ and the irreducible closed subsets $B\subseteq X$ such that $B\cap U\neq\emptyset$ (cf. Remark~\reff{rem:proofPreparations}\itememph{a}) and because $(\Oo_X|_V)_Z) \simeq \Oo_{X,Z}$ when $V\cap Z\neq \emptyset$ and $V\subseteq X$ is open, as the open $U\subseteq V$ such that $U\cap Z\neq\emptyset$ are cofinal in the open subsets over which the direct limit is taken.
+
+Therefore it is possible to assume without loss of generality that $X$ is affine. As $Z\subseteq X$ is irreducible closed, by \cite[Corollary~2.2.2]{alg1} we have $Z=V(\qq)$ for some prime ideal $\qq\subseteq \Oo_X(X)$. As $\Oo_X(X\setminus V(f)) \simeq \Oo_X(X)_f$ by \cite[Proposition~2.3.3]{alg1}, we have 
+\begin{align*}
+	\Oo_{X,Z}=\colimit[f\notin\qq] \Oo_X\big(X\setminus V(f)\big)\simeq\colimit[f\notin\qq] \Oo_X(X)_f\simeq \Oo_X(X)_\qq
+\end{align*}
+and we have bijections 
+\begin{diagram*}
+	\node[ob] (a) at (0,0) {$\left\{
+		\begin{array}{c}
+			\text{irreducible closed subsets}\\
+			Y\subseteq X\text{ such that }Z\subseteq Y
+		\end{array}\right\}$};
+	\node[ob] (b) at (0,-2.5) {$\left\{
+		\begin{array}{c}
+			\text{prime ideals }\pp\in\Oo_X(X)\text{ such that }\pp\subseteq\qq\\
+			(\text{or in other words }\pp\cap(\Oo_X\setminus \qq)=\emptyset)
+		\end{array}\right\}$};
+	\node[ob] (c) at (7.5,-2.5) {$\Spec \Oo_X(X)_\qq\simeq\Spec\Oo_{X,Z}$};
+	\scriptsize
+	\draw[->] (a) -- (b) node[pos=0.5, above=-0.25ex, sloped] {$\sim$};
+	\draw[->] (b) -- (c) node[pos=0.5, above=-0.25ex] {$\sim$};
+	\draw[->,dashed] (a) -- (c) node[pos=0.5, above=-0.25ex, sloped] {$\sim$};
+\end{diagram*}
+(the vertical bijection from \cite[Corollary~2.2.2]{alg1}, the horizontal from \cite[Corollary~2.3.1\itememph{e}]{alg1}) inducing the bijective correspondence we want.
 \end{proof}
 \begin{defi}[Intersection multiplicity]\lbl{def:intersectionMultiplicity}
-    Let $X\subseteq \IP^n(k)$ be a projective algebraic variety over $k=\ov k$ $H\in k[X_0,\ldots, X_n]$ a homogeneous polynomial of degree $d>0$ not identically zero on $X$, and $Z$ an irreducible component of $X\cap V(H)$. We define the intersection multiplicity $i(X,H,Z)$ by
+    Let $X\subseteq \IP^n(k)$ be a projective algebraic variety over an algebraically closed field $k$, $H\in k[X_0,\ldots, X_n]$ a homogeneous polynomial of degree $d>0$ not identically zero on $X$, and $Z$ an irreducible component of $X\cap V(H)$. We define the intersection multiplicity $i(X,H,Z)$ by
     \begin{align*}
-        i(X,H,Z) = \ell\left(\Oo_{X,Z} / \left\langle \frac{H}{F}\right\rangle_{\Oo_{X,Z}}\right) = \ell(\Oo_X(d)_Z/H\cdot \Oo_{X,Z})
+        i(X,H;Z) = \ell\left(\Oo_{X,Z} \Bigm/ \Big(\frac{H}{F}\cdot\Oo_{X,Z}\Big)\right) = \ell\big(\Oo_X(d)_Z/H\cdot \Oo_{X,Z}\big)
     \end{align*}
-    where the length is of $\Oo_{X,Z}$-modules and in the middle term $F$ is any element of $k[X_0,\ldots, X_n]_d$ not identically vanishing on $Z$.
+    where the length is of $\Oo_{X,Z}$-modules and in the middle term, $F$ is any element of $k[X_0,\ldots, X_n]_d$ not identically vanishing on $Z$.
 \end{defi}
-\begin{cor}
-    \begin{alphanumerate}
-    \item
-        The equality of the middle term and the right term holds as the image of $F$ in $\Oo_X(d)_Z$ is a free generator ($F$ being a free generator of $\Oo_X(d)|_{X\setminus V(F)}$, and $X\setminus V(F)$ intersects $Z$). Therefore, multiplicity by $F$ defines an iso 
-            \begin{align*}
-                \Oo_{X,Z}/\left\langle\frac{H}{F}\right\rangle \isomorphism[\cdot F] \Oo_X(\ell)_Z/H\cdot \Oo_{X,Z}\;.
-            \end{align*}
-            This shows the middle term is independent of $F$.
-    \item 
+\begin{proof}[You know you are attending a Franke lecture, when a definition needs a proof]
+	By an argument same as Example~\reff{ex:O(l)LineBundle}, $F$ is a free generator of $\Oo_X(d)|_{X\setminus V(F)}$. Moreover, $X\setminus V(F)$ intersects $Z$, hence $(X\setminus V(F),F)/_\sim$ is a free generator of $\Oo_X(d)_Z$. Therefore, multiplication by $F$ defines an isomorphism
+	\begin{align*}
+	\Oo_{X,Z} \Bigm/ \Big(\frac{H}{F}\cdot\Oo_{X,Z}\Big) \isomorphism[\cdot F] \Oo_X(\ell)_Z/H\cdot \Oo_{X,Z}\;.
+	\end{align*}
+	This shows that the middle term is independent of $F$.
+\end{proof}
+\begin{cor}[of Definition~\reff{def:intersectionMultiplicity}]
         When $Z = V(\qq)$ we have
         \begin{align*}
-            i(X,H,Z) = \ell\left((S(X)_\qq)_0/\left\langle\frac{F}{H}\right\rangle_{(S(X)_q)_0}\right) = \ell\left(((S(X)_\qq)_d)/H\cdot (S(X)_q)_0\right)
+            i(X,H;Z) = \ell\left((S(X)_\qq)_0/\Bigm/ \Big(\frac{H}{F}\cdot(S(X)_\qq)_0\Big)\right) = \ell\big((S(X)_\qq)_d/H\cdot (S(X)_q)_0\big)
         \end{align*}
         where the length is of $(S(X)_\qq)_0$-modules.
-    \end{alphanumerate}
 \end{cor}
+\begin{proof}
+	Follows directly from Proposition~\reff{prop:pseudoStalkStuff}\itememph{c}.
+\end{proof}
 
 
 
@@ -2408,7 +2453,7 @@ One may check that locally closed sets are precisely the open subsets of closed 
 
 It turns out (by a Yoneda-style argument) that this universal property characterizes $R_S$ uniquely up to unique isomorphism. One constructs $R_S$ (and thereby proves its existence) by $R_S = (R\times S)/_\sim$ where $(r,s)\sim (\rho, \sigma)$ iff there is $t\in S$ such that $t\cdot r\cdot \sigma = t\cdot\rho\cdot s$ (note that since $R$ is not necessarily a domain the factor $t$ on both sides cannot be omitted). One thinks of $(r,s)/_\sim$ as $\frac{r}{s}$ and introduces the ring operations in an obvious way. 
 
-If $I\subseteq R$ is any ideal then $I_S = I\cdot R_S = \left\{\frac{i}{s}\st i\in I, s\in S\right\}$ is an ideal in $R_S$, and any ideal in $R_S$ can be obtained in this way: $J= (J\sqcap R)\cdot R_S$ for any ideal $J\subseteq R_S$ where $J\sqcap R$ denotes the preimage of $J$ in $R$ under $\psi_S$. It follows then $R_S$ is Noetherian when $R$ is. For prime ideals one obtains a bijection (cf. \cite[Corollary~2.3.1(e)]{alg1})
+If $I\subseteq R$ is any ideal then $I_S = I\cdot R_S = \left\{\frac{i}{s}\st i\in I, s\in S\right\}$ is an ideal in $R_S$, and any ideal in $R_S$ can be obtained in this way: $J= (J\sqcap R)\cdot R_S$ for any ideal $J\subseteq R_S$ where $J\sqcap R$ denotes the preimage of $J$ in $R$ under $\psi_S$. It follows then $R_S$ is Noetherian when $R$ is. For prime ideals one obtains a bijection (cf. \cite[Corollary~2.3.1\itememph{e}]{alg1})
 \begin{align*}
 \Spec R_S & \isomorphism\left\{\qq\in\Spec R\st \qq\cap S=\emptyset\right\}\\
 \pp &\longmapsto \pp\sqcap R\\
@@ -2660,8 +2705,8 @@ Professor Franke would like to point out that the following definition being giv
 \begin{defi}[Prevariety]\lbl{def:prevariety}
     A \defemph{prevariety} over an algebraically closed field $k$ is a Noetherian, irreducible topological space $X$ together with a subsheaf $\Oo_X$ of the sheaf of $k$-valued functions on $X$ such that 
     \begin{itemize}
-    	\item any $x\in X$ has an open neighbourhood $U$ for which there is a homeomorphism $U\smash{\isomorphism[\phi]} V\subseteq k^n$ where $V$ is a quasi-affine variety in $k^n$
-    	\item and such that a $k$-valued function $\lambda$ on the open subset $W$ satisfies $\lambda \in \Oo_X(W)$ if and only if $\phi^*\lambda = (y\mapsto \lambda(\phi(y))$ defines an element of $\Oo(\phi(W))$. 
+    	\item any $x\in X$ has an open neighbourhood $U$ for which there is a homeomorphism $U\smash{\isomorphism[\phi]} V\subseteq k^n$ where $V$ is an affine variety in $k^n$
+    	\item and such that a $k$-valued function $\lambda$ on the open subset $W\subseteq U$ satisfies $\lambda \in \Oo_X(W)$ if and only if $\phi^*\lambda = (y\mapsto \lambda(\phi(y))$ defines an element of $\Oo_V(\phi(W))$. 
     \end{itemize}
     
     A \defemph{morphism} $X\morphism[f] Y$ of prevarieties is a continuous map such that for any open $V\subseteq Y$ and any $\lambda \in\Oo_Y(V)$, $f^*\lambda$ is an element of $\Oo_X(f^{-1}V)$.
