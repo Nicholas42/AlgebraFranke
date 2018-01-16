@@ -186,13 +186,13 @@ Let it be said that the first three recommendations are from Professor Franke wh
     \item \lbl{ex:affineIsVariety}
         Any affine algebraic variety is a variety in the sense of Definition \reff{def:variety}.
     \item
-        In particular, $\IA^0 = \{0\}$ is a variety, as is any one-point prevariety.
+        In particular, $\IA^0(k) = \{0\}$ is a variety, as is any one-point prevariety.
     \item 
         Non-empty open and irreducible closed subsets $Y$ of varieties $X$ are varieties 
     \end{alphanumerate}
 \end{example}
 \begin{proof}
-		For part \itememph{c} note that the inclusion $Y\morphism[\iota] X$ (together with $\iota^*\colon \Oo_X\to\Oo_Y$) is a morphism of prevarieties, and for a pair $a,b\colon T\to A$ of morphisms of prevarieties we have $\left\{t\in T\st a(t) = b(t) \right\} = \left\{t \in T\st(\iota a)(t) = (\iota b)(t) \right\}$. The latter is closed in $T$ because $X$ is a variety.
+		For part \itememph{c} note that the inclusion $Y\monomorphism[\iota] X$ (together with $\iota^*\colon \Oo_X\to\iota_*\Oo_Y$) is a morphism of prevarieties, and for a pair $a,b\colon T\to A$ of morphisms of prevarieties we have $\left\{t\in T\st a(t) = b(t) \right\} = \left\{t \in T\st(\iota a)(t) = (\iota b)(t) \right\}$. The latter is closed in $T$ because $X$ is a variety.
 	
         For part \itememph{a} let $X\subseteq k^n$ be closed and irreducible, $a,b\colon T\to X$ be morphisms of prevarieties and $K= \left\{t\in T\st a(t) = b(t)\right\}$. To show that $K$ is closed in $T$, it is sufficient to show that any $t\in T$ has a neighbourhood $\Omega$ such that $K\cap \Omega$ is closed in $\Omega$. Choosing $\Omega$ such that it is isomorphic to an affine algebraic variety, which is possible because $T$ is a prevariety, we may assume without loss of generality that $T\subseteq k^n$ is an affine algebraic variety in (i.e.  an irreducible subset of) $k^n$. Let 
 	        \begin{align*}
