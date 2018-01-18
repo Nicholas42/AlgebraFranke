@@ -291,7 +291,7 @@ The derivation from Corollary~\reff{cor:V(f)codimension1} by induction on $r$ is
     \begin{align}\lbl{eq:PrimeCapRadical}
         \bigcap_{\pp\in V(I)}\pp = \sqrt{I}\;,
     \end{align}
-    which follows from applying Proposition~reff{prop:nilradicalCapPrimeIdeals} to $R/I$. The assertion about prime ideals is left as an exercise (and you should have done this on exercise sheet \#2!).
+    which follows from applying Proposition~\reff{prop:nilradicalCapPrimeIdeals} to $R/I$. The assertion about prime ideals is left as an exercise (and you should have done this on exercise sheet \#2!).
 \end{proof}
 \begin{prop}
     The intersection of the maximal ideals of $R$, called the \defemph{Jacobson-radical}, is
@@ -2121,14 +2121,14 @@ We postpone the quite lengthy proof of Proposition~\reff{prop:Akizuki-Hopkins} t
         \end{align*}
         \item We have a bijection 
         \begin{align*}
-            \Spec(R_S) &\isomorphism  \left\{\pp\in \Spec R\st  \pp\cap S\right\}\\
+            \Spec(R_S) &\isomorphism  \left\{\pp\in \Spec R\st  \pp\cap S\neq\emptyset\right\}\\
             \pp &\morphism \pp \cdot R_S\\
             \lambda^{-1}(\qq) &\lmorphism \qq\;.
         \end{align*}
     \item 
         Every graded $R_S$-module defines a graded $R$-module on which $S$ acts invertibly, and every graded $R$ on which $S$ acts invertibly module is obtained in this fashion.
     \item
-        For every graded $R$-module $M$ there is a unique (up to unique isomorphism) $R_S$-module $M_S$ with a morphism $M\morphism[\mu] M_S$ of graded $R$-modules, which has has the universal property for such morphisms:
+        For every graded $R$-module $M$ there is a unique (up to unique isomorphism) $R_S$-module $M_S$ with a morphism $M\morphism[\mu] M_S$ of graded $R$-modules, which has the universal property for such morphisms:
         \begin{quote}
         	For any morphism $M\morphism[\nu] N$ of graded $R$-modules $M$ to graded $R_S$-modules $N$, there is a unique morphism $M_S\morphism[n] N$ such that
         	\begin{diagram*}
@@ -2159,7 +2159,7 @@ We postpone the quite lengthy proof of Proposition~\reff{prop:Akizuki-Hopkins} t
     Conversely, let $\qq\in\Spec R_S$ be homogeneous and $f\in\pp=\lambda^{-1}(\qq)$. Let $f=\sum_{i=-\infty}^{\infty}f_i$ with $f_i\in R_i$ (and only finitely many $f_i\neq 0$) be its decomposition into homogeneous components in $R$. Then $\lambda(f)=\sum_{i=-\infty}^{\infty}\lambda(f_i)$ and $\lambda(f_i)\in(R_S)_i$. By homogeneousness of $\qq$ we obtain $\lambda(f_i)\in \qq$ and thus $f_i\in\pp$, proving that $\pp$ is homogeneous.
 \end{proof}
 \begin{rem}\lbl{rem:conventionOnGradedLocalization}
-    If $R$ is a graded ring and $\pp$ a homogeneous prime ideal, $R_\pp$ is defined as the graded localization of $R$ with respect to $S=\bigcup_{i\in\IZ} (R_i\setminus \pp)$. That is, we only localize only at the \emph{homogeneous} elements and \emph{not} at all of $R\setminus\pp$. The same convention is applied to $M_\pp$ where $M$ is a graded $R$-module.
+    If $R$ is a graded ring and $\pp$ a homogeneous prime ideal, $R_\pp$ is defined as the graded localization of $R$ with respect to $S=\bigcup_{i\in\IZ} (R_i\setminus \pp)$. That is, we localize only at the \emph{homogeneous} elements and \emph{not} at all of $R\setminus\pp$. The same convention is applied to $M_\pp$ where $M$ is a graded $R$-module.
 \end{rem}
 
 \section{Intersection multiplicities and B\'ezout's theorem}
