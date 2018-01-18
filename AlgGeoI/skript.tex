@@ -1897,7 +1897,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
     The last implication \itememph{c} $\Rightarrow$ \itememph{a} is obvious.
 \end{proof}
 \begin{cor}
-    There is a canonical bijection from the quasi-coherent ideals $\Jj$ on $X=\Spec R$ to the ideals $I\subseteq R$ by 
+    There is a canonical bijection from the quasi-coherent sheaves of ideals $\Jj$ on $X=\Spec R$ to the ideals $I\subseteq R$ by 
     \begin{align*}
     \left\{
     \begin{array}{c}
@@ -2034,7 +2034,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
 \begin{cor}\lbl{cor:OXInjectiveQuasiCompact}
     The morphism $\Oo_X(U)_\lambda\xrightarrow{\text{\eqreff{eq:moduleLoc}}} \Oo_X\big(U\setminus V(\lambda)\big)$ is injective when $U$ is quasi-compact and bijective, when $V$ is quasi-compact and quasi-separated. 
 \end{cor}
-\begin{cor}
+\begin{cor}\lbl{cor:nilpotentVanishingSet}
     When $U$ is quasi-compact and $\lambda\in \Oo_X(U)$ such that $V(\lambda) = U$ then $\lambda$ is nilpotent. (Vice versa, we clearly have $V(f) = U$ when $\lambda$ is nilpotent, even when $U$ is not quasi-compact.)
 \end{cor}
 \begin{proof}
@@ -2612,28 +2612,31 @@ A Franke lecture is no Franke lecture without a definition being proved.
 \subsection{Irreducibility, reducedness and integrality}
 
 \begin{fact}
-    Let $X$ be a topological space, $\Rr$ a sheaf of rings on it. Let $U\subseteq X$ be open. Then the following conditions to $r\in\Rr(U)$ are equivalent:
+    Let $X$ be a topological space, $\Rr$ a sheaf of rings on it. Let $U\subseteq X$ be open. Then the following conditions on $r\in\Rr(U)$ are equivalent:
     \begin{alphanumerate}
     \item   
-        For every $x\in U$, the image of $r\in \Rr_x$ is nilpotent.
+        For every $x\in U$, the image of $r$ in $\Rr_x$ is nilpotent.
     \item 
         It is possible to cover $U$ by open subsets $U_i$ such that $r|_{U_i}$ is nilpotent.
     \end{alphanumerate}
         When $U$ is quasi-compact this is equivalent to $r$ being nilpotent.
 \end{fact}
+\begin{proof}
+	The equivalence of \itememph{a} and \itememph{b} is trivial. If $U$ is quasi-compact and $r\in\Rr(U)$ nilpotent, then so are its restrictions $r|_V$ for any open $V\subseteq U$. Conversely, let $U=\bigcup_{i\in I}U_i$ be an open cover such that $(r|_{U_i})^{n_i}=0$ in $\Oo_X(U_i)$. By quasi-compactness, we may assume $I$ to be finite and take $n=\max_{i\in I}n_i$, then the sheaf axiom shows $r^n=0$ in $\Oo_X(U)$.
+\end{proof}
 
 \begin{defi}
-    Such $r\in \Rr(U)$ is called \defemph{locally nilpotent} on $U$. If $(\nil \Rr)(U) \subseteq \Rr(U)$ denotes the ideal of locally nilpotent elements, then $\nil(\Rr)$ is a sheaf of ideals in $\Rr$ called the nil-radical of $\Rr$.
+    Such $r\in \Rr(U)$ is called \defemph{locally nilpotent} on $U$. If $\nil (\Rr)(U) \subseteq \Rr(U)$ denotes the ideal of locally nilpotent elements, then $\nil(\Rr)$ is a sheaf of ideals in $\Rr$ called the \defemph{nil-radical} of $\Rr$.
 \end{defi}
 
 \begin{fact}
     For a prescheme $X$ we have
     \begin{align*}
-        (\nil(\Oo_X))(U) = \left\{f\in \Oo_X(U) \st V(f) = U\right\}\;.
+        \nil(\Oo_X)(U) = \left\{f\in \Oo_X(U) \st V(f) = U\right\}\;.
     \end{align*}
 \end{fact}
 \begin{proof}
-    If $U$ is quasi-compact, this follows from corollary 1.5.2. The question being local, the assertion follows in general.
+    If $U$ is quasi-compact, this follows from Corollary~\reff{cor:nilpotentVanishingSet}. The question being local, the assertion follows in general.
 \end{proof}
 \begin{prop}\lbl{prop:reduced}
     For a prescheme $X$, $\nil(\Oo_X)$ is quasi-coherent, and the following conditions are equivalent:
@@ -2645,11 +2648,16 @@ A Franke lecture is no Franke lecture without a definition being proved.
     \end{alphanumerate}
 \end{prop}
 \begin{proof}
-    First, we show that $\nil(\Oo_X)$ is quasi-coherent. It suffices to show that $\nil(\Oo_X) = \snake{\nil(R)}$ when $X=\Spec R$. Since these open subsets form a topology base, it is sufficient to show $(\nil(\Oo_X))(\Spec R_f) = \nil(R)_f$. As $\Spec R_f$ is quasi-compact the left hand side is $\nil(R_f)$ hence we have to show $\nil(R)_f \isomorphism \nil(R_f)$. Injectivity follows from the injectivity of $\nil(R)\morphism R$. For surjectivity, let $\frac{r}{f^k}\in \nil(R_f)$, then $\frac{r^m}{f^{km}} = 0$ in $R_f$ for appropriate $m$, hence $f^\ell r^m = 0$ in $R$ for some $\ell\in\IN$, and $(rf^\ell) = 0$ in $R$, hence $f^\ell r\in \nil(R)$ but $\frac{r}{f^k}=\frac{f^\ell r}{f^{\ell+k}}\in \nil(R)_f$.
+    First, we show that $\nil(\Oo_X)$ is quasi-coherent. It suffices to show that $\nil(\Oo_X) = \snake{\nil(R)}$ when $X=\Spec R$. Since these open subsets form a topology base, it is sufficient to show $\nil(\Oo_X)(\Spec R_f) = \nil(R)_f$. As $\Spec R_f$ is quasi-compact, by Corollary~\reff{cor:nilpotentVanishingSet} the left-hand side equals $\nil(R_f)$, hence we have to show $\nil(R)_f = \nil(R_f)$. Clearly, an element of $\nil(R)_f\subseteq R_f$ is nilpotent in $R_f$ and hence $\nil(R)_f\subseteq\nil(R_f)$. To show $\nil(R)_f\supseteq\nil(R_f)$, let $rf^{-k}\in \nil(R_f)$, then $r^mf^{-km} = 0$ in $R_f$ for appropriate $m$, hence $f^\ell r^m = 0$ in $R$ for some $\ell\in\IN$. Then also $(rf^\ell)^m = 0$ in $R$, hence $f^\ell r\in \nil(R)$ but $rf^{-k}=f^\ell r\cdot f^{-(\ell+k)}\in \nil(R)_f$.
     
-    Assume \itememph{a}. If $Y\subseteq X$ is a closed subprescheme containing all points of $X$, it is given by a quasi-coherent sheaf of ideals $I$. For $x\in X=Y$, we have $\Oo_{Y,x}= \Oo_{X,x}/I_x$ hence for any $f\in \Oo_X(U)$ we have $V(f) = V(f|_{U\cap Y})$. For $f\in I(U)$, $f|_{Y\cap U} = 0$ hence $V(f) = U$ hence $f\in (\nil(\Oo_X))(U)$ hence $f=0$ by \itememph{a}. Hence $I=0$ and $X=Y$.
+    Let's prove \itememph{a} $\Rightarrow$ \itememph{b}. Assume \itememph{a}. If $Y\subseteq X$ is a closed subprescheme containing all points of $X$ and $Y\monomorphism[\iota]X$ the corresponding closed immersion, then $Y$ is given via Proposition~\reff{prop:closedImmersionCoherentSheaves} by a quasi-coherent sheaf of ideals $\Jj=\ker(\Oo_X\morphism[\iota^*]\iota_*\Oo_Y)$. For $x\in X=Y$, we have $\Oo_{Y,x}= \Oo_{X,x}/\Jj_x$ hence for any $f\in \Oo_X(U)$ we have
+    \begin{align*}
+    	V(f) &= \left\{x\in U\st (\text{image of }f\text{ in }\Oo_{X,x})\in\mm_{X,x}\right\}\\
+    	&= \left\{x\in U\st (\text{image of }\iota^*f\text{ in }\Oo_{Y,x}=\Oo_{X,x}/\Jj_x)\in\mm_{Y,x}=\mm_{X,x}/\Jj_x\right\}=V(\iota^*f)\;.
+    \end{align*}
+     For $f\in \Jj(U)$, $\iota^*f = 0$ hence $V(f) = U$ hence $f\in \nil(\Oo_X)(U)$ by Corollary~\reff{cor:nilpotentVanishingSet}, thus $f=0$ by \itememph{a}. It follows that $\Jj=0$ and $X=Y$ as preschemes.
     
-    In the other direction, one can easily see, that $\nil(\Oo_X) \neq 0$ defines a closed subprescheme containing all the points of $X$.
+    In the other direction, one can easily see that $\nil(\Oo_X) \neq 0$ defines a closed subprescheme containing all the points of $X$, hence \itememph{b} $\Rightarrow$ \itememph{a}.
 \end{proof}
 \begin{defi}[Reduced prescheme] \lbl{def:reduced}
     A prescheme with these properties is called \defemph{reduced}. For any prescheme $X$, let $X^{\red}$ be the closed subprescheme of $X$ be defined by $\nil(\Oo_X)$.
@@ -2658,13 +2666,13 @@ A Franke lecture is no Franke lecture without a definition being proved.
     $X^{\red}$ is the smallest closed subprescheme of $X$ containing all points of $X$, and is reduced.
 \end{rem}
 \begin{fact}
-    Let $X$ be a reduced prescheme, $Y$ a scheme and $X\doublemorphism[f][g] Y$ two morphisms of preschemes coinciding on a dense open subset $U\subseteq X$. Then they coincide on $X$. In fact, $Y$ being a scheme can be weakend to the existence of a separated morphism $Y\morphism[\upsilon] S$ such that $\upsilon f = \upsilon g$.
+    Let $X$ be a reduced prescheme, $Y$ a scheme and $X\doublemorphism[f][g] Y$ two morphisms of preschemes coinciding on a dense open subset $U\subseteq X$. Then they coincide on $X$. In fact, $Y$ being a scheme can be weekend to the existence of a separated morphism $Y\morphism[\upsilon] S$ such that $\upsilon f = \upsilon g$.
 \end{fact}
 \begin{proof}
-    Under our assumptions on $Y$, the equalizer $\Eq\left(X\doublemorphism[f][g] Y\right)$ is a closed subprescheme of $X$ containing all points of $U$, hence of $X$. By Proposition~\reff{prop:reduced} $f$ and $g$ coincide on $X$.
+    Under our assumptions on $Y$, the equalizer $\Eq\Big(X\doublemorphism[f][g] Y\Big)$ is a closed subprescheme of $X$ containing all points of $U$, hence of $X$. By Proposition~\reff{prop:reduced}, $f$ and $g$ coincide on $X$.
 \end{proof}
 \begin{rem}
-    It is easy to see that the scheme property of a prescheme $Y$ or the separateness of the morphisms $Y\morphism[\upsilon] S$, can be characteristized by the validity of the above assertion for reduced $X$. In fact, it is sufficient to take $X=\Spec R$ where $R$ is a domain, or a general valuation ring, or, when $Y$ is Noetherian, a discrete valuation ring.
+    It is easy to see that the scheme property of a prescheme $Y$ or the separateness of the morphisms $Y\morphism[\upsilon] S$, can be characteristized by the validity of the above assertion for reduced $X$. In fact, it is sufficient to take $X=\Spec R$ where $R$ is a domain, or a general valuation ring, or, when $Y$ is Noetherian, a discrete valuation ring (the \emph{valuation criterion for separatedness}).
 \end{rem}
 \begin{prop}
     \begin{alphanumerate}
@@ -2672,25 +2680,31 @@ A Franke lecture is no Franke lecture without a definition being proved.
         Let $X$ be a prescheme. For $x\in X$, we have a bijection:
         \begin{align*}
             \Spec(\Oo_{X,x}) &\lisomorphism \left\{y\in X\st x\in \ov{\{y\}}\right\}\\
-            \left\{(U,f)/_\sim \in \Oo_{X,x}\st y\in V(f)\right\} &\longmapsfrom y\;.
+            \left\{(U,\lambda)/_\sim \in \Oo_{X,x}\st y\in V(\lambda)\right\} &\longmapsfrom y\;.
         \end{align*}
         Under this bijection, the generic points of the irreducible components (i.e. the maximal irreducible subsets) of $X$ containing $x$ correspond to the minimal prime ideals of $\Oo_{X,x}$.
     \item
-        The morphism $\Spec (\Oo_{X,x}) \morphism X$ defined by 
+        The morphism $\Spec (\Oo_{X,x}) \morphism[\phi] X$ defined by 
         \begin{align*}
-            \Spec(\Oo_{X,x} ) = \Spec(\Oo_X(U)_{\pp_x}) \morphism \Spec(\Oo_X(U)) = U \morphism X
+            \phi\colon\Spec(\Oo_{X,x} ) = \Spec\big(\Oo_X(U)_{\pp_x}\big) \morphism \Spec\big(\Oo_X(U)\big) = U \monomorphism X
         \end{align*}
-        for an affine open neighbourhood $U$ of $x$ ($\pp_x\in \Spec(\Oo_X(U))$ being the ideal of $f\in \Oo_X(U)$ such that $x\in V(f)$) is independent of $U$ and defines the bijection of \itememph{a} on the level of points.
+        for an affine open neighbourhood $U$ of $x$ and $\pp_x\in \Spec(\Oo_X(U))$ the ideal of all $f\in \Oo_X(U)$ such that $x\in V(f)$, is independent of $U$ and defines the bijection of \itememph{a} on the level of points.
     \end{alphanumerate}
 \end{prop}
 \begin{proof}
-    For \itememph{a}, we may assume $X$ to be affine because any affine open neighbourhood of $x$ contains all $y$ occuring on the right hand side. When $X=\Spec R$, and $x$ is given by $\pp$ and $y$ by $\qq$ then $\ov{\{y\}} = V(\qq)$ hence $\qq$ defines an element of the right hand side iff $\qq\supseteq \pp$. In this case, the image of $y$ in the left hand side $\Spec(\Oo_{X,x})\simeq \Spec R_\pp$ is the set of all $\frac{r}{f}\in R_\pp$ such that $\qq R_f$ is an element of the vanishing set of $\frac{r}{f}$ in $R_f$, hence $\frac{r}{f}\in \qq R_f$, hence the ideal of $R_\pp$ associated to $y$ is $\qq R_\pp$. This is indeed a bijection onto $\Spec R_\pp$, the inverse map being given by $\Spec R_\pp \morphism \Spec R$, $\gamma\mapsto \qq= \gamma\sqcap R$.
+    For \itememph{a}, we may assume $X$ to be affine because any affine open neighbourhood of $x$ contains all $y$ occuring on the right hand side (in fact, any open neighbourhood $U$ of $x$ contains $y$ as otherwise $\ov{\{y\}}\subseteq X\setminus U$). When $X=\Spec R$, and $x$ is given by $\pp$ and $y$ by $\qq$ then $\ov{\{y\}} = V(\qq)$, hence $\qq$ defines an element of the right-hand side iff $\qq\subseteq \pp$. In this case, the image of $y$ in the left hand side $\Spec(\Oo_{X,x})\simeq \Spec R_\pp$ is the set of all $\frac{r}{f}\in R_\pp$ (where $f\notin\pp$) such that $\qq R_f$ is an element of the vanishing set of $\frac{r}{f}$ in $R_f$, i.e. $\frac{r}{f}\in \qq R_f$, hence the ideal of $R_\pp$ associated to $y$ is $\qq R_\pp$ (as one would expect). Now the map $\qq\mapsto\qq R_\pp$ gives indeed a bijection onto $\Spec R_\pp$, the inverse map being given by 
+    \begin{align}\lbl{eq:localizationBijection}
+    	\begin{split}
+	    	\Spec R_\pp &\morphism \left\{\qq\in\Spec R\st\qq\subseteq\pp\right\}\\ \rr&\longmapsto \qq= (\text{preimage of }\rr\text{ under }R\morphism R_\pp)
+    	\end{split}\tag{$*$}
+    \end{align}
+    (a special case of \cite[Corollary~2.3.1\itememph{e}]{alg1}). The correspondence between generic points of maximal irreducible subsets and minimal prime ideals of $\Oo_{X,x}$ is obvious.
     
-    Now we prove \itememph{b}. The fact that the map on points defined by that morphism is the inverse to $\lmorphism$ in \itememph{a} follows from the last remark. In particular, it is unique on the level of points. On the level of stalks of sections of the structure sheaf it is given by the canonical morphism (for a $y\in X$ such that $x\in\ov{\{y\}}$)
+    Now we prove \itememph{b}. The fact that the map on points defined by $\phi$ is the inverse to $\Spec(\Oo_{X,x}) \lisomorphism \left\{y\in X\st x\in \ov{\{y\}}\right\}$ in \itememph{a} follows from \eqreff{eq:localizationBijection}. In particular, $\phi$ is unique on the level of points. Let's consider it on the level of stalks of sections of the structure sheaf. For a $y\in X$ such that $x\in\ov{\{y\}}$ corresponding to the prime ideal $\qq\in\Spec(\Oo_{X,x})$ under the bijection from \itememph{a} we get a canonical morphism
     \begin{align*}
-        \Oo_{X,x} = \colimit[U\ni x] \Oo_X(U) \morphism \colimit[V\ni y] \Oo_X(U)
+        \Oo_{X,x} = \colimit[U\ni x] \Oo_X(U) \morphism \colimit[V\ni y] \Oo_X(V)=\Oo_{X,y}
     \end{align*}
-    mapping the complement of the prime ideal defined by $y$ to units, hence defining $(\Oo_{X,x})_\qq\morphism \Oo_{X,y}$ ($\qq$ being the image of $y$ under $\lmorphism$) by the universal property of the localization. This is the $(\Oo_{X,x})_\qq \simeq (\Oo_{\Spec \Oo_{X,x}})_\qq \morphism \Oo_{X,y}$ defined by the morphisms of \itememph{b}.
+    from the fact that any open neighbourhood $U$ of $x$ also contains $y$. Under this canonical map, the complement of the prime ideal $\qq$ defined by $y$ maps to units, hence it factors over $(\Oo_{X,x})_\qq\morphism \Oo_{X,y}$ by the universal property of localization. This is the $(\Oo_{X,x})_\qq \simeq (\Oo_{\Spec \Oo_{X,x}})_\qq \morphism \Oo_{X,y}$ defined by $\phi$, hence it is unique as well.
 \end{proof}
 
 \begin{prop}
