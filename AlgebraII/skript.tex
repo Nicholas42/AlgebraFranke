@@ -2266,7 +2266,7 @@ and we have bijections
     \end{align*}
     where the length is of $\Oo_{X,Z}$-modules and in the middle term, $F$ is any element of $k[X_0,\ldots, X_n]_d$ not identically vanishing on $Z$.
 \end{defi}
-\begin{proof}[You know you are attending a Franke lecture, when a definition needs a proof]
+\begin{proof}[You know you are attending a lecture by Franke, when a definition needs a proof]
 	By an argument same as Example~\reff{ex:O(l)LineBundle}, $F$ is a free generator of $\Oo_X(d)|_{X\setminus V(F)}$. Moreover, $X\setminus V(F)$ intersects $Z$, hence $(X\setminus V(F),F)/_\sim$ is a free generator of $\Oo_X(d)_Z$. Therefore, multiplication by $F$ defines an isomorphism
 	\begin{align*}
 	\Oo_{X,Z} \Bigm/ \Big(\frac{H}{F}\cdot\Oo_{X,Z}\Big) \isomorphism[\cdot F] \Oo_X(\ell)_Z/H\cdot \Oo_{X,Z}\;.
@@ -2283,6 +2283,111 @@ and we have bijections
 \begin{proof}
 	Follows directly from Proposition~\reff{prop:pseudoStalkStuff}\itememph{c}.
 \end{proof}
+
+\begin{rem}
+    \begin{alphanumerate}
+    \item \lbl{rem:multstuff}
+        It follows from the second equality that the middle term is independent of $F$.
+    \item 
+        When $Z\not\subseteq V(H)$, then $\frac{H}{F}\in \Oo_{X,Z}^\times$ and the above definition of $i$ gives zero. When $Z\subseteq X\cap V(H)$ is not an irreducible component of $X\cap V(H)$, the length can be shown to be infinite.
+    \item 
+    \item 
+        The definition can be generalized to $i(A,B;Z)$ (containing our  with irreducible $H$ as the special case when $B=V(H)\subseteq \IP^n(k)$) the multiplicity of an irreducible component in $A\cap B$, where $A$ and $B$ are irreducible and of arbitrary codimension. This was done by Serre and is much more complicated. Our
+        \begin{align*}
+            \ell\left(\Oo_{A,Z}\otimes_{\Oo_{\IP^n(k), Z}} \Oo_{B,Z} \right)
+        \end{align*}
+        becomes
+        \begin{align*}
+            \sum_j^\infty (-1)^j \ell\left(\operatorname{Tor}_j^{\Oo_{\IP^n(k), Z}}(\Oo_{A,Z},\Oo_{B,Z})\right)
+        \end{align*}
+    \end{alphanumerate}
+\end{rem}
+
+\begin{thm}[B\'ezout's theorem in a more general version] \lbl{thm:bezoutGeneral}
+    Let $X\subseteq \IP^n(k)$ be an irreducible closed subset, $H\in k[X_0,\ldots, X_n]$ a polynomial of degree $d$ not identically vanishing on $X$ then 
+    \begin{align*}
+        \sum_{Z} i(X,H;Z) \cdot \deg(Z) = d\deg (X)
+    \end{align*}
+    where the intersection multiplicities are finite and the sum is taken over all irreducible components $Z$ of $X$.
+\end{thm}
+\begin{rem*}
+    As $\Oo_{X,Z}$ is a domain and the $\Oo_X(\ell)_Z$ are free modules of rank $1$ over it, we have
+    \begin{align*}
+        0\morphism \Oo_X(e)_Z/G\cdot \Oo_{X,Z} \morphism[F] \Oo_X(e+d)_Z/(GF)\cdot \Oo_{X,Z} \morphism \Oo_X(e+d)_Z/F\cdot \Oo_X(e)_Z \morphism 0
+    \end{align*}
+    when $G$ is another homogeneous polynomial not identically vanishing on $X$ and the right term is
+    \begin{align*}
+        \Oo_X(d)_Z/ F\cdot \Oo_{X,Z} \isomorphism[X_i^e] \Oo_X(e+d)_Z/F\cdot \Oo_X(e)_Z
+    \end{align*}
+    showing $i(X,H\cdot G; Z) = i(X,H;Z)+i(X,G;Z)$. For this reason, everything can be reduced to the case where $H$ is irreducible. In this case, $H$ is a generator of the prime ideal $\rr$ such that $V(\rr) = C = V(H)$, hence, one can interpret the result as
+    \begin{align*}
+        \sum_Z i(X,C;Z) \cdot \deg (Z) = \deg(X)\cdot \deg(C)
+    \end{align*}
+    where the sum is taken over the irreducible components of $X\cap C$, provided $X\not \subseteq C$, which holds when $\codim(C,\IP^n(k)) = 1$. With Serre's definition of $i(X,C;Z)$ the equality hold in full generality when the intersection is \emph{proper}, i.e., all occuring $Z$ have codimension in $\IP^n(k)$ equal to $\codim (X,\IP^n(k)) +\codim(C, \IP^n(k))$.
+    
+    When $X$ also has codimension 1, $V=V(P)$ with $P$ irreducible, 
+    \begin{align*}
+        (X,C;Z) = \ell\left(\Oo_{\IP^n(k), Z} \mid / \left\langle \frac{P}{X_i^e}, \frac{H}{X_i^d}\right\rangle_{\Oo_{\IP^n(k), Z}}\right)
+    \end{align*}
+    where $C=V(H)$, $H$ and $P$ irreducible of degrees $d$ and $e$, $X_i$ not identically vanishing on $Z$. This is symmetric in $P$ and $H$, hence our definition of $i(X,C;Z)$ is symmetric in $X$ and $C$ when both are of codimension 1. Serre's $i$ is always symmetric in the first two operands.
+    
+    It seems that B\'ezout treated the case $n=2$, $\dim(X) = 1$ in the 18th century.
+\end{rem*}
+\begin{proof}[Proof of B\'ezout's Theorem]
+    Let $R=S(X)$ and $M=R/H\cdot R[-d]$ then we have 
+    \begin{align*}
+        P_M(t) = P_X(t) - P_X(t-d)
+    \end{align*}
+    where $P_M$, $P_X$ are the Hilbert polynomials) by the short exact sequence
+    \begin{align*}
+        0\morphism R[-t] \morphism[H] \morphism M \morphism 0\;.
+    \end{align*}
+    If $\xi$ is the dimension and $e$ the degree of $X$ this is 
+    \begin{align*}
+    \begin{split}
+        \frac{e}{\xi!}(t^\xi-(t-d)^\xi) + \sum_{i=0}^{\xi-1} c_i(t^i- (t-d)^i) &= \frac{e\cdot d\cdot \xi}{\xi!}t^{\xi-1} + \text{ lower powers } \\
+        &= \frac{e\cdot d}{(\xi-1)!}t^{\xi-1} +\text{ lower powers }\;.
+        \end{split}\tag{+}\lbl{eq:bezout}
+    \end{align*}
+    Let $0=M_0\subsetneq \ldots \subsetneq M_k = M$ be a filtration as in Proposition~\reff{prop:filtrationByPrimeIdeals}, with $M_i/M_{i-1} \simeq (R/\qq_i)[t_i]$, $\qq_i$ being a homogeneous prime ideal. By Fact (there is no fact 3.1.3) we have
+    
+    \begin{align*}
+        \sqrt{\langle H\rangle_R} = \sqrt{\Ann_R(M)} = \bigcap_{i=1}^k \qq_i
+    \end{align*}
+    showing that $V(H)\cap X) = \bigcup_{i=1}^k V(\qq_i)$. In particular, the $\subseteq$-minimal elements of $\left\{\qq_i\st 1\leq i\leq k\right\}$ correspond to the irreducible components of $V(H)\cap X$. Let $Z=V(\qq)$ be such an irreducible component, we claim that $i(X,H;Z)$ equals the number of occurences of $\qq$ in the sequence $(\qq_i)_{i=1}^k$, in particular proving the finiteness. The contribution of the $\qq_i$ such that $V(\qq_i)$ is an irreducible component of $X\cap V(H)$ to the leading coefficient of $P_M (t) = \sum_{i=1}^k P_{M_i/M_{i-1}}(t) = \sum_{i=1}^k P_{R/\qq_i}(t-t_i)$ is therefore
+    \begin{align*}
+        \sum_{Z} i(X,H;Z) \cdot \frac{\deg(Z)}{(\xi-1)!}t^{\xi-1}\tag{*} \lbl{eq:bezoutLeadingCoeff}\;.
+    \end{align*}
+    If $V(\qq_i)$ is not an irreducible component of $X\cap V(H)$ it is strictly contained in an irreducible component of $X\cap V(H)$, hence of dimension smaller or equal to $\xi-2$, and its Hilbert polynomial $\sum_{j=0}^{\xi-2} c_j^{(i)} t^j$ (by Proposition~\reff{prop:HilbertDegreeEqualsDimension}) does not contribute to the $(\xi-1)$-st coefficient of $P_M$. Therefore, \eqreff{eq:bezoutLeadingCoeff} is equal to the leading term of $P_M$. B\'ezout's theorem follows by comparison with \eqreff{eq:bezout} for the leading term.
+    
+    It remains to prove our claim 
+    \begin{align*}
+        i(X,H;Z) = \#\left\{i\st 1\leq i\leq k, \qq_i = \qq\right\}\tag{\%} \lbl{eq:multascount}
+    \end{align*}
+    where $Z = V(\qq)$, about the intersection multiplicity. We have
+    \begin{align*}
+        M_\qq \simeq R_\qq/H\cdot R_\qq[-d]
+    \end{align*}
+    by the exactness of localization. Also by the properties of localization, $((M_i)_\qq)^k_{i=0}$ form a filtration of $M_\qq$ with filtration quotients $(M_i)_{\qq}/(M_{i-1})_\qq \simeq (M_i/M_{i-1})_\qq \simeq (R/\qq_i[t_i])_\qq \simeq (R_\qq/\qq_i\cdot R_\qq)[t_i]$ which is zero unless $\qq_i\subseteq \qq$. If $\qq_i\subseteq \qq$ we have $V(\qq_i) \supseteq Z = V(\qq)$ and equality occurs as $Z$ is an irreducible component of $X\cap V(H) = \bigcup_{i=1}^k V(\qq_i)$. Hence, $\qq = \qq_i$, when $(M_i/M_{i-1})_\qq\neq 0$ and in this case
+    \begin{align*}
+        M_i/M_{i-1} \simeq (R_\qq/\qq\cdot R_\qq)[t_i]\;.
+    \end{align*}
+    But $(\qq\cdot R_\qq)_0$ is the maximal ideal of the local ring $\Oo_{X,Z}\simeq (R_\qq)_0$, and $(R_\qq)_\ell$ is a free $(R_\qq)_0$-module with generator $X_j^\ell$ if $j$ is chosen such that $X_j\not in \qq$. Therefore, $\ell_{\Oo_{X,Z}}((R_\qq/\qq R_\qq)\ell) = \ell_{(R_\qq)_0} (R_\qq/\qq R_\qq)$ equals one as the residue field of a local ring is simple module over that ring. Thus, $\ell_{(R_\qq)_0} ((M_\qq)_\ell)$ equals the of \eqreff{eq:multascount}. But that lenght equals $i(X,H;Z)$ by \reff{rem:multstuff}\itememph{c}.
+\end{proof}
+
+
+\section{The Samuel polynomial and the principal ideal theorem}
+
+If $R$ is a Noetherian local ring one shows that $\ell(R/m_i) \sim c\cdot t^d$ or $\ell(\mm^i/\mm^{i+1})\sim \snake c t^{d-1}$ where $c\cdot\snake c \neq 0$ and $d$ is the dimension, giving a general proof of the principal ideal theorem as an application.
+
+
+
+
+
+
+
+
+
 
 
 
