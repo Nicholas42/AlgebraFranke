@@ -268,7 +268,7 @@ The derivation from Corollary~\reff{cor:V(f)codimension1} by induction on $r$ is
 \begin{prop}\lbl{prop:nilradicalCapPrimeIdeals}
     If $R$ is any ring, then 
     \begin{align*}
-    	\bigcap_{\substack{\pp\in\Spec R\\}} \pp =\nil(R) \coloneqq \left\{f\in R\st f^n=0 \text{ for some } n\in\IN\right\} = \sqrt{(0)}\;.
+    	\bigcap_{\pp\in\Spec R} \pp =\nil(R) \coloneqq \left\{f\in R\st f^n=0 \text{ for some } n\in\IN\right\} = \sqrt{(0)}\;.
     \end{align*}
     The ideal $\nil(R)$ is called the \defemph{\upshape nilradical} of $R$.
 \end{prop}
@@ -1470,15 +1470,15 @@ the above inequality \eqreff{eq:proofAffineConeCorrespondenceAst} would be stric
 \end{align*}
 as both $\IP^n(k)$ and $k^{n+1}$ are catenary.
 \end{proof}
-\begin{cor}
-Every irreducible %and closed
-subset of codimension $1$ in $\IP^n(k)$ has the form $Z = V(p)$ where $p\neq 0$ is a homogeneous polynomial of positive degree.
+\begin{cor}\lbl{cor:codim1SubsetsOfIP^n}
+An irreducible closed
+subset $Z\subseteq\IP^n(k)$ has codimension $1$ in $\IP^n(k)$ iff it has the form $Z = V(p)$ where $p\neq 0$ is an irreducible homogeneous polynomial of positive degree in $R=k[X_0,\ldots,X_n]$.
 \end{cor}
 \begin{proof}
-If $Z$ is ireducible of codimension $1$ in $\IP^n(k)$, then $C(Z)$ has codimension $1$ in $\IA^{n+1}(k)$. Hence $C(Z) = V(p)$ for some prime element
-$p\in R = k[X_0,\ldots,X_n]$, where $p$ is uniquely determined up to multiplicative equivalence in $R$, i.e., up to $k^\times$
-(existence was shown in \cite[Proposition~2.1.3]{alg1}, uniqueness up to multiplicative equivalence is rather clear). 
-Since $p(X)$ and $p(\lambda X)$, for any $\lambda\in k^\times$, have the same vanishing set $C(Z)$ (since this is homogeneous), it follows that for any $\lambda\in k^\times$ there is some $c_\lambda\in k^\times$ such that $p(X) = c_\lambda p(\lambda X)$. But any such polynomial must be homogeneous (choose $\lambda\in k^\times \setminus\bigcup_{d\leq\deg p} \mu_d$,
+An irreducible closed subset $Z$ has codimension $1$ in $\IP^n(k)$ iff $C(Z)$ has codimension $1$ in $\IA^{n+1}(k)$ by Proposition~\reff{prop:affineConeCorrespondence}. By \cite[Proposition~2.1.3]{alg1}, this is the case iff $C(Z) = V(p)$ for some prime element
+$p\in R = k[X_0,\ldots,X_n]$, where the prime ideal $(p)\in \Spec R$ is uniquely determined, hence so is its generator $p$ up to multiplicative equivalence in $R$, i.e. up to $k^\times$.
+
+We show that such $p$ must necessarily be homogeneous, which will establish the equivalence. Since $p(X)$ and $p(\lambda X)$, for any $\lambda\in k^\times$, have the same vanishing set $C(Z)$ (as this is homogeneous), it follows (from uniqueness up to $k^\times$) that for any $\lambda\in k^\times$ there is some $c_\lambda\in k^\times$ such that $p(X) = c_\lambda p(\lambda X)$. But any such polynomial must be homogeneous (choose $\lambda\in k^\times \setminus\bigcup_{d\leq\deg p} \mu_d$,
 i.e. $\lambda$ not a $d\ordinalth$ root of unity for all $d\leq\deg p$).
 \end{proof}
 %end of the section written by Felix
@@ -1801,9 +1801,9 @@ As $\pp$ is homogeneous, $S(X)$ inherits a grading $S(X)=\bigoplus_{d\geq 0}S_d(
 \begin{defi}[Simple module, finite length]\lbl{def:simpleModule}
     \begin{alphanumerate}
     \item 
-        A module $M$ over any ring $R$ is called \defemph{simple} if it is not $\{0\}$ and $\{0\}$ and $M$ are the only $R$-submodules of $M$.
+        A module $M$ over any ring $R$ is called \defemph{simple} if it is not $0$ and $0$ and $M$ are the only $R$-submodules of $M$.
     \item \lbl{def:finiteLength}
-        An $R$-module $M$ is called \defemph{finite length} if it has a filtration $\{0\} = M_0\subsetneq M_1\subsetneq\ldots\subsetneq M_\ell = M$ such that $M_i/M_{i-1}$ is simple for $1\leq i\leq\ell$. Then $\ell$ is called \emph{length} of $M$. 
+        An $R$-module $M$ is called \defemph{finite length} if it has a filtration $0 = M_0\subsetneq M_1\subsetneq\ldots\subsetneq M_\ell = M$ such that $M_i/M_{i-1}$ is simple for $1\leq i\leq\ell$. Then $\ell$ is called \emph{length} of $M$ and denoted $\ell=\ell_R(M)$ (sometimes the index is dropped). 
     \end{alphanumerate}
 \end{defi}
 
@@ -1812,31 +1812,31 @@ As $\pp$ is homogeneous, $S(X)$ inherits a grading $S(X)=\bigoplus_{d\geq 0}S_d(
     \item \lbl{rem:ArtinSchreier}
         By a theorem of Artin-Schreier, the number $\ell$ is determined uniquely by $M$, as are the isomorphism classes of $M_i/M_{i-1}$ up to permutation. We did not prove this in the lecture, but the proof is not too hard so it shall be sketched here.
         
-        Let $\{0\}=M_0\subsetneq \ldots\subsetneq M_\ell=M$ and $\{0\}=N_0\subsetneq\ldots\subsetneq N_k=M$ be two filtrations with simple quotients. We do induction on $\ell+k$. The case $\ell+k=0$ is trivial. Now let w.l.o.g. $\ell\geq1$ and choose  a minimal $m$ such that $M_1\subseteq N_m$. Clearly $m\geq 1$, and using that $M_1\not\subseteq N_{m-1}$ and that $M_1$ is simple as well as $N_m/N_{m-1}$ we deduce that $N_{m-1}+M_1=N_m$ and $N_{m-1}\cap M_1=\{0\}$. Then $N_m\simeq N_{m-1}\oplus M_1$. In particular, $N_m/N_{m-1}\simeq M_1$.
+        Let $0=M_0\subsetneq \ldots\subsetneq M_\ell=M$ and $0=N_0\subsetneq\ldots\subsetneq N_k=M$ be two filtrations with simple quotients. We do induction on $\ell+k$. The case $\ell+k=0$ is trivial. Now let w.l.o.g. $\ell\geq1$ and choose  a minimal $m$ such that $M_1\subseteq N_m$. Clearly $m\geq 1$, and using that $M_1\not\subseteq N_{m-1}$ and that $M_1$ is simple as well as $N_m/N_{m-1}$ we deduce that $N_{m-1}+M_1=N_m$ and $N_{m-1}\cap M_1=0$. Then $N_m\simeq N_{m-1}\oplus M_1$. In particular, $N_m/N_{m-1}\simeq M_1$.
         
-        Now replace $M$ by $M'=M/M_1$, each $M_i$ for $i=1,\ldots,\ell$ by $M_{i-1}'=M_i/M_1$, each $N_j$ for $j= m+1,\ldots,k$ by $N_{j-1}'=N_j/M_1$ and finally each $N_j$ for $j=0,\ldots, m-1$ by $N_j'=(N_j+M_1)/M_1\simeq (N_j\oplus M_1)/M_1\simeq N_j$. Then $\{0\}=M_0'\subsetneq\ldots \subsetneq M_{\ell-1}'=M'$ and $\{0\}=N_0'\subsetneq \ldots\subsetneq N_{k-1}'=M'$ are filtrations of $M'$ with the same quotients as the original filtrations of $M$ except for a quotient isomorphic to $M_1$ we deleted from both filtrations. Induction does the rest.\qed
+        Now replace $M$ by $M'=M/M_1$, each $M_i$ for $i=1,\ldots,\ell$ by $M_{i-1}'=M_i/M_1$, each $N_j$ for $j= m+1,\ldots,k$ by $N_{j-1}'=N_j/M_1$ and finally each $N_j$ for $j=0,\ldots, m-1$ by $N_j'=(N_j+M_1)/M_1\simeq (N_j\oplus M_1)/M_1\simeq N_j$. Then $0=M_0'\subsetneq\ldots \subsetneq M_{\ell-1}'=M'$ and $0=N_0'\subsetneq \ldots\subsetneq N_{k-1}'=M'$ are filtrations of $M'$ with the same quotients as the original filtrations of $M$ except for a quotient isomorphic to $M_1$ we deleted from both filtrations. Induction does the rest.\qed
     \item 
         The length of a $k$-vector space is its dimension. Indeed, as the quotients mustn't be $0$, the dimension must strictly increase in each step of a filtration with simple quotients. Conversely, if the quotients are to be simple, it can only increase by $1$ in each step.
     \item
-        The length of $\IZ/N\IZ$ is the number of prime factors of $N$ with respect to their multiplicity. Indeed, if $N=p_1\cdots p_n$ is its decomposition into (not necessarily distinct) prime factors, then
+        The length of $\IZ/N\IZ$ is the number of prime factors of $N$ with respect to their multiplicity. Indeed, if $N=p_1\cdots p_n$ is its decomposition into prime factors, then
         \begin{align*}
-        	\{0\}= \left(p_1\cdots p_n\IZ\right)/N\IZ\subsetneq \left(p_1\cdots p_{n-1}\IZ\right)/N\IZ\subsetneq\ldots\subsetneq p_1\IZ/N\IZ\subsetneq\IZ/N\IZ
+        	0= \left(p_1\cdots p_n\IZ\right)/N\IZ\subsetneq \left(p_1\cdots p_{n-1}\IZ\right)/N\IZ\subsetneq\ldots\subsetneq p_1\IZ/N\IZ\subsetneq\IZ/N\IZ
         \end{align*}
         is a filtration with simple quotients, hence the claim follows from Artin-Schreier.
     \item 
         The zero module has length 0.
     \item 
-        Any submodule or quotient module of an $R$-module $M$ of finite length has again finite length, and for any strictly increasing chain $M_0\subsetneq M_1\subsetneq\ldots\subsetneq M_d$ of submodules of $M$, the sequence $\ell(M_i)$ is strictly increasing. Thus $d\leq \ell(M)$, and any module of finite length is Noetherian.
+        Any submodule or quotient module of an $R$-module $M$ of finite length has again finite length, and for any strictly increasing chain $M_0\subsetneq M_1\subsetneq\ldots\subsetneq M_d$ of submodules of $M$, the sequence $\ell_R(M_i)$ is strictly increasing. Thus $d\leq \ell_R(M)$, and any module of finite length is Noetherian.
     \item 
-        If $0\morphism M' \morphism[\alpha] M\morphism[\beta] M'' \morphism 0$ is a short exact sequence then $\ell(M) = \ell(M') +\ell(M'')$. This is an easy consequence of Artin-Schreier. Indeed, if $\{0\}=M_0'\subsetneq\ldots M_{\ell'}'=M'$ and $\{0\}=M_0''\subsetneq\ldots\subsetneq M_{\ell''}''=M''$ are filtrations of $M'$ and $M''$ with simple quotients $M_i'/M_{i-1}'$ and $M_j''/M_{j-1}''$, then 
+        If $0\morphism M' \morphism[\alpha] M\morphism[\beta] M'' \morphism 0$ is a short exact sequence then $\ell_R(M) = \ell_R(M') +\ell_R(M'')$. This is an easy consequence of Artin-Schreier. Indeed, if $0=M_0'\subsetneq\ldots M_{\ell'}'=M'$ and $0=M_0''\subsetneq\ldots\subsetneq M_{\ell''}''=M''$ are filtrations of $M'$ and $M''$ with simple quotients $M_i'/M_{i-1}'$ and $M_j''/M_{j-1}''$, then 
         \begin{align*}
-        	\{0\}=\alpha(M_0')\subsetneq\ldots\subsetneq \alpha(M_{\ell'}')=\beta^{-1}(M_0'')\subsetneq\ldots\subsetneq \beta^{-1}(M_{\ell''}'')=M
+        	0=\alpha(M_0')\subsetneq\ldots\subsetneq \alpha(M_{\ell'}')=\beta^{-1}(M_0'')\subsetneq\ldots\subsetneq \beta^{-1}(M_{\ell''}'')=M
         \end{align*}
         is a filtration of $M$ of length $\ell'+\ell''$ with simple quotients.
         
-        \item Inductively, one can deduce from \itememph{f} that for any $R$-module $M$ and any filtration $\{0\}=M_0\subseteq M_1\subseteq \ldots\subseteq M_k=M$ we have 
+        \item Inductively, one can deduce from \itememph{f} that for any $R$-module $M$ and any filtration $0=M_0\subseteq M_1\subseteq \ldots\subseteq M_k=M$ we have 
         \begin{align*}
-        	\ell(M)=\sum_{i=1}^{k}\ell(M_i/M_{i-1})\;.
+        	\ell_R(M)=\sum_{i=1}^{k}\ell_R(M_i/M_{i-1})\;.
         \end{align*}
         Also note that all of this still works if some of the involved lengths are infinite.
     \end{alphanumerate}
@@ -1860,13 +1860,13 @@ We postpone the quite lengthy proof of Proposition~\reff{prop:Akizuki-Hopkins} t
 \begin{prop}
     \begin{alphanumerate}
     \item \lbl{prop:filtrationByPrimeIdeals}
-        Let $R$ be a Noetherian ring, $M$ a finitely generated $R$-module. Then there is a finite filtration $\{0\} = M_0\subsetneq M_1\subsetneq\ldots\subsetneq M_k = M$ such that $M_i/M_{i-1} \simeq R/\pp_i$ for some $\pp_i\in \Spec R$.
+        Let $R$ be a Noetherian ring, $M$ a finitely generated $R$-module. Then there is a finite filtration $0 = M_0\subsetneq M_1\subsetneq\ldots\subsetneq M_k = M$ such that $M_i/M_{i-1} \simeq R/\pp_i$ for some $\pp_i\in \Spec R$.
     \item  
         If $R$ and $M$ are graded ($R$ being $\IN$-graded), we may chose this filtration in such a way that the $M_i$ are graded submodules and the $\pp_i$ homogeneous and $M_i/M_{i-1} \simeq (R/\pp_i)[t_i]$ (this is the shift from Definition~\reff{def:gradedSubmodule} and not some polynomial ring thingy), where $t_i\in \IN_0$ and the isomorphism respects the grading.
     \end{alphanumerate}
 \end{prop}
 \begin{lem}\lbl{lem:submoduleRp}
-    Let $M\neq\{0\}$ be a module over a Noetherian ring $R$,  then it contains a submodule isomorphic to $R/\pp$ for some $\pp\in \Spec R$. If $M$ and $R$ are graded, then $\pp$ may be chosen homogeneous and such that the isomorphism respects the grading up to shift.
+    Let $M\neq0$ be a module over a Noetherian ring $R$,  then it contains a submodule isomorphic to $R/\pp$ for some $\pp\in \Spec R$. If $M$ and $R$ are graded, then $\pp$ may be chosen homogeneous and such that the isomorphism respects the grading up to shift.
 \end{lem}
 \begin{proof}
     The set of ideals $\left\{\Ann_R(m) = \left\{r\in R\st r\cdot m = 0\right\} \st m\in M\setminus \{0\}\right\}$ in $R$ has a $\subseteq$-maximal element, as $R$ is Noetherian. Let $m\neq 0$ such that $\Ann_R(m) = \pp$ is $\subseteq$-maximal in the above set of ideals. Then the submodule $R\cdot m \subseteq M$ is isomorphic to $R/\pp$. We have $1\not\in \pp$ as $m\neq 0$. Let $ab\in \pp$. If $a\not\in\pp$, then $a\cdot m \neq 0$ and $\Ann_R(a\cdot m)\supseteq \Ann_R(m)$, and equality must occur by our choice of $m$. Thus $b\in \Ann_R(a\cdot m)$ implies $b\in \Ann_R(m)$, and $\pp$ is prime.
@@ -1881,17 +1881,17 @@ We postpone the quite lengthy proof of Proposition~\reff{prop:Akizuki-Hopkins} t
 \begin{rem*}
     \begin{alphanumerate}
     \item 
-        Note that $R/\pp$ is simple iff $\pp$ is maximal. Otherwise $\ell(R/\pp) = \infty$.
+        Note that $R/\pp$ is simple iff $\pp$ is maximal. Otherwise $\ell_R(R/\pp) = \infty$. Indeed, any element $x\not=0$ which is not a unit induces an infinite chain $(x)\supseteq(x^2)\supseteq\ldots$ of ideals of $R$.
     \item 
-        In particular, $M$ in Proposition~\reff{prop:filtrationByPrimeIdeals} is of finite length iff the $\pp_i$ are maximal. In this case, the length of the filtration equals $\ell(M)$ and the $R/\pp_i$ are unique up to permutation and isomorphism. Otherwise, the length of the filtration may be non-unique, e.g. $\{0\}\subsetneq \IZ$ or $\{0\}\subsetneq 2\IZ \subsetneq \IZ$ when $M=R=\IZ$.
+        In particular, $M$ in Proposition~\reff{prop:filtrationByPrimeIdeals} is of finite length iff the $\pp_i$ are maximal. In this case, the length of the filtration equals $\ell_R(M)$ and the $R/\pp_i$ are unique up to permutation and isomorphism. Otherwise, the length of the filtration may be non-unique, e.g. $\{0\}\subsetneq \IZ$ or $\{0\}\subsetneq 2\IZ \subsetneq \IZ$ when $M=R=\IZ$.
     \end{alphanumerate}
 \end{rem*}
 \begin{proof}[Proof of Proposition~\reff{prop:Akizuki-Hopkins}]
     Assume \itememph{a} and consider a filtration of the finitely generated $R$-module $R$ as in Proposition~\reff{prop:filtrationByPrimeIdeals}. Given the Krull dimension is $0$, the prime ideals $\pp_i$ occuring there are maximal and so $R/\pp_i$ is simple and thus $R$ has finite length by Artin-Schreier. This shows that \itememph{a} $\Rightarrow$ \itememph{b}.
     
-    Let $R$ be of finite length as an $R$-module, i.e. \itememph{b} holds. We use induction on the minimal number $k$ of generators of $M$ to prove \itememph{d}. If $k=1$, $M$ is isomorphic to $R/I$ for some ideal $I\subseteq R$ and its length is smaller or equal to $\ell(R)$. Now let $k\geq 2$. If $M$ is generated by $m_1,\ldots, m_k$ and the assertion is known for $k-1$ generators, then, if $M'\subseteq M$ denotes the submodule generated by $m_1,\ldots, m_{k-1}$, we have $\ell(M') < \infty$ by the induction assumption and $M/M'$ is generated by the image of $m_k$, hence has finite length by the previous consideration. By Remark~\reff{rem:ArtinSchreier}\itememph{f}, $\ell(M)=\ell(M')+\ell(M/M')$ is finite.
+    Let $R$ be of finite length as an $R$-module, i.e. \itememph{b} holds. We use induction on the minimal number $k$ of generators of $M$ to prove \itememph{d}. If $k=1$, $M$ is isomorphic to $R/I$ for some ideal $I\subseteq R$ and its length is smaller or equal to $\ell_R(R)$. Now let $k\geq 2$. If $M$ is generated by $m_1,\ldots, m_k$ and the assertion is known for $k-1$ generators, then, if $M'\subseteq M$ denotes the submodule generated by $m_1,\ldots, m_{k-1}$, we have $\ell_R(M') < \infty$ by the induction assumption and $M/M'$ is generated by the image of $m_k$, hence has finite length by the previous consideration. By Remark~\reff{rem:ArtinSchreier}\itememph{f}, $\ell_R(M)=\ell_R(M')+\ell_R(M/M')$ is finite.
     
-    To show \itememph{d} $\Rightarrow$ \itememph{e}, note that the length of the members of such sequence as in \itememph{e} form a strictly decreasing sequence. Hence the length of the sequence is bounded by $\ell(M)$ assuming that $M$ is of finite length, which is given by \itememph{d}.
+    To show \itememph{d} $\Rightarrow$ \itememph{e}, note that the length of the members of such sequence as in \itememph{e} form a strictly decreasing sequence. Hence the length of the sequence is bounded by $\ell_R(M)$ assuming that $M$ is of finite length, which is given by \itememph{d}.
     
     Taking $M=R$, \itememph{c} is a special case of \itememph{e}.
     
@@ -1914,17 +1914,17 @@ We postpone the quite lengthy proof of Proposition~\reff{prop:Akizuki-Hopkins} t
     \begin{align*}
     	\nil(R)\supsetneq\nil(R)^2\subsetneq \ldots\supsetneq \nil(R)^i\supsetneq\ldots 
     \end{align*}
-    must terminate at some point by \itememph{c}. Thus, let $n\in\IN$ such that $\nil(R)^n = \nil(R)^i$ for all $i\geq n$. Let $N = \nil(R)^n$. We would like to show $N=\{0\}$. If $N\neq \{0\}$, the annihilator $K$ of $N$ would be an ideal of $R$ strictly contained in $R$. From \itememph{c} and Zorn's lemma it follows that any set of ideals of $R$ contains a $\subseteq$-minimal element. Thus, there is an ideal $K\subsetneq I\subseteq R$ minimal among all such ideals. If $x\in I\setminus K$ we have $I= K+x\cdot R$ by the minimality of $I$. We have $K\subseteq x\cdot \nil(R) + K \subseteq I$, hence $x\cdot  \nil(R) + K = K$ or $x\cdot \nil(R) +K = I$ by the minimality of $I$. In the second case $(I/K) = \nil(R)\cdot(I/K)$ and $I=K$ by \NAK, a contradiction to our choice of $I$. In the first case, $x\cdot \nil(R) \subseteq K$, hence $x\cdot \nil(R)^{n+1}\subseteq K\cdot N = 0$. But $\nil(R)^{n+1}= \nil(R)^n = N$, hence $x\in K$, a contradiction to our choice of $I$. 
+    must terminate at some point by \itememph{c}. Thus, let $n\in\IN$ such that $\nil(R)^n = \nil(R)^i$ for all $i\geq n$. Let $N = \nil(R)^n$. We would like to show $N=0$. If $N\neq 0$, the annihilator $K$ of $N$ would be an ideal of $R$ strictly contained in $R$. From \itememph{c} and Zorn's lemma it follows that any set of ideals of $R$ contains a $\subseteq$-minimal element. Thus, there is an ideal $K\subsetneq I\subseteq R$ minimal among all such ideals. If $x\in I\setminus K$ we have $I= K+x\cdot R$ by the minimality of $I$. We have $K\subseteq x\cdot \nil(R) + K \subseteq I$, hence $x\cdot  \nil(R) + K = K$ or $x\cdot \nil(R) +K = I$ by the minimality of $I$. In the second case $(I/K) = \nil(R)\cdot(I/K)$ and $I=K$ by \NAK, a contradiction to our choice of $I$. In the first case, $x\cdot \nil(R) \subseteq K$, hence $x\cdot \nil(R)^{n+1}\subseteq K\cdot N = 0$. But $\nil(R)^{n+1}= \nil(R)^n = N$, hence $x\in K$, a contradiction to our choice of $I$. 
     
-    \emph{Step 4.} We want to show that, if $I\subseteq J$ are ideals of $R$ and $I/J$ is annihilated by one of the $\mm_i$, then the length $\ell(I/J)$ is finite. Otherwise this quotient would be a vector space of infinite dimension over the field $R/\mm_i$, hence has an infinite descending chain of subvector spaces whose preimages under $I\morphism I/J$ form an infinite descending chain of ideals in $R$, contradicting \itememph{c}. 
+    \emph{Step 4.} We want to show that, if $I\subseteq J$ are ideals of $R$ and $I/J$ is annihilated by one of the $\mm_i$, then the length $\ell_R(I/J)$ is finite. Otherwise this quotient would be a vector space of infinite dimension over the field $R/\mm_i$, hence has an infinite descending chain of subvector spaces whose preimages under $I\morphism I/J$ form an infinite descending chain of ideals in $R$, contradicting \itememph{c}. 
     
-    \emph{Step 5.} We conclude that $\nil(R)^i/\nil(R)^{i+1}$ has finite length. Indeed, consider the (downwards indexed) filtration $\{0\}=N_k\subsetneq N_{k-1}\subsetneq \ldots\subsetneq N_0=\nil(R)^i/\nil(R)^{i+1}$ of $\nil(R)^i/\nil(R)^{i+1}$ given by
+    \emph{Step 5.} We conclude that $\nil(R)^i/\nil(R)^{i+1}$ has finite length. Indeed, consider the (downwards indexed) filtration $0=N_k\subsetneq N_{k-1}\subsetneq \ldots\subsetneq N_0=\nil(R)^i/\nil(R)^{i+1}$ of $\nil(R)^i/\nil(R)^{i+1}$ given by
     \begin{align*}
         N_j\coloneqq\bigg(\bigcap_{i=1}^j\mm_i\cdot\nil(R)^i\bigg) /\nil(R)^{i+1}\quad\text{for }j=0,\ldots,k\;.
     \end{align*}
     Then each $N_j/N_{j+1}$  is annihilated by $\mm_{j+1}$, hence has finite length by Step~4.  Using Remark~\reff{rem:ArtinSchreier}\itememph{g}, we deduce that $\nil(R)^i/\nil(R)^{i+1}$ has finite length as well.
     
-    As $\nil(R)^n=\{0\}$, this shows that $\ell(R) <\infty$ (again by Remark~\reff{rem:ArtinSchreier}\itememph{g}). In particular, $R$ must be Noetherian and this finishes our proof.
+    As $\nil(R)^n=0$, this shows that $\ell_R(R) <\infty$ (again by Remark~\reff{rem:ArtinSchreier}\itememph{g}). In particular, $R$ must be Noetherian and this finishes our proof.
 \end{proof}
 
 \begin{defi}[Artinian]\lbl{def:artinian}
@@ -1938,14 +1938,14 @@ We postpone the quite lengthy proof of Proposition~\reff{prop:Akizuki-Hopkins} t
     \item 
         $R_0$ is Artinian, $R$ is generated by $R_0$ and $R_1$, and $R_1$ is a finitely generated $R_0$-module.
     \end{alphanumerate}
-    Let $M$ be a finitely generated graded $R$-module. Then there are a polynomial $P_M\in \IQ[T]$ and $k_0\in\IZ$ such that $\ell(M_k) = P_M(k)$ for all $k\geq k_0$.This polynomial is uniquely determined and if $R_1$ may be generated by $d$ elements as an $R_0$-module then its degree is less than $d$.
+    Let $M$ be a finitely generated graded $R$-module. Then there are a polynomial $P_M\in \IQ[T]$ and $k_0\in\IZ$ such that $\ell_{R_0}(M_k) = P_M(k)$ for all $k\geq k_0$.This polynomial is uniquely determined and if $R_1$ may be generated by $d$ elements as an $R_0$-module then its degree is less than $d$.
 \end{thm}
 
 \begin{rem*}
 	\begin{alphanumerate}
 		\item 
 		We use the convention that the zero polynomial 0 has degree $-\infty$. When $d=0$, the condition $\deg(P_M) <d$ is thus equivalent to $P_M = 0$.
-		\item  Here, $\ell(M_k)$ is the length of $M_k$ as an $R_0$-module and not as an $R$-module. In fact, it wouldn't make sense to consider the length $M_k$ as an $R$-module since it is most likely \emph{not} an $R$-module, e.g. since $R_1\cdot M_k\subseteq M_{k+1}$.
+		\item  Here, we are considering the length $\ell_{R_0}(M_k)$ iof $M_k$ as an $R_0$-module and not as an $R$-module. In fact, it wouldn't make sense to consider the length $M_k$ as an $R$-module since it is most likely \emph{not} an $R$-module, e.g. since $R_1\cdot M_k\subseteq M_{k+1}$.
 	\end{alphanumerate}
 \end{rem*}
 \begin{defi}[Hilbert polynomial]\lbl{def:hilbertPolynomial}
@@ -1959,11 +1959,11 @@ We postpone the quite lengthy proof of Proposition~\reff{prop:Akizuki-Hopkins} t
     
     For existence we use induction on $d$. \emph{Step 1.} If $d=0$, $R=R_0$. As $M$ is finitely generated, $M_k = 0$ when $k\gge0$ and $P_M =0$ does it. 
     
-    \emph{Step 2.} When $0\morphism M'\morphism M\morphism M'' \morphism 0$ is a short exact sequence of $R$-modules and the assertion is valid for $M'$ and $M''$, then it is valid for $M$ and $P_M = P_{M'} +P_{M''}$, since we have $\ell(M_k) = \ell(M'_k)+\ell(M''_k) $ for $k\gge 0$ (Remark~\reff{rem:ArtinSchreier}\itememph{f}), and the sum has degree smaller than $d$ if both summands are of degree smaller than $d$. Using an induction similar to Remark~\reff{rem:ArtinSchreier}\itememph{g}, we deduce that 
+    \emph{Step 2.} When $0\morphism M'\morphism M\morphism M'' \morphism 0$ is a short exact sequence of $R$-modules and the assertion is valid for $M'$ and $M''$, then it is valid for $M$ and $P_M = P_{M'} +P_{M''}$, since we have $\ell_{R_0}(M_k) = \ell_{R_0}(M'_k)+\ell_{R_0}(M''_k) $ for $k\gge 0$ (Remark~\reff{rem:ArtinSchreier}\itememph{f}), and the sum has degree smaller than $d$ if both summands are of degree smaller than $d$. Using an induction similar to Remark~\reff{rem:ArtinSchreier}\itememph{g}, we deduce that 
     \begin{align*}
     	P_M=\sum_{i=1}^kP_{M_i/M_{i-1}}
     \end{align*}
-    (and in particular, the assertion holds for $M$) for any filtration $\{0\}=M_0\subseteq M_1\subseteq\ldots\subseteq M_k=M$ such that the assertion is valid for all subquotients $M_i/M_{i-1}$. 
+    (and in particular, the assertion holds for $M$) for any filtration $0=M_0\subseteq M_1\subseteq\ldots\subseteq M_k=M$ such that the assertion is valid for all subquotients $M_i/M_{i-1}$. 
     
     \emph{Step 3.} Also, if the assertion is valid for $M$ then it is clearly valid for the shift $M[\ell]$ (with $\ell\in\IZ$) and $P_{M[\ell]}(T) = P_M(T+\ell)$. 
     
@@ -1974,7 +1974,7 @@ We postpone the quite lengthy proof of Proposition~\reff{prop:Akizuki-Hopkins} t
     \end{align*}
     and the induction assumption may be applied to $M/xM$ (with grading $(M/xM)_k = M_k/xM_{k-1}$) which is a module over $R/xR$. When $k$ is large enough, we thus obtain
     \begin{align*}
-    	\ell(M_k)=\ell(M_{k-1})+\ell(M_k/xM_{k-1})=\ell(M_{k-1})+P_{M/xM}(k)\;,
+    	\ell_{R_0}(M_k)=\ell_{R_0}(M_{k-1})+\ell_{R_0}(M_k/xM_{k-1})=\ell_{R_0}(M_{k-1})+P_{M/xM}(k)\;,
     \end{align*}
     where the polynomial $P_{M/X\cdot M}$ has degree smaller than $d-1$. The assertion thus follows from the following elementary fact.
 \end{proof}
@@ -2000,7 +2000,7 @@ We postpone the quite lengthy proof of Proposition~\reff{prop:Akizuki-Hopkins} t
 	From this, both assertion \itememph{a} and \itememph{b} are immediate.
 \end{proof}
 \begin{fact}\lbl{fact:AnnPrimeCap}
-    Let $M$ be an $R$-module with a filtration $0=M_0\subsetneq \ldots \subsetneq M_k$ such that $M_i/M_{i-1}\simeq R/\pp_i$, where $\pp_i \in \Spec R$. Let $\Ann(M) = \left\{r\in R\st r\cdot M = 0\right\}$, then $\sqrt{\Ann(M)} = \bigcap_{i=1}^k\pp_i$.
+    Let $M$ be an $R$-module with a filtration $0=M_0\subsetneq \ldots \subsetneq M_k=M$ such that $M_i/M_{i-1}\simeq R/\pp_i$, where $\pp_i \in \Spec R$. Let $\Ann(M) = \left\{r\in R\st r\cdot M = 0\right\}$, then $\sqrt{\Ann(M)} = \bigcap_{i=1}^k\pp_i$.
 \end{fact}
 \begin{proof}
     If $r\in \bigcap_{i=1}^k\pp_i$ then $r\cdot M_i/M_{i-1} = 0$ for all $i$, hence $r\cdot M_i\subseteq M_{i-1}$ and thus $r^k\cdot M =0$. This shows $r^k\in \Ann(M)$. On the other side, if $r\not\in \pp_i$, and $m\in M_i\setminus M_{i-1}$ then $r^\ell\cdot m \neq 0$ for arbitrary $\ell$ as the image of $m$ in $M_i/M_{i-1} \simeq R/\pp_i$ is non-zero and $r\not\in \pp_i$ is not a zero divisor in $R/\pp_i$. Thus, $r\not\in \sqrt{\Ann(M)}$.
@@ -2010,7 +2010,7 @@ We postpone the quite lengthy proof of Proposition~\reff{prop:Akizuki-Hopkins} t
     \item \lbl{prop:HilbertDegreeEqualsDimension}
         If $Z=V(\pp)$ (where $\pp\subseteq k[X_0,\ldots, X_n]$ is a homogeneous prime ideal) is a projective algebraic variety, then the degree of its Hilbert polynomial equals $\dim(Z)$.
     \item 
-        If $R=k[X_0,\ldots, X_n]$ and $M$ is a finitely generated graded $R$-module with a filtration $0=M_0\subsetneq M_1\subsetneq\ldots\subsetneq M_\ell$ with $M_i/M_{i-1}\simeq (R/\pp_i)[t_i]$ as in Proposition~\reff{prop:filtrationByPrimeIdeals}, then the degree of the Hilbert polynomial $P_M$ equals
+        If $R=k[X_0,\ldots, X_n]$ and $M$ is a finitely generated graded $R$-module with a filtration $0=M_0\subsetneq M_1\subsetneq\ldots\subsetneq M_\ell=M$ with $M_i/M_{i-1}\simeq (R/\pp_i)[t_i]$ as in Proposition~\reff{prop:filtrationByPrimeIdeals}, then the degree of the Hilbert polynomial $P_M$ equals
         \begin{align*}
             \deg P_M=\max\left\{\dim V(\pp_i)\st 1\leq i\leq \ell\right\}
         \end{align*}
@@ -2042,7 +2042,7 @@ We postpone the quite lengthy proof of Proposition~\reff{prop:Akizuki-Hopkins} t
     \end{align*}
     If $d=0$, it follows that $\deg P_N = -\infty$ and $P_N=0$ and $P_M$ is constant. On the other side, $P_M = 0$ would imply the vanishing of $M=R/\pp$ in large homogeneous degrees. Then $R_+\subseteq\sqrt{\pp}$ and $\sqrt{\pp}=\pp$ for $\pp$ being prime, thus $d=\dim(\emptyset)=-\infty$, but we are assuming $d=0$. Thus, $P_M$ is a non-zero constant polynomial, i.e. of degree $0$. 
     
-    Now consider the case $d\geq 1$. Note that $x\in R_1$ is necessarily an irreducible polynomial. Then $V(x)$ is irreducible closed and has codimension $\codim (V(x),\IP^n(k))=1$. Indeed, by Proposition~\reff{prop:affineConeCorrespondence} its codimension equals that of the affine vanishing set $V_\aff(x)\subseteq \IA^{n+1}(k)$ which is $1$ by \cite[Proposition~2.1.3]{alg1}. By Theorem~\reff{thm:projectiveIntersection}, the irreducible components of $V(\pp)\cap V(X)$ thus have codimension $\geq n-d+1$. However, their dimension is bounded by $d-1$, hence equals $d-1$. As the irreducible components of $V(\pp)\cap V(x)$ must be among the $V(\qq_i)$ we obtain 
+    Now consider the case $d\geq 1$. Note that $x\in R_1$ is necessarily an irreducible polynomial. Then $V(x)$ is irreducible closed and has codimension $\codim (V(x),\IP^n(k))=1$ by Corollary~\reff{cor:codim1SubsetsOfIP^n}. By Theorem~\reff{thm:projectiveIntersection}, the irreducible components of $V(\pp)\cap V(x)$ thus have codimension $\geq n-d+1$. However, their dimension is bounded by $d-1$, hence equals $d-1$. As the irreducible components of $V(\pp)\cap V(x)$ must be among the $V(\qq_i)$ we obtain 
     \begin{align*}
     	\deg P_N=\max\left\{\dim(V(\qq_i))\st 1\leq i\leq m\right\} = d-1\;.
     \end{align*}
@@ -2262,7 +2262,7 @@ and we have bijections
 \begin{defi}[Intersection multiplicity]\lbl{def:intersectionMultiplicity}
     Let $X\subseteq \IP^n(k)$ be a projective algebraic variety over an algebraically closed field $k$, $H\in k[X_0,\ldots, X_n]$ a homogeneous polynomial of degree $d>0$ not identically zero on $X$, and $Z$ an irreducible component of $X\cap V(H)$. We define the intersection multiplicity $i(X,H,Z)$ by
     \begin{align*}
-        i(X,H;Z) = \ell\left(\Oo_{X,Z} \Bigm/ \Big(\frac{H}{F}\cdot\Oo_{X,Z}\Big)\right) = \ell\big(\Oo_X(d)_Z/H\cdot \Oo_{X,Z}\big)
+        i(X,H;Z) = \ell_{\Oo_{X,Z}}\left(\Oo_{X,Z} \Bigm/ \left(\frac{H}{F}\cdot\Oo_{X,Z}\right)\right) = \ell_{\Oo_{X,Z}}\big(\Oo_X(d)_Z/H\cdot \Oo_{X,Z}\big)
     \end{align*}
     where the length is of $\Oo_{X,Z}$-modules and in the middle term, $F$ is any element of $k[X_0,\ldots, X_n]_d$ not identically vanishing on $Z$.
 \end{defi}
@@ -2273,10 +2273,10 @@ and we have bijections
 	\end{align*}
 	This shows that the middle term is independent of $F$.
 \end{proof}
-\begin{cor}[of Definition~\reff{def:intersectionMultiplicity}]
+\begin{cor}[of Definition~\reff{def:intersectionMultiplicity}]\lbl{cor:intersectionMultiplicity}
         When $Z = V(\qq)$ we have
         \begin{align*}
-            i(X,H;Z) = \ell\left((S(X)_\qq)_0/\Bigm/ \Big(\frac{H}{F}\cdot(S(X)_\qq)_0\Big)\right) = \ell\big((S(X)_\qq)_d/H\cdot (S(X)_q)_0\big)
+            i(X,H;Z) = \ell_{(S(X)_\qq)_0}\left((S(X)_\qq)_0\Bigm/ \left(\frac{H}{F}\cdot(S(X)_\qq)_0\right)\right) = \ell_{(S(X)_\qq)_0}\Big((S(X)_\qq)_d/H\cdot (S(X)_q)_0\Big)
         \end{align*}
         where the length is of $(S(X)_\qq)_0$-modules.
 \end{cor}
@@ -2287,98 +2287,118 @@ and we have bijections
 \begin{rem}
     \begin{alphanumerate}
     \item \lbl{rem:multstuff}
-        It follows from the second equality that the middle term is independent of $F$.
+        It follows from the second equality that the middle term in Definition~\reff{def:intersectionMultiplicity} and Corollary~\reff{cor:intersectionMultiplicity} is independent of $F$.
     \item 
         When $Z\not\subseteq V(H)$, then $\frac{H}{F}\in \Oo_{X,Z}^\times$ and the above definition of $i$ gives zero. When $Z\subseteq X\cap V(H)$ is not an irreducible component of $X\cap V(H)$, the length can be shown to be infinite.
     \item 
-    \item 
-        The definition can be generalized to $i(A,B;Z)$ (containing our  with irreducible $H$ as the special case when $B=V(H)\subseteq \IP^n(k)$) the multiplicity of an irreducible component in $A\cap B$, where $A$ and $B$ are irreducible and of arbitrary codimension. This was done by Serre and is much more complicated. Our
+        The definition can be generalized to $i(A,B;Z)$ (containing ours for irreducible $H$ as the special case when $B=V(H)\subseteq \IP^n(k)$) the multiplicity of an irreducible component in $Z\subseteq A\cap B$, where $A$ and $B$ are irreducible and of arbitrary codimension. This was done by Serre and is much more complicated. Our
         \begin{align*}
-            \ell\left(\Oo_{A,Z}\otimes_{\Oo_{\IP^n(k), Z}} \Oo_{B,Z} \right)
+            \ell_{\Oo_{\IP^n(k), Z}}\left(\Oo_{A,Z}\otimes_{\Oo_{\IP^n(k), Z}} \Oo_{B,Z} \right)
         \end{align*}
         becomes
         \begin{align*}
-            \sum_j^\infty (-1)^j \ell\left(\operatorname{Tor}_j^{\Oo_{\IP^n(k), Z}}(\Oo_{A,Z},\Oo_{B,Z})\right)
+            \sum_{j=0}^\infty (-1)^j \ell_{\Oo_{\IP^n(k), Z}}\left(\operatorname{Tor}_j^{\Oo_{\IP^n(k), Z}}(\Oo_{A,Z},\Oo_{B,Z})\right)\;.
         \end{align*}
+        \item Ok, hang on a minute. Why is $\ell_{\Oo_{\IP^n(k), Z}}\left(\Oo_{A,Z}\otimes_{\Oo_{\IP^n(k), Z}} \Oo_{B,Z} \right)$ \emph{our} intersection multiplicity? I've never seen that guy before! Well, here is why: Let $Z$ intersect $\IP^n(k)\setminus V(X_i)$ (as these sets cover $\IP^n(k)$, $Z$ must intersect one of them). Then $X_i$ doesn't vanish identically on $Z$ and we have $Z=V(\qq)$ with $\qq\subseteq R=k[X_0,\ldots,X_n]$ a prime ideal such that $X_i\notin\qq$. Let $d$ be the degree of $H$, which we assume to be irreducible (and homogeneous of course). Then $S(V(H))_\qq=(R/HR)_\qq$ is a graded ring and
+        \begin{align*}
+        	\bigoplus_{\ell\in\IZ}\big((R/HR)_\qq\big)_\ell=(R/HR)_\qq=R_\qq/H R_\qq\simeq R_\qq\Bigm/\left(\frac{H}{X_i^d}\cdot R_\qq\right)
+        \end{align*}
+        as $X_i\notin\qq$ is a unit in $R_\qq$. Now the left-hand side has the big advantage that $\frac{H}{X_i^d}$ is homogeneous of degree $0$ and we deduce that 
+        \begin{align*}
+        	\Oo_{V(H),Z}\simeq\big((R/HR)_\qq\big)_0\simeq \left(R_\qq\right)_0\Bigm/\left(\frac{H}{X_i^d}\cdot \left(R_\qq\right)_0\right)\simeq \Oo_{\IP^n(k),Z}\Bigm/\left(\frac{H}{X_i^d}\cdot \Oo_{\IP^n(k),Z}\right)
+        \end{align*}
+        in which we used Proposition~\reff{prop:pseudoStalkStuff}\itememph{c} twice. Hence, tensoring $\Oo_{X,Z}$ with $\Oo_{V(H),Z}$ is the same as modding out $\frac{H}{X_i^d}\cdot \Oo_{X,Z}$ (cf. Fact~\reff{fact:tensorQuotient}), hence gives the same as the middle term in Definition~\reff{def:intersectionMultiplicity}, except that we are taking the length as an $\Oo_{\IP^n(k),Z}$-module instead of as an $\Oo_{X,Z}$-module. However, if $X=V(\pp)$ for $\pp\subseteq R$ a homogeneous prime ideal, we have that
+        \begin{align*}
+        	\Oo_{X,Z}\simeq ((R/\pp)_\qq)_0\simeq (R_\qq)_0/(\pp R_\qq)_0
+        \end{align*}
+        (by Proposition~\reff{prop:pseudoStalkStuff}\itememph{c}) is a quotient of $(R_\qq)_0\simeq\Oo_{\IP^n(k),Z}$ and $\Oo_{X,Z}\otimes_{\Oo_{\IP^n(k), Z}} \Oo_{V(H),Z}$ has $(\pp R_\qq)_0$-torsion (well, we tensored with $\Oo_{X,Z}$), hence any $\Oo_{\IP^n(k),Z}$-submodule of it is an $\Oo_{X,Z}$-submodule as well and the lengths agree.
     \end{alphanumerate}
 \end{rem}
 
 \begin{thm}[B\'ezout's theorem in a more general version] \lbl{thm:bezoutGeneral}
-    Let $X\subseteq \IP^n(k)$ be an irreducible closed subset, $H\in k[X_0,\ldots, X_n]$ a polynomial of degree $d$ not identically vanishing on $X$ then 
+    Let $X\subseteq \IP^n(k)$ be a projective algebraic variety, $H\in k[X_0,\ldots, X_n]$ a polynomial of degree $d$ not identically vanishing on $X$, then 
     \begin{align*}
-        \sum_{Z} i(X,H;Z) \cdot \deg(Z) = d\deg (X)
+        \sum_{Z} i(X,H;Z) \cdot \deg(Z) = d\cdot\deg (X)
     \end{align*}
-    where the intersection multiplicities are finite and the sum is taken over all irreducible components $Z$ of $X$.
+    where the intersection multiplicities are finite and the sum is taken over all irreducible components $Z$ of $X\cap V(H)$.
 \end{thm}
 \begin{rem*}
-    As $\Oo_{X,Z}$ is a domain and the $\Oo_X(\ell)_Z$ are free modules of rank $1$ over it, we have
+    As $\Oo_{X,Z}$ is a domain and the $\Oo_X(\ell)_Z$ are free modules of rank $1$ over it, we have a short exact sequence
     \begin{align*}
-        0\morphism \Oo_X(e)_Z/G\cdot \Oo_{X,Z} \morphism[F] \Oo_X(e+d)_Z/(GF)\cdot \Oo_{X,Z} \morphism \Oo_X(e+d)_Z/F\cdot \Oo_X(e)_Z \morphism 0
+        0\morphism \Oo_X(e)_Z/G\cdot \Oo_{X,Z} \morphism[\cdot F] \Oo_X(e+d)_Z/(GF)\cdot \Oo_{X,Z} \morphism \Oo_X(e+d)_Z/F\cdot \Oo_X(e)_Z \morphism 0
     \end{align*}
-    when $G$ is another homogeneous polynomial not identically vanishing on $X$ and the right term is
+    when $F,G\in k[X_0,\ldots,X_n]$ are homogeneous polynomials of degree $e$ respectively $d$ not identically vanishing on $X$. If $i$ is chosen such that $Z$ intersects $\IP^n(k)\setminus V(X_i)$, i.e. $X_i$ doesn't vanish identically on $Z$, we have an isomorphism
     \begin{align*}
-        \Oo_X(d)_Z/ F\cdot \Oo_{X,Z} \isomorphism[X_i^e] \Oo_X(e+d)_Z/F\cdot \Oo_X(e)_Z
+        \Oo_X(d)_Z/ F\cdot \Oo_{X,Z} \isomorphism[\cdot X_i^e] \Oo_X(e+d)_Z/F\cdot \Oo_X(e)_Z
     \end{align*}
-    showing $i(X,H\cdot G; Z) = i(X,H;Z)+i(X,G;Z)$. For this reason, everything can be reduced to the case where $H$ is irreducible. In this case, $H$ is a generator of the prime ideal $\rr$ such that $V(\rr) = C = V(H)$, hence, one can interpret the result as
+    showing that $i(X, GF; Z) = i(X,F;Z)+i(X,G;Z)$ by the right term of Definition~\reff{def:intersectionMultiplicity} and Artin-Schreier (cf. Remark~\reff{rem:ArtinSchreier}\itememph{f}). For this reason, Theorem~\reff{thm:bezoutGeneral} can be reduced to the case where $H$ is irreducible. In this case, $H$ is a generator of the prime ideal $\rr=(H)$ such that $V(\rr) = C = V(H)$, hence, one can interpret the result as
     \begin{align*}
         \sum_Z i(X,C;Z) \cdot \deg (Z) = \deg(X)\cdot \deg(C)
     \end{align*}
-    where the sum is taken over the irreducible components of $X\cap C$, provided $X\not \subseteq C$, which holds when $\codim(C,\IP^n(k)) = 1$. With Serre's definition of $i(X,C;Z)$ the equality hold in full generality when the intersection is \emph{proper}, i.e., all occuring $Z$ have codimension in $\IP^n(k)$ equal to $\codim (X,\IP^n(k)) +\codim(C, \IP^n(k))$.
+    where the sum is taken over the irreducible components of $X\cap C$, provided $X\not \subseteq C$, which holds when $\codim(X,\IP^n(k)) = 1$. With Serre's definition of $i(X,C;Z)$ the equality hold in full generality when the intersection is \emph{proper}, i.e., all occuring $Z$ have codimension in $\IP^n(k)$ equal to $\codim (X,\IP^n(k)) +\codim(C, \IP^n(k))$.
     
-    When $X$ also has codimension 1, $V=V(P)$ with $P$ irreducible, 
+    When $X$ also has codimension 1, $V=V(P)$ with $P\in k[X_0,\ldots,X_n]$ irreducible and homogeneous of some degree $e$ (by Corollary~\reff{cor:codim1SubsetsOfIP^n}), then 
     \begin{align*}
-        (X,C;Z) = \ell\left(\Oo_{\IP^n(k), Z} \mid / \left\langle \frac{P}{X_i^e}, \frac{H}{X_i^d}\right\rangle_{\Oo_{\IP^n(k), Z}}\right)
+        i(X,C;Z) = \ell_{\Oo_{\IP^n(k), Z}}\Bigg(\Oo_{\IP^n(k), Z} \Bigm/ \left( \frac{P}{X_i^e}, \frac{H}{X_i^d}\right)_{\Oo_{\IP^n(k), Z}}\Bigg)
     \end{align*}
-    where $C=V(H)$, $H$ and $P$ irreducible of degrees $d$ and $e$, $X_i$ not identically vanishing on $Z$. This is symmetric in $P$ and $H$, hence our definition of $i(X,C;Z)$ is symmetric in $X$ and $C$ when both are of codimension 1. Serre's $i$ is always symmetric in the first two operands.
+    since $\Oo_{X,Z}\simeq \Oo_{\IP^n(k),Z}\Bigm/\left(\frac{P}{X_i^e}\cdot\Oo_{\IP^n(k),Z}\right)$ by the argument from Remark~\reff{rem:multstuff}\itememph{e}.This is symmetric in $P$ and $H$, hence our definition of $i(X,C;Z)$ is symmetric in $X$ and $C$ when both are of codimension $1$. Serre's $i$ is always symmetric in the first two operands.
     
-    It seems that B\'ezout treated the case $n=2$, $\dim(X) = 1$ in the 18th century.
+    It seems that B\'ezout treated the case $n=2$, $\dim(X) = 1$ in the $18\ordinalth$ century.
 \end{rem*}
 \begin{proof}[Proof of B\'ezout's Theorem]
-    Let $R=S(X)$ and $M=R/H\cdot R[-d]$ then we have 
+    Let $R=S(X)$ and $M=(R/HR)[-d]$ then we have
     \begin{align*}
-        P_M(t) = P_X(t) - P_X(t-d)
+        P_M(T) = P_X(T) - P_X(T-d)
     \end{align*}
-    where $P_M$, $P_X$ are the Hilbert polynomials) by the short exact sequence
+    where $P_M$, $P_X$ are the Hilbert polynomials of $M$ and $X$) by Remark~\reff{rem:ArtinSchreier}\itememph{f} and the short exact sequence
     \begin{align*}
-        0\morphism R[-t] \morphism[H] \morphism M \morphism 0\;.
+        0\morphism R[-d] \morphism[\cdot H]R \morphism M \morphism 0\;.
     \end{align*}
-    If $\xi$ is the dimension and $e$ the degree of $X$ this is 
+    If $\xi$ is the dimension and $e$ the degree of $X$ and $P_X=\frac{e}{\xi!}T^\xi+\sum_{i=0}^{\xi-1}c_iT^i$ this equals
     \begin{align*}
     \begin{split}
-        \frac{e}{\xi!}(t^\xi-(t-d)^\xi) + \sum_{i=0}^{\xi-1} c_i(t^i- (t-d)^i) &= \frac{e\cdot d\cdot \xi}{\xi!}t^{\xi-1} + \text{ lower powers } \\
-        &= \frac{e\cdot d}{(\xi-1)!}t^{\xi-1} +\text{ lower powers }\;.
-        \end{split}\tag{+}\lbl{eq:bezout}
+        P_M(T)=\frac{e}{\xi!}(T^\xi-(T-d)^\xi) + \sum_{i=0}^{\xi-1} c_i(T^i- (T-d)^i) &= \frac{e\cdot d\cdot \xi}{\xi!}\cdot T^{\xi-1} + \text{ lower powers } \\
+        &= \frac{e\cdot d}{(\xi-1)!}\cdot T^{\xi-1} +\text{ lower powers }\;.
+        \end{split}\tag{\#}\lbl{eq:bezout}
     \end{align*}
-    Let $0=M_0\subsetneq \ldots \subsetneq M_k = M$ be a filtration as in Proposition~\reff{prop:filtrationByPrimeIdeals}, with $M_i/M_{i-1} \simeq (R/\qq_i)[t_i]$, $\qq_i$ being a homogeneous prime ideal. By Fact (there is no fact 3.1.3) we have
+    Let $0=M_0\subsetneq \ldots \subsetneq M_k = M$ be a filtration as in Proposition~\reff{prop:filtrationByPrimeIdeals}, with $M_i/M_{i-1} \simeq (R/\qq_i)[t_i]$, $\qq_i\in\Spec R$ being homogeneous prime ideals and $t_i$ some integers. By Fact~\reff{fact:AnnPrimeCap} we have
     
     \begin{align*}
-        \sqrt{\langle H\rangle_R} = \sqrt{\Ann_R(M)} = \bigcap_{i=1}^k \qq_i
+        \sqrt{(H)_R} = \sqrt{\Ann_R(M)} = \bigcap_{i=1}^k \qq_i
     \end{align*}
-    showing that $V(H)\cap X) = \bigcup_{i=1}^k V(\qq_i)$. In particular, the $\subseteq$-minimal elements of $\left\{\qq_i\st 1\leq i\leq k\right\}$ correspond to the irreducible components of $V(H)\cap X$. Let $Z=V(\qq)$ be such an irreducible component, we claim that $i(X,H;Z)$ equals the number of occurences of $\qq$ in the sequence $(\qq_i)_{i=1}^k$, in particular proving the finiteness. The contribution of the $\qq_i$ such that $V(\qq_i)$ is an irreducible component of $X\cap V(H)$ to the leading coefficient of $P_M (t) = \sum_{i=1}^k P_{M_i/M_{i-1}}(t) = \sum_{i=1}^k P_{R/\qq_i}(t-t_i)$ is therefore
-    \begin{align*}
-        \sum_{Z} i(X,H;Z) \cdot \frac{\deg(Z)}{(\xi-1)!}t^{\xi-1}\tag{*} \lbl{eq:bezoutLeadingCoeff}\;.
-    \end{align*}
-    If $V(\qq_i)$ is not an irreducible component of $X\cap V(H)$ it is strictly contained in an irreducible component of $X\cap V(H)$, hence of dimension smaller or equal to $\xi-2$, and its Hilbert polynomial $\sum_{j=0}^{\xi-2} c_j^{(i)} t^j$ (by Proposition~\reff{prop:HilbertDegreeEqualsDimension}) does not contribute to the $(\xi-1)$-st coefficient of $P_M$. Therefore, \eqreff{eq:bezoutLeadingCoeff} is equal to the leading term of $P_M$. B\'ezout's theorem follows by comparison with \eqreff{eq:bezout} for the leading term.
+    showing that $V(H)\cap X) = \bigcup_{i=1}^k V(\qq_i)$. In particular, the $\subseteq$-minimal elements of $\{\qq_1,\ldots,\qq_n\}$ correspond to the irreducible components of $V(H)\cap X$. Let $Z=V(\qq)$ be such an irreducible component, we claim that 
+    \begin{claim}\lbl{claim:occurrencesOfq}
+    	The intersection multiplicity $i(X,H;Z)$ equals the number of occurrences of $\qq$ in the sequence $(\qq_1,\ldots,\qq_n)$.
+    \end{claim}
     
-    It remains to prove our claim 
+     Believing Claim~\reff{claim:occurrencesOfq} for the moment, this proves in particular the finiteness if $i(X,H;Z)$. The contribution of the $\qq_i$ such that $V(\qq_i)$ is an irreducible component of $X\cap V(H)$ to the leading coefficient of $P_M (T) = \sum_{i=1}^k P_{M_i/M_{i-1}}(T) = \sum_{i=1}^k P_{R/\qq_i}(T-t_i)$ therefore is given by
     \begin{align*}
-        i(X,H;Z) = \#\left\{i\st 1\leq i\leq k, \qq_i = \qq\right\}\tag{\%} \lbl{eq:multascount}
+        \sum_{Z} i(X,H;Z) \cdot \frac{\deg(Z)}{(\xi-1)!}\cdot T^{\xi-1}\tag{$*$} \lbl{eq:bezoutLeadingCoeff}\;.
     \end{align*}
-    where $Z = V(\qq)$, about the intersection multiplicity. We have
+    If $V(\qq_i)$ is not an irreducible component of $X\cap V(H)$, it is strictly contained in an irreducible component of $X\cap V(H)$, hence of dimension $\leq\xi-2$, and its Hilbert polynomial (by Proposition~\reff{prop:HilbertDegreeEqualsDimension}) is of degree $\leq\xi-2$ and thus doesn't contribute to the $(\xi-1)\ordinalst$ coefficient of $P_M$. Therefore, \eqreff{eq:bezoutLeadingCoeff} is equal to the leading term of $P_M$. B\'ezout's theorem follows by comparison of leading coefficients with \eqreff{eq:bezout}.
+    
+    It remains to prove Claim~\reff{claim:occurrencesOfq}. We have $M_\qq \simeq (R_\qq/H R_\qq)[-d]$ by the exactness of localization. By more properties of localization, the $R_\qq$-modules $0=(M_0)_\qq\subseteq \ldots\subseteq (M_k)_\qq=M_\qq$ form a filtration of $M_\qq$ with filtration quotients 
     \begin{align*}
-        M_\qq \simeq R_\qq/H\cdot R_\qq[-d]
+    	(M_i)_{\qq}/(M_{i-1})_\qq \simeq (M_i/M_{i-1})_\qq \simeq (R/\qq_i[t_i])_\qq \simeq (R_\qq/\qq_iR_\qq)[t_i]
     \end{align*}
-    by the exactness of localization. Also by the properties of localization, $((M_i)_\qq)^k_{i=0}$ form a filtration of $M_\qq$ with filtration quotients $(M_i)_{\qq}/(M_{i-1})_\qq \simeq (M_i/M_{i-1})_\qq \simeq (R/\qq_i[t_i])_\qq \simeq (R_\qq/\qq_i\cdot R_\qq)[t_i]$ which is zero unless $\qq_i\subseteq \qq$. If $\qq_i\subseteq \qq$ we have $V(\qq_i) \supseteq Z = V(\qq)$ and equality occurs as $Z$ is an irreducible component of $X\cap V(H) = \bigcup_{i=1}^k V(\qq_i)$. Hence, $\qq = \qq_i$, when $(M_i/M_{i-1})_\qq\neq 0$ and in this case
+    which is zero unless $\qq_i\subseteq \qq$ (using Proposition~\reff{prop:gradedLocalization}\itememph{b}; as $\qq_i$ is homogeneous, it doesn't matter that we only localize at the homogeneous elements of $R\setminus\qq$, which we do by the convention from Remark~\reff{rem:conventionOnGradedLocalization}). If $\qq_i\subseteq \qq$ we have $V(\qq_i) \supseteq Z = V(\qq)$ and equality occurs as $Z$ is an irreducible component of $X\cap V(H) = \bigcup_{i=1}^k V(\qq_i)$. Hence, $\qq = \qq_i$, when $(M_i/M_{i-1})_\qq\neq 0$ and in this case
     \begin{align*}
-        M_i/M_{i-1} \simeq (R_\qq/\qq\cdot R_\qq)[t_i]\;.
+        (M_i/M_{i-1})_\qq \simeq (R_\qq/\qq R_\qq)[t_i]\;.
     \end{align*}
-    But $(\qq\cdot R_\qq)_0$ is the maximal ideal of the local ring $\Oo_{X,Z}\simeq (R_\qq)_0$, and $(R_\qq)_\ell$ is a free $(R_\qq)_0$-module with generator $X_j^\ell$ if $j$ is chosen such that $X_j\not in \qq$. Therefore, $\ell_{\Oo_{X,Z}}((R_\qq/\qq R_\qq)\ell) = \ell_{(R_\qq)_0} (R_\qq/\qq R_\qq)$ equals one as the residue field of a local ring is simple module over that ring. Thus, $\ell_{(R_\qq)_0} ((M_\qq)_\ell)$ equals the of \eqreff{eq:multascount}. But that lenght equals $i(X,H;Z)$ by \reff{rem:multstuff}\itememph{c}.
+    But $(\qq R_\qq)_0$ is the maximal ideal of the local ring $\Oo_{X,Z}\simeq (R_\qq)_0$ (using Proposition~\reff{prop:pseudoStalkStuff}\itememph{c}), and $(R_\qq)_\ell$ is a free $(R_\qq)_0$-module with generator $X_j^\ell$ if $j$ is chosen such that $X_j\notin \qq$. Therefore, 
+    \begin{align*}
+    	i(X,H;Z)\overset{\text{Prop.~\reff{prop:pseudoStalkStuff}\itememph{c}}}{=}\ell_{\Oo_{X,Z}}\big((M_\qq)_\ell\big)&=\sum_{i=1}^{k}\ell_{\Oo_{X,Z}}\big(((M_i/M_{i-1})_\qq)_\ell\big)\\
+    	&=\#\{\qq_i=\qq\}\cdot\ell_{\Oo_{X,Z}}\big((R_\qq/\qq R_\qq)_\ell\big) \\
+    	&=\#\{\qq_i=\qq\}\cdot \ell_{(R_\qq)_0} \big((R_\qq)_0/(\qq R_\qq)_0\big)\\
+    	&=\#\{\qq_i=\qq\}
+    \end{align*}
+    using $\ell_{(R_\qq)_0} \big((R_\qq)_0/(\qq R_\qq)_0\big)=1$ as the residue field of a local ring is a simple module over that ring. This proves Claim~\reff{claim:occurrencesOfq}.
 \end{proof}
 
 
 \section{The Samuel polynomial and the principal ideal theorem}
 
-If $R$ is a Noetherian local ring one shows that $\ell(R/m_i) \sim c\cdot t^d$ or $\ell(\mm^i/\mm^{i+1})\sim \snake c t^{d-1}$ where $c\cdot\snake c \neq 0$ and $d$ is the dimension, giving a general proof of the principal ideal theorem as an application.
+If $R$ is a Noetherian local ring with maximal ideal $\mm$ one shows that $\ell_R(R/\mm^i) \sim c\cdot t^d$ or $\ell_R(\mm^i/\mm^{i+1})\sim \snake c t^{d-1}$ where $c\cdot\snake c \neq 0$ and $d$ is the dimension, giving a general proof of the principal ideal theorem as an application (hopefully, in the next lecture this will make sense).
 
 
 
@@ -2740,11 +2760,15 @@ but this does not hold in general. The last two isomorphisms are just a non-abst
 \end{fact}
 The above assertion about cokernels is an immediate consequence. Moreover, when $R=k$ is a field, then an $k$-module $N$ is a $k$-vector space, hence free, hence \emph{projective} and thus flat (by some standard facts from commutative algebra), proving that in this case the above assertion about kernels holds.
 
-Also, note that if $A=R/I$ where $I\subseteq R$ is some ideal, then 
-\begin{align*}
-    M\otimes_R A &\isomorphism M/(I\cdot M)\\
-    m\otimes(r\mod I) &\longmapsto (r\cdot m) \mod (I\cdot M).
-\end{align*}
+\begin{fact}\lbl{fact:tensorQuotient}
+	Also, note that if $A=R/I$ where $I\subseteq R$ is some ideal, then 
+	\begin{align*}
+		M\otimes_R A &\isomorphism M/(I\cdot M)\\
+		m\otimes(r\mod I) &\longmapsto (r\cdot m) \mod (I\cdot M)
+	\end{align*}
+	is an isomorphism.
+\end{fact}
+
 In the case where $B$ is another $R$-algebra, $A\otimes_R B$ has a unique ring structure such that $(a\otimes b)\cdot(\alpha \otimes \beta) = (a \cdot \alpha)\otimes (b\cdot \beta)$. The construction is done by steps: First construct multiplication maps $\mu_{\alpha, \beta}\colon A\otimes_R B \morphism A\otimes_R B$ such that $\mu_{\alpha,\beta} (a\otimes b) = (a\cdot \alpha)\otimes (b\cdot \beta)$. Then show
 \begin{align*}
     \mu_{\alpha+\alpha',\beta} &= \mu_{\alpha,\beta}+\mu_{\alpha',\beta}\\
@@ -2789,11 +2813,11 @@ hold for any $A$-algebra $S$ and any $B$-algebra $T$.
 \begin{rem}
     \begin{alphanumerate}
         \item 
-            The sheaf axiom is interesting even if $I=\emptyset$ when it implies that $\Aa(\emptyset) = \{0\}$ (if $\Aa$ is a sheaf of groups or rings).
+            The sheaf axiom is interesting even if $I=\emptyset$ when it implies that $\Aa(\emptyset) = 0$ (if $\Aa$ is a sheaf of groups or rings).
         \item
             A typical example is the sheaf of $k$-valued functions on $X$, associating to any $U\subseteq X$ the rings of $k$-valued functions on $U$. Normally, one considers \emph{subsheaves} defined by conditions like being locally constant, $C^\infty$, holomorphic, regular in some sense and so on.
         \item 
-            Our definitions of $\Oo(Z)$ or $\Oo(d)(Z)$ can be applied to any subset $Z\subseteq \IP^n(k)$. When $Z=\emptyset$, it gives $\Oo(Z) = \{0\}$ (or $\Oo(d)(Z) = \{0\}$) with the empty function as the only element. When $Z$ is quasi-projective, $\Oo$ is sheaf of rings (a subsheaf of the sheaf of $k$-valued functions on $Z$) and $\Oo(d)\colon U\mapsto \Oo(d)(U)$ is a sheaf of modules.
+            Our definitions of $\Oo(Z)$ or $\Oo(d)(Z)$ can be applied to any subset $Z\subseteq \IP^n(k)$. When $Z=\emptyset$, it gives $\Oo(Z) = 0$ (or $\Oo(d)(Z) = 0$) with the empty function as the only element. When $Z$ is quasi-projective, $\Oo$ is sheaf of rings (a subsheaf of the sheaf of $k$-valued functions on $Z$) and $\Oo(d)\colon U\mapsto \Oo(d)(U)$ is a sheaf of modules.
     \end{alphanumerate}
 \end{rem}
 
