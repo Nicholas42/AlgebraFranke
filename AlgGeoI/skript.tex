@@ -2844,7 +2844,7 @@ We derive this from two other lemmas, the first of which is very useful in gener
 \begin{proof}[Proof of Proposition~\reff{prop:locFiniteMorph}]
     The implication \itememph{a} $\Rightarrow$ \itememph{b} is trivial. Now assume \itememph{b}. By \itememph{b}, $X$ may be covered by affine open $U_i$ such that $f(U_i)\subseteq V_i$ with $V_i\subseteq Y$ affine and $\Oo_X(U_i)/\Oo_Y(U_i)$ of finite type. Let $U\subseteq X$, $V\subseteq Y$ as in \itememph{a}. Then $U$ my be covered by affine open subsets $U=\bigcup_{i,j}U_{i,j}$ such that $U_{i,j}\subseteq U_i$. Then $\Oo_X(U_{i,j}) /\Oo_Y(V_i)$ is of finite type by Lemma~\reff{lem:finiteTypeAffine}. But $V_i\cap V$ may be covered by $V\setminus V(\lambda)$ and then $\Oo_X(U_{i,j}\setminus V(f^*\lambda)) \simeq \Oo_X(U_{i,j})_{f^*\lambda}$ is of finite type over $\Oo_Y(V\setminus V(\lambda))\simeq \Oo_Y(V)_\lambda$. 
     
-    Indeed, we have $V(f^*\lambda)=f^{-1}(V(\lambda))$ by Definition~\reff{def:localMorphism}\itememph{b}, moreover by transitivity of the restriction morphisms in $\Oo_X$ and the defining property of the morphism of sheaves $\Oo_Y\morphism[f^*]f_*\Oo_X$ we obtain a commutative diagram
+    Indeed, we have $V(f^*\lambda)=f^{-1}(V(\lambda))$ by Definition~\reff{def:localMorphisms}\itememph{b}, moreover by transitivity of the restriction morphisms in $\Oo_X$ and the defining property of the morphism of sheaves $\Oo_Y\morphism[f^*]f_*\Oo_X$ we obtain a commutative diagram
     \begin{diagram*}
     	\node[ob] (OY) at (0,1.5) {$\Oo_Y(V_i)$};
     	\node[ob] (OYl) at (4,1.5) {$\Oo_Y\big(V\setminus V(\lambda)\big)$};
