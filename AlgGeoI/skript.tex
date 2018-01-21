@@ -289,7 +289,7 @@ Let it be said that the first three recommendations are from Professor Franke wh
     Equip $\Bb$ with partial order $\preceq$ where $V\preceq U$ iff $V\supseteq U$. Any partially ordered set $(\XX, \preceq)$ defines a category in which there is a morphism $X\to Y$ precisely if $X\preceq Y$. Then, a presheaf on $\Bb$ is a functor from (the category made out of) $\Bb$ and the target category.
 \end{rem*}
 \begin{varthm}{defi}\lbl{def:morphismOfPresheaves}
-    A morphism $\Gg\morphism[f] \Hh$ of presheaves on $\Bb$ is a collection $\Gg(U)\morphism[f_U] \Hh(U)$ in the target category such that
+    A morphism $\Gg\morphism[f] \Hh$ of presheaves on $\Bb$ is a collection $\Gg(U)\morphism[f_U] \Hh(U)$ of morphisms in the target category such that
     \begin{diagram*}
     	\node[ob](a) at (0,1.5) {$\Gg(U)$};
     	\node[ob](c) at (0,0) {$\Hh(U)$};
@@ -2682,7 +2682,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
             \Spec(\Oo_{X,x}) &\lisomorphism \left\{y\in X\st x\in \ov{\{y\}}\right\}\\
             \left\{(U,\lambda)/_\sim \in \Oo_{X,x}\st y\in V(\lambda)\right\} &\longmapsfrom y\;.
         \end{align*}
-        Under this bijection, the generic points of the irreducible components (i.e. the maximal irreducible subsets) of $X$ containing $x$ correspond to the minimal prime ideals of $\Oo_{X,x}$.
+        Under this bijection, the generic points of the irreducible components (i.e. the maximal irreducible, hence automatically closed, subsets) of $X$ containing $x$ correspond to the minimal prime ideals of $\Oo_{X,x}$.
     \item
         The morphism $\Spec (\Oo_{X,x}) \morphism[\phi] X$ defined by 
         \begin{align*}
@@ -2707,7 +2707,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
     from the fact that any open neighbourhood $U$ of $x$ also contains $y$. Under this canonical map, the complement of the prime ideal $\qq$ defined by $y$ maps to units, hence it factors over $(\Oo_{X,x})_\qq\morphism \Oo_{X,y}$ by the universal property of localization. This is the $(\Oo_{X,x})_\qq \simeq (\Oo_{\Spec \Oo_{X,x}})_\qq \morphism \Oo_{X,y}$ defined by $\phi$, hence it is unique as well.
 \end{proof}
 
-\begin{prop}
+\begin{prop}\lbl{prop:integralPrescheme}
     For a prescheme $X$, the following conditions are equivalent:
     \begin{alphanumerate}
     \item 
@@ -2717,7 +2717,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
     \item 
         As \itememph{b}, but $U$ must be affine.
     \end{alphanumerate}
-    If the underlying topological space is Noetherian, this is equivalent 
+    If the underlying topological space is Noetherian, this is equivalent to 
     \begin{alphanumerate}
     \item[\itememph{d}]
         $X$ is connected and $X\neq \emptyset$ and the stalks $\Oo_{X,x}$ for all $x\in X$ are domains.
@@ -2726,32 +2726,53 @@ A Franke lecture is no Franke lecture without a definition being proved.
     \end{alphanumerate}
 \end{prop}
 \begin{proof}
-    Assume \itememph{a} and let $U\subseteq X$ be open and $f,g\in \Oo_X(U)$ such that $fg = 0$. Then $U = V(f)\cup V(g)$ and as $U$ is irreducible and $V(f)$ and $V(g)$ closed we have without loss of generality $U = V(f)$ hence $f\in(\nil(\Oo_X))(U)$ by Fact~\reff{fact:nilRadical}. As $X$ is reduced, $f=0$, which shows \itememph{b}.
+    Assume \itememph{a} and let $U\subseteq X$ be open and $f,g\in \Oo_X(U)$ such that $fg = 0$. Then $U = V(f)\cup V(g)$ and, as $U$ is irreducible and $V(f)$ and $V(g)$ are closed in $U$, we have without loss of generality $U = V(f)$ hence $f\in\nil(\Oo_X)(U)$ by Fact~\reff{fact:nilRadical}. As $X$ is reduced, $f=0$, which shows \itememph{a} $\Rightarrow$ \itememph{b}.
     
     It is obvious, that \itememph{b} implies \itememph{c}.
     
-    Assuming \itememph{c} we can show \itememph{a}. Assume $\nil(\Oo_X) \neq 0$, so let $f\in \nil(\Oo_X)(U)$ with $f\neq 0$, then we can cover $U$ with affine open subsets and there has to be an affine $\snake U \subseteq U$ such that $f|_{\snake U} \neq 0$ and $f\in \nil(\Oo_X)(\snake U)$. This is a contradiction and shows reducedness. For irreducibility, take $X=A\cup B$ where $A$ and $B$ are closed and not equal to $X$. Then $V=X\setminus A$ and $W= X\setminus B$ are non-empty open subsets, hence contain non-empty affine open subsets $\snake V \subseteq V$ and $\snake W \subseteq W$. Let $f,g\in \Oo_X(\snake V\cup\snake W)$ be such that $f|_{\snake V} = 1$, $f|_{\snake W} = 0$, $g|_{\snake V} = 0$, $g|_{\snake W} = 1$, then $\snake V\cup \snake W$ is affine and $f$ and $g$ are zero divisors in $\Oo_X(\snake V\cup \snake W)$.
+    Let's assume \itememph{c}, we show \itememph{c} $\Rightarrow$ \itememph{a}. Assume $\nil(\Oo_X) \neq 0$, so let $f\in \nil(\Oo_X)(U)$ with $f\neq 0$. We can cover $U$ with affine open subsets $U=\bigcup_{i\in I}U_i$. By the sheaf axiom, there has to be an affine $U_i \subseteq U$ such that $f|_{U_i} \neq 0$. But $f\in \nil(\Oo_X)(U_i)$, contradiction. This shows reducedness. 
     
-    If we assume \itememph{b}, then 
+    For irreducibility, take $X=A\cup B$ where $A$ and $B$ are closed and not equal to $X$. Then $V=X\setminus A$ and $W= X\setminus B$ are non-empty open subsets, hence contain non-empty affine open subsets $\snake V \subseteq V$ and $\snake W \subseteq W$. Let $f,g\in \Oo_X(\snake V\cup\snake W)$ be such that $f|_{\snake V} = 1$, $f|_{\snake W} = 0$, $g|_{\snake V} = 0$, $g|_{\snake W} = 1$ (we can do this by the sheaf axiom as $\snake V\cap\snake W=\emptyset$, i.e. there's no intersection to check), then $\snake V\cup \snake W$ is affine and $f$ and $g$ are non-zero zero divisors in $\Oo_X(\snake V\cup \snake W)$. Here, we used the following 
+    \begin{fact*}
+    	When $X$ and $Y$ are affine, so is their disjoint union $X\amalg Y$.
+    \end{fact*}
+    \begin{proof}[Proof of the fact] 
+    	We have $(\Spec A) \amalg (\Spec B) \simeq \Spec A\oplus B$.
+    \end{proof}
+    
+    We return to the proof of Proposition~\reff{prop:integralPrescheme}. If we assume \itememph{b}, then 
     \begin{align*}
-        \Oo_{X,x} = \colimit[U\ni x] \Oo_X(U)
+        \Oo_{X,x} = \colimit[U\ni x] \Oo_X(U)\;,
     \end{align*}
-    and the colimit of domains is again a domain. So we conclude \itememph{d}.
+    as a colimit of domains, is a domain again. So we conclude \itememph{b} $\Rightarrow$ \itememph{d}. It is obvious that \itememph{d} is stronger then \itememph{e}.
     
-    It is obvious that \itememph{d} is stronger then \itememph{e}.
+    Now let $X$ be Noetherian and \itememph{e} be true. We show that \itememph{e} $\Rightarrow$ \itememph{a}. If $U\subseteq X$ is open and $f\in \Oo_X(U)$ nilpotent, its image in $\Oo_{X,x}$ is nilpotent, hence $0$, for every closed point $x\in X$. Let $V\subseteq U$ quasi-compact (e.g. affine) and let $x\in V$ be closed. The image of $f$ in $\Oo_{X,x}$ being zero, there is an open neighbourhood $V_x\subseteq V$ of $x$ such that $f|_{V_x} = 0$. But these $V_x$ cover $V$ by Proposition~\reff{prop:closedSubsetPoint} ($V\setminus\bigcup_{x\in V} V_x$ is closed, where the union is taken over all closed points; if it was non-empty, we could find another closed point inside), hence $f|_V = 0$. Since those $V$ cover $U$, we conclude $f= 0$. This shows reducedness of $X$.
     
-    Now let $X$ be Noetherian and \itememph{e} be true. If $U\subseteq X$ is open and $f\in \Oo_X(U)$ nilpotent, its image in $\Oo_{X,x}$ is nilpotent, hence $0$, for every closed point $x\in X$. Let $V\subseteq U$ quasi-compact (e.g. affine) and let $x\in V$ be closed. The image of $f$ in $\Oo_{X,x}$ being zero, there is an open neighbourhood $V_x$ of $x$ such that $f|_{V_x} = 0$. But these $V_x$ cover $V$ by Proposition~\reff{prop:closedSubsetPoint} ($V\setminus\bigcup_{x\in V} V_x$ being closed, where the union is taken over all closed points), hence $f|_V = 0$. Since those $V$ cover $U$, $f= 0$. Let $X=\bigcup_{i=1}^n$ be the decomposition of $X$ into irreducible components. Let $1\leq i<j\leq n$. If $X_i\cap X_j \neq \emptyset$ it would contain a closed point $x$ by Proposition~\reff{prop:closedSubsetPoint}. By Proposition~\reff{prop:specStalksCorrespondence}\itememph{a} $\Oo_{X,x}$ would contain two different minimal prime ideals (corresponding to $X_i$ and $X_j$) hence fail to be a domain. So this proofs \itememph{a}.
+    Let $X=\bigcup_{i=1}^nX_i$ be the decomposition of $X$ into irreducible components (i.e. maximal irreducible subsets, which are then automatically closed). If $X_i\cap X_j \neq \emptyset$ for $i\neq j$ it would contain a closed point $x$ by Proposition~\reff{prop:closedSubsetPoint} (note that $X$ is Noetherian, hence quasi-compact, cf. \cite[Definition~2.1.2]{alg1}). By Proposition~\reff{prop:specStalksCorrespondence}\itememph{a} $\Oo_{X,x}$ would contain two different minimal prime ideals (corresponding to $X_i$ and $X_j$), hence fail to be a domain. Thus $X=\coprod_{i=1}^nX_i$ and $n=1$ by connectedness. This proves \itememph{a}.
 \end{proof}
-\begin{fact*}
-    When $X$ and $Y$ are affine, so is their disjoint union $X\amalg Y$.
-\end{fact*}
-\begin{proof}
-    \begin{align*}
-        (\Spec A) \amalg (\Spec B) \simeq \Spec A\oplus B
-    \end{align*}
-\end{proof}
+\begin{rem*}%I need to ask Franke about this.%not anymore
+	Without the Noetherianness assumption, the following implications hold
+	\begin{center}
+		\begin{tikzpicture}
+			\node (a) at (0,0) {\itememph{a}};
+			\node [right=0.75cm of a] (b) {\itememph{b}};
+			\path (a.east) -- (b.west) node[pos=0.5] {$\Longleftrightarrow$};
+			\node [right=0.75cm of b] (c) {\itememph{c}};
+			\path (b.east) -- (c.west) node[pos=0.5] {$\Longleftrightarrow$};
+			\node [right=0.75cm of c] (d) {\itememph{d}};
+			\path (c.east) -- (d.west) node[pos=0.5] {$\Longrightarrow$};
+			\node [right=0.75cm of d] (e) {\itememph{e}};
+			\path (d.east) -- (e.west) node[pos=0.5] {$\Longrightarrow$};
+			\node [right=0.75cm of e] (x) {$X$ reduced};
+			\path (e.east) -- (x.west) node[pos=0.5] {$\Longrightarrow$}; 
+			\scriptsize
+			\draw[-implies, double equal sign distance,dotted, bend left=20] (e) to node[pos=0.5, below] {$X$ quasi-compact} (a);
+		\end{tikzpicture}
+	\end{center}
+	Note that in the last step of the above proof we don't need the finiteness of the number of irreducible components; the only thing we need is quasi-compactness and connectedness of $X$, hence above proof essentially showed this implications.
+\end{rem*}
 \begin{defi}[Integral preschemes]\lbl{def:integralPrescheme}
-    Such a prescheme is called \defemph{integral}.
+    A prescheme satisfying the equivalent conditions \itememph{a}, \itememph{b}, \itememph{c} of Proposition~\reff{prop:integralPrescheme} is called \defemph{integral}.
 \end{defi}
 
 \section{Finiteness properties of preschemes and morphisms of preschemes}
@@ -2761,7 +2782,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
     For a morphism $X\morphism[f] Y$ of preschemes, the following conditions are equivalent:
     \begin{alphanumerate}
     \item 
-        If $U\subseteq X$ and $V\subseteq Y$ are affine $f(U)$ are affine and $f(U)\subseteq V$ then $\Oo_X(U)$ is of finite type over $\Oo_Y(V)$.
+        If $U\subseteq X$ and $V\subseteq Y$ are and $f(U)\subseteq V$ then $\Oo_X(U)$ is of finite type over $\Oo_Y(V)$.
     \item 
         It is possible to cover $X$ by affine open subsets $U$ for which there are affine open $V\subseteq Y$ such that $f(U) \subseteq V$ and $\Oo_X(U)$ is of finite type over $\Oo_X(V)$.
     \end{alphanumerate}
@@ -2777,58 +2798,70 @@ A Franke lecture is no Franke lecture without a definition being proved.
 \end{lem}
 We derive this from two other lemmas, the first of which is very useful in general for assertions of this type.
 \begin{lem}\lbl{lem:propsOfAffine}
-    Let $E$ be a property of affine open subsets of a prescheme $X$ satisfying the following properties:
+    Let $\Ee$ be a property of affine open subsets of a prescheme $X$ satisfying the following properties:
     \begin{alphanumerate}
     \item 
-        $E(V)$ implies $E(V\setminus V(f))$ for all $f\in \Oo_X(V)$.
+        $\Ee(V)$ implies $\Ee(V\setminus V(f))$ for all $f\in \Oo_X(V)$.
     \item 
-        If $(f_i)_{i=1}^n \in \Oo_X(V)$, $V$ being affine, such that $\bigcap_{i=1}^n V(f_i) =\emptyset$ and such that $E(V\setminus V(f_i))$ for all $i$, then $E(V)$ holds.
+        If $V$ is affine and $f_1,\ldots,f_n \in \Oo_X(V)$ such that $\bigcap_{i=1}^n V(f_i)=\emptyset$ and such that $\Ee(V\setminus V(f_i))$ for all $i$, then $\Ee(V)$ holds.
     \end{alphanumerate}
     Then the following conditions are equivalent:
     \begin{alphanumerate}
       \item[\itememph{\alpha}]
-        $X$ may be covered by affine open subsets $U$ such that $E$ holds for all of them.
+        $X$ may be covered by affine open subsets $U$ such that $\Ee$ holds for all of them.
     \item[\itememph{\beta}]
-        $E$ holds for arbitrary affine open subsets of $X$.
+        $\Ee$ holds for arbitrary affine open subsets of $X$.
     \end{alphanumerate}
 \end{lem}
 \begin{proof}
-    The implication \itememph{\beta} $\to$ \itememph{\alpha} being trivial we have to show the other direction. We first have to show that $E(U)$ holds when $U\subseteq V$ and $E(V)$ holds ($U$ and $V$ being affine open subsets). Since the $V\setminus V(\lambda)$ ($\lambda\in \Oo_X(V)$) form a topology base on $V$, $U$ may be covered by such subsets which inherit $E$ by \itememph{a}. But $V\setminus V(\lambda)$ equals $U\setminus V(\lambda)$ when it is a subset of $U$. By the quasi-compactness of $U$ and \itememph{b}, $E(U)$ holds. 
+    The implication \itememph{\beta} $\Rightarrow$ \itememph{\alpha} being trivial we have to show the other direction. We first have to show that $\Ee(U)$ holds when $U\subseteq V$ are affine and $\Ee(V)$ holds ($U$ and $V$ being affine open subsets). Since the $V\setminus V(\lambda)$ (for $\lambda\in \Oo_X(V)$) form a topology base on $V$, $U$ may be covered by such subsets which inherit $\Ee$ by \itememph{a}. But $V\setminus V(\lambda)$ equals $U\setminus V(\lambda)$ when it is a subset of $U$. By the quasi-compactness of $U$ and \itememph{b}, $\Ee(U)$ holds. 
     
-    Now let $U$ be an arbitrary affine open subset of $X$. If $x\in U$, it is contained in some affine open subset $V$ of $X$ with $E(V)$. Let $W\subseteq U\cap V$ be an affine open neighbourhood of $x$, we have $E(W)$ by the initial step. We may actually assume $W=U\setminus V(\lambda)$ with $\lambda\in \Oo_X(U)$ as such $W$ form a topology base on $U$. Thus, $U$ may be covered by $W=U\setminus V(\lambda)$ with $E(W)$. By the quasi-compactness of $U$ it has a finite covering of that type, and by \itememph{b}, $E(U)$ holds.
+    Now let $U$ be an arbitrary affine open subset of $X$. If $x\in U$, then $x$ is contained in some affine open subset $V$ of $X$ with $\Ee(V)$. Let $W\subseteq U\cap V$ be an affine open neighbourhood of $x$, we have $\Ee(W)$ by the initial step. We may actually assume $W=U\setminus V(\lambda)$ with $\lambda\in \Oo_X(U)$ as such $W$ form a topology base on $U$. Thus, $U$ may be covered by $W=U\setminus V(\lambda)$ with $\Ee(W)$. By the quasi-compactness of $U$ it has a finite covering of that type, and by \itememph{b}, $\Ee(U)$ holds.
 \end{proof}
-\begin{fact*}
-    $R_f/R$ is of finite type, as 
-    \begin{align*}
-        R[T]/\langle 1-fT\rangle_{R[T]} \simeq R_f
-    \end{align*}
-\end{fact*}
 \begin{lem}\lbl{lem:finiteTypeOnGenerators}
-    Let $R$ be a ring, $A$ an $R$-algebra, $(f_i)_{i=1}^n$ elements of $A$ such that $\langle f_1,\ldots, f_n\rangle_A = A$ (in other words, $\bigcap_{i=1}^n V(f_i) =\emptyset$ in $\Spec A$. If $A_{f_i}$ is an $R$-algebra of finite type for $1\leq i\leq n$, then $A$ is an $R$-algebra of finite type.
+    Let $R$ be a ring, $A$ an $R$-algebra, $f_1,\ldots,f_n$ elements of $A$ such that $(f_1,\ldots, f_n)_A = A$ (in other words, $\bigcap_{i=1}^n V(f_i) =\emptyset$ in $\Spec A$). If $A_{f_i}$ is an $R$-algebra of finite type for $1\leq i\leq n$, then $A$ is an $R$-algebra of finite type.
 \end{lem}
 \begin{proof}
-    By our assumption there are $(g_i)_{i=1}^n\in A$ such that $1=\sum_{i=1}^n f_ig_i$. Let $A_{f_i}$ be generated by $(\alpha_{i,j})_{j=1}^m$, $\alpha_{i,j} = \frac{a_{i,j}}{f_i^\ell}\in A_{f_i}$, as an $R$-algebra. Let $\snake A\subseteq A$ be the sub-$R$-algebra of $A$ generated by $\left\{f_i\st 1\leq i\leq n\right\} \cup \left\{g_i\st 1\leq i\leq n\right\} \cup \left\{a_{i,j}\st 1\leq i\leq n, 1\leq j \leq m\right\}$. We claim $\snake A = A$. Let $x\in A$, we first show that $f_i^kx \in \snake A$ for $1\leq i \leq n$, when $k$ is large enough. In fact, 
+    By our assumption there are $g_1,\ldots,g_n\in A$ such that $1=\sum_{i=1}^n f_ig_i$. Let $A_{f_i}$ be generated by $(\alpha_{i,j})_{j=1}^m$, $\alpha_{i,j} = a_{i,j}\cdot f_i^{-\ell}\in A_{f_i}$ (with $a_{i,j}\in A$, $\ell\geq0$), as an $R$-algebra. Let $\snake A\subseteq A$ be the sub-$R$-algebra of $A$ generated by $f_1,\ldots,f_n$, $g_1,\ldots,g_n$ and the  $a_{i,j}$. We claim $\snake A = A$. Let $x\in A$, we first show that $f_i^kx \in \snake A$ for $i=1,\ldots, n$, when $k$ is large enough. In fact, 
     \begin{align*}
-        x = \sum_{\beta \in \IN^m} \rho_{i,\beta} \alpha_{i,1}^{\beta_1}\cdot\ldots\cdot \alpha_{i,m}^{\beta_m}
+        x = \sum_{\beta \in \IN_0^m} \rho_{i,\beta} \alpha_{i,1}^{\beta_1}\cdot\ldots\cdot \alpha_{i,m}^{\beta_m}
     \end{align*}
-    where $\rho_{i,\beta}\in R$ and equal to zero for all but finitely many $\beta$. When $k\geq \ell\max\left\{|\beta|\st \rho_{i,\beta}\neq 0\right\}$:
+    where $\rho_{i,\beta}\in R$ and equal to zero for all but finitely many $\beta$. When $k\geq \ell\cdot \max\left\{|\beta|\st \rho_{i,\beta}\neq 0\right\}$ (where we set $|\beta|=\beta_1+\ldots+\beta_m$), we have
     \begin{align*}
-        f_i^kx = \sum_{\beta \in \IN^m} \rho_{i,\beta}f_i^{p_{\beta,i,k}} a_{i,1}^{\beta_1}\cdot\ldots\cdot a_{i,m}^{\beta_m}\in \snake A
+        f_i^kx = \sum_{\beta \in \IN_0^m} \rho_{i,\beta}f_i^{k-\ell\cdot|\beta|} a_{i,1}^{\beta_1}\cdot\ldots\cdot a_{i,m}^{\beta_m}\in \snake A
     \end{align*}
-    establishing the claim. But if $k$ has this property
+    with $k-\ell\cdot|\beta|\geq 0$ if $\rho_{i,\beta}\neq 0$, establishing the claim. But if $k$ has this property,
     \begin{align*}
-        x &= \left(\sum_{i=1}^n f_ig_i\right)^{nk}\cdot x\\
-        &= \sum_{\gamma\in\IN^n} c_\gamma \left(\prod_{i=1}^n (f_ig_i)^{\gamma_i}\right) x
+        x = \left(\sum_{i=1}^n f_ig_i\right)^{nk}\cdot x= \sum_{\gamma\in\IN_0^n} \frac{(nk)!}{\gamma_1!\cdots\gamma_n!} \left(\prod_{i=1}^n (f_ig_i)^{\gamma_i}\right)\cdot x
     \end{align*}
-    and $\prod_{i=1}^n (f_ig_i)^{\gamma_i}x\in \snake A$ as $\gamma_i\geq k$ for at least one $i$, hence $f_i^{\gamma_i}\in\snake A$, as are the other factors.
+    in which $\frac{(nk)!}{\gamma_1!\cdots\gamma_n!}$ is integral and $\prod_{i=1}^n (f_ig_i)^{\gamma_i}x\in \snake A$ as $\gamma_i\geq k$ for at least one $i$, hence $f_i^{\gamma_i}x\in\snake A$, as are the other factors.
 \end{proof}
 
 \begin{proof}[Proof of Lemma~\reff{lem:finiteTypeAffine}]
-    Let $E(V))$ be the property ``$\Oo_X(V)$ is of finite type over $A$'' of affine open $V\subseteq X$. By transitivity of ``of finite type'' for ring extensions and the last Fact, it has property \itememph{a} of Lemma~\reff{lem:propsOfAffine}. By Lemma~\reff{lem:finiteTypeOnGenerators}, it also has property \itememph{b}. Applying Lemma~\reff{lem:propsOfAffine} to $E$ gives Lemma~\reff{lem:finiteTypeAffine}.
+    Let $\Ee(V)$ be the property ``$\Oo_X(V)$ is of finite type over $A$'' of affine open $V\subseteq X$. If $V\subseteq X$ is affine having property $\Ee$ and $\lambda\in\Oo_X(V)$, then $\Oo_X(V\setminus V(\lambda))\simeq\Oo_X(V)_\lambda=\Oo_X(V)[\lambda^{-1}]$ is of finite type over $\Oo_X(V)$ and thus over $A$ as well, i.e. $\Ee$ has property \itememph{a} of Lemma~\reff{lem:propsOfAffine}. By Lemma~\reff{lem:finiteTypeOnGenerators}, it also has property \itememph{b}. Applying Lemma~\reff{lem:propsOfAffine} to $\Ee$ gives Lemma~\reff{lem:finiteTypeAffine}.
 \end{proof}
 
 \begin{proof}[Proof of Proposition~\reff{prop:locFiniteMorph}]
-    The implication from \itememph{a} to \itememph{b} is trivial. Now assume \itememph{b}. By \itememph{b}, $X$ may be covered by affine open $U_i$ such that $f(U_i)\subseteq V_i$ with $V_i$ affine and $\Oo_X(U_i)/\Oo_Y(U_i)$ of finite type. Let $U\subseteq X$, $V\subseteq Y$ as in \itememph{a}. Then $U$ my be covered by affine open $\snake U\subseteq U_i$. Then $\Oo_X(\snake U) /\Oo_Y(V_i)$ is of finite type. But $V_i\cap V$ may be covered by $V\setminus V(\lambda)$ and then $\Oo_X(\snake U\setminus V(f^*\lambda)) = \Oo_X(\snake U)_\lambda$ is of finite type[citation needed] over $\Oo_Y(V\setminus V(\lambda))\simeq \Oo_Y(V)_\lambda$, hence $\Oo_Y(V)$ and the assertion from Lemma~\reff{lem:finiteTypeAffine} for $U\morphism V$.
+    The implication \itememph{a} $\Rightarrow$ \itememph{b} is trivial. Now assume \itememph{b}. By \itememph{b}, $X$ may be covered by affine open $U_i$ such that $f(U_i)\subseteq V_i$ with $V_i\subseteq Y$ affine and $\Oo_X(U_i)/\Oo_Y(U_i)$ of finite type. Let $U\subseteq X$, $V\subseteq Y$ as in \itememph{a}. Then $U$ my be covered by affine open subsets $U=\bigcup_{i,j}U_{i,j}$ such that $U_{i,j}\subseteq U_i$. Then $\Oo_X(U_{i,j}) /\Oo_Y(V_i)$ is of finite type by Lemma~\reff{lem:finiteTypeAffine}. But $V_i\cap V$ may be covered by $V\setminus V(\lambda)$ and then $\Oo_X(U_{i,j}\setminus V(f^*\lambda)) \simeq \Oo_X(U_{i,j})_{f^*\lambda}$ is of finite type over $\Oo_Y(V\setminus V(\lambda))\simeq \Oo_Y(V)_\lambda$. 
+    
+    Indeed, we have $V(f^*\lambda)=f^{-1}(V(\lambda))$ by Definition~\reff{def:localMorphism}\itememph{b}, moreover by transitivity of the restriction morphisms in $\Oo_X$ and the defining property of the morphism of sheaves $\Oo_Y\morphism[f^*]f_*\Oo_X$ we obtain a commutative diagram
+    \begin{diagram*}
+    	\node[ob] (OY) at (0,1.5) {$\Oo_Y(V_i)$};
+    	\node[ob] (OYl) at (4,1.5) {$\Oo_Y\big(V\setminus V(\lambda)\big)$};
+    	\node[ob] (OX) at (0,0) {$\Oo_X(f^{-1}V_i)$};
+    	\node[ob] (OXl) at (4,0) {$\Oo_X\big(f^{-1}V\setminus V(f^*\lambda)\big)$};
+    	\node[ob] (OXU) at (2,-1.25) {$\Oo_X\big(U_{i,j}\setminus V(f^*\lambda)\big)$};
+    	\scriptsize
+    	\draw[->] (OY) -- (OX) node[pos=0.5, left] {$f^*$};
+    	\draw[->] (OYl) -- (OXl) node[pos=0.5, right] {$f^*$};
+    	\draw[->] (OY) -- (OYl);
+    	\draw[->] (OX) -- (OXl);
+    	\draw[->] (OX) -- (OXU);
+    	\draw[->] (OXl) -- (OXU);
+    \end{diagram*}
+     In particular, that $\Oo_X(U_{i,j})_{f^*\lambda}$ is of finity type over $\Oo_Y(V)_\lambda$ follows from the fact that it is of finite type over $\Oo_Y(V_i)$, which again is due to $\Oo_X(U_{i,j})_{f^*\lambda}=\Oo_X(U_{i,j})[(f^*\lambda)^{-1}]$ being of finite type over $\Oo_X(U_{i,j})$ being of finite type over $\Oo_Y(V_i)$. 
+     
+     At the price of possibly making $f^*\lambda$ another generator, $\Oo_X(U_{i,j})_{f^*\lambda}$ is of finity type over $\Oo_Y(V)$ if it is over $\Oo_Y(V)_\lambda$ and the assertion follows from Lemma~\reff{lem:finiteTypeAffine} for $U\morphism V\simeq\Spec\Oo_Y(V)$.
 \end{proof}
 
 
