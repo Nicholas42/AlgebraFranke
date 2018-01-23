@@ -1900,7 +1900,7 @@ We postpone the quite lengthy proof of Proposition~\reff{prop:Akizuki-Hopkins} t
     \begin{lem}[Prime avoidance]\lbl{lem:primeAvoidance}
         Let $\pp_1,\ldots, \pp_r$ be ideals of a ring $R$ such that there at most two among them who are not prime. If $I$ is an ideal of $R$ not contained in any $\pp_i$, then it is also not contained in the union of all the $\pp_i$. 
     \end{lem}
-    Professor Franke does not want to prove this here and recommends the appropriate chapter in a book by Eisenbud. You can also find a proof by Franke himself in \cite[Lemma~2.5.1]{alg1}.
+    Professor Franke does not want to prove this here and recommends the appropriate chapter in Eisenbud, \cite[Section~3.2]{eisenbudCommAlg}. You can also find a proof by Franke himself in \cite[Lemma~2.5.1]{alg1}.
     
     Back to \itememph{c} $\Rightarrow$ \itememph{a}. \emph{Step 1.} First we prove that any prime ideal is maximal, i.e. the Krull dimension is $0$. If $x\in R/\pp$ and $x\neq 0$, $x^n\cdot(R/\pp)$ would form a strictly descending chain of ideals in the domain $R/\pp$ if $x$ failed to be a unit, so any $x\in R/\pp\setminus\{0\}$ is a unit, hence $R/\pp$ a field and $\pp$ thus maximal. 
     
@@ -1981,7 +1981,7 @@ We postpone the quite lengthy proof of Proposition~\reff{prop:Akizuki-Hopkins} t
 \begin{fact}
     \begin{alphanumerate}
     \item \lbl{fact:discreteIntegration}
-        If $f\colon \IZ\morphism \IQ$ is a function such that there is a polynomial $P\in\IQ[T]$ such that $f(k) -f(k-1) = P(k)$ for $k$ sufficiently large, i.e. $k\geq k_0$ for some $k_0$, then there exists a polynomial $Q\in\IQ[T]$ such that $f(k) = Q(k)$ for $k\geq k_0-1$. 
+        If $f\colon \IZ\morphism \IQ$ is a function such that there is a polynomial $P\in\IQ[T]$ such that $f(k) -f(k-1) = P(k)$ for $k$ sufficiently large, i.e. $k\geq k_0$ for some $k_0$, then there exists a (unique) polynomial $Q\in\IQ[T]$ such that $f(k) = Q(k)$ for $k\geq k_0-1$. 
     \item 
         If $P\neq 0$ then $\deg Q = \deg P +1$. If $\deg P = \delta$, then we have $(\delta+1) \cdot q_{\delta+1} = p_\delta$ for the leading coefficients $q_{\delta+1}$ and $p_\delta$ of $Q$ respectively $P$. 
     \end{alphanumerate}
@@ -2398,22 +2398,20 @@ and we have bijections
 
 \section{The Samuel polynomial and the principal ideal theorem}
 
-If $R$ is a Noetherian local ring with maximal ideal $\mm$ one shows that $\ell_R(R/\mm^i) \sim c\cdot t^d$ or $\ell_R(\mm^i/\mm^{i+1})\sim \snake c t^{d-1}$ where $c\cdot\snake c \neq 0$ and $d$ is the dimension, giving a general proof of the principal ideal theorem as an application (hopefully, in the next lecture this will make sense).
-
 Let $R$ be a local ring, $M$ a finitely generated $R$-module. When $R$ is Noetherian, it has a filtration (Proposition~\reff{prop:filtrationByPrimeIdeals})
 \begin{align}
     0 = M_0\subsetneq M_1\subsetneq\ldots \subsetneq M_k = M\;, \lbl{eq:filtrationByPrimeIdeals}
 \end{align}
-where $M_i/M_{i+1} \simeq R/_{\pp_i}$
+where $M_i/M_{i+1} \simeq R/\pp_i$ with $\pp_i\in\Spec R$ some prime ideals.
 
 \begin{lem}\lbl{lem:support}
-    Let $M$ be a finitely generated module over any (not necessarily Noetherian) ring $R$, then
+    Let $M$ be a finitely generated module over any (not necessarily Noetherian) ring $R$, then we have
     \begin{align*}
         V(\Ann_R(M)) = \left\{\pp\in R\st M_\pp\neq 0\right\}\;.
     \end{align*}
 \end{lem}
 \begin{proof}
-    If $\pp\not\supseteq \Ann_R(M)$, there is a $r\in R\setminus \pp$ such that $r\cdot M = 0$, hence $M_\pp$ as $r$ gets inverted in $R_\pp$. Thus $V(\Ann_R(M))$ is a subset of the right hand side for arbitrary $M$. Conversely, let $m_1,\ldots, m_k$ generate $M$. If $M_\pp = 0$, then the image of each $m_i$ in $M_\pp$ is $0$. Therefore, there is $r_i\in R\setminus \pp$ such that $r_im_i = 0$. let $r = \prod_{i=1}^k r_i$, then $r\in R\setminus \pp$ and $r\cdot M = 0$. Hence $\pp\not\supseteq \Ann_R(M)$, schowing the inclusion in the other direction.
+    If $\pp\not\supseteq \Ann_R(M)$, there is a $r\in R\setminus \pp$ such that $r\cdot M = 0$, hence $M_\pp=0$ as $r$ gets inverted in $R_\pp$. Thus $V(\Ann_R(M))$ is a subset of the right-hand side for arbitrary $M$. Conversely, let $m_1,\ldots, m_k$ generate $M$. If $M_\pp = 0$, then the image of each $m_i$ in $M_\pp$ is $0$. Therefore, there is $r_i\in R\setminus \pp$ such that $r_im_i = 0$. let $r = \prod_{i=1}^k r_i$, then $r\in R\setminus \pp$ and $r\cdot M = 0$. Hence $\pp\not\supseteq \Ann_R(M)$, showing the inclusion in the other direction.
 \end{proof}
 
 \begin{defi}[Support]\lbl{def:support}
@@ -2421,7 +2419,7 @@ where $M_i/M_{i+1} \simeq R/_{\pp_i}$
     \item 
         The set characterized in Lemma~\reff{lem:support} is called the \defemph{support} $\supp(M)$.
     \item  
-        For the duration of  the next 1 to 2 lectures, we set 
+        For the duration of  the next 1 to 2 lectures or so, we set 
         \begin{align*}
             \dim(M) \coloneqq \dim(\supp(M))\;.
         \end{align*}
@@ -2432,104 +2430,128 @@ where $M_i/M_{i+1} \simeq R/_{\pp_i}$
     \item 
         As always, let $\dim \emptyset = -\infty$.
     \item
-        If $R$ is a field, $M$ is a vector space and we have
+        If $R=k$ is a field, $M$ is a $k$-vector space and we have
         \begin{align*}
-            \dim(M) = \begin{cases}-\infty & \text{if } M=\emptyset \\ 0 &\text{otherwise}\end{cases}\;.
+            \dim(M) = \begin{cases}-\infty & \text{if } M=0 \\ 0 &\text{otherwise}\end{cases}\;.
         \end{align*}
     \end{alphanumerate}
 \end{rem*}
-From now on, let $R$ be local and Noetherian and $M$ finitely generated.
+From now on, let $R$ be a Noetherian local ring with maximal ideal $\mm$ and $M$ a finitely generated $R$-module.
 
 \begin{fact}
-    The set $\supp(M)$ is closed and let $\supp(M) = \bigcup_{i=1}^\ell V(\qq_i)$ be its decomposition into irreducible components. Let $Q(M) = \left\{\qq_i\st 1\leq i\leq \ell\right\}$. Then 
+    The set $\supp(M)$ is Zariski-closed. Let $\supp(M) = \bigcup_{i=1}^\ell V(\qq_i)$ be its decomposition into irreducible components (cf. Proposition~\reff{prop:irreducibleDecomposition}\itememph{b}) and $Q(M) = \left\{\qq_1,\ldots,\qq_\ell\right\}$. Then 
     \begin{align}
         \sqrt{\Ann_R(M)} = \bigcap_{\qq\in Q(M)} \qq  \lbl{eq:sqrtAnnCap}
     \end{align}
-    hence
+    hence we have
     \begin{align}
         \dim M = \max_{\qq\in Q(M)} \dim(R/\qq)\;.\lbl{eq:dimSuppM}
     \end{align}
-    For any filtration \eqreff{eq:filtrationByPrimeIdeals} $Q(M)$ is equal to the set of $\subseteq$-minimal elements of $\left\{\pp_1,\ldots,\pp_k\right\}$.
+    For any filtration like \eqreff{eq:filtrationByPrimeIdeals}, $Q(M)$ is equal to the set of $\subseteq$-minimal elements of $\left\{\pp_1,\ldots,\pp_k\right\}$.
 \end{fact}
 \begin{proof}
-    For any filtration \eqreff{eq:filtrationByPrimeIdeals} we have, by Fact(fact 3.1.3 does not exist), $\sqrt{\Ann_R(M)} ) =\bigcap_{i=1}^k \pp_k = \bigcap_{\qq\in Q} \qq$, where $\qq$ is the set of minimal elements of $\left\{\pp_1,\ldots,\pp_k\right\}$. By $\supp(M) = V(\Ann_R(M))$ it is closed and by the facts recalled before, it equals $\bigcup_{\qq\in Q} V(\qq)$ where no member of this union contains another, hence it is the decomposition into irreducible components and $Q= Q(M)$ and \eqreff{eq:sqrtAnnCap} follows. 
+    Zariski-closedness follows from $\supp(M) = V(\Ann_R(M))$ by Lemma~\reff{lem:support}. For any filtration like \eqreff{eq:filtrationByPrimeIdeals}, Fact~\reff{fact:AnnPrimeCap} gives 
+    \begin{align*}
+    	\sqrt{\Ann_R(M)}  =\bigcap_{i=1}^k \pp_k = \bigcap_{\qq\in Q} \qq\;,
+    \end{align*}
+    where $Q$ is the set of $\subseteq$-minimal elements of $\left\{\pp_1,\ldots,\pp_k\right\}$. Hence $\supp M=\bigcup_{\qq\in Q} V(\qq)$ where no member of this union contains another, hence it is the decomposition into irreducible components and $Q= Q(M)$ and \eqreff{eq:sqrtAnnCap} follows. 
     
-    Moreover, any chain of irreducible subsets of $\supp M$ must be contained in one irreducible component $V(\qq)$, hence it must be of the form $(V(\qq_i))_{i=1}^m$ with $\qq_i\supseteq \qq$, and such $\qq_i$ define elements $\qq_i/\qq$ of $\Spec R/\qq$, and this correspondence can be reversed showing \eqreff{eq:dimSuppM}.
+    Moreover, any chain of irreducible subsets of $\supp M$ must be contained in one irreducible component $V(\qq)$, hence it must be of the form $V(\qq_0)\subsetneq \ldots\subsetneq V(\qq_m)$ with $\qq_i\supseteq \qq$, and such $\qq_i$ define elements $\qq_0/\qq\supsetneq\ldots\supsetneq\qq_m/\qq$ of $\Spec R/\qq$. This correspondence can clearly be reversed, showing \eqreff{eq:dimSuppM}.
 \end{proof}
 \begin{rem*}
-    We have
+    By the usual correspondence between prime ideals and irreducible subsets, we have
     \begin{align}
-        \dim M = \sup\left\{m\st \text{There is a chain of prime ideals } \Ann_R(M) \subseteq \pp_0\subsetneq \pp_1\subsetneq \ldots \subsetneq \pp_m\right\}\;. \lbl{eq:dimChainAnn}
+        \dim M = \sup\left\{m\st \text{there is a chain of prime ideals } \Ann_R(M) \subseteq \pp_0\subsetneq \pp_1\subsetneq \ldots \subsetneq \pp_m\right\}\;. \lbl{eq:dimChainAnn}
     \end{align}
 \end{rem*}
 \begin{fact}
-    If $x\in R\setminus_{\qq\in Q(M)}\qq$, then $\dim(M/x\cdot M) <\dim(M)$, unless $\dim(M) =\infty$.
+    If $x\in R\setminus\bigcap_{\qq\in Q(M)}\qq$, then $\dim(M/x M) <\dim(M)$, unless $\dim(M) =\infty$.
 \end{fact}
 \begin{proof}
-    We have $\Ann_R(M/x\cdot M) \supseteq \Ann_R(M)$, hence $\supp M/x\cdot M \subseteq \supp M$, therefore $\dim(M/x\cdot M) \leq \dim(M)$. Moreover, if $\Ann(M/x\cdot M) \subseteq \qq_0 \subsetneq \ldots \subsetneq \qq_\ell$ is any chain of prime ideals $\qq_0 \in \supp(M/x\cdot M)\subseteq \supp M$, hence $\qq_0\in V(\qq)$ for some $\qq\in Q(M)$ but $\qq\subsetneq \qq_0$ as $x\in \qq_0$ but $x\not\in \qq$ by our assumption, hence $\dim(M)\geq \ell+1$.
+    We have $\Ann_R(M/x M) \supseteq \Ann_R(M)$, hence $\supp M/x M \subseteq \supp M$ and therefore $\dim(M/x M) \leq \dim(M)$. Moreover, if $\Ann(M/x M) \subseteq \qq_0 \subsetneq \ldots \subsetneq \qq_\ell$ is any chain of prime ideals, then $\qq_0 \in \supp(M/x M)\subseteq \supp M$, hence $\qq_0\in V(\qq)$ for some $\qq\in Q(M)$ but $\qq\subsetneq \qq_0$ as $x\in \qq_0$ but $x\not\in \qq$ by our assumption, hence $\dim(M)\geq \ell+1$.
 \end{proof}
 \begin{defi}[Ideal of definition]\lbl{def:idealOfDefinition}
-    An \defemph{ideal of definition} of $R$ is any ideal $I$ with $\sqrt{I} = \mm$ (the maximal ideal of $R$).
+    An \defemph{ideal of definition} of $R$ is any ideal $I$ with $\sqrt{I} = \mm$ (the maximal ideal of the local ring $R$).
 \end{defi}
 \begin{rem*}
-    $I$ being an ideal of definition is equivalent to $V(I) = \{\mm\}$, which is equivalent to $\dim(V(I)) = 0$ which is equivalent to $\dim(R/I ) = 0$, which is equivalent to $R/I$ being artinian and not equal to $0$.
+    That $I$ is an ideal of definition is equivalent to $V(I) = \{\mm\}$, which is equivalent to $\dim(V(I)) = 0$ which is equivalent to $\dim(R/I ) = 0$, which is equivalent to $R/I$ being artinian (by Proposition~\reff{prop:Akizuki-Hopkins}\itememph{a}) and not equal to $0$ (the zero ring).
 \end{rem*}
 \begin{fact}\lbl{fact:samuelPolynomial}
-    If $I$ is any ideal of definition there is a unique polynomial $Q= Q(I,M)$ such that $\ell_R(M/I^kM) = Q(k)$ for any large enough $k\in \IN$.
+    If $I\subseteq R$ is any ideal of definition there is a unique polynomial $Q= Q(M,I)$ such that $\ell_R(M/I^kM) = Q(k)$ for any large enough $k\in \IN$.
 \end{fact}
 
 \begin{proof}
-    Consider the graded ring $\gr(R,I) = \bigoplus_{k=0}^\infty I^k/I^{k+1}$. Since $R$ is Noetherian, $I = \langle x_1,\ldots, x_e\rangle_R$ and the $x_i\mod I^2$ generate $I/I^2$ as an $(R/I)$-module. Thus $\gr_0(R,I) = R/I$ is Artinian and $gr(R,I)$ is generated by $\gr_0(R,I)$ and $\gr_1(R,0)$. Since $\gr_1(R,I)$ is finitely generated over $R/I$, therefore Theorem~\reff{thm:hilbertPolynomial} can be applied to any finitely generated graded $\gr(R,I)$-module. We apply it to $\gr(M,I) = \bigoplus_{k=0}^\infty (I^kM)/(I^{k+1}M)$ which is generated by $(\mu_i \mod IM)\in \gr_0(M,I)$, when $M$ is generated by the $\mu_i$. Hence, there is $P\in Q(I)$ such that $P(k) = \ell_{R/I} (I^kM/I^{k+1}M) = \ell_R(I^kM/I^{k+1}M)$ hence
+    Consider the graded ring associated to $R$ and $I$, i.e.
+    \begin{align*}
+    	\gr(R,I) = \bigoplus_{k=0}^\infty I^k/I^{k+1}\;. 
+    \end{align*}
+    Then $\gr_0(R,I) = R/I$ is Artinian (by the previous remark) and $\gr(R,I)$ is generated by $\gr_0(R,I)$ and $\gr_1(R,I)$. Since $\gr_1(R,I)$ is finitely generated over $R/I$ (indeed, as $R$ is Noetherian, $I =  (x_1,\ldots, x_n)_R$ and the $x_i\mod I^2$ generate $I/I^2$ as an $R/I$-module), therefore Theorem~\reff{thm:hilbertPolynomial} can be applied to any finitely generated graded $\gr(R,I)$-module. We apply it to the graded module associated to $M$ and $I$, i.e.
+    \begin{align*}
+    	\gr(M,I) = \bigoplus_{k=0}^\infty (I^kM)/(I^{k+1}M)
+    \end{align*}	
+   	which is generated by the $(\mu_i \mod IM)\in \gr_0(M,I)$, when $M$ is generated by $\mu_1,\ldots,\mu_m$ over $R$. Hence, there is $P\in \IQ[T]$ such that $P(k) = \ell_{R/I} (I^kM/I^{k+1}M) = \ell_R(I^kM/I^{k+1}M)$, hence
     \begin{align*}
         \ell_R(M/I^{k+1}M) - \ell_R(M/I^kM) = \ell_R(I^kM/I^{k+1}M) = P(k)
     \end{align*}
-    when $k$ is sufficiently large, by the above fact and $0\morphism I^kM/I^{k+1} M \morphism M/I^{k+1}M \morphism M/I^kM\morphism 0$ and the additivity of $\ell$ on short exact sequences. The assertion now follows from Fact~\reff{fact:AnnPrimeCap}.
+    when $k$ is sufficiently large. Here we used that by Remark~\reff{rem:ArtinSchreier}\itememph{f}, the length behaves additively on the short exact sequence
+    \begin{align*}
+    	0\morphism I^kM/I^{k+1} M \morphism M/I^{k+1}M \morphism M/I^kM\morphism 0\;.
+    \end{align*}
+    The assertion now follows from Fact~\reff{fact:discreteIntegration}\itememph{a}.
 \end{proof}
 
 \begin{defi}[Samuel polynomial]\lbl{def:samuelPolynomial}
-    This polynomial $Q=Q(M,I)$ is called the \defemph{Samuel polynomial} of $M$ with respect to $I$ and its degree is denoted by $d(I,M)$. Moreover, let 
+    This polynomial $Q=Q(M,I)$ is called the \defemph{Samuel polynomial} of $M$ with respect to $I$ and its degree is denoted by $d(M,I)$. Moreover, let 
     \begin{align*}
-        \delta(I,M) = \min\left\{k \st \text{there are }x_1,\ldots,x_k \text{ such that } \ell(M/x_1M+\ldots x_k M)<\infty\right\}\;.
+        \delta(M,I) = \min\left\{k \st \text{there are }x_1,\ldots,x_k\in I \text{ such that } \ell_R\big(M/(x_1M+\ldots x_k M)\big)<\infty\right\}\;.
     \end{align*}
 \end{defi}
 \begin{rem*}
     \begin{alphanumerate}
     \item 
-        In the last equation, $\ell = \ell_R = \ell_{R/J}$, whenever applied to some $R/J$-module. When $\langle x_1,\ldots, x_k \rangle_R = I$ this is $\ell(M/IM) < \infty$ by Proposition~\reff{prop:Akizuki-Hopkins} as $R/I$ is Artinian and $M$ finitely generated over it. Hence $\delta < \infty$ as such $x_1,\ldots, x_k$ may always be found.
+        We have that $\ell_R(N) = \ell_{R/J}(N)$, whenever $N$ is an $R/J$-module and $J\subseteq R$ any ideal. Indeed, each $R$-submodule of $N$ has $J$-torsion as well, hence is also an $R/J$-submodule and conversely any $R/J$-submodule is automatically an $R$-submodule (we have seen this argument before at the end of Remark~\reff{rem:multstuff}\itememph{d}). This was used in the proof of Fact~\reff{fact:samuelPolynomial} and you should keep it in mind in Definition~\reff{def:samuelPolynomial}.
+     \item   
+         In particular, $\ell_R(M/IM)=\ell_{R/I}(M/IM) < \infty$ by Proposition~\reff{prop:Akizuki-Hopkins}\itememph{d} as $R/I$ is Artinian and $M$ finitely generated over it. Hence $\delta(M,I) < \infty$ as we may e.g. take $x_1,\ldots, x_k$ to be generators of $I$.
     \item 
-        Obviously, $d<\infty$.
+        Obviously, $d(M,I)<\infty$.
     \end{alphanumerate}
 \end{rem*}
 \begin{thm}\lbl{thm:idealOfDefinition}
-    For any ideal of definition $I$ of any Noetherian local ring $R$ and any finitely generated $R$-module $M$, we have $\dim M = d(I,M) = \delta(I,M)$.
+    For any ideal of definition $I$ of any Noetherian local ring $R$ with maximal ideal $\mm$ and any finitely generated $R$-module $M$, we have 
+    \begin{align*}
+    	\dim M = d(M,I) = \delta(M,I)\;.
+    \end{align*}    
 \end{thm}
-\emph{Of course}, before proving this, we will give some corollaries:
+\emph{Of course}, before proving this, we will give some corollaries.
 \begin{cor}\lbl{cor:dimFinite}
-    We have $\dim(M) <\infty$. In particular, with $M=R$, $\supp R= V(0) = \Spec R$, we have $\dim(R)<\infty$, when $R$ is Noetherian local.
+    We have $\dim(M) <\infty$. In particular, with $M=R$, $\supp R= V(0) = \Spec R$, we have $\dim(R)<\infty$, when $R$ is a Noetherian local ring.
 \end{cor}
 \begin{cor}\lbl{cor:dimOfGr}
     The dimension of any Noetherian local ring $(R,\mm)$ is equal to dimension of the ungraded ring $\gr(R,\mm)$.
 \end{cor}
 \begin{proof}
-    This prove assumes $k=R/\mm$ to be algebraically closed, but also works in general. If $\gr(R,\mm)$ has no zero divisors $\gr(R,\mm) = k[X_0,\ldots, X_n]/\pp$ corresponds to some projective variety $Y\subseteq \IP^{n}(k)$ and $\dim\gr(R,\mm) = \dim(C(Y)) = \dim(Y) +1 = 1+ \deg P $ where $P$ is the Hilbert polynomial of $Y$, hence the same $P$ as in Fact~\reff{fact:samuelPolynomial} and $\deg Q = 1+\deg P$ by Fact~\reff{fact:AnnPrimeCap}.
+    This proof captures only the case where $k=R/\mm$ is algebraically closed and $\gr(R,\mm)$ is a domain. For a unconditional proof, cf. Eisenbud, \cite[Corollary~12.5]{eisenbudCommAlg}.
+    
+    If $\gr(R,\mm)$ has no zero divisors, then it is a graded domain of finite type over $k=R/\mm=\gr_o(R,\mm)$, hence $\gr(R,\mm) = k[X_0,\ldots, X_n]/\pp$ with $\pp\subseteq k[X_0,\ldots,X_n]$ a homogeneous prime ideal and $\gr(R,\mm)$ corresponds to the graded ring of some projective variety $Y\subseteq \IP^{n}(k)$. Then $\dim\gr(R,\mm) = \dim(C(Y)) = \dim(Y) +1 = \deg P+1 $ where $P$ is the Hilbert polynomial of $Y$ (using Proposition~\reff{prop:HilbertDegreeEqualsDimension}), hence the same $P$ as in Fact~\reff{fact:samuelPolynomial} and $\deg Q(R,\mm) = \deg P+1$ by Fact~\reff{fact:discreteIntegration}\itememph{b} and $\deg Q(R,\mm)=d(R,\mm)=\dim R$ by Theorem~\reff{thm:idealOfDefinition}.
 \end{proof}
 \begin{cor}
-    If $R$ is a Noetherian local ring and $\mm = \langle x_1,\ldots, x_n\rangle_R$, then $\dim(R) \leq n$.
+    If $R$ is a Noetherian local ring and $\mm =( x_1,\ldots, x_n)_R$, then $\dim(R) \leq n$.
 \end{cor}
 \begin{proof}
-    We have $\ell(R/(x_1R+\ldots +x_nR) ) = \ell(k(R)) = 1< \infty$, hence $\delta(\mm, R) \leq k$ and $\dim(R) \leq k$ by Theorem~\reff{thm:idealOfDefinition}
+    We have $\ell_R(R/(x_1R+\ldots +x_nR) ) = \ell_R(R/\mm) = 1< \infty$, hence $\delta(R,\mm) \leq n$ and $\dim(R) \leq n$ by Theorem~\reff{thm:idealOfDefinition}.
 \end{proof}
 \begin{cor}\lbl{cor:dimGeneratorsDefinition}
     If $R$ is Noetherian local, $\dim(R)$ is the minimal number of elements of $R$ generating an ideal of definition $J$.
 \end{cor}
 \begin{proof}
-    If $J= \langle x_1,\ldots,x_n\rangle_R$ is an ideal of definition then $\dim(R) = \delta(J,R) \leq n$ as before. Vice versa, let $d=\dim(R) = \delta(\mm,R)$ then there are $x_1,\ldots, x_k\in R$ such that $\ell(R/\langle x_1,\ldots, x_d\rangle_R)<\infty)$ hence $J= \langle x_1,\ldots, x_d\rangle_R$ is an ideal of definition.
+    If $J= (x_1,\ldots,x_n)_R$ is an ideal of definition then $\dim(R) = \delta(R,J) \leq n$ as before. Vice versa, let $d=\dim(R) = \delta(\mm,R)$ then there are $x_1,\ldots, x_k\in R$ such that $\ell_R(R/(x_1,\ldots, x_d)_R)<\infty)$ hence $J= (x_1,\ldots, x_d)_R$ is an ideal of definition.
 \end{proof}
-\begin{cor}[The principal ideal theorem (Theorem~\reff{thm:krullPrincipalIdeal})]
+And finally, we are able to prove Theorem~\reff{thm:krullIdeal} (and thus also the principal ideal theorem, Theorem~\reff{thm:krullPrincipalIdeal}) at last!
+\begin{cor}[Krull's height theorem]
     If $R$ is any Noetherian ring and $\pp$ minimal among all prime ideals containing $x_1,\ldots, x_k\in R$, then $\dim(\pp) \leq k$.
 \end{cor}
 \begin{proof}
-    As $\hoehe(\pp) = \dim(R_\pp)$ and the ideals of $R$ contained in $\pp$ correspond to $\Spec R_\pp$, $\mm = \pp R_\pp$ is the minimal prime ideal containing all $x_i$, hence we may assume $R$ to be local with maximal ideal $\mm= \pp$. Then $V(x_1,\ldots, x_k) =\{\mm\}$ and $\sqrt{\langle x_1,\ldots,x_k\rangle_R}=\mm$ hence $I=\langle x_1,\ldots, x_k\rangle_R$ is an ideal of definition and $\dim R \leq k$ by the previous corollary.
+    As the prime ideals of the localization $R_\pp$ correspond to the prime ideals contained in $\pp$, its maximal ideal $\mm=\pp R_\pp$ is the only prime ideal containing the images of the $x_i$ in $R_\pp$. Then $V(x_1,\ldots, x_k) =\{\mm\}$ in $\Spec R_\pp$ and $\sqrt{(x_1,\ldots,x_k)_{R_\pp}}=\mm$ hence $I=(x_1,\ldots, x_k)_{R_\pp}$ is an ideal of definition and $\hoehe(\pp)=\dim R_\pp \leq k$ by the previous Corollary~\reff{cor:dimGeneratorsDefinition}.
 \end{proof}
 
 
@@ -2596,7 +2618,7 @@ For any finite cover $X= \bigcup_{i=1}^n X_i$ by closed subsets, there is $1\leq
 		\item 
 		Any subset of a Noetherian topological space is Noetherian with it's induced subspace topology \emph{(cf. \cite[Remark~2.2.1]{alg1})}. \lbl{prop:irreducibleDecomposition}
 		\item 
-		If $X$ is Noetherian, there is a unique (that is, up to permutation of the $X_i$) decomposition $X = \bigcup_{i=1}^n X_i$ into irreducible closed subsets $X_i\subseteq X$ such that $X_i\not\subseteq X_j$ for $i\neq j$ \emph{(cf. \cite[Proposition~2.1.1]{alg1})}.
+		If $X$ is Noetherian, there is a unique (that is, up to permutation of the $X_i$) decomposition $X = \bigcup_{i=1}^n X_i$ into irreducible closed subsets $X_i\subseteq X$ such that $X_i\not\subseteq X_j$ for $i\neq j$ \emph{(cf. \cite[Proposition~2.1.1]{alg1})}, called the \defemph{irreducible components} of $X$.
 	\end{alphanumerate}
 	
 \end{prop}
