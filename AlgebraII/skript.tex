@@ -1678,9 +1678,9 @@ As $\pp$ is homogeneous, $S(X)$ inherits a grading $S(X)=\bigoplus_{d\geq 0}S_d(
     \begin{align*}
     	 \vartheta(x)\cdot\prod_{j=1}^d (\lambda(x)-\lambda_j)^{e_j} = 0
     \end{align*}
-   for all $\vartheta\in S_N(X)$ and all $x\in C(X)\setminus \{0\}$ by Cayley-Hamilton. As it is always possible to choose $\vartheta\in S_N(X)$ such that $\vartheta(x)=0$ for a given $x\in C(X)\setminus\{0\}$ (indeed, if the $i\ordinalth$ coordinate of $x$ is non-zero, then $X_i^N\mod\pp$ will do) we have $\prod_{j=1}^d (\lambda(x)-\lambda_j) = 0$, hence 
+   for all $\vartheta\in S_N(X)$ and all $x\in C(X)\setminus \{0\}$ by Cayley-Hamilton. As it is always possible to choose $\vartheta\in S_N(X)$ such that $\vartheta(x)\neq0$ for a given $x\in C(X)\setminus\{0\}$ (indeed, if the $i\ordinalth$ coordinate of $x$ is non-zero, then $X_i^N\mod\pp$ will do) we have $\prod_{j=1}^d (\lambda(x)-\lambda_j) = 0$, hence 
    \begin{align*}
-   	C(X)\setminus \{0\} = \bigcup_{j=1}^d (\lambda-\lambda_j)\;. 
+   	C(X)\setminus \{0\} = \bigcup_{j=1}^d V(\lambda-\lambda_j)\;. 
    \end{align*}
    As $C(X)\setminus \{0\}$ is irreducible, there is $j$ such that $C(X)\setminus\{0\} = V(\lambda-\lambda_j)$. Then $\lambda=\lambda_j$ is constant on $X$. 
 \end{proof}
