@@ -41,7 +41,7 @@ Professor Franke said the lecture requires a firm knowledge of commutative algeb
  \item Matsumura, H.: \emph{Commutative Ring Theory},
  \item Hartshorne, R.: \emph{Algebraic Geometry},
  \item Mumford, D.: \emph{The Red Book of Varieties and Schemes},
- \item Schwab, N. \& Wagner, F.: \href{https://github.com/Nicholas42/AlgebraFranke/tree/master/AlgebraI}{\emph{Algebra I by Jens Franke}} \cite{alg1}. \textbf{Warning!} Somewhere in the middle of this text, the term \emph{irreducible} is redefined as irreducible \emph{and closed}. So don't let yourself get confused.
+ \item Schwab, N. \& Wagner, F.: \href{https://github.com/Nicholas42/AlgebraFranke/tree/master/AlgebraI}{\emph{Algebra I by Jens Franke}} \cite{alg1}. \textbf{Warning!} Somewhere in the middle of this text, the term \emph{irreducible} is redefined as irreducible \emph{and closed} when referring to subsets of a topological space. So don't let yourself get confused.
 \end{itemize}
 Let it be said that the first three recommendations are from Professor Franke while the last one is from the (not so) humble authors of these notes.
 
@@ -1415,14 +1415,14 @@ Since the preimage of this ideal in $\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y}$ equ
 \begin{defi}[Immersive morphisms] \lbl{def:immersiveMorphism}
     A morphism $Y\morphism[\upsilon] S$ of locally ringed spaces is called \defemph{immersive} if, topologically, $\upsilon$ is a homeomorphism onto its image (equipped with the induced topology with respect to $S$), and for every $y\in Y$ the map $\Oo_{S,\upsilon(y)} \morphism[\upsilon^*]\Oo_{Y,y}$ is surjective. 
        
-    If $\upsilon(Y)\subseteq S$ is a closed subset, $\upsilon$ is called a \defemph{closed immersion}. If it is open, $\upsilon$ is an \defemph{open immersion}.
+    If $\upsilon(Y)\subseteq S$ is a closed subset, $\upsilon$ is called a \defemph{closed immersion}. If it is open and additionally, $\Oo_S\morphism[\upsilon^*]\upsilon_*\Oo_Y$ restricts to an isomorphism of sheaves $\Oo_S|_{\upsilon(Y)}\isomorphism\upsilon_*\Oo_Y$, $\upsilon$ is called an \defemph{open immersion}.
 \end{defi}
 
 \begin{cor}\lbl{cor:immersionBaseChange}
     Let $Y\morphism[\upsilon]S$ be a immersive morphism. Then its base change (cf. \hyperref[rem:baseChange]{this} remark) $F=X\times_SY\morphism[\snake \upsilon] X$ is immersive, and its image is $\xi^{-1}(\upsilon(Y))$.
 \end{cor}
 \begin{rem*}
-	 In particular, the base change of a closed immersion is itself closed and likewise the base change of an open immersion is open again.
+	 In particular, the base change of a closed immersion is itself closed and likewise the base change of an open immersion is open again. For the last assertion, we also need to check that $\snake{\upsilon}^*$ induces isomorphisms on stalks, which will follow from the proof to come.
 \end{rem*}
 \begin{proof}[Proof of Corollary~\reff{cor:immersionBaseChange}]
     For $(x,y,\pp)$ and $s$ as in the description of $F$, let $I_s\subseteq \Oo_{S,s}$ be the kernel of $\Oo_{S,s}\morphism[\upsilon^*] \Oo_{Y,y}$. Then $\Oo_{Y,y}\simeq \Oo_{S,s}/I_s$ (as $\upsilon^*$ is assumed surjective), hence 
@@ -2071,16 +2071,18 @@ A Franke lecture is no Franke lecture without a definition being proved.
             \defemph{quasi-separated} if the preimage of any affine open subset of $Y$ is quasi-separated (two more equivalent conditions are given in Lemma~\reff{lem:qsmorphism}).
     \end{alphanumerate}
 \end{defi}
-\begin{rem*}
+\begin{rem}
     \begin{alphanumerate}
-        \item 
+        \item \lbl{rem:qcqs}
             The equivalence of the three conditions in \itememph{b} can be seen via \itememph{\beta} $\Rightarrow$ \itememph{\alpha} $\Rightarrow$ \itememph{\gamma} $\Rightarrow$ \itememph{\beta} as in the proof of Definition~\reff{def:quasicompact} (which actually is a special case of this). 
         \item 
             $X$ is quasi-separated iff for any quasi-compact open subset $U$ the embedding $U\monomorphism X$ is quasi-compact (preimages in this case are just intersections with $U$ and we obtain Definition~\reff{def:quasicompact}\itememph{e}).
         \item 
             Open embeddings are quasi-separated for trivial reasons.
+        \item
+	        Closed embeddings are quasi-compact. Indeed, taking the preimage in this case is the same as intersecting with the closed image of the closed embedding and closed subsets of quasi-compact spaces are quasi-compact again.
     \end{alphanumerate}
-\end{rem*}
+\end{rem}
 \begin{prop}
     \begin{alphanumerate}
         \item\lbl{prop:closedEmbeddingPrescheme}
@@ -2213,7 +2215,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
 	
 	Part \itememph{b} follows from Proposition~\reff{cor:fibreProductsInLRS}\itememph{b} except for the fact that the involved fibre products are preschemes, which will follow from the proof of \itememph{a}. Part \itememph{c} follows from Corollary~\reff{cor:affineSchemesFibreProduct} and together, \itememph{b}, \itememph{c} and \itememph{d} imply \itememph{a} by a technical argument as in the proof of Corollary~\reff{cor:preschemesEqualizers}.
 \end{proof}
-\begin{defi}
+\begin{defi}\lbl{def:S-preschemes}
 	Let $S$ be a prescheme. The category of \defemph{$S$-preschemes} has morphisms $X\morphism[\xi]S$ of preschemes as objects and diagrams  
 	\begin{diagram*}
 		\node[ob](x) at (0,1.25) {$X$};
@@ -2474,7 +2476,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
     \item 
         The open subsets $U\subseteq Y$ such that $f^{-1}(U)$ is quasi-compact form a topology base.
     \item 
-        $X$ may be covered by affine open subsets such that $f^{-1}(U)$ is quasi-compact.
+        $Y$ may be covered by affine open subsets $U$ such that $f^{-1}(U)$ is quasi-compact.
     \end{alphanumerate}
 \end{fact}
 \begin{proof}
@@ -2842,75 +2844,66 @@ We derive this from two other lemmas, the first of which is very useful in gener
 \end{proof}
 
 \begin{proof}[Proof of Proposition~\reff{prop:locFiniteMorph}]
-    The implication \itememph{a} $\Rightarrow$ \itememph{b} is trivial. Now assume \itememph{b}. By \itememph{b}, $X$ may be covered by affine open $U_i$ such that $f(U_i)\subseteq V_i$ with $V_i\subseteq Y$ affine and $\Oo_X(U_i)/\Oo_Y(U_i)$ of finite type. Let $U\subseteq X$, $V\subseteq Y$ as in \itememph{a}. Then $U$ my be covered by affine open subsets $U=\bigcup_{i,j}U_{i,j}$ such that $U_{i,j}\subseteq U_i$. Then $\Oo_X(U_{i,j}) /\Oo_Y(V_i)$ is of finite type by Lemma~\reff{lem:finiteTypeAffine}. But $V_i\cap V$ may be covered by $V\setminus V(\lambda)$ and then $\Oo_X(U_{i,j}\setminus V(f^*\lambda)) \simeq \Oo_X(U_{i,j})_{f^*\lambda}$ is of finite type over $\Oo_Y(V\setminus V(\lambda))\simeq \Oo_Y(V)_\lambda$. 
-    
-    Indeed, we have $V(f^*\lambda)=f^{-1}(V(\lambda))$ by Definition~\reff{def:localMorphisms}\itememph{b}, moreover by transitivity of the restriction morphisms in $\Oo_X$ and the defining property of the morphism of sheaves $\Oo_Y\morphism[f^*]f_*\Oo_X$ we obtain a commutative diagram
-    \begin{diagram*}
-    	\node[ob] (OY) at (0,1.5) {$\Oo_Y(V_i)$};
-    	\node[ob] (OYl) at (4,1.5) {$\Oo_Y\big(V\setminus V(\lambda)\big)$};
-    	\node[ob] (OX) at (0,0) {$\Oo_X(f^{-1}V_i)$};
-    	\node[ob] (OXl) at (4,0) {$\Oo_X\big(f^{-1}V\setminus V(f^*\lambda)\big)$};
-    	\node[ob] (OXU) at (2,-1.25) {$\Oo_X\big(U_{i,j}\setminus V(f^*\lambda)\big)$};
-    	\scriptsize
-    	\draw[->] (OY) -- (OX) node[pos=0.5, left] {$f^*$};
-    	\draw[->] (OYl) -- (OXl) node[pos=0.5, right] {$f^*$};
-    	\draw[->] (OY) -- (OYl);
-    	\draw[->] (OX) -- (OXl);
-    	\draw[->] (OX) -- (OXU);
-    	\draw[->] (OXl) -- (OXU);
-    \end{diagram*}
-     In particular, that $\Oo_X(U_{i,j})_{f^*\lambda}$ is of finity type over $\Oo_Y(V)_\lambda$ follows from the fact that it is of finite type over $\Oo_Y(V_i)$, which again is due to $\Oo_X(U_{i,j})_{f^*\lambda}=\Oo_X(U_{i,j})[(f^*\lambda)^{-1}]$ being of finite type over $\Oo_X(U_{i,j})$ being of finite type over $\Oo_Y(V_i)$. 
+    The implication \itememph{a} $\Rightarrow$ \itememph{b} being trivial, let's assume \itememph{b}. We cover $X=\bigcup_{i\in I}U_i$ by affine open $U_i$ for which there are affine open $V_i\supseteq f(U_i)$ such that $\Oo_X(U_i)/\Oo_Y(V_i)$ is of finite type. Now let $U\subseteq X$ and $V\subseteq Y$ be arbitrary affine open subsets such that $V\supseteq f(U)$.
      
-     At the price of possibly making $f^*\lambda$ another generator, $\Oo_X(U_{i,j})_{f^*\lambda}$ is of finite type over $\Oo_Y(V)$ if it is over $\Oo_Y(V)_\lambda$ and the assertion follows from Lemma~\reff{lem:finiteTypeAffine} for $U\morphism V\simeq\Spec\Oo_Y(V)$.
+     \emph{Step 1.} It is possible to cover $f^{-1}(V)=\bigcup_{j\in J}\snake U_j$ by affine open $\snake U_j$ for which there is an affine open $\snake V_j$ such that $f(\snake U_j) \subseteq \snake V_j\subseteq V$ and $\Oo_X(\snake U_j)/\Oo_Y(\snake V_j)$ is of finite type. 
      
+     Indeed, if $x\in f^{-1}(V)$ then $x\in U_i$ for some $i\in I$ and there exists $\lambda_x \in \Oo_Y(V_i)$ such that $f(x)\not\in V(\lambda_x)$ and $\snake V_x \coloneqq V_i\setminus V(\lambda_x) \subseteq V$ (as open subsets of this form form a topology base by Fact~\reff{fact:affineSchemesTopologyBase}\itememph{b}). Keep in mind that $V(f^*\lambda_x)=f^{-1}\big(V(\lambda_x)\big)$ as $f$ is a morphism of locally ringed spaces, cf. Definition~\reff{def:localMorphisms}\itememph{b}. Then, with $\snake U_x = U_i\setminus V(f^*(\lambda_x))$, we have $x\in\snake U_x$, $f(\snake U_x)\subseteq \snake V_x$ and finally $\Oo_X(\snake U_x)\simeq \Oo_X(U_x)_\lambda\simeq\Oo_X(U_i)[(f^*\lambda_x)^{-1}]$ is of finite type over $\Oo_X(U_i)$ hence $\Oo_Y(V_i)$, hence $\Oo_Y(\snake V_x)=\Oo_Y(V_i)_{\lambda_x}$. Taking $J$ to be a subset of $f^{-1}(V)$ such that the $\snake U_j$ for $j\in J$ cover $f^{-1}(V)$ (e.g. just choose $J=f^{-1}(V)$), we proved Step~1.
      
+     \emph{Step 2.} It is possible to do the same thing with $\snake V_j= V\setminus V(\lambda)$. Indeed, open subsets of this form being a topology base, it is possible to find $\lambda_{j,k}\in \Oo_Y(V)$ such that $V\setminus V(\lambda_{j,k})$ are subsets of $\snake V_j$ covering it. Then the $\snake U_{j,k} = \snake U_j\setminus V(f^*\lambda_{j,k})$ cover $\snake U_j$ and $\Oo_X(\snake U_{j,k}) \simeq \Oo_X(\snake U_j)_{f^*\lambda_{j,k}}$ is of finite type over $\Oo_X(\snake U_j)$ hence $\Oo_Y(\snake V_j)$ hence $\Oo_Y(V\setminus V(\lambda_{i,j}))=\Oo_Y(V)_{\lambda_{j,k}}$.
      
-     Alternative proof: Let $U_i$, $V_i\supseteq f(U_i)$ be affine such that $\Oo(U_i)/\Oo(V_i)$ is of finite type.
-     
-     Step 1: It is possible to cover $f^{-1}(V)$ by affine $\snake U_i$ for which there is an affine $\snake V_i$ such that $f(\snake U_i) \subseteq \snake V_i\subseteq V$ and $\Oo_X(\snake U_i)/\Oo_X(\snake V_i)$ is of finite type. Indeed, if $x\in f^{-1}(V)$ then $x\in U_i$ and as open subsets of this form form a topology base there exists $\lambda \in \Oo_Y(V_i)$ such that $f(x)\not\in V(\lambda)$ and $\snake V_i = V_i\setminus V(\lambda) \subseteq V$. Then, with $\snake U_i = U\setminus V(f^*(\lambda))$, we have $x\in\snake U_i$, $\Oo_X(\snake U_i)\simeq \Oo_X(U_i)_\lambda$ is of finite type over $\Oo_X(U_i)$ hence $\Oo_Y(V_i)$, hence $\Oo_Y(\snake V_i)$.
-     
-     Step 2: It is possible to do the same thing with $\snake V_i = V\setminus V(\lambda)$. Indeed, open subsets of this form being a topology base, it is possible to find $\lambda_{i,j}\in \Oo_Y(V)$ such that $V\setminus V(\lambda_{i,j}$ are subsets of $\snake V_i$ covering it. Then the $\snake U_{i,j} = \snake U_i\setminus V(f^*(\lambda_{i,j}))$ cover $\snake U_i$ and $\Oo_X(\snake U_{i,j}) \simeq \Oo_X(\snake U_i)_\lambda$ is of finite type over $\Oo_X(\snake U_i)$ hence $\Oo_Y(\snake V_i)$ hence $\Oo_Y(V\setminus V(\lambda_{i,j}))$.
-     
-     Step 3: In step 2, $\Oo_Y(\snake V_i) \simeq \Oo_Y(V)_\lambda$ is of finite type over $\Oo_X(V)$. Hence $\Oo_X(\snake U_i)/\Oo_X(V)$ is of finite type and an application of the Lemma to $f^{-1}(V)\morphism V$ gives $\Oo_X(U)/\Oo_X(V)$ finite type.
+     \emph{Step 3.} In Step 2, $\Oo_Y(V)_{\lambda_{j,k}}$ is of finite type over $\Oo_X(V)$. Hence $\Oo_X(\snake U_{j,k})/\Oo_X(V)$ is of finite type. Then the affine open cover $f^{-1}(V)=\bigcup_{j,k}\smash{\snake U}_{j,k}$ satisfies the property \itememph{b} from Lemma~\reff{lem:finiteTypeAffine} with respect to the morphism of preschemes $f^{-1}(V)\morphism V\simeq\Spec\Oo_Y(V)$. We thus get from Lemma~\reff{lem:finiteTypeAffine}\itememph{a} that $\Oo_X(U)$ is of finite type over $\Oo_X(V)$, which is what we wanted to show.
 \end{proof}
 
 \begin{defi}[Morphism of (locally) finite type]\lbl{def:morphismFiniteType}
-    A morphism is of \defemph{locally finite type} if it satisfies these equivalent conditions. It is of \defemph{finite type} if it is quasi-compact and of locally finite type.
+    A morphism is of \defemph{locally finite type} if it satisfies the equivalent conditions \itememph{a} and \itememph{b} from Proposition~\reff{prop:locFiniteMorph}. It is of \defemph{finite type} if it is quasi-compact and of locally finite type.
 \end{defi}
 
 \begin{fact}
-    If $Y=\Spec R$, the structure of a $Y$-prescheme on $X$ is equivalent to the structure of a sheaf of $R$-algebras on $\Oo_X$ and $X$ is locally of finite type over $Y$ iff the $\Oo_X(U)$ for affine $U$ are $R$-algebras of finite type, and it is of finite type, iff it is in addition quasi-compact.
+    If $Y=\Spec R$, the structure of a $Y$-prescheme on $X$ (cf. Definition~\reff{def:S-preschemes}) is equivalent to the structure of a sheaf of $R$-algebras on $\Oo_X$ and $X$ is locally of finite type over $Y$ iff the $\Oo_X(U)$ for affine $U$ are $R$-algebras of finite type, and it is of finite type, iff it is in addition quasi-compact.
 \end{fact}
-\begin{fact}
+\begin{proof}
+	Note that such a  morphism $X\morphism[f]Y$ is quasi-compact iff $X$ is quasi-compact using \itememph{\alpha} and \itememph{\gamma} of Definition~\reff{def:qcqs}\itememph{b}. The rest is quite obvious.
+\end{proof}
+\begin{fact}\lbl{fact:locFiniteTypeProperties}
     The class of morphisms of locally finite type is base-local and stable under composition and base-change. The same holds for morphisms of finite type. 
 \end{fact}
 \begin{proof}
-    Since the class of quasi-compact morphisms have these properties, it suffices to prove them for morphisms of locally finite type. 
+    According to Fact~\reff{fact:qcIsBaseLocalAndStuff}, the class of quasi-compact morphisms have these properties, thus it suffices to prove them for morphisms of locally finite type. 
     
-    If $W\subseteq Y$ is open, it is cleat that $f^{-1}(W)\morphism W$ inherits the property \itememph{a} from Proposition~\reff{prop:locFiniteMorph} from $f$. Conversely, let $Y$ be covered by $W_i$ for which $f^{-1}(W_i)\morphism W_i$ is of locally finite type. Then $f^{-1}(W_i)$ may be covered by $U$ as in property \itememph{b} of Proposition~\reff{prop:locFiniteMorph}. Hence $X$ may be covered this way. This proves base-locality.
+    If $W\subseteq Y$ is open, it is clear that $f^{-1}(W)\morphism W$ inherits the property \itememph{a} from Proposition~\reff{prop:locFiniteMorph} from $f$. Conversely, let $Y=\bigcup_{i\in I}W_i$ be covered by open subsets $W_i$ for which $f^{-1}(W_i)\morphism W_i$ is of locally finite type. Then $f^{-1}(W_i)$ may be covered by $U$ as in property \itememph{b} of Proposition~\reff{prop:locFiniteMorph}. Hence $X$ may be covered this way. This proves base-locality.
     
-    By the transitivity of ``finite type'' for ring extensions, property \itememph{a} of Proposition~\reff{prop:locFiniteMorph} is stable under composition.
+    As being of finite type is transitive for ring extensions, property \itememph{a} of Proposition~\reff{prop:locFiniteMorph} is stable under composition.
     
-    By base-locality, it is sufficient to consider the base-change of $X\morphism \Spec A$ by $\Spec B\morphism \Spec A$. Then $X\morphism \Spec A$ satisfies the equivalent conditions of Lemma~\reff{lem:finiteTypeAffine}. It is possible to cover $X$ by affine $U_i\simeq \Spec(C_i)$ and $X\times_{\Spec A} \Spec B$ is covered by the $U_i\times_{\Spec A} \Spec B \simeq \Spec(C_i\otimes_A B)$ and $C_i\otimes_A B/B$ is of finite type, being generated by the $c_{i,j}\otimes 1$ over $B$ if the $(c_{i,j})_{j=1}^{n_i}$ generate $C_i/A$.
+    By base-locality, it is sufficient to show base-change stability in the special case of $X\morphism \Spec A$ being base-changed along $\Spec B\morphism \Spec A$. By Lemma~\reff{lem:finiteTypeAffine}\itememph{a}, it is possible to cover $X$ by affine $U_i\simeq \Spec(C_i)$ such that the $C_i$ are of finite type over $A$. Then $X\times_{\Spec A} \Spec B$ is covered by the $U_i\times_{\Spec A} \Spec B \simeq \Spec(C_i\otimes_A B)$ and $C_i\otimes_A B$ is of finite type over $B$, being generated by the $c_{i,j}\otimes 1$ over $B$ if the $(c_{i,j})_{j=1}^{n_i}$ generate $C_i/A$.
 \end{proof}
 \begin{rem*}
-    Being of locally finite type is also local in the sens that it is inherited by $U\morphism[f] V$ form $X\morphism[f] Y$ if $U$ and $V$ are open with $f(U)\morphism V$ and that it holds for $f$ if $X$ may be covered by such open subsets $U$ (for which an appropriate $V$ exists).
+    Being of locally finite type is also local in the sense that it is inherited by $U\morphism[f] V$ from $X\morphism[f] Y$ if $U$ and $V$ are open with $f(U)\morphism V$ and that it holds for $f$ if $X$ may be covered by such open subsets $U$ (for which an appropriate $V$ exists).
 \end{rem*}
-\begin{rem*}
-    $\id_X$ is of finite type as Proposition~\reff{prop:locFiniteMorph}\itememph{b} obviously holds.
-\end{rem*}
-\begin{cor}
-    If $U\subseteq V$ is an inclusion of affine open subsets of a prescheme, $\Oo_X(U)/\Oo_X(V)$ is of finite type.
+\begin{cor}\lbl{cor:affineInclusionFiniteType}
+    If $U\subseteq V$ is an inclusion of affine open subsets of a prescheme $X$, then $\Oo_X(U)$ is of finite type over $\Oo_X(V)$.
 \end{cor}
-\begin{cor}
+\begin{proof}
+	The morphism $\id_X$ is of finite type as Proposition~\reff{prop:locFiniteMorph}\itememph{b} obviously holds. Then Proposition~\reff{prop:locFiniteMorph}\itememph{a} does it.
+\end{proof}
+\begin{cor}\lbl{cor:openImmersionFiniteType}
     Any open immersion is of locally finite type. 
 \end{cor}
-\begin{cor}
+\begin{proof}
+	Follows from Corollary~\reff{cor:affineInclusionFiniteType}.
+\end{proof}
+\begin{cor}\lbl{cor:closedImmersionFiniteType}
     Any closed immersion is of finite type.
 \end{cor}
+\begin{proof}
+	As we noted in Remark~\reff{rem:qcqs}\itememph{d}, closed immersions are always quasi-compact. To show locally finite typeness, let $K\morphism[\iota]X$ be a closed immersion, then $K$ is given by a quasi-coherent sheaf of ideals $\Jj\subseteq\Oo_X$. Restricting to an affine open subset $U\simeq\Spec R$ of $X$, $\Jj$ has the form $\snake I$ for some ideal $I\subseteq R$ and $\iota^{-1}U\morphism U$ is given by $\Spec R/I\morphism\Spec R$. Now $R/I$ is of finite type over $R$ and by Proposition~\reff{prop:locFiniteMorph}\itememph{b} we are done.
+\end{proof}
 \begin{cor}
-    Any locally closed immersion of locally finite type.
+    Any locally closed immersion is of locally finite type.
 \end{cor}
+\begin{proof}
+	This follows trivially from the preceding Corollary~\reff{cor:openImmersionFiniteType} and Corollary~\reff{cor:closedImmersionFiniteType}. Or does it? Well, that depends on how \emph{locally closed immersions} are defined. We \emph{didn't} define them, but the usual notion seems to be that of a morphism of the form $j\circ i$ with $i$ an open immersion followed by $j$ a closed one. For example, The Stacks Project uses this (cf. \cite[Tag~01IO]{stacks-project}) -- but caution, their notion of closed immersions of locally ringed spaces (not preschemes though) is somewhat stronger than ours. In particular, an immersion being locally closed is \emph{stronger} than its image being locally closed.
+\end{proof}
 
 \subsection{(Locally) Noetherian preschemes}
 
@@ -2918,7 +2911,7 @@ We derive this from two other lemmas, the first of which is very useful in gener
     For a prescheme $X$, the following are equivalent:
     \begin{alphanumerate}
     \item 
-        For any quasi-compact open $U\subseteq X$, any ascending sequence $\Jj_0\subseteq \Jj_1\subseteq\ldots \subseteq \Oo_X|_U$ of quasi-coherent sheaves of ideals on $U$ terminates at some $i$ wih $\Jj_i= \Jj_k$, when $k\geq i$.
+        For any quasi-compact open $U\subseteq X$, any ascending sequence $\Jj_0\subseteq \Jj_1\subseteq\ldots \subseteq \Oo_X|_U$ of quasi-coherent sheaves of ideals on $U$ terminates at some $N$ wih $\Jj_N= \Jj_n$, when $n\geq N$.
     \item 
         For any affine open $U\subseteq X$, \itememph{a} holds.
     \item 
@@ -2930,7 +2923,9 @@ We derive this from two other lemmas, the first of which is very useful in gener
     \end{alphanumerate}
 \end{prop}
 \begin{proof}
-    Since there is a bijection between quasi-coherent sheaves of ideals on $U=\Spec A$ and the ideals in $A$, $A$ is Noetherian iff \itememph{a} holds for $U=\Spec A$. Thus \itememph{b} and \itememph{c} as well as \itememph{d} and \itememph{e} are equivalent. The implications from \itememph{a} to \itememph{b} and from \itememph{b} to \itememph{e} are trivial.  If \itememph{e} holds, then $X$ may be covered by affine open $U_i$ for which $\Oo_X(U_i)$ is Noetherian. the $\Oo_X(U_i\setminus V(\lambda)) \simeq \Oo_X(U_i)_\lambda$ are also Noetherian, hence the $U_i\setminus V(\lambda)$ satisfy \itememph{a}. By Fact~\reff{fact:affineSchemesTopologyBase} they form a topology base. Hence any quasi-compact open $U$ may be covered by finitely many such $U_i\setminus V(\lambda)$. Since the sequence $(\Jj)_{i\in\IN}$ stabilizes on each of these finitely many subsets, it stabilizes on $U$.
+    Since there is a bijection between quasi-coherent sheaves of ideals on $U=\Spec A$ and the ideals in $A$, $A$ is Noetherian iff \itememph{a} holds for $U=\Spec A$. Thus \itememph{b} $\Leftrightarrow$ \itememph{c} as well as \itememph{d} $\Leftrightarrow$ \itememph{e}. The implications \itememph{a} $\Rightarrow$ \itememph{b} $\Rightarrow$ \itememph{e} are trivial.  
+    
+    Let's show \itememph{e} $\Rightarrow$ \itememph{a}. By \itememph{e}, $X=\bigcup_{i\in I}U_i$ may be covered by affine open $U_i$ for which $\Oo_X(U_i)$ is Noetherian. For $\lambda\in\Oo_X(U_i)$, the $\Oo_X(U_i\setminus V(\lambda)) \simeq \Oo_X(U_i)_\lambda$ are also Noetherian, hence the $U_i\setminus V(\lambda)$ satisfy \itememph{a}. By Fact~\reff{fact:affineSchemesTopologyBase}\itememph{b} they form a topology base. Hence any quasi-compact open $U$ may be covered by finitely many such $U_i\setminus V(\lambda)$. Since the sequence $(\Jj_i)_{i\in\IN_0}$ stabilizes on each of these finitely many subsets, it stabilizes on $U$ (using the sheaf axiom).
 \end{proof}
 \begin{defi}[(Locally) Noetherian preschemes]\lbl{def:locNoetherian}
     Such preschemes are called \defemph{locally Noetherian}. $X$ is \defemph{Noetherian} if it is locally Noetherian and quasi-compact.
@@ -2946,51 +2941,67 @@ We derive this from two other lemmas, the first of which is very useful in gener
         The underlying topological space of a Noetherian prescheme is Noetherian.
     \item 
         Let a topological space be called locally Noetherian if the following equivalent conditions hold:
-        \begin{enumerate}
-        \item 
+        \begin{itemize}
+        \item[\itememph{\alpha}]
             Any quasi-compact open subset is Noetherian, and it is covered by quasi-compact open subsets.
-        \item 
+        \item[\itememph{\beta}]
             It is covered by Noetherian open subsets.
-        \item 
+        \item[\itememph{\gamma}] 
             It is covered by quasi-compact open subsets and any open subsets of a quasi-compact open subset is quasi-compact.
-        \end{enumerate}
+        \end{itemize}
         Then the underlying topological space of a locally Noetherian prescheme is locally Noetherian.
-
     \end{alphanumerate}
 \end{fact}
-
+\begin{proof}
+	Part \itememph{a} follows from Proposition~\reff{prop:locNoetherian}\itememph{d}, Proposition~\reff{prop:locFiniteMorph}\itememph{b} and the Hilbert Basissatz. Part \itememph{b} follows in the same way as quasi-compactness is preserved by morphisms of finite type.
+	
+	Now let's prove \itememph{c} (which is \emph{not} just a trivial consequence of Proposition~\reff{prop:locNoetherian}\itememph{a}). If $X$ is a Noetherian prescheme, there is a finite affine open cover $X=\bigcup_{i=1}^kU_i$ with $\Oo_X(U_i)$ Noetherian, hence each $U_i$ is Noetherian. If $X\supseteq C_0\supseteq C_1\supseteq \ldots$ is a descending chain of closed subsets, then each $(U_i\cap C_n)_{n\in\IN_0}$ stabilizes, hence so does $(C_n)_{n\in\IN_0}$. Part \itememph{d} is similar.
+\end{proof}
 
 \section{The relation between varieties and schemes}
 
-Let $X$ be a Noetherian $T_1$-space and $X^* = X\cup H $, where \begin{align*}
-    = \left\{\eta_Z\st Z\subset X \text{ irreducible, closed}, \#(Z)> 1\right\}\;,
+Let $X$ be a Noetherian $T_1$-space and $X^* = X\cup H $, where 
+\begin{align*}
+    H= \left\{\eta_Z\st Z\subset X \text{ irreducible closed, }\#Z> 1\right\}\;,
 \end{align*}
 the two sets are assumed to be disjoint and where $\eta_Z\neq \eta_Y$ when $Z\neq Y$. For open $U\subseteq X$, let 
 \begin{align*}
-    U^* &= U \cup \left\{\eta_Z\in H\st Z\cap U \neq \emptyset, \#(Z) > 1\right\} \\
-    &= U\cup \left\{\eta_Y \st Y\subseteq U\text{ closed, irreducible}, \#(Y) > 1\right\}\;.
+    U^* &= U \cup \left\{\eta_Z\in H\st Z\cap U \neq \emptyset\text{, }\# Z > 1\right\} = U\cup \left\{\eta_Y \st Y\subseteq U\text{ irreducible closed, }\#Y > 1\right\}\;.
 \end{align*}
-We have $(U\cap V)^* = U^* \cap V^*$, $\bigcup_{i\in I} U_i^* = (\bigcup_{i\in I} U_i)^*$ by the base properties of irreducibility. Thus, there is a topology base on $X^*$ by the open subsets $U^*$. As the posets of $X$ and $X^*$ are isomorphic, the presheaf categories on $X$ and $X^*$ are isomorphic and the validity of the sheaf axiom turns out to be preserved. 
+The second equality can be seen as follows: If $Y\subseteq U$ is irreducible and $\#Y>1$, then its closure $\ov Y\subseteq X$ is irreducible and clearly has also at least $2$ points. Conversely, if $Z\subseteq X$ is irreducible and $\# Z>1$, then $Z\cap U$ is irreducible if it is $\neq\emptyset$ and must contain more than $1$ point. Indeed, if not, then this point would be open in $Z$ but also closed (by $T_1$-ness), thus $Z$ woudn't be connected and, in particular, not irreducible.
 
-\begin{fact}
-    We have an equivalence of categories between the Noetherian $T_1$-spaces and the the Noetherian sober spaces such that the closed points are dense in any closed subsets. 
+We have $(U\cap V)^* = U^* \cap V^*$, $\bigcup_{i\in I} U_i^* = \big(\bigcup_{i\in I} U_i\big)^*$ by basic properties of irreducibility. Thus, there is a topology base on $X^*$ by the open subsets $U^*$. As the posets of $X$ and $X^*$ (i.e. the partially ordered sets with respect to inclusion) are isomorphic, the presheaf categories on $X$ and $X^*$ are isomorphic and the validity of the sheaf axiom turns out to be preserved. 
+
+\begin{fact}\lbl{fact:catIsoT1Sober}
+    We have an equivalence of categories between the Noetherian $T_1$-spaces and the the Noetherian sober spaces such that the closed points are dense in any closed subset. 
     \begin{align*}
-        X =\left\{\text{closed points of } Y\right\} &\lmorphism Y\\
-        X&\morphism Y= X^*
+        X =\left\{\text{closed points of } Y\right\} &\longmapsfrom Y\\
+        X&\longmapsto Y= X^*\;.
     \end{align*}
 \end{fact}
-If $k=\ov k$ and $X\morphism \Spec k$ is a morphism of finite type, then a point $x\in X$ is closed iff it is closed in some affine open subsets which is equivalent to $k(x) = k$. And every $f\in \Oo_X(U)$ defines a function from the closed points of $U$ to $k$ by mapping $x\in X$ to the image of $f$ under
+If $k$ is an algebraically closed field and $X\morphism \Spec k$ is a morphism of finite type, then a point $x\in X$ is closed iff it is closed in some affine open subset which again is equivalent to $\KK(x)=\Oo_{X,x}/\mm_x = k$ (where $\mm_x$ is the maximal ideal of $\Oo_{X,x}$). 
+\begin{claim*}
+	This is true.
+\end{claim*}
+\begin{proof}
+	Indeed, if $x\in X$ is closed, then $\{x\}\monomorphism X$ is a closed immersion, hence of finite type by Corollary~\reff{cor:closedImmersionFiniteType}, hence so is the composite $\{x\}\morphism\Spec k$ by stability under composition (cf. Fact~\reff{fact:locFiniteTypeProperties}), hence $\Oo_{X,x}$ is of finite type over $k$ and its residue field must equal $k$ by Hilbert's Nullstellensatz.
+	
+	Conversely, if $\KK(x)=k$, choose an open neighbourhood $U\simeq \Spec R$ of $x$, such that $x$ corresponds to $\pp\in\Spec R$. Then $\KK(x)$ equals the residue field of the local ring $R_\pp$ which is the same as the quotient field of $R/\pp$. The ring $R=\Oo_X(U)$ being of finite type over $k$, Noether normalization  shows that $R/\pp$ is integral over $k[a1,\ldots,a_n]$ with some $a_1,\ldots,a_n\in R/\pp$ algebraically independent over $k$. As $\KK(x)=k$ we must have $n=0$ and $R/\pp$ is integral over a field, thus a field itself (cf. for example \cite[Proposition~1.5.1\itememph{d}]{alg1}). Then $\pp$ is a maximal ideal and $\{x\}=V(\pp)$ is closed in $U$. As this holds for any affine open neighbourhood of $x$ and, of course, also for those affine open sets not containing $x$, it follows that $x\in X$ is a closed point.
+	
+	Finally, $\KK(x)$ doesn't change when restricting to an affine open neighbourhood of $x$. This shows that the above-asserted equivalence.
+\end{proof}
+Then every $f\in \Oo_X(U)$ defines a function from the closed points of $U$ to $k$ by mapping $x\in X$ to the image of $f$ under
 \begin{align*}
-    \Oo_X(U)\morphism \Oo_{X,x} \morphism \Oo_{X,x}/\mm_x \simeq k
+    \Oo_X(U)\morphism \Oo_{X,x} \morphism \Oo_{X,x}/\mm_x \simeq k\;.
 \end{align*}
-
+This should be enough to motivate the following
 \begin{thm}
-    We have an equivalence of categories between the category of prevarieties over $k$ and the integral preschemes $X/k$ of finite type by
+    We have an equivalence of categories between the category of prevarieties over $k$ and the integral preschemes $X$ of finite type over $\Spec k$ by
     \begin{align*}
-        Y &\morphism Y^*\\
-        Y = \left\{\text{closed points of } X\right\} &\lmorphism X
+        Y &\longmapsto Y^*\\
+        Y = \left\{\text{closed points of } X\right\} &\longmapsfrom X
     \end{align*}
-    with the above sheaf of $k$-valued functions. Here $Y^*$ is equipped with the unique sheaf of rings on $Y^*$ corresponding to $\Oo_Y$ under the above isomorphism of categories.
+    with the prevariety $Y$ equipped with the above sheaf of $k$-valued functions. The prescheme $Y^*$ of finite type over $\Spec k$ is equipped with the unique sheaf of rings on $Y^*$ corresponding to $\Oo_Y$ under isomorphism of categories from Fact~\reff{fact:catIsoT1Sober}.
 \end{thm}
 
 
