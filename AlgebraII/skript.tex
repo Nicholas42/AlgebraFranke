@@ -11,6 +11,9 @@
 
 \usepackage{csquotes}
 \usepackage[backend=biber,style=numeric,sorting=none]{biblatex}
+\setcounter{biburlnumpenalty}{7000}
+\setcounter{biburllcpenalty}{7000}
+\setcounter{biburlucpenalty}{8000}
 \addbibresource{../literatur.bib}
 % Title Page
 \title{Algebra II}
@@ -170,7 +173,7 @@ as well. \textbf{Warning!} Somewhere in the middle of the last-mentioned text, t
 \end{thm}    
 The following corollary can be derived in the same way as Corollary~\reff{cor:V(f)codimension1} from Theorem~\reff{thm:krullPrincipalIdeal}.
 \begin{cor}\lbl{cor:capV(f)codimension}
-    Let $X$ be a quasi-affine variety in $k^n$, and let $f_1,\ldots,f_r\in \Oo(X)$ and let $Z$ be any irreducible component of $\bigcap_{i=1}^r V(f_i)=V(f_1,\ldots,f_r)$. Then $\codim(Z,X)\leq r$.
+    Let $X$ be a quasi-affine variety in $k^n$ (for $k$ an algebraically closed field), and let $f_1,\ldots,f_r\in \Oo(X)$. Let $Z$ be any irreducible component of $\bigcap_{i=1}^r V(f_i)=V(f_1,\ldots,f_r)$. Then $\codim(Z,X)\leq r$.
 \end{cor}
 The derivation from Corollary~\reff{cor:V(f)codimension1} by induction on $r$ is significantly easier then the similar inductive derivation of Theorem~\reff{thm:krullIdeal} from Theorem~\reff{thm:krullPrincipalIdeal} due to the fact that $k^n$ is catenary. We will eventually prove Theorem~\reff{thm:krullIdeal} by Hilbert polynomial arguments.
 \begin{proof}[Proof of Corollary~\reff{cor:capV(f)codimension}]
@@ -300,7 +303,7 @@ The derivation from Corollary~\reff{cor:V(f)codimension1} by induction on $r$ is
     \end{align}
 \end{prop}
 \begin{proof}
-    Let $r\in \bigcap_{\mm\in\mSpec} \mm$ and $x\in R$. If $1+xr\not\in R^\times$ it must be contained in some maximal ideal $\mm$ or $R$. Since $r\in\mm$ and $1 = 1+xr - xr\in\mm$, which is a contradiction. 
+    Let $r\in \bigcap_{\mm\in\mSpec} \mm$ and $x\in R$. If $1+xr\not\in R^\times$ it must be contained in some maximal ideal $\mm$ of $R$. Since $r\in\mm$ and $1 = 1+xr - xr\in\mm$, we get a contradiction. 
     
     Conversely, let $\mm$ be maximal and $r\not\in\mm$. Then $\KK(\mm) = R/\mm$ is a field. Let $-x\mod \mm$ be inverse to $r\mod\mm$ (that being non-zero due to $r\not\in\mm$) in that field. Then $xr+1\in\mm$ and $xr+1\not\in R^\times$, so $r$ is not an element of the right hand side.
 \end{proof}
@@ -312,7 +315,7 @@ The following is usually known under the name \emph{Nakayama's lemma}. However, 
         Let $R$ ba any ring, $M$ a finitely generated $R$-module such that $\rad(R)\cdot M = M$. Then $M=0$.
 \end{prop}
 \begin{proof}
-    Let $m=(m_1,\ldots,m_k)^t$ be generators of $M$. As $M=\rad(R) \cdot M$ there are $\rho_{i,j}\in\rad(R)$ such that $m_i = \sum_{j=1}^k \rho_{i,j} m_j$. In other words $(\id_k -\rho)\cdot m=0$ where $\rho$ is the matrix formed by the $\rho_{i,j}$. But $\det(\id_k - \rho) \equiv 1\mod \rad(R)$ by the Leibniz formula as $\rad(R)$ is an ideal containing the $\rho_{i,j}$. By \eqreff{eq:JacobsonRadical}, we conclude $\det(\id_k -\rho)\in R^\times$. Hence, by Cramers rule, $\id_k-\rho$ has an inverse matrix. Therefore $(\id_k -\rho) \cdot m = 0$ implies $m=0$ and thus $M=0$.
+    Let $m=(m_1,\ldots,m_k)^t$ be a vector of generators of $M$. As $M=\rad(R) \cdot M$ there are $\rho_{i,j}\in\rad(R)$ such that $m_i = \sum_{j=1}^k \rho_{i,j} m_j$. In other words $(\id_k -\,\rho)\cdot m=0$ where $\rho=(\rho_{i,j})$ is the matrix formed by the $\rho_{i,j}$. But $\det(\id_k - \rho) \equiv 1\mod \rad(R)$ by the Leibniz formula as $\rad(R)$ is an ideal containing the $\rho_{i,j}$. By \eqreff{eq:JacobsonRadical}, we conclude $\det(\id_k -\,\rho)\in R^\times$. Hence, by Cramers rule, $\id_k-\rho$ has an inverse matrix. Therefore $(\id_k -\,\rho) \cdot m = 0$ implies $m=0$ and thus $M=0$.
 \end{proof}
 Applying Proposition~\reff{prop:NAK} to $M/N$, we obtain the following corollary.
 \begin{cor}\lbl{cor:NAK}
@@ -443,7 +446,7 @@ Applying Proposition~\reff{prop:NAK} to $M/N$, we obtain the following corollary
         Y = \left\{\begin{pmatrix} a&b\\ 0&0\end{pmatrix} \st a,b\in k \right\}\;,\quad
         Z = \left\{\begin{pmatrix} 0&0\\ c&d\end{pmatrix} \st c,d\in k \right\}
     \end{align*}  
-    are irreducible closed subsets of codimension 1 and (thus) dimension 2. But $Y\cap Z = \{0\}$ has codimension 3 in $X$.
+    are irreducible closed subsets of codimension 1 and (thus) dimension 2. But $Y\cap Z = \{0\}$ has codimension 3 in $X$ and the inequality from Theorem~\reff{thm:codimIneqRegular} fails, due to the failure of regularity of $X$ at $0$.
 \end{rem}
 \begin{proof}[Proof of Theorem \reff{thm:codimIneqRegular}]
 	First of all, passing to the respective closures (which doesn't change codimension, e.g. by the \emph{locality of codimension}, cf. Remark~\reff{rem:proofPreparations}\itememph{a}), we may assume that $X,Y,Z$ are affine.
@@ -1066,7 +1069,9 @@ The following wasn't treated in the lecture but we include it anyway (at the pri
 
 
 \section{Kähler differentials for field extensions}\lbl{sec:KahlerFieldExtensions}
-In this section Professor Franke presented some nice-to-know results but without any proofs. However, we try our best to sketch most of the proofs.
+In this section Professor Franke presented some nice-to-know results but without any proofs. However, we try our best to sketch most of the proofs. 
+
+It should be mentioned, though, that an exhaustive, self-contained, and very readable treatment of Kähler differentials can be found in Eisenbud, \cite[Chapter~16]{eisenbudCommAlg}. A more general version of the Jacobi criterion (cf. Proposition~\reff{prop:Jacobian}) may also be found there -- we recommend having a look at this.
 
 \begin{prop}
 	\begin{alphanumerate}
@@ -1108,7 +1113,7 @@ In this section Professor Franke presented some nice-to-know results but without
     \end{alphanumerate}
 \end{prop}
 \begin{proof}
-	Assertion \itememph{a} is not so trivial and we refer to \cite[Proposition~5.6]{kunzKahler}.
+	Assertion \itememph{a} is not so trivial and we refer to Eisenbud, \cite[Corollary~16.17]{eisenbudCommAlg}, or \cite[Proposition~5.6]{kunzKahler}.
 	
 	For \itememph{b}, a result due to F.K. Schmidt says that every extension (algebraic or not) of a perfect field is separable. For finitely generated field extensions we use the notion of separability from Proposition~\reff{prop:kahlerFieldExtension1}. In general, \emph{separable} means that every finitely generated subextension is separable. To prove Schmidt's result, consider a maximal separable subextension $Z/k$, then $L/Z$ is algebraic and purely inseparable and we also may assume it is finite. Then $L^{p^e}\subseteq Z$ for some $e\in\IN_0$, hence $L^{p^e}$ is a separable extension of $k$. Now $k=k^{p^e}$ as $k$ is perfect (i.e. the Frobenius is bijective), hence $L/k$ is separable since $L/k$ is isomorphic to $L^{p^e}/k^{p^e}$ via the Frobenius. Also cf. \cite[Proposition~5.18]{kunzKahler}.
 \end{proof}
@@ -2074,7 +2079,7 @@ We postpone the quite lengthy proof of Proposition~\reff{prop:Akizuki-Hopkins} t
         \begin{align*}
             0\morphism R[-d]\morphism[\cdot p] R\morphism S (Z) \morphism 0
         \end{align*}
-        we have $P_R(T) - P_R(T-d) = P_{S_\bullet(Z)}(T)$. But $P_R(T) = \binom{T+n}n$ hence 
+        we have $P_R(T) - P_R(T-d) = P_{S(Z)}(T)$. But $P_R(T) = \binom{T+n}n$ hence 
         \begin{align*}
         	P_Z = \frac{T^n-(T-d)^n}{n!} + \text{ lower powers } = \frac{d\cdot n\cdot T^{n-1}}{n!} + \text{ lower powers} 
         \end{align*}
@@ -2361,8 +2366,7 @@ and we have bijections
         &= \frac{e\cdot d}{(\xi-1)!}\cdot T^{\xi-1} +\text{ lower powers }\;.
         \end{split}\tag{\#}\lbl{eq:bezout}
     \end{align*}
-    Let $0=M_0\subsetneq \ldots \subsetneq M_k = M$ be a filtration as in Proposition~\reff{prop:filtrationByPrimeIdeals}, with $M_i/M_{i-1} \simeq (R/\qq_i)[t_i]$, $\qq_i\in\Spec R$ being homogeneous prime ideals and $t_i$ some integers. By Fact~\reff{fact:AnnPrimeCap} we have
-    
+    Let $0=M_0\subsetneq \ldots \subsetneq M_k = M$ be a filtration as in Proposition~\reff{prop:filtrationByPrimeIdeals}, with $M_i/M_{i-1} \simeq (R/\qq_i)[t_i]$, $\qq_i\in\Spec R$ being homogeneous prime ideals and $t_i$ some integers. By Fact~\reff{fact:AnnPrimeCap} we have    
     \begin{align*}
         \sqrt{(H)_R} = \sqrt{\Ann_R(M)} = \bigcap_{i=1}^k \qq_i
     \end{align*}
@@ -2398,7 +2402,7 @@ and we have bijections
 
 \section{The Samuel polynomial and the principal ideal theorem}
 
-Let $R$ be a local ring, $M$ a finitely generated $R$-module. When $R$ is Noetherian, it has a filtration (Proposition~\reff{prop:filtrationByPrimeIdeals})
+Let $R$ be a local ring, $M$ a finitely generated $R$-module. When $R$ is Noetherian, $M$ has a filtration (Proposition~\reff{prop:filtrationByPrimeIdeals})
 \begin{align}
     0 = M_0\subsetneq M_1\subsetneq\ldots \subsetneq M_k = M\;, \lbl{eq:filtrationByPrimeIdeals}
 \end{align}
@@ -2439,22 +2443,22 @@ where $M_i/M_{i+1} \simeq R/\pp_i$ with $\pp_i\in\Spec R$ some prime ideals.
 From now on, let $R$ be a Noetherian local ring with maximal ideal $\mm$ and $M$ a finitely generated $R$-module.
 
 \begin{fact}
-    The set $\supp(M)$ is Zariski-closed. Let $\supp(M) = \bigcup_{i=1}^\ell V(\qq_i)$ be its decomposition into irreducible components (cf. Proposition~\reff{prop:irreducibleDecomposition}\itememph{b}) and $Q(M) = \left\{\qq_1,\ldots,\qq_\ell\right\}$. Then 
+    The set $\supp(M)$ is Zariski-closed. Let $\supp(M) = \bigcup_{i=1}^\ell V(\qq_i)$ be its decomposition into irreducible components (cf. Proposition~\reff{prop:irreducibleDecomposition}\itememph{b}) and $\QQ_M= \left\{\qq_1,\ldots,\qq_\ell\right\}$. Then 
     \begin{align}
-        \sqrt{\Ann_R(M)} = \bigcap_{\qq\in Q(M)} \qq  \lbl{eq:sqrtAnnCap}
+        \sqrt{\Ann_R(M)} = \bigcap_{\qq\in \QQ_M} \qq  \lbl{eq:sqrtAnnCap}
     \end{align}
     hence we have
     \begin{align}
-        \dim M = \max_{\qq\in Q(M)} \dim(R/\qq)\;.\lbl{eq:dimSuppM}
+        \dim (M) = \max \left\{\dim(R/\qq)\st \qq\in \QQ_M\right\}=\max\left\{\dim(R/\pp_1),\ldots,\dim(R/\pp_k)\right\}\;.\lbl{eq:dimSuppM}
     \end{align}
-    For any filtration like \eqreff{eq:filtrationByPrimeIdeals}, $Q(M)$ is equal to the set of $\subseteq$-minimal elements of $\left\{\pp_1,\ldots,\pp_k\right\}$.
+    For any filtration like \eqreff{eq:filtrationByPrimeIdeals}, $\QQ_M$ is equal to the set of $\subseteq$-minimal elements of $\left\{\pp_1,\ldots,\pp_k\right\}$.
 \end{fact}
 \begin{proof}
     Zariski-closedness follows from $\supp(M) = V(\Ann_R(M))$ by Lemma~\reff{lem:support}. For any filtration like \eqreff{eq:filtrationByPrimeIdeals}, Fact~\reff{fact:AnnPrimeCap} gives 
     \begin{align*}
-    	\sqrt{\Ann_R(M)}  =\bigcap_{i=1}^k \pp_k = \bigcap_{\qq\in Q} \qq\;,
+    	\sqrt{\Ann_R(M)}  =\bigcap_{i=1}^k \pp_k = \bigcap_{\qq\in\QQ} \qq\;,
     \end{align*}
-    where $Q$ is the set of $\subseteq$-minimal elements of $\left\{\pp_1,\ldots,\pp_k\right\}$. Hence $\supp M=\bigcup_{\qq\in Q} V(\qq)$ where no member of this union contains another, hence it is the decomposition into irreducible components and $Q= Q(M)$ and \eqreff{eq:sqrtAnnCap} follows. 
+    where $\QQ$ is the set of $\subseteq$-minimal elements of $\left\{\pp_1,\ldots,\pp_k\right\}$. Hence $\supp M=\bigcup_{\qq\in \QQ} V(\qq)$ where no member of this union contains another, hence it is the decomposition into irreducible components and $\QQ= \QQ_M$ and \eqreff{eq:sqrtAnnCap} follows, as well as the right equality of \eqreff{eq:dimSuppM}. 
     
     Moreover, any chain of irreducible subsets of $\supp M$ must be contained in one irreducible component $V(\qq)$, hence it must be of the form $V(\qq_0)\subsetneq \ldots\subsetneq V(\qq_m)$ with $\qq_i\supseteq \qq$, and such $\qq_i$ define elements $\qq_0/\qq\supsetneq\ldots\supsetneq\qq_m/\qq$ of $\Spec R/\qq$. This correspondence can clearly be reversed, showing \eqreff{eq:dimSuppM}.
 \end{proof}
@@ -2465,10 +2469,10 @@ From now on, let $R$ be a Noetherian local ring with maximal ideal $\mm$ and $M$
     \end{align}
 \end{rem*}
 \begin{fact}
-    If $x\in R\setminus\bigcap_{\qq\in Q(M)}\qq$, then $\dim(M/x M) <\dim(M)$, unless $\dim(M) =\infty$.
+    If $x\in R\setminus\bigcap_{\qq\in \QQ_M}\qq$, then $\dim(M/x M) <\dim(M)$, unless $\dim(M) =\infty$.
 \end{fact}
 \begin{proof}
-    We have $\Ann_R(M/x M) \supseteq \Ann_R(M)$, hence $\supp M/x M \subseteq \supp M$ and therefore $\dim(M/x M) \leq \dim(M)$. Moreover, if $\Ann(M/x M) \subseteq \qq_0 \subsetneq \ldots \subsetneq \qq_\ell$ is any chain of prime ideals, then $\qq_0 \in \supp(M/x M)\subseteq \supp M$, hence $\qq_0\in V(\qq)$ for some $\qq\in Q(M)$ but $\qq\subsetneq \qq_0$ as $x\in \qq_0$ but $x\not\in \qq$ by our assumption, hence $\dim(M)\geq \ell+1$.
+    We have $\Ann_R(M/x M) \supseteq \Ann_R(M)$, hence $\supp (M/x M) \subseteq \supp (M)$ and therefore $\dim(M/x M) \leq \dim(M)$. Moreover, if $\Ann(M/x M) \subseteq \qq_0 \subsetneq \ldots \subsetneq \qq_\ell$ is any chain of prime ideals, then $\qq_0 \in \supp(M/x M)\subseteq \supp M$, hence $\qq_0\in V(\qq)$ for some $\qq\in \QQ_M$ but $\qq\subsetneq \qq_0$ as $x\in \qq_0$ but $x\not\in \qq$ by our assumption, hence $\dim(M)\geq \ell+1$.
 \end{proof}
 \begin{defi}[Ideal of definition]\lbl{def:idealOfDefinition}
     An \defemph{ideal of definition} of $R$ is any ideal $I$ with $\sqrt{I} = \mm$ (the maximal ideal of the local ring $R$).
@@ -2477,7 +2481,7 @@ From now on, let $R$ be a Noetherian local ring with maximal ideal $\mm$ and $M$
     That $I$ is an ideal of definition is equivalent to $V(I) = \{\mm\}$, which is equivalent to $\dim(V(I)) = 0$ which is equivalent to $\dim(R/I ) = 0$, which is equivalent to $R/I$ being artinian (by Proposition~\reff{prop:Akizuki-Hopkins}\itememph{a}) and not equal to $0$ (the zero ring).
 \end{rem*}
 \begin{fact}\lbl{fact:samuelPolynomial}
-    If $I\subseteq R$ is any ideal of definition there is a unique polynomial $Q= Q(M,I)$ such that $\ell_R(M/I^kM) = Q(k)$ for any large enough $k\in \IN$.
+    If $I\subseteq R$ is any ideal of definition there is a unique polynomial $Q= Q_{M,I}$ such that $\ell_R(M/I^kM) = Q(k)$ for any large enough $k\in \IN$.
 \end{fact}
 
 \begin{proof}
@@ -2501,7 +2505,7 @@ From now on, let $R$ be a Noetherian local ring with maximal ideal $\mm$ and $M$
 \end{proof}
 
 \begin{defi}[Samuel polynomial]\lbl{def:samuelPolynomial}
-    This polynomial $Q=Q(M,I)$ is called the \defemph{Samuel polynomial} of $M$ with respect to $I$ and its degree is denoted by $d(M,I)$. Moreover, let 
+    This polynomial $Q=Q_{M,I}$ is called the \defemph{Samuel polynomial} of $M$ with respect to $I$ and its degree is denoted by $d(M,I)$. Moreover, let 
     \begin{align*}
         \delta(M,I) = \min\left\{k \st \text{there are }x_1,\ldots,x_k\in I \text{ such that } \ell_R\big(M/(x_1M+\ldots x_k M)\big)<\infty\right\}\;.
     \end{align*}
@@ -2519,7 +2523,7 @@ From now on, let $R$ be a Noetherian local ring with maximal ideal $\mm$ and $M$
 \begin{thm}\lbl{thm:idealOfDefinition}
     For any ideal of definition $I$ of any Noetherian local ring $R$ with maximal ideal $\mm$ and any finitely generated $R$-module $M$, we have 
     \begin{align*}
-    	\dim M = d(M,I) = \delta(M,I)\;.
+    	\dim (M) = d(M,I) = \delta(M,I)\;.
     \end{align*}    
 \end{thm}
 \emph{Of course}, before proving this, we will give some corollaries.
@@ -2532,7 +2536,7 @@ From now on, let $R$ be a Noetherian local ring with maximal ideal $\mm$ and $M$
 \begin{proof}
     This proof captures only the case where $k=R/\mm$ is algebraically closed and $\gr(R,\mm)$ is a domain. For a unconditional proof, cf. Eisenbud, \cite[Corollary~12.5]{eisenbudCommAlg}.
     
-    If $\gr(R,\mm)$ has no zero divisors, then it is a graded domain of finite type over $k=R/\mm=\gr_o(R,\mm)$, hence $\gr(R,\mm) = k[X_0,\ldots, X_n]/\pp$ with $\pp\subseteq k[X_0,\ldots,X_n]$ a homogeneous prime ideal and $\gr(R,\mm)$ corresponds to the graded ring of some projective variety $Y\subseteq \IP^{n}(k)$. Then $\dim\gr(R,\mm) = \dim(C(Y)) = \dim(Y) +1 = \deg P+1 $ where $P$ is the Hilbert polynomial of $Y$ (using Proposition~\reff{prop:HilbertDegreeEqualsDimension}), hence the same $P$ as in Fact~\reff{fact:samuelPolynomial} and $\deg Q(R,\mm) = \deg P+1$ by Fact~\reff{fact:discreteIntegration}\itememph{b} and $\deg Q(R,\mm)=d(R,\mm)=\dim R$ by Theorem~\reff{thm:idealOfDefinition}.
+    If $\gr(R,\mm)$ has no zero divisors, then it is a graded domain of finite type over $k=R/\mm=\gr_o(R,\mm)$, hence $\gr(R,\mm) = k[X_0,\ldots, X_n]/\pp$ with $\pp\subseteq k[X_0,\ldots,X_n]$ a homogeneous prime ideal and $\gr(R,\mm)$ corresponds to the graded ring of some projective variety $Y\subseteq \IP^{n}(k)$. Then $\dim\gr(R,\mm) = \dim(C(Y)) = \dim(Y) +1 = \deg P+1 $ where $P$ is the Hilbert polynomial of $Y$ (using Proposition~\reff{prop:HilbertDegreeEqualsDimension}), hence the same $P$ as in Fact~\reff{fact:samuelPolynomial} and $\deg Q_{R,\mm} = \deg P+1$ by Fact~\reff{fact:discreteIntegration}\itememph{b} and $\deg Q_{R,\mm}=d(R,\mm)=\dim R$ by Theorem~\reff{thm:idealOfDefinition}.
 \end{proof}
 \begin{cor}\lbl{cor:dimRMaxIdeal}
     If $R$ is a Noetherian local ring and $\mm =( x_1,\ldots, x_n)_R$, then $\dim(R) \leq n$.
@@ -2546,98 +2550,154 @@ From now on, let $R$ be a Noetherian local ring with maximal ideal $\mm$ and $M$
 \begin{proof}
     If $J= (x_1,\ldots,x_n)_R$ is an ideal of definition then $\dim(R) = \delta(R,J) \leq n$ as before. Vice versa, let $d=\dim(R) = \delta(\mm,R)$ then there are $x_1,\ldots, x_k\in R$ such that $\ell_R(R/(x_1,\ldots, x_d)_R)<\infty)$ hence $J= (x_1,\ldots, x_d)_R$ is an ideal of definition.
 \end{proof}
-And finally, we are able to prove Theorem~\reff{thm:krullIdeal} (and thus also the principal ideal theorem, Theorem~\reff{thm:krullPrincipalIdeal}) at last!
+And finally, we are able to prove Theorem~\reff{thm:krullIdeal} and thus also Krull's (who, as we all know from \cite{alg1}, was a \emph{n00b} compared to Grothendieck) principal ideal theorem, Theorem~\reff{thm:krullPrincipalIdeal}, at last!
 \begin{cor}[Krull's height theorem]\lbl{cor:KrullHeight}
     If $R$ is any Noetherian ring and $\pp$ minimal among all prime ideals containing $x_1,\ldots, x_k\in R$, then $\dim(\pp) \leq k$.
 \end{cor}
 \begin{proof}
     As the prime ideals of the localization $R_\pp$ correspond to the prime ideals contained in $\pp$, its maximal ideal $\mm=\pp R_\pp$ is the only prime ideal containing the images of the $x_i$ in $R_\pp$. Then $V(x_1,\ldots, x_k) =\{\mm\}$ in $\Spec R_\pp$ and $\sqrt{(x_1,\ldots,x_k)_{R_\pp}}=\mm$ hence $I=(x_1,\ldots, x_k)_{R_\pp}$ is an ideal of definition and $\hoehe(\pp)=\dim R_\pp \leq k$ by the previous Corollary~\reff{cor:dimGeneratorsDefinition}.
 \end{proof}
+We now start proving Theorem~\reff{thm:idealOfDefinition}. To do this, we will invoke the famous \emph{Artin-Rees lemma}, which had almost been upgraded to a theorem itself.
 \begin{prop}[Artin-Rees] \lbl{prop:artinRees}
-    If $R$ is an Noetherian ring, $I\subseteq R$ an ideal, $N\subseteq M$ a submodule of a finitely generated $R$-module $M$, then there exists a $d\in\IN$ such that $N\cap I^{k+d} \subseteq M \subseteq I^kN$. Here $d$ should only depend on $R$, $I$, $M$ and $N$.
+    If $R$ is an Noetherian ring, $I\subseteq R$ an ideal, $N\subseteq M$ a submodule of a finitely generated $R$-module $M$, then there exists a number $c\in\IN_0$ such that 
+    \begin{align*}
+    	N\cap I^{k+c}M \subseteq I^kN\quad\text{for all }k\geq 0\;. 
+    \end{align*}
 \end{prop}
 \begin{proof}
     Let 
     \begin{align*}
-        A = \left\{\sum_{i=0}^\infty a_kT^k\in R[T] \st a_k I^k\right\}
+        B_IR = \left\{\sum_{k=0}^\infty a_kT^k\in R[T] \st a_k\in I^k\right\}\simeq R\oplus I\oplus I^2\oplus\cdots= R\oplus\bigoplus_{n=1}^\infty I^n
     \end{align*}
-    be the \emph{Rees-algebra} (or \emph{blowup-algebra}). One may note, that due to $A$ being a subset of the polynomial ring, in each element, all but finitely many $a_k$ have to be $0$. This is an $R$-algebra of finite type, hence Noetherian. If $I$ is generated by $(i_\ell)_{\ell=1}^L$ then $A$ is generated over $R$ by $\left\{ i_\ell T \st 1\leq \ell \leq L\right\}$. The module 
+    be the \emph{Rees-algebra} (or \emph{blowup-algebra}). One may note, that due to $B_IR$ being a subset of the polynomial ring, in each element all but finitely many $a_k$ have to be $0$. This is an $R$-algebra of finite type, hence Noetherian by Hilbert's Basissatz. Indeed, if $I$ is generated by $i_1,\ldots,i_n$ then $A$ is generated over $R$ by $i_1T,\ldots,i_nT$. The module 
     \begin{align*}
-        \snake M = \left\{\sum_{i=0}^\infty \mu_iT^i\in M[T] \st \mu_j \in I^jM\right\}
+        B_IM = \left\{\sum_{k=0}^\infty \mu_kT^k\in M[T] \st \mu_k \in I^kM\right\}\simeq M\oplus IM\oplus I^2M\oplus\cdots=\bigoplus_{n=0}^\infty I^nM
     \end{align*}
-    is finitely generated (by $(m_k T^0)_{k=1}^K$ when the $m_k$ generate $M$ as an $R$-module) as an $A$-module. As $A$ is Noetherian, $\widehat N = (N[T])\cap \snake M \subseteq \snake M$ is also finitely generated. Let $(n_\lambda T^{c_\lambda})_{\lambda = 1}^\Lambda$ be generators of $\widehat N$ over $A$. Then the assertion holds for $d = \max\left\{c_\lambda\st 1\leq \lambda \leq \Lambda\right\}$. 
+    is finitely generated (by $m_1T^0,\ldots,m_\ell T^0$ when $m_1,\ldots,m_\ell$ generate $M$ as an $R$-module) as an $B_IR$-module. As $B_IR$ is Noetherian, $\widehat N = N[T]\cap B_IM \subseteq B_IM$ is also finitely generated. Let $n_1T^{c_1},\ldots,n_sT^{c_s}$ be generators of $\widehat N$ over $B_IR$ (decomposing arbitrary generators into homogeneous components, we may assume that we have generators which are all homogeneous). We claim that the assertion holds for $c = \max\left\{c_1,\ldots,c_s\right\}$. 
     
-    The set of homogeneous elements of degree $k+d$ of $\widehat N$ equals $((I^{k+d}M)\cap N)\cdot T^{k+d}$ and its elements must be of the form
+    The set of homogeneous elements of degree $k+c$ of $\widehat N$ equals $(I^{k+c}M\cap N)\cdot T^{k+c}$ and its elements must be of the form
     \begin{align*}
-        \sum_{\lambda = 1}^\Lambda (a_\lambda T^{k+d-c_\lambda})(n_\lambda T^{c_\lambda})
+        \sum_{j = 1}^s \big(a_j T^{k+c-c_j}\big)\big(n_j T^{c_j}\big)
     \end{align*}
-    where $a_\lambda \in I^{k+d-c_\lambda} \subseteq I^k$. The result follows as $a_\lambda n_\lambda \in I^k N$.
+    where $a_j \in I^{k+c-c_j} \subseteq I^k$ as $c\geq c_j$. The result follows as $a_j n_j \in I^k N$.
 \end{proof}
-
 \begin{cor}[This is not Corollary~\reff{cor:dimRMaxIdeal}]\lbl{cor:shortExactd}
-    Let $0\morphism M'\morphism M \morphism M''\morphism 0$ be short exact sequence of finitely generated modules over a Noetherian local ring $R$ in which some ideal of definition has been fixed. Then $d(M) = \max(d(M'), d(M''))$ and if the Samuel polynomials of $M'$ and $M$ have the same degrees and leading coefficients (e.g. because they are isomorphic), then $d(M'') < d(M)$.
+    Let $0\morphism M'\morphism M \morphism M''\morphism 0$ be short exact sequence of finitely generated modules over a Noetherian local ring $R$ in which some ideal $I$ of definition has been fixed. Then 
+    \begin{align*}
+    	d(M,I) = \max\{d(M',I), d(M'',I)\}
+    \end{align*}
+    and if the Samuel polynomials of $M'$ and $M$ have the same degrees and leading coefficients (e.g. because they are isomorphic), then $d(M'',I) < d(M,I)$.
 \end{cor}
 \begin{proof}
-    We have 
+    We have $M'/(I^kM\cap M')\simeq (I^kM+M')/I^kM$ by the second isomorphism theorem, which gives a short exact sequence
     \begin{align*}
-        0 &\morphism M'/(I^k\cap M') \morphism M/I^kM \morphism M''/I^kM'' \morphism 0\\
-        0 &\morphism I^kM +M'/I^kM \nearrow
+        0 &\morphism M'/(I^kM\cap M') \morphism M/I^kM \morphism M''/I^kM'' \morphism 0
     \end{align*}
-    by an easy diagram chase, hence $\ell(M/I^kM) = \ell(M''/I^kM'') + \ell(M'/(I^kM\cap M'))$ and an application of \hyperref[prop:artinRees]{Artin-Rees-Lemma} gives the 
+    by an easy diagram chase. Hence $\ell_R(M/I^kM) = \ell_R(M''/I^kM'') + \ell_R\big(M'/(I^kM\cap M')\big)$ by Remark~\reff{rem:ArtinSchreier}\itememph{f} and an application of the Artin-Rees lemma (Proposition~\reff{prop:artinRees}) gives the existence of some constant $c\in \IN_0$ such that $I^kM'\subseteq I^kM\cap M'\subseteq I^{k-c}M'$. Then there are surjective maps $M'/I^kM'\epimorphism M'/(I^kM\cap M')\epimorphism M'/I^{k-c}M'$, hence their lengths over $R$ must be decreasing in that order and we obtain $Q_{M',I}(k-c) \leq \ell_R\big(M'/(I^kM\cap M')\big) \leq Q_{M',I}(k)$ for $k$ sufficiently large by Fact~\reff{fact:samuelPolynomial}. Thus, for $k$ sufficiently large,
+    \begin{align*}
+        Q_{M',I}(k-c) + Q_{M'',I}(k) \leq Q_{M,I}(k) \leq Q_{M',I}(k) + Q_{M'',I}(k)
+    \end{align*}
+    and if $d=\max\{d(M',I), d(M'',I)\}$, then both the left-hand and the right-hand side are polynomials of degree $d$. It follows that $\deg Q_{M,I}=d$ as well.
     
-    hence $Q_{M'}(k-c) \leq \ell(M'/I^kM\cap M') \leq Q_{M'}(k)$ hence
-    \begin{align*}
-        Q_{M'}(k-c) + Q_{M''}(k) \leq Q_M(k) \leq Q_{M'}(k) + Q_{M''}(k)
-    \end{align*}
-    and if $d=\max(d(M'), d(M''))$ it follows that $Q_M(k) \in \Oo(k^d)$ and also $(k-c)^d \gge Q_M$ proving $\deg(Q_M) = d$. If $Q_M$ and $Q_{M'}$ have the same degree and leading coefficient $\gamma$, then $Q_{M'}(t-c), Q_{M'}(t)$ as wall as everything in between and also $Q_M(t)$ is in $\gamma k^d +\Oo(k^{d-1})$ hence $Q_{M''}(k) \in \Oo(k^{d-1})$ as $k\to \infty$ hence the degree of $Q_{M'}$ is smaller or equal to $d-1$.
+     If $Q_{M,I}$ and $Q_{M',I}$ have the same degree and leading coefficient, then so have the polynomials $Q_{M',I}(T-c)$ and $Q_{M,I}(T)$, hence $Q_{M'',I}(k)\leq Q_{M,I}(k)-Q_{M',I}(k-c)=O(k^{d-1})$ as $k\to\infty$ (note that this $O$ is \emph{Landau notation} and no structure sheaf thingy).
+     Then the degree of $Q_{M'',I}$ must be $\leq d-1$.
 \end{proof}
-\begin{cor}[This also not Corollary~\reff{cor:dimGeneratorsDefinition}]
+\begin{cor}[This also not Corollary~\reff{cor:dimGeneratorsDefinition}]\lbl{cor:dEqualsMaxDim}
     Appyling this to \eqreff{eq:filtrationByPrimeIdeals} we obtain 
     \begin{align*}
-        d(M) = \max\left\{d(R/\qq) \st \qq\in Q_M\right\}\;.
+        d(M,I) = \max\left\{d(R/\qq,I) \st \qq\in \QQ_M\right\}\;.
     \end{align*}
 \end{cor}
 \begin{proof}
     By \eqreff{eq:filtrationByPrimeIdeals} and an inductive application of Corollary~\reff{cor:shortExactd} the left hand side equals 
     \begin{align*}
-        \max\left\{d(R/\pp_i\st 1 \leq i \leq k\right\}
+        \max\left\{d(R/\pp_i,I)\st 1 \leq i \leq k\right\}
     \end{align*}
-    (as in \eqreff{eq:filtrationByPrimeIdeals}) but the $\qq\in Q_M$ are the minimal elements of $\left\{\pp_i \st 1\leq i\leq k\right\}$ and if $\pp_i\supseteq \qq$ we have $R/\qq \epimorphism R/\pp_i$, hence $\ell(R/I^k+\qq) \geq \ell(R/I^k +\pp_i)$ hence $d(R/\pp_i) \leq \deg(R/\qq)$.
+    (as in \eqreff{eq:filtrationByPrimeIdeals}) but the $\qq\in \QQ_M$ are the $\subseteq$-minimal elements of $\left\{\pp_1,\ldots,\pp_k\right\}$ and if $\pp_i\supseteq \qq$ we have $R/\qq \epimorphism R/\pp_i$, hence $\ell_R\big(R/(I^k+\qq)\big) \geq \ell_R\big(R/(I^k +\pp_i)\big)$, hence $d(R/\pp_i,I) \leq d(R/\qq,I)$.
 \end{proof}
-\begin{cor}[Krull, not Krull's height theorem as in Corollary~\reff{cor:KrullHeight}, but still Krull (who, as we all know, was a \emph{n00b} compared to Grothendieck)]
-    If $R$ is a local Noetherian ring with maximal ideal $\mm$, then 
+\begin{cor}[Krull's intersection theorem]\lbl{cor:KrullIntersection}
+    If $R$ is a local Noetherian ring with maximal ideal $\mm$, $I\subseteq R$ a proper ideal and $M$ a finitely generated $R$-module, then 
     \begin{align*}
-        \bigcap_{k=0}^\infty \mm^k = \{0\}\;.
+        \bigcap_{k=0}^\infty I^kM =0\;.
     \end{align*}
 \end{cor}
 \begin{proof}
-    Let $M=R$, $N= \bigcap_{k=0}^\infty \mm^k$ then $\mm N \supseteq (\mm^{d+1} M) \cap N =  \mm^{d+1}\cap N = N$ by Proposition~\reff{prop:artinRees} and $N=0$ by \NAK.
+    By Artin-Rees (Proposition~\reff{prop:artinRees}), there is a $c\in\IN_0$ such that $\mm N \supseteq IN\supseteq I^{c+1} M \cap N = N$. Then $N=0$ by \NAK.
 \end{proof}
+\begin{rem*}
+	In particular, $\bigcap_{k=0}^\infty\mm^k=0$, which is the version we proved in the lecture. However, we need it in full generality for the proof of Theorem~\reff{thm:idealOfDefinition}, which follows now.
+\end{rem*}
 \begin{proof}[Proof of Theorem~\reff{thm:idealOfDefinition}]
-    First we show $\dim(M) \leq d(M)$ by induction on $d(M)$. When $d(M) = 0$ the lengths of $M/I^kM$ are bounded by some constant $C$ independent of $k$, hence $\ell(M) \leq C$. Hence $\ell(R/\pp_i) \leq C$ in \eqreff{eq:filtrationByPrimeIdeals} hence all $\pp_i=mm$ by Proposition~\reff{prop:Akizuki-Hopkins}. Therefore $\dim(M) = \max\left\{\dim(R/\pp_i)\st 1\leq i\leq k\right\} = 0$. Let $d(M)>0$ and let the assertion be proved for all $N$ with $d(N) < d(M)$. It is sufficient to prove it for all modules $R/\pp$ with the same $d$ because by Corollary~\reff{cor:shortExactd} it is inherited by $M$ from the $R/\pp_i$ occuring in \eqreff{eq:filtrationByPrimeIdeals}. Let $\pp_i \subseteq \qq_0 \subsetneq \qq_1 \subsetneq \ldots \subsetneq \qq_\delta$ a chain of prime ideals contained in $\supp(M)$, then we may select $x\in \qq_1\setminus \qq_0 \subseteq \qq_1\setminus \pp_i$. Then $x$ is no zero-divisor in $M$ and $\qq_1\subsetneq \ldots \subsetneq \qq_\delta$ are still contained in $\supp(M/x M)$ hence $\dim(M/xM) \geq \delta -1$ but $0\morphism M\morphism[x] \morphism M/xM$ and Corollary~\reff{cor:shortExactd} show $d(M/xM) <d(M)$ and $\delta-1 < d(M)$ or $\delta \leq d(M)$.
+    \emph{Step 1.} First we show $\dim(M) \leq d(M,I)$ by induction on $d(M,I)$. When $d(M,I) = 0$ the lengths of $M/I^kM$ are bounded as $k\to\infty$ by some constant $C$ independent of $k$, hence $\ell_R(M) \leq C$. 
     
-    \begin{cor}[YES, a Corollary in a proof, deal with it, I also have to]
-        The finite-dimensionality of $R$ now been established.
-    \end{cor}
-    
-    We now show $d\leq \delta$ (this is not the delta from the last step, if you wondered). If $\delta(M) = 0$, $\ell(M) < \infty$ and $Q_M(k) \leq \ell(M)$ for sufficiently large $k$, hence $Q_M$ is constant and $d=0$. Let $\delta(M) =k$ and the assertion be valid for $N$ with $\delta(N) < k$. We have $x_i\in I$, $1\leq i \leq k$ such that $\ell(M/\sum_{i=1} x_iM)< \infty$ hence $\ell(N/\sum_{i=1}^{k-1} x_iN) < \infty$ where $N=M/x_k M$. It follows that $d(N) \leq k-1$ But
+    Well, the last assertion is not so trivial as it seems at first glance. The problem here is that $\ell_R(M/I^kM)=Q_{M,I}(k)\leq C$ only holds for $k$ sufficiently large. So a priori there's no control over $\ell_R(M)$, i.e. $k=0$, but luckily at this point Krull's intersection theorem (Corollary~\reff{cor:KrullIntersection}) is what we need. Suppose that $M\supseteq M_0\supsetneq M_1\supsetneq\ldots\supsetneq M_{C}$ was a strictly descending chain of length $C+1$ of $R$-submodules. Applying the intersection theorem to $M/M_i$ for $i=1,\ldots,C$, we obtain 
     \begin{align*}
-        0 \morphism x_kM/x_k\cap I^\ell M \morphism M/I^\ell/M \morphism N/I^\ell N\morphism 0
+    	0=\bigcap_{k=0}^\infty I^k(M/M_i)=\bigcap_{k=0}^\infty(I^kM+M_i)/M_i\supseteq\bigg(\bigcap_{k=0}^\infty(I^kM+M_i)\bigg)\Bigm/M_i
     \end{align*}
-    and $\ell(x_kM/x_kM\cap I^\ell M) \leq \ell(M/I^{\ell-1} M)$ as $M/I^{\ell-1} M \morphism x_kM / (x_kM \cap I^\ell M)$, $m \mod I^{\ell-1} M \morphism (x_km)\mod(x_1M\cap I^\ell M)$ is surjective. It follows that $Q_N(\ell) \geq Q_M(\ell) - Q_M(\ell-1)$ and if $Q_M (\ell) = \gamma \ell^d + \Oo(\ell^{d-1})$ then $Q_M(\ell) - Q_M(\ell-1) = \gamma d\ell^{d-1} + \Oo(\ell^{d-2})$ hence $d(N)\geq d(M) -1$ and $d(M) \leq d(N) +1 \leq \delta(N) +1 \leq \delta(M)$.
+    (the inclusion on the right-hand side is easy to check; I'm not sure though, or rather skeptical, if it is an equality in general), hence $\bigcap_{k=0}^\infty(I^kM+M_i)=M_i$. We thus find a sufficiently large $k_i$ such that $M_{i-1}\not\subseteq I^kM+M_i$ for $k\geq k_i$. Taking $k\geq\max\{k_1,\ldots,k_C\}$ we obtain $I^kM+M_0\supsetneq I^kM+M_1\supsetneq\ldots\supsetneq I^kM+M_C$, hence a strictly descending chain
+    \begin{align*}
+    	(I^kM+M_0)/I^kM\supsetneq (I^kM+M_1)/I^kM\supsetneq\ldots\supsetneq (I^kM+M_C)/I^kM
+    \end{align*}
+    of length $C+1$ of $R$-submodules of $M/I^kM$, contradiction.
     
-    \begin{cor}[*facepalm*]
+     Hence $\ell_R(R/\pp_i) \leq C$ in \eqreff{eq:filtrationByPrimeIdeals}, hence all $R/\pp_i$ are Artinian and thus zero-dimensional by Proposition~\reff{prop:Akizuki-Hopkins}. Therefore $\dim(M) = \max\left\{\dim(R/\pp_i)\st 1\leq i\leq k\right\} = 0$ using \eqreff{eq:dimSuppM}. 
+     
+     Now let $d(M,I)\geq 1$ and let the assertion be proved for all $R$-modules $N$ with $d(N,I) < d(M,I)$. By \eqreff{eq:dimSuppM} and Corollary~\reff{cor:dEqualsMaxDim} it is sufficient to deal with the case $M=R/\pp$ with $\pp\in\Spec R$ a prime ideal. Let $\pp \subseteq \qq_0 \subsetneq \qq_1 \subsetneq \ldots \subsetneq \qq_s$ a chain of prime ideals contained in $\supp(M)$, then we may select $x\in \qq_1\setminus \qq_0 \subseteq \qq_1\setminus \pp$. Then $x$ is no zero-divisor in $M=R/\pp$ and $\qq_1\subsetneq \ldots \subsetneq \qq_s$ are still contained in $\supp(M/x M)$ hence $\dim(M/xM) \geq s -1$, but the short exact sequence $0\morphism M\morphism[\cdot x]M \morphism M/xM\morphism0$ and Corollary~\reff{cor:shortExactd} show $d(M/xM,I) <d(M,I)$. Thus $s \leq d(M,I)$.
+    
+    \begin{cor*}[\emph{Yes}, a Corollary inside a proof, deal with it, I also have to]
+        The finite-dimensionality of $R$ now been established.
+    \end{cor*}
+    
+    \emph{Step 2.} We now show $d(M,I)\leq \delta(M,I)$. We do induction on $\delta(M,I)$. If $\delta(M,I) = 0$, then $\ell_R(M) < \infty$ and $Q_{M,I}(k) \leq \ell_R(M)$ for sufficiently large $k$, proving that $Q_{M,I}$ must be constant and $d(M,I)\leq 0$. 
+    
+    Now let $\delta(M,I) =n\geq 1$ and the assertion be valid for finitely generated $R$-modules $N$ with $\delta(N,I) < n$. We have $x_1,\ldots,x_n\in I$ such that $\ell_R\big(M/(x_1M+\ldots+x_nM)\big)< \infty$. Hence $\ell_R\big(N/(x_1N+\ldots+x_{n-1}N)\big) < \infty$ where $N=M/x_n M$. It follows that $\delta(N,I) \leq n-1$. But
+    \begin{align*}
+        0 \morphism x_nM/(x_nM\cap I^k M) \morphism M/I^kM \morphism N/I^k N\morphism 0
+    \end{align*}
+    is a short exact sequence and $\ell_R\big(x_nM/(x_nM\cap I^k M)\big) \leq \ell_R(M/I^{k-1} M)$ as $M\morphism[\cdot x_n]x_nM$ induces a surjective map $M/I^{k-1} M \epimorphism x_nM / (x_nM \cap I^k M)$. It follows that 
+    \begin{align*}
+    	Q_{N,I}(k) \geq Q_{M,I}(k) - Q_{M,I}(k-1)\quad \text{for }k\text{ sufficiently large}
+    \end{align*}
+    and if $Q_{M,I} (k) = \gamma k^d + O(k^{d-1})$ with $\gamma\neq0$ then $Q_{M,I}(k) - Q_{M,I}(k-1) = \gamma dk^{d-1} + O(k^{d-2})$. Hence $d(N,I)\geq d(M,I) -1$ and $d(M,I) \leq d(N,I) +1 \leq \delta(N,I) +1 \leq n=\delta(M,I)$.
+    
+    \begin{cor*}[*facepalm*]
         The Principal Ideal Theorem of Krull and its consequences follow.
-    \end{cor}
+    \end{cor*}
     
-    To end the proof, we have to show $\delta \leq \dim(M)$. Induction on $\dim(M)$. If $\dim(M) = 0$ all $\pp_i$ in \eqreff{eq:filtrationByPrimeIdeals} are $\pp_i= \mm$ hence $\ell(M) < \infty$ and $\delta(M) =0$. Let $\dim(M) < 0$ and the assertion be valid for modules of lower dimension. Let $x_1 \in I  \setminus \bigcup_{\qq\in Q_M}\qq$ (which is possible by prime avoidance as $I\subseteq \qq$ would imply $\mm = \sqrt{I}\subseteq \sqrt{\qq} = \qq$ which is impossible as $\dim M \geq 1$\textbraceright.  Let $N= M/x_1 M$ then $\sqrt{\Ann_R(N)} = \sqrt{xR + \bigcap_{\qq\in Q_M}\qq}$ hence $\supp(N) \subseteq \supp(M)$, hence any $\rr\in Q_N$ contains in some $\qq\in Q_M$ but $\rr \neq \qq$ as $x_1\in \rr$, $x_1\not \in \qq$. Thus, every irreducible component of $\supp N$ is strictly contained in some irreducible component of $\supp M$. Thus $\delta(N) \leq \dim (N) < \dim(M)$ and if $d=\dim(M)$ there are $x_2,\ldots, x_{d-1}\in I$ such that $\ell(M/\sum_{i=1}^d x_i M) = \ell(N/\sum_{i=2}^d x_i N) < \infty$, hence $\delta(M) \leq \dim(M)$.
+    \emph{Step 3.} To end the proof, we have to show $\delta(M,I) \leq \dim(M)$. We do induction on $\dim(M)$. If $\dim(M) = 0$, all $\pp_i$ in \eqreff{eq:filtrationByPrimeIdeals} are maximal, hence $\ell_R(M) < \infty$ and $\delta(M,I) =0$. 
+    
+    Now let $\dim(M)\geq 1$ and the assertion be valid for $R$-modules of lower dimension. Choose an element $x_1 \in I  \setminus \bigcup_{\qq\in \QQ_M}\qq$. This is possible by prime avoidance (Lemma~\reff{lem:primeAvoidance}) as $I\subseteq \qq$ for $\qq\in\QQ_M$ would imply $\mm = \sqrt{I}\subseteq \sqrt{\qq} = \qq$ which is impossible since $\dim M \geq 1$ and $\qq$ is $\subseteq$-minimal. Let $N= M/x_1 M$ then $\sqrt{\Ann_R(N)} = \sqrt{x_1R + \bigcap_{\qq\in \QQ_M}\qq}$ (this is because $\ldots$ well $\ldots$ let's see after the proof), hence $\supp(N) \subseteq \supp(M)$, hence any $\rr\in \QQ_N$ contains some $\qq\in \QQ_M$ but $\rr \neq \qq$ as $x_1\in \rr$ and $x_1\not \in \qq$. Thus, every irreducible component of $\supp N$ is strictly contained in some irreducible component of $\supp M$. Thus $\delta(N,I) \leq \dim (N) < \dim(M)$ and if $d=\dim(M)$ there are $x_2,\ldots, x_d\in I$ such that $\ell_R\big(M/(x_1M+\ldots+x_dM)\big) = \ell_R\big(N/(x_2N+\ldots+x_dN)\big) < \infty$, hence $\delta(M,I) \leq \dim(M)$.
     %If $M=R/\pp$ and $\pp=\mm$ we have $\dim(M) = 0$. Let therefore $\pp\neq \mm$ then $\pp\not \supseteq I$ as $\pp = \sqrt{\pp} \supseteq \sqrt{I} = \mm$ otherwise. Let $x\in \pp\setminus I$ Then $x$ is no zero divisor in $M$ hence 
 \end{proof}
-
-
-
-
-
+To really finish the proof, we need the following fact, which again looks obvious at first glance but it actually isn't -- or maybe it is for Professor Franke, but certainly not for the authors of this notes.
+\begin{lem}\lbl{lem:radicalOfAnnihilator}
+	Let $R$ be an arbitrary ring (i.e. commutative, but neither necessarily Noetherian nor local). Let $I\subseteq R$ be an ideal and $M$ a finitely generated $R$-module. Then
+	\begin{align*}
+		\sqrt{\Ann_R(M/IM)}=\sqrt{I+\Ann_R(M)}\;.
+	\end{align*}
+\end{lem}
+\begin{rem*}
+	Note that the obvious-seeming stronger relation $\Ann_R(M/IM)=I+\Ann_R(M)$ may fail, even for well-behaved rings. The following counterexample is taken from \url{https://math.stackexchange.com/questions/79538/annihilator-of-quotient-module-m-im}.
+	
+	 Let $R=k[x,y]\subseteq k[t]$ where $k$ is a field, $x=t^2$, $y=t^3$. Let $M=k[t]$. It is finitely generated over $R$ (a system of generators is $1, t$). 
+	Let $I=(x)\subseteq R$. Then $IM=t^2k[t]$ and $yM=t^3k[t]\subseteq IM$. So $y\in \operatorname{Ann}_R(M/IM)$. But $y\notin I$, contradiction! Localizing everything at the maximal ideal $(x,y)\subseteq R$ should also give a counterexample in the local case, I think, but I haven't checked all details.
+\end{rem*}
+To prove Lemma~\reff{lem:radicalOfAnnihilator}, we need a slight generalization (often regarded a variant) of the Nakayama lemma.
+\begin{lem}[cf. Eisenbud, {\cite[Corollary~4.7]{eisenbudCommAlg}}]\lbl{lem:NAKgeneralization}
+	Let $R$ be a ring, $I\subseteq R$ an ideal and $M$ a finitely generated $R$-module such that $IM=M$. Then there exists $x\equiv 1\mod I$ such that $xM=0$.
+\end{lem}
+\begin{proof}
+	We mimick the proof of \NAK. Let $m=(m_1,\ldots,m_n)^t$ be a vector of generators of $M$. As $M=IM$, there are $\alpha_{i,j}\in I$ such that $m_i=\sum_{j=1}^n\alpha_{i,j}m_j$. If $\alpha=(\alpha_{i,j})$ denotes the matrix formed by the $\alpha_{i,j}$, we thus have $(\id_n-\,\alpha)\cdot m=0$. Multiplying by the matrix of cofactors of $\id_n-\,\alpha$, we obtain $\det(\id_n-\,\alpha)\cdot m=0$. Thus, for $x=\det(\id_n-\,\alpha)$ we have $xM=0$ and also $x\equiv 1\mod I$ as the reduction modulo $I$ of $\id_n-\,\alpha$ equals the identity matrix.
+\end{proof}
+\begin{proof}[Proof of Lemma~\reff{lem:radicalOfAnnihilator}]
+	It is clear that $I+\Ann_R(M)\subseteq \Ann_R(M/IM)$, hence this inclusion also holds for their radicals.
+	
+	Conversely, let $f\in\Ann_R(M/IM)$. If $f$ is nilpotent, we certainly have $f\in\sqrt{I+\Ann_R(M)}$. Otherwise consider the localized module $M_f$ over the localization $R_f$. We have $M_f/IM_f\simeq (M/IM)_f$, hence $f\cdot M_f/IM_f=0$. But since $f$ is a unit in $R_f$, this implies $M_f/IM_f=0$ or $M_f=IM_f$. By Lemma~\reff{lem:NAKgeneralization} we find an $x\in R_f$ such that $xM_f=0$ and $x\equiv 1\mod IM_f$.
+	
+	Now let $m_1,\ldots,m_n$ be generators of $M$ over $R$. If $x=yf^{-s}$ for some $y\in R$ and $s\geq0$, then, as $xm_i=0$ in $R_f$ we find $k_i\geq 0$ such that $f^{k_i}ym_i=0$ in $R$. Then $f^ky\in\Ann_R(M)$ if $k$ is large enough, that is, if $k\geq\max\{k_1,\ldots,k_n\}$. Now $x\equiv 1\mod IM_f$ implies $x-1=af^{-t}$ for some $a\in I$ and $t\geq0$. This is equivalent to $f^{k-s}y-f^{k}=f^{k-t}a$ for $k\geq s,t$ large enough. Combining both, we get $f^k\in I+\Ann_R(M)$ if $k$ is large enough, as we wanted to show.
+	
+	This shows $\Ann_R(M/IM)\subseteq\sqrt{I+\Ann_R(M)}$. This of course still holds if we take the radical on the left-hand side.
+\end{proof}
 
 
 
