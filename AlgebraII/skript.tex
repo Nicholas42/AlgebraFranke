@@ -142,7 +142,7 @@ as well. \textbf{Warning!} Somewhere in the middle of the last-mentioned text, t
 \begin{proof}[Standalone proof of Corollary~\reff{cor:V(f)codimension1}]
 	\emph{Step 1.} We reduce to the case where $X$ is affine and $V(f)$ is irreducible. Indeed, by Remark~\reff{rem:proofPreparations}\itememph{c}, $X$ may be assumed to be affine. Let $V(f)=C_1\cup\cdots\cup C_m$ be its decomposition into irreducible components. Since $C_1\not\subseteq B\coloneqq C_2\cup\cdots\cup C_m$, there is a $\lambda\in\Oo(X)$ vanishing on $B$ but not on $C_1$. By Remark~\reff{rem:proofPreparations}\itememph{b}, we may replace $X$ by $\snake X=X\setminus V(\lambda)$. Denote $\snake f=f|_{\snake X}\in\Oo\big(\snake X\big)$, then $V(f)\cap \snake X=V(\snake f)=C_1\setminus V(\lambda)$ is irreducible and we may replace $X$ and $f$ by their tilded versions $\snake X$ and $\snake f$.
 	
-	\emph{Step 2.} Let $R$ be a factorial domain and $p\in R$ prime. Then $\hoehe(p)=1$. Indeed, $\hoehe(p)>0$ as $(0)\in\Spec R$ and $p\not=0$. Suppose there is a prime ideal $(0)\subsetneq\qq\subsetneq(p)$. Let $g\in\qq\setminus\{0\}$ and $g=q_1\cdots q_k$ its decomposition into prime factors. We may assume that $k$ is minimal. Since $p\mid q_1\cdots q_k$, we have w.l.o.g. $p\mid q_1$, hence $p$ and $q$ differ only by a unit of $R$ as they are both primes. But $q_2\cdots q_k\not\in\qq$ by minimality of $k$, hence $q_1\in\qq$ as $\qq$ is prime. Then also $p\in\qq$, hence $(p)\subseteq\qq$, contradiction!
+	\emph{Step 2.} Let $R$ be a factorial domain and $p\in R$ prime. Then $\hoehe(p)=1$. Indeed, $\hoehe(p)>0$ as $\{0\}\in\Spec R$ and $p\not=0$. Suppose there is a prime ideal $\{0\}\subsetneq\qq\subsetneq(p)$. Let $g\in\qq\setminus\{0\}$ and $g=q_1\cdots q_k$ its decomposition into prime factors. We may assume that $k$ is minimal. Since $p\mid q_1\cdots q_k$, we have w.l.o.g. $p\mid q_1$, hence $p$ and $q$ differ only by a unit of $R$ as they are both primes. But $q_2\cdots q_k\not\in\qq$ by minimality of $k$, hence $q_1\in\qq$ as $\qq$ is prime. Then also $p\in\qq$, hence $(p)\subseteq\qq$, contradiction!
 	
 	\emph{Step 3.} The principal ideal theorem holds when $R$ is factorial. Indeed, let $f\in R\setminus\{0\}$ and $f=p_1\cdots p_k$ its prime factorization. Then any prime ideal containing $f$ contains some $p_i$, hence the $(p_i)$ are the minimal prime ideals containing $f$. Step 2 does the rest.
 	
@@ -271,7 +271,7 @@ The derivation from Corollary~\reff{cor:V(f)codimension1} by induction on $r$ is
 \begin{prop}\lbl{prop:nilradicalCapPrimeIdeals}
     If $R$ is any ring, then 
     \begin{align*}
-    	\bigcap_{\pp\in\Spec R} \pp =\nil(R) \coloneqq \left\{f\in R\st f^n=0 \text{ for some } n\in\IN\right\} = \sqrt{(0)}\;.
+    	\bigcap_{\pp\in\Spec R} \pp =\nil(R) \coloneqq \left\{f\in R\st f^n=0 \text{ for some } n\in\IN\right\} = \sqrt{\{0\}}\;.
     \end{align*}
     The ideal $\nil(R)$ is called the \defemph{\upshape nilradical} of $R$.
 \end{prop}
@@ -981,7 +981,7 @@ The following wasn't treated in the lecture but we include it anyway (at the pri
         \end{quote}
         However, this is \emph{wrong}! For example, if $R$ is such that $\#\Spec R=1$ but fails to be a field (e.g. $R=\IZ/p^2\IZ$ for $p$ prime or $k[X]/(X^{2017})$), then there are modules which are finitely generated but not free (e.g. $R/\mm$ where $\mm$ is the only maximal ideal), hence not locally free (since $R\setminus \mm\subseteq R^\times$). But the function $\pp\mapsto \dim_{\KK(\pp)}(M_\pp/\pp M_\pp)$ has no choice but to be constant as $\#\Spec R = 1$. 
         
-        However again,  if $R$ has no nilpotent elements, the generalization is true and the proof of Proposition \reff{prop:locallyFreeDim} works. Instead of $y\in X\setminus(V(f)\cup V(r_1))$ in the last step of the above proof we now need to find a prime ideal $\qq\in\Spec R$ such that $r_1,f\in R\setminus\qq$ to arrive at the same contradiction. Equivalently, we need to assure that $r_1f\in R\setminus\qq$. But $r_1f\not=0$ (as otherwise $r_1$ would be $0$ in $M_f$) and the intersection of all prime ideals is the nilradical $\nil(R)$ which is $(0)$ in our case, hence such a $\qq$ may be found.
+        However again,  if $R$ has no nilpotent elements, the generalization is true and the proof of Proposition \reff{prop:locallyFreeDim} works. Instead of $y\in X\setminus(V(f)\cup V(r_1))$ in the last step of the above proof we now need to find a prime ideal $\qq\in\Spec R$ such that $r_1,f\in R\setminus\qq$ to arrive at the same contradiction. Equivalently, we need to assure that $r_1f\in R\setminus\qq$. But $r_1f\not=0$ (as otherwise $r_1$ would be $0$ in $M_f$) and the intersection of all prime ideals is the nilradical $\nil(R)$ which is $\{0\}$ in our case, hence such a $\qq$ may be found.
       \item 
         The closest analogue to Proposition \reff{prop:locallyFreeDim} probably is
         \begin{quote}
@@ -991,7 +991,7 @@ The following wasn't treated in the lecture but we include it anyway (at the pri
             \end{align*}
             then $M$ is a locally free $R$-module of rank $\ell$.
         \end{quote}
-        but this fails unless $R$ is, in addition to $\nil(R) = (0)$, a \emph{Jacobson ring}: The maximal ideals of $R$ form a dense subset of every closed subset of $\Spec R$. For instance, algebras of finite type over $\IZ$ or any field or any principal ideal domain with infinitely many prime ideals may be taken (when $\nil(R) = (0)$), but not local rings which are not fields (as $M=R/\mm$ is a counterexample).
+        but this fails unless $R$ is, in addition to $\nil(R) = \{0\}$, a \emph{Jacobson ring}: The maximal ideals of $R$ form a dense subset of every closed subset of $\Spec R$. For instance, algebras of finite type over $\IZ$ or any field or any principal ideal domain with infinitely many prime ideals may be taken (when $\nil(R) = \{0\}$), but not local rings which are not fields (as $M=R/\mm$ is a counterexample).
 
     \end{alphanumerate}
 \end{rem*}
