@@ -898,7 +898,7 @@ In many cases, the module of Kähler differentials can be calculated using $\Ome
 
 
 
-\section{Kähler-differentials and regularity}
+\section{Kähler differentials and regularity}
 
 \begin{defi}[Locally free] \lbl{def:locallyFree}
     Let $R$ be a ring, $M$ an $R$-module. We say that $M$ is \defemph{locally free} at $\pp\in \Spec R$ if there is $f\in R\setminus\pp$ such that $M_f$ is a free $R_f$-module. When $M_f$ is free of rank $d$ we call $M$ \emph{locally free of rank $d$ at $\pp$}. We simply call $M$ a \emph{locally free $R$-module (of rank $d$)} if it is locally free (of rank $d$) at every prime ideal.
@@ -2271,10 +2271,10 @@ and we have bijections
     \end{align*}
     where the length is of $\Oo_{X,Z}$-modules and in the middle term, $F$ is any element of $k[X_0,\ldots, X_n]_d$ not identically vanishing on $Z$.
 \end{defi}
-\begin{proof}[You know you are attending a lecture by Franke, when a definition needs a proof]
+\begin{proof}[You know you are attending a Franke lecture, when a definition needs a proof]
 	By an argument same as Example~\reff{ex:O(l)LineBundle}, $F$ is a free generator of $\Oo_X(d)|_{X\setminus V(F)}$. Moreover, $X\setminus V(F)$ intersects $Z$, hence $(X\setminus V(F),F)/_\sim$ is a free generator of $\Oo_X(d)_Z$. Therefore, multiplication by $F$ defines an isomorphism
 	\begin{align*}
-	\Oo_{X,Z} \Bigm/ \Big(\frac{H}{F}\cdot\Oo_{X,Z}\Big) \isomorphism[\cdot F] \Oo_X(\ell)_Z/H\cdot \Oo_{X,Z}\;.
+	\Oo_{X,Z} \Bigm/ \left(\frac{H}{F}\cdot\Oo_{X,Z}\right) \isomorphism[\cdot F] \Oo_X(\ell)_Z/H\cdot \Oo_{X,Z}\;.
 	\end{align*}
 	This shows that the middle term is independent of $F$.
 \end{proof}
@@ -2411,7 +2411,7 @@ where $M_i/M_{i+1} \simeq R/\pp_i$ with $\pp_i\in\Spec R$ some prime ideals.
 \begin{lem}\lbl{lem:support}
     Let $M$ be a finitely generated module over any (not necessarily Noetherian) ring $R$, then we have
     \begin{align*}
-        V(\Ann_R(M)) = \left\{\pp\in R\st M_\pp\neq 0\right\}\;.
+        V(\Ann_R(M)) = \left\{\pp\in \Spec R\st M_\pp\neq 0\right\}\;.
     \end{align*}
 \end{lem}
 \begin{proof}
@@ -2677,59 +2677,70 @@ To really finish the proof, we need the following fact, which again looks obviou
 	\end{align*}
 \end{lem}
 \begin{rem*}
-	Note that the obvious-seeming stronger relation $\Ann_R(M/IM)=I+\Ann_R(M)$ may fail, even for well-behaved rings. The following counterexample is taken from \url{https://math.stackexchange.com/questions/79538/annihilator-of-quotient-module-m-im}.
+	Note that the obvious-seeming stronger relation $\Ann_R(M/IM)=I+\Ann_R(M)$ may fail, even for well-behaved rings. Here's a counterexample\footnote{taken from \url{https://math.stackexchange.com/questions/79538/annihilator-of-quotient-module-m-im}}.
 	
 	 Let $R=k[x,y]\subseteq k[t]$ where $k$ is a field, $x=t^2$, $y=t^3$. Let $M=k[t]$. It is finitely generated over $R$ (a system of generators is $1, t$). 
 	Let $I=(x)\subseteq R$. Then $IM=t^2k[t]$ and $yM=t^3k[t]\subseteq IM$. So $y\in \operatorname{Ann}_R(M/IM)$. But $y\notin I$, contradiction! Localizing everything at the maximal ideal $(x,y)\subseteq R$ should also give a counterexample in the local case, I think, but I haven't checked all details.
 \end{rem*}
-To prove Lemma~\reff{lem:radicalOfAnnihilator}, we need a slight generalization (often regarded a variant) of the Nakayama lemma.
-\begin{lem}[cf. Eisenbud, {\cite[Corollary~4.7]{eisenbudCommAlg}}]\lbl{lem:NAKgeneralization}
-	Let $R$ be a ring, $I\subseteq R$ an ideal and $M$ a finitely generated $R$-module such that $IM=M$. Then there exists $x\equiv 1\mod I$ such that $xM=0$.
-\end{lem}
-\begin{proof}
-	We mimick the proof of \NAK. Let $m=(m_1,\ldots,m_n)^t$ be a vector of generators of $M$. As $M=IM$, there are $\alpha_{i,j}\in I$ such that $m_i=\sum_{j=1}^n\alpha_{i,j}m_j$. If $\alpha=(\alpha_{i,j})$ denotes the matrix formed by the $\alpha_{i,j}$, we thus have $(\id_n-\,\alpha)\cdot m=0$. Multiplying by the matrix of cofactors of $\id_n-\,\alpha$, we obtain $\det(\id_n-\,\alpha)\cdot m=0$. Thus, for $x=\det(\id_n-\,\alpha)$ we have $xM=0$ and also $x\equiv 1\mod I$ as the reduction modulo $I$ of $\id_n-\,\alpha$ equals the identity matrix.
-\end{proof}
+
+The following proof was suggested to us by Felix and is a lot shorter and more elegant than ours, so it shall be presented here.
 \begin{proof}[Proof of Lemma~\reff{lem:radicalOfAnnihilator}]
-	It is clear that $I+\Ann_R(M)\subseteq \Ann_R(M/IM)$, hence this inclusion also holds for their radicals.
+	We may equivalently prove $V(\Ann_R(M/IM))=V(I+\Ann_R(M))$. Applying  Lemma~\reff{lem:support} to the finitely generated $R$-module $M/IM$, we have
+	\begin{align*}
+		V(\Ann_R(M/IM))=\left\{\pp\in\Spec R\st (M/IM)_\pp\neq 0\right\}=\left\{\pp\in\Spec R\st IM_\pp\subsetneq M_\pp\right\}\;.
+	\end{align*}
+	Note that by Nakayama's Lemma in the form of Corollary~\reff{cor:NAK} we have $IM_\pp\subsetneq M_\pp$ iff $(IR_\pp+\pp R_\pp)M_\pp\subsetneq M_\pp$. Now this is the case iff $IR_\pp\subseteq \pp R_\pp$ (since $IR_\pp=R_\pp$ otherwise, $\pp R_\pp$ being the maximal ideal of the local ring $R_\pp$) and $\pp M_\pp\subsetneq M_\pp$. The first condition is equivalent to $I\subseteq \pp$. Indeed, if $I\subseteq \pp$, then clearly $IR_\pp\subseteq \pp R_\pp$. Conversely, if $IR_\pp\subseteq \pp R_\pp$, then $I\subseteq IR_\pp\cap R\subseteq\pp R_\pp\cap R=\pp$ (note that the first inclusion may be proper in general).
 	
-	Conversely, let $f\in\Ann_R(M/IM)$. If $f$ is nilpotent, we certainly have $f\in\sqrt{I+\Ann_R(M)}$. Otherwise consider the localized module $M_f$ over the localization $R_f$. We have $M_f/IM_f\simeq (M/IM)_f$, hence $f\cdot M_f/IM_f=0$. But since $f$ is a unit in $R_f$, this implies $M_f/IM_f=0$ or $M_f=IM_f$. By Lemma~\reff{lem:NAKgeneralization} we find an $x\in R_f$ such that $xM_f=0$ and $x\equiv 1\mod IM_f$.
-	
-	Now let $m_1,\ldots,m_n$ be generators of $M$ over $R$. If $x=yf^{-s}$ for some $y\in R$ and $s\geq0$, then, as $xm_i=0$ in $R_f$ we find $k_i\geq 0$ such that $f^{k_i}ym_i=0$ in $R$. Then $f^ky\in\Ann_R(M)$ if $k$ is large enough, that is, if $k\geq\max\{k_1,\ldots,k_n\}$. Now $x\equiv 1\mod IM_f$ implies $x-1=af^{-t}$ for some $a\in I$ and $t\geq0$. This is equivalent to $f^{k-s}y-f^{k}=f^{k-t}a$ for $k\geq s,t$ large enough. Combining both, we get $f^k\in I+\Ann_R(M)$ if $k$ is large enough, as we wanted to show.
-	
-	This shows $\Ann_R(M/IM)\subseteq\sqrt{I+\Ann_R(M)}$. This of course still holds if we take the radical on the left-hand side.
+	For the second condition, again by Nakayama's lemma (in its \NAK\ version) we have $\pp M_\pp\subsetneq M_\pp$ iff $M_\pp\neq 0$. Thus, we get
+	\begin{align*}
+		V(\Ann_R(M/IM))&=\left\{\pp\in \Spec R\st I\subseteq \pp \text{ and }M_\pp\neq 0\right\}=V(I)\cap \supp(M)\\
+		&=V(I+\Ann_R(M))\;,
+	\end{align*}
+	where we applied Lemma~\reff{lem:support} to $M$. We are done.
 \end{proof}
-\begin{rem}[Recall]
-    For a Noetherian local ring $R$, its maximal ideal $\mm$ and $k=R/\mm$, we have
-    \begin{align*}
-        \dim_k(\mm/\mm^2) = \min\left\{n \st \mm \text{ may be generated by } n \text{ elements}\right\}\;.
-    \end{align*}
-    We have $\dim(R) \leq n$ and $R$ is called \emph{regular} when equality occurs.
-\end{rem}
-\begin{example*}
-    Take $y^2 = x^2+x^4$ over a field of characteristic not equal to $2$. We have $y = \pm x\sqrt{1+x^2}$ and $\sqrt{1+x^2} = 1 + \sum_{i=1}^\infty \frac{x^{2i}}{2^{2i-i}}$. 
-    
-    $y^2 = x^2$ (i.e., $y^2 = \pm m$, $A\cup B$ where $A = \left \{(t,t) \st t\in k\right\}$ and $B= \left\{(t,-t)\st t\in k \right\}$). Hence $k[X,Y]/I$ where $I = \left\{f \st f|_{A\cup B} = 0\right\}$ has zero divisors. 
+ Recall that for a Noetherian local ring $R$ with maximal ideal $\mm$ and residue field $k=R/\mm$, the dimension $\dim_k(\mm/\mm^2)$ equals the minimal number of generators of $\mm$ and $\dim(R) \leq \dim_k(\mm/\mm^2)$ (cf. Proposition~\reff{prop:dimLeqGeneratorsMaximal}). If equality occurs, $R$ is called \emph{regular}.
+\begin{example*}%1. The first curve Franke drew was certainly some 8 shaped thing, but y^2=x^2+x^4 doesn't look like this, so I assume what he meant is y^2=x^2-x^4.
+	%2. The power series is just wrong.
+    Consider the following curves over a field of characteristic not equal to $2$. Both have \emph{singularities} in the origin.
+     \begin{center}
+    	\begin{minipage}{0.42\textwidth}
+    		\centering
+    		\includegraphics{Curve3.pdf}
+    		
+    		$Y^2=X^2-X^4$
+    	\end{minipage}
+    	\begin{minipage}{0.42\textwidth}
+    		\centering
+    		\includegraphics{Curve4.pdf}
+    		
+    		$Y^2=X^2$
+    	\end{minipage}\\    	
+    	\phantom{we need more space}
+    \end{center}    
+    %$y^2 = x^2$ (i.e., $y^2 = \pm m$, $A\cup B$ where $A = \left \{(t,t) \st t\in k\right\}$ and $B= \left\{(t,-t)\st t\in k \right\}$). Hence $k[X,Y]/I$ where $I = \left\{f \st f|_{A\cup B} = 0\right\}$ has zero divisors. 
 \end{example*}
-One would intuitively expect, that there are always singularities, where irreducible components meet or where there are any non-zero zero-divisors.
+One would intuitively expect, that there are always singularities, where irreducible components meet or where the stalk of the structure sheaf has any non-zero zero-divisors. The following corollary shows, that this is indeed the case
 
 \begin{cor}
-    Let $R$ be a Noetherian local ring of dimension $d$ with maximal ideal $\mm$.
+    Let $R$ be a Noetherian local ring maximal ideal $\mm$. Suppose that $R$ is regular of dimension $d$.
     \begin{alphanumerate}
     \item 
-        If $x_1,\ldots, x_d$ generate $\mm$ then 
+        If $\mu_1,\ldots, \mu_d$ generate $\mm$ then 
         \begin{align*} 
-            k[X_1,\ldots, X_d] &\morphism \gr_\mm(R)\\
-            X^\alpha &\morphism x^\alpha \mod \mm^{|\alpha| +1}
+            k[X_1,\ldots, X_d] &\morphism \gr(R,\mm)\\
+            X_1^{\alpha_1}\cdots X_d^{\alpha_d} &\longmapsto \mu_1^{\alpha_1}\cdots\mu_d^{\alpha_d} \mod \mm^{|\alpha| +1}
         \end{align*}
-        where $\alpha$ is arbitrary in $\IN_0^d$, is bijective.
+        (where $|\alpha|=\alpha_1+\ldots+\alpha_d$ and $\alpha\in\IN_0^d$) is an isomorphism.
     \item 
         $R$ is domain.
     \end{alphanumerate}
 \end{cor}
 \begin{proof}
-    Obviously the homomorphism from \itememph{a} is well-defined and it is surjective, as the $x_i$ generate $\mm$ as an ideal, hence $\left\{x^\alpha\st \alpha\in \IN_0^d, |\alpha| = k\right\}$ generate $\mm^k$ as an ideal. If it failed to be bijective. There would be a homogeneous $P\in k[X_1,\ldots, X_n]$ contained in the kernel. If $H$ denotes the Hilbert polynomial of $k[X_1,\ldots, X_d]/P$ we have $\deg H < d-1$ and $\ell(\mm^\ell /\mm^{\ell+1}) = \dim_k(\mm^\ell/\mm^{\ell+1}) \leq H(\ell)$ for large $\ell$ and it follows that the Samuel polynomial of $R$ has degree smaller then $d$, a contradiction to Theorem~\reff{thm:idealOfDefinition} and $\dim(R) = d$.
+    Obviously the homomorphism from \itememph{a} is well-defined and it is surjective. Indeed, the $\mu_i$ generate $\mm$ as an ideal, hence the $\mu_1^{\alpha_1}\cdots\mu_d^{\alpha_d}$ for $|\alpha|=k$ generate $\mm^k$ as an ideal. If the map failed to be injective, there would be a homogeneous $P\in S=k[X_1,\ldots, X_n]$ contained in the kernel. 
     
-    Obviously, $R\neq \{0\}$ as it is local. Assume $f,g\in R\setminus\{0\}$ and $fg = 0$. By the Krull intersection lemma there are $k,\ell \geq 0$ such that $f\not\in \mm^{k+1}$, $g\in \mm^{\ell+1}$. The smallest such $k,\ell$ are natural numbers. Then $\ov f = f\mod \mm^{k+1} \neq 0 $ in $\mm^k/\mm^{k+1}$ and $\ov g= g\mod m^{\ell+1}\neq 0$ in $\mm^\ell/\mm^{\ell+1}$ and $fg\mod \mm^{k+\ell+1} = \ov f\ov g$ in $\gr_{k+\ell}(R,\mm)$, and by \itememph{a} and because $k[X_1,\ldots, X_d]$ is a domain this does not vanish, a contradiction.
+    Let $P$ be homogeneous of degree $e$ and $H$ denote the Hilbert polynomial of $S/(P)$. Multiplying by $P$ gives an isomorphism $S_\ell\isomorphism P\cdot S_\ell=(P)_{\ell+e}$. Then the Hilbert polynomial of $(P)$ equals that of $S$ shifted by $-e$. In particular, both have the same degree $d-1$ (by Lemma~\reff{lem:homogeneousPolynomials}) and the same leading coefficient. Then $H$, being the difference of these two via the short exact sequence $0\morphism (P)\morphism S\morphism S/(P)\morphism 0$, has degree $\deg H < d-1$. As $S/(P)\epimorphism \gr (R,\mm)$ is surjective, $\ell(\mm^\ell /\mm^{\ell+1}) = \dim_k(\mm^\ell/\mm^{\ell+1}) \leq H(\ell)$ for large $\ell$ and it follows that the Samuel polynomial of $R$ has degree smaller then $d$, a contradiction to Theorem~\reff{thm:idealOfDefinition} and $\dim(R) = d$. This shows \itememph{a}.
+    
+    To prove \itememph{b}, first note that $R\neq 0$ as the zero ring is not local. Assume $f,g\in R\setminus\{0\}$ and $fg = 0$. By the Krull intersection lemma there minimal exponents $n,\ell \geq 0$ such that $f\notin \mm^{n+1}$, $g\notin \mm^{\ell+1}$. Then $\ov f = f\mod \mm^{n+1} \neq 0 $ in $\mm^n/\mm^{n+1}$ and $\ov g= g\mod m^{\ell+1}\neq 0$ in $\mm^\ell/\mm^{\ell+1}$ and $fg\mod \mm^{n+\ell+1} = \ov f\cdot \ov g$ in $\gr_{n+\ell}(R,\mm)$. By \itememph{a} and because $k[X_1,\ldots, X_d]$ is a domain this does not vanish, a contradiction.
 \end{proof} 
 
 \section{One-dimensional regular rings}
