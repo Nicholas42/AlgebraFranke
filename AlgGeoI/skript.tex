@@ -3130,6 +3130,129 @@ Recall (not from this lecture but from Algebra~II, so if you do not participate 
     To close the circle, we assume \itememph{a} and \itememph{b} (these being equivalent) and show \itememph{d}. If $y\in Y$ is closed and there are affine open subsets $V\subseteq Y$, $U\subseteq X$ such that $y\in V$ and $f(V)\subseteq U$. Then $\Oo_X(U)$ is Jacobson and $\Oo_Y(V)$ of finite type over it, hence $f(y)$ is closed in $U$ by the Proposition~\reff{prop:JacobsonRing}\itememph{d}, hence $f(y)$ is closed in $X$ by \itememph{a} (using the property from Fact~\reff{fact:closedPointsDense}\itememph{c}).
 \end{proof}
 
+\begin{thm}[Serre] \lbl{thm:serre}
+    For a Noetherian local ring $R$, with residue field $k$, the following are equivalent:
+    \begin{alphanumerate}
+    \item 
+        $k$ admits a finite free resolution, i.e. an exact sequence
+            \begin{align*}
+                0 \lmorphism k \lmorphism F_0 \lmorphism F_1 \lmorphism \ldots \lmorphism F_n \lmorphism 0
+            \end{align*}
+        where the $F_i$ are free.
+    \item 
+        $k$ admits a finite flat resolution, i.e. an exact sequence
+            \begin{align*}
+                0 \lmorphism k \lmorphism F_0 \lmorphism F_1 \lmorphism \ldots \lmorphism F_n \lmorphism 0
+            \end{align*}
+        where the $F_i$ are flat, i.e. $-\otimes F_i$ is an exact functor.
+    \item 
+        Any $R$-module admits a finite free resolution.
+    \item 
+        Any $R$-module admits a finite flat resolution.
+    \item 
+        Equality occurs in the inequality $\dim R \leq \dim (\mm/\mm^2)$.
+    \end{alphanumerate}
+\end{thm}
+
+\begin{defi}[Regular ring] \lbl{def:regular}
+    Such $R$ are called \defemph{regular}.
+\end{defi}
+\begin{cor}
+    If $R$ is a regular local ring and $\pp\in \Spec R$, then $R_\pp$ is regular.
+\end{cor}
+\begin{defi}[Normal ring]\lbl{def:normal}
+    A domain is called \defemph{regular} if it is integrally closed in its field of quotients. It is clear that this is inherited by localization. 
+\end{defi}
+
+\begin{defi}[Regular and normal prescheme]\lbl{def:regularNormalPrescheme}
+    A locally Noetherian prescheme $X$ is called \defemph{regular} (respectively \defemph{normal}) if $\Oo_{X,x}$ is regular (respectively normal) for all $x\in X$.
+\end{defi}
+\begin{rem*}
+    \begin{alphanumerate}
+    \item   
+        If $X$ is quasi-compact or Jacobson and $\Oo_{X,x}$ regular for closed $x$, then $X$ is regular. (Let $x\in X$, by Proposition~\reff{prop:closedSubsetPoint}, $\ov{\{x\}}$ contains a closed point $y$. Then $\Oo_{X,y}$ is regular as is its localization $\Oo_{X,x}$ by Theorem~\reff{thm:serre}) 
+    \item   
+        Note that $\left\{x\in X\st \Oo_{X,x} \text{ singular}\right\}$ may fail to be closed, despite Theorem~\reff{thm:serre}. (We think singular means not regular)
+    \item 
+        For a domain $A$ with field of quotients $k$, one has $A=\bigcap_{\pp\in \Spec A}  A_\pp = \bigcap_{\mm\in\mSpec} A_\mm$. Consider $r$ in this intersection and $I=\left\{a\in A\st ar\in A\right\}$ then $I$ fails to be contained in any maximal ideal of $A$, while being an ideal. It easily follows that $A$ is normal iff all $A_\mm$ (or all $A_\pp$ are. Hence, $X$ being normal is equivalent to $\Oo_X(U)$ being a normal domain for any open, affine, connected, non-empty $U$. This is equivalent to $X$ may be covered by affine open $U$ such that $\Oo_X(U)$ is a normal domain. When $X$ is quasi-compact or Jacobson, this is equivalent to $\Oo_{X,x}$ being a normal domain when $x$ is closed in $X$.
+    \item 
+        Let $R_k$ be the condition: $\Oo_{X,x}$ is regular when $\codim(\ov{\{x\}}, X) \leq k$. Then $R_0$ may be expressed as the regularity of $\Oo_{X,\eta}$ where $\ov\eta$ is an irreducible component of $X$, which for zero-dimensional local rings is equivalent to $\Oo_{X,\eta}$ being a field or to $\nil(\Oo_{X,\eta})=0$. By (probably) Serre, $X$ is reduced iff $X$ is $R_0$ and $\Oo_X(U)\morphism \Oo_X(V)$ are injective when $V$ is dense in $U$ (i.e. if $X$ is $S_1$). By the normality criterion of Serre, $X$ is normal iff $X$ is $R_1$ and $\Oo_X(U)\morphism \Oo_X(V)$ are injective when $V$ is dense in $U$ and $\Oo_X(U)\morphism \Oo_X(V)$ is an isomorphism if all irreducible of $U\setminus V$ are of codimension greater than $1$ (i.e. if $X$ is $S_2$). The $S_k$ are related Cohen-Macaulayness (which is $S_\infty$).
+    \end{alphanumerate}
+\end{rem*}
+
+\section{Affine and finite morphisms}
+
+\begin{defi}[Affine morphism] \lbl{def:affineMorphism}
+    A morphism $X\morphism[f] Y$ of preschemes is called \defemph{affine} if it satisfies the following equivalent conditions:
+    \begin{alphanumerate}
+    \item 
+        $U\subseteq Y$ is open affine, then $f^{-1}(U)$ is an affine open subset of $X$.
+    \item 
+        It is possible to cover $Y$ by affine open $U$ such that $f^{-1}(U)$ is an affine open subset of $X$.
+    \end{alphanumerate}
+\end{defi}
+
+\begin{defi}[Finite and integral morphism]\lbl{def:finiteIntegralMorphism}
+    A morphism $X\morphism[f] Y$ of preschemes is called finite (respectively integral) if it is affine and in addition the following equivalent conditions hold
+    \begin{alphanumerate}
+    \item 
+        If $U\subseteq Y$ is open affine then $\Oo_X(f^{-1}(U))$ is finite (respectively integral) over $\Oo_Y(U)$.
+    \item 
+        $Y$ may be covered by affine open subsets $U$ for which this is the case. 
+    \end{alphanumerate}
+\end{defi}
+The proof of equivalence in Definition~\reff{def:finiteIntegralMorphism} is by Lemma~\reff{lem:propsOfAffine} applied to the property $E(U)$:
+\begin{quote}
+    $\Oo_X(f^{-1}(U))$ is finite/integral over $\Oo_Y(U)$.
+\end{quote}
+which by $\Oo_Y(U\setminus V(\lambda))\simeq \Oo_Y(U)_\lambda$ and $\Oo_X(f^{-1}(U\setminus V(\lambda))) \simeq \Oo_X(f^{-1}(U))_\lambda$ (it is easy to see that any morphism with Property \itememph{b} of Definition~\reff{def:affineMorphism} is quasi-compact and quasi-separated) and finiteness/integrality of the ring extension is preserved in these situations and can be tested on such coverings (an $R$-module $M$ is finitely generated iff $\Spec R$ can be covered $\Spec R = \bigcup_{i=1}^n \Spec R_{f_i}$ such that $M_{f_i}$ is finitely generated).
+
+There is a sheaf version of $\Spec$ as follows:
+Let $\Aa$ be any quasi-coherent $\Oo_X$-algebra, then
+\begin{align*}
+    \SPEC(\Aa) = \left\{(x,\pp) \st x\in X, \pp \in \Spec(A_x) \text{ such that the preimage of }\pp\text{ under } \Oo_{X,x}\morphism \Aa_x \text{ is } \mm_{X,x}\right\}
+\end{align*}
+
+Topology base:
+\begin{align*}
+    \Omega(U,\lambda) = \left\{ (x,\pp) \st x\in U, \pp\not\ni (\text{image of } \lambda \text{ under } \Aa(U)\morphism \Aa_X)\right\}
+\end{align*}
+where $U\subseteq X$ is open and $\lambda \in \Aa(U)$. As $\Omega(U,\lambda) \cap \Omega(V,\vartheta) = \Omega(U\cap V, \lambda|_{U\cap V} \cdot \vartheta|_{U\cap V})$ this is indeed a base for some topology.
+
+Pretender stalk:
+\begin{align*}
+    \Oo_{Y,[x,\pp]} \coloneqq (\Aa_x)_\pp
+\end{align*}
+
+Coherence condition:
+\begin{align*}
+    \Oo_Y(W) = \left\{(\alpha_{x,\pp})\in \prod_{(x,\pp)\in W} \Oo_{Y,[x,\pp]}\st \text{Every } w\in W\text{ has a neighbourhood } \Omega(U,\lambda) \text{ for which there is } a\in \Aa(U)_\lambda \text{ such that } \alpha_{x,\pp} \text{ is the image of } a\text{ under } \Aa(U)_\lambda \morphism (\Aa_x)_\lambda \morphism (\Aa_x)_\pp = \Aa_{[x,\pp]} \text{ whenever } (x,\pp)\in W\cap \Omega(U,\lambda)\right\}
+\end{align*}
+
+As in the previous parts of the lecture, one checks that the pretender stalks are canonically isomorphic to the actual stalks. Hence $Y$ is a locally ringed space. It is also easy to check that $(x,\pp)\morphism x$, $Y\morphism X$ is continuous (the preimage of $U$ is $\Omega(U, 1)$) and one has a morphism $Y\morphism X$ of locally ringed spaces, $p(x,\pp) = x$, $p^* f$ are the imaged of $f$ under $\Oo_X(U) \morphism \Oo_{X,x} \morphism \Aa_x \morphism (\Aa_x)_\pp$. One then notes that $p^{-1} U\simeq \SPEC(\Aa|_U)$. This reduces the question of $\SPEC(\Aa)$ being a preschme to the case where $X=\Spec R$ is affine. In this case, one has $\Aa= \snake A$ where $A$ is an $R$-algebra, and it is natural to assume 
+\begin{align*}
+    \SPEC(\Aa)&\isomorphism \Spec A\\
+    (\qq\sqcap R, \qq \cdot A_x) &\longmapsfrom \qq\\
+    (x,\pp)  &\longmapsto (\text{the preimage of }\pp\text{ under } A\morphism A_x \simeq \Aa_x)\;.
+\end{align*}
+One has $(\Oo_{\SPEC \Aa})_{(x,\pp)} = (\Aa_x)_\pp \simeq (A_x)_\pp \simeq A_\qq \simeq (\Oo_{\Spec A})_\qq$ and the identification of the coherence conditions is also easy.
+
+\begin{prop}
+    Let $S$ be a prescheme, $\Aa$ any quasi-coherent $\Oo_S$-algebra, $X\morphism[\xi] S$ any $S$-prescheme. Then one has a bijection
+    \begin{align*}
+        \Hom_{\cat{S-PreSch}} (X, \SPEC(A)) \simeq \Hom_{\cat{\Oo_S-Alg}} (\Aa, \xi_* \Oo_X)
+    \end{align*}
+    sending $X\morphism[f] \Spec \Aa$ to $\Aa \simeq p_* \Oo_{\Spec \Aa} \morphism[p_*(f^*)] p_*f_* \Oo_X = \xi_* \Oo_X$. ($p\colon:\SPEC \Aa \morphism S$).
+\end{prop}
+\begin{proof}
+    As 
+    \begin{align*}
+        U&\longmapsto \Hom_{\cat{U-PreSch}} (\xi^{-1}(U), p^{-1}(U)) = \Hom_{\cat{S-PreSch}}(\xi^{-1}(U), p^{-1}(U))\\
+        U&\longmapsto \Hom_{\cat{\Oo_U-Alg}} (\Aa_U, \xi_*\Aa|U) = \Hom_{\cat{\Oo_U-Alg}}(\Aa|_I, (\si|_{\xi^{-1}(U)})_* \Oo_{\xi^{-1}}(U))\;.
+    \end{align*}
+    are easily seen to be sheaves of sets on $S$, it is sufficient to check this on the affine open subsets of $S$ where it follows from the similar adjunction in the end of 1.4.
+\end{proof}
+
 
 
 
