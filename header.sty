@@ -8,7 +8,9 @@
 \chead{\textsc{\headmark}}
 
 \usepackage{amsmath,amsfonts,amssymb,mathtools}
+\usepackage{array}
 \usepackage{stmaryrd}
+\SetSymbolFont{stmry}{bold}{U}{stmry}{m}{n}%otherwise we get a strange warning
 
 \usepackage{paralist}
 \usepackage[shortlabels]{enumitem}
@@ -16,6 +18,7 @@
 \usepackage{old-arrows}
 \usepackage{pgf,tikz}
 \usetikzlibrary{positioning,arrows,calc}
+\tikzstyle{ob}=[font=\vphantom{$\snake A_A$}]
 
 \usepackage[english]{babel}
 \usepackage[normalem]{ulem}

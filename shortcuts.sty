@@ -1,6 +1,12 @@
 %---- ENVIRONMENTS ----
 %
-\newenvironment{diagram}{\begin{center}\begin{tikzpicture}[line join=round, line cap=round]}{\end{tikzpicture}\end{center}}  
+\newenvironment{diagram*}[1][]{\begin{center}\begin{tikzpicture}[line join=round, line cap=round,#1]}{\end{tikzpicture}\end{center}}  
+
+
+\NewDocumentEnvironment{diagram}{O{} O{}}{\diagramenv{#1}{#2}}{\enddiagramenv}
+\NewEnviron{diagramenv}[2]{\begin{align}#2\begin{tikzpicture}[line cap=round, line join=round,#1]\BODY\end{tikzpicture}\end{align}}
+%\NewDocumentEnvironment{diagram*}{O{} O{}}{\diagramenvv{#1}{#2}}{\enddiagramenvv}
+%\NewEnviron{diagramenvv}[2]{\begin{align*}#2\begin{tikzpicture}[line cap=round, line join=round,#1]\BODY\end{tikzpicture}\end{align*}}
 
 %---- MANY ALPHABETS ----
 %
@@ -138,6 +144,9 @@
 \newoperator{Min}
 \newoperator{Sheaf}
 \newcommand{\sh}{\mathrm{sh}}
+\newcommand{\red}{\mathrm{red}}
+\newoperator {Cl}
+\newoperator{Pic}
 \renewcommand{\det}{\operatorname{det}}%otherwise, det_K behaves strangely in displaymode
 \newoperator{Mat}
 \newoperator{Tr}
@@ -153,8 +162,14 @@
 \newoperator{Eq}
 \newoperator{Bil}
 \newoperator{coker}
+\newoperator{supp}
+\newoperator{gr}
+\DeclareMathOperator{\SPEC}{\mathbf{Spec}}
+\newcommand{\proj}{\mathrm{proj}}
+\newcommand{\aff}{\mathrm{aff}}
 \newcommand{\nil}{\operatorname{nil}}
 \newcommand{\Spec}{\operatorname{Spec}}
+\newoperator{Proj}
 \newcommand{\tr}{\operatorname{tr}}
 \newcommand{\cat}[1]{\operatorname{#1}}%style of categories
 %inductive limit
@@ -177,15 +192,21 @@
 \newcommand{\longto}{\longrightarrow}
 \newcommand{\longot}{\longleftarrow}
 \newcommand{\isomorphism}[1][]{
-	\tikz[baseline=(a.base)] \node (a) at (0,0) {$\longrightarrow$} node[above=-0.25ex] {\tiny $\sim$} node[below=-0.25ex] {$\scriptstyle #1$};}
+	\mathrel{\tikz[baseline=(a.base)] \node (a) at (0,0) {$\!\!\longrightarrow\!\!$} node[above=-0.25ex] {\tiny $\sim$} node[below=-0.25ex] {$\scriptstyle #1$};}}
 \newcommand{\lisomorphism}[1][]{
-	\tikz[baseline=(a.base)] \node (a) at (0,0) {$\longleftarrow$} node[above=-0.25ex] {\tiny $\sim$} node[below=-0.25ex] {$\scriptstyle #1$};}
+	\mathrel{\tikz[baseline=(a.base)] \node (a) at (0,0) {$\!\!\longleftarrow\!\!$} node[above=-0.25ex] {\tiny $\sim$} node[below=-0.25ex] {$\scriptstyle #1$};}}
 \NewDocumentCommand{\doublemorphism}{O{} O{}}{\mathrel{\overset{#1}{\underset{#2}{\substack{\textstyle\longrightarrow\\[-0.67ex]
 			\textstyle\longrightarrow}}}}}
 \NewDocumentCommand{\doublelmorphism}{O{} O{}}{\mathrel{\overset{#1}{\underset{#2}{\substack{\textstyle\longleftarrow\\[-0.67ex]
 					\textstyle\longleftarrow}}}}}
 \NewDocumentCommand{\doublelrmorphism}{O{} O{}}{\mathrel{\overset{#1}{\underset{#2}{\substack{\textstyle\longrightarrow\\[-0.67ex]
 					\textstyle\longleftarrow}}}}}
+\NewDocumentCommand{\xdoublemorphism}{O{} O{}}{\mathrel{\substack{\textstyle\xrightarrow[\hphantom{#2}]{#1}\\[-2.45ex]
+					\textstyle\xrightarrow[#2]{\hphantom{#1}}}}}
+\NewDocumentCommand{\xdoublelmorphism}{O{} O{}}{\mathrel{\substack{\textstyle\xleftarrow{#1}\\[-0.67ex]
+			\textstyle\xleftarrow[#2]{}}}}
+\NewDocumentCommand{\xdoublelrmorphism}{O{} O{}}{\mathrel{\substack{\textstyle\xleftrightarrow{#1}\\[-0.67ex]
+			\textstyle\xleftrightarrow[#2]{}}}}
 
 \newcommand{\IsArgEmpty}[3]{%
 	\if\relax\detokenize{#1}\relax%
