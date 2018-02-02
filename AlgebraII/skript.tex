@@ -2822,7 +2822,7 @@ One would intuitively expect, that there are always singularities, where irreduc
     \itememph{e} $\to$ \itememph{c}. We will show the equivalent to Proposition~\reff{prop:invertPrincipal}. Assume that $\mm$ is not invertible. By Lemma~\reff{lem:invertLocal}, $\mm^{-1} = R$. let $x\in \mm\setminus \mm^2$. by Proposition~\reff{prop:filtrationByPrimeIdeals}, there is $y\in R$ such that $\upsilon = y\mod xR\in R/xR$ satisifies $\Ann_R(\upsilon) = \pp$ for some $\pp\in \Spec R$. Then $\pp = \left\{r\in R\st ry\subseteq xR\right\}$ is not 0 as $x\in\pp$. As $\dim(R) = 1$, $\pp = \mm$. Let $a=y/x$ then $a\not \in R$ as $y\in xR$ otherwise. But $y\in \mm^{-1}$ because for $\mu\in\mm = \pp$ we have $\mu y\in xR$ hence $\mu a = (\mu y)/x\in R$. A contradiction.
 \end{proof}
 
-\begin{thm}
+\begin{thm}\lbl{thm:dedekindDomain}
     For a domain $R$ the following are equivalent.
     \begin{alphanumerate}
     \item 
@@ -2832,8 +2832,8 @@ One would intuitively expect, that there are always singularities, where irreduc
     \item 
         $R$ is Noetherian and any $R_\pp$ is field or a DVR.
     \item 
-        $R$ is a filed or one-dimensional Noetherian normal.
-    \item 
+        $R$ is a field or one-dimensional Noetherian normal.
+    \item[$\mathrm{(\tilde d)}$]
         $R$ is a field or one-dimensional Noetherian regular.
     \item 
         Any ideal of $R$ may be written as a product of prime ideals.
@@ -2841,10 +2841,158 @@ One would intuitively expect, that there are always singularities, where irreduc
     In fact, the decomposition in \itememph{e} is for ideals not equal to $0$ unique up to reordering and the group of fractional ideals is free with the non-zero prime ideals as generators.
 \end{thm}
 \begin{defi}[Dedekind rings]
-    Such $R$ are called \defemph{Dedekind domains} and $\operatorname{Cl} = (\text{fractional ideals}/(K^\times/R^\times)$ is the class group of $R$.
+    Such $R$ are called \defemph{Dedekind domains} and $\operatorname{Cl} = (\text{fractional ideals}/(K^\times/R^\times)$ is the \defemph{class group} of $R$.
 \end{defi}
+\begin{proof}[Proof of Theorem \ref{thm:dedekindDomain}]
+If $R$ is a field, all assertions are more or less trivially fulfilled, so let us assume $R$ is not a field.
 
+\itememph{a} $\rightarrow$ \itememph{b} is trivial.
 
+\itememph{b} $\rightarrow$ \itememph{a}: Let $I$ be any fractional ideal. Then there is some $r\in R\setminus\{0\}$ such
+that $rI\subseteq I$. Then $(rI)^{-1} = r^{-1} I^{-1}$ is easily checked,
+and the invertibility of $rI$ implies
+\begin{align*}
+R = (rI)(RI)^{-1} = r I r^{-1} I^{-1} = rr^{-1} I I^{-1} = I I^{-1}.
+\end{align*}
+Hence $I$ is invertible.
+
+\itememph{b} $\rightarrow$ \itememph{c}: As invertibility for fractional ideals is equivalent to \enquote{finitely generated and locally principal}
+(Proposition \ref{prop:invertPrincipal}),
+\itememph{b} implies that any ideal is finitely generated, hence
+$R$ is Noetherian. If $\pp \in \Spec R$ and $\pp\neq \{0\}$, then the same proposition implies
+that $\pp R_\pp$ is principal ($\pp$ being invertible) and $R_{\pp}$ is a DVR by Theorem \ref{thm:regularDVR}.
+
+\itememph{c} $\rightarrow$ \itememph{b}: This also follows from Proposition \reff{prop:invertPrincipal}.
+
+\itememph{c} $\rightarrow$ \itememph{d}: It is clear that $R$ is Noetherian, and $\dim R\leq 1$ follows easily from
+$\dim R_\pp\leq 1$ for all $\pp\in \Spec R$ (use \itememph{c} and Theorem \ref{thm:regularDVR}). We still have to show $R$ is normal.
+
+We have seen that DVRs are normal. For any domain $R$, $R=\bigcap_{\mm \in \mSpec R} R_m$ (the intersection being
+taken in the field of fractions $K$): If $k\in K$
+is in the intersection but not in $R$, then $I=\{r\in R \mid rk\in R\}$ is a principal ideal ($k\notin R$, hence $1\in I$) not contained
+in any proper ideal $\mm$ (as $k\notin R_\mm$ otherwise), a contradiction.
+
+If $k\in K$ is integral over $R$ and $R$ satisfies \itememph{c}, it is integral over the $R_\mm$ hence contained in $R_\mm$ (as $R_\mm$ are DVRs),
+hence contained in $\bigcap_{\mm} R_\mm = R$.
+
+\itememph{d} $\rightarrow$ \itememph{\tilde d} Normality is easily seen to be preserved under localization, hence the $R_\mm$ are normal, hence
+regular by Theorem \ref{thm:regularDVR}.
+
+\itememph{\tilde d} $\rightarrow$ \itememph{c}: Theorem \ref{thm:regularDVR}.
+
+\itememph{c} $\rightarrow$ \itememph{e}: Let $I\neq 0$ be any ideal of $R$. For $\mm\in \mSpec R$, we have $I\cdot R_\mm = a R_\mm$
+for some $a\in R_\mm$. Put $v_\mm(I) = v_\mm(a)$ where $v_\mm : \mathrm{Quot}(R_\mm) \rightarrow \mathbb Z\cup \{\infty\}$ is the
+function on $K$ defined by the valuation $v_\mm$ of $R_\mm$.
+Then $I=\prod_{\mm\in \mSpec R} \mm^{v_\mm(I)}$ as
+\begin{align*}
+\left(\prod_{m\in \mm\Spec R} \mm^{e_\mm}\right)_{\nn} = \prod_{\mm} (\mm R_\nn)^{e_\mm} = (nR_\nn)^{e_\nn},
+\end{align*}
+since $\mm R_\nn = R_\nn$ when $\mm\neq \nn$ because
+$\mm$ and $\nn$ are maximal ideals, so $\mm\not\subseteq \nn$.
+It follows that $v_\nn\left(\prod_\mm \mm^{e_\mm}\right) = e_\nn$. As $IR_\mm$ is uniquely determined by $v_\mm(I)$, it follows
+that $I_\nn = \left(\prod_\mm \mm^{v_\mm(I)}\right)_\nn$ for any $\nn\in \mSpec R$,
+implying $I=\prod_\mm \mm^{v_\mm(I)}$ by arguments similar to the ones for the proof of (\itememph{c}$\rightarrow$\itememph{d}) above.
+Uniqueness of the decomposition
+also follows from these considerations.
+
+\itememph{e} $\rightarrow$ \itememph{c} (When $R$ is Noetherian).
+It is easy to see that \itememph{e} is inherited by localizations,
+hence it suffices to show that any local Noetherian domain $R$ with \itememph{e} is a field or a DVR. Let $\mm\subset R$ be the maximal
+ideal, $k=R/\mm$ and assume that $x,y\in \mm/\mm^2$
+are linearly independent over $k$ (in particular $\neq 0$). Let $V,W\subseteq \mm/\mm^2$ be $k$-subvector spaces spanned by $x$ (resp. $y$)
+and let $I,J\subseteq \mm$ be the preimages of $V$ and $W$. Let moreover
+$I=\prod_{i=1}^n \pp_i$ be a decomposition of $I$ into prime ideals as in \itememph{e}. We have $\pp_i\subseteq \mm$,
+hence $I\subseteq \mm^n$ implying $n\leq 1$ (since $\mm^2\subsetneqq I$).
+As $n=0$ would imply $I=R$, we get $n=1$, hence $I=\pp$ and $\pp = \sqrt \pp = \sqrt I = \mm$
+(since $I\supseteq \mm^2$). This shows $I=\pp = \mm$ and the same holds for $J$, a contradiction.
+We conclude $\dim(\mm/\mm^2)=0$, so $(\mm=0$ and $R$ is a field) or ($\dim(\mm/\mm^2)=1$ and $R$ is a DVR (Theorem
+\ref{thm:regularDVR})).
+
+Prof. Franke claims he \emph{has} a proof that \itememph{e} implies that $R$ is Noetherian, but does not give to us.
+This implication can nevertheless be seen as follows: Suppose first that $I,J$ are non-zero ideals of $R$ such that $I\subseteq J$.
+Fix decompositions of $I$ and $J$ as in \itememph{e}.
+If $\pp$ is any maximal ideal and $e\in \IN$ (resp. $f\in \IN$) the multiplicity of $\pp$ in the decomposition of $I$ (resp. $J$)
+then $\pp^e R_{\pp}=IR_\pp \subseteq JR_\pp=\pp^f R_{\pp}$.
+Pick an a non-zero $\alpha \in\pp$ and decompose $\alpha R_\pp = \pp^g R_\pp$ (since \itememph{e} is inherited by $R_\pp$).
+Then $\alpha^e R_\pp = \left(\pp^{e} R_\pp\right)^g \subseteq \left(\pp^{f} R_\pp\right)^g = \alpha^f R_\pp$,
+so $\alpha^f$ divides $\alpha^e$. Since $R_\pp$ is a domain, we conclude $e\leq f$.
+
+We see: Once we fixed a decomposition of $I$ as in \itememph{e}, there are only finitely many possibilities
+for the decompositions of ideals $J\supseteq I$. In particular, an increasing chain of ideals
+$I=I_0\subseteq I_1\subseteq I_2\subseteq\cdots$ in $R$ will satisfy that only finitely many different ideals occur in it!
+This shows that any increasing chain of ideals in $R$ must become stationary, so $R$ is Noetherian.
+\end{proof}
+
+\section{Relation with intersection multiplicities}Let $C\subseteq \IP^2$ be a curve in the projective plane which is regular at $c\in C$:
+By Theorem \reff{thm:regularDVR}, $\Oo_{C,c}$ is a DVR. Let $v_c : \Oo_{C,c}^\times \rightarrow\mathbb Z$ be its valuation.
+If $\Ll$ is a line bundle on $C$ and $l\in \Ll(U)$, where
+$c\in U\subseteq U$, we put $v_c(l) = v_c\left(\frac l\lambda\right)$, where $\lambda$
+is any generator of the free $\Oo_{C,c}$-module $\Ll_c$ of rank $1$.
+
+Note that for any DVR $R$ and $r\in R$, we have $l(R/rR) = v(r)$ (where $v$ is the valuation of $R$): If
+$r=0$, both sides are $\infty$ and if $\pi\in R$ is a uniformizer (i.e. $v(\pi)=1$) and $r\neq 0$,
+then $r=\varepsilon\pi^k$ with $\varepsilon \in R^\times$, $k=v(r)$ and $R/rR = r/\pi^kR$ has
+a filtration by the submodules $\pi^iR/\pi^kR$ where $0\leq i\leq k$.
+The filtration quotients $\frac{\pi^i R/\pi^k R}{\pi^{i+1} R/\pi^k R} \simeq R/\pi R$ are simple $R$-modules.
+
+For the above $C$ and $c$, it follows that $v(f) = l(\Oo_{C,c}/f\Oo_{C,c})$ hence
+$v_c(l) = v_c\left(\frac l\lambda\right) = l\left(\Oo_{C,c}/\frac l\lambda\Oo_{C,c}\right)
+=l(\Ll_c/l\Oo_{C,c})$ as $\lambda\cdot : \Oo_{C,c}/\frac l\lambda \Oo_{C,c}\xrightarrow\cong \Ll_c/l\Oo_{C,c}$.
+It follows that
+\begin{align*}%\tag{+}
+i(C,H,c) = v_c(H),
+\end{align*}
+where $H$ is any homogeneous polynomial of degree $d$, viewed as an element of
+$(\Oo_{\IP^2}(d))(\IP^2)$ and restricted to $C$, giving a section
+of $\Ll = \Oo_C(d)$.
+This can also be applied to any $C\subseteq \IP^n$ of codimension one at any $Z\subseteq C$ of codimension one in $C$ such that
+$\Oo_{C,Z}$ is a DVR.
+\begin{thm}\lbl{thm:maxNoether}
+\begin{alphanumerate}
+\item If $C\subseteq \IP^2$ is a regular curve, then $k[X_0,X_1,X_2]_d\xrightarrow\sim (\Oo_C(d))(C)$.
+\item (\emph{Restsatz}, M. Noether) Let $C\subseteq \IP^2$ be a curve and $H\in k[X_0,X_1,X_2]$ be a polynomial of homogeneous degree $h$
+not vanishing identically on $C$. Let moreover $c_1,\dotsc,c_{h\deg C}$ be the elements of $V(H)\cap C$ (occuring with the respective muliplicities).
+
+If $E\in k[X_0,X_1,X_2]_e$ with $0<e<h$ is such that $c_1,\dotsc,c_{e\deg C}$ are the elements of $C\cap V(E)$ (by multiplicity),
+then there is some $F\in k[X_0,X_1,X_2]_f$ with $e+f=h$
+and the remaining $f\deg C$ points $c_{1+e\deg C},\dotsc, c_{h\deg C}$ are precisely the elements $V(F)\cap C$ (by multiplicity).
+\end{alphanumerate}
+\end{thm}
+\begin{example*}
+Let $Q\subseteq \IP^2$ be a quartic and $P_1,\dotsc,P_6$ different points and $g_i$ the staight line connecting
+$P_i$ with $P_{i+1}$ (where $P_7 := P_1$).
+Then the intersections $g_1\cap g_4, g_2\cap g_5$ and $g_3\cap g_6$ (which maybe do not exist in the \emph{affine} plane,
+but do so in the projective line)  are on a line (the \emph{Pascal line})
+[picture]
+
+To prove this, consider $C=g_1\cup g_3\cup g_5\subseteq \IP^2$ (this is not irreducible, hence not a variety, but nevermind)
+and $H$ the polynomial of degree $3$ defining $g_2\cup g_4\cup g_6$.
+Then $C\cap V(H) \supseteq \{P_1,\dotsc,P_6\}$ lying on $Q$, a curve on degree $2$.
+By the Restsatz, the remaining intersection points of $C$ and $H$ must be contained in a line.
+\end{example*}
+\begin{proof}[Proof sketch Theorem \ref{thm:maxNoether}, finishing the final lecture in a hurry and five minutes overtime]
+
+\itememph{a} $\rightarrow$ \itememph{b}:
+As $v_c(H\vert_c) \geq v_c(E\vert_c)$ at all points where $E$ fails to be a local generator of
+$\Oo_C(e)$, there is a preimage $(H\vert_C)/(E\vert_C)$
+of $H\vert_C \in (\Oo_C(h))(C)$ under the map $\Oo_C(f)\xrightarrow{\cdot E} \Oo_C(f+e) = \Oo_C(h)$.
+By \itememph{a}, there is a polynomial $F$ in $3$ variables such that
+$F\vert_C = \frac{H\vert_C}{E\vert_C}$, so $H=FE$ on $C$. Then $F$ has the required properties
+and $i(C,H,c) = i(C,E,c) + i(C,F,c)$ as the multiplicities
+depend only on $H\vert_C$.
+
+To prove \itememph{a}, one notes the the result can be shown to hold when $d$ is large (exercise sheet 10, exercise 6).
+We show that the result for $d+1$ implies the result for $d$:
+Let $\varphi\in \Oo_C(d)$
+and let $L\neq 0$ be any linear polynomial such that $C\cap V(L)$ contains only regular points of $C$.
+(This is where the proof becomes very sketchy. e.g. pick a regular point $p\in C$,
+then choose $L$ such that $i(L,C,p)=\deg C$)
+Let, e.g., $L=X_0$ (this is possible after a suitable automorphism of $\IP^2$) and let $L\varphi = G\vert_C$ where
+$G\in k[X_0,X_1,X_2]_{d+1}$. Using the intersection multiplicities one shows that $i(V(L),G,l)\geq i(V(L),C,l)$ for any $l\in V(L) = V(X_0)\cong \IP^1$.
+It follows that $G\vert_{V(L)}$ is divisible by $P\vert_{V(L)}$ (where $P$ is
+the irreducible polynomial defining $C$) hence in $k[X_1,X_2] \simeq k[X_0,X_1,X_2]/X_0$. Hence
+$G=AP+BX_0$ and $\varphi X_0=BX_0$ on $C$, such that $\varphi=B$ there.
+\end{proof}
 
 
 
