@@ -327,12 +327,12 @@ Let it be said that the first three recommendations are from Professor Franke wh
 \begin{rem*}    
     \begin{alphanumerate}
       \item 
-        The definition \eqreff{eq:sheafification} obviously does not change if the coherence condition on its right hand side is replaced by 
+        The definition \eqreff{eq:sheafification} obviously does not change if the coherence condition on its right-hand side is replaced by 
         \begin{quote}
             for every $y\in U$, there are an open neighbourhood $V$ of $y$ in $X$ and $\gamma\in \Gg(U)$ such that $V\subseteq U$ and $V\in\Bb$ and such that $g_x =(V,\gamma)/_\sim$ for all $x\in V$.
         \end{quote}
       \item 
-        It is easy to see that $\Hh=\Gg^\sh$ satisfies the sheaf axiom: If $U = \bigcup_{i\in I} U_i$ is an open cover and $g^{(i)} = \big(g^{(i)}_x\big)_{x\in U_i}\in \Hh(U_i)$ as on the right hand side of the sheaf axiom, define $g\in \Hh(U)$ by $g_x = g_x^{(i)}$ where $i$ is chosen such that $x\in U_i$. This depends on $x$ only. It is easy to see that indeed $g\in \Hh(U)$ and that $g$ this is the only element of $\Hh(U)$ with $g|_{U_i} = g_i$ for all $i\in I$.
+        It is easy to see that $\Hh=\Gg^\sh$ satisfies the sheaf axiom: If $U = \bigcup_{i\in I} U_i$ is an open cover and $g^{(i)} = \big(g^{(i)}_x\big)_{x\in U_i}\in \Hh(U_i)$ as on the right-hand side of the sheaf axiom, define $g\in \Hh(U)$ by $g_x = g_x^{(i)}$ where $i$ is chosen such that $x\in U_i$. This depends on $x$ only. It is easy to see that indeed $g\in \Hh(U)$ and that $g$ this is the only element of $\Hh(U)$ with $g|_{U_i} = g_i$ for all $i\in I$.
       \item
         It is easy to see that for every $x\in X$, $\Gg\to \Gg_x$ is a functor from the category of presheaves to the respective target category, provided that the colimits occuring in the definition of $\Gg_x$ exist in that category. Moreover $(-)^\sh$ is a functor from the category of presheaves with values in sets, groups, or rings to the respective category of sheaves.
     \end{alphanumerate}
@@ -391,7 +391,7 @@ of presheaves on $\Bb$.
 	
 	And finally part \itememph{d}. We first show injectivity of $\Gg(U)\morphism[\Gamma_\Gg] \Gg^\sh(U)$, for $U\in \Bb$. Let $g,g'\in \Gg(U)$ have the same image in $\Gg^\sh(U)$, i.e. for every $x\in U$ their images $g_x$ and $g'_x$ in $\Gg_x$ coincide. By definition of $\Gg_x$, this means that for every $x\in U$ there is an open neighbourhood $V_x\in\Bb$ of $x$, such that $g|_{V_x}=g'|_{V_x}$. As the $V_x$ cover $U$, this implies $g=g'$ by the sheaf axiom.
 	
-	For surjectivity, let $g=(g_x)_{x\in U}\in \Gg^\sh(U)$. For every $x\in U$ there are, by the coherence condition on the right hand side of \eqreff{eq:sheafification}, an open neighbourhood $V_x\in\Bb$ and $\gamma^{(x)}\in \Gg(V_x)$ such that $g_y$ equals the image of $\gamma^{(x)}$ in $\Gg_y$ for all $y\in U\cap V_x$. Replacing $V_x$ by $U\cap V_x$ and $\gamma^{(x)}$ by its restriction we may assume $V_x\subseteq U$. If $x,\xi\in U$ and $y\in V_x\cap V_\xi$, then the images of $\gamma^{(x)}$ and $\gamma^{(\xi)}$ in $\Gg_y$ coincide (they are $g_y$). Thus, the images of $\gamma^{(x)}|_{V_x\cap V_\xi}$ and $ \gamma^{(\xi)}|_{V_x\cap V_\xi}$ under $\Gg(V_x\cap V_\xi ) \morphism[\Gamma_\Gg] \Gg^\sh(V_x\cap V_\xi)$ coincide. Consequently,  $\gamma^{(x)}|_{V_x\cap V_\xi} = \gamma^{(\xi)}|_{V_x\cap V_\xi}$, as injectivity has already been shown. By the sheaf axiom for $\Gg$, there is $\gamma\in \Gg(U)$ such that $\gamma^{(x)}=\gamma|_{V_x}$ simultaneously for all $x\in U$ (note that in all of this we silently used that $\Bb$ is closed under intersections). Then 
+	For surjectivity, let $g=(g_x)_{x\in U}\in \Gg^\sh(U)$. For every $x\in U$ there are, by the coherence condition on the right-hand side of \eqreff{eq:sheafification}, an open neighbourhood $V_x\in\Bb$ and $\gamma^{(x)}\in \Gg(V_x)$ such that $g_y$ equals the image of $\gamma^{(x)}$ in $\Gg_y$ for all $y\in U\cap V_x$. Replacing $V_x$ by $U\cap V_x$ and $\gamma^{(x)}$ by its restriction we may assume $V_x\subseteq U$. If $x,\xi\in U$ and $y\in V_x\cap V_\xi$, then the images of $\gamma^{(x)}$ and $\gamma^{(\xi)}$ in $\Gg_y$ coincide (they are $g_y$). Thus, the images of $\gamma^{(x)}|_{V_x\cap V_\xi}$ and $ \gamma^{(\xi)}|_{V_x\cap V_\xi}$ under $\Gg(V_x\cap V_\xi ) \morphism[\Gamma_\Gg] \Gg^\sh(V_x\cap V_\xi)$ coincide. Consequently,  $\gamma^{(x)}|_{V_x\cap V_\xi} = \gamma^{(\xi)}|_{V_x\cap V_\xi}$, as injectivity has already been shown. By the sheaf axiom for $\Gg$, there is $\gamma\in \Gg(U)$ such that $\gamma^{(x)}=\gamma|_{V_x}$ simultaneously for all $x\in U$ (note that in all of this we silently used that $\Bb$ is closed under intersections). Then 
 	\begin{align*}
 		g_x=\big(V_x, \gamma^{(x)}\big)/_\sim = \big(V_x,\gamma|_{V_x}\big)/_\sim = \big(U,\gamma\big)/_\sim\quad\text{for all }x\in U\;. 
 	\end{align*}
@@ -604,7 +604,7 @@ of presheaves on $\Bb$.
         \end{alphanumerate}
     \end{example}
 
-\section{Locally ringed spaces}
+\section{Locally ringed spaces}\lbl{sec:locRingedSpaces}
 \begin{defi}[Ringed space]\lbl{def:ringedSpace}
     A \defemph{ringed space} is a pair $(X,\Oo_X)$ consisting of a topological space $X$ and a \emph{structure sheaf} which is a sheaf of rings. A \defemph{locally ringed space} is ringed space $(X,\Oo_X)$ such that for any $x\in X$, the stalk $\Oo_{X,x}$ is a local ring, called the \emph{local ring of $X$ at} $x$. Its maximal ideal is denoted $\mm_{X,x}\subseteq \Oo_{X,x}$, or sometimes just $\mm_x$. Finally, let $\KK(x) = \Oo_{X,x}/\mm_x$ be the residue field.
 \end{defi}
@@ -786,6 +786,7 @@ of presheaves on $\Bb$.
 \begin{proof}
 	It suffices to note that $\iota_{\cat{Top}}$ is a monomorphism of topological spaces and $\iota^*$ an epimorphism of sheaves on $Y$ (since it stalk-wise an epimorphism).
 \end{proof}
+\subsection{Construction of equalizers}
 \begin{prop}\lbl{prop:equalizerLRS}
     Let $X\doublemorphism[a][\smash{b}] Y$ be morphisms in $\cat{LRS}$. Then an equalizer of these morphisms is given as follows
     \begin{itemize}
@@ -869,7 +870,7 @@ of presheaves on $\Bb$.
     \begin{align*}
         \phi_\ell\in \left(a^*(v) -b^*(v)\st v\in \Oo_{Y,a(\ell)} = \Oo_{Y,b(\ell)}\right)_{\Oo_{X,\ell}}
     \end{align*}
-    and $f_\ell =0$ as $\Oo_{K,[\ell]}$ is the quotient of $\Oo_{X,\ell}$ by the ideal on the right hand side. Thus, $f|_{U\cap W} =0$, proving the injectivity claim.
+    and $f_\ell =0$ as $\Oo_{K,[\ell]}$ is the quotient of $\Oo_{X,\ell}$ by the ideal on the right-hand side. Thus, $f|_{U\cap W} =0$, proving the injectivity claim.
 	
 	Surjectivity is somewhat easier. Let $\gamma\in\Oo_{K,[k]}$, and choose a preimage $\gamma'\in\Oo_{X,k}$ of $\gamma$ under the quotient projection $\Oo_{X,k}\morphism\Oo_{K,[k]}=\Oo_{X,k}/I$. There are an open neighbourhood $k\in V\subseteq X$ and $\phi\in\Oo_X(V)$ such that $\gamma'$ is the image of $\phi$ in $\Oo_{X,k}$. Let $U=V\cap K$ and $f=\kappa^*\phi\in\kappa_*\Oo_K(V)=\Oo_K(V\cap K)\Oo_K(U)$, then the component $f_k$ of $f$ at $k$ equals
 	\begin{align*}
@@ -1031,7 +1032,8 @@ of presheaves on $\Bb$.
         \left\{\tau \in \Hom(T,X) \st  f\tau =  g\tau \right\} = \left\{\tau \in \Hom(T,X) \st jf\tau = jg\tau\right\}.
     \end{align*}
 \end{rem*}
-\paragraph{Fibre products.} Our goal now is to characterize fibre products of locally ringed spaces. Let $X\morphism[\xi]S\lmorphism[\upsilon]Y$ be morphisms of locally ringed spaces.  For $U\subseteq X$, $V\subseteq Y$, $W\subseteq S$ open subsets in their respective spaces such that $\xi(U) \cup \upsilon(V)\subseteq W$ we put 
+\subsection{Construction of fibre products}
+Our goal now is to characterize fibre products of locally ringed spaces. Let $X\morphism[\xi]S\lmorphism[\upsilon]Y$ be morphisms of locally ringed spaces.  For $U\subseteq X$, $V\subseteq Y$, $W\subseteq S$ open subsets in their respective spaces such that $\xi(U) \cup \upsilon(V)\subseteq W$ we put 
 \begin{align*}
 	\Rr(U,V;W) \coloneqq \Oo_X(U)\otimes_{\Oo_S(W)}\Oo_Y(V)\quad\text{and also}\quad \Rr(U,V) \coloneqq  \Rr(U,V;S)\;. 
 \end{align*}
@@ -1432,7 +1434,7 @@ Since the preimage of this ideal in $\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y}$ equ
     \begin{align*}
     	\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y} \simeq \Oo_{X,x}/(\xi^*(I_s) \cdot \Oo_{X,x}) \eqqcolon \Oo_{X,x}/(I_s\Oo_{X,x})\;. 
     \end{align*}
-    Since $\alpha^{-1}(\pp)$ equals $\mm_{X,x}$, we have $\pp\supseteq \mm_{X,x}/(I_s \Oo_{X,x})$ which must be an equality as the right hand side is the maximal ideal of local ring $\Oo_{X,x}/(I_s \Oo_{X,x})$. Thus, $\pp$ and $y$ are uniquely determined by $x$ ($y$ actually because $\upsilon$ has to be injective) and $\Oo_{F,[x,y,\pp]}\simeq \Oo_{X,x}/(I_s \Oo_{X,x})$ is a quotient of $\Oo_{X,x}$ implying surjectivity of $\xi^*$ on stalks. It remains to confirm that the topology is indeed the induced topology. Note that
+    Since $\alpha^{-1}(\pp)$ equals $\mm_{X,x}$, we have $\pp\supseteq \mm_{X,x}/(I_s \Oo_{X,x})$ which must be an equality as the right-hand side is the maximal ideal of local ring $\Oo_{X,x}/(I_s \Oo_{X,x})$. Thus, $\pp$ and $y$ are uniquely determined by $x$ ($y$ actually because $\upsilon$ has to be injective) and $\Oo_{F,[x,y,\pp]}\simeq \Oo_{X,x}/(I_s \Oo_{X,x})$ is a quotient of $\Oo_{X,x}$ implying surjectivity of $\xi^*$ on stalks. It remains to confirm that the topology is indeed the induced topology. Note that
     \begin{align}\lbl{eq:omegaCover}
         \Omega(U,V,f) = \bigcup_{\lambda\in \Lambda} \Omega(U,V_\lambda, f|_{U,V_\lambda})\tag{$*$}
     \end{align}
@@ -2030,7 +2032,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
     
     Now let \itememph{b} be given. Let $\Bb$ be a topology base of affine open subsets such that $\Mm|_U$ is quasi-coherent when $U\in\Bb$. By Definition~\reff{def:quasicoherent}\itememph{b}, \eqreff{eq:bijectiveQCQS} is an isomorphism for $U\in\Bb$. Now let $U$ be a quasi-compact open subset, $f\in \Oo_X(U)$, $m=\mu f^{-s}\in \Mm(U)_f$ (with $\mu\in \Mm(U)$ and $s\geq0$) such that the image of $m$ under \eqreff{eq:bijectiveQCQS} vanishes. Then $\mu|_{U\setminus V(f)} = 0$. As $U$ is quasi-compact it can be represented $U=\bigcup_{i=1}^n U_i$ with $U_i\in\Bb$. As \eqreff{eq:bijectiveQCQS} is bijective for $U_i$, we have $k_i\in\IN$ such that $f^{k_i}\mu|_{U_i}= 0$ in $\Mm(V_i)$. Let $k=\max_{i=1,\ldots,n} k_i$, then $f^k\mu|_{U_i} = 0$, hence $f^k\mu = 0$ in $\Mm(U)$ as $\Mm$ is a sheaf. Thus, $m = \mu f^{-s}\in M(U)_f$ is zero, which shows injectivity.
     
-    To show the asserted bijectivity, let $\Bb$ be as before, $U\subseteq X$ be open, quasi-compact and quasi-separated, and let $m\in \Mm(U\setminus V(f))$ be given. As before we have $U=\bigcup_{i=1}^n U_i$ with $U_i\in\Bb$. As \eqreff{eq:bijectiveQCQS} is an isomorphism on $U_i$ and there are only finitely many $U_i$, we find $\mu_i\in\Mm(U_i)$ and an exponent $k\geq0$ such that $m|_{U_i\setminus V(f)} = \mu_if^{-k}$. For brevity, denote $U_{i,j}=U_i\cap U_j$. Let $\mu_{i,j} = \mu_i|_{U_{i,j}} - \mu_j|_{U_{i,j}}$, then $\mu_{i,j}|_{U_{i,j}\setminus V(f)} = 0$. As $U$ is quasi-separated and the $U_i$ are affine, this implies $f^{\ell_{i,j}} \mu_{i,j} = 0$ in $\Mm(U_{i,j})$ (for some exponents $\ell_{i,j}\geq0$) by the injectivity step, which applies here since $U_{i,j}$ is quasi-compact by Definition~\reff{def:quasicompact}\itememph{d}. Taking $\ell = \max_{i,j}\ell_{i,j}$ we have $f^\ell\mu_i |_{U_{i,j}} = f^\ell\mu_j|_{U_{i,j}}$ and replacing $k$ by $k+\ell$ and $\mu_i$ by $f^\ell \mu_i$, we achieve $\mu_i|_{U_{i,j}} = \mu_j|_{U_{i,j}}$. As $\Mm$ is a sheaf, there is $\mu\in\Mm(U)$ such that $\mu|_{U_i} = \mu_i$. Then $\big(\mu f^{-k}\big)|_{U\setminus V(f)} = m$ as the restriction of the left hand side to $U_i\setminus V(f)$ equals $\mu_if^{-k} = m|_{U_i\setminus V(f)}$. 
+    To show the asserted bijectivity, let $\Bb$ be as before, $U\subseteq X$ be open, quasi-compact and quasi-separated, and let $m\in \Mm(U\setminus V(f))$ be given. As before we have $U=\bigcup_{i=1}^n U_i$ with $U_i\in\Bb$. As \eqreff{eq:bijectiveQCQS} is an isomorphism on $U_i$ and there are only finitely many $U_i$, we find $\mu_i\in\Mm(U_i)$ and an exponent $k\geq0$ such that $m|_{U_i\setminus V(f)} = \mu_if^{-k}$. For brevity, denote $U_{i,j}=U_i\cap U_j$. Let $\mu_{i,j} = \mu_i|_{U_{i,j}} - \mu_j|_{U_{i,j}}$, then $\mu_{i,j}|_{U_{i,j}\setminus V(f)} = 0$. As $U$ is quasi-separated and the $U_i$ are affine, this implies $f^{\ell_{i,j}} \mu_{i,j} = 0$ in $\Mm(U_{i,j})$ (for some exponents $\ell_{i,j}\geq0$) by the injectivity step, which applies here since $U_{i,j}$ is quasi-compact by Definition~\reff{def:quasicompact}\itememph{d}. Taking $\ell = \max_{i,j}\ell_{i,j}$ we have $f^\ell\mu_i |_{U_{i,j}} = f^\ell\mu_j|_{U_{i,j}}$ and replacing $k$ by $k+\ell$ and $\mu_i$ by $f^\ell \mu_i$, we achieve $\mu_i|_{U_{i,j}} = \mu_j|_{U_{i,j}}$. As $\Mm$ is a sheaf, there is $\mu\in\Mm(U)$ such that $\mu|_{U_i} = \mu_i$. Then $\big(\mu f^{-k}\big)|_{U\setminus V(f)} = m$ as the restriction of the left-hand side to $U_i\setminus V(f)$ equals $\mu_if^{-k} = m|_{U_i\setminus V(f)}$. 
     
     The hard work being done, \itememph{c} trivially implies \itememph{d}. We obtain \itememph{d} $\Rightarrow$ \itememph{e} by Fact~\reff{fact:SpecRqcqs}\itememph{a}, \itememph{e} $\Rightarrow$ \itememph{f} by Definition~\reff{def:quasicoherent}\itememph{b} and \itememph{f} $\Rightarrow$ \itememph{a} by Definition~\reff{def:prescheme}.
 \end{proof}
@@ -2697,7 +2699,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
     \end{alphanumerate}
 \end{prop}
 \begin{proof}
-    For \itememph{a}, we may assume $X$ to be affine because any affine open neighbourhood of $x$ contains all $y$ occuring on the right hand side (in fact, any open neighbourhood $U$ of $x$ contains $y$ as otherwise $\ov{\{y\}}\subseteq X\setminus U$). When $X=\Spec R$, and $x$ is given by $\pp$ and $y$ by $\qq$ then $\ov{\{y\}} = V(\qq)$, hence $\qq$ defines an element of the right-hand side iff $\qq\subseteq \pp$. In this case, the image of $y$ in the left hand side $\Spec(\Oo_{X,x})\simeq \Spec R_\pp$ is the set of all $\frac{r}{f}\in R_\pp$ (where $f\notin\pp$) such that $\qq R_f$ is an element of the vanishing set of $\frac{r}{f}$ in $R_f$, i.e. $\frac{r}{f}\in \qq R_f$, hence the ideal of $R_\pp$ associated to $y$ is $\qq R_\pp$ (as one would expect). Now the map $\qq\mapsto\qq R_\pp$ gives indeed a bijection onto $\Spec R_\pp$, the inverse map being given by 
+    For \itememph{a}, we may assume $X$ to be affine because any affine open neighbourhood of $x$ contains all $y$ occuring on the right-hand side (in fact, any open neighbourhood $U$ of $x$ contains $y$ as otherwise $\ov{\{y\}}\subseteq X\setminus U$). When $X=\Spec R$, and $x$ is given by $\pp$ and $y$ by $\qq$ then $\ov{\{y\}} = V(\qq)$, hence $\qq$ defines an element of the right-hand side iff $\qq\subseteq \pp$. In this case, the image of $y$ in the left-hand side $\Spec(\Oo_{X,x})\simeq \Spec R_\pp$ is the set of all $\frac{r}{f}\in R_\pp$ (where $f\notin\pp$) such that $\qq R_f$ is an element of the vanishing set of $\frac{r}{f}$ in $R_f$, i.e. $\frac{r}{f}\in \qq R_f$, hence the ideal of $R_\pp$ associated to $y$ is $\qq R_\pp$ (as one would expect). Now the map $\qq\mapsto\qq R_\pp$ gives indeed a bijection onto $\Spec R_\pp$, the inverse map being given by 
     \begin{align}\lbl{eq:localizationBijection}
     	\begin{split}
 	    	\Spec R_\pp &\morphism \left\{\qq\in\Spec R\st\qq\subseteq\pp\right\}\\ \rr&\longmapsto \qq= (\text{preimage of }\rr\text{ under }R\morphism R_\pp)
@@ -2731,7 +2733,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
     \end{alphanumerate}
 \end{prop}
 \begin{proof}
-    Assume \itememph{a} and let $U\subseteq X$ be open and $f,g\in \Oo_X(U)$ such that $fg = 0$. Then $U = V(f)\cup V(g)$ and, as $U$ is irreducible and $V(f)$ and $V(g)$ are closed in $U$, we have without loss of generality $U = V(f)$ hence $f\in\nil(\Oo_X)(U)$ by Fact~\reff{fact:nilRadical}. As $X$ is reduced, $f=0$, which shows \itememph{a} $\Rightarrow$ \itememph{b}.
+    Assume \itememph{a} and let $U\subseteq X$ be open and $f,g\in \Oo_X(U)$ such that $fg = 0$. Then $U = V(f)\cup V(g)$. As $U$ is irreducible (it is an open and thus dense subspace of the irreducible space $X$) and $V(f)$ and $V(g)$ are closed in $U$, we have without loss of generality $U = V(f)$ hence $f\in\nil(\Oo_X)(U)$ by Fact~\reff{fact:nilRadical}. As $X$ is reduced, $f=0$, which shows \itememph{a} $\Rightarrow$ \itememph{b}.
     
     It is obvious, that \itememph{b} implies \itememph{c}.
     
@@ -2755,7 +2757,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
     
     Let $X=\bigcup_{i=1}^nX_i$ be the decomposition of $X$ into irreducible components (i.e. maximal irreducible subsets, which are then automatically closed). If $X_i\cap X_j \neq \emptyset$ for $i\neq j$ it would contain a closed point $x$ by Proposition~\reff{prop:closedSubsetPoint} (note that $X$ is Noetherian, hence quasi-compact, cf. \cite[Definition~2.1.2]{alg1}). By Proposition~\reff{prop:specStalksCorrespondence}\itememph{a} $\Oo_{X,x}$ would contain two different minimal prime ideals (corresponding to $X_i$ and $X_j$), hence fail to be a domain. Thus $X=\coprod_{i=1}^nX_i$ and $n=1$ by connectedness. This proves \itememph{a}.
 \end{proof}
-\begin{rem*}%I need to ask Franke about this.%not anymore
+\begin{rem}\lbl{rem:Prop2.1.4WithoutNoetherian}%I need to ask Franke about this.%not anymore
 	Without the Noetherianness assumption, the following implications hold
 	\begin{center}
 		\begin{tikzpicture}
@@ -2775,7 +2777,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
 		\end{tikzpicture}
 	\end{center}
 	Note that in the last step of the above proof we don't need the finiteness of the number of irreducible components; the only thing we need is quasi-compactness and connectedness of $X$, hence above proof essentially showed this implications.
-\end{rem*}
+\end{rem}
 \begin{defi}[Integral preschemes]\lbl{def:integralPrescheme}
     A prescheme satisfying the equivalent conditions \itememph{a}, \itememph{b}, \itememph{c} of Proposition~\reff{prop:integralPrescheme} is called \defemph{integral}.
 \end{defi}
@@ -2803,25 +2805,25 @@ A Franke lecture is no Franke lecture without a definition being proved.
 \end{lem}
 We derive this from two other lemmas, the first of which is very useful in general for assertions of this type.
 \begin{lem}\lbl{lem:propsOfAffine}
-    Let $\Ee$ be a property of affine open subsets of a prescheme $X$ satisfying the following properties:
+    Let $\Pp$ be a property of affine open subsets of a prescheme $X$ satisfying the following properties:
     \begin{alphanumerate}
-    \item 
-        $\Ee(V)$ implies $\Ee(V\setminus V(f))$ for all $f\in \Oo_X(V)$.
-    \item 
-        If $V$ is affine and $f_1,\ldots,f_n \in \Oo_X(V)$ such that $\bigcap_{i=1}^n V(f_i)=\emptyset$ and such that $\Ee(V\setminus V(f_i))$ for all $i$, then $\Ee(V)$ holds.
+    \item[\itememph{\alpha}] 
+        $\Pp(V)$ implies $\Pp(V\setminus V(f))$ for all $f\in \Oo_X(V)$.
+    \item[\itememph{\beta}] 
+        If $V$ is affine and $f_1,\ldots,f_n \in \Oo_X(V)$ such that $\bigcap_{i=1}^n V(f_i)=\emptyset$ and such that $\Pp(V\setminus V(f_i))$ for all $i$, then $\Pp(V)$ holds.
     \end{alphanumerate}
     Then the following conditions are equivalent:
     \begin{alphanumerate}
-      \item[\itememph{\alpha}]
-        $X$ may be covered by affine open subsets $U$ such that $\Ee$ holds for all of them.
-    \item[\itememph{\beta}]
-        $\Ee$ holds for arbitrary affine open subsets of $X$.
+      \item
+        $X$ may be covered by affine open subsets $U$ such that $\Pp$ holds for all of them.
+    \item
+        $\Pp$ holds for arbitrary affine open subsets of $X$.
     \end{alphanumerate}
 \end{lem}
 \begin{proof}
-    The implication \itememph{\beta} $\Rightarrow$ \itememph{\alpha} being trivial we have to show the other direction. We first have to show that $\Ee(U)$ holds when $U\subseteq V$ are affine and $\Ee(V)$ holds ($U$ and $V$ being affine open subsets). Since the $V\setminus V(\lambda)$ (for $\lambda\in \Oo_X(V)$) form a topology base on $V$, $U$ may be covered by such subsets which inherit $\Ee$ by \itememph{a}. But $V\setminus V(\lambda)$ equals $U\setminus V(\lambda)$ when it is a subset of $U$. By the quasi-compactness of $U$ and \itememph{b}, $\Ee(U)$ holds. 
+    The implication \itememph{\beta} $\Rightarrow$ \itememph{\alpha} being trivial we have to show the other direction. We first have to show that $\Pp(U)$ holds when $U\subseteq V$ are affine and $\Pp(V)$ holds ($U$ and $V$ being affine open subsets). Since the $V\setminus V(\lambda)$ (for $\lambda\in \Oo_X(V)$) form a topology base on $V$, $U$ may be covered by such subsets which inherit $\Pp$ by \itememph{a}. But $V\setminus V(\lambda)$ equals $U\setminus V(\lambda)$ when it is a subset of $U$. By the quasi-compactness of $U$ and \itememph{b}, $\Pp(U)$ holds. 
     
-    Now let $U$ be an arbitrary affine open subset of $X$. If $x\in U$, then $x$ is contained in some affine open subset $V$ of $X$ with $\Ee(V)$. Let $W\subseteq U\cap V$ be an affine open neighbourhood of $x$, we have $\Ee(W)$ by the initial step. We may actually assume $W=U\setminus V(\lambda)$ with $\lambda\in \Oo_X(U)$ as such $W$ form a topology base on $U$. Thus, $U$ may be covered by $W=U\setminus V(\lambda)$ with $\Ee(W)$. By the quasi-compactness of $U$ it has a finite covering of that type, and by \itememph{b}, $\Ee(U)$ holds.
+    Now let $U$ be an arbitrary affine open subset of $X$. If $x\in U$, then $x$ is contained in some affine open subset $V$ of $X$ with $\Pp(V)$. Let $W\subseteq U\cap V$ be an affine open neighbourhood of $x$, we have $\Pp(W)$ by the initial step. We may actually assume $W=U\setminus V(\lambda)$ with $\lambda\in \Oo_X(U)$ as such $W$ form a topology base on $U$. Thus, $U$ may be covered by $W=U\setminus V(\lambda)$ with $\Pp(W)$. By the quasi-compactness of $U$ it has a finite covering of that type, and by \itememph{b}, $\Pp(U)$ holds.
 \end{proof}
 \begin{lem}\lbl{lem:finiteTypeOnGenerators}
     Let $R$ be a ring, $A$ an $R$-algebra, $f_1,\ldots,f_n$ elements of $A$ such that $(f_1,\ldots, f_n)_A = A$ (in other words, $\bigcap_{i=1}^n V(f_i) =\emptyset$ in $\Spec A$). If $A_{f_i}$ is an $R$-algebra of finite type for $1\leq i\leq n$, then $A$ is an $R$-algebra of finite type.
@@ -2843,7 +2845,7 @@ We derive this from two other lemmas, the first of which is very useful in gener
 \end{proof}
 
 \begin{proof}[Proof of Lemma~\reff{lem:finiteTypeAffine}]
-    Let $\Ee(V)$ be the property ``$\Oo_X(V)$ is of finite type over $A$'' of affine open $V\subseteq X$. If $V\subseteq X$ is affine having property $\Ee$ and $\lambda\in\Oo_X(V)$, then $\Oo_X(V\setminus V(\lambda))\simeq\Oo_X(V)_\lambda=\Oo_X(V)[\lambda^{-1}]$ is of finite type over $\Oo_X(V)$ and thus over $A$ as well, i.e. $\Ee$ has property \itememph{a} of Lemma~\reff{lem:propsOfAffine}. By Lemma~\reff{lem:finiteTypeOnGenerators}, it also has property \itememph{b}. Applying Lemma~\reff{lem:propsOfAffine} to $\Ee$ gives Lemma~\reff{lem:finiteTypeAffine}.
+    Let $\Pp(V)$ be the property ``$\Oo_X(V)$ is of finite type over $A$'' of affine open $V\subseteq X$. If $V\subseteq X$ is affine having property $\Pp$ and $\lambda\in\Oo_X(V)$, then $\Oo_X(V\setminus V(\lambda))\simeq\Oo_X(V)_\lambda=\Oo_X(V)[\lambda^{-1}]$ is of finite type over $\Oo_X(V)$ and thus over $A$ as well, i.e. $\Pp$ has property \itememph{\alpha} of Lemma~\reff{lem:propsOfAffine}. By Lemma~\reff{lem:finiteTypeOnGenerators}, it also has property \itememph{\beta}. Applying Lemma~\reff{lem:propsOfAffine} to $\Pp$ gives Lemma~\reff{lem:finiteTypeAffine}.
 \end{proof}
 
 \begin{proof}[Proof of Proposition~\reff{prop:locFiniteMorph}]
@@ -3025,7 +3027,7 @@ In this section we want to consider the following problem. Let $R$ be a discrete
 \end{example}
 
 \begin{fact}\lbl{fact:closedPointsDense}
-    Consider the following two properties of topological spaces:
+    Consider the following ``two'' properties of topological spaces:
     \begin{alphanumerate}
     \item 
         The closed points of $X$ are dense in any closed subset.
@@ -3046,7 +3048,7 @@ In this section we want to consider the following problem. Let $R$ be a discrete
 
 Recall (not from this lecture but from Algebra~II, so if you do not participate in the other lecture, you may want to read the nice script \cite{alg2}), that for any ring $R$ we define its \defemph{Jacobson radical} 
 \begin{align*}
-    \rad R = \bigcap_{\mm\in\mSpec R} \mm = \left\{r\in R\st 1-\rho r \in R^\times\forall \rho\in R\right\}
+    \rad R = \bigcap_{\mm\in\mSpec R} \mm = \left\{r\in R\st 1-\rho r \in R^\times\ \forall \rho\in R\right\}
 \end{align*}
 
 \begin{lem}\lbl{lem:whenRadIsZero}
@@ -3131,16 +3133,16 @@ Recall (not from this lecture but from Algebra~II, so if you do not participate 
 \end{proof}
 
 \begin{thm}[Serre] \lbl{thm:serre}
-    For a Noetherian local ring $R$, with residue field $k$, the following are equivalent:
+    For a Noetherian local ring $R$ with maximal ideal $\mm$ and residue field $k$, the following are equivalent:
     \begin{alphanumerate}
     \item 
-        $k$ admits a finite free resolution, i.e. an exact sequence
+        $k$ admits a finite free resolution, i.e. an exact sequence of $R$-modules
             \begin{align*}
                 0 \lmorphism k \lmorphism F_0 \lmorphism F_1 \lmorphism \ldots \lmorphism F_n \lmorphism 0
             \end{align*}
         where the $F_i$ are free.
     \item 
-        $k$ admits a finite flat resolution, i.e. an exact sequence
+        $k$ admits a finite flat resolution, i.e. an exact sequence of $R$-modules
             \begin{align*}
                 0 \lmorphism k \lmorphism F_0 \lmorphism F_1 \lmorphism \ldots \lmorphism F_n \lmorphism 0
             \end{align*}
@@ -3150,35 +3152,67 @@ Recall (not from this lecture but from Algebra~II, so if you do not participate 
     \item 
         Any $R$-module admits a finite flat resolution.
     \item 
-        Equality occurs in the inequality $\dim R \leq \dim (\mm/\mm^2)$.
+        Equality occurs in the inequality $\dim R \leq \dim_k (\mm/\mm^2)$.
     \end{alphanumerate}
 \end{thm}
 
 \begin{defi}[Regular ring] \lbl{def:regular}
     Such $R$ are called \defemph{regular}.
 \end{defi}
-\begin{cor}
+\begin{cor}\lbl{cor:localizationRegular}
     If $R$ is a regular local ring and $\pp\in \Spec R$, then $R_\pp$ is regular.
 \end{cor}
+\begin{proof}
+	An $R_\pp$-module $M$ is also an $R$-module and thus admits a finite resolution by free $R$-modules by Theorem~\reff{thm:serre}\itememph{c}. Tensoring this resolution with $R_\pp$ (which is flat, since localization is an exact functor) gives a finite free resolution of $M\otimes_RR_\pp\simeq M$ (well, $M$ is an $R_\pp$-module already) by free $R_\pp$-modules, hence $R_\pp$ is regular again by Theorem~\reff{thm:serre}\itememph{c}.
+\end{proof} 
 \begin{defi}[Normal ring]\lbl{def:normal}
-    A domain is called \defemph{regular} if it is integrally closed in its field of quotients. It is clear that this is inherited by localization. 
+    A domain is called \defemph{normal} if it is integrally closed in its field of quotients.
 \end{defi}
-
+ It is easy to see that normality is inherited by localization. 
 \begin{defi}[Regular and normal prescheme]\lbl{def:regularNormalPrescheme}
     A locally Noetherian prescheme $X$ is called \defemph{regular} (respectively \defemph{normal}) if $\Oo_{X,x}$ is regular (respectively normal) for all $x\in X$.
 \end{defi}
 \begin{rem*}
     \begin{alphanumerate}
     \item   
-        If $X$ is quasi-compact or Jacobson and $\Oo_{X,x}$ regular for closed $x$, then $X$ is regular. (Let $x\in X$, by Proposition~\reff{prop:closedSubsetPoint}, $\ov{\{x\}}$ contains a closed point $y$. Then $\Oo_{X,y}$ is regular as is its localization $\Oo_{X,x}$ by Theorem~\reff{thm:serre}) 
+        If $X$ is quasi-compact or Jacobson and $\Oo_{X,x}$ regular for closed $x$, then $X$ is regular. Indeed, let $x\in X$, by Proposition~\reff{prop:closedSubsetPoint} (for $X$ quasi-compact) or Fact~\reff{fact:closedPointsDense}\itememph{a} (for $X$ Jacobson), $\ov{\{x\}}$ contains a closed point $y$. Then $\Oo_{X,y}$ is regular as is its localization $\Oo_{X,x}$ (we  use Proposition~\reff{prop:specStalksCorrespondence} to see that $\Oo_{X,x}$ is indeed a localization of $\Oo_{X,y}$) by Corollary~\reff{cor:localizationRegular}.
     \item   
-        Note that $\left\{x\in X\st \Oo_{X,x} \text{ singular}\right\}$ may fail to be closed, despite Theorem~\reff{thm:serre}. (We think singular means not regular)
+        Note that $\left\{x\in X\st \Oo_{X,x} \text{ singular}\right\}$ may fail to be closed, despite Theorem~\reff{thm:serre}. As you might expect, \emph{singular} means \emph{not regular}.
     \item 
-        For a domain $A$ with field of quotients $k$, one has $A=\bigcap_{\pp\in \Spec A}  A_\pp = \bigcap_{\mm\in\mSpec} A_\mm$. Consider $r$ in this intersection and $I=\left\{a\in A\st ar\in A\right\}$ then $I$ fails to be contained in any maximal ideal of $A$, while being an ideal. It easily follows that $A$ is normal iff all $A_\mm$ (or all $A_\pp$ are. Hence, $X$ being normal is equivalent to $\Oo_X(U)$ being a normal domain for any open, affine, connected, non-empty $U$. This is equivalent to $X$ may be covered by affine open $U$ such that $\Oo_X(U)$ is a normal domain. When $X$ is quasi-compact or Jacobson, this is equivalent to $\Oo_{X,x}$ being a normal domain when $x$ is closed in $X$.
+        For a domain $A$ with field of quotients $K$, one has 
+        \begin{align*}
+        	A=\bigcap_{\pp\in \Spec A}  A_\pp = \bigcap_{\mm\in\mSpec} A_\mm\;.
+        \end{align*}
+        (the intersection being taken in $K$). Indeed, it's obvious that $A$ is contained in these intersections. Conversely, consider $r$ in this intersection and $I=\left\{a\in A\st ar\in A\right\}$ then $I$ fails to be contained in any maximal ideal of $A$, while being an ideal, hence $I=A$ and $r=1\cdot r\in A$. 
+        
+        It easily follows that $A$ is normal iff all $A_\mm$ (or all $A_\pp$) are. Hence, for $X$ a locally Noetherian prescheme, we have that
+        \begin{itemize}
+        	\item[\itememph{\alpha}] $X$ is normal
+        	\item[\itememph{\beta}] $\Oo_X(U)$ is a normal domain for any affine open, connected, and non-empty $U$
+        	\item[\itememph{\gamma}] $X$ may be covered by affine open $U$ such that $\Oo_X(U)$ is a normal domain
+        \end{itemize}
+         are equivalent. When $X$ is quasi-compact or Jacobson, this is moreover equivalent to $\Oo_{X,x}$ being a normal domain when $x$ is closed in $X$.
+         
+         Indeed, \itememph{\alpha} $\Rightarrow$ \itememph{\beta} follows from Proposition~\reff{prop:integralPrescheme}\itememph{d} and \itememph{c} applied to $U$ (note that the $\Oo_X(U)$ appearing here are Noetherian by Proposition~\reff{prop:locNoetherian}\itememph{b}) and the above locality of a ring being normal. To see \itememph{\beta} $\Rightarrow$ \itememph{\gamma}, by Lemma~\reff{lem:NoetherianConnectedComponentsOpen} we can cover $X$ by affine open and connected subsets. Finally, \itememph{\gamma} $\Rightarrow$ \itememph{\alpha} follows from Proposition~\reff{prop:integralPrescheme}\itememph{c} and \itememph{d} (note that such $U$ as in \itememph{\gamma} are irreducible, being the spectrum of a domain, and thus connected).
+         
+         If $X$ is quasi-compact, we can use Remark~\reff{rem:Prop2.1.4WithoutNoetherian} to deduce the stated equivalence. If $X$ is Jacobson, a point $x\in X$ is closed in $X$ iff it is closed in some open subset $U\subseteq X$ by Fact~\reff{fact:closedPointsDense}\itememph{c} and we may apply Proposition~\reff{prop:integralPrescheme}\itememph{e} and \itememph{d} on suitable affine open and connected subsets $U\subseteq X$.
     \item 
-        Let $R_k$ be the condition: $\Oo_{X,x}$ is regular when $\codim(\ov{\{x\}}, X) \leq k$. Then $R_0$ may be expressed as the regularity of $\Oo_{X,\eta}$ where $\ov\eta$ is an irreducible component of $X$, which for zero-dimensional local rings is equivalent to $\Oo_{X,\eta}$ being a field or to $\nil(\Oo_{X,\eta})=0$. By (probably) Serre, $X$ is reduced iff $X$ is $R_0$ and $\Oo_X(U)\morphism \Oo_X(V)$ are injective when $V$ is dense in $U$ (i.e. if $X$ is $S_1$). By the normality criterion of Serre, $X$ is normal iff $X$ is $R_1$ and $\Oo_X(U)\morphism \Oo_X(V)$ are injective when $V$ is dense in $U$ and $\Oo_X(U)\morphism \Oo_X(V)$ is an isomorphism if all irreducible of $U\setminus V$ are of codimension greater than $1$ (i.e. if $X$ is $S_2$). The $S_k$ are related Cohen-Macaulayness (which is $S_\infty$).
+        Let $R_k$ be the condition: $\Oo_{X,x}$ is regular when $\codim(\ov{\{x\}}, X) \leq k$. Then $R_0$ may be expressed as the regularity of $\Oo_{X,\eta}$ where $Z=\ov{\left\{\eta\right\}}$ is an irreducible component of $X$ (and thus $\eta$ its generic point), which for zero-dimensional Noetherian local rings is equivalent to $\Oo_{X,\eta}$ being a field. 
+        
+        Well, two things are to check here. First, that $\Oo_{X,\eta}$ is zero-dimensional. Let $\Spec R\simeq U\subseteq X$ be affine open intersecting $Z$, then $Z\cap U\simeq V(\pp)$ for some prime ideal $\pp\in\Spec R$ which has height $0$ as $V(\pp)$ is maximal irreducible. Then $R_\pp\simeq \Oo_{X,\eta}$ is zero-dimensional.  
+        
+        And second, that a zero-dimensional Noetherian local ring $R$ is regular iff it is a field. If $R$ is a field, it's clearly regular. Conversely, let $\mm$ be the maximal ideal, and $f_1,\ldots,f_n$ generators of it. If $\mm=\mm^2$, $f_1$ is representable as a linear combination of $f_if_j$. In particular, $f_1$ is contained in the ideal generated by $f_2,\ldots,f_n$, and $f_1^2$. We can thus replace each $f_i$ by $f_i^2$. Repeating this, we get $\mm=0$ as each $f_i$ is nilpotent.
+        
+          By (probably) Serre, $X$ is reduced iff $X$ is $R_0$ and $\Oo_X(U)\morphism \Oo_X(V)$ are injective when $V$ is dense in $U$ (i.e. if $X$ is $S_1$, a yet-to-define, though never defined criterion). By the \emph{normality criterion} of Serre, $X$ is normal iff $X$ is $R_1$ and $\Oo_X(U)\morphism \Oo_X(V)$ are injective when $V$ is dense in $U$ and $\Oo_X(U)\morphism \Oo_X(V)$ is an isomorphism if all irreducible components of $U\setminus V$ are of codimension greater than $1$ (i.e. if $X$ is $S_2$). The $S_k$ are related  to \emph{Cohen-Macaulay}ness (which actually is $S_\infty$).
     \end{alphanumerate}
 \end{rem*}
+This lemma wasn't covered in the lecture, but is perhaps worthwhile to know.
+\begin{lem}\lbl{lem:NoetherianConnectedComponentsOpen}
+	When $R$ is Noetherian, every connected component of $\Spec R$ is open.
+\end{lem}
+\begin{proof}
+	Let $C$ be a connected component of $\Spec R$. If $\Spec R$ is connected, $C=\Spec R$ is open. Now assume that $\Spec R$ is the disjoint union of two nonempty closed subsets $V(I_1)$ and $V(J_1)$ for some ideals $I=I_1$ and $J$ of $R$. Then $C$ must be contained in one of $V(I_1)$ and $V(J_1)$, say in $V(I_1)$. If $V(I_1)$ is connected, $C=V(I_1)=\Spec R\setminus V(J_1)$ is open. Otherwise $V(I_1)$ is the disjoint union of nonempty closed sets $V(I_2)$ and $V(J_2)$ where $I_2$ and $J_2$ are ideals of $R$ strictly containing $I_1$. Continuing this process, we find that $C=V(I_n)$ for some $I_n$, as the Noetherian ring $R$ can't contain an infinite chain $I_1\subsetneq I_2\subsetneq\ldots$ of strictly ascending ideals. Then $C=\Spec R\setminus \bigcup_{i=1}^nV(J_i)$ is open.
+\end{proof}
 
 \section{Affine and finite morphisms}
 
@@ -3191,7 +3225,7 @@ Recall (not from this lecture but from Algebra~II, so if you do not participate 
         It is possible to cover $Y$ by affine open $U$ such that $f^{-1}(U)$ is an affine open subset of $X$.
     \end{alphanumerate}
 \end{defi}
-
+We will prove the equivalence of \itememph{a} and \itememph{b} once we have the $\SPEC_Y$ functor available (cf. Lemma~\reff{lem:affineMorphismEquivalence}).
 \begin{defi}[Finite and integral morphism]\lbl{def:finiteIntegralMorphism}
     A morphism $X\morphism[f] Y$ of preschemes is called finite (respectively integral) if it is affine and in addition the following equivalent conditions hold
     \begin{alphanumerate}
@@ -3201,73 +3235,111 @@ Recall (not from this lecture but from Algebra~II, so if you do not participate 
         $Y$ may be covered by affine open subsets $U$ for which this is the case. 
     \end{alphanumerate}
 \end{defi}
-The proof of equivalence in Definition~\reff{def:finiteIntegralMorphism} is by Lemma~\reff{lem:propsOfAffine} applied to the property $E(U)$:
-\begin{quote}
-    $\Oo_X(f^{-1}(U))$ is finite/integral over $\Oo_Y(U)$.
-\end{quote}
-which by $\Oo_Y(U\setminus V(\lambda))\simeq \Oo_Y(U)_\lambda$ and $\Oo_X(f^{-1}(U\setminus V(\lambda))) \simeq \Oo_X(f^{-1}(U))_\lambda$ (it is easy to see that any morphism with Property \itememph{b} of Definition~\reff{def:affineMorphism} is quasi-compact and quasi-separated) and finiteness/integrality of the ring extension is preserved in these situations and can be tested on such coverings (an $R$-module $M$ is finitely generated iff $\Spec R$ can be covered $\Spec R = \bigcup_{i=1}^n \Spec R_{f_i}$ such that $M_{f_i}$ is finitely generated).
+\begin{proof}[Proof of equivalence]
+	The implication \itememph{a} $\Rightarrow$ \itememph{b} being trivial, we need to prove \itememph{b} $\Rightarrow$ \itememph{a}. We apply Lemma~\reff{lem:propsOfAffine} to the property $\Pp$, where
+	\begin{quote}
+		$\Pp(U)\colon\Oo_X(f^{-1}(U))$ is finite/integral over $\Oo_Y(U)$.
+	\end{quote}
+	Indeed, we have that $\Oo_Y(U\setminus V(\lambda))\simeq \Oo_Y(U)_\lambda$ and $\Oo_X(f^{-1}(U\setminus V(\lambda))) \simeq \Oo_X(f^{-1}(U))_{f^*\lambda}$. For the second isomorphism, note that by Proposition~\reff{prop:coherentDef}\itememph{a}, for any morphism $f$ with Property \itememph{b} of Definition~\reff{def:affineMorphism}, $f_*\Oo_X$ is a quasi-coherent $\Oo_Y$-module and this isomorphism follows from Proposition~\reff{prop:coherentDef}\itememph{e}. Hence finiteness and integrality of the ring extension is preserved in these situations, i.e. the property from Lemma~\reff{lem:propsOfAffine}\itememph{\alpha} holds. Moreover, $\Pp$ can be tested on such coverings as from Lemma~\reff{lem:propsOfAffine}\itememph{\beta}. That is, an $R$-module $M$ is finitely generated iff $\Spec R$ can be covered $\Spec R = \bigcup_{i=1}^n \Spec R_{\lambda_i}$ such that $M_{\lambda_i}$ is finitely generated. 
+	
+	To see this, for each $i$ choose a finite set $m_{i,1},\ldots,m_{i,n_i}$ of $R_{\lambda_i}$-generators of $M_{\lambda_i}$. We may take the $m_{i,j}$ from the image of $M$ in $M_{\lambda_i}$. Let $M'\subseteq M$ be the module generated by preimages of all these generators $m_{i,j}$ (still finitely many). Then, by construction, the inclusion $M'\monomorphism M$ becomes bijective when localized at any prime ideal, hence must be bijective as well.
+\end{proof}
+\subsection{The relative \texorpdfstring{$\SPEC$}{Spec} functor}
+
 
 There is a sheaf version of $\Spec$ as follows:
-Let $\Aa$ be any quasi-coherent $\Oo_X$-algebra, then
+Let $\Aa$ be any quasi-coherent $\Oo_X$-algebra, then we construct a scheme $\SPEC_X(\Aa)$ with the following properties.
+\begin{itemize}
+	\item \emph{Underlying set.} As a set,
+	\begin{align*}
+		\SPEC_X(\Aa) = \left\{(x,\pp) \st 
+		\begin{array}{c}
+			x\in X\text{, }\pp \in \Spec(\Aa_x) \text{ such that the preimage of }\pp\\
+			\text{under } \Oo_{X,x}\morphism \Aa_x \text{ is } \mm_{X,x}\text{ (the maximal ideal of }\Aa_x)
+		\end{array}
+		\right\}
+	\end{align*}
+	\item \emph{Topology base.} Let
+	\begin{align*}
+		\Omega(U,\lambda) = \left\{ (x,\pp) \st x\in U\text{ and }\pp\not\ni (\text{image of } \lambda \text{ under } \Aa(U)\to \Aa_X)\right\}
+	\end{align*}
+	where $U\subseteq X$ is open and $\lambda \in \Aa(U)$. As $\Omega(U,\lambda) \cap \Omega(V,\vartheta) = \Omega(U\cap V, \lambda|_{U\cap V} \cdot \vartheta|_{U\cap V})$ this is indeed a base for some topology.
+	\item \emph{Pretender stalk.} There is only one reasonable choice and this is $\Oo_{Y,[x,\pp]} \coloneqq (\Aa_x)_\pp$. Here, $Y=\SPEC_X(\Aa)$ for brevity.
+	\item \emph{Structure sheaf.} For $\Omega\subseteq Y$ open, let
+	\begin{align*}
+	\Oo_Y(\Omega) = \left\{\alpha=(\alpha_{x,\pp})\in \prod_{(x,\pp)\in \Omega} \Oo_{Y,[x,\pp]}\st 
+	\begin{array}{c}
+		\alpha\text{ fulfills the }\\
+		\text{\emph{coherence condition}}
+	\end{array}
+	\right\}\;.
+	\end{align*}
+	Here, the \emph{coherence condition} says that every $\omega\in \Omega$ has a neighbourhood $\Omega(U,\lambda)$ together with an $a\in \Aa(U)_\lambda$ such that whenever $(x,\pp)\in \Omega\cap \Omega(U,\lambda)$, we have
+	\begin{align*}
+		\alpha_{x,\pp}=\left(
+		\begin{array}{c}
+			\text{image of }a\text{ under }\\
+			\Aa(U)_\lambda \morphism (\Aa_x)_\lambda \morphism (\Aa_x)_\pp = \Oo_{Y,[x,\pp]}
+		\end{array}\right)\;.
+	\end{align*}
+\end{itemize}
+As was done in section~\reff{sec:locRingedSpaces} for equalizers and fibre products, one checks that the pretender stalks are canonically isomorphic to the actual stalks. Hence $Y$ is a locally ringed space. It is also easy to check that $Y\morphism[p] X$, $p(x,\pp)=x$ is continuous (the preimage of $U\subseteq X$ open is $\Omega(U, 1)$) and one has a morphism $Y\morphism[p] X$ of locally ringed spaces, whose algebraic component $\Oo_X\morphism[p^*]p_*\Oo_Y$ for $f\in\Oo_X(U)$ is given by 
 \begin{align*}
-    \SPEC(\Aa) = \left\{(x,\pp) \st x\in X, \pp \in \Spec(A_x) \text{ such that the preimage of }\pp\text{ under } \Oo_{X,x}\morphism \Aa_x \text{ is } \mm_{X,x}\right\}
+	p^* f=\left(
+	\begin{array}{c}
+		\text{image of }f\text{ under}\\
+		\Oo_X(U) \morphism \Oo_{X,x} \morphism \Aa_x \morphism (\Aa_x)_\pp 
+	\end{array}\right)_{(x,\pp)\in p^{-1}(U)}
 \end{align*}
-
-Topology base:
-\begin{align*}
-    \Omega(U,\lambda) = \left\{ (x,\pp) \st x\in U, \pp\not\ni (\text{image of } \lambda \text{ under } \Aa(U)\morphism \Aa_X)\right\}
-\end{align*}
-where $U\subseteq X$ is open and $\lambda \in \Aa(U)$. As $\Omega(U,\lambda) \cap \Omega(V,\vartheta) = \Omega(U\cap V, \lambda|_{U\cap V} \cdot \vartheta|_{U\cap V})$ this is indeed a base for some topology.
-
-Pretender stalk:
-\begin{align*}
-    \Oo_{Y,[x,\pp]} \coloneqq (\Aa_x)_\pp
-\end{align*}
-
-Coherence condition:
-\begin{align*}
-    \Oo_Y(W) = \left\{(\alpha_{x,\pp})\in \prod_{(x,\pp)\in W} \Oo_{Y,[x,\pp]}\st \text{Every } w\in W\text{ has a neighbourhood } \Omega(U,\lambda) \text{ for which there is } a\in \Aa(U)_\lambda \text{ such that } \alpha_{x,\pp} \text{ is the image of } a\text{ under } \Aa(U)_\lambda \morphism (\Aa_x)_\lambda \morphism (\Aa_x)_\pp = \Aa_{[x,\pp]} \text{ whenever } (x,\pp)\in W\cap \Omega(U,\lambda)\right\}
-\end{align*}
-
-As in the previous parts of the lecture, one checks that the pretender stalks are canonically isomorphic to the actual stalks. Hence $Y$ is a locally ringed space. It is also easy to check that $(x,\pp)\morphism x$, $Y\morphism X$ is continuous (the preimage of $U$ is $\Omega(U, 1)$) and one has a morphism $Y\morphism X$ of locally ringed spaces, $p(x,\pp) = x$, $p^* f$ are the imaged of $f$ under $\Oo_X(U) \morphism \Oo_{X,x} \morphism \Aa_x \morphism (\Aa_x)_\pp$. One then notes that $p^{-1} U\simeq \SPEC(\Aa|_U)$. This reduces the question of $\SPEC(\Aa)$ being a preschme to the case where $X=\Spec R$ is affine. In this case, one has $\Aa= \snake A$ where $A$ is an $R$-algebra, and it is natural to assume 
+One then notes that $p^{-1} (U)\simeq \SPEC_X(\Aa|_U)$. This reduces the question of $\SPEC_X(\Aa)$ being a prescheme to the case where $X=\Spec R$ is affine. In this case, one has $\Aa= \snake A$ where $A$ is an $R$-algebra, and it is natural to assume 
 \begin{align*}
     \SPEC(\Aa)&\isomorphism \Spec A\\
-    (\qq\sqcap R, \qq \cdot A_x) &\longmapsfrom \qq\\
-    (x,\pp)  &\longmapsto (\text{the preimage of }\pp\text{ under } A\morphism A_x \simeq \Aa_x)\;.
+    (\text{preimage of }\qq\text{ in }R, \qq \cdot A_x) &\longmapsfrom \qq\\
+    (x,\pp)  &\longmapsto (\text{preimage of }\pp\text{ under } A\to A_x \simeq \Aa_x)\;.
 \end{align*}
-One has $(\Oo_{\SPEC \Aa})_{(x,\pp)} = (\Aa_x)_\pp \simeq (A_x)_\pp \simeq A_\qq \simeq (\Oo_{\Spec A})_\qq$ and the identification of the coherence conditions is also easy.
+Indeed, one has $(\Oo_{\SPEC \Aa})_{(x,\pp)} = (\Aa_x)_\pp \simeq (A_x)_\pp \simeq A_\qq \simeq (\Oo_{\Spec A})_\qq$ and the identification of the coherence conditions is also easy.
 
 \begin{prop}
-    Let $S$ be a prescheme, $\Aa$ any quasi-coherent $\Oo_S$-algebra, $X\morphism[\xi] S$ any $S$-prescheme. Then one has a bijection
-    \begin{align*}
-        \Hom_{\cat{S-PreSch}} (X, \SPEC(A)) \simeq \Hom_{\cat{\Oo_S-Alg}} (\Aa, \xi_* \Oo_X)
-    \end{align*}
-    sending $X\morphism[f] \Spec \Aa$ to $\Aa \simeq p_* \Oo_{\Spec \Aa} \morphism[p_*(f^*)] p_*f_* \Oo_X = \xi_* \Oo_X$. ($p\colon:\SPEC \Aa \morphism S$).
+    Let $S$ be a prescheme, $\Aa$ any quasi-coherent $\Oo_S$-algebra, $X\morphism[\xi] S$ any $S$-prescheme. Then one has a natural bijection
+    \begin{align}\lbl{eq:SPECAdjunction}
+        \Hom_{S\cat{-PreSch}} \big(X, \SPEC_S(A)\big) \simeq \Hom_{\Oo_S\cat{-Alg}} (\Aa, \xi_* \Oo_X)
+    \end{align}
+    sending $X\morphism[f] \Spec \Aa$ to $\Aa \simeq p_* \Oo_{\Spec \Aa} \xrightarrow{p_*(f^*)} p_*f_* \Oo_X = \xi_* \Oo_X$. Here, $p$ denotes the morphism $\SPEC_S \Aa \morphism[p] S$.
 \end{prop}
 \begin{proof}
-    As 
+    First note that indeed $p_*f_*=\xi_*$ as $f$ is a morphism of $S$-preschemes. As, for open subsets $U\subseteq S$, the assignments
     \begin{align*}
-        U&\longmapsto \Hom_{\cat{U-PreSch}} (\xi^{-1}(U), p^{-1}(U)) = \Hom_{\cat{S-PreSch}}(\xi^{-1}(U), p^{-1}(U))\\
-        U&\longmapsto \Hom_{\cat{\Oo_U-Alg}} (\Aa_U, \xi_*\Aa|_U) = \Hom_{\cat{\Oo_U-Alg}}(\Aa|_I, (\xi|_{\xi^{-1}(U)})_* \Oo_{\xi^{-1}}(U))\;.
+        U&\longmapsto \Hom_{U\cat{-PreSch}} \left(\xi^{-1}(U), p^{-1}(U)\right) = \Hom_{S\cat{-PreSch}}\left(\xi^{-1}(U), p^{-1}(U)\right)\\
+        U&\longmapsto \Hom_{\Oo_U\cat{-Alg}} \left(\Aa_U, (\xi_*\Oo_X)|_U\right) = \Hom_{\Oo_U\cat{-Alg}}\left(\Aa|_U, (\xi|_{\xi^{-1}(U)})_* \Oo_{\xi^{-1}(U)}\right)
     \end{align*}
-    are easily seen to be sheaves of sets on $S$, it is sufficient to check this on the affine open subsets of $S$ where it follows from the similar adjunction in the end of 1.4.
+    are easily seen to be sheaves of sets on $S$, it is sufficient to check the adjunction\eqreff{eq:SPECAdjunction} on the affine open subsets of $S$ where it follows from the similar adjunction from Proposition~\reff{prop:affineSchemeAdjunction}.
 \end{proof}
 
-\begin{lem}
-    A morphism of preschemes is affine if and only if it is quasi-compact and quasi-separated and the canonical morphism
-    \begin{align}
-        X\morphism \SPEC(f_*\Oo_X)\lbl{eq:isomAffine}
-    \end{align}
-    (corresponding to $\id_{f_*\Oo_X}$ under the previous adjunction) is an isomorphism.
+\begin{lem}\lbl{lem:affineMorphismEquivalence}
+    The conditions \itememph{a} and \itememph{b} from Definition~\reff{def:affineMorphism} are equivalent. Moreover, they are equivalent to the following
+    \begin{alphanumerate}
+    	\item[\itememph{c}] The morphism $X\morphism[f]Y$ is quasi-compact and quasi-separated. The sheaf $f_*\Oo_X$ is a quasi-coherent $\Oo_Y$-module and the canonical morphism
+    	\begin{align}\lbl{eq:isomAffine}
+    	X\morphism \SPEC_Y(f_*\Oo_X)\tag{$*$}
+    	\end{align}
+    	corresponding to $\id_{f_*\Oo_X}$ under the adjunction \eqreff{eq:SPECAdjunction} is an isomorphism.
+    \end{alphanumerate}
 \end{lem}
 \begin{proof}
-    Assume \itememph{b} from Definition~\reff{def:affineMorphism}. Over the affine open $U$ such that $V= f^{-1}(U)$ is affine, we have
+    The implication \itememph{a} $\Rightarrow$ \itememph{b} is trivial. Assume \itememph{b}. Note that \itememph{b} precisely guarantees that $f_*\Oo_X$ is a quasi-coherent $\Oo_Y$-module. Over the affine open $U$ such that $V= f^{-1}(U)$ is affine, we have
+     \begin{diagram*}
+     	\node[ob](x) at (0,1.5) {$\SPEC_Y\big((f_*\Oo_X)|_V\big)$};
+     	\node[ob](s) at (1.875,0) {$V$};
+     	\node[ob](y) at (3.75,1.5) {$\Spec\big(\Oo_X(V)\big)$};
+     	\scriptsize
+     	\draw[->] (s) -- (x);
+     	\draw[->] (x) -- (y) node[pos=0.5,above=-0.25ex] {$\sim$};
+     	\draw[->] (s) -- (y) node[pos=0.5,above=-0.25ex,sloped] {$\sim$};
+     \end{diagram*}
+     
+    where the rightward arrows are isomorphisms. Hence \eqreff{eq:isomAffine} is an isomorphism over open $U$ such that $f^{-1}(U)$ is affine (and $f$ is quasi-compact and quasi-separated over such $U$). If $X$ may be covered by such $U$ the conditions hold globally and we obtain \itememph{c}.
     
-    DIAGRAM
-    
-    where the rightward arrows are isomorphisms. Hence \eqreff{eq:isomAffine} is an iso over open $U$ such that $f^{-1}(U)$ is affine (and f is quasi-compact and quasi-separated over such $U$). If $X$ may be covered by such $U$ the conditions hold globally.
-    
-    We obtain \itememph{a} from this by similar arguments. 
+    To obtain \itememph{c} $\Rightarrow$ \itememph{a}, note that for any quasi-coherent $\Oo_Y$-algebra $\Aa$ and $U\subseteq Y$ affine open, its preimage $p^{-1}(U)$ under $\SPEC_Y(\Aa)\morphism[p]Y$ equals $\SPEC_S(\Aa|_U)\simeq \Spec A$ if $\Aa|_U=\snake A$ for $A$ an $\Oo_X(U)$-algebra (and such an $A$ may be found by Proposition~\reff{prop:coherentDef}\itememph{a} and Definition~\reff{def:quasicoherent}\itememph{a} as $\Aa$ is quasi-coherent). Then the argument from \itememph{b} $\Rightarrow$ \itememph{c} can be reversed.
 \end{proof}
 \begin{cor}
     The clauses of affine and of finite morphisms are stable under composition and base-change and are base-local.
@@ -3284,7 +3356,7 @@ One has $(\Oo_{\SPEC \Aa})_{(x,\pp)} = (\Aa_x)_\pp \simeq (A_x)_\pp \simeq A_\qq
 \end{rem}
 
 \begin{defi}[Universally closed morphism]\lbl{def:univClosed}
-    A morphism $X\morphism Y$ is closed if $f(A)\subseteq Y$ is closed whenever $A$ is closed in $Y$. It is \defemph{universally closed} if all its base-changes $\snake X = X\otimes_Y \snake Y \morphism \snake Y$ are closed.
+    A morphism $X\morphism Y$ is closed if $f(A)\subseteq Y$ is closed whenever $A$ is closed in $Y$. It is \defemph{universally closed} if all its base-changes $\snake X = X\times_Y \snake Y \morphism \snake Y$ are closed.
 \end{defi}
 \begin{rem}
     \begin{alphanumerate}
@@ -3363,7 +3435,7 @@ is ascending. Let $I_\infty = \bigcup_{k=1}^\infty I_k$.
 \end{cor}
 \begin{example}
     \begin{align*}
-        \IP^n(R) = \Proj(R[X_1,\ldots, X_n])
+        \IP^n_R = \Proj(R[X_1,\ldots, X_n])
     \end{align*}
 \end{example}
 \begin{rem}
@@ -3375,11 +3447,11 @@ is ascending. Let $I_\infty = \bigcup_{k=1}^\infty I_k$.
     Let $X\morphism[p] \Spec R$ be a proper morphism and $X$ integral (irreducible and reduced). Then there is a projective morphism $\snake X\morphism[\pi] X$ such that $\snake X\morphism \Spec R$ is projective and such that there is a dense open subset $U$ of $X$ such that $\pi^{-1}(U) \morphism[\pi] U$ is an isomorphism.
 \end{prop}
 \begin{proof}
-    Let $U_i\subseteq X$ be affine open subsets covering $X$, $U_i\simeq \Spec A_i$ where $A_i\simeq R[X_1,\ldots, X_{n_i}]/I_i$ giving a closed embedding $U_i\morphism \IA^{n_i}(R)$. Let $U = \bigcap_i U_i$, we have embeddings 
+    Let $U_i\subseteq X$ be affine open subsets covering $X$, $U_i\simeq \Spec A_i$ where $A_i\simeq R[X_1,\ldots, X_{n_i}]/I_i$ giving a closed embedding $U_i\morphism \IA^{n_i}_R$. Let $U = \bigcap_i U_i$, we have embeddings 
     \begin{align*}
-        U\morphism X\times \prod_i \IA^{n_i}(R)\morphism X\times\prod_i \IP^{n_i}(R)\;.
+        U\morphism X\times \prod_i \IA^{n_i}_R\morphism X\times\prod_i \IP^{n_i}_R\;.
     \end{align*}
-    Let $\snake X$ be the closure of the image of $U$ under that embedding (reduced subprescheme), then $\snake X\morphism X$ has the desired properties (e.g. is an isomorphism over $U$) and $\snake X\morphism \prod_i \IP^{n_i}(R)$ (projection to the second factor) is a closed embedding.
+    Let $\snake X$ be the closure of the image of $U$ under that embedding (reduced subprescheme), then $\snake X\morphism X$ has the desired properties (e.g. is an isomorphism over $U$) and $\snake X\morphism \prod_i \IP^{n_i}_R$ (projection to the second factor) is a closed embedding.
 \end{proof}
 
 
@@ -3807,7 +3879,6 @@ A category is called \emph{small} if its class of objects is a set.
         \end{align*}
       \item \lbl{rem:commaCategory}
         Let the \emph{comma category} $\Aa\morphism S$ (or $\Aa/S$) be the category whose objects are pairs $(X,\xi)$ with $X\in\Ob(\Aa)$ an object and $X\morphism[\xi] S$ a morphism in $\Aa$, and where a morphism $(X,\xi) \morphism[f] (Y,\upsilon)$ is a morphism $X\morphism[f]Y$ in $\Aa$ such that we have $\upsilon f= \xi$, i.e. 
-    
         \begin{diagram*}
             	\node[ob](x) at (0,1.25) {$X$};
             	\node[ob](s) at (1.25,0) {$S$};
@@ -3816,8 +3887,7 @@ A category is called \emph{small} if its class of objects is a set.
             	\draw[->] (x) -- (s) node[pos=0.5,below left] {$\xi$};
             	\draw[->] (x) -- (y) node[pos=0.5,above] {$f$};
             	\draw[->] (y) -- (s) node[pos=0.5,below right] {$\upsilon$};
-            \end{diagram*}
-        
+            \end{diagram*}      
         commutes. Then $X\times_S Y$ is the product of $(X,\xi)$ and $(Y,\upsilon)$ in $\Aa\morphism S$.
       \item 
         Fibre products with any (possibly cardinal) number of factors can be defined in the same way or as products in $A\morphism S$.
