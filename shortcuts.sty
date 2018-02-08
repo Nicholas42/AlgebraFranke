@@ -175,14 +175,14 @@
 \newcommand{\cat}[1]{\operatorname{#1}}%style of categories
 %inductive limit
 \newcommand\colimit[1][]{
-	\mathchoice{\underset{\substack{\displaystyle{\longrightarrow}\\#1}}{\lim}}%displaystyle
+	\mathchoice{\underset{\substack{\displaystyle{\longrightarrow}\\[-1pt]#1}}{\lim}}%displaystyle
 	{\underset{\textstyle\longrightarrow}{\lim}\underset{#1}{}}%textstyle
 	{\underset{\scriptstyle\longrightarrow}{\lim}\underset{#1}{}}
 	{\underset{\longrightarrow}{\lim}\underset{#1}{}}\ %
 }
 %projective limit
 \newcommand\limit[1][]{
-	\mathchoice{\underset{\substack{\displaystyle{\longleftarrow}\\#1}}{\lim}}%displaystyle
+	\mathchoice{\underset{\substack{\displaystyle{\longleftarrow}\\[-1pt]#1}}{\lim}}%displaystyle
 	{\underset{\textstyle\longleftarrow}{\lim}\underset{#1}{}}%textstyle
 	{\underset{\scriptstyle\longleftarrow}{\lim}\underset{#1}{}}
 	{\underset{\longleftarrow}{\lim}\underset{#1}{}}\ %
