@@ -271,7 +271,7 @@ The derivation from Corollary~\reff{cor:V(f)codimension1} by induction on $r$ is
 \begin{prop}\lbl{prop:nilradicalCapPrimeIdeals}
     If $R$ is any ring, then 
     \begin{align*}
-    	\bigcap_{\pp\in\Spec R} \pp =\nil(R) \coloneqq \left\{f\in R\st f^n=0 \text{ for some } n\in\IN\right\} = \sqrt{\{0\}}\;.
+    	\bigcap_{\pp\in\Spec R} \pp =\nil(R) \coloneqq \left\{f\in R\st f^n=0 \text{ for some } n\in\IN\right\} = \sqrt{(0)}\;.
     \end{align*}
     The ideal $\nil(R)$ is called the \defemph{\upshape nilradical} of $R$.
 \end{prop}
@@ -2199,8 +2199,9 @@ We postpone the quite lengthy proof of Proposition~\reff{prop:Akizuki-Hopkins} t
     \end{align*}
     for $*\in\{+,\cdot\}$ (one may check that this is well-defined). $\Oo_{X,Z}$ is a local ring with maximal ideal
     \begin{align*}
-        \mm = \left\{(U,f)/_\sim \st f\text{ doesn't vanish identically on }U\cap Z\right\}\;.
+        \mm = \left\{(U,f)/_\sim \st f\text{ vanishes identically on }U\cap Z\right\}
     \end{align*}
+    since for $f$ not identically zero on $U\cap Z$, we have $(U,f)\sim\left(U\setminus V(f),f|_{U\setminus V(f)}\right)$ in $\Oo_{X,Z}$ and the latter is clearly invertible.
 \begin{prop}
     \begin{alphanumerate}
     \item \lbl{prop:pseudoStalkStuff}
@@ -2242,7 +2243,7 @@ The question \itememph{b} is local because for any open subset $U\subseteq X$, w
 
 Therefore it is possible to assume without loss of generality that $X$ is affine. As $Z\subseteq X$ is irreducible closed, by \cite[Corollary~2.2.2]{alg1} we have $Z=V(\qq)$ for some prime ideal $\qq\subseteq \Oo_X(X)$. As $\Oo_X(X\setminus V(f)) \simeq \Oo_X(X)_f$ by \cite[Proposition~2.3.3]{alg1}, we have 
 \begin{align*}
-	\Oo_{X,Z}=\colimit[f\notin\qq] \Oo_X\big(X\setminus V(f)\big)\simeq\colimit[f\notin\qq] \Oo_X(X)_f\simeq \Oo_X(X)_\qq
+	\Oo_{X,Z}=\colimit[f\notin \qq]\Oo_X\big(X\setminus V(f)\big)\simeq\colimit[f\notin\qq] \Oo_X(X)_f\simeq \Oo_X(X)_\qq
 \end{align*}
 and we have bijections 
 \begin{diagram*}
@@ -2271,8 +2272,8 @@ and we have bijections
     \end{align*}
     where the length is of $\Oo_{X,Z}$-modules and in the middle term, $F$ is any element of $k[X_0,\ldots, X_n]_d$ not identically vanishing on $Z$.
 \end{defi}
-\begin{proof}[You know you are attending a Franke lecture, when a definition needs a proof]
-	By an argument same as Example~\reff{ex:O(l)LineBundle}, $F$ is a free generator of $\Oo_X(d)|_{X\setminus V(F)}$. Moreover, $X\setminus V(F)$ intersects $Z$, hence $(X\setminus V(F),F)/_\sim$ is a free generator of $\Oo_X(d)_Z$. Therefore, multiplication by $F$ defines an isomorphism
+\begin{proof}[You know you are attending a Franke lecture when a definition needs a proof]
+	By the same argument as in Example~\reff{ex:O(l)LineBundle}, $F$ is a free generator of $\Oo_X(d)|_{X\setminus V(F)}$. Moreover, $X\setminus V(F)$ intersects $Z$, hence $(X\setminus V(F),F)/_\sim$ is a free generator of $\Oo_X(d)_Z$. Therefore, multiplication by $F$ defines an isomorphism
 	\begin{align*}
 	\Oo_{X,Z} \Bigm/ \left(\frac{H}{F}\cdot\Oo_{X,Z}\right) \isomorphism[\cdot F] \Oo_X(\ell)_Z/H\cdot \Oo_{X,Z}\;.
 	\end{align*}
