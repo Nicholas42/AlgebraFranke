@@ -144,17 +144,17 @@ Let it be said that the first three recommendations are from Professor Franke wh
  \end{align*}
  Then one may check that $(A,\Oo_A)$ is a prevariety. Note that $\Oo_A$ is \emph{not} given by the restriction $\Oo_X|_A$ (which is only defined for open subsets $U\subseteq X$ anyway). If one prefers a more functorial definition of $\Oo_A$, the following will do: For each open subset $U\subseteq X$, let 
  \begin{align*}
- 	I(U)=\left\{\phi\in\Oo_X(U)\st \phi\text{ lies in the maximal ideal of }\Oo_{A,a}\ \forall a\in U\cap A\right\}
+ 	\Ii(U)=\left\{\phi\in\Oo_X(U)\st \phi\text{ lies in the maximal ideal of }\Oo_{A,a}\ \forall a\in U\cap A\right\}
  \end{align*}
  (the \emph{stalk} $\Oo_{A,a}$ is defined in \cite[Definition 2.2.5]{alg1} or, for arbitrary presheaves, in Definition~\reff{def:stalk}). Then
  \begin{align*}
- 	\Oo_A(W)=\colimit[U] \Oo_X(U)/I(U)\;,
+ 	\Oo_A(W)=\colimit[U] \Oo_X(U)/\Ii(U)\;,
  \end{align*}
 	where the colimit is taken over all open subsets $U\subseteq X$ such that $U\cap A=W$.
 \end{varthm}
 
 \begin{rem*}
- The following conditions on a topological space $X$ are equivalent:
+ Recall that the following conditions on a topological space $X$ are equivalent:
  \begin{alphanumerate}
   \item
     If $x\neq y$ are points of $X$, there are open neighbourhoods $V,W\subseteq X$ separating them, i.e. $x\in V$, $y\in W$ and $V\cap W= \emptyset$. This is the usual definition for $X$ being \emph{Hausdorff}.
@@ -163,7 +163,7 @@ Let it be said that the first three recommendations are from Professor Franke wh
   \item 
     If $a$ and $b$ are continuous maps $T\to X$, then their \emph{equalizer} $K = \left\{t\in T\st a(t) = b(t)\right\}$ is closed in $T$.
  \end{alphanumerate}
-
+This motivates the following definition of an \emph{algebraic variety} being a prevariety with some kind of Hausdorff property.
 \end{rem*}
 
 
@@ -182,7 +182,7 @@ Let it be said that the first three recommendations are from Professor Franke wh
     \begin{align*}
         \Oo_X(U) = \left\{f\colon U\to k\st \iota_\pm^* f = f \iota_\pm \in \Oo_{\IA^n(k)} \left(\iota_\pm^{-1}(U)\right)\right\}.
     \end{align*}
-    Then $U_\pm = \iota_\pm^{-1}\big(\IA^n(k)\big)$ are both open and $\IA^n(k)\morphism[\iota_\pm] U_\pm$ is a homeomorphism identifying the respective structure sheaves. Thus, $X$ is a prevariety, but not a variety in the sense of Definition~\reff{def:variety} as we may take $T=\IA^n(k) \morphism[\iota_\pm] X$ in Definition \reff{def:variety} and obtain $K = \left\{x\in \IA^n(k)\st \iota_+(x) = \iota_-(x)\right\} = \IA^n\setminus\{0\}$, which is not closed.
+    Then $U_\pm = \iota_\pm\big(\IA^n(k)\big)$ are both open and $\IA^n(k)\morphism[\iota_\pm] U_\pm$ is a homeomorphism identifying the respective structure sheaves. Thus, $X$ is a prevariety, but not a variety in the sense of Definition~\reff{def:variety} as we may take $T=\IA^n(k) \morphism[\iota_\pm] X$ in Definition \reff{def:variety} and obtain $K = \left\{x\in \IA^n(k)\st \iota_+(x) = \iota_-(x)\right\} = \IA^n\setminus\{0\}$, which is not closed.
 \end{example}
 \begin{example}
     \begin{alphanumerate}
@@ -197,7 +197,7 @@ Let it be said that the first three recommendations are from Professor Franke wh
 \begin{proof}
 		For part \itememph{c} note that the inclusion $Y\monomorphism[\iota] X$ (together with $\iota^*\colon \Oo_X\to\iota_*\Oo_Y$) is a morphism of prevarieties, and for a pair $a,b\colon T\to A$ of morphisms of prevarieties we have $\left\{t\in T\st a(t) = b(t) \right\} = \left\{t \in T\st(\iota a)(t) = (\iota b)(t) \right\}$. The latter is closed in $T$ because $X$ is a variety.
 	
-        For part \itememph{a} let $X\subseteq k^n$ be closed and irreducible, $a,b\colon T\to X$ be morphisms of prevarieties and $K= \left\{t\in T\st a(t) = b(t)\right\}$. To show that $K$ is closed in $T$, it is sufficient to show that any $t\in T$ has a neighbourhood $\Omega$ such that $K\cap \Omega$ is closed in $\Omega$. Choosing $\Omega$ such that it is isomorphic to an affine algebraic variety, which is possible because $T$ is a prevariety, we may assume without loss of generality that $T\subseteq k^n$ is an affine algebraic variety in (i.e.  an irreducible subset of) $k^n$. Let 
+        For part \itememph{a} let $X\subseteq k^n$ be closed and irreducible, $a,b\colon T\to X$ be morphisms of prevarieties and $K= \left\{t\in T\st a(t) = b(t)\right\}$. To show that $K$ is closed in $T$, it is sufficient to show that any $t\in T$ has a neighbourhood $\Omega$ such that $K\cap \Omega$ is closed in $\Omega$. Choosing $\Omega$ such that it is isomorphic to an affine algebraic variety, which is possible because $T$ is a prevariety, we may assume without loss of generality that $T\subseteq k^m$ is an affine algebraic variety in (i.e.  an irreducible subset of) $k^m$. Let 
 	        \begin{align*}
 		    X_i\colon X&\longrightarrow k\\
 		    (x_1,\ldots,x_n)&\longmapsto x_i
@@ -238,9 +238,9 @@ Let it be said that the first three recommendations are from Professor Franke wh
 		(x,t) &\longmapsto x \\
 		(x,f(x)^{-1}) &\longmapsfrom x
 	\end{align*}
-	is a homeomorphism topological spaces. Then $V(\qq)$ is irreducible (as $X\setminus V(f)$ is), hence an affine variety, which proves that $X\setminus V(f)$ must be affine as well (cf. \cite[Proposition~2.2.4]{alg1}).
+	is a homeomorphism topological spaces. Then $V(\qq)$ is irreducible (as $X\setminus V(f)$ is), hence an affine variety and the above map turns into an isomorphism of quasi-affine varieties, which proves that $X\setminus V(f)$ must be affine as well (cf. \cite[Proposition~2.2.4]{alg1}).
 	
-	Let $U\subseteq X$ be open and $F\subseteq U$ be finite. Let $X\setminus U = V(I)$ with $I\subseteq R$ an ideal. If $n=0$, $U = \{0\}$ is affine and we have nothing to prove. Let $n\geq 1$. Because $k$ is infinite, the $k$-vector space $I$ cannot be the union of its finitely many codimension one subspaces $I_x=\left\{p\in I\st p(x) = 0\right\}$ for $x\in F$. Therefore, there is $p\in I$ such that $F\subseteq X\setminus V(p)$. By our initial remark, $X\setminus V(p)$ is affine. As $p\in I$, $X\setminus V(p)\subseteq U$ and the claim follows.
+	Let $U\subseteq X$ be open and $F\subseteq U$ be finite. Let $X\setminus U = V(I)$ with $I\subseteq R$ an ideal. If $n=0$, $U = \{0\}$ is affine and we have nothing to prove. Let $n\geq 1$. Because $k$ is infinite, the $k$-vector space $I$ cannot be the union of its finitely many codimension one subspaces $I_x=\left\{p\in I\st p(x) = 0\right\}$ for $x\in F$ (indeed, $I/I_x\isomorphism k$ via $p\mapsto p(x)$). Therefore, there is $p\in I$ such that $F\subseteq X\setminus V(p)$. By our initial remark, $X\setminus V(p)$ is affine and a neighbourhood of $F$. As $p\in I$, $X\setminus V(p)\subseteq U$ and the claim follows from Proposition~\reff{prop:commonNeighbourhoodVariety}.
 	
 	\emph{Step 2.} Let $X\subseteq \IP^n(k)$ be quasi-projective and let $F\subseteq X$ be finite. We can write 
 	\begin{align*}
@@ -249,7 +249,7 @@ Let it be said that the first three recommendations are from Professor Franke wh
 	As $k^{n+1}$ is larger than the union of the $N$ codimension one subspaces \begin{align*}
 		V_i=\left\{(\xi_j)_{j=0}^n\st \sum_{j=0}^n \xi_j f_j^{(i)} = 0\right\}\quad\text{for }i=1,\ldots,N\;,
 	\end{align*} 
-	there is a homogenous polynomial $p\neq 0$ of degree 1 such that $p\big(f_0^{(i)},\ldots, f_n^{(i)}\big) \neq 0$ for all $1\leq i\leq N$. Then $F\subseteq X\setminus V(p)$. But $\IP^n(k)\setminus V(p)$ is isomorphic to $k^n$ as this is the case when $p= X_0$ and $\GL_{n+1}(k)$ transitively acts on $k^{n+1}\setminus\{0\}$. Thus, $F\subseteq X\setminus V(p)$ and $X\setminus V(p)$ is isomorphic to a quasi-affine variety. The assertion now follows from Step~1.
+	there is a homogenous polynomial $p\neq 0$ of degree 1 such that $p\big(f_0^{(i)},\ldots, f_n^{(i)}\big) \neq 0$ for all $1\leq i\leq N$. Then $F\subseteq X\setminus V(p)$. But $\IP^n(k)\setminus V(p)$ is isomorphic to $k^n$ as this is the case when $p= X_0$ and $\GL_{n+1}(k)$ acts transitively on $k^{n+1}\setminus\{0\}$. Thus, $F\subseteq X\setminus V(p)$ and $X\setminus V(p)$ is isomorphic to a quasi-affine variety. The assertion now follows from Step~1.
 \end{proof}
     \begin{rem*}
         \begin{alphanumerate}
@@ -264,7 +264,7 @@ Let it be said that the first three recommendations are from Professor Franke wh
     \end{rem*}
 \section{General properties and sheaf constructions}\lbl{sec:SheafConstructions}
 \begin{defi}[Stalk]\lbl{def:stalk}
-    Let $\Gg$ be a presheaf on the topological space $X$ and $x\in X$. Let $\Gg_x = \colimit[U] \Gg(U)$, denote the \defemph{stalk} of $\Gg$ at $x$, where $\colimit$ is taken over the open neighbourhoods $U$ of $x$.
+    Let $\Gg$ be a presheaf on the topological space $X$ and $x\in X$. Let $\Gg_x = \colimit[U] \Gg(U)$ denote the \defemph{stalk} of $\Gg$ at $x$, where $\colimit$ is taken over the open neighbourhoods $U$ of $x$.
 \end{defi}
 \begin{rem*}
     In general, $\colimit$ is the colimit in the target category. For the target categories of abelian groups, sets or rings we have
@@ -370,7 +370,7 @@ of presheaves on $\Bb$.
 \begin{proof}
 	\itememph{c} If you think about it for a while, this becomes rather obvious from the definitions.\lbl{thisIsNotAProofCozWeAreLazy}
 	
-	For part \itememph{a}, we prove surjectivity first: Let $g\in\Gg^\sh(U)$ and $x\in U$, we need to find an open neighbourhood $V\in \Bb$ of $x$ and $\gamma\in \Gg(V)$ such that the images of $\Gamma_\Gg(\gamma)\in \Gg^\sh(V)$ and of $g$ in $\Gg^\sh_x$ coincide. We chose $V$ and $\gamma$ as on the right hand of \eqreff{eq:sheafification}. As $\Bb$ is a topology base there is $W\in\Bb$ sucht that $x\in W\subseteq U\cap V$. It follows from the definition of $\Gamma_\Gg$ and the coherence condition that $g|_W = \Gamma_\Gg(\gamma)|_W$. Consequently, their images in the stalk at $x$ coincide, as asserted.
+	For part \itememph{a}, we prove surjectivity first: Let $g\in\Gg^\sh(U)$ and $x\in U$, we need to find an open neighbourhood $V\in \Bb$ of $x$ and $\gamma\in \Gg(V)$ such that the images in $\Gg^\sh_x$ of $\Gamma_\Gg(\gamma)\in \Gg^\sh(V)$ and of $g$ coincide. We chose $V$ and $\gamma$ as on the right-hand side of \eqreff{eq:sheafification}. As $\Bb$ is a topology base there is $W\in\Bb$ sucht that $x\in W\subseteq U\cap V$. It follows from the definition of $\Gamma_\Gg$ and the coherence condition that $g|_W = \Gamma_\Gg(\gamma)|_W$. Consequently, their images in the stalk at $x$ coincide, as asserted.
 	
 	To show injectivity define
 	\begin{align*}
@@ -490,7 +490,7 @@ of presheaves on $\Bb$.
 	       	\draw[->] (FB) -- (Fsh) node[pos=0.5, above=-0.25ex] {$\sim$};
 	       	\draw[->] (GB) -- (G) node[pos=0.5, above=-0.25ex] {$\sim$};
         \end{diagram*}
-        in which also $(\Gamma_\Ff)_x$ is an isomorphism by Proposition~\reff{prop:sheafificationMorphisms}.  It follows that $\beta_x$ is uniquely determined by $\alpha_x$, hence by $\alpha$. By Corollary~\reff{cor:sheafDefinedByStalks}\itememph{c} this means that $\beta$ is uniquely determined by $\alpha$.
+        in which also $(\Gamma_\Ff)_x$ is an isomorphism by Proposition~\reff{prop:sheafificationMorphisms}\itememph{a}.  It follows that $\beta_x$ is uniquely determined by $\alpha_x$, hence by $\alpha$. By Corollary~\reff{cor:sheafDefinedByStalks}\itememph{c} this means that $\beta$ is uniquely determined by $\alpha$, showing uniqueness.
         
         To show existence of $\beta$ we construct it as 
         \begin{align*}
@@ -506,7 +506,7 @@ of presheaves on $\Bb$.
         \begin{align*}
         	\Hom_{\cat{Shv}(X)}(\Ff^\sh,\Gg)\simeq\Hom_{\cat{PreShv}(\Bb)}(\Ff,\Gg|_\Bb)\;.
         \end{align*}
-        In other words, $L=(-)^\sh\colon \cat{PreShv}(\Bb) \to \cat{Shv}(X)$ and $R=(-)|_\Bb\colon \cat{Shv}(X) \to \cat{PreShv}(\Bb)$ is an adjoint pair of functors.
+        In other words, $L=(-)^\sh\colon \cat{PreShv}(\Bb) \to \cat{Shv}(X)$ and $R=(-)|_\Bb\colon \cat{Shv}(X) \to \cat{PreShv}(\Bb)$ is an \emph{adjoint pair of functors} (cf. Definition~\reff{def:adjointFunctors}).
     \end{rem}
     \begin{defi}[Direct image] \lbl{def:directImage}
         Let $X\morphism[f] Y$ be a continuous map and $\Gg$ a presheaf on $X$. By $f_*\Gg$ we denote the presheaf on $Y$ defined by 
@@ -591,7 +591,7 @@ of presheaves on $\Bb$.
             If $f\colon X\to \{*\}$ is the projection to the one-point space and the category $\cat{Shv}(\{*\})$ of sheaves on $\{*\}$ with values in the category $\Aa$ of sets, abelian groups, rings, etc, is identified with $\Aa$ and $A\in\Ob(\Aa)$, then 
             \begin{align*}
                 \big(f^\flat(A)\big)(U) &= \begin{cases} A &\text{if }U\neq\emptyset\\ \{0\} &\text{if } U= \emptyset \end{cases}\\
-                \big(f^\sharp(A)\big)(U) &= \left\{f\colon U \to A\st f \text{ is locally constant}\right\}\;.
+                \big(f^\sharp(A)\big)(U) &= \left\{f\colon U \to \{0,A\}\st f \text{ is locally constant}\right\}\;.
             \end{align*}
           \item 
             If $V\morphism[f] Y$ is the embedding of an open subset then $f^\flat \Gg(U) = \Gg(U)$ for open $U\subseteq V$. In other words, $f^\flat \Gg = \Gg|_V$ and the sheaf property is preserved. Thus, $f^\sharp \Gg = \Gg|_V$ if $\Gg$ is a sheaf.
@@ -622,7 +622,7 @@ of presheaves on $\Bb$.
 \end{defi}
 
 \begin{rem*}
-    Locally ringed spaces will be a subcategory of it, but not a \emph{full} subcategory.
+    Locally ringed spaces will be a subcategory of it, but not a \emph{full} subcategory (cf. Definition~\reff{def:subcategory}\itememph{b}).
 \end{rem*}
 \begin{rem*}
     As $f^\sharp$ is left-adjoint to $f_*$ (to be precise, we're actually considering  $(f_{\cat{Top}})_*$ and $(f_{\cat{Top}})^\sharp$), giving $f^*\colon \Oo_Y\to f_*\Oo_X$ is equivalent to giving a morphism $f^\sharp \Oo_Y \to \Oo_X$ which is also denoted by $f^*$. Using this type of $f^*$ we would still arrive at the same category, up to unique isomorphism of the sets of morphisms. In particular, we have 
@@ -747,7 +747,7 @@ of presheaves on $\Bb$.
     \end{alphanumerate}
 \end{fact}
 \begin{proof}
-	\itememph{a} is just \itememph{\alpha} from Definition~\reff{def:localMorphisms}\itememph{b}. We got it, ok?
+	\itememph{a} is just \itememph{\alpha} from Definition~\reff{def:localMorphisms}\itememph{b}, in case you didn't notice.
 	
 	Part \itememph{b} is immediately follows from the fact that $\Oo_{Z,z}\morphism[g^*]\Oo_{Y,y}\morphism[f^*]\Oo_{X,x}$ equals $\Oo_{Z,z}\morphism[(gf)^*]\Oo_{X,x}$ by Remark~\reff{rem:pullbackthingyAtStalks}.
 	
@@ -872,7 +872,7 @@ of presheaves on $\Bb$.
     \end{align*}
     and $f_\ell =0$ as $\Oo_{K,[\ell]}$ is the quotient of $\Oo_{X,\ell}$ by the ideal on the right-hand side. Thus, $f|_{U\cap W} =0$, proving the injectivity claim.
 	
-	Surjectivity is somewhat easier. Let $\gamma\in\Oo_{K,[k]}$, and choose a preimage $\gamma'\in\Oo_{X,k}$ of $\gamma$ under the quotient projection $\Oo_{X,k}\morphism\Oo_{K,[k]}=\Oo_{X,k}/I$. There are an open neighbourhood $k\in V\subseteq X$ and $\phi\in\Oo_X(V)$ such that $\gamma'$ is the image of $\phi$ in $\Oo_{X,k}$. Let $U=V\cap K$ and $f=\kappa^*\phi\in\kappa_*\Oo_K(V)=\Oo_K(V\cap K)\Oo_K(U)$, then the component $f_k$ of $f$ at $k$ equals
+	Surjectivity is somewhat easier. Let $\gamma\in\Oo_{K,[k]}$, and choose a preimage $\gamma'\in\Oo_{X,k}$ of $\gamma$ under the quotient projection $\Oo_{X,k}\morphism\Oo_{K,[k]}=\Oo_{X,k}/I$. There are an open neighbourhood $k\in V\subseteq X$ and $\phi\in\Oo_X(V)$ such that $\gamma'$ is the image of $\phi$ in $\Oo_{X,k}$. Let $U=V\cap K$ and $f=\kappa^*\phi\in\kappa_*\Oo_K(V)=\Oo_K(V\cap K)=\Oo_K(U)$, then the component $f_k$ of $f$ at $k$ equals
 	\begin{align*}
 		f_k=\left(
 		\begin{array}{c}
@@ -939,13 +939,13 @@ of presheaves on $\Bb$.
 	
 	Let $U\subseteq K$ be an open subset and $\lambda=(\lambda_k)_{k\in U}\in\Oo_K(U)\subseteq\prod_{k\in U}\Oo_{K,[k]}$. For $t\in T$ and $y=a(\vartheta(t))=b(\vartheta(t))$, the morphism $\Oo_{X,\vartheta(t)}\morphism[\tau^*]\Oo_{T,t}$ coequalizes the pair $\Oo_{Y,y}\doublemorphism[\smash{a^*}][\smash{b^*}]\Oo_{X,\vartheta(t)}$, hence factors over
 	\begin{align*}
-		\Oo_{X,\vartheta(t)}\morphism\Oo_{K,[\vartheta(t)]}\morphism[\snake{\tau}_t]\Oo_{T,t}\;.
+		\Oo_{X,\vartheta(t)}\morphism\Oo_{K,[\vartheta(t)]}\morphism[\vartheta^*_t]\Oo_{T,t}\;.
 	\end{align*}
 	We claim that
 	\begin{align}\lbl{eq:bruteForcePullback}
-		\snake{\tau}^*\lambda=\left(\snake{\tau}_t\left(\lambda_{\vartheta(t)}\right)\right)_{t\in\vartheta^{-1}U}\in\prod_{t\in\vartheta^{-1}U}\Oo_{T,t}\tag{$*$}
+		\vartheta^*\lambda=\left(\vartheta^*_t\left(\lambda_{\vartheta(t)}\right)\right)_{t\in\vartheta^{-1}U}\in\prod_{t\in\vartheta^{-1}U}\Oo_{T,t}\tag{$*$}
 	\end{align}
-	belongs to the image of $\Oo_T(\vartheta^{-1}U)$ in $\prod_{t\in\vartheta^{-1}U}\Oo_{T,t}$. Believing this for the moment, we finish the rest of the proof. From \eqreff{eq:bruteForcePullback} we obtain a morphism $\vartheta^*\colon\Oo_K(U)\morphism\Oo_T(\vartheta^{-1}U)$ such that the image of $\vartheta^*\lambda$ in $\prod_{t\in\vartheta^{-1}U}\Oo_{T,t}$ equals $\snake{\tau}^*\lambda$. It is rather easy to show that $\vartheta^*\colon\Oo_K\morphism\vartheta_*\Oo_T$ is a morphism of sheaves of rings, thus turning $\vartheta$ into a morphism of ringed spaces satisfying $\tau=\kappa\vartheta$ (which may be easily checked on stalks). Since $\Oo_{X,k}\morphism[\kappa^*]\Oo_{K,k}\simeq\Oo_{X,k}/I$ is surjective, Fact~\reff{fact:localMorphisms}\itememph{d}(iii) tells us that $\vartheta$ is indeed a morphism of locally ringed spaces.
+	belongs to the image of $\Oo_T(\vartheta^{-1}U)$ in $\prod_{t\in\vartheta^{-1}U}\Oo_{T,t}$. Believing this for the moment, we finish the rest of the proof. From \eqreff{eq:bruteForcePullback} we obtain a morphism $\vartheta^*\colon\Oo_K(U)\morphism\Oo_T(\vartheta^{-1}U)$ such that the image of $\vartheta^*\lambda$ in $\prod_{t\in\vartheta^{-1}U}\Oo_{T,t}$ equals $\vartheta^*\lambda$. It is rather easy to show that $\vartheta^*\colon\Oo_K\morphism\vartheta_*\Oo_T$ is a morphism of sheaves of rings, thus turning $\vartheta$ into a morphism of ringed spaces satisfying $\tau=\kappa\vartheta$ (which may be easily checked on stalks). Since $\Oo_{X,k}\morphism[\kappa^*]\Oo_{K,k}\simeq\Oo_{X,k}/I$ is surjective, Fact~\reff{fact:localMorphisms}\itememph{d}(iii) tells us that $\vartheta$ is indeed a morphism of locally ringed spaces.
 	
 	We need to show that $\vartheta$ is unique. As before, the topological component is easy: As $K\morphism[\kappa_{\cat{Top}}]X$ is injective, it follows that $\vartheta_{\cat{Top}}$ is uniquely determined by $\tau=\kappa\vartheta$. Now for the algebraic component. As $\Oo_{X,\kappa(\vartheta(t))}\morphism[\smash{\kappa^*}]\Oo_{K,\vartheta(t)}=\Oo_{K,\tau(t)}$ is surjective, it follows that $\vartheta^*\colon \Oo_{K,\vartheta(t)}\morphism\Oo_{T,t}$ is uniquely determined by $\tau$ and the commutativity of
 	\begin{diagram*}
@@ -981,7 +981,7 @@ of presheaves on $\Bb$.
 	\end{align*}
 	When $t\in\vartheta^{-1}U\cap\tau^{-1}V\eqqcolon W$ (which is an open neighbourhood of $z$ in $T$), this may be applied to $k=\vartheta(t)=\tau(t)$ and gives
 	\begin{align*}
-		\snake{\tau}_t(\lambda_k)=\left(
+		\vartheta^*_t(\lambda_k)=\left(
 		\begin{array}{c}
 			\text{image of }\tau^*\ell\text{ under}\\
 			\Oo_T(\tau^{-1}V)\morphism\Oo_T(W)\morphism\Oo_{T,t}
@@ -997,20 +997,20 @@ of presheaves on $\Bb$.
 		\scriptsize
 		\draw[->] (kz) -- (kx) node[pos=0.5, above] {$\tau^*$};
 		\draw[->] (kz) -- (ky) node[pos=0.5, below left] {$\kappa^*$};
-		\draw[->] (ky) -- (kx) node[pos=0.5,below right] {$\snake\tau_k$};
+		\draw[->] (ky) -- (kx) node[pos=0.5,below right] {$\vartheta^*_k$};
 		\draw[->] (OX) -- (OT) node[pos=0.5, above] {$\tau^*$};
 		\draw[->] (OX) -- (kz);
 		\draw[->] (OT) -- (kx);
 	\end{diagram*}
 	It follows that
 	\begin{align*}
-		\snake{\tau}^*\lambda=\left(
+		\vartheta^*\lambda=\left(
 		\begin{array}{c}
 			\text{image of }\tau^*\ell\text{ under}\\
 			\Oo_T(\tau^{-1}V)\morphism\Oo_T(W)\morphism\prod_{t\in W}\Oo_{T,t}
 		\end{array}\right)\;.
 	\end{align*}
-	Since such a neighbourhood $W$ may be found for any $z\in\vartheta^{-1}U$, $\snake{\tau}^*\lambda$ desires the satisfied coherence condition.
+	Since such a neighbourhood $W$ may be found for any $z\in\vartheta^{-1}U$, $\vartheta^*\lambda$ desires the satisfied coherence condition.
 \end{proof}
 \begin{cor}
     Let $X\doublemorphism[f][\smash{g}] Y$ be a pair of morphisms of locally ringed spaces and $K\morphism[\kappa] X$ be an equalizer of that pair:
@@ -1085,7 +1085,7 @@ We're now prepared to describe the fibre product $F=X\times_SY$:
 			\morphism\left(\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y}\right)_\theta\morphism\left(\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y}\right)_\pp
 		\end{array}\right)\;.
 	\end{align*}
-	\item \emph{Projections.} We obtain projections $X\lmorphism[p]F\morphism[p] Y$ by $p(x,y,\pp) = x$ and $q(x,y,\pp) = y$. They are continuous, e.g. $p^{-1}(U)=\Omega(U,Y,1)$. For $f\in\Oo_X(U)$, $g\in \Oo_Y(V)$ we define the pullbacks $p^*$, $q^*$ via
+	\item \emph{Projections.} We obtain projections $X\lmorphism[p]F\morphism[p] Y$ by $p(x,y,\pp) = x$ and $q(x,y,\pp) = y$. Let $s=\xi(x)=\upsilon(y)$. The maps $p$ and $q$ are continuous, e.g. $p^{-1}(U)=\Omega(U,Y,1)$. For $f\in\Oo_X(U)$, $g\in \Oo_Y(V)$ we define the pullbacks $p^*$, $q^*$ via
 	\begin{align*}
         p^*f&= \left(
         \begin{array}{c}
@@ -1126,14 +1126,14 @@ We're now prepared to describe the fibre product $F=X\times_SY$:
     
     \emph{Step 3.} We prove that the pretender stalks are isomorphic to the actual ones. This time, surjectivity first. Let $\lambda \in \Oo_{F,[x,y,\pp]} = (\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y})_\pp$ be given as $\frac{\phi}{\sigma}$ where $\phi$ and $\sigma$ are elements of this tensor product and $\sigma\not\in \pp$. Then there exist open neighbourhoods $U$ of $x$ and $V$ of $y$ as well as elements $f\in \Rr(U,V)$ and $t\in \Rr(U,V)$ such that the images of $f$ and $t$ in $\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y}$ equal $\phi$ and $\sigma$. Then $\frac{f}{t}$ defines an element of $\Oo_F(\Omega(U,V,t))$ whose image in $\Oo_{F,(x,y,\pp)}$ is mapped to $\lambda=\frac{\phi}{\sigma}\in\Oo_{F,[x,y,\pp]}$. 
     
-    For injectivity, let $\lambda = (\lambda_\omega)\in \Oo_F(\Omega) \subseteq \prod_{\omega\in \Omega}\Oo_{F,[\omega]}$ and let $(x,y,\pp)\in \Omega$ such that $\lambda_{x,y,\pp}$ vanishes in $\Oo_{F,[x,y,\pp]}$. We must show that $\lambda$ vanishes in some neighbourhood of $(x,y,\pp)$. By the coherence condition there is an open neighbourhood $\Omega(U,V,\theta)$ of $(x,y,\pp)$ together with $\ell\in \Rr(U,V)_\theta$ such that the image of $\ell$ under $\Rr(U,V)_\theta\morphism \Oo_F(\Omega(U,V,\theta)) \morphism \Oo_F(\Omega \cap \Omega(U,V,\theta))$ equals the restriction $\lambda|_{\Omega\cap\Omega(U,V,\theta)}$ of $\lambda$ to $\Omega\cap\Omega(U,V,\theta)$. Replacing $\Omega$ by $\Omega \cap \Omega(U,V, \theta)$ and $\lambda$ by its restriction, we achieve that lambda itself equals this image. Let $\ell=\frac{n}{\theta}$ with $n\in\Rr(U,V)$ (we may w.l.o.g. assume the denominator is $\theta$ because localizing at an arbitrary power of $\theta$ still gives the same localization). Now $0=\lambda_{(x,y,\pp)}$ equals the image of $\ell$ under
+    For injectivity, let $\lambda = (\lambda_\omega)\in \Oo_F(\Omega) \subseteq \prod_{\omega\in \Omega}\Oo_{F,[\omega]}$ and let $(x,y,\pp)\in \Omega$ such that $\lambda_{x,y,\pp}$ vanishes in $\Oo_{F,[x,y,\pp]}$. We must show that $\lambda$ vanishes in some neighbourhood of $(x,y,\pp)$. By the coherence condition there is an open neighbourhood $\Omega(U,V,\theta)$ of $(x,y,\pp)$ together with $\ell\in \Rr(U,V)_\theta$ such that the image of $\ell$ under $\Rr(U,V)_\theta\morphism \Oo_F(\Omega(U,V,\theta)) \morphism \Oo_F(\Omega \cap \Omega(U,V,\theta))$ equals the restriction $\lambda|_{\Omega\cap\Omega(U,V,\theta)}$ of $\lambda$ to $\Omega\cap\Omega(U,V,\theta)$. Replacing $\Omega$ by $\Omega \cap \Omega(U,V, \theta)$ and $\lambda$ by its restriction, we achieve that $\lambda$ itself equals this image. Let $\ell=\frac{n}{\theta}$ with $n\in\Rr(U,V)$ (we may w.l.o.g. assume the denominator is $\theta$ because localizing at an arbitrary power of $\theta$ still gives the same localization). Now $0=\lambda_{(x,y,\pp)}$ equals the image of $\ell$ under
     \begin{align*}
         \Rr(U,V)_\theta = (\Oo_{X}(U)\otimes_{\Oo_S(S)}\Oo_{Y}(V)) \morphism (\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y})_\pp\;.
     \end{align*}
     Since $\lambda_{(x,y,\pp)}=0$, there is $h\in (\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y})\setminus \pp$ such that $n \cdot h = 0$ in $\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y} \simeq \colimit \Oo_{X}(\snake U) \otimes_{\Oo_S(W)}\Oo_{Y}(\snake V)$. We may assume that $h$ is the image of $\eta\in \Rr(\snake U, \snake V)$ in $\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y}$ and that $n\cdot \eta = 0$ in $\Rr\smash{(\snake U, \snake V};W)$. Replacing both $\eta$ and $\theta$ by $\eta\cdot \theta$ as well as $U$ by $\snake U$ and $V$ by $\snake V$, we may assume $U=\snake U$, $V=\snake V$ and $\eta = \theta$. Then the image of $\ell = \frac{n}{\theta}$ under $\Rr(U,V)_\theta \morphism \Rr(U,V;W)_\theta$ vanishes. But the map $\Rr(U,V)_\theta\morphism \Oo_F(\Omega(U,V,\theta))$ factors over $\Rr(U,V;W)_\theta$ as this is the case for the maps
     \begin{diagram*}
     	\node[ob](a) at (0,1.5) {$\left(\Oo_X(U)\otimes_{\Oo_S(S)}\Oo_Y(V)\right)_\theta$};
-    	\node[ob](c) at (2.5,0) {$\Big(\Oo_X(U)\otimes_{\Oo_S(W)}\Oo_Y(V)\Big)_{\theta|_{U,V;W}}$};
+    	\node[ob](c) at (2.5,0) {$\Big(\Oo_X(U)\otimes_{\Oo_S(W)}\Oo_Y(V)\Big)_{\theta|_{\Rr(U,V;W)}}$};
     	\node[ob](b) at (5,1.5) {$\left(\Oo_{X,x'}\otimes_{\Oo_{S,s'}}\Oo_{Y,y'}\right)_\theta$};
     	\node[ob](d) at (8.5,1.5) {$\Oo_{F,\left[x',y',\pp'\right]}$};
     	\scriptsize
@@ -1206,7 +1206,7 @@ by the $\Oo_{S,s}$-bilinearity of $-\otimes_{\Oo_{S,s}}-$.
 $\xi\tau_X = \upsilon \tau_Y$. We define a map $T\morphism[\tau] F$ as follows:
 For $t\in T$, we put $x = \tau_X(t), y = \tau_Y(t), s = \xi(x) = \xi(\tau_X(t)) = \upsilon(\tau_Y(t)) = \upsilon(y)$. By the universal property of $\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y}$
 as a cofibre product in the category of rings, there is a unique ring homomorphism
-$\tau^\ast$ from this ring to $\Oo_{T,t}$ such that
+$\tau^\flat$ from this ring to $\Oo_{T,t}$ such that
 \begin{diagram}[baseline=0.75cm-0.5ex][\lbl{diag:fibreProduct}]
 	\node[ob](OXx) at (0,1.5) {$\Oo_{X,x}$};
 	\node[ob](OTt) at (0,0) {$\Oo_{T,t}$};
@@ -1217,14 +1217,14 @@ $\tau^\ast$ from this ring to $\Oo_{T,t}$ such that
 	\draw [->] (OYy) -- (OTt) node[pos=0.5, below] {$\tau_Y^*$};
 	\draw [->] (OYy) -- (Tensor) node[pos=0.5, right] {$\beta$};
 	\draw [->] (OXx) -- (Tensor) node[pos=0.5, above] {$\alpha$};
-	\draw [->, dashed] (Tensor) -- (OTt) node[pos=0.5, below right] {$\tau^*$};
+	\draw [->, dashed] (Tensor) -- (OTt) node[pos=0.5, below right] {$\exists!\ \tau^\flat$};
 	\tag{$*$}
 \end{diagram}
 commutes.
-It is given by $\tau^\ast(f\otimes g) = \tau_X^\ast(f)\cdot\tau^\ast_Y(g)$. Let $\pp = \left(\tau^\ast\right)^{-1}(\mm_{T,t})$.
+It is given by $\tau^\flat(f\otimes g) = \tau_X^\ast(f)\cdot\tau^\ast_Y(g)$. Let $\pp = (\tau^\flat)^{-1}(\mm_{T,t})$.
 By the above diagram,
 \begin{align*}
-\alpha^{-1}(\pp) = \alpha^{-1}\left(\tau^\ast\right)^{-1}(\mm_{T,t}) = \tau^\ast_X(\mm_{T,t}) = \mm_{X,x}\;,
+\alpha^{-1}(\pp) = \alpha^{-1}(\tau^\flat)^{-1}(\mm_{T,t}) = \tau^\ast_X(\mm_{T,t}) = \mm_{X,x}\;,
 \end{align*}
 as $\tau_X$ is a morphism of locally ringed spaces. Similarly, $\beta^{-1}(\pp) = (\mm_{Y,y})$ Thus
 \begin{align*}
@@ -1246,20 +1246,20 @@ to $\Oo_T(\Theta)$, where $\Theta = \tau_X^{-1}(U)\cap \tau_Y^{-1}(Y)$, such tha
 	\draw [->] (OY) -- (OT) node[pos=0.5, below] {$\tau_Y^*$};
 	\draw [->] (OY) -- (R) node[pos=0.5, right] {$g\mapsto 1\otimes g$};
 	\draw [->] (OX) -- (R) node[pos=0.5, above] {$f\mapsto f\otimes 1$};
-	\draw [->, dashed] (R) -- (OT) node[pos=0.5, below right] {$\tau^\sharp$};
+	\draw [->, dashed] (R) -- (OT) node[pos=0.5, below right] {$\exists!\ \tau^\sharp$};
 \end{diagram*}
 commutes, and $\tau^\sharp(f\otimes g) = \tau_X^\ast(f)\cdot \tau_Y^\ast(g)$. Then, for $\lambda\in \Rr(U,V)$,
 \begin{align*}
 \lbl{eq:fibreproducts-lrs-proof-tau-preimage}
 \tau^{-1}\Omega(U,V,\lambda) &=\left\{t\in T \st
 \begin{array}{c}
-	 \tau_X(t)\in U\text{, }\tau_Y(t)\text{ and the image of }\lambda\text{ in }\Oo_{X,x}\otimes_{\Oo_{S,s}}
+	 \tau_X(t)\in U\text{, }\tau_Y(t)\in V\text{ and the image of }\lambda\text{ in }\Oo_{X,x}\otimes_{\Oo_{S,s}}
 	 \Oo_{Y,y}\\
-	 \text{(where }s=\xi(\tau_X(t))=\upsilon(\tau_Y(t))\text{) is } \notin \left(\tau^\ast\right)^{-1}(\mm_{T,t})
+	 \text{is } \notin (\tau^\flat)^{-1}(\mm_{T,t})\text{, where we set }s=\xi\big(\tau_X(t)\big)=\upsilon\big(\tau_Y(t)\big)
 \end{array} \right\}\\
 &=\left\{t\in \Theta \st \left(\text{image of }\lambda\text{ in }\Oo_{X,x}\otimes_{\Oo_{S,s}}
-\Oo_{Y,y}\right) \notin \left(\tau^\ast\right)^{-1}(\mm_{T,t}) \right\}\\
-&=\left\{t\in \Theta\st\left(\text{image of }\tau^\sharp\lambda\text{ in }\Oo_T(\Theta)\morphism \Oo_{T,t}\right)\notin\mm_{T,t}\right\}\\
+\Oo_{Y,y}\right) \notin (\tau^\flat)^{-1}(\mm_{T,t}) \right\}\\
+&=\left\{t\in \Theta\st\left(\text{image of }\tau^\sharp\lambda\text{ in }\Oo_T(\Theta)\to \Oo_{T,t}\right)\notin\mm_{T,t}\right\}\\
 &=\Theta\setminus V(\tau^\sharp \lambda)\;,\tag{\#}
 \end{align*}
 which is open. The transition from the second line to the third line uses the commutativity of the following diagram:
@@ -1271,24 +1271,24 @@ which is open. The transition from the second line to the third line uses the co
 	\scriptsize
 	\draw [->] (R) -- (Tensor);
 	\draw [->] (R) -- (OT) node[pos=0.5,above] {$\tau^\sharp$};
-	\draw [->] (Tensor) -- (OTt) node[pos=0.5,above] {$\tau^*$};
+	\draw [->] (Tensor) -- (OTt) node[pos=0.5,above] {$\tau^\flat$};
 	\draw [->] (OT) -- (OTt);
 \end{diagram*}
-This can be seen as follows: The element $f\otimes g$ in the upper-left corner $\Rr(U,V)=\Oo_X(V)\otimes_{\Oo_S(S)} \Oo_Y(V)$ is mapped to via the upper-right corner to
+Indeed, the element $f\otimes g$ in the upper-left corner $\Rr(U,V)=\Oo_X(V)\otimes_{\Oo_S(S)} \Oo_Y(V)$ is mapped to via the upper-right corner to
 \begin{align*}
 \left(
 \begin{array}{c}
 	\text{image of }\tau^\sharp(f\otimes g)\text{ under}\\
-	\Oo_T(\theta)\morphism \Oo_{T,t}
+	\Oo_T(\Theta)\morphism \Oo_{T,t}
 \end{array}\right)&=\left(
 \begin{array}{c}
 	\text{image of }\tau_X^\ast(f)\cdot\tau_Y^\ast(g)\text{ under}\\
-	\Oo_T(\theta)\morphism \Oo_{T,t}
+	\Oo_T(\Theta)\morphism \Oo_{T,t}
 \end{array}\right)\\
-&=\big(\text{image of }\tau_X^\ast(f)\text{ in } \Oo_{T,t}\big)\cdot\big(\text{ image of }\tau_Y^\ast(g)\text{ in } \Oo_{T,t}\big)\\
+&=\big(\text{image of }\tau_X^\ast(f)\text{ in } \Oo_{T,t}\big)\cdot\big(\text{image of }\tau_Y^\ast(g)\text{ in } \Oo_{T,t}\big)\\
 &=\tau_X^\ast\big(\text{image of }f\text{ in }\Oo_{X,x}\big)
 \cdot \tau_Y^\ast\big(\text{image of }g\text{ in }\Oo_{Y,y}\big)\\
-&=\tau^\ast\big(\left(\text{image of }f\text{ in }\Oo_{X,x}\right) \otimes 
+&=\tau^\flat\big(\left(\text{image of }f\text{ in }\Oo_{X,x}\right) \otimes 
 \left(\text{image of }g\text{ in }\Oo_{Y,y}\right)\big),
 \end{align*}
 which is the image of $f\otimes g$ via the lower-left corner. As these pure tensor products generate
@@ -1296,31 +1296,31 @@ $\Rr(U,V)$ as an abelian group, the stated commutativity of the diagram follows.
 
 \emph{Definition of the algebraic component $\tau^\ast$ of $\tau$.}
 Fix an open subset $\Omega\subseteq F$. We define
-$\tau\left( \phi\right),$
+$\tau^*\left( \phi\right),$
 where $\phi=(\phi_\omega)_{\omega\in \Omega} \in \prod_{\omega\in \Omega} \Oo_{F,[\omega]}$ must satisfy the coherence condition for sections of $\Oo_F$,
-to be the preimage of $(\tau^\flat \varphi_{\tau(t)})_{t\in \tau^{-1}(\Omega)}$ under $\Oo_T\left(\tau^{-1}\Omega\right)\morphism \prod_{t\in \tau^{-1}(
-\Omega)} \Oo_{T,t}$. Here, $\tau^\flat$ is the unique ring homomorphism $\Oo_{F,[\tau(t)]} \rightarrow \Oo_{T,t}$ making the diagram
+to be the preimage of $\big(\tau^* \varphi_{\tau(t)}\big)_{t\in \tau^{-1}(\Omega)}$ under $\Oo_T\left(\tau^{-1}\Omega\right)\morphism \prod_{t\in \tau^{-1}(
+\Omega)} \Oo_{T,t}$. Here, $\tau^*$ is the unique ring homomorphism $\Oo_{F,[\tau(t)]} \rightarrow \Oo_{T,t}$ making the diagram
 \begin{diagram*}
 	\node[ob](Tensor) at (0,1.5) {$\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y}$};
 	\node[ob](OF) at (4.5,1.5) {$\left(\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y}\right)_{\pp}$\rlap{$\:=\Oo_{F,[x,y,\pp]}$}};
 	\node[ob](OT) at (4.5, 0) {$\Oo_{T,t}$};
 	\scriptsize
 	\draw[->] (Tensor) -- (OF);
-	\draw[->] (Tensor) -- (OT) node[pos=0.5, below left] {$\tau^*$};
-	\draw[->, dashed] (OF) -- (OT) node[pos=0.5, right] {$\exists!\ \tau^\flat$};
+	\draw[->] (Tensor) -- (OT) node[pos=0.5, below left] {$\tau^\flat$};
+	\draw[->, dashed] (OF) -- (OT) node[pos=0.5, right] {$\exists!\ \tau^*$};
 \end{diagram*}
-commute. It exists by the universal property of localizations, as $\pp = \left(\tau^\ast\right)^{-1} (\mm_{T,t})$.
-To confirm that $(\tau^\flat \varphi_{\tau(t)})_{t\in \tau^{-1}(\Omega)}$ has the coherence condition characterizing the
+commute. It exists by the universal property of localizations, as $\pp = (\tau^\flat)^{-1} (\mm_{T,t})$.
+To confirm that $\big(\tau^* \varphi_{\tau(t)}\big)_{t\in \tau^{-1}(\Omega)}$ has the coherence condition characterizing the
 image of $\Oo_T(\tau^{-1}\Omega)$, let $\snake\Omega = \Omega(U,V,\lambda)$ be an open neighbourhood in $F$ of
 $\tau(t)$ such that on $\snake\Omega\cap \Omega$, $\varphi$ is given by $f\in R(U,V)_\lambda$. By
 \eqreff{eq:fibreproducts-lrs-proof-tau-preimage}, $\tau^{-1}(\snake\Omega) = \left(\tau_X^{-1}(V)\cap \tau_Y^{-1}(V)\right)\setminus
-V(\tau^\sharp(\lambda))$ is an open neighbourhood of $t$ on which $\tau^\sharp(g)\cdot\tau^\sharp(\lambda)^{-k}$ defines a section of $\Oo_T$,
+V\big(\tau^\sharp(\lambda)\big)$ is an open neighbourhood of $t$ on which $\tau^\sharp(g)\cdot\tau^\sharp(\lambda)^{-k}$ defines a section of $\Oo_T$,
 where $g\in R(U,V)$ and $k\geq 0$ such that $f=g\cdot\lambda^{-k}$. Then
 \begin{align*}
-\tau^\flat\left(\varphi_{\tau(t)}\right) = \frac{\tau^\ast(g_{\tau(t)})}{\tau^\ast(\lambda_{\tau(t)})^k} = \left(\text{image of }\frac{\tau^\sharp(g)}
+\tau^*\left(\varphi_{\tau(t)}\right) = \frac{\tau^\flat(g_{\tau(t)})}{\tau^\flat(\lambda_{\tau(t)})^k} = \left(\text{image of }\frac{\tau^\sharp(g)}
 {\tau^\sharp(\lambda)^k}\text{ in }\Oo_{T,t}\right)
 \end{align*}
-for $t,\in \tau^{-1}(\Omega)\cap \tau^{-1}(\snake\Omega)$, using the same equality as in the proof of 
+for $t\in \tau^{-1}(\Omega)\cap \tau^{-1}(\snake\Omega)$, using the same equality as in the proof of 
 \eqreff{eq:fibreproducts-lrs-proof-tau-preimage}.
 This completes the description of the algebraic component $\tau^\ast$ of $\tau$. It is clear that it makes $\tau$ a morphism of ringed spaces,
 that $\tau^\ast p^\ast = \tau_X^\ast$ and that $\tau^\ast q^\ast = \tau_Y^\ast$ hold (this follows from the commutativity of the triangles in
@@ -1337,8 +1337,8 @@ the map on stalks induced by the new $\tau^\ast$).
 	\scriptsize
 	\draw[->] (OF) -- (OTt);
 	\draw[->] (L) -- (Tensor);
-	\draw[->] (L) -- (OTt) node[pos=0.5, right] {$\tau^*$};
-	\draw[->] (Tensor) -- (OTt) node[pos=0.5, above left] {$\tau^\flat$};
+	\draw[->] (L) -- (OTt) node[pos=0.5, right] {$\tau^\flat$};
+	\draw[->] (Tensor) -- (OTt) node[pos=0.5, above left] {$\tau^*$};
 \end{diagram*}
 and $\tau^\flat$ maps $\pp \mathcal L_{\pp}$ to $\mm_{T,t}$ as $\tau^\ast(\pp)\subseteq \mm_{T,t}$ as
 $\pp = \left(\tau^\ast\right)^{-1}\mm_{T,t}$ by the definition of $T$.
@@ -1498,7 +1498,7 @@ Since the preimage of this ideal in $\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y}$ equ
 \begin{rem*}
     When $X$ is a prescheme, $K$ will fail to be a prescheme unless $\Ii$ is \emph{quasi-coherent}.
 \end{rem*}
-\begin{proof}
+\begin{proof}[Proof of Proposition~\reff{prop:closedImmersionSheaves}]
     The following proof is quite sketchy, because lots of technical details have been outsourced to exercise sheet \#8. Let $\Ii\subseteq \Oo_x$ be a sheaf of ideals. We put 
     \begin{align*}
         K = \left\{x\in X\st\Ii_x\subsetneq \Oo_{X,x}\right\} \morphism[\kappa] X\;,
@@ -1717,7 +1717,7 @@ If $M$ is an $R$-module, we have a similar presheaf (of abelian groups or of mod
             	\end{cases}\;.
             \end{align*}
         \item 
-            When $R$ is a a principal ideal domain (or more generally, a Dedekind domain with finite class group $\Pic R$, as in this case $\pp^{\#\Pic R}=(\pi)$ is a principal ideal for every prime ideal $\pp$ and $V(\pp)=V(\pi)$), the same is done by 
+            When $R$ is a a principal ideal domain (or more generally, a Dedekind domain with finite class group $\Cl_R$, as in this case $\pp^{\#\Cl_R}=(\pi)$ is a principal ideal for every prime ideal $\pp$ and $V(\pp)=V(\pi)$), the same is done by 
             \begin{align*}
             	\Oo_{\Spec R}(U)= \big(\Spec R\setminus V(f)\big) =
             	\begin{cases}
@@ -2528,7 +2528,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
     In $X=\Spec \big(k\left[X_i \st i\in \IN\right]\big)$, the open subset $X\setminus \{m\}$ with $\mm= \left( X_i\st i\in\IN \right)$ fails to be quasi-compact as $X\setminus \{\mm\} = \bigcup_{i=1}^\infty X\setminus V(X_i)$ has no finite subcover. Then $X\setminus \{\mm\}\morphism X$ is a morphism which fails to be quasi-compact.
 \end{example}
 \begin{lem}\lbl{lem:qsmorphism}
-    For a morphism $X\morphism Y$ of preschemes, the following conditions are equivalent:
+    For a morphism $X\morphism[f] Y$ of preschemes, the following conditions are equivalent:
     \begin{alphanumerate}
     \item 
         For any affine open subset $U\subseteq Y$, $f^{-1}(U)$ is quasi-separated.
@@ -2565,14 +2565,14 @@ A Franke lecture is no Franke lecture without a definition being proved.
     Such morphisms are called \defemph{quasi-separated}.
 \end{defi}
 \begin{fact}\lbl{fact:qsmorphismProperties}
-    Any separated morphism is quasi-separated. The class of quasi-separated morphisms is base-local and closed under base change, composition, and fibre products.
+    Any separated morphism is quasi-separated. The class of quasi-separated morphisms is base-local and closed under base change and composition.
 \end{fact}
 \begin{proof}
-    For the first assertion note that Lemma~\reff{lem:qsmorphism}\itememph{c} holds as any closed immersion is quasi-compact. The closedness under composition follows from condition \itememph{b} of Lemma~\reff{lem:qsmorphism}. Base-locality follows from Lemma~\reff{lem:qsmorphism}\itememph{c}, since quasi-compactness of morphisms is base-local, for $U\subseteq Y$ open and $X_U = f^{-1}(U)$ the $X_U\times_U X_U$ are open subsets of $X\times_Y X$ and $\Delta^{-1}(X_U\times_U X_U) = X_U$. Closedness under base change is also a consequence of Lemma~\reff{lem:qsmorphism}\itememph{c} as, for $\snake Y\morphism Y$ and $\snake X = X\times_Y \snake Y$ we have that 
+    For the first assertion note that Fact~\reff{fact:separationStuff}\itememph{d} implies the condition from Lemma~\reff{lem:qsmorphism}\itememph{c} as any closed immersion is quasi-compact (cf. Remark~\reff{rem:qcqs}\itememph{d}). The closedness under composition follows from condition \itememph{b} of Lemma~\reff{lem:qsmorphism}. Base-locality follows from Lemma~\reff{lem:qsmorphism}\itememph{c}, since quasi-compactness of morphisms is base-local, and for $U\subseteq Y$ open and $X_U = f^{-1}(U)$ the $X_U\times_U X_U$ are open subsets covering $X\times_Y X$ and $\Delta^{-1}(X_U\times_U X_U) = X_U$. Closedness under base change is also a consequence of Lemma~\reff{lem:qsmorphism}\itememph{c} as, for $\snake Y\morphism Y$ and $\snake X = X\times_Y \snake Y$ we have that 
     \begin{align*}
     	\snake X \xrightarrow{\snake\Delta=\left(\id_{\snake X},\id_{\snake X}\right)} \snake X\times_{\snake Y}\snake X\;
     \end{align*}
-    is a base change of $X\morphism[\Delta] X\times_Y X$ with respect to $\snake X\times_{\snake Y} \snake X \morphism X\times_Y X$ and quasi-compactness is stable under base change (Fact~\reff{fact:qcIsBaseLocalAndStuff}).
+    is a base change of $X\morphism[\Delta] X\times_Y X$ with respect to $\snake X\times_{\snake Y} \snake X \morphism X\times_Y X$ (after a bit abstract nonsense) and quasi-compactness is stable under base change (Fact~\reff{fact:qcIsBaseLocalAndStuff}).
 \end{proof}
 
 \subsection{Generic points}
@@ -3552,7 +3552,7 @@ is ascending. Let $I_\infty = \bigcup_{k=1}^\infty I_k$.
 	\end{rmnumerate}
 \end{defi}
 \begin{example}
-    \begin{itemize}
+    \begin{alphanumerate}
         \item 
             The category $\cat{Set}$ of sets where $\Ob(\Aa)$ is the class of sets, $\Hom_\Aa(X,Y)$ is the set of maps from $X$ to $Y$ and the composition of morphism is the composition of maps.
         \item 
@@ -3565,17 +3565,17 @@ is ascending. Let $I_\infty = \bigcup_{k=1}^\infty I_k$.
             The Banach spaces with bounded (continuous) maps.
         \item 
             The $k$-vector spaces with $k$-linear maps $\cat{Vect}_K$ or $R$-modules with $R$-linear maps $R\cat{-Mod}$.
-    \end{itemize}
+    \end{alphanumerate}
 \end{example}
 A category is called \emph{small} if its class of objects is a set.
 
-\begin{defi}
+\begin{defi}\lbl{def:subcategory}
 	Let $\Aa$ and $\Bb$ be categories. We call $\Bb$
-	\begin{itemize}
+	\begin{alphanumerate}
 		\item a \defemph{subcategory} of $\Aa$ if $\Ob(\Bb) \subseteq \Ob(\Aa)$ and $\Hom_\Bb(X,Y) \subseteq \Hom_\Aa(X,Y)$ and for arbitrary objects $X,Y$ of $\Bb$, the identity $\id_X$ of $X$ in $\Aa$ is a morphism in $\Hom_\Bb(X,X)$.
 		\item a \defemph{full subcategory} of $\Aa$ if additionally $\Hom_\Aa(X,Y) = \Hom_\Bb(X,Y)$ for arbitrary objects $X,Y\in\Ob(\Bb)$.
 		\item an \defemph{equivalent subcategory} of $\Aa$ if it is a full subcategory and every object $X\in \Ob(\Aa)$ is isomorphic to some $Y\in\Ob(\Bb)$ (where a morphism $X\morphism[f] Y$ is an isomorphism iff there  is a (unique) $Y\morphism[g] X$ such that $f\circ g = \id_Y$ and $g\circ f= \id_X$.
-	\end{itemize}
+	\end{alphanumerate}
 \end{defi}
 
   A further example is the category of prevarieties (with morphisms according to Definition \reff{def:preVarieties}) and its full subcategory of varieties, containing all varieties as objects.
@@ -3598,7 +3598,7 @@ A category is called \emph{small} if its class of objects is a set.
   
 
   \begin{rem*}
-  	\begin{itemize}
+  	\begin{alphanumerate}
   		\item 
   		If $\Aa\morphism[F] \operatorname{Set}$ is a faithful functor, then any morphism $f$ such that $Ff$ is injective (respectively surjective) then $f$ is a monomorphism (respectively epismorphism). 
   		\item
@@ -3607,7 +3607,7 @@ A category is called \emph{small} if its class of objects is a set.
   		In the category of Banach spaces and bounded linear maps, $f$ is a epimorphism iff its image is dense.
   		\item
   		The map from a domain to its field of quotients is an epimorphism in the category of rings.
-  	\end{itemize}
+  	\end{alphanumerate}
   \end{rem*}
   \begin{defi}[Canonical morphism]\lbl{def:canonicalMorphism}
   	Let $\Aa\doublemorphism[F][\smash{G}] \Bb$ be functors. A \defemph{functor morphism} or \defemph{canonical morphism} from $F$ to $G$ is a collection of morphisms $\smash{F(A) \morphism[\phi_A]G(A)}$, for all $A\in \Ob \Aa$ such that the diagram
@@ -3622,7 +3622,7 @@ A category is called \emph{small} if its class of objects is a set.
   		\draw[->] (GA) -- (GB) node[pos=0.5, right] {$G(\alpha)$};
   		\draw[->] (FB) -- (GB) node[pos=0.5, above] {$\phi_B$};
   	\end{diagram*}
-  	commutes for arbitrary morphisms $A\morphism[\alpha] \Bb$ in $\Aa$. The functors $\Aa\morphism[F]\Bb$ as objects with canonical morphisms as morphisms thus form a category, the \emph{functor category} $\Funct(\Aa,\Bb)$. Also cf. \cite[page~26]{alg1}.
+  	commutes for arbitrary morphisms $A\morphism[\alpha] B$ in $\Aa$. The functors $\Aa\morphism[F]\Bb$ as objects with canonical morphisms as morphisms thus form a category, the \emph{functor category} $\Funct(\Aa,\Bb)$. Also cf. \cite[page~26]{alg1}.
   \end{defi}
   \begin{defi}[Adjoint functors]\lbl{def:adjointFunctors}
   	Let $\Aa$ and $\Bb$ be categories. An \defemph{adjoint pair of functors} 
@@ -3642,12 +3642,12 @@ A category is called \emph{small} if its class of objects is a set.
   	\end{alphanumerate}
   \end{defi}
   \begin{rem*}
-  	\begin{itemize}
+  	\begin{alphanumerate}
   		\item 
   		Equivalently, a contravariant functor $\Aa\morphism \Bb$ is a covariant functor $\Aa\morphism \Bb^\op$.
   		\item
   		The map $V\morphism V^\ast$ (to the dual vector space) on the category of vector spaces over some fixed field $k$ is an example.
-  	\end{itemize}
+  	\end{alphanumerate}
   \end{rem*}
   \begin{lem}[Yoneda lemma for covariant functors]\lbl{lem:yoneda}
   	For any $M\in\Ob \Aa$, the map $\Cov_M(X) = \Hom_\Aa(M,X)$ defines a covariant functor $\Cov_M=\Hom_\Aa(M,-)\colon \Aa\morphism \cat{Set}$ and 
@@ -3685,7 +3685,7 @@ A category is called \emph{small} if its class of objects is a set.
   		\end{align*}
   		is representable.
   		\item 
-  		Many important constructions in algebraic topology (classifying spaces) and algebraic geometry (Moduli space, Picard/Hilbert schemes) amount to representing certain functors.
+  		Many important constructions in algebraic topology (classifying spaces) and algebraic geometry (Moduli spaces, Picard/Hilbert schemes) amount to representing certain functors.
   	\end{alphanumerate}
   \end{rem*}
   \begin{lem}[Yoneda Lemma, $3\ordinalrd$ try or something]\lbl{lem:functorYoneda}
