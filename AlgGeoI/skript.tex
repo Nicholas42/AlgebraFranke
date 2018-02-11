@@ -195,7 +195,7 @@ This motivates the following definition of an \emph{algebraic variety} being a p
     \end{alphanumerate}
 \end{example}
 \begin{proof}
-		For part \itememph{c} note that the inclusion $Y\monomorphism[\iota] X$ (together with $\iota^*\colon \Oo_X\to\iota_*\Oo_Y$) is a morphism of prevarieties, and for a pair $a,b\colon T\to A$ of morphisms of prevarieties we have $\left\{t\in T\st a(t) = b(t) \right\} = \left\{t \in T\st(\iota a)(t) = (\iota b)(t) \right\}$. The latter is closed in $T$ because $X$ is a variety.
+		For part \itememph{c} note that the inclusion $Y\monomorphism[\iota] X$ (together with $\iota^*\colon \Oo_X\to\iota_*\Oo_Y$) is a morphism of prevarieties, and for a pair $a,b\colon T\to Y$ of morphisms of prevarieties we have $\left\{t\in T\st a(t) = b(t) \right\} = \left\{t \in T\st(\iota a)(t) = (\iota b)(t) \right\}$. The latter is closed in $T$ because $X$ is a variety.
 	
         For part \itememph{a} let $X\subseteq k^n$ be closed and irreducible, $a,b\colon T\to X$ be morphisms of prevarieties and $K= \left\{t\in T\st a(t) = b(t)\right\}$. To show that $K$ is closed in $T$, it is sufficient to show that any $t\in T$ has a neighbourhood $\Omega$ such that $K\cap \Omega$ is closed in $\Omega$. Choosing $\Omega$ such that it is isomorphic to an affine algebraic variety, which is possible because $T$ is a prevariety, we may assume without loss of generality that $T\subseteq k^m$ is an affine algebraic variety in (i.e.  an irreducible subset of) $k^m$. Let 
 	        \begin{align*}
@@ -226,7 +226,7 @@ This motivates the following definition of an \emph{algebraic variety} being a p
     Let $X$ be any prevariety such that for arbitrary $x,y\in X$ there is a common open neighbourhood $U$ of $x$ and $y$ which is affine (that is, isomorphic as a prevariety to an affine variety in some $k^n$). Then $X$ is a variety.
 \end{prop}
 \begin{proof}
-    Let $a,b\colon T\to X$ as in Definition \reff{def:variety} and $t\in T$ and let $U\subseteq X$ be an affine open subset of $X$ containing both $a(t)$ and $b(t)$. Let $V = a^{-1}(U) \cap b^{-1}(U)\subseteq T$. This is an open subset of $T$ containing $t$. It is easily seen that $a|_V$ and $b|_V$ are morphisms $V\to U$. By the previous example, $K\cap V = \left\{t\in U\st a(t) = b(t)\right\}$ is closed in $V$. Because such a neighbourhood can be found for any $t\in T$, $K$ is closed in $T$ by Remark~\reff{rem:localClosedness}\itememph{a}.
+    Let $a,b\colon T\to X$ as in Definition \reff{def:variety} and $t\in T$ and let $U\subseteq X$ be an affine open subset of $X$ containing both $a(t)$ and $b(t)$. Let $V = a^{-1}(U) \cap b^{-1}(U)\subseteq T$. This is an open subset of $T$ containing $t$. It is easily seen that $a|_V$ and $b|_V$ are morphisms $V\to U$. By the previous Example~\reff{ex:affineIsVariety}\itememph{a}, $K\cap V = \left\{t\in U\st a(t) = b(t)\right\}$ is closed in $V$. Because such a neighbourhood can be found for any $t\in T$, $K$ is closed in $T$ by Remark~\reff{rem:localClosedness}\itememph{a}.
 \end{proof}
 \begin{cor}
     Quasi-projective and quasi-affine algebraic varieties are varieties.
@@ -2283,7 +2283,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
 	\end{alphanumerate}
 \end{defi}
 \begin{fact}\lbl{fact:immersionsBaseChangeStable}
-	The classes $\Cc$ of open or closed or general immersions (homeomorphisms onto their images and surjective on stalks) are closed under composition, stable under base change and base-local. Moreover, they have the following cancellation property: $ij\in\Cc$ and $i\in C$ implies $j\in\Cc$.
+	The classes $\Cc$ of open or closed or general immersions (homeomorphisms onto their images and surjective on stalks) are closed under composition, stable under base change and base-local. Moreover, they have the following cancellation property: $ij\in\Cc$ and $i\in \Cc$ implies $j\in\Cc$.
 \end{fact}
 \begin{proof}
 	Closedness under composition holds because homeomorphisms work that way and compositions of surjections are surjective. Stability under base change follows from Corollary~\reff{cor:immersionBaseChange}. Base-locality is clear as both being a homeomorphism and being surjective on stalks are local properties. Finally, the cancellation property is due to the fact that if $ij$ and $i$ are homeomorphisms onto their image, then so is $j$, and if the morphisms $j^*i^*$ and $i^*$ induced on stalks are surjective, then so is $j^*$.
@@ -2311,7 +2311,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
 	\end{alphanumerate}
 \end{fact}
 \begin{proof}
-	\itememph{a} $\Leftrightarrow$ \itememph{b} follows from Fact~\reff{fact:equalizerImmersive}. The implication \itememph{a} $\Rightarrow$ \itememph{c} is trivial. It remains to show \itememph{c} $\Rightarrow$ \itememph{a}. Let $T$ be an arbitrary prescheme, $T\doublemorphism[a][b]X$ a pair of morphisms and $K$ the subset of $T$ on which $\Eq\Big(T\doublemorphism[\smash{a}][b]X\Big)$ maps homeomorphically. By Corollary~\reff{cor:preschemesEqualizers}\itememph{c} and the assumption, $K\cap U$ is closed in $U$ for any affine open $U\subseteq T$. As the affine open subsets cover $T$, this shows that $K$ is closed.
+	\itememph{a} $\Leftrightarrow$ \itememph{b} follows from Fact~\reff{fact:equalizerImmersive}. The implication \itememph{a} $\Rightarrow$ \itememph{c} is trivial. It remains to show \itememph{c} $\Rightarrow$ \itememph{a}. Let $T$ be an arbitrary prescheme, $T\doublemorphism[a][b]X$ a pair of morphisms and $K$ the subset of $T$ on which $\smash{\Eq\Big(}T\doublemorphism[\smash{a}][b]X\smash{\Big)}$ maps homeomorphically. By Corollary~\reff{cor:preschemesEqualizers}\itememph{c} and the assumption, $K\cap U$ is closed in $U$ for any affine open $U\subseteq T$. As the affine open subsets cover $T$, this shows that $K$ is closed.
 \end{proof}
 \begin{defi}
 	\begin{alphanumerate}
@@ -2337,7 +2337,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
 \begin{proof}
 	Part \itememph{a} is obvious: If $X\morphism[f]Y$ is a monomorphism and $T\doublemorphism[a][b]X$ are such that $fa=fb$, then $a=b$ and the equalizer under consideration equals $T$. Part \itememph{b} is also trivial, as any $T\doublemorphism[a][b]X$ such that $fa=fb$ also satisfies $gfa=gfb$.
 	
-	Let's prove \itememph{d}. The diagonal is always immersive as $\Delta(X)\xrightarrow{p|_{\Delta(X)}=q|_{\Delta(X)}}X$ is inverse to $X\morphism\Delta(X)$. If $f$ is separated, then $\Delta(X)=\Eq\Big(X\times_YX\doublemorphism[p_1][p_2]X\Big)\monomorphism X\times_YX$ is a closed immersion. Conversely, if $\Delta(X)\subseteq X\times_YX$ is closed and $T\doublemorphism[\smash{a}][b]X$ is such that $fa=fb$, then we have a morphism $\tau\colon T\xrightarrow{\smash{(a,b)}}X\times_YX$ and 
+	Let's prove \itememph{d}. The diagonal is always immersive as $\Delta(X)\xrightarrow{p|_{\Delta(X)}=q|_{\Delta(X)}}X$ is inverse to $X\morphism\Delta(X)$. If $f$ is separated, then $\Delta(X)=\Eq\Big(X\times_YX\doublemorphism[p][q]X\Big)\monomorphism X\times_YX$ is a closed immersion, where $p,q$ denote the two canonical projections. Conversely, if $\Delta(X)\subseteq X\times_YX$ is closed and $T\doublemorphism[a][b]X$ is such that $fa=fb$, then we have a morphism $\tau\colon T\xrightarrow{(a,b)}X\times_YX$ and 
 	\begin{align*}
 		K=\Eq\Big(T\doublemorphism[a][b]X\Big)\simeq T\times_{X\times_YX}\Delta(X)\;.
 	\end{align*} 
@@ -2347,7 +2347,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
 	\begin{align*}
 		\Eq\Big(T\doublemorphism[a][b]X\Big)\simeq\Eq\Big(K\morphism T\doublemorphism[a][b]X\Big)
 	\end{align*}
-	is a closed subprescheme of $K$ as $f$ is separated. And finally closedness under base change. Consider a cocartesian square (i.e. a fibre product diagram)
+	is a closed subprescheme of $K$ as $f$ is separated. And finally stability under base change. Consider a cocartesian square (i.e. a fibre product diagram)
 	\begin{diagram*}
 		\node[ob](a) at (0,1.5) {\llap{$X\times_SY=\:$}$X'$};
 		\node[ob](c) at (0,0) {$X$};
@@ -2388,7 +2388,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
     \item \lbl{fact:schemeStuff}
         Every affine prescheme is a scheme. More general, if for any two points of a prescheme $X$ there is an affine open subset of $X$ containing both of them, then $X$ is a scheme.
     \item 
-        The class of schemes is closed under forming equalizers of pair of morphisms and fibre products.
+        The class of schemes is closed under forming equalizers of pair of morphisms (to arbitrary preschemes) and fibre products.
     \item 
         Every open or closed subprescheme of a scheme is a scheme.
     \item 
@@ -2438,7 +2438,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
     \end{alphanumerate}
 \end{fact}
 \begin{proof}
-    \itememph{a} implies \itememph{b}, since for $U$ as in \itememph{b}, $f^{-1}(U)\morphism U$ is separated by Fact~\reff{fact:separationStuff}\itememph{c} as it is the base change of $f$ by $U\morphism Y$. Thus $f^{-1}(U)\morphism U\morphism \Spec\IZ$ is separated.
+    \itememph{a} implies \itememph{b}, since for $U$ as in \itememph{b}, $f^{-1}(U)\morphism U$ is separated by Fact~\reff{fact:separationStuff}\itememph{c} as it is the base change of $f$ by $U\monomorphism Y$. Thus $f^{-1}(U)\morphism U\morphism \Spec\IZ$ is separated.
     
     The implication from \itememph{b} to \itememph{c} is trivial, as $Y$ may be covered by affine open subsets. The implication \itememph{c} $\Rightarrow$ \itememph{d} is even more trivial.
     
@@ -2446,7 +2446,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
     \begin{align*}
     	\Eq(a,b) \cap V_i = \Eq\bigg(V_i\doublemorphism[a|_{V_i}][b|_{V_i}]f^{-1}(U_i) \bigg)
     \end{align*}
-    (the equality follows from Corollary~\reff{cor:preschemesEqualizers}\itememph{c}) is closed in $V_i$ as $f^{-1}(U_i) $ is a scheme. By an argument like in \hyperref[rem:localClosedness]{this} remark, this shows that $\Eq(a,b)$ is closed in $T$, i.e. $f$ is separated.
+    (the equality follows from Corollary~\reff{cor:preschemesEqualizers}\itememph{c}) is closed in $V_i$ as $f^{-1}(U_i) $ is a scheme. By an argument like in Remark~\reff{rem:localClosedness}\itememph{a}, this shows that $\Eq(a,b)$ is closed in $T$, i.e. $f$ is separated.
 \end{proof}
 \begin{prop}\lbl{prop:separatedMorphismEmbedding}
     Any \defemph{section} (i.e. right-inverse) $s$ of a separated morphism is a closed embedding. 
@@ -2509,16 +2509,15 @@ A Franke lecture is no Franke lecture without a definition being proved.
     The class of quasi-compact morphisms is base-local (cf. Definition~\reff{def:baseLocal}\itememph{b}) and closed under composition and base change. 
 \end{fact}
 \begin{proof}
-    Closedness under composition is obvious from Fact~\reff{fact:qcmorphism}\itememph{a} and base-locality is obvious from Fact~\reff{fact:qcmorphism}\itememph{c}. Closedness under base change may, by base-locality, be reduced to the case $X\morphism[f]Y$ where $Y$ is affine and the base change is along $\snake Y\morphism Y$ with $\snake Y$ affine. In this case, $X=f^{-1}(Y)$ is quasi-compact, hence $X=\bigcup_{i=1}^nX_i$ with $X_i\subseteq X$ is affine open and $X\times_Y\snake Y=\bigcup_{i=1}^n \snake X_i$ in which the factors $\snake X_i = X_i\times_Y \snake Y$ are affine (as was seen in Corollary~\reff{cor:affineSchemesFibreProduct}) and thus quasi-compact. 
+    Closedness under composition is obvious from Fact~\reff{fact:qcmorphism}\itememph{a} and base-locality is obvious from Fact~\reff{fact:qcmorphism}\itememph{c}. Closedness under base change may, by base-locality and Corollary~\reff{cor:fibreProductsInLRS}\itememph{b}, be reduced to the case $X\morphism[f]Y$ where $Y$ is affine and the base change is along $\snake Y\morphism Y$ with $\snake Y$ affine. In this case, $X=f^{-1}(Y)$ is quasi-compact, hence $X=\bigcup_{i=1}^nX_i$ with $X_i\subseteq X$ is affine open and $X\times_Y\snake Y=\bigcup_{i=1}^n X_i\times_Y \snake Y$ in which the factors $X_i\times_Y \snake Y$ are affine (as was seen in Corollary~\reff{cor:affineSchemesFibreProduct}) and thus quasi-compact. Then $X\times_Y\snake Y$, as a finite union of quasi-compact sets, is quasi-compact as well. 
     
-    Denote by $\snake f$ the base change $X\times_Y\snake Y\morphism[\snake f]\snake Y$ of $f$.    
-    By the following Fact~\reff{fact:qcToAffineIsQc}, the restriction $\snake X_i \morphism \snake Y$ is quasi-compact. When $U\subseteq Y$ is a quasi-compact open subset this means that $\snake f^{-1}(U) \cap \snake X_i = (\snake f|_{\snake X_i})^{-1} (U)$ is quasi-compact and $\snake f^{-1}(U)$, being the finite union of these subsets, is quasi-compact as well. 
+    By the upcoming Fact~\reff{fact:qcToAffineIsQc}, the base change $X\times_Y\snake Y\morphism[\snake f]\snake Y$ of $f$ is quasi-compact.  
 \end{proof}
 \begin{fact}\lbl{fact:qcToAffineIsQc}
     Let $X$ be quasi-compact and $Y$ affine, then any morphism $X\morphism Y$ is quasi-compact.
 \end{fact}
 \begin{proof}\lbl{fact:qcmorphismBetweenQcAndAffine}
-    By Fact~\reff{fact:complementClosedQC}, $f^{-1}(Y\setminus V(\lambda)) = X\setminus V(f^*\lambda)$ is quasi-compact, for $\lambda\in \Oo_Y(Y)$. As such $Y\setminus V(\lambda)$ form a topology base on $Y$, Fact~\reff{fact:qcmorphism}\itememph{c} may be applied.
+    This follows immediately from Fact~\reff{fact:qcmorphism}\itememph{d}.
 \end{proof}
 
 \begin{prop}\lbl{prop:closedSubsetPoint}
@@ -2916,7 +2915,7 @@ We derive this from two other lemmas, the first of which is very useful in gener
     Any locally closed immersion is of locally finite type.
 \end{cor}
 \begin{proof}
-	This follows trivially from the preceding Corollary~\reff{cor:openImmersionFiniteType} and Corollary~\reff{cor:closedImmersionFiniteType}. Or does it? Well, that depends on how \emph{locally closed immersions} are defined. We \emph{didn't} define them, but the usual as well as intended notion (I asked Professor Franke) is that of a morphism of the form $j\circ i$ with $i$ an open immersion followed by $j$ a closed one.  In particular, an immersion being locally closed is \emph{stronger} than it being an immersion of locally ringed spaces with locally closed image.
+	A locally closed immersion is, by definition (a definition that was never given, but here's what Professor Franke -- I asked him -- would have given, if he had given it), a morphism of the form $j\circ i$ with $i$ an open immersion followed by $j$ a closed one (and not just an immersion with locally closed image). Then the claim follows trivially from the preceding Corollary~\reff{cor:openImmersionFiniteType} and Corollary~\reff{cor:closedImmersionFiniteType}. 
 \end{proof}
 
 \subsection{(Locally) Noetherian preschemes}
@@ -3194,7 +3193,7 @@ Recall (not from this lecture but from Algebra~II, so if you do not participate 
         \end{align*}
         (the intersection being taken in $K$). Indeed, it's obvious that $A$ is contained in these intersections. Conversely, consider $r$ in this intersection and $I=\left\{a\in A\st ar\in A\right\}$ then $I$ fails to be contained in any maximal ideal of $A$, while being an ideal, hence $I=A$ and $r=1\cdot r\in A$. 
         
-        It easily follows that $A$ is normal iff all $A_\mm$ (or all $A_\pp$) are. Hence, for $X$ a locally Noetherian prescheme, we have that
+        It easily follows that $A$ is normal iff all $A_\mm$ (or all $A_\pp$) are. Hence, for $X$ a locally Noetherian prescheme, we have that the conditions
         \begin{itemize}
         	\item[\itememph{\alpha}] $X$ is normal
         	\item[\itememph{\beta}] $\Oo_X(U)$ is a normal domain for any affine open, connected, and non-empty $U$
@@ -3217,10 +3216,10 @@ Recall (not from this lecture but from Algebra~II, so if you do not participate 
 \end{rem*}
 This lemma wasn't covered in the lecture, but is perhaps worthwhile to know.
 \begin{lem}\lbl{lem:NoetherianConnectedComponentsOpen}
-	When $R$ is Noetherian, every connected component of $\Spec R$ is open.
+	When $R$ is Noetherian, $\Spec R$ has finitely many irreducible components. In particular, any irreducible component of $\Spec R$ is open.
 \end{lem}
 \begin{proof}
-	Let $C$ be a connected component of $\Spec R$. If $\Spec R$ is connected, $C=\Spec R$ is open. Now assume that $\Spec R$ is the disjoint union of two nonempty closed subsets $V(I_1)$ and $V(J_1)$ for some ideals $I=I_1$ and $J$ of $R$. Then $C$ must be contained in one of $V(I_1)$ and $V(J_1)$, say in $V(I_1)$. If $V(I_1)$ is connected, $C=V(I_1)=\Spec R\setminus V(J_1)$ is open. Otherwise $V(I_1)$ is the disjoint union of nonempty closed sets $V(I_2)$ and $V(J_2)$ where $I_2$ and $J_2$ are ideals of $R$ strictly containing $I_1$. Continuing this process, we find that $C=V(I_n)$ for some $I_n$, as the Noetherian ring $R$ can't contain an infinite chain $I_1\subsetneq I_2\subsetneq\ldots$ of strictly ascending ideals. Then $C=\Spec R\setminus \bigcup_{i=1}^nV(J_i)$ is open.
+	If $R$ is Noetherian, then so is $\Spec R$ as a topological space. By \cite[Proposition~2.1.1]{alg1}, $\Spec R$ can be expressed as a finite union of irreducible components. Irreducible sets being connected, we conclude that every connected component must contain an irreducible component, hence there are finitely many of them.
 \end{proof}
 
 \section{Affine and finite morphisms}
