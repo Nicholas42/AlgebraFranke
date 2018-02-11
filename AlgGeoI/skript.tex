@@ -1004,7 +1004,7 @@ of presheaves on $\Bb$.
 	\end{diagram*}
 	It follows that
 	\begin{align*}
-		\vartheta^*\lambda=\left(
+		\vartheta^*\lambda|_W=\left(
 		\begin{array}{c}
 			\text{image of }\tau^*\ell\text{ under}\\
 			\Oo_T(\tau^{-1}V)\morphism\Oo_T(W)\morphism\prod_{t\in W}\Oo_{T,t}
@@ -1081,7 +1081,7 @@ We're now prepared to describe the fibre product $F=X\times_SY$:
 	\begin{align*}
 		\lambda_{(x,y,\pp)}=\left(
 		\begin{array}{c}
-			\text{image of }\ell\text{ under }\Rr(U,V,\theta)=\left(\Oo_X(U)\otimes_{\Oo_S(S)}\Oo_Y(V)\right)_\theta\\
+			\text{image of }\ell\text{ under }\Rr(U,V)_\theta=\left(\Oo_X(U)\otimes_{\Oo_S(S)}\Oo_Y(V)\right)_\theta\\
 			\morphism\left(\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y}\right)_\theta\morphism\left(\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y}\right)_\pp
 		\end{array}\right)\;.
 	\end{align*}
@@ -1253,13 +1253,13 @@ commutes, and $\tau^\sharp(f\otimes g) = \tau_X^\ast(f)\cdot \tau_Y^\ast(g)$. Th
 \lbl{eq:fibreproducts-lrs-proof-tau-preimage}
 \tau^{-1}\Omega(U,V,\lambda) &=\left\{t\in T \st
 \begin{array}{c}
-	 \tau_X(t)\in U\text{, }\tau_Y(t)\in V\text{ and the image of }\lambda\text{ in }\Oo_{X,x}\otimes_{\Oo_{S,s}}
-	 \Oo_{Y,y}\\
-	 \text{is } \notin (\tau^\flat)^{-1}(\mm_{T,t})\text{, where we set }s=\xi\big(\tau_X(t)\big)=\upsilon\big(\tau_Y(t)\big)
+	 x\in U\text{, }y\in V\text{ and the image of }\lambda\text{ in }\Oo_{X,x}\otimes_{\Oo_{S,s}}
+	 \Oo_{Y,y}\text{ is } \notin\pp\text{,}\\
+	 \text{where we set }(x,y,\pp)=\tau(t)\text{ and }s=\xi\big(\tau_X(t)\big)=\upsilon\big(\tau_Y(t)\big)
 \end{array} \right\}\\
 &=\left\{t\in \Theta \st \left(\text{image of }\lambda\text{ in }\Oo_{X,x}\otimes_{\Oo_{S,s}}
 \Oo_{Y,y}\right) \notin (\tau^\flat)^{-1}(\mm_{T,t}) \right\}\\
-&=\left\{t\in \Theta\st\left(\text{image of }\tau^\sharp\lambda\text{ in }\Oo_T(\Theta)\to \Oo_{T,t}\right)\notin\mm_{T,t}\right\}\\
+&=\left\{t\in \Theta\st\left(\text{image of }\tau^\sharp\lambda\text{ under }\Oo_T(\Theta)\to \Oo_{T,t}\right)\notin\mm_{T,t}\right\}\\
 &=\Theta\setminus V(\tau^\sharp \lambda)\;,\tag{\#}
 \end{align*}
 which is open. The transition from the second line to the third line uses the commutativity of the following diagram:
@@ -1434,15 +1434,15 @@ Since the preimage of this ideal in $\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y}$ equ
     \begin{align*}
     	\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y} \simeq \Oo_{X,x}/(\xi^*(I_s) \cdot \Oo_{X,x}) \eqqcolon \Oo_{X,x}/(I_s\Oo_{X,x})\;. 
     \end{align*}
-    Since $\alpha^{-1}(\pp)$ equals $\mm_{X,x}$, we have $\pp\supseteq \mm_{X,x}/(I_s \Oo_{X,x})$ which must be an equality as the right-hand side is the maximal ideal of local ring $\Oo_{X,x}/(I_s \Oo_{X,x})$. Thus, $\pp$ and $y$ are uniquely determined by $x$ ($y$ actually because $\upsilon$ has to be injective) and $\Oo_{F,[x,y,\pp]}\simeq \Oo_{X,x}/(I_s \Oo_{X,x})$ is a quotient of $\Oo_{X,x}$ implying surjectivity of $\xi^*$ on stalks. It remains to confirm that the topology is indeed the induced topology. Note that
+    Since $\alpha^{-1}(\pp)$ equals $\mm_{X,x}$, we have $\pp\supseteq \mm_{X,x}/(I_s \Oo_{X,x})$ which must be an equality as the right-hand side is the maximal ideal of local ring $\Oo_{X,x}/(I_s \Oo_{X,x})$. Thus, $\pp$ and $y$ are uniquely determined by $x$ ($y$ actually because $\upsilon$ has to be injective) and $\Oo_{F,[x,y,\pp]}\simeq \Oo_{X,x}/(I_s \Oo_{X,x})$ is a quotient of $\Oo_{X,x}$ implying surjectivity of $\xi^*$ on stalks and that $F$ is mapped to $\xi^{-1}(\upsilon(Y))$. It remains to confirm that the topology is indeed the induced topology. Note that
     \begin{align}\lbl{eq:omegaCover}
-        \Omega(U,V,f) = \bigcup_{\lambda\in \Lambda} \Omega(U,V_\lambda, f|_{U,V_\lambda})\tag{$*$}
+        \Omega(U,V,f) = \bigcup_{\lambda\in \Lambda} \Omega\left(U,V_\lambda, f|_{\Rr(U,V_\lambda)}\right)\tag{$*$}
     \end{align}
     when $V=\bigcup_{\lambda\in \Lambda} V_\lambda$. Let $f\in \Rr(U,V)$, $f=\sum_{i=1}^n g_i\otimes h_i$, $g_i\in \Oo_X(U)$, $h_i\in\Oo_Y(V)$. As $Y$ carries the induced topology and $\upsilon^*$ is surjective on stalks, $V$ may be covered by open subsets of the form $V_\lambda = Y\cap W_\lambda$, $W_\lambda \subseteq S$ open, such that there are $\eta_{i,\lambda}\in \Oo_S(W_\lambda)$ satisfying $h_i|_{V_\lambda} = \upsilon^*(\eta_{i,\lambda})$. Then
     \begin{align*}
-        f|_{U,V_\lambda} = \sum_{i=1}^n g_i\otimes \upsilon^*(\eta_{i,\lambda}) = \sum_{i=1}^n (\xi^*(\eta_{i,\lambda})\cdot g_i) \otimes 1 \eqqcolon\phi_\lambda\otimes 1
+        f|_{\Rr(U,V_\lambda)} = \sum_{i=1}^n g_i\otimes \upsilon^*(\eta_{i,\lambda}) = \sum_{i=1}^n (\xi^*(\eta_{i,\lambda})\cdot g_i) \otimes 1 \eqqcolon\phi_\lambda\otimes 1
     \end{align*}
-    in $\Rr(\xi^{-1}(W_\lambda)\cap U, V_\lambda, W_\lambda)$. Thus $\Omega(U,V_\lambda, f|_{U,V_\lambda}) = ((U\cap \xi^{-1}(W_\lambda)\setminus V(\phi_\lambda))\cap F$ is open in the induced topology. By \eqreff{eq:omegaCover}, $\Omega(U,V,f)$ is open as well.
+    in $\Rr(\xi^{-1}(W_\lambda)\cap U, V_\lambda; W_\lambda)$. Thus $\Omega\left(U,V_\lambda, f|_{\Rr(U,V_\lambda)}\right) = \big((U\cap \xi^{-1}(W_\lambda)\setminus V(\phi_\lambda)\big)\cap F$ is open in the induced topology. By \eqreff{eq:omegaCover}, $\Omega(U,V,f)$ is open as well.
 \end{proof}
 \begin{defi}[Sheaf of modules]\lbl{def:sheafOfModules}
     Let $\Rr$ be a sheaf of rings on $X$. A \defemph{sheaf of modules} over $\Rr$, or simply an $\Rr$-module, is a sheaf $\Mm$ of abelian groups on $X$ with multiplications
@@ -1454,7 +1454,7 @@ Since the preimage of this ideal in $\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y}$ equ
     In the case where $\Mm(U) \subseteq \Rr(U)$ is an ideal in that ring and the module operations respectively $(-)|_V$ are the restrictions of the ring operations in $\Rr(U)$ respectively of $(-)|_V$ for $\Rr$ to $\Mm(U)$, we call $\Mm$ a \defemph{sheaf of ideals} in $\Rr$.
 \end{defi}
 
-\begin{prop}
+\begin{prop}\lbl{prop:sheafOfIdeals}
     If $(\Ii_{[x]})_{x\in X}$ is a family of ideals in the stalks $\Rr_x$, then the following conditions are equivalent.
     \begin{alphanumerate}
         \item 
@@ -1479,10 +1479,12 @@ Since the preimage of this ideal in $\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y}$ equ
 		
 		Uniqueness of $\Ii$ (if it exists at all) follows from the fact that a sheaf can be recovered from its stalks, a special case of Proposition~\reff{prop:sheafificationMorphisms}\itememph{d}.
 	\end{proof}
-\begin{cor*}
-    $U=\left\{x\in X\st \Ii_{[x]}=\Rr_x\right\}$ is open in $X$.
-\end{cor*}
-
+\begin{cor}\lbl{cor:trivialStalksOpen}
+    If $\Ii\subseteq \Rr$ is a sheaf of ideals, $\left\{x\in X\st \Ii_x=\Rr_x\right\}$ is open in $X$.
+\end{cor}
+\begin{proof}
+	If some $\Ii_x$ contains $1\in \Rr_x$, then, by Proposition~\reff{prop:sheafOfIdeals}\itememph{b} there is an open neighbourhood $U$ of $x$ such that the image of $1\in\Rr(U)$ also lies in $\Ii_y$ for all $y\in U$.
+\end{proof}
 \begin{prop}\lbl{prop:closedImmersionSheaves}
     For a locally ringed space $X$, let two immersions $K_1\morphism[\kappa_1] X\lmorphism[\kappa_2] K_2$ be called equivalent (write $\kappa_1\sim\kappa_2$) if there is an isomorphism $K_1\morphism[\iota] K_2$ of locally ringed spaces such that $\kappa_2\iota = \kappa_1$. Then there is a bijection 
     \begin{align*}
@@ -1499,11 +1501,11 @@ Since the preimage of this ideal in $\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y}$ equ
     When $X$ is a prescheme, $K$ will fail to be a prescheme unless $\Ii$ is \emph{quasi-coherent}.
 \end{rem*}
 \begin{proof}[Proof of Proposition~\reff{prop:closedImmersionSheaves}]
-    The following proof is quite sketchy, because lots of technical details have been outsourced to exercise sheet \#8. Let $\Ii\subseteq \Oo_x$ be a sheaf of ideals. We put 
+    The following proof is quite sketchy, because lots of technical details have been outsourced to exercise sheet \#8. Let $\Ii\subseteq \Oo_X$ be a sheaf of ideals. We put 
     \begin{align*}
         K = \left\{x\in X\st\Ii_x\subsetneq \Oo_{X,x}\right\} \morphism[\kappa] X\;,
     \end{align*}
-    which is closed in $X$ by the last corollary, and equip it with the induced topology with respect to $X$. We define pretender stalks 
+    which is closed in $X$ by Corollary~\reff{cor:trivialStalksOpen}, and equip it with the induced topology with respect to $X$. We define pretender stalks 
     \begin{align*}
         \Oo_{K,[x]} = \Oo_{X,x} / \Ii_x
     \end{align*}
@@ -1564,9 +1566,9 @@ Since the preimage of this ideal in $\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y}$ equ
 		\begin{minipage}{0.425\textwidth}
 			\centering			
 			\begin{diagram*}
-				\node[ob](MXU) at (0,1.25) {$\Mm_X(U)$};
-				\node[ob](MXUV) at (3,1.25) {$\Mm_X(U\setminus V(f))$};
-				\node[ob](MXUf) at (1.5, 0) {$\Mm_X(U)_f$};
+				\node[ob](MXU) at (0,1.25) {$\Mm(U)$};
+				\node[ob](MXUV) at (3,1.25) {$\Mm(U\setminus V(f))$};
+				\node[ob](MXUf) at (1.5, 0) {$\Mm(U)_f$};
 				\scriptsize
 				\draw [->] (MXU) -- (MXUV);
 				\draw [->] (MXU) -- (MXUf);
@@ -1579,7 +1581,7 @@ Since the preimage of this ideal in $\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y}$ equ
 
 
 \section{The structure sheaf and quasi-coherent sheaf of modules on \texorpdfstring{$\Spec R$}{Spec R}}
-Let $R$ be a ring, $\Bb = \left\{ \Spec R\setminus V(f)\st f\in R\right\}$. This is a topology base of $\Spec R$ equipped with the Zariski-topology. Moreover, $\Bb$ is closed under intersection since $(\Spec R\setminus V(f))\cap (\Spec R\setminus V(g)) = \Spec R\setminus V(fg)$. The localization $R_f$ depends, up to unique isomorphism of $R$-algebras, only on $(\Spec R)\setminus V(f)$. To see this, we claim that when $\Spec R\setminus V(g)\subseteq \Spec R\setminus V(f)$ there is a unique homomorphism $R_f\morphism R_g$ of $R$-algebras. In fact, $V(g)\supseteq V(f)$ implies $g\in \sqrt{(f)}=\bigcap_{\pp\in V(f)}\pp$ which shows that some power of $g$ is divisible by $f$ and so $f$ is a unit in $R_g$. The universal property of localization thus establishes our claim.
+Let $R$ be a ring, $\Bb = \left\{ \Spec R\setminus V(f)\st f\in R\right\}$. This is a topology base of $\Spec R$ equipped with the Zariski-topology. Moreover, since $(\Spec R\setminus V(f))\cap (\Spec R\setminus V(g)) = \Spec R\setminus V(fg)$,  $\Bb$ is closed under intersection. The localization $R_f$ depends, up to unique isomorphism of $R$-algebras, only on $(\Spec R)\setminus V(f)$. To see this, we claim that when $\Spec R\setminus V(g)\subseteq \Spec R\setminus V(f)$ there is a unique homomorphism $R_f\morphism R_g$ of $R$-algebras. In fact, $V(g)\supseteq V(f)$ implies $g\in \sqrt{(f)}=\bigcap_{\pp\in V(f)}\pp$ which shows that some power of $g$ is divisible by $f$ and so $f$ is a unit in $R_g$. The universal property of localization thus establishes our claim.
 
 From these considerations, we have a presheaf of rings on $\Bb$ via
 \begin{align}\lbl{eq:SpecRingLoc}
@@ -1609,22 +1611,25 @@ If $M$ is an $R$-module, we have a similar presheaf (of abelian groups or of mod
     \end{align*}
     by our construction of the sheafification in Definition~\reff{def:sheafification}. Moreover, by Proposition~\reff{prop:sheafificationMorphisms}\itememph{a}, $\Oo_{\Spec R,\pp}\simeq R_\pp$ and $(\snake M_\pp)\simeq M_\pp$.
 \end{rem*}
-\begin{fact}
+\begin{fact}\lbl{fact:SpecRfAndSpecRWithoutV(f)}
     The restricted sheaf $\Oo_{\Spec R}|_{\Spec R\setminus V(f)}$ is isomorphic to $\Oo_{\Spec R_f}$ under the identification $\Spec R_f\isomorphism \Spec R\setminus V(f)$ sending $\qq\in \Spec R_f$ to its preimage in $R$ and $\pp\in \Spec R$ to $\qq = \pp R_f$. In the following conditions we identify $\Spec R_f$ with $\Spec R\setminus V(f)$, for the sake of convenience.
 \end{fact}
+\begin{proof}
+	Kinda obvious from the definitions.
+\end{proof}
 \begin{prop}\lbl{prop:RequalsGlobalSection}
     The maps $R\morphism \Oo_{\Spec R}(\Spec R)$ and $M\morphism \snake M (\Spec R)$, sending $r$ and $m$ (which are global sections of the in \eqreff{eq:SpecRingLoc} and \eqreff{eq:SpecModuleLoc} defined presheaves) to their images in the sheafifications, are isomorphisms.
 \end{prop}
 \begin{rem*}
-    By the previous fact in its analogue $\snake M|_{\Spec R_f} \simeq \snake{M}_f$, we also have
+    By the previous Fact~\reff{fact:SpecRfAndSpecRWithoutV(f)} and its analogue $\snake M|_{\Spec R_f} \simeq \snake{M}_f$, we also have
     \begin{align*}
         \Oo_{\Spec R}\big(\Spec R\setminus V(f)\big) &\isomorphism R_f\\
         \snake M\big(\Spec R\setminus V(f)\big) &\isomorphism M_f\;.
     \end{align*}
     However our proof of Proposition~\reff{prop:RequalsGlobalSection} will yield this directly.
 \end{rem*}
-\begin{proof}
-    We show that the presheaves $\Spec R_f\mapsto R_f$ or $\Spec M_f\mapsto M_f$ satisfy the sheaf axiom for covers of elements of $\Bb= \left\{\Spec R_f\st f\in R\right\}$ by elements of $\Bb$. Having established this, the claim follows from Proposition~\reff{prop:sheafificationMorphisms}\itememph{d} (note that $\Bb$ is closed under intersections as we pointed out at the beginning of the section).  If $\Spec R_f = \bigcup_{\lambda\in\Lambda} \Spec R_{g_\lambda}$ is a cover of $\Spec R_f$, we may replace $R$ by $R_f$ so it's enough to consider covers of $\Spec R$ only.
+\begin{proof}[Proof of Proposition~\reff{prop:RequalsGlobalSection}]
+    We show that the presheaves $\Spec R_f\mapsto R_f$ or $\Spec R_f\mapsto M_f$ satisfy the sheaf axiom for covers of elements of $\Bb= \left\{\Spec R_f\st f\in R\right\}$ by elements of $\Bb$. Having established this, the claim follows from Proposition~\reff{prop:sheafificationMorphisms}\itememph{d} (note that $\Bb$ is closed under intersections as we pointed out at the beginning of the section).  If $\Spec R_f = \bigcup_{\lambda\in\Lambda} \Spec R_{g_\lambda}$ is a cover of $\Spec R_f$, we may replace $R$ by $R_f$ so it's enough to consider covers of $\Spec R$ only.
     
     The following Lemma~\reff{lem:finCover} deals with the case of finite covers. The case of arbitrary covers will then be deduced from this special case in a more general setting in Lemma~\reff{lem:finiteCompactSheafAxiom}.
 \end{proof}
@@ -1728,7 +1733,7 @@ If $M$ is an $R$-module, we have a similar presheaf (of abelian groups or of mod
     \end{alphanumerate}
 \end{example}
 \begin{rem}
-    Proposition \reff{prop:RequalsGlobalSection} would have failed if we had defined $\Oo_{\Spec R}$ as a sheaf of functions $\pp\morphism k(\pp)$ as $R$ may have nilpotent elements.
+    Proposition \reff{prop:RequalsGlobalSection} would have failed if we had defined $\Oo_{\Spec R}$ as a sheaf of functions $\pp\morphism \KK(\pp)$ as $R$ may have nilpotent elements.
 \end{rem}
 \begin{prop}\lbl{prop:affineSchemeAdjunction}
     If $R$ is a ring and $X$ a locally ringed space, we have a canonical bijection:
@@ -1780,23 +1785,23 @@ If $M$ is an $R$-module, we have a similar presheaf (of abelian groups or of mod
     \begin{align*}
         f^*\colon \Oo_{\Spec R}(U) \simeq R_\lambda  \morphism[\phi] \Oo_X(X)_{\phi(\lambda)} \xrightarrow{\text{\eqreff{eq:moduleLoc}}} \Oo_X\big(X\setminus V(\phi(\lambda))\big) = \Oo_X(f^{-1} U)
     \end{align*}
-    defining a homomorphism of presheaves on $\Bb$ with target $f_*\Oo_X|_\Bb$. Sheafifying gives
+    defining a homomorphism of presheaves on $\Bb$ with target $f_*\Oo_X|_\Bb$. Sheafifying gives a morphism of sheaves
     \begin{align*}
         f^*\colon \Oo_{\Spec R}\simeq (\Oo_{\Spec R}|_\Bb)^\sh \morphism (f_*\Oo_X|_\Bb)^\sh \simeq f_*\Oo_X\;.
     \end{align*}
-    In particular, for $\lambda = 1$, we have that $R\simeq  \Oo_{\Spec R}(\Spec R) \morphism[f^*] \Oo_X(X)$ equals $\phi$. The morphism induced on stalks by $f$ is thus uniquely determined morphism $R_\pp \morphism \Oo_{X,x}$ (where $\pp=f(x)$) such that 
+    In particular, for $\lambda = 1$, we have that $R\simeq  \Oo_{\Spec R}(\Spec R) \morphism[f^*] \Oo_X(X)$ equals $\phi$. The morphism induced on stalks by $f$ is thus the uniquely determined morphism $R_\pp \morphism \Oo_{X,x}$ (where $\pp=f(x)$) such that 
     \begin{diagram*}
     	\node[ob] (a) at (0,1.5) {$R$};
     	\node[ob][ob] (c) at (0,0) {$R_\pp$};
     	\node[ob] (b) at (2.5,1.5) {$\Oo_X(X)$};
-    	\node[ob][ob] (d) at (2.5,0) {$\Oo_{X,k}$};
+    	\node[ob][ob] (d) at (2.5,0) {$\Oo_{X,x}$};
     	\scriptsize
     	\draw[->] (a) -- (b) node[pos=0.5, above] {$\phi$};
     	\draw[->] (a) -- (c);
     	\draw[->] (c) -- (d);
     	\draw[->] (b) -- (d);
     \end{diagram*}  
-    commutes. $R\morphism R_\pp$ equals the map . By \eqreff{eq:prop1.4.2surj}, the morphism $R\morphism[\phi] \Oo_X(X) \morphism \Oo_{X,x}$ maps $\pp$ to $\mm_{X,x}$, hence $R_\pp \morphism \Oo_{X,x}$ maps $\pp\cdot R_\pp$ to $\mm_{X,x}$ and therefore is local. Thus $f$ is a morphism of locally ringed spaces.
+    commutes. By \eqreff{eq:prop1.4.2surj}, the morphism $R\morphism[\phi] \Oo_X(X) \morphism \Oo_{X,x}$ maps $\pp$ to $\mm_{X,x}$, hence $R_\pp \morphism \Oo_{X,x}$ maps $\pp\cdot R_\pp$ to $\mm_{X,x}$ and therefore is local. Thus $f$ is a morphism of locally ringed spaces and we are done.
 \end{proof}
 \begin{rem*}
     In particular, for $X=\Spec S$ any ring morphism $R\morphism[\phi] S$ defines a morphism of locally ringed spaces
@@ -1845,7 +1850,7 @@ If $M$ is an $R$-module, we have a similar presheaf (of abelian groups or of mod
     is a fibre product of $\Spec A$ with $\Spec B$ over $\Spec R$ in $\cat{LRS}$. 
 \end{cor}
 \begin{proof}
-	This follows from the fact that $A\otimes_R B$ is a cofibre product of $A$ with $B$ over $R$ hence a fibre product in $\cat{Ring}^\op$ and the right-adjoint functor $\Spec(-)$ preserves arbitrary limits, in particular, fibre products.
+	This follows from the fact that $A\otimes_R B$ is a cofibre product of $A$ with $B$ over $R$ hence a fibre product in $\cat{Ring}^\op$ and the (by Proposition~\reff{prop:affineSchemeAdjunction}) right-adjoint functor $\Spec(-)$ preserves arbitrary limits, in particular, fibre products.
 \end{proof}
 \begin{prop}\lbl{prop:affineSchemeAdjunctionModules}
     Let $M$ be an $R$-module and $\Nn$ an $\Oo_{\Spec R}$-module, then we have a canonical bijection 
@@ -2030,17 +2035,17 @@ A Franke lecture is no Franke lecture without a definition being proved.
 \begin{proof}
     Assume \itememph{a}. Recall that $\snake M|_{\Spec R_f} \simeq \snake M_f$ for $M$ an $R$-module and $f\in R$. In particular, when $X = \bigcup_{\lambda\in\Lambda}U_\lambda$ is a cover with $U_\lambda$ affine and $\Mm|_{U_\lambda}$ quasi-coherent, then $\Mm|_{U_\lambda\setminus V(f)}$ is quasi-coherent. By Fact~\reff{fact:affineSchemesTopologyBase}\itememph{b}, \itememph{b} follows.
     
-    Now let \itememph{b} be given. Let $\Bb$ be a topology base of affine open subsets such that $\Mm|_U$ is quasi-coherent when $U\in\Bb$. By Definition~\reff{def:quasicoherent}\itememph{b}, \eqreff{eq:bijectiveQCQS} is an isomorphism for $U\in\Bb$. Now let $U$ be a quasi-compact open subset, $f\in \Oo_X(U)$, $m=\mu f^{-s}\in \Mm(U)_f$ (with $\mu\in \Mm(U)$ and $s\geq0$) such that the image of $m$ under \eqreff{eq:bijectiveQCQS} vanishes. Then $\mu|_{U\setminus V(f)} = 0$. As $U$ is quasi-compact it can be represented $U=\bigcup_{i=1}^n U_i$ with $U_i\in\Bb$. As \eqreff{eq:bijectiveQCQS} is bijective for $U_i$, we have $k_i\in\IN$ such that $f^{k_i}\mu|_{U_i}= 0$ in $\Mm(V_i)$. Let $k=\max_{i=1,\ldots,n} k_i$, then $f^k\mu|_{U_i} = 0$, hence $f^k\mu = 0$ in $\Mm(U)$ as $\Mm$ is a sheaf. Thus, $m = \mu f^{-s}\in M(U)_f$ is zero, which shows injectivity.
+    Now let \itememph{b} be given. Let $\Bb$ be a topology base of affine open subsets such that $\Mm|_U$ is quasi-coherent when $U\in\Bb$. By Definition~\reff{def:quasicoherent}\itememph{b}, \eqreff{eq:bijectiveQCQS} is an isomorphism for $U\in\Bb$. Now let $U$ be a quasi-compact open subset, $\lambda\in \Oo_X(U)$, $m=\mu \lambda^{-s}\in \Mm(U)_\lambda$ (with $\mu\in \Mm(U)$ and $s\geq0$) such that the image of $m$ under \eqreff{eq:bijectiveQCQS} vanishes. Then $\mu|_{U\setminus V(\lambda)} = 0$. As $U$ is quasi-compact it can be represented $U=\bigcup_{i=1}^n U_i$ with $U_i\in\Bb$. As \eqreff{eq:bijectiveQCQS} is bijective for $U_i$, we have $k_i\in\IN$ such that $\lambda^{k_i}\mu|_{U_i}= 0$ in $\Mm(V_i)$. Let $k=\max_{i=1,\ldots,n} k_i$, then $\lambda^k\mu|_{U_i} = 0$, hence $\lambda^k\mu = 0$ in $\Mm(U)$ as $\Mm$ is a sheaf. Thus, $m = \mu \lambda^{-s}\in M(U)_\lambda$ is zero, which shows injectivity.
     
-    To show the asserted bijectivity, let $\Bb$ be as before, $U\subseteq X$ be open, quasi-compact and quasi-separated, and let $m\in \Mm(U\setminus V(f))$ be given. As before we have $U=\bigcup_{i=1}^n U_i$ with $U_i\in\Bb$. As \eqreff{eq:bijectiveQCQS} is an isomorphism on $U_i$ and there are only finitely many $U_i$, we find $\mu_i\in\Mm(U_i)$ and an exponent $k\geq0$ such that $m|_{U_i\setminus V(f)} = \mu_if^{-k}$. For brevity, denote $U_{i,j}=U_i\cap U_j$. Let $\mu_{i,j} = \mu_i|_{U_{i,j}} - \mu_j|_{U_{i,j}}$, then $\mu_{i,j}|_{U_{i,j}\setminus V(f)} = 0$. As $U$ is quasi-separated and the $U_i$ are affine, this implies $f^{\ell_{i,j}} \mu_{i,j} = 0$ in $\Mm(U_{i,j})$ (for some exponents $\ell_{i,j}\geq0$) by the injectivity step, which applies here since $U_{i,j}$ is quasi-compact by Definition~\reff{def:quasicompact}\itememph{d}. Taking $\ell = \max_{i,j}\ell_{i,j}$ we have $f^\ell\mu_i |_{U_{i,j}} = f^\ell\mu_j|_{U_{i,j}}$ and replacing $k$ by $k+\ell$ and $\mu_i$ by $f^\ell \mu_i$, we achieve $\mu_i|_{U_{i,j}} = \mu_j|_{U_{i,j}}$. As $\Mm$ is a sheaf, there is $\mu\in\Mm(U)$ such that $\mu|_{U_i} = \mu_i$. Then $\big(\mu f^{-k}\big)|_{U\setminus V(f)} = m$ as the restriction of the left-hand side to $U_i\setminus V(f)$ equals $\mu_if^{-k} = m|_{U_i\setminus V(f)}$. 
+    To show the asserted bijectivity, let $\Bb$ be as before, $U\subseteq X$ be open, quasi-compact and quasi-separated, and let $m\in \Mm(U\setminus V(f))$ be given. As before we have $U=\bigcup_{i=1}^n U_i$ with $U_i\in\Bb$. As \eqreff{eq:bijectiveQCQS} is an isomorphism on $U_i$ and there are only finitely many $U_i$, we find $\mu_i\in\Mm(U_i)$ and an exponent $k\geq0$ such that $m|_{U_i\setminus V(\lambda)} = \mu_i\lambda^{-k}$. For brevity, denote $U_{i,j}=U_i\cap U_j$. Let $\mu_{i,j} = \mu_i|_{U_{i,j}} - \mu_j|_{U_{i,j}}$, then $\mu_{i,j}|_{U_{i,j}\setminus V(\lambda)} = 0$. As $U$ is quasi-separated and the $U_i$ are affine, this implies $\lambda^{\ell_{i,j}} \mu_{i,j} = 0$ in $\Mm(U_{i,j})$ (for some exponents $\ell_{i,j}\geq0$) by the injectivity step, which applies here since $U_{i,j}$ is quasi-compact by Definition~\reff{def:quasicompact}\itememph{d}. Taking $\ell = \max_{i,j}\ell_{i,j}$ we have $\lambda^\ell\mu_i |_{U_{i,j}} = \lambda^\ell\mu_j|_{U_{i,j}}$ and replacing $k$ by $k+\ell$ and $\mu_i$ by $\lambda^\ell \mu_i$, we achieve $\mu_i|_{U_{i,j}} = \mu_j|_{U_{i,j}}$. As $\Mm$ is a sheaf, there is $\mu\in\Mm(U)$ such that $\mu|_{U_i} = \mu_i$. Then $\big(\mu \lambda^{-k}\big)|_{U\setminus V(\lambda)} = m$ as the restriction of the left-hand side to $U_i\setminus V(\lambda)$ equals $\mu_i\lambda^{-k} = m|_{U_i\setminus V(\lambda)}$. 
     
     The hard work being done, \itememph{c} trivially implies \itememph{d}. We obtain \itememph{d} $\Rightarrow$ \itememph{e} by Fact~\reff{fact:SpecRqcqs}\itememph{a}, \itememph{e} $\Rightarrow$ \itememph{f} by Definition~\reff{def:quasicoherent}\itememph{b} and \itememph{f} $\Rightarrow$ \itememph{a} by Definition~\reff{def:prescheme}.
 \end{proof}
 \begin{cor}\lbl{cor:OXInjectiveQuasiCompact}
-    The morphism $\Oo_X(U)_\lambda\xrightarrow{\text{\eqreff{eq:moduleLoc}}} \Oo_X\big(U\setminus V(\lambda)\big)$ is injective when $U$ is quasi-compact and bijective, when $V$ is quasi-compact and quasi-separated. 
+    The morphism $\Oo_X(U)_\lambda\xrightarrow{\text{\eqreff{eq:moduleLoc}}} \Oo_X\big(U\setminus V(\lambda)\big)$ is injective when $U$ is quasi-compact and bijective, when $U$ is quasi-compact and quasi-separated. 
 \end{cor}
 \begin{cor}\lbl{cor:nilpotentVanishingSet}
-    When $U$ is quasi-compact and $\lambda\in \Oo_X(U)$ such that $V(\lambda) = U$ then $\lambda$ is nilpotent. (Vice versa, we clearly have $V(f) = U$ when $\lambda$ is nilpotent, even when $U$ is not quasi-compact.)
+    When $U$ is quasi-compact and $\lambda\in \Oo_X(U)$ such that $V(\lambda) = U$ then $\lambda$ is nilpotent. (Vice versa, we clearly have $V(\lambda) = U$ when $\lambda$ is nilpotent, even when $U$ is not quasi-compact.)
 \end{cor}
 \begin{proof}
 	By Corollary~\reff{cor:OXInjectiveQuasiCompact}, $\Oo_X(U)_\lambda \morphism\Oo_X(\emptyset)$ is injective, hence $\Oo_X(U)_\lambda$ is the zero ring and $\lambda$ must be nilpotent.
@@ -2103,7 +2108,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
     \begin{diagram*}
     	\node[ob] (a) at (0,1.5) {$\big(f_*\Mm(U)\big)_\lambda$};
     	\node[ob] (b) at (4,1.5) {$f_*\Mm\big(U\setminus V(\lambda)\big)$};
-    	\node[ob] (c) at (0,0) {$\Mm\left(f^{-1}U\right)_\lambda$};
+    	\node[ob] (c) at (0,0) {$\Mm\left(f^{-1}U\right)_{f^*\lambda}$};
     	\node[ob] (d) at (4,0) {$\Mm\left(f^{-1}U\setminus V(f^*\lambda)\right)$};
     	\scriptsize
     	\draw[->] (a) -- (b) node[pos=0.5, above] {\eqreff{eq:bijectiveQCQS}};
@@ -2160,7 +2165,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
 \begin{cor}
 	\begin{alphanumerate}
 		\item \lbl{cor:preschemesEqualizers}The category of preschemes has equalizers.
-		\item If $Y\morphism[\upsilon]Z$ is a monomorphism (e.q. an open/closed/arbitrary immersion), then
+		\item If $Y\morphism[\upsilon]Z$ is a monomorphism (e.g. an open/closed/arbitrary immersion), then
 		\begin{align*}
 			\Eq\Big(X\doublemorphism[a][b]Y\Big)\simeq\Eq\Big(X\doublemorphism[\upsilon a][\upsilon b]Z\Big)\;.
 		\end{align*}
@@ -3564,7 +3569,7 @@ is ascending. Let $I_\infty = \bigcup_{k=1}^\infty I_k$.
         \item 
             The Banach spaces with bounded (continuous) maps.
         \item 
-            The $k$-vector spaces with $k$-linear maps $\cat{Vect}_K$ or $R$-modules with $R$-linear maps $R\cat{-Mod}$.
+            The $k$-vector spaces with $k$-linear maps $\cat{Vect}_k$ or $R$-modules with $R$-linear maps $R\cat{-Mod}$.
     \end{alphanumerate}
 \end{example}
 A category is called \emph{small} if its class of objects is a set.
@@ -3574,7 +3579,7 @@ A category is called \emph{small} if its class of objects is a set.
 	\begin{alphanumerate}
 		\item a \defemph{subcategory} of $\Aa$ if $\Ob(\Bb) \subseteq \Ob(\Aa)$ and $\Hom_\Bb(X,Y) \subseteq \Hom_\Aa(X,Y)$ and for arbitrary objects $X,Y$ of $\Bb$, the identity $\id_X$ of $X$ in $\Aa$ is a morphism in $\Hom_\Bb(X,X)$.
 		\item a \defemph{full subcategory} of $\Aa$ if additionally $\Hom_\Aa(X,Y) = \Hom_\Bb(X,Y)$ for arbitrary objects $X,Y\in\Ob(\Bb)$.
-		\item an \defemph{equivalent subcategory} of $\Aa$ if it is a full subcategory and every object $X\in \Ob(\Aa)$ is isomorphic to some $Y\in\Ob(\Bb)$ (where a morphism $X\morphism[f] Y$ is an isomorphism iff there  is a (unique) $Y\morphism[g] X$ such that $f\circ g = \id_Y$ and $g\circ f= \id_X$.
+		\item an \defemph{equivalent subcategory} of $\Aa$ if it is a full subcategory and every object $X\in \Ob(\Aa)$ is isomorphic to some $Y\in\Ob(\Bb)$, where we call a morphism $X\morphism[f] Y$ an \defemph{isomorphism} iff there  is a (unique) $Y\morphism[g] X$ such that $f\circ g = \id_Y$ and $g\circ f= \id_X$.
 	\end{alphanumerate}
 \end{defi}
 
@@ -3738,8 +3743,8 @@ A category is called \emph{small} if its class of objects is a set.
   	\begin{diagram*}
   		\node[ob](CovMM) at (0,1.5) {$\Cov_M(M)$};
   		\node[ob](CovMX) at (0,0) {$\Cov_M(X)$};
-  		\node[ob](FM) at (2.5,1.5) {$F(X)$};
-  		\node[ob](FX) at (2.5,0) {$F(Y)$};
+  		\node[ob](FM) at (2.5,1.5) {$F(M)$};
+  		\node[ob](FX) at (2.5,0) {$F(X)$};
   		\scriptsize
   		\draw[->] (CovMM) -- (CovMX) node[pos=0.5, left] {$\Cov_M(\xi)$};
   		\draw[->] (CovMM) -- (FM) node[pos=0.5, above] {$\beta_M$};
