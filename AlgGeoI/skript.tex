@@ -18,10 +18,10 @@
 \author{Nicholas Schwab \& Ferdinand Wagner}
 \date{Wintersemester 2017/18}
 
-\displaywidowpenalty=10000
-%\postdisplaypenalty=10000
-\widowpenalty=10000
-\clubpenalty=10000
+\displaywidowpenalty=8000
+%\postdisplaypenalty=8000
+\widowpenalty=8000
+\clubpenalty=8000
 
 \begin{document}
 \pagenumbering{Alph}
@@ -2543,27 +2543,27 @@ A Franke lecture is no Franke lecture without a definition being proved.
     \end{alphanumerate}
 \end{lem}
 \begin{proof}
-    Let's start proving \itememph{a} $\Rightarrow$ \itememph{b}. Let \itememph{a} be satisfied and $U\subseteq Y$ be quasi-separated, we have to show that $f^{-1}(U)$ is quasi-separated. Without losing generality we may assume $U=Y$ is quasi-separated and have to show that $X$ is quasi-separated, i.e. for two arbitrary quasi-compact open subsets $V$ and $W$ of $X$, $V\cap W$ is quasi-compact. We claim that it is sufficient to show this when $f(V)$ and $f(W)$ are contained in affine open subsets $\Omega$ and $\Theta$ of $Y$. Indeed, every $x\in V$ has some affine open neighbourhood $V_x\subseteq V$ with $f(V_x)\subseteq \Omega_x$ where $\Omega_x \subseteq Y$ is affine. Similarly, every $x\in W$ has a neighbourhood $W_x\subseteq W$ such that $f(W_x)\subseteq \Theta_x$ which is affine. Then for every $x\in V$ and $\xi \in W$, $V_x\cap W_\xi$ is quasi-compact by the special case we have yet to prove, and by quasi-compactness of $V,W$ there are $x_i\in V$, $\xi_j\in W$ such that $V=\bigcup_{i=1}^m V_{x_i}$ and $W = \bigcup_{j=1}^n W_{x_j}$. Then
+    Let's start proving \itememph{a} $\Rightarrow$ \itememph{b}. Let \itememph{a} be satisfied and $U\subseteq Y$ be quasi-separated, we have to show that $f^{-1}(U)$ is quasi-separated. Without losing generality we may assume $U=Y$ is quasi-separated and have to show that $X$ is quasi-separated, i.e. for two arbitrary quasi-compact open subsets $V$ and $W$ of $X$, $V\cap W$ is quasi-compact. We claim that it is sufficient to show this when $f(V)$ and $f(W)$ are contained in affine open subsets $\Omega$ and $\Theta$ of $Y$. Indeed, every $x\in V$ has some affine open neighbourhood $V_x\subseteq V$ with $f(V_x)\subseteq \Omega_x$ where $\Omega_x \subseteq Y$ is affine. Similarly, every $\xi\in W$ has a neighbourhood $W_\xi\subseteq W$ such that $f(W_\xi)\subseteq \Theta_\xi$ which is affine. Then for every $x\in V$ and $\xi \in W$, $V_x\cap W_\xi$ is quasi-compact by the special case we have yet to prove, and by quasi-compactness of $V,W$ there are $x_i\in V$, $\xi_j\in W$ such that $V=\bigcup_{i=1}^m V_{x_i}$ and $W = \bigcup_{j=1}^n W_{x_j}$. Then
     \begin{align*}
         V\cap W = \bigcup_{i=1}^m \bigcup_{j=1}^n (V_{x_i}\cap W_{\xi_j})
     \end{align*}
     is quasi-compact.
     
-    Now, if $f(V)\subseteq \Omega$ and $f(W)\subseteq \Theta$ are as above, then $\Omega\cap \Theta$ is quasi-compact as $Y$ is quasi-separated. Since open subsets of that form form a topology base on $\Omega$, $\Omega\cap \Theta = \bigcup_{i=1}^m (\Omega\setminus V(\omega_i))$ with $\omega_i\in \Oo_Y(\Omega)$ and 
+    Now, if $f(V)\subseteq \Omega$ and $f(W)\subseteq \Theta$ are as above, then $\Omega\cap \Theta$ is quasi-compact as $Y$ is quasi-separated. Since open subsets of that form form a topology base on $\Omega$, 
     \begin{align*}
-        \Omega\cap \Theta = \bigcup_{j=1}^n(\Theta \setminus V(\vartheta_j))
+        \Omega\cap \Theta = \bigcup_{i=1}^m (\Omega\setminus V(\omega_i))=\bigcup_{j=1}^n(\Theta \setminus V(\vartheta_j))
     \end{align*}
-    with $\vartheta_j\in \Oo_Y(\Theta)$. Then $V\setminus V(f^*\omega_i)$ and $W\setminus V(f^* \vartheta_j)$ are quasi-compact by Fact~\reff{fact:complementClosedQC} and have image contained in $\Omega$, and $f^{-1}(\Omega)$ is quasi-separated (since we are assuming \itememph{a}), hence
+    with $\omega_i\in \Oo_Y(\Omega)$ and $\vartheta_j\in \Oo_Y(\Theta)$. Then $V\setminus V(f^*\omega_i)$ and $W\setminus V(f^* \vartheta_j)$ are quasi-compact by Fact~\reff{fact:complementClosedQC} and have image contained in $\Omega$, and $f^{-1}(\Omega)$ is quasi-separated (since we are assuming \itememph{a}), hence
     \begin{align*}
         (V\setminus V(f^*\omega_i))\cap (W\setminus V(f^* \vartheta_j))
     \end{align*}
     is quasi-compact, and so is their finite union $V\cap W$. This implies \itememph{b}.
     
-    Now assume \itememph{c} for showing that \itememph{c} $\Rightarrow$ \itememph{b}. Let $\Delta$ be quasi-compact. If $U\subseteq Y$ is affine and $V$ and $W$ are affine open subsets of $f^{-1}(U)$, $V\times_Y W = V\times_U W$ as $U\morphism Y$ is monic (Corollary~\reff{cor:preschemesFibreProduct}\itememph{c}). As $U$, $V$, and $W$ are affine, so is $V\times_U W$ by Corollary~\reff{cor:affineSchemesFibreProduct}. But $V\cap W$ equals $\Delta^{-1}(V\times_Y W)$ (by an argument like in the proof of Proposition~\reff{prop:intersectionAffine}) which is quasi-compact as $\Delta$ is a quasi-compact morphism. This shows \itememph{b}.
+    Now assume \itememph{c} for showing that \itememph{c} $\Rightarrow$ \itememph{a}. Let $\Delta$ be quasi-compact. If $U\subseteq Y$ is affine and $V$ and $W$ are affine open subsets of $f^{-1}(U)$, $V\times_Y W = V\times_U W$ as $U\monomorphism Y$ is monic (Corollary~\reff{cor:preschemesFibreProduct}\itememph{c}). As $U$, $V$, and $W$ are affine, so is $V\times_U W$ by Corollary~\reff{cor:affineSchemesFibreProduct}. But $V\cap W$ equals $\Delta^{-1}(V\times_Y W)$ (by an argument like in the proof of Proposition~\reff{prop:intersectionAffine}) which is quasi-compact as $\Delta$ is a quasi-compact morphism. This shows \itememph{a}.
     
-    We show that \itememph{a} $\Rightarrow$ \itememph{c}. Consider \itememph{a} to be true. Let $V, W\subseteq X$ be affine open subsets of $X$ such that $f(V)\cup f(W) \subseteq U$ where $U\subseteq Y$ is affine. Note that such $V\times_U W = V\times_Y W$ cover $X\times_Y X$. As quasi-compactness of morphisms is a base-local property, it suffices to show that $\Delta^{-1}(V\times_Y W)\morphism V\times_Y W$ is quasi-compact. This however, follows from Fact~\reff{fact:qcToAffineIsQc} as $\Delta^{-1}(V\times_YW) = V\cap W$ is quasi-compact by our assumption and $V\times_Y W= V\times_U W$ is affine. This implies \itememph{c}.
+    We show that \itememph{a} $\Rightarrow$ \itememph{c}. Consider \itememph{a} to be true. Let $V, W\subseteq X$ be affine open subsets of $X$ such that $f(V)\cup f(W) \subseteq U$ where $U\subseteq Y$ is affine. Note that such $V\times_U W = V\times_Y W$ cover $X\times_Y X$. As quasi-compactness of morphisms is a base-local property (Fact~\reff{fact:qcIsBaseLocalAndStuff}), it suffices to show that $\Delta^{-1}(V\times_Y W)\morphism V\times_Y W$ is quasi-compact. This however, follows from Fact~\reff{fact:qcToAffineIsQc} as $\Delta^{-1}(V\times_YW) = V\cap W$ is quasi-compact by our assumption and $V\times_Y W= V\times_U W$ is affine. This implies \itememph{c}.
     
-    Ah right, and \itememph{b} $\Rightarrow$ \itememph{a} is trivial, closing the circle.
+    All right, and \itememph{b} $\Rightarrow$ \itememph{a} is trivial by Fact~\reff{fact:SpecRqcqs}\itememph{a}, closing the circle.
 \end{proof}
 \begin{defi}[Quasi-separated morphisms]\lbl{def:qsmorphism}
     Such morphisms are called \defemph{quasi-separated}.
@@ -2574,7 +2574,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
 \begin{proof}
     For the first assertion note that Fact~\reff{fact:separationStuff}\itememph{d} implies the condition from Lemma~\reff{lem:qsmorphism}\itememph{c} as any closed immersion is quasi-compact (cf. Remark~\reff{rem:qcqs}\itememph{d}). The closedness under composition follows from condition \itememph{b} of Lemma~\reff{lem:qsmorphism}. Base-locality follows from Lemma~\reff{lem:qsmorphism}\itememph{c}, since quasi-compactness of morphisms is base-local, and for $U\subseteq Y$ open and $X_U = f^{-1}(U)$ the $X_U\times_U X_U$ are open subsets covering $X\times_Y X$ and $\Delta^{-1}(X_U\times_U X_U) = X_U$. Closedness under base change is also a consequence of Lemma~\reff{lem:qsmorphism}\itememph{c} as, for $\snake Y\morphism Y$ and $\snake X = X\times_Y \snake Y$ we have that 
     \begin{align*}
-    	\snake X \xrightarrow{\snake\Delta=\left(\id_{\snake X},\id_{\snake X}\right)} \snake X\times_{\snake Y}\snake X\;
+    	\snake\Delta\colon\snake X \xrightarrow{\left(\id_{\snake X},\id_{\snake X}\right)} \snake X\times_{\snake Y}\snake X\;
     \end{align*}
     is a base change of $X\morphism[\Delta] X\times_Y X$ with respect to $\snake X\times_{\snake Y} \snake X \morphism X\times_Y X$ (after a bit abstract nonsense) and quasi-compactness is stable under base change (Fact~\reff{fact:qcIsBaseLocalAndStuff}).
 \end{proof}
@@ -2710,12 +2710,12 @@ A Franke lecture is no Franke lecture without a definition being proved.
     For \itememph{a}, we may assume $X$ to be affine because any affine open neighbourhood of $x$ contains all $y$ occuring on the right-hand side (in fact, any open neighbourhood $U$ of $x$ contains $y$ as otherwise $\ov{\{y\}}\subseteq X\setminus U$). When $X=\Spec R$, and $x$ is given by $\pp$ and $y$ by $\qq$ then $\ov{\{y\}} = V(\qq)$, hence $\qq$ defines an element of the right-hand side iff $\qq\subseteq \pp$. In this case, the image of $y$ in the left-hand side $\Spec(\Oo_{X,x})\simeq \Spec R_\pp$ is the set of all $\frac{r}{f}\in R_\pp$ (where $f\notin\pp$) such that $\qq R_f$ is an element of the vanishing set of $\frac{r}{f}$ in $R_f$, i.e. $\frac{r}{f}\in \qq R_f$, hence the ideal of $R_\pp$ associated to $y$ is $\qq R_\pp$ (as one would expect). Now the map $\qq\mapsto\qq R_\pp$ gives indeed a bijection onto $\Spec R_\pp$, the inverse map being given by 
     \begin{align}\lbl{eq:localizationBijection}
     	\begin{split}
-	    	\Spec R_\pp &\morphism \left\{\qq\in\Spec R\st\qq\subseteq\pp\right\}\\ \rr&\longmapsto \qq= (\text{preimage of }\rr\text{ under }R\morphism R_\pp)
+	    	\Spec R_\pp &\morphism \left\{\qq\in\Spec R\st\qq\subseteq\pp\right\}\\ \rr&\longmapsto \qq= (\text{preimage of }\rr\text{ under }R\to R_\pp)
     	\end{split}\tag{$*$}
     \end{align}
     (a special case of \cite[Corollary~2.3.1\itememph{e}]{alg1}). The correspondence between generic points of maximal irreducible subsets and minimal prime ideals of $\Oo_{X,x}$ is obvious.
     
-    Now we prove \itememph{b}. The fact that the map on points defined by $\phi$ is the inverse to $\Spec(\Oo_{X,x}) \lisomorphism \left\{y\in X\st x\in \ov{\{y\}}\right\}$ in \itememph{a} follows from \eqreff{eq:localizationBijection}. In particular, $\phi$ is unique on the level of points. Let's consider it on the level of stalks of sections of the structure sheaf. For a $y\in X$ such that $x\in\ov{\{y\}}$ corresponding to the prime ideal $\qq\in\Spec(\Oo_{X,x})$ under the bijection from \itememph{a} we get a canonical morphism
+    Now we prove \itememph{b}. The fact that the map on points defined by $\phi$ is the inverse to the map $\Spec(\Oo_{X,x}) \lisomorphism \left\{y\in X\st x\in \ov{\{y\}}\right\}$ in \itememph{a} follows from \eqreff{eq:localizationBijection}. In particular, $\phi$ is unique on the level of points. Let's consider it on the level of stalks of sections of the structure sheaf. For a $y\in X$ such that $x\in\ov{\{y\}}$ corresponding to the prime ideal $\qq\in\Spec(\Oo_{X,x})$ under the bijection from \itememph{a} we get a canonical morphism
     \begin{align*}
         \Oo_{X,x} = \colimit[U\ni x] \Oo_X(U) \morphism \colimit[V\ni y] \Oo_X(V)=\Oo_{X,y}
     \end{align*}
@@ -2761,9 +2761,9 @@ A Franke lecture is no Franke lecture without a definition being proved.
     \end{align*}
     as a colimit of domains, is a domain again. So we conclude \itememph{b} $\Rightarrow$ \itememph{d}. It is obvious that \itememph{d} is stronger then \itememph{e}.
     
-    Now let $X$ be Noetherian and \itememph{e} be true. We show that \itememph{e} $\Rightarrow$ \itememph{a}. If $U\subseteq X$ is open and $f\in \Oo_X(U)$ nilpotent, its image in $\Oo_{X,x}$ is nilpotent, hence $0$, for every closed point $x\in X$. Let $V\subseteq U$ quasi-compact (e.g. affine) and let $x\in V$ be closed. The image of $f$ in $\Oo_{X,x}$ being zero, there is an open neighbourhood $V_x\subseteq V$ of $x$ such that $f|_{V_x} = 0$. But these $V_x$ cover $V$ by Proposition~\reff{prop:closedSubsetPoint} ($V\setminus\bigcup_{x\in V} V_x$ is closed, where the union is taken over all closed points; if it was non-empty, we could find another closed point inside), hence $f|_V = 0$. Since those $V$ cover $U$, we conclude $f= 0$. This shows reducedness of $X$.
+    Now let $X$ be Noetherian and \itememph{e} be true. We show that \itememph{e} $\Rightarrow$ \itememph{a}. Let $y\in X$ and $x\in\ov{\{y\}}$ a closed point, which exists by Proposition~\reff{prop:closedSubsetPoint} (note that $X$ is Noetherian, hence quasi-compact, cf. \cite[Definition~2.1.2]{alg1}). Choosing an affine open neighbourhood $U\simeq \Spec R$ in which $y$ corresponds to the prime ideal $\pp$ and $x$ to the maximal ideal $\mm$, we see that $\Oo_{X,y}\simeq R_\pp$ is a localization of $\Oo_{X,x}\simeq R_\mm$ and thus a reduced ring since $\Oo_{X,x}$ is. Hence $X$ is reduced at stalks (i.e. \itememph{d} holds) and it's easy to see that this implies reducedness.
     
-    Let $X=\bigcup_{i=1}^nX_i$ be the decomposition of $X$ into irreducible components (i.e. maximal irreducible subsets, which are then automatically closed). If $X_i\cap X_j \neq \emptyset$ for $i\neq j$ it would contain a closed point $x$ by Proposition~\reff{prop:closedSubsetPoint} (note that $X$ is Noetherian, hence quasi-compact, cf. \cite[Definition~2.1.2]{alg1}). By Proposition~\reff{prop:specStalksCorrespondence}\itememph{a} $\Oo_{X,x}$ would contain two different minimal prime ideals (corresponding to $X_i$ and $X_j$), hence fail to be a domain. Thus $X=\coprod_{i=1}^nX_i$ and $n=1$ by connectedness. This proves \itememph{a}.
+    Let $X=\bigcup_{i=1}^nX_i$ be the decomposition of $X$ into irreducible components (i.e. maximal irreducible subsets, which are then automatically closed). If $X_i\cap X_j \neq \emptyset$ for $i\neq j$ it would contain a closed point $x$ by Proposition~\reff{prop:closedSubsetPoint} (again by quasi-compactness). By Proposition~\reff{prop:specStalksCorrespondence}\itememph{a} $\Oo_{X,x}$ would contain two different minimal prime ideals (corresponding to $X_i$ and $X_j$ -- or rather their generic points), hence fail to be a domain. Thus $X=\coprod_{i=1}^nX_i$ and $n=1$ by connectedness. This proves \itememph{a}.
 \end{proof}
 \begin{rem}\lbl{rem:Prop2.1.4WithoutNoetherian}%I need to ask Franke about this.%not anymore
 	Without the Noetherianness assumption, the following implications hold
@@ -2776,15 +2776,17 @@ A Franke lecture is no Franke lecture without a definition being proved.
 			\path (b.east) -- (c.west) node[pos=0.5] {$\Longleftrightarrow$};
 			\node [right=0.75cm of c] (d) {\itememph{d}};
 			\path (c.east) -- (d.west) node[pos=0.5] {$\Longrightarrow$};
-			\node [right=0.75cm of d] (e) {\itememph{e}};
-			\path (d.east) -- (e.west) node[pos=0.5] {$\Longrightarrow$};
-			\node [right=0.75cm of e] (x) {$X$ reduced};
-			\path (e.east) -- (x.west) node[pos=0.5] {$\Longrightarrow$}; 
+			\node [below=0.75cm of d] (e) {\itememph{e}};
+			\path (d.south) -- (e.north) node[pos=0.5, rotate=-90] {$\Longrightarrow$};
+			\node [right=0.75cm of d] (x) {$X$ reduced};
+			\path (d.east) -- (x.west) node[pos=0.5] {$\Longrightarrow$}; 
 			\scriptsize
-			\draw[-implies, double equal sign distance,dotted, bend left=20] (e) to node[pos=0.5, below] {$X$ quasi-compact} (a);
+			\draw[-implies, double equal sign distance,dotted, bend left=20] (e) to node[pos=0.5, below left] {$X$ quasi-compact} (a);
 		\end{tikzpicture}
 	\end{center}
 	Note that in the last step of the above proof we don't need the finiteness of the number of irreducible components; the only thing we need is quasi-compactness and connectedness of $X$, hence above proof essentially showed this implications.
+	
+	Also note that such $X$ as in Proposition~\reff{prop:integralPrescheme}\itememph{e} do not need to be reduced if quasi-compactness isn't required. There are even examples of preschemes without closed points, such as \url{http://math.stanford.edu/~vakil/files/schwede03.pdf}. If we replace the $A'$ on page 11 by $A''=A'[T]/(T^2)$ and localize at $(T,x_1,x_2,\ldots)$ instead, we get a non-reduced version of that counterexample.
 \end{rem}
 \begin{defi}[Integral preschemes]\lbl{def:integralPrescheme}
     A prescheme satisfying the equivalent conditions \itememph{a}, \itememph{b}, \itememph{c} of Proposition~\reff{prop:integralPrescheme} is called \defemph{integral}.
@@ -2797,11 +2799,12 @@ A Franke lecture is no Franke lecture without a definition being proved.
     For a morphism $X\morphism[f] Y$ of preschemes, the following conditions are equivalent:
     \begin{alphanumerate}
     \item 
-        If $U\subseteq X$ and $V\subseteq Y$ are and $f(U)\subseteq V$ then $\Oo_X(U)$ is of finite type over $\Oo_Y(V)$.
+        If $U\subseteq X$ and $V\subseteq Y$ are affine open subsets and $f(U)\subseteq V$ then $\Oo_X(U)$ is of finite type over $\Oo_Y(V)$.
     \item 
         It is possible to cover $X$ by affine open subsets $U$ for which there are affine open $V\subseteq Y$ such that $f(U) \subseteq V$ and $\Oo_X(U)$ is of finite type over $\Oo_X(V)$.
     \end{alphanumerate}
 \end{prop}
+To prove this, we first consider the case where $Y=\Spec A$ is affine.
 \begin{lem}\lbl{lem:finiteTypeAffine}
     Let $X\morphism \Spec A$ be a morphism of preschemes, then the following conditions are equivalent:
     \begin{alphanumerate}
@@ -2837,15 +2840,15 @@ We derive this from two other lemmas, the first of which is very useful in gener
     Let $R$ be a ring, $A$ an $R$-algebra, $f_1,\ldots,f_n$ elements of $A$ such that $(f_1,\ldots, f_n)_A = A$ (in other words, $\bigcap_{i=1}^n V(f_i) =\emptyset$ in $\Spec A$). If $A_{f_i}$ is an $R$-algebra of finite type for $1\leq i\leq n$, then $A$ is an $R$-algebra of finite type.
 \end{lem}
 \begin{proof}
-    By our assumption there are $g_1,\ldots,g_n\in A$ such that $1=\sum_{i=1}^n f_ig_i$. Let $A_{f_i}$ be generated by $(\alpha_{i,j})_{j=1}^m$, $\alpha_{i,j} = a_{i,j}\cdot f_i^{-\ell}\in A_{f_i}$ (with $a_{i,j}\in A$, $\ell\geq0$), as an $R$-algebra. Let $\snake A\subseteq A$ be the sub-$R$-algebra of $A$ generated by $f_1,\ldots,f_n$, $g_1,\ldots,g_n$ and the  $a_{i,j}$. We claim $\snake A = A$. Let $x\in A$, we first show that $f_i^kx \in \snake A$ for $i=1,\ldots, n$, when $k$ is large enough. In fact, 
+    By our assumption there are $g_1,\ldots,g_n\in A$ such that $1=\sum_{i=1}^n f_ig_i$. Let $A_{f_i}$ be generated by $(\alpha_{i,j})_{j=1}^m$, $\alpha_{i,j} = a_{i,j}\cdot f_i^{-\ell}\in A_{f_i}$ (with $a_{i,j}\in A$, $\ell\geq0$), as an $R$-algebra. Let $\snake A\subseteq A$ be the sub-$R$-algebra of $A$ generated by $f_1,\ldots,f_n$, $g_1,\ldots,g_n$ and the  $a_{i,j}$. We claim $\snake A = A$. Let $x\in A$, we first show that $f_i^kx \in \snake A$ for $i=1,\ldots, n$, when $k$ is large enough. We have 
     \begin{align*}
-        x = \sum_{\beta \in \IN_0^m} \rho_{i,\beta} \alpha_{i,1}^{\beta_1}\cdot\ldots\cdot \alpha_{i,m}^{\beta_m}
+        x = \sum_{\beta \in \IN_0^m} \rho_{i,\beta} \alpha_{i,1}^{\beta_1}\cdot\ldots\cdot \alpha_{i,m}^{\beta_m}\quad\text{in }A_{f_i}\text{,}
     \end{align*}
     where $\rho_{i,\beta}\in R$ and equal to zero for all but finitely many $\beta$. When $k\geq \ell\cdot \max\left\{|\beta|\st \rho_{i,\beta}\neq 0\right\}$ (where we set $|\beta|=\beta_1+\ldots+\beta_m$), we have
     \begin{align*}
-        f_i^kx = \sum_{\beta \in \IN_0^m} \rho_{i,\beta}f_i^{k-\ell\cdot|\beta|} a_{i,1}^{\beta_1}\cdot\ldots\cdot a_{i,m}^{\beta_m}\in \snake A
+        f_i^kx = \sum_{\beta \in \IN_0^m} \rho_{i,\beta}f_i^{k-\ell\cdot|\beta|} a_{i,1}^{\beta_1}\cdot\ldots\cdot a_{i,m}^{\beta_m}\text{in }A_{f_i}
     \end{align*}
-    with $k-\ell\cdot|\beta|\geq 0$ if $\rho_{i,\beta}\neq 0$, establishing the claim. But if $k$ has this property,
+    with $k-\ell\cdot|\beta|\geq 0$ if $\rho_{i,\beta}\neq 0$. The right-hand side can be seen as an element $a\in\snake{A}$. As this is (only) an equality in $A_{f_i}$, we get $f^{k+k'}x=f^{k'}a$ as an equality in $A$ for some $k'\geq0$. But still, $f^{k'}a\in\snake{A}$, establishing the claim. But if $k$ has this property,
     \begin{align*}
         x = \left(\sum_{i=1}^n f_ig_i\right)^{nk}\cdot x= \sum_{\gamma\in\IN_0^n} \frac{(nk)!}{\gamma_1!\cdots\gamma_n!} \left(\prod_{i=1}^n (f_ig_i)^{\gamma_i}\right)\cdot x
     \end{align*}
@@ -2909,13 +2912,13 @@ We derive this from two other lemmas, the first of which is very useful in gener
     Any closed immersion is of finite type.
 \end{cor}
 \begin{proof}
-	As we noted in Remark~\reff{rem:qcqs}\itememph{d}, closed immersions are always quasi-compact. To show locally finite typeness, let $K\morphism[\iota]X$ be a closed immersion, then $K$ is given by a quasi-coherent sheaf of ideals $\Jj\subseteq\Oo_X$. Restricting to an affine open subset $U\simeq\Spec R$ of $X$, $\Jj$ has the form $\snake I$ for some ideal $I\subseteq R$ and $\iota^{-1}U\morphism U$ is given by $\Spec R/I\morphism\Spec R$. Now $R/I$ is of finite type over $R$ and by Proposition~\reff{prop:locFiniteMorph}\itememph{b} we are done.
+	As we noted in Remark~\reff{rem:qcqs}\itememph{d}, closed immersions are always quasi-compact. To show locally finite typeness, let $K\morphism[\iota]X$ be a closed immersion, then Proposition~\reff{prop:closedImmersionCoherentSheaves} assings to $K$ a quasi-coherent sheaf of ideals $\Jj\subseteq\Oo_X$. Restricting to an affine open subset $U\simeq\Spec R$ of $X$, $\Jj$ has the form $\snake I$ for some ideal $I\subseteq R$ and $\iota^{-1}U\morphism U$ is given by $\Spec R/I\morphism\Spec R$. Now $R/I$ is of finite type over $R$ and by Proposition~\reff{prop:locFiniteMorph}\itememph{b} we are done.
 \end{proof}
 \begin{cor}
     Any locally closed immersion is of locally finite type.
 \end{cor}
 \begin{proof}
-	A locally closed immersion is, by definition (a definition that was never given, but here's what Professor Franke -- I asked him -- would have given, if he had given it), a morphism of the form $j\circ i$ with $i$ an open immersion followed by $j$ a closed one (and not just an immersion with locally closed image). Then the claim follows trivially from the preceding Corollary~\reff{cor:openImmersionFiniteType} and Corollary~\reff{cor:closedImmersionFiniteType}. 
+	A locally closed immersion is, by definition (a definition that was never given, but here's what Professor Franke -- I asked him -- would have given, if he had given it), a morphism of the form $j\circ i$ with $i$ an open immersion followed by $j$ a closed one (and not just an immersion with locally closed image). Then Corollary~\reff{cor:openImmersionFiniteType} and Corollary~\reff{cor:closedImmersionFiniteType} do it. 
 \end{proof}
 
 \subsection{(Locally) Noetherian preschemes}
@@ -2924,7 +2927,7 @@ We derive this from two other lemmas, the first of which is very useful in gener
     For a prescheme $X$, the following are equivalent:
     \begin{alphanumerate}
     \item 
-        For any quasi-compact open $U\subseteq X$, any ascending sequence $\Jj_0\subseteq \Jj_1\subseteq\ldots \subseteq \Oo_X|_U$ of quasi-coherent sheaves of ideals on $U$ terminates at some $N$ wih $\Jj_N= \Jj_n$, when $n\geq N$.
+        For any quasi-compact open $U\subseteq X$, any ascending sequence $\Jj_0\subseteq \Jj_1\subseteq\ldots \subseteq \Oo_X|_U$ of quasi-coherent sheaves of ideals on $U$ terminates at some $N$ with $\Jj_N= \Jj_n$, when $n\geq N$.
     \item 
         For any affine open $U\subseteq X$, \itememph{a} holds.
     \item 
@@ -3021,7 +3024,7 @@ This should be enough to motivate the following
 In this section we want to consider the following problem. Let $R$ be a discrete valuation ring with maximal (principal) ideal $(\pi)$. Then $\Spec R = \{s,\eta\}$, where $s= (\pi)$ is closed and $\eta = \{0\}$ is open. Thus the closed points of $\Spec R$ are not dense in $\Spec R$, and $\Spec K \morphism \Spec R$, where $K= R[\pi^{-1}]$ is the quotient field of $R$, is of finite type and maps the unique (hence closed) point of $\Spec K$ to the non-closed $\eta\in \Spec R$.
 
 \begin{example}
-    Let $S= \Spec R$, $X=\IA^1_R=\Spec R[T]$ (the \emph{affine line} over $R$), and  $\IP_R^1=\Proj \left(R[T_0,T_1]\right)$ (also cf. Example~\reff{ex:Proj} and Example~\reff{ex:projectiveScheme}). We have a diagram
+    Let $S= \Spec R$, $X=\IA^1_R=\Spec R[T]$ (the \emph{affine line} over $R$), and  $\IP_R^1=\Proj \left(R[T_0,T_1]\right)$ (also cf. Example~\reff{ex:Proj} and Example~\reff{ex:projectiveScheme}). We have a commutative diagram
     \begin{diagram*}
     	\node[ob](x) at (0,1.25) {$X$};
     	\node[ob](s) at (1.25,0) {$S$};
@@ -3105,13 +3108,13 @@ Recall (not from this lecture but from Algebra~II, so if you do not participate 
 \begin{example}
     Any field is a Jacobson ring as is any principal ideal domain with infinitely many prime ideals, or any Dedekind domain with infinitely many prime ideals. Semilocal rings (with only finitely many maximal ideals) are non-Jacobson unless $\Spec R$ is discrete (this is equivalent to $R$ being Artinian, provided $R$ is Noetherian).
 \end{example}
-\begin{cor}
+\begin{cor}\lbl{cor:NillstellensatzReloaded}
     Any algebra of finite type over a Jacobson ring is Jacobson.
 \end{cor}
 \begin{proof}
-    Let $R$ be Jacobson and $A/R$ as well as $B/A$ be ring extensions of finite type. Let $\mm\in \mSpec B$ and $\nn = A\cap \mm$ then $\nn\cap R = \mm\cap R$ is a maximal ideal as $B/R$ is of finite type and $R$ is Jacobson. Hence $A/\nn$ is a subring of $B/\mm$ which is of finite type over $A/(A\cap\nn)$, hence it is a finite field extension of $R/\mm$ by the Nullstellensatz. Now $A/\nn$ gets sandwiched via $R/(\mm\cap R) \subseteq A/\nn \subseteq B/\mm$ where the outer terms form a finite field extension, then $A/\nn$ is a domain and $B/\mm$ a field integral over it, hence $A/\nn$ must be a field itself (cf. \cite[Proposition~1.5.1\itememph{d}]{alg1}) and $\nn$ a maximal ideal. Hence $A$ satisfies Property \itememph{c} of Proposition~\reff{prop:JacobsonRing}.
+    Let $R$ be Jacobson and $A/R$ as well as $B/A$ be ring extensions of finite type. Let $\mm\in \mSpec B$ and $\nn = A\cap \mm$, then $\nn\cap R = \mm\cap R$ is a maximal ideal as $B/R$ is of finite type and $R$ is Jacobson. Hence $A/\nn$ is a subring of $B/\mm$ and $B/\mm$ is of finite type over $R/(R\cap\mm)$, hence it is a finite field extension of $R/(R\cap\mm)$ by the Nullstellensatz. Now $A/\nn$ gets sandwiched via $R/(R\cap\mm) \subseteq A/\nn \subseteq B/\mm$ where the outer terms form a finite field extension, then $A/\nn$ is a domain and $B/\mm$ a field integral over it, hence $A/\nn$ must be a field itself (cf. \cite[Proposition~1.5.1\itememph{d}]{alg1}) and $\nn$ a maximal ideal. Hence $A$ satisfies Property \itememph{d} of Proposition~\reff{prop:JacobsonRing}.
 \end{proof}
-\begin{defi}[Finally Franke openly admits it is actually also a Proposition. A fault confessed is half redressed]\lbl{def:JacobsonPrescheme}
+\begin{defi}[Finally Franke openly admits it is actually also a proposition -- a fault confessed is half redressed]\lbl{def:JacobsonPrescheme}
     For a prescheme $X$, the following conditions are equivalent:
     \begin{alphanumerate}
     \item 
@@ -3126,35 +3129,34 @@ Recall (not from this lecture but from Algebra~II, so if you do not participate 
     A prescheme with these properties is called \defemph{Jacobson prescheme}. Any prescheme of locally finite type over a Jacobson prescheme is Jacobson.
 \end{defi}
 \begin{rem*}
-    In view of these facts, Jacobsonness is a local property. It is inherited by the open subsets. A prescheme $X$ is Jacobson if it may be covered by open subset which are.
+    In view of these facts, Jacobsonness is a local property. It is inherited by the open subsets. A prescheme $X$ is Jacobson if it may be covered by open subset which are Jacobson.
 \end{rem*}
 \begin{proof}[Proposition or not, we need to prove Definition~\reff{def:JacobsonPrescheme} anyway]
-    Assume \itememph{a}. Let $U\subseteq X$ be an affine open subset, $A\subseteq U$ closed and irreducible, and $V\subseteq U$ open such that $V\cap A\neq \emptyset$. Let $B$ be the closure of $A$ in $X$. Then $A\cap V = B\cap V$ contains a point which is closed in $X$, hence $U$ and the closed points of $U$ are dense in $A$. This proves \itememph{a} $\Rightarrow $ \itememph{b}.
+    Assume \itememph{a}. Let $U\subseteq X$ be an affine open subset, $A\subseteq U$ closed and irreducible, and $V\subseteq U$ open such that $V\cap A\neq \emptyset$. Let $B$ be the closure of $A$ in $X$. Then $A\cap V = B\cap V$ contains a point which is closed in $X$, hence in $U$ and thus the closed points of $U$ are dense in $A$. This proves \itememph{a} $\Rightarrow $ \itememph{b}.
     
     That \itememph{b} implies \itememph{c} is trivial.
     
-    Now assume \itememph{c}, we want to show \itememph{a}. If $U\subseteq X$ is affine open and $\Oo_X(U)$ is Jacobson, then $\Oo_X(U\setminus V(\lambda))$ is Jacobson for any $\lambda\in \Oo_X(U)$ as $\Oo_X(U)_\lambda$ is of finite type over $\Oo_X(U)$. By Fact~\reff{fact:affineSchemesTopologyBase}\itememph{b} the affine open $U$ such that $\Oo_X(U)$ is Jacobson thus form a topology base and the assertion is easily seen similar to Fact~\reff{fact:1++}.
+    Now assume \itememph{c}, we want to show \itememph{a}. If $U\subseteq X$ is affine open and $\Oo_X(U)$ is Jacobson, then $\Oo_X(U\setminus V(\lambda))$ is Jacobson for any $\lambda\in \Oo_X(U)$ as $\Oo_X(U)_\lambda$ is of finite type over $\Oo_X(U)$ and we can use Corollary~\reff{cor:NillstellensatzReloaded}. By Fact~\reff{fact:affineSchemesTopologyBase}\itememph{b} the affine open $U$ such that $\Oo_X(U)$ is Jacobson thus form a topology base and the assertion is easily seen similar to Fact~\reff{fact:1++}.
     
     Let's show \itememph{d} $\Rightarrow$ \itememph{a}. If $U\subseteq X$ is open, then the open immersion $U\monomorphism X$ is of locally finite type (by Corollary~\reff{cor:openImmersionFiniteType}) hence maps closed points to closed ones if we assume \itememph{d}. Then Fact~\reff{fact:closedPointsDense}\itememph{c} holds which implies \itememph{a}.
     
-    To close the circle, we assume \itememph{a} and \itememph{b} (these being equivalent) and show \itememph{d}. If $y\in Y$ is closed and there are affine open subsets $V\subseteq Y$, $U\subseteq X$ such that $y\in V$ and $f(V)\subseteq U$. Then $\Oo_X(U)$ is Jacobson and $\Oo_Y(V)$ of finite type over it, hence $f(y)$ is closed in $U$ by the Proposition~\reff{prop:JacobsonRing}\itememph{d}, hence $f(y)$ is closed in $X$ by \itememph{a} (using the property from Fact~\reff{fact:closedPointsDense}\itememph{c}).
+    To close the circle, we assume \itememph{a} and \itememph{b} (these being equivalent) and show \itememph{d}. Let $y\in Y$ be closed and choose affine open subsets $V\subseteq Y$, $U\subseteq X$ such that $y\in V$ and $f(V)\subseteq U$. Then $\Oo_X(U)$ is Jacobson and $\Oo_Y(V)$ of finite type over it, hence $f(y)$ is closed in $U$ by the Proposition~\reff{prop:JacobsonRing}\itememph{d}, hence $f(y)$ is closed in $X$ by \itememph{a} (using the property from Fact~\reff{fact:closedPointsDense}\itememph{c}).
 \end{proof}
 
 \begin{thm}[Serre] \lbl{thm:serre}
     For a Noetherian local ring $R$ with maximal ideal $\mm$ and residue field $k$, the following are equivalent:
     \begin{alphanumerate}
     \item 
-        $k$ admits a finite free resolution, i.e. an exact sequence of $R$-modules
+        $k$ admits a finite free resolution, i.e. there are free $R$-modules $F_i$ and an exact sequence
             \begin{align*}
-                0 \lmorphism k \lmorphism F_0 \lmorphism F_1 \lmorphism \ldots \lmorphism F_n \lmorphism 0
+                0 \lmorphism k \lmorphism F_0 \lmorphism F_1 \lmorphism \ldots \lmorphism F_n \lmorphism 0\;.
             \end{align*}
-        where the $F_i$ are free.
     \item 
         $k$ admits a finite flat resolution, i.e. an exact sequence of $R$-modules
             \begin{align*}
                 0 \lmorphism k \lmorphism F_0 \lmorphism F_1 \lmorphism \ldots \lmorphism F_n \lmorphism 0
             \end{align*}
-        where the $F_i$ are flat, i.e. $-\otimes F_i$ is an exact functor.
+        where the $F_i$ are flat. That is, each $-\otimes F_i$ is an exact functor.
     \item 
         Any $R$-module admits a finite free resolution.
     \item 
@@ -3214,7 +3216,7 @@ Recall (not from this lecture but from Algebra~II, so if you do not participate 
           By (probably) Serre, $X$ is reduced iff $X$ is $R_0$ and $\Oo_X(U)\morphism \Oo_X(V)$ are injective when $V$ is dense in $U$ (i.e. if $X$ is $S_1$, a yet-to-define, though never defined criterion). By the \emph{normality criterion} of Serre, $X$ is normal iff $X$ is $R_1$ and $\Oo_X(U)\morphism \Oo_X(V)$ are injective when $V$ is dense in $U$ and $\Oo_X(U)\morphism \Oo_X(V)$ is an isomorphism if all irreducible components of $U\setminus V$ are of codimension greater than $1$ (i.e. if $X$ is $S_2$). The $S_k$ are related  to \emph{Cohen-Macaulay}ness (which actually is $S_\infty$).
     \end{alphanumerate}
 \end{rem*}
-This lemma wasn't covered in the lecture, but is perhaps worthwhile to know.
+The following lemma wasn't covered in the lecture, but is perhaps worthwhile to know.
 \begin{lem}\lbl{lem:NoetherianConnectedComponentsOpen}
 	When $R$ is Noetherian, $\Spec R$ has finitely many irreducible components. In particular, any irreducible component of $\Spec R$ is open.
 \end{lem}
@@ -3336,9 +3338,9 @@ Indeed, one has $(\Oo_{\SPEC \Aa})_{(x,\pp)} = (\Aa_x)_\pp \simeq (A_x)_\pp \sim
     \end{alphanumerate}
 \end{lem}
 \begin{proof}
-    The implication \itememph{a} $\Rightarrow$ \itememph{b} is trivial. Assume \itememph{b}. Note that \itememph{b} precisely guarantees that $f_*\Oo_X$ is a quasi-coherent $\Oo_Y$-module. Over the affine open $U$ such that $V= f^{-1}(U)$ is affine, we have
+    The implication \itememph{a} $\Rightarrow$ \itememph{b} is trivial. Assume \itememph{b}. Note that \itememph{b} precisely guarantees that $f_*\Oo_X$ is a quasi-coherent $\Oo_Y$-module. Over the affine open $U\subseteq Y$ such that $V= f^{-1}(U)$ is affine, we have
      \begin{diagram*}
-     	\node[ob](x) at (0,1.5) {$\SPEC_Y\big((f_*\Oo_X)|_V\big)$};
+     	\node[ob](x) at (0,1.5) {$\SPEC_Y\big((f_*\Oo_X)|_U\big)$};
      	\node[ob](s) at (1.875,0) {$V$};
      	\node[ob](y) at (3.75,1.5) {$\Spec\big(\Oo_X(V)\big)$};
      	\scriptsize
