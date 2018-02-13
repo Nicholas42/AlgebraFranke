@@ -2739,7 +2739,7 @@ One would intuitively expect, that there are always singularities, where irreduc
 \begin{proof}
     Obviously the homomorphism from \itememph{a} is well-defined and it is surjective. Indeed, the $\mu_i$ generate $\mm$ as an ideal, hence the $\mu_1^{\alpha_1}\cdots\mu_d^{\alpha_d}$ for $|\alpha|=k$ generate $\mm^k$ as an ideal. If the map failed to be injective, there would be a homogeneous $P\in S=k[X_1,\ldots, X_n]$ contained in the kernel. 
     
-    Let $P$ be homogeneous of degree $e$ and $H$ denote the Hilbert polynomial of $S/(P)$. Multiplying by $P$ gives an isomorphism $S_\ell\isomorphism P\cdot S_\ell=(P)_{\ell+e}$. Then the Hilbert polynomial of $(P)$ equals that of $S$ shifted by $-e$. In particular, both have the same degree $d-1$ (by Lemma~\reff{lem:homogeneousPolynomials}) and the same leading coefficient. Then $H$, being the difference of these two via the short exact sequence $0\morphism (P)\morphism S\morphism S/(P)\morphism 0$, has degree $\deg H < d-1$. As $S/(P)\epimorphism \gr (R,\mm)$ is surjective, $\ell(\mm^\ell /\mm^{\ell+1}) = \dim_k(\mm^\ell/\mm^{\ell+1}) \leq H(\ell)$ for large $\ell$ and it follows that the Samuel polynomial of $R$ has degree smaller then $d$, a contradiction to Theorem~\reff{thm:idealOfDefinition} and $\dim(R) = d$. This shows \itememph{a}.
+    Let $P$ be homogeneous of degree $e$ and $H$ denote the Hilbert polynomial of $S/(P)$. Multiplying by $P$ gives an isomorphism $S_\ell\isomorphism P\cdot S_\ell=(P)_{\ell+e}$. Then the Hilbert polynomial of $(P)$ equals that of $S$ shifted by $-e$. In particular, both have the same degree $d-1$ (by Lemma~\reff{lem:homogeneousPolynomials}) and the same leading coefficient. Then $H$, being the difference of these two via the short exact sequence $0\morphism (P)\morphism S\morphism S/(P)\morphism 0$, has degree $\deg H < d-1$. As $S/(P)\epimorphism \gr (R,\mm)$ is surjective, $\ell_R(\mm^\ell /\mm^{\ell+1}) = \dim_k(\mm^\ell/\mm^{\ell+1}) \leq H(\ell)$ for large $\ell$ and it follows that the Samuel polynomial of $R$ has degree smaller then $d$, a contradiction to Theorem~\reff{thm:idealOfDefinition} and $\dim(R) = d$. This shows \itememph{a}.
     
     To prove \itememph{b}, first note that $R\neq 0$ as the zero ring is not local. Assume $f,g\in R\setminus\{0\}$ and $fg = 0$. By the Krull intersection lemma there minimal exponents $n,\ell \geq 0$ such that $f\notin \mm^{n+1}$, $g\notin \mm^{\ell+1}$. Then $\ov f = f\mod \mm^{n+1} \neq 0 $ in $\mm^n/\mm^{n+1}$ and $\ov g= g\mod m^{\ell+1}\neq 0$ in $\mm^\ell/\mm^{\ell+1}$ and $fg\mod \mm^{n+\ell+1} = \ov f\cdot \ov g$ in $\gr_{n+\ell}(R,\mm)$. By \itememph{a} and because $k[X_1,\ldots, X_d]$ is a domain this does not vanish, a contradiction.
 \end{proof} 
@@ -2747,47 +2747,48 @@ One would intuitively expect, that there are always singularities, where irreduc
 \section{One-dimensional regular rings}
 
 \begin{defi}[discrete valuation valuation ring]\lbl{def:discreteValuation}
-    A \defemph{discrete valuation valuation ring} (now with $100\%$ more valuation!!) $R$ is a domain $R$ with a function $c\colon \IN\cup\{\infty\}$ (called the valuation) such that
+    A \defemph{discrete valuation valuation ring} (now with $100\%$ more valuation!!) is a domain $R$ with a function $v\colon R\morphism \IN\cup\{\infty\}$ (called the \emph{valuation}) such that
     \begin{alphanumerate}
     \item 
         $v(x)=\infty$ iff $x = 0$.
     \item 
         $v(xy) = v(x) + v(y)$
     \item 
-        $v(x+y) \geq \min(v(x), v(y))$ (there should be a $\min$ even if Professor Franke is tenacious in using $\max$)
+        $v(x+y) \geq \min\{v(x), v(y)\}$ (there should be a $\min$ even if Professor Franke is tenacious in using $\max$)
     \item 
-        $v(x)\geq v(y)$ then $y$ divides $x$. 
+        If $v(x)\geq v(y)$, then $y$ divides $x$. 
     \item 
         There is $x\in R$ with $v(x) = 1$.
     \end{alphanumerate}
 \end{defi}
 \begin{rem}
-    \begin{enumerate}
+    \begin{alphanumerate}
     \item 
-        \itememph{a} can be deduced from the rest. Let $v(x) = 1$, then $v(0) = v(0\cdot x) = v(0) + v(x) = v(0) +1$, implying $v(0)\not \in \IN$. 
+        Definition~\reff{def:discreteValuation}\itememph{a} can be deduced from the rest. Let $v(x) = 1$, then $v(0) = v(0\cdot x) = v(0) + v(x) = v(0) +1$, implying $v(0)\not \in \IN$. 
     \item 
-        It easily follows $v(\epsilon) = 0$ for $\epsilon \in R^\times$. Hence $v(x) = v(-x)$ and $v(x) = v(x+y-y) \geq \max(v(x+y), v(y))$ showing equality in \itememph{c}, when $v(x) \neq v(y)$.
+        It easily follows $v(\epsilon) = 0$ for $\epsilon \in R^\times$. Hence $v(x) = v(-x)$ and $v(x) = v(x+y-y) \geq \max\{v(x+y), v(y)\}$ showing equality in \itememph{c}, when $v(x) \neq v(y)$.
     \item 
-        Ordered groups other than $\IZ$ (e.g $\IZ\times \IZ$ ordered lexicographically) may be considered as target of the valuation, giving a more general notion. But these will fail to be Noetherian, unless they are DVR.
-    \end{enumerate}
+        Ordered groups other than $\IZ$ (e.g $\IZ\times \IZ$ ordered lexicographically) may be considered as target of the valuation, giving a more general notion. But these will fail to be Noetherian, unless they are discrete valuation rings.
+    \end{alphanumerate}
 \end{rem}
 \begin{defi}[Normal ring]\lbl{def:normal}
-    A domain $R$ is called \defemph{normal} if it s integrally closed in its field of quotients $K$. Recall that $x\in K$ is in the integral closure of $R$ in $K$ iff there is a finitely generated $R$-submodule $M\neq\{0\}$ of $K$ such that $x\cdot M\subseteq M$  iff there is an $R$-subalgebra $C\subseteq K$ such that $x\in C$ and $C$ is finitely generated as an $R$-module.
+    A domain $R$ is called \defemph{normal} if it is integrally closed in its field of quotients $K$. 
 \end{defi}
-
+Recall that $x\in K$ is in the integral closure of $R$ in $K$ iff there is a finitely generated $R$-submodule $M\neq\{0\}$ of $K$ such that $x\cdot M\subseteq M$  iff there is an $R$-subalgebra $C\subseteq K$ such that $x\in C$ and $C$ is finitely generated as an $R$-module (we proved this on exercise sheet \#10).
 \begin{defi}[Fractional ideal] \lbl{def:fractionalIdeal} %At least, it was just a remark, not a fact....
-    A \defemph{fractional ideal} of a domain $R$ is a $R$-submodule $I\subseteq K$ with $a\cdot I \subseteq R$ for some $a\in R\setminus \{0\}$, where zero is excluded. We put $I^{-1} = \left\{j\in K\st jI\subseteq R\right\}$. We call $I$ \emph{invertible} iff $I\cdot I^{-1}  = R$. When $R$ is Noetherian, it is clear that $I^{-1}$ is a fractional ideal and the invrtible fractional ideals form a group.
+    A \defemph{fractional ideal} of a domain $R$ is an $R$-submodule $I\subseteq K$ with $a I \subseteq R$ for some $a\in R\setminus \{0\}$. We put $I^{-1} = \left\{x\in K\st xI\subseteq R\right\}$. The ideal $I$ is called \defemph{invertible} iff $I\cdot I^{-1}  = R$. 
 \end{defi}
+If $I\subseteq K$ is a fractional ideal, then so is $I^{-1}$. Indeed, $I$ always contains an element $r\in R$ and then $rI^{-1}\subseteq R$ by definition of $I^{-1}$. The invertible fractional ideals thus form a group under ideal multiplication. If $R$ is Noetherian, the fractional ideals are precisely the finitely generated $R$-submodules of $K$.
 \begin{prop}\lbl{prop:invertPrincipal}
-    A fractional ideal $I$ is invertible iff it is finitely generated and $I\cdot R_\pp$ is a principal ideal in $R_\pp$ for any $\pp\in \Spec R$.
+    A fractional ideal $I$ is invertible iff it is finitely generated and $I_\pp=I\cdot R_\pp$ is a principal ideal in $R_\pp$ for any $\pp\in \Spec R$.
 \end{prop}
 \begin{proof}
-    If $I$ is invertible, there are $(a_i)_{i=1}^n$ and $(b_i)_{i=1}^n$ such that $a_i\in I$, $b_i\in I^{-1}$ and $\sum_{i=1}^n a_i b_i = 1$ and it follows that the $a_i$ generate $I$ (and, that the $b_i$ generate $I^{-1}$, so $I^{-1}$ is also finitely generated). If $\pp\in \Spec R$ there is $i$, $1\leq i\leq n$ such that $a_ib_i\not\in  \pp$ hence $a_ib_i\in R_\pp^\times$ and $a_i$ generates $I\cdot R_\pp$. Hence \itememph{b} follows.
+    If $I$ is invertible, there are $a_1,\ldots,a_n\in I$ and $b_1,\ldots,b_n\in I^{-1}$ such that $\sum_{i=1}^n a_i b_i = 1$. If $J=(a_1,\ldots,a_n)$ denotes the ideal generated by $a_1,\ldots,a_n$, then also $JI^{-1}=R$, hence $J=JI^{-1}I=I$ and the $a_i$ generate $I$ (similarly, the $b_i$ generate $I^{-1}$, so $I^{-1}$ is also finitely generated). If $\pp\in \Spec R$ there is an $i$ such that $a_ib_i\not\in  \pp$, hence $a_ib_i\in R_\pp^\times$. Thus $b_iI_\pp$ contains a unit, but is also contained in $R_\pp$ as $b_i\in I^{-1}$. Then $b_iI_\pp=R_\pp$ and $I_\pp=a_ib_iI_\pp=a_iR_\pp=(a_i)$, i.e. $I_\pp$ is a principal ideal.
     
-    Let \itememph{b} hold. We clearly have $I^{-1}\cdot R_\pp\subseteq (IR_\pp)^{-1}$ where equality holds when $I$ is finitely generated. $I\cdot R_\pp$ becomes principal then $(IR_\pp) (IR_\pp)^{-1} = R_\pp$ and $I\cdot I^{-1}\morphism R$ becomes an isomorphism after localization at any $\pp\in \Spec R$. but any such morphism of modules is an isomorphism.
+    Conversely, assume that $I$ is finitely generated and all localizations $I_\pp$ are principal. We clearly have $I^{-1}\cdot R_\pp\subseteq I_\pp^{-1}$ where equality holds when $I$ is finitely generated. Since $I_\pp$ is principal, clearly $I_\pp\cdot I_\pp^{-1} = R_\pp$, hence the inclusion $I\cdot I^{-1}\monomorphism R$ becomes an isomorphism after localization at any $\pp\in \Spec R$. But any such morphism of $R$-modules is an isomorphism.
 \end{proof}
 \begin{lem}\lbl{lem:invertLocal}
-    Let $R$ be a normal local domain and $\mm$ is finitely generated, then $\mm$ is invertible or $\mm^{-1} = R$.
+    Let $R$ be a normal local domain with finitely generated maximal ideal $\mm$. Then $\mm$ is invertible or $\mm^{-1} = R$.
 \end{lem}
 \begin{proof}
     Since $R\subseteq \mm^{-1}$ we have $\mm\subseteq \mm \mm^{-1} \subseteq R$. Hence $\mm$ is invertible or $\mm\mm^{-1} = \mm$. In the latter case, for any $x\in \mm^{-1}$, we have $x\mm \subseteq \mm$ hence $x$ is in the integral closure of $R$ by what was recalled before.
@@ -2797,11 +2798,11 @@ One would intuitively expect, that there are always singularities, where irreduc
     For a Noetherian local ring $R$ of positive dimension, the following are equivalent:
     \begin{alphanumerate}
     \item 
-        $R$ is a DVR.
+        $R$ is a discrete valuation ring (DVR from now on).
     \item 
-        $R$ is a PID.
+        $R$ is a principal ideal domain (PID from now on).
     \item 
-        $\mm$ is a principal ideal.
+        The maximal ideal $\mm$ is a principal ideal.
     \item 
         $R$ is one-dimensional regular.
     \item 
@@ -2810,118 +2811,115 @@ One would intuitively expect, that there are always singularities, where irreduc
 \end{thm}
 
 \begin{proof}
-    Assume \itememph{a}. If $I\subseteq R$ is not $0$ and $x\in I$ is such that $v(x)$ is minimal, then it is easy to see that $I = xR = \left\{r\in R\st v(r) \geq v(x)\right\}$. So every ideal in $R$ is principal. 
+    Assume \itememph{a}. If $I\subseteq R$ is not $0$ and $x\in I$ is such that $v(x)$ is minimal, then it is easy to see that $I = (x) = \left\{r\in R\st v(r) \geq v(x)\right\}$. So every ideal in $R$ is principal, hence \itememph{a} $\Rightarrow$ \itememph{b}.
     
     The implication from \itememph{b} to \itememph{c} is trivial.
     
-    Now assume \itememph{c}, we want to show \itememph{a}. Let $v(x) = \sup\left\{k\in \IN \st x\in \mm^k\right\}$. By the Kurll intersection theorem, $v(x) = \infty$ iff $x=0$. Let $\mm = \pi R$, then $\mm^k = \pi^k R$ (hence $\pi$ is not nilpotent, as $\mm$ is nilpotent and $\dim R = 0$ otherwise) and $x\in \pi^{v(x)} R$ for all $x\in R\setminus\{0\}$, and it follows that $v(xy) = v(x) + v(y)$, that $R$ is a domain and all the further properties of a DVR.
+    Now assume \itememph{c}, we want to show \itememph{c} $\Rightarrow$ \itememph{a}. Let $v(x) = \sup\left\{k\in \IN \st x\in \smash{\mm^k}\right\}$. By Krull's intersection theorem (Corollary~\reff{cor:KrullIntersection}), $v(x) = \infty$ iff $x=0$. Let $\mm = (\pi)$, then $\mm^k = (\pi^k)$. In particular, $\pi$ is not nilpotent, as otherwise $\mm$ would be nilpotent, i.e. $\mm=\nil(R)$. But $\nil(R)=\bigcap_{\pp\in\Spec R}\pp$ (by Proposition~\reff{prop:nilradicalCapPrimeIdeals}) shows that $\mm$ is the only prime ideal of $R$ and $\dim R = 0$ -- contradiction! Now $v$ satisfies $x\in (\pi^{v(x)})$ for all $x\in R\setminus\{0\}$, and it follows that $v(xy) = v(x) + v(y)$, that $R$ is a domain and all the further properties of a DVR are easily verified.
     
-    The points \itememph{d} and \itememph{e} are obviously equivalent by what was recalled before.
+    The points \itememph{d} and \itememph{c} are obviously equivalent as equality occurs in $1\leq\dim(R)\leq\dim_{\KK(\mm)}\mm/\mm^2$ iff $\mm$ can be generated by a single element (cf. the proof of Proposition~\reff{prop:dimLeqGeneratorsMaximal}).
     
-    Now assume \itememph{a}, we want to show \itememph{e}. Let $x\in K$ be integral over $R$: $x^n = \sum_{i=0}^{n-1} r_i x^i$ with $r_i \in R$. Then $nv(x) \geq \min \left \{r_ix_i\st 0\leq i\leq n\right\} \geq \min\left\{ 0, (n-1)v(x)\right\}$. (as $r_i\in R$, hence $v(r_i)\geq 0$) and $v(x)\geq 0$ (as it is finite otherwise).
+    Now assume \itememph{a}, we want to show \itememph{a} $\Rightarrow$ \itememph{e}. The valuation $v$ extends to a map $v\colon K\morphism\IZ\cup\{\infty\}$ in the obvious way and still satisfies the conditions from Definition~\reff{def:discreteValuation}. Moreover, we will have $R=\left\{x\in K\st v(x)\geq 0\right\}$. Let $x\in K$ be integral over $R$, say $x^n = \sum_{i=0}^{n-1} r_i x^i$ with $r_i \in R$. Then 
+    \begin{align*}
+    	nv(x) \geq \min \left \{r_ix^i\st 0\leq i\leq n\right\} \geq \min\left\{ 0, (n-1)v(x)\right\}
+    \end{align*}
+     (as $r_i\in R$, hence $v(r_i)\geq 0$). Hence $v(x)\geq 0$, that is, $x\in R$, showing that $R$ is normal. One-dimensionality follows as we already know \itememph{a} $\Leftrightarrow$ \itememph{d}.
     
-    \itememph{e} $\to$ \itememph{c}. We will show the equivalent to Proposition~\reff{prop:invertPrincipal}. Assume that $\mm$ is not invertible. By Lemma~\reff{lem:invertLocal}, $\mm^{-1} = R$. let $x\in \mm\setminus \mm^2$. by Proposition~\reff{prop:filtrationByPrimeIdeals}, there is $y\in R$ such that $\upsilon = y\mod xR\in R/xR$ satisifies $\Ann_R(\upsilon) = \pp$ for some $\pp\in \Spec R$. Then $\pp = \left\{r\in R\st ry\subseteq xR\right\}$ is not 0 as $x\in\pp$. As $\dim(R) = 1$, $\pp = \mm$. Let $a=y/x$ then $a\not \in R$ as $y\in xR$ otherwise. But $y\in \mm^{-1}$ because for $\mu\in\mm = \pp$ we have $\mu y\in xR$ hence $\mu a = (\mu y)/x\in R$. A contradiction.
+    Finally, let's prove \itememph{e} $\Rightarrow$ \itememph{c}. We will show that $\mm$ is invertible, which suffices thanks to Proposition~\reff{prop:invertPrincipal}. Assume not, then $\mm^{-1}=R$ by Lemma~\reff{lem:invertLocal}. Let $x\in \mm\setminus \mm^2$. We deduce from the proof of Lemma~\reff{lem:submoduleRp} (applied to the $R$-module $R/xR$) that there is a $y\in R$ such that $\upsilon = y\mod xR\in R/xR$ satisifies $\Ann_R(\upsilon) = \pp$ for some $\pp\in \Spec R$. Then $\pp = \left\{r\in R\st ry\subseteq xR\right\}$ is not 0 as $x\in\pp$. As $\dim(R) = 1$ this implies $\pp = \mm$. Now let $a=y/x\in K$, then $a\not \in R$ as $y\in (x)$ and $\Ann_R(\upsilon)=R$ otherwise. But $y\in \mm^{-1}$ because for $\mu\in\mm = \pp$ we have $\mu y\in (x)$ hence $\mu a = (\mu y)/x\in R$. This contradicts $\mm^{-1}=R$.
 \end{proof}
 
 \begin{thm}\lbl{thm:dedekindDomain}
     For a domain $R$ the following are equivalent.
     \begin{alphanumerate}
     \item 
-        Any ideal $I\neq 0$ is invertible.
+        Any ideal $I\neq (0)$ is invertible.
     \item 
         Any fractional ideal is invertible.
     \item 
-        $R$ is Noetherian and any $R_\pp$ is field or a DVR.
+        $R$ is Noetherian and for any non-zero $\pp\in\Spec R$, the localization $R_\pp$ is a field or a DVR.
     \item 
         $R$ is a field or one-dimensional Noetherian normal.
-    \item[$\mathrm{(\tilde d)}$]
+    \item
         $R$ is a field or one-dimensional Noetherian regular.
     \item 
         Any ideal of $R$ may be written as a product of prime ideals.
     \end{alphanumerate}
-    In fact, the decomposition in \itememph{e} is for ideals not equal to $0$ unique up to reordering and the group of fractional ideals is free with the non-zero prime ideals as generators.
+    In fact, the decomposition in \itememph{f} is for ideals not equal to $(0)$ unique up to reordering and the group of fractional ideals is free with the non-zero prime ideals as generators.
 \end{thm}
 \begin{defi}[Dedekind rings]
-    Such $R$ are called \defemph{Dedekind domains} and $\operatorname{Cl} = (\text{fractional ideals}/(K^\times/R^\times)$ is the \defemph{class group} of $R$.
+    Such $R$ are called \defemph{Dedekind domains}. If $J_R$ is the group of fractional ideals of $R$ and $P_R$ its subgroup of principal fractional ideals, then  $\Cl_R = J_R/P_R$ is called the \defemph{class group} of $R$.
 \end{defi}
 \begin{proof}[Proof of Theorem \ref{thm:dedekindDomain}]
 If $R$ is a field, all assertions are more or less trivially fulfilled, so let us assume $R$ is not a field.
 
-\itememph{a} $\rightarrow$ \itememph{b} is trivial.
-
-\itememph{b} $\rightarrow$ \itememph{a}: Let $I$ be any fractional ideal. Then there is some $r\in R\setminus\{0\}$ such
+The implication \itememph{a} $\Rightarrow$ \itememph{b} is trivial. For \itememph{b} $\Rightarrow$ \itememph{a}, let $I$ be any fractional ideal. Then there is some $r\in R\setminus\{0\}$ such
 that $rI\subseteq I$. Then $(rI)^{-1} = r^{-1} I^{-1}$ is easily checked,
 and the invertibility of $rI$ implies
 \begin{align*}
-R = (rI)(RI)^{-1} = r I r^{-1} I^{-1} = rr^{-1} I I^{-1} = I I^{-1}.
+R = (rI)(rI)^{-1} = r I r^{-1} I^{-1} = rr^{-1} I I^{-1} = I I^{-1}.
 \end{align*}
 Hence $I$ is invertible.
 
-\itememph{b} $\rightarrow$ \itememph{c}: As invertibility for fractional ideals is equivalent to \enquote{finitely generated and locally principal}
-(Proposition \ref{prop:invertPrincipal}),
+Now for \itememph{b} $\Rightarrow$ \itememph{c}. As invertibility for fractional ideals is equivalent to being finitely generated and locally principal
+(by Proposition~\reff{prop:invertPrincipal}),
 \itememph{b} implies that any ideal is finitely generated, hence
-$R$ is Noetherian. If $\pp \in \Spec R$ and $\pp\neq \{0\}$, then the same proposition implies
-that $\pp R_\pp$ is principal ($\pp$ being invertible) and $R_{\pp}$ is a DVR by Theorem \ref{thm:regularDVR}.
+$R$ is Noetherian. If $\pp \in \Spec R$ and $\pp\neq \{0\}$, then  $\pp R_\pp$ is principal again by Proposition~\reff{prop:invertPrincipal}, $\pp$ being invertible.  Hence $R_{\pp}$ is a DVR by Theorem~\reff{thm:regularDVR}. 
 
-\itememph{c} $\rightarrow$ \itememph{b}: This also follows from Proposition \reff{prop:invertPrincipal}.
+The converse implication \itememph{c} $\Rightarrow$ \itememph{b} also follows from Proposition~\reff{prop:invertPrincipal} and the fact that DVRs are always PIDs.
 
-\itememph{c} $\rightarrow$ \itememph{d}: It is clear that $R$ is Noetherian, and $\dim R\leq 1$ follows easily from
-$\dim R_\pp\leq 1$ for all $\pp\in \Spec R$ (use \itememph{c} and Theorem \ref{thm:regularDVR}). We still have to show $R$ is normal.
+Let's prove \itememph{c} $\Rightarrow$ \itememph{d}. It is clear that $R$ is Noetherian, and $\dim R\leq 1$ follows easily from
+$\dim R_\pp\leq 1$ for all $\pp\in \Spec R$ (using \itememph{c} and Theorem \ref{thm:regularDVR}). We still have to show $R$ is normal.
 
-We have seen that DVRs are normal. For any domain $R$, $R=\bigcap_{\mm \in \mSpec R} R_m$ (the intersection being
-taken in the field of fractions $K$): If $k\in K$
-is in the intersection but not in $R$, then $I=\{r\in R \mid rk\in R\}$ is a principal ideal ($k\notin R$, hence $1\in I$) not contained
-in any proper ideal $\mm$ (as $k\notin R_\mm$ otherwise), a contradiction.
-
-If $k\in K$ is integral over $R$ and $R$ satisfies \itememph{c}, it is integral over the $R_\mm$ hence contained in $R_\mm$ (as $R_\mm$ are DVRs),
+We have seen that DVRs are normal. For any domain $R$, we have $R=\bigcap_{\mm \in \mSpec R} R_\mm$ (the intersection being
+taken in the field of fractions $K$). Indeed, if $x\in K$
+is in the intersection, then $I=\{r\in R \mid rx\in R\}$ is an ideal of $R$ not contained
+in any maximal ideal $\mm$ (as $x\notin R_\mm$ otherwise), hence $I=R$ and $x\in R$. 
+Now if $x\in K$ is integral over $R$ and $R$ satisfies \itememph{c}, it is integral over each localization $R_\mm$ hence contained in $R_\mm$ (as the $R_\mm$ are DVRs),
 hence contained in $\bigcap_{\mm} R_\mm = R$.
 
-\itememph{d} $\rightarrow$ \itememph{\tilde d} Normality is easily seen to be preserved under localization, hence the $R_\mm$ are normal, hence
-regular by Theorem \ref{thm:regularDVR}.
+Now \itememph{d} $\Rightarrow$ \itememph{e}. Normality is easily seen to be preserved under localization, hence the $R_\mm$ are normal, hence
+regular by Theorem~\reff{thm:regularDVR}. Similarly, \itememph{e} $\Rightarrow$ \itememph{c} is an immediate consequence of Theorem \ref{thm:regularDVR} as well.
 
-\itememph{\tilde d} $\rightarrow$ \itememph{c}: Theorem \ref{thm:regularDVR}.
-
-\itememph{c} $\rightarrow$ \itememph{e}: Let $I\neq 0$ be any ideal of $R$. For $\mm\in \mSpec R$, we have $I\cdot R_\mm = a R_\mm$
-for some $a\in R_\mm$. Put $v_\mm(I) = v_\mm(a)$ where $v_\mm : \mathrm{Quot}(R_\mm) \rightarrow \mathbb Z\cup \{\infty\}$ is the
-function on $K$ defined by the valuation $v_\mm$ of $R_\mm$.
-Then $I=\prod_{\mm\in \mSpec R} \mm^{v_\mm(I)}$ as
+We prove \itememph{c} $\Rightarrow$ \itememph{f}. Let $I\neq 0$ be any ideal of $R$. For any maximal ideal $\pp\in \mSpec R$, we have $I\cdot R_\pp = a R_\pp$
+for some $a\in R_\pp$. Put $v_\pp(I) = v_\pp(a)$ where $v_\pp\colon K\morphism \mathbb Z\cup \{\infty\}$ is the
+function on $K$ defined by the valuation $v_\pp$ of $R_\pp$.
+We claim that $I=\prod_{\pp\in \mSpec R} \pp^{v_\pp(I)}$. Indeed, we only have to check that both sides agree in any localization $R_\qq$ at a maximal prime $\qq\in\mSpec R$. To check this,
 \begin{align*}
-\left(\prod_{m\in \mm\Spec R} \mm^{e_\mm}\right)_{\nn} = \prod_{\mm} (\mm R_\nn)^{e_\mm} = (nR_\nn)^{e_\nn},
+\left(\prod_{\pp\in \mSpec R} \pp^{e_\pp}\right)\cdot R_\qq = \prod_{\pp}\left(\pp R_\qq\right)^{e_\pp} = \left(\qq R_\qq\right)^{e_\qq},
 \end{align*}
-since $\mm R_\nn = R_\nn$ when $\mm\neq \nn$ because
-$\mm$ and $\nn$ are maximal ideals, so $\mm\not\subseteq \nn$.
-It follows that $v_\nn\left(\prod_\mm \mm^{e_\mm}\right) = e_\nn$. As $IR_\mm$ is uniquely determined by $v_\mm(I)$, it follows
-that $I_\nn = \left(\prod_\mm \mm^{v_\mm(I)}\right)_\nn$ for any $\nn\in \mSpec R$,
-implying $I=\prod_\mm \mm^{v_\mm(I)}$ by arguments similar to the ones for the proof of (\itememph{c}$\rightarrow$\itememph{d}) above.
+since $\pp R_\qq = R_\qq$ when $\pp\neq \qq$ because
+both $\pp$ and $\qq$ are maximal ideals, so $\pp\not\subseteq \qq$.
+It follows that $v_\qq\left(\prod_\pp \pp^{e_\pp}\right) = e_\qq$. As $I\cdot R_\pp$ is uniquely determined by $v_\pp(I)$, it follows
+that $I\cdot R_\qq = \left(\prod_\pp \pp^{v_\pp(I)}\right)\cdot R_\qq$ for any $\nn\in \mSpec R$ and we are done as explained above.
 Uniqueness of the decomposition
 also follows from these considerations.
 
-\itememph{e} $\rightarrow$ \itememph{c} (When $R$ is Noetherian).
-It is easy to see that \itememph{e} is inherited by localizations,
-hence it suffices to show that any local Noetherian domain $R$ with \itememph{e} is a field or a DVR. Let $\mm\subset R$ be the maximal
-ideal, $k=R/\mm$ and assume that $x,y\in \mm/\mm^2$
-are linearly independent over $k$ (in particular $\neq 0$). Let $V,W\subseteq \mm/\mm^2$ be $k$-subvector spaces spanned by $x$ (resp. $y$)
-and let $I,J\subseteq \mm$ be the preimages of $V$ and $W$. Let moreover
-$I=\prod_{i=1}^n \pp_i$ be a decomposition of $I$ into prime ideals as in \itememph{e}. We have $\pp_i\subseteq \mm$,
-hence $I\subseteq \mm^n$ implying $n\leq 1$ (since $\mm^2\subsetneqq I$).
-As $n=0$ would imply $I=R$, we get $n=1$, hence $I=\pp$ and $\pp = \sqrt \pp = \sqrt I = \mm$
-(since $I\supseteq \mm^2$). This shows $I=\pp = \mm$ and the same holds for $J$, a contradiction.
-We conclude $\dim(\mm/\mm^2)=0$, so $(\mm=0$ and $R$ is a field) or ($\dim(\mm/\mm^2)=1$ and $R$ is a DVR (Theorem
-\ref{thm:regularDVR})).
 
-Prof. Franke claims he \emph{has} a proof that \itememph{e} implies that $R$ is Noetherian, but does not give to us.
-This implication can nevertheless be seen as follows: Suppose first that $I,J$ are non-zero ideals of $R$ such that $I\subseteq J$.
-Fix decompositions of $I$ and $J$ as in \itememph{e}.
-If $\pp$ is any maximal ideal and $e\in \IN$ (resp. $f\in \IN$) the multiplicity of $\pp$ in the decomposition of $I$ (resp. $J$)
-then $\pp^e R_{\pp}=IR_\pp \subseteq JR_\pp=\pp^f R_{\pp}$.
-Pick an a non-zero $\alpha \in\pp$ and decompose $\alpha R_\pp = \pp^g R_\pp$ (since \itememph{e} is inherited by $R_\pp$).
-Then $\alpha^e R_\pp = \left(\pp^{e} R_\pp\right)^g \subseteq \left(\pp^{f} R_\pp\right)^g = \alpha^f R_\pp$,
-so $\alpha^f$ divides $\alpha^e$. Since $R_\pp$ is a domain, we conclude $e\leq f$.
+In the lecture, we proved \itememph{f} $\Rightarrow$ \itememph{c} under the assumption that $R$ is Noetherian, but actually we also silently assumed $R$ to be one-dimensional, for which there seems to be no quick proof from \itememph{f} directly. Instead, we will present a proof for \itememph{f} $\Rightarrow$ \itememph{a}, which is taken from \cite[pp.~83-84]{matsumuraCRT}. 
 
-We see: Once we fixed a decomposition of $I$ as in \itememph{e}, there are only finitely many possibilities
-for the decompositions of ideals $J\supseteq I$. In particular, an increasing chain of ideals
-$I=I_0\subseteq I_1\subseteq I_2\subseteq\cdots$ in $R$ will satisfy that only finitely many different ideals occur in it!
-This shows that any increasing chain of ideals in $R$ must become stationary, so $R$ is Noetherian.
+\emph{Step 1.} First note that if $I$ and $J$ are fractional ideals such that $\aa=IJ$ is invertible, then so are $I$ and $J$. Indeed, we have $I^{-1}J^{-1}\aa\subseteq R$, hence $I^{-1}J^{-1}\subseteq \aa^{-1}$. Moreover, from $\aa^{-1}IJ\subseteq R$ we get $\aa^{-1}I\subseteq J^{-1}$ and $\aa^{-1}J\subseteq I^{-1}$. Multiplying the latter equations together and using that $\aa$ is invertible, we see that $\aa^{-1}=\aa^{-1}\left(\aa^{-1}IJ\right)\subseteq I^{-1}J^{-1}$, hence $\aa^{-1}=I^{-1}J^{-1}$. Then
+\begin{align*}
+	R=\aa^{-1}IJ=(II^{-1})(JJ^{-1})
+\end{align*}
+and this can't happen unless $II^{-1}=JJ^{-1}=R$.
+
+\emph{Step 2} (this will be the most technical of all). Let $\pp$ be a non-zero prime ideal and $I\supsetneq\pp$ an ideal strictly containing $\pp$, then $\pp I=\pp$. Clearly, it suffices to consider the case $I=\pp+(a)$ for some $a\in R\setminus \pp$. The trick is to prove $I^2=\pp+(a^2)$, from which the claim can be deduced as follows. As $I^2=(a^2)+a\pp+\pp^2$ and this equals $\pp+(a^2)$, any $x\in\pp$ has a representation $x=y+az+a^2t$ with $y\in\pp^2$, $z\in \pp$ and $t\in R$. As $a\notin\pp$, we must have $t\in \pp$, thus the right-hand side is an element of $\pp\big((a)+\pp\big)=I\pp$. Since clearly $\pp I\subseteq\pp$, this shows $\pp I=\pp$.
+
+To show $I^2=\pp+(a^2)$, let $I^2=\pp_1\cdots \pp_m$ and $\pp+(a^2)=\qq_1\cdots\qq_n$ be decompositions of them into (not necessarily distinct) prime ideals. Let $\ov a$ and $\ov{\pp}_i,\ov{\qq}_j$ be the images of $a$ and the $\pp_i$ and $\qq_j$ in $R/\pp$, then
+\begin{align}\lbl{eq:decompInR/p}
+	\ov \pp_1\cdots \ov \pp_m=\ov a^2R/\pp=\ov \qq_1\cdots\ov \qq_n\;.\tag{$*$}
+\end{align}
+Let w.l.o.g. $\ov \pp_1$ be $\subseteq$-minimal among the $\ov \pp_i$. By primality, some of the $\ov \qq_j$ must be contained in $\ov \pp_1$, say, $\ov \qq_1\subseteq \ov \pp_1$. But $\ov \qq_1$ is prime as well, hence $\ov \pp_i\subseteq \ov \qq_1\subseteq \ov \pp_1$ for some $i$ and by $\subseteq$-minimality we must have $\ov \pp_i=\ov \pp_1$. Hence $\ov \pp_1=\ov \qq_1$. Also note that the $\ov \pp_i$ and $\ov \qq_j$ are invertible, since the principal ideal $\ov a^2R/\pp$ is clearly invertible and we may apply Step~1. Multiplying \eqreff{eq:decompInR/p} by $\ov \pp_1^{-1}=\ov \qq_1^{-1}$ we get $\ov \pp_2\cdots \ov \pp_m=\ov \qq_2\cdots \ov \qq_n$. Iterating this process gives $m=n$ and the $\ov \pp_i$ and $\ov \qq_j$ coincide. Then so do the $\pp_i$ and $\qq_j$ and $I^2=\pp+(a^2)$ follows.
+
+\emph{Step 3.} Let $a\in R$ and $(a)=\pp_1\cdots \pp_n$ be a decomposition into prime ideals. Then all occuring $\pp_i$ are maximal. Indeed, if $I\supsetneq \pp_i$ for some $i$ and some ideal $I\subseteq R$, then $\pp_iI=\pp_i$ by Step~2. Now $\pp_i$ is invertible by Step~1 (since $(a)$ clearly is) and multiplying by $\pp_i^{-1}$ yields $I=R$.
+
+\emph{Step 4.} Let $\pp$ be a non-zero prime ideal. Then $\pp$ is maximal and invertible. Indeed, take a $0\neq a\in\pp$ and consider its factorization $(a)=\pp_1\cdots \pp_n$. By Step~3, each $\pp_i$ is maximal, but their product is also contained in $\pp$, hence $\pp_i\subseteq\pp$ for some $i$ which must be an equality by maximality of $\pp_i$. Since $(a)$ is invertible, so is $\pp$ by Step~1. As every ideal of $R$ can be decomposed into primes, every non-zero ideal is invertible and we obtain \itememph{f} $\Rightarrow$ \itememph{a}.
+
+%We prove the converse \itememph{f} $\Rightarrow$ \itememph{c} under the assumption that $R$ is Noetherian. It is easy to see that \itememph{f} is inherited by localizations, hence it suffices to show that any local Noetherian domain $R$ with \itememph{f} is a field or a DVR. Let $\mm\subseteq R$ be the maximal ideal, $k=R/\mm$ its residue field. Our first goal is to show $\dim_k\mm/\mm^2\leq1$. Assume not, then there are $x,y\in \mm/\mm^2$ linearly independent over $k$ (in particular $x,y\neq 0$). Let $V,W\subseteq \mm/\mm^2$ be $k$-subvector spaces spanned by $x$ resp. $y$ and let $I,J\subseteq \mm$ be the preimages of $V$ and $W$. Let moreover $I=\prod_{i=1}^n \pp_i$ be a decomposition of $I$ into prime ideals as in \itememph{f} (the $\pp_i$ need not be distinct). We have $\pp_i\subseteq \mm$, hence $I\subseteq \mm^n$ implying $n\leq 1$ since $\mm^2\subsetneq I$. As $n=0$ would imply $I=R$, we get $n=1$. Hence $I=\pp$ and $\pp = \sqrt \pp = \sqrt I = \mm$ since $I\supseteq \mm^2$. This shows $I=\pp = \mm$ and the same holds for $J$, a contradiction. We conclude $\dim(\mm/\mm^2)=0$, so $\mm=0$ and $R$ is a field, or $\dim_k\mm/\mm^2=1$.  and $R$ is a DVR (Theorem \ref{thm:regularDVR})).
+
+%Prof. Franke claims he \emph{has} a proof that \itememph{e} implies that $R$ is Noetherian, but does not give to us. This implication can nevertheless be seen as follows: Suppose first that $I,J$ are non-zero ideals of $R$ such that $I\subseteq J$. Fix decompositions of $I$ and $J$ as in \itememph{e}. If $\pp$ is any maximal ideal and $e\in \IN$ (resp. $f\in \IN$) the multiplicity of $\pp$ in the decomposition of $I$ (resp. $J$) then $\pp^e R_{\pp}=IR_\pp \subseteq JR_\pp=\pp^f R_{\pp}$. Pick an a non-zero $\alpha \in\pp$ and decompose $\alpha R_\pp = \pp^g R_\pp$ (since \itememph{e} is inherited by $R_\pp$). Then $\alpha^e R_\pp = \left(\pp^{e} R_\pp\right)^g \subseteq \left(\pp^{f} R_\pp\right)^g = \alpha^f R_\pp$, so $\alpha^f$ divides $\alpha^e$. Since $R_\pp$ is a domain, we conclude $e\leq f$.
+
+%We see: Once we fixed a decomposition of $I$ as in \itememph{e}, there are only finitely many possibilities for the decompositions of ideals $J\supseteq I$. In particular, an increasing chain of ideals $I=I_0\subseteq I_1\subseteq I_2\subseteq\cdots$ in $R$ will satisfy that only finitely many different ideals occur in it! This shows that any increasing chain of ideals in $R$ must become stationary, so $R$ is Noetherian.
 \end{proof}
 
 \section{Relation with intersection multiplicities}Let $C\subseteq \IP^2$ be a curve in the projective plane which is regular at $c\in C$:
@@ -2971,8 +2969,7 @@ and $H$ the polynomial of degree $3$ defining $g_2\cup g_4\cup g_6$.
 Then $C\cap V(H) \supseteq \{P_1,\dotsc,P_6\}$ lying on $Q$, a curve on degree $2$.
 By the Restsatz, the remaining intersection points of $C$ and $H$ must be contained in a line.
 \end{example*}
-\begin{proof}[Proof sketch Theorem \ref{thm:maxNoether}, finishing the final lecture in a hurry and five minutes overtime]
-
+\emph{Sketch of proof of Theorem~\reff{thm:maxNoether}, finishing the final lecture in a hurry and five minutes overtime.}
 \itememph{a} $\rightarrow$ \itememph{b}:
 As $v_c(H\vert_c) \geq v_c(E\vert_c)$ at all points where $E$ fails to be a local generator of
 $\Oo_C(e)$, there is a preimage $(H\vert_C)/(E\vert_C)$
@@ -2992,8 +2989,7 @@ Let, e.g., $L=X_0$ (this is possible after a suitable automorphism of $\IP^2$) a
 $G\in k[X_0,X_1,X_2]_{d+1}$. Using the intersection multiplicities one shows that $i(V(L),G,l)\geq i(V(L),C,l)$ for any $l\in V(L) = V(X_0)\cong \IP^1$.
 It follows that $G\vert_{V(L)}$ is divisible by $P\vert_{V(L)}$ (where $P$ is
 the irreducible polynomial defining $C$) hence in $k[X_1,X_2] \simeq k[X_0,X_1,X_2]/X_0$. Hence
-$G=AP+BX_0$ and $\varphi X_0=BX_0$ on $C$, such that $\varphi=B$ there.
-\end{proof}
+$G=AP+BX_0$ and $\varphi X_0=BX_0$ on $C$, such that $\varphi=B$ there.\qed
 
 
 
