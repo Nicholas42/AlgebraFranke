@@ -2763,7 +2763,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
     
     Now let $X$ be Noetherian and \itememph{e} be true. We show that \itememph{e} $\Rightarrow$ \itememph{a}. Let $y\in X$ and $x\in\ov{\{y\}}$ a closed point, which exists by Proposition~\reff{prop:closedSubsetPoint} (note that $X$ is Noetherian, hence quasi-compact, cf. \cite[Definition~2.1.2]{alg1}). Choosing an affine open neighbourhood $U\simeq \Spec R$ in which $y$ corresponds to the prime ideal $\pp$ and $x$ to the maximal ideal $\mm$, we see that $\Oo_{X,y}\simeq R_\pp$ is a localization of $\Oo_{X,x}\simeq R_\mm$ and thus a reduced ring since $\Oo_{X,x}$ is. Hence $X$ is reduced at stalks (i.e. \itememph{d} holds) and it's easy to see that this implies reducedness.
     
-    Let $X=\bigcup_{i=1}^nX_i$ be the decomposition of $X$ into irreducible components (i.e. maximal irreducible subsets, which are then automatically closed). If $X_i\cap X_j \neq \emptyset$ for $i\neq j$ it would contain a closed point $x$ by Proposition~\reff{prop:closedSubsetPoint} (again by quasi-compactness). By Proposition~\reff{prop:specStalksCorrespondence}\itememph{a} $\Oo_{X,x}$ would contain two different minimal prime ideals (corresponding to $X_i$ and $X_j$ -- or rather their generic points), hence fail to be a domain. Thus $X=\coprod_{i=1}^nX_i$ and $n=1$ by connectedness. This proves \itememph{a}.
+    Let $X=\bigcup_{i=1}^nX_i$ be the decomposition of $X$ into irreducible components (i.e. maximal irreducible subsets, which are then automatically closed). If $X_i\cap X_j \neq \emptyset$ for $i\neq j$ it would contain a closed point $x$ by Proposition~\reff{prop:closedSubsetPoint} (again by quasi-compactness). By Proposition~\reff{prop:specStalksCorrespondence}\itememph{a} $\Oo_{X,x}$ would contain two different minimal prime ideals (corresponding to $X_i$ and $X_j$ -- or rather their generic points), hence fail to be a domain. Thus $X=\coprod_{i=1}^nX_i$. The $X_i$ are closed, hence open and connected since they are irreducible. Thus $n=1$ by connectedness of $X$. This proves that \itememph{d} $\Rightarrow$ \itememph{a}.
 \end{proof}
 \begin{rem}\lbl{rem:Prop2.1.4WithoutNoetherian}%I need to ask Franke about this.%not anymore
 	Without the Noetherianness assumption, the following implications hold
@@ -2776,15 +2776,15 @@ A Franke lecture is no Franke lecture without a definition being proved.
 			\path (b.east) -- (c.west) node[pos=0.5] {$\Longleftrightarrow$};
 			\node [right=0.75cm of c] (d) {\itememph{d}};
 			\path (c.east) -- (d.west) node[pos=0.5] {$\Longrightarrow$};
-			\node [below=0.75cm of d] (e) {\itememph{e}};
-			\path (d.south) -- (e.north) node[pos=0.5, rotate=-90] {$\Longrightarrow$};
-			\node [right=0.75cm of d] (x) {$X$ reduced};
-			\path (d.east) -- (x.west) node[pos=0.5] {$\Longrightarrow$}; 
+			\node [below right=0.75cm of d] (e) {\itememph{e}};
+			\path (d.south east) -- (e.north west) node[pos=0.5, rotate=-45] {$\Longrightarrow$};
+			\node [below left=0.75cm of d] (x) {$X$ reduced};
+			\path (d.south west) -- (x.north east) node[pos=0.5, rotate=-135] {$\Longrightarrow$}; 
 			\scriptsize
-			\draw[-implies, double equal sign distance,dotted, bend left=20] (e) to node[pos=0.5, below left] {$X$ quasi-compact} (a);
+			\draw[-implies, double equal sign distance,dotted, bend right=45] (e) to node[pos=0.5, above right] {$X$ quasi-compact} (d);
 		\end{tikzpicture}
 	\end{center}
-	Note that in the last step of the above proof we don't need the finiteness of the number of irreducible components; the only thing we need is quasi-compactness and connectedness of $X$, hence above proof essentially showed this implications.
+	Note that in the last step of the above proof we crucially need the finiteness of the number of irreducible components. Without Noetherianness, there are even examples of affine schemes which are connected and have all stalks domains, but are not irreducible (cf. exercise 6 on exercise sheet \#12).
 	
 	Also note that such $X$ as in Proposition~\reff{prop:integralPrescheme}\itememph{e} do not need to be reduced if quasi-compactness isn't required. There are even examples of preschemes without closed points, such as \url{http://math.stanford.edu/~vakil/files/schwede03.pdf}. If we replace the $A'$ on page 11 by $A''=A'[T]/(T^2)$ and localize at $(T,x_1,x_2,\ldots)$ instead, we get a non-reduced version of that counterexample.
 \end{rem}
