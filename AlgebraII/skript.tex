@@ -404,7 +404,7 @@ Applying Proposition~\reff{prop:NAK} to $M/N$, we obtain the following corollary
 \begin{rem*}
     The derivatives occurring are the usual formal derivatives used in algebra. Inseparability does not play a role here as $k$ is algebraically closed. When $k\neq \overline{k}$ has positive characteristic and $x\in \overline{k}^n$ has some $x_i$ which is inseparable, the above argument collapses and $X$ may be regular (but not \emph{smooth}) at $x$ even if the Jacobian criterion of regularity is violated.
 \end{rem*}
-\begin{example*}
+\begin{example*}\lbl{ex:singularPoints}
     Consider the prime ideals $\pp= (X^2-X^3)$ and $\qq = (Y^2-X^4-X^2)$ in $k[X,Y]$, where $k$ may be assumed to be an algebraically closed field of characteristic $0$ or greater than $3$. The affine varieties $V(\pp)$ and $V(\qq)$ in $k^2$ have \emph{singular points} precisely in the origin, as depicted in the following figures.
 \end{example*}
 \begin{center}
@@ -2637,15 +2637,17 @@ We now start proving Theorem~\reff{thm:idealOfDefinition}. To do this, we will i
 \begin{proof}[Proof of Theorem~\reff{thm:idealOfDefinition}]
     \emph{Step 1.} First we show $\dim(M) \leq d(M,I)$ by induction on $d(M,I)$. When $d(M,I) = 0$ the lengths of $M/I^kM$ are bounded as $k\to\infty$ by some constant $C$ independent of $k$, hence $\ell_R(M) \leq C$. 
     
-    Well, the last assertion is not so trivial as it seems at first glance. The problem here is that $\ell_R(M/I^kM)=Q_{M,I}(k)\leq C$ only holds for $k$ sufficiently large. So a priori there's no control over $\ell_R(M)$, i.e. $k=0$, but luckily at this point Krull's intersection theorem (Corollary~\reff{cor:KrullIntersection}) is what we need. Suppose that $M\supseteq M_0\supsetneq M_1\supsetneq\ldots\supsetneq M_{C}$ was a strictly descending chain of length $C+1$ of $R$-submodules. Applying the intersection theorem to $M/M_i$ for $i=1,\ldots,C$, we obtain 
-    \begin{align*}
-    	0=\bigcap_{k=0}^\infty I^k(M/M_i)=\bigcap_{k=0}^\infty(I^kM+M_i)/M_i\supseteq\bigg(\bigcap_{k=0}^\infty(I^kM+M_i)\bigg)\Bigm/M_i
-    \end{align*}
-    (the inclusion on the right-hand side is easy to check; I'm not sure though, or rather skeptical, if it is an equality in general), hence $\bigcap_{k=0}^\infty(I^kM+M_i)=M_i$. We thus find a sufficiently large $k_i$ such that $M_{i-1}\not\subseteq I^kM+M_i$ for $k\geq k_i$. Taking $k\geq\max\{k_1,\ldots,k_C\}$ we obtain $I^kM+M_0\supsetneq I^kM+M_1\supsetneq\ldots\supsetneq I^kM+M_C$, hence a strictly descending chain
-    \begin{align*}
-    	(I^kM+M_0)/I^kM\supsetneq (I^kM+M_1)/I^kM\supsetneq\ldots\supsetneq (I^kM+M_C)/I^kM
-    \end{align*}
-    of length $C+1$ of $R$-submodules of $M/I^kM$, contradiction.
+    Well, the last assertion is not so trivial as it seems at first glance. The problem here is that $\ell_R(M/I^kM)=Q_{M,I}(k)\leq C$ only holds for $k$ sufficiently large. So a priori there's no control over $\ell_R(M)$, i.e. $k=0$. The following elegant workaround was suggested to us by \texttt{jckt}. First note that $\ell_R(M/I^kM)$ is monotonic in $k$. Indeed, $I^kM\supseteq I^{k+1}M$, hence $M/I^kM$ is a quotient of $M/I^{k+1}M$ and $\ell_R(M/I^kM)\leq \ell_R(M/I^{k+1}M)$. Moreover, as long as $I^kM\supsetneq I^{k+1}M$ this inequality is strict. So we deduce that $I^kM=I^{k+1}M$ for $k$ sufficiently large. Then we also have $I^kM=\mm I^kM$, hence $I^kM=0$ by \NAK. Thus $\ell_R(M)=\ell_R(M/I^kM)\leq C$, as was claimed.
+    
+    %luckily at this point Krull's intersection theorem (Corollary~\reff{cor:KrullIntersection}) is what we need. Suppose that $M\supseteq M_0\supsetneq M_1\supsetneq\ldots\supsetneq M_{C}$ was a strictly descending chain of length $C+1$ of $R$-submodules. Applying the intersection theorem to $M/M_i$ for $i=1,\ldots,C$, we obtain 
+    %\begin{align*}
+    %	0=\bigcap_{k=0}^\infty I^k(M/M_i)=\bigcap_{k=0}^\infty(I^kM+M_i)/M_i\supseteq\bigg(\bigcap_{k=0}^\infty(I^kM+M_i)\bigg)\Bigm/M_i
+    %\end{align*}
+    %(the inclusion on the right-hand side is easy to check; I'm not sure though, or rather skeptical, if it is an equality in general), hence $\bigcap_{k=0}^\infty(I^kM+M_i)=M_i$. We thus find a sufficiently large $k_i$ such that $M_{i-1}\not\subseteq I^kM+M_i$ for $k\geq k_i$. Taking $k\geq\max\{k_1,\ldots,k_C\}$ we obtain $I^kM+M_0\supsetneq I^kM+M_1\supsetneq\ldots\supsetneq I^kM+M_C$, hence a strictly descending chain
+    %\begin{align*}
+    %	(I^kM+M_0)/I^kM\supsetneq (I^kM+M_1)/I^kM\supsetneq\ldots\supsetneq (I^kM+M_C)/I^kM
+    %\end{align*}
+    %of length $C+1$ of $R$-submodules of $M/I^kM$, contradiction.
     
      Hence $\ell_R(R/\pp_i) \leq C$ in \eqreff{eq:filtrationByPrimeIdeals}, hence all $R/\pp_i$ are Artinian and thus zero-dimensional by Proposition~\reff{prop:Akizuki-Hopkins}. Therefore $\dim(M) = \max\left\{\dim(R/\pp_i)\st 1\leq i\leq k\right\} = 0$ using \eqreff{eq:dimSuppM}. 
      
@@ -2687,7 +2689,9 @@ To really finish the proof, we need the following fact, which again looks obviou
 	Note that the obvious-seeming stronger relation $\Ann_R(M/IM)=I+\Ann_R(M)$ may fail, even for well-behaved rings. Here's a counterexample\footnote{taken from \url{https://math.stackexchange.com/questions/79538/annihilator-of-quotient-module-m-im}}.
 	
 	 Let $R=k[x,y]\subseteq k[t]$ where $k$ is a field, $x=t^2$, $y=t^3$. Let $M=k[t]$. It is finitely generated over $R$ (a system of generators is $1, t$). 
-	Let $I=(x)\subseteq R$. Then $IM=t^2k[t]$ and $yM=t^3k[t]\subseteq IM$. So $y\in \operatorname{Ann}_R(M/IM)$. But $y\notin I$, contradiction! Localizing everything at the maximal ideal $(x,y)\subseteq R$ should also give a counterexample in the local case, I think, but I haven't checked all details.
+	Let $I=(x)\subseteq R$. Then $IM=t^2k[t]$ and $yM=t^3k[t]\subseteq IM$. So $y\in \operatorname{Ann}_R(M/IM)$. But $y\notin I$, contradiction! 
+	
+	Localizing everything at the maximal ideal $(x,y)\subseteq R$ should also give a counterexample in the local case, I think, but I haven't checked all details.
 \end{rem*}
 
 The following proof was suggested to us by Felix and is a lot shorter and more elegant than ours, so it shall be presented here.
@@ -2708,7 +2712,7 @@ The following proof was suggested to us by Felix and is a lot shorter and more e
  Recall that for a Noetherian local ring $R$ with maximal ideal $\mm$ and residue field $k=R/\mm$, the dimension $\dim_k(\mm/\mm^2)$ equals the minimal number of generators of $\mm$ and $\dim(R) \leq \dim_k(\mm/\mm^2)$ (cf. Proposition~\reff{prop:dimLeqGeneratorsMaximal}). If equality occurs, $R$ is called \emph{regular}.
 \begin{example*}%1. The first curve Franke drew was certainly some 8 shaped thing, but y^2=x^2+x^4 doesn't look like this, so I assume what he meant is y^2=x^2-x^4.
 	%2. The power series is just wrong.
-    Consider the following curves over a field of characteristic not equal to $2$. Both have \emph{singularities} in the origin.
+    Consider the curves given by the ideals $(Y^2-X^2+X^4)$ and $(Y^2-X^2)$ in $k[X,Y]$ over a field $k$ of characteristic not equal to $2$. Similar to \hyperref[ex:singularPoints]{this} example, both have \emph{singularities} in the origin.
      \begin{center}
     	\begin{minipage}{0.42\textwidth}
     		\centering
