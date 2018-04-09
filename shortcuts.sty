@@ -1,7 +1,8 @@
 %---- ENVIRONMENTS ----
 %
-\newenvironment{diagram*}[1][]{\begin{center}\begin{tikzpicture}[line join=round, line cap=round,#1]}{\end{tikzpicture}\end{center}}  
-
+%\newenvironment{diagram*}[1][]{\begin{center}\begin{tikzpicture}[line join=round, line cap=round,#1]}{\end{tikzpicture}\end{center}}  
+\NewDocumentEnvironment{diagram*}{O{} O{}}{\diagramenvv{#1}{#2}}{\enddiagramenvv}
+\NewEnviron{diagramenvv}[2]{\begin{align*}#2\begin{tikzpicture}[line cap=round, line join=round,#1]\BODY\end{tikzpicture}\end{align*}}
 
 \NewDocumentEnvironment{diagram}{O{} O{}}{\diagramenv{#1}{#2}}{\enddiagramenv}
 \NewEnviron{diagramenv}[2]{\begin{align}#2\begin{tikzpicture}[line cap=round, line join=round,#1]\BODY\end{tikzpicture}\end{align}}
@@ -267,7 +268,7 @@
 %---- MODIFIERS ----
 %
 \newcommand{\ov}{\overline}
-\newcommand{\snake}[1]{\widetilde{#1}\vphantom{\overrightarrow{#1}}}%space adjusting hack
+\newcommand{\snake}[1]{\vphantom{\overrightarrow{#1}}\widetilde{#1}}%space adjusting hack
 
 
 

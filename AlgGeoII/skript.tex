@@ -1,0 +1,208 @@
+\documentclass[a4paper,parskip=half,numbers=enddot, DIV=12]{scrreprt}
+\usepackage[utf8]{inputenc}
+
+\usepackage{../header}
+\usepackage{../frankenumbering}
+\usepackage{../shortcuts}
+
+\usepackage{csquotes}
+%\usepackage{tikz-cd}%I cannot draw diagrams without it - Felix. %well, I can - Ferdinand
+\usepackage[backend=biber,style=numeric,sorting=none]{biblatex}
+\setcounter{biburlnumpenalty}{7000}
+\setcounter{biburllcpenalty}{7000}
+\setcounter{biburlucpenalty}{8000}
+\addbibresource{../literatur.bib}
+
+% Title Page
+\title{Algebraic Geometry II}
+\author{Ferdinand Wagner}
+\date{Sommersemester 2018}
+
+\displaywidowpenalty=8000
+%\postdisplaypenalty=8000
+\widowpenalty=8000
+\clubpenalty=8000
+
+\begin{document}
+\pagenumbering{Alph}
+\maketitle
+\pagenumbering{roman}
+
+\thispagestyle{plain}
+This text consists of notes on the lecture Algebraic Geometry II, taught at the University of Bonn by Professor Jens Franke in the summer term (Sommersemester) 2018. 
+
+Please report bugs, typos etc. through the \emph{Issues} feature of github.
+
+\tableofcontents
+
+\addchap{Introduction}
+\pagenumbering{arabic}
+This lecture will develop the cohomology of (quasi)coherent sheaves of modules. Professor Franke assumes familiarity with the contents of last term's Algebraic Geometry I. In particular, this includes the category of (pre)schemes, equalizers and fibre products of preschemes as well as in arbitrary categories and quasi-coherent $\Oo_X$-modules. If you are want to brush up your knowledge about these topics, the \href{https://github.com/Nicholas42/AlgebraFranke/tree/master/AlgGeoI}{\emph{lecture notes from Algebraic Geometry I}} \cite{alggeo1} might be your friend.
+
+Professor Franke started the lecture with an example of sheaf cohomology entering the game. Let $X$ be a topological space, $\Cc_X$ the sheaf of continuous $\IC$-valued functions on $X$ and $\underline{\IZ}_X$ the sheaf of locally constant (i.e., continuous) functions on $X$ with values in $\IZ$. Then there is a short exact sequence
+\begin{align*}
+	0\morphism \underline{\IZ}_X\morphism[\cdot 2\pi\mathrm{i}] \Cc_X\morphism[\exp]\Cc_X^\times\morphism 0
+\end{align*}
+of sheaves of abelian groups. In general, taking global section doesn't preserve exactness but gives rise to a long exact sequence
+\begin{diagram*}
+	\node[ob] (0o) at (0,1.5) {$0$};
+	\node[ob] (0u) at (0,0) {$0$};
+	\node[ob] (H0Z) [right=0.5 of 0u] {$H^0(X,\underline{\IZ}_X)$};
+	\node[ob] (H0CX) [right=0.5 of H0Z] {$H^0(X,\Cc_X)$};
+	\node[ob] (H0CXx) [right=0.5 of H0CX] {$H^0(X,\Cc_X^\times)$};
+	\node[ob] (Z) at (0o -| H0Z) {$\underline{\IZ}_X(X)$};
+	\node[ob] (CX) at (0o -| H0CX) {$\Cc_X(X)$};
+	\node[ob] (CXx) at (0o -| H0CXx) {$\Cc_X^\times(X)$};
+	\node[ob, shift={(0,1.5)}] (H1Z) [right=0.75 of H0CXx] {$H^1(X,\underline{\IZ}_X)$};
+	\node[ob] (H1CX) [right=0.5 of H1Z] {$H^1(X,\Cc_X)$};
+	\node[ob] (dots) [right=0.5 of H1CX] {$\ldots$};
+	\scriptsize
+	\draw[->] (0o) -- (Z);
+	\draw[->] (0u) -- (H0Z);
+	\draw[->] (Z) -- (CX);
+	\draw[->] (H0Z) -- (H0CX);
+	\draw[->] (CX) -- (CXx);
+	\draw[->] (H0CX) -- (H0CXx);
+	\draw[->] (CXx) -- (H1Z) node[pos=0.5, above right] {$d$};
+	\draw[->] (H0CXx) -- (H1Z);
+	\draw[->] (H1Z) -- (H1CX);
+	\draw[->] (Z) -- (H0Z) node[pos=0.5, above=-0.25ex, sloped] {$\sim$};
+	\draw[->] (CX) -- (H0CX) node[pos=0.5, above=-0.25ex, sloped] {$\sim$};
+	\draw[->] (CXx) -- (H0CXx) node[pos=0.5, above=-0.25ex, sloped] {$\sim$};
+	\draw[->] (H1CX) -- (dots);
+\end{diagram*}
+in which the $H^k(X,\underline{\IZ}_X)$, $H^k(X,\Cc_X)$, and $H^k(X,\Cc_X^\times)$ are \emph{sheaf cohomology groups}. There is the more general notion of \emph{derived functors} (Grothendieck, Tohoku paper), but this won't appear in the lecture.
+
+Background in homological algebra is not required safe for cohomology groups of cochain complexes, the long exact cohomology sequence and the following famous lemma.
+\begin{lem}[Five lemma] Given a diagram
+	\begin{diagram*}
+		\node[ob] (A) at (0,1.5) {$A$};
+		\node[ob] (B) at (1.5,1.5) {$B$};
+		\node[ob] (C) at (3,1.5) {$C$};
+		\node[ob] (D) at (4.5,1.5) {$D$};
+		\node[ob] (E) at (6,1.5) {$E$};
+		\node[ob] (A') at (0,0) {$A'$};
+		\node[ob] (B') at (1.5,0) {$B'$};
+		\node[ob] (C') at (3,0) {$C'$};
+		\node[ob] (D') at (4.5,0) {$D'$};
+		\node[ob] (E') at (6,0) {$E'$};
+		\scriptsize
+		\draw[->] (A) -- (B);
+		\draw[->] (B) -- (C);
+		\draw[->] (C) -- (D);
+		\draw[->] (D) -- (E);
+		\draw[->] (A') -- (B');
+		\draw[->] (B') -- (C');
+		\draw[->] (C') -- (D');
+		\draw[->] (D') -- (E');
+		\draw[->] (A) -- (A') node[pos=0.5, left] {$\alpha$};
+		\draw[->] (B) -- (B') node[pos=0.5, left] {$\beta$};
+		\draw[->] (C) -- (C') node[pos=0.5, left] {$\gamma$};
+		\draw[->] (D) -- (D') node[pos=0.5, left] {$\delta$};
+		\draw[->] (E) -- (E') node[pos=0.5, left] {$\epsilon$};
+	\end{diagram*}
+	of (abelian) groups/$R$-modules/etc.\ with exact rows, in which $\alpha$, $\beta$, $\delta$, and $\epsilon$ are isomorphisms, then $\gamma$ is an isomorphism as well.
+\end{lem}
+\begin{proof}
+	Easy diagram chase.
+\end{proof}
+
+\chapter{Cohomology of quasi-coherent sheaves of modules}
+\section{Recollection of basic definitions and results}
+\begin{defi}[{\cite[Definition~1.5.2 and Definition~1.5.9\itememph{b}]{alggeo1}}]
+	\begin{alphanumerate}
+		\item A \defemph{prescheme} (Franke uses ``EGA termology'') is a locally ringed space $(X,\Oo_X)$ which locally has the form $\Spec R$ for some rings $R$.
+		\item A prescheme $X$ is called a \defemph{scheme}, if, for any prescheme $T$ and any pair of morphisms $T\doublemorphism[a][b]X$, the equalizer $\Eq\Big(T\doublemorphism[a][b]X\Big)$ is a closed subprescheme of $X$.
+	\end{alphanumerate}
+\end{defi}
+\begin{rem*}
+	Equivalently, a prescheme $X$ is a scheme iff the diagonal $\Delta\colon X\xrightarrow{(\id_X,\id_X)}X\times X$ is a closed immersion (cf.\ \cite[Fact~1.5.8]{alggeo1}). In other words, schemes are \emph{separated} preschemes
+\end{rem*}
+\begin{prop}
+	If $U$ and $V$ are affine open subsets of a scheme $X$, then their intersection $U\cap V$ is again affine (and open of course).
+\end{prop}
+\begin{proof}
+	This was proved in \cite[Proposition~1.5.4]{alggeo1}.
+\end{proof}
+
+
+\appendix
+\chapter{Appendix -- category theory corner}
+\setcounter{thm}{0}
+\renewcommand*{\thethm}{\Alph{thm}}
+\section{Towards abelian categories}
+\begin{defi}
+	\begin{alphanumerate}
+		\item \lbl{def:additiveCategory}A \defemph{pointed} category is a category with initial and final objects, such that the canonical (unique) morphism from the initial to the final object is an isomorphism.
+		\item An \defemph{additive} category $\Aa$ is a pointed category which has a product $X\times Y$ (i.e., a fibre product over the final object $*$) and coproduct $X\amalg Y$ (i.e., a dual fibre product with respect to the initial object $*$) such that the canonical morphism $X\amalg Y\morphism X\times Y$ is an isomorphism for all objects $X,Y\in\Ob(\Aa)$ and such that the resulting addition law on $\Hom_\Aa(X,Y)$ defines a group structure for all $X,Y\in\Ob(\Aa)$.
+	\end{alphanumerate}
+\end{defi}
+\begin{rem*}
+	 \begin{alphanumerate}
+	 	\item When $\Aa$ is a pointed category and $X,Y\in\Ob(\Aa)$, let the \emph{zero morphism} (which we denote $0$) $X\morphism[0]Y$ be defined by $X\morphism *\morphism Y$, where $*$ is the both initial and final object.
+	 	\item We will construct the canonical morphism $X\amalg Y\morphism[c]X\times Y$ from Definition~\reff{def:additiveCategory}\itememph{b}. The product $X\times Y$ comes with canonical projections $X\lmorphism[p_1]X\times Y\morphism[p_2]Y$ such that given morphisms $T\morphism[\xi]X$ and $T\morphism[\upsilon]Y$ there is a unique $T\morphism[\xi\times\upsilon]X\times Y$ such that
+	 	\begin{diagram*}
+	 		\node (XY) at (0,0) {$X\times Y$};
+	 		\node (X) at (-1,1.25) {$X$};
+	 		\node (Y) at (-1,-1.25) {$Y$};
+	 		\node (T) at (2.5,0) {$T$};
+	 		\scriptsize
+	 		\draw[->] (XY) -- (X) node[pos=0.5, above right] {$p_1$};
+	 		\draw[->] (XY) -- (Y) node[pos=0.5, below right] {$p_2$};
+	 		\draw[->, dashed] (T) -- (XY) node[pos = 0.5, above] {$\exists!\ \xi\times \upsilon$};
+	 		\draw[->, bend right] (T) to node[pos=0.5,below left] {$\xi$} (X);
+	 		\draw[->, bend left] (T) to node[pos=0.5,above left] {$\upsilon$} (Y);
+	 	\end{diagram*}
+	 	commutes.
+	 	
+	 	Similarly, the coproduct $X\amalg Y$ has morphisms $X\morphism[i_1]X\amalg Y\lmorphism[i_2]Y$ such that given morphisms $X\morphism[\xi]T$ and $Y\morphism[\upsilon]T$ there is a unique morphism $X\amalg Y\morphism[\xi\amalg\upsilon]T$ such that
+	 	\begin{diagram*}
+	 		\node (XY) at (0,0) {$X\amalg Y$};
+	 		\node (X) at (-1,1.25) {$X$};
+	 		\node (Y) at (-1,-1.25) {$Y$};
+	 		\node (T) at (2.5,0) {$T$};
+	 		\scriptsize
+	 		\draw[<-] (XY) -- (X) node[pos=0.5, above right] {$i_1$};
+	 		\draw[<-] (XY) -- (Y) node[pos=0.5, below right] {$i_2$};
+	 		\draw[->, dashed] (XY) -- (T) node[pos = 0.5, above] {$\exists!\ \xi\amalg \upsilon$};
+	 		\draw[<-, bend right] (T) to node[pos=0.5,below left] {$\xi$} (X);
+	 		\draw[<-, bend left] (T) to node[pos=0.5,above left] {$\upsilon$} (Y);
+	 	\end{diagram*}
+	 	commutes.
+	 	
+	 	Using the universal property of $X\times Y$, we get a unique morphism $X\morphism[\alpha]X\times Y$ such that $p_1\alpha=\id_X$, $p_2\alpha=0$ and a unique morphism $Y\morphism[\beta]X\times Y$ such that $p_1\beta=0$ and $p_2\beta=\id_Y$. Then 
+	 	\begin{align*}
+	 		c\colon X\amalg Y\xrightarrow{\alpha\amalg\beta}X\times Y
+	 	\end{align*}
+	 	is the morphism we are looking for. It is unique with the property that $p_1 c i_1=\id_X$, $p_1 c i_2=0$, $p_2 c i_1=0$, and $p_2 c i_2=\id_Y$.
+	 	\item For abelian groups and modules over a ring, both $X\amalg Y$ and $X\times Y$ are given by $\left\{(x,y)\st x\in X,\ y\in Y\right\}$ with component-wise operations and $p_1(x,y)=x$, $p_2(x,y)=y$, $i_1(x)=(x,0)$, and $i_2(y)=(0,y)$.
+	 	\item For an additive category $\Aa$, it follows that finite products $\prod_{i=1}^nX_i$ and coproducts $\coprod_{i=1}^nX_i$ (of some objects $X_1,\ldots,X_n\in\Ob(\Aa)$) exist and are canonically isomorphic. We typically denote both by $\bigoplus_{i=1}^nX_i$ in that case.
+	 	\item We would like to describe the addition on $\Hom_\Aa(X,Y)$. For a pair of morphisms $X\doublemorphism[a][b]Y$ we denote the composition
+	 	\begin{align*}
+	 		X\xrightarrow{\id_X\times\id_X}X\oplus X\xrightarrow{a\amalg b}Y
+	 	\end{align*}
+	 	by $a+b$. Then $0$ is a neutral element and associativity holds, but the existence of inverse elements needs to be imposed to obtain indeed a group structure.
+	 	\item It is, however, automatically abelian. What we need to show is $(a\amalg b)\circ\Delta=(b\amalg a)\circ\Delta$ with $\Delta=\id_X\times \id_X$. The universal property of coproducts gives a unique $X\oplus X\morphism[\sigma]X\oplus X$ such that
+	 	\begin{diagram*}
+	 		\node (XX2) at (0,0) {$X\oplus X$};
+	 		\node (X1) at (-1,1.25) {$X$};
+	 		\node (X2) at (-1,-1.25) {$X$};
+	 		\node (XX1) at (-2,0) {$X\oplus X$};
+	 		\node (Y) at (2.5,0) {$Y$};
+	 		\scriptsize
+	 		\draw[<-] (XX2) -- (X1) node[pos=0.5, above right] {$i_1$};
+	 		\draw[<-] (XX2) -- (X2) node[pos=0.5, below right] {$i_2$};
+	 		\draw[->] (XX2) -- (Y) node[pos = 0.5, above] {$a\amalg b$};
+	 		\draw[<-, bend right] (Y) to node[pos=0.5,below left] {$a$} (X1);
+	 		\draw[<-, bend left] (Y) to node[pos=0.5,above left] {$b$} (X2);
+	 		\draw[<-] (XX1) -- (X1) node[pos=0.5, above left] {$i_2$};
+	 		\draw[<-] (XX1) -- (X2) node[pos=0.5, below left] {$i_1$};
+	 		\draw[->, dashed] (XX1) -- (XX2) node[pos=0.5, above] {$\exists!\ \sigma$};
+	 	\end{diagram*}
+	 	commutes. Then $\sigma$ is easily seen to be an isomorphism and $b\amalg a=(a\amalg b)\circ \sigma$ by the uniqueness of $b\amalg a$. It thus suffices to show $\sigma\Delta=\Delta$. By the uniqueness of $\Delta$, this is equivalent to $p_1\sigma\Delta=\id_X$ and $p_2\sigma\Delta=\id_X$. We claim that $p_1\sigma=p_2$ and vice versa, which would finish the proof. To see this, note that $p_1\sigma=p_2$ is equivalent to $p_1\sigma i_1=p_2i_1=0$ and $p_1\sigma i_2=p_2i_2=\id_X$ by the universal property of the coproduct $X\oplus X$. This follows from $\sigma i_1=i_2$ and $\sigma i_2=i_1$ by definition of $\sigma$.
+	 \end{alphanumerate}
+\end{rem*}
+
+\printbibliography
+
+\end{document}          

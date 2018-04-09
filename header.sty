@@ -7,6 +7,7 @@
 \pagestyle{scrheadings}
 \chead{\textsc{\rightmark}}
 \AtBeginDocument{\setlength{\parfillskip}{0pt plus 1fil}}
+\newcommand{\avoidbreak}{\postdisplaypenalty=9999}
 
 \usepackage{amsmath,amsfonts,amssymb,mathtools}
 \usepackage{array}
@@ -19,7 +20,7 @@
 \usepackage{old-arrows}
 \usepackage{pgf,tikz}
 \usetikzlibrary{positioning,arrows,calc}
-\tikzstyle{ob}=[font=\vphantom{$\snake A_A$}]
+\tikzstyle{ob}=[font=\vphantom{$(\snake {A}_A)$}]
 
 \usepackage[english]{babel}
 \usepackage[normalem]{ulem}
