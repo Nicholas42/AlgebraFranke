@@ -63,7 +63,7 @@ of sheaves of abelian groups. In general, taking global section doesn't preserve
 	\draw[->] (H0Z) -- (H0CX);
 	\draw[->] (CX) -- (CXx);
 	\draw[->] (H0CX) -- (H0CXx);
-	\draw[->] (CXx) -- (H1Z) node[pos=0.5, above right] {$d$};
+	\draw[->] (CXx) -- (H1Z) node[pos=0.5, above] {$d$};
 	\draw[->] (H0CXx) -- (H1Z);
 	\draw[->] (H1Z) -- (H1CX);
 	\draw[->] (Z) -- (H0Z) node[pos=0.5, above=-0.25ex, sloped] {$\sim$};
@@ -202,6 +202,87 @@ Background in homological algebra is not required safe for cohomology groups of 
 	 	commutes. Then $\sigma$ is easily seen to be an isomorphism and $b\amalg a=(a\amalg b)\circ \sigma$ by the uniqueness of $b\amalg a$. It thus suffices to show $\sigma\Delta=\Delta$. By the uniqueness of $\Delta$, this is equivalent to $p_1\sigma\Delta=\id_X$ and $p_2\sigma\Delta=\id_X$. We claim that $p_1\sigma=p_2$ and vice versa, which would finish the proof. To see this, note that $p_1\sigma=p_2$ is equivalent to $p_1\sigma i_1=p_2i_1=0$ and $p_1\sigma i_2=p_2i_2=\id_X$ by the universal property of the coproduct $X\oplus X$. This follows from $\sigma i_1=i_2$ and $\sigma i_2=i_1$ by definition of $\sigma$.
 	 \end{alphanumerate}
 \end{rem*}
+\begin{example*} The following are additive categories.
+	\begin{alphanumerate}
+		\item Modules over a given ring $R$ (in particular, abelian groups).
+		\item Sheaves of modules.
+		\item Banach spaces with bounded linear maps as morphisms. The common initial and final object is the zero space and $A\oplus B=\left\{(a,b)\st a\in A,\ b\in B\right\} $ with $\max\{\|a\|,\|b\|\}$ or $\|a\|+\|b\|$ as norm (this category will turn out not to be abelian).
+		\item Free or projective modules over a ring $R$.
+	\end{alphanumerate}
+\end{example*}
+\begin{rem}
+	For kernels and cokernels in an additive category $\Aa$ the following universal properties are imposed. The kernel $\ker(A\morphism[\alpha]B)$ must come with a morphism $\ker(\alpha)\morphism[\iota]A$ and satisfy
+	\begin{align*}
+		\Hom_\Aa\left(T,\ker\Big(A\morphism[\alpha]B\Big)\right)&\isomorphism \left\{f\in \Hom_\Aa\st \alpha f=0\right\}\\
+		\left(T\morphism[\tau]A\right)&\longmapsto f=\iota\tau
+	\end{align*}
+	for any test object $T\in\Ob(\Aa)$. Similarly, cokernels come with a morphism $B\morphism[\pi]\coker(\alpha)$ and satisfy
+	\begin{align*}
+		\Hom_\Aa\left(\coker\Big(A\morphism[\alpha]B\Big),T\right)&\isomorphism \left\{g\in\Hom_\Aa(B,T)\st g\alpha=0\right\}\\
+		\left(\coker(\alpha)\morphism[\tau]T\right)&\longmapsto g=\tau\pi
+	\end{align*}
+	for any test object $T\in\Ob(\Aa)$.
+	
+	Thus, 
+	\begin{align*}
+		\ker\Big(A\morphism[\alpha]B\Big)=\Eq\Big(A\doublemorphism[\alpha][0]B\Big)\quad\text{and}\quad\coker\Big(A\morphism[\alpha]B\Big)=\Coeq\Big(A\doublemorphism[\alpha][0]B\Big)\;. 
+	\end{align*}
+	For abelian categories, the existence of kernels and cokernels is required, in addition to additivity. Equivalent conditions are the existence of equalizers and coequalizers, fibre products and dual fibre products or finite limits and colimits as
+	\begin{align*}
+		\Eq\Big(A\doublemorphism[\alpha][\beta]B\Big)=\ker\Big(A\xrightarrow{\alpha-\beta}B\Big)\quad\text{and}\quad \Coeq\Big(A\doublemorphism[\alpha][\beta]B\Big)=\coker\Big(A\xrightarrow{\alpha-\beta}B\Big)
+	\end{align*}
+	(the minus here is the one obtained from additivity of $\Aa$).
+	
+	Recall that a morphism $A\morphism[i]B$ is an \emph{effective monomorphism}, if the following equivalent conditions hold.
+	\begin{alphanumerate}
+		\item (In any category) We have a bijection
+		\begin{align*}
+			\Hom_\Aa(T,A)&\isomorphism\left\{f\in\Hom_\Aa(T,B)\st 
+			\begin{array}{c}
+				\alpha f=\beta f\text{ if }B\doublemorphism[\alpha][\beta]S\text{ is any pair of}\\ 
+				\text{morphisms such that }\alpha i=\beta i
+			\end{array}
+			\right\}\\
+			t\in\Hom_\Aa(T,A) &\longmapsto f=it\;.
+		\end{align*}
+		\item (If the category has finite colimits) $i$ is an equalizer of something.
+		\item (In additive categories with kernels and cokernels) $i$ is the kernel of an appropriate morphism
+		\item (In additive categories with kernels and cokernels) $i$ is the kernel of its cokernel.
+	\end{alphanumerate}
+	Dually, $A\morphism[p]B$ is an \emph{effective epimorphism} if the following equivalent conditions hold.
+	\begin{alphanumerate}
+		\item (In any category) We have a bijection
+		\begin{align*}
+			\Hom_\Aa(B,T)&\isomorphism\left\{f\in\Hom_\Aa(A,T)\st 
+			\begin{array}{c}
+				f\alpha =f\beta\text{ if }S\doublemorphism[\alpha][\beta]A\text{ is any pair of}\\
+				\text{morphisms such that}p\alpha =p\beta 
+			\end{array}
+			\right\}\\
+			t\in\Hom_\Aa(B,T) &\longmapsto f=tp\;.
+		\end{align*}
+		\item (If the category has finite limits) $p$ is a coequalizer of something.
+		\item (In additive categories with kernels and cokernels) $p$ is the cokernel of an appropriate morphism
+		\item (In additive categories with kernels and cokernels) $p$ is the cokernel of its kernel.
+		\item $B^\op\morphism[p^\op]A^\op$ is an effective monomorphism in the dual category $\Aa^\op$.
+	\end{alphanumerate}
+	In any category, a morphism which is mono and effectively epi (or epi and effectively mono) is an isomorphism, but there are examples of morphisms which are simultaneously mono and epi but not an isomorphism (e.q. $\IZ\monomorphism\IQ$ in the category of rings). This needs to be ruled out by a definition, and that's what is happening now! 
+\end{rem}
+\begin{defi}
+	A category $\Aa$ is \defemph{abelian}, if it is additive, has kernels and cokernels and such that every monomorphism is effectively mono, every epimorphism is effectively epi and (thus) any morphism which is both a mono- and an epimorphism is an isomorphism.
+\end{defi}
+The category of modules (over a ring $R$) or sheaves of modules are abelian categories, but not Banach spaces or projective modules over most rings.
+\begin{example}
+	We show that the category $\Rr\cat{-Mod}$ of sheaves of modules (over a sheaf of rings $\Rr$ on some topological space $X$) is abelian.
+	
+	First note that the zero sheaf $0$ is a common initial and final object. A direct sum of $\Aa,\Bb\in\Ob(\Rr\cat{-Mod})$ is given by
+	\begin{align*}
+		(\Aa\oplus\Bb)(U)=\left\{(a,b)\st a\in\Aa(U), b\in\Bb(U)\right\}\quad\text{for all }U\subseteq X\text{ open}
+	\end{align*}
+	(it's clear that this is a presheaf and it inherits the sheaf axiom from $\Aa$ and $\Bb$) with component-wise module operations and with $\Aa\lmorphism[p]\Aa\oplus\Bb\morphism[q]\Bb$ and $\Aa\morphism[i]\Aa\oplus\Bb\lmorphism[j]\Bb$ given by $p(a,b)=a$, $q(a,b)=b$, $i(a)=(a,0)$, and $j(b)=(0,b)$ for $U\subseteq X$ open and $a\in\Aa(U)$, $b\in\Bb(U)$.
+	
+	If $\Aa\morphism[\alpha]\Tt\lmorphism[\beta]\Bb$ are given, $\Aa\oplus\Bb\morphism[\alpha\amalg\beta]\Tt$ sending $(a,b)\in(\Aa\oplus\Bb)(U)$ to $\alpha(a)+\beta(b)$ verifies the universal property of the coproduct for $\Aa\oplus\Bb$. Similarly, $\Tt\morphism[\alpha\times\beta]\Aa\oplus\Bb$ given by $(\alpha\times\beta)(t)=(\alpha(t),\beta(t))$ for $t\in\Tt(U)$ confirms the universal property of the product for $\Aa\oplus\Bb$. Also, $c=\id_{\Aa\oplus\Bb}$ is the unique endomorphism $c$ of that object such that $pci=\id_\Aa$, $qcj=\id_\Bb$, $pcj=0$, and $qci=0$. Thus, $\Rr\cat{-Mod}$ is additive (the group laws being easily verified).
+\end{example}
 
 \printbibliography
 
