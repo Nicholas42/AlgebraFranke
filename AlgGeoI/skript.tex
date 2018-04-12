@@ -256,7 +256,7 @@ This motivates the following definition of an \emph{algebraic variety} being a p
           \item 
             Let $X$ be a prevariety. If two arbitrary points have a common neighbourhood which is a variety, then $X$ is a variety.
           \item 
-            We have actually seen that arbitrary finite subsets of quasi-projective algebraic varieties have open neighbourhoods which are affine. This is usefull, e.g., when forming quotients by finite groups.
+            We have actually seen that arbitrary finite subsets of quasi-projective algebraic varieties have open neighbourhoods which are affine. This is useful, e.g., when forming quotients by finite groups.
           \item
             Hironaka (see Hartshorne for examples of a non-quasi-projective variety) has an example of a variety where there are two points without a common affine neighbourhood.
         \end{alphanumerate}
@@ -286,7 +286,7 @@ This motivates the following definition of an \emph{algebraic variety} being a p
     	\item and to each inclusion of elements of $\Bb$ a \emph{restriction morphism}  		$(-)|_V\colon\Gg(U) \morphism \Gg(V)$
     	such that $\Gg(U) \morphism[(-)|_U]\Gg(U)$ equals $\id_{\Gg(U)}$ and $f|_W = (f|_V)|_W$ for all $f\in \Gg(U)$ if $W\subseteq V\subseteq U$ is a inclusion of elements of $\Bb$. 
     \end{itemize}
-	 If $\Gg$ is a presheaf on $\Bb$ and $x\in X$ we put $\Gg_x = \colimit[U] \Gg(U)$ where the direct limit (\emph{direct limit} means the same as \emph{colimit}) is taken over alle $U\in \Bb$ containing $x$.
+	 If $\Gg$ is a presheaf on $\Bb$ and $x\in X$ we put $\Gg_x = \colimit[U] \Gg(U)$ where the direct limit (\emph{direct limit} means the same as \emph{colimit}) is taken over all $U\in \Bb$ containing $x$.
 \end{defi}
 \begin{rem*}
     Equip $\Bb$ with partial order $\preceq$ where $V\preceq U$ iff $V\supseteq U$. Any partially ordered set $(\XX, \preceq)$ defines a category in which there is a morphism $X\to Y$ precisely if $X\preceq Y$. Then, a presheaf on $\Bb$ is a functor from (the category made out of) $\Bb$ and the target category.
@@ -332,9 +332,9 @@ This motivates the following definition of an \emph{algebraic variety} being a p
             for every $y\in U$, there are an open neighbourhood $V$ of $y$ in $X$ and $\gamma\in \Gg(U)$ such that $V\subseteq U$ and $V\in\Bb$ and such that $g_x =(V,\gamma)/_\sim$ for all $x\in V$.
         \end{quote}
       \item 
-        It is easy to see that $\Hh=\Gg^\sh$ satisfies the sheaf axiom: If $U = \bigcup_{i\in I} U_i$ is an open cover and $g^{(i)} = \big(g^{(i)}_x\big)_{x\in U_i}\in \Hh(U_i)$ as on the right-hand side of the sheaf axiom, define $g\in \Hh(U)$ by $g_x = g_x^{(i)}$ where $i$ is chosen such that $x\in U_i$. This depends on $x$ only. It is easy to see that indeed $g\in \Hh(U)$ and that $g$ this is the only element of $\Hh(U)$ with $g|_{U_i} = g_i$ for all $i\in I$.
+        It is easy to see that $\Hh=\Gg^\sh$ satisfies the sheaf axiom: If $U = \bigcup_{i\in I} U_i$ is an open cover and $g^{(i)} = \big(g^{(i)}_x\big)_{x\in U_i}\in \Hh(U_i)$ as on the right-hand side of the sheaf axiom, define $g\in \Hh(U)$ by $g_x = g_x^{(i)}$ where $i$ is chosen such that $x\in U_i$. This depends on $x$ only. It is easy to see that indeed $g\in \Hh(U)$ and that this $g$ is the only element of $\Hh(U)$ with $g|_{U_i} = g_i$ for all $i\in I$.
       \item
-        It is easy to see that for every $x\in X$, $\Gg\to \Gg_x$ is a functor from the category of presheaves to the respective target category, provided that the colimits occuring in the definition of $\Gg_x$ exist in that category. Moreover $(-)^\sh$ is a functor from the category of presheaves with values in sets, groups, or rings to the respective category of sheaves.
+        It is easy to see that for every $x\in X$, $\Gg\to \Gg_x$ is a functor from the category of presheaves to the respective target category, provided that the colimits occurring in the definition of $\Gg_x$ exist in that category. Moreover $(-)^\sh$ is a functor from the category of presheaves with values in sets, groups, or rings to the respective category of sheaves.
     \end{alphanumerate}
 \end{rem*}
 We define a \emph{canonical morphism} (cf. Definition~\reff{def:canonicalMorphism})
@@ -370,7 +370,7 @@ of presheaves on $\Bb$.
 \begin{proof}
 	\itememph{c} If you think about it for a while, this becomes rather obvious from the definitions.\lbl{thisIsNotAProofCozWeAreLazy}
 	
-	For part \itememph{a}, we prove surjectivity first: Let $g\in\Gg^\sh(U)$ and $x\in U$, we need to find an open neighbourhood $V\in \Bb$ of $x$ and $\gamma\in \Gg(V)$ such that the images in $\Gg^\sh_x$ of $\Gamma_\Gg(\gamma)\in \Gg^\sh(V)$ and of $g$ coincide. We chose $V$ and $\gamma$ as on the right-hand side of \eqreff{eq:sheafification}. As $\Bb$ is a topology base there is $W\in\Bb$ sucht that $x\in W\subseteq U\cap V$. It follows from the definition of $\Gamma_\Gg$ and the coherence condition that $g|_W = \Gamma_\Gg(\gamma)|_W$. Consequently, their images in the stalk at $x$ coincide, as asserted.
+	For part \itememph{a}, we prove surjectivity first: Let $g\in\Gg^\sh(U)$ and $x\in U$, we need to find an open neighbourhood $V\in \Bb$ of $x$ and $\gamma\in \Gg(V)$ such that the images in $\Gg^\sh_x$ of $\Gamma_\Gg(\gamma)\in \Gg^\sh(V)$ and of $g$ coincide. We chose $V$ and $\gamma$ as on the right-hand side of \eqreff{eq:sheafification}. As $\Bb$ is a topology base there is $W\in\Bb$ such that $x\in W\subseteq U\cap V$. It follows from the definition of $\Gamma_\Gg$ and the coherence condition that $g|_W = \Gamma_\Gg(\gamma)|_W$. Consequently, their images in the stalk at $x$ coincide, as asserted.
 	
 	To show injectivity define
 	\begin{align*}
@@ -445,7 +445,7 @@ of presheaves on $\Bb$.
     	%\end{align*}
     	%(we regard the $\Gg(U)$ as sets). Then $F$ is faithful. Hence, if $\alpha$ is stalk-wise injective then also section-wise (by \itememph{b}), hence $F(\alpha)$ is injective. Faithfulness of $F$ finally shows that $\alpha$ must be a monomorphism.
     	
-    	Proving the \emph{only if} part of \itememph{e} is quite trivial since $\Rr(U) \morphism \Rr_x$ is a ring homomorphism, thus maps units to units. Conversely, let $\rho_x$ be a unit for every $x\in U$. We consider the morphism $\Rr|_U \morphism[\rho\cdot]\Rr|_U$ (of sheaves of \emph{sets}, multipliying by $\rho$ is no ring homomorphism!). On stalks it defines the map $\Rr_x \morphism[\rho_x\cdot] \Rr_x$, which is bijective. By \itememph{b} it is an isomorphism, hence there is $\sigma \in \Rr(U)$ such that $\rho \sigma = 1$ and $\rho\in \Rr(U)^\times$.
+    	Proving the \emph{only if} part of \itememph{e} is quite trivial since $\Rr(U) \morphism \Rr_x$ is a ring homomorphism, thus maps units to units. Conversely, let $\rho_x$ be a unit for every $x\in U$. We consider the morphism $\Rr|_U \morphism[\rho\cdot]\Rr|_U$ (of sheaves of \emph{sets}, multiplying by $\rho$ is no ring homomorphism!). On stalks it defines the map $\Rr_x \morphism[\rho_x\cdot] \Rr_x$, which is bijective. By \itememph{b} it is an isomorphism, hence there is $\sigma \in \Rr(U)$ such that $\rho \sigma = 1$ and $\rho\in \Rr(U)^\times$.
     \end{proof}
     \begin{fact}\lbl{fact:smallerBaseSheafification}
         If $\Ff$ is a presheaf on $\Bb$ and $\snake{\Bb}\subseteq \Bb$ is another topology base, then $\big(\Ff|_{\snake \Bb}\big)^\sh\simeq \Ff^\sh$.
@@ -890,7 +890,7 @@ of presheaves on $\Bb$.
 	
 	\emph{Step 2.} We check that $K\morphism[\kappa]X$ equalizes $X\doublemorphism[a][\smash{b}]Y$.
 	
-	The fact that $a\kappa=b\kappa$ is a trivial consequence of the definition of $K$ as far as only the topological component is concernced. For the algebraic component, let $V\subseteq Y$ be open, $U=a^{-1}(V)\cap K=b^{-1}(V)\cap K$ and let $\lambda\in\Oo_K(V)$. We need to show that $\kappa^*a^*\lambda=\kappa^*b^*\lambda$. Indeed, let $y=a(k)=b(k)$. Using that
+	The fact that $a\kappa=b\kappa$ is a trivial consequence of the definition of $K$ as far as only the topological component is concerned. For the algebraic component, let $V\subseteq Y$ be open, $U=a^{-1}(V)\cap K=b^{-1}(V)\cap K$ and let $\lambda\in\Oo_K(V)$. We need to show that $\kappa^*a^*\lambda=\kappa^*b^*\lambda$. Indeed, let $y=a(k)=b(k)$. Using that
 	\begin{diagram*}
 		\node[ob](a) at (0,1.5) {$\Oo_Y(V)$};
 		\node[ob](c) at (0,0) {$\Oo_{Y,y}$};
@@ -1142,7 +1142,7 @@ We're now prepared to describe the fibre product $F=X\times_SY$:
     	\draw[->] (c) -- (b);
     	\draw[->] (b) -- (d);
     \end{diagram*}  
-    (where $s'=\xi(x')=\upsilon(y')$) from which it is made up. It follows that the image of $\ell$ under this map vanishes and $\lambda$ als vanishes.
+    (where $s'=\xi(x')=\upsilon(y')$) from which it is made up. It follows that the image of $\ell$ under this map vanishes and $\lambda$ also vanishes.
     
     \emph{Step 4.} We have to show that $p$ and $q$ are morphisms of locally ringed spaces. Only the locality of $\Oo_{X,x}\morphism[p^*] \Oo_{F,(x,y,p)}$ (and $q^*$ likewise) is questionable. By the previous step, $p^*$ can be identified with 
     \begin{align*}
@@ -1362,7 +1362,7 @@ $\pp = \left(\tau^\ast\right)^{-1}\mm_{T,t}$ by the definition of $T$.
 	\draw [->] (Tensor) -- (OF);
 	\draw [->, dotted] (OF) -- (OT) node[pos=0.5, below left] {$\tau^*$};
 \end{diagram*}
- the dashed arrow $\tau^\flat$ is uniquely determined by the co-cartesianess of the lower right corner. Because $\tau$ is a morphism of locally ringed spaces, the dotted arrow $\tau^*$ must be a local ring morphism, hence
+ the dashed arrow $\tau^\flat$ is uniquely determined by the cocartesianness of the lower right corner. Because $\tau$ is a morphism of locally ringed spaces, the dotted arrow $\tau^*$ must be a local ring morphism, hence
 \begin{align*}
     (\tau^*)^{-1}(\mm_{T,t}) = \pp\Oo_{F,[x,y,\pp]} = \pp\left(\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y}\right)_\pp\;.
 \end{align*}
@@ -1722,9 +1722,9 @@ If $M$ is an $R$-module, we have a similar presheaf (of abelian groups or of mod
             	\end{cases}\;.
             \end{align*}
         \item 
-            When $R$ is a a principal ideal domain (or more generally, a Dedekind domain with finite class group $\Cl_R$, as in this case $\pp^{\#\Cl_R}=(\pi)$ is a principal ideal for every prime ideal $\pp$ and $V(\pp)=V(\pi)$), the same is done by 
+            When $R$ is a a principal ideal domain (or more generally, a Dedekind domain with finite class group $\Cl_R$, as in this case $\pp^{\#\Cl_R}=(\pi)$ is a principal ideal for every prime ideal $\pp$ and $V(\pp)=V(\pi)$), $\Oo_{\Spec R}$ is already uniquely described by  
             \begin{align*}
-            	\Oo_{\Spec R}(U)= \big(\Spec R\setminus V(f)\big) =
+            	\Oo_{\Spec R}(U)= 
             	\begin{cases}
 	            	R_f&\text{if }U=\Spec R\setminus V(f)\\
 	            	0 &\text{if }U=\emptyset
@@ -1911,7 +1911,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
     \begin{align*}
     \left\{
     \begin{array}{c}
-	    \text{quasi-coherent sheafs of}\\
+	    \text{quasi-coherent sheaves of}\\
 	    \text{ideals }\Jj\text{ on }X=\Spec R
     \end{array}\right\}&\isomorphism \left\{\text{ideals }I\subseteq R\right\} \\
         \Jj&\longmapsto \Jj(X) \subseteq \Oo_X(X) \simeq R\\
@@ -1927,7 +1927,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
 
 \section{Preschemes and schemes}
 \begin{defi}[Preschemes. \textsc{Yay, finally!}] \lbl{def:prescheme}
-    A locally ringend space $X$ is a \defemph{prescheme} if every $x\in X$ has an open neighbourhood $U$ such that the locally ringed space $(U,\Oo_X|_U)$ is isomorphic to $\Spec R$ in $\cat{LRS}$, for some ring $R$. 
+    A locally ringed space $X$ is a \defemph{prescheme} if every $x\in X$ has an open neighbourhood $U$ such that the locally ringed space $(U,\Oo_X|_U)$ is isomorphic to $\Spec R$ in $\cat{LRS}$, for some ring $R$. 
     
     The category of preschemes is a full subcategory of $\cat{LRS}$, i.e.\ every morphism of locally ringed spaces between two preschemes is a morphism of preschemes.
 \end{defi}
@@ -1960,7 +1960,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
 	\end{alphanumerate}
 \end{fact}
 \begin{rem*}
-    In particular, if $U\subseteq X$ is open, if can be covered by affine open subsets of $X$. 
+    In particular, if $U\subseteq X$ is open, it can be covered by affine open subsets of $X$. 
 \end{rem*}
 \begin{proof}[Proof of Fact~\reff{fact:affineSchemesTopologyBase}]
     It is sufficient to show the second part. Let $V\subseteq X$ be open. As the sets $\left\{\Spec R\setminus V(g)\st g\in R\right\}$ form a topology base on $\Spec R$, we have
@@ -1977,7 +1977,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
     A prescheme $X$ is called \defemph{quasi-compact} if it satisfies the following equivalent criteria:
     \begin{alphanumerate}
         \item 
-            The topological Space $X$ is quasi-compact.
+            The topological space $X$ is quasi-compact.
         \item 
             $X$ may be covered by finitely many affine open subsets. 
         \item 
@@ -2183,7 +2183,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
 \begin{proof}
 	Part \itememph{b} is true in any category an can be easily proved by abstract nonsense.
 	
-	Part \itememph{c} follows from our explicit construction of equalizers in $\cat{LRS}$ in Proposition~\reff{prop:equalizerLRS} as long as only equalizers in $\cat{LRS}$ are concerned. That the occuring equalizers are indeed preschemes will follow from the proof of \itememph{a}. Part \itememph{d} is a consequence of Proposition~\reff{prop:affineSchemeAdjunction} and the fact that $\Spec(-)$ is a contravariant functor. 
+	Part \itememph{c} follows from our explicit construction of equalizers in $\cat{LRS}$ in Proposition~\reff{prop:equalizerLRS} as long as only equalizers in $\cat{LRS}$ are concerned. That the occurring equalizers are indeed preschemes will follow from the proof of \itememph{a}. Part \itememph{d} is a consequence of Proposition~\reff{prop:affineSchemeAdjunction} and the fact that $\Spec(-)$ is a contravariant functor. 
 	
 	Together, \itememph{b}, \itememph{c} (that is, what we proved of it so far) and \itememph{d} imply \itememph{a}. Indeed, let $E\subseteq X$ be the equalizer of $X\doublemorphism[a][b]Y$ in the category of locally ringed spaces, where $X$ and $Y$ are preschemes; we need to show that $E$ is a prescheme as well. Let $x\in E$. Choose an affine open neighbourhood $V$ of $a(x)=b(x)$ in $Y$ and an affine open neighbourhood of $U\subseteq a^{-1}(V)\cap b^{-1}(V)$ of $x$ in $X$. Then 
 	\begin{align*}
@@ -2475,7 +2475,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
 \end{proof}
 
 
-\chapter{Properties of (pre)schmes and their morphisms}
+\chapter{Properties of (pre)schemes and their morphisms}
 
 \section{(Mostly) topological properties}
 
@@ -2484,7 +2484,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
     For a morphism $X\morphism[f] Y$ of preschemes, the following conditions are equivalent
     \begin{alphanumerate}
     \item 
-        For any affine open $U\subseteq X$, $f^{-1}(U)$ is quasi-compact
+        For any affine open $U\subseteq Y$, $f^{-1}(U)$ is quasi-compact
     \item 
         For any quasi-compact open $U\subseteq Y$, $f^{-1}(U)$ is quasi-compact.
     \item 
@@ -2687,7 +2687,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
     Under our assumptions on $Y$, the equalizer $\Eq\Big(X\doublemorphism[f][g] Y\Big)$ is a closed subprescheme of $X$ containing all points of $U$, hence of $X$. By Proposition~\reff{prop:reduced}, $f$ and $g$ coincide on $X$.
 \end{proof}
 \begin{rem}
-    It is easy to see that the scheme property of a prescheme $Y$ or the separateness of the morphisms $Y\morphism[\upsilon] S$, can be characteristized by the validity of the above assertion for reduced $X$. In fact, it is sufficient to take $X=\Spec R$ where $R$ is a domain, or a general valuation ring, or, when $Y$ is Noetherian, a discrete valuation ring (the \emph{valuation criterion for separatedness}).
+    It is easy to see that the scheme property of a prescheme $Y$ or the separateness of the morphisms $Y\morphism[\upsilon] S$, can be characterized by the validity of the above assertion for reduced $X$. In fact, it is sufficient to take $X=\Spec R$ where $R$ is a domain, or a general valuation ring, or, when $Y$ is Noetherian, a discrete valuation ring (the \emph{valuation criterion for separatedness}).
 \end{rem}
 \begin{prop}
     \begin{alphanumerate}
@@ -2707,7 +2707,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
     \end{alphanumerate}
 \end{prop}
 \begin{proof}
-    For \itememph{a}, we may assume $X$ to be affine because any affine open neighbourhood of $x$ contains all $y$ occuring on the right-hand side (in fact, any open neighbourhood $U$ of $x$ contains $y$ as otherwise $\ov{\{y\}}\subseteq X\setminus U$). When $X=\Spec R$, and $x$ is given by $\pp$ and $y$ by $\qq$ then $\ov{\{y\}} = V(\qq)$, hence $\qq$ defines an element of the right-hand side iff $\qq\subseteq \pp$. In this case, the image of $y$ in the left-hand side $\Spec(\Oo_{X,x})\simeq \Spec R_\pp$ is the set of all $\frac{r}{f}\in R_\pp$ (where $f\notin\pp$) such that $\qq R_f$ is an element of the vanishing set of $\frac{r}{f}$ in $R_f$, i.e.\ $\frac{r}{f}\in \qq R_f$, hence the ideal of $R_\pp$ associated to $y$ is $\qq R_\pp$ (as one would expect). Now the map $\qq\mapsto\qq R_\pp$ gives indeed a bijection onto $\Spec R_\pp$, the inverse map being given by 
+    For \itememph{a}, we may assume $X$ to be affine because any affine open neighbourhood of $x$ contains all $y$ occurring on the right-hand side (in fact, any open neighbourhood $U$ of $x$ contains $y$ as otherwise $\ov{\{y\}}\subseteq X\setminus U$). When $X=\Spec R$, and $x$ is given by $\pp$ and $y$ by $\qq$ then $\ov{\{y\}} = V(\qq)$, hence $\qq$ defines an element of the right-hand side iff $\qq\subseteq \pp$. In this case, the image of $y$ in the left-hand side $\Spec(\Oo_{X,x})\simeq \Spec R_\pp$ is the set of all $\frac{r}{f}\in R_\pp$ (where $f\notin\pp$) such that $\qq R_f$ is an element of the vanishing set of $\frac{r}{f}$ in $R_f$, i.e.\ $\frac{r}{f}\in \qq R_f$, hence the ideal of $R_\pp$ associated to $y$ is $\qq R_\pp$ (as one would expect). Now the map $\qq\mapsto\qq R_\pp$ gives indeed a bijection onto $\Spec R_\pp$, the inverse map being given by 
     \begin{align}\lbl{eq:localizationBijection}
     	\begin{split}
 	    	\Spec R_\pp &\morphism \left\{\qq\in\Spec R\st\qq\subseteq\pp\right\}\\ \rr&\longmapsto \qq= (\text{preimage of }\rr\text{ under }R\to R_\pp)
@@ -2832,9 +2832,9 @@ We derive this from two other lemmas, the first of which is very useful in gener
     \end{alphanumerate}
 \end{lem}
 \begin{proof}
-    The implication \itememph{\beta} $\Rightarrow$ \itememph{\alpha} being trivial we have to show the other direction. We first have to show that $\Pp(U)$ holds when $U\subseteq V$ are affine and $\Pp(V)$ holds ($U$ and $V$ being affine open subsets). Since the $V\setminus V(\lambda)$ (for $\lambda\in \Oo_X(V)$) form a topology base on $V$, $U$ may be covered by such subsets which inherit $\Pp$ by \itememph{a}. But $V\setminus V(\lambda)$ equals $U\setminus V(\lambda)$ when it is a subset of $U$. By the quasi-compactness of $U$ and \itememph{b}, $\Pp(U)$ holds. 
+    The implication \itememph{b} $\Rightarrow$ \itememph{a} being trivial we have to show the other direction. We first have to show that $\Pp(U)$ holds when $U\subseteq V$ are affine and $\Pp(V)$ holds ($U$ and $V$ being affine open subsets). Since the $V\setminus V(\lambda)$ (for $\lambda\in \Oo_X(V)$) form a topology base on $V$, $U$ may be covered by such subsets which inherit $\Pp$ by \itememph{\alpha}. But $V\setminus V(\lambda)$ equals $U\setminus V(\lambda)$ when it is a subset of $U$. By the quasi-compactness of $U$ and \itememph{\beta}, $\Pp(U)$ holds. 
     
-    Now let $U$ be an arbitrary affine open subset of $X$. If $x\in U$, then $x$ is contained in some affine open subset $V$ of $X$ with $\Pp(V)$. Let $W\subseteq U\cap V$ be an affine open neighbourhood of $x$, we have $\Pp(W)$ by the initial step. We may actually assume $W=U\setminus V(\lambda)$ with $\lambda\in \Oo_X(U)$ as such $W$ form a topology base on $U$. Thus, $U$ may be covered by $W=U\setminus V(\lambda)$ with $\Pp(W)$. By the quasi-compactness of $U$ it has a finite covering of that type, and by \itememph{b}, $\Pp(U)$ holds.
+    Now let $U$ be an arbitrary affine open subset of $X$. If $x\in U$, then $x$ is contained in some affine open subset $V$ of $X$ with $\Pp(V)$. Let $W\subseteq U\cap V$ be an affine open neighbourhood of $x$, we have $\Pp(W)$ by the initial step. We may actually assume $W=U\setminus V(\lambda)$ with $\lambda\in \Oo_X(U)$ as such $W$ form a topology base on $U$. Thus, $U$ may be covered by $W=U\setminus V(\lambda)$ with $\Pp(W)$. By the quasi-compactness of $U$ it has a finite cover of that type, and by \itememph{\beta}, $\Pp(U)$ holds.
 \end{proof}
 \begin{lem}\lbl{lem:finiteTypeOnGenerators}
     Let $R$ be a ring, $A$ an $R$-algebra, $f_1,\ldots,f_n$ elements of $A$ such that $(f_1,\ldots, f_n)_A = A$ (in other words, $\bigcap_{i=1}^n V(f_i) =\emptyset$ in $\Spec A$). If $A_{f_i}$ is an $R$-algebra of finite type for $1\leq i\leq n$, then $A$ is an $R$-algebra of finite type.
@@ -2876,7 +2876,7 @@ We derive this from two other lemmas, the first of which is very useful in gener
 \end{defi}
 
 \begin{fact}
-    If $Y=\Spec R$, the structure of a $Y$-prescheme on $X$ (cf. Definition~\reff{def:S-preschemes}) is equivalent to the structure of a sheaf of $R$-algebras on $\Oo_X$ and $X$ is locally of finite type over $Y$ iff the $\Oo_X(U)$ for affine $U$ are $R$-algebras of finite type, and it is of finite type, iff it is in addition quasi-compact.
+    If $Y=\Spec R$, the structure of a $Y$-prescheme on $X$ (cf. Definition~\reff{def:S-preschemes}) is equivalent to the structure of a sheaf of $R$-algebras on $\Oo_X$ and $X$ is of locally finite type over $Y$ iff the $\Oo_X(U)$ for affine $U$ are $R$-algebras of finite type, and it is of finite type, iff it is in addition quasi-compact.
 \end{fact}
 \begin{proof}
 	Note that such a  morphism $X\morphism[f]Y$ is quasi-compact iff $X$ is quasi-compact using \itememph{\alpha} and \itememph{\gamma} of Definition~\reff{def:qcqs}\itememph{b}. The rest is quite obvious.
@@ -2912,7 +2912,7 @@ We derive this from two other lemmas, the first of which is very useful in gener
     Any closed immersion is of finite type.
 \end{cor}
 \begin{proof}
-	As we noted in Remark~\reff{rem:qcqs}\itememph{d}, closed immersions are always quasi-compact. To show locally finite typeness, let $K\morphism[\iota]X$ be a closed immersion, then Proposition~\reff{prop:closedImmersionCoherentSheaves} assings to $K$ a quasi-coherent sheaf of ideals $\Jj\subseteq\Oo_X$. Restricting to an affine open subset $U\simeq\Spec R$ of $X$, $\Jj$ has the form $\snake I$ for some ideal $I\subseteq R$ and $\iota^{-1}U\morphism U$ is given by $\Spec R/I\morphism\Spec R$. Now $R/I$ is of finite type over $R$ and by Proposition~\reff{prop:locFiniteMorph}\itememph{b} we are done.
+	As we noted in Remark~\reff{rem:qcqs}\itememph{d}, closed immersions are always quasi-compact. To show locally finite typeness, let $K\morphism[\iota]X$ be a closed immersion, then Proposition~\reff{prop:closedImmersionCoherentSheaves} assigns to $K$ a quasi-coherent sheaf of ideals $\Jj\subseteq\Oo_X$. Restricting to an affine open subset $U\simeq\Spec R$ of $X$, $\Jj$ has the form $\snake I$ for some ideal $I\subseteq R$ and $\iota^{-1}U\morphism U$ is given by $\Spec R/I\morphism\Spec R$. Now $R/I$ is of finite type over $R$ and by Proposition~\reff{prop:locFiniteMorph}\itememph{b} we are done.
 \end{proof}
 \begin{cor}
     Any locally closed immersion is of locally finite type.
@@ -2984,7 +2984,7 @@ the two sets are assumed to be disjoint and where $\eta_Z\neq \eta_Y$ when $Z\ne
 \begin{align*}
     U^* &= U \cup \left\{\eta_Z\in H\st Z\cap U \neq \emptyset\text{, }\# Z > 1\right\} = U\cup \left\{\eta_Y \st Y\subseteq U\text{ irreducible closed, }\#Y > 1\right\}\;.
 \end{align*}
-The second equality can be seen as follows: If $Y\subseteq U$ is irreducible and $\#Y>1$, then its closure $\ov Y\subseteq X$ is irreducible and clearly has also at least $2$ points. Conversely, if $Z\subseteq X$ is irreducible and $\# Z>1$, then $Z\cap U$ is irreducible if it is $\neq\emptyset$ and must contain more than $1$ point. Indeed, if not, then this point would be open in $Z$ but also closed (by $T_1$-ness), thus $Z$ woudn't be connected and, in particular, not irreducible.
+The second equality can be seen as follows: If $Y\subseteq U$ is irreducible and $\#Y>1$, then its closure $\ov Y\subseteq X$ is irreducible and clearly has also at least $2$ points. Conversely, if $Z\subseteq X$ is irreducible and $\# Z>1$, then $Z\cap U$ is irreducible if it is $\neq\emptyset$ and must contain more than $1$ point. Indeed, if not, then this point would be open in $Z$ but also closed (by $T_1$-ness), thus $Z$ wouldn't be connected and, in particular, not irreducible.
 
 We have $(U\cap V)^* = U^* \cap V^*$, $\bigcup_{i\in I} U_i^* = \big(\bigcup_{i\in I} U_i\big)^*$ by basic properties of irreducibility. Thus, there is a topology base on $X^*$ by the open subsets $U^*$. As the posets of $X$ and $X^*$ (i.e.\ the partially ordered sets with respect to inclusion) are isomorphic, the presheaf categories on $X$ and $X^*$ are isomorphic and the validity of the sheaf axiom turns out to be preserved. 
 
@@ -3047,7 +3047,7 @@ In this section we want to consider the following problem. Let $R$ be a discrete
     \item   
         If $U\subseteq X$ is open and $x\in U$ closed in $U$ then $x$ is closed in $X$.
     \end{alphanumerate}
-    Then \itememph{a} and \itememph{b} are equivalent and imply \itememph{c}. If in addition there is a topology base consisting of open subsets $U$ such that any closed subset of $U$ contains a closed point (this is equvalent to any irreducible closed subset of $U$ containing a closed point) then \itememph{c} also implies \itememph{a}.
+    Then \itememph{a} and \itememph{b} are equivalent and imply \itememph{c}. If in addition there is a topology base consisting of open subsets $U$ such that any closed subset of $U$ contains a closed point (this is equivalent to any irreducible closed subset of $U$ containing a closed point) then \itememph{c} also implies \itememph{a}.
 \end{fact}
 \begin{proof}
     It is obvious that \itememph{a} implies \itememph{b}. Now assume \itememph{b} and let $A\subseteq X$ be closed, $U\subseteq X$ open and $a\in A\cap U$ and $B= \ov{\{a\}} \subseteq A$. Then $B$ is irreducible closed hence $B\cap U$ contains a closed point $b$ of $X$ and $b\in B\cap U\subseteq A\cap U$. So \itememph{a} holds.
@@ -3092,7 +3092,7 @@ Recall (not from this lecture but from Algebra~II, so if you do not participate 
      
      Conversely, assume that \itememph{b} holds and let $V(\pp)\setminus V(I)$ for some ideal $I\supsetneq\pp$ be an open subset of the irreducible set $V(\pp)\subseteq \Spec R$. Then $I\not\subseteq \bigcap_{\mm\in\MM}\mm$, hence there is an $\mm\in\MM$ such that $I\not\subseteq\mm$ and so $\mm\in V(\pp)\setminus V(I)$. Thus, $\bigcup_{\mm\in\MM}\{\mm\}$ is dense in $V(\pp)$ and Fact~\reff{fact:closedPointsDense}\itememph{b} holds, proving that \itememph{b} $\Rightarrow$ \itememph{a}.
     
-    Assume \itememph{b}, we want to show \itememph{b} $\Rightarrow$ \itememph{d}. Let $R\morphism[\alpha]A$ be an $R$-algebra of finite type, $\mm\in \mSpec A$, we have to show $\alpha^{-1}(\mm) \in \mSpec R$. Replacing $A$ by $A/\mm$, we may assume $A$ to be a field. Replacing $R$ by $R/\pp$ with $\pp = \alpha^{-1}(\mm)$ (this certainly is a prime ideal of $R$) we may assume $R$ to be a subring of that field. Then $A$ contains the field $K$ of quotients of $R$ over which it is of finite type. By the Nullstellensatz $A/K$ is a finite field extension, hence $A$ is a finitely generated $K$-module. By a theorem of Artin-Tate (cf. \cite[Proposition~1.4.2]{alg1}), $K$ is of finite type over $R$. By $\rad R = 0$ and Lemma~\reff{lem:whenRadIsZero}, $R=K$, hence all prime ideals of $R$ are maximal. 
+    Assume \itememph{b}, we want to show \itememph{b} $\Rightarrow$ \itememph{d}. Let $R\morphism[\alpha]A$ be an $R$-algebra of finite type, $\mm\in \mSpec A$, we have to show $\alpha^{-1}(\mm) \in \mSpec R$. Replacing $A$ by $A/\mm$, we may assume $A$ to be a field. Replacing $R$ by $R/\pp$ with $\pp = \alpha^{-1}(\mm)$ (this certainly is a prime ideal of $R$) we may assume $R$ to be a subring of that field. Then $A$ contains the field $K$ of quotients of $R$ over which it is of finite type. By the Nullstellensatz $A/K$ is a finite field extension, hence $A$ is a finitely generated $K$-module. By a theorem of Artin--Tate (cf. \cite[Proposition~1.4.2]{alg1}), $K$ is of finite type over $R$. By $\rad R = 0$ and Lemma~\reff{lem:whenRadIsZero}, $R=K$, hence all prime ideals of $R$ are maximal. 
     
     To show that \itememph{d} implies \itememph{a}, we upgrade Fact~\reff{fact:closedPointsDense} to Fact~\reff{fact:1++} (the proof of Fact~\reff{fact:closedPointsDense} essentially shows this).
     
@@ -3371,7 +3371,7 @@ Indeed, one has $(\Oo_{\SPEC \Aa})_{(x,\pp)} = (\Aa_x)_\pp \simeq (A_x)_\pp \sim
 \end{proof}
 
 \begin{defi}[Universally closed morphism]\lbl{def:univClosed}
-    A morphism $X\morphism Y$ is closed if $f(A)\subseteq Y$ is closed whenever $A$ is closed in $Y$. It is \defemph{universally closed} if all its base changes $\snake X = X\times_Y \snake Y \morphism \snake Y$ are closed.
+    A morphism $X\morphism Y$ is closed if $f(A)\subseteq Y$ is closed whenever $A$ is closed in $X$. It is \defemph{universally closed} if all its base changes $\snake X = X\times_Y \snake Y \morphism \snake Y$ are closed.
 \end{defi}
 \begin{rem}
     \begin{alphanumerate}
@@ -3423,7 +3423,7 @@ Note that the crucial point here is to be allowed to choose $U=f^{-1}(W)$, which
     For more about $\Proj$, see exercise sheet \#11.
 \end{example}
 \begin{example}
-    Let $R_0$ be any ring, $A$ an $R_0$-algebra and $R_k = A$ for $k>0$. Equip $R=\bigoplus_{k\geq 0}R_k$ with the obvious ring operations. That is, for $a\in R_i$ and $b\in R_j$ their product is $ab$ viewed as an element of $R_{i+j}$. Then $P\setminus V(\lambda) \simeq \Spec((R_\lambda)_0$ may be applied where $\lambda = 1\in A$ viewed in degree $1$ (i.e.\ multiplication by $\lambda$ is a ``right shift''). As $V(\lambda)=\emptyset$ (since $(\lambda)=R_+$), this shows $\Proj(R)\simeq \Spec A$ as a $\Spec R_0$-prescheme. In particular, $\Proj(R)\morphism \Spec R_0$ may easily fail to be closed.
+    Let $R_0$ be any ring, $A$ an $R_0$-algebra and $R_k = A$ for $k>0$. Equip $R=\bigoplus_{k\geq 0}R_k$ with the obvious ring operations. That is, for $a\in R_i$ and $b\in R_j$ their product is $ab$ viewed as an element of $R_{i+j}$. Then $P\setminus V(\lambda) \simeq \Spec(R_\lambda)_0$ may be applied where $\lambda = 1\in A$ viewed in degree $1$ (i.e.\ multiplication by $\lambda$ is a ``right shift''). As $V(\lambda)=\emptyset$ (since $(\lambda)=R_+$), this shows $\Proj(R)\simeq \Spec A$ as a $\Spec R_0$-prescheme. In particular, $\Proj(R)\morphism \Spec R_0$ may easily fail to be closed.
 \end{example}
 If we assume that $R_1$ is a finitely generated $R_0$-module and $R_+$ generated by $R_1$ as an ideal (or equivalently $R$ by $R_1$ as $R_0$-algebra), then $R_k$ is also finitely generated over $R_0$ and the sequence of ideals 
 \begin{align*}
@@ -3456,7 +3456,7 @@ is ascending. Let $I_\infty = \bigcup_{k=1}^\infty I_k$.
     We have seen that its image is closed. The same holds for the image of $V(I) \simeq \Proj(R/I)$ in $\Spec (R_0/I_0)$ for any homogeneous ideal $I\subseteq R$ and $\Spec (R_0/I_0)\monomorphism \Spec R_0$ is a closed immersion.
 \end{proof}
 \begin{rem}
-    In fact, it is sufficient to assume $R_+$ to be finitely generated. Indeed, in this case $R$ is an $R_0$-algebra of finite type (e.g.\ by taking the homogeneous components of $R$-generators of the ideal $R_+$) and $R_k$ is a finitely generated $R_0$-module for all $k$, which is all we ever needed finitely-generatedness for.
+    In fact, it is sufficient to assume $R_+$ to be finitely generated. Indeed, in this case $R$ is an $R_0$-algebra of finite type (e.g.\ by taking the homogeneous components of $R$-generators of the ideal $R_+$) and $R_k$ is a finitely generated $R_0$-module for all $k$, which is all we ever needed finitely generatedness for.
 \end{rem}
 \begin{rem}\lbl{rem:universallyClosedAffineSuffices}
     Closedness of a morphism $X\morphism[f] Y$ being base-local, universal closedness already follows when all base changes of $f$ by $\Spec A \morphism Y$ are closed.
@@ -3606,7 +3606,7 @@ A category is called \emph{small} if its class of objects is a set.
   \begin{rem*}
   	\begin{alphanumerate}
   		\item 
-  		If $\Aa\morphism[F] \operatorname{Set}$ is a faithful functor, then any morphism $f$ such that $Ff$ is injective (respectively surjective) then $f$ is a monomorphism (respectively epismorphism). 
+  		If $\Aa\morphism[F] \operatorname{Set}$ is a faithful functor, then any morphism $f$ such that $Ff$ is injective (respectively surjective) then $f$ is a monomorphism (respectively epimorphism). 
   		\item
   		In the categories of sets or $R$-modules, $f$ is a monomorphism (epimorphism) iff $f$ is injective (surjective).
   		\item
@@ -3761,7 +3761,7 @@ A category is called \emph{small} if its class of objects is a set.
   Putting $F= \Cov_N$ respectively $F=\Con_N$ we obtain the above special cases.
   
   \section{Products and (co-)equalizers}
-  Our goal is to formulate a notion of \emph{sheaf} that allows to define sheafs for arbitrary target categories. Recall that the sheaf axiom (\hyperref[sheafAxiom]{this one}) requires
+  Our goal is to formulate a notion of \emph{sheaf} that allows to define sheaves for arbitrary target categories. Recall that the sheaf axiom (\hyperref[sheafAxiom]{this one}) requires
   \begin{align}\lbl{eq:sheafAxiom}
   	\Gg(U)\longrightarrow\left\{(g_i)_{i\in I}\in\prod_{i\in I}\Gg(U_i)\st g_i|_{U_{i,j}}=g_j|_{U_{i,j}}\ \forall i,j\in I\right\}\tag{$*$}
   \end{align}
@@ -3770,7 +3770,7 @@ A category is called \emph{small} if its class of objects is a set.
   \begin{defi}[Products]
   	A \defemph{product} of objects $(A_i)_{i\in I}$ of $\Aa$ is an object $\prod_{i\in I}A_i$ together with morphisms $\prod_{i\in I}A_i\morphism[\pi_i]A_i$ for each $i\in I$ such that the following \emph{universal property} holds:
   	\begin{quote}
-  		If $T\in\Ob(\Aa)$ comes with morphisms $T\morphism[\tau_i]A_i$ for each $i\in I$, then there is a unique morhism $T\morphism[\exists!\ f]\prod_{i\in I}A_i$ such that $\tau_i=\pi_i\circ f$.
+  		If $T\in\Ob(\Aa)$ comes with morphisms $T\morphism[\tau_i]A_i$ for each $i\in I$, then there is a unique morphism $T\morphism[\exists!\ f]\prod_{i\in I}A_i$ such that $\tau_i=\pi_i\circ f$.
   	\end{quote}
   	In other words, $\prod_{i\in I}A_i=\limit[i\in I]{A_i}$ is the \emph{limiting cone} over the trivial diagram consisting only of the $A_i$ without any arrows.
   \end{defi}
@@ -4032,7 +4032,7 @@ A category is called \emph{small} if its class of objects is a set.
 %\begin{lem}[Eakin-Nagata]\lbl{lem:eakinNagata}
 %    Let $A\subseteq B$ be a subring of a Noetherian ring $B$ such that $B$ is a finitely generated $A$-module. Then $A$ is also Noetherian.
 %\end{lem}
-%\begin{lem}[Artin-Tate]\lbl{lem:artinTate}
+%\begin{lem}[Artin--Tate]\lbl{lem:artinTate}
 %    Let $R$ be a Noetherian ring, $B$ an $R$-algebra of finite type and $A\subseteq B$ an $R$-subalgebra such that $B$ is finitely generated as an $A$-module. Then $A$ is of finite type over $R$.
 %\end{lem}
 
