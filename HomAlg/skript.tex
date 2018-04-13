@@ -1,0 +1,144 @@
+\documentclass[a4paper,parskip=half,numbers=enddot, DIV=12]{scrreprt}
+\usepackage[utf8]{inputenc}
+
+\usepackage{../header}
+\usepackage{../frankenumbering}
+\usepackage{../shortcuts}
+
+\usepackage{csquotes}
+%\usepackage{tikz-cd}%I cannot draw diagrams without it - Felix. %well, I can - Ferdinand
+\usepackage[backend=biber,style=numeric,sorting=none]{biblatex}
+\setcounter{biburlnumpenalty}{7000}
+\setcounter{biburllcpenalty}{7000}
+\setcounter{biburlucpenalty}{8000}
+\addbibresource{../literatur.bib}
+
+% Title Page
+\title{Homological Methods in Commutative Algebra}
+\author{Ferdinand Wagner}
+\date{Sommersemester 2018}
+
+\displaywidowpenalty=8000
+%\postdisplaypenalty=8000
+\widowpenalty=8000
+\clubpenalty=8000
+
+\begin{document}
+\pagenumbering{Alph}
+\maketitle
+\pagenumbering{roman}
+
+\thispagestyle{plain}
+This text consists of notes on the lecture Homological Methods in Commutative Algebra, taught at the University of Bonn by Professor Jens Franke in the summer term (Sommersemester) 2018. 
+
+Please report bugs, typos etc. through the \emph{Issues} feature of github.
+
+\tableofcontents
+
+\addchap{Introduction}
+\pagenumbering{arabic}
+
+Professor Franke started the lecture giving an idea of what the $\Tor$ and $\Ext$ functors do. Let $R$ be a commutative ring with $1$. For an exact sequence of $R$-modules
+\begin{align*}
+	0\morphism M'\morphism M\morphism M''\morphism 0
+\end{align*}
+and $T$ another $R$-module, the sequence 
+\begin{align}\lbl{eq:TensorSequence}
+	M'\otimes_RT\morphism M\otimes_RT\morphism M''\otimes_RT\morphism 0
+\end{align}
+is exact but usually can't be extended by $0$ on the left end. The same is true for
+\begin{align}\lbl{eq:HomSequence}
+	0\morphism\Hom_R(T,M')\morphism\Hom_R(T,M)\morphism\Hom_R(T,M'')
+\end{align}
+and
+\begin{align}\lbl{eq:HomSequence2}
+	0\morphism\Hom_R(M'',T)\morphism\Hom_R(M,T)\morphism\Hom_R(M',T)\;,
+\end{align}
+but again, they can't be extended by $0$ on the right in general.
+\begin{example*}
+	Take $R=\IZ$ and consider the exact sequence $0\morphism\IZ\morphism[\cdot2]\IZ\morphism\IZ/2\IZ\morphism0$. 
+	\begin{alphanumerate}
+		\item Let $T=\IZ/2\IZ$ in \eqreff{eq:TensorSequence}. Then $\IZ\otimes_\IZ\IZ/2\IZ\simeq\IZ/2\IZ$ and $\IZ/2\IZ\morphism[\cdot 2]\IZ/2\IZ$ is the zero morphism, showing that injectivity on the left end fails in \eqreff{eq:TensorSequence}.
+		\item Let $T=\IZ/2\IZ$ in \eqreff{eq:HomSequence}. We claim that surjectivity fails on the right end. Indeed, if it was surjective, then $\id_{\IZ/2\IZ}\in\Hom_\IZ(\IZ/2\IZ,\IZ/2\IZ)$ would have to have a lift
+		\begin{diagram*}
+			\node[ob] (Z2) at (0,0) {$\IZ/2\IZ$};			
+			\node[ob] (Z22) at (1.75,0) {$\IZ/2\IZ$};
+			\node[ob] (Z) at (1.75,1.5) {$\IZ$};
+			\draw[transform canvas={yshift=1pt}] (Z2) -- (Z22);
+			\draw[transform canvas={yshift=-1pt}] (Z2) -- (Z22);
+			\draw[->>] (Z) -- (Z22);
+			\draw[->, dashed] (Z2) -- (Z);
+		\end{diagram*}
+		which it hasn't as $\IZ$ is $2$-torsion free and thus every morphism $\IZ/2\IZ\morphism\IZ$ must be $0$.
+		\item Let $T=\IZ$ in \eqreff{eq:HomSequence2}. We claim that that surjectivity fails on the right end, or more specifically, that $\id_{\IZ}\in\Hom_\IZ(\IZ,\IZ)$ has no preimage. Indeed, if $f\in\Hom_\IZ(\IZ,\IZ)$ is a preimage of $\id_\IZ$, i.e. the composition $\IZ\morphism[\cdot2]\IZ\morphism[f]\IZ$ equals $\id_\IZ$, then $f$ must be given by $f(n)=\frac{n}{2}$ on $2\IZ$, but this can't be extended to all of $\IZ$, contradiction!
+	\end{alphanumerate}
+\end{example*}
+To handle this deficiency, one constructs \emph{derived functors} $\Tor$ and $\Ext$, which give rise to long exact sequences
+\begin{multline*}
+	\ldots\morphism\Tor_2^R(M'',T)\morphism \Tor_1^R(M',T)\morphism \Tor_1^R(M,T)\morphism \Tor_1^R(M'',T)\\
+	\morphism M'\otimes_RT\morphism M\otimes_RT\morphism M''\otimes_RT\morphism 0\;,
+\end{multline*}
+as well as
+\begin{multline*}
+	0\morphism\Hom_R(T,M')\morphism\Hom_R(T,M)\morphism\Hom_R(T,M'')\\
+	\morphism\Ext_R^1(T,M')\morphism\Ext_R^1(T,M)\morphism\Ext_R^1(T,M'')\morphism\Ext_R^2(T,M')\morphism\ldots
+\end{multline*}
+and
+\begin{multline*}
+0\morphism\Hom_R(M'',T)\morphism\Hom_R(M,T)\morphism\Hom_R(M',T)\\
+\morphism\Ext_R^1(M'',T)\morphism\Ext_R^1(M,T)\morphism\Ext_R^1(M',T)\morphism\Ext_R^2(M'',T)\morphism\ldots\;.
+\end{multline*}
+extending the open ends of \eqreff{eq:TensorSequence}, \eqreff{eq:HomSequence}, and \eqreff{eq:HomSequence2} respectively.
+
+A highlight of this lecture will be \emph{Serre's characterization of regularity}.
+\begin{thm*}
+	For a  Noetherian local ring $R$ with maximal ideal $\mm$ and residue field $k$, the following are equivalent.
+	\begin{alphanumerate}
+		\item $\dim_k\mm/\mm^2=\dim R$ (i.e., $R$ is regular).
+		\item There is some vanishing bound for $\Tor_*^R(-,-)$.
+		\item \ldots and $\dim R$ is such a vanishing bound.
+		\item There is some vanishing bound for $\Ext_R^*(-,-)$.
+		\item \ldots and $\dim R$ is again such a vanishing bound.
+	\end{alphanumerate}
+\end{thm*}
+From this, one can deduce the following
+\begin{cor*}
+	If $R$ is a regular Noetherian local ring and $\pp\in\Spec R$, then $R_\pp$ is regular as well.
+\end{cor*}
+
+We will also introduce the notion of \emph{Cohen--Macaulay rings} and prove that they are \emph{universally catenary} (which is quite a generalization of what we did in Algebra I, cf. \cite[Theorem~10]{alg1}).
+\begin{thm*}
+	If $R$ is a regular Noetherian local ring or, more generally, a Cohen--Macaulay ring, then it is \defemph{universally catenary}: If $A$ is an $R$-algebra of finite type and $X\subseteq Y\subseteq Z$ are irreducible closed subsets of $\Spec A$, then
+	\begin{align*}
+		\codim(X,Y)+\codim(Y,Z)=\codim(X,Z)\;.
+	\end{align*}
+\end{thm*}
+
+\chapter{The $\Tor$ and $\Ext$ functors}
+From now on, unless otherwise stated, our rings are commutative with $1$.
+\section{Injective and projective modules}
+\begin{prop}[Baer]\lbl{prop:InjectiveModules}
+	For an $R$-module $N$, the following are equivalent.
+	\begin{alphanumerate}
+		\item The functor $\Hom_R(-,N)$ is exact.
+		\item For any embedding $M'\monomorphism M$ of $R$-modules, $\Hom_R(M,N)\morphism\Hom_R(M',N)$ is surjective.
+		\item Property \itememph{b} holds for $R=M$. In other words, if $I\subseteq R$ is any ideal, then any morphism $I\morphism N$ of $R$-modules extends to a morphism $R\morphism N$.
+	\end{alphanumerate}
+	\begin{rem*}
+		\begin{alphanumerate}
+			\item Since there is a bijection
+			\begin{align*}
+				\Hom_R(R,M)&\isomorphism M\\
+				\left(r\mapsto r\cdot m\right)&\longmapsfrom m\\
+				\left(R\morphism[\phi]M\right)&\longmapsto \phi(1)\;,
+			\end{align*}
+			Proposition~\reff{prop:InjectiveModules}\itememph{c} can be reformulated as that any morphism $I\morphism N$ for $I\subseteq R$ an ideal has the form $i\mapsto i\cdot m$ for some $m\in M$.
+			\item Note that Proposition~\reff{prop:InjectiveModules}\itememph{c} is trivial when $I=0$.
+			\item When $R=\IZ$, every ideal $I\subseteq \IZ$ has the form $n\IZ$ for some $n\in\IZ$ and a morphism $n\IZ\morphism[\phi]N$ is uniquely determined by $\phi(n)$. Thus, an extension $\hat\phi$ of $\phi$ to $\IZ$ exists iff there is an element $\nu\in N$ such that $n\cdot\nu=\phi(n)$ (in that case, put $\hat\phi(1)=\nu$). Hence, Proposition~\reff{prop:InjectiveModules}\itememph{c}  amounts to whether the abelian group $N$ is \emph{divisible}, that is, whether $N\morphism[\cdot n]N$ is surjective for all $n\in\IZ$.
+		\end{alphanumerate}
+	\end{rem*}
+\end{prop}
+
+\printbibliography
+
+\end{document}          
