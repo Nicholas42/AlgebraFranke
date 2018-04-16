@@ -71,10 +71,10 @@ of sheaves of abelian groups. In general, taking global section doesn't preserve
 	\draw[->] (CXx) -- (H0CXx) node[pos=0.5, above=-0.25ex, sloped] {$\sim$};
 	\draw[->] (H1CX) -- (dots);
 \end{diagram*}
-in which the $H^k(X,\underline{\IZ}_X)$, $H^k(X,\Cc_X)$, and $H^k(X,\Cc_X^\times)$ are \emph{sheaf cohomology groups}. There is the more general notion of \emph{derived functors} (Grothendieck, Tohoku paper), but this won't appear in the lecture.
+in which the $H^k(X,\underline{\IZ}_X)$, $H^k(X,\Cc_X)$, and $H^k(X,\Cc_X^\times)$ are \emph{sheaf cohomology groups}. There is the more general notion of \emph{derived functors} (Grothendieck, T\^{o}hoku paper), but this won't appear in the lecture.
 
 Background in homological algebra is not required safe for cohomology groups of cochain complexes, the long exact cohomology sequence and the following famous lemma.
-\begin{lem}[Five lemma] Given a diagram
+\begin{lem*}[Five lemma] Given a diagram
 	\begin{diagram*}
 		\node[ob] (A) at (0,1.5) {$A$};
 		\node[ob] (B) at (1.5,1.5) {$B$};
@@ -102,7 +102,7 @@ Background in homological algebra is not required safe for cohomology groups of 
 		\draw[->] (E) -- (E') node[pos=0.5, left] {$\epsilon$};
 	\end{diagram*}
 	of (abelian) groups/$R$-modules/etc.\ with exact rows, in which $\alpha$, $\beta$, $\delta$, and $\epsilon$ are isomorphisms, then $\gamma$ is an isomorphism as well.
-\end{lem}
+\end{lem*}
 \begin{proof}
 	Easy diagram chase.
 \end{proof}
@@ -227,7 +227,7 @@ Background in homological algebra is not required safe for cohomology groups of 
 	\begin{align*}
 		\ker\Big(A\morphism[\alpha]B\Big)=\Eq\Big(A\doublemorphism[\alpha][0]B\Big)\quad\text{and}\quad\coker\Big(A\morphism[\alpha]B\Big)=\Coeq\Big(A\doublemorphism[\alpha][0]B\Big)\;. 
 	\end{align*}
-	For abelian categories, the existence of kernels and cokernels is required, in addition to additivity. Equivalent conditions are the existence of equalizers and coequalizers, fibre products and dual fibre products or finite limits and colimits as
+	For abelian categories, the existence of kernels and cokernels is required, in addition to additivity. Equivalent conditions are the existence of equalizers and coequalizers, fibre products and dual fibre products, or the existence of finite limits and colimits as
 	\begin{align*}
 		\Eq\Big(A\doublemorphism[\alpha][\beta]B\Big)=\ker\Big(A\xrightarrow{\alpha-\beta}B\Big)\quad\text{and}\quad \Coeq\Big(A\doublemorphism[\alpha][\beta]B\Big)=\coker\Big(A\xrightarrow{\alpha-\beta}B\Big)
 	\end{align*}
@@ -256,7 +256,7 @@ Background in homological algebra is not required safe for cohomology groups of 
 			\Hom_\Aa(B,T)&\isomorphism\left\{f\in\Hom_\Aa(A,T)\st 
 			\begin{array}{c}
 				f\alpha =f\beta\text{ if }S\doublemorphism[\alpha][\beta]A\text{ is any pair of}\\
-				\text{morphisms such that}p\alpha =p\beta 
+				\text{morphisms such that }p\alpha =p\beta 
 			\end{array}
 			\right\}\\
 			t\in\Hom_\Aa(B,T) &\longmapsto f=tp\;.
@@ -266,22 +266,99 @@ Background in homological algebra is not required safe for cohomology groups of 
 		\item (In additive categories with kernels and cokernels) $p$ is the cokernel of its kernel.
 		\item $B^\op\morphism[p^\op]A^\op$ is an effective monomorphism in the dual category $\Aa^\op$.
 	\end{alphanumerate}
-	In any category, a morphism which is mono and effectively epi (or epi and effectively mono) is an isomorphism, but there are examples of morphisms which are simultaneously mono and epi but not an isomorphism (e.q. $\IZ\monomorphism\IQ$ in the category of rings). This needs to be ruled out by a definition, and that's what is happening now! 
+	In any category, a morphism which is mono and effectively epi (or epi and effectively mono) is an isomorphism, but there are examples of morphisms which are simultaneously mono and epi but not an isomorphism (e.g.\ $\IZ\monomorphism\IQ$ in the category of rings). This needs to be ruled out by a definition, and that's what is happening now! 
 \end{rem}
 \begin{defi}
-	A category $\Aa$ is \defemph{abelian}, if it is additive, has kernels and cokernels and such that every monomorphism is effectively mono, every epimorphism is effectively epi and (thus) any morphism which is both a mono- and an epimorphism is an isomorphism.
+	A category $\Aa$ is \defemph{abelian}, if it is additive, has kernels and cokernels and such that every monomorphism is effectively mono, every epimorphism is effectively epi, and (thus) any morphism which is both a mono- and an epimorphism is an isomorphism.
 \end{defi}
 The category of modules (over a ring $R$) or sheaves of modules are abelian categories, but not Banach spaces or projective modules over most rings.
 \begin{example}
 	We show that the category $\Rr\cat{-Mod}$ of sheaves of modules (over a sheaf of rings $\Rr$ on some topological space $X$) is abelian.
 	
-	First note that the zero sheaf $0$ is a common initial and final object. A direct sum of $\Aa,\Bb\in\Ob(\Rr\cat{-Mod})$ is given by
+	\begin{proof}
+	\emph{Step 1.} We verify that $\Rr\cat{-Mod}$ is additive. First note that the zero sheaf $0$ is a common initial and final object. A direct sum of $\Mm,\Nn\in\Ob(\Rr\cat{-Mod})$ is given by
 	\begin{align*}
-		(\Aa\oplus\Bb)(U)=\left\{(a,b)\st a\in\Aa(U), b\in\Bb(U)\right\}\quad\text{for all }U\subseteq X\text{ open}
+		(\Mm\oplus\Nn)(U)=\left\{(m,n)\st m\in\Mm(U), n\in\Nn(U)\right\}\quad\text{for all }U\subseteq X\text{ open}
 	\end{align*}
-	(it's clear that this is a presheaf and it inherits the sheaf axiom from $\Aa$ and $\Bb$) with component-wise module operations and with $\Aa\lmorphism[p]\Aa\oplus\Bb\morphism[q]\Bb$ and $\Aa\morphism[i]\Aa\oplus\Bb\lmorphism[j]\Bb$ given by $p(a,b)=a$, $q(a,b)=b$, $i(a)=(a,0)$, and $j(b)=(0,b)$ for $U\subseteq X$ open and $a\in\Aa(U)$, $b\in\Bb(U)$.
+	(it's clear that this is a presheaf and it inherits the sheaf axiom from $\Aa$ and $\Nn$) with component-wise module operations and with $\Mm\lmorphism[p]\Mm\oplus\Nn\morphism[q]\Nn$ and $\Mm\morphism[i]\Mm\oplus\Nn\lmorphism[j]\Nn$ given by $p(m,n)=m$, $q(m,n)=n$, $i(m)=(m,0)$, and $j(n)=(0,n)$ on open subsets $U\subseteq X$ and $m\in\Mm(U)$, $n\in\Nn(U)$.
 	
-	If $\Aa\morphism[\alpha]\Tt\lmorphism[\beta]\Bb$ are given, $\Aa\oplus\Bb\morphism[\alpha\amalg\beta]\Tt$ sending $(a,b)\in(\Aa\oplus\Bb)(U)$ to $\alpha(a)+\beta(b)$ verifies the universal property of the coproduct for $\Aa\oplus\Bb$. Similarly, $\Tt\morphism[\alpha\times\beta]\Aa\oplus\Bb$ given by $(\alpha\times\beta)(t)=(\alpha(t),\beta(t))$ for $t\in\Tt(U)$ confirms the universal property of the product for $\Aa\oplus\Bb$. Also, $c=\id_{\Aa\oplus\Bb}$ is the unique endomorphism $c$ of that object such that $pci=\id_\Aa$, $qcj=\id_\Bb$, $pcj=0$, and $qci=0$. Thus, $\Rr\cat{-Mod}$ is additive (the group laws being easily verified).
+	If $\Mm\morphism[\mu]\Tt\lmorphism[\nu]\Nn$ are given, $\Mm\oplus\Nn\morphism[\mu\amalg\nu]\Tt$ sending $(m,n)\in(\Mm\oplus\Nn)(U)$ to $\mu(m)+\nu(n)$ verifies the universal property of the coproduct for $\Mm\oplus\Nn$. Similarly, $\Tt\morphism[\mu\times\nu]\Mm\oplus\Nn$ given by $(\mu\times\nu)(t)=(\mu(t),\nu(t))$ for $t\in\Tt(U)$ confirms the universal property of the product for $\Mm\oplus\Nn$. Also, $c=\id_{\Mm\oplus\Nn}$ is the unique endomorphism $c$ of that object such that $pci=\id_\Mm$, $qcj=\id_\Nn$, $pcj=0$, and $qci=0$. Thus, $\Rr\cat{-Mod}$ is additive (the group laws being easily verified).
+	
+	\emph{Step 2.} Now about \emph{kernels}. Let $\Mm\morphism[f]\Nn$ be a morphism of sheaves of $\Rr$-modules and $\Kk$ be the sheaf given by 
+	\begin{align*}
+		\Kk(U)=\ker\left(\Mm\morphism[f]\Nn\right)(U)\coloneqq\ker\left(\Mm(U)\morphism[f]\Nn(U)\right)
+	\end{align*}
+	(you should convince yourself that this indeed satisfies the sheaf axiom). Then the inclusion $\Kk\morphism[\kappa]\Mm$ is a monomorphism as $\Kk(U)\monomorphism\Mm(U)$ is injective for every open subset $U\subseteq X$. If $\Tt\morphism[\tau]\Mm$ is a morphism such that $f\tau=0$, then for every $t\in\Tt(U)$ we have $f(\tau(t))=0$, hence $\snake{\tau}(t)\coloneqq\tau(t)\in\ker\left(\Mm(U)\morphism[f]\Nn(U)\right)=\Kk(U)$ and $\tau$ factors over 
+	\begin{diagram*}
+		\node[ob](R) at (0,1.25) {$\Tt$};
+		\node[ob](A) at (2.5,1.25) {$\Mm$};
+		\node[ob](RS) at (1.25,0) {$\Kk$};
+		\scriptsize
+		\draw[->] (R) -- (A) node[pos=0.5, above] {$\tau$};
+		\draw[->, dashed] (R) -- (RS) node[pos=0.5, below left] {$\exists!\ \snake\tau$};
+		\draw[right hook->] (RS) -- (A) node[pos=0.5, below right] {$\kappa$};
+	\end{diagram*}
+	This proves that $\Kk$ is indeed a kernel of $f$ in the category $\Rr\cat{-Mod}$.
+	
+	It is a consequence of the exactness of the $\colimit$ functor, that 
+	\begin{align*}
+		\Kk_x\simeq\ker\left(\Mm_x\morphism[f]\Nn_x\right)\;.
+	\end{align*}
+	
+	More generally, one may check that in any additive category (with kernels), a morphism $i$ is a monomorphism iff $\ker(i)=0$. Thus, in our example we have the equivalent conditions
+	\begin{alphanumerate}
+		\item $\Mm\morphism[f]\Nn$ is a monomorphism
+		\item $\Mm(U)\morphism[f]\Nn(U)$ is injective for all open subsets $U\subseteq X$
+		\item $\ker(f)=0$ (the zero sheaf)
+		\item $\Mm_x\morphism[f]\Nn_x$ is injective for all $x\in X$.
+	\end{alphanumerate}
+	
+	\emph{Step 3.} We construct cokernels, which won't be that straightforward (duh!), related to the fact that epimorphisms aren't that simple in categories of sheaves. If $f$ is such that $\Mm(U)\morphism[f]\Nn(U)$ is surjective for all open $U$, then $f$ is an epimorphism, but there are epimorphisms $f$ for which this fails. It follows from the fact that a sheaf $\Gg$ is canonically isomorphic to its sheafification $\Gg^\sh$ (cf. \cite[Proposition~1.2.1\itememph{d}]{alggeo1}) that a morphism between sheaves (of sets, groups, \ldots) is uniquely determined by the maps it induces on stalks. Thus, $\Gg\morphism\Hh$ is an epimorphism when $\Gg_x\morphism\Hh_x$ is an epimorphism in the respective target category , for all $x\in X$.
+	
+	Now for the cokernel construction. For a morphism $\Mm\morphism[f]\Nn$ of sheaves of $\Rr$-modules, we put
+	\begin{align*}
+		\coker(f)=\Cc\coloneqq\left(U\mapsto \coker\left(\Mm(U)\morphism[f]\Nn(U)\right)\right)^\sh
+	\end{align*}
+	Note that $\Cc_x\morphism\coker\left(\Mm_x\morphism[f]\Nn_x\right)$ sending the image of $\nu=(\nu_y)_{y\in U}\in\Cc(U)$ under $\Cc(U)\morphism\Cc_x$ to $\nu_x$ is an isomorphism. If $\nu_x=0$, by the coherence condition there is some $n\in\Nn(V)$ such that $\nu_y=\left(\text{image of }n\text{ in }\coker\left(\Mm_y\morphism[f]\Nn_y\right)\right)$ for all $y\in U\cap V$ and such that $x\in V$. Replacing $U$ by $U\cap V$ and $\nu$ by $\nu|_{U\cap V}$, we may assume that $U=V$. The image of $n$ in $\Nn_x$ is in the image of $\Mm_x\morphism[f]\Nn_x$ as its image in $\coker\left(\Mm_x\morphism[f]\Nn_x\right)$ is $\nu_x=0$. By the definition of stalks, it follows that there are an open neighbourhood $x\in V\subseteq U$ and $m\in\Mm(U)$ such that $n|_V=f(m)$. But then $\nu_y$ vanishes when $y\in V$, hence $\nu|_V=0$, showing that $\Cc_x\morphism\coker\left(\Mm_x\morphism[f]\Nn_x\right)$ is injective.
+	
+	If $\upsilon\in\coker\left(\Mm_x\morphism[f]\Nn_x\right)$ is the image of some $\xi\in\Nn_x$ which is the image of some $n\in\Nn(U)$ and $\upsilon$ is the image of
+	\begin{align*}
+		\left(\text{image of }n\text{ under }\Nn(U)\morphism\Nn_y\morphism\coker\left(\Mm_y\morphism[f]\Nn_y\right)\right)_{y\in U}\in\Cc(U)\;.
+	\end{align*}
+	Hence $\Cc_x\morphism\coker\left(\Mm_x\morphism[f]\Nn_x\right)$ is surjective.
+	
+	We have a morphism $\Nn\morphism\Cc$ sending $n\in \Nn(U)$ to
+	\begin{align*}
+		\left(\text{image of }n\text{ under }\Nn(U)\morphism\Nn_x\morphism\coker\left(\Mm_x\morphism[f]\Nn_x\right)\right)_{x\in U}\;.
+	\end{align*}
+	By the previous calculation $\Cc_x\simeq\coker\left(\Mm_x\morphism[f]\Nn_x\right)$, this morphism $\Nn\morphism\Cc$ induces surjections on stalks, hence is an epimorphism of sheaves. We show that the morphism $\Nn\morphism\Cc$ satisfies the universal property of the cokernel.
+	
+	Let $\Nn\morphism[\tau]\Tt$ be a morphism of sheaves of $\Rr$-modules such that $\tau f=0$. When $\nu=(\nu_x)_{x\in U}\in\Cc(U)\subseteq\prod_{x\in U}\coker\left(\Mm_x\morphism[f]\Nn_x\right)$ we define $\tau_1(\nu)\in\prod_{x\in U}\Tt_x$ by selecting $n\in\Nn_x$ whose image in $\coker\left(\Mm_x\morphism[f]\Nn_x\right)$ equals $\nu_x$, then put $\tau_1(\nu)_x=\tau(n)_x$ which is independent of the choice of $n$. It follows from the coherence condition for $\Cc$ that $\tau_1(\nu)\in\Tt^\sh(U)\subseteq\prod_{x\in U}\Tt_x$. Hence there is $\Cc\morphism[\tau_2]\Tt$ such that $\tau_1=\left(\Tt\isomorphism\Tt^\sh\right)\circ\tau_2$ and $\tau_2$ makes
+	\begin{diagram*}
+		\node[ob](R) at (0,1.25) {$\Nn$};
+		\node[ob](A) at (2.5,1.25) {$\Tt$};
+		\node[ob](RS) at (1.25,0) {$\Cc$};
+		\scriptsize
+		\draw[->] (R) -- (A) node[pos=0.5, above] {$\tau$};
+		\draw[->, dashed] (R) -- (RS) node[pos=0.5, below left] {$\exists!\ \tau_2$};
+		\draw[->] (RS) -- (A);
+	\end{diagram*}
+	commutative (uniqueness of $\tau_2$ is easy to see stalk-wise). It follows that $\Nn\morphism\Cc$ is ineed a cokernel of $f$.
+	
+	More generally, one may check that in any additive category (with cokernels) a morphism $f$ is an epimorphism if $\coker(f)=0$. By our previous construction of cokernels and the description of stalks, we have equivalent conditions
+	\begin{alphanumerate}
+		\item $\Mm\morphism[f]\Nn$ is an epimorphism of sheaves of $\Rr$-modules.
+		\item $\Mm_x\morphism[f]\Nn_x$ is surjective for all $x\in X$.
+		\item For every open $U\subseteq X$ and $n\in\Nn(U)$ there are an open covering $U=\bigcup_{\lambda\in\Lambda}U_\lambda$ and $m_\lambda\in\Mm(U_\lambda)$ such that $n|_{U_\lambda}=f(m_\lambda)$
+	\end{alphanumerate}
+	\ldots but \itememph{c} does \emph{not} imply the surjectivity of $\Mm(U)\morphism[f]\Nn(U)$, unless, e.g., $f$ is also a monomorphism.
+	
+	\emph{Step 4.} We verify the rest of the abelianness conditions. First, let $\Mm\morphism[f]\Nn$ be a mono- and epimorphism. Then it induces isomorphisms on stalks, hence is an isomorphism itself.
+	
+	Let $\Mm\morphism[i]\Nn$ be a monomorphism and $\Nn\morphism\Cc$ be its cokernel. Then $\ker\left(\Nn\morphism\Cc\right)_x=\ker\left(\Nn_x\morphism\Cc_x\right)=\ker\left(\Nn_x\morphism\coker\left(\Mm_x\morphism[i]\Nn_x\right)\right)\simeq\Mm_x$ as $\Mm_x\morphism[i]\Nn_x$ is injective. Hence $\Mm\morphism\ker\left(\Nn\morphism\Cc\right)$ induces isomorphisms on stalks and thus is an isomorphism itself. It follows that any monomorphism is an effective monomorphism.
+	
+	Similar arguments apply to epimorphisms.	
+	\end{proof}
 \end{example}
 
 \printbibliography
