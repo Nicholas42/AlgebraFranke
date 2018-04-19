@@ -1973,7 +1973,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
     \end{align*}
     proving that $V$ can be covered by elements of the above set.
 \end{proof}
-\begin{defi}[Quasi-compact]\lbl{def:quasicompact}
+\begin{defi}[Quasi-compact, quasi-separated]\lbl{def:quasicompact}
     A prescheme $X$ is called \defemph{quasi-compact} if it satisfies the following equivalent criteria:
     \begin{alphanumerate}
         \item 
@@ -2084,7 +2084,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
 \begin{rem}
     \begin{alphanumerate}
         \item \lbl{rem:qcqs}
-            The equivalence of the three conditions in \itememph{b} can be seen via \itememph{\beta} $\Rightarrow$ \itememph{\alpha} $\Rightarrow$ \itememph{\gamma} $\Rightarrow$ \itememph{\beta} as in the proof of Definition~\reff{def:quasicompact} (which actually is a special case of this). 
+            The equivalence of the three conditions in Definition~\reff{def:qcqs}\itememph{b} can be seen via \itememph{\beta} $\Rightarrow$ \itememph{\alpha} $\Rightarrow$ \itememph{\gamma} $\Rightarrow$ \itememph{\beta} as in the proof of Definition~\reff{def:quasicompact} (which actually is a special case of this). 
         \item 
             $X$ is quasi-separated iff for any quasi-compact open subset $U$ the embedding $U\monomorphism X$ is quasi-compact (preimages in this case are just intersections with $U$ and we obtain Definition~\reff{def:quasicompact}\itememph{e}).
         \item 
@@ -2494,7 +2494,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
     \end{alphanumerate}
 \end{fact}
 \begin{proof}
-	The equivalence of \itememph{a}, \itememph{b}, and \itememph{c} was proved in Definition~\reff{def:qcqs}\itememph{b}. It is easy to see that \itememph{b} implies \itememph{d}. Assuming \itememph{d}, if $U\subseteq Y$ is affine and $f^{-1}(U)$ is quasi-compact, then for $\lambda\in \Oo_Y(U)$, we have $f^{-1}(U\setminus V(\lambda)) = f^{-1}(U) \setminus  V(f^*\lambda)$ being quasi-compact by Fact~\reff{fact:complementClosedQC}. By Fact~\reff{fact:affineSchemesTopologyBase}\itememph{b}, such $U\setminus V(\lambda)$ form a topology base.
+	The equivalence of \itememph{a}, \itememph{b}, and \itememph{c} was proved in Remark~\reff{rem:qcqs}\itememph{a}. It is easy to see that \itememph{b} implies \itememph{d}. Assuming \itememph{d}, if $U\subseteq Y$ is affine and $f^{-1}(U)$ is quasi-compact, then for $\lambda\in \Oo_Y(U)$, we have $f^{-1}(U\setminus V(\lambda)) = f^{-1}(U) \setminus  V(f^*\lambda)$ being quasi-compact by Fact~\reff{fact:complementClosedQC}. By Fact~\reff{fact:affineSchemesTopologyBase}\itememph{b}, such $U\setminus V(\lambda)$ form a topology base.
 \end{proof}
 \begin{defi}[Quasi-compact morphism] \lbl{def:qcmorphism}
     A morphism with these properties is called \defemph{quasicompact}.
@@ -2844,7 +2844,7 @@ We derive this from two other lemmas, the first of which is very useful in gener
     \begin{align*}
         x = \sum_{\beta \in \IN_0^m} \rho_{i,\beta} \alpha_{i,1}^{\beta_1}\cdot\ldots\cdot \alpha_{i,m}^{\beta_m}\quad\text{in }A_{f_i}\text{,}
     \end{align*}
-    where $\rho_{i,\beta}\in R$ and equal to zero for all but finitely many $\beta$. When $k\geq \ell\cdot \max\left\{|\beta|\st \rho_{i,\beta}\neq 0\right\}$ (where we set $|\beta|=\beta_1+\ldots+\beta_m$), we have
+    where $\rho_{i,\beta}\in R$ and equal to zero for all but finitely many $\beta$. When $k\geq \ell\cdot \max\left\{|\beta|\st \rho_{i,\beta}\neq 0\right\}$ (where we put $|\beta|=\beta_1+\ldots+\beta_m$), we have
     \begin{align*}
         f_i^kx = \sum_{\beta \in \IN_0^m} \rho_{i,\beta}f_i^{k-\ell\cdot|\beta|} a_{i,1}^{\beta_1}\cdot\ldots\cdot a_{i,m}^{\beta_m}\text{in }A_{f_i}
     \end{align*}
