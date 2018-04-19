@@ -124,7 +124,122 @@ Background in homological algebra is not required safe for cohomology groups of 
 \begin{proof}
 	This was proved in \cite[Proposition~1.5.4]{alggeo1}.
 \end{proof}
+\begin{rem*}
+	Note that open subsets of the form $\Spec(R_f)\simeq \Spec R\setminus V(f)$ form a topology base on $\Spec R$ and that the \emph{saturation} of $\{1,f,f^2,\ldots\}$ (i.e.\ the largest multiplicative subset of $R$ which still gives the same localization) depends only on $\Spec R\setminus V(f)$. Hence, for any $R$-module $M$, the localization $M_f$ depends (up to canonical isomorphism) only on $\Spec R\setminus V(f)$ and $M$. One defines a sheaf of modules $\snake{M}$ on $\Spec R$ as the sheafification of $\Spec (R_f)\mapsto M_f$. Then
+	\begin{align*}
+		\snake{M}(U)=\left\{(m_\pp)_{\pp\in U}\in\prod_{\pp\in U}M_\pp\st
+		\begin{array}{c}
+			\text{for every }\qq\in U\text{ there are }f\in R\setminus\qq\text{ and }\mu\in M_f\text{ such that}\\
+			m_\pp=\left(\text{image of }\mu\text{ under }M_f\morphism M_\pp\right)\text{ for all }\pp\in\Spec (R_f)
+		\end{array}
+		\right\}
+	\end{align*}
+\end{rem*}
+A sheaf of modules $\Mm$ on $\Spec R$ is called \defemph{quasi-coherent} if $\Mm\simeq \snake{M}$ for some $R$-module $M$.
 
+Recall that a prescheme is called \emph{quasi-compact} if the underlying topological space is quasi-compact and \emph{quasi-separated} if the intersection of any two quasi-compact open subsets is quasi-compact.
+
+For an $\Oo_X$-module $\Mm$, the following are equivalent:
+\begin{alphanumerate}
+	\item $X$ may be covered by affine open subsets $U$ such that $\Mm|_U$ is quasi-coherent in the above sense.
+	\item For any affine open $U\subseteq X$, $\Mm|_U$ is quasi-coherent.
+	\item For any quasi-compact and quasi-separated open $U\subseteq X$ and $f\in\Oo_X(U)$, the canonical morphism
+	\begin{align}\lbl{eq:qcIso}
+		\Mm(U)_f\morphism\Mm(U\setminus V(f))
+	\end{align}
+	(coming from the universal property of localization) is an isomorphism.
+	\item \eqreff{eq:qcIso} is an isomorphism when $U$ is quasi-compact and quasi-separated and injective when $U$ is only quasi-compact.
+	\item When $U\subseteq X$ is affine, the canonical morphism
+	\begin{align}\lbl{eq:qcIso2}
+		\Mm(U)_{\pp_x}\morphism\Mm_x
+	\end{align}
+	is an isomorphism for all $x\in U$, where $\pp_x=\left\{f\in\Oo_X(U)\st x\in V(f)\right\}$.
+\end{alphanumerate}
+An $\Oo_X$-module with this properties is called \defemph{quasi-coherent}. Recall the adjunction
+\begin{align}\lbl{eq:ROXAdjunction}
+	\Hom_{\Oo_{\Spec R}}(\snake{M}, \Nn)\isomorphism\Hom_R(M,\Nn(\Spec R))
+\end{align}
+(using $M\simeq \Mm(\Spec R)$. When \eqreff{eq:qcIso2} is an isomorphism (for $X=U=\Spec R$), it follows that the canonical mprhism $\snake{M}\morphism\Mm$ (with $M=\Mm(X)$) is an isomorphism on stalks, hence an isomorphism. This shows the equivalence of \itememph{e} with the other properties.
+
+
+When $X=\Spec R$, $\Aa=R\cat{-Mod}$, $\Bb=\Oo_X\cat{-Mod}$, $LM=\snake{M}$, $R\Mm=\Mm(X)$, then $L$ and $R$ are an adjoint pair of functors by \eqreff{eq:ROXAdjunction}. It follows that $L$ commutes with cokernels. In particular, the full subcategory $\cat{QCoh}(X)\subseteq\Oo_X\cat{-Mod}$ of quasi-coherent $\Oo_X$-modules is closed under taking cokernels and direct sums (note that $\Hom_{\Oo_X}(\snake{M},\snake{N})\simeq\Hom_R(M,N)$ by \eqreff{eq:ROXAdjunction}).
+\begin{rem*}
+	A morphism $X\morphism[f]Y$ of preschemes is \defemph{quasi-compact} if it satisfies the following equivalent conditions.
+	\begin{alphanumerate}
+		\item For quasi-compact open $U\subseteq Y$, $f^{-1}(U)$ is quasi-compact.
+		\item For affine open $U\subseteq Y$, $f^{-1}(U)$ is quasi-compact.
+		\item One can cover $Y$ by affine open $U$ such that $f^{-1}(U)$ is quasi-compact.
+	\end{alphanumerate}
+	It is called \defemph{quasi-separated} if it satisfies the following equivalent conditions.
+	\begin{alphanumerate}
+		\item For an open quasi-separated $U\subseteq Y$, $f^{-1}(U)$ is quasi-separated again.
+		\item For affine open subsets $U\subseteq Y$, $f^{-1}(U)$ is quasi-separated.
+		\item It is possible to cover $Y$ by affine open $U$ such that $f^{-1}(U)$ is quasi-separated.
+	\end{alphanumerate}
+\end{rem*}
+
+\begin{prop}
+	If $X\morphism[f]Y$ is quasi-compact and quasi-separated morphism of preschemes and $\Mm\in\Ob(\cat{QCoh}(X))$, then $f_*\Mm\in\Ob\left(\cat{QCoh}\right)$.
+\end{prop}
+
+\begin{prop}
+	\begin{alphanumerate}
+		\item The class $\cat{QCoh}(X)$ of quasi-coherent $\Oo_X$-modules on a prescheme $X$ is closed under taking kernels and cokernels of morphisms and under taking (finite) direct sums.
+		\item If $\Mm$ is a quasi-coherent $\Oo_X$-module and $U\subseteq X$ open, then $\Mm|_U\in\Ob\left(\cat{QCoh}(U)\right)$.
+	\end{alphanumerate}
+\end{prop}
+\begin{prop}
+	If $X$ is a prescheme, associating to (the isomorphism class of) a closed embedding $Y\morphism[i]X$ the sheaf of ideals $\Jj=\ker\Big(\Oo_X\morphism[i^*]i_*\Oo_X\Big)$ gives a bijection between the set of closed subpreschemes of $X$ and the quasi-coherent sheaves of ideals in $\Oo_X$.
+\end{prop}
+\begin{lem}
+	For a quasi-coherent $\Oo_X$-module $\Mm$ on a prescheme $X$, the following conditions are equivalent.
+	\begin{alphanumerate}
+		\item For any affine open $U\subseteq X$, $\Mm(U)$ is a finitely generated $\Oo_X(U)$-module.
+		\item It is possible to cover $X$ by affine open subsets $U\subseteq X$, for which $\Mm(U)$ is a finitely generated $\Oo_X(U)$-module.
+	\end{alphanumerate}
+\end{lem}
+We prove this by combining another two lemmas.
+\begin{lem}
+	Let $\Pp$ be a property of affine open subsets of a prescheme $X$ such that
+	\begin{alphanumerate}
+		\item[\itememph{\alpha}] If $U\subseteq X$ is affine and $f\in\Oo_X(U)$, then $\Pp(U)$ implies $\Pp(U\setminus V(f))$.
+		\item[\itememph{\beta}] If $U$ is affine and $f_1,\ldots,f_n\in\Oo_X(U)$ are such that $\bigcap_{i=1}^nV(f_i)=\emptyset$ and such that $\Pp(U\setminus V(f_i))$ holds for all $i=1,\ldots,n$, then $\Pp(U)$ holds.
+	\end{alphanumerate}
+	Then the following assertions about $X$ are equivalent.
+	\begin{alphanumerate}
+		\item If $U\subseteq X$ is affine open, $\Pp(U)$ holds.
+		\item $X$ may be covered by affine open $U$ for which $\Pp(U)$ holds.
+	\end{alphanumerate}
+\end{lem}
+\begin{lem}
+	\begin{alphanumerate}
+		\item If $M$ is a finitely generated $R$-module, then $M_f$ is a finitely generated $R_f$-module.
+		\item If $M$ is an $R$-module and $f_1,\ldots,f_n\in R$ such that $\bigcap_{i=1}^nV(f_i)=\emptyset$ in $\Spec R$ and such that $M_{f_i}$ is finitely generated over $R_{f_i}$, then $M$ is finitely generated over $R$.
+	\end{alphanumerate}
+\end{lem}
+\begin{proof}
+	Part \itememph{a} is trivial, as the images of $R$-generators of $M$ in $M_f$ generate it as an $R_f$-module.
+	
+	Now for part \itememph{b}. As $M_{f_i}$ is finitely generated over $R_{f_i}$, there are $k\in\IN$ and $m_{i,j}\in M$, $j=1,\ldots,N_i$ such that $m_{i,j}f^{-k}$ generate $M_{f_i}$ over $R_{f_i}$ (as there are only finitely many generators, we can choose a common exponent $k$ for all of them). Then also the $m_{i,j}$ generate $M_{f_i}$ since $f_i$ is a unit in $R_{f_i}$. We claim that the $\left\{m_{i,j}\st i=1,\ldots, n\text{ and }j=1,\ldots, N_i\right\}$ generate $M$ as an $R$-module.
+	
+	Let $m\in M$, then
+	\begin{align*}
+		m=\sum_{j=1}^{N_i}\frac{r_{i,j}}{f_i^\ell}m_{i,j}\quad\text{in }M_{f_i}\;,
+	\end{align*}
+	where $r_{i,j}\in R$ and $\ell\in\IN$ (again, we can choose a common exponent). Then there is some $\ell'\in \IN$ such that
+	\begin{align*}
+		f_i^{\ell+\ell'}m=\sum_{j=1}^{N_i}r_{i,j}f_i^{\ell'}m_{i,j}\quad\text{in }M\;.
+	\end{align*}
+	Replacing $\ell$ by $\ell+\ell'$ and $r_{i,j}$ by $f_i^{\ell'}r_{i,j}$ we may assume $\ell'=0$, i.e.
+	\begin{align*}
+		f_i^{\ell}m=\sum_{j=1}^{N_i}r_{i,j}m_{i,j}\quad\text{in }M\;.
+	\end{align*}
+	We now have $\bigcap_{i=1}^nV(f_i^\ell)=\bigcap_{i=1}^nV(f_i)=\emptyset$, hence the ideal generated by the $f_i^\ell$ is $R$ and we thus find $g_1,\ldots,g_n\in R$ such that $\sum_{i=1}^{n}f_i^\ell g_i=1$ in $R$. It follows that
+	\begin{align*}
+		m=\sum_{i=1}^nf_i^\ell g_im=\sum_{i=1}^{n}\sum_{j=1}^{N_i}r_{i,j}g_im_{i,j}
+	\end{align*}
+	is an element of the submodule generated by the $m_{i,j}$.
+\end{proof}
 
 \appendix
 \chapter{Appendix -- category theory corner}
@@ -470,7 +585,22 @@ For clarity (and to better distinguish between the proof and Professor Franke's 
 	
 	Similar arguments apply to epimorphisms.	
 \end{proof}
-
+Recall the definition of an adjoint pair of functors.
+\begin{defi}
+	Let $\Aa,\Bb$ be categories. A pair $\Aa\doublelrmorphism[L][R]\Bb$ of (covariant) functors is called \defemph{adjoint}, if there is a canonical bijection
+	\begin{align*}
+		\Hom_\Aa(X,RY)\isomorphism\Hom_\Bb(LX,Y)
+	\end{align*}
+	which is functorial in both $X\in\Ob(\Aa)$ and $Y\in\Ob(\Bb)$.
+\end{defi}
+\begin{rem*}
+	It can be easily seen that $L$ preserves colimits (in particular, coproducts and in particular again, initial objects) and $R$ preserves limits (in particular, products and in particular again, final objects). When $\Aa$ and $\Bb$ are additive, it follows that both $L$ and $R$ map $0$ to $0$ and are compatible with finite direct sums. Because of
+	\begin{align*}
+		\Hom_\Aa\left(T,R\left(\ker\Big(X\morphism[f]Y)\Big)\right)\right)&\simeq \Hom_\Bb\left(LT,\ker\Big(X\morphism[f]Y\Big)\right)\simeq\ker\left(\Hom_\Bb(LT,X)\morphism[f\circ]\Hom_\Bb(LT,Y)\right)\\
+		&\simeq\ker\left(\Hom_\Aa(T,RX)\morphism[Rf\circ]\Hom_\Aa(T,RY)\right)=\Hom_\Aa\left(T,\ker\Big(RX\morphism[Rf]RY\Big)\right)
+	\end{align*}
+	$R$ is compatible with kernels and $L$ is compatible with cokernels.
+\end{rem*}
 
 \printbibliography
 
