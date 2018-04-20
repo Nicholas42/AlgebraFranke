@@ -114,30 +114,107 @@ We will also introduce the notion of \emph{Cohen--Macaulay rings} and prove that
 	\end{align*}
 \end{thm*}
 
-\chapter{The $\Tor$ and $\Ext$ functors}
+\chapter{$\Tor$ and $\Ext$ of $R$-modules}
 From now on, unless otherwise stated, our rings are commutative with $1$.
-\section{Injective and projective modules}
-\begin{prop}[Baer]\lbl{prop:InjectiveModules}
+\section{Injective and projective modules and properties of $\Ext_R^*$}
+\begin{prop}[Baer's criterion]\lbl{prop:InjectiveModules}
 	For an $R$-module $N$, the following are equivalent.
 	\begin{alphanumerate}
 		\item The functor $\Hom_R(-,N)$ is exact.
 		\item For any embedding $M'\monomorphism M$ of $R$-modules, $\Hom_R(M,N)\morphism\Hom_R(M',N)$ is surjective.
 		\item Property \itememph{b} holds for $R=M$. In other words, if $I\subseteq R$ is any ideal, then any morphism $I\morphism N$ of $R$-modules extends to a morphism $R\morphism N$.
 	\end{alphanumerate}
-	\begin{rem*}
-		\begin{alphanumerate}
-			\item Since there is a bijection
-			\begin{align*}
-				\Hom_R(R,M)&\isomorphism M\\
-				\left(r\mapsto r\cdot m\right)&\longmapsfrom m\\
-				\left(R\morphism[\phi]M\right)&\longmapsto \phi(1)\;,
-			\end{align*}
-			Proposition~\reff{prop:InjectiveModules}\itememph{c} can be reformulated as that any morphism $I\morphism N$ for $I\subseteq R$ an ideal has the form $i\mapsto i\cdot m$ for some $m\in M$.
-			\item Note that Proposition~\reff{prop:InjectiveModules}\itememph{c} is trivial when $I=0$.
-			\item When $R=\IZ$, every ideal $I\subseteq \IZ$ has the form $n\IZ$ for some $n\in\IZ$ and a morphism $n\IZ\morphism[\phi]N$ is uniquely determined by $\phi(n)$. Thus, an extension $\hat\phi$ of $\phi$ to $\IZ$ exists iff there is an element $\nu\in N$ such that $n\cdot\nu=\phi(n)$ (in that case, put $\hat\phi(1)=\nu$). Hence, Proposition~\reff{prop:InjectiveModules}\itememph{c}  amounts to whether the abelian group $N$ is \emph{divisible}, that is, whether $N\morphism[\cdot n]N$ is surjective for all $n\in\IZ$.
-		\end{alphanumerate}
-	\end{rem*}
 \end{prop}
+\begin{rem}
+	\begin{alphanumerate}
+		\item \lbl{rem:Injective}Since there is a bijection
+		\begin{align*}
+			\Hom_R(R,M)&\isomorphism M\\
+			\left(r\mapsto r\cdot m\right)&\longmapsfrom m\\
+			\left(R\morphism[\phi]M\right)&\longmapsto \phi(1)\;,
+		\end{align*}
+		Proposition~\reff{prop:InjectiveModules}\itememph{c} can be reformulated as that any morphism $I\morphism N$ for $I\subseteq R$ an ideal has the form $i\mapsto i\cdot m$ for some $m\in M$.
+		\item Note that Proposition~\reff{prop:InjectiveModules}\itememph{c} is trivial when $I=0$.
+		\item When $R=\IZ$, every ideal $I\subseteq \IZ$ has the form $n\IZ$ for some $n\in\IZ$ and a morphism $n\IZ\morphism[\phi]N$ is uniquely determined by $\phi(n)$. Thus, an extension $\hat\phi$ of $\phi$ to $\IZ$ exists iff there is an element $\nu\in N$ such that $n\cdot\nu=\phi(n)$ (in that case, put $\hat\phi(1)=\nu$). Hence, Proposition~\reff{prop:InjectiveModules}\itememph{c}  amounts to whether the abelian group $N$ is \emph{divisible}, that is, whether $N\morphism[\cdot n]N$ is surjective for all $n\in\IZ$ (also cf.\ Definition~\reff{def:Divisible}).
+	\end{alphanumerate}
+\end{rem}
+\begin{defi}
+	An $R$-module satisfying the equivalent conditions from Proposition~\reff{prop:InjectiveModules} is called \defemph{injective}.
+\end{defi}
+\begin{proof}[Proof of Proposition~\reff{prop:InjectiveModules}]
+	The implication \itememph{b} $\Rightarrow$ \itememph{c} is trivial. Let's prove \itememph{c} $\Rightarrow$ \itememph{b}. Let $M\morphism[f]N$ be a morphism of $R$-modules and consider
+	\begin{align*}
+		\MM=\left\{(Q,\phi)\st M\subseteq Q\subseteq M'\text{ and }\snake{\phi}\in\Hom_R(Q,N)\text{ such that }\phi|_M=f\right\}\;.
+	\end{align*}
+	$\MM$ becomes a partially ordered set via $(Q_1,\phi_1)\preceq (Q_2,\phi_2)\Leftrightarrow Q_1\subseteq Q_2$ and $\phi_2|_{Q_1}=\phi_1$. Then it's easy to see that Zorn's lemma is applicable, hence $\MM$ has a $\preceq$-maximal element $(Q_*,\phi_*)$. If \itememph{c} is satisfied and $Q_*\subsetneq M'$, there is an $m\in M'\setminus L_*$. Let $I=\left\{r\in R\st rm\in Q_*\right\}$ and let $I\morphism[g]N$ be given by $g(r)=\phi_*(rm)$. By \itememph{c}, there is a morphism $R\morphism[\gamma]N$ extending $g$, i.e., a $\nu\in N$ such that $\phi_*(rm)=r\nu$ when $r\in I$ (using Remark~\reff{rem:Injective}\itememph{a}). Let $\snake{Q}=Q_*+Rm$ and $\snake{\phi}(m_*+rm)=\phi_*(m_*)+r\nu$ for $m_*\in Q_*$ and $r\in R$, then it's easy to see that $\snake{\phi}$ is well-defined and $(Q_*,\phi_*)\prec (\snake{Q},\snake{\phi})$, a contradiction.
+	
+	The equivalence \itememph{a} $\Leftrightarrow$ \itememph{b} is easy to see as for any short exact sequence $0\morphism X\morphism Y\morphism Z\morphism 0$, the sequence $0\morphism\Hom_R(Z,N)\morphism\Hom_R(Y,N)\morphism\Hom_R(X,N)$ is exact anyways and \itememph{b} implies exactness at the right end. 
+\end{proof}
+\begin{defi}\lbl{def:Divisible}
+	If $R$ is a domain and $M$ an $R$-module, then $M$ is called \defemph{divisible} if $M\morphism[r\cdot]M$ is surjective for all $r\in R\setminus\{0\}$
+\end{defi}
+\begin{cor}
+	\begin{alphanumerate}
+		\item \lbl{cor:InjectivityAndDivisibility}When $R$ is a domain, the property from Proposition~\reff{prop:InjectiveModules}\itememph{c} for principal ideals $I$ is equivalent do divisibility of $N$.
+		\item Any injective module $N$ is divisible in the following sense: If $r\in R$ is not a zero divisor, $N\morphism[r\cdot]N$ is surjective.
+		\item In particular, if $N$ is injective and $S\subseteq R$ a multiplicative subset not containing zero divisors, then the morphism $N\morphism N_S$ to the localization of $N$ at $S$ is surjective.
+	\end{alphanumerate}
+\end{cor}
+\begin{proof}
+	Part \itememph{a} can be seen using the arguments from Remark~\reff{rem:Injective}\itememph{c}. For \itememph{b}, note that $R\morphism[r\cdot]R$ is injective when $r$ is no zero divisor, hence, for any $n\in N$, the morphism $\phi\in\Hom_R(R,N)$ given by $\phi(1)=n$ extends to $\hat{\phi}\in\Hom_R(R,N)$ such that $\phi=r\hat{\phi}$. Then $\hat{\phi}(1)$ is a preimage of $n$ under $N\morphism[r\cdot]N$. Part \itememph{c} follows from \itememph{b} and the universal property of localization.
+\end{proof}
+\begin{rem*}
+	Note that $R=\IZ/p^2\IZ$, for $p\in\IZ$ a prime, is injective over itself, but $R\morphism[p\cdot ]R$ fails to be injective. Indeed, the only ideal of $R$ where Baer's criterion is in question is $(p)\subseteq R$. We need to show that any $R$-morphism $(p)\morphism R$ extends to an $R$-morphism $R\morphism R$. But any $(p)\morphism[\phi] R$ maps $p$ to the $p$-torsion part of $R$, i.e., to $(p)$ itself, hence is given by $\phi(p)=rp$ for some $r\in R$ and can be extended via $\hat{\phi}$ given by $\hat{\phi}(1)=r$. This shows that Corollary~\reff{cor:InjectivityAndDivisibility}\itememph{b} is somewhat sharp.
+\end{rem*}
+\begin{cor}
+	A module over a principal ideal domain is injective iff it is divisible.
+\end{cor}
+\begin{proof}
+	Follows from Corollary~\reff{cor:InjectivityAndDivisibility}\itememph{a}.
+\end{proof}
+\begin{rem*}
+	The same holds for Dedekind domains, see Corollary~6 (which is not there yet).
+\end{rem*}
+\begin{cor}
+	When $R$ is a principal ideal domain, then any quotient of an injective module is injective again. The category of $R$-modules has \defemph{sufficiently many injective objects} in the sense that for any object $X$ there is a monomophism $X\monomorphism I$ with $I$ injective. Thus, any $R$-module $X$ has an \defemph{injective resolution}, i.e., an exact sequence
+	\begin{align*}
+	0\morphism X\morphism I^0\morphism I^1\morphism I^2\morphism\ldots
+	\end{align*}
+	with injective objects $I^0,I^1,I^2,\ldots$. In fact, any $R$-module, for $R$ a principal ideal domain, has an injective resolution $0\morphism X\morphism I^0\morphism I^1\morphism 0$ of length $1$.
+\end{cor}
+\begin{proof}
+	The first assertion follows as the quotient of divisible modules is divisible again. Note that $K/R$ is divisible, $K$ being the quotient field of $R$, hence it is injective. If $M$ is any $R$-module and $m\in M\setminus\{0\}$. We have to distinguish to cases.
+	
+	\emph{Case 1.} Suppose $\Ann_R(m)$ is non-zero, i.e., $\Ann_R(m)=(\alpha)$ for some $\alpha\in R\setminus \{0\}$ (remember we have a principal ideal domain). Then we have a morphism from $Rm\subseteq M$ to $K/R$ given by $rm\mapsto \frac{r}{\alpha}\bmod R$ (note that modding out $R$ is necessary for this to be well-defined -- we couldn't just have used $K$). By injectivity of $K/R$, there is an extension $M\morphism[\phi_m]K/R$, satisfying $\phi_m(m)\neq 0$. Let $I_m\subseteq K/R$ be the target of $\phi_m$.
+	
+	\emph{Case 2.} If $\Ann_R(m)=0$, we get a morphism from $Rm\subseteq M$ to $K$ instead, sending $rm\mapsto r$ (this time, using $K$ doesn't cause problems thanks to $\Ann_R(m)=0$). By injectivity of $K$, this extends to a morphism $M\morphism[\phi_m]K$ such that $\phi_m(m)\neq0$. Let $I_m=K$ be the target of $\phi_m$.
+	
+	Now put $I=\prod_{m\in M\setminus\{0\}}I_m$. Then $I$ is divisible (since every $I_m$ is), hence injective, and $M\morphism I$, $\mu\mapsto\left(\phi_m(\mu)\right)_{m\in M\setminus\{0\}}$ is a monomorphism. As a quotient of $I^0=I$, $I^1=\coker\left(M\morphism I^0\right)$ is injective as well, hence $0\morphism M\morphism I^0\morphism I^1\morphism 0$ is an injective resolution of length $1$.
+\end{proof}
+\begin{prop}[a.k.a. ``Satz 2'']\lbl{prop:RModHasEnoughInjectives}
+	For any ring $R$, the category of $R$-modules has sufficiently many injective objects.
+\end{prop}
+\begin{proof}
+	This will follow from Lemma~\reff{lem:AdjointStuff}\itememph{b} and \itememph{c} below.
+\end{proof}
+\begin{rem*}
+	This holds in vast more generality, and in particular, Proposition~\reff{prop:RModHasEnoughInjectives} follows immediately from the following theorem, which, however, we are not going to prove in this lecture.
+	\begin{thm*}[Grothendieck]
+		Any AB5 category with a generator has sufficiently many injective objects.
+	\end{thm*}
+\end{rem*}
+\begin{lem}\lbl{lem:AdjointStuff}
+	Let $R$ be any ring.
+	\begin{alphanumerate}
+		\item The forgetful functor from $R\cat{-Mod}$ to the category of abelian groups has a right-adjoint functor, namely $\Hom_\IZ(R,-)$. That is, there is a bijection
+		\begin{align}\lbl{eq:ForgetHomAdjunction}
+			\Hom_\IZ(M,A)\isomorphism\Hom_R(M,\Hom_\IZ(R,A))\tag{$*$}
+		\end{align}
+		for any $R$-module $M$ and any abelian group $A$. Here, we equip $\Hom_\IZ(R,A)$ with an $R$-module structure via $(r\cdot\phi)(x)=\phi(rx)$ for $\phi\in\Hom_\IZ(R,A)$ and $r,x\in R$.
+		\item For any injective abelian group $I$, $\Hom_\IZ(R,I)$ is an injective $R$-module.
+		\item Let $M$ be any $R$-module and $I$ and abelian group and $M\monomorphism[\iota]I$ a monomorphism of abelian groups, then the $R$-morphism $M\morphism\Hom_\IZ(R,A)$ obtained by applying \eqreff{eq:ForgetHomAdjunction} is injective.
+	\end{alphanumerate}
+\end{lem}
 
 \printbibliography
 
