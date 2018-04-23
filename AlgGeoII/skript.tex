@@ -224,7 +224,7 @@ Let $\Aa$ be the category $R\cat{-Mod}$ and $\Bb$ be $\Oo_{\Spec R}\cat{-Mod}$, 
 \begin{proof}
 	The first assertion holds by our explicit construction of $\ker(f)$ in Lemma~\reff{lem:RModHasKernels}. For the second one, we may assume $X=U=\Spec R$. Denoting $M=\Mm(X)$, $N=\Nn(X)$, then
 	\begin{align*}
-		\coker\Big(\Mm\morphism[f]\Nn)=\coker\Big(\snake{M}\morphism[f]\snake{N}\Big)=\Big(\coker\Big(M\morphism[f]N\Big)\Big)^\sim
+		\coker\Big(\Mm\morphism[f]\Nn)=\coker\Big(\snake{M}\morphism[f]\snake{N}\Big)\simeq\Big(\coker\Big(M\morphism[f]N\Big)\Big)^\sim
 	\end{align*}
 	as $M\mapsto\snake{M}$ preserves cokernels.
 \end{proof}
@@ -320,30 +320,31 @@ But before we do this, we to introduce the notion of \emph{coherent} $\Oo_X$-mod
 \end{rem*}
 
 \section{\vC ech cohomology}
-\begin{defi}
-	Let $\Uu\colon X=\bigcup_{i\in I}U_i$ be an open cover of a topological space $X$ (e.g., a prescheme) and let $\Mm$ be a presheaf of abelian groups (e.g., a quasi-coherent $\Oo_X$-module) on $X$.  Let always
-	\begin{align}\lbl{eq:capConvention}
-		U_{i_0,\ldots,i_n}=\bigcap_{k=0}^nU_{i_k}\;.
-	\end{align}
-	The \defemph{\vC ech complex} $\check{C}^*(\Uu,\Mm)$ is the cochain complex defined as follows. Let
+Let $\Uu\colon X=\bigcup_{i\in I}U_i$ be an open cover of a topological space $X$. In the following, we will use the convention
+\begin{align}\lbl{eq:capConvention}
+U_{i_0,\ldots,i_n}=\bigcap_{k=0}^nU_{i_k}\;.
+\end{align}
+\begin{defi}\lbl{def:cech}
+	For an open cover $\Uu$ of a topological space $X$ (e.g., a prescheme) and $\Mm$ a presheaf of abelian groups (e.g., a quasi-coherent $\Oo_X$-module) on $X$ the \defemph{\vC ech complex} $\check{C}^*(\Uu,\Mm)$ is the cochain complex defined as follows. Let
 	\begin{align*}
 		\check{C}^n(\Uu,\Mm)\coloneqq\prod_{(i_0,\ldots,i_n)\in I^{n+1}}\Mm(U_{i_0,\ldots,i_n})\;.
 	\end{align*}
-	Let the elements of $\check{C}^n(\Uu,\Mm)$ be denoted $\psi=(\psi_{i_0,\ldots,i_n})_{(i_0,\ldots,i_n)\in I^{n+1}}$. The differentials $\check{C}^n(\Uu,\Mm)\morphism[\check{d}^n]\check{C}^{n+1}(\Uu,\Mm)$ are defined by
+	Let the elements of $\check{C}^n(\Uu,\Mm)$ be denoted $\psi=(\psi_{i_0,\ldots,i_n})_{(i_0,\ldots,i_n)\in I^{n+1}}$. The differentials $\check{C}^n(\Uu,\Mm)\morphism[\hacek{d}^n]\check{C}^{n+1}(\Uu,\Mm)$ are defined by
 	\begin{align*}
-		(\check{d}^n\psi)_{i_0,\ldots,i_{n+1}}=\sum_{j=0}^{n+1}(-1)^j\psi_{i_0,\ldots,\hat{i}_j,\ldots,i_{n+1}}|_{U_{i_0,\ldots,i_{n+1}}}
+		(\hacek{d}^n\psi)_{i_0,\ldots,i_{n+1}}=\sum_{j=0}^{n+1}(-1)^j\psi_{i_0,\ldots,\hat{i}_j,\ldots,i_{n+1}}|_{U_{i_0,\ldots,i_{n+1}}}
 	\end{align*}
 	where $\hat{i}_j$ denotes the omission of the index $i_j$. For instance,
 	\begin{align*}
-		(\check{d}^0\psi)_{i,j}=\psi_j|_{U_{i,j}}-\psi_i|_{U_{i,j}}\quad\text{and}\quad (\check{d}^1\psi)_{i,j,k}=\psi_{j,k}|_{U_{i,j,k}}-\psi_{i,k}|_{U_{i,j,k}}+\psi_{i,j}|_{U_{i,j,k}}\;.
+		(\hacek{d}^0\psi)_{i,j}=\psi_j|_{U_{i,j}}-\psi_i|_{U_{i,j}}\quad\text{and}\quad (\hacek{d}^1\psi)_{i,j,k}=\psi_{j,k}|_{U_{i,j,k}}-\psi_{i,k}|_{U_{i,j,k}}+\psi_{i,j}|_{U_{i,j,k}}\;.
 	\end{align*}
 	The \defemph{\vC ech cohomology} $\check{H}^*(\Uu,\Mm)$ is defined as the cohomology of the \vC ech complex, i.e.,
 	\begin{align*}
 		\check{H}^i(\Uu,\Mm)=H^i\left(\check{C}^*(\Uu,\Mm)\right)\;.
 	\end{align*}	
 \end{defi}
-\begin{proof}[We need to prove $\check{d}^2=0$ and we won't do this in a remark]
-	The fact that this is indeed a cochain complex may be verified as follows. For $\ell=0,\ldots,n+1$ let $\check{C}^n(\Uu,\Mm)\morphism[d_\ell]\check{C}^{n+1}(\Uu,\Mm)$ be given by
+To see that $\check{C}^*(\Uu,\Mm)$ is indeed a cochain complex, we need to prove $\hacek{d}^2=0$ -- and we won't do this in a remark!
+\begin{proof}[Proof of Definition~\reff{def:cech}]
+	For $\ell=0,\ldots,n+1$ let $\check{C}^n(\Uu,\Mm)\morphism[d_\ell]\check{C}^{n+1}(\Uu,\Mm)$ be given by
 	\begin{align*}
 		(d_\ell\psi)_{i_0,\ldots,i_{n+1}}=\psi_{i_0,\ldots,\hat{i}_\ell,\ldots,i_{n+1}}|_{U_{i_0,\ldots,i_{n+1}}}\;.
 	\end{align*}
@@ -351,11 +352,13 @@ But before we do this, we to introduce the notion of \emph{coherent} $\Oo_X$-mod
 	\begin{align}\lbl{eq:simplicialStuff}
 		d_md_\ell=d_{\ell+1}d_m\quad\text{when }\ell\geq m\;.
 	\end{align}
-	Indeed, we have $(d_md_\ell\psi)_{\boldsymbol{i}}=\psi_{\boldsymbol{j}}|_{U_{\boldsymbol{i}}}$, where $\boldsymbol{j}$ is obtained from $\boldsymbol{i}$ by omitting the indices $i_\ell$ and $i_m$ when $\ell<m$ and the indices $i_{\ell+1}$ and $i_m$ when $\ell\geq m$. The assertion follows.
+	Indeed, we have $(d_md_\ell\psi)_{\mathbf{i}}=\psi_{\mathbf{j}}|_{U_{\mathbf{i}}}$, where $\mathbf{j}$ is obtained from $\mathbf{i}$ by omitting the indices $i_\ell$ and $i_m$ when $\ell<m$ and the indices $i_{\ell+1}$ and $i_m$ when $\ell\geq m$. The assertion follows.
 	
-	\emph{Step 2.} We prove the following. Let $C^*$ is any family of abelian groups (or objects of an abelian category) and $C^n\morphism[d_\ell]C^{n+1}$ morphisms for $\ell=0,\ldots,n+1$. Suppose that $C^n=0$ for $n<0$ and that \eqreff{eq:simplicialStuff} holds. Then $d=\sum_{i=0}^{n+1}(-1)^id_i$ satisfies $d^2=0$. 
-	
-	Indeed,
+	\emph{Step 2.} We prove the following. Let $C^*$ is any family of abelian groups (or objects of an abelian category) and $C^n\morphism[d_\ell]C^{n+1}$ morphisms for $\ell=0,\ldots,n+1$. Suppose that $C^n=0$ for $n<0$ and that \eqreff{eq:simplicialStuff} holds. Then 
+	\begin{align*}
+		d=\sum_{i=0}^{n+1}(-1)^id_i
+	\end{align*}
+	satisfies $d^2=0$. Indeed,
 	\begin{align*}
 		d^2&=\sum_{m=0}^{n+2}\sum_{\ell=0}^{n+1}(-1)^{\ell+m}d_md_\ell=\sum_{m=0}^{n+2}\sum_{\ell=0}^{m-1}(-1)^{\ell+m}d_md_\ell+\sum_{m=0}^{n+2}\sum_{\ell=m}^{n+1}(-1)^{\ell+m}d_md_\ell\\
 		&=\sum_{m=0}^{n+2}\sum_{\ell=0}^{m-1}(-1)^{\ell+m}d_md_\ell+\sum_{m=0}^{n+1}\sum_{\ell=m}^{n+1}(-1)^{\ell+m}d_{\ell+1}d_m\\
