@@ -23,6 +23,8 @@
 \widowpenalty=8000
 \clubpenalty=8000
 
+\newcommand{\vC}{\v{C}}
+
 \begin{document}
 \pagenumbering{Alph}
 \maketitle
@@ -198,22 +200,64 @@ Let $\Aa$ be the category $R\cat{-Mod}$ and $\Bb$ be $\Oo_{\Spec R}\cat{-Mod}$, 
 \end{proof}
 \begin{prop}
 	\begin{alphanumerate}
-		\item The full subcategory $\cat{QCoh}(X)\subseteq\Oo_X\cat{-Mod}$ of quasi-coherent $\Oo_X$-modules on a prescheme $X$ is closed under taking kernels and cokernels of morphisms and under taking (finite) direct sums.
+		\item \lbl{prop:QCohHasKerCoker}The full subcategory $\cat{QCoh}(X)\subseteq\Oo_X\cat{-Mod}$ of quasi-coherent $\Oo_X$-modules on a prescheme $X$ is closed under taking kernels and cokernels of morphisms and under taking (finite) direct sums.
 		\item If $\Mm$ is a quasi-coherent $\Oo_X$-module and $U\subseteq X$ open, then $\Mm|_U\in\Ob\left(\cat{QCoh}(U)\right)$.
 	\end{alphanumerate}
 \end{prop}
 \begin{proof}
-	Part \itememph{a}. Closedness under taking kernels was proved in \cite[Fact~1.5.3]{alggeo1}. For cokernels and finite direct sums (which are finite coproducts since $\Oo_X\cat{-Mod}$ is an abelian category by Proposition~\reff{prop:RmodAbelian}), consider the case $X=\Spec R$ first. Then $R\cat{-Mod}\morphism[L]\Oo_X\cat{-Mod}$, $M\mapsto\snake{M}$ and $\Oo_X\cat{-Mod}\morphism R\cat{-Mod}$, $\Mm\mapsto\Mm(X)$ are adjoint functors by \eqreff{eq:ROXAdjunction}. By Remark~\reff{rem:AdjunctionPreservesStuff}, $L$ preserves cokernels and coproducts. By locality of quasi-coherentness, this follows for all preschemes $X$.
+	Part \itememph{a}. For cokernels and finite direct sums (which are finite coproducts since $\Oo_X\cat{-Mod}$ is an abelian category by Proposition~\reff{prop:RmodAbelian}), consider the case $X=\Spec R$ first. Then $R\cat{-Mod}\morphism[L]\Oo_X\cat{-Mod}$, $M\mapsto\snake{M}$ and $\Oo_X\cat{-Mod}\morphism R\cat{-Mod}$, $\Mm\mapsto\Mm(X)$ are adjoint functors by \eqreff{eq:ROXAdjunction}. By Remark~\reff{rem:AdjunctionPreservesStuff}, $L$ preserves cokernels and coproducts. By locality of quasi-coherentness, this follows for all preschemes $X$.
+	
+	Closedness under taking kernels was proved in \cite[Fact~1.5.3]{alggeo1}. It's worth pointing out that in fact, the proof given there shows that $M\mapsto\snake{M}$ preserves kernels as well. 
 	
 	Part \itememph{b} follows immediately from (e.g.) Definition~\reff{def:Quasicoherent}\itememph{b}.
 \end{proof}
+\begin{cor}\lbl{cor:kerAndCokerForQcModules}
+	Let $X$ be a prescheme, $\Mm\morphism[f]\Nn$ a morphism of quasi-coherent $\Oo_X$-modules and $U\subseteq X$ open, then
+	\begin{align*}
+		\ker\Big(\Mm(U)\morphism[f]\Nn(U)\Big)\simeq\ker(f)(U)\;.
+	\end{align*}
+	If $U$ is, in addition, affine, then
+	\begin{align*}
+		\coker\Big(\Mm(U)\morphism[f]\Nn(U)\Big)\simeq\coker(f)(X)\;.
+	\end{align*}
+\end{cor}
+\begin{proof}
+	The first assertion holds by our explicit construction of $\ker(f)$ in Lemma~\reff{lem:RModHasKernels}. For the second one, we may assume $X=U=\Spec R$. Denoting $M=\Mm(X)$, $N=\Nn(X)$, then
+	\begin{align*}
+		\coker\Big(\Mm\morphism[f]\Nn)=\coker\Big(\snake{M}\morphism[f]\snake{N}\Big)=\Big(\coker\Big(M\morphism[f]N\Big)\Big)^\sim
+	\end{align*}
+	as $M\mapsto\snake{M}$ preserves cokernels.
+\end{proof}
+\begin{cor}
+	Let $0\morphism\Mm'\morphism\Mm\morphism\Mm''\morphism0$ be a short exact sequence of quasi-coherent $\Oo_X$-modules on a prescheme $X$ and $U\subseteq X$ be affine open, then 
+	\begin{align*}
+		0\morphism\Mm'(U)\morphism\Mm(U)\morphism\Mm''(U)\morphism 0
+	\end{align*}
+	is exact as well.
+\end{cor}
+\begin{proof}
+	Follows from Corollary~\reff{cor:kerAndCokerForQcModules}.
+\end{proof}
+\begin{rem*}
+	It turns out to be sufficient to assume that two of the above three sheaves $\Mm',\Mm,\Mm''$ are quasi-coherent. Indeed, we proved in Proposition~\reff{prop:QCohHasKerCoker} that kernels and cokernels of morphisms between quasi-coherent sheaves are quasi-coherent again, so the only case in question is where $\Mm$ is not required to be quasi-coherent. This case, however, will be treated by cohomological methods.
+\end{rem*}
+Our plan is to associate to any quasi-coherent $\Oo_X$-module on a scheme $X$ \emph{cohomology groups} $H^i(X,\Mm)$ such that
+\begin{itemize}
+	\item $H^0(X,\Mm)\simeq\Mm(X)$.
+	\item when $0\morphism\Mm'\morphism\Mm\morphism\Mm''\morphism0$ is an exact sequence of $\Oo_X$-modules, we have a canonical long exact sequence
+	\begin{multline*}
+		0\morphism H^0(X,\Mm')\morphism H^0(X,\Mm)\morphism H^0(X,\Mm'')\\
+		\morphism[d] H^1(X,\Mm')\morphism H^1(X,\Mm)\morphism H^1(X,\Mm'')\morphism[d]H^2(X,\Mm')\morphism\ldots
+	\end{multline*}
+\end{itemize}
+But before we do this, we to introduce the notion of \emph{coherent} $\Oo_X$-modules.
 \begin{prop}
 	If $X$ is a prescheme, associating to (the isomorphism class of) a closed embedding $Y\morphism[i]X$ the sheaf of ideals $\Jj=\ker\Big(\Oo_X\morphism[i^*]i_*\Oo_X\Big)$ gives a bijection between the set of closed subpreschemes of $X$ and the quasi-coherent sheaves of ideals in $\Oo_X$.
 \end{prop}
 \begin{proof}
 	This is \cite[Proposition~1.5.3]{alggeo1}.
 \end{proof}
-\begin{lem}
+\begin{lem}\lbl{lem:locFinGen}
 	For a quasi-coherent $\Oo_X$-module $\Mm$ on a prescheme $X$, the following conditions are equivalent.
 	\begin{alphanumerate}
 		\item For any affine open $U\subseteq X$, $\Mm(U)$ is a finitely generated $\Oo_X(U)$-module.
@@ -265,6 +309,74 @@ Let $\Aa$ be the category $R\cat{-Mod}$ and $\Bb$ be $\Oo_{\Spec R}\cat{-Mod}$, 
 	\end{align*}
 	is an element of the submodule generated by the $m_{i,j}$.
 \end{proof}
+\begin{defi}
+	\begin{alphanumerate}
+		\item We call a quasi-coherent $\Oo_X$-module \defemph{locally finitely generated} it it satisfies the equivalent conditions from Lemma~\reff{lem:locFinGen}.
+		\item When $X$ is locally Noetherian (cf. \cite[Definition~2.2.2]{alggeo1}), an $\Oo_X$-module is called \defemph{coherent} if it is quasi-coherent and locally finitely generated.
+	\end{alphanumerate}
+\end{defi}
+\begin{rem*}
+	There is a general definition of \emph{coherent} sheaves of modules on arbitrary ringed spaces, which in the case of a locally Noetherian prescheme is equivalent to the above.
+\end{rem*}
+
+\section{\vC ech cohomology}
+\begin{defi}
+	Let $\Uu\colon X=\bigcup_{i\in I}U_i$ be an open cover of a topological space $X$ (e.g., a prescheme) and let $\Mm$ be a presheaf of abelian groups (e.g., a quasi-coherent $\Oo_X$-module) on $X$.  Let always
+	\begin{align}\lbl{eq:capConvention}
+		U_{i_0,\ldots,i_n}=\bigcap_{k=0}^nU_{i_k}\;.
+	\end{align}
+	The \defemph{\vC ech complex} $\check{C}^*(\Uu,\Mm)$ is the cochain complex defined as follows. Let
+	\begin{align*}
+		\check{C}^n(\Uu,\Mm)\coloneqq\prod_{(i_0,\ldots,i_n)\in I^{n+1}}\Mm(U_{i_0,\ldots,i_n})\;.
+	\end{align*}
+	Let the elements of $\check{C}^n(\Uu,\Mm)$ be denoted $\psi=(\psi_{i_0,\ldots,i_n})_{(i_0,\ldots,i_n)\in I^{n+1}}$. The differentials $\check{C}^n(\Uu,\Mm)\morphism[\check{d}^n]\check{C}^{n+1}(\Uu,\Mm)$ are defined by
+	\begin{align*}
+		(\check{d}^n\psi)_{i_0,\ldots,i_{n+1}}=\sum_{j=0}^{n+1}(-1)^j\psi_{i_0,\ldots,\hat{i}_j,\ldots,i_{n+1}}|_{U_{i_0,\ldots,i_{n+1}}}
+	\end{align*}
+	where $\hat{i}_j$ denotes the omission of the index $i_j$. For instance,
+	\begin{align*}
+		(\check{d}^0\psi)_{i,j}=\psi_j|_{U_{i,j}}-\psi_i|_{U_{i,j}}\quad\text{and}\quad (\check{d}^1\psi)_{i,j,k}=\psi_{j,k}|_{U_{i,j,k}}-\psi_{i,k}|_{U_{i,j,k}}+\psi_{i,j}|_{U_{i,j,k}}\;.
+	\end{align*}
+	The \defemph{\vC ech cohomology} $\check{H}^*(\Uu,\Mm)$ is defined as the cohomology of the \vC ech complex, i.e.,
+	\begin{align*}
+		\check{H}^i(\Uu,\Mm)=H^i\left(\check{C}^*(\Uu,\Mm)\right)\;.
+	\end{align*}	
+\end{defi}
+\begin{proof}[We need to prove $\check{d}^2=0$ and we won't do this in a remark]
+	The fact that this is indeed a cochain complex may be verified as follows. For $\ell=0,\ldots,n+1$ let $\check{C}^n(\Uu,\Mm)\morphism[d_\ell]\check{C}^{n+1}(\Uu,\Mm)$ be given by
+	\begin{align*}
+		(d_\ell\psi)_{i_0,\ldots,i_{n+1}}=\psi_{i_0,\ldots,\hat{i}_\ell,\ldots,i_{n+1}}|_{U_{i_0,\ldots,i_{n+1}}}\;.
+	\end{align*}
+	\emph{Step 1.} We prove that
+	\begin{align}\lbl{eq:simplicialStuff}
+		d_md_\ell=d_{\ell+1}d_m\quad\text{when }\ell\geq m\;.
+	\end{align}
+	Indeed, we have $(d_md_\ell\psi)_{\boldsymbol{i}}=\psi_{\boldsymbol{j}}|_{U_{\boldsymbol{i}}}$, where $\boldsymbol{j}$ is obtained from $\boldsymbol{i}$ by omitting the indices $i_\ell$ and $i_m$ when $\ell<m$ and the indices $i_{\ell+1}$ and $i_m$ when $\ell\geq m$. The assertion follows.
+	
+	\emph{Step 2.} We prove the following. Let $C^*$ is any family of abelian groups (or objects of an abelian category) and $C^n\morphism[d_\ell]C^{n+1}$ morphisms for $\ell=0,\ldots,n+1$. Suppose that $C^n=0$ for $n<0$ and that \eqreff{eq:simplicialStuff} holds. Then $d=\sum_{i=0}^{n+1}(-1)^id_i$ satisfies $d^2=0$. 
+	
+	Indeed,
+	\begin{align*}
+		d^2&=\sum_{m=0}^{n+2}\sum_{\ell=0}^{n+1}(-1)^{\ell+m}d_md_\ell=\sum_{m=0}^{n+2}\sum_{\ell=0}^{m-1}(-1)^{\ell+m}d_md_\ell+\sum_{m=0}^{n+2}\sum_{\ell=m}^{n+1}(-1)^{\ell+m}d_md_\ell\\
+		&=\sum_{m=0}^{n+2}\sum_{\ell=0}^{m-1}(-1)^{\ell+m}d_md_\ell+\sum_{m=0}^{n+1}\sum_{\ell=m}^{n+1}(-1)^{\ell+m}d_{\ell+1}d_m\\
+		&=\sum_{i>j}(-1)^{i+j}d_id_j+\sum_{i>j}(-1)^{i+j-1}d_id_j=0\;,
+	\end{align*}
+	as required.
+\end{proof}
+\begin{rem*}
+	Our program is to show that $\check{H}^*(\Uu,\Mm)$ is independent of $\Uu$ and has the desired properties, when $X$ is a scheme, $\Mm\in\Ob(\cat{QCoh}(X))$ and $\Uu$ is an affine open cover.
+\end{rem*}
+\begin{rem*}
+	For instance, the cohomology of $\IP_R^1=\Proj(R[X_0,X_1])$ can be calculated using the affine open cover 
+	\begin{align*}
+		U_i=\IP_R^1\setminus V(X_i)\simeq \Spec \left(R[X_0,X_1]_{X_i}\right)_0\simeq \Spec R[t_i]\quad\text{where }t_i=
+		\begin{cases}
+			X_1\cdot X_0^{-1} & \text{if }i=0\\
+			X_0\cdot X_1^{-1} & \text{if }i=1
+		\end{cases}\;.
+	\end{align*}
+	Unfortunately, calculations become complicated by the fact that there are infinitely many non-zero terms in $\check{C}^*(\Uu,\Mm)$.
+\end{rem*}
 
 \appendix
 \chapter{Appendix -- category theory corner}
@@ -447,7 +559,7 @@ For clarity (and to better distinguish between the proof and Professor Franke's 
 	
 	If $\Mm\morphism[\mu]\Tt\lmorphism[\nu]\Nn$ are given, $\Mm\oplus\Nn\morphism[\mu\amalg\nu]\Tt$ sending $(m,n)\in(\Mm\oplus\Nn)(U)$ to $\mu(m)+\nu(n)$ verifies the universal property of the coproduct for $\Mm\oplus\Nn$. Similarly, $\Tt\morphism[\mu\times\nu]\Mm\oplus\Nn$ given by $(\mu\times\nu)(t)=(\mu(t),\nu(t))$ for $t\in\Tt(U)$ confirms the universal property of the product for $\Mm\oplus\Nn$. Also, $c=\id_{\Mm\oplus\Nn}$ is the unique endomorphism $c$ of that object such that $pci=\id_\Mm$, $qcj=\id_\Nn$, $pcj=0$, and $qci=0$. Thus, $\Rr\cat{-Mod}$ is additive (the group structure on $\Hom$ sets being easily verified).
 \end{proof}
-\begin{lem}
+\begin{lem}\lbl{lem:RModHasKernels}
 	The category $\Rr\cat{-Mod}$ has kernels.
 \end{lem}
 \begin{proof}
