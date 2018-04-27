@@ -120,7 +120,7 @@ Background in homological algebra is not required safe for cohomology groups of 
 \begin{rem*}
 	Equivalently, a prescheme $X$ is a scheme iff the diagonal $\Delta\colon X\xrightarrow{(\id_X,\id_X)}X\times X$ is a closed immersion (cf.\ \cite[Fact~1.5.8]{alggeo1}). In other words, schemes are \emph{separated} preschemes
 \end{rem*}
-\begin{prop}
+\begin{prop}\lbl{prop:SchemesAffineIntersec}
 	If $U$ and $V$ are affine open subsets of a scheme $X$, then their intersection $U\cap V$ is again affine (and open of course).
 \end{prop}
 \begin{proof}
@@ -200,7 +200,7 @@ Let $\Aa$ be the category $R\cat{-Mod}$ and $\Bb$ be $\Oo_{\Spec R}\cat{-Mod}$, 
 \end{proof}
 \begin{prop}
 	\begin{alphanumerate}
-		\item \lbl{prop:QCohHasKerCoker}The full subcategory $\cat{QCoh}(X)\subseteq\Oo_X\cat{-Mod}$ of quasi-coherent $\Oo_X$-modules on a prescheme $X$ is closed under taking kernels and cokernels of morphisms and under taking (finite) direct sums.
+		\item \lbl{prop:QCohHasKerCoker}The full subcategory $\cat{QCoh}(X)\subseteq\Oo_X\cat{-Mod}$ of quasi-coherent sheaves of $\Oo_X$-modules on a prescheme $X$ is closed under taking kernels and cokernels of morphisms and under taking (finite) direct sums.
 		\item If $\Mm$ is a quasi-coherent $\Oo_X$-module and $U\subseteq X$ open, then $\Mm|_U\in\Ob\left(\cat{QCoh}(U)\right)$.
 	\end{alphanumerate}
 \end{prop}
@@ -228,7 +228,7 @@ Let $\Aa$ be the category $R\cat{-Mod}$ and $\Bb$ be $\Oo_{\Spec R}\cat{-Mod}$, 
 	\end{align*}
 	as $M\mapsto\snake{M}$ preserves cokernels.
 \end{proof}
-\begin{cor}
+\begin{cor}\lbl{cor:GlobalSectionsExactOnAffine}
 	Let $0\morphism\Mm'\morphism\Mm\morphism\Mm''\morphism0$ be a short exact sequence of quasi-coherent $\Oo_X$-modules on a prescheme $X$ and $U\subseteq X$ be affine open, then 
 	\begin{align*}
 		0\morphism\Mm'(U)\morphism\Mm(U)\morphism\Mm''(U)\morphism 0
@@ -318,7 +318,7 @@ But before we do this, we to introduce the notion of \emph{coherent} $\Oo_X$-mod
 \begin{rem*}
 	There is a general definition of \emph{coherent} sheaves of modules on arbitrary ringed spaces, which in the case of a locally Noetherian prescheme is equivalent to the above.
 \end{rem*}
-
+%Composite letter `\textasciicaron+C'(hyperref) not defined in PD1 encoding,(hyperref) removing `\textasciicaron'
 \section{\vC ech cohomology}
 Let $\Uu\colon X=\bigcup_{i\in I}U_i$ be an open cover of a topological space $X$. In the following, we will use the convention
 \begin{align}\lbl{eq:capConvention}
@@ -348,6 +348,8 @@ To see that $\check{C}^*(\Uu,\Mm)$ is indeed a cochain complex, we need to prove
 	\begin{align*}
 		(d_\ell\psi)_{i_0,\ldots,i_{n+1}}=\psi_{i_0,\ldots,\hat{i}_\ell,\ldots,i_{n+1}}|_{U_{i_0,\ldots,i_{n+1}}}\;.
 	\end{align*}
+	Again, $\hat{i}_\ell$ denotes the omission of the index $i_\ell$.
+	
 	\emph{Step 1.} We prove that
 	\begin{align}\lbl{eq:simplicialStuff}
 		d_md_\ell=d_{\ell+1}d_m\quad\text{when }\ell\geq m\;.
@@ -380,6 +382,207 @@ To see that $\check{C}^*(\Uu,\Mm)$ is indeed a cochain complex, we need to prove
 	\end{align*}
 	Unfortunately, calculations become complicated by the fact that there are infinitely many non-zero terms in $\check{C}^*(\Uu,\Mm)$.
 \end{rem*}
+\begin{rem}
+	Let $\check{C}_\alt^n(\Uu,\Mm)\subseteq\check{C}^n(\Uu,\Mm)$ be the subgroup containing all $\psi\in\check{C}^n(\Uu,\Mm)$ such that
+	\begin{align*}
+		\psi_{i_{\pi(0)},,\ldots,i_{\pi(n)}}=\sgn(\pi)\psi_{i_0,\ldots,i_n}\in \Mm(U_{i_0,\ldots,i_n})\quad\text{and}\quad\psi_{i_0,\ldots,i_{n-1},i_{n-1}}=0\in\Mm(U_{i_0,\ldots,i_{n-1}})
+	\end{align*}
+	for all permutations $\pi\in\SS_n$. Note that $U_{i_0,\ldots,i_n}=U_{i_{\pi(0)},\ldots,i_{\pi(n)}}$ as permuting indices doesn't change intersections, so the first property makes sense. Also note that both properties together imply that $\psi_{i_0,\ldots,i_n}=0$ whenever $(i_0,\ldots,i_n)$ contains a repeated index.
+	
+	\begin{claim*}
+		$\check{C}_\alt^*(\Uu,\Mm)\subseteq\check{C}^*(\Uu,\Mm)$ is a subcomplex, called the \defemph{alternating \vC ech complex}.
+	\end{claim*}
+	\begin{proof}
+		Define \emph{codegeneracy maps} 
+		\begin{align*}
+			\check{C}^n(\Uu,\Mm)\morphism[s_\ell]\check{C}^{n-1}(\Uu,\Mm)\;,\quad (s_\ell\psi)_{i_0,\ldots,i_{n-1}}=\psi_{i_0,\ldots,i_\ell,i_\ell,\ldots,i_{n-1}}\quad\text{for }\ell=0,\ldots,n-1
+		\end{align*}
+		(i.e., $s_\ell$ repeats the $\ell\ordinalth$ index) as well as \emph{transposition maps}
+		\begin{align*}
+			\check{C}^n(\Uu,\Mm)\morphism[t_\ell]\check{C}^n(\Uu,\Mm)\;,\quad (t_\ell\psi)_{i_0,\ldots,i_n}=\psi_{i_0,\ldots,i_{\ell-1},i_{\ell+1},i_\ell,i_{\ell+2},\ldots,i_{n-1}}\quad\text{for }\ell=0,\ldots,n-1
+		\end{align*}
+		(i.e., $t_\ell$ swaps the $\ell\ordinalth$ and $(\ell+1)\ordinalst$ index). As any permutation may be expressed as a composition of elementary transpositions, $\check{C}_\alt^n(\Uu,\Mm)\subseteq\check{C}^n(\Uu,\Mm)$ is given by the relations
+		\begin{align*}
+			s_\ell\psi=0\quad\text{and}\quad t_\ell\psi=-\psi\quad\text{for }\ell=0,\ldots,n-1
+		\end{align*}
+		So what we need to check to confirm that $\check{C}_\alt^*(\Uu,\Mm)$ is indeed a subcomplex of $\check{C}^*(\Uu,\Mm)$ is that the above relations are preserved by the differential $\hacek{d}$.
+		
+		One may easily check the relations
+		\begin{align}\lbl{eq:cosimplicialDegeneracies}
+			s_\ell d_i=\begin{cases}
+				d_is_{\ell-1} & \text{if }i<\ell\\
+				\id &  \text{if }i=\ell\text{ or }i=\ell+1\\
+				d_{i-1}s_\ell &  \text{if }i>\ell+1
+			\end{cases}
+		\end{align}
+		and
+		\begin{align}\lbl{eq:transpositions}
+			t_\ell d_j=\begin{cases}
+				d_jt_{\ell} & \text{if }\ell<j-1\\
+				d_\ell &  \text{if }\ell=j-1\\
+				d_{\ell+1} &  \text{if }\ell=j\\
+				d_jt_{\ell-1} & \text{if }\ell>j
+			\end{cases}\;.
+		\end{align}
+		Now let $\psi\in\check{C}^n(\Uu,\Mm)$ such that $t_j\psi=-\psi$ for all $j=0,\ldots,n-1$. Using \eqreff{eq:transpositions}, we get
+		\begin{align*}
+			t_\ell\hacek{d}\psi&=\sum_{j=0}^{\ell-1}(-1)^jt_\ell d_j\psi+(-1)^\ell t_\ell d_\ell\psi+(-1)^{\ell+1} t_\ell d_{\ell+1}\psi+\sum_{j=\ell+2}^n(-1)^jt_\ell d_j\psi\\
+			&=\sum_{j=0}^{\ell-1}(-1)^jd_jt_{\ell-1}\psi+(-1)^\ell d_{\ell+1}\psi+(-1)^{\ell+1} d_\ell\psi+\sum_{j=\ell+2}^{n}(-1)^j d_jt_\ell\psi\\
+			&=-\sum_{j=0}^{\ell-1}(-1)^jd_j\psi-(-1)^\ell d_\ell\psi-(-1)^{\ell+1} d_{\ell+1}\psi-\sum_{j=\ell+2}^{n}(-1)^j d_j\psi\\
+			&=-\hacek{d}\psi\;.
+		\end{align*}
+		Similarly, one can check that $s_\ell\hacek{d}\psi=0$ when $s_j\psi=0$ for all $j=0,1,\ldots,n-1$. This shows that $\hacek{d}$ restricts to a differential on $\check{C}_\alt
+		^n(\Uu,\Mm)$, as required.
+	\end{proof}
+	It will eventually turn out that the cohomology groups $\check{H}_\alt^i(\Uu,\Mm)=H^i\left(\check{C}_\alt^*(\Uu,\Mm)\right)$ obtained from the alternating \vC ech complex are the same as the regular \vC ech cohomology groups $\check{H}^i(\Uu,\Mm)$.
+\end{rem}
+\begin{rem}
+	A \emph{cosimplicial object} of a category $\Aa$ is a sequence of objects $(X^n)_{n\geq 0}$ with morphisms $d_j\colon X^n\morphism X^{n+1}$ for $j=0,\ldots,n+1$ satisfying \eqreff{eq:simplicialStuff} and $s_j\colon X^n\morphism X^{n-1}$ for $j=0,\ldots,n$ satisfying a version of \eqreff{eq:simplicialStuff} together with \eqreff{eq:cosimplicialDegeneracies}. In other words, a cosimplicial object is a covariant functor from the \emph{simplex category} $\Delta$ to $\Aa$.
+	
+	There is a \emph{Dold--Puppe correspondence} between cochain complexes concentrated in nonnegative degrees and cosimplicial objects of an abelian category.  
+\end{rem}
+\begin{example}
+	\begin{alphanumerate}
+		\item By the sheaf axiom, 
+		\begin{align*}
+			\Mm(X)&\simeq\left\{(m_i)_{i\in I}\in\prod_{i\in I}\Mm(U_i)\st m_i|_{U_{i,j}}=m_j|_{U_{i,j}}\right\}\\
+			&=\ker\Big(\check{C}^0(\Uu,\Mm)\morphism[\hacek{d}^0]\check{C}^1(\Uu,\Mm)\Big)\simeq \check{H}^0(\Uu,\Mm)\\
+			&=\ker\Big(\check{C}_\alt^0(\Uu,\Mm)\morphism[\hacek{d}^0]\check{C}_\alt^1(\Uu,\Mm)\Big)\simeq \check{H}_\alt^0(\Uu,\Mm)
+		\end{align*}
+		\item For the trivial cover $\Uu_0\colon X=X$, the \vC ech complex $\check{C}^*(\Uu_0,\Mm)$ has the form
+		\begin{align*}
+			\Mm(X)\morphism 0\morphism 0\morphism0\morphism\ldots
+		\end{align*}
+		and the alternating \vC ech complex $\check{C}_\alt^*(\Uu_0,\Mm)$ looks like
+		\begin{align*}
+			\Mm(X)\morphism[0]\Mm(X)\morphism[\id]\Mm(X)\morphism[0]\ldots\;,
+		\end{align*}
+		so
+		\begin{align*}
+			\check{H}^n(\Uu_0,\Mm)=\check{H}_\alt^n(\Uu_0,\Mm)=\begin{cases}
+				\Mm(X) & \text{if }n=0\\
+				0 & \text{else}
+			\end{cases}\;.
+		\end{align*}
+		\item If $\Mm$ and $\Nn$ are presheaves of modules on $X$ and $\Uu$ is an open cover of $X$, then 
+		\begin{align*}
+			\check{C}^*(\Uu,\Mm\oplus\Nn)=\check{C}^*(\Uu,\Mm)\oplus\check{C}^*(\Uu,\Nn)
+		\end{align*}
+		and, more general, 
+		\begin{align*}
+			\check{C}^*\bigg(\Uu,\prod_{i\in I}\Mm_i\bigg)=\prod_{i\in I}\check{C}^*(\Uu,\Mm_i)\;.
+		\end{align*}
+		The same holds for $\check{C}_\alt^*(\Uu,-)$.
+	\end{alphanumerate}
+\end{example}
+If $\Uu\colon X=\bigcup_{i\in I}U_i$ is a cover of a scheme $X$ by affine open subsets $U_i$, then all intersections $U_{i_0,\ldots,i_n}$ are affine again by Proposition~\reff{prop:SchemesAffineIntersec}. If $0\morphism\Mm'\morphism\Mm\morphism\Mm''\morphism 0$ is a short exact sequence in $\cat{QCoh}(X)$, Corollary~\reff{cor:GlobalSectionsExactOnAffine} provides short exact sequences
+\begin{align*}
+	0\morphism \check{C}^*(\Uu,\Mm')\morphism \check{C}^*(\Uu,\Mm)\morphism \check{C}^*(\Uu,\Mm'')\morphism 0
+\end{align*}
+and
+\begin{align*}
+	0\morphism \check{C}_\alt^*(\Uu,\Mm')\morphism \check{C}_\alt^*(\Uu,\Mm)\morphism \check{C}_\alt^*(\Uu,\Mm'')\morphism 0
+\end{align*}
+of chain complexes. For $\check{C}^*(\Uu,-)$ this is immediate from Definition~\reff{def:cech} and from the fact that products of short exact sequences are short exact again. To see this for $\check{C}_\alt^*(\Uu,-)$, choose any linear ordering of $I$ and note that 
+\begin{align*}
+	\check{C}_\alt^n(\Uu,\Mm)\simeq\prod_{i_0<\ldots<i_n\in I}\Mm(U_{i_0,\ldots,i_n})\;,
+\end{align*}
+then the same argument may be applied.
+
+Taking long exact cohomology sequences we just proved
+\begin{prop}
+	If $\Uu$ is an affine open cover of a scheme $X$ and $\Mm$ a quasi-coherent sheaf of $\Oo_X$-modules, then there is a long exact cohomology sequence
+	\begin{diagram*}
+		\node[ob] (0o) at (0,1.5) {$0$};
+		\node[ob] (0u) at (0,0) {$0$};
+		\node[ob] (H0Z) [right=0.5 of 0o] {$\check{H}^0(\Uu,\Mm')$};
+		\node[ob] (H0CX) [right=0.5 of H0Z] {$\check{H}^0(\Uu,\Mm)$};
+		\node[ob] (H0CXx) [right=0.5 of H0CX] {$\check{H}^0(\Uu,\Mm'')$};
+		\node[ob] (Z) at (0u -| H0Z) {$\Mm'(X)$};
+		\node[ob] (CX) at (0u -| H0CX) {$\Mm(X)$};
+		\node[ob] (CXx) at (0u -| H0CXx) {$\Mm''(X)$};
+		\node[ob] (H1Z) [right=0.75 of H0CXx] {$\check{H}^1(\Uu,\Mm')$};
+		\node[ob] (H1CX) [right=0.5 of H1Z] {$\check{H}^1(\Uu,\Mm)$};
+		\node[ob] (dots) [right=0.5 of H1CX] {$\ldots$};
+		\scriptsize
+		\draw[->] (0u) -- (Z);
+		\draw[->] (0o) -- (H0Z);
+		\draw[->] (Z) -- (CX);
+		\draw[->] (H0Z) -- (H0CX);
+		\draw[->] (CX) -- (CXx);
+		\draw[->] (H0CX) -- (H0CXx);
+		\draw[->] (H0CXx) -- (H1Z)node[pos=0.5, above] {$d$};;
+		\draw[->] (H1Z) -- (H1CX);
+		\draw[->] (H0Z) -- (Z) node[pos=0.5, above=-0.25ex, sloped] {$\sim$};
+		\draw[->] (H0CX) -- (CX) node[pos=0.5, above=-0.25ex, sloped] {$\sim$};
+		\draw[->] (H0CXx) -- (CXx) node[pos=0.5, above=-0.25ex, sloped] {$\sim$};
+		\draw[->] (H1CX) -- (dots);
+	\end{diagram*}
+	and similar for $\check{H}_\alt^*(\Uu,-)$.
+\end{prop}
+\begin{rem}
+	For arbitrary preschemes, the situation is more difficult (cf. Thomason, \emph{The Grothendieck Festschrift}).
+\end{rem}
+\begin{defi}
+	An open cover $\Vv\colon X=\bigcup_{j\in J}V_j$ is a \defemph{refinement} of $\Uu\colon X=\bigcup_{i\in I}U_i$ if there is a map $v\colon J\morphism I$ such that $V_j\subseteq U_{v(j)}$ for all $j\in J$. Such a $v$ is called a \defemph{refinement map} for the pair $(\Vv,\Uu)$. 
+\end{defi}
+Note that Professor Franke isn't sure whether \emph{refinement map} is the usual term. Assuming the axiom of choice, the existence of $v$ is equivalent to every $V_j$ being contained in some $U_i$. 
+
+A refinement map $v$ induces a morphism
+\begin{align*}
+	\check{C}^*(\Uu,\Mm)\morphism[v^*]\check{C}^*(\Vv,\Mm)\;,\quad(v^n\psi)_{j_0,\ldots,j_n}=\psi_{v(j_0),\ldots,v(j_n)}|_{V_{j_0,\ldots,j_n}}\quad\text{for }\psi\in\check{C}^n(\Uu,\Mm)\;.
+\end{align*}
+Clearly, $v^*$ commutes with the $d_j$, $s_j$, and $t_j$, hence restricts to a morphism of chain complexes $\check{C}_\alt^*(\Uu,\Mm)\morphism[v^*]\check{C}_\alt^*(\Vv,\Mm)$.
+\begin{lem}
+	\begin{alphanumerate}
+		\item A refinement $\Ww$ of a refinement $\Vv$ of $\Uu$ is a refinement of $\Uu$ and if $v$ and $w$ are associated refinement maps for $(\Vv,\Uu)$ and $(\Ww,\Uu)$, then $vw$ is a refinement map for $(\Ww,\Uu)$. Moreover, $(vw)^*=w^*v^*$ and the identity $\id_I$ is a refinement map for $(\Uu,\Uu)$ and $\id_I^*=\id_{\check{C}^*(\Uu,-)}$.
+		\item Two arbitrary open covers have a common refinement. When $X$ is a prescheme, this common refinement can be chosen affine.
+		\item If $v_1,v_2\colon J\morphism I$ are two refinement maps for $(\Vv,\Uu)$, then $v_1^*$ and $v_2^*$ induce the same morphism on \vC ech cohomology.
+	\end{alphanumerate}
+\end{lem}
+\begin{proof}
+	Part \itememph{a} is obvious. For \itememph{b}, let $\Uu$ and $\Vv$ be open covers of $X$. Then $X=\bigcup_{(i,j)\in I\times J}U_i\cap V_j$ is a common refinement. When $X$ is a prescheme, we may cover each $U_i\cap V_j$ by affine open subsets and thus obtain a common affine refinement of $\Uu$ and $\Vv$.
+	
+	Now for part \itememph{c}. Define maps $h^n\colon\check{C}^n(\Uu,\Mm)\morphism\check{C}^{n-1}(\Vv,\Mm)$ as follows: We put 
+	\begin{align*}
+		h^n=\sum_{\ell=0}^{n-1}(-1)^\ell h_\ell\;,
+	\end{align*}
+	where $h_\ell\colon\check{C}^n(\Uu,\Mm)\morphism\check{C}^{n-1}(\Vv,\Mm)$ is given by
+	\begin{align*}
+		(h_\ell\psi)_{j_0,\ldots,j_{n-1}}=\psi_{v_1(j_0),\ldots,v_1(j_\ell),v_2(j_\ell),\ldots,v_2(j_{n-1})}|_{V_{j_0,\ldots,j_{n-1}}}\quad\text{for }\psi\in\check{C}^n(\Uu,\Mm)\;.
+	\end{align*}
+	Then it's a straightforward but tedious check that the following relations hold:
+	\begin{align}\lbl{eq:SHIT}
+		h_\ell d_k=\begin{cases}
+			d_kh_{\ell-1} & \text{if }0\leq k<\ell\\
+			h_{\ell-1}d_{k} & \text{if }0< k=\ell\\
+			v_2^n & \text{if }0=k=\ell\\
+			h_{\ell+1}d_{k} & \text{if }k=\ell+1<n\\
+			v_1^n & \text{if }k=\ell+1=n\\
+			d_{k-1}h_\ell & \text{if }k>\ell+1
+		\end{cases}\;.
+	\end{align}
+	(I tried my best to get the indices right and I claim my hit ratio is way higher than Franke's). Our goal is to show 
+	\begin{align*}
+		\hacek{d}^{n-1}h^n+h^{n+1}\hacek{d}^n=v_2^n-v_1^n\;,
+	\end{align*}
+	for then $h^*$ is a cochain homotopy between $v_1^*$ and $v_2^*$ and it's a well-known fact from homological algebra that cochain homotopic maps induce the same morphisms on cohomology. Indeed, using \eqreff{eq:SHIT} we get
+	\begin{align*}
+		h^{n+1}\hacek{d}^n&=\sum_{\ell=0}^{n}\sum_{k=0}^{n+1}(-1)^{\ell+k}h_\ell d_k\\
+		&=\begin{multlined}[t]
+			\sum_{\ell=0}^{n}\sum_{k=0}^{\ell-1}(-1)^{\ell+k}h_\ell d_k+(-1)^0h_0d_0+\sum_{\ell=1}^{n}(-1)^{2\ell}h_\ell d_\ell\\
+			+\sum_{\ell=0}^{n-1}(-1)^{2\ell+1}h_\ell d_{\ell+1}+(-1)^{2n+1}h_nd_{n+1}+\sum_{\ell=0}^{n}\sum_{k=\ell+2}^{n+1}(-1)^{\ell+k}h_\ell d_k
+		\end{multlined}\\
+		&=\begin{multlined}[t]
+			\sum_{\ell=0}^{n}\sum_{k=0}^{\ell-1}(-1)^{\ell+k}d_k h_{\ell-1}+v_2^n+\sum_{\ell=1}^{n}h_{\ell-1} d_\ell\\
+			-\sum_{\ell=0}^{n-1}h_\ell d_{\ell+1}-v_1^n+\sum_{\ell=0}^{n}\sum_{k=\ell+2}^{n+1}(-1)^{\ell+k}d_{k-1} h_{\ell}
+		\end{multlined}\\
+		&=\sum_{\ell=0}^{n-1}\sum_{k=0}^{\ell}(-1)^{\ell+1+k}d_k h_{\ell}+\sum_{\ell=0}^{n}\sum_{k=\ell+1}^{n}(-1)^{\ell+k+1}d_{k} h_{\ell}+v_2^n-v_1^n\\
+		&=-\sum_{k=0}^{n}\sum_{\ell=0}^{n-1}(-1)^{\ell+k}d_kh_\ell +v_2^n-v_1^n\\
+		&=-\hacek{d}^{n-1}h^n+v_2^n-v_1^n\;,
+	\end{align*}
+	as required.
+\end{proof}
 
 \appendix
 \chapter{Appendix -- category theory corner}
