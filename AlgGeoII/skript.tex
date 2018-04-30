@@ -39,7 +39,7 @@ Please report bugs, typos etc. through the \emph{Issues} feature of github.
 
 \addchap{Introduction}
 \pagenumbering{arabic}
-This lecture will develop the cohomology of (quasi)coherent sheaves of modules. Professor Franke assumes familiarity with the contents of last term's Algebraic Geometry I. In particular, this includes the category of (pre)schemes, equalizers and fibre products of preschemes as well as in arbitrary categories and quasi-coherent $\Oo_X$-modules. If you are want to brush up your knowledge about these topics, the \href{https://github.com/Nicholas42/AlgebraFranke/tree/master/AlgGeoI}{\emph{lecture notes from Algebraic Geometry I}} \cite{alggeo1} might be your friend.
+This lecture will develop the cohomology of (quasi)coherent sheaves of modules. Professor Franke assumes familiarity with the contents of last term's Algebraic Geometry I. In particular, this includes the category of (pre)schemes, equalizers and fibre products of preschemes as well as in arbitrary categories and quasi-coherent $\Oo_X$-modules. If you want to brush up your knowledge about these topics, the \href{https://github.com/Nicholas42/AlgebraFranke/tree/master/AlgGeoI}{\emph{lecture notes from Algebraic Geometry I}} \cite{alggeo1} might be your friend.
 
 Professor Franke started the lecture with an example of sheaf cohomology entering the game. Let $X$ be a topological space, $\Cc_X$ the sheaf of continuous $\IC$-valued functions on $X$ and $\underline{\IZ}_X$ the sheaf of locally constant (i.e., continuous) functions on $X$ with values in $\IZ$. Then there is a short exact sequence
 \begin{align*}
@@ -103,7 +103,7 @@ Background in homological algebra is not required safe for cohomology groups of 
 		\draw[->] (D) -- (D') node[pos=0.5, left] {$\delta$};
 		\draw[->] (E) -- (E') node[pos=0.5, left] {$\epsilon$};
 	\end{diagram*}
-	of (abelian) groups/$R$-modules/etc.\ with exact rows, in which $\alpha$, $\beta$, $\delta$, and $\epsilon$ are isomorphisms, then $\gamma$ is an isomorphism as well.
+	of (abelian) groups/$R$-modules/etc.\ with exact rows, in which $\beta$ and $\delta$ are isomorphisms, $\alpha$ is an epimorphism and $\epsilon$ a monomorphism, then $\gamma$ is an isomorphism as well.
 \end{lem*}
 \begin{proof}
 	Easy diagram chase.
@@ -192,7 +192,7 @@ Let $\Aa$ be the category $R\cat{-Mod}$ and $\Bb$ be $\Oo_{\Spec R}\cat{-Mod}$, 
 	Equivalence was proved in \cite[Fact~2.1.1]{alggeo1} for quasi-compactness and \cite[Lemma~2.1.1]{alggeo1} for quasi-separatedness.
 \end{proof}
 
-\begin{prop}
+\begin{prop}\lbl{prop:PushforwardOfQcIsQc}
 	If $X\morphism[f]Y$ is quasi-compact and quasi-separated morphism of preschemes and $\Mm\in\Ob(\cat{QCoh}(X))$, then $f_*\Mm\in\Ob\left(\cat{QCoh}\right)$.
 \end{prop}
 \begin{proof}
@@ -443,7 +443,7 @@ To see that $\check{C}^*(\Uu,\Mm)$ is indeed a cochain complex, we need to prove
 \end{rem}
 \begin{example}
 	\begin{alphanumerate}
-		\item By the sheaf axiom, 
+		\item \lbl{ex:FirstCechComputations}By the sheaf axiom, 
 		\begin{align*}
 			\Mm(X)&\simeq\left\{(m_i)_{i\in I}\in\prod_{i\in I}\Mm(U_i)\st m_i|_{U_{i,j}}=m_j|_{U_{i,j}}\right\}\\
 			&=\ker\Big(\check{C}^0(\Uu,\Mm)\morphism[\hacek{d}^0]\check{C}^1(\Uu,\Mm)\Big)\simeq \check{H}^0(\Uu,\Mm)\\
@@ -490,7 +490,7 @@ of chain complexes. For $\check{C}^*(\Uu,-)$ this is immediate from Definition~\
 then the same argument may be applied.
 
 Taking long exact cohomology sequences we just proved
-\begin{prop}
+\begin{prop}\lbl{prop:LongExactCechSequence}
 	If $\Uu$ is an affine open cover of a scheme $X$ and $\Mm$ a quasi-coherent sheaf of $\Oo_X$-modules, then there is a long exact cohomology sequence
 	\begin{diagram*}
 		\node[ob] (0o) at (0,1.5) {$0$};
@@ -535,7 +535,7 @@ A refinement map $v$ induces a morphism
 Clearly, $v^*$ commutes with the $d_j$, $s_j$, and $t_j$, hence restricts to a morphism of chain complexes $\check{C}_\alt^*(\Uu,\Mm)\morphism[v^*]\check{C}_\alt^*(\Vv,\Mm)$.
 \begin{lem}
 	\begin{alphanumerate}
-		\item A refinement $\Ww$ of a refinement $\Vv$ of $\Uu$ is a refinement of $\Uu$ and if $v$ and $w$ are associated refinement maps for $(\Vv,\Uu)$ and $(\Ww,\Uu)$, then $vw$ is a refinement map for $(\Ww,\Uu)$. Moreover, $(vw)^*=w^*v^*$ and the identity $\id_I$ is a refinement map for $(\Uu,\Uu)$ and $\id_I^*=\id_{\check{C}^*(\Uu,-)}$.
+		\item \lbl{lem:refinementPullback}A refinement $\Ww$ of a refinement $\Vv$ of $\Uu$ is a refinement of $\Uu$ and if $v$ and $w$ are associated refinement maps for $(\Vv,\Uu)$ and $(\Ww,\Uu)$, then $vw$ is a refinement map for $(\Ww,\Uu)$. Moreover, $(vw)^*=w^*v^*$ and the identity $\id_I$ is a refinement map for $(\Uu,\Uu)$ and $\id_I^*=\id_{\check{C}^*(\Uu,-)}$.
 		\item Two arbitrary open covers have a common refinement. When $X$ is a prescheme, this common refinement can be chosen affine.
 		\item If $v_1,v_2\colon J\morphism I$ are two refinement maps for $(\Vv,\Uu)$, then $v_1^*$ and $v_2^*$ induce the same morphism on \vC ech cohomology.
 	\end{alphanumerate}
@@ -582,6 +582,205 @@ Clearly, $v^*$ commutes with the $d_j$, $s_j$, and $t_j$, hence restricts to a m
 		&=-\hacek{d}^{n-1}h^n+v_2^n-v_1^n\;,
 	\end{align*}
 	as required.
+\end{proof}
+\begin{cor}\lbl{cor:refinementPullback}
+	Let $\Mm$ be a presheaf of modules on a space $X$ and $\Uu,\Vv$ be open covers of $X$.
+	\begin{alphanumerate} 
+		\item If $\Vv$ is a refinement of $\Uu$, we have a canonical morphism 
+		\begin{align*}
+			\tau_{\Uu,\Vv}\colon \check{H}^*(\Uu,\Mm)\morphism\check{H}^*(\Vv,\Mm)
+		\end{align*}
+		satisfying $\tau_{\Vv,\Ww}\tau_{\Uu,\Vv}=\tau_{\Uu,\Ww}$ if $\Ww$ is another open cover of $X$ which is a refinement of $\Vv$, as well as $\tau_{\Uu,\Uu}=\id$.
+		\item If $\Uu$ is a refinement of $\Vv$ and $\Vv$ a refinement of $\Uu$, then $\tau_{\Uu,\Vv}$ and $\tau_{\Vv,\Uu}$ are isomorphisms which are inverse to each other.
+		\item If there is an $i^*\in I$ such that $U_{i^*}=X$, then $\check{H}^n(\Uu,\Mm)$ vanishes for $n\geq 1$.
+	\end{alphanumerate}
+\end{cor}
+\begin{proof}
+	Part \itememph{a} follows from Lemma~\reff{lem:refinementPullback}. Part \itememph{b} follows from \itememph{a} as $\tau_{\Vv,\Uu}\tau_{\Uu,\Vv}=\tau_{\Uu,\Uu}=\id$. Part \itememph{c} follows from \itememph{b} and Example~\reff{ex:FirstCechComputations} as $\Uu$ and the trivial cover $\Uu_0\colon X=X$ are refinements of each other in this case.
+\end{proof}
+\begin{rem}\lbl{rem:trivialCalt}
+	In general, the cochain homotopy used in the proof of Lemma~\reff{lem:refinementPullback} won't preserve the subcomplex $\check{C}_\alt^*(-,\Mm)\subseteq\check{C}^*(-,\Mm)$. However, Corollary~\reff{cor:refinementPullback}\itememph{c} for $\check{H}_\alt^*(\Uu,\Mm)$ can still be obtained, using the \emph{cochain contraction} $h^*\colon \check{C}^*(\Uu,\Mm)\morphism\check{C}^*(\Uu,\Mm)$, where $h^n\colon \check{C}^n(\Uu,\Mm)\morphism\check{C}^{n-1}(\Uu,\Mm)$ for $n\geq 1$ is given by
+	\begin{align*}
+		(h^n\psi)_{i_0,\ldots,i_n}=\psi_{i^*,i_0,\ldots,i_n}\;.
+	\end{align*}
+	It's a straightforward check that $h^*$ preserves $\check{C}_\alt^*(\Uu,\Mm)\subseteq \check{C}^*(\Uu,\Mm)$. Moreover, one has the relations
+	\begin{align*}
+		h^nd_k=\begin{cases}
+			\id &\text{if }k=0\\
+			d_{k-1}h^{n-1} & \text{if }k>0
+		\end{cases}\;,
+	\end{align*}
+	hence
+	\begin{align*}
+		\hacek{d}^{n-1}h^n+h^{n+1}\hacek{d}^n&=\sum_{k=0}^{n}(-1)^kd_kh^n+\sum_{k=0}^{n+1}(-1)^kd_kh^{n+1}\\
+		&=\id+\sum_{k=0}^{n}\left((-1)^k+(-1)^{k+1}\right)d_kh^n\\
+		&=\id\;,
+	\end{align*}
+	proving that $h^*$ is indeed a cochain contraction, hence $\check{H}_\alt^i(\Uu,\Mm)=0$ for $i>0$. For our purposes, this will turn out to be sufficient.
+\end{rem}
+We now arrive at the main result of this section.
+\begin{prop}\lbl{prop:CechCohoOnScheme}
+	 Let $X$ be a quasi-compact scheme, $\Mm$ be a quasi-coherent $\Oo_X$-module and $\Uu$ and affine open cover of $X$.
+	\begin{alphanumerate}
+		\item If $\Vv$ is another affine open cover of $X$ which is a refinement of $\Uu$, then
+		\begin{align*}
+			\tau_{\Uu,\Vv}\colon \check{H}^*(\Uu,\Mm)\isomorphism\check{H}^*(\Vv,\Mm)\;.
+		\end{align*}
+		\item The inclusion $\check{C}_\alt^*(\Uu,\Mm)\subseteq \check{C}^*(\Uu,\Mm)$ of cochain complexes induces an isomorphism
+		\begin{align*}
+			\check{H}_\alt^*(\Uu,\Mm)\isomorphism\check{H}^*(\Uu,\Mm)\;.
+		\end{align*}
+		\item If $X$ is affine and $i\geq 1$, then $\check{H}_\alt^i(\Uu,\Mm)=\check{H}^i(\Uu,\Mm)=0$.
+	\end{alphanumerate}
+\end{prop}
+Before the proof, a lemma.
+\begin{lem}\lbl{lem:CohomologyOfPushforward}
+	For an open cover $\Uu\colon X=\bigcup_{i\in I}\Uu_i$ of a topological space $X$ and a continuous map $f\colon Y\morphism X$, let $f^{-1}(\Uu)$ be the cover $Y=\bigcup_{i\in I}f^{-1}(U_i)$. Let $\Ff$ be a sheaf of abelian groups on $Y$.
+	\begin{alphanumerate}
+		\item We have an isomorphism of cochain complexes $\check{C}^*(f^{-1}(\Uu),\Ff)\simeq \check{C}^*(\Uu,f_*\Ff)$ and this isomorphism restricts to an isomorphism $\check{C}_\alt^*(f^{-1}(\Uu),\Ff)\simeq \check{C}_\alt^*(\Uu,f_*\Ff)$.
+		\item If the image of $f$ is contained in one of the open subsets $U_i$, then $\check{H}^i(\Uu,f_*\Ff)=\check{H}_\alt^i(\Uu,f_*\Ff)=0$ for $i\geq 1$.
+	\end{alphanumerate}
+\end{lem}
+\begin{proof}
+	Part \itememph{a} is pretty much tautological. Let $\Vv=f^{-1}(\Uu)$, $V_i=f^{-1}(U_i)$, then we have $V_{i_0,\ldots,i_n}=f^{-1}(U_{i_0,\ldots,i_n})$, hence $f_*\Ff(V_{i_0,\ldots,i_n})=\Ff(U_{i_0,\ldots,i_n})$ by definition of the \emph{direct image} $f_*\Ff$. The differentials $\hacek{d}$ as well as the degeneracy and transposition maps $s_\ell,t_\ell$ of $\check{C}^*(f^{-1}(\Uu),\Ff)$ and $\check{C}^*(\Uu,f_*\Ff)$ clearly coincide, proving the asserted isomorphisms of cochain complexes.
+	
+	Part \itememph{b} follows from \itememph{a}, Corollary~\reff{cor:refinementPullback}\itememph{c} and Remark~\reff{rem:trivialCalt}.
+\end{proof}
+\begin{proof}[Proof of Proposition~\reff{prop:CechCohoOnScheme}]
+	Part \itememph{a}. We fix the covers $\Uu$ and $\Vv$ and consider the following conditions on $\Mm$:
+	\begin{quote}
+		$\Mm$ satisfies $A_i(\Mm)$ iff $\check{H}^j(\Uu,\Mm)\morphism[\tau_{\Uu,\Vv}]\check{H}^j(\Vv,\Mm)$ is an isomorphism for $j<i$ and injective for $i=j$.
+	\end{quote}
+	\begin{claim}\lbl{claim:AiAi+1}
+		For a short exact sequence $0\morphism \Mm'\morphism \Mm\morphism \Mm''\morphism 0$ of quasi-coherent $\Oo_X$-modules one has the implication
+		\begin{align*}
+		\left[A_{i+1}(\Mm)\text{ and }A_i(\Mm'')\right] \Longrightarrow A_{i+1}(\Mm')\;.
+		\end{align*}
+	\end{claim}
+	To prove Claim~\reff{claimAiAi+1}, consider the commutative diagram
+	\begin{diagram*}
+		\node[ob] (A) at (0,1.5) {$\check{H}^{j-1}(\Uu,\Mm)$};
+		\node[ob] (B) at (3,1.5) {$\check{H}^{j-1}(\Uu,\Mm'')$};
+		\node[ob] (C) at (6,1.5) {$\check{H}^{j}(\Uu,\Mm')$};
+		\node[ob] (D) at (9,1.5) {$\check{H}^j(\Uu,\Mm)$};
+		\node[ob] (E) at (12,1.5) {$\check{H}^{j}(\Uu,\Mm'')$};
+		\node[ob] (A') at (0,0) {$\check{H}^{j-1}(\Vv,\Mm)$};
+		\node[ob] (B') at (3,0) {$\check{H}^{j-1}(\Vv,\Mm'')$};
+		\node[ob] (C') at (6,0) {$\check{H}^{j}(\Vv,\Mm')$};
+		\node[ob] (D') at (9,0) {$\check{H}^{j}(\Vv,\Mm)$};
+		\node[ob] (E') at (12,0) {$\check{H}^{j}(\Vv,\Mm'')$};
+		\scriptsize
+		\draw[->] (A) -- (B);
+		\draw[->] (B) -- (C);
+		\draw[->] (C) -- (D);
+		\draw[->] (D) -- (E);
+		\draw[->] (A') -- (B');
+		\draw[->] (B') -- (C');
+		\draw[->] (C') -- (D');
+		\draw[->] (D') -- (E');
+		\draw[->] (A) -- (A') node[pos=0.5, left] {$\alpha$};
+		\draw[->] (B) -- (B') node[pos=0.5, left] {$\beta$};
+		\draw[->] (C) -- (C') node[pos=0.5, left] {$\gamma$};
+		\draw[->] (D) -- (D') node[pos=0.5, left] {$\delta$};
+		\draw[->] (E) -- (E') node[pos=0.5, left] {$\epsilon$};
+	\end{diagram*}
+	When $j\leq i$, then $\alpha,\beta$, and $\delta$ are isomorphisms, while $\epsilon$ is injective, proving $\gamma$ to be an isomorphism by the five lemma. When $j=i+1$, $\alpha$ is an isomorphism by $A_{i+1}(\Mm)$ while $\beta$ and $\delta$ are injective, proving $\gamma$ to be injective by the four lemma. Claim~\reff{claim:AiAi+1} follows.
+	\begin{claim}\lbl{claim:BigN}
+		For any quasi-coherent $\Oo_X$-module $\Mm$ there are a quasi-coherent $\Oo_X$-module $\Nn$ such that $A_i(\Nn)$ holds for arbitary $i$, and a monomorphism $\Mm\monomorphism\Nn$.
+	\end{claim}
+	To show this, let $j_W\colon W\morphism X$ be the embedding of any affine open subset $W$ contained in one of the open subsets forming the cober $\Vv$. As $X$ is a scheme, the morphism $j_W$ is affine, i.e., preimages of affine open subsets are affine (cf. \cite[Definition~2.5.1]{alggeo1}). Indeed, since preimages in this case are intersections with $W$, this follows from Proposition~\reff{prop:SchemesAffineIntersec}. Being an open embedding, $j_W$ is also quasi-separated. By Proposition~\reff{prop:PushforwardOfQcIsQc} and Proposition~\reff{prop:QCohHasKerCoker}\itememph{b}, $(j_W)_*\Mm|_W$ is a quasi-coherent $\Oo_X$-module. Since $X$ is quasi-compact, we find finitely many affine open subsets $W_1,\ldots,W_n$ covering $X$, each $W_i$ contained in an element of $\Vv$ (that is, $X=\bigcup_{i=1}^nW_i$ is a finite affine refinement of $\Vv$). Then
+	\begin{align*}
+		\Nn\coloneqq\bigoplus_{i=1}^n(j_{W_i})_*\Mm|_{W_i}
+	\end{align*}
+	is quasi-coherent by Proposition~\reff{prop:QCohHasKerCoker}\itememph{a}.
+	
+	We have morphisms
+	\begin{align*}
+		\Mm(U)&\morphism\Nn(U)=\bigoplus_{i=1}^n(j_{W_i})_*(\Mm|_{W_i})(U)=\bigoplus_{i=1}^n\Mm(U\cap W_i)\\
+	m&\longmapsto (m|_{U\cap W_i})_{i=1}^n
+	\end{align*}
+	which are injective as $\Mm$ satisfies the sheaf axiom and form a morphism of $\Oo_X$-modules $\Mm\morphism\Nn$, which is thus a monomorphism.
+	
+	By Example~\reff{ex:FirstCechComputations}\itememph{c}, 
+	\begin{align*}
+		\check{H}^k(\Uu,\Nn)=\bigoplus_{i=1}^n\check{H}^k(\Uu,(j_{W_i})_*\Mm|_{W_i})
+	\end{align*}
+	and same for $\Vv$. But Example~\reff{ex:FirstCechComputations}\itememph{a} and  Lemma~\reff{lem:CohomologyOfPushforward}\itememph{b} (which applies here as every $W_i$ is contained in an element of $\Vv$, thus also of $\Uu$) show that 
+	\begin{align*}
+		\check{H}^k(\Uu,(j_{W_i})_*\Mm|_{W_i})=\check{H}^k(\Vv,(j_{W_i})_*\Mm|_{W_i})=\begin{cases}
+			\Mm(W_i) &\text{if }k=0\\
+			0 & \text{else}
+		\end{cases}\;,
+	\end{align*}
+	hence $(j_{W_i})_*\Mm|_{W_i}$ has property $A_i$ for arbitrary $i$. Now $\Nn$ inherits the property $A_i$ from its summands, proving Claim~\reff{claim:BigN}.
+		
+	We are now able to finish the proof of Proposition~\reff{prop:CechCohoOnScheme}\itememph{a}. We prove by induction on $i$ that $A_i(\Mm)$ holds for arbitrary quasi-coherent $\Oo_X$-modules $\Mm$.  For $i=0$, note that $\check{H}^0(\Uu,\Mm)\simeq \check{H}^0(\Vv,\Mm)\simeq \Mm(X)$ for all $\Oo_X$-modules $\Mm$ (quasi-coherent or not), i.e., $A_0(\Mm)$ holds. 
+	
+	Now suppose $i\geq 1$ and $A_{i-1}$ holds for every quasi-coherent $\Oo_X$-module. Using Claim~\reff{claim:BigN}, we choose an embedding $\Mm\monomorphism[\iota]\Nn$ where $\Nn$ is quasi-coherent and satisfies $A_i$, then apply Claim~\reff{claim:AiAi+1} to the exact sequence
+	\begin{align*}
+		0\morphism\Mm\morphism[\iota]\Nn\morphism\coker(\iota)\morphism 0
+	\end{align*}
+	to derive $A_i(\Mm)$ from $A_i(\Nn)$ and $A_{i-1}(\coker(\iota))$. Here, Proposition~\reff{prop:QCohHasKerCoker}\itememph{a} ensures that $\coker(\iota)$ is quasi-coherent as well.
+	
+	Part \itememph{b}. The proof of part \itememph{a} can be carried over with the following modifications.
+	\begin{itemize}
+		\item $A_i(\Mm)$ is now the condition that $\check{H}_\alt^j(\Uu,\Mm)\morphism \check{H}^j(\Uu,\Mm)$ is an isomorphism when $j<i$ and injective for $j=i$.
+		\item Claim~\reff{claim:AiAi+1} also holds for the new $A_i$.
+		\item If $W\subseteq X$ is affine and contained in one of the $V_i$ and $\Ff\in\Ob(\cat{Qcoh}(W))$, then $(j_W)_*\Ff$ satisfies all $A_i$ (which follows like above from Lemma~\reff{lem:CohomologyOfPushforward}\itememph{b} and Example~\reff{ex:FirstCechComputations}).
+	\end{itemize}
+	
+	Part \itememph{c}. Apply \itememph{a} with $\Uu$ the trivial cover $X=X$ and $\Vv$ any affine open cover of $X$ to conclude $\check{H}^i(\Vv,\Mm)=0$ when $i\geq 1$ and $\Mm$ is a quasi-coherent $\Oo_X$-module. Then one uses \itememph{b} to show that $\check{H}_\alt^*(\Vv,\Mm)$ also vanishes in positive degrees.
+\end{proof}
+\begin{defi}
+	Let $X$ be a quasi-compact scheme and $\Mm$ a quasi-coherent $\Oo_X$-module. We put
+	\begin{align*}
+		H^i(X,\Mm)\coloneqq \check{H}^i(\Vv_0,\Mm)\;,
+	\end{align*}
+	where $\Vv_0$ is the affine open cover of $X$ consisting of all affine open subsets of $X$.
+\end{defi}
+Summing up our previous work, we obtain the following Theorem~\reff{thm:CohoOnSchemes} in full glory.
+\begin{thm}\lbl{thm:CohoOnSchemes}
+	Let $X$ be a quasi-compact scheme and $\Mm$ a quasi-coherent $\Oo_X$-module.
+	\begin{alphanumerate}
+		\item If $\Uu$ is any affine open over of $X$, then
+		\begin{align*}
+			H^*(X,\Mm)\isomorphism[\tau_{\Uu,\Vv_0}]\check{H}^*(\Uu,\Mm)\lisomorphism \check{H}_\alt^*(\Uu,\Mm)
+		\end{align*}
+		are isomorphisms compatible with the (iso)morphisms $\check{H}^*(\Uu,\Mm)\morphism[\tau_{\Uu,\Vv}]\check{H}^*(\Vv,\Mm)$ when $\Vv$ is an affine refinement of $\Uu$.
+		\item When $X$ is affine, $H^i(X,\Mm)=0$ when $i\geq 1$.
+		\item There is a canonical isomorphism $H^0(X,\Mm)\simeq \Mm(X)$.
+		\item When $0\morphism \Mm'\morphism\Mm\morphism\Mm''\morphism0$ is a short exact sequence of quasi-coherent $\Oo_X$-modules, one has a long exact cohomology sequence
+		\begin{multline*}
+			\begin{tikzpicture}[line cap=round, line join=round]
+			\node[ob] (0o) at (0,0) {$0$};
+			\node[ob] (0u) at (0,1.5) {$0$};
+			\node[ob] (H0Z) [right=0.5 of 0o] {$H^0(X,\Mm')$};
+			\node[ob] (H0CX) [right=0.5 of H0Z] {$H^0(X,\Mm)$};
+			\node[ob] (H0CXx) [right=0.5 of H0CX] {$H^0(X,\Mm'')$};
+			\node[ob] (Z) at (0u -| H0Z) {$\Mm'(X)$};
+			\node[ob] (CX) at (0u -| H0CX) {$\Mm(X)$};
+			\node[ob] (CXx) at (0u -| H0CXx) {$\Mm''(X)$};
+			\node[ob] (H1Z) [right=0.75 of H0CXx] {$H^1(X,\Mm')$};
+			\node[ob] (H1CX) [right=0.5 of H1Z] {$\ldots$};
+			\scriptsize
+			\draw[->] (0u) -- (Z);
+			\draw[->] (0o) -- (H0Z);
+			\draw[->] (Z) -- (CX);
+			\draw[->] (H0Z) -- (H0CX);
+			\draw[->] (CX) -- (CXx);
+			\draw[->] (H0CX) -- (H0CXx);
+			\draw[->] (H0CXx) -- (H1Z)node[pos=0.5, above] {$d$};;
+			\draw[->] (H1Z) -- (H1CX);
+			\draw[->] (H0Z) -- (Z) node[pos=0.5, above=-0.25ex, sloped] {$\sim$};
+			\draw[->] (H0CX) -- (CX) node[pos=0.5, above=-0.25ex, sloped] {$\sim$};
+			\draw[->] (H0CXx) -- (CXx) node[pos=0.5, above=-0.25ex, sloped] {$\sim$};
+			\end{tikzpicture}\\
+			\ldots \morphism H^{i-1}(X,\Mm'')\morphism[d]H^i(X,\Mm')\morphism H^i(X,\Mm)\morphism H^i(X,\Mm'')\morphism[d]\ldots
+		\end{multline*}
+	\end{alphanumerate}
+\end{thm}
+\begin{proof}
+	Part \itememph{a} follows from Proposition~\reff{prop:CechCohoOnScheme} and the fact that every affine open cover $\Uu$ is a refinement of $\Vv_0$. Part \itememph{b} is Proposition~\reff{prop:CechCohoOnScheme}\itememph{c}. Part \itememph{c} was seen in Example~\reff{ex:FirstCechComputations}\itememph{a} and \itememph{d} follows from Proposition~\reff{prop:LongExactCechSequence}.
 \end{proof}
 
 \appendix
@@ -853,7 +1052,7 @@ For clarity (and to better distinguish between the proof and Professor Franke's 
 			\colimit[i\in I]\colimit[j\in J]X_{i,j}\simeq\colimit[j\in J]\colimit[i\in I]X_{i,j}\simeq\colimit[(i,j)\in I\times J]X_{i,j}\;.
 		\end{align*}
 	\end{lem}
-	\begin{proof}[Proof of Lemma~\reff{lem:ColimitsCommute}]
+	\begin{proof}
 		Clearly, it is enough to show the rightmost isomorphism. What we need to show is that $L\coloneqq\colimit[j]\colimit[i]X_{i,j}$ satisfies the universal property of $L'\coloneqq\colimit[(i,j)]X_{i,j}$.
 		
 		 Let $T$ be an object of $\Aa$ and $\big(X_{i,j}\morphism[\tau_{i,j}]T\big)_{i\in I,j\in J}$ be a cocone below the diagram $(X_{i,j})_{i,j}$. That is, for every $\alpha\in I_{i_1,i_2}$ and $j\in J$ the diagram 
