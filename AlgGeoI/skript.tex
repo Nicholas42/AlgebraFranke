@@ -63,7 +63,7 @@ Let it be said that the first three recommendations are from Professor Franke wh
     
     A so defined presheaf is furthermore a \defemph{sheaf} if additionally, the following condition, called \emph{sheaf axiom}, holds:
     \begin{quote}\lbl{sheafAxiom}
-     For every open covering $U = \bigcup_{i\in I} U_i$ of an open subset $U\subseteq X$ the map
+     For every open cover $U = \bigcup_{i\in I} U_i$ of an open subset $U\subseteq X$ the map
         \begin{align*}
 			\Ff(U) &\longto \left\{(f_i)_{i\in I}\in \prod_{i\in I} \Ff (U_i)\st f_i|_{U_i\cap U_j} = f_j|_{U_i\cap U_j} \text{ for }i,j\in I\right\}\\
 			f &\longmapsto \left(f|_{U_i}\right)_{i\in I}
@@ -361,7 +361,7 @@ of presheaves on $\Bb$.
         \end{align*}
         (defined using $\big(\Gg|_{\snake\Bb}\big)_x \isomorphism \Gg_x$)  is an isomorphism.
       \item 
-        If $\Bb$ is closed under intersections and $\Gg$ satisfies the sheaf axiom for coverings of elements of $\Bb$ by elements of $\Bb$, then 
+        If $\Bb$ is closed under intersections and $\Gg$ satisfies the sheaf axiom for covers of elements of $\Bb$ by elements of $\Bb$, then 
         \begin{align*}
         	\Gamma_\Gg\colon \Gg\isomorphism \Gg^\sh|_\Bb\;.
         \end{align*}
@@ -2442,7 +2442,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
     
     The implication from \itememph{b} to \itememph{c} is trivial, as $Y$ may be covered by affine open subsets. The implication \itememph{c} $\Rightarrow$ \itememph{d} is even more trivial.
     
-    Finally let's prove \itememph{d} $\Rightarrow$ \itememph{a}. Let $T\doublemorphism[a][b] X$ be such that $fa = fb$. If $Y=\bigcup_{i\in I} U_i$ is a covering by open subsets such that $f^{-1}(U_i)$ is a scheme, then $V_i = a^{-1}f^{-1}(U_i) = b^{-1}f^{-1} (U_i)$ form an open cover of $T$, and 
+    Finally let's prove \itememph{d} $\Rightarrow$ \itememph{a}. Let $T\doublemorphism[a][b] X$ be such that $fa = fb$. If $Y=\bigcup_{i\in I} U_i$ is a cover by open subsets such that $f^{-1}(U_i)$ is a scheme, then $V_i = a^{-1}f^{-1}(U_i) = b^{-1}f^{-1} (U_i)$ form an open cover of $T$, and 
     \begin{align*}
     	\Eq(a,b) \cap V_i = \Eq\bigg(V_i\doublemorphism[a|_{V_i}][b|_{V_i}]f^{-1}(U_i) \bigg)
     \end{align*}
@@ -3002,7 +3002,7 @@ If $k$ is an algebraically closed field and $X\morphism \Spec k$ is a morphism o
 \begin{proof}
 	Indeed, if $x\in X$ is closed, then $\{x\}\monomorphism X$ is a closed immersion, hence of finite type by Corollary~\reff{cor:closedImmersionFiniteType}, hence so is the composite $\{x\}\morphism\Spec k$ by stability under composition (cf. Fact~\reff{fact:locFiniteTypeProperties}), hence $\Oo_{X,x}$ is of finite type over $k$ and its residue field must equal $k$ by Hilbert's Nullstellensatz.
 	
-	Conversely, if $\KK(x)=k$, choose an open neighbourhood $U\simeq \Spec R$ of $x$, such that $x$ corresponds to $\pp\in\Spec R$. Then $\KK(x)$ equals the residue field of the local ring $R_\pp$ which is the same as the quotient field of $R/\pp$. The ring $R=\Oo_X(U)$ being of finite type over $k$, Noether normalization  shows that $R/\pp$ is integral over $k[a1,\ldots,a_n]$ with some $a_1,\ldots,a_n\in R/\pp$ algebraically independent over $k$. As $\KK(x)=k$ we must have $n=0$ and $R/\pp$ is integral over a field, thus a field itself (cf. for example \cite[Proposition~1.5.1\itememph{d}]{alg1}). Then $\pp$ is a maximal ideal and $\{x\}=V(\pp)$ is closed in $U$. As this holds for any affine open neighbourhood of $x$ and, of course, also for those affine open sets not containing $x$, it follows that $x\in X$ is a closed point.
+	Conversely, if $\KK(x)=k$, choose an open neighbourhood $U\simeq \Spec R$ of $x$, such that $x$ corresponds to $\pp\in\Spec R$. Then $\KK(x)$ equals the residue field of the local ring $R_\pp$ which is the same as the quotient field of $R/\pp$. The ring $R=\Oo_X(U)$ being of finite type over $k$, Noether normalization  shows that $R/\pp$ is integral over $k[a_1,\ldots,a_n]$ with some $a_1,\ldots,a_n\in R/\pp$ algebraically independent over $k$. As $\KK(x)=k$ we must have $n=0$ and $R/\pp$ is integral over a field, thus a field itself (cf. for example \cite[Proposition~1.5.1\itememph{d}]{alg1}). Then $\pp$ is a maximal ideal and $\{x\}=V(\pp)$ is closed in $U$. As this holds for any affine open neighbourhood of $x$ and, of course, also for those affine open sets not containing $x$, it follows that $x\in X$ is a closed point.
 	
 	Finally, $\KK(x)$ doesn't change when restricting to an affine open neighbourhood of $x$. This shows that the above-asserted equivalence.
 \end{proof}
@@ -3252,7 +3252,7 @@ We will prove the equivalence of \itememph{a} and \itememph{b} once we have the 
 	\end{quote}
 	Indeed, we have that $\Oo_Y(U\setminus V(\lambda))\simeq \Oo_Y(U)_\lambda$ and $\Oo_X(f^{-1}(U\setminus V(\lambda))) \simeq \Oo_X(f^{-1}(U))_{f^*\lambda}$. For the second isomorphism, note that by Proposition~\reff{prop:coherentDef}\itememph{a}, for any morphism $f$ with Property \itememph{b} of Definition~\reff{def:affineMorphism}, $f_*\Oo_X$ is a quasi-coherent $\Oo_Y$-module and this isomorphism follows from Proposition~\reff{prop:coherentDef}\itememph{e}. Hence finiteness and integrality of the ring extension is preserved in these situations, i.e.\ the property from Lemma~\reff{lem:propsOfAffine}\itememph{\alpha} holds. 
 	
-	Moreover, $\Pp$ can be tested on such coverings as from Lemma~\reff{lem:propsOfAffine}\itememph{\beta}. That is, an $R$-module $M$ is finitely generated iff $\Spec R$ can be covered $\Spec R = \bigcup_{i=1}^n \Spec R_{\lambda_i}$ such that $M_{\lambda_i}$ is finitely generated. 
+	Moreover, $\Pp$ can be tested on such covers as from Lemma~\reff{lem:propsOfAffine}\itememph{\beta}. That is, an $R$-module $M$ is finitely generated iff $\Spec R$ can be covered $\Spec R = \bigcup_{i=1}^n \Spec R_{\lambda_i}$ such that $M_{\lambda_i}$ is finitely generated. 
 	
 	To see this, for each $i$ choose a finite set $m_{i,1},\ldots,m_{i,n_i}$ of $R_{\lambda_i}$-generators of $M_{\lambda_i}$. We may take the $m_{i,j}$ from the image of $M$ in $M_{\lambda_i}$. Let $M'\subseteq M$ be the module generated by preimages of all these generators $m_{i,j}$ (still finitely many). Then, by construction, the inclusion $M'\monomorphism M$ becomes bijective when localized at any prime ideal, hence must be bijective as well.
 \end{proof}

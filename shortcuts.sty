@@ -9,6 +9,9 @@
 %\NewDocumentEnvironment{diagram*}{O{} O{}}{\diagramenvv{#1}{#2}}{\enddiagramenvv}
 %\NewEnviron{diagramenvv}[2]{\begin{align*}#2\begin{tikzpicture}[line cap=round, line join=round,#1]\BODY\end{tikzpicture}\end{align*}}
 
+\newlength{\arrowlength}
+\settowidth{\arrowlength}{$\longrightarrow$}
+
 %---- MANY ALPHABETS ----
 %
 \renewcommand{\phi}{\varphi}
