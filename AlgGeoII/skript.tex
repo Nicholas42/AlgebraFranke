@@ -224,7 +224,7 @@ Let $\Aa$ be the category $R\cat{-Mod}$ and $\Bb$ be $\Oo_{\Spec R}\cat{-Mod}$, 
 \begin{proof}
 	The first assertion holds by our explicit construction of $\ker(f)$ in Lemma~\reff{lem:RModHasKernels}. For the second one, we may assume $X=U=\Spec R$. Denoting $M=\Mm(X)$, $N=\Nn(X)$, then
 	\begin{align*}
-		\coker\Big(\Mm\morphism[f]\Nn)=\coker\Big(\snake{M}\morphism[f]\snake{N}\Big)\simeq\Big(\coker\Big(M\morphism[f]N\Big)\Big)^\sim
+		\coker\Big(\Mm\morphism[f]\Nn\Big)=\coker\Big(\snake{M}\morphism[f]\snake{N}\Big)\simeq\Big(\coker\Big(M\morphism[f]N\Big)\Big)^\sim
 	\end{align*}
 	as $M\mapsto\snake{M}$ preserves cokernels.
 \end{proof}
@@ -382,18 +382,17 @@ To see that $\check{C}^*(\Uu,\Mm)$ is indeed a cochain complex, we need to prove
 	\end{align*}
 	Unfortunately, calculations become complicated by the fact that there are infinitely many non-zero terms in $\check{C}^*(\Uu,\Mm)$.
 \end{rem*}
-\begin{rem}
 	Let $\check{C}_\alt^n(\Uu,\Mm)\subseteq\check{C}^n(\Uu,\Mm)$ be the subgroup containing all $\psi\in\check{C}^n(\Uu,\Mm)$ such that
 	\begin{align*}
 		\psi_{i_{\pi(0)},,\ldots,i_{\pi(n)}}=\sgn(\pi)\psi_{i_0,\ldots,i_n}\in \Mm(U_{i_0,\ldots,i_n})\quad\text{and}\quad\psi_{i_0,\ldots,i_{n-1},i_{n-1}}=0\in\Mm(U_{i_0,\ldots,i_{n-1}})
 	\end{align*}
 	for all permutations $\pi\in\SS_n$. Note that $U_{i_0,\ldots,i_n}=U_{i_{\pi(0)},\ldots,i_{\pi(n)}}$ as permuting indices doesn't change intersections, so the first property makes sense. Also note that both properties together imply that $\psi_{i_0,\ldots,i_n}=0$ whenever $(i_0,\ldots,i_n)$ contains a repeated index.
 	
-	\begin{claim*}
+	\begin{defi}
 		$\check{C}_\alt^*(\Uu,\Mm)\subseteq\check{C}^*(\Uu,\Mm)$ is a subcomplex, called the \defemph{alternating \vC ech complex}.
-	\end{claim*}
+	\end{defi}
 	\begin{proof}
-		Define \emph{codegeneracy maps} 
+		We need to confirm that the differential $\hacek{d}^n$ maps $\check{C}_\alt^n(\Uu,\Mm)$ into $\check{C}_\alt^{n+1}(\Uu,\Mm)$. To do this, define \emph{codegeneracy maps} 
 		\begin{align*}
 			\check{C}^n(\Uu,\Mm)\morphism[s_\ell]\check{C}^{n-1}(\Uu,\Mm)\;,\quad (s_\ell\psi)_{i_0,\ldots,i_{n-1}}=\psi_{i_0,\ldots,i_\ell,i_\ell,\ldots,i_{n-1}}\quad\text{for }\ell=0,\ldots,n-1
 		\end{align*}
@@ -435,7 +434,6 @@ To see that $\check{C}^*(\Uu,\Mm)$ is indeed a cochain complex, we need to prove
 		^n(\Uu,\Mm)$, as required.
 	\end{proof}
 	It will eventually turn out that the cohomology groups $\check{H}_\alt^i(\Uu,\Mm)=H^i\left(\check{C}_\alt^*(\Uu,\Mm)\right)$ obtained from the alternating \vC ech complex are the same as the regular \vC ech cohomology groups $\check{H}^i(\Uu,\Mm)$.
-\end{rem}
 \begin{rem}
 	A \emph{cosimplicial object} of a category $\Aa$ is a sequence of objects $(X^n)_{n\geq 0}$ with morphisms $d_j\colon X^n\morphism X^{n+1}$ for $j=0,\ldots,n+1$ satisfying \eqreff{eq:simplicialStuff} and $s_j\colon X^n\morphism X^{n-1}$ for $j=0,\ldots,n$ satisfying a version of \eqreff{eq:simplicialStuff} together with \eqreff{eq:cosimplicialDegeneracies}. In other words, a cosimplicial object is a covariant functor from the \emph{simplex category} $\Delta$ to $\Aa$.
 	
@@ -491,7 +489,7 @@ then the same argument may be applied.
 
 Taking long exact cohomology sequences we just proved
 \begin{prop}\lbl{prop:LongExactCechSequence}
-	If $\Uu$ is an affine open cover of a scheme $X$ and $\Mm$ a quasi-coherent sheaf of $\Oo_X$-modules, then there is a long exact cohomology sequence
+	If $\Uu$ is an affine open cover of a scheme $X$ and $0\morphism \Mm'\morphism\Mm\morphism\Mm''\morphism 0$ a short exact sequence of quasi-coherent sheaves of $\Oo_X$-modules, then there is a long exact cohomology sequence
 	\begin{diagram*}
 		\node[ob] (0o) at (0,1.5) {$0$};
 		\node[ob] (0u) at (0,0) {$0$};
@@ -781,6 +779,122 @@ Summing up our previous work, we obtain the following Theorem~\reff{thm:CohoOnSc
 \end{thm}
 \begin{proof}
 	Part \itememph{a} follows from Proposition~\reff{prop:CechCohoOnScheme} and the fact that every affine open cover $\Uu$ is a refinement of $\Vv_0$. Part \itememph{b} is Proposition~\reff{prop:CechCohoOnScheme}\itememph{c}. Part \itememph{c} was seen in Example~\reff{ex:FirstCechComputations}\itememph{a} and \itememph{d} follows from Proposition~\reff{prop:LongExactCechSequence}.
+\end{proof}
+\begin{cor}
+	Let $0\morphism \Mm'\morphism[\alpha]\Mm\morphism[\beta]\Mm''\morphism0$ be a short exact sequence of $\Oo_X$-modules, where $X$ is any prescheme. Then if two of $\Mm',\Mm,\Mm''$ are quasi-coherent, so is the third, and for any affine open subset $U\subseteq X$ the sequence
+	\begin{align}\lbl{eq:exactAffineSectionSequence}
+		0\morphism \Mm'(U)\morphism[\alpha]\Mm(U)\morphism[\beta]\Mm''(U)\morphism 0\tag{$*$}
+	\end{align}
+	is exact.
+\end{cor}
+\begin{proof}
+	We have seen in Proposition~\reff{prop:QCohHasKerCoker} that the category $\cat{QCoh}(X)$ of quasi-coherent $\Oo_X$-modules is stable under kernels and cokernels. Therefore, $\Mm'$ is quasi-coherent when $\Mm$ and $\Mm''$ are and $\Mm''$ is quasi-coherent when $\Mm'$ and $\Mm$ are. We may thus assume that $\Mm'$ and $\Mm''$ are the quasi-coherent ones.
+	
+	To show exactness of \eqreff{eq:exactAffineSectionSequence}, we may replace $X$ by $U$ and the involved sheaves by their restriction to $U$ and thus assume that $X=U=\Spec R$ is affine. This may also be assumed in the proof of quasi-coherentness of $\Mm$, which is a local question. We then only need to show surjectivity of $\Mm(X)\morphism[\beta]\Mm''(X)$. If we had the long exact cohomology sequence available, this would be an immediate consequence of the vanishing of $H^1(X,\Mm')$ -- but we haven't, so what the proof does is mimicking the cohomological argument on foot. For this, let $m''\in\Mm''(X)$. As $\Mm\morphism[\beta]\Mm''$ is an epimorphism and the affine open subsets form a topology base in $X$, there is an affine open cover $\Vv\colon X=\bigcup_{i\in I}V_i$ such that $m''|_{V_i}$ is in the image of $\beta(m_i)$ for some $m_i\in \Mm(V_i)$.
+	
+	The $m_i$ satisfy $\beta(m_i|_{V_{i,j}}-m_j|_{V_{i,j}})=0\in\Mm''(V_{i,j})$, hence there are $m'_{i,j}\in\Mm(V_{i,j})$ such that $\alpha(m'_{i,j})=m_i|_{V_{i,j}}-m_j|_{V_{i,j}}$, the sequence $0\morphism\Mm'(V_{i,j})\morphism[\alpha]\Mm(V_{i,j})\morphism[\beta]\Mm''(V_{i,j})$ being exact. Consider the elements $\mu=(m_i)_{i\in I}\in \check{C}^0(\Vv,\Mm)$ and $\mu'=(m'_{i,j})_{(i,j)\in I^2}\in \check{C}^1(\Vv,\Mm')$. Then $\alpha(\mu')=\hacek{d}\mu$. Thus 
+	\begin{align*}
+		\alpha(\hacek{d}\mu')=\hacek{d}\alpha(\mu')=\hacek{d}^2\mu=0\;,
+	\end{align*}
+	hence $\hacek{d}\mu'=0$ by injectivity of $\alpha$. This means that $\mu'$ is a cocycle, and by the vanishing of $\check{H}^1(\Vv,\Mm')$ (due to Proposition~\reff{prop:CechCohoOnScheme}\itememph{c}), also a coboundary. That is, $\mu'=\hacek{d}\lambda'$ for some $\lambda\in\check{C}^0(\Vv,\Mm')$ (note that at this point Professor Franke run out of primes, though there are apparently infinitely many of them). Let $\lambda=\alpha(\lambda')$. As $\hacek{d}(\mu-\lambda)=\alpha(\mu')-\alpha(\mu')=0$, the $\mu_i-\lambda_i$ lift by the sheaf axiom to a single element $m^*\in\Mm(X)$ such that $m^*|_{V_i}=\mu_i-\lambda_i$. Since $\beta(\mu-\lambda)=\beta(\mu)-\beta(\alpha(\lambda'))=\beta(\mu)$, we have $\beta(m^*)=m''$. This proves the surjectivity of $\Mm(X)\morphism\Mm''(X)$ and thus \eqreff{eq:exactAffineSectionSequence}.
+	
+	To show that $\Mm$ is quasi-coherent, consider $0\morphism M'\morphism M\morphism M''\morphism 0$ where $M'=\Mm'(X)$, $M=\Mm(X)$, and $M''=\Mm''(X)$ which is an exact sequence of $R$-modules (as we just proved). As pointed out in the proof of Proposition~\reff{prop:QCohHasKerCoker}\itememph{a},  the functor $R\cat{-Mod}\morphism\cat{QCoh}(\Spec R)$ mapping $N\mapsto \snake{N}$ preserves kernels and cokernels, hence the diagram
+	\begin{diagram*}
+		\node[ob] (A) at (0,1.5) {$0$};
+		\node[ob] (B) at (2,1.5) {$\snake{M}'$};
+		\node[ob] (C) at (4,1.5) {$\snake{M}$};
+		\node[ob] (D) at (6,1.5) {$\snake{M}''$};
+		\node[ob] (E) at (8,1.5) {$0$};
+		\node[ob] (A') at (0,0) {$0$};
+		\node[ob] (B') at (2,0) {$\Mm'$};
+		\node[ob] (C') at (4,0) {$\Mm$};
+		\node[ob] (D') at (6,0) {$\Mm''$};
+		\node[ob] (E') at (8,0) {$0$};
+		\scriptsize
+		\draw[->] (A) -- (B);
+		\draw[->] (B) -- (C);
+		\draw[->] (C) -- (D);
+		\draw[->] (D) -- (E);
+		\draw[->] (A') -- (B');
+		\draw[->] (B') -- (C');
+		\draw[->] (C') -- (D');
+		\draw[->] (D') -- (E');
+		\draw[->] (B) -- (B') node[pos=0.5, above=-0.25ex, sloped] {$\sim$};
+		\draw[->] (C) -- (C');% node[pos=0.5, left] {$\gamma$};
+		\draw[->] (D) -- (D') node[pos=0.5, above=-0.25ex, sloped] {$\sim$};
+	\end{diagram*}
+	has exact rows. Since $\snake{M}'\morphism\Mm'$ and $\snake{M}''\morphism\Mm''$ are isomorphisms, so is $\snake{M}\morphism\Mm$ by the five lemma.
+\end{proof}
+In the following, if $\Uu\colon X=\bigcup_{i\in I}U_i$ is an open cover and $Y\subseteq X$, we will write $\Uu\cap Y$ for the open cover $Y=\bigcup_{i\in I}(Y\cap U_i)$.
+\begin{cor}
+	Let $X$ be a quasi-coherent scheme.
+	\begin{alphanumerate}
+		\item If $W\monomorphism[j]X$ is the embedding of the affine open subset $W$ and $\Mm\in\Ob(\cat{QCoh}(X))$, then $H^p(X,j_*\Mm)=0$ for $p\geq 1$.
+		\item Let $W_i\monomorphism[j_i]X$ be the embeddings of affine open subsets $W_i$ for $i=1,\ldots,n$. Let $W=\bigcup_{i=1}^nW_i$. If $\Mm\in\Ob(\cat{QCoh}(X))$, then
+		\begin{align*}
+			H^p\bigg(X,\bigoplus_{i=1}^n(j_i)_*\Mm|_{W_i}\bigg)=0\quad\text{for }p\geq 1
+		\end{align*}
+		and if $\Kk$ denotes the kernel of $\Mm\morphism\bigoplus_{i=1}^n(j_i)_*\Mm|_{W_i}$ sending $m\in\Mm(U)$ to
+		\begin{align*}
+			\left(m|_{U\cap W_i}\right)_{i=1}^n\in\bigoplus_{i=1}^n\Mm(U\cap W_i)=\bigoplus_{i=1}^n(j_i)_*\Mm|_{W_i}(U)
+		\end{align*}
+		satisfies $\Kk|_W=0$.
+	\end{alphanumerate}
+\end{cor}
+\begin{proof}
+	Part \itememph{a}. Let $\Uu$ be any affine open cover of $X$. By Proposition~\reff{prop:SchemesAffineIntersec}, the $U_i\cap W$ are affine and we have $\check{H}^p(\Uu\cap W,\Mm)\simeq \check{H}^p(\Uu,j_*\Mm)=0$ by Lemma~\reff{lem:CohomologyOfPushforward}\itememph{a} and Proposition~\reff{prop:CechCohoOnScheme}\itememph{c}.
+	
+	Part \itememph{b} follows from the fact that each $j_i$ is a monomorphism and the sheaf axiom.
+\end{proof}
+\begin{lem}\lbl{lem:LocalizedCechComplex}
+	Let $\Uu$ be a finite open cover of the quasi-separated prescheme $X$ by quasi-compact open subsets and $f\in\Oo_X(X)$. By the universal property of localization, we have morphisms $\Mm(U)_f\morphism\Mm(U\setminus V(f))$ for arbitrary $\Oo_X$-modules $\Mm$ and open $U\subseteq X$. When applied to $U=U_{i_0,\ldots,i_n}$, this gives a morphism
+	\begin{align*}
+		\check{C}^*(\Uu,\Mm)_f\morphism\check{C}^*\Big(\Uu\cap\big(X\setminus V(f)\big),\Mm\Big)
+	\end{align*}
+	of \vC ech complexes. When $\Mm$ is quasi-coherent, this is an isomorphism.
+\end{lem}
+\begin{rem*}
+	The structure of an $\Oo_X(X)$-module on $\check{C}^*(\Uu,\Mm)$ is obtained using the $\Oo_X(U_{i_0,\ldots,i_n})$-module structures on $\Mm(U_{i_0,\ldots,i_n})$ followed by $\Oo_X(X)\morphism \Oo_X(U_{i_0,\ldots,i_n})$. Taking the product over all $(i_0,\ldots,i_n)\in I^{n+1}$ gives the structure of a cochain complex of $\Oo_X(X)$-modules on $\check{C}^*(\Uu,\Mm)$, which is used in the formulation of Lemma~\reff{lem:LocalizedCechComplex}. The morphism under investigation is a morphism of cochain complexes  of $\Oo_X(X)_f$-modules.
+\end{rem*}
+\begin{proof}[Proof of Lemma~\reff{lem:LocalizedCechComplex}]
+	As $\check{C}^n(\Uu,\Mm)=\prod_{(i_0,\ldots,i_n)\in I^{n+1}}\Mm(U_{i_0,\ldots,i_n})$ is a finite product and localization commutes with finite products, it is sufficient to show that
+	\begin{align*}
+		\Mm(U_{i_0,\ldots,i_n})_f\isomorphism\Mm(U_{i_0,\ldots,i_n}\setminus V(f))\;.
+	\end{align*}
+	By Definition~\reff{def:Quasicoherent}\itememph{c}, this will hold if $U_{i_0,\ldots,i_n}$ is quasi-compact and quasi-separated. It is quasi-separated as an open subset of the quasi-separated prescheme $X$. It is quasi-compact as an intersection of the quasi-compact subsets $U_{i_0},\ldots,U_{i_n}$ using quasi-separatedness of $X$.
+\end{proof}
+\begin{prop}
+	Let $X$ be a quasi-compact scheme, $\Mm$ a quasi-coherent $\Oo_X$-module, and $f\in\Oo_X(X)$. Then we have a canonical isomorphism
+	\begin{align*}
+		H^*(X,\Mm)_f\isomorphism H^*\left(X\setminus V(f),\Mm|_{X\setminus V(f)}\right)\;.
+	\end{align*}
+\end{prop}
+\begin{proof}
+	Follows from Lemma~\reff{lem:LocalizedCechComplex}. Note that the open subset $X\setminus V(f)\subseteq X$ is a scheme again by \cite[Fact~1.5.9\itememph{c}]{alggeo1} and quasi-compact by \cite[Fact~2.1.2]{alggeo1}.
+\end{proof}
+\begin{rem*}
+	In general, there is the notion of \emph{derived functors} (from Grothendieck's famous \emph{T\^{o}hoku paper}) applicable to the left-exact functors on an abelian category with sufficiently many injective objects, like $\Rr\cat{-Mod}$ ($\Rr$ being any sheaf of rings on any topological space) and $\cat{QCoh}(X)$ ($X$ being any prescheme). When $\Mm$ is an $\Rr$-module on any topological space $X$, the derived functors taken on the category of $\Rr$-modules or sheaves of abelian groups are canonically isomorphic. When $X$ is quasi-compact (or paracompact, this is actually sufficient) scheme, these are isomorphic to the cohomology introduced here and also to the derived functor of the global section functor taken for $\cat{QCoh}(X)$.
+\end{rem*}
+\section{The affinity criterion of Serre}
+\begin{prop}[Serre's affinity criterion]
+	For a quasi-compact scheme $X$, the following conditions are equivalent.
+	\begin{alphanumerate}
+		\item $X$ is affine.
+		\item $H^p(X,\Mm)=0$ for $p\geq 1$ when $\Mm$ is a quasi-coherent $\Oo_X$-module.
+		\item $H^1(X,\Jj)=0$ when $\Jj$ is a quasi-coherent sheaf of ideals on $X$.
+	\end{alphanumerate}
+\end{prop}
+\begin{rem*}
+	In EGA III, this is shown under the weaker assumptions that $X$ is quasi-compact and quasi-separated (instead of separated), using $H^*$ defined as a derived functor on $\Oo_X\cat{-Mod}$.
+\end{rem*}
+We need the following.
+\begin{prop}
+	\begin{alphanumerate}
+		\item If $Z$ is a non-empty quasi-compact closed subset of a prescheme $X$, it contains a closed point.
+	\end{alphanumerate}
+\end{prop}
+\begin{proof}
+	Part \itememph{a} is proved in \cite[Proposition~2.1.1]{alggeo1}
 \end{proof}
 
 \appendix
