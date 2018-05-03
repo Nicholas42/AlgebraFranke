@@ -2663,7 +2663,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
     \end{alphanumerate}
 \end{prop}
 \begin{proof}
-    First, we show that $\nil(\Oo_X)$ is quasi-coherent. It suffices to show that $\nil(\Oo_X) = \snake{\nil(R)}$ when $X=\Spec R$. Since these open subsets form a topology base, it is sufficient to show $\nil(\Oo_X)(\Spec R_f) = \nil(R)_f$. As $\Spec R_f$ is quasi-compact, by Corollary~\reff{cor:nilpotentVanishingSet} the left-hand side equals $\nil(R_f)$, hence we have to show $\nil(R)_f = \nil(R_f)$. Clearly, an element of $\nil(R)_f\subseteq R_f$ is nilpotent in $R_f$ and hence $\nil(R)_f\subseteq\nil(R_f)$. To show $\nil(R)_f\supseteq\nil(R_f)$, let $rf^{-k}\in \nil(R_f)$, then $r^mf^{-km} = 0$ in $R_f$ for appropriate $m$, hence $f^\ell r^m = 0$ in $R$ for some $\ell\in\IN$. Then also $(rf^\ell)^m = 0$ in $R$, hence $f^\ell r\in \nil(R)$ but $rf^{-k}=f^\ell r\cdot f^{-(\ell+k)}\in \nil(R)_f$.
+    First, we show that $\nil(\Oo_X)$ is quasi-coherent. It suffices to show that $\nil(\Oo_X) = \nil(R)^\sim$ when $X=\Spec R$. Since these open subsets form a topology base, it is sufficient to show $\nil(\Oo_X)(\Spec R_f) = \nil(R)_f$. As $\Spec R_f$ is quasi-compact, by Corollary~\reff{cor:nilpotentVanishingSet} the left-hand side equals $\nil(R_f)$, hence we have to show $\nil(R)_f = \nil(R_f)$. Clearly, an element of $\nil(R)_f\subseteq R_f$ is nilpotent in $R_f$ and hence $\nil(R)_f\subseteq\nil(R_f)$. To show $\nil(R)_f\supseteq\nil(R_f)$, let $rf^{-k}\in \nil(R_f)$, then $r^mf^{-km} = 0$ in $R_f$ for appropriate $m$, hence $f^\ell r^m = 0$ in $R$ for some $\ell\in\IN$. Then also $(rf^\ell)^m = 0$ in $R$, hence $f^\ell r\in \nil(R)$ but $rf^{-k}=f^\ell r\cdot f^{-(\ell+k)}\in \nil(R)_f$.
     
     Let's prove \itememph{a} $\Rightarrow$ \itememph{b}. Assume \itememph{a}. If $Y\subseteq X$ is a closed subprescheme containing all points of $X$ and $Y\monomorphism[\iota]X$ the corresponding closed immersion, then $Y$ is given via Proposition~\reff{prop:closedImmersionCoherentSheaves} by a quasi-coherent sheaf of ideals $\Jj=\ker(\Oo_X\morphism[\iota^*]\iota_*\Oo_Y)$. For $x\in X=Y$, we have $\Oo_{Y,x}= \Oo_{X,x}/\Jj_x$ hence for any $f\in \Oo_X(U)$ we have
     \begin{align*}
@@ -3534,7 +3534,7 @@ is ascending. Let $I_\infty = \bigcup_{k=1}^\infty I_k$.
     
     
     \appendix
-    \chapter{Useful stuff from category theory}
+    \chapter{Appendix -- category theory corner}
 \section{Fundamental concepts}
 \begin{defi}[Category]
 	A \defemph{category} $\Aa$ is a class $\Ob(\Aa)$ of \emph{objects} of $\Aa$ together with:
@@ -3593,10 +3593,10 @@ A category is called \emph{small} if its class of objects is a set.
   		\item a map $F\colon \Ob(\Aa)\to\Ob(\Bb)$,
   		\item for $X,Y\in\Ob(\Aa)$ a map $F\colon\Hom_\Aa(X,Y)\to\Hom_\Bb(FX,FY)$ such that $F(\id_X)=\id_{FX}$ whenever $X\in\Ob(\Aa)$ and $F(\psi\phi)=F(\psi)F(\phi)$ when $X\morphism[\phi]Y\morphism[\psi]Z$ are morphisms in $\Aa$.
   	\end{itemize}
-  	A functor is called \emph{faithful} if $F:\Hom_\Aa(X,Y)\to\Hom_\Bb(FX,FY)$ is injective and \emph{fully faithful} if it's bijective.
+  	A functor is called \defemph{faithful} if $F:\Hom_\Aa(X,Y)\to\Hom_\Bb(FX,FY)$ is injective and \defemph{fully faithful} if it's bijective.
   \end{defi}
     
-  Professor Franke would like to draw a line here. We hope, this one will do: \tikz\draw(0,0) -- (2.6,0);.
+  %Professor Franke would like to draw a line here. We hope, this one will do: \tikz\draw(0,0) -- (2.6,0);.
   
   \begin{example*}
   	We have \emph{forgetful} functors like $\cat{Vect}_k\to\cat{Ab}$ or $\cat{Ab}\to\cat{Set}$. These functors are faithful (at least for the two examples).
@@ -3606,7 +3606,7 @@ A category is called \emph{small} if its class of objects is a set.
   \begin{rem*}
   	\begin{alphanumerate}
   		\item 
-  		If $\Aa\morphism[F] \operatorname{Set}$ is a faithful functor, then any morphism $f$ such that $Ff$ is injective (respectively surjective) then $f$ is a monomorphism (respectively epimorphism). 
+  		If $\Aa\morphism[F] \cat{Set}$ is a faithful functor, and $f$ a morphism such that $Ff$ is injective (respectively surjective) then $f$ is a monomorphism (respectively epimorphism). 
   		\item
   		In the categories of sets or $R$-modules, $f$ is a monomorphism (epimorphism) iff $f$ is injective (surjective).
   		\item
