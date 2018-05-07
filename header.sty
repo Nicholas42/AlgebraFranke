@@ -3,11 +3,14 @@
 \usepackage{lmodern}
 \usepackage{microtype}
 \setkomafont{sectioning}{\rmfamily\bfseries}
-\usepackage[automark,headsepline]{scrlayer-scrpage}
+\usepackage[autooneside=false,automark,headsepline]{scrlayer-scrpage}
 \pagestyle{scrheadings}
-\chead{\textsc{\headmark}}
+\chead{\textsc{\rightmark}}
+\AtBeginDocument{\setlength{\parfillskip}{0pt plus 1fil}}
+\newcommand{\avoidbreak}{\postdisplaypenalty=9999}
 
 \usepackage{amsmath,amsfonts,amssymb,mathtools}
+\usepackage{accents}
 \usepackage{array}
 \usepackage{stmaryrd}
 \SetSymbolFont{stmry}{bold}{U}{stmry}{m}{n}%otherwise we get a strange warning
@@ -18,7 +21,7 @@
 \usepackage{old-arrows}
 \usepackage{pgf,tikz}
 \usetikzlibrary{positioning,arrows,calc}
-\tikzstyle{ob}=[font=\vphantom{$\snake A_A$}]
+\tikzstyle{ob}=[font=\vphantom{$(\snake {A}_A)$}]
 
 \usepackage[english]{babel}
 \usepackage[normalem]{ulem}

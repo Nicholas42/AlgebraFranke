@@ -1,12 +1,16 @@
 %---- ENVIRONMENTS ----
 %
-\newenvironment{diagram*}[1][]{\begin{center}\begin{tikzpicture}[line join=round, line cap=round,#1]}{\end{tikzpicture}\end{center}}  
-
+%\newenvironment{diagram*}[1][]{\begin{center}\begin{tikzpicture}[line join=round, line cap=round,#1]}{\end{tikzpicture}\end{center}}  
+\NewDocumentEnvironment{diagram*}{O{} O{}}{\diagramenvv{#1}{#2}}{\enddiagramenvv}
+\NewEnviron{diagramenvv}[2]{\begin{align*}#2\begin{tikzpicture}[line cap=round, line join=round,#1]\BODY\end{tikzpicture}\end{align*}}
 
 \NewDocumentEnvironment{diagram}{O{} O{}}{\diagramenv{#1}{#2}}{\enddiagramenv}
 \NewEnviron{diagramenv}[2]{\begin{align}#2\begin{tikzpicture}[line cap=round, line join=round,#1]\BODY\end{tikzpicture}\end{align}}
 %\NewDocumentEnvironment{diagram*}{O{} O{}}{\diagramenvv{#1}{#2}}{\enddiagramenvv}
 %\NewEnviron{diagramenvv}[2]{\begin{align*}#2\begin{tikzpicture}[line cap=round, line join=round,#1]\BODY\end{tikzpicture}\end{align*}}
+
+\newlength{\arrowlength}
+\settowidth{\arrowlength}{$\longrightarrow$}
 
 %---- MANY ALPHABETS ----
 %
@@ -145,6 +149,7 @@
 \newoperator{Sheaf}
 \newcommand{\sh}{\mathrm{sh}}
 \newcommand{\red}{\mathrm{red}}
+\newcommand{\alt}{\mathrm{alt}}
 \newoperator {Cl}
 \newoperator{Pic}
 \renewcommand{\det}{\operatorname{det}}%otherwise, det_K behaves strangely in displaymode
@@ -164,7 +169,11 @@
 \newoperator{coker}
 \newoperator{supp}
 \newoperator{gr}
+\newoperator{Tor}
+\newoperator{Ext}
+\newoperator{sgn}
 \DeclareMathOperator{\SPEC}{\mathbf{Spec}}
+\DeclareMathOperator{\PROJ}{\mathbf{Proj}}
 \newcommand{\proj}{\mathrm{proj}}
 \newcommand{\aff}{\mathrm{aff}}
 \newcommand{\nil}{\operatorname{nil}}
@@ -174,14 +183,14 @@
 \newcommand{\cat}[1]{\operatorname{#1}}%style of categories
 %inductive limit
 \newcommand\colimit[1][]{
-	\mathchoice{\underset{\substack{\displaystyle{\longrightarrow}\\#1}}{\lim}}%displaystyle
+	\mathchoice{\underset{\substack{\displaystyle{\longrightarrow}\\[-1pt]#1}}{\lim}}%displaystyle
 	{\underset{\textstyle\longrightarrow}{\lim}\underset{#1}{}}%textstyle
 	{\underset{\scriptstyle\longrightarrow}{\lim}\underset{#1}{}}
 	{\underset{\longrightarrow}{\lim}\underset{#1}{}}\ %
 }
 %projective limit
 \newcommand\limit[1][]{
-	\mathchoice{\underset{\substack{\displaystyle{\longleftarrow}\\#1}}{\lim}}%displaystyle
+	\mathchoice{\underset{\substack{\displaystyle{\longleftarrow}\\[-1pt]#1}}{\lim}}%displaystyle
 	{\underset{\textstyle\longleftarrow}{\lim}\underset{#1}{}}%textstyle
 	{\underset{\scriptstyle\longleftarrow}{\lim}\underset{#1}{}}
 	{\underset{\longleftarrow}{\lim}\underset{#1}{}}\ %
@@ -266,10 +275,32 @@
 %---- MODIFIERS ----
 %
 \newcommand{\ov}{\overline}
-\newcommand{\snake}[1]{\widetilde{#1}\vphantom{\overrightarrow{#1}}}%space adjusting hack
 
+\newcommand{\hacek}[1]{\check{#1}\hspace{0.06125em}}
 
-
+\DeclareMathSymbol{\widehatsym}{\mathord}{largesymbols}{"62}
+\newcommand\lowerwidehatsym{%
+	\text{\smash{\raisebox{-1.3ex}{%
+				$\widehatsym$}}}}
+\newcommand\fixwidehat[1]{\accentset{\displaystyle\lowerwidehatsym}{#1}}%
+	%\mathchoice
+	%{\accentset{\displaystyle\lowerwidehatsym}{#1}}
+	%{\accentset{\textstyle\lowerwidehatsym}{#1}}
+	%{\accentset{\scriptstyle\lowerwidehatsym}{#1}}
+	%{\accentset{\scriptscriptstyle\lowerwidehatsym}{#1}}
+%}
+\DeclareMathSymbol{\widetildesym}{\mathord}{largesymbols}{"65}
+\newcommand\lowerwidetildesym{%
+	\text{\smash{\raisebox{-1.3ex}{%
+				$\widetildesym$}}}}
+\newcommand\fixwidetilde[1]{\accentset{\displaystyle\lowerwidetildesym}{#1}}%
+	%\mathchoice
+	%{\accentset{\displaystyle\lowerwidetildesym}{#1}}
+	%{\accentset{\textstyle\lowerwidetildesym}{#1}}
+%	{\accentset{\scriptstyle\lowerwidetildesym}{#1}}
+	%{\accentset{\scriptscriptstyle\lowerwidetildesym}{#1}}
+%}
+\newcommand{\snake}[1]{\fixwidetilde{#1}}%space adjusting hack
 %---- MISCELLANEOUS ----
 %
 \newcommand{\defemph}[1]{\textbf{\upshape#1}} %emphasize style of a to-be-defined object in a definition
