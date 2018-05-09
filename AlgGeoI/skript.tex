@@ -1498,7 +1498,7 @@ Since the preimage of this ideal in $\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y}$ equ
     is bijective for any test object $T$.
 \end{prop}
 \begin{rem*}
-    When $X$ is a prescheme, $K$ will fail to be a prescheme unless $\Ii$ is \emph{quasi-coherent}.
+    When $X$ is a prescheme, $K$ will fail to be a prescheme unless $\Ii$ is \emph{quasi-coherent} (cf. Definition~\reff{def:preschemeQuasiCoherent} and Proposition~\reff{prop:closedImmersionCoherentSheaves}).
 \end{rem*}
 \begin{proof}[Proof of Proposition~\reff{prop:closedImmersionSheaves}]
     The following proof is quite sketchy, because lots of technical details have been outsourced to exercise sheet \#8. Let $\Ii\subseteq \Oo_X$ be a sheaf of ideals. We put 
@@ -1736,10 +1736,10 @@ If $M$ is an $R$-module, we have a similar presheaf (of abelian groups or of mod
     Proposition \reff{prop:RequalsGlobalSection} would have failed if we had defined $\Oo_{\Spec R}$ as a sheaf of functions $\pp\morphism \KK(\pp)$ as $R$ may have nilpotent elements.
 \end{rem}
 \begin{prop}\lbl{prop:affineSchemeAdjunction}
-    If $R$ is a ring and $X$ a locally ringed space, we have a canonical bijection:
+    If $R$ is a ring and $X$ a locally ringed space, we have a canonical bijection
     \begin{align*}
         \Hom_{\cat{LRS}}(X,\Spec R) &\isomorphism \Hom_{\cat{Ring}}(R,\Oo_X(X))\\
-        \big(X\morphism[\xi] \Spec R\big) &\longmapsto \Big(R\isomorphism \Oo_{\Spec R}(\Spec R) \morphism[\xi^*] \Oo_X(X)\Big)
+        \big(X\morphism[\xi] \Spec R\big) &\longmapsto \Big(R\isomorphism \Oo_{\Spec R}(\Spec R) \morphism[\xi^*] \Oo_X(X)\Big)\;.
     \end{align*}
 \end{prop}
 \begin{rem*}
