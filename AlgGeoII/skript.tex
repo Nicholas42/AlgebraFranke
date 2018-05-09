@@ -876,7 +876,7 @@ In the following, if $\Uu\colon X=\bigcup_{i\in I}U_i$ is an open cover and $Y\s
 	In general, there is the notion of \emph{derived functors} (from Grothendieck's famous \emph{T\^{o}hoku paper}) applicable to the left-exact functors on an abelian category with sufficiently many injective objects, like $\Rr\cat{-Mod}$ ($\Rr$ being any sheaf of rings on any topological space) and $\cat{QCoh}(X)$ ($X$ being any prescheme). When $\Mm$ is an $\Rr$-module on any topological space $X$, the derived functors taken on the category of $\Rr$-modules or sheaves of abelian groups are canonically isomorphic. When $X$ is quasi-compact (or paracompact, this is actually sufficient) scheme, these are isomorphic to the cohomology introduced here and also to the derived functor of the global section functor taken for $\cat{QCoh}(X)$.
 \end{rem*}
 \section{The affinity criterion of Serre}
-\begin{prop}[Serre's affinity criterion]
+\begin{prop}[Serre's affinity criterion]\lbl{prop:serreAffinity}
 	For a quasi-compact scheme $X$, the following conditions are equivalent.
 	\begin{alphanumerate}
 		\item $X$ is affine.
@@ -890,13 +890,180 @@ In the following, if $\Uu\colon X=\bigcup_{i\in I}U_i$ is an open cover and $Y\s
 We need the following.
 \begin{prop}
 	\begin{alphanumerate}
-		\item If $Z$ is a non-empty quasi-compact closed subset of a prescheme $X$, it contains a closed point.
+		\item\lbl{prop:closedPoint} If $Z$ is a non-empty quasi-compact closed subset of a prescheme $X$, it contains a closed point.
+		\item\lbl{prop:qcSheafOfIdealsDefinedByVf} If $Z\subseteq X$ is a closed subset of a prescheme $X$, then $\Jj(U) := \{f \in \Oo_X(U) \mid Z\cap U \subseteq V(f)\}$
+defines a quasi-coherent sheaf of ideals.
+	\item\lbl{prop:intersectQc} If $\Nn_{1,2}\subseteq \Mm$ arae quasi-coherent subsheaves of the quasi-coherent sheaf of modules $\Mm$, $\Nn_1 \cap \Nn_2(U) := \Nn_1(U)\cap
+\Nn_2(U)$ defines a quasi-coherent sheaf of modules.
 	\end{alphanumerate}
 \end{prop}
 \begin{proof}
 	Part \itememph{a} is proved in \cite[Proposition~2.1.1]{alggeo1}
-\end{proof}
 
+	Part \itememph{b}: Let $U\subseteq X$ be quasi-compact and quasi-separated, $f\in\Oo_X(U)$ and $\varphi \in \Jj(U)$ such
+	that $\varphi\vert_{U\cap V(f)}=0$. Then as $\Oo_X$ is quasi-coherent, there exists $n\in\IN$ such that $f^n\varphi = 0$ (cf. Definition\footnote{In his lecture, Franke referred to Remark 1.1.2. I think that he \emph{meant} the statement in Definition
+\reff{def:Quasicoherent}.}
+\reff{def:Quasicoherent}).
+	It follows that the canonical map $\Jj(U)_f\rightarrow \Jj(U\setminus V(f))$ is injective.
+
+	If $\psi \in \Jj(U\setminus V(f))$, then as $\Oo_X$ is quasi-coherent, there is $n\in\IN$ such that $f^n\psi$ extends to some
+	$g\in \Oo_X(U)$. Now $fg$ extends $f^{n+1}\psi$ and is in $\Jj(U)$, as
+	\begin{align*}(Z\cap U)\setminus V(f)\underset{\text{def. }\Jj}\subseteq V(\psi)\subseteq V(f^{n+1} \psi)=V(g\vert_{U\setminus V(f)})\end{align*}
+	and $V(f)\subseteq V(fg)$. Thus $\Jj(U)_f\xrightarrow\cong \Jj(U\setminus V(f))$.
+
+	Part \itememph{c}: It is directly possible to verify $(\Nn_1\cap \Nn_2)(U)_f\xrightarrow\cong (\Nn_1\cap \Nn_2)(U\setminus V(f))$ similar
+	as above. Alternatively, note that $\Nn_1\cap \Nn_2 = \ker(\Nn_1\rightarrow \Mm\rightarrow\Mm/\Mm_2)$.
+\end{proof}
+\begin{proof}[Proof of Proposition \reff{prop:serreAffinity}]
+\itememph{a} $\rightarrow$ \itememph{b}: This follows from Theorem 1.
+
+\itememph{b} $\rightarrow$ \itememph{c}: Trivial.
+
+\itememph{c} $\rightarrow$ \itememph{a}: We first derive
+\begin{fact*}[c++]
+If $\Mm\subseteq \Oo_X^n$ is a quasi-coherent submodule, then $H^1(X,\Mm)=0$.
+\end{fact*}
+\begin{proof}[Proof of c++]
+Induction on $n$, $n=0$ being trivial.
+
+Inductive step. If $(\Oo_X^{n-1})(U)$ is identified with
+$\{(f_1,\dotsc,f_{n-1},0) \in \Oo_X(V)^n\} \subseteq \Oo_X(U)^n$, then
+$\Mm' = \Mm\cap \Oo_X^{n-1}$ is quasi-coherent by Proposition \reff{prop:intersectQc} c).
+Moreover, \begin{align*}\Mm'' := \Mm/\Mm'\rightarrow \Oo_X, (f_1,\dotsc,f_n)\mapsto f_n\end{align*}
+is a monomorphism. Hence $H^1(X,\Mm')=0$ by induction and $H^1(X,\Mm'')=0$ by c). 
+Now looking at the piece
+\begin{align*}
+H^1(X,\Mm')\rightarrow H^1(X,\Mm)\rightarrow H^1(X,\Mm'')
+\end{align*}
+of the long exact cohomology sequence, we get $H^1(X,\Mm)=0$; completing the induction.
+\let\oldqed\qedsymbol
+\def\qedsymbol{\oldqed{} \emph{for c++}}
+\end{proof}
+\emph{Proof of \itememph{a}}.
+
+Let $R=\Oo_X(X)$, so we have a morphism $X\xrightarrow p\Spec R$ corresponding to $\id_R$
+under the adjunction
+\begin{align*}
+\Hom(X,\Spec R) \simeq \Hom(R,\Oo_X(X)).
+\end{align*}
+We have to show that $p$ is an isomorphism. For this it is sufficient to show
+\begin{alphanumerate}
+	\item[\itememph{\alpha}] If $f\in R$ is chosen such that $X\setminus V(f)$ is affine, then $X\setminus V(f) = p^{-1}(\Spec R\setminus V(f))$
+	is isomorphically mapped to $\Spec R\setminus V(f)$ by $p$.
+	\item[\itememph{\beta}] The open subsets $X\setminus V(f)$ with $f$ as in \itememph{\alpha} cover $X$.
+	\item[\itememph{\gamma}] If $(f_i)_{i=1}^n \in R^n$ are as in \itememph{\alpha} and $X=\bigcup_{i=1}^n (X\setminus V(f))$ then
+$\Spec R = \bigcup_{i=1}^n (\Spec R)\setminus V(f_i)$.
+\end{alphanumerate}
+By \itememph{\beta} and the quasi-compactness of $X$, it is possible to find
+$(f_1,\dotsc,f_n)\in R^n$ to which \itememph{\gamma} may be applied. Then the open subsets
+$U_i = (\Spec R)\setminus V(f_i)$ cover $\Spec R$
+and $p^{-1}(U_i) \xrightarrow[\cong]p U_i$. By the sheaf axiom, we then get
+$\Spec R\xrightarrow[\cong]p X$.
+
+\emph{Proof of \itememph{\alpha}}.
+The fact $X\setminus V(f)=p^{-1}(\Spec R\setminus V(f))$ follows from the explicit construction of $p$.
+Namely, $p$ maps a point $x\in X$ to the prime ideal $\pp = \{f\in R \mid f\text{ vanishes in }\Oo_{X,x}\}$.
+Therefore $x\in X\setminus V(f) \iff f \notin p(x) \iff p(x) \in \Spec R\setminus V(f)$.
+
+If $X\setminus V(f)$ is affine, we get
+\begin{diagram*}%Let's try it
+\node[ob] (Xf) at (0,2) {${X\setminus V(f)}$};
+\node[ob] (SpecOX) at (5,2) {${\Spec(\Oo_X(X\setminus V(f)))}$};
+\node[ob] (SpecRf) at (9,2) {$\Spec(R_f)$};
+\node[ob] (X) at (0,0) {$X$};
+\node[ob] (SpecR) at (5,0) {${\Spec R}$};
+\scriptsize
+\draw[->] (Xf) -- (X);
+\draw[->] (X) -- (SpecR);
+\draw[->] (SpecOX) -- (SpecR);
+\draw[->] (Xf) -- (SpecOX) node[pos=0.5, above=-0.25ex, sloped] {$\sim$};
+\draw[->] (SpecOX) -- (SpecRf) node[pos=0.5, above=-0.25ex, sloped] {$\sim$};;
+\end{diagram*}
+The first isomorphism comes from the fact that $X\setminus V(f)$ is affine.
+For the second, we use $\Oo_X(X\setminus V(f)) \xrightarrow\cong (\Oo_X)_f= R_f$,
+which follows from Definition\footnote{Again, he refers to Remark 1.1.2.} \reff{def:Quasicoherent} using
+that $\Oo_X$ is quasi-coherent, and $X$ is both quasi-compact and quasi-separated.
+This shows \itememph{\alpha}
+
+\emph{Proof of \itememph{\beta}}:
+Let $U\subseteq X$ be the union of the affine open subsets of the form $X\setminus V(f)$
+and $Z=X\setminus U$. If $Z\neq \emptyset$, there is a closed point $z\in Z$ by Proposition \reff{prop:closedPoint} a).
+We have an affine open neighbourhood $V$ of $z$. Let $Y_1\subseteq X$ be the closed subset $X\setminus V$, let
+$Y_2 := \{z\}$ and $Y = Y_1\cup Y_2$. The sheaf of ideals $\Jj$ of functions $f\in \Oo_X(W)$ such
+that $Y\cap W\subseteq V(f)$ is quasi-coherent by Proposition \reff{prop:qcSheafOfIdealsDefinedByVf} b).
+By \itememph{c}, we have $H^1(X,\Jj)=0$. Note that $Y$ is the closed subprescheme of $X$ defined
+by $\Jj$ and denote by $Y\xrightarrow iX$ its immersion, i.e. $\Jj = \ker(\Oo_X\xrightarrow{i^\ast} i_\ast \Oo_Y)$. We get
+some $\varphi\in\Oo_Y(Y) = (i_\ast \Oo_Y)(X)$ such that
+$\varphi\vert_{Y_1}=0$ and $\varphi\vert_{Y_2}=1$ as $Y$ is the disjoint union of the open subsets $Y_{1,2}$.
+
+By the cohomology sequence
+\begin{align*}
+\Oo_X(X)\rightarrow (i_\ast \Oo_Y)(X)\rightarrow H^1(X,\Jj)=0,
+\end{align*}
+there is some $f\in\Oo_X(X)$ such that $f\vert_Y=\varphi$. Hence
+$Y_1\subseteq V(f)$ and $z\notin V(f)$, so
+$z\in X\setminus V(f) = (X\setminus Y_1)\setminus V(f) = V\setminus V(f)$, which is an affine open subset of $X$.
+We get $z\in U$, a contradiction.
+
+\emph{Proof of \itememph{\gamma}}: Let $f_1,\dotsc,f_n$ be as requested. Then $\Oo_X^n\xrightarrow{(f_1,\dotsc,f_n)} \Oo_X$
+is an epimorphism as the $U_i = X\setminus V(f_i)$
+cover $X$ and $\Oo_X\xrightarrow{f_i} \Oo_X$ is an isomorphism on $U_i$.
+Let $\Mm$ be the kernel of this epimorphism. We have
+\begin{diagram*}
+\node[ob] (Rn) at (0,2) {$R^n$};
+\node[ob] (R) at (5,2) {$R$};
+\node[ob] (OxXn) at (0,0) {$\Oo_X(X)^n$};
+\node[ob] (OxX) at (5,0) {$\Oo_X(X)$};
+\node[ob] (H1M) at (8,0) {$H^1(X,\Mm)$};
+\draw[->] (Rn) -- (OxXn) node[pos=0.5, above=-0.25ex, sloped] {$\sim$};
+\draw[->] (R) -- (OxX) node[pos=0.5, above=-0.25ex, sloped] {$\sim$};
+\draw[->] (Rn) -- (R) node[pos=0.5, above=-0.25ex, sloped] {$(g_i)_{i=1}^n \mapsto \sum_i g_i f_i$};
+\draw[->] (OxXn) -- (OxX) node[pos=0.5, above=-0.25ex, sloped] {$(f_1,\dotsc,f_n)$};
+\draw[->] (OxX) -- (H1M);
+\end{diagram*}
+The lower row is an extract of a long exact cohomology sequence.
+Note that $H^1(X,\Mm)=0$ by c++, hence the $f_i$ generate $R$ as an ideal of $R$ and $\bigcap_{i=1}^n V(f_i)=\emptyset$
+in $\Spec R$ as stated.
+\end{proof}
+\begin{rem*}
+$H^1(X,\Oo_X)=0$ is not enough (even when $X$ is a quasi-compact scheme) for the affinity of $X$ as it holds, e.g., for $X=\IP^n_R$.
+\end{rem*}
+\section{Cohomological dimension}
+\begin{prop}[Grothendieck]
+Let $X$ be a scheme and $Z\subseteq X$ a closed subset which Noetherian as topological space.%
+\footnote{It is possible that we will later add the further assumption that $X$ is Noetherian as topological space. The necessity
+of such an assumption will hopefully be clear once a full proof of this proposition is presented.}
+Then $H^p(X,\Mm)=0$ when $\Mm\in \mathrm{Qc}(X)$ satisfies
+$\Mm\vert_{X\setminus Z}=0$ and $p>\dim(Z)$ (the Krull dimension of $Z$, which may be infinite).
+\end{prop}
+\begin{proof}
+There is nothing to show if $\dim(Z)=\infty$, so we may show this by induction on $\dim(Z)$.
+
+If $\dim(Z)=0$, then the decomposition of $Z$ into its irreducible components $Z=\bigcup_{i=1}^n Z_i$ can be written as $Z_i = \{z_i\}$
+where $z_i$ is a closed point of $X$.
+
+As the affine open subsets form a topology base on $X$, there are affine open neighbourhoods $W_i\subseteq X$ of $z_i$
+such that $Z\cap W_i = \{z_i\}$. Let $\Mm_i := (\iota_i)_\ast\left(\Mm\vert_{W_i}\right)$ where 
+$W_i\xrightarrow{\iota_i} X$ is the open immersion.
+Let $\tilde \Mm := \bigoplus_{i=1}^n \Mm_i$. We have seen in the corollaries to Theorem \reff{thm:CohoOnSchemes} that
+$H^p(X,\tilde\Mm)=0$ when $p>0$% and that $\ker(M\rigtharrow\tilde\Mm)$ vanishes on $W=\bigcup_{i=1}^n W_i$.
+%As $\Mm$ and $\tilde\Mm$ vanish on $U=X\setminus Z$ and $X=U\cup W$, it follows that $\Mm\rightarrow \tilde\Mm$ is a monomorphism
+.
+Moreover, $(\Mm_i)_{Z_j}=0$ when $i\neq j$ while $\Mm\rightarrow \Mm_i$ is an isomorphism of $W_i$, hence of stalks at $z_i$.
+Moreover, since $\Mm$ and $\Mm_i$ vanish on $X\setminus Z$,
+we see that $\Mm\xrightarrow\cong\tilde\Mm$ and the assertion follows.
+
+\emph{Inductive step}: Let $\dim(Z)$ be finite and the assertion be proved for $\Mm \in\mathrm{Qc}(X)$ supported on closed
+subsets of smaller Krull dimension. Let $Z=\bigcup_{i=1}^n Z_i$ be the decomposition into irreducible components
+and let $\eta_i$ be the generic point of $Z_i$. We have $\eta_i\notin Z_j$ for $i\neq j$, by the minimality
+of $Z=\bigcup_{i=1}^n$. As the affine open subsets form a topology base, there are affine open neighbourhoods
+$W_i$ of $\eta_i$ such that $W_i\cap Z_j=\emptyset$ for $i\neq j$.
+
+Let $\Mm_i = (\iota_i)_\ast\left(\Mm\vert_{W_i}\right)$ where $W_i\xrightarrow\iota_iX$ is the inclusion.
+
+\textbf{Claim}: Kernel and cokernel of $\Mm\rightarrow\tilde \Mm =\bigoplus_{i=1}^n \Mm_i$ vanish outside of
+$\tilde Z = Z\setminus \bigcup_{i=1}^n W_i$.\def\qedsymbol{\emph{to be continued\ldots}}
+\end{proof}
 \appendix
 \chapter{Appendix -- category theory corner}
 \setcounter{thm}{0}
