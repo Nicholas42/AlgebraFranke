@@ -1,5 +1,5 @@
 \documentclass[a4paper,parskip=half,numbers=enddot, DIV=12]{scrreprt}
-\usepackage[utf8]{inputenc}
+%\usepackage[utf8]{inputenc}
 
 \usepackage{../header}
 \usepackage{../frankenumbering}
@@ -128,13 +128,14 @@ Background in homological algebra is not required safe for cohomology groups of 
 \end{proof}
 	Note that open subsets of the form $\Spec(R_f)\simeq \Spec R\setminus V(f)$ form a topology base on $\Spec R$ and that the \emph{saturation} of $\{1,f,f^2,\ldots\}$ (i.e.\ the largest multiplicative subset of $R$ which still gives the same localization) depends only on $\Spec R\setminus V(f)$. Hence, for any $R$-module $M$, the localization $M_f$ depends (up to canonical isomorphism) only on $\Spec R\setminus V(f)$ and $M$. One defines a sheaf of modules $\snake{M}$ on $\Spec R$ as the sheafification of $\Spec (R_f)\mapsto M_f$. Then
 	\begin{align*}
-		\snake{M}(U)=\left\{(m_\pp)_{\pp\in U}\in\prod_{\pp\in U}M_\pp\st
+		\snake{M}(U)=\left\{(m_\pp)\in\prod_{\pp\in U}M_\pp\st
 		\begin{array}{c}
 			\text{for every }\qq\in U\text{ there are }f\in R\setminus\qq\text{ and }\mu\in M_f\text{ such that}\\
 			m_\pp=\left(\text{image of }\mu\text{ under }M_f\morphism M_\pp\right)\text{ for all }\pp\in\Spec (R_f)
 		\end{array}
-		\right\}
+		\right\}\;.
 	\end{align*}
+	In the following, I will deviate from Franke's numbering in the lecture, but I simply refuse to call a definition ``remark''.
 \begin{defi}[{\cite[Definition~1.4.2]{alggeo1}}]\lbl{def:QuasicoherentSpecR}
 	A sheaf of modules $\Mm$ on $\Spec R$ is called \defemph{quasi-coherent} if $\Mm\simeq \snake{M}$ for some $R$-module $M$.
 \end{defi}
@@ -628,7 +629,7 @@ We now arrive at the main result of this section.
 		\begin{align*}
 			\check{H}_\alt^*(\Uu,\Mm)\isomorphism\check{H}^*(\Uu,\Mm)\;.
 		\end{align*}
-		\item If $X$ is affine and $i\geq 1$, then $\check{H}_\alt^i(\Uu,\Mm)=\check{H}^i(\Uu,\Mm)=0$.
+		\item If $X$ is affine and $i>0$, then $\check{H}_\alt^i(\Uu,\Mm)=\check{H}^i(\Uu,\Mm)=0$.
 	\end{alphanumerate}
 \end{prop}
 Before the proof, a lemma.
@@ -636,7 +637,7 @@ Before the proof, a lemma.
 	For an open cover $\Uu\colon X=\bigcup_{i\in I}\Uu_i$ of a topological space $X$ and a continuous map $f\colon Y\morphism X$, let $f^{-1}(\Uu)$ be the cover $Y=\bigcup_{i\in I}f^{-1}(U_i)$. Let $\Ff$ be a sheaf of abelian groups on $Y$.
 	\begin{alphanumerate}
 		\item We have an isomorphism of cochain complexes $\check{C}^*(f^{-1}(\Uu),\Ff)\simeq \check{C}^*(\Uu,f_*\Ff)$ and this isomorphism restricts to an isomorphism $\check{C}_\alt^*(f^{-1}(\Uu),\Ff)\simeq \check{C}_\alt^*(\Uu,f_*\Ff)$.
-		\item If the image of $f$ is contained in one of the open subsets $U_i$, then $\check{H}^i(\Uu,f_*\Ff)=\check{H}_\alt^i(\Uu,f_*\Ff)=0$ for $i\geq 1$.
+		\item If the image of $f$ is contained in one of the open subsets $U_i$, then $\check{H}^i(\Uu,f_*\Ff)=\check{H}_\alt^i(\Uu,f_*\Ff)=0$ for $i>0$.
 	\end{alphanumerate}
 \end{lem}
 \begin{proof}
@@ -655,7 +656,7 @@ Before the proof, a lemma.
 		\left[A_{i+1}(\Mm)\text{ and }A_i(\Mm'')\right] \Longrightarrow A_{i+1}(\Mm')\;.
 		\end{align*}
 	\end{claim}
-	To prove Claim~\reff{claimAiAi+1}, consider the commutative diagram
+	To prove Claim~\reff{claim:AiAi+1}, consider the commutative diagram
 	\begin{diagram*}
 		\node[ob] (A) at (0,1.5) {$\check{H}^{j-1}(\Uu,\Mm)$};
 		\node[ob] (B) at (3,1.5) {$\check{H}^{j-1}(\Uu,\Mm'')$};
@@ -727,7 +728,7 @@ Before the proof, a lemma.
 		\item If $W\subseteq X$ is affine and contained in one of the $V_i$ and $\Ff\in\Ob(\cat{Qcoh}(W))$, then $(j_W)_*\Ff$ satisfies all $A_i$ (which follows like above from Lemma~\reff{lem:CohomologyOfPushforward}\itememph{b} and Example~\reff{ex:FirstCechComputations}).
 	\end{itemize}
 	
-	Part \itememph{c}. Apply \itememph{a} with $\Uu$ the trivial cover $X=X$ and $\Vv$ any affine open cover of $X$ to conclude $\check{H}^i(\Vv,\Mm)=0$ when $i\geq 1$ and $\Mm$ is a quasi-coherent $\Oo_X$-module. Then one uses \itememph{b} to show that $\check{H}_\alt^*(\Vv,\Mm)$ also vanishes in positive degrees.
+	Part \itememph{c}. Apply \itememph{a} with $\Uu$ the trivial cover $X=X$ and $\Vv$ any affine open cover of $X$ to conclude $\check{H}^i(\Vv,\Mm)=0$ when $i>0$ and $\Mm$ is a quasi-coherent $\Oo_X$-module. Then one uses \itememph{b} to show that $\check{H}_\alt^*(\Vv,\Mm)$ also vanishes in positive degrees.
 \end{proof}
 \begin{defi}
 	Let $X$ be a quasi-compact scheme and $\Mm$ a quasi-coherent $\Oo_X$-module. We put
@@ -745,7 +746,7 @@ Summing up our previous work, we obtain the following Theorem~\reff{thm:CohoOnSc
 			H^*(X,\Mm)\isomorphism[\tau_{\Uu,\Vv_0}]\check{H}^*(\Uu,\Mm)\lisomorphism \check{H}_\alt^*(\Uu,\Mm)
 		\end{align*}
 		are isomorphisms compatible with the (iso)morphisms $\check{H}^*(\Uu,\Mm)\morphism[\tau_{\Uu,\Vv}]\check{H}^*(\Vv,\Mm)$ when $\Vv$ is an affine refinement of $\Uu$.
-		\item When $X$ is affine, $H^i(X,\Mm)=0$ when $i\geq 1$.
+		\item When $X$ is affine, $H^i(X,\Mm)=0$ when $i>0$.
 		\item There is a canonical isomorphism $H^0(X,\Mm)\simeq \Mm(X)$.
 		\item When $0\morphism \Mm'\morphism\Mm\morphism\Mm''\morphism0$ is a short exact sequence of quasi-coherent $\Oo_X$-modules, one has a long exact cohomology sequence
 		\begin{multline*}
@@ -788,7 +789,7 @@ Summing up our previous work, we obtain the following Theorem~\reff{thm:CohoOnSc
 	is exact.
 \end{cor}
 \begin{proof}
-	We have seen in Proposition~\reff{prop:QCohHasKerCoker} that the category $\cat{QCoh}(X)$ of quasi-coherent $\Oo_X$-modules is stable under kernels and cokernels. Therefore, $\Mm'$ is quasi-coherent when $\Mm$ and $\Mm''$ are and $\Mm''$ is quasi-coherent when $\Mm'$ and $\Mm$ are. We may thus assume that $\Mm'$ and $\Mm''$ are the quasi-coherent ones.
+	We have seen in Proposition~\reff{prop:QCohHasKerCoker}\itememph{a} that the category $\cat{QCoh}(X)$ of quasi-coherent $\Oo_X$-modules is stable under kernels and cokernels. Therefore, $\Mm'$ is quasi-coherent when $\Mm$ and $\Mm''$ are and $\Mm''$ is quasi-coherent when $\Mm'$ and $\Mm$ are. We may thus assume that $\Mm'$ and $\Mm''$ are the quasi-coherent ones.
 	
 	To show exactness of \eqreff{eq:exactAffineSectionSequence}, we may replace $X$ by $U$ and the involved sheaves by their restriction to $U$ and thus assume that $X=U=\Spec R$ is affine. This may also be assumed in the proof of quasi-coherentness of $\Mm$, which is a local question. We then only need to show surjectivity of $\Mm(X)\morphism[\beta]\Mm''(X)$. If we had the long exact cohomology sequence available, this would be an immediate consequence of the vanishing of $H^1(X,\Mm')$ -- but we haven't, so what the proof does is mimicking the cohomological argument on foot. For this, let $m''\in\Mm''(X)$. As $\Mm\morphism[\beta]\Mm''$ is an epimorphism and the affine open subsets form a topology base in $X$, there is an affine open cover $\Vv\colon X=\bigcup_{i\in I}V_i$ such that $m''|_{V_i}$ is in the image of $\beta(m_i)$ for some $m_i\in \Mm(V_i)$.
 	
@@ -826,13 +827,13 @@ Summing up our previous work, we obtain the following Theorem~\reff{thm:CohoOnSc
 	has exact rows. Since $\snake{M}'\morphism\Mm'$ and $\snake{M}''\morphism\Mm''$ are isomorphisms, so is $\snake{M}\morphism\Mm$ by the five lemma.
 \end{proof}
 In the following, if $\Uu\colon X=\bigcup_{i\in I}U_i$ is an open cover and $Y\subseteq X$, we will write $\Uu\cap Y$ for the open cover $Y=\bigcup_{i\in I}(Y\cap U_i)$.
-\begin{cor}
+\begin{cor}\lbl{cor:CohomologyOfPushforward}
 	Let $X$ be a quasi-coherent scheme.
 	\begin{alphanumerate}
-		\item If $W\monomorphism[j]X$ is the embedding of the affine open subset $W$ and $\Mm\in\Ob(\cat{QCoh}(X))$, then $H^p(X,j_*\Mm)=0$ for $p\geq 1$.
+		\item If $W\monomorphism[j]X$ is the embedding of the affine open subset $W$ and $\Mm\in\Ob(\cat{QCoh}(X))$, then $H^p(X,j_*\Mm)=0$ for $p>0$.
 		\item Let $W_i\monomorphism[j_i]X$ be the embeddings of affine open subsets $W_i$ for $i=1,\ldots,n$. Let $W=\bigcup_{i=1}^nW_i$. If $\Mm\in\Ob(\cat{QCoh}(X))$, then
 		\begin{align*}
-			H^p\bigg(X,\bigoplus_{i=1}^n(j_i)_*\Mm|_{W_i}\bigg)=0\quad\text{for }p\geq 1
+			H^p\bigg(X,\bigoplus_{i=1}^n(j_i)_*\Mm|_{W_i}\bigg)=0\quad\text{for }p>0
 		\end{align*}
 		and if $\Kk$ denotes the kernel of $\Mm\morphism\bigoplus_{i=1}^n(j_i)_*\Mm|_{W_i}$ sending $m\in\Mm(U)$ to
 		\begin{align*}
@@ -880,189 +881,192 @@ In the following, if $\Uu\colon X=\bigcup_{i\in I}U_i$ is an open cover and $Y\s
 	For a quasi-compact scheme $X$, the following conditions are equivalent.
 	\begin{alphanumerate}
 		\item $X$ is affine.
-		\item $H^p(X,\Mm)=0$ for $p\geq 1$ when $\Mm$ is a quasi-coherent $\Oo_X$-module.
+		\item $H^p(X,\Mm)=0$ for $p>0$ when $\Mm$ is a quasi-coherent $\Oo_X$-module.
 		\item $H^1(X,\Jj)=0$ when $\Jj$ is a quasi-coherent sheaf of ideals on $X$.
 	\end{alphanumerate}
 \end{prop}
 \begin{rem*}
 	In EGA III, this is shown under the weaker assumptions that $X$ is quasi-compact and quasi-separated (instead of separated), using $H^*$ defined as a derived functor on $\Oo_X\cat{-Mod}$.
 \end{rem*}
-We need the following.
+To prove Proposition~\reff{prop:serreAffinity} we need the following.
 \begin{prop}
 	\begin{alphanumerate}
 		\item\lbl{prop:closedPoint} If $Z$ is a non-empty quasi-compact closed subset of a prescheme $X$, it contains a closed point.
-		\item\lbl{prop:qcSheafOfIdealsDefinedByVf} If $Z\subseteq X$ is a closed subset of a prescheme $X$, then $\Jj(U) := \{f \in \Oo_X(U) \mid Z\cap U \subseteq V(f)\}$
+		\item\lbl{prop:qcSheafOfIdealsDefinedByVf} If $Z\subseteq X$ is a closed subset of a prescheme $X$, then $\Jj(U) \coloneqq \{f \in \Oo_X(U) \mid Z\cap U \subseteq V(f)\}$
 defines a quasi-coherent sheaf of ideals.
-	\item\lbl{prop:intersectQc} If $\Nn_{1,2}\subseteq \Mm$ arae quasi-coherent subsheaves of the quasi-coherent sheaf of modules $\Mm$, $\Nn_1 \cap \Nn_2(U) := \Nn_1(U)\cap
+	\item\lbl{prop:intersectQc} If $\Nn_1,\Nn_2\subseteq \Mm$ are quasi-coherent subsheaves of the quasi-coherent sheaf of modules $\Mm$, $(\Nn_1 \cap \Nn_2)(U) \coloneqq \Nn_1(U)\cap
 \Nn_2(U)$ defines a quasi-coherent sheaf of modules.
 	\end{alphanumerate}
 \end{prop}
 \begin{proof}
 	Part \itememph{a} is proved in \cite[Proposition~2.1.1]{alggeo1}
 
-	Part \itememph{b}: Let $U\subseteq X$ be quasi-compact and quasi-separated, $f\in\Oo_X(U)$ and $\varphi \in \Jj(U)$ such
-	that $\varphi\vert_{U\cap V(f)}=0$. Then as $\Oo_X$ is quasi-coherent, there exists $n\in\IN$ such that $f^n\varphi = 0$ (cf. Definition\footnote{In his lecture, Franke referred to Remark 1.1.2. I think that he \emph{meant} the statement in Definition
-\reff{def:Quasicoherent}.}
-\reff{def:Quasicoherent}).
+	Part \itememph{b}. Let $U\subseteq X$ be quasi-compact and quasi-separated, $f\in\Oo_X(U)$ and $\varphi \in \Jj(U)$ such
+	that $\varphi\vert_{U\cap V(f)}=0$. Then, as $\Oo_X$ is quasi-coherent, there exists $n\in\IN$ such that $f^n\varphi = 0$ by Definition~\reff{def:Quasicoherent}\itememph{c}.
 	It follows that the canonical map $\Jj(U)_f\rightarrow \Jj(U\setminus V(f))$ is injective.
 
 	If $\psi \in \Jj(U\setminus V(f))$, then as $\Oo_X$ is quasi-coherent, there is $n\in\IN$ such that $f^n\psi$ extends to some
-	$g\in \Oo_X(U)$. Now $fg$ extends $f^{n+1}\psi$ and is in $\Jj(U)$, as
-	\begin{align*}(Z\cap U)\setminus V(f)\underset{\text{def. }\Jj}\subseteq V(\psi)\subseteq V(f^{n+1} \psi)=V(g\vert_{U\setminus V(f)})\end{align*}
-	and $V(f)\subseteq V(fg)$. Thus $\Jj(U)_f\xrightarrow\cong \Jj(U\setminus V(f))$.
+	$g\in \Oo_X(U)$ (using Definition~\reff{def:Quasicoherent}\itememph{c} again). Now $fg$ extends $f^{n+1}\psi$ and is in $\Jj(U)$. Indeed, we need to show $Z\cap U \subseteq V(fg)$ and this follows from
+	\begin{align*}
+		(Z\cap U)\setminus V(f)\subseteq V(\psi)\subseteq V\left(f^{n+1} \psi\right)=V\left(fg\vert_{U\setminus V(f)}\right)\subseteq V(fg)
+	\end{align*}
+	(the first inclusion coming from $\psi\in \Jj(U\setminus V(f))$) and $V(f)\subseteq V(fg)$. Thus we get an isomorphism $\Jj(U)_f\isomorphism \Jj(U\setminus V(f))$, which is the criterion from Definition~\reff{def:Quasicoherent}\itememph{c} once again.
 
-	Part \itememph{c}: It is directly possible to verify $(\Nn_1\cap \Nn_2)(U)_f\xrightarrow\cong (\Nn_1\cap \Nn_2)(U\setminus V(f))$ similar
-	as above. Alternatively, note that $\Nn_1\cap \Nn_2 = \ker(\Nn_1\rightarrow \Mm\rightarrow\Mm/\Mm_2)$.
+	Part \itememph{c}. It is directly possible to verify $(\Nn_1\cap \Nn_2)(U)_f\isomorphism (\Nn_1\cap \Nn_2)(U\setminus V(f))$ similar
+	as above. Alternatively, note that $\Nn_1\cap \Nn_2 = \ker(\Nn_1\rightarrow \Mm\rightarrow\Mm/\Nn_2)$ and use that $\cat{QCoh}(X)$ has kernels and cokernels by Proposition~\reff{prop:QCohHasKerCoker}\itememph{a}.
 \end{proof}
 \begin{proof}[Proof of Proposition \reff{prop:serreAffinity}]
-\itememph{a} $\rightarrow$ \itememph{b}: This follows from Theorem 1.
+ The implication \itememph{a} $\Rightarrow$ \itememph{b} follows from Theorem \reff{thm:CohoOnSchemes}\itememph{c} and \itememph{b} $\Rightarrow$ \itememph{c} is Trivial.
 
-\itememph{b} $\rightarrow$ \itememph{c}: Trivial.
-
-\itememph{c} $\rightarrow$ \itememph{a}: We first derive
-\begin{fact*}[c++]
-If $\Mm\subseteq \Oo_X^n$ is a quasi-coherent submodule, then $H^1(X,\Mm)=0$.
-\end{fact*}
-\begin{proof}[Proof of c++]
-Induction on $n$, $n=0$ being trivial.
-
-Inductive step. If $(\Oo_X^{n-1})(U)$ is identified with
-$\{(f_1,\dotsc,f_{n-1},0) \in \Oo_X(V)^n\} \subseteq \Oo_X(U)^n$, then
-$\Mm' = \Mm\cap \Oo_X^{n-1}$ is quasi-coherent by Proposition \reff{prop:intersectQc} c).
-Moreover, \begin{align*}\Mm'' := \Mm/\Mm'\rightarrow \Oo_X, (f_1,\dotsc,f_n)\mapsto f_n\end{align*}
-is a monomorphism. Hence $H^1(X,\Mm')=0$ by induction and $H^1(X,\Mm'')=0$ by c). 
-Now looking at the piece
+Let's do \itememph{c} $\Rightarrow$ \itememph{a}. We first derive \itememph{c} $\Rightarrow$ \itememph{c^{++}}, where \itememph{c^{++}} is the condition
+\begin{description}
+	\item[\itememph{c^{++}}] If $\Mm\subseteq \Oo_X^n$ is a quasi-coherent submodule, then $H^1(X,\Mm)=0$.
+\end{description}
+We prove \itememph{c^{++}} by induction on $n$. The case $n=0$ is trivial. Now let $n\geq 1$ and assume that \itememph{c^{++}} holds for $n-1$. If $\Oo_X^{n-1}(U)$ is identified with
+$\{(f_1,\ldots,f_{n-1},0) \in \Oo_X(V)^n\} \subseteq \Oo_X(U)^n$, then
+$\Mm' = \Mm\cap \Oo_X^{n-1}$ is quasi-coherent by Proposition \reff{prop:intersectQc}\itememph{c}.
+Moreover,
 \begin{align*}
-H^1(X,\Mm')\rightarrow H^1(X,\Mm)\rightarrow H^1(X,\Mm'')
+	\Mm'' \coloneqq \Mm/\Mm'&\morphism \Oo_X\\
+	(f_1,\ldots,f_n)\bmod\Mm&\longmapsto f_n
 \end{align*}
-of the long exact cohomology sequence, we get $H^1(X,\Mm)=0$; completing the induction.
-\let\oldqed\qedsymbol
-\def\qedsymbol{\oldqed{} \emph{for c++}}
-\end{proof}
-\emph{Proof of \itememph{a}}.
+is a monomorphism. Hence $H^1(X,\Mm')=0$ by induction and $H^1(X,\Mm'')=0$ by \itememph{c}. Now looking at the piece
+\begin{align*}
+\ldots\morphism H^1(X,\Mm')\morphism H^1(X,\Mm)\morphism H^1(X,\Mm'')\morphism\ldots
+\end{align*}
+of the long exact cohomology sequence, we get $H^1(X,\Mm)=0$, completing the induction.
 
-Let $R=\Oo_X(X)$, so we have a morphism $X\xrightarrow p\Spec R$ corresponding to $\id_R$
+Now we prove \itememph{c^{++}} $\Rightarrow$ \itememph{a}. Let $R=\Oo_X(X)$, so we have a morphism $X\morphism[p]\Spec R$ corresponding to $\id_R$
 under the adjunction
 \begin{align*}
-\Hom(X,\Spec R) \simeq \Hom(R,\Oo_X(X)).
+\Hom_{\cat{LRS}}(X,\Spec R) \simeq \Hom_{\cat{Ring}}(R,\Oo_X(X))
 \end{align*}
-We have to show that $p$ is an isomorphism. For this it is sufficient to show
+from \cite[Proposition~1.4.2]{alggeo1}. We have to show that $p$ is an isomorphism. For this it is sufficient to show the following.
 \begin{alphanumerate}
 	\item[\itememph{\alpha}] If $f\in R$ is chosen such that $X\setminus V(f)$ is affine, then $X\setminus V(f) = p^{-1}(\Spec R\setminus V(f))$
-	is isomorphically mapped to $\Spec R\setminus V(f)$ by $p$.
+	is isomorphically mapped to $\Spec R\setminus V(f)\simeq \Spec(R_f)$ by $p$.
 	\item[\itememph{\beta}] The open subsets $X\setminus V(f)$ with $f$ as in \itememph{\alpha} cover $X$.
-	\item[\itememph{\gamma}] If $(f_i)_{i=1}^n \in R^n$ are as in \itememph{\alpha} and $X=\bigcup_{i=1}^n (X\setminus V(f))$ then
-$\Spec R = \bigcup_{i=1}^n (\Spec R)\setminus V(f_i)$.
+	\item[\itememph{\gamma}] If $f_1,\ldots,f_n \in R$ are as in \itememph{\alpha} and $X=\bigcup_{i=1}^n (X\setminus V(f_i))$ then
+	\begin{align*}
+		\Spec R = \bigcup_{i=1}^n (\Spec R\setminus V(f_i))\;.
+	\end{align*}
 \end{alphanumerate}
 By \itememph{\beta} and the quasi-compactness of $X$, it is possible to find
-$(f_1,\dotsc,f_n)\in R^n$ to which \itememph{\gamma} may be applied. Then the open subsets
-$U_i = (\Spec R)\setminus V(f_i)$ cover $\Spec R$
-and $p^{-1}(U_i) \xrightarrow[\cong]p U_i$. By the sheaf axiom, we then get
-$\Spec R\xrightarrow[\cong]p X$.
+$f_1,\ldots,f_n\in R$ to which \itememph{\gamma} may be applied. Then the open subsets
+$U_i = (\Spec R\setminus V(f_i))$ cover $\Spec R$
+and $\smash{p^{-1}(U_i) \isomorphism[p] U_i}$. Then we get
+$\Spec R\isomorphism[p] X$.
 
 \emph{Proof of \itememph{\alpha}}.
 The fact $X\setminus V(f)=p^{-1}(\Spec R\setminus V(f))$ follows from the explicit construction of $p$.
-Namely, $p$ maps a point $x\in X$ to the prime ideal $\pp = \{f\in R \mid f\text{ vanishes in }\Oo_{X,x}\}$.
-Therefore $x\in X\setminus V(f) \iff f \notin p(x) \iff p(x) \in \Spec R\setminus V(f)$.
+Namely, $p$ maps a point $x\in X$ to the prime ideal $\pp \subseteq R$ which is the preimage of the maximal ideal $\mm_{X,x}\subseteq \Oo_{X,x}$ under $R=\Oo_X(X)\morphism\Oo_{X,x}$.
+Hence $x\in X\setminus V(f) \Leftrightarrow f \notin p(x) \Leftrightarrow p(x) \in \Spec R\setminus V(f)$, showing that $p$ is a bijection on the underlying sets.
 
 If $X\setminus V(f)$ is affine, we get
 \begin{diagram*}%Let's try it
-\node[ob] (Xf) at (0,2) {${X\setminus V(f)}$};
-\node[ob] (SpecOX) at (5,2) {${\Spec(\Oo_X(X\setminus V(f)))}$};
-\node[ob] (SpecRf) at (9,2) {$\Spec(R_f)$};
+\node[ob] (Xf) at (0,1.5) {${X\setminus V(f)}$};
+\node[ob] (SpecOX) at (4,1.5) {${\Spec\big(\Oo_X(X\setminus V(f))\big)}$};
+\node[ob] (SpecRf) at (8,1.5) {$\Spec(R_f)$};
 \node[ob] (X) at (0,0) {$X$};
-\node[ob] (SpecR) at (5,0) {${\Spec R}$};
+\node[ob] (SpecO) at (4,0) {${\Spec \Oo_X(X)}$};
+\node[ob] (SpecR) at (8,0) {$\Spec R$};
 \scriptsize
 \draw[->] (Xf) -- (X);
-\draw[->] (X) -- (SpecR);
-\draw[->] (SpecOX) -- (SpecR);
+\draw[->] (SpecRf) -- (SpecR);
+\draw[transform canvas={yshift=1pt}] (SpecO) -- (SpecR);
+\draw[transform canvas={yshift=-1pt}] (SpecO) -- (SpecR);
+\draw[->] (X) -- (SpecO) node[pos=0.5, above] {$p$};
+\draw[->] (SpecOX) -- (SpecO);
 \draw[->] (Xf) -- (SpecOX) node[pos=0.5, above=-0.25ex, sloped] {$\sim$};
-\draw[->] (SpecOX) -- (SpecRf) node[pos=0.5, above=-0.25ex, sloped] {$\sim$};;
+\draw[->] (SpecOX) -- (SpecRf) node[pos=0.5, above=-0.25ex, sloped] {$\sim$};
 \end{diagram*}
 The first isomorphism comes from the fact that $X\setminus V(f)$ is affine.
-For the second, we use $\Oo_X(X\setminus V(f)) \xrightarrow\cong (\Oo_X)_f= R_f$,
-which follows from Definition\footnote{Again, he refers to Remark 1.1.2.} \reff{def:Quasicoherent} using
+For the second, we use $\Oo_X(X\setminus V(f)) \isomorphism \Oo_X(X)_f= R_f$,
+which follows from Definition~\reff{def:Quasicoherent}\itememph{c} using
 that $\Oo_X$ is quasi-coherent, and $X$ is both quasi-compact and quasi-separated.
-This shows \itememph{\alpha}
+This shows \itememph{\alpha}.
 
-\emph{Proof of \itememph{\beta}}:
+\emph{Proof of \itememph{\beta}}.
 Let $U\subseteq X$ be the union of the affine open subsets of the form $X\setminus V(f)$
-and $Z=X\setminus U$. If $Z\neq \emptyset$, there is a closed point $z\in Z$ by Proposition \reff{prop:closedPoint} a).
-We have an affine open neighbourhood $V$ of $z$. Let $Y_1\subseteq X$ be the closed subset $X\setminus V$, let
-$Y_2 := \{z\}$ and $Y = Y_1\cup Y_2$. The sheaf of ideals $\Jj$ of functions $f\in \Oo_X(W)$ such
-that $Y\cap W\subseteq V(f)$ is quasi-coherent by Proposition \reff{prop:qcSheafOfIdealsDefinedByVf} b).
+and $Z=X\setminus U$. If $Z\neq \emptyset$, there is a closed point $z\in Z$ by Proposition \reff{prop:closedPoint}\itememph{a}.
+Choose an affine open neighbourhood $V$ of $z$. Let $Y_1\subseteq X$ be the closed subset $X\setminus V$, let
+$Y_2 = \{z\}$ and $Y = Y_1\cup Y_2$. The sheaf of ideals $\Jj$ of functions $f\in \Oo_X(W)$ such
+that $Y\cap W\subseteq V(f)$ is quasi-coherent by Proposition \reff{prop:qcSheafOfIdealsDefinedByVf}\itememph{b}.
 By \itememph{c}, we have $H^1(X,\Jj)=0$. Note that $Y$ is the closed subprescheme of $X$ defined
-by $\Jj$ and denote by $Y\xrightarrow iX$ its immersion, i.e. $\Jj = \ker(\Oo_X\xrightarrow{i^\ast} i_\ast \Oo_Y)$. We get
-some $\varphi\in\Oo_Y(Y) = (i_\ast \Oo_Y)(X)$ such that
-$\varphi\vert_{Y_1}=0$ and $\varphi\vert_{Y_2}=1$ as $Y$ is the disjoint union of the open subsets $Y_{1,2}$.
+by $\Jj$ and denote by $Y\monomorphism[i]X$ its embedding, i.e., $\Jj = \ker\big(\Oo_X\xrightarrow{i^\ast} i_\ast \Oo_Y\big)$. We get
+some $\varphi\in\Oo_Y(Y) = i_\ast \Oo_Y(X)$ such that
+$\varphi\vert_{Y_1}=0$ and $\varphi\vert_{Y_2}=1$ as $Y$ is the disjoint union of its open subsets $Y_1,Y_2$.
 
 By the cohomology sequence
 \begin{align*}
-\Oo_X(X)\rightarrow (i_\ast \Oo_Y)(X)\rightarrow H^1(X,\Jj)=0,
+0\morphism \Jj(X)\morphism\Oo_X(X)\morphism[i^*] i_\ast \Oo_Y(X)\morphism H^1(X,\Jj)=0\;,
 \end{align*}
-there is some $f\in\Oo_X(X)$ such that $f\vert_Y=\varphi$. Hence
+there is some $f\in\Oo_X(X)$ such that $i^*f=\varphi$. Hence
 $Y_1\subseteq V(f)$ and $z\notin V(f)$, so
 $z\in X\setminus V(f) = (X\setminus Y_1)\setminus V(f) = V\setminus V(f)$, which is an affine open subset of $X$.
 We get $z\in U$, a contradiction.
 
-\emph{Proof of \itememph{\gamma}}: Let $f_1,\dotsc,f_n$ be as requested. Then $\Oo_X^n\xrightarrow{(f_1,\dotsc,f_n)} \Oo_X$
-is an epimorphism as the $U_i = X\setminus V(f_i)$
-cover $X$ and $\Oo_X\xrightarrow{f_i} \Oo_X$ is an isomorphism on $U_i$.
-Let $\Mm$ be the kernel of this epimorphism. We have
+\emph{Proof of \itememph{\gamma}}. Let $f_1,\ldots,f_n$ be as requested. Consider the morphisms $\Oo_X\morphism[\cdot f_i]\Oo_X$ given by multiplication with $f_i$ and let $f\colon\Oo_X^n\morphism \Oo_X$ be the morphism induced by the $\cdot f_i$. Then $\cdot f_i$ is an isomorphism on $U_i = X\setminus V(f_i)$, hence induces isomorphisms on stalks $\Oo_{X,x}$ for $x\in U_i$, and the $U_i$ cover $X$. Thus $f$
+is an epimorphism on stalks, hence an epimorphism of sheaves. Let $\Mm$ be the kernel of this epimorphism. We have
 \begin{diagram*}
-\node[ob] (Rn) at (0,2) {$R^n$};
-\node[ob] (R) at (5,2) {$R$};
+\node[ob] (Rn) at (0,1.5) {$\vphantom{R^n}\scriptsize\hphantom{(r_1,\ldots,r_n)}$};
+\node[ob] at (0,1.5) {$R^n$};
+\node[ob] (R) at (3,1.5) {$\vphantom{R}\scriptsize\hphantom{\sum r_i f_i}$};
+\node[ob] at (3,1.5) {$R$};
 \node[ob] (OxXn) at (0,0) {$\Oo_X(X)^n$};
-\node[ob] (OxX) at (5,0) {$\Oo_X(X)$};
-\node[ob] (H1M) at (8,0) {$H^1(X,\Mm)$};
+\node[ob] (OxX) at (3,0) {$\Oo_X(X)$};
+\node[ob] (H1M) at (5.5,0) {$H^1(X,\Mm)$};
+\scriptsize
+\node[ob] (ri) at ($(Rn.east)+(0,0.5)$) [left] {$(r_1,\ldots,r_n)$};
+\node[ob] (sum) at ($(R.west)+(0,0.5)$) [right] {$\sum r_i f_i$};
+\draw[|->] (ri) -- (sum);
 \draw[->] (Rn) -- (OxXn) node[pos=0.5, above=-0.25ex, sloped] {$\sim$};
 \draw[->] (R) -- (OxX) node[pos=0.5, above=-0.25ex, sloped] {$\sim$};
-\draw[->] (Rn) -- (R) node[pos=0.5, above=-0.25ex, sloped] {$(g_i)_{i=1}^n \mapsto \sum_i g_i f_i$};
-\draw[->] (OxXn) -- (OxX) node[pos=0.5, above=-0.25ex, sloped] {$(f_1,\dotsc,f_n)$};
+\draw[->] (Rn) -- (R);
+\draw[->] (OxXn) -- (OxX) node[pos=0.5, above] {$f$};
 \draw[->] (OxX) -- (H1M);
 \end{diagram*}
 The lower row is an extract of a long exact cohomology sequence.
-Note that $H^1(X,\Mm)=0$ by c++, hence the $f_i$ generate $R$ as an ideal of $R$ and $\bigcap_{i=1}^n V(f_i)=\emptyset$
+Note that $H^1(X,\Mm)=0$ by \itememph{c^{++}}, hence the $f_i$ generate $R$ as an ideal of $R$ and $\bigcap_{i=1}^n V(f_i)=\emptyset$
 in $\Spec R$ as stated.
 \end{proof}
 \begin{rem*}
-$H^1(X,\Oo_X)=0$ is not enough (even when $X$ is a quasi-compact scheme) for the affinity of $X$ as it holds, e.g., for $X=\IP^n_R$.
+$H^1(X,\Oo_X)=0$ is not enough (even when $X$ is a quasi-compact scheme) for affinity of $X$ as it holds, e.g., for $X=\IP^n_R$.
 \end{rem*}
 \section{Cohomological dimension}
 \begin{prop}[Grothendieck]
 Let $X$ be a scheme and $Z\subseteq X$ a closed subset which Noetherian as topological space.%
-\footnote{It is possible that we will later add the further assumption that $X$ is Noetherian as topological space. The necessity
+\footnote{It is possible that we will later add the further assumption that $X$ is Noetherian as a topological space. The necessity
 of such an assumption will hopefully be clear once a full proof of this proposition is presented.}
-Then $H^p(X,\Mm)=0$ when $\Mm\in \mathrm{Qc}(X)$ satisfies
-$\Mm\vert_{X\setminus Z}=0$ and $p>\dim(Z)$ (the Krull dimension of $Z$, which may be infinite).
+Let $\Mm$ be a quasi-coherent sheave of $\Oo_X$-modules satisfying $\Mm\vert_{X\setminus Z}=0$ and let $p>\dim(Z)$ (the Krull dimension of $Z$, which may be infinite). Then $H^p(X,\Mm)=0$.
 \end{prop}
 \begin{proof}
 There is nothing to show if $\dim(Z)=\infty$, so we may show this by induction on $\dim(Z)$.
 
-If $\dim(Z)=0$, then the decomposition of $Z$ into its irreducible components $Z=\bigcup_{i=1}^n Z_i$ can be written as $Z_i = \{z_i\}$
-where $z_i$ is a closed point of $X$.
+Let $\dim(Z)=0$ and $Z=\bigcup_{i=1}^n Z_i$ the decomposition of $Z$ into its irreducible components. Each $Z_i$ is Noetherian (as $Z$ is), hence quasi-compact, and closed, thus contains a closed point $z_i$ by Proposition~\reff{prop:closedPoint}\itememph{a}. But then $Z_i = \{z_i\}$ as $\{z_i\}$ is irreducible and $\dim(Z_i)=0$.
 
 As the affine open subsets form a topology base on $X$, there are affine open neighbourhoods $W_i\subseteq X$ of $z_i$
 such that $Z\cap W_i = \{z_i\}$. Let $\Mm_i := (\iota_i)_\ast\left(\Mm\vert_{W_i}\right)$ where 
-$W_i\xrightarrow{\iota_i} X$ is the open immersion.
-Let $\tilde \Mm := \bigoplus_{i=1}^n \Mm_i$. We have seen in the corollaries to Theorem \reff{thm:CohoOnSchemes} that
-$H^p(X,\tilde\Mm)=0$ when $p>0$% and that $\ker(M\rigtharrow\tilde\Mm)$ vanishes on $W=\bigcup_{i=1}^n W_i$.
-%As $\Mm$ and $\tilde\Mm$ vanish on $U=X\setminus Z$ and $X=U\cup W$, it follows that $\Mm\rightarrow \tilde\Mm$ is a monomorphism
+$W_i\monomorphism[\iota_i] X$ is the corresponding open immersion.
+Let $\Ff= \bigoplus_{i=1}^n \Mm_i$. We have seen in Corollary~\reff{cor:CohomologyOfPushforward}\itememph{b} that
+$H^p(X,\Ff)=0$ when $p>0$% and that $\ker(M\rigtharrow\snake\Mm)$ vanishes on $W=\bigcup_{i=1}^n W_i$.
+%As $\Mm$ and $\snake\Mm$ vanish on $U=X\setminus Z$ and $X=U\cup W$, it follows that $\Mm\rightarrow \snake\Mm$ is a monomorphism
 .
-Moreover, $(\Mm_i)_{Z_j}=0$ when $i\neq j$ while $\Mm\rightarrow \Mm_i$ is an isomorphism of $W_i$, hence of stalks at $z_i$.
+Moreover, $(\Mm_j)_{z_i}=0$ when $i\neq j$ while $\Ff\rightarrow \Mm_i$ is an isomorphism on $W_i$, hence induces an isomorphism $\Ff_{z_i}\isomorphism(\Mm_i)_{z_i}=\Mm_{z_i}$ on stalks at $z_i$.
 Moreover, since $\Mm$ and $\Mm_i$ vanish on $X\setminus Z$,
-we see that $\Mm\xrightarrow\cong\tilde\Mm$ and the assertion follows.
+we see that $\Ff\isomorphism\Mm$ and the assertion follows.
 
-\emph{Inductive step}: Let $\dim(Z)$ be finite and the assertion be proved for $\Mm \in\mathrm{Qc}(X)$ supported on closed
+For the inductive step, let $\dim(Z)$ be finite and the assertion be proved for $\Mm \in\Ob(\cat{QCoh}(X))$ supported on closed
 subsets of smaller Krull dimension. Let $Z=\bigcup_{i=1}^n Z_i$ be the decomposition into irreducible components
-and let $\eta_i$ be the generic point of $Z_i$. We have $\eta_i\notin Z_j$ for $i\neq j$, by the minimality
-of $Z=\bigcup_{i=1}^n$. As the affine open subsets form a topology base, there are affine open neighbourhoods
+and let $\eta_i$ be the generic point of $Z_i$ (cf. \cite[Subsection~2.1.2]{alggeo1}). We have $\eta_i\notin Z_j$ for $i\neq j$ since otherwise $Z_i=\ov{\{\eta_i\}}\subseteq Z_j$. As the affine open subsets form a topology base, there are affine open neighbourhoods
 $W_i$ of $\eta_i$ such that $W_i\cap Z_j=\emptyset$ for $i\neq j$.
 
-Let $\Mm_i = (\iota_i)_\ast\left(\Mm\vert_{W_i}\right)$ where $W_i\xrightarrow\iota_iX$ is the inclusion.
+Let $\Mm_i = (\iota_i)_\ast\Mm\vert_{W_i}$ where $W_i\morphism[\iota_i]X$ is the inclusion.
 
-\textbf{Claim}: Kernel and cokernel of $\Mm\rightarrow\tilde \Mm =\bigoplus_{i=1}^n \Mm_i$ vanish outside of
-$\tilde Z = Z\setminus \bigcup_{i=1}^n W_i$.\def\qedsymbol{\emph{to be continued\ldots}}
+\begin{claim*}
+	Kernel and cokernel of $\Mm\rightarrow\Ff =\bigoplus_{i=1}^n \Mm_i$ vanish outside of
+	$\snake Z = Z\setminus \bigcup_{i=1}^n W_i$.
+\end{claim*} \def\qedsymbol{\emph{to be continued\ldots}}
 \end{proof}
 \appendix
 \chapter{Appendix -- category theory corner}

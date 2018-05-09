@@ -201,7 +201,7 @@
 \newcommand{\longto}{\longrightarrow}
 \newcommand{\longot}{\longleftarrow}
 \newcommand{\isomorphism}[1][]{
-	\mathrel{\tikz[baseline=(a.base)] \node (a) at (0,0) {$\!\!\longrightarrow\!\!$} node[above=-0.25ex] {\tiny $\sim$} node[below=-0.25ex] {$\scriptstyle #1$};}}
+	\mathrel{\tikz[baseline=(a.base)] \node (a) at (0,0) {$\!\!\longrightarrow\!\!$} node[above=-0.25ex] {\smash{\tiny $\sim$}} node[below=-0.25ex] {$\scriptstyle #1$};}}
 \newcommand{\lisomorphism}[1][]{
 	\mathrel{\tikz[baseline=(a.base)] \node (a) at (0,0) {$\!\!\longleftarrow\!\!$} node[above=-0.25ex] {\tiny $\sim$} node[below=-0.25ex] {$\scriptstyle #1$};}}
 \NewDocumentCommand{\doublemorphism}{O{} O{}}{\mathrel{\overset{#1}{\underset{#2}{\substack{\textstyle\longrightarrow\\[-0.67ex]
