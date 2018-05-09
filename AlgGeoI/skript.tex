@@ -279,7 +279,7 @@ This motivates the following definition of an \emph{algebraic variety} being a p
 \begin{rem*}
     A set $\Bb$ of open subsets of a topological space $X$ is called a \emph{base} of the topology if every open subset of $X$ may be written as a union of elements of $\Bb$. A set of subsets of some set $X$ is the base of a (uniquely determined) topology on $X$ iff the intersection of two arbitrary elements of $\Bb$ can be written as the union of elements of $\Bb$ and $\Bb$ covers $X$.
 \end{rem*}
-\begin{defi}[Presheaves defined on a topological base]\lbl{def:presheafOnBase}
+\begin{defi}[Presheaves defined on a topology base]\lbl{def:presheafOnBase}
     Let $\Bb$ be a base of the topology on $X$. A \defemph{presheaf} on $\Bb$ associates
     \begin{itemize}
     	\item a set (group, ring, \ldots) $\Gg(U)$ to any $U\in \Bb$
@@ -329,7 +329,7 @@ This motivates the following definition of an \emph{algebraic variety} being a p
       \item 
         The definition \eqreff{eq:sheafification} obviously does not change if the coherence condition on its right-hand side is replaced by 
         \begin{quote}
-            for every $y\in U$, there are an open neighbourhood $V$ of $y$ in $X$ and $\gamma\in \Gg(U)$ such that $V\subseteq U$ and $V\in\Bb$ and such that $g_x =(V,\gamma)/_\sim$ for all $x\in V$.
+            for every $y\in U$, there are an open neighbourhood $V$ of $y$ in $X$ and $\gamma\in \Gg(V)$ such that $V\subseteq U$ and $V\in\Bb$ and such that $g_x =(V,\gamma)/_\sim$ for all $x\in V$.
         \end{quote}
       \item 
         It is easy to see that $\Hh=\Gg^\sh$ satisfies the sheaf axiom: If $U = \bigcup_{i\in I} U_i$ is an open cover and $g^{(i)} = \big(g^{(i)}_x\big)_{x\in U_i}\in \Hh(U_i)$ as on the right-hand side of the sheaf axiom, define $g\in \Hh(U)$ by $g_x = g_x^{(i)}$ where $i$ is chosen such that $x\in U_i$. This depends on $x$ only. It is easy to see that indeed $g\in \Hh(U)$ and that this $g$ is the only element of $\Hh(U)$ with $g|_{U_i} = g_i$ for all $i\in I$.
@@ -3273,7 +3273,7 @@ Let $\Aa$ be any quasi-coherent $\Oo_X$-algebra, then we construct a scheme $\SP
 	\end{align*}
 	\item \emph{Topology base.} Let
 	\begin{align*}
-		\Omega(U,\lambda) = \left\{ (x,\pp) \st x\in U\text{ and }\pp\not\ni (\text{image of } \lambda \text{ under } \Aa(U)\to \Aa_X)\right\}
+		\Omega(U,\lambda) = \left\{ (x,\pp) \st x\in U\text{ and }\pp\not\ni (\text{image of } \lambda \text{ under } \Aa(U)\to \Aa_x)\right\}
 	\end{align*}
 	where $U\subseteq X$ is open and $\lambda \in \Aa(U)$. As $\Omega(U,\lambda) \cap \Omega(V,\vartheta) = \Omega(U\cap V, \lambda|_{U\cap V} \cdot \vartheta|_{U\cap V})$ this is indeed a base for some topology.
 	\item \emph{Pretender stalk.} There is only one reasonable choice and this is $\Oo_{Y,[x,\pp]} \coloneqq (\Aa_x)_\pp$. Here, $Y=\SPEC_X(\Aa)$ for brevity.
@@ -3314,7 +3314,7 @@ Indeed, one has $(\Oo_{\SPEC \Aa})_{(x,\pp)} = (\Aa_x)_\pp \simeq (A_x)_\pp \sim
 \begin{prop}
     Let $S$ be a prescheme, $\Aa$ any quasi-coherent $\Oo_S$-algebra, $X\morphism[\xi] S$ any $S$-prescheme. Then one has a natural bijection
     \begin{align}\lbl{eq:SPECAdjunction}
-        \Hom_{S\cat{-PreSch}} \big(X, \SPEC_S(A)\big) \simeq \Hom_{\Oo_S\cat{-Alg}} (\Aa, \xi_* \Oo_X)
+        \Hom_{S\cat{-PreSch}} \big(X, \SPEC_S(\Aa)\big) \simeq \Hom_{\Oo_S\cat{-Alg}} (\Aa, \xi_* \Oo_X)
     \end{align}
     sending $X\morphism[f] \Spec \Aa$ to $\Aa \simeq p_* \Oo_{\Spec \Aa} \xrightarrow{p_*(f^*)} p_*f_* \Oo_X = \xi_* \Oo_X$. Here, $p$ denotes the morphism $\SPEC_S \Aa \morphism[p] S$.
 \end{prop}
