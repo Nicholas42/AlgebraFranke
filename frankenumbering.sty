@@ -81,23 +81,34 @@
 \newtheorem{thm}{Theorem}[]
 \newtheorem*{thm*}{Theorem}
 \newtheorem{lem}{Lemma}[section]
+\renewcommand{\thelem}{\arabic{lem}}
 \newtheorem*{lem*}{Lemma}
 \newtheorem{sat}{Satz}[section]
+\renewcommand{\thesat}{\arabic{sat}}
 \newtheorem{cor}{Corollary}[section]
+\renewcommand{\thecor}{\arabic{cor}}
 \newtheorem*{cor*}{Corollary}
 \newtheorem{prop}{Proposition}[section]
+\renewcommand{\theprop}{\arabic{prop}}
 
 \theoremstyle{cdef}
 \newtheorem{defi}{Definition}[section]
+\renewcommand{\thedefi}{\arabic{defi}}
 \newtheorem*{defi*}{Definition}
 \newtheorem{exc}{Exercise}[section]
+\renewcommand{\theexc}{\arabic{exc}}
+\newtheorem*{exc*}{Exercise}
 \newtheorem{example}{Example}[section]
+\renewcommand{\theexample}{\arabic{example}}
 \newtheorem*{example*}{Example}
 \newtheorem{rem}{Remark}[section]
+\renewcommand{\therem}{\arabic{rem}}
 \newtheorem*{rem*}{Remark}
 \newtheorem{fact}{Fact}[section]
+\renewcommand{\thefact}{\arabic{fact}}
 \newtheorem*{fact*}{Fact}
 \newtheorem{claim}{Claim}[section]
+\renewcommand{\theclaim}{\arabic{claim}}
 \newtheorem*{claim*}{Claim}
 
 \theoremstyle{cvarcthm}
@@ -123,9 +134,7 @@
 
 \newcommand{\lbl}[1]{
 	\label{#1}
-	\ifmmode
-		\labelWithSpecificText{eqsubsec#1}{\thesection}
-	\fi
+	\labelWithSpecificText{lblsubsec#1}{\thesection}
 }
 
 %\newcommand{\reff}[1]{%
@@ -134,18 +143,23 @@
 %	\IfBeginWith{\temp}{\thesubsection}{\hyperref[#1]{\tempcropped}}{\hyperref[#1]{\temp}}%
 %}
 
+\newcounter{IsThisATheorem}
+
 \newcommand{\reff}[1]{%
-	\edef\pretemp{\getrefnumber{#1}}%this is an
-	\StrLeft{\pretemp}{1}[\dummy]%incredibly nasty (even more)
-	\IfInteger{\dummy}{\def\strangetoken{f}}{\def\strangetoken{t}}%
-	\IfSubStr{ABCDEFGHIJKLMNOPQRSTUVWXYZ}{\dummy}{\def\strangetoken{f}}{}%
-	\IfStrEq{\strangetoken}{f}{\def\temp{\pretemp}}{\def\temp{\detokenize\pretemp}}%kinda
-	\StrBehind*{\temp}{\thesection.}[\tempcropped]%hacky workaround
-	\IfBeginWith*{\temp}{\thesection}{\hyperref[#1]{\tempcropped}} {\hyperref[#1]{\temp}}%for some seriously weird bug
+	\setcounter{IsThisATheorem}{0}%
+	\IfBeginWith{#1}{thm:}{\setcounter{IsThisATheorem}{1}}{}%
+	\IfBeginWith{#1}{sec:}{\setcounter{IsThisATheorem}{1}}{}%
+	\ifnum\value{IsThisATheorem}=1%
+		\ref{#1}%
+	\else%
+		\edef\temp{\getrefnumber{lblsubsec#1}}%
+		\IfBeginWith{\temp}{\thesection}{\hyperref[#1]{\getrefnumber{#1}}}{\hyperref[#1]{\temp.\getrefnumber{#1}}}%
+	\fi
 }
 
+
 \newcommand{\eqreff}[1]{%
-	\edef\temp{\getrefnumber{eqsubsec#1}}%
+	\edef\temp{\getrefnumber{lblsubsec#1}}%
 	\IfBeginWith{\temp}{\thesection}{\hyperref[#1]{\upshape(\getrefnumber{#1})}}{\hyperref[#1]{\upshape(\temp .\getrefnumber{#1})}}%	
 }
 \newenvironment{alphanumerate}{\begin{enumerate}[label={\itememph{\alph*}},ref=\curthm]}{\end{enumerate}}       
