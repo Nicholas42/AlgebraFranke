@@ -753,14 +753,14 @@ Summing up our previous work, we obtain the following Theorem~\reff{thm:CohoOnSc
 			\begin{tikzpicture}[line cap=round, line join=round]
 			\node[ob] (0o) at (0,0) {$0$};
 			\node[ob] (0u) at (0,1.5) {$0$};
-			\node[ob] (H0Z) [right=0.5 of 0o] {$H^0(X,\Mm')$};
-			\node[ob] (H0CX) [right=0.5 of H0Z] {$H^0(X,\Mm)$};
-			\node[ob] (H0CXx) [right=0.5 of H0CX] {$H^0(X,\Mm'')$};
+			\node[ob] (H0Z) [right=0.575 of 0o] {$H^0(X,\Mm')$};
+			\node[ob] (H0CX) [right=0.575 of H0Z] {$H^0(X,\Mm)$};
+			\node[ob] (H0CXx) [right=0.575 of H0CX] {$H^0(X,\Mm'')$};
 			\node[ob] (Z) at (0u -| H0Z) {$\Mm'(X)$};
 			\node[ob] (CX) at (0u -| H0CX) {$\Mm(X)$};
 			\node[ob] (CXx) at (0u -| H0CXx) {$\Mm''(X)$};
-			\node[ob] (H1Z) [right=0.75 of H0CXx] {$H^1(X,\Mm')$};
-			\node[ob] (H1CX) [right=0.5 of H1Z] {$\ldots$};
+			\node[ob] (H1Z) [right=0.575 of H0CXx] {$H^1(X,\Mm')$};
+			\node[ob] (H1CX) [right=0.575 of H1Z] {$\ldots$};
 			\scriptsize
 			\draw[->] (0u) -- (Z);
 			\draw[->] (0o) -- (H0Z);
@@ -1124,6 +1124,8 @@ Let $\Mm_i = (\iota_i)_\ast\Mm\vert_{W_i}$ where $W_i\morphism[\iota_i]X$ is the
 	 		X\xrightarrow{\id_X\times\id_X}X\oplus X\xrightarrow{a\amalg b}Y
 	 	\end{align*}
 	 	by $a+b$. Then $0$ is a neutral element and associativity holds, but the existence of inverse elements needs to be imposed to obtain indeed a group structure.
+	 	
+	 	One can show that this is the only possible group structure behaving bilinearly under composition.
 	 	\item It is, however, automatically abelian. What we need to show is $(a\amalg b)\circ\Delta=(b\amalg a)\circ\Delta$ with $\Delta=\id_X\times \id_X$. The universal property of coproducts gives a unique $X\oplus X\morphism[\sigma]X\oplus X$ such that
 	 	\begin{diagram*}
 	 		\node (XX2) at (0,0) {$X\oplus X$};
