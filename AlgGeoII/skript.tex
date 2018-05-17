@@ -175,7 +175,7 @@ Background in homological algebra is not required safe for cohomology groups of 
 \end{proof}
 
 Let $\Aa$ be the category $R\cat{-Mod}$ and $\Bb$ be $\Oo_{\Spec R}\cat{-Mod}$, then the functor $L$ given by $M\mapsto\snake{M}$ and the functor $\Mm\mapsto\Mm(\Spec R)$ are an adjoint pair of functors by \eqreff{eq:ROXAdjunction}. It follows that $L$ commutes with cokernels and coproducts. In particular, the full subcategory $\cat{QCoh}(X)\subseteq\Oo_X\cat{-Mod}$ of quasi-coherent $\Oo_X$-modules is closed under taking cokernels and direct sums for $X=\Spec R$, and by locality of quasi-coherentness this holds for all preschemes $X$.
-\begin{defi}[{\cite[Definition~2.1.1 and Definition~2.1.2]{alggeo1}}]
+\begin{defi}[{\cite[Definition~2.1.1 and Definition~2.1.2]{alggeo1}}]\lbl{def:qcqs}
 	A morphism $X\morphism[f]Y$ of preschemes is \defemph{quasi-compact} if it satisfies the following equivalent conditions.
 	\begin{alphanumerate}
 		\item For quasi-compact open $U\subseteq Y$, $f^{-1}(U)$ is quasi-compact.
@@ -326,7 +326,7 @@ Let $\Uu\colon X=\bigcup_{i\in I}U_i$ be an open cover of a topological space $X
 U_{i_0,\ldots,i_n}=\bigcap_{k=0}^nU_{i_k}\;.
 \end{align}
 \begin{defi}\lbl{def:cech}
-	For an open cover $\Uu$ of a topological space $X$ (e.g., a prescheme) and $\Mm$ a presheaf of abelian groups (e.g., a quasi-coherent $\Oo_X$-module) on $X$ the \defemph{\vC ech complex} $\check{C}^*(\Uu,\Mm)$ is the cochain complex defined as follows. Let
+	For an open cover $\Uu$ of a topological space $X$ (e.g., a prescheme) and $\Mm$ a presheaf of abelian groups (e.g., a quasi-coherent $\Oo_X$-module) on $X$ the \defemph{\vC ech complex} $\check{C}^\bullet (\Uu,\Mm)$ is the cochain complex defined as follows. Let
 	\begin{align*}
 		\check{C}^n(\Uu,\Mm)\coloneqq\prod_{(i_0,\ldots,i_n)\in I^{n+1}}\Mm(U_{i_0,\ldots,i_n})\;.
 	\end{align*}
@@ -338,12 +338,12 @@ U_{i_0,\ldots,i_n}=\bigcap_{k=0}^nU_{i_k}\;.
 	\begin{align*}
 		(\hacek{d}^0\psi)_{i,j}=\psi_j|_{U_{i,j}}-\psi_i|_{U_{i,j}}\quad\text{and}\quad (\hacek{d}^1\psi)_{i,j,k}=\psi_{j,k}|_{U_{i,j,k}}-\psi_{i,k}|_{U_{i,j,k}}+\psi_{i,j}|_{U_{i,j,k}}\;.
 	\end{align*}
-	The \defemph{\vC ech cohomology} $\check{H}^*(\Uu,\Mm)$ is defined as the cohomology of the \vC ech complex, i.e.,
+	The \defemph{\vC ech cohomology} $\check{H}^\bullet (\Uu,\Mm)$ is defined as the cohomology of the \vC ech complex, i.e.,
 	\begin{align*}
-		\check{H}^i(\Uu,\Mm)=H^i\left(\check{C}^*(\Uu,\Mm)\right)\;.
+		\check{H}^i(\Uu,\Mm)=H^i\left(\check{C}^\bullet (\Uu,\Mm)\right)\;.
 	\end{align*}	
 \end{defi}
-To see that $\check{C}^*(\Uu,\Mm)$ is indeed a cochain complex, we need to prove $\hacek{d}^2=0$ -- and we won't do this in a remark!
+To see that $\check{C}^\bullet (\Uu,\Mm)$ is indeed a cochain complex, we need to prove $\hacek{d}^2=0$ -- and we won't do this in a remark!
 \begin{proof}[Proof of Definition~\reff{def:cech}]
 	For $\ell=0,\ldots,n+1$ let $\check{C}^n(\Uu,\Mm)\morphism[d_\ell]\check{C}^{n+1}(\Uu,\Mm)$ be given by
 	\begin{align*}
@@ -357,7 +357,7 @@ To see that $\check{C}^*(\Uu,\Mm)$ is indeed a cochain complex, we need to prove
 	\end{align}
 	Indeed, we have $(d_md_\ell\psi)_{\mathbf{i}}=\psi_{\mathbf{j}}|_{U_{\mathbf{i}}}$, where $\mathbf{j}$ is obtained from $\mathbf{i}$ by omitting the indices $i_\ell$ and $i_m$ when $\ell<m$ and the indices $i_{\ell+1}$ and $i_m$ when $\ell\geq m$. The assertion follows.
 	
-	\emph{Step 2.} We prove the following. Let $C^*$ is any family of abelian groups (or objects of an abelian category) and $C^n\morphism[d_\ell]C^{n+1}$ morphisms for $\ell=0,\ldots,n+1$. Suppose that $C^n=0$ for $n<0$ and that \eqreff{eq:simplicialStuff} holds. Then 
+	\emph{Step 2.} We prove the following. Let $C^\bullet $ be any family of abelian groups (or objects of an abelian category) and $C^n\morphism[d_\ell]C^{n+1}$ morphisms for $\ell=0,\ldots,n+1$. Suppose that $C^n=0$ for $n<0$ and that \eqreff{eq:simplicialStuff} holds. Then 
 	\begin{align*}
 		d=\sum_{i=0}^{n+1}(-1)^id_i
 	\end{align*}
@@ -370,7 +370,7 @@ To see that $\check{C}^*(\Uu,\Mm)$ is indeed a cochain complex, we need to prove
 	as required.
 \end{proof}
 \begin{rem*}
-	Our program is to show that $\check{H}^*(\Uu,\Mm)$ is independent of $\Uu$ and has the desired properties, when $X$ is a scheme, $\Mm\in\Ob(\cat{QCoh}(X))$ and $\Uu$ is an affine open cover.
+	Our program is to show that $\check{H}^\bullet (\Uu,\Mm)$ is independent of $\Uu$ and has the desired properties, when $X$ is a scheme, $\Mm\in\Ob(\cat{QCoh}(X))$ and $\Uu$ is an affine open cover.
 \end{rem*}
 \begin{rem*}
 	For instance, the cohomology of $\IP_R^1=\Proj(R[X_0,X_1])$ can be calculated using the affine open cover 
@@ -381,7 +381,7 @@ To see that $\check{C}^*(\Uu,\Mm)$ is indeed a cochain complex, we need to prove
 			X_0\cdot X_1^{-1} & \text{if }i=1
 		\end{cases}\;.
 	\end{align*}
-	Unfortunately, calculations become complicated by the fact that there are infinitely many non-zero terms in $\check{C}^*(\Uu,\Mm)$.
+	Unfortunately, calculations become complicated by the fact that there are infinitely many non-zero terms in $\check{C}^\bullet (\Uu,\Mm)$.
 \end{rem*}
 	Let $\check{C}_\alt^n(\Uu,\Mm)\subseteq\check{C}^n(\Uu,\Mm)$ be the subgroup containing all $\psi\in\check{C}^n(\Uu,\Mm)$ such that
 	\begin{align*}
@@ -390,7 +390,7 @@ To see that $\check{C}^*(\Uu,\Mm)$ is indeed a cochain complex, we need to prove
 	for all permutations $\pi\in\SS_n$. Note that $U_{i_0,\ldots,i_n}=U_{i_{\pi(0)},\ldots,i_{\pi(n)}}$ as permuting indices doesn't change intersections, so the first property makes sense. Also note that both properties together imply that $\psi_{i_0,\ldots,i_n}=0$ whenever $(i_0,\ldots,i_n)$ contains a repeated index.
 	
 	\begin{defi}
-		$\check{C}_\alt^*(\Uu,\Mm)\subseteq\check{C}^*(\Uu,\Mm)$ is a subcomplex, called the \defemph{alternating \vC ech complex}.
+		$\check{C}_\alt^\bullet (\Uu,\Mm)\subseteq\check{C}^\bullet (\Uu,\Mm)$ is a subcomplex, called the \defemph{alternating \vC ech complex}.
 	\end{defi}
 	\begin{proof}
 		We need to confirm that the differential $\hacek{d}^n$ maps $\check{C}_\alt^n(\Uu,\Mm)$ into $\check{C}_\alt^{n+1}(\Uu,\Mm)$. To do this, define \emph{codegeneracy maps} 
@@ -405,7 +405,7 @@ To see that $\check{C}^*(\Uu,\Mm)$ is indeed a cochain complex, we need to prove
 		\begin{align*}
 			s_\ell\psi=0\quad\text{and}\quad t_\ell\psi=-\psi\quad\text{for }\ell=0,\ldots,n-1
 		\end{align*}
-		So what we need to check to confirm that $\check{C}_\alt^*(\Uu,\Mm)$ is indeed a subcomplex of $\check{C}^*(\Uu,\Mm)$ is that the above relations are preserved by the differential $\hacek{d}$.
+		So what we need to check to confirm that $\check{C}_\alt^\bullet (\Uu,\Mm)$ is indeed a subcomplex of $\check{C}^\bullet (\Uu,\Mm)$ is that the above relations are preserved by the differential $\hacek{d}$.
 		
 		One may easily check the relations
 		\begin{align}\lbl{eq:cosimplicialDegeneracies}
@@ -434,7 +434,7 @@ To see that $\check{C}^*(\Uu,\Mm)$ is indeed a cochain complex, we need to prove
 		Similarly, one can check that $s_\ell\hacek{d}\psi=0$ when $s_j\psi=0$ for all $j=0,1,\ldots,n-1$. This shows that $\hacek{d}$ restricts to a differential on $\check{C}_\alt
 		^n(\Uu,\Mm)$, as required.
 	\end{proof}
-	It will eventually turn out that the cohomology groups $\check{H}_\alt^i(\Uu,\Mm)=H^i\left(\check{C}_\alt^*(\Uu,\Mm)\right)$ obtained from the alternating \vC ech complex are the same as the regular \vC ech cohomology groups $\check{H}^i(\Uu,\Mm)$.
+	It will eventually turn out that the cohomology groups $\check{H}_\alt^i(\Uu,\Mm)=H^i\left(\check{C}_\alt^\bullet (\Uu,\Mm)\right)$ obtained from the alternating \vC ech complex are the same as the regular \vC ech cohomology groups $\check{H}^i(\Uu,\Mm)$.
 \begin{rem}
 	A \emph{cosimplicial object} of a category $\Aa$ is a sequence of objects $(X^n)_{n\geq 0}$ with morphisms $d_j\colon X^n\morphism X^{n+1}$ for $j=0,\ldots,n+1$ satisfying \eqreff{eq:simplicialStuff} and $s_j\colon X^n\morphism X^{n-1}$ for $j=0,\ldots,n$ satisfying a version of \eqreff{eq:simplicialStuff} together with \eqreff{eq:cosimplicialDegeneracies}. In other words, a cosimplicial object is a covariant functor from the \emph{simplex category} $\Delta$ to $\Aa$.
 	
@@ -448,11 +448,11 @@ To see that $\check{C}^*(\Uu,\Mm)$ is indeed a cochain complex, we need to prove
 			&=\ker\Big(\check{C}^0(\Uu,\Mm)\morphism[\hacek{d}^0]\check{C}^1(\Uu,\Mm)\Big)\simeq \check{H}^0(\Uu,\Mm)\\
 			&=\ker\Big(\check{C}_\alt^0(\Uu,\Mm)\morphism[\hacek{d}^0]\check{C}_\alt^1(\Uu,\Mm)\Big)\simeq \check{H}_\alt^0(\Uu,\Mm)
 		\end{align*}
-		\item For the trivial cover $\Uu_0\colon X=X$, the \vC ech complex $\check{C}^*(\Uu_0,\Mm)$ has the form
+		\item For the trivial cover $\Uu_0\colon X=X$, the \vC ech complex $\check{C}^\bullet (\Uu_0,\Mm)$ has the form
 		\begin{align*}
 			\Mm(X)\morphism 0\morphism 0\morphism0\morphism\ldots
 		\end{align*}
-		and the alternating \vC ech complex $\check{C}_\alt^*(\Uu_0,\Mm)$ looks like
+		and the alternating \vC ech complex $\check{C}_\alt^\bullet (\Uu_0,\Mm)$ looks like
 		\begin{align*}
 			\Mm(X)\morphism[0]\Mm(X)\morphism[\id]\Mm(X)\morphism[0]\ldots\;,
 		\end{align*}
@@ -465,24 +465,24 @@ To see that $\check{C}^*(\Uu,\Mm)$ is indeed a cochain complex, we need to prove
 		\end{align*}
 		\item If $\Mm$ and $\Nn$ are presheaves of modules on $X$ and $\Uu$ is an open cover of $X$, then 
 		\begin{align*}
-			\check{C}^*(\Uu,\Mm\oplus\Nn)=\check{C}^*(\Uu,\Mm)\oplus\check{C}^*(\Uu,\Nn)
+			\check{C}^\bullet (\Uu,\Mm\oplus\Nn)=\check{C}^\bullet (\Uu,\Mm)\oplus\check{C}^\bullet (\Uu,\Nn)
 		\end{align*}
 		and, more general, 
 		\begin{align*}
-			\check{C}^*\bigg(\Uu,\prod_{i\in I}\Mm_i\bigg)=\prod_{i\in I}\check{C}^*(\Uu,\Mm_i)\;.
+			\check{C}^\bullet \bigg(\Uu,\prod_{i\in I}\Mm_i\bigg)=\prod_{i\in I}\check{C}^\bullet (\Uu,\Mm_i)\;.
 		\end{align*}
-		The same holds for $\check{C}_\alt^*(\Uu,-)$.
+		The same holds for $\check{C}_\alt^\bullet (\Uu,-)$.
 	\end{alphanumerate}
 \end{example}
 If $\Uu\colon X=\bigcup_{i\in I}U_i$ is a cover of a scheme $X$ by affine open subsets $U_i$, then all intersections $U_{i_0,\ldots,i_n}$ are affine again by Proposition~\reff{prop:SchemesAffineIntersec}. If $0\morphism\Mm'\morphism\Mm\morphism\Mm''\morphism 0$ is a short exact sequence in $\cat{QCoh}(X)$, Corollary~\reff{cor:GlobalSectionsExactOnAffine} provides short exact sequences
 \begin{align*}
-	0\morphism \check{C}^*(\Uu,\Mm')\morphism \check{C}^*(\Uu,\Mm)\morphism \check{C}^*(\Uu,\Mm'')\morphism 0
+	0\morphism \check{C}^\bullet (\Uu,\Mm')\morphism \check{C}^\bullet (\Uu,\Mm)\morphism \check{C}^\bullet (\Uu,\Mm'')\morphism 0
 \end{align*}
 and
 \begin{align*}
-	0\morphism \check{C}_\alt^*(\Uu,\Mm')\morphism \check{C}_\alt^*(\Uu,\Mm)\morphism \check{C}_\alt^*(\Uu,\Mm'')\morphism 0
+	0\morphism \check{C}_\alt^\bullet (\Uu,\Mm')\morphism \check{C}_\alt^\bullet (\Uu,\Mm)\morphism \check{C}_\alt^\bullet (\Uu,\Mm'')\morphism 0
 \end{align*}
-of chain complexes. For $\check{C}^*(\Uu,-)$ this is immediate from Definition~\reff{def:cech} and from the fact that products of short exact sequences are short exact again. To see this for $\check{C}_\alt^*(\Uu,-)$, choose any linear ordering of $I$ and note that 
+of chain complexes. For $\check{C}^\bullet (\Uu,-)$ this is immediate from Definition~\reff{def:cech} and from the fact that products of short exact sequences are short exact again. To see this for $\check{C}_\alt^\bullet (\Uu,-)$, choose any linear ordering of $I$ and note that 
 \begin{align*}
 	\check{C}_\alt^n(\Uu,\Mm)\simeq\prod_{i_0<\ldots<i_n\in I}\Mm(U_{i_0,\ldots,i_n})\;,
 \end{align*}
@@ -517,7 +517,7 @@ Taking long exact cohomology sequences we just proved
 		\draw[->] (H0CXx) -- (CXx) node[pos=0.5, above=-0.25ex, sloped] {$\sim$};
 		\draw[->] (H1CX) -- (dots);
 	\end{diagram*}
-	and similar for $\check{H}_\alt^*(\Uu,-)$.
+	and similar for $\check{H}_\alt^\bullet (\Uu,-)$.
 \end{prop}
 \begin{rem}
 	For arbitrary preschemes, the situation is more difficult (cf. Thomason, \emph{The Grothendieck Festschrift}).
@@ -529,9 +529,9 @@ Note that Professor Franke isn't sure whether \emph{refinement map} is the usual
 
 A refinement map $v$ induces a morphism
 \begin{align*}
-	\check{C}^*(\Uu,\Mm)\morphism[v^*]\check{C}^*(\Vv,\Mm)\;,\quad(v^n\psi)_{j_0,\ldots,j_n}=\psi_{v(j_0),\ldots,v(j_n)}|_{V_{j_0,\ldots,j_n}}\quad\text{for }\psi\in\check{C}^n(\Uu,\Mm)\;.
+	\check{C}^\bullet (\Uu,\Mm)\morphism[v^*]\check{C}^\bullet (\Vv,\Mm)\;,\quad(v^n\psi)_{j_0,\ldots,j_n}=\psi_{v(j_0),\ldots,v(j_n)}|_{V_{j_0,\ldots,j_n}}\quad\text{for }\psi\in\check{C}^n(\Uu,\Mm)\;.
 \end{align*}
-Clearly, $v^*$ commutes with the $d_j$, $s_j$, and $t_j$, hence restricts to a morphism of chain complexes $\check{C}_\alt^*(\Uu,\Mm)\morphism[v^*]\check{C}_\alt^*(\Vv,\Mm)$.
+Clearly, $v^*$ commutes with the $d_j$, $s_j$, and $t_j$, hence restricts to a morphism of chain complexes $\check{C}_\alt^\bullet (\Uu,\Mm)\morphism[v^*]\check{C}_\alt^\bullet (\Vv,\Mm)$.
 \begin{lem}
 	\begin{alphanumerate}
 		\item \lbl{lem:refinementPullback}A refinement $\Ww$ of a refinement $\Vv$ of $\Uu$ is a refinement of $\Uu$ and if $v$ and $w$ are associated refinement maps for $(\Vv,\Uu)$ and $(\Ww,\Uu)$, then $vw$ is a refinement map for $(\Ww,\Uu)$. Moreover, $(vw)^*=w^*v^*$ and the identity $\id_I$ is a refinement map for $(\Uu,\Uu)$ and $\id_I^*=\id_{\check{C}^*(\Uu,-)}$.
@@ -565,7 +565,7 @@ Clearly, $v^*$ commutes with the $d_j$, $s_j$, and $t_j$, hence restricts to a m
 	\begin{align*}
 		\hacek{d}^{n-1}h^n+h^{n+1}\hacek{d}^n=v_2^n-v_1^n\;,
 	\end{align*}
-	for then $h^*$ is a cochain homotopy between $v_1^*$ and $v_2^*$ and it's a well-known fact from homological algebra that cochain homotopic maps induce the same morphisms on cohomology. Indeed, using \eqreff{eq:SHIT} we get
+	for then $h$ is a cochain homotopy between $v_1^*$ and $v_2^*$ and it's a well-known fact from homological algebra that cochain homotopic maps induce the same morphisms on cohomology. Indeed, using \eqreff{eq:SHIT} we get
 	\begin{align*}
 		h^{n+1}\hacek{d}^n&=\sum_{\ell=0}^{n}\sum_{k=0}^{n+1}(-1)^{\ell+k}h_\ell d_k\\
 		&=\begin{multlined}[t]
@@ -587,7 +587,7 @@ Clearly, $v^*$ commutes with the $d_j$, $s_j$, and $t_j$, hence restricts to a m
 	\begin{alphanumerate} 
 		\item If $\Vv$ is a refinement of $\Uu$, we have a canonical morphism 
 		\begin{align*}
-			\tau_{\Uu,\Vv}\colon \check{H}^*(\Uu,\Mm)\morphism\check{H}^*(\Vv,\Mm)
+			\tau_{\Uu,\Vv}\colon \check{H}^\bullet (\Uu,\Mm)\morphism\check{H}^\bullet (\Vv,\Mm)
 		\end{align*}
 		satisfying $\tau_{\Vv,\Ww}\tau_{\Uu,\Vv}=\tau_{\Uu,\Ww}$ if $\Ww$ is another open cover of $X$ which is a refinement of $\Vv$, as well as $\tau_{\Uu,\Uu}=\id$.
 		\item If $\Uu$ is a refinement of $\Vv$ and $\Vv$ a refinement of $\Uu$, then $\tau_{\Uu,\Vv}$ and $\tau_{\Vv,\Uu}$ are isomorphisms which are inverse to each other.
@@ -598,11 +598,11 @@ Clearly, $v^*$ commutes with the $d_j$, $s_j$, and $t_j$, hence restricts to a m
 	Part \itememph{a} follows from Lemma~\reff{lem:refinementPullback}. Part \itememph{b} follows from \itememph{a} as $\tau_{\Vv,\Uu}\tau_{\Uu,\Vv}=\tau_{\Uu,\Uu}=\id$. Part \itememph{c} follows from \itememph{b} and Example~\reff{ex:FirstCechComputations} as $\Uu$ and the trivial cover $\Uu_0\colon X=X$ are refinements of each other in this case.
 \end{proof}
 \begin{rem}\lbl{rem:trivialCalt}
-	In general, the cochain homotopy used in the proof of Lemma~\reff{lem:refinementPullback} won't preserve the subcomplex $\check{C}_\alt^*(-,\Mm)\subseteq\check{C}^*(-,\Mm)$. However, Corollary~\reff{cor:refinementPullback}\itememph{c} for $\check{H}_\alt^*(\Uu,\Mm)$ can still be obtained, using the \emph{cochain contraction} $h^*\colon \check{C}^*(\Uu,\Mm)\morphism\check{C}^*(\Uu,\Mm)$, where $h^n\colon \check{C}^n(\Uu,\Mm)\morphism\check{C}^{n-1}(\Uu,\Mm)$ for $n\geq 1$ is given by
+	In general, the cochain homotopy used in the proof of Lemma~\reff{lem:refinementPullback} won't preserve the subcomplex $\check{C}_\alt^\bullet (-,\Mm)\subseteq\check{C}^\bullet (-,\Mm)$. However, Corollary~\reff{cor:refinementPullback}\itememph{c} for $\check{H}_\alt^\bullet (\Uu,\Mm)$ can still be obtained, using the \emph{cochain contraction} $h\colon \check{C}^\bullet (\Uu,\Mm)\morphism\check{C}^\bullet (\Uu,\Mm)$, where $h^n\colon \check{C}^n(\Uu,\Mm)\morphism\check{C}^{n-1}(\Uu,\Mm)$ for $n\geq 1$ is given by
 	\begin{align*}
 		(h^n\psi)_{i_0,\ldots,i_n}=\psi_{i^*,i_0,\ldots,i_n}\;.
 	\end{align*}
-	It's a straightforward check that $h^*$ preserves $\check{C}_\alt^*(\Uu,\Mm)\subseteq \check{C}^*(\Uu,\Mm)$. Moreover, one has the relations
+	It's a straightforward check that $h$ preserves $\check{C}_\alt^\bullet (\Uu,\Mm)\subseteq \check{C}^\bullet (\Uu,\Mm)$. Moreover, one has the relations
 	\begin{align*}
 		h^nd_k=\begin{cases}
 			\id &\text{if }k=0\\
@@ -615,7 +615,7 @@ Clearly, $v^*$ commutes with the $d_j$, $s_j$, and $t_j$, hence restricts to a m
 		&=\id+\sum_{k=0}^{n}\left((-1)^k+(-1)^{k+1}\right)d_kh^n\\
 		&=\id\;,
 	\end{align*}
-	proving that $h^*$ is indeed a cochain contraction, hence $\check{H}_\alt^i(\Uu,\Mm)=0$ for $i>0$. For our purposes, this will turn out to be sufficient.
+	proving that $h$ is indeed a cochain contraction, hence $\check{H}_\alt^i(\Uu,\Mm)=0$ for $i>0$. For our purposes, this will turn out to be sufficient.
 \end{rem}
 We now arrive at the main result of this section.
 \begin{prop}\lbl{prop:CechCohoOnScheme}
@@ -623,11 +623,11 @@ We now arrive at the main result of this section.
 	\begin{alphanumerate}
 		\item If $\Vv$ is another affine open cover of $X$ which is a refinement of $\Uu$, then
 		\begin{align*}
-			\tau_{\Uu,\Vv}\colon \check{H}^*(\Uu,\Mm)\isomorphism\check{H}^*(\Vv,\Mm)\;.
+			\tau_{\Uu,\Vv}\colon \check{H}^\bullet (\Uu,\Mm)\isomorphism\check{H}^\bullet (\Vv,\Mm)\;.
 		\end{align*}
-		\item The inclusion $\check{C}_\alt^*(\Uu,\Mm)\subseteq \check{C}^*(\Uu,\Mm)$ of cochain complexes induces an isomorphism
+		\item The inclusion $\check{C}_\alt^\bullet (\Uu,\Mm)\subseteq \check{C}^\bullet (\Uu,\Mm)$ of cochain complexes induces an isomorphism
 		\begin{align*}
-			\check{H}_\alt^*(\Uu,\Mm)\isomorphism\check{H}^*(\Uu,\Mm)\;.
+			\check{H}_\alt^\bullet (\Uu,\Mm)\isomorphism\check{H}^\bullet (\Uu,\Mm)\;.
 		\end{align*}
 		\item If $X$ is affine and $i>0$, then $\check{H}_\alt^i(\Uu,\Mm)=\check{H}^i(\Uu,\Mm)=0$.
 	\end{alphanumerate}
@@ -636,12 +636,12 @@ Before the proof, a lemma.
 \begin{lem}\lbl{lem:CohomologyOfPushforward}
 	For an open cover $\Uu\colon X=\bigcup_{i\in I}\Uu_i$ of a topological space $X$ and a continuous map $f\colon Y\morphism X$, let $f^{-1}(\Uu)$ be the cover $Y=\bigcup_{i\in I}f^{-1}(U_i)$. Let $\Ff$ be a sheaf of abelian groups on $Y$.
 	\begin{alphanumerate}
-		\item We have an isomorphism of cochain complexes $\check{C}^*(f^{-1}(\Uu),\Ff)\simeq \check{C}^*(\Uu,f_*\Ff)$ and this isomorphism restricts to an isomorphism $\check{C}_\alt^*(f^{-1}(\Uu),\Ff)\simeq \check{C}_\alt^*(\Uu,f_*\Ff)$.
+		\item We have an isomorphism of cochain complexes $\check{C}^\bullet (f^{-1}(\Uu),\Ff)\simeq \check{C}^\bullet (\Uu,f_*\Ff)$ and this isomorphism restricts to an isomorphism $\check{C}_\alt^\bullet (f^{-1}(\Uu),\Ff)\simeq \check{C}_\alt^\bullet (\Uu,f_*\Ff)$.
 		\item If the image of $f$ is contained in one of the open subsets $U_i$, then $\check{H}^i(\Uu,f_*\Ff)=\check{H}_\alt^i(\Uu,f_*\Ff)=0$ for $i>0$.
 	\end{alphanumerate}
 \end{lem}
 \begin{proof}
-	Part \itememph{a} is pretty much tautological. Let $\Vv=f^{-1}(\Uu)$, $V_i=f^{-1}(U_i)$, then we have $V_{i_0,\ldots,i_n}=f^{-1}(U_{i_0,\ldots,i_n})$, hence $f_*\Ff(V_{i_0,\ldots,i_n})=\Ff(U_{i_0,\ldots,i_n})$ by definition of the \emph{direct image} $f_*\Ff$. The differentials $\hacek{d}$ as well as the degeneracy and transposition maps $s_\ell,t_\ell$ of $\check{C}^*(f^{-1}(\Uu),\Ff)$ and $\check{C}^*(\Uu,f_*\Ff)$ clearly coincide, proving the asserted isomorphisms of cochain complexes.
+	Part \itememph{a} is pretty much tautological. Let $\Vv=f^{-1}(\Uu)$, $V_i=f^{-1}(U_i)$, then we have $V_{i_0,\ldots,i_n}=f^{-1}(U_{i_0,\ldots,i_n})$, hence $f_*\Ff(V_{i_0,\ldots,i_n})=\Ff(U_{i_0,\ldots,i_n})$ by definition of the \emph{direct image} $f_*\Ff$. The differentials $\hacek{d}$ as well as the degeneracy and transposition maps $s_\ell,t_\ell$ of $\check{C}^\bullet (f^{-1}(\Uu),\Ff)$ and $\check{C}^\bullet (\Uu,f_*\Ff)$ clearly coincide, proving the asserted isomorphisms of cochain complexes.
 	
 	Part \itememph{b} follows from \itememph{a}, Corollary~\reff{cor:refinementPullback}\itememph{c} and Remark~\reff{rem:trivialCalt}.
 \end{proof}
@@ -728,7 +728,7 @@ Before the proof, a lemma.
 		\item If $W\subseteq X$ is affine and contained in one of the $V_i$ and $\Ff\in\Ob(\cat{Qcoh}(W))$, then $(j_W)_*\Ff$ satisfies all $A_i$ (which follows like above from Lemma~\reff{lem:CohomologyOfPushforward}\itememph{b} and Example~\reff{ex:FirstCechComputations}).
 	\end{itemize}
 	
-	Part \itememph{c}. Apply \itememph{a} with $\Uu$ the trivial cover $X=X$ and $\Vv$ any affine open cover of $X$ to conclude $\check{H}^i(\Vv,\Mm)=0$ when $i>0$ and $\Mm$ is a quasi-coherent $\Oo_X$-module. Then one uses \itememph{b} to show that $\check{H}_\alt^*(\Vv,\Mm)$ also vanishes in positive degrees.
+	Part \itememph{c}. Apply \itememph{a} with $\Uu$ the trivial cover $X=X$ and $\Vv$ any affine open cover of $X$ to conclude $\check{H}^i(\Vv,\Mm)=0$ when $i>0$ and $\Mm$ is a quasi-coherent $\Oo_X$-module. Then one uses \itememph{b} to show that $\check{H}_\alt^\bullet (\Vv,\Mm)$ also vanishes in positive degrees.
 \end{proof}
 \begin{defi}
 	Let $X$ be a quasi-compact scheme and $\Mm$ a quasi-coherent $\Oo_X$-module. We put
@@ -743,9 +743,9 @@ Summing up our previous work, we obtain the following Theorem~\reff{thm:CohoOnSc
 	\begin{alphanumerate}
 		\item If $\Uu$ is any affine open over of $X$, then
 		\begin{align*}
-			H^*(X,\Mm)\isomorphism[\tau_{\Uu,\Vv_0}]\check{H}^*(\Uu,\Mm)\lisomorphism \check{H}_\alt^*(\Uu,\Mm)
+			H^\bullet (X,\Mm)\isomorphism[\tau_{\Uu,\Vv_0}]\check{H}^\bullet (\Uu,\Mm)\lisomorphism \check{H}_\alt^\bullet (\Uu,\Mm)
 		\end{align*}
-		are isomorphisms compatible with the (iso)morphisms $\check{H}^*(\Uu,\Mm)\morphism[\tau_{\Uu,\Vv}]\check{H}^*(\Vv,\Mm)$ when $\Vv$ is an affine refinement of $\Uu$.
+		are isomorphisms compatible with the (iso)morphisms $\check{H}^\bullet (\Uu,\Mm)\morphism[\tau_{\Uu,\Vv}]\check{H}^\bullet (\Vv,\Mm)$ when $\Vv$ is an affine refinement of $\Uu$.
 		\item When $X$ is affine, $H^i(X,\Mm)=0$ when $i>0$.
 		\item There is a canonical isomorphism $H^0(X,\Mm)\simeq \Mm(X)$.
 		\item When $0\morphism \Mm'\morphism\Mm\morphism\Mm''\morphism0$ is a short exact sequence of quasi-coherent $\Oo_X$-modules, one has a long exact cohomology sequence
@@ -768,7 +768,7 @@ Summing up our previous work, we obtain the following Theorem~\reff{thm:CohoOnSc
 			\draw[->] (H0Z) -- (H0CX);
 			\draw[->] (CX) -- (CXx);
 			\draw[->] (H0CX) -- (H0CXx);
-			\draw[->] (H0CXx) -- (H1Z)node[pos=0.5, above] {$d$};;
+			\draw[->] (H0CXx) -- (H1Z)node[pos=0.5, above] {$d$};
 			\draw[->] (H1Z) -- (H1CX);
 			\draw[->] (H0Z) -- (Z) node[pos=0.5, above=-0.25ex, sloped] {$\sim$};
 			\draw[->] (H0CX) -- (CX) node[pos=0.5, above=-0.25ex, sloped] {$\sim$};
@@ -850,12 +850,12 @@ In the following, if $\Uu\colon X=\bigcup_{i\in I}U_i$ is an open cover and $Y\s
 \begin{lem}\lbl{lem:LocalizedCechComplex}
 	Let $\Uu$ be a finite open cover of the quasi-separated prescheme $X$ by quasi-compact open subsets and $f\in\Oo_X(X)$. By the universal property of localization, we have morphisms $\Mm(U)_f\morphism\Mm(U\setminus V(f))$ for arbitrary $\Oo_X$-modules $\Mm$ and open $U\subseteq X$. When applied to $U=U_{i_0,\ldots,i_n}$, this gives a morphism
 	\begin{align*}
-		\check{C}^*(\Uu,\Mm)_f\morphism\check{C}^*\Big(\Uu\cap\big(X\setminus V(f)\big),\Mm\Big)
+		\check{C}^\bullet (\Uu,\Mm)_f\morphism\check{C}^\bullet \Big(\Uu\cap\big(X\setminus V(f)\big),\Mm\Big)
 	\end{align*}
 	of \vC ech complexes. When $\Mm$ is quasi-coherent, this is an isomorphism.
 \end{lem}
 \begin{rem*}
-	The structure of an $\Oo_X(X)$-module on $\check{C}^*(\Uu,\Mm)$ is obtained using the $\Oo_X(U_{i_0,\ldots,i_n})$-module structures on $\Mm(U_{i_0,\ldots,i_n})$ followed by $\Oo_X(X)\morphism \Oo_X(U_{i_0,\ldots,i_n})$. Taking the product over all $(i_0,\ldots,i_n)\in I^{n+1}$ gives the structure of a cochain complex of $\Oo_X(X)$-modules on $\check{C}^*(\Uu,\Mm)$, which is used in the formulation of Lemma~\reff{lem:LocalizedCechComplex}. The morphism under investigation is a morphism of cochain complexes  of $\Oo_X(X)_f$-modules.
+	The structure of an $\Oo_X(X)$-module on $\check{C}^\bullet (\Uu,\Mm)$ is obtained using the $\Oo_X(U_{i_0,\ldots,i_n})$-module structures on $\Mm(U_{i_0,\ldots,i_n})$ followed by $\Oo_X(X)\morphism \Oo_X(U_{i_0,\ldots,i_n})$. Taking the product over all $(i_0,\ldots,i_n)\in I^{n+1}$ gives the structure of a cochain complex of $\Oo_X(X)$-modules on $\check{C}^\bullet (\Uu,\Mm)$, which is used in the formulation of Lemma~\reff{lem:LocalizedCechComplex}. The morphism under investigation is a morphism of cochain complexes  of $\Oo_X(X)_f$-modules.
 \end{rem*}
 \begin{proof}[Proof of Lemma~\reff{lem:LocalizedCechComplex}]
 	As $\check{C}^n(\Uu,\Mm)=\prod_{(i_0,\ldots,i_n)\in I^{n+1}}\Mm(U_{i_0,\ldots,i_n})$ is a finite product and localization commutes with finite products, it is sufficient to show that
@@ -864,10 +864,10 @@ In the following, if $\Uu\colon X=\bigcup_{i\in I}U_i$ is an open cover and $Y\s
 	\end{align*}
 	By Definition~\reff{def:Quasicoherent}\itememph{c}, this will hold if $U_{i_0,\ldots,i_n}$ is quasi-compact and quasi-separated. It is quasi-separated as an open subset of the quasi-separated prescheme $X$. It is quasi-compact as an intersection of the quasi-compact subsets $U_{i_0},\ldots,U_{i_n}$ using quasi-separatedness of $X$.
 \end{proof}
-\begin{prop}
+\begin{prop}\lbl{prop:localiedCoho}
 	Let $X$ be a quasi-compact scheme, $\Mm$ a quasi-coherent $\Oo_X$-module, and $f\in\Oo_X(X)$. Then we have a canonical isomorphism
 	\begin{align*}
-		H^*(X,\Mm)_f\isomorphism H^*\left(X\setminus V(f),\Mm|_{X\setminus V(f)}\right)\;.
+		H^\bullet (X,\Mm)_f\isomorphism H^\bullet \left(X\setminus V(f),\Mm|_{X\setminus V(f)}\right)\;.
 	\end{align*}
 \end{prop}
 \begin{proof}
@@ -886,7 +886,7 @@ In the following, if $\Uu\colon X=\bigcup_{i\in I}U_i$ is an open cover and $Y\s
 	\end{alphanumerate}
 \end{prop}
 \begin{rem*}
-	In EGA III, this is shown under the weaker assumptions that $X$ is quasi-compact and quasi-separated (instead of separated), using $H^*$ defined as a derived functor on $\Oo_X\cat{-Mod}$.
+	In EGA III, this is shown under the weaker assumptions that $X$ is quasi-compact and quasi-separated (instead of separated), using $H^\bullet $ defined as a derived functor on $\Oo_X\cat{-Mod}$.
 \end{rem*}
 To prove Proposition~\reff{prop:serreAffinity} we need the following.
 \begin{prop}
@@ -1009,9 +1009,9 @@ We get $z\in U$, a contradiction.
 \emph{Proof of \itememph{\gamma}}. Let $f_1,\ldots,f_n$ be as requested. Consider the morphisms $\Oo_X\morphism[\cdot f_i]\Oo_X$ given by multiplication with $f_i$ and let $f\colon\Oo_X^n\morphism \Oo_X$ be the morphism induced by the $\cdot f_i$. Then $\cdot f_i$ is an isomorphism on $U_i = X\setminus V(f_i)$, hence induces isomorphisms on stalks $\Oo_{X,x}$ for $x\in U_i$, and the $U_i$ cover $X$. Thus $f$
 is an epimorphism on stalks, hence an epimorphism of sheaves. Let $\Mm$ be the kernel of this epimorphism. We have
 \begin{diagram*}
-\node[ob] (Rn) at (0,1.5) {$\vphantom{R^n}\scriptsize\hphantom{(r_1,\ldots,r_n)}$};
+\node[ob] (Rn) at (0,1.5) {$\vphantom{R^n}$\scriptsize$\hphantom{(r_1,\ldots,r_n)}$};
 \node[ob] at (0,1.5) {$R^n$};
-\node[ob] (R) at (3,1.5) {$\vphantom{R}\scriptsize\hphantom{\sum r_i f_i}$};
+\node[ob] (R) at (3,1.5) {$\vphantom{R}$\scriptsize$\hphantom{\sum r_i f_i}$};
 \node[ob] at (3,1.5) {$R$};
 \node[ob] (OxXn) at (0,0) {$\Oo_X(X)^n$};
 \node[ob] (OxX) at (3,0) {$\Oo_X(X)$};
@@ -1034,14 +1034,18 @@ in $\Spec R$ as stated.
 $H^1(X,\Oo_X)=0$ is not enough (even when $X$ is a quasi-compact scheme) for affinity of $X$ as it holds, e.g., for $X=\IP^n_R$.
 \end{rem*}
 \section{Cohomological dimension}
-\begin{prop}[Grothendieck]
-Let $X$ be a scheme and $Z\subseteq X$ a closed subset which Noetherian as topological space.%
-\footnote{It is possible that we will later add the further assumption that $X$ is Noetherian as a topological space. The necessity
-of such an assumption will hopefully be clear once a full proof of this proposition is presented.}
+\begin{prop}[Grothendieck]\lbl{prop:CohoDimension}
+Let $X$ be a quasi-compact scheme and $Z\subseteq X$ a closed subset which is Noetherian as topological space. %
+%\footnote{It is possible that we will later add the further assumption that $X$ is Noetherian as a topological space. The necessity of such an assumption will hopefully be clear once a full proof of this proposition is presented.}
 Let $\Mm$ be a quasi-coherent sheave of $\Oo_X$-modules satisfying $\Mm\vert_{X\setminus Z}=0$ and let $p>\dim(Z)$ (the Krull dimension of $Z$, which may be infinite). Then $H^p(X,\Mm)=0$.
 \end{prop}
-\begin{proof}
-There is nothing to show if $\dim(Z)=\infty$, so we may show this by induction on $\dim(Z)$.
+\begin{rem*}
+	Grothendieck shows $H^p(Z,\Gg)=0$ when $Z$ is a Noetherian topological space, $\Gg$ a sheaf of abelian groups on it and $p>\dim(Z)$. This, however, requires the construction of $H^p$ as a derived functor.
+	
+	In our situation, the bound may fail to be sharp.
+\end{rem*}
+\begin{proof}[Proof of Proposition~\reff{prop:CohoDimension}]
+There is nothing to show if $\dim(Z)=\pm \infty$, so we may show this by induction on $\dim(Z)$.
 
 Let $\dim(Z)=0$ and $Z=\bigcup_{i=1}^n Z_i$ the decomposition of $Z$ into its irreducible components. Each $Z_i$ is Noetherian (as $Z$ is), hence quasi-compact, and closed, thus contains a closed point $z_i$ by Proposition~\reff{prop:closedPoint}\itememph{a}. But then $Z_i = \{z_i\}$ as $\{z_i\}$ is irreducible and $\dim(Z_i)=0$.
 
@@ -1056,18 +1060,195 @@ Moreover, $(\Mm_j)_{z_i}=0$ when $i\neq j$ while $\Ff\rightarrow \Mm_i$ is an is
 Moreover, since $\Mm$ and $\Mm_i$ vanish on $X\setminus Z$,
 we see that $\Ff\isomorphism\Mm$ and the assertion follows.
 
-For the inductive step, let $\dim(Z)$ be finite and the assertion be proved for $\Mm \in\Ob(\cat{QCoh}(X))$ supported on closed
-subsets of smaller Krull dimension. Let $Z=\bigcup_{i=1}^n Z_i$ be the decomposition into irreducible components
-and let $\eta_i$ be the generic point of $Z_i$ (cf. \cite[Subsection~2.1.2]{alggeo1}). We have $\eta_i\notin Z_j$ for $i\neq j$ since otherwise $Z_i=\ov{\{\eta_i\}}\subseteq Z_j$. As the affine open subsets form a topology base, there are affine open neighbourhoods
-$W_i$ of $\eta_i$ such that $W_i\cap Z_j=\emptyset$ for $i\neq j$.
+For the inductive step, let $d=\dim(Z)$ be finite and the assertion be proved for quasi-coherent $\Mm$ supported on closed
+subsets of smaller Krull dimension. Let $Z=\bigcup_{i=1}^n Z_i$ be the decomposition into irreducible components $Z_i$. Then $Z_i\setminus \bigcup_{j\neq i}Z_j$ is non-empty, as $Z_i\subseteq Z_j$ otherwise by irreducibility of $Z_i$. Hence we find affine open subsets $W_i\subseteq X$ such that $W_i$ intersects $Z_i$ but no $Z_j$ fpr $j\neq i$.
 
-Let $\Mm_i = (\iota_i)_\ast\Mm\vert_{W_i}$ where $W_i\morphism[\iota_i]X$ is the inclusion.
+Let $\Nn_i = (j_i)_\ast\Mm\vert_{W_i}$ where $W_i\monomorphism[j_i]X$ is the inclusion of the open subset $W_i\subseteq X$ and let $\Nn=\bigoplus_{i=1}^n\Nn_i$. We consider the morphism $\Mm\morphism\Nn$ given by
+\begin{align*}
+\Mm(U)&\morphism\Nn(U)=\bigoplus_{i=1}^n(j_{i})_*(\Mm|_{W_i})(U)=\bigoplus_{i=1}^n\Mm(U\cap W_i)\\
+m&\longmapsto (m|_{U\cap W_i})_{i=1}^n\;.
+\end{align*}
+As was seen in Corollary~\reff{cor:CohomologyOfPushforward}\itememph{b}, $H^p(X,\Nn)=0$ when $p>0$ and also $\Mm\morphism\Nn$ is a monomorphism outside $\snake{X}=X\setminus\bigcup_{i=1}^nW_i$ (well, this is the same construction as in Claim~\reff{claim:BigN}). Let $\snake{Z}=Z\cap \snake{X}$. 
+%Remark, what monomorphism _outside_ means
+We have $\Mm|_{X\setminus Z}=0=\Nn|_{X\setminus Z}$, hence $\Mm\morphism \Nn$ is also a monomorphism outside $Z$, hence a monomorphism outside $\snake{Z}$. We claim:
+\begin{claim}\lbl{claim:epicClaim}
+	The morphism $\Mm\morphism\Nn$ is also an epimorphism outside $\snake{Z}$.
+\end{claim}
+Assuming this for the moment, we have an exact sequence
+\begin{align}\lbl{eq:4termsequence}
+	0\morphism\Kk\morphism\Mm\morphism\Nn\morphism\Cc\morphism 0\tag{\S}
+\end{align}
+(with $\Kk=\ker(\Mm\morphism\Nn)$ and $\Cc=\coker(\Mm\morphism\Nn)$), where $\Kk$ and $\Cc$ vanish outside $\snake{Z}$. Since $W_i$ intersects $Z_i$, we have $Z_i\not\subseteq \snake{X}$, hence no irreducible component of $Z$ is contained in $\snake{Z}$ and we obtain $\dim(\snake{Z})<\dim(Z)=d$. If $d=0$, this implies $\snake{Z}=0$, hence $\Mm\simeq \Nn$ has vanishing cohomology in positive degrees. Otherwise, the induction assumption implies $H^p(X,\Kk)=0=H^p(X,\Cc)$ when $p\geq d$. We split \eqreff{eq:4termsequence} into $0\morphism\Bb\morphism\Nn\morphism\Cc\morphism 0$ and $0\morphism \Kk\morphism\Mm\morphism\Bb\morphism 0$, where $\Bb=\ker(\Nn\morphism\Cc)$ which is also the image of $\Mm\morphism\Nn$. These give
+\begin{align*}
+	\ldots\morphism H^{p-1}(X,\Cc)\morphism H^p(X,\Bb)\morphism H^p(X,\Nn)\morphism \ldots\;,
+\end{align*}
+hence $H^p(X,\Bb)=0$ when $p>d$, and then
+\begin{align*}
+	\ldots\morphism H^p(X,\Kk)\morphism H^p(X,\Mm)\morphism H^p(X,\Bb)\morphism \ldots\;,
+\end{align*}
+implying $H^p(X,\Mm)=0$ when $p>d$. The vanishing assertion follows.
 
-\begin{claim*}
-	Kernel and cokernel of $\Mm\rightarrow\Ff =\bigoplus_{i=1}^n \Mm_i$ vanish outside of
-	$\snake Z = Z\setminus \bigcup_{i=1}^n W_i$.
-\end{claim*} \def\qedsymbol{\emph{to be continued\ldots}}
+It remains to prove Claim~\reff{claim:epicClaim} that $\Cc|_{X\setminus \snake{Z}}$ vanishes. For this, we use that
+\begin{align}\lbl{eq:stalksOfNn}
+	(\Nn_i)_x\simeq\begin{cases}
+		\Mm_x & \text{if }x\in Z_i\cap W_i\\
+		0 & \text{if }x\notin Z_i
+	\end{cases}\;.\tag{\%}
+\end{align}
+When $x\in Z$ this implies $\Nn_x=0$, hence $\Mm_x\morphism\Nn_x$ is surjective. When $x\in Z\setminus \snake{Z}$, then $x\in Z\cap W_i$ for some $i$, hence $x\in Z_i$ since $W_i$ doesn't intersect $Z_j$ for $j\neq i$. Thus
+\begin{align*}
+	(\Nn_j)_x\simeq\begin{cases}
+	\Mm_x & \text{if }j=i\\
+	0 & \text{else}
+	\end{cases}
+\end{align*}
+by \eqreff{eq:stalksOfNn} and $\Mm_x\isomorphism\Nn_x$. To see \eqreff{eq:stalksOfNn}, note that $\Nn_i(U)=\Mm(U)$ when $U\subseteq W_i$ and $x\in Z_i\cap W_i$, hence $(\Nn_i)_x\simeq \Mm_x$ in this case. Suppose $x\notin Z_i$. When $x\notin W_i$, then clearly $(\Nn_i)_x=0$. When $x\in W_i\setminus Z_i$, then also $x\notin Z$ as $W_i$ doesn't intersect the other irreducible components, hence $(\Nn_i)_x=0$ follows from the fact that $\Mm|_{X\setminus Z}=0$.
 \end{proof}
+
+\section{Cohomology of morphisms and functorial properties of cohomology}
+Let $X\morphism[f]Y$ be a quasi-compact and separated morphism of preschemes. The set $\Bb$ of quasi-compact open subsets $U\subseteq Y$ which are schemes form a topology base on $Y$ (well, it contains all affine open subsets). By well-known properties of quasi-compact and of separated morphisms, $f^{-1}(U)$ is a quasi-compact scheme when $U\in \Bb$ (quasi-compactness is just Definition~\reff{def:qcqs} and $f^{-1}(U)\morphism\Spec\IZ$ is separated as the composition of the separated morphisms $f$ and $U\morphism\Spec \IZ$, cf. \cite[Fact~1.5.7\itememph{c}]{alggeo1}). We thus have for any quasi-coherent $\Oo_X$-module $\Mm$ a presheaf
+\begin{align}\lbl{eq:cohoPresheaf}
+	\Phi^p\colon U\mapsto H^p\left(f^{-1}(U),\Mm\right)\tag{$*$}
+\end{align}
+on $\Bb$. The presheaf structure on \eqreff{eq:cohoPresheaf} is defined as follows. Let $V\subseteq U$ be elements of $\Bb$ and $\Uu,\Vv$ the covers of $f^{-1}(U)$ and $f^{-1}(V)$ by their affine open subsets. Then the morphism of restricting to the intersection with $f^{-1}(V)$ gives $\check{C}^\bullet (\Uu,\Mm)\morphism\check{C}^\bullet (\Uu\cap f^{-1}(V),\Mm)$ which may be followed by any morphism $\check{C}^\bullet (\Uu\cap f^{-1}(V),\Mm)\morphism\check{C}^\bullet (\Vv,\Mm)$ coming from a refinement map for the pair $(\Vv,\Uu\cap f^{-1}(\Vv))$ 
+(we proved in Lemma~\reff{lem:refinementPullback}\itememph{c} that any two refinement maps induce the same morphism on cohomology, so this choice doesn't matter), which gives
+\begin{align*}
+	H^p\left(f^{-1}(U),\Mm\right)=\check{H}^p(\Uu,\Mm)\morphism\check{H}^p(\Vv,\Mm)=H^p\left(f^{-1}(\Vv),\Mm\right)\;,
+\end{align*}
+and this is the desired presheaf structure.
+
+\begin{defi}
+	Sheafifying $\Phi^p$ gives an $\Oo_Y$-module called the \defemph{$p\ordinalth$ direct image} of $\Mm$ under $f$ and denoted $R^pf_*\Mm$.
+\end{defi}
+ We have a morphism
+ \begin{align}\lbl{eq:HpToRp}
+ 	H^p\left(f^{-1}(U),\Mm\right)\morphism R^pf_*\Mm(U)=H^0(U,R^pf_*\Mm)
+ \end{align}
+ (for $U\in\Bb$) as a special case of the morphism from a presheaf to its sheafification.
+ 
+ \begin{prop}
+ 	\begin{alphanumerate}
+ 		\item \lbl{prop:HigherDirectImage}$R^0f_*\Mm\simeq f_*\Mm$ canonically.
+ 		\item The $\Oo_X$-modules $R^pf_*\Mm$ are quasi-coherent.
+ 		\item For a short exact sequence $0\morphism\Mm'\morphism\Mm\morphism\Mm''\morphism 0$ of quasi-coherent $\Oo_X$-modules one has a long exact cohomology sequence 
+ 		\begin{multline*}
+ 		\begin{tikzpicture}[line cap=round, line join=round]
+ 		\node[ob] (0o) at (0,0) {$0$};
+ 		\node[ob] (0u) at (0,1.5) {$0$};
+ 		\node[ob] (H0Z) [right=0.575 of 0o] {$R^0f_*\Mm'$};
+ 		\node[ob] (H0CX) [right=0.575 of H0Z] {$R^0f_*\Mm$};
+ 		\node[ob] (H0CXx) [right=0.575 of H0CX] {$R^0f_*\Mm''$};
+ 		\node[ob] (Z) at (0u -| H0Z) {$f_*\Mm'$};
+ 		\node[ob] (CX) at (0u -| H0CX) {$f_*\Mm$};
+ 		\node[ob] (CXx) at (0u -| H0CXx) {$f_*\Mm''$};
+ 		\node[ob] (H1Z) [right=0.575 of H0CXx] {$R^1f_*\Mm'$};
+ 		\node[ob] (H1CX) [right=0.575 of H1Z] {$\ldots$};
+ 		\scriptsize
+ 		\draw[->] (0u) -- (Z);
+ 		\draw[->] (0o) -- (H0Z);
+ 		\draw[->] (Z) -- (CX);
+ 		\draw[->] (H0Z) -- (H0CX);
+ 		\draw[->] (CX) -- (CXx);
+ 		\draw[->] (H0CX) -- (H0CXx);
+ 		\draw[->] (H0CXx) -- (H1Z)node[pos=0.5, above] {$\delta$};
+ 		\draw[->] (H1Z) -- (H1CX);
+ 		\draw[->] (H0Z) -- (Z) node[pos=0.5, above=-0.25ex, sloped] {$\sim$};
+ 		\draw[->] (H0CX) -- (CX) node[pos=0.5, above=-0.25ex, sloped] {$\sim$};
+ 		\draw[->] (H0CXx) -- (CXx) node[pos=0.5, above=-0.25ex, sloped] {$\sim$};
+ 		\end{tikzpicture}\\
+ 		\ldots \morphism R^{p-1}f_*\Mm''\morphism[\delta]R^pf_*\Mm'\morphism R^pf_*\Mm\morphism R^pf_*\Mm''\morphism[\delta]\ldots
+ 		\end{multline*}
+ 		\item When $U\subseteq Y$ is affine, \eqreff{eq:HpToRp} becomes an isomorphism $H^p\left(f^{-1}(U),\Mm\right)\isomorphism R^pf_*\Mm(U)$.
+ 	\end{alphanumerate}
+ \end{prop}
+ \begin{proof}
+ 	Part \itememph{a}. We have $\Phi^0(U)=H^0(f^{-1}(U),\Mm)\simeq \Mm(f^{-1}(U))=f_*\Mm(U)$, hence $\Phi^0\simeq f_*\Mm|_\Bb$. Then sheafifying gives $f_*\Mm$ again by \cite[Proposition~1.2.1\itememph{c},\itememph{d}]{alggeo1}.
+ 	
+ 	Part \itememph{c}. By Theorem~\reff{thm:CohoOnSchemes} we have a similar long exact cohomology sequence of presheaves on $\Bb$. Sheafifying it gives the desired sequence, as sheafification  is an exact functor (exactness may be tested on stalks and sheafification preserves stalks by \cite[Proposition1.2.1\itememph{a}]{alggeo1}).
+ 	
+ 	It is easy to see that our construction of $R^pf_*$ is base-local, i.e.,
+ 	\begin{align*}
+ 		R^pf_*\Mm|_U\simeq R^p\left(f|_{f^{-1}(U)}\right)_*\Mm|_{f^{-1}(U)}\;.
+ 	\end{align*}
+ 	Thus we may assume $Y=\Spec R$ to be affine (quasi-coherentness is a local property) for \itememph{b} and $Y=U=\Spec R$ in \itememph{d}. 
+ 	
+ 	Let $\Bb=\left\{U\subseteq Y\st U\text{ open and a quasi-compact scheme}\right\}$ the topology base on which $\Phi^p$ is defined, then $\snake{\Bb}=\left\{Y\setminus V(\lambda)\st\lambda\in R\right\}$ is another topology base of $Y$, and $\left(\Gg|_{\snake{\Bb}}\right)^\sh=\Gg^\sh$ for any presheaf $\Gg$ on $\Bb$ by \cite[Proposition~1.2.1\itememph{c}]{alggeo1}. But for $U=Y\setminus V(\lambda)\in\snake{\Bb}$ we have
+ 	\begin{align*}
+ 		H^p\left(f^{-1}(U),\Mm\right)=H^p\left(f^{-1}(Y\setminus V(\lambda)),\Mm\right)= H^p(X\setminus V(f^*\lambda),\Mm)\simeq H^p(X,\Mm)_\lambda =M_\lambda
+ 	\end{align*}
+ 	for $M=H^p(X,\Mm)$ by Proposition~\reff{prop:localiedCoho}. We also used $f^{-1}(Y\setminus V(\lambda)=X\setminus V(f^*\lambda)$ as $f$ is a morphism of locally ringed spaces (cf. \cite[Definition~1.3.4\itememph{b}]{alggeo1}). It follows that $R^pf_*\Mm$ is canonically isomorphic to the sheafififation of $U\setminus V(\lambda)\mapsto M_\lambda$, which is just $\snake{M}$ by definition of the twiddlelization (\cite[Definition~1.5.1]{alggeo1}, actually). As $\snake{M}$ is a quasi-coherent $\Oo_Y$-module, \itememph{b} follows. Then $M\simeq \snake{M}(Y)$, which shows \itememph{d}.
+ \end{proof}
+ In general, the morphism \eqreff{eq:HpToRp} fails to be an isomorphism: The \emph{restriction to fibres} (for $Y$ a quasi-compact scheme)
+ \begin{align}\lbl{eq:RestrictionToFibres}
+ 	H^p(X,\Mm)\morphism R^pf_*\Mm=E_2^{0,p}\tag{\#}
+ \end{align}
+ as a special case of \eqreff{eq:HpToRp} is normally not an isomorphism when $Y$ is not affine. There is another morphism, the \emph{pull-back} (for $Y$ again a quasi-compact scheme)
+ \begin{align}\lbl{eq:pull-back}
+ 	E_2^{p,0}=H^p(Y,f_*\Mm)\morphism H^p(X,\Mm)\tag{$*$}
+ \end{align}
+(also not an isomorphism unless $f$ is affine) which can be constructed as follows. Let $\Uu_Y$ be the open cover of $Y$ by its affine subsets and $\Vv$ any affine refinement of $f^{-1}(\Uu_Y)$. Then, using Lemma~\reff{lem:CohomologyOfPushforward}\itememph{b} and Proposition~\reff{prop:CechCohoOnScheme}\itememph{a} we obtain
+\begin{align*}
+	H^p(Y,f_*\Mm)=\check{H}^p(\Uu_Y,f_*\Mm)=\check{H}^p\left(f^{-1}(\Uu_Y),\Mm\right)\morphism \check{H}^p(\Vv,\Mm)\lisomorphism H^p(X,\Mm)
+\end{align*}
+defining the above pull-back morphism \eqreff{eq:pull-back}. There is also an inverse image functor $f^*\colon \Oo_Y\cat{-Mod}\morphism \Oo_X\cat{-Mod}$ which preserves quasi-coherence and is left-adjoint to $f_*$. Thus, for $\Nn$ a quasi-coherent $\Oo_Y$-module, there is a canonical morphism $\Nn\morphism f_*f^*\Mm$ which gives another type of pull-back morphism
+\begin{align*}
+	H^p(Y,\Nn)\morphism H^p(Y,f_*f^*\Nn)\morphism[\text{\eqreff{eq:pull-back}}]H^p(X,f^*\Nn)\;.
+\end{align*}
+In general, \eqreff{eq:RestrictionToFibres} and \eqreff{eq:pull-back} will fail to be isomorphisms but are part of the \emph{Leray spectral sequence}
+\begin{align*}
+	E_2^{p,q}=H^p(Y,R^qf_*\Mm)\converge H^{p+q}(X,\Mm)
+\end{align*}
+converging ``to $H^{p+q}(X,\Mm)$'' (actually to some limit filtration of this). 
+
+This means the following: One has a sequence $\left(E_k^{\bullet,\bullet}\right)_{k=2}^\infty$ of doubly graded abelian groups (or $R$-modules or objects of any other abelian category) equipped with morphisms (the \emph{differentials}) $d_k=d_k^{p,q}\colon E_k^{p,q}\morphism E_k^{p+k,q+1-k}$ such that 
+\begin{align*}
+	E_k^{p,q}\morphism[d_k]E_k^{p+k,q+1-k}\morphism[d_k]E_k^{p+2k,q+1-2k}
+\end{align*}
+vanishes and such that $E_{k+1}^{\bullet,\bullet}=H^\bullet (E_k^{\bullet,\bullet},d_k^{\bullet,\bullet})$ in the sense that
+\begin{align}\lbl{eq:eta}
+	E_{k+1}^{p,q}=\ker\Big(E_k^{p,q}\morphism[d_k]E_k^{p+k,q+1-k}\Big)/\Im\Big(E_k^{p-k,q+k-1}\morphism[d_k]E_k^{p,q}\Big)\tag{$\eta$}\;.
+\end{align}
+Thus $E_k^{p,q}=0$ for all $k\geq 2$ when $E_2^{p,q}=0$. When $E_2^{\bullet,\bullet}$ is supported in the $1\ordinalst$ quadrant (i.e., $E_2^{p,q,}=0$ if $p<0$ or $q<0$), the same is true for all $E_k^{\bullet,\bullet}$ and \eqreff{eq:eta} becomes
+\begin{align}\lbl{eq:eta'}
+	E_{k+1}^{p,q}=\coker\Big(E_k^{p-k,q+k-1}\morphism[d_k]E_k^{p,q}\Big)\quad\text{for }k>q+1\tag{$\eta'$}
+\end{align}
+and 
+\begin{align}\lbl{eq:eta''}
+	E_{k+1}^{p,q}=\ker\Big(E_k^{p,q}\morphism[d_k]E_k^{p+k,q-k+1}\Big)\quad\text{for }k>p\tag{$\eta''$}
+\end{align}
+and we deduce $E_{k+1}^{p,q}=E_k^{p,q}$ for $k>\max\{p,q+1\}$.
+
+For $1\ordinalst$ quadrant sequences (like Leray's) we put $E_\infty^{p,q}=E_k^{p,q}$ where $k$ is large enough. When the spectral sequence \emph{converges to some filtration on its limit} $L^\bullet $ (we have $L^\bullet =H^\bullet (X,\Mm)$ for Leray), it is meant that there is a filtration $F^\bullet L^\bullet \colon L^\bullet =F^0L^\bullet \supseteq F^1L*\supseteq \ldots$ with $E_\infty^{p,q}\simeq F^pL^{p+q}/F^{p+1}L^{p+q}$. Thus, for $1\ordinalst$ quadrant sequences,
+\begin{align*}
+	F^1L^p=\ker\left(L^p\morphism E_\infty^{0,p}\right)=\ker\Big(L^p\morphism E_2^{p,q}\Big)
+\end{align*}
+(where we use $E_\infty^{0,p}\subseteq E_2^{0,p}$ by \eqreff{eq:eta''}) has \eqreff{eq:RestrictionToFibres} as a special case. Also, using $F^{p+1}L^p=0$ for $1\ordinalst$ quadrant sequences we obtain an epimorphism
+\begin{align*}
+	F^pL^p\simeq E_\infty^{p,q}\lepimorphism E_2^{p,0}
+\end{align*}
+by \eqreff{eq:eta'}. The resulting morphism $E_2^{p,0}\morphism L^p$ has \eqreff{eq:pull-back} as a special case.
+
+There is also a Leray spectral sequence $R^pg_*R^qf_*\Mm\converge R^{p+q}(gf)_*\Mm$.
+
+\section{Affine morphisms}
+\begin{prop}
+	Let $X$ be quasi-separated and $Y$ an arbitrary prescheme. For a morphism $X\morphism[f]Y$, the following conditions are equivalent.
+	\begin{alphanumerate}
+		\item If $U\subseteq Y$ is an affine open subset, then so is $f^{-1}(U)\subseteq X$.
+		\item It is possible to cover $Y$ by affine open $U$ such that $f^{-1}(U)$ is affine open.
+		\item $f$ is separated and quasi-compact and we have $R^pf_*\Mm=0$ when $\Mm$ is a quasi-coherent $\Oo_X$-module and $p>0$.
+	\end{alphanumerate}
+\end{prop}
+\begin{proof}
+	The implication \itememph{a} $\Rightarrow$ \itememph{b} is trivial and \itememph{b} $\Rightarrow$ \itememph{c} follows easily from Theorem~\reff{thm:CohoOnSchemes}\itememph{b} and Proposition~\reff{prop:HigherDirectImage}\itememph{b}.
+	
+	Now for \itememph{c} $\Rightarrow$ \itememph{a}. If $U\subseteq Y$ is affine and $\Mm\in\Ob(\cat{QCoh}(f^{-1}(U)))$, then $\Mm$ extends to $X$ (this will be checked in the next lecture) and by Proposition~\reff{prop:HigherDirectImage}\itememph{d}
+	\begin{align*}
+		H^p\left(f^{-1}(U),\Mm\right)\simeq R^pf_*\Mm(U)=0\;.
+	\end{align*}
+	By Serre's affinity criterion (Proposition~\reff{prop:serreAffinity}), $f^{-1}(U)$ is affine.
+\end{proof}
+
 \appendix
 \chapter{Appendix -- category theory corner}
 \setcounter{thm}{0}

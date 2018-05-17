@@ -272,6 +272,20 @@
 	{\IsArgEmpty{#1}{\twoheadleftarrow}{\overset{#1}{\mathrel{\smash{\longtwoheadleftarrow}\vphantom{\rightarrow}}}}}%
 }
 
+\newcommand{\converge}{%
+	\mathchoice{\Longrightarrow}%
+	{\Rightarrow}%
+	{\Rightarrow}%
+	{\Rightarrow}%
+}
+
+\newcommand{\lconverge}{%
+	\mathchoice{\Longleftarrow}%
+	{\Leftarrow}%
+	{\Leftarrow}%
+	{\Leftarrow}%
+}
+
 %---- MODIFIERS ----
 %
 \newcommand{\ov}{\overline}
