@@ -95,9 +95,9 @@ A highlight of this lecture will be \emph{Serre's characterization of regularity
 	For a  Noetherian local ring $R$ with maximal ideal $\mm$ and residue field $k$, the following are equivalent.
 	\begin{alphanumerate}
 		\item $\dim_k\mm/\mm^2=\dim R$ (i.e., $R$ is regular).
-		\item There is some vanishing bound for $\Tor_*^R(-,-)$.
+		\item There is some vanishing bound for $\Tor_\bullet ^R(-,-)$.
 		\item \ldots and $\dim R$ is such a vanishing bound.
-		\item There is some vanishing bound for $\Ext_R^*(-,-)$.
+		\item There is some vanishing bound for $\Ext_R^\bullet (-,-)$.
 		\item \ldots and $\dim R$ is again such a vanishing bound.
 	\end{alphanumerate}
 \end{thm*}
@@ -116,7 +116,7 @@ We will also introduce the notion of \emph{Cohen--Macaulay rings} and prove that
 
 \chapter{\texorpdfstring{$\Tor$}{Tor} and \texorpdfstring{$\Ext$}{Ext} of \texorpdfstring{$R$}{R}-modules}
 From now on, unless otherwise stated, our rings are commutative with $1$.
-\section{Injective and projective modules and properties of \texorpdfstring{$\Ext_R^*$}{Ext}}
+\section{Injective and projective modules and properties of \texorpdfstring{$\Ext_R^\bullet $}{Ext}}
 \begin{prop}[Baer's criterion]\lbl{prop:InjectiveModules}
 	For an $R$-module $N$, the following are equivalent.
 	\begin{alphanumerate}
@@ -256,22 +256,35 @@ From now on, unless otherwise stated, our rings are commutative with $1$.
 	\end{proof}
 	Back to the proof of Lemma~\reff{lem:AdjointStuff} and let's prove \itememph{c}. Let $M\monomorphism[\phi]I$ be a monomorphism of abelian groups. The corresponding morphism $M\morphism[\psi]\Hom_\IZ(R,I)$ sends $m\in M$ to $\psi(m)\colon R\morphism I$ given by $\psi(m)(r)=\phi(rm)$. If $\psi(m)$ is the zero morphism for some $m\in M$, then $0=\psi(m)(1)=\phi(m)$, proving $m=0$ by injectivity of $\phi$. Then $\psi$ is also injective.
 \end{proof}
+\begin{prop}
+	\begin{alphanumerate}
+		\item For any PID $R$ and any $R$-modules $M,N$ we have $\Ext_R^p(M,N)=0$ when $p>1$.
+		\item Any submodule of a projective $R$-module is projective.
+	\end{alphanumerate}
+\end{prop}
+\begin{proof}
+	The quotient of any injective $R$-module being injective, when $N\monomorphism I$ is a monomorphism with $I$ injective, then
+	\begin{align*}
+		0\morphism N\morphism I\morphism I/N\morphism 0
+	\end{align*}
+	is an injective resolution of $N$ of length $1$.
+\end{proof}
 
 \appendix
 \chapter{Appendix -- category theory corner}
 \setcounter{thm}{0}
 \renewcommand*{\thethm}{\Alph{thm}}
 
-\section{Derived functors and \texorpdfstring{$\Ext_R^*$}{Ext}}
+\section{Derived functors and \texorpdfstring{$\Ext_R^\bullet $}{Ext}}
 \begin{defi}\lbl{def:homologicalfunctor}
-	Let $\Aa$ and $\Bb$ be abelian categories (cf. \cite[Definition~A.1.4]{alggeo2}). A \defemph{homological $\partial$-functor} $F_*\colon\Aa\morphism\Bb$ is a sequence $(F_n)_{n\geq 0}$  of additive functors $\Aa\morphism[F_i]\Bb$ together with a natural transformation $\partial=\partial_F\colon F_{i+1}(A'')\morphism F_i(A')$ on the category of short exact sequences on $\Aa$, such that the sequence
+	Let $\Aa$ and $\Bb$ be abelian categories (cf. \cite[Definition~A.1.4]{alggeo2}). A \defemph{homological $\partial$-functor} $F_\bullet \colon\Aa\morphism\Bb$ is a sequence $(F_n)_{n\geq 0}$  of additive functors $\Aa\morphism[F_i]\Bb$ together with a natural transformation $\partial=\partial_F\colon F_{i+1}(A'')\morphism F_i(A')$ on the category of short exact sequences on $\Aa$, such that the sequence
 	\begin{multline*}
 		\ldots\morphism F_{i+1}(A'')\morphism[\partial]F_i(A')\morphism F_i(A)\morphism F_i(A'')\morphism[\partial]\ldots\\
 		\ldots\morphism F_{1}(A'')\morphism[\partial]F_0(A')\morphism F_0(A)\morphism F_0(A'')\morphism 0\;.
 	\end{multline*}
 	is exact whenever $0\morphism A'\morphism A\morphism A''\morphism 0$ is a short exact sequence in $\Aa$.
 	
-	A \defemph{morphism} $F_*\morphism[\phi]G_*$ of homological $\partial$-functors is a sequence $(\phi_n)_{n\geq0}$ of natural transformations $F_i\morphism[\phi_i]G_i$ such that for any short exact sequence $0\morphism A'\morphism A\morphism A''\morphism 0$ in $\Aa$ the diagram 
+	A \defemph{morphism} $F_\bullet \morphism[\phi]G_\bullet $ of homological $\partial$-functors is a sequence $(\phi_n)_{n\geq0}$ of natural transformations $F_i\morphism[\phi_i]G_i$ such that for any short exact sequence $0\morphism A'\morphism A\morphism A''\morphism 0$ in $\Aa$ the diagram 
 	\begin{diagram*}
 		\node[ob] (F1A) at (0,1.5) {$F_{i+1}(A'')$};
 		\node[ob] (G1A) at (0,0) {$G_{i+1}(A'')$};
@@ -285,16 +298,16 @@ From now on, unless otherwise stated, our rings are commutative with $1$.
 	\end{diagram*}
 	commutes.
 	
-	Similarly, a \defemph{cohomological $\partial$-functor} $F^*\colon\Aa\morphism\Bb$ is a sequence $(F^n)_{n\geq 0}$ of additive functors $\Aa\morphism[F^i]\Bb$ together with connecting morphism $\partial=\partial_F\colon F^i(A'')\morphism F^{i+1}(A')$ such that for a short exact sequence $0\morphism A'\morphism A\morphism A''\morphism 0$, the sequence 
+	Similarly, a \defemph{cohomological $\partial$-functor} $F^\bullet \colon\Aa\morphism\Bb$ is a sequence $(F^n)_{n\geq 0}$ of additive functors $\Aa\morphism[F^i]\Bb$ together with connecting morphism $\partial=\partial_F\colon F^i(A'')\morphism F^{i+1}(A')$ such that for a short exact sequence $0\morphism A'\morphism A\morphism A''\morphism 0$, the sequence 
 	\begin{multline*}
 		0\morphism F^0(A')\morphism F^0(A)\morphism F^0(A'')\morphism[\partial] F^1(A')\morphism\ldots\\
 		\ldots\morphism[\partial]F^i(A')\morphism F^i(A)\morphism F^i(A'')\morphism[\partial]F^{i+1}(A')\morphism\ldots
 	\end{multline*}
-	 is required to be exact. And the notion of a \defemph{morphism} $F^*\morphism[\phi]G^*$ of cohomological $\partial$-functors is defined in the obvious way.
+	 is required to be exact. And the notion of a \defemph{morphism} $F^\bullet \morphism[\phi]G^\bullet $ of cohomological $\partial$-functors is defined in the obvious way.
 	
-	Let $\Aa\morphism[F]\Bb$ be a \emph{right-exact} functor, i.e., for any short exact sequence $0\morphism A'\morphism A\morphism A''\morphism 0$, the sequence $FA'\morphism FA\morphism FA''\morphism 0$ is exact (but that's not quite it, cf. Definition~\reff{def:leftrightexact}). A \defemph{left-derived functor} of $F$ is a homological functor $L_*F$ from $\Aa$ to $\Bb$ with a natural isomorphism $L_0F\simeq F$ such that for any homological functor $\Phi_*\colon \Aa\morphism\Bb$, any natural transformation $\Phi_0\morphism L_0F$ extends in a unique way to a morphism $\Phi_*\morphism L_*F$ of homological functors.
+	Let $\Aa\morphism[F]\Bb$ be a \emph{right-exact} functor, i.e., for any short exact sequence $0\morphism A'\morphism A\morphism A''\morphism 0$, the sequence $FA'\morphism FA\morphism FA''\morphism 0$ is exact (but that's not quite it, cf. Definition~\reff{def:leftrightexact}). A \defemph{left-derived functor} of $F$ is a homological functor $L_\bullet F$ from $\Aa$ to $\Bb$ with a natural isomorphism $L_0F\simeq F$ such that for any homological functor $\Phi_\bullet \colon \Aa\morphism\Bb$, any natural transformation $\Phi_0\morphism L_0F$ extends in a unique way to a morphism $\Phi_\bullet \morphism L_\bullet F$ of homological functors.
 	
-	Similar, a functor $\Aa\morphism[F]\Bb$ is \emph{right-exact} functor if $0\morphism FA'\morphism FA\morphism FA''$ is exact for any short exact sequence $0\morphism A'\morphism A\morphism A''\morphism 0$ (and $F$ is \emph{additive}, cf. Definition~\reff{def:leftrightexact}). A \defemph{right-derived functor} of $F$ is a homological functor $R^*F$ from $\Aa$ to $\Bb$ with a natural isomorphism $R^0F\simeq F$ such that for any homological functor $\Psi^*\colon \Aa\morphism\Bb$, any natural transformation $R^0F\morphism \Psi^0$ extends in a unique way to a morphism $R^*F\morphism \Psi^*$ of homological functors.
+	Similar, a functor $\Aa\morphism[F]\Bb$ is \emph{right-exact} functor if $0\morphism FA'\morphism FA\morphism FA''$ is exact for any short exact sequence $0\morphism A'\morphism A\morphism A''\morphism 0$ (and $F$ is \emph{additive}, cf. Definition~\reff{def:leftrightexact}). A \defemph{right-derived functor} of $F$ is a homological functor $R^\bullet F$ from $\Aa$ to $\Bb$ with a natural isomorphism $R^0F\simeq F$ such that for any homological functor $\Psi^\bullet \colon \Aa\morphism\Bb$, any natural transformation $R^0F\morphism \Psi^0$ extends in a unique way to a morphism $R^\bullet F\morphism \Psi^\bullet $ of homological functors.
 \end{defi}
 \begin{rem}
 	\begin{alphanumerate}
@@ -309,7 +322,7 @@ From now on, unless otherwise stated, our rings are commutative with $1$.
 			\draw[->] (F) -- (Phi);
 			\draw[->] (Phi) -- (L);
 		\end{diagram*}
-		can be uniquely extended to a morphism $\Phi_*\morphism L_*F$ of homological functors. Similar for right-derived functors.
+		can be uniquely extended to a morphism $\Phi_\bullet \morphism L_\bullet F$ of homological functors. Similar for right-derived functors.
 	\end{alphanumerate}
 \end{rem}
 \begin{example}
@@ -321,6 +334,7 @@ From now on, unless otherwise stated, our rings are commutative with $1$.
 		\item When $X\monomorphism[\xi] Y$ is a monomorphism, then any morphism $X\morphism[\iota] I$ extends to a morphism $Y\morphism I$ (i.e., $I$ is injective in the sense of Definition~\reff{def:injectiveModule}\itememph{b}).
 		\item Any short exact sequence $0\morphism I\morphism X\morphism X''\morphism 0$ splits.
 	\end{alphanumerate}
+	The category $\Aa$ has \defemph{sufficiently many injective objects} if every object $X$ has a monomorphism $X\monomorphism I$ with $I$ injective.
 \end{defi}
 \begin{proof}
 	To see \itememph{a} $\Rightarrow$ \itememph{b}, extend $\id_I$ to $X\morphism[\pi]I$, then $\pi$ gives a split of the exact sequence (the argument used in the case of $R$-modules still works in arbitrary abelian categories).
@@ -360,10 +374,10 @@ From now on, unless otherwise stated, our rings are commutative with $1$.
 	hence $\upsilon$ has indeed the required property.
 \end{proof}
 \begin{thm}\lbl{thm:DerivedFunctors}
-	Let $\Aa$ be an abelian category with sufficiently many injective objects.
+	Let $\Aa,\Bb$ be an abelian categories where $\Bb$ has sufficiently many injective objects.
 	\begin{alphanumerate}
-		\item Any left-exact functor $\Aa\morphism[F]\Bb$ from $\Aa$ to any abelian category $\Bb$ has a right-derived functor.
-		\item Let $\Phi^*\colon \Aa\morphism\Bb$ be a cohomological functor, then $\Phi^*$ is a right-derived functor of $\Phi^0$ iff $\Phi^pI=0$ for any injective object $I\in\Ob(\Aa)$ and all $p>0$.
+		\item Any left-exact functor $\Aa\morphism[F]\Bb$ has a right-derived functor $R^\bullet F$.
+		\item Let $\Phi^\bullet \colon \Aa\morphism\Bb$ be a cohomological functor, then $\Phi^\bullet $ is a right-derived functor of $\Phi^0$ iff $\Phi^pI=0$ for any injective object $I\in\Ob(\Aa)$ and all $p>0$.
 		\item Let $\Ff\colon 0\morphism F'\morphism F\morphism F''\morphism0$ be a sequence of left-exact functors $\Aa\morphism\Bb$ and functor morphisms between them such that $0\morphism F'I\morphism F I\morphism F'' I\morphism 0$ is exact when $I$ is an injective object of $\Aa$. Then there is a unique sequence of natural transformations $R^iF''\morphism[d_\Ff]R^{i+1}F'$ such that
 		\begin{multline*}
 			0\morphism F'X\morphism F X\morphism F''X\morphism[d_\Ff]R^1 F'X\morphism\ldots\\
@@ -371,17 +385,17 @@ From now on, unless otherwise stated, our rings are commutative with $1$.
 		\end{multline*}
 		is exact for arbitrary $X\in\Ob(\Aa)$ and such that the diagram
 		\begin{diagram*}
-			\node[ob] (F1A) at (0,1.5) {$R^i F''(Y)$};
-			\node[ob] (G1A) at (0,0) {$R^{i+1} F''(X)$};
-			\node[ob] (FA) at (3,1.5) {$R^{i+1} F'(Y)$};
-			\node[ob] (GA) at (3,0) {$R^{i+2} F'(X)$};
+			\node[ob] (F1A) at (0,1.5) {$R^i F''(X'')$};
+			\node[ob] (G1A) at (0,0) {$R^{i+1} F''(X')$};
+			\node[ob] (FA) at (3,1.5) {$R^{i+1} F'(X'')$};
+			\node[ob] (GA) at (3,0) {$R^{i+2} F'(X')$};
 			\scriptsize
-			\draw[->] (F1A) -- (G1A) node[pos=0.5, left] {$\partial_{R^* F''}$};
-			\draw[->] (FA) -- (GA) node[pos=0.5, right] {$-\partial_{R^* F'}$};
+			\draw[->] (F1A) -- (G1A) node[pos=0.5, left] {$\partial_{R^\bullet  F''}$};
+			\draw[->] (FA) -- (GA) node[pos=0.5, right] {$-\partial_{R^\bullet  F'}$};
 			\draw[->] (F1A) -- (FA) node[pos=0.5, above] {$d_\Ff$};
 			\draw[->] (G1A) -- (GA) node[pos=0.5, above] {$d_\Ff$};
 		\end{diagram*}
-		commutes when $0\morphism X\morphism Z\morphism Y\morphism 0$ is a short exact sequence in $\Aa$.
+		commutes when $0\morphism X'\morphism X\morphism X''\morphism 0$ is a short exact sequence in $\Aa$ (note the minus sign on the right vertical arrow!).
 	\end{alphanumerate}
 \end{thm}
 \begin{proof}
@@ -426,7 +440,7 @@ From now on, unless otherwise stated, our rings are commutative with $1$.
 		\draw[->,dashed] (C) -- (C') node[pos=0.5, left] {$\smash{\hat{\xi}}\vphantom{\xi}$};
 		\draw[->,dotted] (D) -- (D') node[pos=0.5, left] {$\xi'$};
 	\end{diagram*}
-	with exact rows $\Xx,\Yy$. Let $n>1$. Our goal $\Psi^n(\xi)\alpha_{X,\iota}^n=\alpha_{Y,\kappa}^n\Psi^n(\xi)$ is precisely that the right face in the following cute little diagram commutes.
+	with exact rows $\Xx,\Yy$. Let $n>1$. Our goal $\Psi^n(\xi)\alpha_{X,\iota}^n=\alpha_{Y,\kappa}^n\Psi^n(\xi)$ is precisely that the right face in the following cute (or cube?) little diagram commutes.
 	\begin{diagram*}
 		\node[ob] (A) at (0,3) {$\Phi^{n-1}X'$};
 		\node[ob] (B) at (4,3) {$\Phi^nX$};
@@ -513,7 +527,7 @@ From now on, unless otherwise stated, our rings are commutative with $1$.
 		\end{diagram*}
 		The top and bottom face commute by naturality of $\partial_\Phi$ and $\partial_\Psi$. The left face commutes because $\alpha^{n-1}$ is a natural transformation. The back face commutes by Definition of $\alpha_{X'}^n$ and on the right face nothing really happens. Hence the front face commutes as well. This shows the desired equality, thus completing the inductive construction of the $\alpha^n$ and showing the existence part of the universal property of a right-derived functor for $\Phi^0$.
 		
-		For uniqueness, let $\alpha^*\colon \Phi^*\morphism\Psi^*$ be any morphism of cohomological functors. Let $X$ be any object and $0\morphism X\morphism[\iota]I\morphism X''\morphism 0$ any short exact sequence with $I$ injective. As $\alpha^*$ is a morphism of cohomological functors, it is compatible with $\partial_\Phi$ and $\partial_\Psi$ for this short exact sequence. That is,
+		For uniqueness, let $\alpha\colon \Phi^\bullet \morphism\Psi^\bullet $ be any morphism of cohomological functors. Let $X$ be any object and $0\morphism X\morphism[\iota]I\morphism X''\morphism 0$ any short exact sequence with $I$ injective. As $\alpha$ is a morphism of cohomological functors, it is compatible with $\partial_\Phi$ and $\partial_\Psi$ for this short exact sequence. That is,
 		\begin{align*}
 		 \alpha_X^n\partial_\Phi=\partial_\Psi\alpha_{X'}^{n-1}\;.
 		\end{align*}
@@ -528,22 +542,22 @@ From now on, unless otherwise stated, our rings are commutative with $1$.
 			\end{align*}
 			with $I^0,I^1,\ldots$ injective.
 		\end{defi}
-		\begin{fact}
+		\begin{fact}\lbl{fact:injectiveResolutions}
 			In an abelian category $\Aa$ with sufficiently many injective objects, injective resolutions exist for any object.
 		\end{fact}
 		\begin{proof}
 			Indeed, for $X\in\Ob(\Aa)$ choose a monomorphism $X\monomorphism[\xi]I^0$, then a monomorphism $\coker(\xi)\monomorphism I^1$, then a monomorphism $\coker\big(I^0\morphism I^1\big)\monomorphism I^2$ and so on.
 		\end{proof}
 		\begin{prop}[Horseshoe lemma]\lbl{prop:Hufeisenlemma}
-			Let $X\morphism[\xi]I^*$ and $Y\morphism[\upsilon]J^*$ be injective resolutions of $X$ and $Y$. 
+			Let $X\morphism[\xi]I^\bullet $ and $Y\morphism[\upsilon]J^\bullet $ be injective resolutions of $X$ and $Y$. 
 			\begin{alphanumerate}
-				\item If $X\morphism[f]Y$ is any morphism, then there is a morphism $I^*\morphism[\phi^*]J^*$ compatible with $f$ in the sense that $\upsilon f=\phi^0\xi$. 
-				\item The extension from \itememph{a} is unique up to cochain homotopy. If $\psi^*$ is a different morphism of cochain complexes with the same property then there is a cochain homotopy $s^*$, where $s^n\colon I^n\morphism J^{n-1}$, between $\phi^*$ and $\psi^*$. That is,
+				\item If $X\morphism[f]Y$ is any morphism, then there is a morphism $I^\bullet \morphism[\phi]J^\bullet $ compatible with $f$ in the sense that $\upsilon f=\phi^0\xi$. 
+				\item The extension from \itememph{a} is unique up to cochain homotopy. If $\psi$ is a different morphism of cochain complexes with the same property then there is a cochain homotopy $s$, where $s^n\colon I^n\morphism J^{n-1}$, between $\phi $ and $\psi $. That is,
 				\begin{align*}
-					d_{J^*}^{n-1}s^n+s^{n+1}d_{I^*}^{n}=\psi^n-\phi^n
+					d_{J^\bullet }^{n-1}s^n+s^{n+1}d_{I^\bullet }^{n}=\psi^n-\phi^n
 				\end{align*}
 				and $s^0=0$.
-				\item If $0\morphism X\morphism[\alpha] Z\morphism[\beta] Y\morphism 0$ is a short exact sequence, there exists an injective resolution $Z\morphism[\zeta]K^*$ of $Z$ such that 
+				\item If $0\morphism X\morphism[\alpha] Z\morphism[\beta] Y\morphism 0$ is a short exact sequence, there exists an injective resolution $Z\morphism[\zeta]K^\bullet $ of $Z$ such that 
 				\begin{diagram}[baseline=-2.25cm-0.5ex]{\lbl{diag:resolution}}
 					\node[ob] (0lO) at (-4,0) {$0$};
 					\node[ob] (X) at (-2,0) {$X$};
@@ -592,27 +606,27 @@ From now on, unless otherwise stated, our rings are commutative with $1$.
 		\end{prop}
 		\begin{rem}
 			\begin{alphanumerate}
-				\item \lbl{rem:Hufeisen}Let $Z^n(I^*)=\ker(d_{I^*}^n)$ and $Z^n(J^*)=\ker(d_{J^*}^n)$. Then $\phi$ and $\psi$ induce morphisms $\phi,\psi\colon Z^n(I^*)\morphism Z^n(J^*)$ and Proposition~\reff{prop:Hufeisenlemma}\itememph{b} shows that $\psi-\phi=d_{J^*}^{n-1}s^n$ on $Z^n(I^*)$, that is, they differ by a coboundary and thus induce the same morphisms in cohomology.
-				\item The assumption that $\Aa$ has sufficiently many injective objects is not required. It also suffices to have $0\morphism Y\morphism[\upsilon]J^*$ a cochain complex with injective $J^n$ (thus dropping exactness) and 
+				\item \lbl{rem:Hufeisen}Let $Z^n(I^\bullet )=\ker(d_{I^\bullet }^n)$ and $Z^n(J^\bullet )=\ker(d_{J^\bullet }^n)$. Then $\phi$ and $\psi$ induce morphisms $\phi,\psi\colon Z^n(I^\bullet )\morphism Z^n(J^\bullet )$ and Proposition~\reff{prop:Hufeisenlemma}\itememph{b} shows that $\psi-\phi=d_{J^\bullet }^{n-1}s^n$ on $Z^n(I^\bullet )$, that is, they differ by a coboundary and thus induce the same morphisms in cohomology.
+				\item The assumption that $\Aa$ has sufficiently many injective objects is not required. It also suffices to have $0\morphism Y\morphism[\upsilon]J^\bullet $ a cochain complex with injective $J^n$ (thus dropping exactness) and 
 				\begin{align*}
 					0\morphism X\morphism[\xi]I^0\morphism[d^0]I^1\morphism[d^1]\ldots 
 				\end{align*}
 				a long exact sequence in which the $I^n$ may fail to be injective. 
 			\end{alphanumerate}
 		\end{rem}
-		Before we prove Proposition~\reff{prop:Hufeisenlemma}, let's see how the rest of Theorem~\reff{thm:DerivedFunctors} follows from it. We first prove \itememph{a}. Let $\Aa\morphism[F]\Bb$ be left exact. For every object $X$ of $\Aa$, chose an injective resolution $X\morphism I_X^*$ of $X$ (and we need the axiom of choice -- for \emph{classes!} -- to do this). For every morphism $X\morphism[f]Y$ choose an extension $I_X^*\morphism[f^*]I_Y^*$ of $f$. Let
+		Before we prove Proposition~\reff{prop:Hufeisenlemma}, let's see how the rest of Theorem~\reff{thm:DerivedFunctors} follows from it. We first prove \itememph{a}. Let $\Aa\morphism[F]\Bb$ be left exact. For every object $X$ of $\Aa$, chose an injective resolution $X\morphism I_X^\bullet $ of $X$ (and we need the axiom of choice -- for \emph{classes!} -- to do this). For every morphism $X\morphism[f]Y$ choose an extension $I_X^\bullet \morphism[f^* ]I_Y^\bullet $ of $f$. Let
 		\begin{align*}
-			R^pF(X)=H^p(FI_X^*)\quad\text{and}\quad R^pF(f)=H^p\Big(FI_X^*\morphism[f^*]FI_Y^*\Big)\;.
+			R^pF(X)=H^p(FI_X^\bullet )\quad\text{and}\quad R^pF(f)=H^p\Big(FI_X^\bullet \morphism[f^* ]FI_Y^\bullet \Big)\;.
 		\end{align*}
-		We need to show that the $R^pF$ are functors. That $R^pF(\id_X)=\id_{R^pF(X)}$ (even when $\id_X^*\neq \id_{I_X^*}$) follows from Proposition~\reff{prop:Hufeisenlemma}\itememph{b} and Remark~\reff{rem:Hufeisen}\itememph{a}. When $X\morphism[f]Y\morphism[g]Z$, the morphisms 
+		We need to show that the $R^pF$ are functors. That $R^pF(\id_X)=\id_{R^pF(X)}$ (even when $\id_X^* \neq \id_{I_X^\bullet }$) follows from Proposition~\reff{prop:Hufeisenlemma}\itememph{b} and Remark~\reff{rem:Hufeisen}\itememph{a}. When $X\morphism[f]Y\morphism[g]Z$, the morphisms 
 		\begin{align*}
-			I_X^*\xdoublemorphism[g^*f^*][(gf)^*]I_Z^*
+			I_X^\bullet \xdoublemorphism[g^* f^* ][(gf)^* ]I_Z^\bullet 
 		\end{align*}
-		are cochain homotopic by Proposition~\reff{prop:Hufeisenlemma}\itememph{b}. Applying the additive functor $F$ ($F$ is left-exact, hence additive by Definition~\reff{def:leftrightexact} and Remark~\reff{rem:left-exactAdditive}) gives cochain homotopic morphisms $F(g^*f^*)$ and $F(g^*)F(f^*)$, showing that the induced morphisms in cohomology coincide, i.e., $R^pF(gf)=R^pF(g)\circ R^pF(f)$. Thus, $R^pF$ is indeed a functor.
+		are cochain homotopic by Proposition~\reff{prop:Hufeisenlemma}\itememph{b}. Applying the additive functor $F$ ($F$ is left-exact, hence additive by Definition~\reff{def:leftrightexact} and Remark~\reff{rem:left-exactAdditive}) gives cochain homotopic morphisms $F(g^* f^* )$ and $F(g^* )F(f^*)$, showing that the induced morphisms in cohomology coincide, i.e., $R^pF(gf)=R^pF(g)\circ R^pF(f)$. Thus, $R^pF$ is indeed a functor.
 		
-		To construct the long exact cohomology sequence for $R^pF$, consider a short exact sequence $0\morphism X\morphism[\alpha]Y\morphism[\beta]Z\morphism 0$ and construct a short exact sequence $0\morphism I_X^*\morphism[a^*] K^*\morphism[b^*] I_Y^*\morphism 0$ as in Proposition~\reff{prop:Hufeisenlemma}\itememph{c}. We obtain a short exact sequence $0\morphism FI_X^*\morphism FK^*\morphism FI_Y^*\morphism 0$ (using Proposition~\reff{prop:injectiveSeqsStayExact}) and a long exact sequence 
+		To construct the long exact cohomology sequence for $R^pF$, consider a short exact sequence $0\morphism X\morphism[\alpha]Y\morphism[\beta]Z\morphism 0$ and construct a short exact sequence $0\morphism I_X^\bullet \morphism[a ] K^\bullet \morphism[b ] I_Y^\bullet \morphism 0$ as in Proposition~\reff{prop:Hufeisenlemma}\itememph{c}. We obtain a short exact sequence $0\morphism FI_X^\bullet \morphism FK^\bullet \morphism FI_Y^\bullet \morphism 0$ (using Proposition~\reff{prop:injectiveSeqsStayExact}) and a long exact sequence 
 		\begin{diagram}[baseline=0.75cm-0.5ex]{\lbl{diag:derivedCohoSeq}}
-			\node[ob] (HpFK) at (0,1.5) {$H^p(FK^*)$};
+			\node[ob] (HpFK) at (0,1.5) {$H^p(FK^\bullet )$};
 			\node[ob] (RpFX) [left=0.575 of HpFK] {$R^pF(X)$};			
 			\node[ob] (RpFY) [right=0.575 of HpFK] {$R^pF(X)$};
 			\node[ob] (Rp1FY) [left=0.575 of RpFX] {$R^{p-1}F(Y)$};
@@ -632,27 +646,27 @@ From now on, unless otherwise stated, our rings are commutative with $1$.
 			\draw[->, dashed] (RpFZ) -- (RpFY);
 			\tag{\#}
 		\end{diagram}
-		The vertical arrow is obtained by choosing morphisms $K^*\morphism[\kappa_1^*]I_Z^*$ and $I_Z^*\morphism[\kappa_2^*]K^*$ of cochain complexes (by Proposition~\reff{prop:Hufeisenlemma}\itememph{b}). Applying $F$ gives $FK^*\xrightarrow{F\kappa_1^*}FI_Z^*$ and $FI_Z^*\xrightarrow{F\kappa_2^*}FK^*$ such that $F(\kappa_1^*)F(\kappa_2^*)$ and $F(\kappa_2^*)F(\kappa_1^*)$ are cochain homotopic to $\id_{FI_Z^*}$ and $\id_{FK^*}$ respectively. It follows that $F(\kappa_1^*)$ and $F(\kappa_2^*)$ induce isomorphisms on cohomology which are inverse to each other, resulting in the vertical arrow of \eqreff{diag:derivedCohoSeq}.
+		The vertical arrow is obtained by choosing morphisms $K^\bullet \morphism[\kappa_1 ]I_Z^\bullet $ and $I_Z^\bullet \morphism[\kappa_2 ]K^\bullet $ of cochain complexes (by Proposition~\reff{prop:Hufeisenlemma}\itememph{b}). Applying $F$ gives $FK^\bullet \xrightarrow{F\kappa_1 }FI_Z^\bullet $ and $FI_Z^\bullet \xrightarrow{F\kappa_2 }FK^\bullet $ such that $F(\kappa_1 )F(\kappa_2 )$ and $F(\kappa_2 )F(\kappa_1 )$ are cochain homotopic to $\id_{FI_Z^\bullet }$ and $\id_{FK^\bullet }$ respectively. It follows that $F(\kappa_1 )$ and $F(\kappa_2 )$ induce isomorphisms on cohomology which are inverse to each other, resulting in the vertical arrow of \eqreff{diag:derivedCohoSeq}.
 		
-		Also, to verify commutativity of \eqreff{diag:derivedCohoSeq}, one notes that $\alpha^*$ and $\kappa_1a^*$, and hence $F(\alpha^*)$ and $F(\kappa_1a^*)$, are cochain homotopic by Proposition~\reff{prop:Hufeisenlemma}\itememph{a}. Same for $\beta^*$ and $b^*\kappa_2$.
+		Also, to verify commutativity of \eqreff{diag:derivedCohoSeq}, one notes that $\alpha $ and $\kappa_1a $, and hence $F(\alpha )$ and $F(\kappa_1a )$, are cochain homotopic by Proposition~\reff{prop:Hufeisenlemma}\itememph{a}. Same for $\beta $ and $b \kappa_2$.
 		
 		This shows that $R^pF$ has the required long exact cohomology sequence. In a similar fashion one can show its functoriality on the category of short exact sequences in $\Aa$.
 		
-		If $X$ is injective, one can choose $I^*\colon X\morphism 0\morphism 0\morphism\ldots$ and $X\morphism[\id_X]I^*$ as injective resolution. Applying Proposition~\reff{prop:Hufeisenlemma}\itememph{b}, we get 
+		If $X$ is injective, one can choose $I^\bullet \colon X\morphism 0\morphism 0\morphism\ldots$ and $X\morphism[\id_X]I^\bullet $ as injective resolution. Applying Proposition~\reff{prop:Hufeisenlemma}\itememph{b}, we get 
 		\begin{align*}
-			R^pF(X)=H^p(FI_X^*)=H^p(FI^*)=0\quad\text{when }p>0
+			R^pF(X)=H^p(FI_X^\bullet )=H^p(FI^\bullet )=0\quad\text{when }p>0
 		\end{align*}
 		and, for arbitrary $X\in\Ob(\Aa)$ (injective or not), a canonical isomorphism
 		\begin{align*}
 			R^0F(X)=\ker(FI_X^0\morphism FI_X^1)\simeq F\big(\ker(I_X^0\morphism I_X^1)\big)\simeq F(X)\;.
 		\end{align*}
-		(using that $F$ is left-exact, hence commutes with kernels). By the \emph{if} part of \itememph{b} that was already proved, $R^*F$ is a right-derived functor of $F$.
+		(using that $F$ is left-exact, hence commutes with kernels). By the \emph{if} part of \itememph{b} that was already proved, $R^\bullet F$ is a right-derived functor of $F$.
 		
-		The \emph{only if} part of \itememph{b} is an immediate consequence. Let $\Phi^*$ be the right-derived functor of $F=\Phi^0$, then $\Phi^*\simeq R^*F$ by the universal property of derived functors. By the above, $\Phi^pI=R^pF(I)=0$ when $I$ is injective.
+		The \emph{only if} part of \itememph{b} is an immediate consequence. Let $\Phi^\bullet $ be the right-derived functor of $F=\Phi^0$, then $\Phi^\bullet \simeq R^\bullet F$ by the universal property of derived functors. By the above, $\Phi^pI=R^pF(I)=0$ when $I$ is injective.
 		
-		Part \itememph{c}. Let $0\morphism F'\morphism F\morphism F''\morphism 0$ be a sequence of left-exact functors which is exact on injective objects. Choosing $I_X^*$ as in the above construction, we get a short exact sequence
+		Part \itememph{c}. Let $0\morphism F'\morphism F\morphism F''\morphism 0$ be a sequence of left-exact functors which is exact on injective objects. Choosing $I_X^\bullet $ as in the above construction, we get a short exact sequence
 		\begin{align}\lbl{eq:shortExactFunctorSequence}
-			0\morphism F'I_X^*\morphism FI_X^*\morphism F''I_X^*\morphism 0\tag{$*$}
+			0\morphism F'I_X^\bullet \morphism FI_X^\bullet \morphism F''I_X^\bullet \morphism 0\tag{$*$}
 		\end{align}
 		and this gives a long exact cohomology sequence which is functorial in $X$ as \eqreff{eq:shortExactFunctorSequence} is. The anti-commutativity of connecting morphisms (with $0\morphism X\morphism Z\morphism Y\morphism 0$ a short exact sequence) comes from the analogous (and well-known) assertion for the connecting morphisms in the diagram 
 		\begin{diagram*}
@@ -668,15 +682,15 @@ From now on, unless otherwise stated, our rings are commutative with $1$.
 			\node[ob] (0'r) at (4, 1.5) {$0$};
 			\node[ob] (0r) at (4, 0) {$0$};
 			\node[ob] (0''r) at (4, -1.5) {$0$};
-			\node[ob] (F'X) at (-2, 1.5) {$F'I_X^*$};
-			\node[ob] (FX) at (-2, 0) {$FI_X^*$};
-			\node[ob] (F''X) at (-2, -1.5) {$F''I_X^*$};
-			\node[ob] (F'Z) at (0, 1.5) {$F'K^*$};
-			\node[ob] (FZ) at (0, 0) {$FK^*$};
-			\node[ob] (F''Z) at (0, -1.5) {$F''K^*$};
-			\node[ob] (F'Y) at (2, 1.5) {$F'I_Y^*$};
-			\node[ob] (FY) at (2, 0) {$FI_Y^*$};
-			\node[ob] (F''Y) at (2, -1.5) {$F''I_Y^*$};
+			\node[ob] (F'X) at (-2, 1.5) {$F'I_X^\bullet $};
+			\node[ob] (FX) at (-2, 0) {$FI_X^\bullet $};
+			\node[ob] (F''X) at (-2, -1.5) {$F''I_X^\bullet $};
+			\node[ob] (F'Z) at (0, 1.5) {$F'K^\bullet $};
+			\node[ob] (FZ) at (0, 0) {$FK^\bullet $};
+			\node[ob] (F''Z) at (0, -1.5) {$F''K^\bullet $};
+			\node[ob] (F'Y) at (2, 1.5) {$F'I_Y^\bullet $};
+			\node[ob] (FY) at (2, 0) {$FI_Y^\bullet $};
+			\node[ob] (F''Y) at (2, -1.5) {$F''I_Y^\bullet $};
 			\draw[->] (0Xo) -- (F'X);
 			\draw[->] (F'X) -- (FX);
 			\draw[->] (FX) -- (F''X);
@@ -702,34 +716,172 @@ From now on, unless otherwise stated, our rings are commutative with $1$.
 			\draw[->] (F''Z) -- (F''Y);
 			\draw[->] (F''Y) -- (0''r);
 		\end{diagram*}
-		(where $K^*$ is the same as in the proof of \itememph{a}).
+		(where $K^\bullet $ is the same as in the proof of \itememph{a}).
 \end{proof}
 \begin{proof}[Proof of Proposition~\reff{prop:Hufeisenlemma}]
-	Part \itememph{a}. For $n\geq 1$ denote the image of $d_{I^*}^{n-1}\colon I^{n-1}\morphism I^n$ by $B^n\subseteq I^n$ and let $B^0\subseteq I^0$ be the image of $\xi$. As $B^0\simeq X$ we have a morphism $f^0\colon B^0\morphism J^0$ such that $\upsilon f=f^0\xi$. We now construct the required morphisms $\phi^*$ inductively. Let $n\geq 0$ and suppose that $\phi^k\colon I^k\morphism J^k$ have already been constructed for $k=-1,\ldots,n-1$ (where $\phi^{-1}=f$) as well as $f^n\colon B^n\morphism J^n$ such that $d_{J^*}^{k-1}\phi^{k-1}=\phi^kd_{I^*}^{k-1}$ for $k< n$ and $d_{J ^*}^{n-1}\phi^{n-1}=f^nd_{I^*}^n$ (where we set $d_{I^*}^{-1}=\xi$ and $d_{J^*}^{-1}=\upsilon$). Let $\phi^n\colon I^n\morphism J^n$ be any extension of $f^n$ using that $J^n$ is injective and $B^n\monomorphism I^n$ a monomorphism. We have $d_{J^*}^{n}\phi ^nd_{I^*}^n=d_{J^*}^{n-1}f^nd_{I^*}^{n-1}=d_{J^*}^nd_{J^*}^{n-1}\phi^{n-1}=0$, hence $d_{J^*}^n\phi^n\colon I^n\morphism J^{n+1}$ factors over $\coker(d_{I^*}^n)\simeq I^n/B^n=I^n/Z^n(I^*)\simeq B^{n+1}$ by exactness of the resolution, which gives $f^{n+1}\colon B^{n+1}\morphism J^{n+1}$. This completes the induction.
+	Part \itememph{a}. For $n\geq 1$ denote the image of $d_{I^\bullet }^{n-1}\colon I^{n-1}\morphism I^n$ by $B^n\subseteq I^n$ and let $B^0\subseteq I^0$ be the image of $\xi$. As $B^0\simeq X$ we have a morphism $f^0\colon B^0\morphism J^0$ such that $\upsilon f=f^0\xi$. We now construct the required morphisms $\phi $ inductively. Let $n\geq 0$ and suppose that $\phi^k\colon I^k\morphism J^k$ have already been constructed for $k=-1,\ldots,n-1$ (where $\phi^{-1}=f$) as well as $f^n\colon B^n\morphism J^n$ such that $d_{J^\bullet }^{k-1}\phi^{k-1}=\phi^kd_{I^\bullet }^{k-1}$ for $k< n$ and $d_{J ^\bullet }^{n-1}\phi^{n-1}=f^nd_{I^\bullet }^n$ (where we set $d_{I^\bullet }^{-1}=\xi$ and $d_{J^\bullet }^{-1}=\upsilon$). Let $\phi^n\colon I^n\morphism J^n$ be any extension of $f^n$ using that $J^n$ is injective and $B^n\monomorphism I^n$ a monomorphism. We have $d_{J^\bullet }^{n}\phi ^nd_{I^\bullet }^n=d_{J^\bullet }^{n-1}f^nd_{I^\bullet }^{n-1}=d_{J^\bullet }^nd_{J^\bullet }^{n-1}\phi^{n-1}=0$, hence $d_{J^\bullet }^n\phi^n\colon I^n\morphism J^{n+1}$ factors over $\coker(d_{I^\bullet }^n)\simeq I^n/B^n=I^n/Z^n(I^\bullet )\simeq B^{n+1}$ by exactness of the resolution, which gives $f^{n+1}\colon B^{n+1}\morphism J^{n+1}$. This completes the induction.
 	
 	Part \itememph{b}. Professor Franke suggests the horseshoe lemma is best understood if you work out the proof for yourself, so you might want to do just that instead. However, for the sake of completeness of these notes I will now include the proof I obediently worked out for myself.
 	
-	Let $\psi^*$ be another lift of $f$. Then $(\psi^0-\phi^0)\xi=\upsilon f-\upsilon f=0$, hence $\psi^0-\phi^0$ factors over $\coker(\xi)=I^0/B^0\simeq B^1$, hence we get a morphism $\sigma^1\colon B^1\morphism J^0$ such that $\sigma^1d_{I^*}^0=\psi^0-\phi^0$. Let $s^1\colon I^1\morphism J^0$ be any extension of $\sigma^1$ using injectivity of $J^0$. We now construct the required cochain homotopy $s^*$ inductively, letting $s^0=0$. Let $n\geq 1$ and suppose that $s^k\colon I^k\morphism J^{k-1}$ has already been constructed for $k\leq n$ such that $d_{J^*}^{k-1}s^k+s^{k+1}d_{I^*}^k=\psi^k-\phi^k$ for $k<n$. Then
+	Let $\psi $ be another lift of $f$. Then $(\psi^0-\phi^0)\xi=\upsilon f-\upsilon f=0$, hence $\psi^0-\phi^0$ factors over $\coker(\xi)=I^0/B^0\simeq B^1$, hence we get a morphism $\sigma^1\colon B^1\morphism J^0$ such that $\sigma^1d_{I^\bullet }^0=\psi^0-\phi^0$. Let $s^1\colon I^1\morphism J^0$ be any extension of $\sigma^1$ using injectivity of $J^0$. We now construct the required cochain homotopy $s^\bullet $ inductively, letting $s^0=0$. Let $n\geq 1$ and suppose that $s^k\colon I^k\morphism J^{k-1}$ has already been constructed for $k\leq n$ such that $d_{J^\bullet }^{k-1}s^k+s^{k+1}d_{I^\bullet }^k=\psi^k-\phi^k$ for $k<n$. Then
 	\begin{align*}
-		\left(\psi^n-\phi^n-d_{J^*}^{n-1}s^n\right)d_{I^*}^{n-1}&=d_{J^*}^{n-1}\left(\psi^{n-1}-\phi^{n-1}\right)-d_{J^*}^{n-1}s^nd_{I^*}^{n-1}\\
-		&=d_{J^*}^{n-1}\left(d_{J^*}^{n-2}s^{n-1}+s^nd_{I^*}^{n-1}\right)-d_{J^*}^{n-1}s^nd_{I^*}^{n-1}\\
-		&=d_{J^*}^{n-1}d_{J^*}^{n-2}s^{n-1}\\
+		\left(\psi^n-\phi^n-d_{J^\bullet }^{n-1}s^n\right)d_{I^\bullet }^{n-1}&=d_{J^\bullet }^{n-1}\left(\psi^{n-1}-\phi^{n-1}\right)-d_{J^\bullet }^{n-1}s^nd_{I^\bullet }^{n-1}\\
+		&=d_{J^\bullet }^{n-1}\left(d_{J^\bullet }^{n-2}s^{n-1}+s^nd_{I^\bullet }^{n-1}\right)-d_{J^\bullet }^{n-1}s^nd_{I^\bullet }^{n-1}\\
+		&=d_{J^\bullet }^{n-1}d_{J^\bullet }^{n-2}s^{n-1}\\
 		&=0\;,
 	\end{align*}
-	hence $(\psi^n-\phi^n-d_{J^*}^{n-1}s^n)d_{I^*}^{n-1}$ factors over $\coker(d_{I^*}^{n-1})=I^n/B^n\simeq B^{n+1}$, giving a morphism $\sigma^{n+1}\colon B^{n+1}\morphism J^n$, which we extend to some $s^{n+1}\colon I^{n+1}\morphism J^n$ with the required property, using that $J^n$ is injective. This finishes the induction step.
+	hence $(\psi^n-\phi^n-d_{J^\bullet }^{n-1}s^n)d_{I^\bullet }^{n-1}$ factors over $\coker(d_{I^\bullet }^{n-1})=I^n/B^n\simeq B^{n+1}$, giving a morphism $\sigma^{n+1}\colon B^{n+1}\morphism J^n$, which we extend to some $s^{n+1}\colon I^{n+1}\morphism J^n$ with the required property, using that $J^n$ is injective. This finishes the induction step.
 	
-	Part \itememph{c}. By Definition~\reff{def:injective}\itememph{b}, the rows of \eqreff{diag:resolution} except the first are automatically split, so we have no choice but $K^n=I^n\oplus J^n$ for all $n\geq 0$. By Definition~\reff{def:injective}\itememph{a} it is clear that the $K^n$ are injective again. Let $i^n\colon I^n\morphism K^n$ denote the canonical inclusion and $j^n\colon K^n\morphism J^n$ the canonical projection. We need to construct the $d_{K^*}^n$ and $\zeta$, which will be yet another inductive lifting argument.
+	Part \itememph{c}. By Definition~\reff{def:injective}\itememph{b}, the rows of \eqreff{diag:resolution} except the first are automatically split, so we have no choice but $K^n=I^n\oplus J^n$ for all $n\geq 0$. By Definition~\reff{def:injective}\itememph{a} it is clear that the $K^n$ are injective again. Let $i^n\colon I^n\morphism K^n$ denote the canonical inclusion and $j^n\colon K^n\morphism J^n$ the canonical projection. We need to construct the $d_{K^\bullet }^n$ and $\zeta$, which will be yet another inductive lifting argument.
 	 
-	 As $\alpha$ is a monomorphism, we can extend $\xi$ to some $\hat{\xi}\colon Z\morphism I^0$. Let $\zeta=\hat{\xi}\times \upsilon\beta$. Then $d_{I^*}^0\hat{\xi}\alpha=d_{I^*}^0\xi=0$, hence $d_{I^*}^0\hat{\xi}$ factors over $\coker(\alpha)=Y$. This gives $\delta^0\colon Y\morphism I^1$ such that $d_{I^*}^0\hat{\xi}=\delta^0\upsilon\beta$. Since $\upsilon$ is a monomorphism and $I^1$ injective, we can extend $-\delta^0$ to some $d^0\colon J^0\morphism I^1$. We define $d_{K^*}^0=(d_{I^*}^0+d^0)\times d_{J^*}^0$. By construction, this satisfies $d_{K^*}^0\zeta=0$.
+	 As $\alpha$ is a monomorphism, we can extend $\xi$ to some $\hat{\xi}\colon Z\morphism I^0$. Let $\zeta=\hat{\xi}\times \upsilon\beta$. Then $d_{I^\bullet }^0\hat{\xi}\alpha=d_{I^\bullet }^0\xi=0$, hence $d_{I^\bullet }^0\hat{\xi}$ factors over $\coker(\alpha)=Y$. This gives $\delta^0\colon Y\morphism I^1$ such that $d_{I^\bullet }^0\hat{\xi}=\delta^0\upsilon\beta$. Since $\upsilon$ is a monomorphism and $I^1$ injective, we can extend $-\delta^0$ to some $d^0\colon J^0\morphism I^1$. We define $d_{K^\bullet }^0=(d_{I^\bullet }^0+d^0)\times d_{J^\bullet }^0$. By construction, this satisfies $d_{K^\bullet }^0\zeta=0$.
 	 
-	 Let $n\geq 0$ and suppose we have already constructed $d_{K^*}^k=(d_{I^*}^k-d^k)\times d_{J^*}^k$ for $k\leq n$, where $d^k\colon J^k\morphism I^{k+1}$ satisfies $d_{I^*}^kd^{k-1}+d^kd_{J^*}^{k-1}=0$ for $k=1,\ldots,n$ and $d_{I^*}^0\hat{\xi}=d^0\upsilon\beta$ (hence $d_{K^*}^kd_{K^*}^{k-1}=0$ and $d_{K^*}^0\zeta=0$). Then
+	 Let $n\geq 0$ and suppose we have already constructed $d_{K^\bullet }^k=(d_{I^\bullet }^k-d^k)\times d_{J^\bullet }^k$ for $k\leq n$, where $d^k\colon J^k\morphism I^{k+1}$ satisfies $d_{I^\bullet }^kd^{k-1}+d^kd_{J^\bullet }^{k-1}=0$ for $k=1,\ldots,n$ and $d_{I^\bullet }^0\hat{\xi}=d^0\upsilon\beta$ (hence $d_{K^\bullet }^kd_{K^\bullet }^{k-1}=0$ and $d_{K^\bullet }^0\zeta=0$). Then
 	 \begin{align*}
-	 	d_{I^*}^{n+1}d^nd_{J^*}^{n-1}=d_{I^*}^{n+1}\left(-d_{I^*}^nd^{n-1}\right)=0\;,
+	 	d_{I^\bullet }^{n+1}d^nd_{J^\bullet }^{n-1}=d_{I^\bullet }^{n+1}\left(-d_{I^\bullet }^nd^{n-1}\right)=0\;,
 	 \end{align*}
-	 hence $d_{I^*}^{n+1}d^n$ factors over $\coker(d_{J^*}^{n-1})=\Im(d_{J^*}^n)$. This gives $\delta^{n+1}\colon \Im(d_{J^*}^n)\morphism I^{n+2}$, and $-\delta^{n+1}$ can be extended to some $d^{n+1}\colon J^{n+1}\morphism I^{n+2}$ (by injectivity of $I^{n+2}$) which satisfies $d_{I^*}^{n+1}d^{n}+d^{n+1}d_{J^*}^n=0$. Then $d_{K^*}^{n+1}=(d_{I^*}^{n+1}+d^{n+1})\times d_{J^*}^{n+1}$ fulfills $d_{K^*}^{n+1}d_{K^*}^n=0$ and the induction is complete.
+	 hence $d_{I^\bullet }^{n+1}d^n$ factors over $\coker(d_{J^\bullet }^{n-1})=\Im(d_{J^\bullet }^n)$. This gives $\delta^{n+1}\colon \Im(d_{J^\bullet }^n)\morphism I^{n+2}$, and $-\delta^{n+1}$ can be extended to some $d^{n+1}\colon J^{n+1}\morphism I^{n+2}$ (by injectivity of $I^{n+2}$) which satisfies $d_{I^\bullet }^{n+1}d^{n}+d^{n+1}d_{J^\bullet }^n=0$. Then $d_{K^\bullet }^{n+1}=(d_{I^\bullet }^{n+1}+d^{n+1})\times d_{J^\bullet }^{n+1}$ fulfills $d_{K^\bullet }^{n+1}d_{K^\bullet }^n=0$ and the induction is complete.
 	
-	 It remains to verify that $Z\morphism[\zeta]K^*$ is indeed a resolution, i.e., acyclic. But this is an immediate consequence of the long exact cohomology sequence for short exact sequences of chain complexes, since both $H^*(I^*)$ and $H^*(J^*)$ vanish.
+	 It remains to verify that $Z\morphism[\zeta]K^\bullet $ is indeed a resolution, i.e., acyclic. But this is an immediate consequence of the long exact cohomology sequence for short exact sequences of chain complexes, since both $H^\bullet (I^\bullet )$ and $H^\bullet (J^\bullet )$ vanish.
 \end{proof}
+Left-derived functors of right-exact functors can be constructed by dualizing everything.
+\begin{defi}\lbl{def:projective}
+	An object $P$ in an abelian category $\Aa$ is \defemph{projective} iff the following equivalent conditions hold.
+	\begin{alphanumerate}
+		\item When $X\epimorphism[\xi] Y$ is an epimorphism, then any morphism $P\morphism[\pi] Y$ extends to a morphism $P\morphism X$ (i.e., $P$ is projective in the sense of Definition~\reff{def:projectiveModule}\itememph{b}).
+		\item Any short exact sequence $0\morphism X'\morphism X\morphism P\morphism 0$ splits.
+	\end{alphanumerate}
+	The category $\Aa$ has \defemph{sufficiently many projective objects} if every object $X$ has an epimorphism $P\epimorphism X$ with $P$ injective.
+\end{defi}
+\begin{proof}
+	Equivalence of \itememph{a} and \itememph{b} follows by dualizing the proof of Definition~\reff{def:injective}.
+\end{proof}
+\begin{defi}
+	A \defemph{projective resolution} of an object $Y$ of an abelian category $\Aa$ is a long exact sequence
+	\begin{align*}
+		\ldots\morphism[d_1]P_1\morphism[d_0] P_0\morphism[\upsilon] Y\morphism 0
+	\end{align*}
+	with $P_0,P_1,\ldots$ projective.
+\end{defi}
+\begin{thm}\lbl{thm:LeftDerivedFunctors}
+	Let $\Aa,\Bb$ be abelian categories where $\Aa$ has sufficiently many projective objects.
+	\begin{alphanumerate}
+		\item Any left-exact functor $\Aa\morphism[F]\Bb$ has a left-derived functor $L_\bullet F$.
+		\item Let $\Phi_\bullet \colon \Aa\morphism\Bb$ be a homological functor, then $\Phi_\bullet $ is a right-derived functor of $\Phi_0$ iff $\Phi_pP=0$ for any projective object $P\in\Ob(\Aa)$ and all $p>0$.
+		\item For a short sequence $\Ff\colon 0\morphism F'\morphism F\morphism F''\morphism0$ which is exact on projectives there is a long exact sequence
+		\begin{multline*}
+		\ldots\morphism L_{i+1} F''X\morphism[d_\Ff]L_i F'X\morphism L_i F X\morphism L_i F''X\morphism[d_\Ff]L_{i-1} F'X\morphism\ldots\\
+		\ldots\morphism L_1 F'X\morphism[d_\Ff]\morphism F'X\morphism F X\morphism F''X\morphism 0
+		\end{multline*}
+		functorial in $X\in\Ob(\Aa)$ and such that the diagram
+		\begin{diagram*}
+			\node[ob] (F1A) at (0,1.5) {$L_i F''(X'')$};
+			\node[ob] (G1A) at (0,0) {$L_{i-1} F''(X')$};
+			\node[ob] (FA) at (3,1.5) {$L_{i-1} F'(X'')$};
+			\node[ob] (GA) at (3,0) {$L_{i-2} F'(X')$};
+			\scriptsize
+			\draw[->] (F1A) -- (G1A) node[pos=0.5, left] {$\partial_{L_\bullet  F''}$};
+			\draw[->] (FA) -- (GA) node[pos=0.5, right] {$-\partial_{L_\bullet  F'}$};
+			\draw[->] (F1A) -- (FA) node[pos=0.5, above] {$d_\Ff$};
+			\draw[->] (G1A) -- (GA) node[pos=0.5, above] {$d_\Ff$};
+		\end{diagram*}
+		commutes when $0\morphism X'\morphism X\morphism X''\morphism 0$ is a short exact sequence in $\Aa$ (again, note the minus!).
+	\end{alphanumerate}
+\end{thm}
+\begin{proof}
+	Dualize the proof of Theorem~\reff{thm:DerivedFunctors} and prove the dual analogues of Fact~\reff{fact:injectiveResolutions} and the Proposition~\reff{prop:Hufeisenlemma} on the way.
+\end{proof}
+\subsection{Construction of \texorpdfstring{$\Ext^\bullet$}{Ext}}
+If $\Aa$ has sufficiently many injective objects, then, for fixed objects $X$, one has a right-derived functor $\Ext_\Aa^\bullet(X,-)$ of $\Hom_\Aa(X,-)\colon \Aa\morphism\cat{Ab}$. As $\Hom_\Aa(X,-)$ is functorial in $X$, so are the $\Ext_\Aa^\bullet(X,-)$. For a short exact sequence $0\morphism X'\morphism X\morphism X''\morphism 0$ and $I$ injective, one has a short exact sequence $0\morphism\Hom_\Aa(X',I)\morphism\Hom_\Aa(X,I)\morphism\Hom_\Aa(X'',I)\morphism 0$. One thus has a long exact cohomology sequence
+\begin{multline}\lbl{eq:ExtSeq1}
+	0\morphism\Ext_\Aa^0(X'',Y)\morphism\Ext_\Aa^0(X,Y)\morphism\Ext_\Aa^0(X',Y)\morphism\Ext_\Aa^1(X'',Y)\morphism\ldots\\
+	\ldots\morphism\Ext_\Aa^p(X'',Y)\morphism\Ext_\Aa^p(X,Y)\morphism\Ext_\Aa^p(X',Y)\morphism\Ext_\Aa^{p+1}(X'',Y)\morphism\ldots\tag{$*$}
+\end{multline}
+for every $Y\in\Ob(\Aa)$ coming from Theorem~\reff{thm:DerivedFunctors}\itememph{c} (somewhere we have to take contravariance into account, i.e., we consider the opposite category somewhere). Moreover, if $0\morphism Y'\morphism Y\morphism Y''\morphism 0$ is  a short exact sequence, we have a long exact sequence
+\begin{multline}\lbl{eq:ExtSeq2}
+0\morphism\Ext_\Aa^0(X,Y')\morphism\Ext_\Aa^0(X,Y)\morphism\Ext_\Aa^0(X,Y'')\morphism\Ext_\Aa^1(X,Y')\morphism\ldots\\
+\ldots\morphism\Ext_\Aa^p(X,Y')\morphism\Ext_\Aa^p(X,Y)\morphism\Ext_\Aa^p(X,Y'')\morphism\Ext_\Aa^{p+1}(X,Y')\morphism\ldots\tag{\#}
+\end{multline}
+since $\Ext_\Aa^\bullet(X,-)$ is a cohomological functor; and the squares formed by the connecting morphisms of  \eqreff{eq:ExtSeq1} and \eqreff{eq:ExtSeq2} anticommute.
+
+If $P\in\Ob(\Aa)$ is projective, then $\Hom_\Aa(P,-)$ is exact, thus
+\begin{align*}
+	\Ext_\Aa^p(P,Y)=H^p\big(\Hom_\Aa(P,I^\bullet)\big)=\Hom_\Aa\big(P,H^p(I^\bullet)\big)=0
+\end{align*}
+for $p>0$ (where $Y\morphism I^\bullet$ is any injective resolution). When $\Aa$ also has sufficiently many projective objects, then, for fixed $Y$, the functor $\Ext_\Aa^\bullet(-,Y)\colon \Aa^\op\morphism\cat{Ab}$ annihilates the injective objects of $\Aa^\op$ (the projectives of $\Aa$) in positive degrees, hence is a right-derived functor of $\Hom_\Aa(-,Y)$. Using the right-derived functors of $\Hom_\Aa(-,Y)\colon \Aa ^\op\morphism\cat{Ab}$ one also obtains $\Ext_\Aa^\bullet$ groups with \eqreff{eq:ExtSeq1} as part of the derived functor structure and \eqreff{eq:ExtSeq2} from Theorem~\reff{thm:DerivedFunctors}\itememph{c}; and when $\Aa$ also has sufficiently many injective objects, then, by the previous arguments, the $\Ext_\Aa^\bullet$ groups are canonically isomorphic to the ones obtained using injective resolutions of $Y$. To cut a long story short: For all $p\geq 0$,
+\begin{align*}
+	\Ext_\Aa^p(X,Y)=H^p\big(\Hom(X,I^\bullet)\big)=H^p\big(\Hom(P_\bullet,Y)\big)
+\end{align*}
+when $Y\morphism I^\bullet$ is an injective resolution of $Y$ and $P_\bullet\morphism X$ a projective resolution of $X$.
+
+An alternative construction of $\Ext_\Aa^1(-,-)$ is as follows. Let $\Ext_\Aa^1(X,Y)$ be the ``class of isomorphism classes'' of short exact sequences $\Ee\colon 0\morphism Y\morphism E\morphism X\morphism 0$. Two such extensions $\Ee,\Ee'$ are isomorphic iff there is a commutative diagram 
+\begin{diagram*}
+	\node[ob] at (-0.75,1.5) {$\Ee\colon$};
+	\node[ob] at (-0.75,0) {$\Ee'\colon$};
+	\node[ob] (A) at (0,1.5) {$0$};
+	\node[ob] (B) at (1.5,1.5) {$Y$};
+	\node[ob] (C) at (3,1.5) {$E$};
+	\node[ob] (D) at (4.5,1.5) {$X$};
+	\node[ob] (E) at (6,1.5) {$0$};
+	\node[ob] (A') at (0,0) {$0$};
+	\node[ob] (B') at (1.5,0) {$Y$};
+	\node[ob] (C') at (3,0) {$E'$};
+	\node[ob] (D') at (4.5,0) {$Y$};
+	\node[ob] (E') at (6,0) {$0$};
+	\scriptsize
+	\draw[->] (A) -- (B);
+	\draw[->] (B) -- (C);
+	\draw[->] (C) -- (D);
+	\draw[->] (D) -- (E);
+	\draw[->] (A') -- (B');
+	\draw[->] (B') -- (C') node[pos=0.5, above] {$\iota$};
+	\draw[->] (C') -- (D');
+	\draw[->] (D') -- (E');
+	\draw[transform canvas={xshift=1pt}] (B) -- (B');
+	\draw[transform canvas={xshift=-1pt}] (B) -- (B');
+	\draw[->] (C) -- (C');
+	\draw[transform canvas={xshift=1pt}] (D) -- (D');
+	\draw[transform canvas={xshift=-1pt}] (D) -- (D');
+\end{diagram*}
+(in which the middle vertical arrow is necessarily an isomorphism, e.g., by the snake lemma). 
+To such a short exact sequence one may associate $c_\Ee$, the image of $\id_X$ under $\Hom_\Aa(X,X)\morphism\Ext_\Aa^1(X,Y)$, or $_\Ee c$, the image of $\id_Y$ under $\Hom_\Aa(Y,Y)\morphism\Ext_\Aa^1(X,Y)$.
+\begin{prop}\lbl{prop:ExtExtends}
+	When $\Aa$ has sufficiently many injective or projective objects, then $_\Ee c=c_\Ee$ and one has a bijection between the isomorphism classes of extensions and $\Ext_\Aa^1(X,Y)$.
+\end{prop}
+\begin{proof}
+	\sout{Omitted} Left as an exercise.
+\end{proof}
+\begin{rem*}
+	\begin{alphanumerate}
+		\item The construction may have set theoretic difficulties, e.g., if $\Aa=\left\{(X,S,f)\right\}$ where $X$ is an abelian group, $S$ a set and $f\colon S\morphism\End(X)$ any function such that two elements in the image of $f$ commute; and $\Hom_\Aa((X,S,f),(Y,T,g))$ are the set of homomorphisms $X\morphism[\xi]Y$ of abelian groups such that $\xi f(s)=g(s)\xi$ when $s\in S\cap T$, $\xi f(s)=0$ when $s\in S\setminus T$, $g(t)\xi=0$ when $t\in T\setminus S$. Then there is no set of extensions of $(\IZ,\emptyset,\emptyset)$ by itself intersecting all isomorphism classes of such extensions.
+		\item The higher order versions of the construction of $\Ext_\Aa^1$ by extensions involves longer exact sequences (\emph{Yoneda}-$\Ext_\Aa^\bullet$).
+	\end{alphanumerate}
+\end{rem*}
+\begin{cor}
+	If $\Ext_\Aa^1(X,Y)=0$, then every short exact sequence $0\morphism Y\morphism E\morphism X\morphism 0$ splits.
+\end{cor}
+\begin{proof}
+	This follows immediately from Proposition~\reff{prop:ExtExtends}, but it's also easy to prove without. From the long exact cohomology sequence \eqreff{eq:ExtSeq1} we get that
+	\begin{align*}
+		0\morphism\Hom_\Aa(X,Y)\morphism\Hom_\Aa(E,Y)\morphism\Hom_\Aa(Y,Y)\morphism \Ext_\Aa^1(X,Y)=0
+	\end{align*}
+	is exact, hence $\Hom_\Aa(E,Y)\morphism\Hom_\Aa(Y,Y)$ is surjective. Choosing a preimage of $\id_Y$ gives a split of the sequence (cf. the proof of Definition~\reff{def:injective}).
+\end{proof}
+\begin{prop}
+	Let $F\colon \Aa\morphism\Bb$ be a left-exact functor between abelian categories where $\Aa$ has sufficiently many injective objects. Let $\XX$ be a class of objects in $\Aa$ with the following properties.
+	\begin{alphanumerate}
+		\item Let $X\simeq Y\oplus Z$, then $X\in\XX$ if and only if $Y,Z\in\XX$.
+		\item Every object of $\Aa$ has a monomorphism into some element of $\XX$.
+		\item If $0\morphism X\morphism Y\morphism Z\morphism 0$ is exact and $X,Y\in\XX$, then $Z\in\XX$ and $0\morphism FX\morphism FY\morphism FZ\morphism 0$  is exact.
+	\end{alphanumerate}
+	Then $\XX$ contains all injective objects, and $R^pF(X)=0$ when $X\in\XX$.
+\end{prop}
+\begin{proof}
+	When $I$ is injective, there is a monomorphism $I\monomorphism X$ with $X\in \XX$. By injectivity of $I$, $\id_I$ extends to a projection $X\morphism[\pi]I$ yielding an isomorphism $X\simeq I\oplus\ker(\pi)$. Then $I\in\XX$ by condition \itememph{a}.
+	
+	If $X\in\XX$ and $X\morphism I^\bullet$ is an injective resolution of $X$, let $B^p=\ker\left(I^p\morphism I^{p+1}\right)$ (thus $B^0\simeq X$ and $B^{p+1}\simeq \Im\left(I^p\morphism I^{p+1}\right)$ for $p\geq 0$). Applying \itememph{c} to the short exact sequence $0\morphism B^p\morphism I^p\morphism B^{p+1}\morphism 0$ inductively shows $B^p\in \XX$ and gives short exact sequences $0\morphism FB^p\morphism FI^p\morphism FB^{p+1}\morphism 0$ which may be spliced together to show exactness of the complex $FX\morphism FI^\bullet$ Then $R^pF(X)=H^p(FI^\bullet)=0$.
+\end{proof}
+
 \section{Some notes on additive categories and additive functors}
 The following lists and proves some first properties of additive categories and additive functors that Professor Franke assumed known in the lecture without explicitly mentioning them.
 \begin{defi}
