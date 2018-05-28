@@ -194,7 +194,7 @@ Let $\Aa$ be the category $R\cat{-Mod}$ and $\Bb$ be $\Oo_{\Spec R}\cat{-Mod}$, 
 \end{proof}
 
 \begin{prop}\lbl{prop:PushforwardOfQcIsQc}
-	If $X\morphism[f]Y$ is quasi-compact and quasi-separated morphism of preschemes and $\Mm\in\Ob(\cat{QCoh}(X))$, then $f_*\Mm\in\Ob\left(\cat{QCoh}\right)$.
+	If $X\morphism[f]Y$ is quasi-compact and quasi-separated morphism of preschemes and $\Mm\in\Ob(\cat{QCoh}(X))$, then $f_*\Mm\in\Ob\left(\cat{QCoh}(Y)\right)$.
 \end{prop}
 \begin{proof}
 	This is \cite[Proposition~1.5.2\itememph{b}]{alggeo1}.
@@ -312,8 +312,8 @@ But before we do this, we to introduce the notion of \emph{coherent} $\Oo_X$-mod
 \end{proof}
 \begin{defi}
 	\begin{alphanumerate}
-		\item We call a quasi-coherent $\Oo_X$-module \defemph{locally finitely generated} it it satisfies the equivalent conditions from Lemma~\reff{lem:locFinGen}.
-		\item When $X$ is locally Noetherian (cf. \cite[Definition~2.2.2]{alggeo1}), an $\Oo_X$-module is called \defemph{coherent} if it is quasi-coherent and locally finitely generated.
+		\item \lbl{def:locFinGenerated}We call a quasi-coherent $\Oo_X$-module \defemph{locally finitely generated} it it satisfies the equivalent conditions from Lemma~\reff{lem:locFinGen}.
+		\item When $X$ is locally Noetherian (cf.\ \cite[Definition~2.2.2]{alggeo1}), an $\Oo_X$-module is called \defemph{coherent} if it is quasi-coherent and locally finitely generated.
 	\end{alphanumerate}
 \end{defi}
 \begin{rem*}
@@ -520,7 +520,7 @@ Taking long exact cohomology sequences we just proved
 	and similar for $\check{H}_\alt^\bullet (\Uu,-)$.
 \end{prop}
 \begin{rem}
-	For arbitrary preschemes, the situation is more difficult (cf. Thomason, \emph{The Grothendieck Festschrift}).
+	For arbitrary preschemes, the situation is more difficult (cf.\ Thomason, \emph{The Grothendieck Festschrift}).
 \end{rem}
 \begin{defi}
 	An open cover $\Vv\colon X=\bigcup_{j\in J}V_j$ is a \defemph{refinement} of $\Uu\colon X=\bigcup_{i\in I}U_i$ if there is a map $v\colon J\morphism I$ such that $V_j\subseteq U_{v(j)}$ for all $j\in J$. Such a $v$ is called a \defemph{refinement map} for the pair $(\Vv,\Uu)$. 
@@ -687,7 +687,7 @@ Before the proof, a lemma.
 	\begin{claim}\lbl{claim:BigN}
 		For any quasi-coherent $\Oo_X$-module $\Mm$ there are a quasi-coherent $\Oo_X$-module $\Nn$ such that $A_i(\Nn)$ holds for arbitary $i$, and a monomorphism $\Mm\monomorphism\Nn$.
 	\end{claim}
-	To show this, let $j_W\colon W\morphism X$ be the embedding of any affine open subset $W$ contained in one of the open subsets forming the cober $\Vv$. As $X$ is a scheme, the morphism $j_W$ is affine, i.e., preimages of affine open subsets are affine (cf. \cite[Definition~2.5.1]{alggeo1}). Indeed, since preimages in this case are intersections with $W$, this follows from Proposition~\reff{prop:SchemesAffineIntersec}. Being an open embedding, $j_W$ is also quasi-separated. By Proposition~\reff{prop:PushforwardOfQcIsQc} and Proposition~\reff{prop:QCohHasKerCoker}\itememph{b}, $(j_W)_*\Mm|_W$ is a quasi-coherent $\Oo_X$-module. Since $X$ is quasi-compact, we find finitely many affine open subsets $W_1,\ldots,W_n$ covering $X$, each $W_i$ contained in an element of $\Vv$ (that is, $X=\bigcup_{i=1}^nW_i$ is a finite affine refinement of $\Vv$). Then
+	To show this, let $j_W\colon W\morphism X$ be the embedding of any affine open subset $W$ contained in one of the open subsets forming the cober $\Vv$. As $X$ is a scheme, the morphism $j_W$ is affine, i.e., preimages of affine open subsets are affine (cf.\ \cite[Definition~2.5.1]{alggeo1}). Indeed, since preimages in this case are intersections with $W$, this follows from Proposition~\reff{prop:SchemesAffineIntersec}. Being an open embedding, $j_W$ is also quasi-separated. By Proposition~\reff{prop:PushforwardOfQcIsQc} and Proposition~\reff{prop:QCohHasKerCoker}\itememph{b}, $(j_W)_*\Mm|_W$ is a quasi-coherent $\Oo_X$-module. Since $X$ is quasi-compact, we find finitely many affine open subsets $W_1,\ldots,W_n$ covering $X$, each $W_i$ contained in an element of $\Vv$ (that is, $X=\bigcup_{i=1}^nW_i$ is a finite affine refinement of $\Vv$). Then
 	\begin{align*}
 		\Nn\coloneqq\bigoplus_{i=1}^n(j_{W_i})_*\Mm|_{W_i}
 	\end{align*}
@@ -1106,9 +1106,9 @@ by \eqreff{eq:stalksOfNn} and $\Mm_x\isomorphism\Nn_x$. To see \eqreff{eq:stalks
 \end{proof}
 
 \section{Cohomology of morphisms and functorial properties of cohomology}
-Let $X\morphism[f]Y$ be a quasi-compact and separated morphism of preschemes. The set $\Bb$ of quasi-compact open subsets $U\subseteq Y$ which are schemes form a topology base on $Y$ (well, it contains all affine open subsets). By well-known properties of quasi-compact and of separated morphisms, $f^{-1}(U)$ is a quasi-compact scheme when $U\in \Bb$ (quasi-compactness is just Definition~\reff{def:qcqs} and $f^{-1}(U)\morphism\Spec\IZ$ is separated as the composition of the separated morphisms $f$ and $U\morphism\Spec \IZ$, cf. \cite[Fact~1.5.7\itememph{c}]{alggeo1}). We thus have for any quasi-coherent $\Oo_X$-module $\Mm$ a presheaf
+Let $X\morphism[f]Y$ be a quasi-compact and separated morphism of preschemes. The set $\Bb$ of quasi-compact open subsets $U\subseteq Y$ which are schemes form a topology base on $Y$ (well, it contains all affine open subsets). By well-known properties of quasi-compact and of separated morphisms, $f^{-1}(U)$ is a quasi-compact scheme when $U\in \Bb$ (quasi-compactness is just Definition~\reff{def:qcqs} and $f^{-1}(U)\morphism\Spec\IZ$ is separated as the composition of the separated morphisms $f$ and $U\morphism\Spec \IZ$, cf.\ \cite[Fact~1.5.7\itememph{c}]{alggeo1}). We thus have for any quasi-coherent $\Oo_X$-module $\Mm$ a presheaf
 \begin{align}\lbl{eq:cohoPresheaf}
-	\Phi^p\colon U\mapsto H^p\left(f^{-1}(U),\Mm\right)\tag{$*$}
+	\Phi^p\Mm\colon U\mapsto H^p\left(f^{-1}(U),\Mm\right)\tag{$*$}
 \end{align}
 on $\Bb$. The presheaf structure on \eqreff{eq:cohoPresheaf} is defined as follows. Let $V\subseteq U$ be elements of $\Bb$ and $\Uu,\Vv$ the covers of $f^{-1}(U)$ and $f^{-1}(V)$ by their affine open subsets. Then the morphism of restricting to the intersection with $f^{-1}(V)$ gives $\check{C}^\bullet (\Uu,\Mm)\morphism\check{C}^\bullet (\Uu\cap f^{-1}(V),\Mm)$ which may be followed by any morphism $\check{C}^\bullet (\Uu\cap f^{-1}(V),\Mm)\morphism\check{C}^\bullet (\Vv,\Mm)$ coming from a refinement map for the pair $(\Vv,\Uu\cap f^{-1}(\Vv))$ 
 (we proved in Lemma~\reff{lem:refinementPullback}\itememph{c} that any two refinement maps induce the same morphism on cohomology, so this choice doesn't matter), which gives
@@ -1118,7 +1118,7 @@ on $\Bb$. The presheaf structure on \eqreff{eq:cohoPresheaf} is defined as follo
 and this is the desired presheaf structure.
 
 \begin{defi}
-	Sheafifying $\Phi^p$ gives an $\Oo_Y$-module called the \defemph{$p\ordinalth$ direct image} of $\Mm$ under $f$ and denoted $R^pf_*\Mm$.
+	Sheafifying $\Phi^p\Mm$ gives an $\Oo_Y$-module called the \defemph{$p\ordinalth$ direct image} of $\Mm$ under $f$ and denoted $R^pf_*\Mm$.
 \end{defi}
  We have a morphism
  \begin{align}\lbl{eq:HpToRp}
@@ -1126,9 +1126,10 @@ and this is the desired presheaf structure.
  \end{align}
  (for $U\in\Bb$) as a special case of the morphism from a presheaf to its sheafification.
  
- \begin{prop}
+ \begin{prop}\lbl{prop:HigherDirectImage}
+ 	Let $X\morphism[f]Y$ is a quasi-compact and separated morphism of preschemes and $\Mm$ a quasi-coherent $\Oo_X$-module.
  	\begin{alphanumerate}
- 		\item \lbl{prop:HigherDirectImage}$R^0f_*\Mm\simeq f_*\Mm$ canonically.
+ 		\item $R^0f_*\Mm\simeq f_*\Mm$ canonically.
  		\item The $\Oo_X$-modules $R^pf_*\Mm$ are quasi-coherent.
  		\item For a short exact sequence $0\morphism\Mm'\morphism\Mm\morphism\Mm''\morphism 0$ of quasi-coherent $\Oo_X$-modules one has a long exact cohomology sequence 
  		\begin{multline*}
@@ -1174,23 +1175,25 @@ and this is the desired presheaf structure.
  	
  	Let $\Bb=\left\{U\subseteq Y\st U\text{ open and a quasi-compact scheme}\right\}$ the topology base on which $\Phi^p$ is defined, then $\snake{\Bb}=\left\{Y\setminus V(\lambda)\st\lambda\in R\right\}$ is another topology base of $Y$, and $\left(\Gg|_{\snake{\Bb}}\right)^\sh=\Gg^\sh$ for any presheaf $\Gg$ on $\Bb$ by \cite[Proposition~1.2.1\itememph{c}]{alggeo1}. But for $U=Y\setminus V(\lambda)\in\snake{\Bb}$ we have
  	\begin{align*}
- 		H^p\left(f^{-1}(U),\Mm\right)=H^p\left(f^{-1}(Y\setminus V(\lambda)),\Mm\right)= H^p(X\setminus V(f^*\lambda),\Mm)\simeq H^p(X,\Mm)_\lambda =M_\lambda
+ 		H^p\left(f^{-1}(U),\Mm\right)=H^p\left(f^{-1}(Y\setminus V(\lambda)),\Mm\right)= H^p(X\setminus V(f^*\lambda),\Mm)\simeq H^p(X,\Mm)_{f^*\lambda} =M_\lambda
  	\end{align*}
- 	for $M=H^p(X,\Mm)$ by Proposition~\reff{prop:localiedCoho}. We also used $f^{-1}(Y\setminus V(\lambda)=X\setminus V(f^*\lambda)$ as $f$ is a morphism of locally ringed spaces (cf. \cite[Definition~1.3.4\itememph{b}]{alggeo1}). It follows that $R^pf_*\Mm$ is canonically isomorphic to the sheafififation of $U\setminus V(\lambda)\mapsto M_\lambda$, which is just $\snake{M}$ by definition of the twiddlelization (\cite[Definition~1.5.1]{alggeo1}, actually). As $\snake{M}$ is a quasi-coherent $\Oo_Y$-module, \itememph{b} follows. Then $M\simeq \snake{M}(Y)$, which shows \itememph{d}.
+ 	by Proposition~\reff{prop:localiedCoho}, where we consider $M=H^p(X,\Mm)$ as an $R=\Oo_Y(Y)$-module via $f^*\colon \Oo_Y(Y)\morphism f_*\Oo_X(Y)=\Oo_X(X)$. We also used $f^{-1}(Y\setminus V(\lambda))=X\setminus V(f^*\lambda)$ as $f$ is a morphism of locally ringed spaces (cf.\ \cite[Definition~1.3.4\itememph{b}]{alggeo1}). It follows that $R^pf_*\Mm$ is canonically isomorphic to the sheafififation of $U\setminus V(\lambda)\mapsto M_\lambda$, which is just $\snake{M}$ by definition of the twiddlelization (\cite[Definition~1.5.1]{alggeo1}, actually). As $\snake{M}$ is a quasi-coherent $\Oo_Y$-module, \itememph{b} follows. Then $M\simeq \snake{M}(Y)$, which shows \itememph{d}.
  \end{proof}
  In general, the morphism \eqreff{eq:HpToRp} fails to be an isomorphism: The \emph{restriction to fibres} (for $Y$ a quasi-compact scheme)
  \begin{align}\lbl{eq:RestrictionToFibres}
- 	H^p(X,\Mm)\morphism R^pf_*\Mm=E_2^{0,p}\tag{\#}
+ 	H^p(X,\Mm)\morphism R^pf_*\Mm=E_2^{0,p}
  \end{align}
  as a special case of \eqreff{eq:HpToRp} is normally not an isomorphism when $Y$ is not affine. There is another morphism, the \emph{pull-back} (for $Y$ again a quasi-compact scheme)
  \begin{align}\lbl{eq:pull-back}
- 	E_2^{p,0}=H^p(Y,f_*\Mm)\morphism H^p(X,\Mm)\tag{$*$}
+ 	E_2^{p,0}=H^p(Y,f_*\Mm)\morphism H^p(X,\Mm)
  \end{align}
 (also not an isomorphism unless $f$ is affine) which can be constructed as follows. Let $\Uu_Y$ be the open cover of $Y$ by its affine subsets and $\Vv$ any affine refinement of $f^{-1}(\Uu_Y)$. Then, using Lemma~\reff{lem:CohomologyOfPushforward}\itememph{b} and Proposition~\reff{prop:CechCohoOnScheme}\itememph{a} we obtain
 \begin{align*}
 	H^p(Y,f_*\Mm)=\check{H}^p(\Uu_Y,f_*\Mm)=\check{H}^p\left(f^{-1}(\Uu_Y),\Mm\right)\morphism \check{H}^p(\Vv,\Mm)\lisomorphism H^p(X,\Mm)
 \end{align*}
-defining the above pull-back morphism \eqreff{eq:pull-back}. There is also an inverse image functor $f^*\colon \Oo_Y\cat{-Mod}\morphism \Oo_X\cat{-Mod}$ which preserves quasi-coherence and is left-adjoint to $f_*$. Thus, for $\Nn$ a quasi-coherent $\Oo_Y$-module, there is a canonical morphism $\Nn\morphism f_*f^*\Mm$ which gives another type of pull-back morphism
+defining the above pull-back morphism \eqreff{eq:pull-back}.
+
+There is an also inverse image functor $f^*\colon \Oo_Y\cat{-Mod}\morphism \Oo_X\cat{-Mod}$ which preserves quasi-coherence and is left-adjoint to $f_*$\footnote{\lbl{footnote:f^*}We constructed $f^*$ on exercise sheet \#10 of Algebraic Geometry~I and also proved the relevant properties there. It is given by $f^*\Mm=f^\sharp\Mm\otimes_{f^\sharp \Oo_Y}\Oo_X$, where $f^\sharp$ is constructed as in \cite[Remark~1.2.4]{alggeo1}.}. Thus, for $\Nn$ a quasi-coherent $\Oo_Y$-module, there is a canonical morphism $\Nn\morphism f_*f^*\Mm$ which gives another type of pull-back morphism
 \begin{align*}
 	H^p(Y,\Nn)\morphism H^p(Y,f_*f^*\Nn)\morphism[\text{\eqreff{eq:pull-back}}]H^p(X,f^*\Nn)\;.
 \end{align*}
@@ -1218,7 +1221,7 @@ and
 \end{align}
 and we deduce $E_{k+1}^{p,q}=E_k^{p,q}$ for $k>\max\{p,q+1\}$.
 
-For $1\ordinalst$ quadrant sequences (like Leray's) we put $E_\infty^{p,q}=E_k^{p,q}$ where $k$ is large enough. When the spectral sequence \emph{converges to some filtration on its limit} $L^\bullet $ (we have $L^\bullet =H^\bullet (X,\Mm)$ for Leray), it is meant that there is a filtration $F^\bullet L^\bullet \colon L^\bullet =F^0L^\bullet \supseteq F^1L*\supseteq \ldots$ with $E_\infty^{p,q}\simeq F^pL^{p+q}/F^{p+1}L^{p+q}$. Thus, for $1\ordinalst$ quadrant sequences,
+For $1\ordinalst$ quadrant sequences (like Leray's) we put $E_\infty^{p,q}=E_k^{p,q}$ where $k$ is large enough. When the spectral sequence \emph{converges to some filtration on its limit} $L^\bullet $ (we have $L^\bullet =H^\bullet (X,\Mm)$ for Leray), it is meant that there is a filtration $F^\bullet L^\bullet \colon L^\bullet =F^0L^\bullet \supseteq F^1L^\bullet\supseteq \ldots$ with $E_\infty^{p,q}\simeq F^pL^{p+q}/F^{p+1}L^{p+q}$. Thus, for $1\ordinalst$ quadrant sequences,
 \begin{align*}
 	F^1L^p=\ker\left(L^p\morphism E_\infty^{0,p}\right)=\ker\Big(L^p\morphism E_2^{p,q}\Big)
 \end{align*}
@@ -1230,24 +1233,175 @@ by \eqreff{eq:eta'}. The resulting morphism $E_2^{p,0}\morphism L^p$ has \eqreff
 
 There is also a Leray spectral sequence $R^pg_*R^qf_*\Mm\converge R^{p+q}(gf)_*\Mm$.
 
-\section{Affine morphisms}
-\begin{prop}
-	Let $X$ be quasi-separated and $Y$ an arbitrary prescheme. For a morphism $X\morphism[f]Y$, the following conditions are equivalent.
+\section{Affine morphisms and the relative \texorpdfstring{$\SPEC$}{Spec} functor}
+\begin{prop}\lbl{prop:AffineMorphism}
+	Let $X\morphism[f]Y$ be a morphism of preschemes, then the following conditions are equivalent.
 	\begin{alphanumerate}
 		\item If $U\subseteq Y$ is an affine open subset, then so is $f^{-1}(U)\subseteq X$.
 		\item It is possible to cover $Y$ by affine open $U$ such that $f^{-1}(U)$ is affine open.
+	\end{alphanumerate}
+	When $X$ is, in addition, quasi-separated, this is moreover equivalent to
+	\begin{alphanumerate}\setcounter{enumi}{2}
 		\item $f$ is separated and quasi-compact and we have $R^pf_*\Mm=0$ when $\Mm$ is a quasi-coherent $\Oo_X$-module and $p>0$.
 	\end{alphanumerate}
 \end{prop}
 \begin{proof}
-	The implication \itememph{a} $\Rightarrow$ \itememph{b} is trivial and \itememph{b} $\Rightarrow$ \itememph{c} follows easily from Theorem~\reff{thm:CohoOnSchemes}\itememph{b} and Proposition~\reff{prop:HigherDirectImage}\itememph{b}.
+	An unconditional proof of \itememph{a} $\Leftrightarrow$ \itememph{b} was given in \cite[Lemma~2.5.1]{alggeo1}.
 	
-	Now for \itememph{c} $\Rightarrow$ \itememph{a}. If $U\subseteq Y$ is affine and $\Mm\in\Ob(\cat{QCoh}(f^{-1}(U)))$, then $\Mm$ extends to $X$ (this will be checked in the next lecture) and by Proposition~\reff{prop:HigherDirectImage}\itememph{d}
+	The implication \itememph{a} $\Rightarrow$ \itememph{b} is trivial. For \itememph{b} $\Rightarrow$ \itememph{c}, it is obvious that $f$ is quasi-compact and separatedness was proved in \cite[Fact~2.6.1]{alggeo1}. To show $R^pf_*\Mm=0$, note that if $U\subseteq Y$ is affine open such that $f^{-1}(U)$ is affine and $\lambda\in\Oo_X(U)$, then $f^{-1}(U\setminus V(\lambda))=f^{-1}(U)\setminus V(f^*\lambda)$ is affine as well. In particular, the $U\subseteq Y$ such that $f^{-1}(U)$ is affine form a topology base on $Y$.  By Theorem~\reff{thm:CohoOnSchemes}\itememph{b} and Proposition~\reff{prop:HigherDirectImage}\itememph{b}, $\Phi^p\Mm$ thus vanishes on a topology base of $Y$. Hence$R^pf_*\Mm=0$ as the sheafification of  $\Phi^p\Mm$. In particular, we didn't need the additional assumption.
+	
+	Now for \itememph{c} $\Rightarrow$ \itememph{a} assuming that $X$ is quasi-separated. If $U\subseteq Y$ is affine and $\Mm\in\Ob(\cat{QCoh}(f^{-1}(U)))$, then $\Mm$ extends to $X$ by Lemma~\reff{lem:weirdLemma} and by Proposition~\reff{prop:HigherDirectImage}\itememph{d}
 	\begin{align*}
 		H^p\left(f^{-1}(U),\Mm\right)\simeq R^pf_*\Mm(U)=0\;.
 	\end{align*}
 	By Serre's affinity criterion (Proposition~\reff{prop:serreAffinity}), $f^{-1}(U)$ is affine.
 \end{proof}
+\begin{lem}\lbl{lem:weirdLemma}
+	Let $X$ be a quasi-separated prescheme and $\Nn$ a quasi-coherent $\Oo_U$-module for some quasi-compact open subset $U\subseteq X$. Then there is a quasi-coherent $\Oo_X$-module $\Mm$ such that $\Mm|_U\simeq \Nn$.
+\end{lem}
+\begin{proof}
+	The open immersion $U\monomorphism[j]X$ is quasi-separated (in fact, separated as is any monomorphism between preschemes, cf.\ \cite[Fact~1.5.7\itememph{a}]{alggeo1}) and quasi-compact since $X$ is quasi-separated and $U$ is quasi-compact. Hence $\Mm=j_*\Nn$ is quasi-coherent by Proposition~\reff{prop:PushforwardOfQcIsQc} and $\Mm|_U\simeq \Nn$.
+\end{proof}
+\begin{defi}
+	\begin{alphanumerate}
+		\item \lbl{def:AffineMorphism}A morphism $X\morphism[f]Y$ between preschemes is called \defemph{affine} if it satisfies the equivalent conditions from Proposition~\reff{prop:AffineMorphism}\itememph{a} and \itememph{b}.
+		\item It is called \defemph{finite} if in addition for any affine open $U\subseteq Y$, $\Oo_X(f^{-1}(U))$ is a finitely generated $\Oo_Y(U)$-module, or, equivalently, if this holds for sufficiently many $U$ to cover $Y$ (by Lemma~\reff{lem:locFinGen}).
+	\end{alphanumerate}
+\end{defi}
+\begin{rem*}
+	In other words, $f$ is finite iff $f$ is affine and $f_*\Oo_X$ is a locally finitely generated $\Oo_Y$-module in the sense of Definition~\reff{def:locFinGenerated}\itememph{a}. If $Y$ is Noetherian, this is equivalent to $f$ being affine and $f_*\Oo_X$ a \emph{coherent} $\Oo_Y$-module in the sense of Definition~\reff{def:locFinGenerated}\itememph{b}.
+\end{rem*}
+\begin{cor}
+	If $X\morphism[f]Y$ is an affine morphism and $\Mm$ a quasi-coherent $\Oo_X$-module, then $R^pf_*\Mm=0$ when $p>0$. When $Y$ is a quasi-compact scheme, the morphism
+	\begin{align*}
+		H^p(Y,f_*\Mm)\xrightarrow{\text{\eqreff{eq:pull-back}}}H^p(X,\Mm)
+	\end{align*} 
+	is an isomorphism.
+\end{cor}
+\begin{proof}
+	The first assertion follows from the fact that $R^pf_*\Mm$ is the sheafification of $U\mapsto H^p(f^{-1}(U),\Mm)$, which vanishes on the topology base of affine open subsets $U\subseteq Y$ when $p>0$ by Theorem~\reff{thm:CohoOnSchemes}\itememph{b}.
+	
+	When $Y$ is a quasi-compact scheme, then $X$ is a scheme as well since $X\morphism\Spec \IZ$ is separated as the composition of the separated morphisms $f$ and $Y\morphism\Spec \IZ$. Also, $X$ is quasi-compact as $f$ and $Y$ are quasi-compact. Let $\Uu_Y$ be the open cover of $Y$ by its affine open subsets, then
+	\begin{align*}
+		H^p\left(Y,f_*\Mm\right)\simeq \check{H}^p\left(\Uu_Y,f_*\Mm\right)\simeq \check{H}^p\left(f^{-1}(\Uu_Y),\Mm\right)\simeq H^p\left(X,\Mm\right)
+	\end{align*}
+	(which was our description of \eqreff{eq:pull-back}) where the last isomorphism holds as $f$ is affine, hence $f^{-1}(\Uu)$ is an affine open cover of $X$.
+	
+	This proves the second assertion under the assumptions which we constructed the relevant cohomology groups.
+\end{proof}
+\begin{rem*}
+	Using the general derived functor construction it follows from the Leray spectral sequence
+	\begin{align*}
+		E_2^{p,q}=H^p(X,R^qf_*\Mm)\converge H^{p+q}(Y,\Mm)
+	\end{align*}
+	and the vanishing of $R^qf_*\Mm$ when $q>0$, $\Mm$ is quasi-coherent and $f$ affine.
+\end{rem*}
+Let $X$ be any prescheme. Recall the construction of the $\SPEC_X(-)$ functor from \cite[Subsection~2.5.1]{alggeo1}, which is given as follows. When $\Aa$ is a quasi-coherent $\Oo_X$-algebra, one has schemes $\Spec \Aa(U)\morphism \Spec \Oo_X(U)\simeq U$ when $U\subseteq X$ is an affine open subset. When $V\subseteq U$ is another affine open subset, then $\Spec A(V)$ is isomorphic to the preimage of $V$ under $\Spec \Aa(U)\morphism U$. This allows one to glue the different $\Spec \Aa(U)$ together to one prescheme $\SPEC_X(\Aa)\morphism X$ which also admits the following description:
+\begin{itemize}
+	\item \emph{Points.} As a set,
+	\begin{align*}
+	\SPEC_X(\Aa) = \left\{(x,\pp) \st 
+	\begin{array}{c}
+	x\in X\text{, }\pp \in \Spec(\Aa_x) \text{ such that the preimage of }\pp\\
+	\text{under } \Oo_{X,x}\morphism \Aa_x \text{ is } \mm_{X,x}\text{ (the maximal ideal of }\Aa_x)
+	\end{array}
+	\right\}
+	\end{align*}
+	\item \emph{Topology base.} Let
+	\begin{align*}
+	\Omega(U,\lambda) = \left\{ (x,\pp) \st x\in U\text{ and }\pp\not\ni (\text{image of } \lambda \text{ under } \Aa(U)\to \Aa_x)\right\}
+	\end{align*}
+	where $U\subseteq X$ is open and $\lambda \in \Aa(U)$. As $\Omega(U,\lambda) \cap \Omega(V,\vartheta) = \Omega(U\cap V, \lambda|_{U\cap V} \cdot \vartheta|_{U\cap V})$ this is indeed a base for some topology.
+	\item \emph{Local rings.} There is only one reasonable choice and this is $\Oo_{Y,[x,\pp]} \coloneqq (\Aa_x)_\pp$. Here, $Y=\SPEC_X(\Aa)$ for brevity.
+	\item \emph{Structure sheaf.} For $\Omega\subseteq Y$ open, let
+	\begin{align*}
+	\Oo_Y(\Omega) = \left\{\alpha=(\alpha_{x,\pp})\in \prod_{(x,\pp)\in \Omega} \Oo_{Y,[x,\pp]}\st 
+	\begin{array}{c}
+	\alpha\text{ fulfills the }\\
+	\text{\emph{coherence condition}\texttrademark}
+	\end{array}
+	\right\}\;.
+	\end{align*}
+	Here, the \emph{coherence condition}\texttrademark\ says that every $\omega\in \Omega$ has a neighbourhood $\Omega(U,\lambda)$ together with an $a\in \Aa(U)_\lambda$ such that whenever $(x,\pp)\in \Omega\cap \Omega(U,\lambda)$, we have
+	\begin{align*}
+	\alpha_{x,\pp}=\left(
+	\begin{array}{c}
+	\text{image of }a\text{ under }\\
+	\Aa(U)_\lambda \morphism (\Aa_x)_\lambda \morphism (\Aa_x)_\pp = \Oo_{Y,[x,\pp]}
+	\end{array}\right)\;.
+	\end{align*}
+\end{itemize}
+\begin{prop}\lbl{prop:SPECAdjunction}
+	Let $Y$ be a prescheme, $\Aa$ an $\Oo_Y$-algebra and $X\morphism[\xi]Y$ a morphism of preschemes.
+	\begin{alphanumerate}
+		\item The morphism $\Spec_Y(\Aa)\morphism Y$ is affine.
+		\item One has a bijection
+		\begin{align}\lbl{eq:SPECAdjunction}
+			\Hom_{\Oo_Y\cat{-Alg}}(\Aa,\xi_*\Oo_X)\lisomorphism\Hom_{Y\cat{-PreSch}}(X,\SPEC_Y(\Aa))
+		\end{align}
+		by gluing the adjunctions 
+		\begin{align*}
+			\Hom_{\Oo_Y(U)\cat{-Mod}}\left(\Aa(U),\Oo_X(\xi^{-1}U)\right)\simeq \Hom_{\cat{PreSch}}\left(\xi^{-1}U,\Spec \Aa(U)\right)
+		\end{align*}
+		together.
+		\item The morphism $\xi$ is affine iff $\xi_*\Oo_X$ is a quasi-coherent $\Oo_Y$-algebra and the morphism $X\morphism\SPEC_Y(\xi_*\Oo_X)$ corresponding to $\id_{\xi_*\Oo_X}$ under \eqreff{eq:SPECAdjunction} is an isomorphism.
+	\end{alphanumerate}
+\end{prop}
+\begin{proof}[Sketch of a proof]
+	For \itememph{a}, the preimage of an affine open $U\subseteq Y$ is $\Spec \Aa(U)$, hence affine. Part \itememph{b} was sketched in \cite[Proposition~2.5.1]{alggeo1} and part \itememph{c} is \cite[Lemma~2.5.1]{alggeo1}.
+\end{proof}
+\begin{cor}
+	Let $\snake{Y}\morphism[f] Y$ be a morphism of preschemes. Let $f^*\colon \Oo_Y\cat{-Alg}\morphism\Oo_{\snake{Y}}\cat{-Alg}$ be the inverse image functor from \hyperref[footnote:f^*]{this} footnote. If $\Aa$ is a $\Oo_Y$-algebra, we have $\SPEC_{\snake{Y}}(f^*\Aa)\simeq \SPEC_Y(\Aa)\times_Y\snake{Y}$.
+\end{cor}
+\begin{proof}
+	Recall that $f^*$ is left-adjoint to $f_*$ Let $X\morphism[\xi]\snake{Y}$ be a $\snake{Y}$-prescheme. Repeatedly applying Proposition~\reff{prop:SPECAdjunction}\itememph{b} we get
+	\begin{align*}
+		\Hom_{\snake{Y}\cat{-PreSch}}\left(X,\SPEC_{\snake{Y}}(f^*\Aa)\right)&\simeq \Hom_{\Oo_{\snake{Y}}\cat{-Alg}}\left(f^*\Aa,\xi_*\Oo_X\right)\\
+		&\simeq\Hom_{\Oo_Y\cat{-Alg}}\left(\Aa,f_*\xi_*\Oo_X\right)\\
+		&\simeq \Hom_{Y\cat{-PreSch}}\left(X,\SPEC_Y(\Aa)\right)\;:
+	\end{align*}
+	In the last line, the $Y$-prescheme structure on $X$ is given by $X\morphism[\xi]\snake{Y}\morphism[f]Y$. If you think about it for a moment, a morphism of $Y$-preschemes from $X$ to $\Spec_Y(\Aa)$, where the $Y$-prescheme structure on $X$ factors over $\snake{Y}$ is exactly the commuting square from the universal property of the fibre product $\SPEC_Y(\Aa)\times_Y\snake{Y}$ and we're done.
+\end{proof}
+
+\section{The relation between \texorpdfstring{$H^1$}{H} and torseurs}
+\begin{defi}
+	Let $G$ be any topological space, $\Gg$ a sheaf of groups on $X$. A \defemph{$\Gg$-torseur} or \defemph{$\Gg$-principal homogeneous space} is a sheaf of sets $\Xx$ on $X$ with a morphism
+	\begin{align*}
+		\Gg\times \Xx\morphism\Xx
+	\end{align*}
+	of sheaves of sets indicated by $(g,\xi)\mapsto g\cdot \xi$, with the property that $1_{\Gg(U)}\cdot \xi=\xi$ and $g\cdot(h\cdot \xi)=(gh)\cdot \xi$ for $g,h\in\Gg(U)$ and $\xi\in\Xx(U)$ and such that $\Xx_x\neq \emptyset$ for any $x\in X$ and the action of $\Gg_x$ on $\Xx_x$ is simply transitive for each $x\in X$.
+	
+	The torseur is called \defemph{trivial} if $\Xx(X)\neq \emptyset$ (and \emph{yes}, the $\neq$ is correct here).
+\end{defi}
+\begin{example}
+	$\Gg$ with its group multiplication is a $\Gg$-torseur and trivial as $1_{\Gg(X)}\in\Gg(X)$.
+\end{example}
+\begin{rem}
+	\begin{alphanumerate}
+		\item If $\xi\in\Xx(X)$ then 
+		\begin{align*}
+			\Gg&\morphism\Xx\\
+			g\in\Gg(U)&\longmapsto g\cdot \xi|_U
+		\end{align*}
+		is an isomorphism (by the simple transitivity stuff it is an isomorphism on stalks).
+		\item If $\Xx$ and $\Yy$ are $\Gg$-torseurs then any morphism $\Xx\morphism[f]\Yy$ of sheaves of sets compatible with the $\Gg$-actions induces isomorphisms on stalks.
+	\end{alphanumerate}
+\end{rem}
+\begin{example}
+	\begin{alphanumerate}
+		\item Let $X$ be a ringed space. If $\Ll$ is a \emph{line bundle} on $X$ (i.e., a locally free $\Oo_X$-module of rank $1$) then
+		\begin{align*}
+			U\mapsto \Ll^\times(U)&=\left\{\lambda\in\Ll(U)\st \Oo_U\morphism[\cdot \lambda]\Ll|_U\text{ is an isomorphism}\right\}\\
+			&=\left\{\lambda\in\Ll(U)\st 
+			\begin{array}{c}
+				\text{the image of }\lambda \text{ in }\Ll_x\text{ is a generator of}\\
+				\text{that free }\Oo_{X,x}\text{-module for all }x\in U
+			\end{array}
+			\right\}
+		\end{align*}
+		is an $\Oo_X^\times$-torseur.
+	\end{alphanumerate}
+\end{example}
 
 \appendix
 \chapter{Appendix -- category theory corner}
@@ -1472,7 +1626,7 @@ For clarity (and to better distinguish between the proof and Professor Franke's 
 	\end{alphanumerate}
 	The construction of cokernels won't be that straightforward (duh!), related to the fact that epimorphisms in categories of sheaves aren't as simple as you might think. If $\Gg$ and $\Hh$ are sheaves on some topological space $X$ and $f$ is a morphism between them such that $\Gg(U)\morphism[f]\Hh(U)$ is surjective for all open $U$, then $f$ is an epimorphism, but there are epimorphisms $f$ for which this fails. 
 	
-	However, it follows from the fact that a sheaf $\Gg$ is canonically isomorphic to its sheafification $\Gg^\sh$ (cf. \cite[Proposition~1.2.1\itememph{d}]{alggeo1}) that a morphism between sheaves (of sets, groups, \ldots) is uniquely determined by the maps it induces on stalks. Thus, $\Gg\morphism\Hh$ is an epimorphism if $\Gg_x\morphism\Hh_x$ is an epimorphism in the respective target category for all $x\in X$.
+	However, it follows from the fact that a sheaf $\Gg$ is canonically isomorphic to its sheafification $\Gg^\sh$ (cf.\ \cite[Proposition~1.2.1\itememph{d}]{alggeo1}) that a morphism between sheaves (of sets, groups, \ldots) is uniquely determined by the maps it induces on stalks. Thus, $\Gg\morphism\Hh$ is an epimorphism if $\Gg_x\morphism\Hh_x$ is an epimorphism in the respective target category for all $x\in X$.
 \end{rem}
 \begin{lem}\lbl{lem:RmodHasCokernels}
 	The category $\Rr\cat{-Mod}$ has cokernels.
@@ -1482,7 +1636,7 @@ For clarity (and to better distinguish between the proof and Professor Franke's 
 	\begin{align*}
 		U\mapsto \coker\Big(\Mm(U)\morphism[f]\Nn(U)\Big)=\Mm(U)/\Nn(U)\quad\text{for }U\subseteq X\text{ open}
 	\end{align*}
-	defines a presheaf $\Ff$ of $\Rr$-modules, but in general, $\Ff$ will fail to be a sheaf. We put $\Cc=\Ff^\sh$ (the \emph{sheafification} of $\Ff$, cf. \cite[Definition~1.2.3]{alggeo1}) and claim that $\Nn\morphism\Cc$ is a cokernel of $f$.
+	defines a presheaf $\Ff$ of $\Rr$-modules, but in general, $\Ff$ will fail to be a sheaf. We put $\Cc=\Ff^\sh$ (the \emph{sheafification} of $\Ff$, cf.\ \cite[Definition~1.2.3]{alggeo1}) and claim that $\Nn\morphism\Cc$ is a cokernel of $f$.
 	
 	Our first goal is to show that
 	\begin{align}\lbl{eq:SheafCokernel}
