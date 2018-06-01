@@ -149,6 +149,7 @@
 	\setcounter{IsThisATheorem}{0}%
 	\IfBeginWith{#1}{thm:}{\setcounter{IsThisATheorem}{1}}{}%
 	\IfBeginWith{#1}{sec:}{\setcounter{IsThisATheorem}{1}}{}%
+	\IfBeginWith{#1}{subsec:}{\setcounter{IsThisATheorem}{1}}{}%
 	\ifnum\value{IsThisATheorem}=1%
 		\ref{#1}%
 	\else%

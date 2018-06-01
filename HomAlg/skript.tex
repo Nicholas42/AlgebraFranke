@@ -187,7 +187,7 @@ From now on, unless otherwise stated, our rings are commutative with $1$.
 \begin{rem*}
 	The same holds for Dedekind domains, see Corollary~6 (which is not there yet).
 \end{rem*}
-\begin{cor}
+\begin{cor}\lbl{cor:PIDInjectiveResolution}
 	When $R$ is a principal ideal domain, then any quotient of an injective module is injective again. The category of $R$-modules has \defemph{sufficiently many injective objects} in the sense that for any object $X$ there is a monomophism $X\monomorphism I$ with $I$ injective. Thus, any $R$-module $X$ has an \defemph{injective resolution}, i.e., an exact sequence
 	\begin{align*}
 	0\morphism X\morphism I^0\morphism I^1\morphism I^2\morphism\ldots
@@ -256,18 +256,183 @@ From now on, unless otherwise stated, our rings are commutative with $1$.
 	\end{proof}
 	Back to the proof of Lemma~\reff{lem:AdjointStuff} and let's prove \itememph{c}. Let $M\monomorphism[\phi]I$ be a monomorphism of abelian groups. The corresponding morphism $M\morphism[\psi]\Hom_\IZ(R,I)$ sends $m\in M$ to $\psi(m)\colon R\morphism I$ given by $\psi(m)(r)=\phi(rm)$. If $\psi(m)$ is the zero morphism for some $m\in M$, then $0=\psi(m)(1)=\phi(m)$, proving $m=0$ by injectivity of $\phi$. Then $\psi$ is also injective.
 \end{proof}
-\begin{prop}
+The dual concept of \emph{projective modules} should be known, but for the sake of completeness I will include it nevertheless.
+\begin{defi}
 	\begin{alphanumerate}
-		\item For any PID $R$ and any $R$-modules $M,N$ we have $\Ext_R^p(M,N)=0$ when $p>1$.
+		\item \lbl{def:projectiveModule}An $R$-module $P$ is called \defemph{projective} iff $\Hom_R(P,-)$ is exact.
+		\item In an arbitrary category $\Aa$, an object $P$ is called \defemph{projective} if for every epimorphism $Y\epimorphism X$, the induced map $\Hom_\Aa(P,X)\morphism\Hom_\Aa(P,Y)$ is surjective, that is, for every morphism $P\morphism[\phi]X$ there is a (usually non-unique) lift
+		\begin{diagram*}
+			\node[ob] (P) at (0,0) {$P$};			
+			\node[ob] (X) at (1.75,0) {$X$};
+			\node[ob] (Y) at (1.75,1.5) {$Y$};
+			\scriptsize
+			\draw[->>] (Y) -- (X);
+			\draw[->] (P) -- (X) node[pos=0.5, above] {$\phi$};
+			\draw[->, dashed] (P) -- (Y) node[pos=0.5, above left] {$\exists\ \hat{\phi}$};
+		\end{diagram*}
+	\end{alphanumerate}
+\end{defi}
+We will now use the $\Ext_R^\bullet(-,-)$ functor, which was constructed (for arbitrary abelian categories rather than just $R\cat{-Mod}$) in Subsection~\reff{subsec:ConstructionOfExt}.
+\begin{prop}\lbl{prop:PIDExt2}
+	Let $R$ be a PID.
+	\begin{alphanumerate}
+		\item For any $R$-modules $M,N$ we have $\Ext_R^p(M,N)=0$ when $p>1$.
 		\item Any submodule of a projective $R$-module is projective.
 	\end{alphanumerate}
 \end{prop}
 \begin{proof}
-	The quotient of any injective $R$-module being injective, when $N\monomorphism I$ is a monomorphism with $I$ injective, then
+	Part \itememph{a}. By Corollary~\reff{cor:PIDInjectiveResolution}, $N$ has an injective resolution of length $1$, hence $\Ext_R^p(M,N)$ vanishes for $p>1$.
+	
+	Part \itememph{b}. Let $P$ be projective and $Q\subseteq P$ a submodule. For any test module $T$ there is an exact sequence $\Ext_R^1(P,T)\morphism\Ext_R^1(Q,T)\morphism\Ext_R^2(P/Q,T)$ in which $\Ext_R^1(P,T)$ vanishes as $P$ is projective and $\Ext_R^2(P/Q,T)$ vanishes by \itememph{a}. Hence $\Ext_R^1(Q,T)=0$ and $\Ext_R^1(Q,-)$ is the zero functor, showing exactness of $\Hom_R(Q,-)$, i.e., projectivity of $Q$ by Definition~\reff{def:projectiveModule}\itememph{a}.
+\end{proof}
+\begin{rem*}
+	\begin{alphanumerate}
+		\item We will soon generalize this to Dedekind domains.
+		\item Let $R$ be a PID again. For $a\in R\setminus \{0\}$, the identity $\id_{R/aR}$ does \emph{not} lift to a morphism $R/aR\morphism R$, showing that $R/aR$ is not projective. By the classification of finitely generated $R$-modules and the fact that any direct summand of a projective module is projective again (this is clear using the criterion that projective modules over any ring are precisely the direct summands of free modules but also follows from Proposition~\reff{prop:PIDExt2}\itememph{b} in our case), this shows that a finitely generated $R$-module is projective iff it is free.
+		
+		This can be seen to hold without the assumption of being finitely generated. Therefore, ``projective'' in Proposition~\reff{prop:PIDExt2}\itememph{b} may be replaced by ``free''.
+	\end{alphanumerate}
+\end{rem*}
+\begin{example*}
+	Let $R$ be any ring. If $a\in R$ is not a zero divisor. We can calculate $\Ext_R^\bullet(R/aR,M)$ for any $R$-module $M$ using the projective resolution $0\morphism R\morphism[\cdot a]R\morphism R/aR\morphism 0$. We get
 	\begin{align*}
-		0\morphism N\morphism I\morphism I/N\morphism 0
+		\Ext_R^k(R/aR,M)=H^k\left(\Hom_R(R\morphism[\cdot a]R,M)\right)=\begin{cases}
+			\ker(M\morphism[\cdot a]M) & \text{if }k=0\\
+			M/aM & \text{if }k=1\\
+			0 & \text{else}
+		\end{cases}\;.
 	\end{align*}
-	is an injective resolution of $N$ of length $1$.
+\end{example*}
+If $N$ is an injective $R$-module, then $\Ext_R^1(T,N)=0$ by Theorem~\reff{thm:DerivedFunctors}\itememph{b} for every test $R$-module $T$. Conversely, if $\Ext_R^1(-,N)=0$ is the zero functor, we see that $\Hom_R(-,N)$ is exact by the long exact $\Ext$ sequence, hence $N$ is injective by Definition~\reff{def:injectiveModule}\itememph{a}. The following proposition shows that this criterion can be sharpened.
+\begin{prop}
+	If $R$ is any ring, then an $R$-module $N$ is injective iff $\Ext_R^1(R/I,N)=0$ for every ideal $I\subseteq R$.
+\end{prop}
+\begin{proof}
+	By Baer's criterion (Proposition~\reff{prop:InjectiveModules}), we only need to check exactness of $\Hom_R(-,N)$ on exact sequences of the form $0\morphism I\morphism R\morphism R/I\morphism 0$ for $I\subseteq R$ an ideal. By vanishing of $\Ext_R^1(R,N)$ (since $R$ is projective over itself), this is equivalent to $\Ext_R^1(R/I,N)=0$ by the long exact $\Ext$ sequence.
+\end{proof}
+\begin{rem*}
+	As far as Professor Franke is aware, there is no similar criterion for projectivity, and by a famous result of Shelah the \emph{Whitehead problem} ``Is any abelian group $A$ with $\Ext_\IZ^1(A,\IZ)=0$ free'' is undecidable in ZFC set theory.
+\end{rem*}
+Our goal now is to establish some properties of $\Ext$ groups over a ring $R$, namely criteria for finitely generatedness and compatibility with localization.
+\begin{fact}\lbl{fact:atimesExt}
+	For $a\in R$ and any $R$-modules $M$ and $N$ the following coincide.
+	\begin{alphanumerate}
+		\item The multiplication $\cdot a$ on $\Ext_R^k(M,N)$ (this is an $R$-module after all).
+		\item The endomorphism $\Ext_R^k(M,N)\morphism\Ext_R^k(M,N)$ induced by $M\morphism[\cdot a]M$ and functoriality of $\Ext_R^k(-,N)$.
+		\item The endomorphism $\Ext_R^k(M,N)\morphism\Ext_R^k(M,N)$ induced by $N\morphism[\cdot a]N$ and functoriality of $\Ext_R^k(M,-)$.
+	\end{alphanumerate}
+\end{fact}
+\begin{proof}
+	Let $N\monomorphism I^\bullet$ be a projective resolution. We obtain a commutative diagram
+	\begin{diagram*}
+		\node[ob] (A) at (0,1.5) {$0$};
+		\node[ob] (B) at (1.5,1.5) {$N$};
+		\node[ob] (C) at (3,1.5) {$I^0$};
+		\node[ob] (D) at (4.5,1.5) {$I^1$};
+		\node[ob] (E) at (6,1.5) {$\ldots$};
+		\node[ob] (A') at (0,0) {$0$};
+		\node[ob] (B') at (1.5,0) {$N$};
+		\node[ob] (C') at (3,0) {$I^0$};
+		\node[ob] (D') at (4.5,0) {$I^1$};
+		\node[ob] (E') at (6,0) {$\ldots$};
+		\scriptsize
+		\draw[->] (A) -- (B);
+		\draw[->] (B) -- (C);
+		\draw[->] (C) -- (D);
+		\draw[->] (D) -- (E);
+		\draw[->] (A') -- (B');
+		\draw[->] (B') -- (C');
+		\draw[->] (C') -- (D');
+		\draw[->] (D') -- (E');
+		\draw[->] (B) -- (B') node[pos=0.5,left] {$\cdot a$};
+		\draw[->] (C) -- (C') node[pos=0.5, left] {$\cdot a$};
+		\draw[->] (D) -- (D') node[pos=0.5, left] {$\cdot a$};
+	\end{diagram*}
+	from which $\Ext_R^\bullet(-,N\morphism[\cdot a]N)$ can be computed, showing that \itememph{c} coincides with \itememph{a}. For \itememph{b}, we do the same but with projective resolutions.
+\end{proof}
+\begin{fact}
+	If multiplication by $a$ annullates one of the modules $M$ or $N$, then it annullates $\Ext_R^\bullet(M,N)$.
+\end{fact}
+\begin{proof}
+	Follows from Fact~\reff{fact:atimesExt}.
+\end{proof}
+\begin{fact}\lbl{fact:freeResolution}
+	If $R$ is a Noetherian ring, then any finitely generated $R$-module $M$ has a projective resolution
+	\begin{align*}
+		0\lmorphism M\lmorphism P_0\lmorphism P_1\lmorphism P_2\lmorphism\ldots
+	\end{align*}
+	where the $P_i$ are finitely generated free $R$-modules.
+\end{fact}
+\begin{proof}
+	We construct the $P_i$ inductively. Since $M$ is finitely generated, we have a surjective morphism $P_0=R^n\epimorphism M$ for some $n$. $R$ being Noetherian, its kernel is finitely generated and we can apply the same construction to it.
+\end{proof}
+\begin{rem*}
+	\begin{alphanumerate}
+		\item The interesting thing here is that the $P_i$ are finitely generated. If we drop this, any module over any ring has a free resolution.
+		\item If $R$ is \emph{coherent} (any finitely generated ideal is finitely presented) and $M$ is finitely presented, Fact~\reff{fact:freeResolution} still holds. Recall that
+	\end{alphanumerate}
+\end{rem*}
+\begin{defi}
+	An $R$-module $M$ is \defemph{finitely presented} if it may be written as a cokernel of some morphism $R^m\morphism R^n$.
+\end{defi}
+\begin{fact}
+	If $M$ and $N$ are finitely generated modules over the Noetherian ring $R$, the $R$-modules $\Ext_R^k(M,N)$ are all finitely generated.
+\end{fact}
+\begin{proof}
+	Choose a free resolution $0\lmorphism M\lmorphism R^{n_0}\morphism R^{n_1}\lmorphism\ldots$ as in Fact~\reff{fact:freeResolution}, then $\Ext_R^k(M,N)$ can be calculated as $H^k\left(N^{n_0}\morphism N^{n_1}\morphism\ldots\right)$, which is finitely generated as the $N^{n_i}$ are finitely generated and we are all Noetherian and stuff.
+\end{proof}
+We will now examine when $\Ext_R^\bullet$ commutes with localization.
+
+Let $\Aa\doublelrmorphism[L][R]\Bb$ be an adjoint pair between abelian categories $\Aa,\Bb$. Then it's easy to see that $L$ preserves projective objects when $R$ is exact and $R$ preserves injectives when $L$ is exact. This may be applied to $\Aa=A\cat{-Mod}$ and $\Bb=A_S\cat{-Mod}$ where $A$ is some ring, $S\subseteq A$ a multiplicative subset, $A_S$ the localization of $A$ at $S$ and where $L$ is the functor $M\mapsto M_S$ for $M$ an $A$-module and $R$ is the forgetful functor. Note that both $L$ and $R$ are exact and we obtain
+\begin{fact}\lbl{fact:InjProjLoc}
+	Let $R$ be any ring. If $M$ is a projective $R$-module, then $M_S$ is a projective $R_S$-module. If $N$ is an injective $R_S$-module, then it is injective as an $R$-module as well.
+\end{fact}
+\begin{fact}
+	For any ring $R$ and any multiplicative subset $S\subseteq R$, we have a canonical isomorphism
+	\begin{align}\lbl{eq:ExtRStoExtR}
+		\Ext_{R_S}^\bullet(M_S,N)\isomorphism\Ext_R(M,N)
+	\end{align}
+	where $M$ is an $R$- and $N$ an $R_S$-module. It is uniquely determined by its compatibility with the long exact cohomology sequence and by the condition that in degree $0$ it coincides with the bijection $\Hom_{R_S}(M_S,N)\simeq \Hom_R(M,N)$.
+\end{fact}
+\begin{proof}
+	When $M$ is fixed, $\Ext_R^\bullet(M,-)$ is a cohomological functor on the category $R_S\cat{-Mod}$. By the universal property of derived functors (in Definition~\reff{def:homologicalfunctor}), the bijection $\Hom_{R_S}(M_S,N)\simeq \Hom_R(M,N)$ uniquely extends to the morphism \eqreff{eq:ExtRStoExtR}. By Fact~\reff{fact:InjProjLoc}, $\Ext_R^\bullet(M,-)$ annullates injective $R_S$-modules in positive degrees, hence by Theorem~\reff{thm:DerivedFunctors}\itememph{b} it is a right-derived functor of $\Hom_{R_S}(M_S,-)$. Then \eqreff{eq:ExtRStoExtR} is an isomorphism by the universal property of right-derived functors.
+\end{proof}
+When $M$ and $N$ are $R$-modules, we have a canonical morphism
+\begin{align*}
+	\Hom_R(M,N)\morphism\Hom_{R_S}(M_S,N_S)
+\end{align*}
+sending $M\morphism[f]N$ to $M_S\morphism[f_S]N_S$. This is a morphism of $R$-modules in which the right-hand side is actually an $R_S$-module. By the universal property of localization this induces a unique morphism
+\begin{align}\lbl{eq:HomRtoHomRS}
+	\Hom_R(M,N)_S\morphism\Hom_{R_S}(M_S,N_S)\;.\tag{$*$}
+\end{align}
+In general, \eqreff{eq:HomRtoHomRS} fails to be injective or surjective. But when $M$ is finitely generted, it is injective, and when $M$ is finitely presented (e.g., when $M$ is finitely generated and $R$ Noetherian) it's an isomorphism. For instance, when $M\simeq\coker(R^m\morphism R^n)$, then $M_S\simeq \coker(R_S^m\morphism R_S^n)$ by exactness of localization and $\Hom_R(M,N)\simeq \ker(N^n\morphism N^m)$ (and similar for $\Hom_{R_S}(M_S,N_S)$) by the universal property of cokernels. We obtain
+\begin{align*}
+	\Hom_R(M,N)_S\simeq\ker(N^n\morphism N^m)_S\simeq \ker(N_S^n\morphism N_S^m)\simeq \Hom_{R_S}(M_S,N_S)
+\end{align*}
+which can be seen to coincide with \eqreff{eq:HomRtoHomRS}.
+
+And now for the advertised compatibility with localization.
+\begin{prop}
+	Let $R$ be a Noetherian ring, $M$ a finitely generated $R$-module. Then for any $R$-module $N$ and any multiplicative subset $S\subseteq R$ there is a canonical isomorphism
+	\begin{align}\lbl{eq:ExtCompatibleWithLoc}
+		\Ext_R^\bullet(M,N)_S\isomorphism\Ext_{R_S}^\bullet (M_S,N_S)\;.
+	\end{align}
+	It is uniquely determined by its compatibility with the long exact $\Ext$ sequences for $N$ and by the condition that it is given by 
+	\begin{align*}
+		\Hom_R(M,N)_S\morphism[{\text{\eqreff{eq:HomRtoHomRS}}}]\Hom_{R_S}(M_S,N_S)
+	\end{align*}
+	in degree 0.
+\end{prop}
+\begin{proof}
+	For every $R$-module $M$, the functor $\Ext_{R_S}^\bullet (M_S, (-)_S)$ composed with the forgetful functor $R_S\cat{-Mod}\morphism R\cat{-Mod}$ is a cohomological functor on $R\cat{-Mod}$, hence there is a unique morphism $\Ext_R^\bullet(M,-)\morphism\Ext_{R_S}^\bullet (M_S,(-)_S)$ extending $\Hom_R(M,N)\morphism\Hom_{R_S}(M_S,N_S)$, and by the universal property of localization this factors uniquely over $\Ext_R^\bullet(M,-)_S$. This shows the uniqueness part.
+	
+	For existence, choose a free resolution $0\lmorphism M\lmorphism R^{n_0}\morphism R^{n_1}\lmorphism\ldots$ as in Fact~\reff{fact:freeResolution}. By exactness of localization, $0\lmorphism M_S\lmorphism R_S^{n_0}\morphism R_S^{n_1}\lmorphism\ldots$ is a free resolution of $M_S$. Using these to compute $\Ext_R^\bullet(M,-)$ and $\Ext_{R_S}^\bullet(M_S,-)$ and the fact that localization commutes with cohomology (since it is exact), we obtain
+	\begin{align*}
+		\Ext_R^k(M,N)_S&=H^k\left(N^{n_0}\morphism N^{n_1}\morphism\ldots\right)_S\\
+		&\simeq H^k\left(N_S^{n_0}\morphism N_S^{n_1}\morphism\ldots\right)\\
+		&=\Ext_{R_S}^k(M_S,N_S)\;,
+	\end{align*}
+	as required.
 \end{proof}
 
 \appendix
@@ -791,7 +956,7 @@ Left-derived functors of right-exact functors can be constructed by dualizing ev
 \begin{proof}
 	Dualize the proof of Theorem~\reff{thm:DerivedFunctors} and prove the dual analogues of Fact~\reff{fact:injectiveResolutions} and the Proposition~\reff{prop:Hufeisenlemma} on the way.
 \end{proof}
-\subsection{Construction of \texorpdfstring{$\Ext^\bullet$}{Ext}}
+\subsection{Construction of \texorpdfstring{$\Ext^\bullet$}{Ext}}\lbl{subsec:ConstructionOfExt}
 If $\Aa$ has sufficiently many injective objects, then, for fixed objects $X$, one has a right-derived functor $\Ext_\Aa^\bullet(X,-)$ of $\Hom_\Aa(X,-)\colon \Aa\morphism\cat{Ab}$. As $\Hom_\Aa(X,-)$ is functorial in $X$, so are the $\Ext_\Aa^\bullet(X,-)$. For a short exact sequence $0\morphism X'\morphism X\morphism X''\morphism 0$ and $I$ injective, one has a short exact sequence $0\morphism\Hom_\Aa(X',I)\morphism\Hom_\Aa(X,I)\morphism\Hom_\Aa(X'',I)\morphism 0$. One thus has a long exact cohomology sequence
 \begin{multline}\lbl{eq:ExtSeq1}
 	0\morphism\Ext_\Aa^0(X'',Y)\morphism\Ext_\Aa^0(X,Y)\morphism\Ext_\Aa^0(X',Y)\morphism\Ext_\Aa^1(X'',Y)\morphism\ldots\\
@@ -886,7 +1051,7 @@ To such a short exact sequence one may associate $c_\Ee$, the image of $\id_X$ u
 The following lists and proves some first properties of additive categories and additive functors that Professor Franke assumed known in the lecture without explicitly mentioning them.
 \begin{defi}
 	\begin{alphanumerate}
-		\item \lbl{def:additiveCategory}A \defemph{preadditive} category $\Aa$ in which each $\Hom_\Aa(X,Y)$ for $X,Y\in\Ob(\Aa)$ is given a group structure which behaves bilinearly under compositions.
+		\item \lbl{def:additiveCategory}A \defemph{preadditive} category $\Aa$ is a category in which each $\Hom_\Aa(X,Y)$ for $X,Y\in\Ob(\Aa)$ is given a group structure behaving bilinearly under compositions.
 		\item An \defemph{additive category} is a preadditive category which has finite products and coproducts such that the canonical morphism $\coprod_{k=1}^nX_k\morphism[c] \prod_{k=1}^{n}X_k$ is an isomorphism for all objects $X_1,\ldots,X_n\in\Ob(\Aa)$.
 	\end{alphanumerate}
 \end{defi}
