@@ -591,7 +591,7 @@ Clearly, $v^*$ commutes with the $d_j$, $s_j$, and $t_j$, hence restricts to a m
 		\end{align*}
 		satisfying $\tau_{\Vv,\Ww}\tau_{\Uu,\Vv}=\tau_{\Uu,\Ww}$ if $\Ww$ is another open cover of $X$ which is a refinement of $\Vv$, as well as $\tau_{\Uu,\Uu}=\id$.
 		\item If $\Uu$ is a refinement of $\Vv$ and $\Vv$ a refinement of $\Uu$, then $\tau_{\Uu,\Vv}$ and $\tau_{\Vv,\Uu}$ are isomorphisms which are inverse to each other.
-		\item If there is an $i^*\in I$ such that $U_{i^*}=X$, then $\check{H}^n(\Uu,\Mm)$ vanishes for $n\geq 1$.
+		\item If there is an $i^*\in I$ such that $U_{i^*}=X$, then $\check{H}^n(\Uu,\Mm)=0$ for $n\geq 1$.
 	\end{alphanumerate}
 \end{cor}
 \begin{proof}
@@ -687,7 +687,7 @@ Before the proof, a lemma.
 	\begin{claim}\lbl{claim:BigN}
 		For any quasi-coherent $\Oo_X$-module $\Mm$ there are a quasi-coherent $\Oo_X$-module $\Nn$ such that $A_i(\Nn)$ holds for arbitary $i$, and a monomorphism $\Mm\monomorphism\Nn$.
 	\end{claim}
-	To show this, let $j_W\colon W\morphism X$ be the embedding of any affine open subset $W$ contained in one of the open subsets forming the cober $\Vv$. As $X$ is a scheme, the morphism $j_W$ is affine, i.e., preimages of affine open subsets are affine (cf.\ \cite[Definition~2.5.1]{alggeo1}). Indeed, since preimages in this case are intersections with $W$, this follows from Proposition~\reff{prop:SchemesAffineIntersec}. Being an open embedding, $j_W$ is also quasi-separated. By Proposition~\reff{prop:PushforwardOfQcIsQc} and Proposition~\reff{prop:QCohHasKerCoker}\itememph{b}, $(j_W)_*\Mm|_W$ is a quasi-coherent $\Oo_X$-module. Since $X$ is quasi-compact, we find finitely many affine open subsets $W_1,\ldots,W_n$ covering $X$, each $W_i$ contained in an element of $\Vv$ (that is, $X=\bigcup_{i=1}^nW_i$ is a finite affine refinement of $\Vv$). Then
+	To show this, let $j_W\colon W\morphism X$ be the embedding of any affine open subset $W$ contained in one of the open subsets forming the cover $\Vv$. As $X$ is a scheme, the morphism $j_W$ is affine, i.e., preimages of affine open subsets are affine (cf.\ \cite[Definition~2.5.1]{alggeo1}). Indeed, since preimages in this case are intersections with $W$, this follows from Proposition~\reff{prop:SchemesAffineIntersec}. Being an open embedding, $j_W$ is also quasi-separated. By Proposition~\reff{prop:PushforwardOfQcIsQc} and Proposition~\reff{prop:QCohHasKerCoker}\itememph{b}, $(j_W)_*\Mm|_W$ is a quasi-coherent $\Oo_X$-module. Since $X$ is quasi-compact, we find finitely many affine open subsets $W_1,\ldots,W_n$ covering $X$, each $W_i$ contained in an element of $\Vv$ (that is, $X=\bigcup_{i=1}^nW_i$ is a finite affine refinement of $\Vv$). Then
 	\begin{align*}
 		\Nn\coloneqq\bigoplus_{i=1}^n(j_{W_i})_*\Mm|_{W_i}
 	\end{align*}
@@ -802,15 +802,15 @@ Summing up our previous work, we obtain the following Theorem~\reff{thm:CohoOnSc
 	To show that $\Mm$ is quasi-coherent, consider $0\morphism M'\morphism M\morphism M''\morphism 0$ where $M'=\Mm'(X)$, $M=\Mm(X)$, and $M''=\Mm''(X)$ which is an exact sequence of $R$-modules (as we just proved). As pointed out in the proof of Proposition~\reff{prop:QCohHasKerCoker}\itememph{a},  the functor $R\cat{-Mod}\morphism\cat{QCoh}(\Spec R)$ mapping $N\mapsto \snake{N}$ preserves kernels and cokernels, hence the diagram
 	\begin{diagram*}
 		\node[ob] (A) at (0,1.5) {$0$};
-		\node[ob] (B) at (2,1.5) {$\snake{M}'$};
-		\node[ob] (C) at (4,1.5) {$\snake{M}$};
-		\node[ob] (D) at (6,1.5) {$\snake{M}''$};
-		\node[ob] (E) at (8,1.5) {$0$};
+		\node[ob] (B) at (1.5,1.5) {$\snake{M}'$};
+		\node[ob] (C) at (3,1.5) {$\snake{M}$};
+		\node[ob] (D) at (4.5,1.5) {$\snake{M}''$};
+		\node[ob] (E) at (6,1.5) {$0$};
 		\node[ob] (A') at (0,0) {$0$};
-		\node[ob] (B') at (2,0) {$\Mm'$};
-		\node[ob] (C') at (4,0) {$\Mm$};
-		\node[ob] (D') at (6,0) {$\Mm''$};
-		\node[ob] (E') at (8,0) {$0$};
+		\node[ob] (B') at (1.5,0) {$\Mm'$};
+		\node[ob] (C') at (3,0) {$\Mm$};
+		\node[ob] (D') at (4.5,0) {$\Mm''$};
+		\node[ob] (E') at (6,0) {$0$};
 		\scriptsize
 		\draw[->] (A) -- (B);
 		\draw[->] (B) -- (C);
@@ -828,18 +828,18 @@ Summing up our previous work, we obtain the following Theorem~\reff{thm:CohoOnSc
 \end{proof}
 In the following, if $\Uu\colon X=\bigcup_{i\in I}U_i$ is an open cover and $Y\subseteq X$, we will write $\Uu\cap Y$ for the open cover $Y=\bigcup_{i\in I}(Y\cap U_i)$.
 \begin{cor}\lbl{cor:CohomologyOfPushforward}
-	Let $X$ be a quasi-coherent scheme.
+	Let $X$ be a quasi-compact scheme.
 	\begin{alphanumerate}
-		\item If $W\monomorphism[j]X$ is the embedding of the affine open subset $W$ and $\Mm\in\Ob(\cat{QCoh}(X))$, then $H^p(X,j_*\Mm)=0$ for $p>0$.
+		\item If $W\monomorphism[j]X$ is the embedding of the affine open subset $W$ and $\Mm\in\Ob(\cat{QCoh}(W))$, then $H^p(X,j_*\Mm)=0$ for $p>0$.
 		\item Let $W_i\monomorphism[j_i]X$ be the embeddings of affine open subsets $W_i$ for $i=1,\ldots,n$. Let $W=\bigcup_{i=1}^nW_i$. If $\Mm\in\Ob(\cat{QCoh}(X))$, then
 		\begin{align*}
 			H^p\bigg(X,\bigoplus_{i=1}^n(j_i)_*\Mm|_{W_i}\bigg)=0\quad\text{for }p>0
 		\end{align*}
 		and if $\Kk$ denotes the kernel of $\Mm\morphism\bigoplus_{i=1}^n(j_i)_*\Mm|_{W_i}$ sending $m\in\Mm(U)$ to
 		\begin{align*}
-			\left(m|_{U\cap W_i}\right)_{i=1}^n\in\bigoplus_{i=1}^n\Mm(U\cap W_i)=\bigoplus_{i=1}^n(j_i)_*\Mm|_{W_i}(U)
+			\left(m|_{U\cap W_i}\right)_{i=1}^n\in\bigoplus_{i=1}^n\Mm(U\cap W_i)=\bigoplus_{i=1}^n(j_i)_*\Mm|_{W_i}(U)\;,
 		\end{align*}
-		satisfies $\Kk|_W=0$.
+		then $\Kk$ satisfies $\Kk|_W=0$.
 	\end{alphanumerate}
 \end{cor}
 \begin{proof}
@@ -1113,7 +1113,7 @@ Let $X\morphism[f]Y$ be a quasi-compact and separated morphism of preschemes. Th
 on $\Bb$. The presheaf structure on \eqreff{eq:cohoPresheaf} is defined as follows. Let $V\subseteq U$ be elements of $\Bb$ and $\Uu,\Vv$ the covers of $f^{-1}(U)$ and $f^{-1}(V)$ by their affine open subsets. Then the morphism of restricting to the intersection with $f^{-1}(V)$ gives $\check{C}^\bullet (\Uu,\Mm)\morphism\check{C}^\bullet (\Uu\cap f^{-1}(V),\Mm)$ which may be followed by any morphism $\check{C}^\bullet (\Uu\cap f^{-1}(V),\Mm)\morphism\check{C}^\bullet (\Vv,\Mm)$ coming from a refinement map for the pair $(\Vv,\Uu\cap f^{-1}(\Vv))$ 
 (we proved in Lemma~\reff{lem:refinementPullback}\itememph{c} that any two refinement maps induce the same morphism on cohomology, so this choice doesn't matter), which gives
 \begin{align*}
-	H^p\left(f^{-1}(U),\Mm\right)=\check{H}^p(\Uu,\Mm)\morphism\check{H}^p(\Vv,\Mm)=H^p\left(f^{-1}(\Vv),\Mm\right)\;,
+	H^p\left(f^{-1}(U),\Mm\right)=\check{H}^p(\Uu,\Mm)\morphism\check{H}^p(\Vv,\Mm)=H^p\left(f^{-1}(V),\Mm\right)\;,
 \end{align*}
 and this is the desired presheaf structure.
 
@@ -1337,7 +1337,7 @@ Let $X$ be any prescheme. Recall the construction of the $\SPEC_X(-)$ functor fr
 		\item The morphism $\Spec_Y(\Aa)\morphism Y$ is affine.
 		\item One has a bijection
 		\begin{align}\lbl{eq:SPECAdjunction}
-			\Hom_{\Oo_Y\cat{-Alg}}(\Aa,\xi_*\Oo_X)\lisomorphism\Hom_{Y\cat{-PreSch}}(X,\SPEC_Y(\Aa))
+			\Hom_{\Oo_Y\cat{-Alg}}(\Aa,\xi_*\Oo_X)\lisomorphism\Hom_{Y\!\cat{-PreSch}}(X,\SPEC_Y(\Aa))
 		\end{align}
 		by gluing the adjunctions 
 		\begin{align*}
@@ -1358,50 +1358,203 @@ Let $X$ be any prescheme. Recall the construction of the $\SPEC_X(-)$ functor fr
 	\begin{align*}
 		\Hom_{\snake{Y}\cat{-PreSch}}\left(X,\SPEC_{\snake{Y}}(f^*\Aa)\right)&\simeq \Hom_{\Oo_{\snake{Y}}\cat{-Alg}}\left(f^*\Aa,\xi_*\Oo_X\right)\\
 		&\simeq\Hom_{\Oo_Y\cat{-Alg}}\left(\Aa,f_*\xi_*\Oo_X\right)\\
-		&\simeq \Hom_{Y\cat{-PreSch}}\left(X,\SPEC_Y(\Aa)\right)\;:
+		&\simeq \Hom_{Y\!\cat{-PreSch}}\left(X,\SPEC_Y(\Aa)\right)\;.
 	\end{align*}
 	In the last line, the $Y$-prescheme structure on $X$ is given by $X\morphism[\xi]\snake{Y}\morphism[f]Y$. If you think about it for a moment, a morphism of $Y$-preschemes from $X$ to $\Spec_Y(\Aa)$, where the $Y$-prescheme structure on $X$ factors over $\snake{Y}$ is exactly the commuting square from the universal property of the fibre product $\SPEC_Y(\Aa)\times_Y\snake{Y}$ and we're done.
 \end{proof}
 
-\section{The relation between \texorpdfstring{$H^1$}{H} and torseurs}
-\begin{defi}
-	Let $G$ be any topological space, $\Gg$ a sheaf of groups on $X$. A \defemph{$\Gg$-torseur} or \defemph{$\Gg$-principal homogeneous space} is a sheaf of sets $\Xx$ on $X$ with a morphism
+\section{The relation between \texorpdfstring{$H^1$}{H} and torsors}
+The usual term for these things seems to be \emph{torsor} rather than \emph{torseur}, so we will deviate from the lecture's notation here.
+\begin{defi}\lbl{def:torsor}
+	Let $X$ be any topological space, $\Gg$ a sheaf of groups on $X$. A \defemph{$\Gg$-torsor} or \defemph{$\Gg$-principal homogeneous space} is a sheaf of sets $\Xx$ on $X$ with a morphism
 	\begin{align*}
 		\Gg\times \Xx\morphism\Xx
 	\end{align*}
 	of sheaves of sets indicated by $(g,\xi)\mapsto g\cdot \xi$, with the property that $1_{\Gg(U)}\cdot \xi=\xi$ and $g\cdot(h\cdot \xi)=(gh)\cdot \xi$ for $g,h\in\Gg(U)$ and $\xi\in\Xx(U)$ and such that $\Xx_x\neq \emptyset$ for any $x\in X$ and the action of $\Gg_x$ on $\Xx_x$ is simply transitive for each $x\in X$.
 	
-	The torseur is called \defemph{trivial} if $\Xx(X)\neq \emptyset$ (and \emph{yes}, the $\neq$ is correct here).
+	The torsor is called \defemph{trivial} if $\Xx(X)\neq \emptyset$ (and \emph{yes}, the $\neq$ is correct here).
 \end{defi}
 \begin{example}
-	$\Gg$ with its group multiplication is a $\Gg$-torseur and trivial as $1_{\Gg(X)}\in\Gg(X)$.
+	$\Gg$ with its group multiplication is a $\Gg$-torsor and trivial as $1_{\Gg(X)}\in\Gg(X)$.
 \end{example}
 \begin{rem}
 	\begin{alphanumerate}
-		\item If $\xi\in\Xx(X)$ then 
+		\item \lbl{rem:torsorIsoStuff}If $\xi\in\Xx(X)$ then 
 		\begin{align*}
 			\Gg&\morphism\Xx\\
 			g\in\Gg(U)&\longmapsto g\cdot \xi|_U
 		\end{align*}
 		is an isomorphism (by the simple transitivity stuff it is an isomorphism on stalks).
-		\item If $\Xx$ and $\Yy$ are $\Gg$-torseurs then any morphism $\Xx\morphism[f]\Yy$ of sheaves of sets compatible with the $\Gg$-actions induces isomorphisms on stalks.
+		\item If $\Xx$ and $\Yy$ are $\Gg$-torsors then any morphism $\Xx\morphism[f]\Yy$ of sheaves of sets compatible with the $\Gg$-actions induces isomorphisms on stalks, i.e., is automatically an isomorphism of sheaves. Thus, the category of $\Gg$-torsors is a \emph{groupoid} -- a category, in which every morphism is an isomorphism.
+		\item I think the following should be pointed out separately (though it wasn't in the lecture). Let $\Xx$ be a $\Gg$-torsor, $U\subseteq X$ open. Then $\Gg(U)$ acts simply transitively on $\Xx(U)$. Indeed, If $\Xx(U)=\emptyset$ this is trivial. Otherwise, $\Xx|_U$ clearly is a trivial $\Gg|_U$-torsor by \itememph{a} and the assertion is just as trivial. 
+		
+		For $\xi,\upsilon\in\Gg(U)$ the unique element $g$ such that $g\cdot \upsilon=\xi$ will be denoted $g=\frac{\xi}{\upsilon}$ (or $\xi-\upsilon$, if the $\Gg$-action is written additively).
 	\end{alphanumerate}
 \end{rem}
 \begin{example}
 	\begin{alphanumerate}
-		\item Let $X$ be a ringed space. If $\Ll$ is a \emph{line bundle} on $X$ (i.e., a locally free $\Oo_X$-module of rank $1$) then
+		\item \lbl{ex:torsorsVectorBundles}Let $(X,\Oo_X)$ be a ringed space. If $\Ll$ is a \emph{line bundle} on $X$ (i.e., a locally free $\Oo_X$-module of rank $1$) then
 		\begin{align*}
-			U\mapsto \Ll^\times(U)&=\left\{\lambda\in\Ll(U)\st \Oo_U\morphism[\cdot \lambda]\Ll|_U\text{ is an isomorphism}\right\}\\
-			&=\left\{\lambda\in\Ll(U)\st 
+			U\mapsto \Ll^\times(U)&=\left\{\ell\in\Ll(U)\st \Oo_U\morphism[\cdot \ell]\Ll|_U\text{ is an isomorphism}\right\}\\
+			&=\left\{\ell\in\Ll(U)\st 
 			\begin{array}{c}
-				\text{the image of }\lambda \text{ in }\Ll_x\text{ is a generator of}\\
+				\text{the image of }\ell \text{ in }\Ll_x\text{ is a generator of}\\
 				\text{that free }\Oo_{X,x}\text{-module for all }x\in U
 			\end{array}
 			\right\}
 		\end{align*}
-		is an $\Oo_X^\times$-torseur.
+		is an $\Oo_X^\times$-torsor when equipped with the $\Oo_X^\times$-action given by $(f,\ell)\mapsto f\cdot \ell$.
+		
+		If $(X,\Oo_X)$ is locally ringed with maximal ideals $\mm_x\subseteq \Oo_{X,x}$ and $\ell\in\Ll(U)$ for some open subset $U\subseteq X$, we put
+		\begin{align*}
+			V(\ell)=\left\{x\in U\st (\text{image of }\ell\text{ in }\Ll_x)\in\mm_x\Ll_x\right\}\;.
+		\end{align*}
+		If $\lambda\in\Ll(U)$ happens to be a free generator of $\Ll|_U$, then $V(\ell)$ coincides with $V\left(\frac{\ell}{\lambda}\right)$, the latter vanishing set being taken in $\Oo_X$ as usual (that is, as in \cite[Definition~1.3.3]{alg1}). Then
+		\begin{align*}
+			\Ll^\times (U)=\left\{\ell\in\Ll(U)\st V(\ell)=\emptyset\right\}\;.
+		\end{align*}
+		The line bundle $\Ll$ is trivial iff $\Ll^\times$ has a global section, i.e., iff it's a \emph{trivial} torsor in  the sense of Definition~\reff{def:torsor}. It is obvious that for an isomorphism $\phi\colon \Ll\isomorphism\Mm$ of line bundles, we have an isomorphism $\Phi\colon \Ll^\times \isomorphism\Mm^\times$ sending $\ell\in\Ll^\times(U)$ to $\phi(\ell)\in\Mm^\times (U)$. Vice versa, if $\Phi\colon \Ll^\times \isomorphism\Mm^\times $ is an isomorphism of $\Oo_X^\times$-torsors (or just a morphism -- it's automatically an isomorphism by Remark~\reff{rem:torsorIsoStuff}\itememph{b}), there is a unique isomorphism $\phi\colon \Ll\isomorphism\Mm$ such that $\Phi(\ell)=\phi(\ell)$ for all open $U\subseteq X$ and $\ell\in\Ll^\times(U)$.
+		
+		We thus get a bijection between the isomorphism classes of line bundles and the isomorphism classes of $\Oo_X^\times$-torsors. As was pointed out, we need to check that every $\Oo_X^\times$-torsor is given as $\Ll^\times$ for some line bundle $\Ll$. If $\Xx$ is an $\Oo_X^\times$-torsor, define $\Ll$ as the sheafification of 
+		\begin{align*}
+			U\mapsto (f,\xi)/_\sim\quad\text{where }f\in\Oo_X(U)\text{, }\xi\in\Xx(U)
+		\end{align*}
+		and the equivalence relation $\sim$ is defined by $(f,\xi)\sim (g,\upsilon)$ iff $f=g\cdot\frac{\xi}{\upsilon}$. $\Ll$ becomes an $\Oo_X$-module via $h\cdot (f,\xi)/_\sim=(fh,\xi)/_\sim$ and $(f,\xi)/_\sim+(g,\upsilon)/_\sim=\left(g+f\cdot \frac{\xi}{\upsilon},\upsilon\right)/_\sim$.
+		\item Let $(X,\Oo_X$ be a locally ringed space again. Define a sheaf $\GL_n(\Oo_X)$ by
+		\begin{align*}
+			\GL_n(\Oo_X)(U)&=\left\{g\in\Oo_X(U)^{n\times n}\st V(\det g)=\emptyset\right\}\\
+			&=\left\{g\in\Oo_X(U)^{n\times n}\st g\text{ has an inverse matrix}\right\}
+		\end{align*}
+		Then there is a similar bijection
+		\begin{align*}
+			\left\{\begin{array}{c}
+				\text{isomorphism classes of }n\text{-dimen-}\\
+				\text{sional vector bundles on }X
+			\end{array}
+			\right\} & \isomorphism\left\{\begin{array}{c}
+			\text{isomorphism classes of}\\
+			\GL_n(\Oo_X)-\text{torsors}
+			\end{array}
+			\right\}\\
+			[\Ee]&\longmapsto \left[\left\{e\in\Ee(U)^n\st 
+			\begin{array}{c}
+			e\text{ is a vector of free}\\
+			\text{generators of }\Ee|_U
+			\end{array}
+			\right\}\right]\;,
+		\end{align*}
+		where $\GL_n(\Oo_X)$ acts by right multiplication with the column vector $e$.
 	\end{alphanumerate}
 \end{example}
+Let $\Gg$ be a sheaf of abelian groups, $\Xx$ a $\Gg$-torsor, $\Uu\colon X=\bigcup_{i\in I}U_i$ an open cover such that $\Xx|_{U_i}$ is trivial (we will then say that $\Xx$ is trivial on $\Uu$). To be compatible with our notation for \vC ech cohomology we will write the $\Gg$-action on $\Xx$ additively. If $\xi_i\in\Xx(U_i)$ for all $i\in I$ are given, there are unique $\psi_{i,j}\coloneqq \xi_i|_{U_{i,j}}-\xi_j|_{U_{i,j}}\in\Gg(U_{i,j})$ as in Remark~\reff{rem:torsorIsoStuff}\itememph{c}. Let $\psi=(\psi_{i,j})_{(i,j)\in I^2}\in\check{C}^1(\Uu,\Gg)$. One easily verifies the correctness of the formal calculation
+\begin{align*}
+	(\hacek{d}^1\psi)_{i,j,k}&=\psi_{j,k}|_{U_{i,j,k}}-\psi_{i,k}|_{U_{i,j,k}}+\psi_{i,j}|_{U_{i,j,k}}\\
+	&=\left(\xi_j|_{U_{i,j,k}}-\xi_k|_{U_{i,j,k}}\right)-\left(\xi_i|_{U_{i,j,k}}-\xi_k|_{U_{i,j,k}}\right)+\left(\xi_i|_{U_{i,j,k}}-\xi_j|_{U_{i,j,k}}\right)\\
+	&=0\;,
+\end{align*}
+that is, $\psi$ is a cocycle.
+
+\begin{prop}
+	\begin{alphanumerate}
+		\item \lbl{prop:torsorsH1Bij}The cohomology class $[\psi]\in \check{H}^1(\Uu,\Gg)$ depends only on the isomorphism class of the $\Gg$-torsor $\Xx$, not on the choice of trivializations.
+		\item One gets a bijection between the isomorphism classes of $\Gg$-torsors trivial on $\Uu$ and $\check{H}^1(\Uu,\Gg)$.
+	\end{alphanumerate}
+\end{prop}
+\begin{proof}
+	Part \itememph{a}. If $\snake{\xi}$ is another trivialization yielding $\snake{\psi}_{i,j}=\snake{\xi}_i|_{U_{i,j}}-\snake{\xi}_j|_{U_{i,j}}$, then $\snake{\xi}_i=\gamma_i+\xi_i$ where $\gamma_i=\snake{\xi}_i-\xi_i\in\Gg(U_i)$ (Remark~\reff{rem:torsorIsoStuff}\itememph{c}) and putting $\gamma=(\gamma_i)_{i\in I}\in \check{C}^0(\Uu,\Gg)$ we get $\snake{\psi}=\hacek{d}^0\gamma+\psi$.
+	
+	Part \itememph{b}. By \itememph{a} it is clear that we have a map from isomorphism classes of $\Gg$-torsors trivial on $\Uu$ to $\check{H}^1(\Uu,\Gg)$. To construct a converse map, let $\eta\in \check{H}^1(\Uu,\Gg)$ and let $\psi\in\check{C}^1(\Uu,\Gg)$ be a representative of $\eta$ (so that $\hacek{d}^1\psi =0$) and let $\Xx_\psi$ be the sheaf of sets on $X$ given by
+	\begin{align*}
+		\Xx_\psi(V)=\left\{\gamma\in \check{C}^0(\Uu\cap V,\Gg)\st \hacek{d}^0\gamma=\psi|_V\right\}\;.
+	\end{align*}
+	We get a $\Gg$-action on $\Xx_\psi$ via $g+\gamma=(g|_{U_i\cap V}+\gamma_i)_{i\in I}$ for $g\in\Gg(V)$, $\gamma\in\check{C}^0(\Uu\cap V,\Gg)$. We verify that $\Gg$ acts simply transitively on stalks and that $\Gg$ trivializes on $\Uu$. Note that if $\gamma,\gamma'\in \Xx(V)$, then $\hacek{d}^0(\gamma-\gamma')=0$, hence $\gamma-\gamma'\in\check{C}^0(\Uu\cap V,\Gg)$ corresponds to (unique) element of $\Gg(V)$. So the action on $\Xx_\psi(V)$ is simply transitive for every $V\subseteq X$ open and the only thing left to check is triviality on $\Uu$. For this, note that $\check{H}^1(\Uu\cap V,\Gg|_V)=0$ by Corollary~\reff{cor:refinementPullback}\itememph{c}, so $\psi|_V$ has a preimage in $\check{C}^0(\Uu\cap V,\Gg)$ and consequently $\Xx_\psi(V)\neq\emptyset$. In particular, the stalks $(\Xx_\psi)_x$ are non-empty and $\Xx_\psi$ is a $\Gg$-torsor trivial on $\Uu$.
+	
+	If $\snake{\psi}=\psi+\hacek{d}^0\phi$ with $\phi\in\check{C}^0(\Uu,\Gg)$ then we have an isomorphism of $\Gg$-torsors
+	\begin{align*}
+		\Xx_\psi&\isomorphism\Xx_{\snake{\psi}}\\
+		\gamma\in\Xx_\psi(V) &\mapsto \gamma+\phi|_V\;.
+	\end{align*}
+	Therefore, we get a map in the opposite direction
+	\begin{align*}
+		\check{H}^1(\Uu,\Gg)&\morphism\left\{\begin{array}{c}
+			\text{isomorphism classes of}\\
+			\Gg\text{-torsors trivial on }\Uu
+		\end{array}\right\}\\
+		\eta=[\psi]&\longmapsto[\Xx_\psi]\;.
+	\end{align*}
+	We claim that the maps we constructed from $\check{H}^1(\Uu,\Gg)$ to the set of isomorphism classes of $\Uu$-trivial $\Gg$-torsors and vice versa are inverse to each other. 
+	
+	Indeed, we may choose $\xi_i\in\Xx_\psi(U_i)$ such that $(\xi_i)_j=\psi_{ij}$ -- using $\hacek{d}^1\psi=0$ they indeed satisfy $\hacek{d}^0\xi_i=\psi|_{U_{i,j}}$ -- and using $\hacek{d}^1\psi=0$ again we find $\xi_i|_{U_{i,j}}-\xi_j|_{U_{i,j}}=\psi_{i,j}$. So we send $[\Xx_\psi]$ to the cohomology class $[\psi]$ and then back to $[\Xx_\psi]$.
+	
+	And for the other direction, if an arbitrary $\Uu$-trivial $\Gg$-torsor $\Xx$ is given, choose trivializations $\xi_i\in\Xx(U_i)$ and put $\psi=(\xi_i|_{U_{i,j}}-\xi_j|_{U_{i,j}})_{(i,j)\in I^2}\in\check{C}^1(\Uu,\Gg)$. Then we get an isomorphism $\Xx\isomorphism\Xx_\psi$ via
+	\begin{align*}
+		\Xx(V)&\morphism \Xx_\psi(V)\\
+		\upsilon &\longmapsto \left(\upsilon|_{U_i\cap V}-\xi_i|_{U_i\cap V}\right)_{i\in I}\in\check{C}^1(\Uu\cap V,\Gg)
+	\end{align*}
+	(this is a morphism of $\Gg$-torsors, hence an isomorphism by Remark~\reff{rem:torsorIsoStuff}\itememph{b}), so $[\Xx]$ is mapped to $[\psi]$ and then back to $[\Xx_\psi]=[\Xx]$ again.
+\end{proof}
+\begin{rem*}
+	When $\Gg$ is any sheaf of groups on $X$, one can define $H^1(X,\Gg)$ as the set of isomorphism classes of $\Gg$-torsors on $X$. This is a pointed set, the base point being the isomorphism class of the trivial torsor. Thus, the isomorphism classes of line bundles and of $n$-dimensional vector bundles on $X$ are in canonical bijection with $H^1(X,\Oo_X^\times)$ and $H^1(X,\GL_n(\Oo_X))$ respectively by Example~\reff{ex:torsorsVectorBundles}.
+\end{rem*}
+\begin{cor}
+	If $X$ is an affine scheme, $\Mm$ a quasi-coherent $\Oo_X$-module and $\Xx$ an $\Mm$-torsor on $X$, then $\Xx$ is trivial.
+\end{cor}
+\begin{proof}
+	Let $\Uu$ be an open cover of $X$ on which $\Xx$ trivializes. We may replace $\Uu$ by an affine refinement. Then $\check{H}^1(\Uu,\Mm)=H^1(X,\Mm)=0$ by Theorem~\reff{thm:CohoOnSchemes}\itememph{a} and \itememph{b}, proving that $\Xx$ is trivial by Proposition~\reff{prop:torsorsH1Bij}\itememph{b}.
+\end{proof}
+If $X$ is an $S$-prescheme, we have a homomorphism of abelian groups
+\begin{align*}
+	d\log\colon\Oo_X^\times &\morphism \Omega_{X/S}\\
+	f&\longmapsto d\log f=\frac{d_{X/S}f}{f}
+\end{align*}
+defining a morphism of \vC ech cohomology groups $\check{H}^1(X,\Oo_X^\times)\morphism \check{H}^1(X,\Omega_{X/S})$. When no open cover is specified, we put $\check{H}^1(X,\Ff)=\colimit[\Uu]\check{H}^1(\Uu,\Ff)$ for a presheaf $\Ff$ on $X$, where the colimit is taken over all open covers $\Uu$ of $X$, partially ordered by refinement. We have to use \vC ech cohomology here since we don't have any other available, unless $X$ is a quasi-compact scheme and $\Ff$ a quasi-coherent $\Oo_X$-module. In this case, the affine open covers are cofinal in the poset of open covers and $\check{H}^1(X,\Ff)=H^1(X,\Ff)$ is what we expect.
+\begin{defi}
+	Let $\Ll$ be line bundle on $X$. The image under the above map of the element of $\check{H}^1(X,\Oo_X^\times)$ associated to the torsor $\Ll^\times$ by Proposition~\reff{prop:torsorsH1Bij}\itememph{b} is called the \defemph{first Chern class} of $\Ll$ and is denoted
+	\begin{align*}
+		c_1(\Ll)\in \check{H}^1(X,\Omega_{X/S})\;.
+	\end{align*}
+\end{defi}
+\begin{defi}
+	Let $\Vv$ and $\Ww$ be vector bundles on the locally ringed space $(X,\Oo_X)$. An \defemph{extension} of $\Ww$ by $\Vv$ is a short exact sequence 
+	\begin{align*}
+		0\morphism \Vv\morphism[a]\Ee\morphism[b]\Ww\morphism 0\;.
+	\end{align*}
+	A \defemph{morphism of extensions} is a commutative diagram
+	\begin{diagram*}
+		\node[ob] (A) at (0,1.5) {$0$};
+		\node[ob] (B) at (1.5,1.5) {$\Vv$};
+		\node[ob] (C) at (3,1.5) {$\Ee$};
+		\node[ob] (D) at (4.5,1.5) {$\Ww$};
+		\node[ob] (E) at (6,1.5) {$0$};
+		\node[ob] (A') at (0,0) {$0$};
+		\node[ob] (B') at (1.5,0) {$\Vv$};
+		\node[ob] (C') at (3,0) {$\Ee'$};
+		\node[ob] (D') at (4.5,0) {$\Ww$};
+		\node[ob] (E') at (6,0) {$0$};
+		\scriptsize
+		\draw[->] (A) -- (B);
+		\draw[->] (B) -- (C) node[pos=0.5,above] {$a$};
+		\draw[->] (C) -- (D) node[pos=0.5,above] {$b$};
+		\draw[->] (D) -- (E);
+		\draw[->] (A') -- (B');
+		\draw[->] (B') -- (C');
+		\draw[->] (C') -- (D');
+		\draw[->] (D') -- (E');
+		\draw[transform canvas={xshift=1pt}] (B) -- (B');
+		\draw[transform canvas={xshift=-1pt}] (B) -- (B');
+		\draw[->] (C) -- (C') node[pos=0.5, left] {$\epsilon$};
+		\draw[transform canvas={xshift=1pt}](D) -- (D');
+		\draw[transform canvas={xshift=-1pt}](D) -- (D');
+	\end{diagram*}
+\end{defi}
+For sheaves $\Ff$ and $\Gg$ on a topological space $X$, we get another sheaf on $X$ by $U\mapsto \Hom_{\cat{Shv}(U)}(\Ff|_U,\Gg|_U)$ for open subsets $U\subseteq X$. This sheaf is denoted $\Hhom(\Ff,\Gg)$. If $\Rr$ is  a sheaf of rings on $X$ and $\Ff$ and $\Gg$ are $\Rr$-modules, we can restrict to homomorphisms respecting the $\Rr$-module structures and obtain a sheaf $\Hhom_\Rr(\Ff,\Gg)$ by $\Hhom_{\Rr}(\Ff,\Gg)(U)=\Hom_{\Rr|_U\cat{-Mod}}(\Ff|_U,\Gg|_U)$ for $U\subseteq X$ open.
+\begin{prop}
+	Let $(X,\Oo_X)$ be a locally ringed space and $\Vv,\Ww$ vector bundles on $X$. Associating to any extension the $\Hhom_{\Oo_X}(\Ww,\Vv)$-torsor $\Xx$ given by
+	\begin{align*}
+		\Xx(U)=\left\{\pi\colon \Ee|_U\morphism\Vv|_U\st \pi a=\id_{\Vv|_U}\right\}
+	\end{align*}
+	for $U\subseteq X$ open, whose $\Hhom_{\Oo_X}(\Ww,\Vv)$-action is given by $h\in\Hom_{\Oo_U\cat{-Mod}}(\Ww|_V,\Vv|_V)$ sending $\pi$ to $\pi+h\circ b$) is an equivalence of groupoids between extensions of $\Ww$ by $\Vv$ and $\Hhom_{\Oo_X}(\Ww,\Vv)$-torsors on $X$.
+\end{prop}
 
 \appendix
 \chapter{Appendix -- category theory corner}
