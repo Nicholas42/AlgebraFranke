@@ -1547,7 +1547,11 @@ defining a morphism of \vC ech cohomology groups $\check{H}^1(X,\Oo_X^\times)\mo
 		\draw[transform canvas={xshift=-1pt}](D) -- (D');
 	\end{diagram*}
 \end{defi}
-For sheaves $\Ff$ and $\Gg$ on a topological space $X$, we get another sheaf on $X$ by $U\mapsto \Hom_{\cat{Shv}(U)}(\Ff|_U,\Gg|_U)$ for open subsets $U\subseteq X$. This sheaf is denoted $\Hhom(\Ff,\Gg)$. If $\Rr$ is  a sheaf of rings on $X$ and $\Ff$ and $\Gg$ are $\Rr$-modules, we can restrict to homomorphisms respecting the $\Rr$-module structures and obtain a sheaf $\Hhom_\Rr(\Ff,\Gg)$ by $\Hhom_{\Rr}(\Ff,\Gg)(U)=\Hom_{\Rr|_U\cat{-Mod}}(\Ff|_U,\Gg|_U)$ for $U\subseteq X$ open.
+For sheaves $\Ff$ and $\Gg$ on a topological space $X$, we get another sheaf on $X$ via 
+\begin{align*}
+	U\longmapsto \Hom_{\cat{Shv}(U)}(\Ff|_U,\Gg|_U)\quad\text{for open subsets }U\subseteq X\;.
+\end{align*}
+This sheaf is denoted $\Hhom(\Ff,\Gg)$. If $\Rr$ is  a sheaf of rings on $X$ and $\Ff$ and $\Gg$ are $\Rr$-modules, we can restrict to homomorphisms respecting the $\Rr$-module structures and obtain a sheaf $\Hhom_\Rr(\Ff,\Gg)$ by $\Hhom_{\Rr}(\Ff,\Gg)(U)=\Hom_{\Rr|_U\cat{-Mod}}(\Ff|_U,\Gg|_U)$ for $U\subseteq X$ open.
 \begin{prop}
 	Let $(X,\Oo_X)$ be a locally ringed space and $\Vv,\Ww$ vector bundles on $X$. Associating to any extension the $\Hhom_{\Oo_X}(\Ww,\Vv)$-torsor $\Xx$ given by
 	\begin{align*}
