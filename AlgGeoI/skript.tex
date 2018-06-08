@@ -451,7 +451,7 @@ of presheaves on $\Bb$.
         If $\Ff$ is a presheaf on $\Bb$ and $\snake{\Bb}\subseteq \Bb$ is another topology base, then $\big(\Ff|_{\snake \Bb}\big)^\sh\simeq \Ff^\sh$.
     \end{fact}
     \begin{proof}
-    	 This is Proposition~\reff{prop:sheafificationMorphisms}\itememph{c} and we proved it there. Ok, actually \hyperref[thisIsNotAProofCozWeAreLazy]{this} doesn't count as a proof, so let's do it now.
+    	 This is Proposition~\reff{prop:sheafificationMorphisms}\itememph{c} and we proved it there. Ok, \hyperref[thisIsNotAProofCozWeAreLazy]{this} arguably doesn't count as a proof, so let's do it now.
     	
         By Fact~\reff{fact:smallerBaseSheaf}, $\big(\Ff|_{\snake \Bb}\big)_x \isomorphism \Ff_x$ is an isomorphism for all $x\in X$. It is clear that 
         \begin{align*}
@@ -2675,7 +2675,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
     In the other direction, one can easily see that $\nil(\Oo_X) \neq 0$ defines a closed subprescheme containing all the points of $X$, hence \itememph{b} $\Rightarrow$ \itememph{a}.
 \end{proof}
 \begin{defi}[Reduced prescheme] \lbl{def:reduced}
-    A prescheme with these properties is called \defemph{reduced}. For any prescheme $X$, let $X^{\red}$ be the closed subprescheme of $X$ be defined by $\nil(\Oo_X)$.
+    A prescheme with these properties is called \defemph{reduced}. For any prescheme $X$, let $X^{\red}$ be the closed subprescheme of $X$ defined by $\nil(\Oo_X)$.
 \end{defi}
 \begin{rem}
     $X^{\red}$ is the smallest closed subprescheme of $X$ containing all points of $X$, and is reduced.
@@ -3487,7 +3487,7 @@ is ascending. Let $I_\infty = \bigcup_{k=1}^\infty I_k$.
     This class is not base-local. One could require this locally or require that locally $\xi^{-1}(U) \subseteq \IP^n_U$ ($U$ affine, $n$ depending on $U$).
 \end{rem}
 \begin{prop}[Chow's lemma]
-    Let $X\morphism[p] \Spec R$ be a proper morphism and $X$ integral (irreducible and reduced). Then there is a projective morphism $\snake X\morphism[\pi] X$ such that $\snake X\morphism \Spec R$ is projective and such that there is a dense open subset $U$ of $X$ such that $\pi^{-1}(U) \morphism[\pi] U$ is an isomorphism.
+    Let $X\morphism[p] \Spec R$ be a proper morphism and $X$ integral (irreducible and reduced). Then there is a projective morphism $\snake X\morphism[\pi] X$ such that $\snake X\morphism \Spec R$ is projective and such that there is a dense open subset $U$ of $X$ for which $\pi^{-1}(U) \morphism[\pi] U$ is an isomorphism.
 \end{prop}
 \begin{proof}[Sketch of a proof]
     Let $U_i\subseteq X$ be affine open subsets covering $X$, $U_i\simeq \Spec A_i$ where $A_i\simeq R[X_1,\ldots, X_{n_i}]/I_i$ giving a closed embedding $U_i\morphism \IA^{n_i}_R$. Let $U = \bigcap_i U_i$, we have embeddings 
