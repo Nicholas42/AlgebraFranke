@@ -355,15 +355,15 @@ To see that $\check{C}^\bullet (\Uu,\Mm)$ is indeed a cochain complex, we need t
 	\begin{align}\lbl{eq:simplicialStuff}
 		d_md_\ell=d_{\ell+1}d_m\quad\text{when }\ell\geq m\;.
 	\end{align}
-	Indeed, we have $(d_md_\ell\psi)_{\mathbf{i}}=\psi_{\mathbf{j}}|_{U_{\mathbf{i}}}$, where $\mathbf{j}$ is obtained from $\mathbf{i}$ by omitting the indices $i_\ell$ and $i_m$ when $\ell<m$ and the indices $i_{\ell+1}$ and $i_m$ when $\ell\geq m$. The assertion follows.
+	Indeed, we have $(d_md_\ell\psi)_{\boldsymbol{i}}=\psi_{\boldsymbol{j}}|_{U_{\boldsymbol{i}}}$, where $\boldsymbol{j}$ is obtained from $\boldsymbol{i}$ by omitting the indices $i_\ell$ and $i_m$ when $\ell<m$ and the indices $i_{\ell+1}$ and $i_m$ when $\ell\geq m$. The assertion follows.
 	
-	\emph{Step 2.} We prove the following. Let $C^\bullet $ be any family of abelian groups (or objects of an abelian category) and $C^n\morphism[d_\ell]C^{n+1}$ morphisms for $\ell=0,\ldots,n+1$. Suppose that $C^n=0$ for $n<0$ and that \eqreff{eq:simplicialStuff} holds. Then 
+	\emph{Step 2.} We prove the following. Let $C^\bullet $ be any family of abelian groups (or objects of an abelian category) and $C^n\morphism[d_\ell]C^{n+1}$ morphisms for $\ell=0,\ldots,n+1$. Suppose that $C^n=0$ for $n<0$ and that \eqreff{eq:simplicialStuff} holds. Then $d^\bullet$ with
 	\begin{align*}
-		d=\sum_{i=0}^{n+1}(-1)^id_i
+		d^n=\sum_{i=0}^{n+1}(-1)^id_i
 	\end{align*}
-	satisfies $d^2=0$. Indeed,
+	satisfies $d^{n+1}d^n=0$. Indeed,
 	\begin{align*}
-		d^2&=\sum_{m=0}^{n+2}\sum_{\ell=0}^{n+1}(-1)^{\ell+m}d_md_\ell=\sum_{m=0}^{n+2}\sum_{\ell=0}^{m-1}(-1)^{\ell+m}d_md_\ell+\sum_{m=0}^{n+2}\sum_{\ell=m}^{n+1}(-1)^{\ell+m}d_md_\ell\\
+		d^{n+1}d^n&=\sum_{m=0}^{n+2}\sum_{\ell=0}^{n+1}(-1)^{\ell+m}d_md_\ell=\sum_{m=0}^{n+2}\sum_{\ell=0}^{m-1}(-1)^{\ell+m}d_md_\ell+\sum_{m=0}^{n+2}\sum_{\ell=m}^{n+1}(-1)^{\ell+m}d_md_\ell\\
 		&=\sum_{m=0}^{n+2}\sum_{\ell=0}^{m-1}(-1)^{\ell+m}d_md_\ell+\sum_{m=0}^{n+1}\sum_{\ell=m}^{n+1}(-1)^{\ell+m}d_{\ell+1}d_m\\
 		&=\sum_{i>j}(-1)^{i+j}d_id_j+\sum_{i>j}(-1)^{i+j-1}d_id_j=0\;,
 	\end{align*}
@@ -389,7 +389,7 @@ To see that $\check{C}^\bullet (\Uu,\Mm)$ is indeed a cochain complex, we need t
 	\end{align*}
 	for all permutations $\pi\in\SS_n$. Note that $U_{i_0,\ldots,i_n}=U_{i_{\pi(0)},\ldots,i_{\pi(n)}}$ as permuting indices doesn't change intersections, so the first property makes sense. Also note that both properties together imply that $\psi_{i_0,\ldots,i_n}=0$ whenever $(i_0,\ldots,i_n)$ contains a repeated index.
 	
-	\begin{defi}
+	\begin{defi}\lbl{def:alternatingCech}
 		$\check{C}_\alt^\bullet (\Uu,\Mm)\subseteq\check{C}^\bullet (\Uu,\Mm)$ is a subcomplex, called the \defemph{alternating \vC ech complex}.
 	\end{defi}
 	\begin{proof}
@@ -1317,8 +1317,8 @@ Let $X$ be any prescheme. Recall the construction of the $\SPEC_X(-)$ functor fr
 	\begin{align*}
 	\Oo_Y(\Omega) = \left\{\alpha=(\alpha_{x,\pp})\in \prod_{(x,\pp)\in \Omega} \Oo_{Y,[x,\pp]}\st 
 	\begin{array}{c}
-	\alpha\text{ fulfills the }\\
-	\text{\emph{coherence condition}\texttrademark}
+	\alpha\text{ fulfills the \emph{cohe-}}\\
+	\text{\emph{rence condition}\texttrademark}
 	\end{array}
 	\right\}\;.
 	\end{align*}
@@ -1420,7 +1420,7 @@ The usual term for these things seems to be \emph{torsor} rather than \emph{tors
 			U\mapsto (f,\xi)/_\sim\quad\text{where }f\in\Oo_X(U)\text{, }\xi\in\Xx(U)
 		\end{align*}
 		and the equivalence relation $\sim$ is defined by $(f,\xi)\sim (g,\upsilon)$ iff $f=g\cdot\frac{\xi}{\upsilon}$. $\Ll$ becomes an $\Oo_X$-module via $h\cdot (f,\xi)/_\sim=(fh,\xi)/_\sim$ and $(f,\xi)/_\sim+(g,\upsilon)/_\sim=\left(g+f\cdot \frac{\xi}{\upsilon},\upsilon\right)/_\sim$.
-		\item Let $(X,\Oo_X$ be a locally ringed space again. Define a sheaf $\GL_n(\Oo_X)$ by
+		\item Let $(X,\Oo_X)$ be a locally ringed space again. Define a sheaf $\GL_n(\Oo_X)$ by
 		\begin{align*}
 			\GL_n(\Oo_X)(U)&=\left\{g\in\Oo_X(U)^{n\times n}\st V(\det g)=\emptyset\right\}\\
 			&=\left\{g\in\Oo_X(U)^{n\times n}\st g\text{ has an inverse matrix}\right\}
@@ -1433,7 +1433,7 @@ The usual term for these things seems to be \emph{torsor} rather than \emph{tors
 			\end{array}
 			\right\} & \isomorphism\left\{\begin{array}{c}
 			\text{isomorphism classes of}\\
-			\GL_n(\Oo_X)-\text{torsors}
+			\GL_n(\Oo_X)\text{-torsors}
 			\end{array}
 			\right\}\\
 			[\Ee]&\longmapsto \left[\left\{e\in\Ee(U)^n\st 
@@ -1537,8 +1537,8 @@ defining a morphism of \vC ech cohomology groups $\check{H}^1(X,\Oo_X^\times)\mo
 		\draw[->] (C) -- (D) node[pos=0.5,above] {$b$};
 		\draw[->] (D) -- (E);
 		\draw[->] (A') -- (B');
-		\draw[->] (B') -- (C');
-		\draw[->] (C') -- (D');
+		\draw[->] (B') -- (C') node[pos=0.5,above] {$a'$};
+		\draw[->] (C') -- (D') node[pos=0.5,above] {$b'$};
 		\draw[->] (D') -- (E');
 		\draw[transform canvas={xshift=1pt}] (B) -- (B');
 		\draw[transform canvas={xshift=-1pt}] (B) -- (B');
@@ -1547,18 +1547,192 @@ defining a morphism of \vC ech cohomology groups $\check{H}^1(X,\Oo_X^\times)\mo
 		\draw[transform canvas={xshift=-1pt}](D) -- (D');
 	\end{diagram*}
 \end{defi}
+Note that $\epsilon$ in the above diagram is automatically an isomorphism. Indeed, we can apply the snake lemma in the abelian category $\Oo_X\cat{-Mod}$ to obtain the vanishing of both $\ker(\epsilon)$ and $\coker(\epsilon)$.
+
 For sheaves $\Ff$ and $\Gg$ on a topological space $X$, we get another sheaf on $X$ via 
 \begin{align*}
 	U\longmapsto \Hom_{\cat{Shv}(U)}(\Ff|_U,\Gg|_U)\quad\text{for open subsets }U\subseteq X\;.
 \end{align*}
 This sheaf is denoted $\Hhom(\Ff,\Gg)$. If $\Rr$ is  a sheaf of rings on $X$ and $\Ff$ and $\Gg$ are $\Rr$-modules, we can restrict to homomorphisms respecting the $\Rr$-module structures and obtain a sheaf $\Hhom_\Rr(\Ff,\Gg)$ by $\Hhom_{\Rr}(\Ff,\Gg)(U)=\Hom_{\Rr|_U\cat{-Mod}}(\Ff|_U,\Gg|_U)$ for $U\subseteq X$ open.
 \begin{prop}
-	Let $(X,\Oo_X)$ be a locally ringed space and $\Vv,\Ww$ vector bundles on $X$. Associating to any extension the $\Hhom_{\Oo_X}(\Ww,\Vv)$-torsor $\Xx$ given by
+	Let $(X,\Oo_X)$ be a locally ringed space and $\Vv,\Ww$ vector bundles on $X$. Associating to any extension $\Ee$ of $\Ww$ by $\Vv$ the $\Hhom_{\Oo_X}(\Ww,\Vv)$-torsor $\Xx$ given by
 	\begin{align*}
-		\Xx(U)=\left\{\pi\colon \Ee|_U\morphism\Vv|_U\st \pi a=\id_{\Vv|_U}\right\}
+		\Xx(U)=\left\{\text{morphisms }\Ee|_U\morphism[\pi]\Vv|_U\text{ of }\Oo_U\text{-modules}\st \pi a=\id_{\Vv|_U}\right\}
 	\end{align*}
-	for $U\subseteq X$ open, whose $\Hhom_{\Oo_X}(\Ww,\Vv)$-action is given by $h\in\Hom_{\Oo_U\cat{-Mod}}(\Ww|_V,\Vv|_V)$ sending $\pi$ to $\pi+h\circ b$) is an equivalence of groupoids between extensions of $\Ww$ by $\Vv$ and $\Hhom_{\Oo_X}(\Ww,\Vv)$-torsors on $X$.
+	for $U\subseteq X$ open, whose $\Hhom_{\Oo_X}(\Ww,\Vv)$-action is given by $h\in\Hom_{\Oo_U\cat{-Mod}}(\Ww|_U,\Vv|_U)$ sending $\pi$ to $\pi+h b$) is an equivalence of groupoids between extensions of $\Ww$ by $\Vv$ and $\Hhom_{\Oo_X}(\Ww,\Vv)$-torsors on $X$.
 \end{prop}
+Franke didn't prove this in the lecture. For the sake of completeness, however, I will do my best to sketch the important steps.
+\begin{proof}[Sketch of a proof]
+	Denote $\Hh=\Hhom_{\Oo_X}(\Ww,\Vv)$ for short and let $\Xx_\Ee$ be the $\Hh$-torsor associated to an extension $\Ee$. Let's first give an argument why $\Xx_\Ee$ is even an $\Hh$-torsor. If $\pi,\pi'\in\Xx_\Ee(U)$ are two sections of $a$ on $U$, then $(\pi-\pi')a=0$, hence $\pi-\pi'$ factors uniquely over the cokernel of $\Vv_U\morphism[a]\Ee|_U$, which is $\Ww|_U$. That is, there is a unique morphism $\Ww|_U\morphism[h]\Vv|_U$ of $\Oo_U$-modules such that $\pi-\pi'=hb$. This shows that $\Hh(U)$ acts simply transitively on $\Xx_\Ee(U)$. It remains to show that the stalks $\Xx_{\Ee,x}$ are non-empty. But $\Vv$ and $\Ww$ are vector bundles, so every $x\in X$ has a neighbourhood $U$ in which $\Ww|_U$ and $\Vv|_U$ are free $\Oo_U$-modules. In particular, $\Ww|_U$ is projective and the extension $\Ee|_U$ is split, i.e., $\Ee|_U\simeq \Ww|_U\oplus \Vv|_U$. Then $\Xx_\Ee(V)$ is non-empty for all open subsets $V\subseteq U$, hence $\Xx_{\Ee,x}\neq \emptyset$.
+	
+	Now about the functoriality properties. To a morphism $\Ee\morphism[\epsilon]\Ee'$ of extensions we associate the morphism $\Xx_\Ee\morphism\Xx_{\Ee'}$ which takes $\pi\in\Xx_\Ee(U)$ to $\epsilon^{-1}\pi\in\Xx_{\Ee'}(U)$ (recall that $\epsilon$ is automatically an isomorphism; we could have taken $\epsilon\pi$ instead to get a contravariant equivalence of groupoids). This gives a functor $\Phi$ from the groupoid of extensions of $\Ww$ by $\Vv$ to the groupoid of $\Hh$-torsors. 
+	
+	We show fully faithfulness first. Faithfulness of $\Phi$ is straightforward: If $\epsilon,\epsilon'\colon \Ee\morphism\Ee'$ are morphisms of extensions such that $\Phi(\epsilon)=\Phi(\epsilon')$, then choose an open cover $\Uu\colon X=\bigcup_{i\in I}U_i$ on which $\Vv$ and $\Ww$ trivialize (i.e., $\Vv|_{U_i}$ is a free $\Oo_{U_i}$-module for all $i\in U$ and same for $\Ww$). Then $\Ee|_{U_i}\simeq \Ww|_{U_i}\oplus \Vv|_{U_i}$ is a split extension (and same for $\Ee'|_{U_i}$), hence the $\Xx_\Ee(U_i)$ are non-empty and we may choose $\pi_i\in \Xx_\Ee(U_i)$ for all $i\in I$. From $\epsilon^{-1}\pi_i=(\epsilon')^{-1}\pi_i$ and splitness of $\Ee|_{U_i},\Ee'|_{U_i}$ it's easy to deduce $\epsilon=\epsilon'$ on $U_i$. Since the $U_i$ cover $X$, this holds on all of $X$ and we are done.
+	
+	Now suppose $\Xx_\Ee\morphism[\phi]\Xx_{\Ee'}$ is a morphism of $\Hh$-torsors. We need to construct a morphism $\Ee\morphism[\epsilon]\Ee'$ of extensions such that $\Phi(\epsilon)=\phi$. If $\pi\in\Xx_\Ee(U)$ is a section of $a$ on $U$, then $\pi$ and $\phi(\pi)$ induce splittings $\Ee|_U\simeq \Ww|_U\oplus\Vv|_U\simeq \Ee'|_U$, which immediately gives a morphism $\Ee|_U\morphism[\epsilon_U]\Ee'|_U$ of extensions of $\Ww|_U$ by $\Vv|_U$. It can be easily checked that $\epsilon_U$ is actually independent of $\pi$. So choosing a trivializing open cover $\Uu$ as above, we get $\epsilon_{U_i}$ for all $i\in I$ which can be glued together (by naturality of their construction) to a morphism $\Ee\morphism[\epsilon]\Ee'$ which indeed satisfies $\Phi(\epsilon)=\phi$.
+	
+	And essential surjectivity. Let $\Xx$ be an $\Hh$-torsor. To construct an extension $\Ee$ such that $\Xx\simeq \Xx_\Ee$, the idea is -- of course -- to choose $\Ee|_U\simeq \Ww|_U\oplus\Vv|_U$ on small neighbourhoods where $\Xx$ trivializes, and then to glue them together somehow. Actually we will take the smallest possible ``neighbourhoods'' -- the stalks $\Ee_x\simeq\Ww_x\oplus\Vv_x$ and impose a suitable coherence condition. To do this, choose an element $\pi_x\in\Xx_x$ for every $x\in X$ and put
+	\begin{align*}
+		\Ee(U)=\left\{e=(w_x,v_x)_{x\in U}\in \prod_{x\in U}\Ww_x\oplus\Vv_x\st\begin{array}{c}
+		e\text{ fulfills the \emph{cohe-}}\\
+		\text{\emph{rence condition}\texttrademark}
+		\end{array}\right\}\;,
+	\end{align*}
+	where the \emph{coherence condition}\texttrademark\ says that every $x\in U$ has a neighbourhood $V\subseteq U$ on which $\pi_x$, $w_x$ and $v_x$ have preimages $\pi_V\in \Xx(V)$, $w_V\in\Ww(V)$ and $v_V\in\Vv(V)$ such that the following holds: $\pi_{V,y}$, $w_{V,y}$ and $v_{V,y}$ denote the respective images in $\Xx_y$, $\Ww_y$ and $\Vv_y$, then $w_y=w_{V,y}$ and $v_y=v_{V,y}+h(w_y)$, where $h=\pi_y-\pi_{V,y}\in\Hh_y$. It is possible to show that this indeed defines an extension of $\Ww$ by $\Vv$ and that $\Xx\simeq\Xx_\Ee$.
+\end{proof}
+
+\chapter{Cohomology of projective spaces}
+\section{Regular sequences and the Koszul complex}
+We will use the following conventions: 
+\begin{defi}
+	\begin{alphanumerate}
+		\item \lbl{def:cone}For a cochain complex $(C^\bullet, d_{C}^\bullet)$ let the \defemph{shift} $C[p]^\bullet$ be the cochain complex defined by $C[p]^q=C^{p+q}$ and whose differential $d_{C[p]}^\bullet$ is given by $d_{C[p]}^q=(-1)^pd_{C}^{p+q}$.
+		\item Let $C^\bullet\morphism[\phi]\snake{C}^\bullet$ be a morphism of cochain complexes. Then the \defemph{cone} $\Cone(\phi)$ is the cochain complex defined by 
+		\begin{align}\lbl{eq:cone}
+			\Cone(\phi)^p=\snake{C}^p\oplus C^{p+1}\quad\text{and}\quad d_{\Cone(\phi)}^p(\snake{c},c)=\left(d_{\snake{C}}^p(\snake{c})+\phi(c),-d_{C}^{p+1}(c)\right)\;.
+		\end{align}
+	\end{alphanumerate}
+\end{defi}
+\begin{rem*}
+	\begin{alphanumerate}
+		\item Obviously, $H^q(C[p]^\bullet)=H^{p+q}(C^\bullet)$.
+		\item Note that $d^\bullet=d_{\Cone(\phi)}^ \bullet$ is indeed a differential of cochain complexes, as
+		\begin{align*}
+			d^{p+1}d^p(\snake{c},c)&=d^{p+1}\left(d_{\snake{C}}^p(\snake{c})+\phi(c),-d_{C}^{p+1}(c)\right)\\
+			&=\left(d_{\snake{C}}^{p+1}d_{\snake{C}}^p(\snake{c})+d_{\snake{C}}^{p+1}\phi(c)-\phi d_{C}^{p+1}(c),d_{C}^{p+2}d_{C}^{p+1}(c)\right)\\
+			&=0\;.
+		\end{align*}
+		We get a short exact sequence
+		\begin{align*}
+			0\morphism \snake{C}^\bullet\morphism\Cone(\phi)\morphism C[1]^\bullet\morphism 0
+		\end{align*}
+		of cochain complexes. The connecting homomorphism $H^{p+1}(C^\bullet)=H^p(C[1]^\bullet)\morphism[\partial]H^{p+1}(\snake{C}^\bullet)$ coincides with the morphism induced by $\phi$. We thus get a long exact cohomology sequence
+		\begin{align}\lbl{eq:MappingConeSeq}
+			\ldots\morphism H^p(C^\bullet)\morphism[\phi]H^p(\snake{C}^\bullet)\morphism H^p(\Cone(\phi))\morphism H^{p+1}(C^\bullet)\morphism\ldots\;.
+		\end{align}
+		In particular, $\phi$ induces isomorphisms on cohomology iff $H^\bullet(\Cone(\phi))$ vanishes.
+	\end{alphanumerate}
+\end{rem*}
+Naturally arising in the computation of cohomology of projective spaces, \emph{regular sequences} are interesting enough to be studied on their own.
+\begin{defi}
+	Let $R$ be a ring and $M$ an $R$-module. A sequence $(x_0,\ldots,x_n)$ of elements of $R$ is called \defemph{$M$-regular} if for $i=0,\ldots,n$
+	\begin{align*}
+		M/(x_0M+\ldots+x_{i-1}M)\morphism[x_i\cdot]M/(x_0M+\ldots+x_{i-1}M)
+	\end{align*}
+	is an injective map. A \defemph{regular sequence} in $R$ is an $M$-regular sequence where $M=R$.
+\end{defi}
+\begin{example}
+	\begin{alphanumerate}
+		\item If $S$ is any ring and $R=S[X_0,\ldots,X_n]$, then the sequence $(X_0,\ldots,X_n)$ is $R$-regular. Indeed, $R/(X_0R+\ldots+X_{i-1}R)\simeq S[X_i,\ldots,X_n]$ and multiplication by $X_i$ in the polynomial ring $S[X_i,\ldots,X_n]$ is clearly injective.
+		\item The sequence $(1,0)$ is always regular, but $(0,1)$ is only regular when $R=0$.
+	\end{alphanumerate}
+\end{example}
+The following definition was lacking the $m=0$ exception in the lecture (let alone the indices), but I think the following is what Professor Franke intended.
+\begin{defi}\lbl{def:KoszulComplex}
+	Let $R$ be a ring, $M$ be an $R$-module, $(x_0,\ldots,x_n)$ a sequence of elements of $R$. The \defemph{Koszul complex} $K^\bullet\big((x_0,\ldots,x_n),M\big)$ is a cochain complex defined as follows. Let $[n]=\{0,\ldots,n\}$. For $m>1$, $K^m\big((x_0,\ldots,x_n),M\big)$ is the collection of maps $f\colon [n]^m\morphism M$ with the following properties:
+	\begin{alphanumerate}
+		\item $f(i_1,\ldots,i_m)=0$ when $i_k=i_\ell$ for some integers $0\leq k<\ell\leq m$.
+		\item $f(i_{\pi(1)},\ldots,i_{\pi(m)})=\sgn(\pi)f(i_1,\ldots,i_m)$ for every permutation $\pi\in\SS_m$.
+	\end{alphanumerate}
+	The differential $d^m\colon K^m\big((x_0,\ldots,x_n),M\big)\morphism K^{m+1}\big((x_0,\ldots,x_n),M\big)$ is given by 
+	\begin{align*}
+		d^mf=\sum_{j=0}^m(-1)^jd_jf\quad\text{where}\quad d_jf(i_1,\ldots,i_{m+1})=x_{i_{j+1}}f(i_1,\ldots,\hat{i}_{j+1},\ldots,i_{m+1})\;.
+	\end{align*}
+	As in Definition~\reff{def:cech}, the hat $\hat{i}_{j+1}$ denotes the omission of $i_{j+1}$. Moreover, for $m=0$ we put $K^0\big((x_0,\ldots,x_n),M\big)=M$ and $d^0\mu$ for $\mu\in M$ is the coaugmentation given by $d^0\mu(i)=x_i\mu$ for $i=0,\ldots,n$.
+\end{defi}
+\begin{rem*}
+	 Before we check that $K^\bullet\big((x_0,\ldots,x_n),M\big)$ is indeed a cochain complex, let's answer the question \emph{how on earth} Definition~\reff{def:KoszulComplex} is related to the definition you may find in the literature (e.g., \cite[p.~423]{eisenbudCommAlg}) ? Well, they are equivalent (duh!) and here is how.
+	 
+	 Let $0\leq\ell_1<\ldots< \ell_m\leq n$ and $\delta_{\ell_1,\ldots,\ell_m}\colon [n]^m\morphism R$ be the map satisfying 
+	 \begin{align*}
+	 	\delta_{\ell_1,\ldots,\ell_m}(i_1,\ldots,i_m)=\begin{cases}
+		 	\sgn(\pi) & \text{when }(i_1,\ldots,i_m)=(\ell_{\pi(1)},\ldots,\ell_{\pi(m)})\text{ for }\pi\in\SS_{m}\\
+		 	0 & \text{when }(i_1,\ldots,i_m)\text{ is no permutation of }(\ell_1,\ldots,\ell_m)
+	 	\end{cases}\;.
+	 \end{align*}
+	  Clearly, $K^m\big((x_0,\ldots,x_n),M\big)$ is generated by the $\delta_{\ell_1,\ldots,\ell_m}\cdot \mu$ for $\mu\in M$. For $K^m(x_0,\ldots,x_n)\coloneqq K^m\big((x_0,\ldots,x_n),R\big)$ the $\delta_{\ell_1,\ldots,\ell_m}$ even form a basis and we easily get an isomorphism
+	  \begin{align*}
+	  	K^\bullet\big((x_0,\ldots,x_n),M\big)\simeq K^\bullet(x_0,\ldots,x_n)\otimes_R M
+	  \end{align*}
+	  of cochain complexes. Moreover, if $e_0,\ldots,e_n$ denote the standard basis vectors of $R^{n+1}$, mapping $\delta_{\ell_1,\ldots,\ell_m}\mapsto e_{\ell_1}\wedge \cdots\wedge e_{\ell_m}$ sends a basis of $K^m(x_0,\ldots,x_n)$ to a basis of $\bigwedge^mR^{n+1}$ and we find that they are isomorphic.
+	  
+	  Let us also find out which map $d^m$ corresponds to. Note that $d_j\delta_{\ell_1,\ldots,\ell_m}(i_1,\ldots,i_{m+1})$ is only non-zero when $(i_1,\ldots,i_{m+1})$ is a permutation of $(k,\ell_1,\ldots,\ell_m)$ for some $k\in[n]$ with $k$ at the $(j+1)\ordinalst$ position. In this case, it takes the value $\pm x_k$, depending on the sign of the permutation of the $\ell_i$. If you think about this for a while, $d^m\delta_{\ell_1,\ldots,\ell_m}$ corresponds to $\sum_{k=0}^nx_ke_k\wedge e_{\ell_1}\wedge \ldots \wedge e_{\ell_m}$. So $d^m$ in $K^\bullet(x_0,\ldots,x_n)$ simply corresponds to the map
+	  \begin{align*}
+	  	(x_0,\ldots,x_n)\wedge -\colon \bigwedge^mR^{n+1}\morphism \bigwedge^{m+1}R^{n+1}\;.
+	  \end{align*}
+	  In $K^\bullet\big((x_0,\ldots,x_n),M\big)\simeq K^\bullet(x_0,\ldots,x_n)\otimes_R M$, this just gets tensored with $M$.
+	  
+	  Also note that $\bigwedge^0N=R$ for every $R$-module $N$ by definition, so the above special case $m=0$ now fits naturally into the rest.
+\end{rem*}
+\begin{rem}
+	\begin{alphanumerate}
+		\item \lbl{rem:FirstKoszulFacts}It is easy to check that the $d_j$ satisfy relations similar to \eqreff{eq:simplicialStuff}, \eqreff{eq:cosimplicialDegeneracies}, and \eqreff{eq:transpositions}. As in the proofs of Definition~\reff{def:cech} and Definition~\reff{def:alternatingCech}, we deduce that $d^\bullet$ preserves the antisymmetry conditions and is a differential in a cochain complex. 
+		
+		Alternatively, from the above considerations it's immediately clear that $d^\bullet$ is well defined and satisfies $d^{m+1}d^m=0$, since wedging with $(x_0,\ldots,x_n)$ two times in a row obviously gives $0$.
+		\item A short exact sequence of $R$-modules induces a short exact sequence of Koszul complexes. Indeed, in the representation $K^m\big((x_0,\ldots,x_n),M\big)\simeq \bigwedge^mR^{n+1}\otimes_RM\simeq M^{\binom{n+1}{m}}$ this is pretty obvious.
+		\item Let $\phi$ be the map $\phi\colon K^\bullet\big((x_0,\ldots,x_{n-1}),M\big)\morphism[x_n\cdot]K^\bullet\big((x_0,\ldots,x_{n-1}),M\big)$. We have a canonical isomorphism
+		\begin{align}\lbl{eq:KoszulCone}
+			\begin{split}
+				K^\bullet\big((x_0,\ldots,x_n),M\big)&\isomorphism\Cone(\phi)[-1]\\
+				f\in K^m\big((x_0,\ldots,x_n),M\big)&\longmapsto \left(f(n,-)|_{[n-1]^{m-1}}, -f|_{[n-1]^{m}}\right)
+			\end{split}			
+		\end{align}
+		(I'm pretty sure there should be a minus in the second component for the differentials to be compatible, i.e., consistent with the \emph{two} sign conventions from Definition~\reff{def:cone}\itememph{a} and \itememph{b} which are in play here, though we didn't put a minus there in the lecture). This isomorphism corresponds to the decomposition $\bigwedge^mR^{n+1}=e_n\wedge \bigwedge^{m-1}R^n\oplus \bigwedge^mR^n\simeq \bigwedge^{m-1}R^n\oplus \bigwedge^mR^n$, sending $e_n\wedge y+z$ to $(y,-z)$ (and you have to tensor it with $M$, of course). If you think about this long enough, this is compatible.
+	\end{alphanumerate}
+\end{rem}
+In the following we put $H^j\big((x_0,\ldots,n),M\big)\coloneqq H^j\big(K^\bullet((x_0,\ldots,x_n),M)\big)$ for ``short''.
+\begin{example}
+	\begin{alphanumerate}
+		\item \lbl{ex:firstKoszulComputations}For small values of $n$, we have
+		\begin{align*}
+			K^\bullet\big(\emptyset,M\big)&=\Big(0\morphism M\morphism 0\morphism\ldots\Big)\\
+			K^\bullet\big((x_0),M\big)&=\Big(0\morphism M\morphism[x_0\cdot] M\morphism 0\morphism\ldots\Big)\\
+			K^\bullet\big((x_0,x_1),M\big)&=\Big(0\morphism M\xrightarrow{(x_0,x_1)} M\oplus M\xrightarrow{\left(\begin{smallmatrix}
+			-x_1\\
+			x_0
+			\end{smallmatrix}\right)} M\morphism 0\morphism\ldots\Big)\;.
+		\end{align*}
+		\item In general, $K^\bullet((x_0,\ldots,x_n),M)$ vanishes in degrees $<0$ and $>n+1$ (as $\bigwedge^mR^{n+1}$ is only non-zero for $0\leq m\leq n+1$). The differentials  $d^0,d^n$ are given by $d^0\mu=\sum_{j=0}^nx_je_j\otimes \mu$ and $d^n\left(\sum_{j=0}^n(e_0\wedge\cdots\wedge\roof{e}_j\wedge\cdots\wedge e_n)\otimes \mu_i\right)=\sum_{j=0}^n(-1)^jx_j (e_0\wedge\cdots\wedge e_n)\otimes\mu_j$. This shows
+		\begin{align*}
+			H^0\big((x_0,\ldots,x_n),M\big)\simeq\bigcap_{i=0}^n\ker\left(M\morphism[x_i\cdot ]M\right)
+		\end{align*}
+		and
+		\begin{align*}
+			H^{n+1}\big((x_0,\ldots,x_n),M\big)\simeq M/(x_0M+\ldots+x_nM)\;.
+		\end{align*}
+	\end{alphanumerate}
+\end{example}
+\begin{fact}
+	Let $R$ be a ring, $(x_0,\ldots,x_n)$ a sequence of elements of $R$ and $M$ an $R$-module.
+	\begin{alphanumerate}
+		\item Let $0\leq i\leq n$, then $(x_0,\ldots,x_n)$ is $M$-regular iff $(x_0,\ldots,x_{i-1})$ is $M$-regular and $(x_i,\ldots,x_n)$ is $M/(x_0M+\ldots+x_{i-1}M)$-regular.
+		\item A sequence $(x_0,\ldots,x_n)$ is $M$-regular iff $H^j\big((x_0,\ldots,x_i),M\big)=0$ for all $i,j$ such that $0\leq i\leq n$ and $j\neq i+1$.
+		\item Let $0\morphism M'\morphism M\morphism M''\morphism 0$ be a short exact sequence of $R$-modules. If $(x_0,\ldots,x_n)$ is $M'$-regular and $M''$-regular, then it is $M$-regular.
+		\item If $(x_0,\ldots,x_n)$ is $M$-regular and $k_0,\ldots,k_n\in \IN$ are natural exponents, then $(x_0^{k_0},\ldots,x_n^{k_n})$ is also $M$-regular.
+	\end{alphanumerate}
+\end{fact}
+\begin{proof}
+	Part \itememph{a} is obvious. For \itememph{b}, we use induction on $n$. For $n=-1$, there is nothing to show. Now suppose that $n\geq 0$ and the assertion holds for $n-1$. From \eqreff{eq:MappingConeSeq} and \eqreff{eq:KoszulCone} we get a long exact sequence
+	\begin{multline}\lbl{eq:KoszulSeq}
+		\ldots\morphism H^{j-1}\big((x_0,\ldots,x_{n-1}),M\big)\morphism[x_n\cdot ] H^{j-1}\big((x_0,\ldots,x_{n-1}),M\big)\morphism H^j\big((x_0,\ldots,x_n),M\big)\\
+		\morphism H^j\big((x_0,\ldots,x_{n-1}),M\big)\morphism[x_n\cdot] H^j\big((x_0,\ldots,x_{n-1}),M\big)\morphism\ldots\;.\tag{$*$}
+	\end{multline}
+	Suppose that $H^j\big((x_0,\ldots,x_i),M\big)$ vanishes for $0\leq i\leq n$ and $j\neq i+1$. Then $(x_0,\ldots,x_{n-1})$ is $M$-regular by induction. Using $H^{n-1}\big((x_0,\ldots,x_{n-1}),M\big)=0$ and Example~\reff{ex:firstKoszulComputations}\itememph{b}, for $j=n$ the sequence \eqreff{eq:KoszulSeq} becomes
+	\begin{align}\lbl{eq:KoszulSeq2}
+		0\morphism H^n\big((x_0,\ldots,x_n),M\big)\morphism M/(x_0M+\ldots+x_{n-1}M)\morphism[ x_n\cdot]M/(x_0M+\ldots+x_{n-1}M)\tag{\#}
+	\end{align}
+	The vanishing of $H^n\big((x_0,\ldots,x_n),M\big)$ in \eqreff{eq:KoszulSeq2} and exactness show that $x_n\cdot$ is injective on $M/(x_0M+\ldots+x_{n-1}M)$, hence $(x_0,\ldots,x_n)$ is $M$-regular.
+	
+	Conversely, assume that $(x_0,\ldots,x_n)$ is $M$-regular. Vanishing of $H^j\big((x_0,\ldots,x_i),M\big)$ for $0\leq i\leq n-1$ and $j\neq i+1$ follows from induction (in particular, we still get \eqreff{eq:KoszulSeq2}) and for $i=n$ and $j>n+1$ this is also clear. From \eqreff{eq:KoszulSeq} we get $H^j\big((x_0,\ldots,x_n),M\big)=0$ for $j<n$ and for $j=n$ this follows from \eqreff{eq:KoszulSeq2} and injectivity of $x_n\cdot$ on $M/(x_0M+\ldots+x_{n-1}M)$.
+	
+	
+	Part \itememph{c} follows from \itememph{b} and the long exact cohomology sequence associated to the short exact sequence $0\morphism K^\bullet\big((x_0,\ldots,x_n),M'\big)\morphism K^\bullet\big((x_0,\ldots,x_n),M\big)\morphism K^\bullet\big((x_0,\ldots,x_n),M''\big)\morphism 0$ of Koszul complexes due to Remark~\reff{rem:FirstKoszulFacts}\itememph{b}.
+	
+	Part \itememph{d}. We use induction on $n$. For $n=-1$, there is nothing to show. Let $n\geq 0$ and assume that \itememph{d} holds for $n-1$ and any $R$-module $M$. Then $M/x_0^{k_0}M$ has a filtration by submodules $x_0^iM/x_0^{k_0}M$ for $i=0,\ldots,k_0$ and with filtration quotients $x_0^iM/x_0^{i+1}M$. Since $x_0\cdot$ is injective on $M$, $x_0^i\cdot$ induces an isomorphism $x_0^iM/x_0^{i+1}M\lisomorphism M/x_0M$. Since $(x_1,\ldots,x_n)$ is $M/x_0M$-regular by \itememph{a}, repeatedly applying \itememph{c} implies that $(x_1,\ldots,x_n)$ is $M/x_0^{k_0}M$-regular. By the induction assumption, $(x_1^{k_1},\ldots,x_n^{k_n})$ is $(M/x_0^{k_0})$-regular as well. An application of \itememph{a} completes the proof.
+\end{proof}
+\begin{defi}
+	Let $R$ be a ring, $M$ and $N$ be finitely generated free (or projective) $R$-modules. A \defemph{non-degenerate pairing} $M\times N\morphism R$ is a $R$-bilinear map $M\times N\morphism R$ such that one of the induced maps $M\morphism\Hom_R(N,R)$ or $N\morphism \Hom_R(M,R)$ is an isomorphism.
+\end{defi}
 
 \appendix
 \chapter{Appendix -- category theory corner}
