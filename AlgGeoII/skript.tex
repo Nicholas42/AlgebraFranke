@@ -1776,83 +1776,124 @@ And finally for a lemma which is perhaps worthwhile to know.
 	Omitted.
 \end{proof}
 \section{The scheme \texorpdfstring{$\IP_R^n$}{P} and its cohomology}
-Let $R$ be an $\IN$-graded ring. Let $R_+\subseteq R$ be the ideal of elements of $R$ of positive homogeneous degree. Recall that there is a bijection
+Let $R$ be an $\IN_0$-graded ring. Let $R_+\subseteq R$ be the ideal of elements of $R$ of positive homogeneous degree. Recall that there is a bijection
 \begin{align*}
 	\left\{\text{homogeneous }\pp\in\Spec R\st \pp\supseteq R_+\right\}&\isomorphism \Spec R_0\\
 	\pp&\longmapsto \qq=\pp\cap R_0\\
 	\pp=\qq+R_+&\longmapsfrom \qq\;.
 \end{align*}
-As a set, put
+We recapitulate the construction and basic properties of $\Proj R$, which has been introduced in \cite[Definition~2.6.2]{alggeo1} and exercise sheet \#11 of Algebraic Geometry I. As a set, put
 \begin{align*}
-	\Proj(R)=\left\{\text{homogeneous }\pp\in\Spec R\st \pp\not\subseteq R_+\right\}
+	\Proj R=\left\{\text{homogeneous }\pp\in\Spec R\st \pp\not\supseteq R_+\right\}
 \end{align*}
 and for $I\subseteq R$ a homogeneous ideal, let
 \begin{align*}
-	V_\proj(I)=V(I)=\left\{\pp\in\Proj(R)\st \pp\supseteq I\right\}\;.
+	V_\proj(I)=V(I)=\left\{\pp\in\Proj R\st \pp\supseteq I\right\}\;.
 \end{align*}
-As $\bigcap_{\lambda\in\Lambda}V(I_\lambda)=V\left(\sum_{\lambda\in\Lambda}I_\lambda\right)$ and $V(I)\cup V(J)=V(I\cap J)=V(IJ)$ and $V(R)=V(R_+)=\emptyset$ and $V(0)=\Proj(R)$ the $V(I)$ are the closed subsets of some topology on $\Proj(R)$.
+As $\bigcap_{\lambda\in\Lambda}V(I_\lambda)=V\left(\sum_{\lambda\in\Lambda}I_\lambda\right)$ and $V(I)\cup V(J)=V(I\cap J)=V(IJ)$ and $V(R)=V(R_+)=\emptyset$ and $V(0)=\Proj R$ the $V(I)$ are the closed subsets of some topology on $\Proj R$.
 
-We define a sheaf of graded rings $\Oo(-)$ on $P=\Proj(R)$ as follows. Let $\Oo(k)_{[\pp]}=(R_\pp)_k$ for homogeneous prime ideals $\pp\subseteq R$ be obtained from $R$ by inverting the \emph{homogeneous} elements of $R_\pp$ only. Note that the subsets of the form $P\setminus V(f)$ with $f\in R$ homogenous form a topology base of $P$. We put
+We define a sheaf of graded rings $\Oo=\bigoplus_{k\in\IZ}\Oo(k)$ on $P=\Proj R$ as follows. Let $\Oo(k)_{[\pp]}=(R_\pp)_k$ for homogeneous prime ideals $\pp\subseteq R$, where we use the convention that $R_\pp$ is obtained from $R$ by inverting the \defemph{homogeneous elements of $R\setminus \pp$ only (!)}. Note that the subsets of the form $P\setminus V(f)$ with $f\in R$ homogenous form a topology base of $P$. We put
 \begin{align*}
 	\Oo(k)(U)=\left\{(g_\pp)\in\prod_{\pp\in U}(R_\pp)_k\st\begin{array}{c}
 		\text{every }x\in U\text{ has a neighbourhood }V=P\setminus V(f)\subseteq U\text{,}\\
 		\text{ where }f\text{ is homogeneous,  such that there is a }\gamma\in (R_f)_k\\
-		\text{such that }g_\pp=\left(\text{image of }\gamma\text{ under }R_f\morphism R_\pp\right)\text{ for all}\pp\in V
+		\text{with }g_\pp=\left(\text{image of }\gamma\text{ under }R_f\morphism R_\pp\right)\text{ for all }\pp\in V
 	\end{array}\right\}\;.
 \end{align*}
 Then there are operations
 \begin{align*}
-	\Oo(k)\times \Oo(k)&\morphism \Oo(k)\;,\quad (f_\pp)_{\pp\in U}+(g_\pp)_{\pp\in U}=(f_\pp+g_\pp)_{\pp\in U}\\
-	\Oo(k)\times \Oo(\ell)&\morphism \Oo(k+\ell)\;,\quad (f_\pp)_{\pp\in U}\cdot (g_\pp)_{\pp\in U}=(f_\pp g_\pp)_{\pp\in U}	
+	\Oo(k)\times \Oo(k)&\morphism \Oo(k)\\
+	\left((f_\pp)_{\pp\in U},(g_\pp)_{\pp\in U}\right)&\longmapsto (f_\pp)_{\pp\in U}+(g_\pp)_{\pp\in U}=(f_\pp+g_\pp)_{\pp\in U}
 \end{align*}
-and a map
+and
+\begin{align*}
+	\Oo(k)\times \Oo(\ell)&\morphism \Oo(k+\ell)\\
+	\left((f_\pp)_{\pp\in U},(g_\pp)_{\pp\in U}\right)&\longmapsto (f_\pp)_{\pp\in U}\cdot (g_\pp)_{\pp\in U}=(f_\pp g_\pp)_{\pp\in U}	
+\end{align*}
+making $\Oo$ into a sheaf of graded rings with $\Oo(0)=\Oo_{\Proj R}$. Moreover, we get a map
 \begin{align}\lbl{eq:ProjPretenderStalk}
 	\begin{split}
 		\Oo(k)_\pp&\morphism\Oo(k)_{[\pp]}\\
 		\left(\begin{array}{c}
 			\text{image of}\\
-			(q_\qq)\in\Oo(k)(U)\text{ in }\Oo(k)_\pp
+			(g_\qq)\in\Oo(k)(U)\text{ in }\Oo(k)_\pp
 		\end{array}\right)&\longmapsto g_\pp
 	\end{split}\tag{$*$}
 \end{align}
 \begin{fact}
 	The map \eqreff{eq:ProjPretenderStalk} is an isomorphism.
 \end{fact}
+\begin{proof}
+	By Proposition~\reff{prop:FirstProjProperties}\itememph{a} and \itememph{c} below, 
+	\begin{align*}
+		\Oo(k)_\pp=\colimit[f\notin \pp]\Oo(k)\big(\Proj R\setminus V(f)\big)\simeq \colimit[f\notin\pp](R_f)_k=(R_\pp)_k=\Oo(k)_{[\pp]}\;,
+	\end{align*}
+	the colimits ranging over all $f$ which are homogeneous of positive degree.
+\end{proof}
 \begin{prop}
 	\begin{alphanumerate}
-		\item $\Proj(R)$ is a scheme. Open subsets of the form $\Proj(R)\setminus V(f)$ where $f\in R_k$ with $k>0$ are affine and form a topology base.
-		\item Every finite subset of $\Proj(R)$ is contained in an affine open subset.
-		\item The sheaf of modules $\Oo(k)$ on $\Proj(R)$ is quasi-coherent, and there is a homeomorphism
+		\item \lbl{prop:FirstProjProperties}Open subsets of the form $\Proj R\setminus V(f)$ where $f\in R_k$ with $k>0$ are affine and form a topology base.
+		\item Every finite subset of $\Proj R$ is contained in an affine open subset. In particular, $\Proj R$ is a scheme.
+		\item The sheaf of modules $\Oo(k)$ on $\Proj R$ is quasi-coherent, and for $f\in R$ which is homogeneous of positive degree there is a homeomorphism
 		\begin{align}\lbl{eq:ProjLocal}
 			\begin{split}
-				\Proj(R)\setminus V(f)&\isomorphism \Spec (R_f)_0\\
+				\Proj R\setminus V(f)&\isomorphism \Spec (R_f)_0\\
 				\pp &\longmapsto \qq=\pp R_f\cap (R_f)_0\\
 				\pp=\sqrt{\qq R_f}\cap R&\longmapsfrom \qq\in\Spec (R_f)_0
 			\end{split}
 		\end{align}
-		under which $(R_\pp)_0\simeq ((R_f)_0)_\qq$. We thus get an identification $\Oo(0)|_{\Proj(R)\setminus V(f)}\simeq \Oo_{\Spec (R_f)_0}$.
-		
-		Moreover, under \eqreff{eq:ProjLocal} there is a similar isomorphism $(R_\pp)_k\simeq ((R_f)_k)_\qq$ (the latter denotes the localization of the $(R_f)_0$-module $(R_f)_k$ with respect to $\qq$, that is, with respect to the homogeneous elements of $R_f\setminus \qq$). This gives an identification
+		under which $(R_\pp)_0\simeq ((R_f)_0)_\qq$. We thus get an identification 
+		\begin{align*}
+			\Oo(0)|_{\Proj R\setminus V(f)}\simeq \Oo_{\Spec (R_f)_0}\;.
+		\end{align*}		
+		Moreover, under \eqreff{eq:ProjLocal} there is a similar isomorphism $(R_\pp)_k\simeq ((R_f)_k)_\qq$ (the latter denotes the localization of the $(R_f)_0$-module $(R_f)_k$ with respect to $\qq$, and here we don't need to restrict to homogeneous elements). This gives an identification
 		\begin{align}\lbl{eq:O(k)isQC}
-			\Oo(k)|_{\Proj(R)\setminus V(f)}\simeq ((R_f)_k)^\sim\;.
+			\Oo(k)|_{\Proj R\setminus V(f)}\simeq ((R_f)_k)^\sim\;.
 		\end{align}
 		\item When $R$ is generated by $R_1$ as an $R_0$-algebra (or equivalently, $R_+$ by $R_1$ as an ideal in $R$) the sheaves of modules $\Oo(k)$ are line bundles and the morphism 
 		\begin{align*}
-			\Oo(k)\otimes_{\Oo_{\Proj(R)}}\Oo(\ell)&\morphism\Oo(k+\ell)\\
+			\Oo(k)\otimes_{\Oo_{\Proj R}}\Oo(\ell)&\morphism\Oo(k+\ell)\\
 			f\otimes g&\longmapsto fg
 		\end{align*}
 		is an isomorphism.
-		\item We have a morphism of preschemes 
+		\item We have a morphism of preschemes $\pi\colon\Proj R\morphism \Spec R_0$ whose topological component is given by
 		\begin{align}\lbl{eq:Proj(R)toSpecR0}
 			\begin{split}
-				\pi\colon\Proj(R)&\morphism \Spec R_0\\
+				\pi\colon\Proj R&\morphism \Spec R_0\\
 				\pp &\longmapsto \pp\cap R_0
 			\end{split}
 		\end{align}
-		and $\pi^*\colon \Oo_{\Spec R_0}\morphism \pi_*\Oo_{\Proj(R)}$ is defined by sending an element $rf^{-k}\in (R_0)_f\simeq \Oo_{\Spec R_0}(\Spec R_0\setminus V(f))$ to precisely that element in $\Oo(0)(\Proj(R)\setminus V(f))$. The morphism $\pi$ is of finite type iff $R$ is an $R_0$-algebra of finite type.
-		\item If $R$ is Noetherian (which is the case iff $R_0$ is Noetherian and $R$ of finite type over $R_0$) then $\Proj(R)$ is Noetherian and the $\Oo(k)$ are coherent.
+		and the algebraic component $\pi^*\colon \Oo_{\Spec R_0}\morphism \pi_*\Oo_{\Proj R}$ is defined by sending an element $rf^{-k}\in (R_0)_f\simeq \Oo_{\Spec R_0}(\Spec R_0\setminus V(f))$ to precisely that element in $\Oo(0)(\Proj R\setminus V(f))$. The morphism $\pi$ is of finite type (cf.\ \cite[Definition~2.2.1]{alggeo1}) iff $R$ is an $R_0$-algebra of finite type.
+		\item If $R$ is Noetherian (which is the case iff $R_0$ is Noetherian and $R$ of finite type over $R_0$) then $\Proj R$ is Noetherian (cf.\ \cite[Definition~2.2.2]{alggeo1}) and the $\Oo(k)$ are coherent.
 	\end{alphanumerate}
 \end{prop}
+\begin{proof}
+	Most of this follows from exercise sheet~\#11 of Algebraic Geometry I. We show the topology base part of \itememph{a} first: Let $I$ be a homogeneous ideal and $\pp\notin V(I)$ a homogeneous prime ideal. Then $I\setminus \pp$ contains a homogeneous element $f$. Clearly $\Proj R\setminus V(f)\subseteq \Proj R\setminus V(I)$. If $f$ has positive degree, we are done. Otherwise choose an element $g\in R_+\setminus \pp$ and replace $f$ by $fg$. The fact that the $\Proj R\setminus V(f)$ are affine follows from \eqreff{eq:ProjLocal}.
+	
+	For \itememph{c}, do exercise~1 and apply this to \eqreff{eq:ProjLocal}. From this, it is clear that for $M$ a graded $R$-module the sheafification of the presheaf 
+	\begin{align*}
+		\Proj R\setminus V(f)\longmapsto (M_f)_0\quad\text{for }f\text{ homogeneous of positive degree}
+	\end{align*}
+	is quasi-coherent and equals $((M_f)_0)^\sim$ on $\Proj R\setminus V(f)$ (i.e., the first part of exercise~3). Applying this to $M=R[k]$ (the shift of $R$ as in Definition~\reff{def:cone}\itememph{a}) shows that $\Oo(k)$ is quasi-coherent and \eqreff{eq:O(k)isQC} holds.
+	
+	Part \itememph{b}. Let $\pp_1,\ldots,\pp_n\in\Proj R$. Since $R_+$ isn't contained in any $\pp_i$, it is also not contained in the union $\bigcup_{i=1}^n\pp_i$ by the prime avoidance lemma (cf.\ \cite[Lemma~2.5.1]{alg1}). Then for any $f\in R_+\setminus \bigcup_{i=1}^n\pp_i$, $\Proj R\setminus V(f)\simeq \Spec (R_f)_0$ is a common affine open neighbourhood of $\pp_1.\ldots,\pp_n$ by \eqreff{eq:ProjLocal}. From \cite[Fact~1.5.9\itememph{a}]{alggeo1} we get that $\Proj R$ is a scheme.
+	
+	Part \itememph{d}. If $R_+$ is generated by $R_1$ as an ideal in $R$, a homogeneous prime ideal $\pp$ contains $R_+$ iff it contains $R_1$. Hence the $\Proj R\setminus V(f)$ for $f\in R_1$ cover $\Proj R$. On $U=\Proj R\setminus V(f)$ however, an isomorphism $\Oo_{\Proj R}|_U=\Oo(0)|_U\isomorphism \Oo(k)|_U$ is given by multiplication with $f^k$. To show that $\Oo(k)\otimes_{\Oo_{\Proj R}}\Oo(\ell)\isomorphism\Oo(k+\ell)$, it is enough to check this stalk-wise. But $\Oo(k)_\pp\simeq \Oo_{\Proj R,\pp}\simeq (R_\pp)_0$ holds for $\pp\in\Proj R$ as we just have seen, and similar for $\Oo(\ell)_\pp$ and $\Oo(k+\ell)_\pp$, so the isomorphism
+	\begin{align*}
+		\Oo(k)_\pp\otimes_{\Oo_{\Proj R,\pp}}\Oo(\ell)_\pp\isomorphism \Oo(k+\ell)_\pp
+	\end{align*}
+	is pretty much obvious.
+	
+	Part \itememph{e}. I will only show the \emph{if} part, hopefully the \emph{only if} part will be covered in the lecture. Let $\alpha_1,\ldots,\alpha_n$ be generators of $R$ as an $R_0$-algebra. Decomposing them into homogeneous components, we may assume that they are homogeneous of degrees $d_1,\ldots,d_n>0$. By \cite[Proposition~2.2.1\itememph{b}]{alggeo1}  and \itememph{c} it is enough to show that $(R_f)_0\simeq\Oo_{\Proj R}(\Proj R\setminus V(f))$ is of finite type over $R_0$ for all $f\in R_+$. Let $d$ be the homogeneous degree of $f$. One may check that $(R_f)_0$ is indeed generated as an $R_0$-algebra by those
+	\begin{align*}
+	\alpha_1^{k_1}\cdots \alpha_n^{k_n}\cdot f^{-k}\quad\text{where }0\leq k_i<d\text{ and }0\leq k<d\cdot(d_1+\ldots+d_n)
+	\end{align*}
+	which have homogeneous degree $0$. 
+	
+	To show that $\pi$ is quasi-compact, it suffices to show quasi-compactness of $\Proj R$ by \cite[Fact~2.1.2]{alggeo1}. Since $R$ is of finite type over $R_0$, the augmentation ideal $R_+$ is finitely generated. Let $f_1,\ldots,f_n$ be homogeneous generators of $R_+$. Then the $\Proj R\setminus V(f_i)\simeq \Spec (R_{f_i})_0$ cover $\Proj R$, so $\Proj R$ is a finite union of quasi-compact sets and thus quasi-compact itself.
+	
+	And finally part \itememph{f}. The stuff in parentheses was proved in \cite[Proposition~2.2.1]{alg2}, by the way. In \itememph{e} we have seen that $\Proj R$ is finite type over $\Spec R_0$ which is Noetherian, hence $\Proj R$ is Noetherian by Hilbert's Basissatz. By an argument similar to \itememph{e}, $(R_f)_k$ is finitely generated as an $(R_f)_0$-module for all $f\in R_+$, hence $\Oo(k)$ is locally finitely generated over $\Oo_{\Proj R}$ by \itememph{c} and thus coherent in the sense of Definition~\reff{def:locFinGenerated}\itememph{b}.
+\end{proof}
 
 \appendix
 \chapter{Appendix -- category theory corner}
