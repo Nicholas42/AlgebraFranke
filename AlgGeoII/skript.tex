@@ -1623,7 +1623,7 @@ Naturally arising in the computation of cohomology of projective spaces, \emph{r
 \end{defi}
 \begin{example}
 	\begin{alphanumerate}
-		\item If $S$ is any ring and $R=S[X_0,\ldots,X_n]$, then the sequence $(X_0,\ldots,X_n)$ is $R$-regular. Indeed, $R/(X_0R+\ldots+X_{i-1}R)\simeq S[X_i,\ldots,X_n]$ and multiplication by $X_i$ in the polynomial ring $S[X_i,\ldots,X_n]$ is clearly injective.
+		\item \lbl{ex:(X0Xn)regular}If $S$ is any ring and $R=S[X_0,\ldots,X_n]$, then the sequence $(X_0,\ldots,X_n)$ is $R$-regular. Indeed, $R/(X_0R+\ldots+X_{i-1}R)\simeq S[X_i,\ldots,X_n]$ and multiplication by $X_i$ in the polynomial ring $S[X_i,\ldots,X_n]$ is clearly injective.
 		\item The sequence $(1,0)$ is always regular, but $(0,1)$ is only regular when $R=0$.
 	\end{alphanumerate}
 \end{example}
@@ -1702,7 +1702,7 @@ In the following we put $H^j\big((x_0,\ldots,n),M\big)\coloneqq H^j\big(K^\bulle
 		\end{align*}
 	\end{alphanumerate}
 \end{example}
-\begin{fact}
+\begin{fact}\lbl{fact:RegularSeqKoszulComplex}
 	Let $R$ be a ring, $(x_0,\ldots,x_n)$ a sequence of elements of $R$ and $M$ an $R$-module.
 	\begin{alphanumerate}
 		\item Let $0\leq i\leq n$, then $(x_0,\ldots,x_n)$ is $M$-regular iff $(x_0,\ldots,x_{i-1})$ is $M$-regular and $(x_i,\ldots,x_n)$ is $M/(x_0M+\ldots+x_{i-1}M)$-regular.
@@ -1733,6 +1733,126 @@ In the following we put $H^j\big((x_0,\ldots,n),M\big)\coloneqq H^j\big(K^\bulle
 \begin{defi}
 	Let $R$ be a ring, $M$ and $N$ be finitely generated free (or projective) $R$-modules. A \defemph{non-degenerate pairing} $M\times N\morphism R$ is a $R$-bilinear map $M\times N\morphism R$ such that one of the induced maps $M\morphism\Hom_R(N,R)$ or $N\morphism \Hom_R(M,R)$ is an isomorphism.
 \end{defi}
+\begin{cor}
+	Let $R$ be any ring, $S=R[X_0,\ldots,X_n]$. The Koszul complex $K^\bullet\big((X_0^\ell,\ldots,X_n^\ell),S\big)$ is acyclic in cohomological degree $\neq n+1$. Its cohomology in dimension $n+1$ is a free $R$-module.
+	
+	The Koszul complex becomes a complex of graded $S$-modules via
+	\begin{align*}
+		K^m\big((X_0^\ell,\ldots,X_n^\ell),S\big)_k\coloneqq \left\{f\in K^m\big((X_0^\ell,\ldots,X_n^\ell),S\big)\st f([n]^m)\subseteq S_{k+\ell m}\right\}\;,
+	\end{align*}
+	where $S_{k+\ell m}$ denotes the degree $(k+\ell m)$-part of $S=R[X_0,\ldots,X_n]$, and
+	\begin{alphanumerate}
+		\item $H^{n+1}\big((X_0^\ell,\ldots,X_n^\ell),S\big)_k=0$ when $k>-n-1$.
+		\item We have an isomorphism
+		\begin{align}\lbl{eq:Hn+1Iso}
+			\begin{split}
+				\tau\colon H^{n+1}\big((X_0^\ell,\ldots,X_n^\ell)\big)&\isomorphism R\\
+				[f]&\longmapsto \text{the coefficient of }(X_0X_1\cdots X_n)^{\ell-1}\text{ in }f(0,1,\ldots,n)
+			\end{split}
+		\end{align}
+		(where $[f]$ denotes the cohomology class of $f\in K^{n+1}\big((X_0^\ell,\ldots,X_n^\ell),S\big)$ which is a cocycle).
+		\item For $0<k<\ell$ we have a non-degenerate pairing
+		\begin{align}\lbl{eq:KoszulNonDegPairing}
+			S_k\times H^{n+1}\big((X_0^\ell,\ldots,X_n^\ell),S\big)_{-n-1-k}\xrightarrow{\text{multiplication}}H^{n+1}\big((X_0^\ell,\ldots,X_n^\ell),S\big)_{-n-1}\overset{\text{\eqreff{eq:Hn+1Iso}}}{\simeq} R\;.
+		\end{align}
+	\end{alphanumerate}
+\end{cor}
+\begin{proof}
+	By Example~\reff{ex:(X0Xn)regular}\itememph{a}, $(X_0,\ldots,X_n)$ is an $S$-regular sequence, hence so is $(X_0^\ell,\ldots,X_n^\ell)$ by Fact~\reff{fact:RegularSeqKoszulComplex}\itememph{d}. Hence the vanishing of $H^i\big((X_0^\ell,\ldots,X_n^\ell),S\big)$ is a consequence of Fact~\reff{fact:RegularSeqKoszulComplex}\itememph{b}. Moreover, by Example~\reff{ex:firstKoszulComputations}\itememph{b} we have 
+	\begin{align*}
+		H^{n+1}\big((X_0^\ell,\ldots,X_n^\ell),S\big)\simeq S/(X_0^\ell,\ldots,X_n^\ell) 
+	\end{align*}
+	which is a free $R$-module with basis $[X_0^{\alpha_0}\cdots X_n^{\alpha_n}]=X_0^{\alpha_0}\cdots X_n^{\alpha_n}+(X_0^\ell,\ldots,X_n^\ell)$ for $\alpha_0,\ldots,\alpha_n\in \IN_0$ such that $\alpha_i<\ell$. The elements of this basis are homogeneous for the above grading and to get an element of homogeneous degree $-n-1$ we need $\alpha_0+\ldots+\alpha_n=-n-1+\ell(n+1)=(\ell-1)(n+1)$ and there is no other way to have this than $\alpha_i=\ell-1$ for $i=0,\ldots,n$. This proves \itememph{b}.
+	
+	Along the same lines we see that \itememph{a} holds. Indeed, for an element of degree $k>-n-1$ we would need $\alpha_0+\ldots+\alpha_n>(\ell-1)(n+1)$ and then there is some $\alpha_i\geq \ell$, contradiction.
+	
+	The pairing from \itememph{c} pairs $X_0^{\beta_0}\cdot X_n^{\beta_n}$ with $[X_0^{\alpha_0}\cdots X_n^{\alpha_n}]\in H^{n+1}\big((X_0^\ell,\ldots,X_n^\ell),S\big)_{-n-1-k}$ to a non-zero element (which is then automatically $(X_0\cdots X_n)^{\ell-1}$) iff $\alpha+\beta=(\ell-1,\ldots,\ell-1)$. For every $\alpha$ contributing to our basis of $H^{n+1}\big((X_0^\ell,\ldots,X_n^\ell),S\big)_{-n-1-k}$ the corresponding $\beta=(\ell-1,\ldots,\ell-1)-\alpha$ is an element of $\IN_0^{n+1}$ and $\beta_0+\ldots+\beta_n=k$. If $k<\ell$ and $\beta\in\IN_0^{n+1}$ satisfies $\beta_0+\ldots+\beta_n=k$, then $\beta_i\leq k\leq\ell-1$ for all components of $\beta$, hence $\alpha=(\ell-1,\ldots,\ell-1)-\beta\in\IN_0^{n+1}$ contributes to our basis of $H^{n+1}\big((X_0^\ell,\ldots,X_n^\ell),S\big)_{-n-1-k}$, showing the non-degeneracy of the pairing.
+\end{proof}
+And finally for a lemma which is perhaps worthwhile to know.
+\begin{lem}
+	Let $R$ be a Noetherian local ring with maximal ideal $\mm$, $M$ a finitely generated $R$-module and $x_0,\ldots,x_n\in\mm$. Then $(x_0,\ldots,x_n)$ is $M$-regular iff $H^i\big((x_0,\ldots,x_n),M\big)=0$ for $i\neq n+1$. In particular, reordering $(x_0,\ldots,x_n)$ will again produce an $M$-regular sequence.
+\end{lem}
+\begin{proof}
+	Omitted.
+\end{proof}
+\section{The scheme \texorpdfstring{$\IP_R^n$}{P} and its cohomology}
+Let $R$ be an $\IN$-graded ring. Let $R_+\subseteq R$ be the ideal of elements of $R$ of positive homogeneous degree. Recall that there is a bijection
+\begin{align*}
+	\left\{\text{homogeneous }\pp\in\Spec R\st \pp\supseteq R_+\right\}&\isomorphism \Spec R_0\\
+	\pp&\longmapsto \qq=\pp\cap R_0\\
+	\pp=\qq+R_+&\longmapsfrom \qq\;.
+\end{align*}
+As a set, put
+\begin{align*}
+	\Proj(R)=\left\{\text{homogeneous }\pp\in\Spec R\st \pp\not\subseteq R_+\right\}
+\end{align*}
+and for $I\subseteq R$ a homogeneous ideal, let
+\begin{align*}
+	V_\proj(I)=V(I)=\left\{\pp\in\Proj(R)\st \pp\supseteq I\right\}\;.
+\end{align*}
+As $\bigcap_{\lambda\in\Lambda}V(I_\lambda)=V\left(\sum_{\lambda\in\Lambda}I_\lambda\right)$ and $V(I)\cup V(J)=V(I\cap J)=V(IJ)$ and $V(R)=V(R_+)=\emptyset$ and $V(0)=\Proj(R)$ the $V(I)$ are the closed subsets of some topology on $\Proj(R)$.
+
+We define a sheaf of graded rings $\Oo(-)$ on $P=\Proj(R)$ as follows. Let $\Oo(k)_{[\pp]}=(R_\pp)_k$ for homogeneous prime ideals $\pp\subseteq R$ be obtained from $R$ by inverting the \emph{homogeneous} elements of $R_\pp$ only. Note that the subsets of the form $P\setminus V(f)$ with $f\in R$ homogenous form a topology base of $P$. We put
+\begin{align*}
+	\Oo(k)(U)=\left\{(g_\pp)\in\prod_{\pp\in U}(R_\pp)_k\st\begin{array}{c}
+		\text{every }x\in U\text{ has a neighbourhood }V=P\setminus V(f)\subseteq U\text{,}\\
+		\text{ where }f\text{ is homogeneous,  such that there is a }\gamma\in (R_f)_k\\
+		\text{such that }g_\pp=\left(\text{image of }\gamma\text{ under }R_f\morphism R_\pp\right)\text{ for all}\pp\in V
+	\end{array}\right\}\;.
+\end{align*}
+Then there are operations
+\begin{align*}
+	\Oo(k)\times \Oo(k)&\morphism \Oo(k)\;,\quad (f_\pp)_{\pp\in U}+(g_\pp)_{\pp\in U}=(f_\pp+g_\pp)_{\pp\in U}\\
+	\Oo(k)\times \Oo(\ell)&\morphism \Oo(k+\ell)\;,\quad (f_\pp)_{\pp\in U}\cdot (g_\pp)_{\pp\in U}=(f_\pp g_\pp)_{\pp\in U}	
+\end{align*}
+and a map
+\begin{align}\lbl{eq:ProjPretenderStalk}
+	\begin{split}
+		\Oo(k)_\pp&\morphism\Oo(k)_{[\pp]}\\
+		\left(\begin{array}{c}
+			\text{image of}\\
+			(q_\qq)\in\Oo(k)(U)\text{ in }\Oo(k)_\pp
+		\end{array}\right)&\longmapsto g_\pp
+	\end{split}\tag{$*$}
+\end{align}
+\begin{fact}
+	The map \eqreff{eq:ProjPretenderStalk} is an isomorphism.
+\end{fact}
+\begin{prop}
+	\begin{alphanumerate}
+		\item $\Proj(R)$ is a scheme. Open subsets of the form $\Proj(R)\setminus V(f)$ where $f\in R_k$ with $k>0$ are affine and form a topology base.
+		\item Every finite subset of $\Proj(R)$ is contained in an affine open subset.
+		\item The sheaf of modules $\Oo(k)$ on $\Proj(R)$ is quasi-coherent, and there is a homeomorphism
+		\begin{align}\lbl{eq:ProjLocal}
+			\begin{split}
+				\Proj(R)\setminus V(f)&\isomorphism \Spec (R_f)_0\\
+				\pp &\longmapsto \qq=\pp R_f\cap (R_f)_0\\
+				\pp=\sqrt{\qq R_f}\cap R&\longmapsfrom \qq\in\Spec (R_f)_0
+			\end{split}
+		\end{align}
+		under which $(R_\pp)_0\simeq ((R_f)_0)_\qq$. We thus get an identification $\Oo(0)|_{\Proj(R)\setminus V(f)}\simeq \Oo_{\Spec (R_f)_0}$.
+		
+		Moreover, under \eqreff{eq:ProjLocal} there is a similar isomorphism $(R_\pp)_k\simeq ((R_f)_k)_\qq$ (the latter denotes the localization of the $(R_f)_0$-module $(R_f)_k$ with respect to $\qq$, that is, with respect to the homogeneous elements of $R_f\setminus \qq$). This gives an identification
+		\begin{align}\lbl{eq:O(k)isQC}
+			\Oo(k)|_{\Proj(R)\setminus V(f)}\simeq ((R_f)_k)^\sim\;.
+		\end{align}
+		\item When $R$ is generated by $R_1$ as an $R_0$-algebra (or equivalently, $R_+$ by $R_1$ as an ideal in $R$) the sheaves of modules $\Oo(k)$ are line bundles and the morphism 
+		\begin{align*}
+			\Oo(k)\otimes_{\Oo_{\Proj(R)}}\Oo(\ell)&\morphism\Oo(k+\ell)\\
+			f\otimes g&\longmapsto fg
+		\end{align*}
+		is an isomorphism.
+		\item We have a morphism of preschemes 
+		\begin{align}\lbl{eq:Proj(R)toSpecR0}
+			\begin{split}
+				\pi\colon\Proj(R)&\morphism \Spec R_0\\
+				\pp &\longmapsto \pp\cap R_0
+			\end{split}
+		\end{align}
+		and $\pi^*\colon \Oo_{\Spec R_0}\morphism \pi_*\Oo_{\Proj(R)}$ is defined by sending an element $rf^{-k}\in (R_0)_f\simeq \Oo_{\Spec R_0}(\Spec R_0\setminus V(f))$ to precisely that element in $\Oo(0)(\Proj(R)\setminus V(f))$. The morphism $\pi$ is of finite type iff $R$ is an $R_0$-algebra of finite type.
+		\item If $R$ is Noetherian (which is the case iff $R_0$ is Noetherian and $R$ of finite type over $R_0$) then $\Proj(R)$ is Noetherian and the $\Oo(k)$ are coherent.
+	\end{alphanumerate}
+\end{prop}
 
 \appendix
 \chapter{Appendix -- category theory corner}
