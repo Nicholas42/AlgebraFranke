@@ -5,6 +5,9 @@
 \usepackage{../frankenumbering}
 \usepackage{../shortcuts}
 
+\usepackage{eurosym}
+\usetikzlibrary{fadings}
+
 \usepackage{csquotes}
 %\usepackage{tikz-cd}%I cannot draw diagrams without it - Felix. %well, I can - Ferdinand
 \usepackage[backend=biber,style=numeric,sorting=none]{biblatex}
@@ -1547,7 +1550,7 @@ defining a morphism of \vC ech cohomology groups $\check{H}^1(X,\Oo_X^\times)\mo
 		\draw[transform canvas={xshift=-1pt}](D) -- (D');
 	\end{diagram*}
 \end{defi}
-Note that $\epsilon$ in the above diagram is automatically an isomorphism. Indeed, we can apply the snake lemma in the abelian category $\Oo_X\cat{-Mod}$ to obtain the vanishing of both $\ker(\epsilon)$ and $\coker(\epsilon)$.
+Note that $\epsilon$ in the above diagram is automatically an isomorphism. Indeed, this follows immediately from the five lemma in the abelian category $\Oo_X\cat{-Mod}$.
 
 For sheaves $\Ff$ and $\Gg$ on a topological space $X$, we get another sheaf on $X$ via 
 \begin{align*}
@@ -1565,20 +1568,50 @@ Franke didn't prove this in the lecture. For the sake of completeness, however, 
 \begin{proof}[Sketch of a proof]
 	Denote $\Hh=\Hhom_{\Oo_X}(\Ww,\Vv)$ for short and let $\Xx_\Ee$ be the $\Hh$-torsor associated to an extension $\Ee$. Let's first give an argument why $\Xx_\Ee$ is even an $\Hh$-torsor. If $\pi,\pi'\in\Xx_\Ee(U)$ are two sections of $a$ on $U$, then $(\pi-\pi')a=0$, hence $\pi-\pi'$ factors uniquely over the cokernel of $\Vv_U\morphism[a]\Ee|_U$, which is $\Ww|_U$. That is, there is a unique morphism $\Ww|_U\morphism[h]\Vv|_U$ of $\Oo_U$-modules such that $\pi-\pi'=hb$. This shows that $\Hh(U)$ acts simply transitively on $\Xx_\Ee(U)$. It remains to show that the stalks $\Xx_{\Ee,x}$ are non-empty. But $\Vv$ and $\Ww$ are vector bundles, so every $x\in X$ has a neighbourhood $U$ in which $\Ww|_U$ and $\Vv|_U$ are free $\Oo_U$-modules. In particular, $\Ww|_U$ is projective and the extension $\Ee|_U$ is split, i.e., $\Ee|_U\simeq \Ww|_U\oplus \Vv|_U$. Then $\Xx_\Ee(V)$ is non-empty for all open subsets $V\subseteq U$, hence $\Xx_{\Ee,x}\neq \emptyset$.
 	
-	Now about the functoriality properties. To a morphism $\Ee\morphism[\epsilon]\Ee'$ of extensions we associate the morphism $\Xx_\Ee\morphism\Xx_{\Ee'}$ which takes $\pi\in\Xx_\Ee(U)$ to $\epsilon^{-1}\pi\in\Xx_{\Ee'}(U)$ (recall that $\epsilon$ is automatically an isomorphism; we could have taken $\epsilon\pi$ instead to get a contravariant equivalence of groupoids). This gives a functor $\Phi$ from the groupoid of extensions of $\Ww$ by $\Vv$ to the groupoid of $\Hh$-torsors. 
-	
-	We show fully faithfulness first. Faithfulness of $\Phi$ is straightforward: If $\epsilon,\epsilon'\colon \Ee\morphism\Ee'$ are morphisms of extensions such that $\Phi(\epsilon)=\Phi(\epsilon')$, then choose an open cover $\Uu\colon X=\bigcup_{i\in I}U_i$ on which $\Vv$ and $\Ww$ trivialize (i.e., $\Vv|_{U_i}$ is a free $\Oo_{U_i}$-module for all $i\in U$ and same for $\Ww$). Then $\Ee|_{U_i}\simeq \Ww|_{U_i}\oplus \Vv|_{U_i}$ is a split extension (and same for $\Ee'|_{U_i}$), hence the $\Xx_\Ee(U_i)$ are non-empty and we may choose $\pi_i\in \Xx_\Ee(U_i)$ for all $i\in I$. From $\epsilon^{-1}\pi_i=(\epsilon')^{-1}\pi_i$ and splitness of $\Ee|_{U_i},\Ee'|_{U_i}$ it's easy to deduce $\epsilon=\epsilon'$ on $U_i$. Since the $U_i$ cover $X$, this holds on all of $X$ and we are done.
-	
-	Now suppose $\Xx_\Ee\morphism[\phi]\Xx_{\Ee'}$ is a morphism of $\Hh$-torsors. We need to construct a morphism $\Ee\morphism[\epsilon]\Ee'$ of extensions such that $\Phi(\epsilon)=\phi$. If $\pi\in\Xx_\Ee(U)$ is a section of $a$ on $U$, then $\pi$ and $\phi(\pi)$ induce splittings $\Ee|_U\simeq \Ww|_U\oplus\Vv|_U\simeq \Ee'|_U$, which immediately gives a morphism $\Ee|_U\morphism[\epsilon_U]\Ee'|_U$ of extensions of $\Ww|_U$ by $\Vv|_U$. It can be easily checked that $\epsilon_U$ is actually independent of $\pi$. So choosing a trivializing open cover $\Uu$ as above, we get $\epsilon_{U_i}$ for all $i\in I$ which can be glued together (by naturality of their construction) to a morphism $\Ee\morphism[\epsilon]\Ee'$ which indeed satisfies $\Phi(\epsilon)=\phi$.
-	
-	And essential surjectivity. Let $\Xx$ be an $\Hh$-torsor. To construct an extension $\Ee$ such that $\Xx\simeq \Xx_\Ee$, the idea is -- of course -- to choose $\Ee|_U\simeq \Ww|_U\oplus\Vv|_U$ on small neighbourhoods where $\Xx$ trivializes, and then to glue them together somehow. Actually we will take the smallest possible ``neighbourhoods'' -- the stalks $\Ee_x\simeq\Ww_x\oplus\Vv_x$ and impose a suitable coherence condition. To do this, choose an element $\pi_x\in\Xx_x$ for every $x\in X$ and put
-	\begin{align*}
-		\Ee(U)=\left\{e=(w_x,v_x)_{x\in U}\in \prod_{x\in U}\Ww_x\oplus\Vv_x\st\begin{array}{c}
-		e\text{ fulfills the \emph{cohe-}}\\
-		\text{\emph{rence condition}\texttrademark}
-		\end{array}\right\}\;,
-	\end{align*}
-	where the \emph{coherence condition}\texttrademark\ says that every $x\in U$ has a neighbourhood $V\subseteq U$ on which $\pi_x$, $w_x$ and $v_x$ have preimages $\pi_V\in \Xx(V)$, $w_V\in\Ww(V)$ and $v_V\in\Vv(V)$ such that the following holds: $\pi_{V,y}$, $w_{V,y}$ and $v_{V,y}$ denote the respective images in $\Xx_y$, $\Ww_y$ and $\Vv_y$, then $w_y=w_{V,y}$ and $v_y=v_{V,y}+h(w_y)$, where $h=\pi_y-\pi_{V,y}\in\Hh_y$. It is possible to show that this indeed defines an extension of $\Ww$ by $\Vv$ and that $\Xx\simeq\Xx_\Ee$.
+	\newlength{\currentparskip}
+	\setlength{\currentparskip}{\parskip}\begin{tikzfadingfrompicture}[name=premium access]
+		\shade[top color=transparent!50, bottom color=transparent!6.25] (0,0) rectangle (2,2);
+	\end{tikzfadingfrompicture}
+	\begin{tikzpicture}[inner sep=0pt]
+		\node (wallOfText) at (0,0) {
+			\begin{minipage}{\textwidth}
+			\setlength{\parskip}{\currentparskip}
+				Now about the functoriality properties. To a morphism $\Ee\morphism[\epsilon]\Ee'$ of extensions we associate the morphism $\Xx_\Ee\morphism\Xx_{\Ee'}$ which takes $\pi\in\Xx_\Ee(U)$ to $\epsilon^{-1}\pi\in\Xx_{\Ee'}(U)$ (recall that $\epsilon$ is automatically an isomorphism; we could have taken $\epsilon\pi$ instead to get a contravariant equivalence of groupoids). This gives a functor $\Phi$ from the groupoid of extensions of $\Ww$ by $\Vv$ to the groupoid of $\Hh$-torsors. 
+				
+				We show fully faithfulness first. Faithfulness of $\Phi$ is straightforward: If $\epsilon,\epsilon'\colon \Ee\morphism\Ee'$ are morphisms of extensions such that $\Phi(\epsilon)=\Phi(\epsilon')$, then choose an open cover $\Uu\colon X=\bigcup_{i\in I}U_i$ on which $\Vv$ and $\Ww$ trivialize (i.e., $\Vv|_{U_i}$ is a free $\Oo_{U_i}$-module for all $i\in U$ and same for $\Ww$). Then $\Ee|_{U_i}\simeq \Ww|_{U_i}\oplus \Vv|_{U_i}$ is a split extension (and same for $\Ee'|_{U_i}$), hence the $\Xx_\Ee(U_i)$ are non-empty and we may choose $\pi_i\in \Xx_\Ee(U_i)$ for all $i\in I$. From $\epsilon^{-1}\pi_i=(\epsilon')^{-1}\pi_i$ and splitness of $\Ee|_{U_i},\Ee'|_{U_i}$ it's easy to deduce $\epsilon=\epsilon'$ on $U_i$. Since the $U_i$ cover $X$, this holds on all of $X$ and we are done.
+				
+				Now suppose $\Xx_\Ee\morphism[\phi]\Xx_{\Ee'}$ is a morphism of $\Hh$-torsors. We need to construct a morphism $\Ee\morphism[\epsilon]\Ee'$ of extensions such that $\Phi(\epsilon)=\phi$. If $\pi\in\Xx_\Ee(U)$ is a section of $a$ on $U$, then $\pi$ and $\phi(\pi)$ induce splittings $\Ee|_U\simeq \Ww|_U\oplus\Vv|_U\simeq \Ee'|_U$, which immediately gives a morphism $\Ee|_U\morphism[\epsilon_U]\Ee'|_U$ of extensions of $\Ww|_U$ by $\Vv|_U$. It can be easily checked that $\epsilon_U$ is actually independent of $\pi$. So choosing a trivializing open cover $\Uu$ as above, we get $\epsilon_{U_i}$ for all $i\in I$ which can be glued together (by naturality of their construction) to a morphism $\Ee\morphism[\epsilon]\Ee'$ which indeed satisfies $\Phi(\epsilon)=\phi$.
+				
+				And essential surjectivity. Let $\Xx$ be an $\Hh$-torsor. To construct an extension $\Ee$ such that $\Xx\simeq \Xx_\Ee$, the idea is -- of course -- to choose $\Ee|_U\simeq \Ww|_U\oplus\Vv|_U$ on small neighbourhoods where $\Xx$ trivializes, and then to glue them together somehow. Actually we will take the smallest possible ``neighbourhoods'' -- the stalks $\Ee_x\simeq\Ww_x\oplus\Vv_x$ and impose a suitable coherence condition. To do this, choose an element $\pi_x\in\Xx_x$ for every $x\in X$ and put
+				\begin{align*}
+				\Ee(U)=\left\{e=(w_x,v_x)_{x\in U}\in \prod_{x\in U}\Ww_x\oplus\Vv_x\st\begin{array}{c}
+				e\text{ fulfills the \emph{cohe-}}\\
+				\text{\emph{rence condition}\texttrademark}
+				\end{array}\right\}\;,
+				\end{align*}
+				where the \emph{coherence condition}\texttrademark\ says that every $x\in U$ has a neighbourhood $V\subseteq U$ on which $\pi_x$, $w_x$ and $v_x$ have preimages $\pi_V\in \Xx(V)$, $w_V\in\Ww(V)$ and $v_V\in\Vv(V)$ such that the following holds: $\pi_{V,y}$, $w_{V,y}$ and $v_{V,y}$ denote the respective images in $\Xx_y$, $\Ww_y$ and $\Vv_y$, then $w_y=w_{V,y}$ and $v_y=v_{V,y}+h(w_y)$, where $h=\pi_y-\pi_{V,y}\in\Hh_y$. It is possible to show that this indeed defines an extension of $\Ww$ by $\Vv$ and that $\Xx\simeq\Xx_\Ee$.
+			\end{minipage}};
+		\coordinate (dummy) at ($(wallOfText.north east)!1.0/2!(wallOfText.south east)$);
+		\fill[white,path fading=premium access] (wallOfText.north west) rectangle (dummy);
+		\fill[white,opacity=0.9375] (dummy) rectangle (wallOfText.south west);
+		\node[rectangle, fill=white,draw=black!50!white, inner sep=3ex, rounded corners] at (0,0) {\begin{minipage}{0.5\textwidth}
+			\sffamily
+			\begin{center}
+			\LARGE\textbf{Want to read more?}
+			\end{center}
+			\vspace{2ex}
+			Subscribe to continue reading (or wait till exercise sheet \#7 has been collected).
+			\begin{itemize}
+			\item[{\tikz[inner sep=0ex,anchor=base, baseline]{\node (a) {\phantom{h}};\draw[red!70!black] (a) circle (5pt);}}] Purchase this proof for 0,99\euro.
+			\item[{\tikz[inner sep=0ex,anchor=base, baseline]{\node (a) {\phantom{h}};\draw[red!70!black] (a) circle (5pt);\fill[red!70!black] (a) circle (3pt);}}] Unlock AlgGeo II PREMIUM. Unlimited access on all devices. Free 30 days trial, then 4,99\euro\ per month.
+			\end{itemize}
+			\begin{center}
+			\tikz\fill[inner sep=0ex,red!70!black, rounded corners]  (0,0.75) rectangle (\textwidth,0) node[pos=0.5,white] {\large\textbf{Get access now}};
+			\end{center}
+			\vspace{2ex}
+			Already have an account? \textbf{\underline{Si\smash{g}n in}} here.
+			\end{minipage}};
+	\end{tikzpicture}
 \end{proof}
 
 \chapter{Cohomology of projective spaces}
@@ -1733,28 +1766,29 @@ In the following we put $H^j\big((x_0,\ldots,n),M\big)\coloneqq H^j\big(K^\bulle
 \begin{defi}
 	Let $R$ be a ring, $M$ and $N$ be finitely generated free (or projective) $R$-modules. A \defemph{non-degenerate pairing} $M\times N\morphism R$ is a $R$-bilinear map $M\times N\morphism R$ such that one of the induced maps $M\morphism\Hom_R(N,R)$ or $N\morphism \Hom_R(M,R)$ is an isomorphism.
 \end{defi}
-\begin{cor}
+\begin{cor}\lbl{cor:KoszulCoho}
 	Let $R$ be any ring, $S=R[X_0,\ldots,X_n]$. The Koszul complex $K^\bullet\big((X_0^\ell,\ldots,X_n^\ell),S\big)$ is acyclic in cohomological degree $\neq n+1$. Its cohomology in dimension $n+1$ is a free $R$-module.
 	
 	The Koszul complex becomes a complex of graded $S$-modules via
 	\begin{align*}
 		K^m\big((X_0^\ell,\ldots,X_n^\ell),S\big)_k\coloneqq \left\{f\in K^m\big((X_0^\ell,\ldots,X_n^\ell),S\big)\st f([n]^m)\subseteq S_{k+\ell m}\right\}\;,
 	\end{align*}
-	where $S_{k+\ell m}$ denotes the degree $(k+\ell m)$-part of $S=R[X_0,\ldots,X_n]$, and
+	where $S_{k+\ell m}$ denotes the degree-$(k+\ell m)$ part of $S=R[X_0,\ldots,X_n]$, and
 	\begin{alphanumerate}
 		\item $H^{n+1}\big((X_0^\ell,\ldots,X_n^\ell),S\big)_k=0$ when $k>-n-1$.
 		\item We have an isomorphism
 		\begin{align}\lbl{eq:Hn+1Iso}
 			\begin{split}
-				\tau\colon H^{n+1}\big((X_0^\ell,\ldots,X_n^\ell)\big)&\isomorphism R\\
-				[f]&\longmapsto \text{the coefficient of }(X_0X_1\cdots X_n)^{\ell-1}\text{ in }f(0,1,\ldots,n)
+				\tau\colon H^{n+1}\big((X_0^\ell,\ldots,X_n^\ell),S\big)_{-n-1}&\isomorphism R\\
+				[f]&\longmapsto \text{coefficient of }(X_0X_1\cdots X_n)^{\ell-1}\text{ in }f(0,1,\ldots,n)
 			\end{split}
 		\end{align}
 		(where $[f]$ denotes the cohomology class of $f\in K^{n+1}\big((X_0^\ell,\ldots,X_n^\ell),S\big)$ which is a cocycle).
 		\item For $0<k<\ell$ we have a non-degenerate pairing
 		\begin{align}\lbl{eq:KoszulNonDegPairing}
-			S_k\times H^{n+1}\big((X_0^\ell,\ldots,X_n^\ell),S\big)_{-n-1-k}\xrightarrow{\text{multiplication}}H^{n+1}\big((X_0^\ell,\ldots,X_n^\ell),S\big)_{-n-1}\overset{\text{\eqreff{eq:Hn+1Iso}}}{\simeq} R\;.
+			S_k\times H^{n+1}\big((X_0^\ell,\ldots,X_n^\ell),S\big)_{-n-1-k}\morphism H^{n+1}\big((X_0^\ell,\ldots,X_n^\ell),S\big)_{-n-1}\overset{\text{\eqreff{eq:Hn+1Iso}}}{\simeq} R.
 		\end{align}
+		(simply given by multiplication).
 	\end{alphanumerate}
 \end{cor}
 \begin{proof}
@@ -1772,9 +1806,45 @@ And finally for a lemma which is perhaps worthwhile to know.
 \begin{lem}
 	Let $R$ be a Noetherian local ring with maximal ideal $\mm$, $M$ a finitely generated $R$-module and $x_0,\ldots,x_n\in\mm$. Then $(x_0,\ldots,x_n)$ is $M$-regular iff $H^i\big((x_0,\ldots,x_n),M\big)=0$ for $i\neq n+1$. In particular, reordering $(x_0,\ldots,x_n)$ will again produce an $M$-regular sequence.
 \end{lem}
-\begin{proof}
-	Omitted.
-\end{proof}
+\begin{tikzpicture}[inner sep=0pt]
+	\node (wallOfText) at (0,0) {
+		\begin{minipage}{\textwidth}
+			\setlength{\parskip}{\currentparskip}
+			\begin{proof}
+			The \emph{only if} part being trivial after Fact~\reff{fact:RegularSeqKoszulComplex}\itememph{b}, we assume now that $H^i\big((x_0,\ldots,x_n),M\big)$ vanishes for $i\neq n+1$. From \eqreff{eq:KoszulCone} and the cone sequence \eqreff{eq:MappingConeSeq} we obtain a part of a long exact sequence
+			\begin{multline*}
+			H^j\big((x_0,\ldots,x_n),M\big)\morphism H^j\big((x_0,\ldots,x_{n-1}),M\big)\morphism[x_n\cdot] H^j\big((x_0,\ldots,x_{n-1}),M\big)\\
+			\morphism H^{j+1}\big((x_0,\ldots,x_n),M\big)\;.
+			\end{multline*}
+			For $j<n$ the outer terms vanish by assumption, hence
+			\begin{align*}
+			H^j\big((x_0,\ldots,x_{n-1}),M\big)\morphism[x_n\cdot] H^j\big((x_0,\ldots,x_{n-1}),M\big)
+			\end{align*}
+			is an isomorphism. But we are working over a Noetherian ring $R$ and $M$ is finitely generated, so all involved constructions are finitely generated as well. In particular, $H^j\big((x_0,\ldots,x_{n-1}),M\big)$ is finitely generated. As $x_n\in\mm$, Nakayama's lemma shows $H^j\big((x_0,\ldots,x_{n-1}),M\big)=0$ for $j<n$. For $j>n$ this holds as well, obviously. Inductively, this shows $H^j\big((x_0,\ldots,x_i),M\big)=0$ for all $i<n$ and $j\neq i+1$, hence $(x_0,\ldots,x_n)$ is regular by Fact~\reff{fact:RegularSeqKoszulComplex}\itememph{b}.			
+			\end{proof}
+		\end{minipage}};
+	\coordinate (dummy) at ($(wallOfText.north east)!1.0/2!(wallOfText.south east)$);
+	\fill[white,path fading=premium access] (wallOfText.north west) rectangle (dummy);
+	\fill[white,opacity=0.9375] (dummy) rectangle (wallOfText.south west);
+	\node[rectangle, fill=white,draw=black!50!white, inner sep=3ex, rounded corners] at (0,0) {\begin{minipage}{0.5\textwidth}
+		\sffamily
+		\begin{center}
+		\LARGE\textbf{Want to read more?}
+		\end{center}
+		\vspace{2ex}
+		Subscribe to continue reading (or wait till exercise sheet \#7 has been collected).
+		\begin{itemize}
+		\item[{\tikz[inner sep=0ex,anchor=base, baseline]{\node (a) {\phantom{h}};\draw[red!70!black] (a) circle (5pt);}}] Purchase this proof for 0,99\euro.
+		\item[{\tikz[inner sep=0ex,anchor=base, baseline]{\node (a) {\phantom{h}};\draw[red!70!black] (a) circle (5pt);\fill[red!70!black] (a) circle (3pt);}}] Unlock AlgGeo II PREMIUM. Unlimited access on all devices. Free 30 days trial, then 4,99\euro\ per month.
+		\end{itemize}
+		\begin{center}
+		\tikz\fill[inner sep=0ex,red!70!black, rounded corners]  (0,0.75) rectangle (\textwidth,0) node[pos=0.5,white] {\large\textbf{Get access now}};
+		\end{center}
+		\vspace{2ex}
+		Already have an account? \textbf{\underline{Si\smash{g}n in}} here.
+		\end{minipage}};
+\end{tikzpicture}
+
 \section{The scheme \texorpdfstring{$\IP_R^n$}{P} and its cohomology}
 Let $R$ be an $\IN_0$-graded ring. Let $R_+\subseteq R$ be the ideal of elements of $R$ of positive homogeneous degree. Recall that there is a bijection
 \begin{align*}
@@ -1855,7 +1925,7 @@ making $\Oo$ into a sheaf of graded rings with $\Oo(0)=\Oo_{\Proj R}$. Moreover,
 			\Oo(k)\otimes_{\Oo_{\Proj R}}\Oo(\ell)&\morphism\Oo(k+\ell)\\
 			f\otimes g&\longmapsto fg
 		\end{align*}
-		is an isomorphism.
+		is an isomorphism (the tensor product of sheaves is introduced in Remark~\reff{rem:tensorProductSheaves}).
 		\item We have a morphism of preschemes $\pi\colon\Proj R\morphism \Spec R_0$ whose topological component is given by
 		\begin{align}\lbl{eq:Proj(R)toSpecR0}
 			\begin{split}
@@ -1863,7 +1933,7 @@ making $\Oo$ into a sheaf of graded rings with $\Oo(0)=\Oo_{\Proj R}$. Moreover,
 				\pp &\longmapsto \pp\cap R_0
 			\end{split}
 		\end{align}
-		and the algebraic component $\pi^*\colon \Oo_{\Spec R_0}\morphism \pi_*\Oo_{\Proj R}$ is defined by sending an element $rf^{-k}\in (R_0)_f\simeq \Oo_{\Spec R_0}(\Spec R_0\setminus V(f))$ to precisely that element in $\Oo(0)(\Proj R\setminus V(f))$. The morphism $\pi$ is of finite type (cf.\ \cite[Definition~2.2.1]{alggeo1}) iff $R$ is an $R_0$-algebra of finite type.
+		and the algebraic component $\pi^*\colon \Oo_{\Spec R_0}\morphism \pi_*\Oo_{\Proj R}$ is defined by sending an element $rf^{-k}\in (R_0)_f\simeq \Oo_{\Spec R_0}(\Spec R_0\setminus V(f))$ to precisely that element in $\Oo(0)(\Proj R\setminus V(f))$. The morphism $\pi$ is of finite type (cf.\ \cite[Definition~2.2.1]{alggeo1}) if $R$ is an $R_0$-algebra of finite type.
 		\item If $R$ is Noetherian (which is the case iff $R_0$ is Noetherian and $R$ of finite type over $R_0$) then $\Proj R$ is Noetherian (cf.\ \cite[Definition~2.2.2]{alggeo1}) and the $\Oo(k)$ are coherent.
 	\end{alphanumerate}
 \end{prop}
@@ -1874,7 +1944,7 @@ making $\Oo$ into a sheaf of graded rings with $\Oo(0)=\Oo_{\Proj R}$. Moreover,
 	\begin{align*}
 		\Proj R\setminus V(f)\longmapsto (M_f)_0\quad\text{for }f\text{ homogeneous of positive degree}
 	\end{align*}
-	is quasi-coherent and equals $((M_f)_0)^\sim$ on $\Proj R\setminus V(f)$ (i.e., the first part of exercise~3). Applying this to $M=R[k]$ (the shift of $R$ as in Definition~\reff{def:cone}\itememph{a}) shows that $\Oo(k)$ is quasi-coherent and \eqreff{eq:O(k)isQC} holds.
+	is quasi-coherent as it equals $((M_f)_0)^\sim$ on $\Proj R\setminus V(f)$ (this is actually the first part of exercise~3). Applying this to $M=R[k]$ (the shift of $R$ as in Definition~\reff{def:cone}\itememph{a}) shows that $\Oo(k)$ is quasi-coherent and \eqreff{eq:O(k)isQC} holds.
 	
 	Part \itememph{b}. Let $\pp_1,\ldots,\pp_n\in\Proj R$. Since $R_+$ isn't contained in any $\pp_i$, it is also not contained in the union $\bigcup_{i=1}^n\pp_i$ by the prime avoidance lemma (cf.\ \cite[Lemma~2.5.1]{alg1}). Then for any $f\in R_+\setminus \bigcup_{i=1}^n\pp_i$, $\Proj R\setminus V(f)\simeq \Spec (R_f)_0$ is a common affine open neighbourhood of $\pp_1.\ldots,\pp_n$ by \eqreff{eq:ProjLocal}. From \cite[Fact~1.5.9\itememph{a}]{alggeo1} we get that $\Proj R$ is a scheme.
 	
@@ -1884,7 +1954,7 @@ making $\Oo$ into a sheaf of graded rings with $\Oo(0)=\Oo_{\Proj R}$. Moreover,
 	\end{align*}
 	is pretty much obvious.
 	
-	Part \itememph{e}. I will only show the \emph{if} part, hopefully the \emph{only if} part will be covered in the lecture. Let $\alpha_1,\ldots,\alpha_n$ be generators of $R$ as an $R_0$-algebra. Decomposing them into homogeneous components, we may assume that they are homogeneous of degrees $d_1,\ldots,d_n>0$. By \cite[Proposition~2.2.1\itememph{b}]{alggeo1}  and \itememph{c} it is enough to show that $(R_f)_0\simeq\Oo_{\Proj R}(\Proj R\setminus V(f))$ is of finite type over $R_0$ for all $f\in R_+$. Let $d$ be the homogeneous degree of $f$. One may check that $(R_f)_0$ is indeed generated as an $R_0$-algebra by those
+	Part \itememph{e}. Let $\alpha_1,\ldots,\alpha_n$ be generators of $R$ as an $R_0$-algebra. Decomposing them into homogeneous components, we may assume that they are homogeneous of degrees $d_1,\ldots,d_n>0$. By \cite[Proposition~2.2.1\itememph{b}]{alggeo1}  and \itememph{c} it is enough to show that $(R_f)_0\simeq\Oo_{\Proj R}(\Proj R\setminus V(f))$ is of finite type over $R_0$ for all $f\in R_+$. Let $d$ be the homogeneous degree of $f$. One may check that $(R_f)_0$ is indeed generated as an $R_0$-algebra by those
 	\begin{align*}
 	\alpha_1^{k_1}\cdots \alpha_n^{k_n}\cdot f^{-k}\quad\text{where }0\leq k_i<d\text{ and }0\leq k<d\cdot(d_1+\ldots+d_n)
 	\end{align*}
@@ -1893,6 +1963,152 @@ making $\Oo$ into a sheaf of graded rings with $\Oo(0)=\Oo_{\Proj R}$. Moreover,
 	To show that $\pi$ is quasi-compact, it suffices to show quasi-compactness of $\Proj R$ by \cite[Fact~2.1.2]{alggeo1}. Since $R$ is of finite type over $R_0$, the augmentation ideal $R_+$ is finitely generated. Let $f_1,\ldots,f_n$ be homogeneous generators of $R_+$. Then the $\Proj R\setminus V(f_i)\simeq \Spec (R_{f_i})_0$ cover $\Proj R$, so $\Proj R$ is a finite union of quasi-compact sets and thus quasi-compact itself.
 	
 	And finally part \itememph{f}. The stuff in parentheses was proved in \cite[Proposition~2.2.1]{alg2}, by the way. In \itememph{e} we have seen that $\Proj R$ is finite type over $\Spec R_0$ which is Noetherian, hence $\Proj R$ is Noetherian by Hilbert's Basissatz. By an argument similar to \itememph{e}, $(R_f)_k$ is finitely generated as an $(R_f)_0$-module for all $f\in R_+$, hence $\Oo(k)$ is locally finitely generated over $\Oo_{\Proj R}$ by \itememph{c} and thus coherent in the sense of Definition~\reff{def:locFinGenerated}\itememph{b}.
+\end{proof}
+\begin{rem}
+	For a graded $R$-module $M$ and open $U\subseteq P=\Proj R$ let 
+	\begin{align*}
+		\snake{M}(U)=\left\{(\mu_\pp)\in\prod_{\pp\in U}(M_\pp)_0\st\begin{array}{c}
+		\text{every }x\in U\text{ has a neighbourhood }V=P\setminus V(f)\subseteq U\text{,}\\
+		\text{ where }f\text{ is homogeneous,  such that there is a }m\in (M_f)_0\\
+		\text{with }\mu_\pp=\left(\text{image of }m\text{ under }M_f\morphism M_\pp\right)\text{ for all }\pp\in V
+		\end{array}\right\}\;.
+	\end{align*}
+	 This is actually the sheafification of the presheaf 
+	 \begin{align*}
+		 \Proj R\setminus V(f)\longmapsto (M_f)_0\quad\text{for }f\text{ homogeneous of positive degree}
+	 \end{align*}
+	 we have already seen in the proof if Proposition~\reff{prop:FirstProjProperties}\itememph{c}. Note that the localizations $M_\pp$ appearing here are understood to be obtained by inverting the \emph{homogeneous} elements of $R\setminus \pp$ only. On open subsets of the form $\Proj R\setminus V(f)\simeq \Spec (R_f)_0$ for $f\in R_+$ homogeneous, $\snake{M}$ equals $((M_f)_0)^\sim$, proving that it is quasi-coherent. In the case $\snake{M}=R[k]$ we obtain $\snake{M}\simeq \Oo(k)$.
+\end{rem}
+\begin{rem*}
+	If $R\morphism[\phi]S$ is a ring morphism such that there is a positive integer $d$ satisfying $\phi(R_k)\subseteq S_{dk}$ for all $k$ and such that $S_+=\sqrt{S\phi(R_+)}$, then we have a continuous map
+	\begin{align*}
+		\Proj S&\morphism\Proj R\\
+		\pp &\longmapsto\phi^{-1}(\pp)
+	\end{align*}
+	together with morphisms $(R_{\phi^{-1}(\pp)})_0\morphism[\phi](S_\pp)_0$, defining a morphism $\Proj S\morphism \Proj R$ of preschemes. 
+	
+	For instance, there is a morphism (a closed immersion even) from $\IP_A^m\coloneqq\Proj A[X_0,\ldots,X_m]$ to $\IP_A^n$ for $m\leq n$ defined by the ring morphism $A[X_0,\ldots,X_n]\morphism A[X_0,\ldots,X_m]$ sending $X_{m+1},\ldots,X_n$ to $0$. By contrast, there is no morphism $\IP_A^m\morphism\IP_A^n$ defined by $A[X_0,\ldots,X_n]\subseteq A[X_0,\ldots,X_m]$ when $n<m$ (because the radical property fails).
+	
+	As an example with $d>1$ we may take $R=A[X_0,X_1,X_2]$, $S=A[Y_0,Y_1]$ and $\phi(X_0)=Y_0^2$, $\phi(X_1)=Y_0Y_1$, $\phi(X_2)=Y_1^2$. The condition $S_+=\sqrt{S\phi(R_+)}$ holds as all monomials of even degree in $Y_0,Y_1$ can be decomposed as a product of the three monomials $Y_0^2,Y_0Y_1,Y_1^2$. We obtain a closed immersion $\IP_A^1=\Proj S\morphism \IP_A^2=\Proj R$ identifying $\IP_A^1$ with the closed subprescheme $V(X_0X_2-X_1^2)\subseteq \IP_A^2$.
+\end{rem*}
+\begin{rem}\lbl{rem:tensorProductSheaves}
+	We will construct a sheaf tensor product. Let $\Rr$ be a sheaf of rings on some space $X$ and $\Mm,\Nn$ be $\Rr$-modules. We define $\Mm\otimes_\Rr\Nn$ to be the sheafification of the presheaf 
+	\begin{align*}
+		\Pp\colon U\longmapsto \Mm(U)\otimes_{\Rr(U)}\Nn(U)\quad\text{for open subsets }U\subseteq X\;.
+	\end{align*}
+	It is ``easy to see'' that the stalk $\Pp_x$ is given by $\Mm_x\otimes_{\Rr_x}\Nn_x$\footnote{If you really want to do this, you could use that both the free module and its submodule of relations-to-be-modded-out appearing in the explicit construction of the tensor product commute with colimits, as does taking the quotient. In fact, since $\Mm_x=\colimit[U\ni x] \Mm(U)$ is a \emph{filtered} colimit, it is the same as being taken in the category of sets, and the free module functor is left-adjoint to the forgetful functor, hence preserves colimits (Remark~\reff{rem:AdjunctionPreservesStuff}). So does taking quotients, since colimits commute with colimits (Lemma~\reff{lem:ColimitsCommute}).}. Then the stalk at $x$ of $\Mm\otimes_\Rr\Nn$ is given by $\Mm_x\otimes_{\Rr_x}\Nn_x$ as well and we get
+	\begin{align*}
+		(\Mm\otimes_\Rr\Nn)(U)=\left\{(f_x)\in\prod_{x\in U}\Mm_x\otimes_{\Rr_x}\Nn_x\st\begin{array}{c}
+			\text{every }x\in U\text{ has a neighbourhood }V\subseteq U\\
+			\text{and }\phi\in \Mm(V)\otimes_{\Rr(V)}\Nn(V)\text{ such that }f_y\text{ is}\\
+			\text{the image of }\phi\text{ in }\Mm_x\otimes_{\Rr_x}\Nn_x\text{ for all }y\in V
+		\end{array}\right\}
+	\end{align*}
+	This satisfies the universal property 
+	\begin{align*}
+		\Hom_{\Rr\cat{-Mod}}(\Mm\otimes_\Rr\Nn,\Tt)&\isomorphism \operatorname{Bil}_\Rr(\Mm\times \Nn,\Tt)\\
+		\phi&\longmapsto\big(\beta\colon (m,n)\longmapsto \phi(m\otimes n)\big)
+	\end{align*}
+	for every $\Rr$-module $\Tt$ (where the set $\operatorname{Bil}_\Rr(\Mm\times \Nn,\Tt)$ of bilinear morphisms of sheaves $\Mm\times \Nn\morphism \Tt$ is defined in the obvious way).
+	
+	Now let $X=\Spec R$ and $\Mm=\snake{M}$, $\Nn=\snake{N}$ for some $R$-modules $M,N$. Then $(M\otimes_RN)_\pp=M\otimes_RN\otimes_RR_\pp=M_\pp\otimes_{R_\pp}N_\pp$ shows that $\Mm\otimes _{\Oo_X}\Nn=(M\otimes_RN)^\sim$. Hence the tensor product over arbitrary preschemes preserves quasi-coherentness of modules.
+	
+	When $\Ll$ is a line bundle on a ringed space $(X,\Oo_X)$ and $\Mm$ an $\Oo_X$-module, then $\Mm\otimes_{\Oo_X}\Ll$ is locally (non-canonically) isomorphic to $\Mm$, a local isomorphism being given by 
+	\begin{align*}
+		\Mm|_U&\isomorphism (\Mm\otimes_{\Oo_X}\Ll)|_U\\
+		m&\longmapsto m\otimes \lambda\;,
+	\end{align*}
+	where $\lambda\in\Ll(U)$ is a free generator of $\Ll|_U$. In that sense, $\Mm\otimes_{\Oo_X}\Ll$ may be viewed as a \emph{twist} of $\Mm$. Similarly, when $\Vv$ is an $n$-dimensional vector bundle on $X$, then $\Mm\otimes_{\Oo_X}\Vv$ is locally (non-canonically) isomorphic to  $\Mm^n$.
+	
+	Now let $R$ be a graded ring such that $R_+$ is generated by $R_1$ over $R$. By Proposition~\reff{prop:FirstProjProperties}\itememph{d}. Then the $\Oo(k)$ are line bundles and for a graded $R$-module $M$ we get an isomorphism
+	\begin{align*}
+		\snake{M}\otimes_{\Oo_{\Proj R}}\Oo(k)&\isomorphism (M[k])^\sim\\
+		m\otimes r&\longmapsto rm
+	\end{align*}
+	(which is easily checked stalk-wise). In particular, this generalizes Proposition~\reff{prop:FirstProjProperties}\itememph{d} (which is the special case $M=R[\ell]$).
+\end{rem}
+Now let $R$ be a ring, $S=R[X_0,\ldots,X_n]$ be equipped with the usual grading and put $\IP_R^n=\Proj R$. Then $\Uu\colon \IP_R^n=\bigcup_{i=0}^nU_i$ with $U_i=\IP_R^n\setminus V(X_i)$ is an affine open cover of $\IP_R^n$ and by \eqreff{eq:ProjLocal} we have
+\begin{align*}
+	U_{i_0,\ldots,i_\ell}=\IP_R^n\setminus V\left(X_{i_0}\cdots X_{i_\ell}\right)\simeq \Spec S[(X_{i_0}\cdots X_{i_\ell})^{-1}]_0\;.
+\end{align*}
+\begin{thm}\lbl{thm:CohoOfIP^n}
+	Let $R$ be a ring, $S=R[X_0,\ldots,X_n]$ and $\Uu$ be the affine open cover of $X=\IP_R^n$ from above. 
+	\begin{alphanumerate}
+		\item  For $k\geq 0$ there is an isomorphism
+		\begin{align}\lbl{eq:Oo(k)(IP^n)}
+			\begin{split}
+				S_k&\isomorphism \Oo(k)(X)\\
+				s&\longmapsto \big(\text{image of }s\text{ in }(S_\pp)_k\big)_{\pp\in X}\;.
+			\end{split}
+		\end{align}
+		For $k<0$ we have $\Oo(k)(X)=0$.
+		\item For $0<p<n$ we have $H^p(X,\Oo(k))=0$ for all integers $k$.
+		\item $H^n(X,\Oo(k))=0$ for $k>-n-1$ and $n>0$.
+		\item There is an isomorphism $H^n(X,\Oo(-n-1))\isomorphism R$ defined (up to sign) by
+		\begin{align}\lbl{eq:H^nIP^nO(-n-1)}
+			\begin{split}
+				\check{C}_\alt^n\big(\Uu,\Oo(-n-1)\big)\simeq S[(X_0\cdots X_n)^{-1}]_{-n-1}&\morphism R\\
+				f=\sum_{\alpha\in\IZ^n}f_\alpha X_0^{\alpha_0}\cdots X_n^{\alpha_n}&\longmapsto f_{(-1,\ldots,-1)}\;.
+			\end{split}
+		\end{align}
+		\item For all $k\in\IZ$, the groups $H^0(X,\Oo(k))$ and $H^n(X,\Oo(k))$ are finitely generated free $R$-modules and there is a non-degenerate pairing
+		\begin{align}\lbl{eq:nonDegCohoPairing}
+			\begin{split}
+				H^0\big(X,\Oo(k)\big)\times H^n\big(X,\Oo(-n-1-k)\big)&\morphism H^n(X,\Oo(-n-1))\overset{\text{\itememph{d}}}{\simeq}R\\
+				(f,[g])&\longmapsto [fg]\;,
+			\end{split}
+		\end{align}
+		where for $f\in\Oo(k)(X)$ and $g\in\check{C}_\alt^n(\Uu,\Oo(-n-1-k))$,  $fg\in\check{C}_\alt^n(\Uu,\Oo(-n-1))$ is defined by $(fg)_{i_0,\ldots,i_n}=f|_{U_{i_0,\ldots,i_n}}\cdot g_{i_0,\ldots,i_n}$ for all indices $i_0,\ldots,i_n$.
+	\end{alphanumerate}
+\end{thm}
+\begin{rem*}
+	The pairing in \eqreff{eq:nonDegCohoPairing} is canonical but the isomorphism $H^n(X,\Oo(-n-1))\simeq R$ is not.
+\end{rem*}
+\begin{proof}[Proof of Theorem~\reff{thm:CohoOfIP^n}]
+	Surprisingly, the proof will be almost trivial once we discover the connection between the \vC ech complex and the Koszul complex. By \eqreff{eq:O(k)isQC}, on $U_{i_0,\ldots,i_\ell}= \IP_R^n\setminus V(X_{i_0}\cdots X_{i_\ell})$ we have
+	\begin{align*}
+		\Oo(k)(U_{i_0,\ldots,i_\ell})\simeq S[(X_{i_0}\cdots X_{i_\ell})^{-1}]_k
+	\end{align*}
+	for all $k\in \IZ$. Considering the sheaf of graded rings $\Oo=\bigoplus_{k\in\IZ}\Oo(k)$ as before, this can be written in a more compact way as
+	\begin{align*}
+		\Oo(U_{i_0,\ldots,i_\ell})\simeq S[(X_{i_0}\cdots X_{i_\ell})^{-1}]\;.
+	\end{align*}
+	Note that we have isomorphisms
+	\begin{multline}\lbl{eq:CechKoszulIso1}
+			S[(X_{i_0}\cdots X_{i_\ell})^{-1}]=\bigcup_{j=0}^\infty R[X_0,\ldots,X_n]\cdot (X_{i_0},\ldots,X_{i_\ell})^{-j}\\
+			\lisomorphism \colimit \left(S\xrightarrow{\cdot(X_{i_0}\cdots X_{i_\ell})}S\xrightarrow{\cdot(X_{i_0}\cdots X_{i_\ell})}S\xrightarrow{\cdot(X_{i_0}\cdots X_{i_\ell})}\ldots\right)\tag{$*$}
+	\end{multline}
+	sending the image of $s\in S$ (as an element of the $j\ordinalth$ member of the sequence) in the colimit to $s\cdot (X_{i_0}\cdots X_{i_\ell})^{-j}$.
+	
+	For every $j\in\IN$ we get a morphism
+	\begin{align*}
+		\check{C}_\alt^\ell(\Uu,\Oo)\simeq \prod_{0\leq i_0<\cdots<i_\ell\leq n}S[(X_{i_0}\cdots X_{i_\ell})^{-1}]\lmorphism \bigwedge^{\ell+1}S^{n+1}\simeq K^{\ell+1}\big((X_0^j,\ldots,X_n^j),S\big)
+	\end{align*}
+	sending $e_{i_0}\wedge \cdots \wedge e_{i_\ell}$ to $(0,\ldots,(X_{i_0}\cdots X_{i_\ell})^{-j},\ldots,0)$ (with the only non-zero entry at position $(i_0,\ldots,i_\ell)$, obviously). Using $\bigwedge^{\ell+1}S^{n+1}\simeq \bigoplus _{0\leq i_0<\cdots <i_\ell\leq n}S$ and \eqreff{eq:CechKoszulIso1}, these morphisms assemble to an isomorphism
+	\begin{align*}
+		\check{C}_\alt^\ell(\Uu,\Oo)\lisomorphism \colimit[j\in \IN] K^{\ell+1}\big((X_0^j,\ldots,X_n^j),S\big)\;,
+	\end{align*}
+	where the transition morphisms $K^{\ell+1}\big((X_0^j,\ldots,X_n^j),S\big)\morphism K^{\ell+1}\big((X_0^{j+1},\ldots,X_n^{j+1}),S\big)$ (with respect to which the colimit is taken) sends an element $f\in K^{\ell+1}\big((X_0^j,\ldots,X_n^j),S\big)$ to $\phi\in K^{\ell+1}\big((X_0^{j+1},\ldots,X_n^{j+1}),S\big)$ defined by $\phi(t_1,\ldots,t_{\ell+1})=X_{t_1}\cdots X_{t_{\ell+1}}f(t_1,\ldots,t_{\ell+1})$. Convince yourself that this is compatible with the Koszul differential, so in fact we get a transition map $K^\bullet\big((X_0^j,\ldots,X_n^j),S\big)\morphism K^\bullet\big((X_0^{j+1},\ldots,X_n^{j+1}),S\big)$, and using this an isomorphism
+	\begin{align}\lbl{eq:CechKoszulIso2}
+		\left(S\morphism\check{C}_\alt^0(\Uu,\Oo)\morphism\check{C}_\alt^1(\Uu,\Oo)\morphism\ldots\right)\lisomorphism \colimit[j\in\IN]K^\bullet\big((X_0^j,\ldots,X_n^j),S\big)[-1]
+	\end{align}
+	of cochain complexes. The degree-$(-1)$ term $S$ comes from the fact that the $K^\bullet\big((X_0^j,\ldots,X_n^j),S\big)$ for all $j\in\IN$ have an equal term in degree $0$.
+	
+	Note that if $n=0$, then $\IP_R^0=\Proj R[X_0]\simeq \Spec R$ and everything follows from well-known properties of affine schemes. Now assume $n>0$. By Example~\reff{ex:(X0Xn)regular}\itememph{a}, the sequence $(X_0,\ldots,X_n)$ is a regular sequence in $S$. By Fact~\reff{fact:RegularSeqKoszulComplex}\itememph{d}, so are $(X_0^j,\ldots,X_n^j)$ for $j\in\IN$. We can now reduce the various assertions about the cohomology of $X=\IP_R^n$ to their Koszul counterparts.
+	
+	Part~\itememph{a}. By Fact~\reff{fact:RegularSeqKoszulComplex}\itememph{b}, $H^p\big((X_0^j,\ldots,X_n^j),S\big)=0$ in degree $p\neq n+1$. In particular, by exactness of filtered colimits equation\eqreff{eq:CechKoszulIso2} gives
+	\begin{align*}
+		H^0\left(S\morphism\check{C}_\alt^\bullet(\Uu,\Oo)\right)\lisomorphism\colimit[j\in\IN]H^1\big((X_0^j,\ldots,X_n^j),S\big)=0\;,
+	\end{align*}
+	hence the kernel $\ker\left(\check{C}_\alt^0(\Uu,\Oo)\morphism\check{C}_\alt^1(\Uu,\Oo)\right)\simeq H^0(X,\Oo)\simeq \Oo(X)$ equals the image of $S$ in $\check{C}_\alt^0(\Uu,\Oo)$. Thus $\Oo(X)\simeq S$ and \itememph{a} follows by comparing degrees.
+	
+	Part~\itememph{b}. Just as in \itememph{a}, for $0<p<n$ we obtain
+	\begin{align*}
+		H^p\left(S\morphism\check{C}_\alt^\bullet(\Uu,\Oo)\right)\lisomorphism\colimit[j\in\IN]H^{p+1}\big((X_0^j,\ldots,X_n^j),S\big)=0\;,
+	\end{align*}
+	from Fact~\reff{fact:RegularSeqKoszulComplex}\itememph{b}, hence $H^p(X,\Oo(k))=0$ for all $k\in\IZ$ by comparing degrees.
+	
+	And finally parts~\itememph{c}, \itememph{d}, and \itememph{e} follow in a similar colimit-taking fashion from Corollary~\reff{cor:KoszulCoho}\itememph{a}, \itememph{b}, and \itememph{c}.
 \end{proof}
 
 \appendix
