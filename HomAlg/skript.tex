@@ -296,10 +296,10 @@ We will now use the $\Ext_R^\bullet(-,-)$ functor, which was constructed (for ar
 	\end{alphanumerate}
 \end{rem*}
 \begin{example*}
-	Let $R$ be any ring. If $a\in R$ is not a zero divisor. We can calculate $\Ext_R^\bullet(R/aR,M)$ for any $R$-module $M$ using the projective resolution $0\morphism R\morphism[\cdot a]R\morphism R/aR\morphism 0$. We get
+	Let $R$ be any ring. If $a\in R$ is not a zero divisor. We can calculate $\Ext_R^\bullet(R/aR,M)$ for any $R$-module $M$ using the projective resolution $0\morphism R\morphism[ a\cdot]R\morphism R/aR\morphism 0$. We get
 	\begin{align*}
-		\Ext_R^k(R/aR,M)=H^k\left(\Hom_R(R\morphism[\cdot a]R,M)\right)=\begin{cases}
-			\ker(M\morphism[\cdot a]M) & \text{if }k=0\\
+		\Ext_R^k(R/aR,M)=H^k\left(\Hom_R(R\morphism[ a\cdot]R,M)\right)=\begin{cases}
+			\ker(M\morphism[ a\cdot]M) & \text{if }k=0\\
 			M/aM & \text{if }k=1\\
 			0 & \text{else}
 		\end{cases}\;.
@@ -319,9 +319,9 @@ Our goal now is to establish some properties of $\Ext$ groups over a ring $R$, n
 \begin{fact}\lbl{fact:atimesExt}
 	For $a\in R$ and any $R$-modules $M$ and $N$ the following coincide.
 	\begin{alphanumerate}
-		\item The multiplication $\cdot a$ on $\Ext_R^k(M,N)$ (this is an $R$-module after all).
-		\item The endomorphism $\Ext_R^k(M,N)\morphism\Ext_R^k(M,N)$ induced by $M\morphism[\cdot a]M$ and functoriality of $\Ext_R^k(-,N)$.
-		\item The endomorphism $\Ext_R^k(M,N)\morphism\Ext_R^k(M,N)$ induced by $N\morphism[\cdot a]N$ and functoriality of $\Ext_R^k(M,-)$.
+		\item The multiplication $a\cdot $ on $\Ext_R^k(M,N)$ (this is an $R$-module after all).
+		\item The endomorphism $\Ext_R^k(M,N)\morphism\Ext_R^k(M,N)$ induced by $M\morphism[ a\cdot]M$ and functoriality of $\Ext_R^k(-,N)$.
+		\item The endomorphism $\Ext_R^k(M,N)\morphism\Ext_R^k(M,N)$ induced by $N\morphism[ a\cdot]N$ and functoriality of $\Ext_R^k(M,-)$.
 	\end{alphanumerate}
 \end{fact}
 \begin{proof}
@@ -624,8 +624,13 @@ We use this to prove an analogue of \eqreff{eq:idim}.
 \end{proof}
 \section{Torsion products and flat modules}
 \begin{defi}
-	Let $\Tor_p^R(-,N)$ be the $p\ordinalth$ left-derived functor of $-\otimes_R N$ as a functor from the category of $R$-modules to itself.
+	Let the \defemph{$p\ordinalth$ torsion product} $\Tor_p^R(M,-)$ be the $p\ordinalth$ left-derived functor of $M\otimes_R -$ as a functor from the category of $R$-modules to itself. 
 \end{defi}
+That is, 
+\begin{align}\lbl{eq:TorDef}
+	\Tor_i^R(M,N)=H_i(M\otimes_RP_\bullet)
+\end{align}
+where $P_\bullet \morphism N$ is any projective resolution.
 \begin{rem*}
 	\begin{alphanumerate}
 		\item Recall that $M\otimes_RN$ has the universal property
@@ -633,24 +638,157 @@ We use this to prove an analogue of \eqreff{eq:idim}.
 			\Hom_R(M\otimes_RN,T)\simeq \operatorname{Bil}_R(M,N;T)
 		\end{align*}
 		where $\operatorname{Bil}_R(M,N;T)$ denotes the $R$-module of $R$-bilinear maps $M\otimes N\morphism T$.
-		\item By definition, for any short exact sequence $\Mm\colon 0\morphism M'\morphism M\morphism M''\morphism 0$ we have a long exact $\Tor$ sequence 
-		\begin{multline*}
-			\ldots\morphism\Tor_{p+1}^R(M'',N)\morphism[\partial]\Tor_p^R(M',N)\morphism\Tor_p^R(M,N)\\
-			\morphism\Tor_p^R(M'',N)\morphism[\partial]\Tor_{p-1}^R(M',N)\morphism\ldots\;.
-		\end{multline*}
-		We will write $\partial_{\Mm,N}$ instead of $\partial$ to avoid confusion if necessary.
-		
-		If $\Nn\colon 0\morphism N'\morphism N\morphism N''\morphism 0$ is another short exact sequence of $R$-modules, then
-		\begin{align}\lbl{eq:TorFuncSeq}
-			0\morphism -\otimes_R N'\morphism -\otimes _RN\morphism -\otimes_RN''\morphism 0\tag{$*$}
-		\end{align}
-		is a sequence of functors from $R\cat{-Mod}$ to itself which is exact on free objects $F$. If $P$ is a projective $R$-module, there is a free $R$-module and a surjective morphism $F\epimorphism[\pi]P$. As $P$ is projective, $\pi$ has a section, making $P$ into a direct summand of $F$. Then the sequence \eqreff{eq:TorFuncSeq} for $P$ is a direct summand of \eqreff{eq:TorFuncSeq} for $F$ and thus exact as well. That is, \eqreff{eq:TorFuncSeq} is exact on projective objects, so Theorem~\reff{thm:LeftDerivedFunctors}\itememph{c} gives another connecting morphism $\partial=\partial_{M,\Nn}\colon \Tor_{p+1}^R(M,N'')\morphism\Tor_p^R(M,N')$ such that
-		\begin{multline*}
+		\item By definition, for any short exact sequence $\Nn\colon 0\morphism N'\morphism N\morphism N''\morphism 0$ we have a long exact $\Tor$ sequence 
+		\begin{multline}\lbl{eq:TorSeq1}
 			\ldots\morphism\Tor_{p+1}^R(M,N'')\morphism[\partial]\Tor_p^R(M,N')\morphism\Tor_p^R(M,N)\\
 			\morphism\Tor_p^R(M,N'')\morphism[\partial]\Tor_{p-1}^R(M,N')\morphism\ldots
-		\end{multline*}
+		\end{multline}
+		We will write $\partial_{M,\Nn}$ instead of $\partial$ to avoid confusion if necessary.
+		
+		If $\Mm\colon 0\morphism M'\morphism M\morphism M''\morphism 0$ is another short exact sequence of $R$-modules, then
+		\begin{align}\lbl{eq:TorFuncSeq}
+			0\morphism (M'\otimes_R -)\morphism (M\otimes _R-)\morphism (M''\otimes_R-)\morphism 0\tag{$*$}
+		\end{align}
+		is a sequence of functors from $R\cat{-Mod}$ to itself which is exact on free objects $F$. If $P$ is a projective $R$-module, there is a free $R$-module and a surjective morphism $F\epimorphism[\pi]P$. As $P$ is projective, $\pi$ has a section, making $P$ into a direct summand of $F$. Then the sequence \eqreff{eq:TorFuncSeq} for $P$ is a direct summand of \eqreff{eq:TorFuncSeq} for $F$ and thus exact as well. That is, \eqreff{eq:TorFuncSeq} is exact on projective objects, so Theorem~\reff{thm:LeftDerivedFunctors}\itememph{c} gives another connecting morphism $\partial=\partial_{\Mm,N}\colon \Tor_{p+1}^R(M,N'')\morphism\Tor_p^R(M,N')$ such that
+		\begin{multline}\lbl{eq:TorSeq2}
+			\ldots\morphism\Tor_{p+1}^R(M'',N)\morphism[\partial]\Tor_p^R(M',N)\morphism\Tor_p^R(M,N)\\
+			\morphism\Tor_p^R(M'',N)\morphism[\partial]\Tor_{p-1}^R(M',N)\morphism\ldots\;.
+		\end{multline}
 		is another long exact sequence.
 	\end{alphanumerate}
+\end{rem*}
+\begin{fact}
+	If $i>0$ is positive and one of $M$ or $N$ is projective, then $\Tor_i^R(M,N)=0$.
+\end{fact}
+\begin{proof}
+	If $N$ is projective, it can be taken as a projective resolution of itself and calculating $\Tor_\bullet^R(M,N)$ using \eqreff{eq:TorDef} gives $\Tor_i^R(M,N)=0$ for all $i>0$. 
+	
+	Now assume that $M$ is projective and let $P_\bullet \morphism N$ be any projective resolution. If $M=\bigoplus_{s\in S}R$ (for some indexing set $S$) is free, then $M\otimes_RP_\bullet=\bigoplus_{s\in S}P_\bullet$ is a complex acyclic in positive degrees (as direct sums of exact sequences stay exact), hence the vanishing of $\Tor_\bullet^R(M,N)$ in positive degrees. For general $M$, there is a free $R$-module $F$ with a surjection $F\morphism M$ which splits by projectivity of $M$, making $M$ a direct summand of $F$, hence $M\otimes_RP_\bullet$ a direct summand of $F\otimes_RP_\bullet$ and thus $\Tor_i^R(M,N)$ one of $\Tor_i^R(F,N)=0$ when $i>0$. 
+\end{proof}
+It follows that $\Tor_\bullet^R(-,N)$ for fixed $N$ has the properties characterizing derived functors (Theorem~\reff{thm:LeftDerivedFunctors}\itememph{b}). It follow that $\Tor_\bullet^R(-,N)$ is also the left-derived functor of $-\otimes_RN$. As a consequence of the universal property of derived functors,
+\begin{prop}\lbl{prop:TorMN=TorNM}
+	There is a unique family of isomorphisms $\Tor_i^R(M,N)\isomorphism\Tor_i^R(N,M)$ which exchange \eqreff{eq:TorSeq1} and \eqreff{eq:TorSeq2} in degree $i=0$ coincide with the isomorphism $M\otimes_RN\isomorphism N\otimes_RM$ (sending $m\otimes n$ to $n\otimes m$). The composition
+	\begin{align*}
+		\Tor_i^R(M,N)\isomorphism \Tor_i^R(N,M)\isomorphism\Tor_i^R(M,N)
+	\end{align*}
+	is the identity.
+\end{prop}
+\begin{example}
+	Let $a$ be an element of $R$ which is not a zero divisor. Then $0\morphism R\morphism[a\cdot ]R\morphism R/aR\morphism 0$ is a projective resolution of $R/aR$ which may be used to calculate $\Tor_i^R(M,R/aR)$. We obtain
+	\begin{align*}
+		\Tor_i^R(M,R/aR)\simeq\begin{cases}
+			M/aM & \text{if }i=0\\
+			\ker(M\morphism[a\cdot ]M) & \text{if }i=1\\
+			0 & \text{else}
+		\end{cases}
+	\end{align*}
+\end{example}
+In the same way as Fact~\reff{fact:atimesExt} for $\Ext$ we have
+\begin{fact}\lbl{fact:atimesTor}
+	For $a\in R$ and any $R$-modules $M$ and $N$ the following coincide.
+	\begin{alphanumerate}
+		\item The multiplication $a\cdot $ on the $R$-module $\Tor_i^R(M,N)$.
+		\item The endomorphism $\Tor_i^R(M,N)\morphism\Tor_i^R(M,N)$ induced by $M\morphism[a\cdot ]M$ and functoriality of $\Ext_R^k(-,N)$.
+		\item The endomorphism $\Tor_i^R(M,N)\morphism\Tor_i^R(M,N)$ induced by $N\morphism[a\cdot ]N$ and functoriality of $\Tor_i^R(M,-)$.
+	\end{alphanumerate}
+\end{fact}
+When the ring $R$ is Noetherian and $M$ is finitely generated, the torsion product may be calculated using a free resolution $0\lmorphism M\lmorphism R^{n_0}\lmorphism R^{n_1}\lmorphism\ldots$ by finitely generated $R$-modules. Using Proposition~\reff{prop:TorMN=TorNM} and \eqreff{eq:TorDef} we get
+\begin{align*}
+	\Tor_\bullet^R(M,N)=H_\bullet\left(N^{n_0}\lmorphism N^{n_1}\lmorphism\ldots\right)\;.
+\end{align*}
+When $N$ is also finitely generated, this clearly shows
+\begin{fact}
+	When $R$ is Noetherian  and $M,N$ finitely generated $R$-modules, then the $\Tor_i^R(M,N)$ are finitely generated $R$-modules as well.
+\end{fact}
+And we need compatibility with localization of course.
+\begin{fact}
+	Let $M$ and $N$ are modules over a ring $R$ and $S$ a multiplicative subset of $R$. Then there are unique isomorphisms
+	\begin{align*}
+		\Tor_\bullet^R(M,N)_S\simeq \Tor_\bullet^R(M,N_S)\simeq \Tor_\bullet^R(M_S,N)\simeq \Tor_\bullet^R(M_S,N_S)\simeq \Tor_\bullet^{R_S}(M_S,N_S)
+	\end{align*}
+	compatible with \eqreff{eq:TorSeq1} and \eqreff{eq:TorSeq2} and in degree $0$ equal to the isomorphisms
+	\begin{align*}
+		(M\otimes _RN)_S\simeq M\otimes _RN_S\simeq M_S\otimes _RN\simeq M_S\otimes _RN_S\simeq {M_S}\otimes _{R_S}N_S
+	\end{align*}
+\end{fact}
+\begin{proof}
+	The constructions on the right-hand side are homological functors of $M$ and $N$ which annullate free $R$-modules and hence also their direct summands, i.e., projective modules (Lemma~\reff{lem:projectiveDirectSummand}) in higher degrees as follows: Let $i>0$, then $\Tor_i^R(M,N_S)=0$ when $M$ is projective, $\Tor_i^R(M_S,N)=0$ when $N$ is projective, and $\Tor_i^{R_S}(M_S,N_S)=0$ when $M$ or $N$ are projective (indeed, localizing preserves the property of being a direct summand of some free module). In degree $0$ they agree up to the isomorphisms above. By Theorem~\reff{thm:LeftDerivedFunctors}\itememph{b} and the universal property of derived functors, the required canonical isomorphisms
+	\begin{align*}
+		\Tor_\bullet^R(M,N)_S\simeq \Tor_\bullet^R(M,N_S)\simeq \Tor_\bullet^R(M_S,N)\simeq \simeq \Tor_\bullet^{R_S}(M_S,N_S)\;.
+	\end{align*}
+	It remains to prove $\Tor_\bullet^R(M,N)_S\simeq \Tor_\bullet^R(M_S,N_S)$. But this can be obtained from the composition $\Tor_\bullet^R(M,N)_S\isomorphism \Tor_\bullet^R(M,N_S)\isomorphism \Tor_\bullet^R(M_S,N_S)$.
+\end{proof}
+The functor $M\otimes_R-$ is compatible with directed (or filtered) colimits (which may be proved by checking the universal property). That is, for a directed system $(N_\lambda)_{\lambda\in\Lambda}$ we have
+\begin{align*}
+	M\otimes_R\colimit[\lambda\in\Lambda]N_\lambda&\isomorphism \colimit[\lambda\in\Lambda]M\otimes_RN_\lambda\\
+	m\otimes\left(\text{image of }n_\lambda\text{ in }\colimit N_\lambda\right)&\longmapsto \left(\text{image of }m\otimes n_\lambda\text{ in }\colimit M\otimes_RN_\lambda\right)\;.
+\end{align*}
+Also recall that direct limits are exact\footnote{To see they commute with kernels you can use the explicit construction, commutativity with cokernels follows from the more general fact of cokernels commuting with cokernels, cf.\ \cite[Lemma~A.1.4]{alggeo2}.}, hence commute with taking homology. We thus obtain
+\begin{fact}\lbl{fact:TorCommutesWithColims}
+	Torsion products are compatible with direct colimits. That is, for a directed system $(N_\lambda)_{\lambda\in\Lambda}$ of $R$-modules we have an isomorphism
+	\begin{align*}
+		\Tor_\bullet^R\bigg(M,\colimit[\lambda\in\Lambda]N_\lambda\bigg)\lisomorphism \colimit[\lambda\in\Lambda]\Tor_\bullet^R(M,N_\lambda)\;.
+	\end{align*}
+\end{fact}
+\begin{prop}
+	For an $R$-module $M$ the following conditions are equivalent.
+	\begin{alphanumerate}
+		\item The functor $M\otimes _R-$ is exact.
+		\item $\Tor_i^R(M,N)=0$ when $i>0$ and $N$ is any $R$-module.
+		\item $\Tor_i^R(M,N)=0$ when $i>0$ and $N$ is finitely generated.
+		\item $\Tor_1^R(M,N)=0$ for any $R$-module $N$.
+		\item $\Tor_1^R(M,N)=0$ when $N$ is finitely generated.
+	\end{alphanumerate}
+\end{prop}
+\begin{proof}
+	The implication \itememph{a} $\Rightarrow$ \itememph{b} is clear from \eqreff{eq:TorDef}. Also \itememph{b} $\Rightarrow$ \itememph{c} $\Rightarrow$ \itememph{e} and \itememph{b} $\Rightarrow$ \itememph{d} $\Rightarrow$ \itememph{e} are trivial. To see \itememph{e} $\Rightarrow$ \itememph{d}, use that any $R$-module $N$ can be written as a direct colimit over its finitely generated submodules and then apply Fact~\reff{fact:TorCommutesWithColims}. Finally, the implication \itememph{e} $\Rightarrow$ \itememph{a} is clear from the long exact $\Tor$ sequence \eqreff{eq:TorSeq1}. 
+\end{proof}
+\begin{defi}
+	An $R$-module with this properties is called \defemph{flat}.
+\end{defi}
+For flatness, there is a criterion similar to Baer's (Proposition~\reff{prop:InjectiveModules}) for injectivity.
+\begin{prop}\lbl{prop:flatConditions}
+	If $R$ is a ring and $M$ and $R$-module, the following are equivalent.
+	\begin{alphanumerate}
+		\item $M$ is flat.
+		\item For any ideal $I\subseteq R$ we have $\Tor_1^R(M,R/I)=0$.
+		\item For any ideal $I\subseteq R$, the morphism $I\otimes_RM\morphism I\cdot M$ sending $i\otimes m$ to $i\cdot m$ is an isomorphism.
+		\item For any ideal $I\subseteq R$, the morphism $I\otimes_RM\morphism I\cdot M$ sending $i\otimes m$ to $i\cdot m$ is injective.
+	\end{alphanumerate}
+	When $R$ is Noetherian, each of \itememph{b}, \itememph{c} and \itememph{d} may be weakened to $I$ being a prime ideal.
+\end{prop}
+\begin{proof}
+	The implication \itememph{a} $\Rightarrow$ \itememph{b} is trivial, as is \itememph{c} $\Leftrightarrow$ \itememph{d}, since the $i\cdot m$ generate $I\cdot M$, so the morphism in question is automatically surjective.
+	
+	For \itememph{b} $\Leftrightarrow$ \itememph{d} use the diagram
+	\begin{diagram*}
+		\node[ob] (IoM) at (0,0)  {$I\otimes_RM$};
+		\node[ob] (TorRIM) [left=0.575 of IoM] {$\Tor_1^R(R/I,M)$};
+		\node[ob] (TorRM) [left=0.575 of TorRIM] {$0=\Tor_1^R(R,M)$};
+		\node[ob] (RM) [right=0.575 of IoM] {$R\otimes_RM$};
+		\node[ob] (IM) at (0,-1.5) {$I\cdot M$};
+		\node[ob] (M) at (IM-|RM)  {$M$};
+		%\path (IM) -- (M) node[pos=0.5] {$\subseteq$};
+		\scriptsize
+		\draw[->] (TorRM) -- (TorRIM);
+		\draw[->] (TorRIM) -- (IoM) node[pos=0.5, above] {$\partial$};
+		\draw[->] (IoM) -- (RM);
+		\draw[->] (IoM) -- (IM) node[pos=0.5,left] {\itememph{d}};
+		\draw[->] (RM) -- (M) node[pos=0.5,above=-0.25ex, sloped] {$\sim$};
+		\draw[right hook->] (IM) -- (M);
+	\end{diagram*}
+	in which the top row is exact. This shows that $I\otimes_RM\morphism I\cdot M$ is injective iff $0=\Tor_1^R(R/I,M)$ and $\Tor_1^R(R/I,M)\simeq\Tor_1^R(M,R/I)$ by Proposition~\reff{prop:TorMN=TorNM}, proving the desired equivalence.
+	
+	And finally \itememph{b} $\Rightarrow$ \itememph{a}. We show that Proposition~\reff{prop:flatConditions}\itememph{e} is fulfilled using induction on the number $n$ of generators of $N$. When $n=0$, then $N=0$ and the assertion is trivial. Now assume $n>0$ and the assertion is valid for fewer that $n$ generators. Let $N'\subseteq N$ be the submodule generated by the first $n-1$ generators. Then $N''=N/N'$ is generated by the (image of the) remaining generator, hence isomorphic to $R/I$ for the ideal $I=\Ann_R(N'')$. We get
+	\begin{align*}
+		0=\Tor_1^R(M,N')\morphism\Tor_1^R(M,N)\morphism\Tor_1^R(M,N'')=0
+	\end{align*}
+	as part of the exact sequence \eqreff{eq:TorSeq2}, in which $\Tor_1^R(M,N')$ vanishes by the induction hypothesis and $\Tor_1^R(M,N'')$ by \itememph{b}. Hence $\Tor_1^R(M,N)$ vanishes as well.
+	
+	When $R$ is Noetherian, we can apply the same induction on a finite filtration $0=N_0\subsetneq N_1\subsetneq\ldots\subsetneq N_k=N$ having the property that $N_i/N_{i-1}\simeq R/\pp_i$ for some $\pp_i\in\Spec R$ to show $\Tor_1^R(M,N_i)=0$ inductively. If you don't know the existence of such a filtration, Professor Franke suggests you spend 2 hours reading Matsumura's \href{http://www.math.unam.mx/javier/Matsumura.pdf}{\emph{Commutative Ring Theory}} \cite{matsumuraCRT} until you stumble upon that result, you imbecile. Alternatively (and providing a proof by Franke himself), have a look at \cite[Proposition~3.1.2\itememph{a}]{alg2}.
+\end{proof}
+\begin{rem*}
+	As the proof shows, \itememph{b} $\Rightarrow$ \itememph{c} $\Rightarrow$ \itememph{d} already holds when $I$ is fixed.
 \end{rem*}
 
 \appendix
