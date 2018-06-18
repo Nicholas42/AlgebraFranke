@@ -1251,7 +1251,7 @@ There is also a Leray spectral sequence $R^pg_*R^qf_*\Mm\converge R^{p+q}(gf)_*\
 \begin{proof}
 	An unconditional proof of \itememph{a} $\Leftrightarrow$ \itememph{b} was given in \cite[Lemma~2.5.1]{alggeo1}.
 	
-	The implication \itememph{a} $\Rightarrow$ \itememph{b} is trivial. For \itememph{b} $\Rightarrow$ \itememph{c}, it is obvious that $f$ is quasi-compact and separatedness was proved in \cite[Fact~2.6.1]{alggeo1}. To show $R^pf_*\Mm=0$, note that if $U\subseteq Y$ is affine open such that $f^{-1}(U)$ is affine and $\lambda\in\Oo_X(U)$, then $f^{-1}(U\setminus V(\lambda))=f^{-1}(U)\setminus V(f^*\lambda)$ is affine as well. In particular, the $U\subseteq Y$ such that $f^{-1}(U)$ is affine form a topology base on $Y$.  By Theorem~\reff{thm:CohoOnSchemes}\itememph{b} and Proposition~\reff{prop:HigherDirectImage}\itememph{b}, $\Phi^p\Mm$ thus vanishes on a topology base of $Y$. Hence$R^pf_*\Mm=0$ as the sheafification of  $\Phi^p\Mm$. In particular, we didn't need the additional assumption.
+	The implication \itememph{a} $\Rightarrow$ \itememph{b} is trivial. For \itememph{b} $\Rightarrow$ \itememph{c}, it is obvious that $f$ is quasi-compact and separatedness was proved in \cite[Fact~2.6.1]{alggeo1}. To show $R^pf_*\Mm=0$, note that if $U\subseteq Y$ is affine open such that $f^{-1}(U)$ is affine and $\lambda\in\Oo_X(U)$, then $f^{-1}(U\setminus V(\lambda))=f^{-1}(U)\setminus V(f^*\lambda)$ is affine as well. In particular, the $U\subseteq Y$ such that $f^{-1}(U)$ is affine form a topology base on $Y$.  By Theorem~\reff{thm:CohoOnSchemes}\itememph{b} and Proposition~\reff{prop:HigherDirectImage}\itememph{b}, $\Phi^p\Mm$ thus vanishes on a topology base of $Y$. Hence $R^pf_*\Mm=0$ as the sheafification of  $\Phi^p\Mm$. In particular, we didn't need the additional assumption.
 	
 	Now for \itememph{c} $\Rightarrow$ \itememph{a} assuming that $X$ is quasi-separated. If $U\subseteq Y$ is affine and $\Mm\in\Ob(\cat{QCoh}(f^{-1}(U)))$, then $\Mm$ extends to $X$ by Lemma~\reff{lem:weirdLemma} and by Proposition~\reff{prop:HigherDirectImage}\itememph{d}
 	\begin{align*}
@@ -1274,7 +1274,7 @@ There is also a Leray spectral sequence $R^pg_*R^qf_*\Mm\converge R^{p+q}(gf)_*\
 \begin{rem*}
 	In other words, $f$ is finite iff $f$ is affine and $f_*\Oo_X$ is a locally finitely generated $\Oo_Y$-module in the sense of Definition~\reff{def:locFinGenerated}\itememph{a}. If $Y$ is Noetherian, this is equivalent to $f$ being affine and $f_*\Oo_X$ a \emph{coherent} $\Oo_Y$-module in the sense of Definition~\reff{def:locFinGenerated}\itememph{b}.
 \end{rem*}
-\begin{cor}
+\begin{cor}\lbl{cor:AffinePushforwardIso}
 	If $X\morphism[f]Y$ is an affine morphism and $\Mm$ a quasi-coherent $\Oo_X$-module, then $R^pf_*\Mm=0$ when $p>0$. When $Y$ is a quasi-compact scheme, the morphism
 	\begin{align*}
 		H^p(Y,f_*\Mm)\xrightarrow{\text{\eqreff{eq:pull-back}}}H^p(X,\Mm)
@@ -2027,34 +2027,34 @@ making $\Oo$ into a sheaf of graded rings with $\Oo(0)=\Oo_{\Proj R}$. Moreover,
 	\end{align*}
 	(which is easily checked stalk-wise). In particular, this generalizes Proposition~\reff{prop:FirstProjProperties}\itememph{d} (which is the special case $M=R[\ell]$).
 \end{rem}
-Now let $R$ be a ring, $S=R[X_0,\ldots,X_n]$ be equipped with the usual grading and put $\IP_R^n=\Proj R$. Then $\Uu\colon \IP_R^n=\bigcup_{i=0}^nU_i$ with $U_i=\IP_R^n\setminus V(X_i)$ is an affine open cover of $\IP_R^n$ and by \eqreff{eq:ProjLocal} we have
+Now let $A$ be a ring, $R=A[X_0,\ldots,X_n]$ be equipped with the usual grading and put $\IP_A^n=\Proj R$. Then $\Uu\colon \IP_A^n=\bigcup_{i=0}^nU_i$ with $U_i=\IP_R^n\setminus V(X_i)$ is an affine open cover of $\IP_A^n$ and by \eqreff{eq:ProjLocal} we have
 \begin{align*}
-	U_{i_0,\ldots,i_\ell}=\IP_R^n\setminus V\left(X_{i_0}\cdots X_{i_\ell}\right)\simeq \Spec S[(X_{i_0}\cdots X_{i_\ell})^{-1}]_0\;.
+	U_{i_0,\ldots,i_\ell}=\IP_A^n\setminus V\left(X_{i_0}\cdots X_{i_\ell}\right)\simeq \Spec R[(X_{i_0}\cdots X_{i_\ell})^{-1}]_0\;.
 \end{align*}
 \begin{thm}\lbl{thm:CohoOfIP^n}
-	Let $R$ be a ring, $S=R[X_0,\ldots,X_n]$ and $\Uu$ be the affine open cover of $X=\IP_R^n$ from above. 
+	Let $A$ be a ring, $R=A[X_0,\ldots,X_n]$ and $\Uu$ be the affine open cover of $X=\IP_A^n$ from above. 
 	\begin{alphanumerate}
 		\item  For $k\geq 0$ there is an isomorphism
 		\begin{align}\lbl{eq:Oo(k)(IP^n)}
 			\begin{split}
-				S_k&\isomorphism \Oo(k)(X)\\
-				s&\longmapsto \big(\text{image of }s\text{ in }(S_\pp)_k\big)_{\pp\in X}\;.
+				R_k&\isomorphism \Oo(k)(X)\\
+				r&\longmapsto \big(\text{image of }s\text{ in }(R_\pp)_k\big)_{\pp\in X}\;.
 			\end{split}
 		\end{align}
 		For $k<0$ we have $\Oo(k)(X)=0$.
 		\item For $0<p<n$ we have $H^p(X,\Oo(k))=0$ for all integers $k$.
 		\item $H^n(X,\Oo(k))=0$ for $k>-n-1$ and $n>0$.
-		\item There is an isomorphism $H^n(X,\Oo(-n-1))\isomorphism R$ defined (up to sign) by
+		\item There is an isomorphism $H^n(X,\Oo(-n-1))\isomorphism A$ defined (up to sign) by
 		\begin{align}\lbl{eq:H^nIP^nO(-n-1)}
 			\begin{split}
-				\check{C}_\alt^n\big(\Uu,\Oo(-n-1)\big)\simeq S[(X_0\cdots X_n)^{-1}]_{-n-1}&\morphism R\\
+				\check{C}_\alt^n\big(\Uu,\Oo(-n-1)\big)\simeq R[(X_0\cdots X_n)^{-1}]_{-n-1}&\morphism A\\
 				f=\sum_{\alpha\in\IZ^n}f_\alpha X_0^{\alpha_0}\cdots X_n^{\alpha_n}&\longmapsto f_{(-1,\ldots,-1)}\;.
 			\end{split}
 		\end{align}
-		\item For all $k\in\IZ$, the groups $H^0(X,\Oo(k))$ and $H^n(X,\Oo(k))$ are finitely generated free $R$-modules and there is a non-degenerate pairing
+		\item For all $k\in\IZ$, the groups $H^0(X,\Oo(k))$ and $H^n(X,\Oo(k))$ are finitely generated free $A$-modules and there is a non-degenerate pairing
 		\begin{align}\lbl{eq:nonDegCohoPairing}
 			\begin{split}
-				H^0\big(X,\Oo(k)\big)\times H^n\big(X,\Oo(-n-1-k)\big)&\morphism H^n(X,\Oo(-n-1))\overset{\text{\itememph{d}}}{\simeq}R\\
+				H^0\big(X,\Oo(k)\big)\times H^n\big(X,\Oo(-n-1-k)\big)&\morphism H^n(X,\Oo(-n-1))\overset{\text{\itememph{d}}}{\simeq}A\\
 				(f,[g])&\longmapsto [fg]\;,
 			\end{split}
 		\end{align}
@@ -2062,53 +2062,179 @@ Now let $R$ be a ring, $S=R[X_0,\ldots,X_n]$ be equipped with the usual grading 
 	\end{alphanumerate}
 \end{thm}
 \begin{rem*}
-	The pairing in \eqreff{eq:nonDegCohoPairing} is canonical but the isomorphism $H^n(X,\Oo(-n-1))\simeq R$ is not.
+	The pairing in \eqreff{eq:nonDegCohoPairing} is canonical but the isomorphism $H^n(X,\Oo(-n-1))\simeq A$ is not.
 \end{rem*}
 \begin{proof}[Proof of Theorem~\reff{thm:CohoOfIP^n}]
-	Surprisingly, the proof will be almost trivial once we discover the connection between the \vC ech complex and the Koszul complex. By \eqreff{eq:O(k)isQC}, on $U_{i_0,\ldots,i_\ell}= \IP_R^n\setminus V(X_{i_0}\cdots X_{i_\ell})$ we have
+	Surprisingly, the proof will be almost trivial once we discover the connection between the \vC ech complex and the Koszul complex. By \eqreff{eq:O(k)isQC}, on $U_{i_0,\ldots,i_\ell}= \IP_A^n\setminus V(X_{i_0}\cdots X_{i_\ell})$ we have
 	\begin{align*}
-		\Oo(k)(U_{i_0,\ldots,i_\ell})\simeq S[(X_{i_0}\cdots X_{i_\ell})^{-1}]_k
+		\Oo(k)(U_{i_0,\ldots,i_\ell})\simeq R[(X_{i_0}\cdots X_{i_\ell})^{-1}]_k
 	\end{align*}
 	for all $k\in \IZ$. Considering the sheaf of graded rings $\Oo=\bigoplus_{k\in\IZ}\Oo(k)$ as before, this can be written in a more compact way as
 	\begin{align*}
-		\Oo(U_{i_0,\ldots,i_\ell})\simeq S[(X_{i_0}\cdots X_{i_\ell})^{-1}]\;.
+		\Oo(U_{i_0,\ldots,i_\ell})\simeq R[(X_{i_0}\cdots X_{i_\ell})^{-1}]\;.
 	\end{align*}
 	Note that we have isomorphisms
-	\begin{multline}\lbl{eq:CechKoszulIso1}
-			S[(X_{i_0}\cdots X_{i_\ell})^{-1}]=\bigcup_{j=0}^\infty R[X_0,\ldots,X_n]\cdot (X_{i_0},\ldots,X_{i_\ell})^{-j}\\
-			\lisomorphism \colimit \left(S\xrightarrow{\cdot(X_{i_0}\cdots X_{i_\ell})}S\xrightarrow{\cdot(X_{i_0}\cdots X_{i_\ell})}S\xrightarrow{\cdot(X_{i_0}\cdots X_{i_\ell})}\ldots\right)\tag{$*$}
-	\end{multline}
-	sending the image of $s\in S$ (as an element of the $j\ordinalth$ member of the sequence) in the colimit to $s\cdot (X_{i_0}\cdots X_{i_\ell})^{-j}$.
+	\begin{align}\lbl{eq:CechKoszulIso1}
+			R[(X_{i_0}\cdots X_{i_\ell})^{-1}]\lisomorphism \colimit \left(R\xrightarrow{\cdot(X_{i_0}\cdots X_{i_\ell})}R\xrightarrow{\cdot(X_{i_0}\cdots X_{i_\ell})}R\xrightarrow{\cdot(X_{i_0}\cdots X_{i_\ell})}\ldots\right)\tag{$*$}
+	\end{align}
+	sending the image of $r\in R$ (as an element of the $j\ordinalth$ member of the sequence) in the colimit to $r\cdot (X_{i_0}\cdots X_{i_\ell})^{-j}$.
 	
 	For every $j\in\IN$ we get a morphism
 	\begin{align*}
-		\check{C}_\alt^\ell(\Uu,\Oo)\simeq \prod_{0\leq i_0<\cdots<i_\ell\leq n}S[(X_{i_0}\cdots X_{i_\ell})^{-1}]\lmorphism \bigwedge^{\ell+1}S^{n+1}\simeq K^{\ell+1}\big((X_0^j,\ldots,X_n^j),S\big)
+		\check{C}_\alt^\ell(\Uu,\Oo)\simeq \prod_{0\leq i_0<\cdots<i_\ell\leq n}R[(X_{i_0}\cdots X_{i_\ell})^{-1}]\lmorphism \bigwedge^{\ell+1}R^{n+1}\simeq K^{\ell+1}\big((X_0^j,\ldots,X_n^j),R\big)
 	\end{align*}
-	sending $e_{i_0}\wedge \cdots \wedge e_{i_\ell}$ to $(0,\ldots,(X_{i_0}\cdots X_{i_\ell})^{-j},\ldots,0)$ (with the only non-zero entry at position $(i_0,\ldots,i_\ell)$, obviously). Using $\bigwedge^{\ell+1}S^{n+1}\simeq \bigoplus _{0\leq i_0<\cdots <i_\ell\leq n}S$ and \eqreff{eq:CechKoszulIso1}, these morphisms assemble to an isomorphism
+	sending $e_{i_0}\wedge \cdots \wedge e_{i_\ell}$ to $(0,\ldots,(X_{i_0}\cdots X_{i_\ell})^{-j},\ldots,0)$ (with the only non-zero entry at position $(i_0,\ldots,i_\ell)$, obviously). Using $\bigwedge^{\ell+1}R^{n+1}\simeq \bigoplus _{0\leq i_0<\cdots <i_\ell\leq n}R$ and \eqreff{eq:CechKoszulIso1}, these morphisms assemble to an isomorphism
 	\begin{align*}
-		\check{C}_\alt^\ell(\Uu,\Oo)\lisomorphism \colimit[j\in \IN] K^{\ell+1}\big((X_0^j,\ldots,X_n^j),S\big)\;,
+		\check{C}_\alt^\ell(\Uu,\Oo)\lisomorphism \colimit[j\in \IN] K^{\ell+1}\big((X_0^j,\ldots,X_n^j),R\big)\;,
 	\end{align*}
-	where the transition morphisms $K^{\ell+1}\big((X_0^j,\ldots,X_n^j),S\big)\morphism K^{\ell+1}\big((X_0^{j+1},\ldots,X_n^{j+1}),S\big)$ (with respect to which the colimit is taken) sends an element $f\in K^{\ell+1}\big((X_0^j,\ldots,X_n^j),S\big)$ to $\phi\in K^{\ell+1}\big((X_0^{j+1},\ldots,X_n^{j+1}),S\big)$ defined by $\phi(t_1,\ldots,t_{\ell+1})=X_{t_1}\cdots X_{t_{\ell+1}}f(t_1,\ldots,t_{\ell+1})$. Convince yourself that this is compatible with the Koszul differential, so in fact we get a transition map $K^\bullet\big((X_0^j,\ldots,X_n^j),S\big)\morphism K^\bullet\big((X_0^{j+1},\ldots,X_n^{j+1}),S\big)$, and using this an isomorphism
+	where the transition morphisms $K^{\ell+1}\big((X_0^j,\ldots,X_n^j),R\big)\morphism K^{\ell+1}\big((X_0^{j+1},\ldots,X_n^{j+1}),R\big)$ (with respect to which the colimit is taken) sends an element $f\in K^{\ell+1}\big((X_0^j,\ldots,X_n^j),R\big)$ to $\phi\in K^{\ell+1}\big((X_0^{j+1},\ldots,X_n^{j+1}),R\big)$ defined by $\phi(t_1,\ldots,t_{\ell+1})=X_{t_1}\cdots X_{t_{\ell+1}}f(t_1,\ldots,t_{\ell+1})$. Convince yourself that this is compatible with the Koszul differential, so in fact we get a transition map $K^\bullet\big((X_0^j,\ldots,X_n^j),R\big)\morphism K^\bullet\big((X_0^{j+1},\ldots,X_n^{j+1}),R\big)$, and using this an isomorphism
 	\begin{align}\lbl{eq:CechKoszulIso2}
-		\left(S\morphism\check{C}_\alt^0(\Uu,\Oo)\morphism\check{C}_\alt^1(\Uu,\Oo)\morphism\ldots\right)\lisomorphism \colimit[j\in\IN]K^\bullet\big((X_0^j,\ldots,X_n^j),S\big)[-1]
+		\left(R\morphism\check{C}_\alt^0(\Uu,\Oo)\morphism\check{C}_\alt^1(\Uu,\Oo)\morphism\ldots\right)\lisomorphism \colimit[j\in\IN]K^\bullet\big((X_0^j,\ldots,X_n^j),R\big)[-1]
 	\end{align}
-	of cochain complexes. The degree-$(-1)$ term $S$ comes from the fact that the $K^\bullet\big((X_0^j,\ldots,X_n^j),S\big)$ for all $j\in\IN$ have an equal term in degree $0$.
+	of cochain complexes. The degree-$(-1)$ term $S$ comes from the fact that the $K^\bullet\big((X_0^j,\ldots,X_n^j),R\big)$ for all $j\in\IN$ have such a term in degree $0$.
 	
-	Note that if $n=0$, then $\IP_R^0=\Proj R[X_0]\simeq \Spec R$ and everything follows from well-known properties of affine schemes. Now assume $n>0$. By Example~\reff{ex:(X0Xn)regular}\itememph{a}, the sequence $(X_0,\ldots,X_n)$ is a regular sequence in $S$. By Fact~\reff{fact:RegularSeqKoszulComplex}\itememph{d}, so are $(X_0^j,\ldots,X_n^j)$ for $j\in\IN$. We can now reduce the various assertions about the cohomology of $X=\IP_R^n$ to their Koszul counterparts.
+	Note that if $n=0$, then $\IP_A^0=\Proj A[X_0]\simeq \Spec A$ and everything follows from well-known properties of affine schemes. Now assume $n>0$. By Example~\reff{ex:(X0Xn)regular}\itememph{a}, the sequence $(X_0,\ldots,X_n)$ is a regular sequence in $R$. By Fact~\reff{fact:RegularSeqKoszulComplex}\itememph{d}, so are $(X_0^j,\ldots,X_n^j)$ for $j\in\IN$. We can now reduce the various assertions about the cohomology of $X=\IP_A^n$ to their Koszul counterparts.
 	
-	Part~\itememph{a}. By Fact~\reff{fact:RegularSeqKoszulComplex}\itememph{b}, $H^p\big((X_0^j,\ldots,X_n^j),S\big)=0$ in degree $p\neq n+1$. In particular, by exactness of filtered colimits equation\eqreff{eq:CechKoszulIso2} gives
+	Part~\itememph{a}. By Fact~\reff{fact:RegularSeqKoszulComplex}\itememph{b}, $H^p\big((X_0^j,\ldots,X_n^j),R\big)=0$ in degree $p\neq n+1$. In particular, by exactness of filtered colimits, equation \eqreff{eq:CechKoszulIso2} gives
 	\begin{align*}
-		H^0\left(S\morphism\check{C}_\alt^\bullet(\Uu,\Oo)\right)\lisomorphism\colimit[j\in\IN]H^1\big((X_0^j,\ldots,X_n^j),S\big)=0\;,
+		H^0\left(R\morphism\check{C}_\alt^\bullet(\Uu,\Oo)\right)\lisomorphism\colimit[j\in\IN]H^1\big((X_0^j,\ldots,X_n^j),R\big)=0\;,
 	\end{align*}
 	hence the kernel $\ker\left(\check{C}_\alt^0(\Uu,\Oo)\morphism\check{C}_\alt^1(\Uu,\Oo)\right)\simeq H^0(X,\Oo)\simeq \Oo(X)$ equals the image of $S$ in $\check{C}_\alt^0(\Uu,\Oo)$. Thus $\Oo(X)\simeq S$ and \itememph{a} follows by comparing degrees.
 	
 	Part~\itememph{b}. Just as in \itememph{a}, for $0<p<n$ we obtain
 	\begin{align*}
-		H^p\left(S\morphism\check{C}_\alt^\bullet(\Uu,\Oo)\right)\lisomorphism\colimit[j\in\IN]H^{p+1}\big((X_0^j,\ldots,X_n^j),S\big)=0\;,
+		H^p\left(R\morphism\check{C}_\alt^\bullet(\Uu,\Oo)\right)\lisomorphism\colimit[j\in\IN]H^{p+1}\big((X_0^j,\ldots,X_n^j),R\big)=0\;,
 	\end{align*}
 	from Fact~\reff{fact:RegularSeqKoszulComplex}\itememph{b}, hence $H^p(X,\Oo(k))=0$ for all $k\in\IZ$ by comparing degrees.
 	
 	And finally parts~\itememph{c}, \itememph{d}, and \itememph{e} follow in a similar colimit-taking fashion from Corollary~\reff{cor:KoszulCoho}\itememph{a}, \itememph{b}, and \itememph{c}.
+\end{proof}
+Our next aim is to investigate the trivialization of the $A$-module $H^n(\IP_A^n,\Oo(-n-1))$ by Theorem~\reff{thm:CohoOfIP^n}\itememph{d}, which is non-canonical unless the coordinates and their order are fixed. What happens when the coordinates are changed by an element of $\GL_{n+1}(A)$ (inducing an automorphism of $R$, hence of $\Proj R=\IP_A^n$) with a compatible action on the line bundles $\Oo(k)$?
+\begin{lem}
+	An element $g\in\GL_{n+1}(A)$ acts on $H^n(\IP_A^n,\Oo(-n-1))$ by multiplication with $\det(g)^{-1}$.
+\end{lem}
+\begin{proof}
+	We will reduce this to the case where $A=K$ is an algebraically closed field. It is easy to see that changing the trivializations of $H^n(\IP_A^n,\Oo(-n-1))$ gives an action of $\GL_{n+1}(A)$ on $A$, hence a group homomorphism 
+	\begin{align*}
+		\phi_A\colon \GL_{n+1}(A)\morphism\Aut_A(A)\simeq A^\times\;,
+	\end{align*}
+	where $\Aut_A(A)$ is the automorphism group of $A$ as an $A$-module. 
+	
+	If $A\morphism[\alpha]B$ is a ring morphism, we get a graded ring morphism $A[X_0,\ldots,X_n]\morphism[\alpha] B[X_0,\ldots,X_n]$ defining a morphism of preschemes $\IP_B^n\morphism[p]\IP_A^n$ together with morphisms $\Oo_{\IP_A^n}(k)\morphism p_*\Oo_{\IP_B^n}(k)$ defined by the above ring morphism $\alpha$ on open subsets of the form $\IP_A^n\setminus V(X_i)$. 
+	
+	Note that $\IP_B^n\morphism[p]\IP_A^n$ is an affine morphism by Proposition~\reff{prop:AffineMorphism}\itememph{b}, since the preimage of $\IP_A^n\setminus V(X_i)$ (which is affine by Proposition~\reff{prop:FirstProjProperties}\itememph{c}) is $\IP_B^n\setminus V(X_i)$ (which is affine). In particular, we get
+	\begin{align*}
+		H^n\left(\IP_A^n,\Oo_{\IP_A^n}(-n-1)\right)\morphism[p^*]H^n\left(\IP_A^n,p_*\Oo_{\IP_B^n}(-n-1)\right)\isomorphism H^n\left(\IP_B^n,\Oo_{\IP_B^n}(-n-1)\right)\;,
+	\end{align*}
+	the isomorphism coming from Corollary~\reff{cor:AffinePushforwardIso}. By naturality of our cohomology constructions\footnote{If $\Uu\colon \IP_A^n=\bigcup_{i=0}^n\IP_A^n\setminus V(X_i)$ is our standard affine open cover, let $g(\Uu)\colon \IP_A^n=\bigcup_{i=0}^n\IP_A^n\setminus V(g(X_i))$ be its image under $g$. Then $g$ induces a map of \vC ech complexes $\check{C}^\bullet (\Uu,\Oo(k))\morphism\check{C}^\bullet (g(\Uu),\Oo(k))$ and this is all natural and stuff; and both \vC ech complexes give $H^n(\IP_A^n,\Oo(k))$ by Theorem~\reff{thm:CohoOnSchemes}\itememph{a}.}
+	\begin{diagram*}
+		\node[ob] (a) at (0,1.5) {$H^n\left(\IP_A^n,\Oo_{\IP_A^n}(-n-1)\right)$};
+		\node[ob] (c) at (0,0) {$H^n\left(\IP_A^n,\Oo_{\IP_A^n}(-n-1)\right)$};
+		\node[ob] (b) at (5,1.5) {$H^n\left(\IP_B^n,\Oo_{\IP_B^n}(-n-1)\right)$};
+		\node[ob] (d) at (5,0) {$H^n\left(\IP_B^n,\Oo_{\IP_B^n}(-n-1)\right)$};
+		\scriptsize
+		\draw[->] (a) -- (b) node[pos=0.5, above] {$p^*$};
+		\draw[->] (c) -- (d) node[pos=0.5, above] {$p^*$};
+		\draw[->] (a) -- (c) node[pos=0.5, left] {$g$};
+		\draw[->] (b) -- (d) node[pos=0.5, right] {$\alpha(g)$};
+	\end{diagram*} 
+	is a commutative diagram, showing that $\phi_B(\alpha(g))=\alpha(\phi_A(g))$. In general, there is a ring morphism
+	\begin{align*}
+		B=\IZ\left[Y_{i,j}\st i,j=0,\ldots,n\right][\det(Y_{i,j})^{-1}]\morphism A
+	\end{align*}
+	sending $Y_{i,j}$ to the corresponding entry in the matrix $g$ and $\det(Y_{i,j})^{-1}$ to $\det(g)^{-1}$. This reduces the assertion to the case of the infinite domain $B$. Embedding $B$ into an algebraic closure $K$ of its field of quotients, we did the advertised reduction.
+	
+	In this case, the morphism $\phi_K\colon \GL_{n+1}(K)\morphism K^\times$ factors over the abelianization of $\GL_{n+1}(K)$. For algebraically closed fields (actually, for fields with more than $3$ elements) the commutator subgroup of $\GL_{n+1}(K)$ is $\SL_{n+1}(K)$. Moreover, every element $C\in\GL_{n+1}(K)$ can be written as the product of a matrix $\lambda\id_{K^{n+1}}$ and a matrix in $\SL_{n+1}(K)$ (using that $\det C$ has an $(n+1)\ordinalst$ root in the algebraically closed field $K$). This reduces to the case $g=\lambda\id_{K^{n+1}}$. In this case, it is easily seen from Proposition~\reff{prop:FirstProjProperties}\itememph{c} that $g$ acts as the identity on $\IP_K^n$ and as multiplication by $\lambda^k$ on $\Oo_{\IP_K^n}(k)$. This proves our claim.
+\end{proof}
+\begin{defi}\lbl{def:AmpleLineBundle}
+	A line bundle $\Ll$ on a quasi-compact prescheme $X$ is called \defemph{ample} if it satisfies the following equivalent conditions.
+	\begin{alphanumerate}
+		\item For every locally finitely generated quasi-coherent $\Oo_X$-module $\Mm$ there is an integer $m(\Mm)$ such that for all $m<m(\Mm)$, there is an epimorphism
+		\begin{align*}
+		(\Ll^{\otimes m})^{\oplus n}\epimorphism \Mm\;,
+		\end{align*}
+		for some natural number $n=n(m)$.
+		\item For every quasi-coherent locally finitely generated $\Oo_X$-module $\Mm$ there is an integer $k(\Mm)$ such that for all $k>k(\Mm)$, $\Ll^{\otimes k}\otimes_{\Oo_X}\Mm$ is \defemph{generated by its global sections}. This shall mean the following: There is a family of global sections $(\lambda_i)_{i\in I}$ such that each stalk $\Ll_x^{\otimes k}\otimes_{\Oo_{X,x}}\Mm_x$ is generated as an $\Oo_{X,x}$-module by the images of the $\lambda_i$.
+	\end{alphanumerate}
+\end{defi}
+\begin{rem*}
+	\begin{alphanumerate}
+		\item In Definition~\reff{def:AmpleLineBundle} we put $\Ll^{-1}=\Hhom_{\Oo_X}(\Ll,\Oo_X)$ and $\Ll^{\otimes m}=(\Ll^{-1})^{\otimes (-m)}$ if $m\in\IZ$ is negative. These are line bundles again, because in the case $\Ll=\Oo_X$ they are canonically isomorphic to $\Oo_X$, which locally and up to isomorphism is always the case. For the same reason, the morphism
+		\begin{align*}
+			\Ll\otimes_{\Oo_X}\Ll^{-1}\morphism\Oo_X
+		\end{align*}
+		defined by the bilinear map of evaluation $\Ll\times\Hhom_{\Oo_X}(\Ll,\Oo_X)\morphism\Oo_X$, $(\lambda,\eta)\mapsto\eta(\lambda)$ and the universal property of the (sheaf) tensor product (cf.\ Remark~\reff{rem:tensorProductSheaves}) is an isomorphism. 
+		
+		More generally, evaluation gives an isomorphism 
+		\begin{align*}
+			\Ll\otimes_{\Oo_X}\Hhom_{\Oo_X}(\Ll,\Mm)\isomorphism\Mm
+		\end{align*}
+		for every quasi-coherent $\Oo_X$-module $\Mm$. Isomorphism classes of line bundles on $X$ get an abelian group structure with $-\otimes_{\Oo_X}-$ defining multiplication, $\Oo_X$ the neutral element and $\Ll^{-1}$ the inverse to $\Ll$.
+		
+		Ok, actually, we have yet to check that our construction of inverse elements is compatible with the group structure, i.e., $(\Ll\otimes_{\Oo_X}\Mm)^{-1}\lisomorphism \Ll^{-1}\otimes_{\Oo_X}\Mm^{-1}$. To obtain a sheaf isomorphism 
+		\begin{align*}
+			\Hhom_{\Oo_X}(\Ll,\Oo_X)\otimes_{\Oo_X}\Hhom_{\Oo_X}(\Mm,\Oo_X)\isomorphism\Hhom_{\Oo_X}(\Ll\otimes_{\Oo_X}\Mm,\Oo_X)
+		\end{align*}
+		we can map $f\otimes g\in\Hom_{\Oo_U\cat{-Mod}}(\Ll|_U,\Oo_U)\otimes_{\Oo_X(U)}\Hom_{\Oo_U\cat{-Mod}}(\Mm|_U,\Oo_U)$ (for an open subset $U\subseteq X$) to the morphism $(\Ll\otimes_{\Oo_X}\Mm)|_U\morphism\Oo_U$ sending $\lambda\otimes\mu$ to $f(\lambda)\cdot g(\mu)$. It is clear that this is locally (where $\Ll$ and $\Mm$ trivialize) an isomorphism, hence an isomorphism in total.
+		\item On $X=\IP_A^n$, there is an isomorphism
+		\begin{align*}
+			\Oo(k)&\isomorphism\Hhom_{\Oo_{\IP_A^n}}\big(\Oo(\ell),\Oo(\ell+k)\big)\\
+			f&\longmapsto (g\mapsto f\cdot g)\;.
+		\end{align*}
+		\item Definition~\reff{def:AmpleLineBundle}\itememph{b} seems way more common in the literature.
+		\item Don't confuse Definition~\reff{def:AmpleLineBundle} with a \emph{relative} notion of ampleness.
+	\end{alphanumerate}
+\end{rem*}
+\begin{proof}[Proof of Definition~\reff{def:AmpleLineBundle} (this has to be)]
+	First note that $\Ll^{\otimes k}\otimes_{\Oo_X}\Mm$ is still locally finitely generated, so by quasi-compactness of $X$ the family in \itememph{b} can be chosen finite (I will leave that to you).
+	
+	We show \itememph{a} $\Rightarrow$ \itememph{b} first. Let $k>-m(\Mm)$. Then there is an epimorphism $(\Ll^{\otimes (-k)})^{\oplus n}\epimorphism \Mm$. Tensoring with $\Ll^{\otimes k}$ gives an epimorphism $\Oo_X^{\oplus n}\epimorphism \Ll^{\otimes k}\otimes_{\Oo_X}\Mm$ (tensor products of sheaves preserve epimorphisms, since this clearly holds on stalks). Then the images of the standard unit vectors in $\Oo_X(X)^{\oplus n}$ generate $\Ll^{\otimes k}\otimes_{\Oo_X}\Mm$.
+	
+	And \itememph{b} $\Rightarrow$ \itememph{a}. Let $m<-k(\Mm)$. Since $\Ll^{\otimes(-m)}\otimes_{\Oo_X}\Mm$ is generated by finitely many global sections, say, $n$ of them, there is an epimorphism $\Oo_X^{\oplus n}\epimorphism\Ll^{\otimes(-m)}\otimes_{\Oo_X}\Mm$. Tensoring with $\Ll^{\otimes m}$ gives an epimorphism $(\Ll^{\otimes m})^{\oplus n}\epimorphism\Mm$.
+\end{proof}
+\begin{defi}
+	Let $\Ll$ be a line bundle on a locally ringed space $(X,\Oo_X)$, with $\mm_x\subseteq \Oo_{X,x}$ the maximal ideal of the local ring at $x$. If $U\subseteq X$ is open and $\lambda\in\Ll(U)$, its \defemph{vanishing set} is
+	\begin{align*}
+		V(\lambda)=\left\{x\in U\st\text{the image of }\lambda\text{ in }\Ll_x\text{ is in }\mm_x\Ll_x\right\}\;.
+	\end{align*}
+\end{defi}
+\begin{rem*}
+	When $\Ll=\Oo_X$, this coincides with the vanishing sets introduced in \cite[Definition~1.3.3]{alggeo1}. Since locally and up to isomorphism this is always the case, $V(\lambda)$ is closed in $U$ by \cite[Fact~1.3.1]{alggeo1} and the usual trick in such situations (\cite[Remark~1.1.4\itememph{a}]{alggeo1}). Similarly, $V(\lambda\otimes \mu)=V(\lambda)\cup V(\mu)$ for the section $\lambda\otimes\mu$ of $\Ll\otimes_{\Oo_X}\Mm$ when $\Ll$ and $\Mm$ are line bundles. 
+\end{rem*}
+\begin{lem}\lbl{lem:powersOfLl}
+	Let $X$ be a quasi-compact prescheme, $\Ll$ a line bundle on $X$, $\lambda\in\Ll(X)$ and $\Mm$ a quasi-coherent $\Oo_X$-module.
+	\begin{alphanumerate}
+		\item If $m\in\Mm(X)$ with $m|_{X\setminus V(\lambda)}=0$, then there is $k\in\IN$ such that the section $\lambda^{\otimes k}\otimes m=0$ in $\Ll^{\otimes k}\otimes_{\Oo_X}\Mm$.
+		\item If $X$ is in addition quasi-separated and $m\in\Mm(X\setminus V(\lambda))$, then there is $k\in\IN$ such that $\lambda^{\otimes k}\otimes m\in(\Ll^{\otimes k}\otimes_{\Oo_X}\Mm)(X\setminus V(\lambda))$ extends to a global section of $\Ll^{\otimes k}\otimes_{\Oo_X}\Mm$ on $X$.
+	\end{alphanumerate}
+\end{lem}
+\begin{rem*}
+	When $\Ll=\Oo_X$, this is identical with one of our definitions of quasi-coherentness for sheaves of $\Oo_X$-modules, as we will immediately see.
+\end{rem*}
+\begin{proof}[Proof of Lemma~\reff{lem:powersOfLl}]
+	When $\Ll=\Oo_X$, assertion \itememph{a} is equivalent to the injectivity and \itememph{b} to the surjectivity of 
+	\begin{align*}
+		\Mm(X)_\lambda\xrightarrow{\text{\eqreff{eq:qcIso}}}\Mm(X\setminus V(\lambda))\;.
+	\end{align*}
+	Since this holds when $\Mm$ is quasi-coherent and $X$ is quasi-compact (resp.\ quasi-compact and quasi-separated) by Definition~\reff{def:Quasicoherent}\itememph{d}, the assertion is true for $\Ll=\Oo_X$.
+	
+	Since $X$ is quasi-compact, we have a finite cover $X=\bigcup_{i=1}^nU_i$ by affine open subsets $U_i$ such that $\Ll|_{U_i}$ is trivial. Also put $U_{i,j}=U_i\cap U_j$ as in our \vC ech complex convention.
+	
+	For \itememph{a}, we have $(m|_{U_i})|_{U_i\setminus V(\lambda)}=0$, hence by the special case treated above there is $k_i\in\IN$ such that $\lambda^{\otimes k_i}\otimes m=0$ on $U_i$. Taking $k=\max_ik_i$ we get $\lambda^{\otimes k}\otimes m=0$ on all of $X$.
+	
+	For \itememph{b} we use the above special case again to obtain $\ell_i\in\IN$ and $\mu_i\in(\Ll^{\otimes \ell_i}\otimes_{\Oo_X}\Mm)(U_i)$ such that $\lambda^{\otimes \ell_i}\otimes m=\mu_i$ on $U_i$. Putting $\ell=\max_i \ell_i$ and replacing $\mu_i$ by $\lambda^{\otimes (\ell-\ell_i)}\otimes \mu_i$ we may assume $\ell_1=\ldots=\ell_n=\ell$. As $X$ is quasi-separated, the $U_{i,j}=U_i\cap U_j$ are quasi-compact. Since $\mu_i|_{U_{i,j}\setminus V(\lambda)}=\mu_j|_{U_{i,j}\setminus V(\lambda)}$, by \itememph{a} there are $k_{i,j}$ such that $\lambda^{\otimes k_{i,j}}\otimes \mu_i=\lambda^{\otimes k_{i,j}}\otimes \mu_j$ on $U_{i,j}$. Put $k=\max_{i,j}k_{i,j}$, then $\lambda^{\otimes k}\otimes \mu_i|_{U_{i,j}}=\lambda^{\otimes k}\otimes \mu_j|_{U_{i,j}}$, hence by the sheaf axiom the $\lambda^{\otimes k}\otimes \mu_i$ extend to a global section $\mu\in\Ll^{\otimes k}\otimes_{\Oo_X}\Mm$. Then $\mu|_{X\setminus V(\lambda)}=\lambda^{\otimes(k+\ell)}\otimes m$, so $\mu$ extends $\lambda^{\otimes(k+\ell)}\otimes m$.
+\end{proof}
+\begin{prop}\lbl{prop:AmplenessCriterion}
+	Let $X$ be a quasi-compact prescheme and $\Ll$ a line bundle on $X$ such that $X$ may be covered by affine open subsets of the form $X\setminus V(\lambda)$ where $\lambda\in\Ll(X)$. Then $\Ll$ is ample.
+\end{prop}
+\begin{cor}
+	\begin{alphanumerate}
+		\item The line bundle $\Oo(1)$ on $\IP_A^n$ is ample.
+		\item If $X$ is quasi-affine (i.e., an open subscheme of an affine scheme), then $\Oo_X$ is ample.
+	\end{alphanumerate}
+\end{cor}
+\begin{proof}
+	For part \itememph{a}, note that the $\IP_A^n\setminus V(X_i)$ are affine and cover $\IP_A^n$. For \itememph{b}, write $X=\ov{X}\setminus Z$ with $\ov{X}$ affine and $Z$ closed, then the open subsets of the form $X\setminus V(f|_X)=\ov{X}\setminus V(f)$ with $f\in\Oo_{\ov{X}}(\ov{X})$ such that $V(f)\supseteq Z$ are affine and cover $X$. In both cases we win by Proposition~\reff{prop:AmplenessCriterion}.
 \end{proof}
 
 \appendix
