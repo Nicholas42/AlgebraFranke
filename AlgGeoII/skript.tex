@@ -1196,7 +1196,7 @@ and this is the desired presheaf structure.
 \end{align*}
 defining the above pull-back morphism \eqreff{eq:pull-back}.
 
-There is an also inverse image functor $f^*\colon \Oo_Y\cat{-Mod}\morphism \Oo_X\cat{-Mod}$ which preserves quasi-coherence and is left-adjoint to $f_*$\footnote{\lbl{footnote:f^*}We constructed $f^*$ on exercise sheet \#10 of Algebraic Geometry~I and also proved the relevant properties there. It is given by $f^*\Mm=f^\sharp\Mm\otimes_{f^\sharp \Oo_Y}\Oo_X$, where $f^\sharp$ is constructed as in \cite[Remark~1.2.4]{alggeo1}.}. Thus, for $\Nn$ a quasi-coherent $\Oo_Y$-module, there is a canonical morphism $\Nn\morphism f_*f^*\Mm$ which gives another type of pull-back morphism
+There is an also inverse image functor $f^*\colon \Oo_Y\cat{-Mod}\morphism \Oo_X\cat{-Mod}$ which preserves quasi-coherence and is left-adjoint to $f_*$\footnote{\lbl{footnote:f^*}We constructed $f^*$ on exercise sheet \#10 of Algebraic Geometry~I, and also proved the relevant properties there. It is given by $f^*\Mm=f^\sharp\Mm\otimes_{f^\sharp \Oo_Y}\Oo_X$, where $f^\sharp$ is constructed as in \cite[Remark~1.2.4]{alggeo1}.}. Thus, for $\Nn$ a quasi-coherent $\Oo_Y$-module, there is a canonical morphism $\Nn\morphism f_*f^*\Mm$ which gives another type of pull-back morphism
 \begin{align*}
 	H^p(Y,\Nn)\morphism H^p(Y,f_*f^*\Nn)\morphism[\text{\eqreff{eq:pull-back}}]H^p(X,f^*\Nn)\;.
 \end{align*}
@@ -1568,50 +1568,20 @@ Franke didn't prove this in the lecture. For the sake of completeness, however, 
 \begin{proof}[Sketch of a proof]
 	Denote $\Hh=\Hhom_{\Oo_X}(\Ww,\Vv)$ for short and let $\Xx_\Ee$ be the $\Hh$-torsor associated to an extension $\Ee$. Let's first give an argument why $\Xx_\Ee$ is even an $\Hh$-torsor. If $\pi,\pi'\in\Xx_\Ee(U)$ are two sections of $a$ on $U$, then $(\pi-\pi')a=0$, hence $\pi-\pi'$ factors uniquely over the cokernel of $\Vv_U\morphism[a]\Ee|_U$, which is $\Ww|_U$. That is, there is a unique morphism $\Ww|_U\morphism[h]\Vv|_U$ of $\Oo_U$-modules such that $\pi-\pi'=hb$. This shows that $\Hh(U)$ acts simply transitively on $\Xx_\Ee(U)$. It remains to show that the stalks $\Xx_{\Ee,x}$ are non-empty. But $\Vv$ and $\Ww$ are vector bundles, so every $x\in X$ has a neighbourhood $U$ in which $\Ww|_U$ and $\Vv|_U$ are free $\Oo_U$-modules. In particular, $\Ww|_U$ is projective and the extension $\Ee|_U$ is split, i.e., $\Ee|_U\simeq \Ww|_U\oplus \Vv|_U$. Then $\Xx_\Ee(V)$ is non-empty for all open subsets $V\subseteq U$, hence $\Xx_{\Ee,x}\neq \emptyset$.
 	
-	\newlength{\currentparskip}
-	\setlength{\currentparskip}{\parskip}\begin{tikzfadingfrompicture}[name=premium access]
-		\shade[top color=transparent!50, bottom color=transparent!6.25] (0,0) rectangle (2,2);
-	\end{tikzfadingfrompicture}
-	\begin{tikzpicture}[inner sep=0pt]
-		\node (wallOfText) at (0,0) {
-			\begin{minipage}{\textwidth}
-			\setlength{\parskip}{\currentparskip}
-				Now about the functoriality properties. To a morphism $\Ee\morphism[\epsilon]\Ee'$ of extensions we associate the morphism $\Xx_\Ee\morphism\Xx_{\Ee'}$ which takes $\pi\in\Xx_\Ee(U)$ to $\epsilon^{-1}\pi\in\Xx_{\Ee'}(U)$ (recall that $\epsilon$ is automatically an isomorphism; we could have taken $\epsilon\pi$ instead to get a contravariant equivalence of groupoids). This gives a functor $\Phi$ from the groupoid of extensions of $\Ww$ by $\Vv$ to the groupoid of $\Hh$-torsors. 
-				
-				We show fully faithfulness first. Faithfulness of $\Phi$ is straightforward: If $\epsilon,\epsilon'\colon \Ee\morphism\Ee'$ are morphisms of extensions such that $\Phi(\epsilon)=\Phi(\epsilon')$, then choose an open cover $\Uu\colon X=\bigcup_{i\in I}U_i$ on which $\Vv$ and $\Ww$ trivialize (i.e., $\Vv|_{U_i}$ is a free $\Oo_{U_i}$-module for all $i\in U$ and same for $\Ww$). Then $\Ee|_{U_i}\simeq \Ww|_{U_i}\oplus \Vv|_{U_i}$ is a split extension (and same for $\Ee'|_{U_i}$), hence the $\Xx_\Ee(U_i)$ are non-empty and we may choose $\pi_i\in \Xx_\Ee(U_i)$ for all $i\in I$. From $\epsilon^{-1}\pi_i=(\epsilon')^{-1}\pi_i$ and splitness of $\Ee|_{U_i},\Ee'|_{U_i}$ it's easy to deduce $\epsilon=\epsilon'$ on $U_i$. Since the $U_i$ cover $X$, this holds on all of $X$ and we are done.
-				
-				Now suppose $\Xx_\Ee\morphism[\phi]\Xx_{\Ee'}$ is a morphism of $\Hh$-torsors. We need to construct a morphism $\Ee\morphism[\epsilon]\Ee'$ of extensions such that $\Phi(\epsilon)=\phi$. If $\pi\in\Xx_\Ee(U)$ is a section of $a$ on $U$, then $\pi$ and $\phi(\pi)$ induce splittings $\Ee|_U\simeq \Ww|_U\oplus\Vv|_U\simeq \Ee'|_U$, which immediately gives a morphism $\Ee|_U\morphism[\epsilon_U]\Ee'|_U$ of extensions of $\Ww|_U$ by $\Vv|_U$. It can be easily checked that $\epsilon_U$ is actually independent of $\pi$. So choosing a trivializing open cover $\Uu$ as above, we get $\epsilon_{U_i}$ for all $i\in I$ which can be glued together (by naturality of their construction) to a morphism $\Ee\morphism[\epsilon]\Ee'$ which indeed satisfies $\Phi(\epsilon)=\phi$.
-				
-				And essential surjectivity. Let $\Xx$ be an $\Hh$-torsor. To construct an extension $\Ee$ such that $\Xx\simeq \Xx_\Ee$, the idea is -- of course -- to choose $\Ee|_U\simeq \Ww|_U\oplus\Vv|_U$ on small neighbourhoods where $\Xx$ trivializes, and then to glue them together somehow. Actually we will take the smallest possible ``neighbourhoods'' -- the stalks $\Ee_x\simeq\Ww_x\oplus\Vv_x$ and impose a suitable coherence condition. To do this, choose an element $\pi_x\in\Xx_x$ for every $x\in X$ and put
-				\begin{align*}
-				\Ee(U)=\left\{e=(w_x,v_x)_{x\in U}\in \prod_{x\in U}\Ww_x\oplus\Vv_x\st\begin{array}{c}
-				e\text{ fulfills the \emph{cohe-}}\\
-				\text{\emph{rence condition}\texttrademark}
-				\end{array}\right\}\;,
-				\end{align*}
-				where the \emph{coherence condition}\texttrademark\ says that every $x\in U$ has a neighbourhood $V\subseteq U$ on which $\pi_x$, $w_x$ and $v_x$ have preimages $\pi_V\in \Xx(V)$, $w_V\in\Ww(V)$ and $v_V\in\Vv(V)$ such that the following holds: $\pi_{V,y}$, $w_{V,y}$ and $v_{V,y}$ denote the respective images in $\Xx_y$, $\Ww_y$ and $\Vv_y$, then $w_y=w_{V,y}$ and $v_y=v_{V,y}+h(w_y)$, where $h=\pi_y-\pi_{V,y}\in\Hh_y$. It is possible to show that this indeed defines an extension of $\Ww$ by $\Vv$ and that $\Xx\simeq\Xx_\Ee$.
-			\end{minipage}};
-		\coordinate (dummy) at ($(wallOfText.north east)!1.0/2!(wallOfText.south east)$);
-		\fill[white,path fading=premium access] (wallOfText.north west) rectangle (dummy);
-		\fill[white,opacity=0.9375] (dummy) rectangle (wallOfText.south west);
-		\node[rectangle, fill=white,draw=black!50!white, inner sep=3ex, rounded corners] at (0,0) {\begin{minipage}{0.5\textwidth}
-			\sffamily
-			\begin{center}
-			\LARGE\textbf{Want to read more?}
-			\end{center}
-			\vspace{2ex}
-			Subscribe to continue reading (or wait till exercise sheet \#7 has been collected).
-			\begin{itemize}
-			\item[{\tikz[inner sep=0ex,anchor=base, baseline]{\node (a) {\phantom{h}};\draw[red!70!black] (a) circle (5pt);}}] Purchase this proof for 0,99\euro.
-			\item[{\tikz[inner sep=0ex,anchor=base, baseline]{\node (a) {\phantom{h}};\draw[red!70!black] (a) circle (5pt);\fill[red!70!black] (a) circle (3pt);}}] Unlock AlgGeo II PREMIUM. Unlimited access on all devices. Free 30 days trial, then 4,99\euro\ per month.
-			\end{itemize}
-			\begin{center}
-			\tikz\fill[inner sep=0ex,red!70!black, rounded corners]  (0,0.75) rectangle (\textwidth,0) node[pos=0.5,white] {\large\textbf{Get access now}};
-			\end{center}
-			\vspace{2ex}
-			Already have an account? \textbf{\underline{Si\smash{g}n in}} here.
-			\end{minipage}};
-	\end{tikzpicture}
+	Now about the functoriality properties. To a morphism $\Ee\morphism[\epsilon]\Ee'$ of extensions we associate the morphism $\Xx_\Ee\morphism\Xx_{\Ee'}$ which takes $\pi\in\Xx_\Ee(U)$ to $\epsilon^{-1}\pi\in\Xx_{\Ee'}(U)$ (recall that $\epsilon$ is automatically an isomorphism; we could have taken $\epsilon\pi$ instead to get a contravariant equivalence of groupoids). This gives a functor $\Phi$ from the groupoid of extensions of $\Ww$ by $\Vv$ to the groupoid of $\Hh$-torsors. 
+	
+	We show fully faithfulness first. Faithfulness of $\Phi$ is straightforward: If $\epsilon,\epsilon'\colon \Ee\morphism\Ee'$ are morphisms of extensions such that $\Phi(\epsilon)=\Phi(\epsilon')$, then choose an open cover $\Uu\colon X=\bigcup_{i\in I}U_i$ on which $\Vv$ and $\Ww$ trivialize (i.e., $\Vv|_{U_i}$ is a free $\Oo_{U_i}$-module for all $i\in U$ and same for $\Ww$). Then $\Ee|_{U_i}\simeq \Ww|_{U_i}\oplus \Vv|_{U_i}$ is a split extension (and same for $\Ee'|_{U_i}$), hence the $\Xx_\Ee(U_i)$ are non-empty and we may choose $\pi_i\in \Xx_\Ee(U_i)$ for all $i\in I$. From $\epsilon^{-1}\pi_i=(\epsilon')^{-1}\pi_i$ and splitness of $\Ee|_{U_i},\Ee'|_{U_i}$ it's easy to deduce $\epsilon=\epsilon'$ on $U_i$. Since the $U_i$ cover $X$, this holds on all of $X$ and we are done.
+	
+	Now suppose $\Xx_\Ee\morphism[\phi]\Xx_{\Ee'}$ is a morphism of $\Hh$-torsors. We need to construct a morphism $\Ee\morphism[\epsilon]\Ee'$ of extensions such that $\Phi(\epsilon)=\phi$. If $\pi\in\Xx_\Ee(U)$ is a section of $a$ on $U$, then $\pi$ and $\phi(\pi)$ induce splittings $\Ee|_U\simeq \Ww|_U\oplus\Vv|_U\simeq \Ee'|_U$, which immediately gives a morphism $\Ee|_U\morphism[\epsilon_U]\Ee'|_U$ of extensions of $\Ww|_U$ by $\Vv|_U$. It can be easily checked that $\epsilon_U$ is actually independent of $\pi$. So choosing a trivializing open cover $\Uu$ as above, we get $\epsilon_{U_i}$ for all $i\in I$ which can be glued together (by naturality of their construction) to a morphism $\Ee\morphism[\epsilon]\Ee'$ which indeed satisfies $\Phi(\epsilon)=\phi$.
+	
+	And essential surjectivity. Let $\Xx$ be an $\Hh$-torsor. To construct an extension $\Ee$ such that $\Xx\simeq \Xx_\Ee$, the idea is -- of course -- to choose $\Ee|_U\simeq \Ww|_U\oplus\Vv|_U$ on small neighbourhoods where $\Xx$ trivializes, and then to glue them together somehow. Actually we will take the smallest possible ``neighbourhoods'' -- the stalks $\Ee_x\simeq\Ww_x\oplus\Vv_x$ and impose a suitable coherence condition. To do this, choose an element $\pi_x\in\Xx_x$ for every $x\in X$ and put
+	\begin{align*}
+	\Ee(U)=\left\{e=(w_x,v_x)_{x\in U}\in \prod_{x\in U}\Ww_x\oplus\Vv_x\st\begin{array}{c}
+	e\text{ fulfills the \emph{cohe-}}\\
+	\text{\emph{rence condition}\texttrademark}
+	\end{array}\right\}\;,
+	\end{align*}
+	where the \emph{coherence condition}\texttrademark\ says that every $x\in U$ has a neighbourhood $V\subseteq U$ on which $\pi_x$, $w_x$ and $v_x$ have preimages $\pi_V\in \Xx(V)$, $w_V\in\Ww(V)$ and $v_V\in\Vv(V)$ such that the following holds: $\pi_{V,y}$, $w_{V,y}$ and $v_{V,y}$ denote the respective images in $\Xx_y$, $\Ww_y$ and $\Vv_y$, then $w_y=w_{V,y}$ and $v_y=v_{V,y}+h(w_y)$, where $h=\pi_y-\pi_{V,y}\in\Hh_y$. It is possible to show that this indeed defines an extension of $\Ww$ by $\Vv$ and that $\Xx\simeq\Xx_\Ee$.
 \end{proof}
 
 \chapter{Cohomology of projective spaces}
@@ -1806,44 +1776,18 @@ And finally for a lemma which is perhaps worthwhile to know.
 \begin{lem}
 	Let $R$ be a Noetherian local ring with maximal ideal $\mm$, $M$ a finitely generated $R$-module and $x_0,\ldots,x_n\in\mm$. Then $(x_0,\ldots,x_n)$ is $M$-regular iff $H^i\big((x_0,\ldots,x_n),M\big)=0$ for $i\neq n+1$. In particular, reordering $(x_0,\ldots,x_n)$ will again produce an $M$-regular sequence.
 \end{lem}
-\begin{tikzpicture}[inner sep=0pt]
-	\node (wallOfText) at (0,0) {
-		\begin{minipage}{\textwidth}
-			\setlength{\parskip}{\currentparskip}
-			\begin{proof}
-			The \emph{only if} part being trivial after Fact~\reff{fact:RegularSeqKoszulComplex}\itememph{b}, we assume now that $H^i\big((x_0,\ldots,x_n),M\big)$ vanishes for $i\neq n+1$. From \eqreff{eq:KoszulCone} and the cone sequence \eqreff{eq:MappingConeSeq} we obtain a part of a long exact sequence
-			\begin{multline*}
-			H^j\big((x_0,\ldots,x_n),M\big)\morphism H^j\big((x_0,\ldots,x_{n-1}),M\big)\morphism[x_n\cdot] H^j\big((x_0,\ldots,x_{n-1}),M\big)\\
-			\morphism H^{j+1}\big((x_0,\ldots,x_n),M\big)\;.
-			\end{multline*}
-			For $j<n$ the outer terms vanish by assumption, hence
-			\begin{align*}
-			H^j\big((x_0,\ldots,x_{n-1}),M\big)\morphism[x_n\cdot] H^j\big((x_0,\ldots,x_{n-1}),M\big)
-			\end{align*}
-			is an isomorphism. But we are working over a Noetherian ring $R$ and $M$ is finitely generated, so all involved constructions are finitely generated as well. In particular, $H^j\big((x_0,\ldots,x_{n-1}),M\big)$ is finitely generated. As $x_n\in\mm$, Nakayama's lemma shows $H^j\big((x_0,\ldots,x_{n-1}),M\big)=0$ for $j<n$. For $j>n$ this holds as well, obviously. Inductively, this shows $H^j\big((x_0,\ldots,x_i),M\big)=0$ for all $i<n$ and $j\neq i+1$, hence $(x_0,\ldots,x_n)$ is regular by Fact~\reff{fact:RegularSeqKoszulComplex}\itememph{b}.			
-			\end{proof}
-		\end{minipage}};
-	\coordinate (dummy) at ($(wallOfText.north east)!1.0/2!(wallOfText.south east)$);
-	\fill[white,path fading=premium access] (wallOfText.north west) rectangle (dummy);
-	\fill[white,opacity=0.9375] (dummy) rectangle (wallOfText.south west);
-	\node[rectangle, fill=white,draw=black!50!white, inner sep=3ex, rounded corners] at (0,0) {\begin{minipage}{0.5\textwidth}
-		\sffamily
-		\begin{center}
-		\LARGE\textbf{Want to read more?}
-		\end{center}
-		\vspace{2ex}
-		Subscribe to continue reading (or wait till exercise sheet \#7 has been collected).
-		\begin{itemize}
-		\item[{\tikz[inner sep=0ex,anchor=base, baseline]{\node (a) {\phantom{h}};\draw[red!70!black] (a) circle (5pt);}}] Purchase this proof for 0,99\euro.
-		\item[{\tikz[inner sep=0ex,anchor=base, baseline]{\node (a) {\phantom{h}};\draw[red!70!black] (a) circle (5pt);\fill[red!70!black] (a) circle (3pt);}}] Unlock AlgGeo II PREMIUM. Unlimited access on all devices. Free 30 days trial, then 4,99\euro\ per month.
-		\end{itemize}
-		\begin{center}
-		\tikz\fill[inner sep=0ex,red!70!black, rounded corners]  (0,0.75) rectangle (\textwidth,0) node[pos=0.5,white] {\large\textbf{Get access now}};
-		\end{center}
-		\vspace{2ex}
-		Already have an account? \textbf{\underline{Si\smash{g}n in}} here.
-		\end{minipage}};
-\end{tikzpicture}
+\begin{proof}
+	The \emph{only if} part being trivial after Fact~\reff{fact:RegularSeqKoszulComplex}\itememph{b}, we assume now that $H^i\big((x_0,\ldots,x_n),M\big)$ vanishes for $i\neq n+1$. From \eqreff{eq:KoszulCone} and the cone sequence \eqreff{eq:MappingConeSeq} we obtain a part of a long exact sequence
+	\begin{multline*}
+	H^j\big((x_0,\ldots,x_n),M\big)\morphism H^j\big((x_0,\ldots,x_{n-1}),M\big)\morphism[x_n\cdot] H^j\big((x_0,\ldots,x_{n-1}),M\big)\\
+	\morphism H^{j+1}\big((x_0,\ldots,x_n),M\big)\;.
+	\end{multline*}
+	For $j<n$ the outer terms vanish by assumption, hence
+	\begin{align*}
+	H^j\big((x_0,\ldots,x_{n-1}),M\big)\morphism[x_n\cdot] H^j\big((x_0,\ldots,x_{n-1}),M\big)
+	\end{align*}
+	is an isomorphism. But we are working over a Noetherian ring $R$ and $M$ is finitely generated, so all involved constructions are finitely generated as well. In particular, $H^j\big((x_0,\ldots,x_{n-1}),M\big)$ is finitely generated. As $x_n\in\mm$, Nakayama's lemma shows $H^j\big((x_0,\ldots,x_{n-1}),M\big)=0$ for $j<n$. For $j>n$ this holds as well, obviously. Inductively, this shows $H^j\big((x_0,\ldots,x_i),M\big)=0$ for all $i<n$ and $j\neq i+1$, hence $(x_0,\ldots,x_n)$ is regular by Fact~\reff{fact:RegularSeqKoszulComplex}\itememph{b}.			
+\end{proof}
 
 \section{The scheme \texorpdfstring{$\IP_R^n$}{P} and its cohomology}
 Let $R$ be an $\IN_0$-graded ring. Let $R_+\subseteq R$ be the ideal of elements of $R$ of positive homogeneous degree. Recall that there is a bijection
@@ -1940,7 +1884,7 @@ making $\Oo$ into a sheaf of graded rings with $\Oo(0)=\Oo_{\Proj R}$. Moreover,
 \begin{proof}
 	Most of this follows from exercise sheet~\#11 of Algebraic Geometry I. We show the topology base part of \itememph{a} first: Let $I$ be a homogeneous ideal and $\pp\notin V(I)$ a homogeneous prime ideal. Then $I\setminus \pp$ contains a homogeneous element $f$. Clearly $\Proj R\setminus V(f)\subseteq \Proj R\setminus V(I)$. If $f$ has positive degree, we are done. Otherwise choose an element $g\in R_+\setminus \pp$ and replace $f$ by $fg$. The fact that the $\Proj R\setminus V(f)$ are affine follows from \eqreff{eq:ProjLocal}.
 	
-	For \itememph{c}, do exercise~1 and apply this to \eqreff{eq:ProjLocal}. From this, it is clear that for $M$ a graded $R$-module the sheafification of the presheaf 
+	For \itememph{c}, do exercise~1 and apply this to \eqreff{eq:ProjLocal}. From this, it is clear that for $M$ a graded $R$-module the sheafification $\snake{M}$ of the presheaf 
 	\begin{align*}
 		\Proj R\setminus V(f)\longmapsto (M_f)_0\quad\text{for }f\text{ homogeneous of positive degree}
 	\end{align*}
@@ -1964,7 +1908,7 @@ making $\Oo$ into a sheaf of graded rings with $\Oo(0)=\Oo_{\Proj R}$. Moreover,
 	
 	And finally part \itememph{f}. The stuff in parentheses was proved in \cite[Proposition~2.2.1]{alg2}, by the way. In \itememph{e} we have seen that $\Proj R$ is finite type over $\Spec R_0$ which is Noetherian, hence $\Proj R$ is Noetherian by Hilbert's Basissatz. By an argument similar to \itememph{e}, $(R_f)_k$ is finitely generated as an $(R_f)_0$-module for all $f\in R_+$, hence $\Oo(k)$ is locally finitely generated over $\Oo_{\Proj R}$ by \itememph{c} and thus coherent in the sense of Definition~\reff{def:locFinGenerated}\itememph{b}.
 \end{proof}
-\begin{rem}
+\begin{rem}\lbl{rem:GradedSnakeM}
 	For a graded $R$-module $M$ and open $U\subseteq P=\Proj R$ let 
 	\begin{align*}
 		\snake{M}(U)=\left\{(\mu_\pp)\in\prod_{\pp\in U}(M_\pp)_0\st\begin{array}{c}
@@ -2025,9 +1969,9 @@ making $\Oo$ into a sheaf of graded rings with $\Oo(0)=\Oo_{\Proj R}$. Moreover,
 		\snake{M}\otimes_{\Oo_{\Proj R}}\Oo(k)&\isomorphism (M[k])^\sim\\
 		m\otimes r&\longmapsto rm
 	\end{align*}
-	(which is easily checked stalk-wise). In particular, this generalizes Proposition~\reff{prop:FirstProjProperties}\itememph{d} (which is the special case $M=R[\ell]$).
+	(which is easily checked stalk-wise). In particular, this generalizes Proposition~\reff{prop:FirstProjProperties}\itememph{d} (which is the special case $M=R[\ell]$). Also keep in mind that the $\snake{M}$ occurring here is the one from Remark~\reff{rem:GradedSnakeM}.
 \end{rem}
-Now let $A$ be a ring, $R=A[X_0,\ldots,X_n]$ be equipped with the usual grading and put $\IP_A^n=\Proj R$. Then $\Uu\colon \IP_A^n=\bigcup_{i=0}^nU_i$ with $U_i=\IP_R^n\setminus V(X_i)$ is an affine open cover of $\IP_A^n$ and by \eqreff{eq:ProjLocal} we have
+Now let $A$ be a ring, $R=A[X_0,\ldots,X_n]$ be equipped with the usual grading and put $\IP_A^n=\Proj R$. Then $\Uu\colon \IP_A^n=\bigcup_{i=0}^nU_i$ with $U_i=\IP_A^n\setminus V(X_i)$ is an affine open cover of $\IP_A^n$ and by \eqreff{eq:ProjLocal} we have
 \begin{align*}
 	U_{i_0,\ldots,i_\ell}=\IP_A^n\setminus V\left(X_{i_0}\cdots X_{i_\ell}\right)\simeq \Spec R[(X_{i_0}\cdots X_{i_\ell})^{-1}]_0\;.
 \end{align*}
@@ -2225,17 +2169,179 @@ Our next aim is to investigate the trivialization of the $A$-module $H^n(\IP_A^n
 	For \itememph{b} we use the above special case again to obtain $\ell_i\in\IN$ and $\mu_i\in(\Ll^{\otimes \ell_i}\otimes_{\Oo_X}\Mm)(U_i)$ such that $\lambda^{\otimes \ell_i}\otimes m=\mu_i$ on $U_i$. Putting $\ell=\max_i \ell_i$ and replacing $\mu_i$ by $\lambda^{\otimes (\ell-\ell_i)}\otimes \mu_i$ we may assume $\ell_1=\ldots=\ell_n=\ell$. As $X$ is quasi-separated, the $U_{i,j}=U_i\cap U_j$ are quasi-compact. Since $\mu_i|_{U_{i,j}\setminus V(\lambda)}=\mu_j|_{U_{i,j}\setminus V(\lambda)}$, by \itememph{a} there are $k_{i,j}$ such that $\lambda^{\otimes k_{i,j}}\otimes \mu_i=\lambda^{\otimes k_{i,j}}\otimes \mu_j$ on $U_{i,j}$. Put $k=\max_{i,j}k_{i,j}$, then $\lambda^{\otimes k}\otimes \mu_i|_{U_{i,j}}=\lambda^{\otimes k}\otimes \mu_j|_{U_{i,j}}$, hence by the sheaf axiom the $\lambda^{\otimes k}\otimes \mu_i$ extend to a global section $\mu\in\Ll^{\otimes k}\otimes_{\Oo_X}\Mm$. Then $\mu|_{X\setminus V(\lambda)}=\lambda^{\otimes(k+\ell)}\otimes m$, so $\mu$ extends $\lambda^{\otimes(k+\ell)}\otimes m$.
 \end{proof}
 \begin{prop}\lbl{prop:AmplenessCriterion}
-	Let $X$ be a quasi-compact prescheme and $\Ll$ a line bundle on $X$ such that $X$ may be covered by affine open subsets of the form $X\setminus V(\lambda)$ where $\lambda\in\Ll(X)$. Then $\Ll$ is ample.
+	Let $X$ be a quasi-compact and quasi-separated prescheme and $\Ll$ a line bundle on $X$ such that $X$ may be covered by affine open subsets of the form $X\setminus V(\lambda)$ where $\lambda\in\Ll(X)$. Then $\Ll$ is ample.
 \end{prop}
+\begin{proof}
+	By quasi-compactness of $X$ and the assumption we find a finite cover $X=\bigcup_{i=1}^nU_i$, where $U_i=X\setminus V(\lambda_i)$ is affine with $\lambda_i\in \Ll(X)$. Let $\Mm$ be a locally finitely generated quasi-coherent $\Oo_X$-module, then $M_i=\Mm(U_i)$ is finitely generated over $\Oo_X(U_i)$, say by $m_{i,j}$ for $j=1,\ldots,n_i$. By Lemma~\reff{lem:powersOfLl}\itememph{b} we can choose $k_0$ sufficiently large so that the $\lambda^{\otimes k_0}\otimes m_{i,j}$ extend to a global section of $\Ll^{\otimes k_0}\otimes_{\Oo_X}\Mm$ on $X$. Then $\Ll^{\otimes k}\otimes_{\Oo_X}\Mm$ is generated by its global sections $\lambda^{\otimes k}\otimes m_{i,j}$ (or more precisely their extensions) for all $k>k_0$, hence $\Ll$ is ample by Definition~\reff{def:AmpleLineBundle}\itememph{b}.
+\end{proof}
 \begin{cor}
 	\begin{alphanumerate}
-		\item The line bundle $\Oo(1)$ on $\IP_A^n$ is ample.
+		\item \lbl{cor:O(1)ample}The line bundle $\Oo(1)$ on $\IP_A^n$ is ample.
 		\item If $X$ is quasi-affine (i.e., an open subscheme of an affine scheme), then $\Oo_X$ is ample.
 	\end{alphanumerate}
 \end{cor}
 \begin{proof}
 	For part \itememph{a}, note that the $\IP_A^n\setminus V(X_i)$ are affine and cover $\IP_A^n$. For \itememph{b}, write $X=\ov{X}\setminus Z$ with $\ov{X}$ affine and $Z$ closed, then the open subsets of the form $X\setminus V(f|_X)=\ov{X}\setminus V(f)$ with $f\in\Oo_{\ov{X}}(\ov{X})$ such that $V(f)\supseteq Z$ are affine and cover $X$. In both cases we win by Proposition~\reff{prop:AmplenessCriterion}.
 \end{proof}
+Let $\Mm$ be a quasi-coherent module on $\IP_A^n$. For every $k\in \IZ$ we put $\Mm(k)=\Mm\otimes_{\Oo_X}\Oo(k)$ and call this a \emph{Serre twist} of $\Mm$.
+\begin{thm}[Serre]\lbl{thm:SerreTwistStuff}
+	Let $A$ be a Noetherian ring. If $\Mm$ is a coherent sheaf of modules on $X=\IP_A^n$, then the groups $H^p(X,\Mm)$ are finitely generated $A$-modules and vanish for $p>n$. When $p>0$ and $k$ is sufficiently large, $H^p(X,\Mm(k))=0$.
+\end{thm}
+\begin{proof}
+	We prove both assertions by downward induction on $p$. When $p>n$, by Proposition~\reff{prop:CechCohoOnScheme}\itememph{b} we can use the alternating \vC ech complex associated to the standard affine open cover $\Uu\colon \IP_A^n=\bigcup_{i=0}^n\IP_A^n\setminus V(X_i)$ to compute $H^p(X,\Mm)=\check{H}_\alt^p(\Uu,\Mm)=0$ since $\check{C}_\alt^\bullet(\Uu,\Mm)$ is concentrated in degrees $\leq n$.
+	
+	Now suppose the assertion is proved in cohomological dimension $p+1$. Since $\Oo(1)$ is ample by Corollary~\reff{cor:O(1)ample}\itememph{a}, there is an epimorphism $\Oo(-j)^{\oplus \ell}\epimorphism[p]\Mm$ when $j$ is large enough (Definition~\reff{def:AmpleLineBundle}\itememph{a}). Putting $\Kk=\ker(p)$, we get a short exact sequence $0\morphism \Kk\morphism \Oo(-j)^{\oplus \ell}\morphism\Mm\morphism 0$ of quasi-coherent $\Oo_X$-modules ($\Kk$ is quasi-coherent by Proposition~\reff{prop:QCohHasKerCoker}) and hence an exact sequence
+	\begin{align*}
+		H^p(X,\Oo(-j))^{\oplus \ell}\simeq H^p\Big(X,\Oo(-j)^{\oplus \ell}\Big)\morphism H^p(X,\Mm)\morphism H^{p+1}(X,\Kk)
+	\end{align*}
+	as part of the long exact cohomology sequence from Theorem~\reff{thm:CohoOnSchemes}\itememph{d}. Since $A$ is Noetherian, $\Kk$ is coherent. Indeed, by Proposition~\reff{prop:FirstProjProperties}\itememph{f}, $X=\IP_A^n$ is a Noetherian scheme. Then $\Kk(U)$ is a $\Oo_X(U)$-submodule of $\Oo(-j)(U)^{\oplus \ell}$ for every affine open subset $U\subseteq X$, hence $\Kk(U)$ is finitely generated by Noetherianness of $\Oo_X(U)$. That is, $\Kk$ is locally finitely generated and thus coherent by Definition~\reff{def:locFinGenerated}\itememph{b}, as claimed. 
+	
+	Now the right end of the above sequence is a finitely generated $A$-module by the induction assumption. For the left end, this holds by Theorem~\reff{thm:CohoOfIP^n}\itememph{b} and \itememph{e}. It follows that $H^p(X,\Mm)$ in the middle is finitely generated as well. 
+	
+	Since tensoring with $\Oo(k)$ is exact (it preserves exactness on stalks since $\Oo(k)$ is a line bundle by Proposition~\reff{prop:FirstProjProperties}\itememph{d}, hence preserves exactness in general), we get short exact sequences $0\morphism \Kk(k)\morphism \Oo(k-j)^{\oplus \ell}\morphism \Mm(k)\morphism 0$. Thus
+	\begin{align*}
+		H^p(X,\Oo(k-j))^{\oplus \ell}\simeq H^p\Big(X,\Oo(k-j)^{\oplus \ell}\Big)\morphism H^p(X,\Mm(k))\morphism H^{p+1}(X,\Kk(k))
+	\end{align*}
+	is exact. For $k>j-n$ and $p>0$ the left term vanishes by Theorem~\reff{thm:CohoOfIP^n}\itememph{b} and \itememph{c}. So does $H^{p+1}(X,\Kk(k))$ for sufficiently large $k$ by the induction assumption. Hence $H^p(X,\Mm(k))$ vanishes as well when $k\gge 0$.
+\end{proof}
+\begin{prop}\lbl{prop:restrictionSurjective}
+	Let $A$ be a Noetherian ring and $X$ a closed subprescheme of $\IP_A^n$. For sufficiently large $k$ the restriction map
+	\begin{align*}
+		A[X_0,\ldots,X_n]_k\simeq H^0\left(\IP_A^n,\Oo_{\IP_A^n}(k)\right)\morphism H^0(X,\Oo_X(k))
+	\end{align*}
+	is surjective.
+\end{prop}
+\begin{rem}
+	\begin{alphanumerate}
+		\item \lbl{rem:WhatIsO_X(k)}In the case where $A$ is a field, this was (essentially) shown on exercise sheet \#10 of Algebra~II.
+		\item The isomorphism $A[X_0,\ldots,X_n]_k\simeq H^0\left(\IP_A^n,\Oo_{\IP_A^n}(k)\right)$ comes from Theorem~\reff{thm:CohoOfIP^n}\itememph{a}.
+		\item Did we define $\Oo_X(k)$? No, we didn't, but we will now. Let $Y=\IP_A^n$ and $X\monomorphism[i]Y$ be the closed embedding we're talking about. Then we put $\Oo_X(k)=i^*\Oo_Y(k)$. Here, $i^*\colon \Oo_Y\cat{-Mod}\morphism\Oo_X\cat{-Mod}$ denotes the pull-back functor from \hyperref[footnote:f^*]{this} footnote. Since $i^*$ is left-adjoint to $i_*$, we have a canonical morphism $\Oo_Y(k)\morphism i_*\Oo_X(k)$, giving $H^0(Y,\Oo_Y(k))\morphism H^0(Y,i_*\Oo_X(k))$. 
+		
+		Since $i$ is affine\footnote{Every closed embedding is. Indeed, locally a closed embedding looks like $\Spec R/I\monomorphism\Spec R$ for some ring $R$ and some ideal $I\subseteq R$ (cf.\ the proof of \cite[Proposition~1.5.3]{alggeo1}) which is clearly affine.}, Corollary~\reff{cor:AffinePushforwardIso} gives $H^0(Y,i_*\Oo_X(k))\simeq H^0(X,\Oo_X(k))$. From this we get the restriction map in the formulation of Proposition~\reff{prop:restrictionSurjective}.
+		\item There is a canonical isomorphism $i_*\Mm\otimes_{\Oo_Y}\Nn\simeq  i_*(\Mm\otimes_{\Oo_X}i^*\Nn)$ for all $\Oo_X$-modules $\Mm$ and $\Oo_Y$-modules $\Nn$ (quasi-coherent or not). To prove this, we first construct the morphism and then prove that it is isomorphic. We get a morphism $i_*\Mm\morphism i_*(\Mm\otimes_{\Oo_X}i^*\Nn)$ from the push-forward of $\Mm\morphism\Mm\otimes_{\Oo_X}i^*\Nn$. Similarly, we get a canonical morphism $i_*i^*\Nn\morphism i_*(\Mm\otimes_{\Oo_X}i^*\Nn)$, which can be composed with $\Nn\morphism i_*i^*\Nn$. Together, they define a bilinear map $i_*\Mm\times \Nn\morphism i_*(\Mm\otimes_{\Oo_X}i^*\Nn)$ and thus a canonical morphism
+		\begin{align}\lbl{eq:i_*Iso}
+			i_*\Mm\otimes_{\Oo_Y}\Nn\morphism i_*(\Mm\otimes_{\Oo_X}i^*\Nn)\tag{\$}
+		\end{align}
+		of $\Oo_Y$-modules. Checking that it is an isomorphism is a job done stalk-wise. First of all, note that for every $\Oo_X$-module $\Ff$, the stalk of $i_*\Ff$ at $y\in Y$ is given by
+		\begin{align*}
+			(i_*\Ff)_y=\begin{cases}
+				\Ff_x &\text{if }y=i(x)\\
+				0 & \text{if }y\text{ isn't in the image of }i
+			\end{cases}\;.
+		\end{align*}
+		Indeed, since $i$ is an embedding, every open neighbourhood of $x\in X$ is of the form $X\cap U=i^{-1}(U)$ for some open neighbourhood $U$ of $i(x)$, hence the first case, and the embedding is closed, hence the second. Also recall that the stalk of $i^*\Nn$ at $x\in X$ is given by $\Oo_{X,x}\otimes_{\Oo_{Y,i(x)}}\Nn_{i(x)}$ (we proved this on exercise sheet \#10 of Algebraic Geometry I). Hence the stalks at $y\in Y$ of the two guys from \eqreff{eq:i_*Iso} are either both $0$ or given by 
+		\begin{align*}
+			\Mm_x\otimes_{\Oo_{Y,i(x)}}\Nn_{i(x)}\quad\text{and}\quad \Mm_x\otimes_{\Oo_{X,x}}\left(\Oo_{X,x}\otimes_{\Oo_{Y,i(x)}}\Nn_{i(x)}\right)
+		\end{align*}
+		(for $y=i(x)$) respectively. Clearly they are isomorphic and it's easy to see that \eqreff{eq:i_*Iso} actually induces that isomorphism.
+	\end{alphanumerate}
+\end{rem}
+\begin{proof}[Proof of Proposition~\reff{prop:restrictionSurjective}]
+	Let $\Jj\subseteq \Oo_Y$ be the sheaf of ideals defining the closed embedding $i$ (cf.\ \cite[Corollary~1.5.3\itememph{a}]{alggeo1}). Let $k\in\IZ$. Then $\Oo_{X,x}=\Oo_{Y,i(x)}/\Jj_x$ and a stalk-wise argument similar to Remark~\reff{rem:WhatIsO_X(k)}\itememph{d} shows that $0\morphism \Jj(k)\morphism \Oo_Y(k)\morphism i_*\Oo_X(k)\morphism 0$ is a short exact sequence of coherent $\Oo_Y$-modules (coherence of $\Jj$ and $\Oo_Y(k)$ follows from $A$ being Noetherian and this implies that the others involved are coherent as well). This gives
+	\begin{align*}
+		H^0(Y,\Oo_Y(k))\morphism H^0(Y,i_*\Oo_X(k))\morphism H^1(Y,\Jj(k))
+	\end{align*}
+	in which the right end vanishes by Theorem~\reff{thm:SerreTwistStuff} when $k$ is large enough. In view of Remark~\reff{rem:WhatIsO_X(k)}\itememph{c}, this proves the assertion.
+\end{proof}
+\begin{exc}
+	Let $k$ be a field, $n\geq 2$ and $Z\subseteq \IP_k^n$ a closed reduced subprescheme whose irreducible components are of codimension $1$ (e.g., a curve in $\IP_k^2$). Then
+	\begin{align*}
+		k[X_0,\ldots,X_n]_\ell\morphism H^0(Z,\Oo_Z(\ell))
+	\end{align*}
+	is surjective for every $\ell\geq 0$. From this, one can deduce Max Noether's \emph{Restsatz}, cf.\ \cite[Theorem~23]{alg2}.
+\end{exc}
+\begin{proof}[Sketch of a proof]
+	Let $R=k[X_0,\ldots,X_n]$. Since $\IP_k^n$ is Noetherian by Proposition~\reff{prop:FirstProjProperties}\itememph{f}, we may decompose $Z=\bigcup_{i=1}^NZ_i$ into irreducible components, which again have codimension $1$. By considering their intersections with the standard affine open cover of $\IP_k^n$ and using \cite[Proposition~2.1.3]{alg1} (and probably \emph{locality of codimension} as well, cf.\ \cite[Remark~2.1.3]{alg1}) one can show that $Z_i\simeq \Proj R/(p_i)$ for some homogeneous prime element $p_i\in R$ (here we use that $Z$ is reduced). Then the ideal $\Jj\subseteq \Oo_{\IP_k^n}$ that cuts out $Z$ is given by $\Jj=p_1\cdots p_N\Oo_{\IP_k^n}$. But then $H^1(\IP_k^n,\Jj(\ell))$ is easily seen to vanish for all $\ell\geq 0$ since $\Jj$ is actually isomorphic to $\Oo_{\IP_k^n}$ and we know that $H^1(\IP_k^n,\Oo(k))$ vanishes by Theorem~\reff{thm:CohoOfIP^n}\itememph{b}. 
+	
+	The assumption then follows from the long exact cohomology sequence associated to the short exact sequence $0\morphism \Jj(k)\morphism \Oo(k)\morphism i_*\Oo_Z(k)\morphism 0$, with $i$ denoting the embedding of $Z$.
+\end{proof}
+Recall the construction of the quasi-coherent $\Oo_{\Proj R}$-module $\Mm=\snake{M}$ from Remark~\reff{rem:GradedSnakeM} when $M$ is a graded module over the graded ring $R$. When $R$ is of finite type over $R_0$, an argument similar (but even more technical) to the proof of Proposition~\reff{prop:FirstProjProperties}\itememph{e} shows that $(M_f)_0$ is a finitely generated $(R_f)_0$-module for every homogeneous $f\in R_+$, i.e., $\Mm$ is locally finitely generated. When $R_0$ is, in addition, Noetherian, Proposition~\reff{prop:FirstProjProperties}\itememph{f} assures that $\Mm$ is coherent.
+\begin{prop}[Serre]\lbl{prop:SerreAgain}
+	Let $A$ be a Noetherian ring and $M$ a finitely generated graded module over $R=A[X_0,\ldots,X_n]$.Put $X=\IP_A^n$.
+	\begin{alphanumerate}
+		\item When $\ell$ is sufficiently large, $M_\ell\morphism H^0(X,\Mm(\ell))$ is an isomorphism.
+		\item When $A=k$ is a field,
+		\begin{align*}
+			\chi(X,\Mm(\ell))\coloneqq\sum_{p=0}^{n}(-1)^p\dim_kH^p(X,\Mm(\ell))=P_M(\ell)\;,
+		\end{align*}
+		where $P_M$ is the Hilbert polynomial of $M$, cf.\ \cite[Definition~3.1.3]{alg2}.
+	\end{alphanumerate}
+\end{prop}
+\begin{rem*}
+	The sum $\chi(X,\Mm(\ell))$ occurring in Proposition~\reff{prop:SerreAgain}\itememph{b} reminds of the \emph{Euler--Poincaré characteristic} from topology, and we will occasionally refer to it by that term.
+\end{rem*}
+\begin{proof}
+	Part \itememph{a}. An element $m\in M_\ell$ is in the kernel if and only if the restrictions of its image to $\IP_A^n\setminus V(X_i)$ vanish for all $i=0,\ldots,n$, i.e., when $m=0$ in $(M_{X_i})_k$. Then there is some $j\in\IN$ such that $X_i^j m=0$ for $i=0,\ldots,n$. Thus, the kernel of the map in question is
+	\begin{align*}
+		\bigcup_{j=0}^\infty\left\{m\in M\st X_i^jm=0\text{ for all }i=0,\ldots,n\right\}\eqqcolon N\subseteq M\;.
+	\end{align*}
+	As $M$ is a finitely generated module over $R$, which is Noetherian by Hilbert's Basissatz, $N$ is finitely generated as well, hence there is an $j\in\IN$ such that $X_i^j$ annullate $N$ for $i=0,\ldots,n$. Choose some generators of $N$ and let $d$ be their largest degree. Then $N$ vanishes in degrees $>d+(n+1)j$, and in such degrees the considered map is injective.
+	
+	For $M=R$ we have $\Mm=\Oo_X$ and the surjectivity of $R_\ell\morphism H^0(X,\Oo_X(\ell))$ follows from Theorem~\reff{thm:CohoOfIP^n}\itememph{a}. In the general case, choosing homogeneous generators of $M$ of degrees $d_1,\ldots,d_N$ gives a surjection $\bigoplus_{i=1}^NR[d_i]\epimorphism M$ of graded $R$-modules. Let $K$ be its kernel and $\Kk=\snake{K}$, then we get a short exact sequence
+	\begin{align*}
+		0\morphism\Kk\morphism\bigoplus_{i=1}^N\Oo_X(d_i)\morphism \Mm\morphism 0
+	\end{align*}
+	of coherent $\Oo_X$-modules. When $\ell$ is so large that $H^1(X,\Kk(\ell))=0$ (Theorem~\reff{thm:SerreTwistStuff}), the long exact cohomology sequence shows that every element of $H^0(X,\Mm(\ell))$ comes from an element of
+	\begin{align*}
+		 H^0\bigg(X,\bigoplus_{i=1}^N\Oo_X(\ell+d_i)\bigg)\simeq\bigoplus_{i=1}^NR_{\ell+d_i} 
+	\end{align*}
+	(the isomorphism coming from Theorem~\reff{thm:CohoOfIP^n}\itememph{a}), hence from an element of $M_\ell$.
+	
+	Part \itememph{b}. By Theorem~\reff{thm:SerreTwistStuff}, the summands in $\chi(X,\Mm(\ell))$ vanish for $p>0$ and sufficiently large twists $\ell$, while the $p=0$ summand becomes $\dim_kM_\ell=\length_kM_\ell$ when $\ell$ is sufficiently large by \itememph{a}. Hence by \cite[Theorem~18]{alg2} the assertion holds when $\ell$ is large enough, and in particular, it suffices to show that $\chi(X,\Mm(\ell))$ is given by a polynomial in $\ell$. We will show this by induction on $n$.
+	
+	If $n=-1$, we have $\IP_k^{-1}=\Proj k=\emptyset$ and everything is trivial (whereas the $n=0$ case doesn't seem as obvious to me as Professor Franke made it look like). Now let $n\geq 0$ and the assertion be valid for $n-1$. Let $0\morphism \Mm'\morphism\Mm\morphism\Mm''\morphism 0$ be a short exact sequence of coherent $\Oo_X$-modules. We claim that
+	\begin{align*}
+		\chi(X,\Mm'(\ell))+\chi(X,\Mm''(\ell))=\chi(X,\Mm(\ell))
+	\end{align*}
+	for all $\ell\in \IZ$. Indeed, the long exact cohomology sequence associated to the short exact sequence $0\morphism \Mm'(\ell)\morphism\Mm(\ell)\morphism\Mm''(\ell)\morphism 0$ vanishes in cohomological degrees $>n$ and consists of finite-dimensional $k$-vector spaces by Theorem~\reff{thm:SerreTwistStuff}. Using that dimension behaves additively in exact sequences, the claimed additivity of the Euler--Poincaré characteristic follows from after an easy calculation.
+	
+	In particular, when the Euler--Poincaré characteristic is a polynomial in $\ell$ for two of $\Mm'$, $\Mm$, and $\Mm''$, so it is for the third. Now let $\Mm$ be coherent and consider the sequence
+	\begin{align*}
+		0\morphism \Kk\morphism \Mm\xrightarrow{X_n\cdot }\Mm(1)\morphism \Qq\morphism 0\;,
+	\end{align*}
+	in which $\Kk$ and $\Qq$ are the appropriate kernel and cokernel. Both are clearly coherent. We may split this 4-term sequence into $0\morphism \Kk\morphism \Mm\morphism \Nn\morphism 0$ and $0\morphism\Nn\morphism\Mm(1)\morphism \Qq\morphism 0$ for some coherent $\Oo_X$-module $\Nn$ to obtain
+	\begin{align*}
+		\chi(X,\Mm(\ell))=\chi(X,\Kk(\ell))+\chi(X,\Nn(\ell))=\chi(X,\Kk(\ell))+\chi(X,\Mm(\ell+1))-\chi(X,\Qq(\ell))\;,
+	\end{align*}
+	hence
+	\begin{align*}
+		\chi(X,\Mm(\ell+1))-\chi(X,\Mm(\ell))=\chi(X,\Qq(\ell))-\chi(X,\Kk(\ell))\;.
+	\end{align*}
+	But the right-hand side of this is a polynomial in $\ell$. Indeed, $\Kk$ and $\Qq$ are annullated by $X_n$, hence they are direct images of coherent sheaves on $\IP_A^{n-1}$ under the closed embedding $\IP_A^{n-1}\isomorphism V(X_n)\monomorphism \IP_A^n$ and we can apply the induction hypothesis (and before that, we use Corollary~\reff{cor:AffinePushforwardIso} to pull cohomology of $\Kk$ and $\Qq$ back to $\IP_A^{n-1}$). From well-known elementary facts like \cite[Fact~3.1.1\itememph{a}]{alg2} it follows that $\chi(X,\Mm(\ell))$ is a polynomial in $\ell$ as well.
+\end{proof}
+To finish this section, Professor Franke briefly introduces a somewhat different topic.
+\paragraph{Line bundles and Weil divisors on locally Noetherian schemes.} Let $R$ be a local Noetherian normal domain (i.e., a domain which is integrally closed in its field of quotients $K$). Then
+\begin{align}\lbl{eq:IntersectionOfLocalizations}
+	R=\bigcap_{\hoehe(\pp)=1}R_\pp\tag{$*$}\;.
+\end{align}
+The proof of this apparently needs \emph{primary decompositions} and may be found in \cite[Theorem~11.5]{matsumuraCRT}. The $R_\pp$ appearing here are one-dimensional Noetherian local normal domains, hence \emph{discrete valuation rings} by \cite[Theorem~21\itememph{e}]{alg2}.
+
+Now let $X$ be a Noetherian normal connected prescheme (cf.\ \cite[Definition~2.2.2, Definition~2.4.5]{alggeo1}) with generic point $\eta$ (cf.\ \cite[Definition~2.1.3]{alggeo1}) and $K=\Oo_{X,\eta}$\footnote{As usual, Franke gives all necessary information while simultaneously hiding everything essential. Since $X$ is Noetherian, so is its underlying topological space by \cite[Fact~2.2.3\itememph{c}]{alggeo1}. Also, the stalks $\Oo_{X,x}$ are normal, hence, in particular, domains for all $x\in X$. Then $X$ is integral by \cite[Proposition~2.1.4\itememph{d}]{alggeo1}, in particular, irreducible, and thus has a unique generic point $\eta$ by \cite[Fact~2.1.9]{alggeo1}.}. It defines a quasi-coherent sheaf of $\Oo_X$-modules $\Kk$ given by
+\begin{align*}
+	\Kk(U)=\begin{cases}
+		0 & \text{if }U=\emptyset\\
+		K & \text{otherwise}
+	\end{cases}\;.
+\end{align*}
+Let $X_1\subseteq X$ be the subset of codimension $1$ points. There is a function
+\begin{align*}
+	\div\colon \Kk(U)^\times \morphism\bigoplus_{x\in U\cap X_1}\IZ
+\end{align*}
+given by $\div(f)_x=v_x(f)$ when $f\in K$ and $v_x$ is the valuation of the DVR $\Oo_{X,x}$ (whose quotient field is $K$, so it makes sense to put $f$ in there).
+
+By \eqreff{eq:IntersectionOfLocalizations} we have
+\begin{align*}
+	\Oo_X(U)^\times =\ker\bigg(\Kk(U)^\times\morphism[\div]\bigoplus_{x\in U\cap X_1}\IZ\bigg)
+\end{align*}
+for all affine open subsets $U\subseteq X$. Similarly,
+\begin{align*}
+	\Oo_X(U)=\left\{f\in\Kk(U)\st \div(f)\geq 0\right\}\;,
+\end{align*}
+where $(d_x)\in \bigoplus_{x\in U\cap X_1}\IZ$ is considered $\geq 0$ iff $d_x\geq 0$ for all $x\in U\cap X_1$ and $\div(0)\coloneqq\infty$. Let $\Div(X)$ be the group of all formal $\IZ$-linear combinations of elements of $X_1$, i.e., $\Div(X)=\bigoplus_{x\in X_1}\IZ$. For $D\in\Div(X)$ and open subsets $U\subseteq X$ let
+\begin{align*}
+	\Oo_X(D)(U)=\left\{f\in\Kk(U)\st\div(f)+D|_U\geq 0\right\}\;.
+\end{align*}
+When $X$ is locally factorial, $\Oo_X(D)$ is a line bundle on $X$ (for general normal $X$ it is only a coherent sheaf).
 
 \appendix
 \chapter{Appendix -- category theory corner}
