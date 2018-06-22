@@ -2956,7 +2956,7 @@ We derive this from two other lemmas, the first of which is very useful in gener
     \item 
         The underlying topological space of a Noetherian prescheme is Noetherian.
     \item 
-        Let a topological space be called locally Noetherian if the following equivalent conditions hold:
+        Let a topological space be called \defemph{locally Noetherian} if the following equivalent conditions hold:
         \begin{itemize}
         \item[\itememph{\alpha}]
             Any quasi-compact open subset is Noetherian, and it is covered by quasi-compact open subsets.
@@ -3182,9 +3182,9 @@ Recall (not from this lecture but from Algebra~II, so if you do not participate 
 \begin{defi}[Regular and normal prescheme]\lbl{def:regularNormalPrescheme}
     A locally Noetherian prescheme $X$ is called \defemph{regular} (respectively \defemph{normal}) if $\Oo_{X,x}$ is regular (respectively normal) for all $x\in X$.
 \end{defi}
-\begin{rem*}
+\begin{rem}
     \begin{alphanumerate}
-    \item   
+    \item 
         If $X$ is quasi-compact or Jacobson and $\Oo_{X,x}$ regular for closed $x$, then $X$ is regular. Indeed, let $x\in X$, by Proposition~\reff{prop:closedSubsetPoint} (for $X$ quasi-compact) or Fact~\reff{fact:closedPointsDense}\itememph{a} (for $X$ Jacobson), $\ov{\{x\}}$ contains a closed point $y$. Then $\Oo_{X,y}$ is regular as is its localization $\Oo_{X,x}$ (we  use Proposition~\reff{prop:specStalksCorrespondence} to see that $\Oo_{X,x}$ is indeed a localization of $\Oo_{X,y}$) by Corollary~\reff{cor:localizationRegular}.
     \item   
         Note that $\left\{x\in X\st \Oo_{X,x} \text{ singular}\right\}$ may fail to be closed, despite Theorem~\reff{thm:serre}. As you might expect, \emph{singular} means \emph{not regular}.
@@ -3215,7 +3215,7 @@ Recall (not from this lecture but from Algebra~II, so if you do not participate 
         
           By (probably) Serre, $X$ is reduced iff $X$ is $R_0$ and $\Oo_X(U)\morphism \Oo_X(V)$ are injective when $V$ is dense in $U$ (i.e., if $X$ is $S_1$, a yet-to-define, though never defined criterion). By the \emph{normality criterion} of Serre, $X$ is normal iff $X$ is $R_1$ and $\Oo_X(U)\morphism \Oo_X(V)$ are injective when $V$ is dense in $U$ and $\Oo_X(U)\morphism \Oo_X(V)$ is an isomorphism if all irreducible components of $U\setminus V$ are of codimension greater than $1$ (i.e., if $X$ is $S_2$). The $S_k$ are related  to \emph{Cohen-Macaulay}ness (which actually is $S_\infty$).
     \end{alphanumerate}
-\end{rem*}
+\end{rem}
 The following lemma wasn't covered in the lecture, but is perhaps worthwhile to know.
 \begin{lem}\lbl{lem:NoetherianConnectedComponentsOpen}
 	When $R$ is Noetherian, $\Spec R$ has finitely many irreducible components. In particular, any irreducible component of $\Spec R$ is open.
