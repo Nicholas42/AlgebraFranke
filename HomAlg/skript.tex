@@ -350,7 +350,7 @@ Our goal now is to establish some properties of $\Ext$ groups over a ring $R$, n
 		\draw[->] (C) -- (C') node[pos=0.5, left] {$\cdot a$};
 		\draw[->] (D) -- (D') node[pos=0.5, left] {$\cdot a$};
 	\end{diagram*}
-	from which $\Ext_R^\bullet(-,N\morphism[\cdot a]N)$ can be computed, showing that \itememph{c} coincides with \itememph{a}. For \itememph{b}, we do the same but with projective resolutions.
+	from which $\Ext_R^\bullet(-,N\morphism[ a\cdot]N)$ can be computed, showing that \itememph{c} coincides with \itememph{a}. For \itememph{b}, we do the same but with projective resolutions.
 \end{proof}
 \begin{fact}
 	If multiplication by $a$ annullates one of the modules $M$ or $N$, then it annullates $\Ext_R^\bullet(M,N)$.
@@ -457,15 +457,15 @@ And now for the advertised compatibility with localization.
 	\end{align*}
 	The left-hand side is $-\infty$ for $X=0$ and $+\infty$ if no such $\ell$ exists. 
 \end{fact}
-For a cochain complex $C^\bullet$ in $\Aa$ we used the \emph{soft truncation} $\tau_{\leq k}C^\bullet$ given by 
+For a cochain complex $C^\bullet$ in $\Aa$ we used the \emph{soft truncation}\footnote{As opposed to the \emph{hard truncation} in which everything above degree $k$ is just cut off.} $\tau_{\leq k}C^\bullet$ given by 
 \begin{align*}
 	\tau_{\leq k}C^\ell=\begin{cases}
 	C^\ell & \text{if }\ell<k\\
 	Z^k=\ker(C^k\morphism C^{k+1})\simeq \Im(C^{k-1}\morphism C^k) & \text{if }\ell=k\\
 	0 & \text{if }\ell>k
-	\end{cases}\;,
+	\end{cases}\;.
 \end{align*}
-as opposed to the \emph{hard truncation} $\snake{\tau}_{\leq k}C^\bullet$,
+Another way to softly truncate would be $\snake{\tau}_{\leq k}C^\bullet$, given by
 \begin{align*}
 \snake{\tau}_{\leq k}C^\ell=\begin{cases}
 C^\ell & \text{if }\ell\leq k\\
@@ -572,7 +572,7 @@ There is a similar result about completion. If $M$ is an $R$-module and $I$ any 
 \begin{align*}
 	\roof{M}=\limit[k\in\IN] M/I^kM\;. 
 \end{align*}
-When $R$ is Noetherian, $M$ a finitely generated $R$-module and $N\subseteq M$ a submodule, then $N\cap I^kM\supseteq I^{k-c}N$ for $k\geq c$ and a suitable $c$ by the Artin-Rees lemma (cf. \cite[Proposition~3.4.1]{alg2}). It follows that the $I$-adic topology on $N$ is induced from the $I$-adic topology on $M$ and the morphism $\roof{N}\morphism\roof{M}$ corresponding to $N\monomorphism M$ stays injective. Since $\roof{(-)}$ also commutes with forming quotients, $M\mapsto\roof{M}$ is an exact functor on \emph{finitely generated} $R$-modules (a complete proof may be found in \cite[Lemma~7.15]{eisenbudCommAlg}). 
+When $R$ is Noetherian, $M$ a finitely generated $R$-module and $N\subseteq M$ a submodule, then $N\cap I^kM\supseteq I^{k-c}N$ for $k\geq c$ and a suitable $c$ by the Artin--Rees lemma (cf. \cite[Proposition~3.4.1]{alg2}). It follows that the $I$-adic topology on $N$ is induced from the $I$-adic topology on $M$ and the morphism $\roof{N}\morphism\roof{M}$ corresponding to $N\monomorphism M$ stays injective. Since $\roof{(-)}$ also commutes with forming quotients, $M\mapsto\roof{M}$ is an exact functor on \emph{finitely generated} $R$-modules (a complete proof may be found in \cite[Lemma~7.15]{eisenbudCommAlg}). 
 
 When $M$ is finitely generated, $\Ext_R^\bullet(M,-)$ may be calculated using a resolution $F_\bullet \morphism M$ of $M$ by finitely generated free modules $F_i\simeq R^{n_i}$. Then the $\roof{F}_i$ stay free (of the same rank), so $\roof{F}_\bullet\morphism \roof{M}$ is still a free resolution, and moreover
 \begin{align*}
@@ -657,7 +657,7 @@ where $P_\bullet \morphism N$ is any projective resolution.
 		is another long exact sequence.
 	\end{alphanumerate}
 \end{rem*}
-\begin{fact}
+\begin{fact}\lbl{fact:TorProj=0}
 	If $i>0$ is positive and one of $M$ or $N$ is projective, then $\Tor_i^R(M,N)=0$.
 \end{fact}
 \begin{proof}
@@ -673,7 +673,7 @@ It follows that $\Tor_\bullet^R(-,N)$ for fixed $N$ has the properties character
 	\end{align*}
 	is the identity.
 \end{prop}
-\begin{example}
+\begin{example}\lbl{ex:TorR/aR}
 	Let $a$ be an element of $R$ which is not a zero divisor. Then $0\morphism R\morphism[a\cdot ]R\morphism R/aR\morphism 0$ is a projective resolution of $R/aR$ which may be used to calculate $\Tor_i^R(M,R/aR)$. We obtain
 	\begin{align*}
 		\Tor_i^R(M,R/aR)\simeq\begin{cases}
@@ -701,7 +701,7 @@ When $N$ is also finitely generated, this clearly shows
 	When $R$ is Noetherian  and $M,N$ finitely generated $R$-modules, then the $\Tor_i^R(M,N)$ are finitely generated $R$-modules as well.
 \end{fact}
 And we need compatibility with localization of course.
-\begin{fact}
+\begin{fact}\lbl{fact:TorLocal}
 	Let $M$ and $N$ are modules over a ring $R$ and $S$ a multiplicative subset of $R$. Then there are unique isomorphisms
 	\begin{align*}
 		\Tor_\bullet^R(M,N)_S\simeq \Tor_\bullet^R(M,N_S)\simeq \Tor_\bullet^R(M_S,N)\simeq \Tor_\bullet^R(M_S,N_S)\simeq \Tor_\bullet^{R_S}(M_S,N_S)
@@ -723,14 +723,14 @@ The functor $M\otimes_R-$ is compatible with directed (or filtered) colimits (wh
 	M\otimes_R\colimit[\lambda\in\Lambda]N_\lambda&\isomorphism \colimit[\lambda\in\Lambda]M\otimes_RN_\lambda\\
 	m\otimes\left(\text{image of }n_\lambda\text{ in }\colimit N_\lambda\right)&\longmapsto \left(\text{image of }m\otimes n_\lambda\text{ in }\colimit M\otimes_RN_\lambda\right)\;.
 \end{align*}
-Also recall that direct limits are exact\footnote{To see they commute with kernels you can use the explicit construction, commutativity with cokernels follows from the more general fact of cokernels commuting with cokernels, cf.\ \cite[Lemma~A.1.4]{alggeo2}.}, hence commute with taking homology. We thus obtain
+Also recall that direct colimits are exact\footnote{To see they commute with kernels you can use the explicit construction, commutativity with cokernels follows from the more general fact of colimits commuting with colimits, cf.\ \cite[Lemma~A.1.4]{alggeo2}.}, hence commute with taking homology. We thus obtain
 \begin{fact}\lbl{fact:TorCommutesWithColims}
 	Torsion products are compatible with direct colimits. That is, for a directed system $(N_\lambda)_{\lambda\in\Lambda}$ of $R$-modules we have an isomorphism
 	\begin{align*}
 		\Tor_\bullet^R\bigg(M,\colimit[\lambda\in\Lambda]N_\lambda\bigg)\lisomorphism \colimit[\lambda\in\Lambda]\Tor_\bullet^R(M,N_\lambda)\;.
 	\end{align*}
 \end{fact}
-\begin{prop}
+\begin{prop}\lbl{prop:TorVanishing}
 	For an $R$-module $M$ the following conditions are equivalent.
 	\begin{alphanumerate}
 		\item The functor $M\otimes _R-$ is exact.
@@ -779,7 +779,7 @@ For flatness, there is a criterion similar to Baer's (Proposition~\reff{prop:Inj
 	\end{diagram*}
 	in which the top row is exact. This shows that $I\otimes_RM\morphism I\cdot M$ is injective iff $0=\Tor_1^R(R/I,M)$ and $\Tor_1^R(R/I,M)\simeq\Tor_1^R(M,R/I)$ by Proposition~\reff{prop:TorMN=TorNM}, proving the desired equivalence.
 	
-	And finally \itememph{b} $\Rightarrow$ \itememph{a}. We show that Proposition~\reff{prop:flatConditions}\itememph{e} is fulfilled using induction on the number $n$ of generators of $N$. When $n=0$, then $N=0$ and the assertion is trivial. Now assume $n>0$ and the assertion is valid for fewer that $n$ generators. Let $N'\subseteq N$ be the submodule generated by the first $n-1$ generators. Then $N''=N/N'$ is generated by the (image of the) remaining generator, hence isomorphic to $R/I$ for the ideal $I=\Ann_R(N'')$. We get
+	And finally \itememph{b} $\Rightarrow$ \itememph{a}. We show that Proposition~\reff{prop:TorVanishing}\itememph{e} is fulfilled using induction on the number $n$ of generators of $N$. When $n=0$, then $N=0$ and the assertion is trivial. Now assume $n>0$ and the assertion is valid for fewer that $n$ generators. Let $N'\subseteq N$ be the submodule generated by the first $n-1$ generators. Then $N''=N/N'$ is generated by the (image of the) remaining generator, hence isomorphic to $R/I$ for the ideal $I=\Ann_R(N'')$. We get
 	\begin{align*}
 		0=\Tor_1^R(M,N')\morphism\Tor_1^R(M,N)\morphism\Tor_1^R(M,N'')=0
 	\end{align*}
@@ -790,6 +790,205 @@ For flatness, there is a criterion similar to Baer's (Proposition~\reff{prop:Inj
 \begin{rem*}
 	As the proof shows, \itememph{b} $\Rightarrow$ \itememph{c} $\Rightarrow$ \itememph{d} already holds when $I$ is fixed.
 \end{rem*}
+\begin{cor}\lbl{cor:DedekindFlat}
+	A module $M$ over a Dedekind domain $R$ is flat iff it is torsion-free.
+\end{cor}
+\begin{proof}
+	When $R$ is a PID, by Proposition~\reff{prop:flatConditions}\itememph{b} all we need to check is that $\Tor_1^R(M,R/aR)=0$ for all $a\in R$. By Example~\reff{ex:TorR/aR} this is equivalent to $M$ being torsion-free. When $R$ is an arbitrary Dedekind domain, we may check for flatness locally (by the upcoming Fact~\reff{fact:flatVeryLocal}\itememph{e}) and the $R_\pp$ are all PIDs for $\pp\in \Spec R$. So $M$ is flat iff all its localizations $M_\pp$ are torsion-free, and just like in the proof of Corollary~\reff{cor:DedekindInjective} this holds iff $M$ is torsion-free.
+\end{proof}
+\begin{rem*}
+	In particular, the proof shows that flat modules over arbitrary rings are always torsion-free.
+\end{rem*}
+\begin{example}\lbl{ex:projFlat}
+	Every projective module is flat (Fact~\reff{fact:TorProj=0} and Proposition~\reff{prop:flatConditions}\itememph{b}).
+\end{example}
+\begin{fact}\lbl{fact:flatVeryLocal}
+	For a module $M$ over an arbitrary ring the following conditions are equivalent.
+	\begin{alphanumerate}
+		\item $M$ is flat.
+		\item For any multiplicative subset $S\subseteq R$, $M_S$ is a flat $R$-module.
+		\item For any multiplicative subset $S\subseteq R$, $M_S$ is a flat $R_S$-module.
+		\item For every maximal ideal $\mm$, $M_\mm$ is a flat $R$-module.
+		\item For every maximal ideal $\mm$, $M_\mm$ is a flat $R_\mm$-module.
+	\end{alphanumerate}
+\end{fact}
+\begin{proof}
+	The implications \itememph{a} $\Rightarrow$ \itememph{b}, \itememph{c} follow from Proposition~\reff{prop:flatConditions}\itememph{b} and Fact~\reff{fact:TorLocal}. Moreover the implications \itememph{b} $\Rightarrow$ \itememph{d} as well as \itememph{c} $\Rightarrow$ \itememph{e} are trivial.
+	
+	Now if any of \itememph{d} or \itememph{e} holds and $I\subseteq R$ is an ideal, then
+	\begin{align*}
+		\Tor_1^R(M,R/I)_\mm\simeq \Tor_1^R(M_\mm,R/I)\simeq \Tor_1^{R_\mm}(M_\mm,R_\mm/I_\mm)=0
+	\end{align*}
+	for every maximal ideal $\mm$ of $R$ by Fact~\reff{fact:TorLocal}. It's a well-known fact that an $R$-module $N$ vanishes iff all its localizations $N_\mm$ at maximal ideals vanish. Hence $\Tor_1^R(M,R/I)=0$, showing that $M$ is flat (i.e., \itememph{a} holds) by Proposition~\reff{prop:flatConditions}\itememph{b}.
+\end{proof}
+\begin{example}
+	Over a Dedekind domain $R$ with quotient field $K$, the modules $K$, any completion of $R$ and $\prod_{i=1}^{\infty}R$ are flat (indeed, they're torsion-free and we have Corollary~\reff{cor:DedekindFlat}), but usually not projective.
+\end{example}
+\begin{example}
+	If $S\subseteq R$ is a multiplicative subset, $R_S$ is a flat $R$-module. Indeed, this follows from Fact~\reff{fact:flatVeryLocal}\itememph{b} since $R$ is flat over itself. $R_S$ being flat also follows from the localization functor being exact.
+\end{example}
+\begin{example}\lbl{ex:CompletionFlat}
+	The completion $\roof{R}$ of a Noetherian ring $R$ with respect to any ideal $I$ is a flat $R$-module. When $M$ is a finitely generated flat $R$-module, its completion $\roof{M}$ is a flat $\roof{R}$-module.
+\end{example}
+\begin{proof}
+	For finitely generated $R$-modules $M$ we have an isomorphism $M\otimes_R\roof{R}\isomorphism \roof{R}$. Indeed, this is true when $M=R$ and both sides commute with taking cokernels and finite direct sums, since completion is exact on finitely generated $R$-modules (cf.\ \cite[Lemma~7.15]{eisenbudCommAlg}). Thus $-\otimes_R\roof{R}$ is an exact functor on finitely generated $R$-modules. Applying this to any finitely generated free resolution of $R/I$ shows $\Tor_1^R(\roof{R},R/I)=0$ for any ideal $I\subseteq R$, so $\roof{R}$ is flat by Proposition~\reff{prop:flatConditions}\itememph{b}.
+	
+	Now let $M$ be a finitely generated flat $R$-module. Since $\roof{M}\simeq M\otimes_R\roof{R}$, the functor $-\otimes_{\roof{R}}\roof{M}$ is exact because both tensoring by $M$ and $\roof{R}$ is exact. Thus $\roof{M}$ stays flat\footnote{And more generally, tensor products of flat modules are clearly flat again.}.
+\end{proof}
+\begin{example}\lbl{ex:productOfFlatsIsFlat}
+	The product of arbitrarily many flat modules over a Noetherian ring is flat again.
+\end{example}
+\begin{proof}
+	Let $(M_j)_{j\in J}$ be a family of $R$-modules. Let $I$ be any ideal of $R$ and $0\lmorphism R/I\lmorphism R^{n_0}\lmorphism R^{n_1}\lmorphism\ldots$ any free resolution by finitely generated free modules, then
+	\begin{align*}
+		\Tor_p^R\bigg(\prod_{j\in J}M_j,R/I\bigg)&\simeq H_p\bigg(\prod_{j\in J}M_j^{n_0}\lmorphism\prod_{j\in J}M_j^{n_1}\lmorphism\ldots \bigg)\\
+		&\simeq \prod_{j\in J} H_p\left(M_j^{n_0}\lmorphism M_j^{n_0}\lmorphism\ldots\right)
+	\end{align*}
+	and the right-hand side vanishes by Proposition~\reff{prop:TorVanishing} when $p>0$ and the $M_j$ are flat. Hence $\prod_{j\in J}M_j$ is flat by Proposition~\reff{prop:flatConditions}\itememph{b}.
+\end{proof}
+\begin{example}\lbl{ex:coprodOfFlatsIsFlat}
+	The coproduct of arbitrarily many flat modules over any ring is flat. Indeed, the $\bigoplus_{j\in J}-$ functor is exact and commutes with tensor products, hence with $\Tor$.
+\end{example}
+\begin{fact}\lbl{fact:flatDim}
+	For any $R$-module $M$, the following are equivalent.
+	\begin{alphanumerate}
+		\item $\Tor_p^R(M,T)=0$ when $p>d$ for any $R$-module $T$.
+		\item $\Tor_{d+1}^R(M,T)=0$ for any $R$-module $T$.
+		\item $\Tor_p^R(M,T)=0$ when $p>d$ for any finitely generated $R$-module $T$.
+		\item $\Tor_{d+1}^R(M,T)=0$ for any finitely generated $R$-module $T$.		
+		\item $\Tor_p^R(M,R/I)=0$ when $p>d$ for any ideal $I\subseteq R$.
+		\item $\Tor_{d+1}^R(M,R/I)=0$ for any any ideal $I\subseteq R$.
+	\end{alphanumerate}
+	Moreover, when $R$ is Noetherian, it is enough to have \itememph{e} or \itememph{f} for prime ideals.
+\end{fact}
+\begin{proof}
+	Clearly, it is enough to show that \itememph{f} $\Rightarrow$ \itememph{a}. Suppose that \itememph{f} holds (resp.\ the even weaker prime ideal condition when $R$ is Noetherian). We can use the inductive argument from the proof of Proposition~\reff{prop:flatConditions} to show $\Tor_{d+1}(M,T)=0$ for every finitely generated $R$-module $T$. Since every $R$-module $T$ is the direct colimit of its finitely generated submodules, Fact~\reff{fact:TorCommutesWithColims} allows us to drop the finitely generatedness of $T$, i.e., we obtain \itememph{b}.
+	
+	Now assume that for some $p>d$, vanishing of $\Tor_p^R(M,-)$ has been shown. Let $T$ be any $R$-module. Choose an epimorphism $F\epimorphism[\pi]T$ for some free $R$-module $F$. From the long exact $\Tor$ sequence associated to $0\morphism \ker\pi\morphism F\morphism T\morphism 0$ we obtain
+	\begin{align*}
+		0=\Tor_{p+1}^R(M,F)\morphism\Tor_{p+1}^R(M,T)\morphism\Tor_p^R(M,\ker \pi)=0\;,
+	\end{align*}
+	hence $\Tor_{p+1}^R(M,T)=0$. This shows \itememph{a}.
+\end{proof}
+\begin{defi}
+	The largest natural number $d$ such that the equivalent properties from Fact~\reff{fact:flatDim} fail (or $+\infty$ if no such $d$ exists, or $-\infty$, if $M=0$) is called the \defemph{flat dimension} $\fdim_R(M)$ of $M$.
+\end{defi}
+\begin{fact}\lbl{fact:flatDimLocal}
+	Let $M$ be a module over an arbitrary ring $R$. Then
+	\begin{alphanumerate}
+		\item $\fdim_R(M)\leq \pdim_R(M)$.
+		\item $\fdim_R(M)=\sup\limits_{\mm\in\mSpec R}\fdim_{R_\mm}M_\mm=\sup\limits_{\mm\in\mSpec R}\fdim_RM_\mm$.
+		\item $\fdim_R(M)=\sup\limits_{\pp\in\Spec R}\fdim_{R_\pp}M_\pp=\sup\limits_{\pp\in\Spec R}\fdim_RM_\pp$.
+	\end{alphanumerate}
+\end{fact}
+\begin{proof}
+	When $\pdim_R(M)=\ell$, then $M$ has a projective resolution of length $\ell$ by Fact~\reff{fact:projDim}. Using this resolution to compute $\Tor_\bullet^R(M,-)$ we see that $\Tor_p^R(M,-)=0$ for $p>d$, hence $\fdim_R(M)\leq \ell$. This shows \itememph{a}.
+	
+	To show \itememph{b} and \itememph{c}, use Fact~\reff{fact:TorLocal} and do the same as in the proof of Corollary~\reff{cor:projDimLocal}.
+\end{proof}
+\begin{rem*}
+	Examples~\reff{ex:CompletionFlat}, \reff{ex:productOfFlatsIsFlat}, and \reff{ex:coprodOfFlatsIsFlat} remain true for the class of $R$-modules of flat dimension $\leq d$. In fact, we can basically copy the proofs (modulo using the upcoming Proposition~\reff{prop:TorCompletion}).
+\end{rem*}
+\begin{prop}\lbl{prop:flatResolution}
+	For an $R$-module $M$, the following are equivalent.
+	\begin{alphanumerate}
+		\item $\fdim_R(M)\leq d$.
+		\item $M$ has a \defemph{flat resolution} of length $d$, i.e., an exact sequence
+		\begin{align}\lbl{eq:flatResolution}
+			0\lmorphism M\lmorphism F_0\lmorphism \ldots\lmorphism F_d\lmorphism 0
+		\end{align}
+		with flat $F_i$. When $M$ is finitely generated and $R$ is Noetherian, we may assume that the $F_i$ are finitely generated as well.
+		\item For any sequence like \eqreff{eq:flatResolution} in which $F_0,\ldots,F_{d-1}$ are flat, $F_d$ is flat as well.
+	\end{alphanumerate}
+\end{prop}
+\begin{proof}
+	Put $B_i=\Im(F_{i+1}\morphism F_i)=\ker(F_i\morphism F_{i-1})$ and $B_{-1}\coloneqq M$. From \eqreff{eq:flatResolution} we get short exact sequences $0\morphism B_i\morphism F_i\morphism B_{i-1}\morphism 0$ for $i=0,\ldots,d-1$. Thus
+	\begin{align*}
+		\Tor_{p+1}^R(F_i,T)\morphism \Tor_{p+1}^R(B_{i-1},T)\morphism \Tor_p^R(B_i,T)\morphism\Tor_p^R(F_i,T)
+	\end{align*}
+	is exact for any $R$-module $T$ by the long exact $\Tor$ sequence. If $F_1,\ldots,F_{d-1}$ in \eqreff{eq:flatResolution} are flat, the outer terms vanish by Proposition~\reff{prop:TorVanishing}, which shows $\Tor_{p+1}^R(B_{i-1},T)\simeq \Tor_p^R(B_i,T)$. Since $F_d\simeq B_{d-1}$, we get thus get $\Tor_p^R(F_d,T)\simeq \Tor_{p+d}^R(M,T)$ for any test module $T$. In particular, $\Tor_1^R(F_d,-)=0$ iff $\Tor_{d+1}^R(M,-)=0$.
+	
+	Note that a resolution like \eqreff{eq:flatResolution} in which $F_0,\ldots,F_{d-1}$ are flat always exists (e.g., soft-truncate any free resolution of $M$). In view of Fact~\reff{fact:flatDim}\itememph{b} and Proposition~\reff{prop:TorVanishing}\itememph{d}, equivalence of \itememph{a}, \itememph{b}, and \itememph{c} is easily deduced.
+\end{proof}
+
+Looking at the above proof again, we find
+\begin{fact}
+	If $0\morphism N\morphism F\morphism M\morphism 0$ is a short exact sequence of $R$-modules and $F$ flat, then 
+	\begin{align*}
+		\fdim_R(N)=\max\{\fdim_R(M)-1,0\}\;.
+	\end{align*}
+\end{fact}
+And finally we prove that $\Tor$ -- for finitely generated modules over Noetherian rings -- is compatible with completions.
+\begin{prop}\lbl{prop:TorCompletion}
+	Let $\roof{(-)}$ denote the completion with respect to an arbitrary ideal $I$ in a Noetherian ring $R$. For all finitely generated $R$-modules $M,N$,
+	\begin{align*}
+		\Tor_i^{\roof{R}}(\roof{M},\roof{N})\simeq \Tor_i^R(M,N)\roof{\phantom{)}}\;.
+	\end{align*}
+\end{prop}
+\begin{proof}
+	Choose a finitely generated free resolution $0\lmorphism N\lmorphism R^{n_0}\lmorphism R^{n_1}\lmorphism\ldots$ of $N$. Then $0\lmorphism \roof{N}\lmorphism \roof{R}^{n_0}\lmorphism \roof{R}^{n_1}\lmorphism\ldots$ is a free resolution of $\roof{N}$ by exactness of $\roof{(-)}$ on finitely generated $R$-modules. Thus
+	\begin{align*}
+		\Tor_i^{\roof{R}}(\roof{M},\roof{N})&\simeq H_i\left(\roof{M}^{n_0}\lmorphism \roof{M}^{n_1}\lmorphism\ldots\right)\simeq  H_i\left(M^{n_0}\lmorphism M^{n_1}\lmorphism\ldots\right)\roof{\phantom{)}}\simeq \Tor_i^R(M,N)\roof{\phantom{)}}\;,
+	\end{align*}
+	since $\roof{(-)}$ commutes with (finitely generated) homology by exactness on finitely generated $R$-modules.
+\end{proof}
+\section{The case of finitely generated modules over Noetherian rings}
+\begin{prop}\lbl{prop:FreeProjFlatTor}
+	Let $P$ be a finitely generated module over a Noetherian local ring $R$ with maximal ideal $\mm$ and residue field $k=R/\mm$. Then the following are equivalent.
+	\begin{alphanumerate}
+		\item $P$ is free.
+		\item $P$ is projective.
+		\item $P$ is flat.
+		\item $\Tor_1^R(P,k)=0$.
+		\item $\Tor_1^{\roof{R}}(\roof{P},k)=0$, where $\roof{(-)}$ denotes the completion with respect to $\mm$.
+	\end{alphanumerate}
+\end{prop}
+\begin{proof}
+	The implications \itememph{a} $\Rightarrow$ \itememph{b} $\Rightarrow$ \itememph{c} $\Rightarrow$ \itememph{d} are pretty much clear (every free module is projective, and we have Example~\reff{ex:projFlat} and Proposition~\reff{prop:TorVanishing}\itememph{d}). To see \itememph{d} $\Leftrightarrow$ \itememph{e}, note that $\roof{R}$ is again a local ring with residue field $k$ (this is quite easy to see; also, cf.\ \cite[p.~192]{eisenbudCommAlg}). Recall that we have seen in the proof of Corollary~\reff{cor:projDimCompletion} that an $R$-module vanishes iff its completion (at any ideal $I\subseteq R$) does, provided $R$ is local. Then Proposition~\reff{prop:TorCompletion} does the job.
+	
+	Let's show \itememph{d} $\Rightarrow$ \itememph{a}. Choose elements $p_1,\ldots,p_n\in P$ whose images in $P/\mm P\simeq P\otimes_Rk$ form a basis of this $k$-vector space. By Nakayama's lemma, $p_1,\ldots,p_n$ also generate $P$. Sending the standard basis vectors $e_i$ to $p_i$ thus gives a surjection $R^n\epimorphism[\pi]P$ which becomes an isomorphism when tensored with $k$. From \itememph{d} and the long exact $\Tor$ sequence we obtain
+	\begin{align*}
+		0=\Tor_1^R(P,k)\morphism \ker(\pi)\otimes_Rk\morphism k^n\morphism P\otimes_Rk\morphism 0\;.
+	\end{align*} 
+	Since $k^n\morphism P\otimes_Rk$ is an isomorphism, this shows $\ker(\pi)\otimes_Rk=0$, hence $\ker(\pi)=0$ by Nakayama's lemma. We find that $\pi$ is already an isomorphism and $P\simeq R^n$ is free.
+\end{proof}
+\begin{cor}\lbl{cor:pdim=fdim}
+	For a finitely generated module over a Noetherian local ring $R$ with maximal ideal $\mm$ and residue field $k$, we have
+	\begin{align*}
+		\pdim_R(M)=\fdim_R(M)=\sup\left\{d\in\IN_0\st \Tor_{d+1}^R(M,k)\neq 0\right\}\;,
+	\end{align*}
+	except when $N=0$, then of course $\fdim_R(N)=-\infty$.
+\end{cor}
+\begin{proof}
+	The first equality is immediate from Fact~\reff{fact:projDim} and Proposition~\reff{prop:flatResolution}\itememph{b} since flat and projective is the same for finitely generated modules over Noetherian local rings by Proposition~\reff{prop:FreeProjFlatTor}. The second equality follows by looking over the proof of Proposition~\reff{prop:flatResolution} again, since in our situation it suffices to check $\Tor_1^R(F,k)=0$ to show flatness of some finitely generated $R$-module $F$ by Proposition~\reff{prop:FreeProjFlatTor}\itememph{d}.
+\end{proof}
+\begin{cor}
+	For any module $M$ over a Noetherian local ring $R$, $\fdim_R(M)\leq \fdim_R(k)$.
+\end{cor}
+\begin{proof}
+	By Proposition~\reff{prop:TorMN=TorNM} and Fact~\reff{fact:flatDim}\itememph{d}, $\fdim_R(k)$ is smallest integer $d$ such that $0=\Tor_1^R(k,M)\simeq \Tor_1^R(M,k)$ for all finitely generated $R$-modules $M$. Then $\fdim_R(M)\leq \fdim_R(k)$ follows immediately from Corollary~\reff{cor:pdim=fdim}. If $M$ is arbitrary and $p>\fdim_R(k)$, we thus have $p>\fdim_R(R/I)$ as well for all ideals $I\subseteq R$. Therefore $\Tor_p^R(M,R/I)\simeq \Tor_1^R(R/I,M)=0$. Fact~\reff{fact:flatDim}\itememph{e} then shows $\fdim_R(M)<p$.
+\end{proof}
+\begin{cor}
+	If $M$ is a finitely generated module over a Noetherian ring $R$ (local or not), then $\pdim_R(M)=\fdim_R(M)$.
+\end{cor}
+\begin{proof}
+	Follows from Fact~\reff{fact:flatDimLocal} and Corollary~\reff{cor:pdim=fdim}.
+\end{proof}
+\begin{prop}
+	For a finitely generated module $M$ over a Noetherian ring $R$ the following are equivalent.
+	\begin{alphanumerate}
+		\item $M$ is projective.
+		\item $M$ is flat.
+		\item It is possible to cover $\Spec R$ by open subsets $\Spec R_{f}$ for $f\in R$ such that $M_f$ is a free $R_f$-module.
+		\item The sheaf of modules $\snake{M}$ on $\Spec R$ (cf.\ \cite[Definition~1.4.1]{alggeo1}) is a vector bundle, i.e., a locally free $\Oo_{\Spec R}$-module.
+		\item $M_\mm$ is free for any maximal ideal $\mm$ of $R$.
+		\item $M_\pp$ is free for any $\pp\in\Spec R$.
+	\end{alphanumerate}
+\end{prop}
+\begin{proof}
+	By Corollary~\reff{cor:projDimLocal}, $M$ is projective iff $M_\mm$ is projective for all maximal ideals $\mm$ of $R$ iff $M_\pp$ is projective for all $\pp\in\Spec R$. The same holds for flatness by Fact~\reff{fact:flatDimLocal}\itememph{b} and \itememph{c}. By Proposisition~\reff{prop:FreeProjFlatTor}, we see that \itememph{a}, \itememph{b},\itememph{e}, and \itememph{f} are equivalent. Equivalence of \itememph{c} and \itememph{d} is pretty much the definition of vector bundles (using the fact that the $\Spec R_f\simeq \Spec R\setminus V(f)$ form a topology base of $\Spec R$ and \cite[Proposition~1.4.1]{alggeo1}). The implication \itememph{c} $\Rightarrow$ \itememph{f} is trivial and \itememph{f} $\Rightarrow$ \itememph{c} is a Nakayama argument that can be found in \cite[Corollary~1.5.1]{alg2}.
+\end{proof}
+
 
 \appendix
 \chapter{Appendix -- category theory corner}
