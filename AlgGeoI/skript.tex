@@ -51,15 +51,15 @@ Let it be said that the first three recommendations are from Professor Franke wh
 \chapter{Varieties and Schemes}\lbl{ch:varietiesAndSchemes}
 \section{Prevarieties and varieties}
 \begin{defi}[Sheaf and presheaf]\lbl{def:preSheaf}
-    A \defemph{presheaf $\Ff$ of rings} on a topological space $X$ associates 
+    A \defemph{presheaf $\Ff$ of groups/rings/sets} on a topological space $X$ associates 
     \begin{itemize}
-    	\item to any open subset $U\subseteq X$ a ring $\Ff(U)$ called the \emph{ring of sections} of $\Ff$ on $U$
-    	\item and to any inclusion of open subsets $V\subseteq U$ a ring homomorphism 
+    	\item to any open subset $U\subseteq X$ a group/ring/set $\Ff(U)$ called the \emph{group/ring/set of sections} of $\Ff$ on $U$
+    	\item and to any inclusion of open subsets $V\subseteq U$ a group/ring homomorphism resp.\ a map of sets
     	\begin{align*}
 	    	(-)|_V\colon \Ff(U) &\longto \Ff(V)
     	\end{align*}
     	such that $f|_V = f$ for all $f\in\Ff(V)$ and $(f|_V)|_W = f|_W$ for any inclusion $W\subseteq V\subseteq U$ of open subsets.
-    \end{itemize}  Note that while this notation (intentionally) reminds of the restriction of functions, behaves similarly and often the restriction is indeed used for this homomorphism, the elements of the rings $\Ff(U)$ are not always functions. 
+    \end{itemize}  Note that while this notation (intentionally) reminds of the restriction of functions, behaves similarly and often the restriction is indeed used for this homomorphism, the elements of $\Ff(U)$ are not always functions. 
     
     A so defined presheaf is furthermore a \defemph{sheaf} if additionally, the following condition, called \emph{sheaf axiom}, holds:
     \begin{quote}\lbl{sheafAxiom}
@@ -70,16 +70,14 @@ Let it be said that the first three recommendations are from Professor Franke wh
         \end{align*}
         is bijective. 
     \end{quote}
+    Elements of $\Ff(U)$ are called \defemph{sections}, elements of $\Rr(X)$ are called \defemph{global sections}.
 \end{defi}
 
 \begin{rem}
-    When $U=\emptyset$ one can take $I=\emptyset$ and obtains $\Ff(\emptyset) = 0$ (the respective zero object).
+    For sheaves of groups/rings and $U=\emptyset$ one can take $I=\emptyset$ and obtains $\Ff(\emptyset) = 0$ (the respective zero object). If $\Ff$ is a sheaf of sets, $\Ff(\emptyset)=*$ is a singleton by similar reasons.
 \end{rem}
 \begin{rem}
     Sheaves of groups, sets, etc. are defined in a similar way. A sheaf of rings $\Rr$ on $X$ defines two sheaves of groups on $X$, namely $U\mapsto (\Rr(U), +)$ and $U\mapsto (\Rr(U)^\times, \cdot)$.
-\end{rem}
-\begin{rem}
-    Elements of $\Rr(U)$ are called \emph{sections}, elements of $\Rr(X)$ are called \emph{global sections}.
 \end{rem}
 \begin{example}
 	    Let $R$ be a ring. The sheaf $\Ff_X$ of $R$-valued functions on $X$ associates to any open subset $U\subseteq X$ the ring of $R$-valued functions $f\colon U \to R$ with the inclusion morphism being the restriction of functions to subsets.
@@ -129,6 +127,8 @@ Let it be said that the first three recommendations are from Professor Franke wh
 	        \frac{x_{i-1}}{x_i},\frac{x_{i+1}}{x_i},\ldots,\frac{x_n}{x_i}\right)\;.
 	    \end{align*}
 	    This is a homeomorphism and identifies the structure sheaves with each other. Hence, for any irreducible closed subset $A\subseteq \IP^n(k)$ such that $Y\coloneqq A\cap(\IP^n(k)\setminus V(X_i)) \neq \emptyset$, $(Y, \Oo_A|_Y) $ is isomorphic to an affine algebraic variety. Thus, quasi-projective algebraic varieties (i.e., $(U,\Oo_U)$ where $U\subseteq \IP^n(k)$ is a non-empty open subset of an irreducible closed subset) are algebraic prevarieties in the sense of Definition~\reff{def:preVarieties}.
+	    
+	    For more about projective spaces and projective varieties, check out our \href{https://github.com/Nicholas42/AlgebraFranke/tree/master/AlgebraII}{\emph{Algebra II lecture notes}} \cite[Chapter 2]{alg2}.
 \end{example}
 \begin{varthm}{example}\lbl{ex:openSubsetsArePrevarieties}
  When $X$ is prevariety in the sense of Definition~\reff{def:preVarieties} and $U\subseteq X$ is open and $U\neq \emptyset$, then $(U,\Oo_X|_U)$ is a prevariety. Note that any non-empty open subset of an irreducible set is necessarily irreducible as well, so irreducibility of $U$ is not required as an extra condition.
@@ -142,15 +142,7 @@ Let it be said that the first three recommendations are from Professor Franke wh
 	    \text{and } \phi\in \Oo_X(U)\text{ such that } f(y) = \phi(y)\ \forall y\in U\cap W
     \end{array}\right\}\;.
  \end{align*}
- Then one may check that $(A,\Oo_A)$ is a prevariety. Note that $\Oo_A$ is \emph{not} given by the restriction $\Oo_X|_A$ (which is only defined for open subsets $U\subseteq X$ anyway). If one prefers a more functorial definition of $\Oo_A$, the following will do: For each open subset $U\subseteq X$, let 
- \begin{align*}
- 	\Ii(U)=\left\{\phi\in\Oo_X(U)\st \phi\text{ lies in the maximal ideal of }\Oo_{A,a}\ \forall a\in U\cap A\right\}
- \end{align*}
- (the \emph{stalk} $\Oo_{A,a}$ is defined in \cite[Definition 2.2.5]{alg1} or, for arbitrary presheaves, in Definition~\reff{def:stalk}). Then
- \begin{align*}
- 	\Oo_A(W)=\colimit[U] \Oo_X(U)/\Ii(U)\;,
- \end{align*}
-	where the colimit is taken over all open subsets $U\subseteq X$ such that $U\cap A=W$.
+ Then one may check that $(A,\Oo_A)$ is a prevariety. Note that $\Oo_A$ is \emph{not} given by the restriction $\Oo_X|_A$ (which is only defined for open subsets $U\subseteq X$ anyway). Instead, there is a \emph{sheaf of ideals} $\Ii\subseteq \Oo_X$ (we will encounter this notion in Definition~\reff{def:sheafOfModules}) such that $\Oo_{A,a}=\Oo_{X,a}/\Ii_a$ for all $a\in A$ (the \emph{stalks} $\Oo_{A,a}$, $\Oo_{X,a}$, and $\Ii_a$ are defined in \cite[Definition 2.2.5]{alg1} or, for arbitrary presheaves, in Definition~\reff{def:stalk}). This also foreshadows Corollary~\reff{cor:closedSubpreschemes}.
 \end{varthm}
 
 \begin{rem*}
@@ -332,7 +324,7 @@ This motivates the following definition of an \emph{algebraic variety} being a p
             for every $y\in U$, there are an open neighbourhood $V$ of $y$ in $X$ and $\gamma\in \Gg(V)$ such that $V\subseteq U$ and $V\in\Bb$ and such that $g_x =(V,\gamma)/_\sim$ for all $x\in V$.
         \end{quote}
       \item 
-        It is easy to see that $\Hh=\Gg^\sh$ satisfies the sheaf axiom: If $U = \bigcup_{i\in I} U_i$ is an open cover and $g^{(i)} = \big(g^{(i)}_x\big)_{x\in U_i}\in \Hh(U_i)$ as on the right-hand side of the sheaf axiom, define $g\in \Hh(U)$ by $g_x = g_x^{(i)}$ where $i$ is chosen such that $x\in U_i$. This depends on $x$ only. It is easy to see that indeed $g\in \Hh(U)$ and that this $g$ is the only element of $\Hh(U)$ with $g|_{U_i} = g_i$ for all $i\in I$.
+        It is easy to see that $\Hh=\Gg^\sh$ satisfies the sheaf axiom: If $U = \bigcup_{i\in I} U_i$ is an open cover and $g^{(i)} = (g^{(i)}_x)_{x\in U_i}\in \Hh(U_i)$ as on the right-hand side of the sheaf axiom, define $g\in \Hh(U)$ by $g_x = g_x^{(i)}$ where $i$ is chosen such that $x\in U_i$. This depends on $x$ only. It is easy to see that indeed $g\in \Hh(U)$ and that this $g$ is the only element of $\Hh(U)$ with $g|_{U_i} = g_i$ for all $i\in I$.
       \item
         It is easy to see that for every $x\in X$, $\Gg\to \Gg_x$ is a functor from the category of presheaves to the respective target category, provided that the colimits occurring in the definition of $\Gg_x$ exist in that category. Moreover $(-)^\sh$ is a functor from the category of presheaves with values in sets, groups, or rings to the respective category of sheaves.
     \end{alphanumerate}
@@ -747,9 +739,7 @@ of presheaves on $\Bb$.
     \end{alphanumerate}
 \end{fact}
 \begin{proof}
-	\itememph{a} is just \itememph{\alpha} from Definition~\reff{def:localMorphisms}\itememph{b}, in case you didn't notice.
-	
-	Part \itememph{b} is immediately follows from the fact that $\Oo_{Z,z}\morphism[g^*]\Oo_{Y,y}\morphism[f^*]\Oo_{X,x}$ equals $\Oo_{Z,z}\morphism[(gf)^*]\Oo_{X,x}$ by Remark~\reff{rem:pullbackthingyAtStalks}.
+	\itememph{a} is just \itememph{\alpha} from Definition~\reff{def:localMorphisms}\itememph{b}, in case you didn't notice. And part \itememph{b} is immediately follows from the fact that $\Oo_{Z,z}\morphism[g^*]\Oo_{Y,y}\morphism[f^*]\Oo_{X,x}$ equals $\Oo_{Z,z}\morphism[(gf)^*]\Oo_{X,x}$ by Remark~\reff{rem:pullbackthingyAtStalks}.
 	
 	Now about part \itememph{c}. Point (i) is trivial. For (ii), note that $\sigma^{-1}(\mm_T)\subseteq\mm_S$ by \hyperref[rem:localMorphismStuff]{this} remark, hence
 	\begin{align*}
@@ -852,7 +842,7 @@ of presheaves on $\Bb$.
     \end{align*}
     Shrinking $U$ if necessary, we may assume $V\cap K \supseteq U$. Let $\phi_k$ be the image of $\phi$ in $\Oo_{X,k}$ and  $y=a(k)=b(k)$. By  Fact~\reff{fact:coequalizerOfRings} we have $\Oo_{K,[k]}=\Oo_{X,k}/I$, where $I$ is the ideal $I=\left(a^*(v)-b^*(v)\st v\in \Oo_{Y,y}\right)\subseteq\Oo_{X,k}$. As we assume that $f_k$ vanishes,
     \begin{align*}
-    	0 = f_k=(\phi_k\mod I)\in\Oo_{K,[k]}=\Oo_{X,k}/I\;, 
+    	0 = f_k=(\phi_k\bmod I)\in\Oo_{K,[k]}=\Oo_{X,k}/I\;, 
     \end{align*}
     hence we have $\rho_1,\ldots,\rho_N\in \Oo_{X,k}$ and $v_1,\ldots,v_N\in \Oo_{Y,y}$ such that
     \begin{align*}
@@ -1402,11 +1392,11 @@ Since the preimage of this ideal in $\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y}$ equ
     To prove \itememph{a}, what we need to show is that for all $x\in X_{\cat{Top}}$ and $y\in Y_{\cat{Top}}$ such that $\xi(x) = \upsilon(y)\eqqcolon s$ there is an appropriate $\pp\in \Spec\left(\Oo_{X,x} \otimes_{\Oo_{S,s}}\Oo_{Y,y}\right)$ such that $\alpha^{-1}(\pp) = \mm_{X,x}$, $\beta^{-1}(\pp) = \mm_{Y,y}$. Consider the ring homomorphism
     \begin{align*}
         \Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y} &\morphism[\phi] \KK(x) \otimes_{\KK(s)}\KK(y) = A\\
-        f\otimes g &\longmapsto (f\mod \mm_{X,x}) \otimes (g\mod \mm_{Y,y})\;.
+        f\otimes g &\longmapsto (f\bmod \mm_{X,x}) \otimes (g\bmod \mm_{Y,y})\;.
     \end{align*}
     If $\mm$ is any maximal ideal of $A$, then $\pp = \phi^{-1}(\mm)$ has the required property. Indeed, for instance,
     \begin{align*}
-        (f\otimes 1)\in\pp \quad\Leftrightarrow\quad \phi(f\otimes 1)\in \mm \quad\Leftrightarrow\quad \big((f\mod\mm_{X,x})\otimes 1\big) \in\mm\;.
+        (f\otimes 1)\in\pp \quad\Leftrightarrow\quad \phi(f\otimes 1)\in \mm \quad\Leftrightarrow\quad \big((f\bmod\mm_{X,x})\otimes 1\big) \in\mm\;.
     \end{align*}
     When $f\in \mm_{X,x}$ the right-hand side vanishes, otherwise $f$ and the right-hand side are units.
     
@@ -1708,7 +1698,7 @@ If $M$ is an $R$-module, we have a similar presheaf (of abelian groups or of mod
      \begin{align*}
      	0\morphism M\morphism \check{C}^\bullet\Big(\Uu,\text{the presheaf giving } \snake M\Big)\lisomorphism \colimit[k\in\IN] K\big((f_1^k, \ldots, f_n^k),M\big)
      \end{align*}
-     which is the argument used in EGA to show Proposition~\reff{prop:RequalsGlobalSection} and the vanishing of higher cohomologies (if anyone of you who is proficient in sheaf and Koszul cohomology notices that part of the above doesn't make any sense, please tell us).
+     which is the argument used in EGA to show Proposition~\reff{prop:RequalsGlobalSection} and the vanishing of higher cohomologies (an introduction to Koszul complexes and their connection to \v{C}ech complexes can be found in \cite[Section~2.1 and proof of Theorem~2]{alggeo2}).
 \end{rem*}
 \begin{example}
     \begin{alphanumerate}
@@ -3482,7 +3472,7 @@ is ascending. Let $I_\infty = \bigcup_{k=1}^\infty I_k$.
     \end{align*}
 \end{defi}
 \begin{rem}
-    There seems to be no universally adopted notion of ``projective morphism''. Grothendieck has a sheaf-$\mathbf{Proj}$ (obtained from $\Proj$ like $\SPEC$ from $\Spec$) and defines an $S$-prescheme $X$ (or the morphism $X\morphism[\xi] S$) to be projective iff $X= \mathbf{Proj}_S(\Rr)$ where $\Rr$ is a quasi-coherent $\IN$-graded $\Oo_S$-algebra such that $\Rr_1(U)$ is a finitely generated $\Oo_S(U)$-module when $U$ is affine, and generated by $\Rr_+(U)$ in that case.
+    There seems to be no universally adopted notion of ``projective morphism''. Grothendieck has a sheaf-$\mathbf{Proj}$ (obtained from $\Proj$ like $\SPEC$ from $\Spec$ -- more about this in \cite[Section~2.3]{alggeo2}) and defines an $S$-prescheme $X$ (or the morphism $X\morphism[\xi] S$) to be projective iff $X= \mathbf{Proj}_S(\Rr)$ where $\Rr$ is a quasi-coherent $\IN$-graded $\Oo_S$-algebra such that $\Rr_1(U)$ is a finitely generated $\Oo_S(U)$-module when $U$ is affine, and generated by $\Rr_+(U)$ in that case.
     
     This class is not base-local. One could require this locally or require that locally $\xi^{-1}(U) \subseteq \IP^n_U$ ($U$ affine, $n$ depending on $U$).
 \end{rem}
