@@ -788,7 +788,7 @@ For flatness, there is a criterion similar to Baer's (Proposition~\reff{prop:Inj
 	When $R$ is Noetherian, we can apply the same induction on a finite filtration $0=N_0\subsetneq N_1\subsetneq\ldots\subsetneq N_k=N$ having the property that $N_i/N_{i-1}\simeq R/\pp_i$ for some $\pp_i\in\Spec R$ to show $\Tor_1^R(M,N_i)=0$ inductively. If you don't know the existence of such a filtration, Professor Franke suggests you spend 2 hours reading Matsumura's \href{http://www.math.unam.mx/javier/Matsumura.pdf}{\emph{Commutative Ring Theory}} \cite{matsumuraCRT} until you stumble upon that result, you imbecile. Alternatively (and providing a proof by Franke himself), have a look at \cite[Proposition~3.1.2\itememph{a}]{alg2}.
 \end{proof}
 \begin{rem*}
-	As the proof shows, \itememph{b} $\Rightarrow$ \itememph{c} $\Rightarrow$ \itememph{d} already holds when $I$ is fixed.
+	As the proof shows, \itememph{b} $\Leftrightarrow$ \itememph{c} $\Leftrightarrow$ \itememph{d} already holds when $I$ is fixed.
 \end{rem*}
 \begin{cor}\lbl{cor:DedekindFlat}
 	A module $M$ over a Dedekind domain $R$ is flat iff it is torsion-free.
@@ -831,7 +831,7 @@ For flatness, there is a criterion similar to Baer's (Proposition~\reff{prop:Inj
 	The completion $\roof{R}$ of a Noetherian ring $R$ with respect to any ideal $I$ is a flat $R$-module. When $M$ is a finitely generated flat $R$-module, its completion $\roof{M}$ is a flat $\roof{R}$-module.
 \end{example}
 \begin{proof}
-	For finitely generated $R$-modules $M$ we have an isomorphism $M\otimes_R\roof{R}\isomorphism \roof{R}$. Indeed, this is true when $M=R$ and both sides commute with taking cokernels and finite direct sums, since completion is exact on finitely generated $R$-modules (cf.\ \cite[Lemma~7.15]{eisenbudCommAlg}). Thus $-\otimes_R\roof{R}$ is an exact functor on finitely generated $R$-modules. Applying this to any finitely generated free resolution of $R/I$ shows $\Tor_1^R(\roof{R},R/I)=0$ for any ideal $I\subseteq R$, so $\roof{R}$ is flat by Proposition~\reff{prop:flatConditions}\itememph{b}.
+	For finitely generated $R$-modules $M$ we have an isomorphism $M\otimes_R\roof{R}\isomorphism \roof{M}$. Indeed, this is true when $M=R$ and both sides commute with taking cokernels and finite direct sums, since completion is exact on finitely generated $R$-modules (cf.\ \cite[Lemma~7.15]{eisenbudCommAlg}). Thus $-\otimes_R\roof{R}$ is an exact functor on finitely generated $R$-modules. Applying this to any finitely generated free resolution of $R/I$ shows $\Tor_1^R(\roof{R},R/I)=0$ for any ideal $I\subseteq R$, so $\roof{R}$ is flat by Proposition~\reff{prop:flatConditions}\itememph{b}.
 	
 	Now let $M$ be a finitely generated flat $R$-module. Since $\roof{M}\simeq M\otimes_R\roof{R}$, the functor $-\otimes_{\roof{R}}\roof{M}$ is exact because both tensoring by $M$ and $\roof{R}$ is exact. Thus $\roof{M}$ stays flat\footnote{And more generally, tensor products of flat modules are clearly flat again.}.
 \end{proof}
