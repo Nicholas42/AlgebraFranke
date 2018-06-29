@@ -923,11 +923,11 @@ defines a quasi-coherent sheaf of ideals.
 
 Let's do \itememph{c} $\Rightarrow$ \itememph{a}. We first derive \itememph{c} $\Rightarrow$ \itememph{c^{++}}, where \itememph{c^{++}} is the condition
 \begin{description}
-	\item[\itememph{c^{++}}] If $\Mm\subseteq \Oo_X^n$ is a quasi-coherent submodule, then $H^1(X,\Mm)=0$.
+	\item[\itememph{c^{++}}] If $\Mm\subseteq \Oo_X^{\oplus n}$ is a quasi-coherent submodule, then $H^1(X,\Mm)=0$.
 \end{description}
-We prove \itememph{c^{++}} by induction on $n$. The case $n=0$ is trivial. Now let $n\geq 1$ and assume that \itememph{c^{++}} holds for $n-1$. If $\Oo_X^{n-1}(U)$ is identified with
+We prove \itememph{c^{++}} by induction on $n$. The case $n=0$ is trivial. Now let $n\geq 1$ and assume that \itememph{c^{++}} holds for $n-1$. If $\Oo_X^{\oplus n-1}(U)$ is identified with
 $\{(f_1,\ldots,f_{n-1},0) \in \Oo_X(V)^n\} \subseteq \Oo_X(U)^n$, then
-$\Mm' = \Mm\cap \Oo_X^{n-1}$ is quasi-coherent by Proposition \reff{prop:intersectQc}\itememph{c}.
+$\Mm' = \Mm\cap \Oo_X^{\oplus n-1}$ is quasi-coherent by Proposition \reff{prop:intersectQc}\itememph{c}.
 Moreover,
 \begin{align*}
 	\Mm'' \coloneqq \Mm/\Mm'&\morphism \Oo_X\\
@@ -1009,7 +1009,7 @@ $Y_1\subseteq V(f)$ and $z\notin V(f)$, so
 $z\in X\setminus V(f) = (X\setminus Y_1)\setminus V(f) = V\setminus V(f)$, which is an affine open subset of $X$.
 We get $z\in U$, a contradiction.
 
-\emph{Proof of \itememph{\gamma}}. Let $f_1,\ldots,f_n$ be as requested. Consider the morphisms $\Oo_X\morphism[\cdot f_i]\Oo_X$ given by multiplication with $f_i$ and let $f\colon\Oo_X^n\morphism \Oo_X$ be the morphism induced by the $\cdot f_i$. Then $\cdot f_i$ is an isomorphism on $U_i = X\setminus V(f_i)$, hence induces isomorphisms on stalks $\Oo_{X,x}$ for $x\in U_i$, and the $U_i$ cover $X$. Thus $f$
+\emph{Proof of \itememph{\gamma}}. Let $f_1,\ldots,f_n$ be as requested. Consider the morphisms $\Oo_X\morphism[\cdot f_i]\Oo_X$ given by multiplication with $f_i$ and let $f\colon\Oo_X^{\oplus n}\morphism \Oo_X$ be the morphism induced by the $\cdot f_i$. Then $\cdot f_i$ is an isomorphism on $U_i = X\setminus V(f_i)$, hence induces isomorphisms on stalks $\Oo_{X,x}$ for $x\in U_i$, and the $U_i$ cover $X$. Thus $f$
 is an epimorphism on stalks, hence an epimorphism of sheaves. Let $\Mm$ be the kernel of this epimorphism. We have
 \begin{diagram*}
 \node[ob] (Rn) at (0,1.5) {$\vphantom{R^n}$\scriptsize$\hphantom{(r_1,\ldots,r_n)}$};
@@ -1355,7 +1355,7 @@ Let $X$ be any prescheme. Recall the construction of the $\SPEC_X(-)$ functor fr
 	Let $\snake{Y}\morphism[f] Y$ be a morphism of preschemes. Let $f^*\colon \Oo_Y\cat{-Alg}\morphism\Oo_{\snake{Y}}\cat{-Alg}$ be the inverse image functor from \hyperref[footnote:f^*]{this} footnote. If $\Aa$ is a $\Oo_Y$-algebra, we have $\SPEC_{\snake{Y}}(f^*\Aa)\simeq \SPEC_Y(\Aa)\times_Y\snake{Y}$.
 \end{cor}
 \begin{proof}
-	Recall that $f^*$ is left-adjoint to $f_*$ Let $X\morphism[\xi]\snake{Y}$ be a $\snake{Y}$-prescheme. Repeatedly applying Proposition~\reff{prop:SPECAdjunction}\itememph{b} we get
+	Recall that $f^*$ is left-adjoint to $f_*$ Let $X\morphism[\xi]\snake{Y}$ be a $\snake{Y}$-prescheme (cf.\ \cite[Definition~1.5.7]{alggeo1}). Repeatedly applying Proposition~\reff{prop:SPECAdjunction}\itememph{b} we get
 	\begin{align*}
 		\Hom_{\snake{Y}\cat{-PreSch}}\left(X,\SPEC_{\snake{Y}}(f^*\Aa)\right)&\simeq \Hom_{\Oo_{\snake{Y}}\cat{-Alg}}\left(f^*\Aa,\xi_*\Oo_X\right)\\
 		&\simeq\Hom_{\Oo_Y\cat{-Alg}}\left(\Aa,f_*\xi_*\Oo_X\right)\\
@@ -1503,7 +1503,7 @@ that is, $\psi$ is a cocycle.
 \begin{proof}
 	Let $\Uu$ be an open cover of $X$ on which $\Xx$ trivializes. We may replace $\Uu$ by an affine refinement. Then $\check{H}^1(\Uu,\Mm)=H^1(X,\Mm)=0$ by Theorem~\reff{thm:CohoOnSchemes}\itememph{a} and \itememph{b}, proving that $\Xx$ is trivial by Proposition~\reff{prop:torsorsH1Bij}\itememph{b}.
 \end{proof}
-If $X$ is an $S$-prescheme, we have a homomorphism of abelian groups
+If $X$ is an $S$-prescheme (cf.\ \cite[Definition~1.5.7]{alggeo1}), we have a homomorphism of abelian groups
 \begin{align*}
 	d\log\colon\Oo_X^\times &\morphism \Omega_{X/S}\\
 	f&\longmapsto d\log f=\frac{d_{X/S}f}{f}
@@ -1588,32 +1588,32 @@ We will use the following conventions:
 \begin{defi}
 	\begin{alphanumerate}
 		\item \lbl{def:cone}For a cochain complex $(C^\bullet, d_{C}^\bullet)$ let the \defemph{shift} $C[p]^\bullet$ be the cochain complex defined by $C[p]^q=C^{p+q}$ and whose differential $d_{C[p]}^\bullet$ is given by $d_{C[p]}^q=(-1)^pd_{C}^{p+q}$.
-		\item Let $C^\bullet\morphism[\phi]\snake{C}^\bullet$ be a morphism of cochain complexes. Then the \defemph{cone} $\Cone(\phi)$ is the cochain complex defined by 
+		\item Let $A^\bullet\morphism[\phi]B^\bullet$ be a morphism of cochain complexes. Then the \defemph{cone} $\Cone(\phi)$ is the cochain complex defined by 
 		\begin{align}\lbl{eq:cone}
-			\Cone(\phi)^p=\snake{C}^p\oplus C^{p+1}\quad\text{and}\quad d_{\Cone(\phi)}^p(\snake{c},c)=\left(d_{\snake{C}}^p(\snake{c})+\phi(c),-d_{C}^{p+1}(c)\right)\;.
+			\Cone(\phi)^p=B^p\oplus A^{p+1}\quad\text{and}\quad d_{\Cone(\phi)}^p(b,a)=\left(d_B^p(b)+\phi(a),-d_A^{p+1}(a)\right)\;.
 		\end{align}
 	\end{alphanumerate}
 \end{defi}
-\begin{rem*}
+\begin{rem}
 	\begin{alphanumerate}
 		\item Obviously, $H^q(C[p]^\bullet)=H^{p+q}(C^\bullet)$.
 		\item Note that $d^\bullet=d_{\Cone(\phi)}^ \bullet$ is indeed a differential of cochain complexes, as
 		\begin{align*}
-			d^{p+1}d^p(\snake{c},c)&=d^{p+1}\left(d_{\snake{C}}^p(\snake{c})+\phi(c),-d_{C}^{p+1}(c)\right)\\
-			&=\left(d_{\snake{C}}^{p+1}d_{\snake{C}}^p(\snake{c})+d_{\snake{C}}^{p+1}\phi(c)-\phi d_{C}^{p+1}(c),d_{C}^{p+2}d_{C}^{p+1}(c)\right)\\
+			d^{p+1}d^p(b,a)&=d^{p+1}\left(d_B^p(b)+\phi(a),-d_A^{p+1}(a)\right)\\
+			&=\left(d_B^{p+1}d_B^p(b)+d_B^{p+1}\phi(a)-\phi d_A^{p+1}(a),d_A^{p+2}d_A^{p+1}(a)\right)\\
 			&=0\;.
 		\end{align*}
-		We get a short exact sequence
+		\item We get a short exact sequence
 		\begin{align*}
-			0\morphism \snake{C}^\bullet\morphism\Cone(\phi)\morphism C[1]^\bullet\morphism 0
+			0\morphism B^\bullet\morphism\Cone(\phi)\morphism A[1]^\bullet\morphism 0
 		\end{align*}
-		of cochain complexes. The connecting homomorphism $H^{p+1}(C^\bullet)=H^p(C[1]^\bullet)\morphism[\partial]H^{p+1}(\snake{C}^\bullet)$ coincides with the morphism induced by $\phi$. We thus get a long exact cohomology sequence
+		of cochain complexes. The connecting homomorphism $H^{p+1}(A^\bullet)=H^p(A[1]^\bullet)\morphism[\partial]H^{p+1}(B^\bullet)$ coincides with the morphism induced by $\phi$. We thus get a long exact cohomology sequence
 		\begin{align}\lbl{eq:MappingConeSeq}
-			\ldots\morphism H^p(C^\bullet)\morphism[\phi]H^p(\snake{C}^\bullet)\morphism H^p(\Cone(\phi))\morphism H^{p+1}(C^\bullet)\morphism\ldots\;.
+			\ldots\morphism H^p(A^\bullet)\morphism[\phi]H^p(B^\bullet)\morphism H^p(\Cone(\phi))\morphism H^{p+1}(A^\bullet)\morphism\ldots\;.
 		\end{align}
 		In particular, $\phi$ induces isomorphisms on cohomology iff $H^\bullet(\Cone(\phi))$ vanishes.
 	\end{alphanumerate}
-\end{rem*}
+\end{rem}
 Naturally arising in the computation of cohomology of projective spaces, \emph{regular sequences} are interesting enough to be studied on their own.
 \begin{defi}
 	Let $R$ be a ring and $M$ an $R$-module. A sequence $(x_0,\ldots,x_n)$ of elements of $R$ is called \defemph{$M$-regular} if for $i=0,\ldots,n$
@@ -1630,9 +1630,9 @@ Naturally arising in the computation of cohomology of projective spaces, \emph{r
 \end{example}
 The following definition was lacking the $m=0$ exception in the lecture (let alone the indices), but I think the following is what Professor Franke intended.
 \begin{defi}\lbl{def:KoszulComplex}
-	Let $R$ be a ring, $M$ be an $R$-module, $(x_0,\ldots,x_n)$ a sequence of elements of $R$. The \defemph{Koszul complex} $K^\bullet\big((x_0,\ldots,x_n),M\big)$ is a cochain complex defined as follows. Let $[n]=\{0,\ldots,n\}$. For $m>1$, $K^m\big((x_0,\ldots,x_n),M\big)$ is the collection of maps $f\colon [n]^m\morphism M$ with the following properties:
+	Let $R$ be a ring, $M$ be an $R$-module, $(x_0,\ldots,x_n)$ a sequence of elements of $R$. The \defemph{Koszul complex} $K^\bullet\big((x_0,\ldots,x_n),M\big)$ is a cochain complex defined as follows. Let $[n]=\{0,\ldots,n\}$. For $m\geq1$, $K^m\big((x_0,\ldots,x_n),M\big)$ is the collection of maps $f\colon [n]^m\morphism M$ with the following properties:
 	\begin{alphanumerate}
-		\item $f(i_1,\ldots,i_m)=0$ when $i_k=i_\ell$ for some integers $0\leq k<\ell\leq m$.
+		\item $f(i_1,\ldots,i_m)=0$ when $i_k=i_\ell$ for some integers $1\leq k<\ell\leq m$.
 		\item $f(i_{\pi(1)},\ldots,i_{\pi(m)})=\sgn(\pi)f(i_1,\ldots,i_m)$ for every permutation $\pi\in\SS_m$.
 	\end{alphanumerate}
 	The differential $d^m\colon K^m\big((x_0,\ldots,x_n),M\big)\morphism K^{m+1}\big((x_0,\ldots,x_n),M\big)$ is given by 
@@ -1641,8 +1641,8 @@ The following definition was lacking the $m=0$ exception in the lecture (let alo
 	\end{align*}
 	As in Definition~\reff{def:cech}, the hat $\hat{i}_{j+1}$ denotes the omission of $i_{j+1}$. Moreover, for $m=0$ we put $K^0\big((x_0,\ldots,x_n),M\big)=M$ and $d^0\mu$ for $\mu\in M$ is the coaugmentation given by $d^0\mu(i)=x_i\mu$ for $i=0,\ldots,n$.
 \end{defi}
-\begin{rem*}
-	 Before we check that $K^\bullet\big((x_0,\ldots,x_n),M\big)$ is indeed a cochain complex, let's answer the question \emph{how on earth} Definition~\reff{def:KoszulComplex} is related to the definition you may find in the literature (e.g., \cite[p.~423]{eisenbudCommAlg}) ? Well, they are equivalent (duh!) and here is how.
+\begin{rem}
+	 Before we check that $K^\bullet\big((x_0,\ldots,x_n),M\big)$ is indeed a cochain complex, let's answer the question \emph{how on earth} Definition~\reff{def:KoszulComplex} is related to the definition you may find in the literature (e.g., \cite[p.~423]{eisenbudCommAlg})? Well, they are equivalent (duh!) and here is how.
 	 
 	 Let $0\leq\ell_1<\ldots< \ell_m\leq n$ and $\delta_{\ell_1,\ldots,\ell_m}\colon [n]^m\morphism R$ be the map satisfying 
 	 \begin{align*}
@@ -1663,13 +1663,13 @@ The following definition was lacking the $m=0$ exception in the lecture (let alo
 	  \end{align*}
 	  In $K^\bullet\big((x_0,\ldots,x_n),M\big)\simeq K^\bullet(x_0,\ldots,x_n)\otimes_R M$, this just gets tensored with $M$.
 	  
-	  Also note that $\bigwedge^0N=R$ for every $R$-module $N$ by definition, so the above special case $m=0$ now fits naturally into the rest.
-\end{rem*}
+	  Also note that $\bigwedge^0N=R$ for every $R$-module $N$ by definition, so the above special case $m=0$ now fits naturally with the rest.
+\end{rem}
 \begin{rem}
 	\begin{alphanumerate}
 		\item \lbl{rem:FirstKoszulFacts}It is easy to check that the $d_j$ satisfy relations similar to \eqreff{eq:simplicialStuff}, \eqreff{eq:cosimplicialDegeneracies}, and \eqreff{eq:transpositions}. As in the proofs of Definition~\reff{def:cech} and Definition~\reff{def:alternatingCech}, we deduce that $d^\bullet$ preserves the antisymmetry conditions and is a differential in a cochain complex. 
 		
-		Alternatively, from the above considerations it's immediately clear that $d^\bullet$ is well defined and satisfies $d^{m+1}d^m=0$, since wedging with $(x_0,\ldots,x_n)$ two times in a row obviously gives $0$.
+		Alternatively, from the above considerations it's immediately clear that $d^\bullet$ is well-defined and satisfies $d^{m+1}d^m=0$, since wedging with $(x_0,\ldots,x_n)$ two times in a row obviously gives $0$.
 		\item A short exact sequence of $R$-modules induces a short exact sequence of Koszul complexes. Indeed, in the representation $K^m\big((x_0,\ldots,x_n),M\big)\simeq \bigwedge^mR^{n+1}\otimes_RM\simeq M^{\binom{n+1}{m}}$ this is pretty obvious.
 		\item Let $\phi$ be the map $\phi\colon K^\bullet\big((x_0,\ldots,x_{n-1}),M\big)\morphism[x_n\cdot]K^\bullet\big((x_0,\ldots,x_{n-1}),M\big)$. We have a canonical isomorphism
 		\begin{align}\lbl{eq:KoszulCone}
@@ -1681,7 +1681,7 @@ The following definition was lacking the $m=0$ exception in the lecture (let alo
 		(I'm pretty sure there should be a minus in the second component for the differentials to be compatible, i.e., consistent with the \emph{two} sign conventions from Definition~\reff{def:cone}\itememph{a} and \itememph{b} which are in play here, though we didn't put a minus there in the lecture). This isomorphism corresponds to the decomposition $\bigwedge^mR^{n+1}=e_n\wedge \bigwedge^{m-1}R^n\oplus \bigwedge^mR^n\simeq \bigwedge^{m-1}R^n\oplus \bigwedge^mR^n$, sending $e_n\wedge y+z$ to $(y,-z)$ (and you have to tensor it with $M$, of course). If you think about this long enough, this is compatible.
 	\end{alphanumerate}
 \end{rem}
-In the following we put $H^j\big((x_0,\ldots,n),M\big)\coloneqq H^j\big(K^\bullet((x_0,\ldots,x_n),M)\big)$ for ``short''.
+In the following we put $H^j\big((x_0,\ldots,n),M\big)\coloneqq H^j\left(K^\bullet\big((x_0,\ldots,x_n),M\big)\right)$ for ``short''.
 \begin{example}
 	\begin{alphanumerate}
 		\item \lbl{ex:firstKoszulComputations}For small values of $n$, we have
@@ -1921,8 +1921,8 @@ making $\Oo$ into a sheaf of graded rings with $\Oo(0)=\Oo_{\Proj R}$. Moreover,
 	 \end{align*}
 	 we have already seen in the proof if Proposition~\reff{prop:FirstProjProperties}\itememph{c}. Note that the localizations $M_\pp$ appearing here are understood to be obtained by inverting the \emph{homogeneous} elements of $R\setminus \pp$ only. On open subsets of the form $\Proj R\setminus V(f)\simeq \Spec (R_f)_0$ for $f\in R_+$ homogeneous, $\snake{M}$ equals $((M_f)_0)^\sim$, proving that it is quasi-coherent. In the case $\snake{M}=R[k]$ we obtain $\snake{M}\simeq \Oo(k)$.
 \end{rem}
-\begin{rem*}
-	If $R\morphism[\phi]S$ is a ring morphism such that there is a positive integer $d$ satisfying $\phi(R_k)\subseteq S_{dk}$ for all $k$ and such that $S_+=\sqrt{S\phi(R_+)}$, then we have a continuous map
+\begin{rem}\lbl{rem:ProjFunctoriality}
+	In general, the $\Proj$ construction is not functorial, not even for graded ring morphisms. However, we do have the following: If $R\morphism[\phi]S$ is a ring morphism such that there is a positive integer $d$ satisfying $\phi(R_k)\subseteq S_{dk}$ for all $k$ and such that $S_+=\sqrt{S\phi(R_+)}$, then we have a continuous map
 	\begin{align*}
 		\Proj S&\morphism\Proj R\\
 		\pp &\longmapsto\phi^{-1}(\pp)
@@ -1932,7 +1932,7 @@ making $\Oo$ into a sheaf of graded rings with $\Oo(0)=\Oo_{\Proj R}$. Moreover,
 	For instance, there is a morphism (a closed immersion even) from $\IP_A^m\coloneqq\Proj A[X_0,\ldots,X_m]$ to $\IP_A^n$ for $m\leq n$ defined by the ring morphism $A[X_0,\ldots,X_n]\morphism A[X_0,\ldots,X_m]$ sending $X_{m+1},\ldots,X_n$ to $0$. By contrast, there is no morphism $\IP_A^m\morphism\IP_A^n$ defined by $A[X_0,\ldots,X_n]\subseteq A[X_0,\ldots,X_m]$ when $n<m$ (because the radical property fails).
 	
 	As an example with $d>1$ we may take $R=A[X_0,X_1,X_2]$, $S=A[Y_0,Y_1]$ and $\phi(X_0)=Y_0^2$, $\phi(X_1)=Y_0Y_1$, $\phi(X_2)=Y_1^2$. The condition $S_+=\sqrt{S\phi(R_+)}$ holds as all monomials of even degree in $Y_0,Y_1$ can be decomposed as a product of the three monomials $Y_0^2,Y_0Y_1,Y_1^2$. We obtain a closed immersion $\IP_A^1=\Proj S\morphism \IP_A^2=\Proj R$ identifying $\IP_A^1$ with the closed subprescheme $V(X_0X_2-X_1^2)\subseteq \IP_A^2$.
-\end{rem*}
+\end{rem}
 \begin{rem}\lbl{rem:tensorProductSheaves}
 	We will construct a sheaf tensor product. Let $\Rr$ be a sheaf of rings on some space $X$ and $\Mm,\Nn$ be $\Rr$-modules. We define $\Mm\otimes_\Rr\Nn$ to be the sheafification of the presheaf 
 	\begin{align*}
@@ -2345,7 +2345,7 @@ where $(d_x)\in \bigoplus_{x\in U\cap X_1}\IZ$ is considered $\geq 0$ iff $d_x\g
 When $X$ is locally factorial, $\Oo_X(D)$ is a line bundle on $X$ (for general normal $X$ it is only a coherent sheaf).
 
 \section{Projective morphisms}
-There are several definitions of \emph{projective morphism} around which are in common use. Professor Franke would like to stick with the EGA version. Also the $\PROJ$ construction occuring in the definition is very important.
+There are several definitions of \emph{projective morphism} around which are in common use. Professor Franke would like to stick with the EGA version. Also the $\PROJ$ construction occuring in the definition is very important and we will describe it first.
 
 Let $\Rr$ be a graded quasi-coherent $\Oo_X$-algebra, where $X$ is a prescheme. That is,
 \begin{align*}
@@ -2382,7 +2382,7 @@ where the $\Rr_i$ are quasi-coherent $\Oo_X$-modules and are equipped with an $\
 	\begin{align*}
 	\rho_{x,\pp}=\left(\text{image of }a\text{ under }\Rr(U)_f \to (\Rr_x)_f \to (\Rr_x)_\pp = \Oo_{P,[x,\pp]}\right)\;.
 	\end{align*}
-	Alternatively, $\Oo_P$ is the sheafification of the presheaf $\Omega(U,f)\mapsto(\Rr(U)_f)_0$ on the above topology base. Note that we have to put $\Rr(U)_f\coloneqq \bigoplus_{i=0}^\infty\Rr_i(U)_f$\footnote{This is actually relevant, as Professor Franke explains that $\Rr(U)$ is the set of all $(r_i)\in\prod_{i=0}^\infty\Rr_i(U)$ such that for every $x\in U$, the image of $r_i$ in $(\Rr_i)_x$ is non-zero only for finitely many $i$ (that's how infinite coproducts of sheaves of modules work, deal with it). So a priori, $\Rr(U)\neq \bigoplus_{i=0}^\infty\Rr_i(U)$ unless $U$ is quasi-compact, and naive localization may give the wrong result.}.
+	Alternatively, $\Oo_P$ is the sheafification of the presheaf $\Omega(U,f)\mapsto(\Rr(U)_f)_0$ on the above topology base. Note that we have to put $\Rr(U)_f\coloneqq \bigoplus_{i=0}^\infty\Rr_i(U)_f$.\footnote{This is actually relevant, as Professor Franke explains that $\Rr(U)$ is the set of all $(r_i)\in\prod_{i=0}^\infty\Rr_i(U)$ such that for every $x\in U$, the image of $r_i$ in $(\Rr_i)_x$ is non-zero only for finitely many $i$ (that's how infinite coproducts of sheaves of modules work, deal with it). So a priori, $\Rr(U)\neq \bigoplus_{i=0}^\infty\Rr_i(U)$ unless $U$ is quasi-compact, and naive localization may give the wrong result.}
 \end{itemize}
 One obtains a sheaf of rings on $P=\PROJ_X(\Rr)$ and has a canonical isomorphism $\Oo_{P,(x,\pp)}\isomorphism\Oo_{P,[x,\pp]}$ sending the image of $\rho=(\rho_{y,\qq})\in\Oo_P(\Omega)$ to $\rho_{x,\pp}$.
 
@@ -2395,7 +2395,7 @@ as the algebraic component one has a morphism of locally ringed spaces.
 This construction is base-local. That is, $\PROJ_U(\Rr|_U)\simeq \pi^{-1}(U)$ for all open subsets (hence subpreschemes) $U\subseteq X$. When $R$ is a graded ring, $X=\Spec R_0$ and $\Rr=\snake{R}$, then $\PROJ_X(\Rr)\simeq \Proj R$ by comparing their definitions. Since the following assertions are all base-local, they follow from the corresponding assertions about $\Proj R$ we proved in Proposition~\reff{prop:FirstProjProperties}.
 \begin{fact}
 	\begin{alphanumerate}
-		\item $\PROJ_X(\Rr)$ is a prescheme. In fact, for any affine open $U\subseteq X$, $\pi^{-1}(U)$ is a quasi-compact scheme.
+		\item \lbl{fact:PROJProperties}$\PROJ_X(\Rr)$ is a prescheme. In fact, for any affine open $U\subseteq X$, $\pi^{-1}(U)$ is a quasi-compact scheme.
 		\item The morphism $\pi$ is separated. When $\Rr$ is locally of finite type as an $\Oo_X$-algebra, then $\pi$ is of finite type. If $X$ is in addition Noetherian (resp.\ locally Noetherian), then so is $\PROJ_X(\Rr)$.
 		\item When $\Rr$ is generated by $\Rr_0$ and $\Rr_1$ as an $\Oo_X$-algebra, then the $\Oo_{\PROJ_X(\Rr)}$-module $\Oo(\ell)=\Oo_{\PROJ_X(\Rr)}(\ell)$ obtained by replacing homogeneous degree $0$ in the definition of the pretender stalk and in the coherence condition\texttrademark\ by homogeneous degree $\ell$ is a line bundle. 
 		
@@ -2405,7 +2405,7 @@ This construction is base-local. That is, $\PROJ_U(\Rr|_U)\simeq \pi^{-1}(U)$ fo
 		\end{align*}
 		defined by the multiplication $\Rr_k\times \Rr_\ell\morphism\Rr_{k+\ell}$.
 		
-		Finally, we have a canonical morphism $\pi^*\Rr_k\morphism[\rho_k]\Oo(k)$ sending $r\in\Rr_k(U)$ to its images under $\Rr_k(U)\morphism ((\Rr_x)_\pp)_k$ with $(x,\pp)$ running over $\pi^{-1}(U)$.
+		Finally, we have a canonical morphism $\Rr_k\morphism[\rho_k]\pi_*\Oo(k)$ sending $r\in\Rr_k(U)$ to its images under $\Rr_k(U)\morphism ((\Rr_x)_\pp)_k$ with $(x,\pp)$ running over $\pi^{-1}(U)$.
 	\end{alphanumerate}
 \end{fact}
 \begin{rem}\lbl{rem:SheafInverseImage}
@@ -2431,12 +2431,123 @@ This construction is base-local. That is, $\PROJ_U(\Rr|_U)\simeq \pi^{-1}(U)$ fo
 	\begin{align*}
 		(f^*\Mm)_x=\Mm_{f(x)}\otimes_{\Oo_{Y,f(x)}}\Oo_{X,x}
 	\end{align*}
-	and from this we get another one of our beautiful coherence condition characterizations for $f^*\Mm$ (I won't include this here). In particular, we see that $f^*$ is base-local.
+	and from this we can describe $f^*\Mm$ by another one of our beautiful coherence condition characterizations for (I won't include this here). In particular, we see that $f^*$ is base-local.
 	
 	Since $f^*\Oo_Y=\Oo_X$ (this is clear on stalks) and $f^*$ preserves direct sums (in fact, as a left-adjoined functor it preserves arbitrary colimits, cf.\ Remark~\reff{rem:AdjunctionPreservesStuff}), so inverse images of vector bundles (resp.\ line bundles) are vector bundles (resp.\ line bundles) again by base-locality of $f^*$.
 	
 	Moreover, when $f$ is a morphism between affine schemes $X=\Spec B$ and $Y=\Spec A$ (thus) coming from a ring morphism $A\morphism B$, then $f^*\snake{M}=(B\otimes_AM)^\sim$ for all $A$-modules $M$ (which is easily seen stalk-wise). It follows that $f^*$ restricts to a functor $f^*\colon \cat{QCoh}(Y)\morphism\cat{QCoh}(X)$.
 \end{rem}
+\paragraph{An adjunction for $\PROJ$.} In the lecture the question came up whether $\PROJ$ (or even ordinary $\Proj$) satisfies an adjunction similar to \eqreff{eq:SPECAdjunction}. It turns out that such an adjunction (in an appropriate sense) indeed exists, but it will be way more subtle than you might believe.
+
+Recall the notion of $S$-preschemes from \cite[Definition~1.5.7]{alggeo1}. Let $R$ be an $\IN_0$-graded ring generated by $R_0$ and $R_1$, let $S=\Spec R_0$ and $X=\Spec A\morphism[\xi]S$ be an $S$-prescheme. 
+\begin{itemize}
+	\item Let $\MM$ be the set of pairs $(\phi,\tau)$ where $X\morphism[\phi]\Proj R$ is a morphism of $S$-preschemes and $\tau\colon \phi^*\Oo_{\Proj R}(1)\isomorphism\Oo_X$ a trivialization of $\phi^*\Oo_{\Proj R}(1)$.
+	\item Let $\NN$ be the set of all surjective morphisms $A\otimes_{R_0}R\morphism[\alpha]A[T]$ of $\IN_0$-graded $A$-algebras (where $T$ has degree 1).
+\end{itemize}
+\begin{lem}\lbl{lem:localPseudoAdjunction}
+	In the above situation, we have a bijection $\MM\simeq\NN$ which is compatible with restrictions to affine open subsets of $X$ and defined as follows.
+	\begin{alphanumerate}
+		\item To $\alpha\in\NN$ we associate the morphism $X\simeq \IP_A^0\simeq\Proj A[T]\morphism\Proj (A\otimes_{R_0}R)\morphism\Proj R$ and the isomorphism $\phi^*\Oo_{\Proj R}(1)\simeq \Oo_{\IP_A^0}(1)\simeq \Oo_X$.
+		\item Let $(\phi,\tau)\in\MM$. Every element $r\in R_k$ defines a global section $r\in\Oo_{\Proj R}(k)(\Proj R)$ and we put $\alpha(a\otimes r)=a\cdot \tau^{\otimes k}(r)\cdot T^k$.
+	\end{alphanumerate}
+\end{lem}
+\begin{proof}[Not quite a proof]
+	Let us first justify that the given descriptions are well-defined. The morphism $\Proj A[T]\morphism \Proj(A\otimes_{R_0}R)$ in \itememph{a} comes from the fact that $A\otimes_{R_0}R\morphism[\alpha]A[T]$ is surjective, so the conditions from Remark~\reff{rem:ProjFunctoriality} are clearly satisfied. The other one is the canonical morphism we get from $\Proj(A\otimes_{R_0}R)\simeq X\times_S\Proj R$.\footnote{And this behaviour of $\Proj$ is easy to see from $\Proj R\setminus V(f)\simeq \Spec (R_f)_0$ for homogeneous $f\in R_+$ (Proposition~\reff{prop:FirstProjProperties}\itememph{c}), since $(A\otimes_{R_0}R)_{1\otimes f})_0=A\otimes_{R_0}(R_f)_0$ and fibre products are base-local.} 
+	
+	Why is $\phi^*\Oo_{\Proj R}\simeq \Oo_{\IP_A^0}(1)$? First of all, we may cover $\Proj R$ by affine open subsets $\Proj R\setminus V(f)$ for $f\in R_1$, by assumption. Moreover, their images $\alpha(1\otimes f)$ in $A[T]_1$ generate the augmentation ideal of $A[T]$ by surjectivity of $\alpha$. On such a subset $\Proj R\setminus V(f)\simeq \Spec (R_f)_0$, $\Oo_{\Proj R}(1)$ is given by $((R_f)_1)^\sim$ (Proposition~\reff{prop:FirstProjProperties}\itememph{c}). Hence $\phi^*\Oo_{\Proj R}$ restricted to $\Spec \big(A[T]_{\alpha(1\otimes f)}\big)_0$ is given by the $\big(A[T]_{\alpha(1\otimes f)}\big)_0$-module $\big(A[T]_{\alpha(1\otimes f)}\big)_0\otimes_{(R_f)_0}(R_f)_1$ (by Remark~\reff{rem:SheafInverseImage}) and we get an isomorphism
+	\begin{align*}
+		\big(A[T]_{\alpha(1\otimes f)}\big)_0\otimes_{(R_f)_0}(R_f)_1&\isomorphism \big(A[T]_{\alpha(1\otimes f)}\big)_1\\
+		a \otimes \frac{r}{f^k}&\longmapsto \frac{\alpha(1\otimes r)}{\alpha(1\otimes f)^k}\cdot a\;,
+	\end{align*}
+	which is easily globalized.
+	
+	For \itememph{b}, the question we should really ask is why $\alpha$ is surjective, as not all elements of the global section of $\phi^*\Oo_{\Proj R}(k)$ need to come from an element $r\in R_k$.\footnote{By the way, $\phi^*$ commutes with tensor products (up to canonical isomorphism), which can be seen on stalks. We will silently use this throughout the section.} However, we can do the following. Let $f\in R_1$ and $g\in A$ such that $\Spec A_g$ lies in the preimage of $\Proj R\setminus V(f)\simeq (R_f)_0$ under $\phi$. By quasi-compactness, we find finitely many such $f_1,\ldots,f_n$ and $g_1,\ldots,g_n$ such that the $\Spec A_{g_i}$ cover $X=\Spec A$. On $\Spec A_{g_i}$, $\phi^*\Oo_{\Proj R}(k)$ is given by the $A_{g_i}$-module $A_{g_i}\otimes_{(R_f)_0}(R_f)_k$ and $\tau^{\otimes k}$ induces an isomorphism
+	\begin{align*}
+		\tau^{\otimes k}\colon A_{g_i}\otimes_{(R_f)_0}(R_f)_k\isomorphism A_{g_i}\;,
+	\end{align*}
+	hence there is some preimage $\sum_{j=1}^{n_j}a_j\otimes \rho_j$ of $1\in A_{g_i}$. Since $R$ is generated by $R_0$ and $R_1$, $\rho_j\in (R_f)_k$ can be written as a product of an element of $R_k$ and an element of $(R_f)_0$. The latter can be sucked into the $A_{g_i}$ factor of the tensor product. Multiplying by a suitable power of $g_i$, we find an element of $A\otimes_{R_0}R_k$ which is mapped to some power $g_i^{k_i}$ by $\tau^{\otimes k}$. Since $g_1,\ldots,g_n$ generate $A$, so do $g_1^{k_1},\ldots,g_n^{k_n}$ and the desired surjectivity follows quite easily.
+	
+	To show that \itememph{a} and \itememph{b} are indeed inverse seems to be a (doable) technical nightmare and I will rely on believing Professor Franke here.
+\end{proof}
+Having dealt with the local case, we now procede to describe an ``adjunction'' of the desired type in general. 
+
+Let $S$ be any prescheme, $X\morphism[\xi]S$ any $S$-prescheme, $\Ll$ a line bundle on $X$ and $\Rr$ a quasi-coherent graded $\Oo_S$-algebra generated by $\Rr_0$ and $\Rr_1$. Put $\PROJ_S(\Rr)=P$.
+\begin{itemize}
+	\item Let $\MM(X)$ be the set of pairs $(\phi,\tau)$ where $X\morphism[\phi]P$ is a morphism of $S$-preschemes and $\tau\colon \phi^*\Oo_{P}(1)\isomorphism \Ll$ an isomorphism of line bundles.	
+	\item Let $\NN(X)$ be the set of all morphisms of graded $\Oo_X$-algebras\footnote{The multiplication on $\bigoplus_{k=0}^\infty\Ll^{\otimes k}$ is given by the tensor product, clearly making this into a graded $\Oo_X$-algebra.} $\xi^*\Rr\morphism\bigoplus_{k=0}^\infty\Ll^{\otimes k}$ which induce surjections on stalks.
+\end{itemize}
+Recall that we have a projection $P\morphism[\pi]S$. Let $\pi^*\Rr_k\morphism[\epsilon_k]\Oo_{P}(k)$ be the morphism associated to $\Rr_k\morphism[\rho_k]\pi_*\Oo_{P}(k)$ from Fact~\reff{fact:PROJProperties}\itememph{d} by the $\pi^*$-$\pi_*$ adjunction. 
+\begin{prop}\lbl{prop:PROJQuasiAdjunction}	
+	We obtain a bijection $\MM(X)\simeq \NN(X)$ by associating to $(\phi,\tau)\in\MM(X)$ the morphism 
+	\begin{align*}
+		\xi^*\Rr_k\simeq \phi^*\pi^*\Rr_k\xrightarrow{\phi^*(\epsilon_k)}\phi^*\Oo_{P}(k)\simeq \phi^*\Oo_{P}(1)^{\otimes k}\xrightarrow{\tau^{\otimes k}}\Ll\;.
+	\end{align*}
+\end{prop}
+\begin{proof}[Sketch of a proof]
+	As $U\mapsto\MM(U)$ and $U\mapsto\NN(U)$ (for $U\subseteq X$ open) are easily seen to be sheaves, it is enough to show this on an appropriate topology base of $X$. We use affine open $U$ such that $\Ll|_U$ is trivial and $\xi(U)$ is contained in an affine open subset of $S$, so that Lemma~\reff{lem:localPseudoAdjunction} may be applied.
+\end{proof}
+By choosing a representative for all possible isomorphism classes of line bundles on $X$ which $\phi^*\Oo_P(1)$ may belong to (and by Remark~\reff{rem:SheafInverseImage} it is indeed a line bundle on $X$), Proposition~\reff{prop:PROJQuasiAdjunction} gives
+\begin{cor}
+	In the situation of Proposition~\reff{prop:PROJQuasiAdjunction}, $\Hom_{S\cat{-PreSch}}(X,\PROJ_S(\Rr))$ is in canonical bijection with the set of pairs $(\Ll,\alpha)$, where $\Ll$ is a representative of an isomorphism class of line bundles on $X$ and $\alpha$ a morphism
+	\begin{align}\lbl{eq:WhatIsAlpha}
+		\alpha\colon\xi^*\Rr\morphism\bigoplus_{k=0}^\infty\Ll^{\otimes k}
+	\end{align}
+	of graded $\Oo_X$-algebras defining surjections on stalks.
+\end{cor}
+\begin{cor}\lbl{cor:PROJQuasiAdjunction}
+	Under the assumptions of Proposition~\reff{prop:PROJQuasiAdjunction}, let $T\morphism[\tau]S$ be an $S$-prescheme and put $P_T=\PROJ_T(\tau^*\Rr)$. Then there is a canonical isomorphism $P_T\isomorphism P\times_ST$ defined by the projection $P_T\morphism[\pi_T]T$ and the morphism $P_T\morphism P$ (over $S$) defined by Proposition~\reff{prop:PROJQuasiAdjunction} and the morphism
+	\begin{align*}
+		(\tau\pi_T)^*\Rr_k= \pi_T^*\tau^*\Rr_k\morphism[\epsilon_k]\Oo_{P_T}(k)\;,
+	\end{align*}
+	where $\epsilon_k$ is defined similar to $\epsilon_k$ in Proposition~\reff{prop:PROJQuasiAdjunction}.
+\end{cor}
+\begin{proof}[Sketch of a proof]
+	Let $X\morphism[t]T$ and $X\morphism[p]P$ be morphisms of preschemes such that $\tau t=\pi p$. By Corollary~\reff{cor:PROJQuasiAdjunction} $p$ corresponds to a morphism
+	\begin{align*}
+		\alpha\colon p^*\pi^*\Rr\morphism\bigoplus_{k=0}^\infty\Ll^{\otimes k}\;.
+	\end{align*}
+	But $p^*\pi^*\Rr=t^*(\tau^*\Rr)$, so $\alpha$ induces a morphism $X\morphism[\xi]P_T$ by Corollary~\reff{cor:PROJQuasiAdjunction} applied to $\tau^*\Rr$ this time. One can show that this gives $P_T$ the required universal property.
+\end{proof}
+\begin{rem*}
+	The isomorphism $\PROJ_T(\tau^*\Rr)\isomorphism\PROJ_S(\Rr)\otimes_ST$ exists in full generality, even when $\Rr$ is not generated by $\Rr_0$ and $\Rr_1$.
+\end{rem*}
+Let $\Rr$ be an $\IN_0$-graded quasi-coherent $\Oo_S$-algebra, $\Ll$ a line bundle on $S$ and
+\begin{align*}
+	\Rr^{(\Ll)}=\bigoplus_{k=0}^\infty\Rr_k\otimes \Ll^{\otimes k}
+\end{align*}
+with the $\Oo_S$-algebra structure defined by $(r\otimes \lambda)\cdot (s\otimes \mu)=(rs)\otimes (\lambda\otimes\mu)$ for $r\in\Rr_k(U)$, $s\in\Rr_{\ell}(U)$, $\lambda\in\Ll^{\otimes k}(U)$, and $\mu\in\Ll^{\otimes \ell}(U)$. We put $P^{(\Ll)}=\PROJ_S\big(\Rr^{(\Ll)}\big)$ and let $\rho$ be the projection $P^{(\Ll)}\morphism S$.
+\begin{cor}
+	There is a canonical isomorphism $i\colon P^{(\Ll)}\isomorphism P$ together with an isomorphism 
+	\begin{align*}
+		\iota\colon i^*\Oo_{P}(1)\otimes_{\Oo_{P}}\rho^*\Ll\isomorphism\Oo_{P^{(\Ll)}}(1)
+	\end{align*}
+	such that
+	\begin{align*}
+		\rho^*(\Rr_1\otimes_{\Oo_S}\Ll)\simeq \rho^*\Rr_1\otimes_{\Oo_{P}}\rho^*\Ll\xrightarrow{i^*(\epsilon_1)\otimes\id_{\rho^*\Ll}}i^*\Oo_{P}(1)\otimes_{\Oo_{P}}\rho^*\Ll\isomorphism\Oo_{P^{(\Ll)}}(1)
+	\end{align*}
+	coincides with
+	\begin{align*}
+		\rho^*(\Rr_1\otimes_{\Oo_S}\Ll)\morphism[\epsilon_1]\Oo_{P^{(\Ll)}}(1)\;.
+	\end{align*}
+\end{cor}
+Let $\Rr$ and $\Ss$ be $\IN_0$-graded $\Oo_S$-algebras satisfiying the assumptions of Proposition~\reff{prop:PROJQuasiAdjunction} and let $\Tt=\bigoplus_{k=0}^\infty\Tt_k$, where $\Tt_k=\Rr_k\otimes_{\Oo_S}\Ss_k$, equipped with the obvious $\Oo_S$-algebra structure. Let $X=\PROJ_S(\Rr)\morphism[\pi_X]S$, $Y=\PROJ_S(\Ss)\morphism[\pi_Y]S$ and $Z=X\times_SY$. Let $Z\morphism[p_X]X$ and $Z\morphism[p_Y]Y$ be the projections to the two factors and $\zeta=\pi_Xp_X=\pi_Yp_Y$. Finally, let $\Ll=p_X^*\Oo_X(1)\otimes_{\Oo_Z}p_Y^*\Oo_Y(1)$ be a line bundle on $Z$.
+
+We have epimorphisms of $\Oo_Z$-modules
+\begin{align*}
+	\zeta^*\Tt_k\simeq \zeta^*\Rr_k\otimes_{\Oo_Z}\zeta^*\Ss_k\epimorphism\Ll^{\otimes k}\simeq p_X^*\Oo_X(k)\otimes_{\Oo_Z}p_Y^*\Oo_Y(k)
+\end{align*}
+defined by the tensor product of $p_X^*\left(\pi_X^*\Rr_k\morphism[\epsilon_X]\Oo_X(1)\right)$ and $p_Y^*\left(\pi_Y^*\Ss_k\morphism[\epsilon_Y]\Oo_Y(1)\right)$. These epimorphisms intertwine the product $\zeta^*\Tt_k\times \zeta^*\Tt_\ell\morphism \zeta^*\Tt_{k+\ell}$ on $\Tt$ with the tensor multiplication $\Ll^{\otimes \ell}\otimes_{\Oo_S}\Ll^{\otimes k}\morphism\Ll^{\otimes(k+\ell)}$. Application of Proposition~\reff{prop:PROJQuasiAdjunction} gives a morphism $Z\morphism\PROJ_S(\Tt)$ of $S$-preschemes. 
+\begin{prop}
+	This is an isomorphism.
+\end{prop}
+\begin{example*}
+	We have the closed embedding $\IP_R^m\times\IP_R^n\morphism\IP_R^{m+n+nm}$ defined by 
+	\begin{align*}
+		R[X_0,\ldots,X_m]_k\otimes_RR[Y_0,\ldots,Y_n]_k\lmorphism R\left[Z_{i,j}\st 1\leq i\leq m,\ 1\leq j\leq n\right]_k
+	\end{align*}
+	sending $Z_{i,j}$ to $X_i\otimes Y_j$.
+\end{example*}
+
 
 \appendix
 \chapter{Appendix -- category theory corner}
