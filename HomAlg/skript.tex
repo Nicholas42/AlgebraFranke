@@ -407,7 +407,7 @@ sending $M\morphism[f]N$ to $M_S\morphism[f_S]N_S$. This is a morphism of $R$-mo
 \begin{align}\lbl{eq:HomRtoHomRS}
 	\Hom_R(M,N)_S\morphism\Hom_{R_S}(M_S,N_S)\;.\tag{$*$}
 \end{align}
-In general, \eqreff{eq:HomRtoHomRS} fails to be injective or surjective. But when $M$ is finitely generted, it is injective, and when $M$ is finitely presented (e.g., when $M$ is finitely generated and $R$ Noetherian) it's an isomorphism. For instance, when $M\simeq\coker(R^m\morphism R^n)$, then $M_S\simeq \coker(R_S^m\morphism R_S^n)$ by exactness of localization and $\Hom_R(M,N)\simeq \ker(N^n\morphism N^m)$ (and similar for $\Hom_{R_S}(M_S,N_S)$) by the universal property of cokernels. We obtain
+In general, \eqreff{eq:HomRtoHomRS} fails to be injective or surjective. But when $M$ is finitely generated, it is injective, and when $M$ is finitely presented (e.g., when $M$ is finitely generated and $R$ Noetherian) it's an isomorphism. For instance, when $M\simeq\coker(R^m\morphism R^n)$, then $M_S\simeq \coker(R_S^m\morphism R_S^n)$ by exactness of localization and $\Hom_R(M,N)\simeq \ker(N^n\morphism N^m)$ (and similar for $\Hom_{R_S}(M_S,N_S)$) by the universal property of cokernels. We obtain
 \begin{align*}
 	\Hom_R(M,N)_S\simeq\ker(N^n\morphism N^m)_S\simeq \ker(N_S^n\morphism N_S^m)\simeq \Hom_{R_S}(M_S,N_S)
 \end{align*}
@@ -864,14 +864,14 @@ For flatness, there is a criterion similar to Baer's (Proposition~\reff{prop:Inj
 \begin{proof}
 	Clearly, it is enough to show that \itememph{f} $\Rightarrow$ \itememph{a}. Suppose that \itememph{f} holds (resp.\ the even weaker prime ideal condition when $R$ is Noetherian). We can use the inductive argument from the proof of Proposition~\reff{prop:flatConditions} to show $\Tor_{d+1}(M,T)=0$ for every finitely generated $R$-module $T$. Since every $R$-module $T$ is the direct colimit of its finitely generated submodules, Fact~\reff{fact:TorCommutesWithColims} allows us to drop the finitely generatedness of $T$, i.e., we obtain \itememph{b}.
 	
-	Now assume that for some $p>d$, vanishing of $\Tor_p^R(M,-)$ has been shown. Let $T$ be any $R$-module. Choose an epimorphism $F\epimorphism[\pi]T$ for some free $R$-module $F$. From the long exact $\Tor$ sequence associated to $0\morphism \ker\pi\morphism F\morphism T\morphism 0$ we obtain
+	Now assume that for some $p>d$, vanishing of $\Tor_p^R(M,-)$ has been shown. Let $T$ be any $R$-module. Choose an epimorphism $F\epimorphism[\pi]T$ for some free $R$-module $F$. From the long exact $\Tor$ sequence associated to $0\morphism \ker(\pi)\morphism F\morphism T\morphism 0$ we obtain
 	\begin{align*}
-		0=\Tor_{p+1}^R(M,F)\morphism\Tor_{p+1}^R(M,T)\morphism\Tor_p^R(M,\ker \pi)=0\;,
+		0=\Tor_{p+1}^R(M,F)\morphism\Tor_{p+1}^R(M,T)\morphism\Tor_p^R(M,\ker (\pi))=0\;,
 	\end{align*}
 	hence $\Tor_{p+1}^R(M,T)=0$. This shows \itememph{a}.
 \end{proof}
 \begin{defi}
-	The largest natural number $d$ such that the equivalent properties from Fact~\reff{fact:flatDim} fail (or $+\infty$ if no such $d$ exists, or $-\infty$, if $M=0$) is called the \defemph{flat dimension} $\fdim_R(M)$ of $M$.
+	The largest natural number $d$ such that the equivalent properties from Fact~\reff{fact:flatDim} fail (or $+\infty$ if no such $d$ exists, or $-\infty$, if $M=0$) is called the \defemph{flat dimension} of $M$ and denoted $\fdim_R(M)$.
 \end{defi}
 \begin{fact}\lbl{fact:flatDimLocal}
 	Let $M$ be a module over an arbitrary ring $R$. Then
@@ -882,7 +882,7 @@ For flatness, there is a criterion similar to Baer's (Proposition~\reff{prop:Inj
 	\end{alphanumerate}
 \end{fact}
 \begin{proof}
-	When $\pdim_R(M)=\ell$, then $M$ has a projective resolution of length $\ell$ by Fact~\reff{fact:projDim}. Using this resolution to compute $\Tor_\bullet^R(M,-)$ we see that $\Tor_p^R(M,-)=0$ for $p>d$, hence $\fdim_R(M)\leq \ell$. This shows \itememph{a}.
+	When $\pdim_R(M)=\ell$, then $M$ has a projective resolution of length $\ell$ by Fact~\reff{fact:projDim}. Using this resolution to compute $\Tor_\bullet^R(M,-)$ we see that $\Tor_p^R(M,-)=0$ for $p>\ell$, hence $\fdim_R(M)\leq \ell$. This shows \itememph{a}.
 	
 	To show \itememph{b} and \itememph{c}, use Fact~\reff{fact:TorLocal} and do the same as in the proof of Corollary~\reff{cor:projDimLocal}.
 \end{proof}
@@ -953,11 +953,10 @@ And finally we prove that $\Tor$ -- for finitely generated modules over Noetheri
 	Since $k^n\morphism P\otimes_Rk$ is an isomorphism, this shows $\ker(\pi)\otimes_Rk=0$, hence $\ker(\pi)=0$ by Nakayama's lemma. We find that $\pi$ is already an isomorphism and $P\simeq R^n$ is free.
 \end{proof}
 \begin{cor}\lbl{cor:pdim=fdim}
-	For a finitely generated module over a Noetherian local ring $R$ with maximal ideal $\mm$ and residue field $k$, we have
+	For a finitely generated module $M$ over a Noetherian local ring $R$ with maximal ideal $\mm$ and residue field $k$, we have
 	\begin{align*}
-		\pdim_R(M)=\fdim_R(M)=\sup\left\{d\in\IN_0\st \Tor_{d+1}^R(M,k)\neq 0\right\}\;,
+		\pdim_R(M)=\fdim_R(M)=\sup\left\{d\in\IN_0\st \Tor_{d+1}^R(M,k)\neq 0\right\}\;.
 	\end{align*}
-	except when $N=0$, then of course $\fdim_R(N)=-\infty$.
 \end{cor}
 \begin{proof}
 	The first equality is immediate from Fact~\reff{fact:projDim} and Proposition~\reff{prop:flatResolution}\itememph{b} since flat and projective is the same for finitely generated modules over Noetherian local rings by Proposition~\reff{prop:FreeProjFlatTor}. The second equality follows by looking over the proof of Proposition~\reff{prop:flatResolution} again, since in our situation it suffices to check $\Tor_1^R(F,k)=0$ to show flatness of some finitely generated $R$-module $F$ by Proposition~\reff{prop:FreeProjFlatTor}\itememph{d}.
@@ -966,7 +965,7 @@ And finally we prove that $\Tor$ -- for finitely generated modules over Noetheri
 	For any module $M$ over a Noetherian local ring $R$, $\fdim_R(M)\leq \fdim_R(k)$.
 \end{cor}
 \begin{proof}
-	By Proposition~\reff{prop:TorMN=TorNM} and Fact~\reff{fact:flatDim}\itememph{d}, $\fdim_R(k)$ is smallest integer $d$ such that $0=\Tor_1^R(k,M)\simeq \Tor_1^R(M,k)$ for all finitely generated $R$-modules $M$. Then $\fdim_R(M)\leq \fdim_R(k)$ follows immediately from Corollary~\reff{cor:pdim=fdim}. If $M$ is arbitrary and $p>\fdim_R(k)$, we thus have $p>\fdim_R(R/I)$ as well for all ideals $I\subseteq R$. Therefore $\Tor_p^R(M,R/I)\simeq \Tor_1^R(R/I,M)=0$. Fact~\reff{fact:flatDim}\itememph{e} then shows $\fdim_R(M)<p$.
+	By Proposition~\reff{prop:TorMN=TorNM} and Fact~\reff{fact:flatDim}\itememph{d}, $\fdim_R(k)$ is smallest integer $d$ such that $0=\Tor_{d+1}^R(k,M)\simeq \Tor_{d+1}^R(M,k)$ for all finitely generated $R$-modules $M$. Then $\fdim_R(M)\leq \fdim_R(k)$ for $M$ finitely generated follows immediately from Corollary~\reff{cor:pdim=fdim}. Now let $M$ be arbitrary, $p>\fdim_R(k)$ and $I\subseteq R$ be any ideal. We have $\Tor_p^R(R/I,M)=0$ since $R/I$ is finitely generated and thus $p>\fdim_R(R/I)$ by what we just proved. But $\Tor_p(R/I,M)\simeq\Tor_p(M,R/I)$, so Fact~\reff{fact:flatDim}\itememph{e} shows $\fdim_R(M)<p$ as well.
 \end{proof}
 \begin{cor}
 	If $M$ is a finitely generated module over a Noetherian ring $R$ (local or not), then $\pdim_R(M)=\fdim_R(M)$.
@@ -986,9 +985,195 @@ And finally we prove that $\Tor$ -- for finitely generated modules over Noetheri
 	\end{alphanumerate}
 \end{prop}
 \begin{proof}
-	By Corollary~\reff{cor:projDimLocal}, $M$ is projective iff $M_\mm$ is projective for all maximal ideals $\mm$ of $R$ iff $M_\pp$ is projective for all $\pp\in\Spec R$. The same holds for flatness by Fact~\reff{fact:flatDimLocal}\itememph{b} and \itememph{c}. By Proposisition~\reff{prop:FreeProjFlatTor}, we see that \itememph{a}, \itememph{b},\itememph{e}, and \itememph{f} are equivalent. Equivalence of \itememph{c} and \itememph{d} is pretty much the definition of vector bundles (using the fact that the $\Spec R_f\simeq \Spec R\setminus V(f)$ form a topology base of $\Spec R$ and \cite[Proposition~1.4.1]{alggeo1}). The implication \itememph{c} $\Rightarrow$ \itememph{f} is trivial and \itememph{f} $\Rightarrow$ \itememph{c} is a Nakayama argument that can be found in \cite[Corollary~1.5.1]{alg2}.
+	By Corollary~\reff{cor:projDimLocal}, $M$ is projective iff $M_\mm$ is projective for all maximal ideals $\mm$ of $R$ iff $M_\pp$ is projective for all $\pp\in\Spec R$. The same holds for flatness by Fact~\reff{fact:flatDimLocal}\itememph{b} and \itememph{c}. By Proposition~\reff{prop:FreeProjFlatTor}, we see that \itememph{a}, \itememph{b}, \itememph{e}, and \itememph{f} are equivalent. Equivalence of \itememph{c} and \itememph{d} is pretty much the definition of vector bundles (using the fact that the $\Spec R_f\simeq \Spec R\setminus V(f)$ form a topology base of $\Spec R$ and \cite[Proposition~1.4.1]{alggeo1}). The implication \itememph{c} $\Rightarrow$ \itememph{f} is trivial. 
+	
+	To derive \itememph{f} $\Rightarrow$ \itememph{c} one uses the Nakayama argument from \cite[Corollary~1.5.1]{alg2}, but Professor Franke decided to repeat it here, so we will include it again in Lemma~\reff{lem:locFree}.
 \end{proof}
+\begin{lem}\lbl{lem:locFree}
+	Let $M$ be a finitely generated module over a Noetherian ring $R$ and $\pp\in\Spec R$ a prime ideal such that $M_\pp$ is a free $R_\pp$ module. Then there is an $f\in R\setminus\pp$ such that $M_f$ is already free over $R_f$.
+\end{lem}
+\begin{proof}
+	Let $m_1,\ldots,m_k\in M$ whose images are free generators of $M_\pp$ over $R_\pp$ and let $g_1,\ldots,g_n\in M$ be generators of $M$ as an $R$-module. By assumption, there are $\rho_{i,j}\in R_\pp$ such that
+	\begin{align}\lbl{eq:gjInR_p}
+		g_j=\sum_{i=1}^k\rho_{i,j}m_i\quad\text{in }M_\pp\;.\tag{$*$}
+	\end{align}
+	Since there are only finitely many $\rho_{i,j}$, we may choose a common denominator $f$, such that $\rho_{i,j}=r_{i,j}\cdot f^{-1}$ with $r_{i,j}\in R$. Replacing $R$ by $R_f$ and $M$ by $M_f$ we thus may assume $\rho_{i,j}\in R$. Then \eqreff{eq:gjInR_p} shows that there are $f_j\in R\setminus \pp$ such that
+	\begin{align*}
+		f_j\left(g_j-\sum_{i=1}^k\rho_{i,j}m_i\right)=0\;.
+	\end{align*}
+	Putting $f=f_1\cdots f_k$, we see that \eqreff{eq:gjInR_p} already holds in $M_f$. So replacing $R$ by $R_f$ and $M$ by $M_f$ again, we may assume that the $m_i$ generate $R$ as an $R$-module.
+	
+	Let $N\subseteq R^k$ be the kernel of $R^k\epimorphism M$ sending the $i\ordinalth$ standard basis vector to $m_i$. We have a short exact sequence $0\morphism N\morphism R^k\morphism M\morphism 0$. Localizing at $\pp$ gives $0\morphism N_\pp\morphism R_\pp^k\morphism M_\pp\morphism 0$ which is still exact, since localization is an exact functor. Moreover, $R_\pp^k\epimorphism M_\pp$ is an isomorphism by choice of the $m_i$, hence $N_\pp=0$. So if $g_1,\ldots,g_n$ are generators of $N$ (and here we use Noetherianness), then $f_ig_i=0$ in $R$ for some $f_i\in R\setminus \pp$. Putting $f=f_1\cdots f_n$, we get $N_f=0$, hence $R_f^k\simeq M_f$ and we are done.
+\end{proof}
+\begin{rem*}
+	Somehow related is the \emph{Serre conjecture} (Serre, 1955) that every finitely generated projective module over a polynomial ring $k[X_1,\ldots,X_n]$ (with $k$ a field) is free. It was proved in 1976 independently by Quillen and Suslin.
+\end{rem*}
+\chapter{Regular rings and Cohen--Macaulay rings}
+\section{An application of the Koszul complex}
+\begin{defi}\lbl{def:KoszulComplex}
+	Let $R$ be a ring, $M$ be an $R$-module, $(x_1,\ldots,x_n)$ a sequence of elements of $R$. The (homological) \defemph{Koszul complex} $K_\bullet\big((x_1,\ldots,x_n),M\big)$ is a chain complex defined as follows. Let $[n]=\{1,\ldots,n\}$. For $p\geq0$, $K_p\big((x_1,\ldots,x_n),M\big)$ is the collection of maps $f\colon [n]^{n-p}\morphism M$ with the following properties:
+	\begin{alphanumerate}
+		\item $f(i_1,\ldots,i_{n-p})=0$ when $i_k=i_\ell$ for some integers $1\leq k<\ell\leq m$.
+		\item $f(i_{\pi(1)},\ldots,i_{\pi(n-p)})=\sgn(\pi)f(i_1,\ldots,i_{n-p})$ for every permutation $\pi\in\SS_{n-p}$.
+	\end{alphanumerate}
+	The differential $d_p\colon K_p\big((x_1,\ldots,x_n),M\big)\morphism K_{p-1}\big((x_1,\ldots,x_n),M\big)$ is given by 
+	\begin{align*}
+	d_pf=\sum_{j=0}^{n-p}(-1)^jd^jf\quad\text{where}\quad d^ jf(i_1,\ldots,i_{n-(p-1)})=x_{i_{j+1}}f(i_1,\ldots,\hat{i}_{j+1},\ldots,i_{n-(p-1)})\;.
+	\end{align*}
+	As usual, the hat $\hat{i}_{j+1}$ denotes the omission of $i_{j+1}$.
+\end{defi}
+In fact, the (homological) Koszul complex is just the (cohomological) one from \cite[Definition~2.1.3]{alggeo2} turned around. We also provided an alternative description there and proved (in \cite[Remark~2.1.1\itememph{a}]{alggeo2}) that this definition indeed gives a complex, i.e., that $d_{p-1}d_p=0$.
 
+\begin{example}
+	For small values of $n$, we have
+	\begin{align*}
+	K_\bullet\big(\emptyset,M\big)&=\Big(0\lmorphism M\lmorphism 0\lmorphism\ldots\Big)\\
+	K_\bullet\big((x_1),M\big)&=\Big(0\lmorphism M\lmorphism[x_1\cdot] M\lmorphism 0\lmorphism\ldots\Big)\\
+	K_\bullet\big((x_1,x_2),M\big)&=\Big(0\lmorphism M\xleftarrow{\left(\begin{smallmatrix}
+		-x_2\\
+		x_1
+		\end{smallmatrix}\right)} M\oplus M\xleftarrow{(x_1,x_2)} M\lmorphism 0\lmorphism\ldots\Big)\;.
+	\end{align*}
+\end{example}
+
+The study of $K_\bullet\big((x_1,\ldots,x_n),M\big)$ (in the easiest case) is by using \emph{cones} of morphisms of chain complexes. This notion is defined as follows.
+\begin{defi}
+	\begin{alphanumerate}
+		\item For a chain complex $(C_\bullet,d_\bullet^C)$ and $k\in \IZ$, the \defemph{shifted complex} is given by $C[k]_i=C_{k+i}$ and with the sign convention that $d_i^{C[k]}=(-1)^kd_{i+k}^C$.
+		\item Let $A_\bullet\morphism[f]B_\bullet$ be a morphism of chain complexes. Then the  \defemph{mapping cone} of $f$ is the complex $C_\bullet=\Cone(f)$ given by $C_i=B_i\oplus A_{i-1}$ and with differential 
+		\begin{align*}
+			d_i^C(b,a)=(d_i^Bb+f(a), -d_{i-1}^Aa)\;.
+		\end{align*}
+	\end{alphanumerate}
+\end{defi}
+ This is easily seen to be indeed a chain complex (cf.\ \cite[Remark~2.1.1\itememph{b}]{alggeo2} for a proof in the dual case). Moreover, there is a short exact sequence
+\begin{align}\lbl{eq:ConeSeq}
+	0\morphism B_\bullet\morphism \Cone(f)\morphism A[-1]_\bullet\morphism 0\;.
+\end{align}
+The connecting morphism of the resulting long exact homology sequence is easily checked to be given by $f$ and we obtain the so-called \emph{cone sequence}
+\begin{align*}
+	\ldots\morphism H_i(A_\bullet)\morphism[f] H_i(B_\bullet)\morphism H_i(\Cone(f))\morphism H_{i-1}(A_\bullet)\morphism\ldots\;.
+\end{align*}
+We can apply this to the Koszul complex as follows: As in \cite[Remark~2.1.3\itememph{c}]{alggeo2}, from
+\begin{align*}
+	\phi\colon K_\bullet\big((x_1,\ldots,x_{n-1}),M\big)\morphism[x_n\cdot]K_\bullet\big((x_1,\ldots,x_{n-1}),M\big)
+\end{align*}
+we get an isomorphism
+\begin{align}\lbl{eq:KoszulCone}
+	\begin{split}
+		K_\bullet\big((x_0,\ldots,x_n),M\big)&\isomorphism\Cone(\phi)\\
+		f\in K_p\big((x_0,\ldots,x_n),M\big)&\longmapsto \left(f(n,-)|_{[n-1]^{n-p-1}}, -f|_{[n-1]^{n-p}}\right)
+	\end{split}			
+\end{align}
+and thanks to considering the \emph{homological} Koszul complex, we don't get the shift occuring from the cohomological case. Since there has been quite some confusion in the lecture, let us justify that this is indeed the case. Denote $x=(x_1,\ldots,x_n)$ and $x'=(x_1,\ldots,x_{n-1})$ for short. Then $K_p(x,M)=K^{n-p}(x,M)$, where $K^\bullet(x,M)$ is the cohomological Koszul complex from \cite[Definition~2.1.3]{alggeo2}. The argument given there shows that
+\begin{align*}
+	K^{n-p}(x,M)\simeq K^{n-p-1}(x',M)\oplus K^{n-p}(x',M)\;.
+\end{align*}
+Now $K^{n-p-1}(x',M)\simeq K_p(x',M)$ and $K^{n-p}(x',M)\simeq K_{p-1}(x',M)$ since $x'$ has length $n-1$ instead of $n$ (and that's where the shift vanishes), so
+\begin{align*}
+	K_p(x,M)\simeq K_p(x',M)\oplus K_{p-1}(x',M)
+\end{align*}
+and the right-hand side gives $\Cone(\phi)$. No shift Sherlock!
+\begin{defi}
+	Let $R$ be a ring, $M$ an $R$-module. A sequence $(x_1,\ldots,x_n)$ of elements of $R$ is called \defemph{$M$-regular} if
+	\begin{align*}
+		M/(x_1M+\ldots+x_{i-1}M)\morphism[x_i\cdot ]M/(x_1M+\ldots+x_{i-1}M)
+	\end{align*}
+	is injective for all $1\leq i\leq n$.
+\end{defi}
+\begin{example}
+	The sequence $(1,0)$ is always $R$-regular, $(0,1)$ only when $R=0$.
+\end{example}
+We now put $H_i\big((x_1,\ldots,x_n),M\big)=H_i\left(K_\bullet\big((x_1,\ldots,x_n),M\big)\right)$ for short.
+\begin{prop}\lbl{prop:KoszulAndRegular}
+	Let $R$ be a ring and $M$ an $R$-module.
+	\begin{alphanumerate}
+		\item If $x=(x_1,\ldots,x_n)$ is an $M$-regular sequence, then $H_i(x,M)=0$ for all $i>0$.
+		\item If $R$ is a Noetherian local ring with maximal ideal $\mm$, $M$ finitely generated, and $x=(x_1,\ldots,x_n)$ a sequence of elements of $\mm$, then $H_i(x,M)=0$ for $i>0$ already implies that $x$ is $M$-regular.
+	\end{alphanumerate}
+\end{prop}
+Since our definition of $H_i\big((x_1,\ldots,x_n),M\big)$ doesn't depend on the order of the $x_i$, Proposition~\reff{prop:KoszulAndRegular}\itememph{b} implies
+\begin{cor}
+	When $R$ is a Noetherian local ring and $M$ finitely generated, then every permutation of an $M$-regular sequence of elements of the maximal ideal $\mm$ of $R$ stays regular.
+\end{cor}
+\begin{proof}[Proof of Proposition~\reff{prop:KoszulAndRegular}]
+	Part \itememph{a}. We prove by induction on $n$ that \itememph{a} holds and moreover that $H^0(x,M)=M/(x_1M+\ldots+x_nM)$. For $n=0$, this is obvious. Now let $n\geq 1$ and the assertions be valid for $n-1$. Put $x'=(x_1,\ldots,x_{n-1})$. From the cone sequence \eqreff{eq:ConeSeq} applied to \eqreff{eq:KoszulCone} and the induction hypothesis, we obtain an exact sequence
+	\begin{align*}
+		0\lmorphism H^0\big(x,M\big)\lmorphism M/(x_1M+\ldots+x_{n-1}M)\lmorphism[x_n\cdot]M/(x_1M+\ldots+x_{n-1}M)\;,
+	\end{align*}
+	proving $H^0\big(x,M\big)\simeq M/(x_1M+\ldots+x_nM)$. Moreover, the cone sequence gives 
+	\begin{align*}
+		H_{i-1}(x',M)\lmorphism H_i(x,M)\lmorphism H_i(x',M)
+	\end{align*}
+	in which for $i\geq 2$ the outer terms vanish by the induction hypothesis, since $x'$ is clearly $M$-regular as well. Hence $H_i(x,M)=0$ for $i\geq 2$. For $i=1$ we get
+	\begin{align*}
+		M/(x_1M+\ldots+x_{n-1}M)\lmorphism[x_n\cdot]M/(x_1M+\ldots+x_{n-1}M)\lmorphism H_1\big(x,M\big)\lmorphism 0\;,
+	\end{align*}
+	and since $x$ is $M$-regular, the map on the left has vanishing kernel, showing $H_i\big(x,M\big)=0$ as well.
+	
+	Part \itememph{b}. Again, we do induction on $n$. The case $n=0$ being trivial, let $n\geq 1$ and the assertion be valid for $n-1$. Keeping the above notation, we first prove that $x'$ is regular. Indeed, otherwise $H_i(x',M)\neq 0$ for some $i>0$ by the induction hypothesis. But Nakayama's lemma shows that $H_i(x',M)\lmorphism[x_n\cdot]H_i(x',M)$ is not surjective (it is easy to check that in the Noetherian case the $H_\bullet(x,M)$ are finitely generated provided that $M$ is), hence the exact sequence
+	\begin{align*}
+		H_i(x,M)\lmorphism H_i(x',M)\lmorphism[x_n\cdot]H_i(x',M)
+	\end{align*}
+	shows that $H_i(x,M)\neq 0$. So it remains to show injectivity of $M/(x_1M+\ldots+x_{n-1}M)\lmorphism[x_n\cdot]M/(x_1M+\ldots+x_{n-1}M)$. However, this follows from
+	\begin{align*}
+		M/(x_1M+\ldots+x_{n-1}M)\lmorphism[x_n\cdot]M/(x_1M+\ldots+x_{n-1}M)\lmorphism H_1(x,M)=0\;.
+	\end{align*}
+	We are done.
+\end{proof}
+\begin{rem*}
+	\begin{alphanumerate}
+		\item We have $H^0(x,M)=M/(x_1M+\ldots+x_nM)$ regardless of whether $x=(x_1,\ldots,x_n)$ is $M$-regular; and the proof essentially shows this.
+		\item Proposition~\reff{prop:KoszulAndRegular}\itememph{b} can be strengthened to $H_1\big(x,M\big)\neq 0$ when $M$ is finitely generated and $x$ is a sequence in $\mm$ of $R$ which is \emph{not} regular (and the proof is easily modified to show this).
+	\end{alphanumerate}
+\end{rem*}
+\begin{fact}
+	Let $R$ be a ring, $x=(x_1,\ldots,x_n)$ an $R$-regular sequence such that $I=x_1R+\ldots+x_nR$ is a proper ideal of $R$.
+	\begin{alphanumerate}
+		\item $0\lmorphism R/I\lmorphism K_\bullet(x,R)$ is a free resolution of $R/I$.
+		\item For every $R$-module $M$ and all $p\geq 0$, $\Tor_p^R(M,R/I)\simeq H_p(x,M)$ and  $\Ext_R^p(R/I,M)\simeq H_{n-p}(x,M)$.
+		\item $\pdim_R(R/I)=\fdim_R(R/I)= n$.
+	\end{alphanumerate}
+\end{fact}
+\begin{proof}
+	Part \itememph{a}. By Proposition~\reff{prop:KoszulAndRegular}\itememph{a} and $H^0(x,R)=R/I$, exactness of $0\lmorphism R/I\lmorphism K_\bullet(x,R)$ follows. Note that as described in \cite[Remark~2.1.2]{alggeo2}, $K_p(x,R)\simeq \bigwedge^{n-p}R^n$, and this is a free $R$-module with a basis given by the $e_{i_1}\wedge \cdots\wedge e_{i_{n-p}}$ where $1\leq i_1<\ldots<i_{n-p}\leq n$ and $e_i$ denotes the $i\ordinalth$ standard basis vector of $R^n$.
+	
+	Part \itememph{b}. Moreover, we show in \cite[Remark~2.1.2]{alggeo2} (up to turning the complex around) that $K_p(x,M)\simeq \bigwedge^{n-p}R^n\otimes_RM$, hence $K_\bullet(x,M)\simeq K_\bullet(x,R)\otimes_RM$ and the assertion about $\Tor_i^R(M,R/I)$ follows immediately. 
+	
+	The assertion about $\Ext_R^i(R/I,M)$ then seems reasonable when we take into account that $\bigwedge^{n-p}R^n\simeq \bigwedge^pR^n$, but the technical details still manage to be disgusting. Yet we will sketch what happens. The $R$-module 
+	\begin{align*}
+		\Hom_R\big(K_p(x,R),M\big)\simeq \Hom_R\left(\bigwedge^{n-p}R^n,M\right)
+	\end{align*}
+	is generated by the morphisms $\delta_I(m)$ for $I\subseteq [n]$ an ordered subset such that $\#I=n-p$ and $m\in M$, where $\delta_I(m)$ sends $\bigwedge_{i\in I}e_i$ to $m$ and the other basis vectors to $0$. Identify $\bigwedge^n R^n\simeq R$ by sending $e_1\wedge\cdots\wedge e_n$ to $1$. Now construct a morphism 
+	\begin{align*}
+		\Hom_R\left(\bigwedge^{n-p}R^n,M\right)\morphism \bigwedge^pR^n\otimes_R M
+	\end{align*}
+	by sending $\delta_I(m)$ to $\epsilon\cdot \bigwedge_{j\notin I}e_j\otimes m$, where $\epsilon=(-1)^{n-p-1}\bigwedge_{i\in I}e_i\wedge\bigwedge_{j\notin I}e_j$, which can be viewed as an element (in fact, $\pm 1$) of $R$. One can show (easy) that this is an isomorphism and (ugly -- and hopefully true, I did my best to get the signs right) that this is in fact compatible with the Koszul differential.
+	
+	Part \itememph{c}. From \itememph{b} and the fact that $K_\bullet(x,M)$ is only supported in homological degrees $0\leq p\leq n$ it is clear that $\pdim_R(R/I)=\fdim_R(R/I)\leq n$. But for $M=R/I$, the Koszul differentials vanish, so
+	\begin{align*}
+		\Tor_n^R(R/I,R/I)\simeq\Ext_R^n(R/I,R/I)\simeq R/I\neq 0\;, 
+	\end{align*}
+	provided that $I$ is a proper ideal.
+\end{proof}
+\section{Regular rings}
+Let $R$ be a Noetherian local ring of dimension $d>0$ with maximal ideal $\mm$ and residue field $k=R/\mm$. Then
+\begin{align*}
+	\dim_k(\mm^i/\mm^{i+1})\sim \epsilon i^{d-1}
+\end{align*}
+with some $\epsilon>0$, by Hilbert polynomial theory.
+
+Indeed, for sufficiently large $i$, $\length_R(R/\mm^i)$ is given by a polynomial $Q=Q_{R,\mm}$ in $i$, the \emph{Samuel polynomial} of $R$ with respect to $\mm$, cf.\ \cite[Definition~3.4.3]{alg2}, whose degree equals $d$ by \cite[Theorem~20]{alg2}. Hence
+\begin{align*}
+	\dim_k(\mm^i/\mm^{i+1})=\length_R(\mm^i/\mm^{i+1})=\length_R(R/\mm^{i+1})-\length_R(R/\mm^i)=Q(i+1)-Q(i)
+\end{align*}
+for $i\gge 0$ (we use that $\mm^i/\mm^{i+1}$ already has $\mm$-torsion, so its length as an $R$-module equals is length as an $R/\mm$-module, i.e., its dimension as a $k$-vector space), showing that $\dim_k(\mm^i/\mm^{i+1})$ is given by a polynomial of degree $d-1$.
+
+As in \cite[Proposition~1.3.1]{alg2} one shows $\dim_k(\mm/\mm^2)\geq d$. Recall that $R$ is called \defemph{regular} when equality holds. In this case, $\mm$ can be generated by $d$ elements $\mu_1,\ldots,\mu_d$ and we have seen in \cite[Corollary~3.4.9]{alg2} that the $\mu_i$ generate the \emph{associated graded ring}
+\begin{align*}
+	\gr(R,\mm)=\bigoplus_{i=0}^n\mm^i/\mm^{i+1}
+\end{align*}
+as a polynomial algebra over $k$.
 
 \appendix
 \chapter{Appendix -- category theory corner}
