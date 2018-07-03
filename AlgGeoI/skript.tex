@@ -2439,7 +2439,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
     (the equality follows from Corollary~\reff{cor:preschemesEqualizers}\itememph{c}) is closed in $V_i$ as $f^{-1}(U_i) $ is a scheme. By an argument like in Remark~\reff{rem:localClosedness}\itememph{a}, this shows that $\Eq(a,b)$ is closed in $T$, i.e., $f$ is separated.
 \end{proof}
 \begin{prop}\lbl{prop:separatedMorphismEmbedding}
-    Any \defemph{section} (i.e., right-inverse) $s$ of a separated morphism is a closed embedding. 
+    Any section (i.e., right-inverse) $s$ of a separated morphism is a closed embedding. 
 \end{prop}
 \begin{proof}
     Let $X\morphism[f] S$ be separated and $S\morphism[s] X$ be such that $fs = \id_S$. Then $S\morphism[s] X$ equals $\Eq\Big(X\doublemorphism[a][b] X\Big)\morphism X$ where $a=\id_X$ and $b= sf$. Indeed, if $T\morphism[g] X$ is a morphism of preschemes such that $ag = bg$ then $g = ag = bg = s\gamma$ with $\gamma = fg$. Thus, $g = s\gamma$ factors over $s$. Moreover, if $\gamma$ is such that $g= s\gamma$, then $\gamma = fs\gamma = fg$ is unique, proving our claim that $S=\Eq(a,b)$.
@@ -3227,7 +3227,7 @@ The following lemma wasn't covered in the lecture, but is perhaps worthwhile to 
 \end{defi}
 We will prove the equivalence of \itememph{a} and \itememph{b} once we have the $\SPEC_Y$ functor available (cf.\ Lemma~\reff{lem:affineMorphismEquivalence}).
 \begin{defi}[Finite and integral morphism]\lbl{def:finiteIntegralMorphism}
-    A morphism $X\morphism[f] Y$ of preschemes is called finite (respectively integral) if it is affine and in addition the following equivalent conditions hold
+    A morphism $X\morphism[f] Y$ of preschemes is called \defemph{finite} (respectively \defemph{integral}) if it is affine and in addition the following equivalent conditions hold
     \begin{alphanumerate}
     \item 
         If $U\subseteq Y$ is open affine then $\Oo_X(f^{-1}(U))$ is finite (respectively integral) over $\Oo_Y(U)$.
@@ -3343,7 +3343,7 @@ Indeed, one has $(\Oo_{\SPEC \Aa})_{(x,\pp)} = (\Aa_x)_\pp \simeq (A_x)_\pp \sim
     
     To obtain \itememph{c} $\Rightarrow$ \itememph{a}, note that for any quasi-coherent $\Oo_Y$-algebra $\Aa$ and $U\subseteq Y$ affine open, its preimage $p^{-1}(U)$ under $\SPEC_Y(\Aa)\morphism[p]Y$ equals $\SPEC_U(\Aa|_U)\simeq \Spec A$ if $\Aa|_U=\snake A$ for $A$ an $\Oo_Y(U)$-algebra (and such an $A$ may be found by Proposition~\reff{prop:coherentDef}\itememph{a} and Definition~\reff{def:quasicoherent}\itememph{a} as $\Aa$ is quasi-coherent). Then the argument from \itememph{b} $\Rightarrow$ \itememph{c} can be reversed.
 \end{proof}
-\begin{cor}
+\begin{cor}\lbl{cor:AffineStableUnderBaseChange}
     The classes of affine and of finite or integral morphisms are stable under composition and base change and are base-local.
 \end{cor}
 \begin{proof}
@@ -3353,7 +3353,7 @@ Indeed, one has $(\Oo_{\SPEC \Aa})_{(x,\pp)} = (\Aa_x)_\pp \simeq (A_x)_\pp \sim
 	\end{align*}
 	by Corollary~\reff{cor:fibreProductsInLRS}\itememph{b}. Since $U\times_WV$ is affine by Corollary~\reff{cor:affineSchemesFibreProduct} and $Y$ can be covered by such $V$, $\xi'$ is an affine morphism by Definition~\reff{def:affineMorphism}\itememph{b} and it's clear that finiteness or integrality conditions are inherited as well.
 \end{proof}
-\begin{prop}
+\begin{prop}\lbl{prop:finiteClosed}
     If $X\morphism[f] Y$ is finite or just integral and $A$ a closed subset of $X$, then $f(A)$ is closed in $Y$.
 \end{prop}
 \begin{proof}
@@ -3370,7 +3370,7 @@ Indeed, one has $(\Oo_{\SPEC \Aa})_{(x,\pp)} = (\Aa_x)_\pp \simeq (A_x)_\pp \sim
     \item  
         The class of universally closed morphisms is base-local and closed under composition and base change.
     \item 
-        Any finite or integral morphism is universally closed.
+        Any finite or integral morphism is universally closed. Indeed, a finite (resp.\ integral) morphism is closed by Proposition~\reff{prop:finiteClosed} and all its base changes are finite (resp.\ integral) again by Corollary~\reff{cor:AffineStableUnderBaseChange}.
     \end{alphanumerate}
 \end{rem}
 \begin{example}
