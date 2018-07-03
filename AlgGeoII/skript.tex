@@ -114,9 +114,9 @@ Background in homological algebra is not required safe for cohomology groups of 
 
 \chapter{Cohomology of quasi-coherent sheaves of modules}
 \section{Recollection of basic definitions and results}
-\begin{defi}[{\cite[Definition~1.5.2 and Definition~1.5.9\itememph{b}]{alggeo1}}]
+\begin{defi}[{\cite[Definitions~1.5.2 and 1.5.9\itememph{b}]{alggeo1}}]
 	\begin{alphanumerate}
-		\item A \defemph{prescheme} (Franke uses ``EGA termology'') is a locally ringed space $(X,\Oo_X)$ which locally has the form $\Spec R$ for some rings $R$.
+		\item A \defemph{prescheme} (Professor Franke prefers ``EGA termology'') is a locally ringed space $(X,\Oo_X)$ which locally has the form $\Spec R$ for some rings $R$.
 		\item A prescheme $X$ is called a \defemph{scheme}, if, for any prescheme $T$ and any pair of morphisms $T\doublemorphism[a][b]X$, the equalizer $\Eq\Big(T\doublemorphism[a][b]X\Big)$ is a closed subprescheme of $X$.
 	\end{alphanumerate}
 \end{defi}
@@ -193,7 +193,7 @@ Let $\Aa$ be the category $R\cat{-Mod}$ and $\Bb$ be $\Oo_{\Spec R}\cat{-Mod}$, 
 	\end{alphanumerate}
 \end{defi}
 \begin{proof}
-	Equivalence was proved in \cite[Fact~2.1.1]{alggeo1} for quasi-compactness and \cite[Lemma~2.1.1]{alggeo1} for quasi-separatedness.
+	Equivalence was proved in \cite[Fact~2.1.1]{alggeo1} for quasi-compactness and in \cite[Lemma~2.1.1]{alggeo1} for quasi-separatedness.
 \end{proof}
 
 \begin{prop}\lbl{prop:PushforwardOfQcIsQc}
@@ -2408,34 +2408,35 @@ This construction is base-local. That is, $\PROJ_U(\Rr|_U)\simeq \pi^{-1}(U)$ fo
 		Finally, we have a canonical morphism $\Rr_k\morphism[\rho_k]\pi_*\Oo(k)$ sending $r\in\Rr_k(U)$ to its images under $\Rr_k(U)\morphism ((\Rr_x)_\pp)_k$ with $(x,\pp)$ running over $\pi^{-1}(U)$.
 	\end{alphanumerate}
 \end{fact}
-\begin{rem}\lbl{rem:SheafInverseImage}
-	So far, we have seen three kinds of inverse image functors. Let $f\colon X\morphism Y$ be a continuous map of topological spaces, where for $f^*$ we additionally assume that $X$ and $Y$ are ringed with structure sheaves $\Oo_X,\Oo_Y$. Then we have
-	\begin{align*}
+\begin{rem}
+	\begin{alphanumerate}
+		\item\lbl{rem:SheafInverseImage} So far, we have seen three kinds of inverse image functors. Let $f\colon X\morphism Y$ be a continuous map of topological spaces, where for $f^*$ we additionally assume that $X$ and $Y$ are ringed with structure sheaves $\Oo_X,\Oo_Y$. Then we have
+		\begin{align*}
 		\begin{array}{r c l c}
-			f^\flat\colon & \cat{PreShv}(Y)\morphism[ ]\cat{PreShv}(X)&\text{left-adjoined to } & \cat{PreShv}(X)\morphism[f_*]\cat{PreShv}(Y)\\
-			f^\sharp\colon & \cat{Shv}(Y)\morphism[ ]\cat{Shv}(X) & \text{left-adjoined to } & \cat{Shv}(X)\morphism[f_*]\cat{Shv}(Y)\\
-			f^*\colon & \Oo_Y\cat{-Mod}\morphism[ ]\Oo_X\cat{-Mod} & \text{left-adjoined to } & \Oo_X\cat{-Mod}\morphism[f_*]\Oo_Y\cat{-Mod}
+		f^\flat\colon & \cat{PreShv}(Y)\morphism[ ]\cat{PreShv}(X)&\text{left-adjoined to } & \cat{PreShv}(X)\morphism[f_*]\cat{PreShv}(Y)\\
+		f^\sharp\colon & \cat{Shv}(Y)\morphism[ ]\cat{Shv}(X) & \text{left-adjoined to } & \cat{Shv}(X)\morphism[f_*]\cat{Shv}(Y)\\
+		f^*\colon & \Oo_Y\cat{-Mod}\morphism[ ]\Oo_X\cat{-Mod} & \text{left-adjoined to } & \Oo_X\cat{-Mod}\morphism[f_*]\Oo_Y\cat{-Mod}
 		\end{array}
-	\end{align*}
-	defined as follows. For a presheaf $\Gg$ on $Y$ define $f^\flat \Gg$ by 
-	\begin{align*}
+		\end{align*}
+		defined as follows. For a presheaf $\Gg$ on $Y$ define $f^\flat \Gg$ by 
+		\begin{align*}
 		f^\flat\Gg(U)=\colimit[V\supseteq f(U)\text{ open}]\Gg(V)
-	\end{align*}
-	for open subsets $U\subseteq X$. This is usually not a sheaf, so we put $f^\sharp\Gg=(f^\flat\Gg)^\sh$. Note that
-	\begin{align*}
+		\end{align*}
+		for open subsets $U\subseteq X$. This is usually not a sheaf, so we put $f^\sharp\Gg=(f^\flat\Gg)^\sh$. Note that
+		\begin{align*}
 		(f^\flat\Gg)_x=\colimit[U\ni x]f^\flat\Gg(U)=\colimit[U\ni x]\colimit[V\supseteq f(U)]\Gg(V)=\colimit[V\ni f(x)]\Gg(V)=\Gg_{f(x)}\;,
-	\end{align*}
-	thus also $(f^\sharp\Gg)_x=\Gg_{f(x)}$ since the stalks of the sheafification are the same (cf.\ \cite[Proposition~1.2.1\itememph{a}]{alggeo1}). In fact, the stalk is an inverse image itself: We have $\Gg_x=i_x^\flat\Gg(\{x\})$, where $i_x\colon\{x\}\morphism X$ is the inclusion of $x\in X$. If $g\colon Y\morphism Z$ is another continuous map, we have canonical functor isomorphisms $(gf)^\flat=f^\flat g^\flat$ and $(gf)^\sharp =f^\sharp g^\sharp$.
-	
-	Now let $\Mm$ be a sheaf of rings on the ringed space $(Y,\Oo_Y)$. In general, $f^\sharp \Mm$ will only be a $f^\sharp\Oo_Y$-module, so we need to tensor it by $\Oo_X$ to get the pullback $f^*\Mm$. That is, $f^*\Mm=f^\sharp\Mm\otimes_{f^\sharp\Oo_Y}\Oo_X$. By Remark~\reff{rem:tensorProductSheaves}, its stalks are given by
-	\begin{align*}
+		\end{align*}
+		thus also $(f^\sharp\Gg)_x=\Gg_{f(x)}$ since the stalks of the sheafification are the same (cf.\ \cite[Proposition~1.2.1\itememph{a}]{alggeo1}). In fact, the stalk is an inverse image itself: We have $\Gg_x=i_x^\flat\Gg(\{x\})$, where $i_x\colon\{x\}\morphism X$ is the inclusion of $x\in X$. If $g\colon Y\morphism Z$ is another continuous map, we have canonical functor isomorphisms $(gf)^\flat=f^\flat g^\flat$ and $(gf)^\sharp =f^\sharp g^\sharp$.
+		
+		Now let $\Mm$ be a sheaf of modules on the ringed space $(Y,\Oo_Y)$. In general, $f^\sharp \Mm$ will only be a $f^\sharp\Oo_Y$-module, so we need to tensor it by $\Oo_X$ to get the pullback $f^*\Mm$. That is, $f^*\Mm=f^\sharp\Mm\otimes_{f^\sharp\Oo_Y}\Oo_X$. By Remark~\reff{rem:tensorProductSheaves}, its stalks are given by
+		\begin{align*}
 		(f^*\Mm)_x=\Mm_{f(x)}\otimes_{\Oo_{Y,f(x)}}\Oo_{X,x}
-	\end{align*}
-	and from this we can describe $f^*\Mm$ by another one of our beautiful coherence condition characterizations for (I won't include this here). In particular, we see that $f^*$ is base-local.
-	
-	Since $f^*\Oo_Y=\Oo_X$ (this is clear on stalks) and $f^*$ preserves direct sums (in fact, as a left-adjoined functor it preserves arbitrary colimits, cf.\ Remark~\reff{rem:AdjunctionPreservesStuff}), so inverse images of vector bundles (resp.\ line bundles) are vector bundles (resp.\ line bundles) again by base-locality of $f^*$.
-	
-	Moreover, when $f$ is a morphism between affine schemes $X=\Spec B$ and $Y=\Spec A$ (thus) coming from a ring morphism $A\morphism B$, then $f^*\snake{M}=(B\otimes_AM)^\sim$ for all $A$-modules $M$ (which is easily seen stalk-wise). It follows that $f^*$ restricts to a functor $f^*\colon \cat{QCoh}(Y)\morphism\cat{QCoh}(X)$.
+		\end{align*}
+		and from this we can describe $f^*\Mm$ by another one of our beautiful coherence condition characterizations for (I won't include this here). In particular, we see that $f^*$ is base-local.
+		\item Since $f^*\Oo_Y=\Oo_X$ (this is clear on stalks) and $f^*$ preserves direct sums (in fact, as a left-adjoined functor it preserves arbitrary colimits, cf.\ Remark~\reff{rem:AdjunctionPreservesStuff}), so inverse images of vector bundles (resp.\ line bundles) are vector bundles (resp.\ line bundles) again by base-locality of $f^*$.
+		\item Moreover, when $f$ is a morphism between affine schemes $X=\Spec B$ and $Y=\Spec A$ (thus) coming from a ring morphism $A\morphism B$, then $f^*\snake{M}=(B\otimes_AM)^\sim$ for all $A$-modules $M$ (which is easily seen stalk-wise). It follows that $f^*$ restricts to a functor $f^*\colon \cat{QCoh}(Y)\morphism\cat{QCoh}(X)$.
+		\item Also note that $f^*$ commutes with tensor products, i.e., $f^*(\Mm\otimes_{\Oo_Y}\Nn)=f^*\Mm\otimes_{\Oo_X}f^*\Nn$. Indeed, this can be easily verified by looking at stalks.
+	\end{alphanumerate}
 \end{rem}
 \paragraph{An adjunction for $\PROJ$.} In the lecture the question came up whether $\PROJ$ (or even ordinary $\Proj$) satisfies an adjunction similar to \eqreff{eq:SPECAdjunction}. It turns out that such an adjunction (in an appropriate sense) indeed exists, but it will be way more subtle than you might believe.
 
@@ -2454,18 +2455,18 @@ Recall the notion of $S$-preschemes from \cite[Definition~1.5.7]{alggeo1}. Let $
 \begin{proof}[Not quite a proof]
 	Let us first justify that the given descriptions are well-defined. The morphism $\Proj A[T]\morphism \Proj(A\otimes_{R_0}R)$ in \itememph{a} comes from the fact that $A\otimes_{R_0}R\morphism[\alpha]A[T]$ is surjective, so the conditions from Remark~\reff{rem:ProjFunctoriality} are clearly satisfied. The other one is the canonical morphism we get from $\Proj(A\otimes_{R_0}R)\simeq X\times_S\Proj R$.\footnote{And this behaviour of $\Proj$ is easy to see from $\Proj R\setminus V(f)\simeq \Spec (R_f)_0$ for homogeneous $f\in R_+$ (Proposition~\reff{prop:FirstProjProperties}\itememph{c}), since $(A\otimes_{R_0}R)_{1\otimes f})_0=A\otimes_{R_0}(R_f)_0$ and fibre products are base-local.} 
 	
-	Why is $\phi^*\Oo_{\Proj R}\simeq \Oo_{\IP_A^0}(1)$? First of all, we may cover $\Proj R$ by affine open subsets $\Proj R\setminus V(f)$ for $f\in R_1$, by assumption. Moreover, their images $\alpha(1\otimes f)$ in $A[T]_1$ generate the augmentation ideal of $A[T]$ by surjectivity of $\alpha$. On such a subset $\Proj R\setminus V(f)\simeq \Spec (R_f)_0$, $\Oo_{\Proj R}(1)$ is given by $((R_f)_1)^\sim$ (Proposition~\reff{prop:FirstProjProperties}\itememph{c}). Hence $\phi^*\Oo_{\Proj R}$ restricted to $\Spec \big(A[T]_{\alpha(1\otimes f)}\big)_0$ is given by the $\big(A[T]_{\alpha(1\otimes f)}\big)_0$-module $\big(A[T]_{\alpha(1\otimes f)}\big)_0\otimes_{(R_f)_0}(R_f)_1$ (by Remark~\reff{rem:SheafInverseImage}) and we get an isomorphism
+	Why is $\phi^*\Oo_{\Proj R}\simeq \Oo_{\IP_A^0}(1)$? First of all, we may cover $\Proj R$ by affine open subsets $\Proj R\setminus V(f)$ for $f\in R_1$, by assumption. Moreover, their images $\alpha(1\otimes f)$ in $A[T]_1$ generate the augmentation ideal of $A[T]$ by surjectivity of $\alpha$. On such a subset $\Proj R\setminus V(f)\simeq \Spec (R_f)_0$, $\Oo_{\Proj R}(1)$ is given by $((R_f)_1)^\sim$ (Proposition~\reff{prop:FirstProjProperties}\itememph{c}). Hence $\phi^*\Oo_{\Proj R}$ restricted to $\Spec \big(A[T]_{\alpha(1\otimes f)}\big)_0$ is given by the $\big(A[T]_{\alpha(1\otimes f)}\big)_0$-module $\big(A[T]_{\alpha(1\otimes f)}\big)_0\otimes_{(R_f)_0}(R_f)_1$ (by Remark~\reff{rem:SheafInverseImage}\itememph{c}) and we get an isomorphism
 	\begin{align*}
 		\big(A[T]_{\alpha(1\otimes f)}\big)_0\otimes_{(R_f)_0}(R_f)_1&\isomorphism \big(A[T]_{\alpha(1\otimes f)}\big)_1\\
 		a \otimes \frac{r}{f^k}&\longmapsto \frac{\alpha(1\otimes r)}{\alpha(1\otimes f)^k}\cdot a\;,
 	\end{align*}
-	which is easily globalized.
+	which is canonical enough to be easily globalized.
 	
-	For \itememph{b}, the question we should really ask is why $\alpha$ is surjective, as not all elements of the global section of $\phi^*\Oo_{\Proj R}(k)$ need to come from an element $r\in R_k$.\footnote{By the way, $\phi^*$ commutes with tensor products (up to canonical isomorphism), which can be seen on stalks. We will silently use this throughout the section.} However, we can do the following. Let $f\in R_1$ and $g\in A$ such that $\Spec A_g$ lies in the preimage of $\Proj R\setminus V(f)\simeq (R_f)_0$ under $\phi$. By quasi-compactness, we find finitely many such $f_1,\ldots,f_n$ and $g_1,\ldots,g_n$ such that the $\Spec A_{g_i}$ cover $X=\Spec A$. On $\Spec A_{g_i}$, $\phi^*\Oo_{\Proj R}(k)$ is given by the $A_{g_i}$-module $A_{g_i}\otimes_{(R_f)_0}(R_f)_k$ and $\tau^{\otimes k}$ induces an isomorphism
+	For \itememph{b}, the question we should really ask is why $\alpha$ is surjective, as not all elements of the global section of $\phi^*\Oo_{\Proj R}(k)$ need to come from an element $r\in R_k$. However, we can do the following. Let $f\in R_1$ and $g\in A$ such that $\Spec A_g$ lies in the preimage of $\Proj R\setminus V(f)\simeq (R_f)_0$ under $\phi$. By quasi-compactness, we find finitely many such $f_1,\ldots,f_n$ and $g_1,\ldots,g_n$ such that the $\Spec A_{g_i}$ cover $X=\Spec A$. On $\Spec A_{g_i}$, $\phi^*\Oo_{\Proj R}(k)$ is given by the $A_{g_i}$-module $A_{g_i}\otimes_{(R_f)_0}(R_f)_k$ and $\tau^{\otimes k}$ induces an isomorphism
 	\begin{align*}
 		\tau^{\otimes k}\colon A_{g_i}\otimes_{(R_f)_0}(R_f)_k\isomorphism A_{g_i}\;,
 	\end{align*}
-	hence there is some preimage $\sum_{j=1}^{n_j}a_j\otimes \rho_j$ of $1\in A_{g_i}$. Since $R$ is generated by $R_0$ and $R_1$, $\rho_j\in (R_f)_k$ can be written as a product of an element of $R_k$ and an element of $(R_f)_0$. The latter can be sucked into the $A_{g_i}$ factor of the tensor product. Multiplying by a suitable power of $g_i$, we find an element of $A\otimes_{R_0}R_k$ which is mapped to some power $g_i^{k_i}$ by $\tau^{\otimes k}$. Since $g_1,\ldots,g_n$ generate $A$, so do $g_1^{k_1},\ldots,g_n^{k_n}$ and the desired surjectivity follows quite easily.
+	hence there is some preimage $\sum_{j=1}^{n_j}a_j\otimes \rho_j$ of $1\in A_{g_i}$. Since $R$ is generated by $R_0$ and $R_1$, $\rho_j\in (R_f)_k$ can be written as a sum of products of an element of $R_k$ and an element of $(R_f)_0$. The latter can be sucked into the $A_{g_i}$ factor of the tensor product. Multiplying by a suitable power of $g_i$, we find an element of $A\otimes_{R_0}R_k$ which is mapped to some power $g_i^{k_i}$ by $\tau^{\otimes k}$. Since $g_1,\ldots,g_n$ generate $A$, so do $g_1^{k_1},\ldots,g_n^{k_n}$ and the desired surjectivity follows quite easily.
 	
 	To show that \itememph{a} and \itememph{b} are indeed inverse seems to be a (doable) technical nightmare and I will rely on believing Professor Franke here.
 \end{proof}
@@ -2486,15 +2487,15 @@ Recall that we have a projection $P\morphism[\pi]S$. Let $\pi^*\Rr_k\morphism[\e
 \begin{proof}[Sketch of a proof]
 	As $U\mapsto\MM(U)$ and $U\mapsto\NN(U)$ (for $U\subseteq X$ open) are easily seen to be sheaves, it is enough to show this on an appropriate topology base of $X$. We use affine open $U$ such that $\Ll|_U$ is trivial and $\xi(U)$ is contained in an affine open subset of $S$, so that Lemma~\reff{lem:localPseudoAdjunction} may be applied.
 \end{proof}
-By choosing a representative for all possible isomorphism classes of line bundles on $X$ which $\phi^*\Oo_P(1)$ may belong to (and by Remark~\reff{rem:SheafInverseImage} it is indeed a line bundle on $X$), Proposition~\reff{prop:PROJQuasiAdjunction} gives
-\begin{cor}
+By choosing a representative for all possible isomorphism classes of line bundles on $X$ which $\phi^*\Oo_P(1)$ may belong to (and by Remark~\reff{rem:SheafInverseImage}\itememph{b} it is indeed a line bundle on $X$), Proposition~\reff{prop:PROJQuasiAdjunction} gives
+\begin{cor}\lbl{cor:PROJQuasiAdjunction}
 	In the situation of Proposition~\reff{prop:PROJQuasiAdjunction}, $\Hom_{S\cat{-PreSch}}(X,\PROJ_S(\Rr))$ is in canonical bijection with the set of pairs $(\Ll,\alpha)$, where $\Ll$ is a representative of an isomorphism class of line bundles on $X$ and $\alpha$ a morphism
 	\begin{align}\lbl{eq:WhatIsAlpha}
 		\alpha\colon\xi^*\Rr\morphism\bigoplus_{k=0}^\infty\Ll^{\otimes k}
 	\end{align}
 	of graded $\Oo_X$-algebras defining surjections on stalks.
 \end{cor}
-\begin{cor}\lbl{cor:PROJQuasiAdjunction}
+\begin{cor}\lbl{cor:PROJpullback}
 	Under the assumptions of Proposition~\reff{prop:PROJQuasiAdjunction}, let $T\morphism[\tau]S$ be an $S$-prescheme and put $P_T=\PROJ_T(\tau^*\Rr)$. Then there is a canonical isomorphism $P_T\isomorphism P\times_ST$ defined by the projection $P_T\morphism[\pi_T]T$ and the morphism $P_T\morphism P$ (over $S$) defined by Proposition~\reff{prop:PROJQuasiAdjunction} and the morphism
 	\begin{align*}
 		(\tau\pi_T)^*\Rr_k= \pi_T^*\tau^*\Rr_k\morphism[\epsilon_k]\Oo_{P_T}(k)\;,
@@ -2502,21 +2503,21 @@ By choosing a representative for all possible isomorphism classes of line bundle
 	where $\epsilon_k$ is defined similar to $\epsilon_k$ in Proposition~\reff{prop:PROJQuasiAdjunction}.
 \end{cor}
 \begin{proof}[Sketch of a proof]
-	Let $X\morphism[t]T$ and $X\morphism[p]P$ be morphisms of preschemes such that $\tau t=\pi p$. By Corollary~\reff{cor:PROJQuasiAdjunction} $p$ corresponds to a morphism
+	Let $X\morphism[t]T$ and $X\morphism[p]P$ be morphisms of preschemes such that $\tau t=\pi p$. By Corollary~\reff{cor:PROJQuasiAdjunction}, $p$ corresponds to a morphism
 	\begin{align*}
 		\alpha\colon p^*\pi^*\Rr\morphism\bigoplus_{k=0}^\infty\Ll^{\otimes k}\;.
 	\end{align*}
 	But $p^*\pi^*\Rr=t^*(\tau^*\Rr)$, so $\alpha$ induces a morphism $X\morphism[\xi]P_T$ by Corollary~\reff{cor:PROJQuasiAdjunction} applied to $\tau^*\Rr$ this time. One can show that this gives $P_T$ the required universal property.
 \end{proof}
 \begin{rem*}
-	The isomorphism $\PROJ_T(\tau^*\Rr)\isomorphism\PROJ_S(\Rr)\otimes_ST$ exists in full generality, even when $\Rr$ is not generated by $\Rr_0$ and $\Rr_1$.
+	The isomorphism $\PROJ_T(\tau^*\Rr)\isomorphism\PROJ_S(\Rr)\times_ST$ exists in full generality, even when $\Rr$ is not generated by $\Rr_0$ and $\Rr_1$.
 \end{rem*}
 Let $\Rr$ be an $\IN_0$-graded quasi-coherent $\Oo_S$-algebra, $\Ll$ a line bundle on $S$ and
 \begin{align*}
-	\Rr^{(\Ll)}=\bigoplus_{k=0}^\infty\Rr_k\otimes \Ll^{\otimes k}
+	\Rr^{(\Ll)}=\bigoplus_{k=0}^\infty\Rr_k\otimes_{\Oo_S} \Ll^{\otimes k}
 \end{align*}
 with the $\Oo_S$-algebra structure defined by $(r\otimes \lambda)\cdot (s\otimes \mu)=(rs)\otimes (\lambda\otimes\mu)$ for $r\in\Rr_k(U)$, $s\in\Rr_{\ell}(U)$, $\lambda\in\Ll^{\otimes k}(U)$, and $\mu\in\Ll^{\otimes \ell}(U)$. We put $P^{(\Ll)}=\PROJ_S\big(\Rr^{(\Ll)}\big)$ and let $\rho$ be the projection $P^{(\Ll)}\morphism S$.
-\begin{cor}
+\begin{cor}\lbl{cor:PROJLTwist}
 	There is a canonical isomorphism $i\colon P^{(\Ll)}\isomorphism P$ together with an isomorphism 
 	\begin{align*}
 		\iota\colon i^*\Oo_{P}(1)\otimes_{\Oo_{P}}\rho^*\Ll\isomorphism\Oo_{P^{(\Ll)}}(1)
@@ -2530,23 +2531,208 @@ with the $\Oo_S$-algebra structure defined by $(r\otimes \lambda)\cdot (s\otimes
 		\rho^*(\Rr_1\otimes_{\Oo_S}\Ll)\morphism[\epsilon_1]\Oo_{P^{(\Ll)}}(1)\;.
 	\end{align*}
 \end{cor}
+\begin{proof}[Sketch of a proof (what did you expect)]
+	We construct an epimorphism
+	\begin{align*}
+		\alpha\colon \rho^*\Rr^{(\Ll)}\epimorphism \bigoplus_{k=0}^\infty\Oo_{P^{(\Ll)}}(k)\otimes_{\Oo_{P^{(\Ll)}}}\rho^*\Ll^{\otimes( -k)}\simeq \bigoplus_{k=0}^\infty\left(\Oo_{P^{(\Ll)}}(1)\otimes_{\Oo_{P^{(\Ll)}}}\Ll^{-1}\right)^{\otimes k}\;.
+	\end{align*}
+	By Corollary~\reff{cor:PROJQuasiAdjunction}, $\alpha$ induces a morphism $i\colon\PROJ_S(\Rr^{(\Ll)})\morphism\PROJ_S(\Rr)$. Then $i$ is easily seen to be an isomorphism since we can construct an inverse in quite a similar fashion. And the rest of the assertions then follows quite easily.
+	
+	To construct $\alpha$, note that 
+	\begin{align*}
+		\rho^*\Rr\simeq \rho^*\bigg(\bigoplus_{k=0}^\infty\Rr_k\otimes_{\Oo_S}\Ll^{\otimes k}\otimes_{\Oo_S}\Ll^{\otimes(-k)}\bigg)\simeq \bigoplus_{k=0}^\infty\rho^*\Rr_k^{(\Ll)}\otimes_{\Oo_{P^{(\Ll)}}}\rho^*\Ll^{\otimes(-k)}
+	\end{align*}
+	using that $\rho^*$ commutes with direct sums (arbitary colimits actually, as $\rho^*$ is a left-adjoint functor) and tensor products (by Remark~\reff{rem:SheafInverseImage}\itememph{d}). Now all we need to do is to prove the following Lemma~\reff{lem:RkEpi} (and apply it to $\rho$ and $\Rr^{(\Ll)}$ instead of $\pi$ and $\Rr$).
+\end{proof}
+\begin{lem}\lbl{lem:RkEpi}
+	The canonical morphism $\pi^*\Rr_k\morphism[\epsilon_k]\Oo_P(k)$ associated to $\Rr_k\morphism[\rho_k]\pi_*\Oo_P(k)$ from Fact~\reff{fact:PROJProperties}\itememph{d} by the $\pi^*$-$\pi_*$ adjunction is an epimorphism.
+\end{lem}
+\begin{proof}
+	It suffices to show this for affine open subsets $U\subseteq S$. Let $\Rr|_U=\snake{R}$, then $\pi^{-1}(U)=\Proj R$ and we need to show that $\pi^*\snake{R}_k\morphism\Oo(k)$ is an epimorphism. On affine open subsets of the form $\Proj R\setminus V(f)$ for $f\in R_1$ (and $\Proj R$ may be covered by such subsets as $\Rr$ is generated by $\Rr_0$ and $\Rr_1$) we know from Remark~\reff{rem:SheafInverseImage}\itememph{c} that $\pi^*\snake{R}_k$ is given by the $(R_f)_0$-module $R_k\otimes_{\Oo_S(U)}(R_f)_0$ and $\Oo(k)$ by $(R_f)_k$. But since $f$ has homogeneous degree $1$ and $R_k$ is generated by $R_0$ and $R_1$, every element of $x\in (R_f)_k$ can be written as $x=\sum_{i=1}^Nx_i\epsilon_i$ with $x_i\in R_k$ and $\epsilon_i\in (R_f)_0$, so $\epsilon_k$ is easily seen to be surjective on these subsets, hence on stalks and that's all we need.
+\end{proof}
 Let $\Rr$ and $\Ss$ be $\IN_0$-graded $\Oo_S$-algebras satisfiying the assumptions of Proposition~\reff{prop:PROJQuasiAdjunction} and let $\Tt=\bigoplus_{k=0}^\infty\Tt_k$, where $\Tt_k=\Rr_k\otimes_{\Oo_S}\Ss_k$, equipped with the obvious $\Oo_S$-algebra structure. Let $X=\PROJ_S(\Rr)\morphism[\pi_X]S$, $Y=\PROJ_S(\Ss)\morphism[\pi_Y]S$ and $Z=X\times_SY$. Let $Z\morphism[p_X]X$ and $Z\morphism[p_Y]Y$ be the projections to the two factors and $\zeta=\pi_Xp_X=\pi_Yp_Y$. Finally, let $\Ll=p_X^*\Oo_X(1)\otimes_{\Oo_Z}p_Y^*\Oo_Y(1)$ be a line bundle on $Z$.
 
 We have epimorphisms of $\Oo_Z$-modules
 \begin{align*}
-	\zeta^*\Tt_k\simeq \zeta^*\Rr_k\otimes_{\Oo_Z}\zeta^*\Ss_k\epimorphism\Ll^{\otimes k}\simeq p_X^*\Oo_X(k)\otimes_{\Oo_Z}p_Y^*\Oo_Y(k)
+	\zeta^*\Tt_k\simeq \zeta^*\Rr_k\otimes_{\Oo_Z}\zeta^*\Ss_k\epimorphism p_X^*\Oo_X(k)\otimes_{\Oo_Z}p_Y^*\Oo_Y(k)\simeq\Ll^{\otimes k}
 \end{align*}
 defined by the tensor product of $p_X^*\left(\pi_X^*\Rr_k\morphism[\epsilon_X]\Oo_X(1)\right)$ and $p_Y^*\left(\pi_Y^*\Ss_k\morphism[\epsilon_Y]\Oo_Y(1)\right)$. These epimorphisms intertwine the product $\zeta^*\Tt_k\times \zeta^*\Tt_\ell\morphism \zeta^*\Tt_{k+\ell}$ on $\Tt$ with the tensor multiplication $\Ll^{\otimes \ell}\otimes_{\Oo_S}\Ll^{\otimes k}\morphism\Ll^{\otimes(k+\ell)}$. Application of Proposition~\reff{prop:PROJQuasiAdjunction} gives a morphism $Z\morphism\PROJ_S(\Tt)$ of $S$-preschemes. 
-\begin{prop}
+\begin{prop}\lbl{prop:technicalAFIso}
 	This is an isomorphism.
 \end{prop}
-\begin{example*}
-	We have the closed embedding $\IP_R^m\times\IP_R^n\morphism\IP_R^{m+n+nm}$ defined by 
+\begin{example}\lbl{ex:SegreEmbedding}
+	For a prescheme $S$, put $\IP_S^n=\PROJ_S\Oo_S[X_0,\ldots,X_n]$ (note that in the special case $S=\Spec R$ this gives $\IP_S^n=\IP_R^n$, as one could expect). We have the closed embedding $\IP_S^m\times\IP_S^n\morphism[\sigma]\IP_S^{m+n+nm}$ defined by 
 	\begin{align*}
-		R[X_0,\ldots,X_m]_k\otimes_RR[Y_0,\ldots,Y_n]_k\lmorphism R\left[Z_{i,j}\st 1\leq i\leq m,\ 1\leq j\leq n\right]_k
+		\Oo_S[X_0,\ldots,X_m]_k\otimes_{\Oo_S}\Oo_S[Y_0,\ldots,Y_n]_k\lmorphism \Oo_S\left[Z_{i,j}\st 1\leq i\leq m,\ 1\leq j\leq n\right]_k
 	\end{align*}
-	sending $Z_{i,j}$ to $X_i\otimes Y_j$.
-\end{example*}
+	sending $Z_{i,j}$ to $X_i\otimes Y_j$. This is the so-called \emph{Segre embedding}.
+\end{example}
+\begin{proof}[Sketch of a proof of Proposition~\reff{prop:technicalAFIso}]
+	One confirms that for any morphism of preschemes $T\morphism[\tau]S$, any line bundle $\Ll$ on $T$ and any morphism
+	\begin{align*}
+		\alpha\colon \tau^*\Tt\epimorphism\bigoplus_{i=0}^\infty\Ll^{\otimes k}
+	\end{align*}
+	of $\Oo_T$-algebras which is an epimorphism on stalks one has a decomposition $\Ll\simeq\Mm\otimes_{\Oo_T}\Nn$ with line bundles $\Mm$ and $\Nn$ on $T$ and epimorphisms 
+	\begin{align*}
+		\beta\colon \tau^*\Rr\epimorphism\bigoplus_{i=0}^{\infty}\Mm^{\otimes k}\quad\text{and}\quad\gamma\colon\tau^*\Ss\epimorphism\bigoplus_{i=0}^{\infty}\Nn^{\otimes k}
+	\end{align*}
+	of graded $\Oo_T$-algebras, whose (homogeneous component-wise) tensor product is $\alpha$. This will verify the required universal property for $\PROJ_S(\Tt)$. 
+	
+	To construct $\Mm$ and $\Nn$, we can do the following. Choose an affine open subset $U\subseteq S$ where $\Ll$ trivializes and let $\Rr|_U=\snake{A}$, $\Ss|_U=\snake{B}$, $\Tt|_U=\snake{C}$, and $\Ll|_U=\snake{L}$ (with $L\simeq \Oo_S(U)$). We may take $\Mm|_U=\snake{M}$ where $M\subseteq L$ is the image of $\tau^*\left((A_1\otimes 1)^\sim\right)\subseteq \tau^*\snake{C_1}$ (and for $\Nn$ we do quite the same). Then $M\otimes_{\Oo_S(U)}N\simeq L$, so $M$ and $N$ are invertible $\Oo_S(U)$-modules and thus locally free of rank one\footnote{See \cite[Tag~0AFW]{stacks-project}. Note that the \emph{omitted details} in the proof of Lemma~15.99.2 are basically that $\Hom_R(M,R)_f\simeq \Hom_{R_f}(M_f,R_f)$, for which we need that $M$ is finitely presented (compare \cite[p.~9]{homalg}). But this always holds for modules which are locally free of finite rank. Actually, being finitely presented is a local property, cf.\ \cite[Tag~00EO]{stacks-project}.}, i.e., $\Mm|_U$ and $\Nn|_U$ are line bundles.
+	
+	Now the construction seems canonical enough that it can be globalized.
+\end{proof}
+We are finally ready to define what a \emph{projective morphism} is.
+\begin{defi}\lbl{def:projectiveMorphism}
+	Let $X\morphism[\xi]S$  be a morphism of preschemes.
+	\begin{alphanumerate}
+		\item The morphism $\xi$ is called \defemph{projective} if there is an $\IN_0$-graded quasi-coherent $\Oo_S$-algebra $\Rr$ generated by $\Rr_1$, and $\Rr_1$ is a locally finitely generated $\Oo_S$-module, together with an isomorphism $X\isomorphism\PROJ_S(\Rr)$ of $S$-preschemes.
+		\item The morphism $\xi$ is called \defemph{strongly projective} if it factors as
+		\begin{align*}
+			X\morphism[i]\IP_S^n\morphism S\;,
+		\end{align*}
+		where $i$ is a closed embedding and $\IP_S^n=\PROJ_S\Oo_S[X_0,\ldots,X_n]$.
+	\end{alphanumerate}
+\end{defi}
+\begin{rem*}
+	Definition~\reff{def:projectiveMorphism}\itememph{a} (at least in the Noetherian case) is the EGA definition while \itememph{b} is Hartshorne's. It turns out that \itememph{b} implies \itememph{a}. In between these two is the class of morphisms $\xi$ which may be factored $X\morphism\IP(\Ee)\morphism S$, where $\Ee$ is a vector bundle and
+	\begin{align*}
+		\IP(\Ee)=\PROJ_S\bigg(\bigoplus_{k=0}^\infty\Ee^{\otimes k}\bigg)\;.
+	\end{align*} 
+	Both definitions are in use.
+\end{rem*}
+\begin{fact}\lbl{fact:ProjectiveStableUnderBaseChange}
+	If $X\morphism[\xi]Y$ is projective (or strongly projective) and the base change
+	\begin{align*}
+		\snake{X}=X\times_Y\snake{Y}\morphism[\snake{\xi}]\snake{Y}
+	\end{align*}
+	is projective (resp.\ strongly projective) again. If $\snake{Y}\morphism[\upsilon] Y$ is also (strongly) projective, then the same holds for $\snake{X}\morphism Y$.
+\end{fact}
+\begin{proof}
+	First suppose that $\xi$ is projective, i.e., $X\simeq \PROJ_Y(\Rr)$ for some suitable $\Rr$ as in Definition~\reff{def:projectiveMorphism}\itememph{a}. By Corollary~\reff{cor:PROJpullback}, $\snake{X}\simeq \PROJ_{\snake{Y}}(\upsilon^*\Rr)$, so $\snake{\xi}$ is projective. Moreover, when $\upsilon$ is projective, we have $\snake{Y}\simeq \PROJ_Y(\Ss)$ for some suitable $\Ss$, hence $\snake{X}\simeq \PROJ_Y(\Tt)$ with $\Tt$ as in Proposition~\reff{prop:technicalAFIso}.
+	
+	Now let $\xi$ be strongly projective and $X\morphism[i]\IP_Y^n\morphism Y$ the associated factorization of $\xi$. We obtain a factorization of $\snake{\xi}$ via
+	\begin{align*}
+		\snake{X}\morphism[\snake{i}]\IP_Y^n\times_Y\snake{Y}\morphism\snake{Y}\;,
+	\end{align*}
+	in which $\snake{i}$ is a closed immersion (these guys are stable under base change by \cite[Corollary~1.3.3]{alggeo1}) and 
+	\begin{align*}
+		\IP_Y^n\times_Y\snake{Y}\simeq \PROJ_{\snake{Y}}\left(\upsilon^*\Oo_Y[X_0,\ldots,X_n]\right)\simeq \PROJ_{\snake{Y}}\Oo_{\snake{Y}}[X_0,\ldots,X_n]\simeq \IP_{\snake{Y}}^n
+	\end{align*}
+	(using $\upsilon^*\Oo_Y=\Oo_{\snake{Y}}$, cf.\ Remark~\reff{rem:SheafInverseImage}\itememph{b}). This shows that $\snake{\xi}$ is strongly projective again. If moreover $\upsilon$ is strongly projective as well, $\snake{X}\morphism Y$ factors over some 
+	\begin{align*}
+		\snake{X}\morphism\IP_Y^n\times_Y\IP_Y^m\morphism[\sigma]\IP_Y^{m+n+mn}\morphism Y\;,
+	\end{align*}
+	in which $\sigma$ is the Segre embedding from Example~\reff{ex:SegreEmbedding}.	
+\end{proof}
+\begin{prop}\lbl{prop:ClosedImmersionPreservesProjective}
+	Let $X\morphism[i]Y$ be a closed immersion and $Y\morphism[f]S$ a projective (resp.\ strongly projective) morphism. Then $f\circ i$ is (strongly) projective again.
+\end{prop}
+\begin{proof}
+	For strong projectiveness, this is trivial (the class of closed immersions is closed under composition). Let $f$ be projective and $Y=\PROJ_S(\Rr)$ where $\Rr$ is as in Definition~\reff{def:projectiveMorphism}\itememph{a}. Let $\Jj_X$ be the sheaf of ideals defining the closed subprescheme $X\subseteq Y$ and let $\Ii_n\subseteq \Rr_n$ be the preimage of $f_*\Jj_X(n)\subseteq f_*\Oo_Y(n)$ under the epimorphism\footnote{Where does this come from? Well, we may consider this locally. Let $U\subseteq S$ be affine and $\Rr|_U=\snake{R}$, then $f_*\Oo_Y(n)(U)=\Oo_Y(k)(f^{-1}(U))\simeq \Oo(n)(\Proj R)\simeq R_n$ by Theorem~\reff{thm:CohoOfIP^n}\itememph{a}, so we get surjections on stalks.} $\Rr_n\epimorphism f_*\Oo_Y(n)$. Let $\snake{\Rr}=\Rr/\Ii$ and $\snake{X}=\PROJ_S(\snake{\Rr})$. 
+	
+	The morphism $\Rr\morphism\snake{\Rr}$ defines a closed embedding $\snake{X}\morphism Y$. Indeed, locally, this looks like $\Proj R/I\morphism\Proj R$, where $I\subseteq R$ is a homogeneous ideal, and $\Proj R/I$ is mapped homeomorphically onto $V(I)\subseteq \Proj R$. Moreover, $((R/I)_{\pp/I})_0\simeq (R_{\pp})_0/(I_\pp)_0$ for all homogeneous prime ideals $\pp\supseteq I$, so we get surjections on stalks and thus have all required properties.
+	
+	We claim that $\snake{X}=X$ as closed subpreschemes of $Y$, proving the claim as $\snake{X}\morphism S$ is projective. Obviously, $X\subseteq \snake{X}$ as all sections of $\Ii_n$ define sections of $\Oo_Y(n)$ vanishing on $X$ by definition. That equality holds is a local question hence the following Lemma~\reff{lem:ProjClosedEmbedding} may be applied. 
+\end{proof}
+\begin{lem}\lbl{lem:ProjClosedEmbedding}
+	Let $Y=\Proj R$ and $X\subseteq Y$ a closed subprescheme defined by the sheaf of ideals $\Jj_X\subseteq \Oo_Y$. Let $I\subseteq R$ an ideal defined as in the proof of Proposition~\reff{prop:ClosedImmersionPreservesProjective}. If $r\in R_k$ and $g\in\Jj_X(k)(U)$ for the open subset $U=Y\setminus V(r)$, then there is some $\ell\in\IN$ and $\gamma\in I_{k\ell+k}$ such that $g=\gamma r^{-\ell}$.
+\end{lem}
+\begin{proof}
+	Apply Lemma~\reff{lem:powersOfLl}\itememph{b} to the quasi-coherent $\Oo_Y$-module $\Jj_X$ and the ample line bundle $\Oo(k)$. Note that we can do all this because $R_1$ is finitely generated by Definition~\reff{def:projectiveMorphism}\itememph{a}, hence $\Proj R$ is quasi-compact by the proof of Proposition~\reff{prop:FirstProjProperties}\itememph{e}. Moreover, $\Proj R$ is a scheme and thus quasi-separated.
+\end{proof}
+\begin{cor}
+	\begin{alphanumerate}
+		\item \lbl{cor:StronglyProjective}Every strongly projective morphism is projective.
+		\item If there is an ample line bundle on $S$, then any projective morphism $X\morphism S$ is strongly projective as well.
+	\end{alphanumerate}
+\end{cor}
+\begin{proof}
+	Part \itememph{a} follows by applying Proposition~\reff{prop:ClosedImmersionPreservesProjective} to the composition $X\morphism\IP_S^n\morphism S$, where $\IP_S^n=\PROJ_S\Oo_S[X_0,\ldots,X_n]\morphism S$ is projective.
+	
+	Part \itememph{b}. Let $X=\PROJ_S(\Rr)$. If $\Ll$ is an ample line bundle on $S$, then $\Rr_1\otimes_{\Oo_S}\Ll^{\otimes k}$ is generated by its global sections when $k\gge 0$ (Definition~\reff{def:AmpleLineBundle}\itememph{b}). Replacing $\Rr$ by $\Rr^{(\Ll^{\otimes k})}$ (we can do this by Corollary~\reff{cor:PROJLTwist}) we may assume $\Rr_1$ to be generated by its global sections\footnote{And even finitely many of them since $\Rr_1$ is locally finitely generated by Definition~\reff{def:projectiveMorphism}\itememph{a} and $S$ is quasi-compact, as quasi-compactness is assumed in Definition~\reff{def:AmpleLineBundle}.}, say, $\xi_0,\ldots,\xi_n$. Then $\Oo_S[X_0,\ldots,X_n]\morphism\Rr$, $X_i\mapsto \xi_i$ is an epimorphism of $\IN_0$-graded quasi-coherent $\Oo_S$-algebras, defining a closed embedding $X\morphism\IP_S^n$ of $S$-preschemes. Hence $X\morphism S$ is strongly projective.
+\end{proof}
+\begin{prop}
+	Let $X\morphism[f]Y\morphism[g]Z$ be strongly projective morphisms. Then $gf$ is strongly projective again. If $f$ and $g$ are only projective, we need that $Z$ is quasi-compact and quasi-separated in order to have $gf$ is projective.
+\end{prop}
+\begin{proof}
+	We have closed embeddings $X\morphism\IP_Y^m$ and $Y\morphism\IP_Z^n$, defining
+	\begin{align*}
+		\IP_Y^m\morphism\IP_{\IP_Z^n}^m\simeq \IP_Z^m\times_Z\IP_Z^n\morphism[\sigma]\IP_Z^{m+n+mn}
+	\end{align*}
+	where $\sigma$ the Segre embedding from Example~\reff{ex:SegreEmbedding}, hence a closed immersion. Thus we find closed immersions 
+	\begin{align*}
+		X\morphism \IP_Y^m\morphism\IP_{\IP_Z^n}^m\morphism\IP_Z^{m+n+mn}\;.
+	\end{align*}	
+	The second assertion is harder and Professor Franke refers to EGA.
+\end{proof}
+\begin{example}\lbl{ex:SPECandPROJ}
+	Let $\Aa$ be a quasi-coherent $\Oo_S$-algebra and $\Rr$ the graded $\Oo_S$-algebra defined by
+	\begin{align*}
+		\Rr_k=\begin{cases}
+			\Oo_S\cdot T^0 & \text{if }k=0\\
+			\Aa\cdot T^k & \text{if }k>0
+		\end{cases}\;,
+	\end{align*}
+	then $\PROJ_S(\Rr)\simeq \SPEC_S(\Aa)$ (indeed, we may check this locally where it amounts to \cite[Example~2.5.2]{alggeo1}).
+\end{example}
+\begin{cor}
+	Finite morphisms are projective.
+\end{cor}
+\begin{proof}
+	Apply Example~\reff{ex:SPECandPROJ} and \cite[Lemma~2.5.1\itememph{c}]{alggeo1}.
+\end{proof}
+\begin{thm}
+	Let $X\morphism[f]S$ be a projective morphism of locally Noetherian preschemes and $\Mm$ a coherent $\Oo_X$-module. Then the $\Oo_S$-modules $R^kf_*\Mm$ are coherent for all $k\in\IN$.
+\end{thm}
+\begin{proof}
+	The assertion is local with respect to $S$, whence we may assume $S=\Spec A$ to be affine, where $A$ is Noetherian. Then $X=\Proj R$, where $R$ is some graded $A$-algebra with $R_0=A$ (we may assume this w.l.o.g.\ -- otherwise exchange $R_0$ by $A$ and this doesn't change anything) and $R$ is generated by $R_0$ and $R_1$ and $R_1$ is a finitely generated $R$-module. If $\xi_0,\ldots,\xi_n\in R_1$ are such generators, then they define a closed embedding $X\monomorphism[i]\IP_A^n$ of $A$-preschemes as in the proof of Corollary~\reff{cor:StronglyProjective}\itememph{b}. Let $\IP_A^n\morphism[p] \Spec A$ be the canonical projection. Then $f=pi$. Moreover, since $p$ is quasi-compact (by an argument as in the proof of Proposition~\reff{prop:FirstProjProperties}\itememph{e}) and $i$ is affine (as is any closed immersion), we can deduce from Corollary~\reff{cor:AffinePushforwardIso} that $R^kf_*\Mm=R^kp_*(i_*\Mm)$. As $i_*\Mm$ is coherent (this is easy), $H^k(\IP_A^n,i_*\Mm)$ is a finitely generated $A$-module by Theorem~\reff{thm:SerreTwistStuff}, hence $R^kp_*(i_*\Mm)$ is a coherent $\Oo_S$-module.
+\end{proof}
+\begin{prop}
+	Let $X\morphism[f]Y\morphism[g]S$ be morphisms such that $g$ is separated and $gf$ is projective (resp.\ strongly projective). Then $f$ is (strongly) projective as well.
+\end{prop}
+\begin{proof}
+	Using Fact~\reff{fact:ProjectiveStableUnderBaseChange} and Proposition~\reff{prop:ClosedImmersionPreservesProjective}, this follows from the following Lemma~\reff{lem:technicalLemma}.
+\end{proof}
+\begin{lem}\lbl{lem:technicalLemma}
+	Let $\Cc$ be a class of morphisms contained in the class of separated morphisms, stable under base-change and such that $fi\in\Cc$ when $f\in \Cc$ and $i$ is a closed embedding. Then from $gf\in\Cc$ and $g$ separated it follows that $f\in \Cc$.
+\end{lem}
+\begin{proof}
+	Consider the commutative diagram
+	\begin{diagram*}
+		\node[ob] (X) at (0,0) {$X$};
+		\node[ob] (Y) at (3,0) {$Y$};
+		\node[ob] (Z) at (1.5,-1.25) {$Z$};
+		\node[ob] (XZY) at (1.5,1.25) {$X\times_ZY$};
+		\scriptsize
+		\draw[dashed,->] (X) -- (Y) node[pos=0.5, above] {$f$};
+		\draw[bend left, dotted,->] (X) to node[pos=0.5, above left] {$i$} (XZY);
+		\draw[->] (XZY) -- (X) node[pos=0.5, below right] {$\pi_X$};
+		\draw[->] (XZY) -- (Y) node[pos=0.5, above right] {$h$};
+		\draw[->] (X) -- (Z) node[pos=0.5, below left] {$gf$};
+		\draw[->] (Y) -- (Z) node[pos=0.5, below right] {$g$};
+	\end{diagram*}
+	in which $i=(\id_X,f)$ and $h$ is the base change of $X\morphism[gf]Z$ with respect to $Y\morphism[g]Z$. Then $X\times_ZY\morphism[\pi_X]X$ is separated as it is a base change of the separated morphism $g$ (and the class of separated morphisms is stable under base change by \cite[Fact~1.5.7\itememph{c}]{alggeo1}), hence $i$ is a closed immersion by \cite[Proposition~1.5.5]{alggeo1} as it is a section of $\pi_X$. Since $\Cc$ is closed under base change, we have $h\in \Cc$. It follows that $f=hi\in\Cc$.
+\end{proof}
+\section{Proper morphisms}
+\begin{defi}\lbl{def:proper}
+	Let $X\morphism[f]Y$ be a morphism of preschemes, where $Y$ is locally Noetherian. We call $f$ \defemph{proper} it it is of finite type, separated and \emph{universally closed}.
+\end{defi}
+\begin{defi}\lbl{def:universallyClosed}
+	A morphism $X\morphism[f]Y$ of preschemes is \defemph{closed} if the image of any closed subset if $X$ is closed in $Y$. It is \defemph{universally closed} if all its base changes 
+	\begin{align*}
+		\snake{X}=X\times_Y\snake{Y}\morphism[\snake{f}]\snake{Y}
+	\end{align*}
+	with respect to any $\snake{Y}\morphism Y$ are closed as well.
+\end{defi}
+\begin{rem*}
+	Obviously, the classes of closed and universally closed are stable under composition and base-local. The class of universally closed morphisms is also stable under base change. It follows that the class $\Cc$ of proper morphisms is base-local and stable under composition and base change as the other properties involved in Definition also have this property (by \cite[Fact~1.5.7\itememph{c} and Fact~2.2.2]{alggeo1}).
+	
+	Also, closed immersions are proper, as are any \emph{finite} morphisms (cf.\ Definition~\reff{def:AffineMorphism}\itememph{b}) by \cite[Example~2.6.1]{alggeo1}. Thus, Lemma~\reff{lem:technicalLemma} gives
+\end{rem*}
+\begin{prop}
+	When $X\morphism[f]Y\morphism[g]Z$ are morphisms of preschemes such that $gf$ is proper and $g$ separated, then $f$ is proper.
+\end{prop}
 
 
 \appendix
