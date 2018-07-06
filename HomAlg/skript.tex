@@ -96,9 +96,9 @@ A highlight of this lecture will be \emph{Serre's characterization of regularity
 	\begin{alphanumerate}
 		\item $\dim_k\mm/\mm^2=\dim R$ (i.e., $R$ is regular).
 		\item There is some vanishing bound for $\Tor_\bullet ^R(-,-)$.
-		\item \ldots and $\dim R$ is such a vanishing bound.
+		\item \ldots and $\dim R+1$ is such a vanishing bound.
 		\item There is some vanishing bound for $\Ext_R^\bullet (-,-)$.
-		\item \ldots and $\dim R$ is again such a vanishing bound.
+		\item \ldots and $\dim R+1$ is again such a vanishing bound.
 	\end{alphanumerate}
 \end{thm*}
 From this, one can deduce the following
@@ -319,9 +319,9 @@ Our goal now is to establish some properties of $\Ext$ groups over a ring $R$, n
 \begin{fact}\lbl{fact:atimesExt}
 	For $a\in R$ and any $R$-modules $M$ and $N$ the following coincide.
 	\begin{alphanumerate}
-		\item The multiplication $a\cdot $ on $\Ext_R^k(M,N)$ (this is an $R$-module after all).
-		\item The endomorphism $\Ext_R^k(M,N)\morphism\Ext_R^k(M,N)$ induced by $M\morphism[ a\cdot]M$ and functoriality of $\Ext_R^k(-,N)$.
-		\item The endomorphism $\Ext_R^k(M,N)\morphism\Ext_R^k(M,N)$ induced by $N\morphism[ a\cdot]N$ and functoriality of $\Ext_R^k(M,-)$.
+		\item The multiplication $a\cdot $ on $\Ext_R^p(M,N)$ (this is an $R$-module after all).
+		\item The endomorphism $\Ext_R^p(M,N)\morphism\Ext_R^k(M,N)$ induced by $M\morphism[ a\cdot]M$ and functoriality of $\Ext_R^p(-,N)$.
+		\item The endomorphism $\Ext_R^k(M,N)\morphism\Ext_R^k(M,N)$ induced by $N\morphism[ a\cdot]N$ and functoriality of $\Ext_R^p(M,-)$.
 	\end{alphanumerate}
 \end{fact}
 \begin{proof}
@@ -378,7 +378,7 @@ Our goal now is to establish some properties of $\Ext$ groups over a ring $R$, n
 	An $R$-module $M$ is \defemph{finitely presented} if it may be written as a cokernel of some morphism $R^m\morphism R^n$.
 \end{defi}
 \begin{fact}\lbl{fact:ExtFinGen}
-	If $M$ and $N$ are finitely generated modules over the Noetherian ring $R$, the $R$-modules $\Ext_R^k(M,N)$ are all finitely generated.
+	If $M$ and $N$ are finitely generated modules over the Noetherian ring $R$, the $R$-modules $\Ext_R^p(M,N)$ are all finitely generated.
 \end{fact}
 \begin{proof}
 	Choose a free resolution $0\lmorphism M\lmorphism R^{n_0}\morphism R^{n_1}\lmorphism\ldots$ as in Fact~\reff{fact:freeResolution}, then $\Ext_R^k(M,N)$ can be calculated as $H^k\left(N^{n_0}\morphism N^{n_1}\morphism\ldots\right)$, which is finitely generated as the $N^{n_i}$ are finitely generated and we are all Noetherian and stuff.
@@ -430,9 +430,9 @@ And now for the advertised compatibility with localization.
 	
 	For existence, choose a free resolution $0\lmorphism M\lmorphism R^{n_0}\morphism R^{n_1}\lmorphism\ldots$ as in Fact~\reff{fact:freeResolution}. By exactness of localization, $0\lmorphism M_S\lmorphism R_S^{n_0}\morphism R_S^{n_1}\lmorphism\ldots$ is a free resolution of $M_S$. Using these to compute $\Ext_R^\bullet(M,-)$ and $\Ext_{R_S}^\bullet(M_S,-)$ and the fact that localization commutes with cohomology (since it is exact), we obtain
 	\begin{align*}
-		\Ext_R^k(M,N)_S&=H^k\left(N^{n_0}\morphism N^{n_1}\morphism\ldots\right)_S\\
-		&\simeq H^k\left(N_S^{n_0}\morphism N_S^{n_1}\morphism\ldots\right)\\
-		&=\Ext_{R_S}^k(M_S,N_S)\;,
+		\Ext_R^p(M,N)_S&=H^p\left(N^{n_0}\morphism N^{n_1}\morphism\ldots\right)_S\\
+		&\simeq H^p\left(N_S^{n_0}\morphism N_S^{n_1}\morphism\ldots\right)\\
+		&=\Ext_{R_S}^p(M_S,N_S)\;,
 	\end{align*}
 	as required.
 \end{proof}
@@ -440,15 +440,15 @@ And now for the advertised compatibility with localization.
 \begin{defi}\lbl{def:idim/pdim}
 	Let $X$ be an objects of $\Aa$. Its \defemph{injective/projective dimension} is defined as
 	\begin{align*}
-		\idim_\Aa(X)&=\sup\left\{p\in\IN\st \Ext_\Aa^p(T,X)\neq 0\text{ for some object }T\in\Ob(\Aa)\right\}\\
-		\pdim_\Aa(X)&=\sup\left\{p\in\IN\st \Ext_\Aa^p(X,T)\neq 0\text{ for some object }T\in\Ob(\Aa)\right\}
+		\idim_\Aa(X)&=\sup\left\{p\st \Ext_\Aa^p(T,X)\neq 0\text{ for some object }T\in\Ob(\Aa)\right\}\\
+		\pdim_\Aa(X)&=\sup\left\{p\st \Ext_\Aa^p(X,T)\neq 0\text{ for some object }T\in\Ob(\Aa)\right\}
 	\end{align*}
 	and we put $\sup\emptyset =-\infty$.
 \end{defi}
 \begin{fact}\lbl{fact:injDim}
 	When $\Aa$ has sufficiently many injective objects and $X\neq 0$ we have
 	\begin{align*}
-		\idim_\Aa(X)&=\min\left\{\ell\in\IN\st X\text{ has an injective resolution of length }\ell\right\}\\
+		\idim_\Aa(X)&=\min\left\{\ell\st X\text{ has an injective resolution of length }\ell\right\}\\
 	&=	\min\left\{\ell\st\begin{array}{c}
 	\text{for any injective resolution }X\morphism I^\bullet\text{ the truncation}\\
 	X\morphism\tau_{\leq\ell}I^\bullet\text{ is an injective resolution of }X
@@ -486,7 +486,7 @@ In particular, this proof shows that $\Ext_\Aa^{\ell+1}(-,X)=0$ implies $\Ext_\A
 \begin{fact}\lbl{fact:projDim}
 	When $\Aa$ has sufficiently many projective objects and $X\neq 0$ we have
 	\begin{align*}
-	\pdim_\Aa(X)&=\min\left\{\ell\in\IN\st X\text{ has a projective resolution of length }\ell\right\}\\
+	\pdim_\Aa(X)&=\min\left\{\ell\st X\text{ has a projective resolution of length }\ell\right\}\\
 	&=	\min\left\{\ell\st\begin{array}{c}
 	\text{for any projective resolution }P_\bullet\morphism X\text{ the truncation}\\
 	\snake{\tau}_{\leq\ell}P_\bullet\morphism X\text{ is a projective resolution of }X
@@ -512,15 +512,16 @@ C_\ell & \text{if }\ell< k\\
 Recall Proposition~\reff{prop:Ext1(R/I)}. By the above proof of equality of various $\idim$s, we have
 \begin{align}\lbl{eq:idim}
 	\begin{split}
-		\idim_R(X)&=\sup\left\{p\in\IN\st\Ext_R^p(R/I,X)\neq 0\text{ for some ideal }I\subseteq I\right\}\\
-		&=\sup\left\{p\in\IN\st\Ext_R^p(T,X)\text{ for some finitely generated }R\text{-module }T\right\}
-	\end{split}\tag{$*$}
+		\idim_R(X)&=\sup\left\{p\st\Ext_R^p(R/I,X)\neq 0\text{ for some ideal }I\subseteq I\right\}\\
+		&=\sup\left\{p\st\Ext_R^p(T,X)\neq 0\text{ for some finitely generated }R\text{-module }T\right\}
+	\end{split}
 \end{align}
 as it is sufficient to use such $T$ as test objects for injectivity in our proof of $\idim_R^{(3)}(X)\leq \idim_R^{(1)}(X)$, hence the proof remains valid when $\idim_R^{(3)}(X)$ is replaced by \eqreff{eq:idim}. Using Proposition~\reff{prop:ExtLocalization}, we obtain
 \begin{cor}\lbl{cor:injDimLocal}
 	For any module $M$ over a Noetherian ring,
 	\begin{align*}
-		\idim_R(M)=\sup_{\mm\in\mSpec R}\idim_{R_\mm}(M_\mm)=\sup_{\pp\in\Spec R}\idim_{R_\pp}M_\pp\;.
+		\idim_R(M)&=\sup\left\{\idim_{R_\mm\vphantom{\pp}}(M_\mm)\st \mm\in\mSpec R\right\}\\
+		&=\sup\left\{\idim_{R_\pp}(M_\pp)\st \pp\in\Spec R\right\}\;.
 	\end{align*}
 \end{cor}
 \begin{proof}
@@ -533,7 +534,8 @@ as it is sufficient to use such $T$ as test objects for injectivity in our proof
 \begin{cor}\lbl{cor:projDimLocal}
 	For any finitely generated module $M$ over a Noetherian ring,
 	\begin{align*}
-	\pdim_R(M)=\sup_{\mm\in\mSpec R}\pdim_{R_\mm}(M_\mm)=\sup_{\pp\in\Spec R}\pdim_{R_\pp}M_\pp\;.
+	\pdim_R(M)&=\sup\left\{\pdim_{R_\mm\vphantom{\pp}}(M_\mm)\st \mm\in\mSpec R\right\}\\
+	&=\sup\left\{\pdim_{R_\pp}(M_\pp)\st \pp\in\Spec R\right\}\;.
 	\end{align*}
 \end{cor}
 \begin{proof}
@@ -714,7 +716,7 @@ And we need compatibility with localization of course.
 \begin{proof}
 	The constructions on the right-hand side are homological functors of $M$ and $N$ which annullate free $R$-modules and hence also their direct summands, i.e., projective modules (Lemma~\reff{lem:projectiveDirectSummand}) in higher degrees as follows: Let $i>0$, then $\Tor_i^R(M,N_S)=0$ when $M$ is projective, $\Tor_i^R(M_S,N)=0$ when $N$ is projective, and $\Tor_i^{R_S}(M_S,N_S)=0$ when $M$ or $N$ are projective (indeed, localizing preserves the property of being a direct summand of some free module). In degree $0$ they agree up to the isomorphisms above. By Theorem~\reff{thm:LeftDerivedFunctors}\itememph{b} and the universal property of derived functors, the required canonical isomorphisms
 	\begin{align*}
-		\Tor_\bullet^R(M,N)_S\simeq \Tor_\bullet^R(M,N_S)\simeq \Tor_\bullet^R(M_S,N)\simeq \simeq \Tor_\bullet^{R_S}(M_S,N_S)\;.
+		\Tor_\bullet^R(M,N)_S\simeq \Tor_\bullet^R(M,N_S)\simeq \Tor_\bullet^R(M_S,N) \simeq \Tor_\bullet^{R_S}(M_S,N_S)\;.
 	\end{align*}
 	It remains to prove $\Tor_\bullet^R(M,N)_S\simeq \Tor_\bullet^R(M_S,N_S)$. But this can be obtained from the composition $\Tor_\bullet^R(M,N)_S\isomorphism \Tor_\bullet^R(M,N_S)\isomorphism \Tor_\bullet^R(M_S,N_S)$.
 \end{proof}
@@ -870,15 +872,15 @@ For flatness, there is a criterion similar to Baer's (Proposition~\reff{prop:Inj
 	\end{align*}
 	hence $\Tor_{p+1}^R(M,T)=0$. This shows \itememph{a}.
 \end{proof}
-\begin{defi}
+\begin{defi}\lbl{def:flatDim}
 	The largest natural number $d$ such that the equivalent properties from Fact~\reff{fact:flatDim} fail (or $+\infty$ if no such $d$ exists, or $-\infty$, if $M=0$) is called the \defemph{flat dimension} of $M$ and denoted $\fdim_R(M)$.
 \end{defi}
 \begin{fact}\lbl{fact:flatDimLocal}
 	Let $M$ be a module over an arbitrary ring $R$. Then
 	\begin{alphanumerate}
 		\item $\fdim_R(M)\leq \pdim_R(M)$.
-		\item $\fdim_R(M)=\sup\limits_{\mm\in\mSpec R}\fdim_{R_\mm}M_\mm=\sup\limits_{\mm\in\mSpec R}\fdim_RM_\mm$.
-		\item $\fdim_R(M)=\sup\limits_{\pp\in\Spec R}\fdim_{R_\pp}M_\pp=\sup\limits_{\pp\in\Spec R}\fdim_RM_\pp$.
+		\item $\fdim_R(M)=\sup\left\{\fdim_{R_\mm}M_\mm\st\mm\in\mSpec R\right\}=\sup\left\{\fdim_RM_\mm\st \mm\in\mSpec R\right\}$.
+		\item $\fdim_R(M)=\sup\left\{\fdim_{R_\pp}M_\pp\st \pp\in\Spec R\right\}=\sup\left\{\fdim_RM_\pp\st \pp\in\Spec R\right\}$.
 	\end{alphanumerate}
 \end{fact}
 \begin{proof}
@@ -955,23 +957,23 @@ And finally we prove that $\Tor$ -- for finitely generated modules over Noetheri
 \begin{cor}\lbl{cor:pdim=fdim}
 	For a finitely generated module $M$ over a Noetherian local ring $R$ with maximal ideal $\mm$ and residue field $k$, we have
 	\begin{align*}
-		\pdim_R(M)=\fdim_R(M)=\sup\left\{d\in\IN_0\st \Tor_{d+1}^R(M,k)\neq 0\right\}\;.
+		\pdim_R(M)=\fdim_R(M)=\sup\left\{d\st \Tor_d^R(M,k)\neq 0\right\}\;.
 	\end{align*}
 \end{cor}
 \begin{proof}
 	The first equality is immediate from Fact~\reff{fact:projDim} and Proposition~\reff{prop:flatResolution}\itememph{b} since flat and projective is the same for finitely generated modules over Noetherian local rings by Proposition~\reff{prop:FreeProjFlatTor}. The second equality follows by looking over the proof of Proposition~\reff{prop:flatResolution} again, since in our situation it suffices to check $\Tor_1^R(F,k)=0$ to show flatness of some finitely generated $R$-module $F$ by Proposition~\reff{prop:FreeProjFlatTor}\itememph{d}.
 \end{proof}
-\begin{cor}
+\begin{cor}\lbl{cor:fdim(k)}
 	For any module $M$ over a Noetherian local ring $R$, $\fdim_R(M)\leq \fdim_R(k)$.
 \end{cor}
 \begin{proof}
-	By Proposition~\reff{prop:TorMN=TorNM} and Fact~\reff{fact:flatDim}\itememph{d}, $\fdim_R(k)$ is smallest integer $d$ such that $0=\Tor_{d+1}^R(k,M)\simeq \Tor_{d+1}^R(M,k)$ for all finitely generated $R$-modules $M$. Then $\fdim_R(M)\leq \fdim_R(k)$ for $M$ finitely generated follows immediately from Corollary~\reff{cor:pdim=fdim}. Now let $M$ be arbitrary, $p>\fdim_R(k)$ and $I\subseteq R$ be any ideal. We have $\Tor_p^R(R/I,M)=0$ since $R/I$ is finitely generated and thus $p>\fdim_R(R/I)$ by what we just proved. But $\Tor_p(R/I,M)\simeq\Tor_p(M,R/I)$, so Fact~\reff{fact:flatDim}\itememph{e} shows $\fdim_R(M)<p$ as well.
+	By Proposition~\reff{prop:TorMN=TorNM} and Fact~\reff{fact:flatDim}\itememph{d}, $\fdim_R(k)$ is smallest integer $d$ such that $0=\Tor_{d+1}^R(k,M)\simeq \Tor_{d+1}^R(M,k)$ for all finitely generated $R$-modules $M$. Then $\fdim_R(M)\leq \fdim_R(k)$ for $M$ finitely generated follows immediately from Corollary~\reff{cor:pdim=fdim}. Now let $M$ be arbitrary, $p>\fdim_R(k)$ and $I\subseteq R$ be any ideal. We have $\Tor_p^R(R/I,M)=0$ since $R/I$ is finitely generated and thus $p>\fdim_R(R/I)$ by what we just proved. But $\Tor_p^R(R/I,M)\simeq\Tor_p^R(M,R/I)$, so Fact~\reff{fact:flatDim}\itememph{e} shows $\fdim_R(M)<p$ as well.
 \end{proof}
 \begin{cor}
 	If $M$ is a finitely generated module over a Noetherian ring $R$ (local or not), then $\pdim_R(M)=\fdim_R(M)$.
 \end{cor}
 \begin{proof}
-	Follows from Fact~\reff{fact:flatDimLocal} and Corollary~\reff{cor:pdim=fdim}.
+	Follows from Fact~\reff{fact:flatDimLocal}, Corollary~\reff{cor:projDimLocal} and Corollary~\reff{cor:pdim=fdim}.
 \end{proof}
 \begin{prop}
 	For a finitely generated module $M$ over a Noetherian ring $R$ the following are equivalent.
@@ -999,7 +1001,7 @@ And finally we prove that $\Tor$ -- for finitely generated modules over Noetheri
 	\end{align}
 	Since there are only finitely many $\rho_{i,j}$, we may choose a common denominator $f$, such that $\rho_{i,j}=r_{i,j}\cdot f^{-1}$ with $r_{i,j}\in R$. Replacing $R$ by $R_f$ and $M$ by $M_f$ we thus may assume $\rho_{i,j}\in R$. Then \eqreff{eq:gjInR_p} shows that there are $f_j\in R\setminus \pp$ such that
 	\begin{align*}
-		f_j\left(g_j-\sum_{i=1}^k\rho_{i,j}m_i\right)=0\;.
+		f_j\bigg(g_j-\sum_{i=1}^k\rho_{i,j}m_i\bigg)=0\;.
 	\end{align*}
 	Putting $f=f_1\cdots f_k$, we see that \eqreff{eq:gjInR_p} already holds in $M_f$. So replacing $R$ by $R_f$ and $M$ by $M_f$ again, we may assume that the $m_i$ generate $R$ as an $R$-module.
 	
@@ -1008,6 +1010,38 @@ And finally we prove that $\Tor$ -- for finitely generated modules over Noetheri
 \begin{rem*}
 	Somehow related is the \emph{Serre conjecture} (Serre, 1955) that every finitely generated projective module over a polynomial ring $k[X_1,\ldots,X_n]$ (with $k$ a field) is free. It was proved in 1976 independently by Quillen and Suslin.
 \end{rem*}
+Though it wasn't featured in the lecture, I would like to add some remarks on the \emph{global dimension} of a ring and vanishing bounds for $\Ext$ and $\Tor$.
+\begin{defi}\lbl{def:gdim}
+	Let $R$ be a ring. The \defemph{cohomological} or \defemph{global dimension} $\gdim(R)$ of the category of $R$-modules is defined as
+	\begin{align*}
+	\gdim(R)=\sup\left\{\pdim_R(M)\st M\text{ is an }R\text{-module}\right\}\;.
+	\end{align*}
+\end{defi}
+Note that the usual notation suggests $\gdim(R)$ is a property of $R$, whereas Professor Franke explicitly formulated it as a property of the category of $R$-modules.
+\begin{cor}
+	Let $R$ be any ring. The following coincide.
+	\begin{alphanumerate}
+		\item The global dimension $\gdim(R)$.
+		\item $\sup\left\{\idim_R(M)\st M\text{ is an }R\text{-module}\right\}$.
+		\item $\sup\left\{\pdim_R(M)\st M\text{ is a finitely generated }R\text{-module}\right\}$.
+		\item The smallest $p$ such that $\Ext_R^{p+1}(-,-)$ vanishes.
+	\end{alphanumerate}
+	When $R$ is Noetherian, we can add 
+	\begin{alphanumerate}\setcounter{enumi}{3}
+		\item The smallest $p$ such that $\Tor_{p+1}^R(-,-)$ vanishes.
+		\item $\sup\left\{\fdim_R(M)\st M\text{ is an }R\text{-module}\right\}$.
+		\item $\sup\left\{\fdim_R\KK(\mm)\st\mm\in\mSpec R\right\}$.
+	\end{alphanumerate}
+\end{cor}
+\begin{proof}
+	We get \itememph{a} $=$ \itememph{d} $=$ \itememph{b} (in this order) immediately from Definition~\reff{def:idim/pdim} and equation \eqreff{eq:idim} gives \itememph{b} $=$ \itememph{d}.
+	
+	Now let $R$ be Noetherian. That \itememph{d} $=$ \itememph{e} is again obvious from Definition~\reff{def:flatDim}. Now by Fact~\reff{fact:flatDimLocal}\itememph{b} and Corollary~\reff{cor:fdim(k)},
+	\begin{align*}
+	\fdim_R(M)=\sup\left\{\fdim_{R_\mm}(M_\mm)\st\mm\in\mSpec R\right\}\leq\sup\left\{\fdim_{R_\mm}\KK(\mm)\st\mm\in\mSpec R\right\}
+	\end{align*}
+	for every $R$-module $M$. Since $\fdim_{R_\mm}\KK(\mm)=\fdim_R\KK(\mm)$ (indeed, since $\mm$ is maximal, $\KK(\mm)_\pp\simeq R_\pp/\mm_\pp=0$ when $\pp\neq\mm$ is a prime ideal, hence Fact~\reff{fact:flatDimLocal}\itememph{c} does it), we obtain that \itememph{e} $=$ \itememph{f}. Now from Fact~\reff{fact:flatDimLocal}\itememph{a} we know $\fdim_R(M)\leq \pdim_R(M)$ for every $R$-module $M$, and Corollary~\reff{cor:pdim=fdim} shows that equality holds when $M$ is finitely generated. Hence \itememph{e} $\leq$ \itememph{a} and \itememph{b} $\leq$ \itememph{e} and we are done.
+\end{proof}
 \chapter{Regular rings and Cohen--Macaulay rings}
 \section{An application of the Koszul complex}
 \begin{defi}\lbl{def:KoszulComplex}
@@ -1127,7 +1161,7 @@ Since our definition of $H_i\big((x_1,\ldots,x_n),M\big)$ doesn't depend on the 
 		\item Proposition~\reff{prop:KoszulAndRegular}\itememph{b} can be strengthened to $H_1\big(x,M\big)\neq 0$ when $M$ is finitely generated and $x$ is a sequence in $\mm$ of $R$ which is \emph{not} regular (and the proof is easily modified to show this).
 	\end{alphanumerate}
 \end{rem*}
-\begin{fact}
+\begin{fact}\lbl{fact:KoszulResolutions}
 	Let $R$ be a ring, $x=(x_1,\ldots,x_n)$ an $R$-regular sequence such that $I=x_1R+\ldots+x_nR$ is a proper ideal of $R$.
 	\begin{alphanumerate}
 		\item $0\lmorphism R/I\lmorphism K_\bullet(x,R)$ is a free resolution of $R/I$.
@@ -1169,14 +1203,116 @@ Indeed, for sufficiently large $i$, $\length_R(R/\mm^i)$ is given by a polynomia
 \end{align*}
 for $i\gge 0$ (we use that $\mm^i/\mm^{i+1}$ already has $\mm$-torsion, so its length as an $R$-module equals is length as an $R/\mm$-module, i.e., its dimension as a $k$-vector space), showing that $\dim_k(\mm^i/\mm^{i+1})$ is given by a polynomial of degree $d-1$.
 
-As in \cite[Proposition~1.3.1]{alg2} one shows $\dim_k(\mm/\mm^2)\geq d$. Recall that $R$ is called \defemph{regular} when equality holds. In this case, $\mm$ can be generated by $d$ elements $\mu_1,\ldots,\mu_d$ and we have seen in \cite[Corollary~3.4.9]{alg2} that the $\mu_i$ generate the \emph{associated graded ring}
+As in \cite[Proposition~1.3.1]{alg2} one shows $\dim_k(\mm/\mm^2)\geq d$. Recall that $R$ is called \defemph{regular} when equality holds. In this case, $\mm$ can be generated by $d$ elements $x_1,\ldots,x_d$ and we have seen in \cite[Corollary~3.4.9]{alg2} that the $x_i$ generate the \emph{associated graded ring}
 \begin{align*}
 	\gr(R,\mm)=\bigoplus_{i=0}^n\mm^i/\mm^{i+1}
 \end{align*}
-as a polynomial algebra over $k$.
+as a polynomial algebra over $k$. Moreover, this can be shown to imply that $R$ is a domain.
+\begin{prop}\lbl{prop:RegularRingRegularSequence}
+	Let $R$ be a Noetherian local ring of dimension $d$ and $x_1,\ldots,x_d$ generators of its maximal ideal $\mm$.
+	\begin{alphanumerate}
+		\item The sequence $x=(x_1,\ldots,x_d)$ is a regular sequence.
+		\item The Koszul complex $K_\bullet(x,R)$ is a free resolution of length $d$ for the residue field $k=R/\mm$.
+		\item The cohomological dimension (cf.\ Definition~\reff{def:gdim}) $\gdim(R)$ of the category of $R$-modules equals $d$.
+	\end{alphanumerate}
+\end{prop}
+\begin{proof}
+	Assertion \itememph{b} follows from \itememph{a} and Fact~\reff{fact:KoszulResolutions}\itememph{a}. Also, \itememph{c} follows from Fact~\reff{fact:KoszulResolutions} and Corollary~\reff{cor:fdim(k)}. It remains to show \itememph{a}. Because regular local rings are domains, $(x_1)$ is a regular sequence. Moreover, the images of $x_2,\ldots,x_d$ generate the maximal ideal of $R/x_1R$. As $\gr(R/x_1R,\mm/x_1R)\simeq \gr(R,\mm)/x_1\gr(R,\mm)$, we find that $\gr(R/x_1R,\mm/x_1R)$ is a polynomial ring in free generators $x_2,\ldots,x_d$ (resp.\ their images modulo $\mm^2$). Therefore the degree $d(R,\mm)$ of the Samuel polynomial of $R/x_1R$ and $\mm$ equals $d-1$, hence $R/x_1R$ has dimension $d-1$ by \cite[Theorem~20]{alg2} and we see that $R/x_1R$ is regular. The regularity of $x=(x_1,\ldots,x_d)$ now follows by assumption on $d$.
+\end{proof}
+And -- finally -- we are ready to prove Serre's famous characterization of regularity.
+\begin{thm}[Serre]\lbl{thm:SerreRegularity}
+	For a Noetherian local ring with maximal ideal $\mm$ and residue field $k=R/\mm$ the following are equivalent.
+	\begin{alphanumerate}
+		\item $R$ is regular.
+		\item The cohomological dimension of the category of $R$-modules is finite.
+		\item The cohomological dimension of the category of $R$-modules equals $\dim R$.
+		\item $d=\fdim_R(k)$ is finite.
+	\end{alphanumerate}
+\end{thm}
+\begin{proof}
+	By Proposition~\reff{prop:RegularRingRegularSequence}\itememph{c} we get \itememph{a} $\Rightarrow$ \itememph{c}. Moreover, \itememph{c} $\Rightarrow$ \itememph{b} $\Rightarrow$ \itememph{d} is trivial, so it remains to derive \itememph{a} from \itememph{d}.
+	
+	For this, we do induction on $d=\fdim_R(k)$. If $d=0$, then $k$ is flat and by Proposition~\reff{prop:FreeProjFlatTor}, $k$ is a free $R$-module. But then $k=R$ is clearly regular of dimension $0$. Now let $d>0$ and the assertion be shown for smaller $d$. We will make use of \emph{associated primes}, which are briefly introduced in Appendix~\reff{sec:AssociatedPrimes}. 
+	\begin{claim}
+		We have $\mm\notin\Ass_R(R)$.
+	\end{claim}
+	Otherwise, $R/\mm\simeq k$ is a submodule of $R$ (cf.\ the proof of Proposition~\reff{prop:AssExactSeqs}). Then there is a short exact sequence $0\morphism k\morphism R\morphism Q\morphism 0$, thus
+	\begin{align*}
+		0=\Tor_{p+1}^R(T,R)\morphism\Tor_{p+1}^R(T,Q)\morphism\Tor_p^R(T,k)\morphism\Tor_p^R(T,R)=0
+	\end{align*}
+	for any test module $T$, proving that $\fdim_R(Q)=\fdim (k)+1$. But $\fdim_R(Q)\leq\fdim_R(k)$ by Corollary~\reff{cor:fdim(k)}, contradiction! This proves the claim.
+	
+	Moreover, $\mm\supsetneq\mm^2$ as otherwise $\mm=0$ by the Nakayama lemma and thus $R=k$ and $d=0$. Thus, by finiteness of $\Ass_R(R)$ (Corollary~\reff{cor:AssFinite}) and prime avoidance (cf.\ \cite[Lemma~2.5.1]{alg1}), it is possible to choose an $x\in\mm\setminus \left(\mm^2\cup\bigcup_{\pp\in\Ass_R(R)}\pp\right)$. Then $R\morphism[x\cdot]R$ is injective by Proposition~\reff{prop:AssProperties}. 
+	
+	We use the fact that if $0\lmorphism M\lmorphism F_\bullet$ is a free resolution of some $R$-module $M$ such that $(x)$ is an $M$-regular sequence, then $0\lmorphism M/xM\lmorphism F_\bullet/xF_\bullet$ is a free resolution of the $R/xR$-module $M/xM$ (pretty easy to see). Therefore,
+	\begin{align}\lbl{eq:pdimOfM/xMandM}
+		\pdim_{R/xR}(M/xM)\leq \pdim_R(M)\tag{$*$}\;.
+	\end{align}
+	We apply this to $M=\mm$. By the short exact sequence $0\morphism\mm\morphism R\morphism k\morphism 0$ we have $\Tor_p^R(\mm,T)\simeq\Tor_{p+1}(k,T)$ for every test module $T$, so $\pdim_R(\mm)=\fdim_R(\mm)=d-1$ (the first equality comes from Corollary~\reff{cor:pdim=fdim}), and thus by \eqreff{eq:pdimOfM/xMandM},
+	\begin{align}\lbl{eq:pdimIneq2}
+		\pdim_{R/xR}(\mm/x\mm)<d\;.\tag{\$}
+	\end{align}
+	If $x=x_1,x_2,\ldots,x_e$ are elements of $\mm$ whose images form a basis of $\mm/\mm^2$ as a $k$-vector space, then we get a splitting of the short exact sequence $0\morphism k\morphism[x\cdot ]\mm/x\mm\morphism\mm/xR\morphism 0$
+	by sending an element $\mu\mod x\mm$ of $\mm/x\mm$ to the coefficient $c_1$ of $x=x_1$ in the (unique) expression
+	\begin{align*}
+		\mu\equiv\sum_{i=1}^ec_ix_i\bmod\mm^2
+	\end{align*}
+	as a linear combination of the above basis of $\mm/\mm^2$. Thus, $k$ as an $R/xR$-module is a direct summand of $\mm/x\mm$ and by \eqreff{eq:pdimIneq2} (and Corollary~\reff{cor:pdim=fdim} again) we get
+	\begin{align*}
+		\fdim_{R/xR}(k)= \pdim_{R/xR}(k)\leq \pdim_{R/xR}(\mm/x\mm)<d\;.
+	\end{align*}
+	By the induction assumption, $R/xR$ is a regular local ring of dimension $\delta<d$. We claim that
+	\begin{claim}\lbl{claim:delta<dim(R)}
+		We even have $\delta<\dim R$.
+	\end{claim}
+	Believing this for the moment, we see that there are $\xi_1,\ldots,\xi_\delta\in\mm$ whose images generate the maximal ideal $\mm/xR$ of $R/xR$. Then $\xi_1,\ldots,\xi_\delta,x$ are generators of $\mm$ as an ideal of $R$. Thus $\dim R\leq \delta+1$ and from $\delta<\dim R$ it follows that equality must hold. Thus $R$ is a regular local ring of dimension $d$.
+	
+	It remains to prove Claim~\reff{claim:delta<dim(R)}. Let $\qq_0\subsetneq\ldots\subsetneq\qq_\delta$ be a sequence of prime ideals in $R/xR$ with preimages $\pp_0,\ldots,\pp_\delta$ in $R$. Then $x\in\pp_i$ for all $i$. If $\pp_0$ contains another prime ideal of $R$, then $\dim R>\delta$ as claimed. Otherwise, $\pp_0$ is a minimal prime ideal of $R$. But the minimal prime ideals of any Noetherian ring are always associated prime ideals of it (Proposition~\reff{prop:AssProperties}\itememph{b}) and $x$ was chosen not to be contained in any associated prime ideal of $R$.
+\end{proof}
+\begin{cor}[Serre]
+	Let $R$ be a regular local ring and $\pp\in\Spec R$. Then $R_\pp$ is also regular.
+\end{cor}
+\begin{proof}
+	As $\KK(\pp)$ is the localization of $R/\pp$ at $\pp$, its projective dimension as an $R_\pp$-module is bounded by the projective dimension of $R/\pp$ as an $R$-module by Corollary~\reff{cor:projDimLocal}. Hence $\pdim_{R_\pp}\KK(\pp)=\fdim_{R_\pp}\KK(\pp)$ is finite and $R_\pp$ is regular by Theorem~\reff{thm:SerreRegularity}.
+\end{proof}
+\begin{defi}
+	\begin{alphanumerate}
+		\item A Noetherian ring $R$ is called \defemph{regular} if it satisfies the following equivalent conditions.
+		\begin{alphanumerate}
+			\item[\itememph{\alpha}] For any $\pp\in\Spec R$, $R_\pp$ is a regular local ring.
+			\item[\itememph{\beta}] For any $\mm\in\mSpec R$, $R_\mm$ is a regular local ring.
+		\end{alphanumerate}
+		\item The ring $R$ is called \defemph{regular in $I$}, where $I\subseteq R$ is an ideal, if it satisfies the equivalent conditions.
+		\begin{alphanumerate}
+			\item[\itememph{\alpha}] For any $\pp\in\Spec R$ containing $I$, $R_\pp$ is a regular local ring.
+			\item[\itememph{\beta}] For any $\mm\in\mSpec R$ containing $I$, $R_\mm$ is a regular local ring.
+		\end{alphanumerate}
+	\end{alphanumerate}
+\end{defi}
+\begin{prop}\lbl{prop:completionRegular}
+	Let $A$ be a Noetherian ring regular in its ideal $I$, then its completion $\roof{A}$ with respect to $I$ is regular.
+\end{prop}
+\begin{proof}
+	For $x\in I\roof{A}$ and any $a\in A$, the series $(1-ax)^{-1}=\sum_{i=0}^{\infty}a^ix^i$ converges in $\roof{A}$, hence $I\roof{A}$ is contained in the Jacobson radical $\rad(\roof{A})$ by \cite[Proposition~1.2.2]{alg2}, i.e., any maximal ideal of $\roof{A}$ contains $I\roof{A}$.  
+	\begin{lem}
+		Let $\nn$ be any maximal ideal of $\roof{A}$. Then $\nn=\roof{\mm}$ for some maximal ideal $\mm$ of $A$ which contains $I$.
+	\end{lem}
+	\begin{proof}
+		Since $\nn$ contains $I\roof{A}$ by what we proved before, $\nn/I\roof{A}\subseteq \roof{A}/I\roof{A}\simeq A/I$ is a proper ideal. Let $\mm\subseteq A$ be preimage of $\nn/I\roof{A}$. Clearly, $\mm$ is a proper ideal containing $I$. Then $\roof{\mm}=\mm\roof{A}\subseteq \roof{A}$ is a proper ideal (no $\mm/I^n$ contains $1$) and it is easy to see that $\roof{\mm}$ contains $\nn$, so $\nn=\roof{\mm}$. It remains to show that $\mm$ is maximal. But (using exactness of $I$-adic completions) $\roof{A}/\roof{\mm}\simeq (A/\mm)\roof{\phantom{)}}$ is a field, and since $\mm\supseteq I$, the $I$-adic completion of $A/\mm$ is just $A/\mm$ as $I\cdot A/\mm=0$. Hence $\mm$ is maximal.
+	\end{proof}
+	
+	Using the lemma, we see that $\gr(\roof{A}_{\roof{\mm}},\roof{\mm})\simeq\gr(\roof{A},\roof{\mm})\simeq \gr(A,\mm)\simeq\gr(A_\mm,\mm)$ implying that $\roof{A}_{\roof{\mm}}$ and $A_\mm$ have the same Krull dimension (their Samuel polynomials coincide and we can use \cite[Theorem~20]{alg2}). If $\mm$ is generated by $x_1,\ldots,x_d$ over $A_\mm$, then so is $\roof{\mm}\simeq\mm\roof{A}$ by their images, showing that $\roof{A}_{\roof{\mm}}$ is regular.
+\end{proof}
+\begin{prop}
+	If $A$ is a regular Noetherian ring, then so are the polynomial ring $A[X_1,\ldots,X_n]$ as well as the ring of formal power series $A\llbracket X_1,\ldots,X_n\rrbracket$.
+\end{prop}
+\begin{proof}
+	Since $A\llbracket X_1,\ldots,X_n\rrbracket$ is the completion of $A[X_1,\ldots,X_n]$ with respect to the ideal $(X_1,\ldots,X_n)$, it's enough to show regularity of $A[X_1,\ldots,X_n]$ by Proposition~\reff{prop:completionRegular}. Clearly, we may reduce this to the polynomial ring $A[T]$ in only one variable.
+\end{proof}
+
 
 \appendix
-\chapter{Appendix -- category theory corner}
+\chapter{Appendix}
 \setcounter{thm}{0}
 \renewcommand*{\thethm}{\Alph{thm}}
 
@@ -1908,6 +2044,64 @@ The following lists and proves some first properties of additive categories and 
 \begin{proof}
 	Since $I$ is injective, the sequence $0\morphism I\morphism X\morphism X''\morphism 0$ splits due to Definition~\reff{def:injective}\itememph{b}, i.e., $X\simeq I\oplus X''$. Since $F$ is additive, $FX\simeq FI\oplus FX''$, and $FI\morphism FX$ and $FX\morphism FX''$ correspond to the inclusion of $FI$ respectively projection onto $FX''$.
 \end{proof}
+\section{Associated primes}\lbl{sec:AssociatedPrimes}
+Professor Franke recalled some facts about associated primes which he considered well-known at this level. However, I somehow managed to dodge every associated prime thrown at me till now, so I will include this here. Also, the proofs are my own so this might not be the most elegant presentation.
+\begin{defi}
+	Let $R$ be a ring and $M$ an $R$-module. The set of \defemph{associated primes} of $M$ is defined as
+	\begin{align*}
+		\Ass_R(M)=\left\{\pp\in\Spec R\st\text{there is an }m\in M\text{ such that }\pp=\Ann_R(m)\right\}\;.
+	\end{align*}
+\end{defi}
+\begin{example}\lbl{ex:AssR/p}
+	When $\pp\in\Spec R$, we have $\Ass_R(R/\pp)=\left\{\pp\right\}$. Indeed, since $R/\pp$ is a domain, every element of $R$ annullating it must be in $\pp$.
+\end{example}
+\begin{prop}\lbl{prop:AssExactSeqs}
+	When $0\morphism M'\morphism M\morphism M''\morphism 0$ is an exact sequence, then
+	\begin{align*}
+		\Ass_R(M')\subseteq \Ass_R(M)\subseteq \Ass_R(M')\cup\Ass_R(M'')\;.
+	\end{align*}
+\end{prop}
+\begin{proof}
+	The first inclusion is obvious. For the second, let $\pp\in\Ass_R(M)$ and $m\in M$ such that $\pp=\Ann_R(m)$. Then $1\mapsto m$ gives an embedding of $R/\pp$ into $M$. Let $R/\pp\simeq P\subseteq M$ be its image. If $P\cap M'=0$, then $P\simeq (P+M')/M'\subseteq M/M'\simeq M''$ shows that $M'$ has a submodule isomorphic to $R/\pp$ as well, hence $\pp\in\Ass_R(M'')$ by Example~\reff{ex:AssR/p}. If $P\cap M'\neq 0$, take a non-zero element $p$ in their intersection. By Example~\reff{ex:AssR/p}, $\Ann_R(p)=\pp$, hence $\pp\in\Ass_R(M')$.
+\end{proof}
+\begin{cor}\lbl{cor:AssFinite}
+	When $R$ is Noetherian and $M$ is finitely generated, $\Ass_R(M)$ is a finite set, and non-empty unless $M=0$.
+\end{cor}
+\begin{proof}
+	Apply Proposition~\reff{prop:AssExactSeqs} and Example~\reff{ex:AssR/p} to a filtration $0=M_0\subseteq\ldots\subseteq M_k=M$ such that $M_i/M_{i-1}\simeq R/\pp_i$ for some $\pp_i\in\Spec R$ (which exists by \cite[Proposition~3.1.2]{alg2}). This pretty much shows both assertions.
+\end{proof}
+Now we prove that taking associated prime ideals commutes with localizations -- in the following sense. 
+\begin{prop}\lbl{prop:AssLocalization}
+	Let $R$ be a Noetherian ring and $M$ an arbitrary $R$-module. When $S\subseteq R$ is a multiplicative subset, then
+	\begin{align*}
+		\Ass_{R_S}(M_S)=\left\{\pp R_S\st \pp\in\Ass_R(M)\text{ and }\pp\cap S=\emptyset\right\}\;.
+	\end{align*}
+\end{prop}
+\begin{proof}
+	We will simply check the assertion in a straightforward way. First let $\pp\in\Ass_R(M)$ such that $\pp\cap S=\emptyset$. Choose $m\in M$ such that $\pp=\Ann_R(m)$. Then $\pp R_S$ clearly annullates $m$ over $R_S$. Conversely, if $\frac{r}{s}\cdot m=0$ in $M_S$, then there is a $t\in S$ such that $trm=0$ in $M$. Hence $tr\in\pp$ and thus $\frac{r}{s}\in\pp R_S$. This proves $\Ass_{R_S}(m)=\pp R_S$, hence $\pp R_S\in\Ass_{R_S}(M_S)$.
+	
+	Now let $\qq\in\Spec R_S$ be an associated prime ideal of $M_S$. Then $\qq=\pp R_S$ for some prime ideal $\pp\in\Spec R$, $\pp\cap S=\emptyset$ (cf.\ \cite[Corollary~2.3.1\itememph{e}]{alg1}) and there is an element $\mu=\frac{m}{s}\in M_S$ such that $\qq=\Ann_{R_S}(\mu)$. Our goal is to modify $m$ such that $\Ann_R(m)=\pp$. Clearly, $\Ann_R(M)\subseteq \qq\cap R=\pp$. Moreover, since every element of $\pp$ anullates $m$ in $M_S$ we see that for every $p\in\pp$ there is a $t\in S$ such that $tp\in\Ann_R(m)$. Choose generators $p_1,\ldots,p_n$ of $\pp$ and such $t_1,\ldots,t_n$. Replacing $m$ by $t_1\cdots t_nm$ doesn't change $\Ann_{R_S}(m)$, as the $t_i$ are units in $R_S$, but gives $p_1,\ldots,p_n\in\Ann_R(m)$, hence $\pp=\Ann_R(m)$.
+\end{proof}
+\begin{prop}\lbl{prop:AssProperties}
+	Let $R$ be a Noetherian and $M$ any $R$-module.
+	\begin{alphanumerate}
+		\item We have
+		\begin{align*}
+			\left\{r\in R\st M\morphism[r\cdot ]M\text{ is injective}\right\}=R\setminus\bigcup_{\pp\in \Ass_R(M)}\pp\;.
+		\end{align*}
+		\item When $M$ is in addition finitely generated, then every prime ideal which is minimal over $\Ann_R(M)$ is an associated prime ideal of $M$.
+	\end{alphanumerate}
+\end{prop}
+\begin{proof}
+	Part \itememph{a}. Clearly, every element $r\in \bigcup_{\pp\in \Ass_R(M)}\pp$ annullates some element of $M$. Conversely, assume that $M\morphism[\smash{r\cdot}]M$ is not injective for some $r\in R$. Consider the set
+	\begin{align*}
+		\MM=\left\{\Ann_R(m)\st m\in M\text{ satisfies }rm=0\right\}\;.
+	\end{align*}
+	of ideals of $R$. Since $R$ is Noetherian and $\MM$ is non-empty by assumption, $\MM$ has a maximal element $\Ann_R(\mu)$ for some $\mu\in M\setminus\{0\}$ satisfying $r\mu=0$. We claim that $\Ann_R(\mu)$ is prime. Indeed, let $a,b\in R$ such that $ab\in \Ann_R(\mu)$. If neither $a$ nor $b$ are in $\Ann_R(\mu)$, we find that $\Ann_R(a\mu)\in\MM$ (since $a\mu\neq 0$) and $\Ann_R(m)$ is properly contained in $\Ann_R(a\mu)$ (since $b\notin\Ann_R(m)$), contradiction.
+	
+	Part \itememph{b}. Let $\pp\in\Spec R$ be minimal above $\Ann_R(M)$. By \cite[Lemma~3.4.1]{alg2}, $\pp\in\supp(M)$, i.e., $M_\pp\neq 0$. Hence $\Ass_{R_\pp}(M_\pp)\neq\emptyset$ by Corollary~\reff{cor:AssFinite}. Clearly, every $\qq\in\Ass_R(M)$ contains $\Ann_R(M)$, and since $\pp$ is minimal above $\Ann_R(M)$, Proposition~\reff{prop:AssLocalization} shows that no prime ideal of $R_\pp$ except $\pp R_\pp$ can be contained in $\Ass_{R_\pp}(M_\pp)$. Therefore, $\Ass_{R_\pp}(M_\pp)=\{\pp R_\pp\}$, hence $\pp\in\Ass_R(M)$ by Proposition~\reff{prop:AssLocalization} again.
+\end{proof}
+
 
 \printbibliography
 
