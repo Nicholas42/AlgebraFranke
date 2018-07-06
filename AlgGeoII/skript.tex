@@ -2838,7 +2838,14 @@ Let $k$ be algebraically closed. All schemes to appear are supposed to be $\Spec
 	\end{alphanumerate}
 \end{thm}
 \begin{rem*}
-	Theorem~\reff{thm:CurvesSerreDuality}\itememph{b} and \itememph{c} are called \emph{Serre duality}. They still hold when $C$ is replaced by a \emph{smooth} scheme $X$ over an arbitrary field $k$ and $\Omega_C^1$ by $\omega_X=\bigwedge^{\dim X}\Omega_X^1$.
+	\begin{alphanumerate}
+		\item Theorem~\reff{thm:CurvesSerreDuality}\itememph{b} and \itememph{c} are called \emph{Serre duality}. They still hold when $C$ is replaced by a \emph{smooth} scheme $X$ over an arbitrary field $k$ and $\Omega_C^1$ by $\omega_X=\bigwedge^{\dim X}\Omega_X^1$.
+		\item When $n=\dim X\geq 2$, Theorem~\reff{thm:CurvesSerreDuality}\itememph{a} will no longer deal with line bundles and $c_1$ is replaced by $c_n$.
+		\item When $k$ is not algebraically closed, the Theorem still holds as stated as long as $C$ is \emph{smooth} over $k$, and we need to define
+		\begin{align*}
+			\deg D=\sum_{x\in C_1} D(x)\cdot [\KK(x):k]\;.
+		\end{align*}
+	\end{alphanumerate}
 \end{rem*}
 
 \appendix
@@ -3084,82 +3091,26 @@ For clarity (and to better distinguish between the proof and Professor Franke's 
 	\begin{align*}
 		\Ff_x=\colimit[U\ni x]\coker\Big(\Mm(U)\morphism[f]\Nn(U)\Big)\simeq \coker\Big(\Mm_x\morphism[f]\Nn_x\Big)\;.
 	\end{align*}
-	Since $\Mm_x=\colimit[U\ni x]\Mm(U)$ and similar for $\Nn_x$, this amounts to showing that cokernels and certain colimits commute. But by Remark~\reff{rem:KernelCokernel}, cokernels are just a special case of colimits, so what we are actually going to show is that colimits commute with colimits -- in the following sense.
+	Since $\Mm_x=\colimit[U\ni x]\Mm(U)$ and similar for $\Nn_x$, this amounts to showing that cokernels and certain colimits commute. But by Remark~\reff{rem:KernelCokernel}, cokernels are just a special case of colimits, so what we are actually going to show is that \emph{colimits commute with colimits}.
+	
+	The following approach was suggested by Willem and is conceptionally way nicer than what I came up with myself. Let $\Aa$ be a category. A \defemph{diagram} (naively, some objects of $\Aa$ with arrows between them such that everything that should commute actually does so) is nothing else but a functor $F\colon \Jj\morphism\Aa$ from some small category $\Jj$ into $\Aa$. We can form the corresponding \defemph{diagram category} which is just the functor category $\Dd=\Funct(\Jj,\Aa)$. Taking colimits then is a functor 
+	\begin{align}
+		\colimit[\Jj]\colon \Dd\morphism\Aa
+	\end{align}
+	(perhaps we need to restrict $\Dd$ to the class of $\Jj$-indexed diagrams whose colimit exists). We also have the \emph{diagonal functor} $\Delta\colon\Aa\morphism\Dd$ assigning to $X\in\Ob(\Aa)$ the diagram with all objects $X$ and all arrows the identity $\id_X$ (and for morphisms, $\Delta$ does the obvious thing).
+	
 	\begin{lem}\lbl{lem:ColimitsCommute}
-		Let $(X_{i,j})_{i\in I,j\in J}$ be objects of a category $\Aa$. For each $i_1,i_2\in I$ let there be an indexing set $I_{i_1,i_2}$ and for each $\alpha\in I_{i_1,i_2}$ and $j\in J$ a morphism
-		\begin{align*}
-			f_\alpha^j\colon X_{i_1,j}\morphism X_{i_2,j}\;.
-		\end{align*}
-		Similarly, for each $j_1,j_2\in J$ let there be an indexing set $J_{j_1,j_2}$ and for each $\beta\in J_{j_1,j_2}$ and $i\in I$ a morphism
-		\begin{align*}
-			g_\beta^i\colon X_{i,j_1}\morphism X_{i,j_2}\;.
-		\end{align*}
-		Moreover, suppose that for each $i_1,i_2\in I$ and $j_1,j_2\in J$ and $\alpha\in I_{i_1,i_2}$ and $\beta\in J_{j_1,j_2}$ the diagram
-		\begin{diagram}[baseline=0cm-0.5ex][\lbl{diag:CokernelsCommute}]
-			\node[ob] (a) at (0,0.75) {$X_{i_1,j_1}$};
-			\node[ob] (b) at (0,-0.75) {$X_{i_1,j_2}$};
-			\node[ob] (c) at (2.5,0.75) {$X_{i_2,j_1}$};
-			\node[ob] (d) at (2.5,-0.75) {$X_{i_2,j_2}$};
-			\scriptsize
-			\draw[->] (a) -- (b) node[pos=0.5,left] {$g_\beta^{i_1}$};
-			\draw[->] (a) -- (c) node[pos=0.5,above] {$f_\alpha^{j_1}$};
-			\draw[->] (c) -- (d) node[pos=0.5,right] {$g_\beta^{i_2}$};
-			\draw[->] (b) -- (d) node[pos=0.5,above] {$f_\alpha^{j_2}$};
-			\tag{\#}
-		\end{diagram}
-		commutes. Then there is an isomorphism
-		\begin{align*}
-			\colimit[i\in I]\colimit[j\in J]X_{i,j}\simeq\colimit[j\in J]\colimit[i\in I]X_{i,j}\simeq\colimit[(i,j)\in I\times J]X_{i,j}\;.
-		\end{align*}
+		The functors $\colimit[\Jj]$ and $\Delta$ form an adjoint pair (cf.\ Definition~\reff{def:AdjointFunctors}).
 	\end{lem}
 	\begin{proof}
-		Clearly, it is enough to show the rightmost isomorphism. What we need to show is that $L\coloneqq\colimit[j]\colimit[i]X_{i,j}$ satisfies the universal property of $L'\coloneqq\colimit[(i,j)]X_{i,j}$.
-		
-		 Let $T$ be an object of $\Aa$ and $\big(X_{i,j}\morphism[\tau_{i,j}]T\big)_{i\in I,j\in J}$ be a cocone below the diagram $(X_{i,j})_{i,j}$. That is, for every $\alpha\in I_{i_1,i_2}$ and $j\in J$ the diagram 
-		\begin{diagram*}
-			\node[ob](R) at (0,1.25) {$X_{i_1,j}$};
-			\node[ob](A) at (2.5,1.25) {$X_{i_2,j}$};
-			\node[ob](RS) at (1.25,0) {$T$};
-			\scriptsize
-			\draw[->] (R) -- (A) node[pos=0.5, above] {$f_\alpha^j$};
-			\draw[->] (R) -- (RS) node[pos=0.5, below left] {$\tau_{i_1,j}$};
-			\draw[<-] (RS) -- (A) node[pos=0.5, below right] {$\tau_{i_2,j}$};
-		\end{diagram*}
-		commutes. By the universal properties of the $L_j\coloneqq\smash{\colimit[i]X_{i,j}}$, the $\tau_{i,j}$ factor over some maps $L_j\morphism[\tau_j]T$. Moreover, for each $j_1,j_2\in J$ and $\beta\in J_{j_1,j_2}$, the compositions 
-		\begin{align*}
-			X_{i,j_1}\morphism[g_\beta^i]X_{i,j_2}\morphism L_{j_2}
-		\end{align*}
-		induce a map $L_{j_1}\morphism[g_\beta]L_{j_2}$ by the universal property of $L_{j_1}$ (here, we silently used the commutativity of \eqreff{diag:CokernelsCommute}, otherwise the above compositions wouldn't be a cocone below $(X_{i,j_1})_{i\in I}$). We thus get a diagram
-		\begin{diagram*}
-			\node[ob](x1) at (0,3) {$X_{i,j_1}$};
-			\node[ob](x2) at (5,3) {$X_{i,j_2}$};
-			\node[ob](l1) at (1.25,1.5) {$L_{j_1}$};
-			\node[ob](l2) at (3.75,1.5) {$L_{j_2}$};
-			\node[ob](t) at (2.5,0) {$T$};
-			\scriptsize
-			\draw[->] (x1) -- (x2) node[pos=0.5, above] {$g_\beta^i$};
-			\draw[dashed,->] (l1) -- (l2) node[pos=0.5, above] {$g_\beta$};
-			\draw[->] (x1) -- (l1);
-			\draw[->] (x2) -- (l2);
-			\draw[->, bend right=45] (x1) to node[pos=0.5, below left] {$\tau_{i,j_1}$} (t);
-			\draw[->, bend left=45] (x2) to node[pos=0.5, below right] {$\tau_{i,j_2}$} (t);
-			\draw[->] (l1) -- (t) node[pos=0.5, below left] {$\tau_{j_1}$};
-			\draw[->] (l2) -- (t) node[pos=0.5, below right] {$\tau_{j_2}$};
-		\end{diagram*}
-	in which everything but the bottom-middle triangle commutes. We show that this triangle commutes as well. Indeed, by the universal property of $L_{j_1}$, $\tau_{j_1}$ is the unique morphism $L_{j_1}\morphism T$ making each
-	\begin{diagram*}
-		\node[ob](R) at (0,1.25) {$X_{i,j_1}$};
-		\node[ob](A) at (2.5,1.25) {$L_{j_1}$};
-		\node[ob](RS) at (1.25,0) {$T$};
-		\scriptsize
-		\draw[->] (R) -- (A);
-		\draw[->] (R) -- (RS) node[pos=0.5, below left] {$\tau_{i,j_1}$};
-		\draw[<-] (RS) -- (A);
-	\end{diagram*}
-	commute. But apparently, $\tau_{j_2}g_\beta$ has this property as well, proving $\tau_{j_1}=\tau_{j_2}g_\beta$. Then the morphisms $\big(L_{j}\morphism[\tau_j]T\big)_{j\in J}$ form a cocone below the diagram $(L_j)_{j\in J}$, hence factor uniquely over some $L\morphism[\tau]T$ by the universal property of $L$.	
+		With this new terminology at hand, look at the definition of a colimit as a colimiting cocone again and find out that this is obvious.
+	\end{proof}
+	By Remark~\reff{rem:AdjunctionPreservesStuff}, left-adjoint functors preserve colimits. In particular, Lemma~\reff{lem:ColimitsCommute} gives
+	\begin{cor}
+		The functor $\colimit[\Jj]$ preserves colimits.
+	\end{cor}
+	\ldots\ and if you think about it, that's precisely the kind of commutativity of colimits with colimits we wanted to have.
 	
-	It remains to prove uniqueness of $\tau$. If $L\morphism[\tau]T$ is a morphism over which each $X_{i,j}\morphism[\tau_{i,j}]T$ factors, then the composition $L_j\morphism L\morphism[\tau]T$ must equal $\tau_j$ since $\tau_j$ is uniquely determined by the universal property of $L_j$. But $\tau$ is uniquely determined by the $\tau_j$, proving uniqueness.
-\end{proof}
 	Having thus proved \eqreff{eq:SheafCokernel}, we now proceed with the proof of Lemma~\reff{lem:RmodHasCokernels}. We have a morphism $\Nn\morphism\Cc$ sending $n\in \Nn(U)$ to
 	\begin{align*}
 	\bigg(\text{image of }n\text{ under }\Nn(U)\morphism\Nn_x\morphism\coker\Big(\Mm_x\morphism[f]\Nn_x\Big)\bigg)_{x\in U}\;.
@@ -3204,7 +3155,7 @@ For clarity (and to better distinguish between the proof and Professor Franke's 
 \end{proof}
 Recall the definition of an adjoint pair of functors.
 \begin{defi}[{\cite[Definition~A.2.3]{alggeo1}}]\lbl{def:AdjointFunctors}
-	Let $\Aa,\Bb$ be categories. A pair $\Aa\doublelrmorphism[L][R]\Bb$ of (covariant) functors is called \defemph{adjoint}, if there is a canonical bijection
+	Let $\Aa,\Bb$ be categories. A pair $\Aa\doublelrmorphism[L][\smash{R}]\Bb$ of (covariant) functors is called \defemph{adjoint}, if there is a canonical bijection
 	\begin{align*}
 		\Hom_\Aa(X,RY)\isomorphism\Hom_\Bb(LX,Y)
 	\end{align*}
