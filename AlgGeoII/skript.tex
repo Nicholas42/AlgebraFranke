@@ -1365,7 +1365,7 @@ Let $X$ be any prescheme. Recall the construction of the $\SPEC_X(-)$ functor fr
 	In the last line, the $Y$-prescheme structure on $X$ is given by $X\morphism[\xi]\snake{Y}\morphism[f]Y$. If you think about it for a moment, a morphism of $Y$-preschemes from $X$ to $\Spec_Y(\Aa)$, where the $Y$-prescheme structure on $X$ factors over $\snake{Y}$ is exactly the commuting square from the universal property of the fibre product $\SPEC_Y(\Aa)\times_Y\snake{Y}$ and we're done.
 \end{proof}
 
-\section{The relation between \texorpdfstring{$H^1$}{H} and torsors}
+\section{The relation between \texorpdfstring{$\check{H}^1$}{H} and torsors}
 The usual term for these things seems to be \emph{torsor} rather than \emph{torseur}, so we will deviate from the lecture's notation here.
 \begin{defi}\lbl{def:torsor}
 	Let $X$ be any topological space, $\Gg$ a sheaf of groups on $X$. A \defemph{$\Gg$-torsor} or \defemph{$\Gg$-principal homogeneous space} is a sheaf of sets $\Xx$ on $X$ with a morphism
@@ -2291,11 +2291,14 @@ Recall the construction of the quasi-coherent $\Oo_{\Proj R}$-module $\Mm=\snake
 	
 	Part \itememph{b}. By Theorem~\reff{thm:SerreTwistStuff}, the summands in $\chi(X,\Mm(\ell))$ vanish for $p>0$ and sufficiently large twists $\ell$, while the $p=0$ summand becomes $\dim_kM_\ell=\length_kM_\ell$ when $\ell$ is sufficiently large by \itememph{a}. Hence by \cite[Theorem~18]{alg2} the assertion holds when $\ell$ is large enough, and in particular, it suffices to show that $\chi(X,\Mm(\ell))$ is given by a polynomial in $\ell$. We will show this by induction on $n$.
 	
-	If $n=-1$, we have $\IP_k^{-1}=\Proj k=\emptyset$ and everything is trivial (whereas the $n=0$ case doesn't seem as obvious to me as Professor Franke made it look like). Now let $n\geq 0$ and the assertion be valid for $n-1$. Let $0\morphism \Mm'\morphism\Mm\morphism\Mm''\morphism 0$ be a short exact sequence of coherent $\Oo_X$-modules. We claim that
-	\begin{align*}
-		\chi(X,\Mm'(\ell))+\chi(X,\Mm''(\ell))=\chi(X,\Mm(\ell))
-	\end{align*}
-	for all $\ell\in \IZ$. Indeed, the long exact cohomology sequence associated to the short exact sequence $0\morphism \Mm'(\ell)\morphism\Mm(\ell)\morphism\Mm''(\ell)\morphism 0$ vanishes in cohomological degrees $>n$ and consists of finite-dimensional $k$-vector spaces by Theorem~\reff{thm:SerreTwistStuff}. Using that dimension behaves additively in exact sequences, the claimed additivity of the Euler--Poincaré characteristic follows after an easy calculation.
+	If $n=-1$, we have $\IP_k^{-1}=\Proj k=\emptyset$ and everything is trivial (whereas the $n=0$ case doesn't seem as obvious to me as Professor Franke made it look like). Now let $n\geq 0$ and the assertion be valid for $n-1$. Let $0\morphism \Mm'\morphism\Mm\morphism\Mm''\morphism 0$ be a short exact sequence of coherent $\Oo_X$-modules. 
+	\begin{claim}\lbl{claim:chiAdditive}
+		For all $\ell\in \IZ$ we have
+		\begin{align*}
+			\chi(X,\Mm'(\ell))+\chi(X,\Mm''(\ell))=\chi(X,\Mm(\ell))
+		\end{align*}
+	\end{claim}
+	Indeed, the long exact cohomology sequence associated to the short exact sequence $0\morphism \Mm'(\ell)\morphism\Mm(\ell)\morphism\Mm''(\ell)\morphism 0$ vanishes in cohomological degrees $>n$ and consists of finite-dimensional $k$-vector spaces by Theorem~\reff{thm:SerreTwistStuff}. Using that dimension behaves additively in exact sequences, the claimed additivity of the Euler--Poincaré characteristic follows after an easy calculation.
 	
 	In particular, when the Euler--Poincaré characteristic is a polynomial in $\ell$ for two of $\Mm'$, $\Mm$, and $\Mm''$, so it is for the third. Now let $\Mm$ be coherent and consider the sequence
 	\begin{align*}
@@ -2414,9 +2417,9 @@ This construction is base-local. That is, $\PROJ_U(\Rr|_U)\simeq \pi^{-1}(U)$ fo
 		\item\lbl{rem:SheafInverseImage} So far, we have seen three kinds of inverse image functors. Let $f\colon X\morphism Y$ be a continuous map of topological spaces, where for $f^*$ we additionally assume that $X$ and $Y$ are ringed with structure sheaves $\Oo_X,\Oo_Y$. Then we have
 		\begin{align*}
 		\begin{array}{r c l c}
-		f^\flat\colon & \cat{PreShv}(Y)\morphism[ ]\cat{PreShv}(X)&\text{left-adjoined to } & \cat{PreShv}(X)\morphism[f_*]\cat{PreShv}(Y)\\
-		f^\sharp\colon & \cat{Shv}(Y)\morphism[ ]\cat{Shv}(X) & \text{left-adjoined to } & \cat{Shv}(X)\morphism[f_*]\cat{Shv}(Y)\\
-		f^*\colon & \Oo_Y\cat{-Mod}\morphism[ ]\Oo_X\cat{-Mod} & \text{left-adjoined to } & \Oo_X\cat{-Mod}\morphism[f_*]\Oo_Y\cat{-Mod}
+		f^\flat\colon & \cat{PreShv}(Y)\morphism[ ]\cat{PreShv}(X)&\text{left-adjoint to } & \cat{PreShv}(X)\morphism[f_*]\cat{PreShv}(Y)\\
+		f^\sharp\colon & \cat{Shv}(Y)\morphism[ ]\cat{Shv}(X) & \text{left-adjoint to } & \cat{Shv}(X)\morphism[f_*]\cat{Shv}(Y)\\
+		f^*\colon & \Oo_Y\cat{-Mod}\morphism[ ]\Oo_X\cat{-Mod} & \text{left-adjoint to } & \Oo_X\cat{-Mod}\morphism[f_*]\Oo_Y\cat{-Mod}
 		\end{array}
 		\end{align*}
 		defined as follows. For a presheaf $\Gg$ on $Y$ define $f^\flat \Gg$ by 
@@ -2434,7 +2437,7 @@ This construction is base-local. That is, $\PROJ_U(\Rr|_U)\simeq \pi^{-1}(U)$ fo
 		(f^*\Mm)_x=\Mm_{f(x)}\otimes_{\Oo_{Y,f(x)}}\Oo_{X,x}
 		\end{align*}
 		and from this we can describe $f^*\Mm$ by another one of our beautiful coherence condition characterizations for (I won't include this here). In particular, we see that $f^*$ is base-local.
-		\item Since $f^*\Oo_Y=\Oo_X$ (this is clear on stalks) and $f^*$ preserves direct sums (in fact, as a left-adjoined functor it preserves arbitrary colimits, cf.\ Remark~\reff{rem:AdjunctionPreservesStuff}), so inverse images of vector bundles (resp.\ line bundles) are vector bundles (resp.\ line bundles) again by base-locality of $f^*$.
+		\item Since $f^*\Oo_Y=\Oo_X$ (this is clear on stalks) and $f^*$ preserves direct sums (in fact, as a left-adjoint functor it preserves arbitrary colimits, cf.\ Remark~\reff{rem:AdjunctionPreservesStuff}), so inverse images of vector bundles (resp.\ line bundles) are vector bundles (resp.\ line bundles) again by base-locality of $f^*$.
 		\item Moreover, when $f$ is a morphism between affine schemes $X=\Spec B$ and $Y=\Spec A$ (thus) coming from a ring morphism $A\morphism B$, then $f^*\snake{M}=(B\otimes_AM)^\sim$ for all $A$-modules $M$ (which is easily seen stalk-wise). It follows that $f^*$ restricts to a functor $f^*\colon \cat{QCoh}(Y)\morphism\cat{QCoh}(X)$.
 		\item Also note that $f^*$ commutes with tensor products, i.e., $f^*(\Mm\otimes_{\Oo_Y}\Nn)=f^*\Mm\otimes_{\Oo_X}f^*\Nn$. Indeed, this can be easily verified by looking at stalks.
 	\end{alphanumerate}
@@ -2761,7 +2764,7 @@ We are finally ready to define what a \emph{projective morphism} is.
 \begin{thm}
 	Let $X\morphism[f]Y$ be a proper morphism of locally Noetherian preschemes. If $\Mm$ is a coherent $\Oo_X$-module and $p\geq 0$, then $R^pf_*\Mm$ is a coherent $\Oo_Y$-module.
 \end{thm}
-\begin{cor}
+\begin{cor}\lbl{cor:ProperHpFinGen}
 	If $A$ is a Noetherian ring and $X$ a proper $\Spec A$-scheme and $\Mm$ a coherent $\Oo_X$-module, then $H^p(X,\Mm)$ is a finitely generated $A$-module.
 \end{cor}
 \begin{thm}
@@ -2779,12 +2782,14 @@ We are finally ready to define what a \emph{projective morphism} is.
 \end{thm}
 
 \chapter{Cohomology of curves}
-Let $X$ be a quasi-compact one-dimensional regular (and thus locally Noetherian since \cite[Definition~2.4.5]{alggeo1} assumes this implicitly; hence even Noetherian by quasi-compactness) integral scheme, $X_1$ the set of codimension $1$ (i.e., closed) points, $\Div(X)$ the free abelian group generated by $X_1$ which we already encountered \hyperref[par:Divisors]{here}. For $D\in\Div(X)$, the line bundle $\Oo_X(D)$ is defined by
-\begin{align*}
+Let $X$ be a quasi-compact one-dimensional regular (and thus locally Noetherian since \cite[Definition~2.4.5]{alggeo1} assumes this implicitly; hence even Noetherian by quasi-compactness) integral scheme, $X_1$ the set of codimension $1$ (i.e., closed) points, $\Div(X)$ the free abelian group generated by $X_1$ which we already encountered \hyperref[par:Divisors]{here}. 
+\begin{defi}\lbl{def:divisorLineBundle}
+	For $D\in\Div(X)$, the line bundle $\Oo_X(D)$ is defined by
+	\begin{align*}
 	\Oo_X(D)(U)=\left\{f\in K\st v_x(f)\geq D(x)\ \forall x\in U\cap X_1\right\}
-\end{align*}
-when $U\neq \emptyset$ (and $\Oo_X(\emptyset)=0$ of course). Here, $K=\Oo_{X,\eta}$ denotes the local ring at the generic point $\eta$ of $X$ (which is a field) and $v_x\colon \Oo_{X,x}\morphism\IZ$ for $x\in X_1$ denotes the valuation of the DVR $\Oo_{X,x}$. 
-
+	\end{align*}
+	when $U\neq \emptyset$ (and $\Oo_X(\emptyset)=0$ of course). Here, $K=\Oo_{X,\eta}$ denotes the local ring at the generic point $\eta$ of $X$ (which is a field) and $v_x\colon \Oo_{X,x}\morphism\IZ$ for $x\in X_1$ denotes the valuation of the DVR $\Oo_{X,x}$ (all of this is justified \hyperref[par:Divisors]{here}). 
+\end{defi}
 Any line bundle on $X$ is isomorphic to a line bundle of this form, and the \emph{divisor class} of $D$, i.e., its coset modulo $\left\{\div(f)=\sum_{x\in X_1}v_x(f)\cdot x\st f\in K^\times\right\}$, is uniquely determined. 
 
 Let us assume that $X$ is a $\Spec k$-scheme where $k$ is a field. We have seen that there are bijections
@@ -2809,18 +2814,21 @@ Let us assume that $X$ is a $\Spec k$-scheme where $k$ is a field. We have seen 
 \end{diagram*}
 and denoted this composition by $c_1$. Also recall the \emph{Picard group} $\Pic(X)$ from Remark~\reff{rem:LineBundleGroup}\itememph{a}.
 \section{Formulation of results}
-Let $k$ be algebraically closed. All schemes to appear are supposed to be $\Spec k$-schemes and $\Omega_X^1\coloneqq\Omega_{X/k}$.
+Let $k$ be algebraically closed. All schemes to appear are supposed to be $\Spec k$-schemes and $\Omega_X^1\coloneqq\Omega_{X/k}$. Also, we use the term \emph{curve} for one-dimensional schemes.
 \begin{thm}\lbl{thm:CurvesSerreDuality}
 	Let $C\morphism\Spec k$ be a proper morphism where $C$ is a regular curve.
 	\begin{alphanumerate}
 		\item There is a homomorphism $\deg\colon \Pic(C)\morphism\IZ$ such that 
 		\begin{align*}
-			\deg \Oo_X(D)\eqqcolon\deg D=\sum_{x\in C_1}D(x)\;.
+			\deg \Oo_C(D)\eqqcolon\deg D=\sum_{x\in C_1}D(x)\;.
 		\end{align*}
-		\item $H^1(C,\Omega_C^1)$ is a one-dimensional $k$-vector space and there is a unique isomorphism $\tau\colon H^1(C,\Omega_C^1)\isomorphism k$ such that the diagram
-		\begin{diagram*}
+		\item $H^1(C,\Omega_C)$ is a one-dimensional $k$-vector space and there is a unique isomorphism 
+		\begin{align}\lbl{eq:H1isok}
+			\tau\colon H^1(C,\Omega_C)\isomorphism k 
+		\end{align}such that the diagram
+		\begin{diagram}[baseline=0.75cm-0.5ex][\lbl{diag:H1PicAndStuff}]
 			\node[ob] (a) at (0,1.5) {$\Pic(C)$};
-			\node[ob] (b) at (3,1.5) {$H^1(C,\Omega_C^1)$};
+			\node[ob] (b) at (3,1.5) {$H^1(C,\Omega_C)$};
 			\node[ob] (c) at (3,0) {$k$};
 			\node[ob] (d) at (0,0) {$\IZ$};
 			\scriptsize
@@ -2828,25 +2836,155 @@ Let $k$ be algebraically closed. All schemes to appear are supposed to be $\Spec
 			\draw[->] (b) -- (c) node[pos=0.5, above=-0.25ex, sloped] {$\sim$} node[pos=0.5, left] {$\tau$};
 			\draw[->] (d) -- (c);
 			\draw[->] (a) -- (d) node[pos=0.5, left] {$\deg$};
-		\end{diagram*}
+		\end{diagram}
 		commutes.
 		\item For every vector bundle $\Vv$ on $C$, there is a non-degenerate pairing
 		\begin{align*}
-			H^0(C,\Vv)\times H^1(C,\Omega_C^1\otimes_{\Oo_C}\Vv^*)\morphism[m]H^1(C,\Omega_C^1)\isomorphism k
+			H^0(C,\Vv)\times H^1(C,\Omega_C\otimes_{\Oo_C}\Vv^*)\morphism[m]H^1(C,\Omega_C)\isomorphism k
 		\end{align*}
-		of finite-dimensional vector spaces. Here, $\Vv^*$ denotes the \defemph{dual bundle} $\Vv^*=\Hhom_{\Oo_C}(\Vv,\Oo_C)$ and the pairing $m$ is given by $(v,\ell\otimes\omega)\mapsto \ell(v)\cdot \omega$.
+		of finite-dimensional vector spaces. Here, $\Vv^*\coloneqq\Hhom_{\Oo_C}(\Vv,\Oo_C)$ denotes the \defemph{dual bundle} and the pairing $m$ is given by $(v,\ell\otimes\omega)\mapsto \ell(v)\cdot \omega$.
 	\end{alphanumerate}
 \end{thm}
 \begin{rem*}
 	\begin{alphanumerate}
-		\item Theorem~\reff{thm:CurvesSerreDuality}\itememph{b} and \itememph{c} are called \emph{Serre duality}. They still hold when $C$ is replaced by a \emph{smooth} scheme $X$ over an arbitrary field $k$ and $\Omega_C^1$ by $\omega_X=\bigwedge^{\dim X}\Omega_X^1$.
+		\item Theorem~\reff{thm:CurvesSerreDuality}\itememph{b} and \itememph{c} are called \emph{Serre duality}. They still hold when $C$ is replaced by a \emph{smooth} scheme $X$ over an arbitrary field $k$ and $\Omega_C$ by $\omega_X=\bigwedge^{\dim X}\Omega_X^1$.
 		\item When $n=\dim X\geq 2$, Theorem~\reff{thm:CurvesSerreDuality}\itememph{a} will no longer deal with line bundles and $c_1$ is replaced by $c_n$.
-		\item When $k$ is not algebraically closed, the Theorem still holds as stated as long as $C$ is \emph{smooth} over $k$, and we need to define
+		\item When $k$ is not algebraically closed, the Theorem~\reff{thm:CurvesSerreDuality} still holds as stated as long as $C$ is \emph{smooth} over $k$, and we need to define
 		\begin{align*}
 			\deg D=\sum_{x\in C_1} D(x)\cdot [\KK(x):k]\;.
 		\end{align*}
 	\end{alphanumerate}
 \end{rem*}
+\begin{thm}[Riemann--Roch]\lbl{thm:RiemannRoch}
+	Let $k$ be algebraically closed. Let $C\morphism\Spec k$ be a proper curve let $g=\dim_k\Omega_C(C)$ denote the \defemph{genus} of $C$. Let $\Vv$ be a $d$-dimensional vector bundle on $C$. Then
+	\begin{align}\lbl{eq:RiemannRoch1}
+		\chi(C,\Vv)\coloneqq\dim_k\Vv(C)-\dim_k H^1(C,\Vv)=\deg(\det\Vv)+d(1-g)\;,
+	\end{align}
+	where $\det \Vv=\bigwedge^d\Vv$ is a line-bundle with a alternating $d$-linear form $\Vv^d\morphism\det\Vv$ having the universal property for alternating $d$-linear forms $\Vv^d\morphism\Mm$ for $\Oo_C$-modules $\Mm$.
+	
+	By Serre duality, we also have
+	\begin{align}\lbl{eq:RiemannRoch2}
+		\dim_k\Vv(C)-\dim_k\Hom_{\Oo_C}(\Vv,\Omega_C)=\deg(\det\Vv)-d(1-g)\;.
+	\end{align}
+\end{thm}
+\begin{rem*}
+	\begin{alphanumerate}
+		\item The $\chi(C,\Vv)$ occurring in Theorem~\reff{thm:RiemannRoch} is a special case of the \emph{Euler--Poincaré characteristic}
+		\begin{align*}
+			\chi(X,\Mm)=\sum_{p=0}^{\dim X}(-1)^p\dim_kH^p(X,\Mm)\;,
+		\end{align*}
+		which we also encountered in Proposition~\reff{prop:SerreAgain}.
+		\item Professor Franke sketched how to construct $\det\Vv$ and prove its universal property, but this is really just taking exterior products (which it seems he doesn't like), the construction of which is locally just taking ordinary  exterior products of modules.
+		
+		The $\Oo_C^\times$-torseur defined by $\det\Vv$ is the image of the $\GL_d(\Oo_C)$-torseur defined by $\Vv$ under $\GL_d(\Oo_C)\morphism[\det]\Oo_C^\times$.
+	\end{alphanumerate}
+\end{rem*}
+\begin{rem}
+	For a line bundle $\Vv=\Ll$, the formula becomes $\chi(C,\Ll)=\deg\Ll+1-g$. Hence we get the famous formula
+	\begin{align}\lbl{eq:RiemannRoch3}
+		\ell(D)-\ell(K-D)=\deg D+1-g\;,
+	\end{align}
+	where we put $\Ll=\Oo_C(D)$, $\ell(D)=\dim_k\Oo_C(D)(C)$ for any divisor $D\in\Div(C)$ and $K$ is a \defemph{canonical divisor} such that $\Oo_C(K)\simeq\Omega_C$. By Corollary~\reff{cor:ProperHpFinGen}, $\Oo_C(C)=H^0(C,\Oo_C)$ is a $k$-algebra of finite dimension, hence an integral ring extension of $k$. Since $C$ is integral, $\Oo_C(C)$ is a domain (cf.\ \cite[Proposition~2.1.4]{alggeo1}), so $\Oo_C(C)$ is actually a finite field extension of $k$ (which is easily seen from Noether normalization). In particular, $\Oo_C(C)\simeq k$, since $k$ is algebraically closed. Hence \eqreff{eq:RiemannRoch3} is correct when $D=0$ (i.e., $\ell(0)=1$). For $D=K$ we obtain $g-1=\deg K+1-g$. Hence
+\end{rem}
+\begin{fact}
+	We have $\deg K=\deg\Omega_C=2g-2$.
+\end{fact}
+\begin{cor}
+	If $D\in\Div(C)$ is a divisor, it fulfills Riemann's inequality $\ell(D)\geq \deg D+1-g$.
+\end{cor}
+\begin{example}
+	If $C\morphism[i]\IP^2_k$ is a regular curve of \emph{degree} $d$ (cf.\ -- more or less -- \cite[Definition~3.1.5]{alg2}) in $\IP_k^2$ it is given as the vanishing scheme of an irreducible homogeneous polynomial $P\in k[X,Y,Z]$ of degree $d$ and multiplication with $P$ gives an isomorphism $\Oo_{\IP_k^2}(-d)\isomorphism\Jj$, where $\Jj$ is the sheaf of ideals defining $C$. That is, $\Jj$ is given by the short exact sequence
+	\begin{align*}
+		0\morphism \Jj\morphism\Oo_{\IP_k^2}\morphism i_*\Oo_C\morphism 0\;.
+	\end{align*}
+	As $i$ is an affine morphism (it is a closed embedding), we have $H^p(C,\Oo_C)\simeq H^p(\IP_k^n,i_*\Oo_C)$ by Corollary~\reff{cor:AffinePushforwardIso}, hence $\chi(C,\Oo_C)=\chi(\IP_k^2,i_*\Oo_C)$ and 
+	\begin{align*}
+		1-g&=\chi(C,\Oo_C)=\chi\big(\IP_k^2,i_*\Oo_C\big)=\chi\big(\IP_k^2,\Oo_{\IP_k^2}\big)-\chi(C,\Jj)=\chi\big(\IP_k^2,\Oo_{\IP_k^2}\big)-\chi\big(\IP_k^2,\Oo(-d)\big)\\
+		&=1-\frac{(d-1)(d-2)}{2}
+	\end{align*}
+	using Proposition~\reff{prop:SerreAgain}\itememph{b} and the fact that the Hilbert polynomial of $R=k[X,Y,Z]$ as a graded module over itself (which gives $\Oo_{\IP_k^2}$) is given by $P_R(\ell)=\binom{\ell+2}{2}$ (cf.\ \cite[Lemma~3.0.1]{alg2}).
+\end{example}
+\section{First proofs}
+In the following, all curves are assumed to be regular. Let $C\morphism\Spec k$ for some field $k$ be a proper curve. Then for $C$ to be integral it suffices that $C$ is connected. Indeed, the underlying space of $C$ is Noetherian (by properness) and the local rings $\Oo_{C,c}$ for all $c\in C$ are regular, hence domains (cf.\ \cite[Corollary~3.4.9\itememph{b}]{alg2}), so all assumptions required for \cite[Proposition~2.1.4\itememph{d}]{alggeo1} are fulfilled.
+
+So let $C$ be integral and $k$ algebraically closed. Since $C\morphism\Spec k$ is proper, $C$ is of finite type over $\Spec k$ and in particular Noetherian by Hilbert's Basissatz. Since $C$ is irreducible (by the integrality assumption), it has a unique generic point $\eta$ by \cite[Fact~2.1.9]{alggeo1}. Let $K=\Oo_{C,\eta}$ be the local ring there (which is a field). 
+
+In order to prove Theorem~\reff{thm:CurvesSerreDuality}\itememph{a}, we need to prove two things: 
+\begin{enumerate}
+	\item that $\deg\Oo_C(D)=\deg D$ descends to a well-defined map from isomorphism classes of line bundles (i.e., from $\Pic(C)$) to $\Div(C)$ \ldots
+	\item \ldots\ which is group homomorphism $\Pic(C)\morphism\Div(C)$. 
+\end{enumerate}
+When we have this, we can compose it with the (obvious) group homomorphism $\Div(C)\morphism\IZ$ to obtain $\deg$. Step~1 clearly will follow from \eqreff{eq:RiemannRoch4} below. For Step~2, what we need to prove is
+\begin{fact}\lbl{fact:OC(D)tensor}
+	If $D_1,D_2\in\Div(C)$ are divisors, then $\Oo_C(D_1)\oplus\Oo_C(D_2)\simeq\Oo_C(D_1+D_2)$.
+\end{fact}
+\begin{proof}
+	The isomorphism is given by $f\otimes g\mapsto fg$ for $f,g\in K$. This is a well-defined morphism of line bundles (we use $v_x(fg)=v_x(f)+v_x(g)$ in Definition~\reff{def:divisorLineBundle}). That it is an isomorphism can be checked on stalks. Actually, it suffices to check this on stalks at closed points. Indeed, restricting to an affine open subset $\Spec R$ a morphism of $R$-modules being an isomorphism can be checked at the maximal ideals, i.e., the closed points, i.e., the codimension-one points since $C$ is one-dimensional. If $c\in C$ is closed and $\Oo_{C,c}$ thus a DVR, we have 
+	\begin{align*}
+		\Oo_C(D_1)_c=\left\{f\in K\st v_c(f)\geq D_1(c)\right\}=\pi_c^{D_1(c)}\Oo_{C,c}\;,
+	\end{align*}
+	where $\pi_c$ is a uniformizer of $\Oo_{C,c}$ (the first equality may be easily checked and the second is obvious). Similarly, $\Oo_C(D_2)_c=\pi_c^{D_2(c)}\Oo_{C,c}$ and multiplication gives
+	\begin{align*}
+		\pi_c^{D_1(c)}\Oo_{C,c}\otimes_{\Oo_{C,c}}\pi_c^{D_2(c)}\Oo_{C,c}\isomorphism \pi_c^{D_1(c)+D_2(c)}\Oo_{C,c}\;,
+	\end{align*}
+	thus we get the required isomorphisms on stalks.
+\end{proof}
+
+We now start proving
+\begin{align}\lbl{eq:RiemannRoch4}
+	\chi(C,\Oo_C(D))=\deg D+\chi(C,\Oo_C)\;.
+\end{align}
+As pointed out, this already implies Theorem~\reff{thm:CurvesSerreDuality}\itememph{a}, and \eqreff{eq:RiemannRoch3} will follow once Serre duality (Theorem~\reff{thm:CurvesSerreDuality}\itememph{b} and \itememph{c}) has been established. The general Riemann--Roch formula for vector bundles $\Vv$ on a curve also follows because every vector bundle on a regular curve has a filtration $0=\Vv_0\subseteq \Vv_1\subseteq\ldots\subseteq \Vv_d=\Vv$, whose quotients are line bundles (that's an easy application of exercise 2 from sheet \#7) and both sides of \eqreff{eq:RiemannRoch1} are additive for short exact sequences $0\morphism\Vv\morphism\Uu\morphism\Ww\morphism 0$ of vector bundles.
+
+Indeed, $\chi(C,\Uu)=\chi(C,\Vv)+\chi(C,\Ww)$ is something we proved in Claim~\reff{claim:chiAdditive}. Also $\dim\Uu=\dim \Vv+\dim\Ww$ is obvious. Finally $\det\Uu\simeq \det\Vv\otimes_{\Oo_C}\det\Ww$, which can be checked locally, where it amounts to showing that $\det M=\det M'\otimes_R\det M''$ whenever $0\morphism M'\morphism[\alpha] M\morphism[\beta] M''\morphism 0$ is a short exact sequence of free (or just projective) $R$-modules. If $M'$ has rank $n$ and $M''$ rank $\ell$, this isomorphism is given by
+\begin{align*}
+	(m_1'\wedge\cdots \wedge m_n')\otimes (m_1''\wedge\cdots\wedge m_\ell'')\longmapsto \alpha(m_1')\wedge\cdots\wedge\alpha(m_n')\wedge m_1\wedge\cdots \wedge m_\ell
+\end{align*}
+for $m_i'\in M'$, $m_j''\in M''$ and the $m_j$ are preimages of the $m_j''$ under $\beta$. It's easy to see that this is well-defined and indeed an isomorphism.
+
+Thus, the general Riemann--Roch formula \eqreff{eq:RiemannRoch1} for arbitrary vector bundles $\Vv$ will follow, and \eqreff{eq:RiemannRoch2} follows by Serre duality.
+
+For \eqreff{eq:RiemannRoch4}, note that
+\begin{fact}\lbl{fact:Ll(pmx)}
+	Let $D$ denote the divisor defined by the closed point $x$ of $C$. For $\Ll$ a line bundle on $C$, put $\Ll(\pm x)=\Ll\otimes_{\Oo_C}\Oo_C(\pm D)$. Then
+	\begin{align*}
+		\chi(C,\Ll(\pm x))=\chi(\Ll)\pm 1\;,
+	\end{align*}
+	hence \eqreff{eq:RiemannRoch4} holds for $\Ll(\pm x)$ iff it holds for $\Ll$.
+\end{fact}
+\begin{proof}
+	We only need to show this for $\Ll(-x)$ as $\Oo_C(D)\otimes_{\Oo_C}\Oo_C(-D)\simeq \Oo_C$ by Fact~\reff{fact:OC(D)tensor}, so the roles of $\Ll$ and $\Ll(-x)$ may  be switched to show the other assertion.
+	
+	The residue field $\KK(x)$ of the local ring $\Oo_{C,x}$ is a $k$-algebra of finite type, hence $\KK(x)\simeq k$ by the Nullstellensatz and the fact that $k$ is algebraically closed. We thus get a closed embedding $\Spec k\simeq\{x\}\morphism[i]C$. Let $\pi$ be a uniformizer of the DVR $\Oo_{C,x}$. Since we are in a Noetherian setting\footnote{The technical argument we need here is \cite[Lemma~1.5.1]{alg2}.}, $\pi$ also generates the maximal ideal $\mm_x\in\Oo_C(U)$ defining $x$ for some affine open neighbourhood $U\ni x$ (that is, we need $v_x(\pi)=1$ and $v_c(\pi)=0$ when $c\in U\setminus\{x\}$ is closed). Shrinking $U$ if necessary we may moreover assume that $\Ll$ trivializes. Let $\lambda\in\Ll^\times(U)$ be a generator. We get a short exact sequence
+	\begin{align*}
+		0\morphism\Ll(-x)\morphism[\pi\cdot]\Ll\morphism[p]i_*\Oo_{\Spec k}\morphism 0\;,
+	\end{align*}
+	in which $p$ is given as follows. Let $\ell\in\Ll(V)$, where $V\subseteq C$ is open and $x\in V$ (otherwise $p$ is just the zero morphism). Let $r\in\Oo_{C,x}$ be the unique element such that $\ell=\lambda r$ in $\Ll_x$. Then $p(\ell)=\alpha\bmod \pi\in\Oo_{C,x}/\pi\Oo_{C,x}\simeq k$. Exactness can be easily checked on stalks, using the description of the stalks of $\Oo_C(-D)$ given in the proof of Fact~\reff{fact:OC(D)tensor}. 
+	
+	By additivity of the Euler--Poincaré characteristic (Claim~\reff{claim:chiAdditive}), 
+	\begin{align*}
+			\chi(C,\Ll(-x))=\chi(C,\Ll)-\chi(C,i_*\Oo_{\Spec k})\;.
+	\end{align*}
+	But $i$ is a closed embedding, hence affine, so $\chi(C,i_*\Oo_{\Spec k})=\chi(\Spec k,\Oo_{\Spec k})=1$ by Corollary~\reff{cor:AffinePushforwardIso}.
+\end{proof}
+\begin{fact}
+	Equation~\eqreff{eq:RiemannRoch4} holds for all divisors $D\in\Div(C)$.
+\end{fact}
+\begin{proof}
+	For $D=0$, this is trivial. Using induction on $\sum_{x\in C_1}|D(x)|$, the general case reduces to Fact~\reff{fact:Ll(pmx)} .
+\end{proof}
+Our next preliminary step is to prove Theorem~\reff{thm:CurvesSerreDuality} with $C=\IP_k^1$. For Theorem~\reff{thm:CurvesSerreDuality}\itememph{b}, it suffices to provide an identification of $\Omega_C$ with $\Oo(-2)$ and to show that $c_1(\Oo(1))$ has a non-zero image in the one-dimensional $k$-vector space $H^1(C,\Oo(-2))$ (here we use Theorem~\reff{thm:CohoOfIP^n}\itememph{d}).\footnote{Where does $c_1(\Oo(1))$ come from? Well, we never stated this explicitly, but $\Pic(\IP_k^n)\simeq\IZ$ with $\Oo(1)$ a generator. How does one prove this? Put $R=k[X_0,\ldots,X_n]$ and let $\Ll$ be any line bundle on $\IP_k^n$. On the affine open subset $U_i=\IP_k^n\setminus V(X_i)$, $\Ll$ is given by $\snake{L}_i$ for some $(R_{X_i})_0$-module $L_i$. Giving a line bundle, $L_i$ is invertible and it can be shown that any invertible module over a UFD is trivial, cf.\ \cite[Tag~0BCH]{stacks-project}. Hence $L_i\simeq(R_{X_i})_0$. A careful (but not hard) inspectation of the gluing data shows that $\Ll$ must be isomorphic to some $\Oo(d)$.}
+
+We get a derivation $d\colon \Oo_{\IP_k^1}\morphism\Oo(-2)$ as follows. For $U\subseteq \IP_k^1$ open and $f\in\Oo_{\IP_k^1}(U)$ put
+\begin{align*}
+	d(f)=\begin{cases}
+	\frac{1}{Y}\cdot\frac{\partial f}{\partial X} & \text{on }U\setminus V(Y)\\
+	-\frac{1}{X}\cdot\frac{\partial f}{\partial Y} & \text{on }U\setminus V(X)
+	\end{cases}\;.
+\end{align*}
+All derivatives are considered as formal derivatives of rational functions in $X$ and $Y$. Since $f$ is a homogeneous rational function of degree $0$, the two terms for $df$ coincide on $U\setminus V(XY)$ (we leave it to the reader to push around $X$ and $Y$ until this comes out). On $\IP_k^1\setminus V(Y)\simeq \Spec k\left[\frac{X}{Y}\right]$ we have $f(X,Y)=\phi\left(\frac{X}{Y}\right)$ for some polynomial $\phi$, and $d(f)=\frac{1}{Y^2}\cdot \phi'\left(\frac{X}{Y}\right)$. Hence $d$ is a universal derivation there, and similar arguments apply to $\IP_k^1\setminus V(X)$. Thus $\Omega_{\IP_k^1}\simeq \Oo(-2)$, as claimed.
+
+It remains to determine the image of $c_1(\Oo(1))$ under this identification followed by the isomorphism $H^1(\IP_k^1,\Oo(-2))\isomorphism k$ from Theorem~\reff{thm:CohoOfIP^n}\itememph{d}. Let $U_0=\IP_k^1\setminus V(X)$, $U_1=\IP_k^1\setminus V(Y)$, then $\Oo(1)$ is trivialized by $X$ on $U_0$ and by $Y$ on $U_1$. Let $\Uu\colon \IP_k^1=U_0\cup U_1$ denote this affine open cover. Reading carefully through the construction before Proposition~\reff{prop:torsorsH1Bij} again, we find that the element of $\check{H}_\alt^1(\Uu,\Oo_C^\times)$ which gives the $\Oo_C^\times$-torsor $\Oo(1)^\times$ is given by $\frac{X}{Y}\in\Oo_C^\times(U_{0,1})$. The image of $f=\frac{X}{Y}$ under $f\mapsto\frac{d(f)}{f}$ equals $\frac{1}{XY}\neq 0$, hence $c_1(\Oo(1))$ is mapped to a non-zero element.
 
 \appendix
 \chapter{Appendix -- category theory corner}
