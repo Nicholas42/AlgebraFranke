@@ -2104,7 +2104,7 @@ We postpone the quite lengthy proof of Proposition~\reff{prop:Akizuki--Hopkins} 
 \begin{example}
     \begin{alphanumerate}
       \item 
-        For $Z=\IP^n(k)$ we have $P_Z(T) = \binom{T+n}n$ which has leading coefficient $\frac{1}{n!}$. Hence $\deg \IP^n(k) = 1$.
+        For $Z=\IP^n(k)$ we have $P_Z(T) = \binom{T+n}n$ (by Lemma~\reff{lem:homogeneousPolynomials}) which has leading coefficient $\frac{1}{n!}$. Hence $\deg \IP^n(k) = 1$.
     \item 
         Let $Z= V(p)$ where $p\in R = k[X_0,\ldots, X_n]$ be an irreducible homogeneous polynomial of degree $d$. Then $S(Z) = R/pR$ admits an obvious grading and by the short exact sequence
         \begin{align*}
@@ -2112,7 +2112,7 @@ We postpone the quite lengthy proof of Proposition~\reff{prop:Akizuki--Hopkins} 
         \end{align*}
         we have $P_R(T) - P_R(T-d) = P_{S(Z)}(T)$. But $P_R(T) = \binom{T+n}n$ hence 
         \begin{align*}
-        	P_Z = \frac{T^n-(T-d)^n}{n!} + \text{ lower powers } = \frac{d\cdot n\cdot T^{n-1}}{n!} + \text{ lower powers} 
+        	P_Z = \frac{T^n-(T-d)^n}{n!} + \text{lower powers} = \frac{d\cdot n\cdot T^{n-1}}{n!} + \text{lower powers} 
         \end{align*}
         and $\deg Z = (n-1)! \cdot\frac{n\cdot d}{n!} = d$. Hence $\deg Z = \deg p$ when $Z=V(p)$ and $p$ is s homogeneous irreducible polynomial, motivating the term \emph{degree}.
     \end{alphanumerate}
