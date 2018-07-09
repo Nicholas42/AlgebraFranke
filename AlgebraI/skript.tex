@@ -361,13 +361,13 @@
 		See H. Matsumura, \href{http://www.math.unam.mx/javier/Matsumura.pdf}{\emph{Commutative Ring Theory}} \cite[Theorem~3.7]{matsumuraCRT}.
 	\end{proof}
 	\section{The notion of integrity and the Noether Normalization Theorem}
-	Remark of the author: It's called integrity not entireness \ldots
+	Remark of the authors: It's called integrity not entireness \ldots
 	\begin{defi}\lbl{def:integrity}
 		Let $A\subseteq B$ be a ring extension. We call $b\in B$ \defemph{integral} over $A$ if it satisfies an equation
 		\begin{align*}
 		b^n +a_{n-1}b^{n-1}+\ldots+a_1b+a_0 =0
 		\end{align*}
-		with $a_0,\ldots,a_{n-1}\in A$. We call $B$ over $A$ \defemph{integral} if every element of $B$ is integral.
+		with $a_0,\ldots,a_{n-1}\in A$. We call $B$ \defemph{integral} over $A$ if every element of $B$ is integral.
 	\end{defi}
 	\begin{rem}
 		It is not really necessary to assume $A\to B$ to be injective.
@@ -375,9 +375,9 @@
 	\begin{prop}
 		\begin{alphanumerate}
 			\item An element $b\in B$ is integral over $A$ iff there is an intermediate ring $A\subseteq C\subseteq B$ containing $b$ which is finite over $A$. If $b_1\ldotspam b_n$ are finitely many integral elements of $B$, there is an $A$-subalgebra $A\subseteq C\subseteq B$ containing all $b_i$ which is finite over $A$.\lbl{prop:integralStuff}%\lbl{prop:integralStuff} % This is some dumb latex issue...
-			\item The elements of $B$ which are integral over $A$ form a subring of $B$, the \emph{integral closure} of $A$ in $B$.
-			\item If $C/B$ and $B/A$ are integral, so is $C/A$.
-			\item Let $B/A$ be integral (where it is essential that $A$ is a subring of $B$). If $B$ is a field, then so is $A$.
+			\item The elements of $B$ which are integral over $A$ form a subring of $B$, the \defemph{integral closure} of $A$ in $B$.
+			\item If $C$ is integral over $B$ and $B$ integral over $A$, then $C$ is integral over $A$.
+			\item Let $B$ be integral over $A$. If $B$ is a field, then so is $A$ (and here it is essential that $A$ is a subring of $B$).
 		\end{alphanumerate}
 		
 	\end{prop}
@@ -462,7 +462,7 @@
 	\end{rem}
 	
 	\begin{thm}[Noether Normalization Theorem]\lbl{thm:NoetherNormalization}
-		Let $k$ be a field, $A$ a $k$-algebra of finite type over $k$. Then there are $k$-algebraically independent $a_1\ldotspam a_n\in A$ such that $A/k[a_1\ldotspam a_n]$ is integral.
+		Let $k$ be a field and $A$ a $k$-algebra of finite type. Then there are $k$-algebraically independent $a_1\ldotspam a_n\in A$ such that $A$ is integral over $k[a_1\ldotspam a_n]$.
 	\end{thm}
 	\begin{proof}
 		Since $A$ is of finite type over $k$, we can choose $a_1,\ldots, a_n$ such that $A$ is integral over $k[a_1,\ldots, a_n]$ (e.g. choose the $a_i$ as generators of $A$ as a $k$-algebra). We may choose a minimal $n$ such that this is possible. We claim 
