@@ -1269,7 +1269,7 @@ And -- finally -- we are ready to prove Serre's famous characterization of regul
 	
 	It remains to prove Claim~\reff{claim:delta<dim(R)}. Let $\qq_0\subsetneq\ldots\subsetneq\qq_\delta$ be a sequence of prime ideals in $R/xR$ with preimages $\pp_0,\ldots,\pp_\delta$ in $R$. Then $x\in\pp_i$ for all $i$. If $\pp_0$ contains another prime ideal of $R$, then $\dim R>\delta$ as claimed. Otherwise, $\pp_0$ is a minimal prime ideal of $R$. But the minimal prime ideals of any Noetherian ring are always associated prime ideals of it (Proposition~\reff{prop:AssProperties}\itememph{b}) and $x$ was chosen not to be contained in any associated prime ideal of $R$.
 \end{proof}
-\begin{cor}[Serre]
+\begin{cor}[Serre]\lbl{cor:Rpregular}
 	Let $R$ be a regular local ring and $\pp\in\Spec R$. Then $R_\pp$ is also regular.
 \end{cor}
 \begin{proof}
@@ -1307,9 +1307,139 @@ And -- finally -- we are ready to prove Serre's famous characterization of regul
 	If $A$ is a regular Noetherian ring, then so are the polynomial ring $A[X_1,\ldots,X_n]$ as well as the ring of formal power series $A\llbracket X_1,\ldots,X_n\rrbracket$.
 \end{prop}
 \begin{proof}
-	Since $A\llbracket X_1,\ldots,X_n\rrbracket$ is the completion of $A[X_1,\ldots,X_n]$ with respect to the ideal $(X_1,\ldots,X_n)$, it's enough to show regularity of $A[X_1,\ldots,X_n]$ by Proposition~\reff{prop:completionRegular}. Clearly, we may reduce this to the polynomial ring $A[T]$ in only one variable.
+	Since $A\llbracket X_1,\ldots,X_n\rrbracket$ is the completion of $A[X_1,\ldots,X_n]$ with respect to the ideal $(X_1,\ldots,X_n)$, it's enough to show regularity of $A[X_1,\ldots,X_n]$ by Proposition~\reff{prop:completionRegular}. Clearly, we may reduce this inductively to the polynomial ring $A[T]$ in only one variable. 
+	
+	Let $\pp\in\Spec A[T]$ and $\mm=\pp\cap A$. W.l.o.g.\ assume that $\mm$ is maximal (otherwise we localize at $\mm$ and replace $A$ by $A_\mm$) and that $A$ is local with maximal ideal $\pp$ (we localize at $\pp$). Let $x_1,\ldots,x_d$ be generators of $\mm$. Since $A$ is regular, we may assume $d=\hoehe(\mm)$. If $\pp=\mm A[T]$, then $x_1,\ldots,x_d$ generate $\pp$ as well and we obtain $d\geq \hoehe(\mm A[T])\geq\hoehe(\mm)=d$ by Krull's height theorem (cf.\ \cite[Theorem~12]{alg2}), hence equality holds and we see that $A[T]$ is regular.
+	
+	If $\pp\supsetneq \mm A[T]$, then $\hoehe(\pp)>\hoehe(\mm)$. Indeed, $\mm A[T]$ is prime as $A[T]/\mm A[T]\simeq k[T]$ is a domain, where we denote $k=A/\mm$. Note that $\KK(\pp)=A[T]/\pp$ is an extension of $k$ of finite type, hence a finite extension. Let $Q\in A[T]$ be a polynomial such that $Q\bmod \pp$ is a minimal polynomial of $T\mod\pp$, then $Q,x_1,\ldots,x_d$ generate $\pp$ and thus $\hoehe(\pp)\leq d+1$ by the height theorem. Since $\hoehe(\pp)>d$, equality holds and regularity follows.
 \end{proof}
-
+\begin{prop}[Hilbert's szyzygy theorem]
+	Finitely generated modules over regular Noetherian rings always have a finite free resolution.
+\end{prop}
+\section{Regular sequences and depth}
+Throughout the section, let $R$ be a Noetherian local ring with maximal ideal $\mm$ and residue field $k$.
+\begin{prop}\lbl{prop:SmallExtVanishing}
+	Let $M$ be a finitely generated $R$-module. For a natural number $n$, the following conditions are equivalent.
+	\begin{alphanumerate}
+		\item There is a finitely generated $R$-module $T$ such that $\supp T=\{\mm\}$ and $\Ext_R^p(T,M)=0$ when $p<n$.
+		\item $\Ext_R^p(k,M)=0$ when $p<n$.
+		\item For every finitely generated $R$-module $T$ with $\supp T=\{\mm\}$ we have $\Ext_R^p(T,M)=0$ when $p<n$.
+	\end{alphanumerate}
+\end{prop}
+\begin{proof}
+	The implications \itememph{c} $\Rightarrow$ \itememph{b} $\Rightarrow$ \itememph{a} are obvious. We use induction on $n$ to show the remaining implications. In the case $n=0$, there's nothing to show. Now assume $n\geq 1$ and that the assertion holds for $n-1$. We show \itememph{a} $\Rightarrow$ \itememph{b} first. There is a surjection $T\morphism k$. Indeed, $T$ has a filtration with quotients of the form $R/\pp$ for $\pp\in\Spec R$. But $\supp M=\{\mm\}$, hence $\pp$ must be $\mm$ (which is easily seen from \cite[Fact~3.1.2 and Lemma~3.1.4]{alg2} -- alternatively, one could quotient out $\mm/\pp$ from $R/\pp$ to obtain $T\morphism k$). Hence there is a short exact sequence $0\morphism T_1\morphism T\morphism k\morphism 0$ and this yields
+	\begin{align*}
+		\Ext_R^{p-1}(T_1,M)\morphism\Ext_R^p(k,M)\morphism\Ext_R^p(T,M)\;.
+	\end{align*}
+	For $p<n$, the term on the left vanishes by \itememph{a} and the term on the right by \itememph{c} and our induction assumption. Therefore $\Ext_R^p(k,M)=0$ as well.
+	
+	And last we show \itememph{b} $\Rightarrow$ \itememph{c}. If $0\morphism T'\morphism T\morphism T''\morphism 0$ and $\Ext_R^p(T',M)=0=\Ext_R^p(T'',M)$, then $\Ext_R^p(T,M)=0$ as it is sandwiched to death between $\Ext_R^p(T',M)$ and $\Ext_R^p(T'',M)$ in the long exact $\Ext$ sequence. Using induction on the length $\ell$ of a filtration of the form $0=T_0\subseteq\ldots\subseteq T_\ell=T$ such that $T_i/T_{i-1}\simeq R/\pp_i$ for prime ideals $\pp_i\in\Spec R$ (and we have seen that $\supp M=\{\mm\}$ allows only $\mm=\pp_i$) we obtain $\Ext_R^p(T,M)=0$ for $p<n$ and all finitely generated $R$-modules $T$.
+\end{proof}
+\begin{defi}
+	The largest number $n$ as in Proposition~\reff{prop:SmallExtVanishing} is called the \defemph{depth} (or sometimes \defemph{homological codimension} -- this is Serre's terminology) of the module and denoted $\depth_R(M)$.
+\end{defi}
+From Proposition~\reff{prop:SmallExtVanishing} and additivity of $\Ext_R^p(k,-)$, we immediately obtain
+\begin{fact}\lbl{fact:depthMinAdditive}
+	If $M$ and $N$ are finitely generated $R$-modules, we have 
+	\begin{align*}
+		\depth_R(M\oplus N)=\min\{\depth_R(M),\depth_R(N)\}\;.
+	\end{align*}
+\end{fact}
+\begin{rem}
+	The condition $\supp M=\{\mm\}$ is equivalent to $\dim (T)=0$ (as in \cite[Definition~3.4.1]{alg2} we put $\dim(T)\coloneqq\dim(\supp T)$ for $R$-modules $T$). Under this condition, we have $\Ext_R^p(T,M)=0$ when $p<\depth_R(M)$.
+\end{rem}
+\begin{thm}[Auslander--Buchsbaum]
+	Let $R$ be a Noetherian local ring and $M\neq 0$ a finitely generated $R$-module with $\pdim_R(M)<\infty$. Then
+	\begin{align}\lbl{eq:AuslanderBuchsbaum}
+		\pdim_R(M)+\depth_R(M)=\depth_R(R)
+	\end{align}
+\end{thm}
+\begin{proof}
+	We use induction on $d=\pdim_R(M)$. When $d=0$, then $M$ is free by Proposition~\reff{prop:FreeProjFlatTor}, hence $\depth_R(M)=\depth_R(R)$ by Fact~\reff{fact:depthMinAdditive}. Now let $d\geq 1$ and assume that the induction is proved for smaller $d$. Let $x_1,\ldots,x_s$ be elements of $M$ whose images form a basis of $M/\mm M$ (hence also generate $M$ by Nakayama). Let $P=R^s\epimorphism[p] M$ be the surjection sending the $i\ordinalth$ standard basis vector to $x_i$. We obtain a short exact sequence
+	\begin{align}\lbl{eq:exactSeq1}
+		0\morphism M'\morphism[i] P\morphism[p] M\morphism 0\;.\tag{$*$}
+	\end{align}
+	Then $i(M')\subseteq \mm P$ by our choice of the $x_i$. Since $P$ is free, its $\Ext_R^\bullet(P,-)$ vanishes and the long exact $\Ext$ sequence shows $\Ext_R^p(M,-)\simeq \Ext_R^p(M',-)$, thus 
+	\begin{align}\lbl{eq:depthInduction}
+		\pdim_R(M')=\pdim_R(M)-1=d-1\;.\tag{\$}
+	\end{align}
+	If $d=1$, this means that $M'$ is free, say, $M'\simeq R^\ell$ and $i$ is given by an $(s\times \ell)$-matrix with coefficients from $\mm$ (since $i(M')\subseteq \mm P$), hence the induced morphism $\Ext_R^p(k,M')\morphism\Ext_R^p(k,P)$ vanishes and from
+	\begin{align*}
+		\Ext_R^p(k,M')\morphism[0]\Ext_R^p(k,P)\morphism\Ext_R^p(k,M)\morphism\Ext_R^{p+1}(k,M')\morphism[0]\Ext_R^{p+1}(k,P)
+	\end{align*}
+	shows that $\depth_R(M)=\min\{\depth_R(P),\depth_R(M')-1\}$. But $M'\neq 0$ (as $d>0$) and $M'$ is free, hence $\depth_R(M')=\depth_R(R)=\depth_R(P)$ as we have seen before, and we must have $\depth_R(M)=\depth_R(M')-1$, establishing \eqreff{eq:AuslanderBuchsbaum} in this case.
+	
+	Let now $d>1$ and $c=\depth_R(M')$. By the induction assumption and \eqreff{eq:depthInduction}, we have $d-1+c=\depth_R(R)$, hence $\depth_R(R)\geq c+1$. It follows that
+	\begin{align*}
+		0=\Ext_R^p(k,P)\morphism\Ext_R^p(k,M)\morphism\Ext_R^{p+1}(k,M')\morphism\Ext_R^{p+1}(k,P)=0
+	\end{align*}
+	for $p<c$. The morphism in the middle must be an isomorphism, hence $\depth_R(M)=c-1$, showing \eqreff{eq:AuslanderBuchsbaum} for $M$.
+\end{proof}
+Next, we will investigate the connection between depth and regular sequences. In particular, we will show that $\depth_R(M)$ equals the length of a maximal $M$-regular sequence consisting of elements from $\mm$ (and in fact, any two such maximal sequences have the same length).
+\begin{lem}\lbl{lem:depthAss}
+	For a finitely generated $R$-module $M$ the following conditions are equivalent.
+	\begin{alphanumerate}
+		\item $\mm\notin\Ass_R(M)$.
+		\item $\depth_R(M)>0$.
+		\item There is an $x\in \mm$ such that $M\morphism[x\cdot ]M$ is injective.
+	\end{alphanumerate}
+\end{lem}
+\begin{proof}
+	By Proposition~\reff{prop:SmallExtVanishing}\itememph{b}, we see that \itememph{b} holds iff $0=\Ext_R^p(k,M)=\Hom_R(k,M)$. Since $k$ is a field, any non-zero morphism $k\morphism M$ is injective. That is, there is a non-zero $k\morphism M$ iff there is an embedding $k\monomorphism M$ which is the case iff $\mm\in\Ass_R(M)$. We conclude \itememph{a} $\Leftrightarrow$ \itememph{b}. The equivalence \itememph{a} $\Leftrightarrow$ \itememph{c} is just Proposition~\reff{prop:AssProperties}\itememph{a} and we are done.
+\end{proof}
+\begin{lem}\lbl{lem:depthM/xM}
+	Let $x\in \mm$ be $M$-regular, then $\depth_R(M)=\depth_R(M/xM)+1$\;.
+\end{lem}
+\begin{proof}
+	The long exact $\Ext$ sequence associated to $0\morphism M\morphism[x\cdot ]M\morphism M/xM\morphism 0$ gives
+	\begin{align*}
+		\Ext_R^p(k,M)\morphism[x\cdot]\Ext_R^p(k,M)\morphism\Ext_R^p(k,M/xM)\morphism\Ext_R^{p+1}(k,M)\morphism[x\cdot]\Ext_R^{p+1}(k,M)\;.
+	\end{align*}
+	Since $x\in\mm$, the outer arrows are $0$, hence $\Ext_R^p(k,M/xM)\morphism\Ext_R^{p+1}(k,M)$ is an isomorphism and the claim follows.
+\end{proof}
+\begin{cor}\lbl{cor:depthM/xM}
+	If $(x_1,\ldots,x_n)$ is an $M$-regular sequence of elements of $\mm$, then
+	\begin{align*}
+		\depth_R(M)=\depth_R\big(M/(x_1M+\ldots+x_nM)\big)+n\;.
+	\end{align*}
+\end{cor}
+\begin{proof}
+	Use Lemma~\reff{lem:depthM/xM} and induction on $n$.
+\end{proof}
+We are now ready to prove the desired correspondence. In particular, Proposition~\reff{prop:DepthRegularSequence}\itememph{b} implies that any two maximal $M$-regular sequences in $\mm$ have the same length.
+\begin{prop}\lbl{prop:DepthRegularSequence}
+	Let $M\neq 0$ be a finitely generated $R$-module, then the following conditions are equivalent.
+	\begin{alphanumerate}
+		\item $\depth_R(M)\geq n$.
+		\item Let $0\leq j\leq n$ and $(x_1,\ldots,x_j)$ be an $M$-regular sequence of elements of $\mm$. Then there are $x_{j+1},\ldots,x_n\in\mm$ such that $(x_1,\ldots,x_n)$ is $M$-regular.
+		\item There is an $M$-regular sequence $(x_1,\ldots,x_n)$ consisting of elements from $\mm$.
+	\end{alphanumerate}
+\end{prop}
+\begin{proof}
+	The implication \itememph{b} $\Rightarrow$ \itememph{c}  is trivial and \itememph{c} $\Rightarrow$ \itememph{a} follows from Corollary~\reff{cor:depthM/xM}. Let's prove \itememph{a} $\Rightarrow$ \itememph{b}. If $j<n$, Corollary~\reff{cor:depthM/xM} gives
+	\begin{align*}
+		\depth_R\big(M/(x_1M+\ldots+x_jM)\big)=\depth_R(M)-j\geq n-j>0\;,
+	\end{align*}
+	hence we find $x_{j+1}\in\mm$ such that $M/(x_1M+\ldots+x_jM)\xrightarrow{x_{j+1}\cdot} M/(x_1M+\ldots+x_jM)$ is injective by Lemma~\reff{lem:depthAss}. Thus $(x_1,\ldots,x_{j+1})$ is $M$-regular. Now iterate.
+\end{proof}
+Let $I\subseteq \mm$ be an ideal and $\roof{ }$ the completion with respect to $I$. We have seen in Proposition~\reff{prop:ExtCompletion} that $\Ext_{\roof{R}}^p(k,\roof{M})\simeq \Ext_R^p(k,M)\roof{\phantom{)}}\simeq \Ext_R^p(k,M)$ (the last isomorphism comes from the fact that $\Ext_R^p(k,M)$ already has $I$-torsion). Hence, by Proposition~\reff{prop:SmallExtVanishing}\itememph{b},
+\begin{prop}
+	We have $\depth_{\roof{R}}(\roof{M})=\depth_R(M)$.
+\end{prop}
+\begin{prop}[F.\ Ischebeck]
+	If $p<\depth_R(M)-\dim(T)$, then $\Ext_R^p(T,M)=0$.
+\end{prop}
+\begin{proof}
+	We use induction on $d=\dim(T)$. When $d=0$, this is precisely our definition of depth. Now let $d\geq 1$ and the assertion be shown for smaller $d$. We have a filtration $0=T_0\subseteq\ldots\subseteq T_n=T$ with $T_i/T_{i-1}\simeq R/\pp_i$ for $\pp_i\in\Spec R$. By \cite[Fact~3.4.1]{alg2}, the $\pp_i$ satisfy $\dim(R/\pp_i)\leq \dim(T)=d$. By an inductive argument on the length $n$ of such a filtration (similar to the proof of Proposition~\reff{prop:SmallExtVanishing}) it is sufficient to consider the case $T=R/\pp$ with $\dim(R/\pp)\leq d$. If $x\in\mm\setminus \pp$, then we have a short exact sequence 
+	\begin{align*}
+		0\morphism R/\pp\morphism[x\cdot ]R/\pp\morphism R/(\pp+xR)\morphism 0\;, 
+	\end{align*}
+	in which $\dim(R/(\pp+xR))<\dim(R/\pp)$. Looking at the long exact $\Ext$ sequence
+	\begin{align*}
+		\ldots\morphism\Ext_R^p(R/\pp,M)\morphism[x\cdot]\Ext_R^p(R/\pp,M)\morphism\Ext_R^{p+1}(R/(\pp+xR),M)\morphism\ldots\;,
+	\end{align*}
+	we see that $\Ext_R^p(R/\pp,M)\morphism[x\cdot]\Ext_R^p(R/\pp,M)$ is surjective when $p+1<\depth_R(M)-\dim(R/(\pp+xR))$ (that's the induction assumption), hence for $p<\depth_R(M)-\dim(T)$. By Nakayama's lemma, $\Ext_R^p(T,M)=0$ for such $p$.
+\end{proof}
 
 \appendix
 \chapter{Appendix}
