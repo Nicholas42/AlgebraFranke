@@ -163,6 +163,9 @@
 	\edef\temp{\getrefnumber{lblsubsec#1}}%
 	\IfBeginWith{\temp}{\thesection}{\hyperref[#1]{\upshape(\getrefnumber{#1})}}{\hyperref[#1]{\upshape(\temp .\getrefnumber{#1})}}%	
 }
+
+\newcommand{\stackstag}[1]{\href{https://stacks.math.columbia.edu/tag/#1}{Tag~#1}}
+
 \newenvironment{alphanumerate}{\begin{enumerate}[label={\itememph{\alph*}},ref=\curthm]}{\end{enumerate}}       
 \newenvironment{rmnumerate}{\begin{enumerate}[label={\upshape(\roman*)},ref=\curthm]}{\end{enumerate}}   
 \renewenvironment{itemize}{\begin{enumerate}[label={$\bullet$},ref=\curthm]}{\end{enumerate}}
