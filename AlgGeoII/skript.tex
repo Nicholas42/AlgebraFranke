@@ -2443,7 +2443,7 @@ This construction is base-local. That is, $\PROJ_U(\Rr|_U)\simeq \pi^{-1}(U)$ fo
 		\end{align*}
 		thus also $(f^\sharp\Gg)_x=\Gg_{f(x)}$ since the stalks of the sheafification are the same (cf.\ \cite[Proposition~1.2.1\itememph{a}]{alggeo1}). In fact, the stalk is an inverse image itself: We have $\Gg_x=i_x^\flat\Gg(\{x\})$, where $i_x\colon\{x\}\morphism X$ is the inclusion of $x\in X$. If $g\colon Y\morphism Z$ is another continuous map, we have canonical functor isomorphisms $(gf)^\flat=f^\flat g^\flat$ and $(gf)^\sharp =f^\sharp g^\sharp$.
 		
-		Now let $\Mm$ be a sheaf of modules on the ringed space $(Y,\Oo_Y)$. In general, $f^\sharp \Mm$ will only be a $f^\sharp\Oo_Y$-module, so we need to tensor it by $\Oo_X$ to get the pullback $f^*\Mm$. That is, $f^*\Mm=f^\sharp\Mm\otimes_{f^\sharp\Oo_Y}\Oo_X$. By Remark~\reff{rem:tensorProductSheaves}, its stalks are given by
+		Now let $\Mm$ be a sheaf of modules on the ringed space $(Y,\Oo_Y)$. In general, $f^\sharp \Mm$ will only be a $f^\sharp\Oo_Y$-module, so we need to tensor it by $\Oo_X$ to get the pull-back $f^*\Mm$. That is, $f^*\Mm=f^\sharp\Mm\otimes_{f^\sharp\Oo_Y}\Oo_X$. By Remark~\reff{rem:tensorProductSheaves}, its stalks are given by
 		\begin{align*}
 		(f^*\Mm)_x=\Mm_{f(x)}\otimes_{\Oo_{Y,f(x)}}\Oo_{X,x}
 		\end{align*}
@@ -2510,7 +2510,7 @@ By choosing a representative for all possible isomorphism classes of line bundle
 	\end{align}
 	of graded $\Oo_X$-algebras defining surjections on stalks.
 \end{cor}
-\begin{cor}\lbl{cor:PROJpullback}
+\begin{cor}\lbl{cor:PROJpull-back}
 	Under the assumptions of Proposition~\reff{prop:PROJQuasiAdjunction}, let $T\morphism[\tau]S$ be an $S$-prescheme and put $P_T=\PROJ_T(\tau^*\Rr)$. Then there is a canonical isomorphism $P_T\isomorphism P\times_ST$ defined by the projection $P_T\morphism[\pi_T]T$ and the morphism $P_T\morphism P$ (over $S$) defined by Proposition~\reff{prop:PROJQuasiAdjunction} and the morphism
 	\begin{align*}
 		(\tau\pi_T)^*\Rr_k= \pi_T^*\tau^*\Rr_k\morphism[\epsilon_k]\Oo_{P_T}(k)\;,
@@ -2593,7 +2593,7 @@ defined by the tensor product of $p_X^*\left(\pi_X^*\Rr_k\morphism[\epsilon_X]\O
 	\end{align*}
 	of graded $\Oo_T$-algebras, whose (homogeneous component-wise) tensor product is $\alpha$. This will verify the required universal property for $\PROJ_S(\Tt)$. 
 	
-	To construct $\Mm$ and $\Nn$, we can do the following. Choose an affine open subset $U\subseteq S$ where $\Ll$ trivializes and let $\Rr|_U=\snake{A}$, $\Ss|_U=\snake{B}$, $\Tt|_U=\snake{C}$, and $\Ll|_U=\snake{L}$ (with $L\simeq \Oo_S(U)$). We may take $\Mm|_U=\snake{M}$ where $M\subseteq L$ is the image of $\tau^*\left((A_1\otimes 1)^\sim\right)\subseteq \tau^*\snake{C_1}$ (and for $\Nn$ we do quite the same). Then $M\otimes_{\Oo_S(U)}N\simeq L$, so $M$ and $N$ are invertible $\Oo_S(U)$-modules and thus locally free of rank one\footnote{See \cite[Tag~0AFW]{stacks-project}. Note that the \emph{omitted details} in the proof of Lemma~15.99.2 are basically that $\Hom_R(M,R)_f\simeq \Hom_{R_f}(M_f,R_f)$, for which we need that $M$ is finitely presented (compare \cite[p.~9]{homalg}). But this always holds for modules which are locally free of finite rank. Actually, being finitely presented is a local property, cf.\ \cite[Tag~00EO]{stacks-project}.}, i.e., $\Mm|_U$ and $\Nn|_U$ are line bundles.
+	To construct $\Mm$ and $\Nn$, we can do the following. Choose an affine open subset $U\subseteq S$ where $\Ll$ trivializes and let $\Rr|_U=\snake{A}$, $\Ss|_U=\snake{B}$, $\Tt|_U=\snake{C}$, and $\Ll|_U=\snake{L}$ (with $L\simeq \Oo_S(U)$). We may take $\Mm|_U=\snake{M}$ where $M\subseteq L$ is the image of $\tau^*\left((A_1\otimes 1)^\sim\right)\subseteq \tau^*\snake{C_1}$ (and for $\Nn$ we do quite the same). Then $M\otimes_{\Oo_S(U)}N\simeq L$, so $M$ and $N$ are invertible $\Oo_S(U)$-modules and thus locally free of rank one\footnote{See \cite[\stackstag{0AFW}]{stacks-project}. Note that the \emph{omitted details} in the proof of Lemma~15.99.2 are basically that $\Hom_R(M,R)_f\simeq \Hom_{R_f}(M_f,R_f)$, for which we need that $M$ is finitely presented (compare \cite[p.~9]{homalg}). But this always holds for modules which are locally free of finite rank. Actually, being finitely presented is a local property, cf.\ \cite[\stackstag{00EO}]{stacks-project}.}, i.e., $\Mm|_U$ and $\Nn|_U$ are line bundles.
 	
 	Now the construction seems canonical enough that it can be globalized.
 \end{proof}
@@ -2624,7 +2624,7 @@ We are finally ready to define what a \emph{projective morphism} is.
 	is projective (resp.\ strongly projective) again. If $\snake{Y}\morphism[\upsilon] Y$ is also (strongly) projective, then the same holds for $\snake{X}\morphism Y$.
 \end{fact}
 \begin{proof}
-	First suppose that $\xi$ is projective, i.e., $X\simeq \PROJ_Y(\Rr)$ for some suitable $\Rr$ as in Definition~\reff{def:projectiveMorphism}\itememph{a}. By Corollary~\reff{cor:PROJpullback}, $\snake{X}\simeq \PROJ_{\snake{Y}}(\upsilon^*\Rr)$, so $\snake{\xi}$ is projective. Moreover, when $\upsilon$ is projective, we have $\snake{Y}\simeq \PROJ_Y(\Ss)$ for some suitable $\Ss$, hence $\snake{X}\simeq \PROJ_Y(\Tt)$ with $\Tt$ as in Proposition~\reff{prop:technicalAFIso}.
+	First suppose that $\xi$ is projective, i.e., $X\simeq \PROJ_Y(\Rr)$ for some suitable $\Rr$ as in Definition~\reff{def:projectiveMorphism}\itememph{a}. By Corollary~\reff{cor:PROJpull-back}, $\snake{X}\simeq \PROJ_{\snake{Y}}(\upsilon^*\Rr)$, so $\snake{\xi}$ is projective. Moreover, when $\upsilon$ is projective, we have $\snake{Y}\simeq \PROJ_Y(\Ss)$ for some suitable $\Ss$, hence $\snake{X}\simeq \PROJ_Y(\Tt)$ with $\Tt$ as in Proposition~\reff{prop:technicalAFIso}.
 	
 	Now let $\xi$ be strongly projective and $X\morphism[i]\IP_Y^n\morphism Y$ the associated factorization of $\xi$. We obtain a factorization of $\snake{\xi}$ via
 	\begin{align*}
@@ -2758,7 +2758,7 @@ We are finally ready to define what a \emph{projective morphism} is.
 \begin{proof}
 	By Proposition~\reff{prop:er}, the question is local on $X$ and we may assume $X=\Spec A$ and need to show $\Proj R\morphism A$ is proper when $R$ is an $\IN_0$-graded $A$-algebra of finite type. We already know that $\Proj R$ is a scheme of finite type over $\Spec A$ (Proposition~\reff{prop:FirstProjProperties}\itememph{b}, \itememph{e}). Hence only universal closedness has to be shown.
 	
-	However, morphisms of the form $\PROJ_X(\Rr)\morphism X$ with $\Rr$ as above still have this form when base changed, by Corollary~\reff{cor:PROJpullback} (or actually Remark~\reff{rem:PROJFibreProducts} since we potentially need to drop the assumption on $\Rr_0$ and $\Rr_1$ here). So it suffices to show closedness. This is again base-local, so it suffices to show that $\Proj R\morphism\Spec A$ is closed. 
+	However, morphisms of the form $\PROJ_X(\Rr)\morphism X$ with $\Rr$ as above still have this form when base changed, by Corollary~\reff{cor:PROJpull-back} (or actually Remark~\reff{rem:PROJFibreProducts} since we potentially need to drop the assumption on $\Rr_0$ and $\Rr_1$ here). So it suffices to show closedness. This is again base-local, so it suffices to show that $\Proj R\morphism\Spec A$ is closed. 
 	
 	We will do this by generalizing (the proof of) \cite[Proposition~2.6.1]{alggeo1}, dropping the assumption that $R$ is generated by $R_0$. Instead, let $R$ be generated by its homogeneous components $R_0,\ldots,R_d$ as an $A$-algebra (we can do this by choosing finitely many generators of $R$ over $A$ and taking $d$ the maximal homogeneous degree where they are supported). Consider the ideals
 	\begin{align}\lbl{eq:AnnullatorIdeal}
@@ -2772,7 +2772,7 @@ We are finally ready to define what a \emph{projective morphism} is.
 	\end{claim*}
 	Indeed, if $R_j=0$ for $j\gge 0$, then $R_+\subseteq \sqrt{0}$, implying that $\Proj R=\emptyset$ since every homogeneous prime ideal would contain $R_+$. Conversely, if $\Proj R=\emptyset$ and $R$ is generatedover $A$ by $\lambda_1,\ldots,\lambda_N$ which are homogeneous of positive degrees $<d$, then all $\lambda_i$ must be nilpotent, since otherwise $\emptyset\neq\Spec (R_{\lambda_i})_0\subseteq \Proj R$. Choose $e_i$ such that $\lambda_i^{e_i}=0$. Then $R_j=0$ for $j>\sum_{i=1}^Nde_i$.
 \end{proof}
-\begin{thm}
+\begin{thm}\lbl{thm:ProperRpcoherent}
 	Let $X\morphism[f]Y$ be a proper morphism of locally Noetherian preschemes. If $\Mm$ is a coherent $\Oo_X$-module and $p\geq 0$, then $R^pf_*\Mm$ is a coherent $\Oo_Y$-module.
 \end{thm}
 \begin{cor}\lbl{cor:ProperHpFinGen}
@@ -3016,7 +3016,7 @@ Before we proceed with the proof of Theorem~\reff{thm:CurvesSerreDuality}\itemem
 	Theorem~\reff{thm:CurvesSerreDuality} and Theorem~\reff{thm:RiemannRoch} hold in the special case $C=\IP_k^1$.
 \end{fact}
 \begin{proof}
-	For Theorem~\reff{thm:CurvesSerreDuality}\itememph{b}, it suffices to provide an identification of $\Omega_C$ with $\Oo(-2)$ and to show that $c_1(\Oo(1))$ has a non-zero image in the one-dimensional $k$-vector space $H^1(C,\Oo(-2))$ (here we use Theorem~\reff{thm:CohoOfIP^n}\itememph{d}).\footnote{Where does $c_1(\Oo(1))$ come from? In Corollary~\reff{cor:Pic(Pn)} we see that $\Pic(\IP_k^n)\simeq \IZ$ with $\Oo(1)$ a generator.}
+	For Theorem~\reff{thm:CurvesSerreDuality}\itememph{b}, it suffices to provide an identification of $\Omega_{\IP_k^1}$ with $\Oo(-2)$ and to show that $c_1(\Oo(1))$ has a non-zero image in the one-dimensional $k$-vector space $H^1(C,\Oo(-2))$ (here we use Theorem~\reff{thm:CohoOfIP^n}\itememph{d}).\footnote{Where does $c_1(\Oo(1))$ come from? In Corollary~\reff{cor:Pic(Pn)} we see that $\Pic(\IP_k^n)\simeq \IZ$ with $\Oo(1)$ a generator.}
 	
 	We get a derivation $d\colon \Oo_{\IP_k^1}\morphism\Oo(-2)$ as follows. For $U\subseteq \IP_k^1$ open and $f\in\Oo_{\IP_k^1}(U)$ put
 	\begin{align*}
@@ -3029,22 +3029,22 @@ Before we proceed with the proof of Theorem~\reff{thm:CurvesSerreDuality}\itemem
 	
 	It remains to determine the image of $c_1(\Oo(1))$ under this identification followed by the isomorphism $H^1(\IP_k^1,\Oo(-2))\isomorphism k$ from Theorem~\reff{thm:CohoOfIP^n}\itememph{d}. Let $U_0=\IP_k^1\setminus V(X)$, $U_1=\IP_k^1\setminus V(Y)$, then $\Oo(1)$ is trivialized by $X$ on $U_0$ and by $Y$ on $U_1$. Let $\Uu\colon \IP_k^1=U_0\cup U_1$ denote this affine open cover. Reading carefully through the construction before Proposition~\reff{prop:torsorsH1Bij} again, we find that the element of $\check{H}_\alt^1(\Uu,\Oo_{\IP_k^1}^\times)$ which gives the $\Oo_{\IP_k^1}^\times$-torsor $\Oo(1)^\times$ is given by $\frac{X}{Y}=t\in\Oo_{\IP_k^1}^\times(U_{0,1})$.
 	
-	The image of $f=t$ under $f\mapsto d(f)f^{-1}$ equals $(XY)^{-1}\neq 0$ and this element is sent to $1$ under the isomorphism $H^1(\IP_k^1,\Oo(-2))\isomorphism k$ from Theorem~\reff{thm:CohoOfIP^n}\itememph{d}. Hence $c_1(\Oo(1))=1$. Thus Theorem~\reff{thm:CurvesSerreDuality}\itememph{b} follows for $C=\IP_k^1$, and so does Theorem~\reff{thm:CurvesSerreDuality}\itememph{c} in the special case $\Vv=\Oo(k)$ by the duality assertion from Theorem~\reff{thm:CohoOfIP^n}\itememph{e}. By Theorem~\reff{thm:GrothendieckBirkhoff}, any vector bundle $\Vv$ on $\IP_k^1$ is isomorphic to a direct sum of line bundles $\Oo(k)$, showing Theorem~\reff{thm:CohoOfIP^n} (and thus Theorem~\reff{thm:RiemannRoch}) for $C=\IP_k^1$
+	The image of $f=t$ under $f\mapsto d(f)f^{-1}$ equals $(XY)^{-1}\neq 0$ and this element is sent to $1$ under the isomorphism $H^1(\IP_k^1,\Oo(-2))\isomorphism k$ from Theorem~\reff{thm:CohoOfIP^n}\itememph{d}. Hence $c_1(\Oo(1))=1$. Thus Theorem~\reff{thm:CurvesSerreDuality}\itememph{b} follows for $C=\IP_k^1$, and so does Theorem~\reff{thm:CurvesSerreDuality}\itememph{c} in the special case $\Vv=\Oo(k)$ by the duality assertion from Theorem~\reff{thm:CohoOfIP^n}\itememph{e}. By Theorem~\reff{thm:GrothendieckBirkhoff}, any vector bundle $\Vv$ on $\IP_k^1$ is isomorphic to a direct sum of line bundles $\Oo(k)$, showing Theorem~\reff{thm:CurvesSerreDuality} (and thus Theorem~\reff{thm:RiemannRoch}) for $C=\IP_k^1$
 \end{proof}
 The strategy for arbitrary $C$ will be to use a finite separable morphism $C\morphism[f]\IP_k^1$ (that is, a morphism inducing separable extensions of fields of rational functions). Then $H^\bullet(C,\Vv)\simeq H^\bullet (\IP_k^1,f_*\Vv)$ for every vector bundle $\Vv$ on $C$ (by Corollary~\reff{cor:AffinePushforwardIso} -- note that $f$ is finite, thus in particular affine). Also $f_*\Vv$ is a coherent $\Oo_{\IP_k^1}$-module and torsion-free (because $\Vv$ is), hence a vector bundle by the classification of modules over PIDs. Thus 
 \begin{align*}
-	H^1(C,\Vv)\simeq H^1(\IP_k^1,f_*\Vv)\simeq \Hom_{\Oo_{\IP_k^1}}\left(f_*\Vv,\Omega_{\IP_k^1}\right)\simeq \Hom_{\Oo_{\IP_k^1}}\left(\Vv,f^!\Omega_{\IP_k^1}\right)
+	H^1(C,\Vv)^*\simeq H^1\big(\IP_k^1,f_*\Vv\big)^*\simeq \Hom_{\Oo_{\IP_k^1}}\big(f_*\Vv,\Omega_{\IP_k^1}\big)\simeq \Hom_{\Oo_C}\big(\Vv,f^!\Omega_{\IP_k^1}\big)
 \end{align*}
  (this is the Serre duality calculation from Remark~\reff{rem:WTFSerreDuality} again), where $f^!$ is (hopefully) a right-adjoint functor for $f_*$. Then if (hopefully again) one has a canonical isomorphism $f^!\Omega_{\IP_k^1}\simeq \Omega_C$, Serre duality for $C$ follows. The fact that the resulting isomorphism $H^1(C,\Omega_C)\isomorphism k$ sends $c_1(\Oo_C(D))$ to the image of $\deg D$ in $k$ has to be checked separately.
 
-\section{The functor \texorpdfstring{$f^!$}{f}}
-Let $C\morphism[f]D$ be a finite separable morphism of regular connected curves over the algebraically closed field $k$. We want to construct a \emph{right-adjoint} $f^!\colon\Oo_D\cat{-Mod}\morphism\Oo_C\cat{-Mod}$ to the functor $f_*$. For this, Professor Franke assumes familiarity with extensions of Dedekind domains, \emph{differents}, and the \emph{trace form}. We refer to \cite[Ch.~II, \S 2]{NEUKIRCH} for an introduction.
+\section{The functor \texorpdfstring{$f^!$}{f}}\lbl{sec:f^!}
+Let $C\morphism[f]D$ be a finite separable morphism of regular connected curves of finite type over the algebraically closed field $k$. We want to construct a \emph{right-adjoint} $f^!\colon\Oo_D\cat{-Mod}\morphism\Oo_C\cat{-Mod}$ to the functor $f_*$. For this, Professor Franke assumes familiarity with extensions of Dedekind domains, \emph{differents}, and the \emph{trace form}. We refer to \cite[Ch.~III, \S 2]{NEUKIRCH} for an introduction.
 
 Let $R$ be a Dedekind domain with field of fractions $K$, $L/K$ a finite separable field extension, $S$ the algebraic closure of $R$ in $L$ and $\Tr_{L/K}\colon L\morphism K$ the \emph{trace}. Put
 \begin{align*}
 	S^*=\left\{\sigma\in L\st \Tr_{L/K}(\sigma s)\in R\text{ for all }s\in S\right\}\;.
 \end{align*}
-Then $S^*$ is a fractional ideal of $S$ and thus has an inverse, the \defemph{Dedekind different} $\DD_{S/R}\coloneqq (S^*)^{-1}$. The construction of $\DD_{S/R}$ commutes with localization, hence we obtain
+Then $S^*$ is a fractional ideal of $S$ and thus has an inverse, the \defemph{Dedekind different} $\DD_{S/R}\coloneqq (S^*)^{-1}$. The construction of $\DD_{S/R}$ commutes with localization (cf.\ \cite[Ch.\ III, (2.2)]{NEUKIRCH}), hence we obtain
 \begin{fact}
 	If $f$ is a morphism as above, there is a unique sheaf of ideals $\DD_f\subseteq \Oo_C$ such that 
 	\begin{align*}
@@ -3060,19 +3060,54 @@ If $\Mm$ is a quasi-coherent $\Oo_D$-module, we denote the composition
 \begin{align*}
 	f_*\left(f^*\Mm\otimes_{\Oo_C}\DD_f^{-1}\right)\simeq \Mm\otimes_{\Oo_D}f_*\DD_f^{-1}\xrightarrow{\id_\Mm\otimes \Tr_{C/D}}\Mm\otimes_{\Oo_D}\Oo_D\simeq \Mm
 \end{align*}
-by $\Tr_f=\Tr_{C/D}$ as well. As $\Tr_{L/K}\colon S\times S^*\morphism R$ is a perfect duality pairing in the above situation of Dedekind domains, one obtains
-\begin{prop}
+by $\Tr_f=\Tr_{C/D}$ as well.\footnote{Ehm \ldots\ why is $f_*\left(f^*\Mm\otimes_{\Oo_C}\Nn\right)\simeq \Mm\otimes_{\Oo_D}f_*\Nn$ for quasi-coherent $\Oo_D$-modules $\Mm$ and $\Oo_C$-modules $\Nn$? We discussed a similar question in Remark~\reff{rem:WhatIsO_X(k)}\itememph{d} for closed embeddings, and like there, we can construct a canonical map between them and only need to verify that it is an isomorphism on stalks, but the way we do this is somewhat different. Let $d\in D$ and choose an affine open neighbourhood $U\simeq \Spec R$ of $d$. Its preimage $f^{-1}U$ is affine as well (since $f$ is finite), say, $f^{-1}U\simeq \Spec S$. Then $S$ is a finite Dedekind extension of $R$, $\Mm$ is given by an $R$-module $M$ on $U$ and $\Nn$ by an $S$-module $N$ on $f^{-1}U$. Then $f_*\Nn$ is given by $S$ as an $R$-module on $U$ and the required isomorphism reduces to
+\begin{align*}
+	((M\otimes_RS)\otimes_SN)_\pp\simeq \big((M\otimes_RS)\otimes_SN\big)\otimes_RR_\pp\simeq M_\pp\otimes_R(N\otimes_RR_\pp)\simeq M_\pp\otimes_RN_\pp\;,
+\end{align*}
+when $\pp\in\Spec R$ is the prime ideal corresponding to $d$.} As $\Tr_{L/K}\colon S\times S^*\morphism R$ is a perfect duality pairing in the above situation of Dedekind domains, one obtains
+\begin{prop}\lbl{prop:f^!Adjunction}
 	For every quasi-coherent $\Oo_C$-module $\Nn$, the map
 	\begin{align}\lbl{eq:f^!adjunction}
-		\Hom_{\Oo_C}\left(\Nn,f^*\Mm\otimes_{\Oo_C}\DD_f^{-1}\right)&\morphism\Hom_{\Oo_D}(f_*\Nn,\Mm)\\
-		\phi&\longmapsto\Tr_f\circ f_*(\phi)
+		\begin{split}
+			\Hom_{\Oo_C}\left(\Nn,f^*\Mm\otimes_{\Oo_C}\DD_f^{-1}\right)&\morphism\Hom_{\Oo_D}(f_*\Nn,\Mm)\\
+			\phi&\longmapsto\Tr_f\circ f_*(\phi)
+		\end{split}
 	\end{align}
 	is bijective. Thus, the functor $f^!\colon\cat{QCoh}(D)\morphism\cat{QCoh}(C)$ given by $f^!\Mm=f^*\Mm\otimes_{\Oo_C}\DD_f^{-1}$ is right-adjoint to $f_*$.
 \end{prop}
-To prove this, we will formulate a lemma first, and to do this, we need to justify that with $f$ as above, a point $d\in D$ has only finitely many preimages in $C$. Indeed, on an affine open neighbourhood $U\subseteq D$ of $d$ the situation looks like a finite extension of Dedekind domains\footnote{$R$ and $S$ are one-dimensional regular Noetherian rings, hence Dedekind domains.} $R=\Oo_D(U)$ and $S=\Oo_C(f^{-1}U)$, where $d$ corresponds to a prime ideal $\pp\in\Spec R$. The preimages of $d$ correspond to the prime ideals of $S$ lying above $\pp$, and it's well-known that there is a finite number $\PP_1,\ldots,\PP_N$ of them (the finitely many prime ideal factors of $\pp S$, cf.\ \cite[Ch.~I, \S 8]{NEUKIRCH}).
+\begin{proof}[Sketch of a proof]
+	Affine-locally, this reduces to proving the adjunction 
+	\begin{align}\lbl{eq:localAdjunction}
+		\Hom_S(N,M\otimes_RS^*)\isomorphism\Hom_R(N,M)\;,\tag{$*$}
+	\end{align}
+	when $R\subseteq S$ is an extension of Dedekind domains such that $S$ is a finite $R$-module and the corresponding extension $L/K$ of quotient fields is separable (in particular, $S$ is the integral over $R$ and thus the integral closure of $R$ in $L$). We would still need to prove that \eqreff{eq:localAdjunction} is compatible with localizations, but the direction from \eqreff{eq:f^!adjunction} surely is, so the other one better be!
+	
+	To prove \eqreff{eq:localAdjunction}, we use the adjunction $\Hom_R(N,M)\simeq \Hom_S(N,\Hom_R(S,M))$. Indeed, the tensor-hom adjunction gives $\Hom_R(N\otimes_SS,M)\simeq \Hom_S(N,\Hom_R(S,M))$ and since $N$ is already an $S$-module, $N\otimes_SS$ is canonically isomorphic to $N$. It thus remains to show that $m\otimes \sigma\mapsto \Tr(\sigma\cdot (-))$ defines an isomorphism $M\otimes_RS^*\isomorphism\Hom_R(S,M)$. Clearly, we may replace $M\otimes_RS^*$ by $\Hom_R(R,M\otimes_RS^*)$. Note that $S$ is a projective $R$-module. Indeed, since $R_\pp$ is a DVR for all $\pp\in\Spec R$, \cite[Ch.~I, (2.10)]{NEUKIRCH} gives that $S_\pp$ is a free $R_\pp$-module of rank $n=[L:K]$. Since $R$ is projective over itself, we can argue like after Definition~\reff{def:PerfectPairing} to show that $\Hom_R(S,M)$ and $\Hom_R(R,M\otimes_RS^*)$ commute with localization at $f\in R$. The isomorphism we need to prove can also be checked locally. Hence replacing $R$, $S$, and $M$ by $R_f$, $S_f$, $M_f$ respectively we may assume that $S$ is free of rank $n$. 
+	
+	Choose a basis $e_1,\ldots, e_n$ of $S$ and the dual basis $e_1^*,\ldots,e_n^*$ of $S^*$. Define a map $R\morphism[\eta]S^*\otimes_RS$ via $\eta(1)=\sum_{i=1}^ne_i^*\otimes e_i$. This looks super non-canonical, but it actually is: When $f_1,\ldots,f_n$ form another basis of $S$, then there is an invertible $R$-matrix $A$ such that $f_i=Ae_i$. The correponding dual basis is given by $f_i^*=(A^{-1})^Te_i^*$ and since $-\otimes_R-$ behaves like expanding bilinear forms, $\sum_{i=1}^nf_i^*\otimes f_i=\sum_{i=1}^ne_i^*\otimes e_i$ is easily deduced. 
+	
+	Now consider the canonical map $\Phi\colon \Hom_R(S,M)\morphism\Hom_R(R,M\otimes_RS^*)$ assigning to $S\morphism[\phi]M$ the composite
+	\begin{align*}
+		R\morphism[\eta]S^*\otimes_RS\xrightarrow{\id_{S^*}\otimes \phi} S^*\otimes_RM\simeq M\otimes_RS^*
+	\end{align*}
+	and the map $\Psi\colon \Hom_R(R,M\otimes_RS^*)\morphism\Hom_R(S,M)$ assigning to $R\morphism[\psi]M\otimes_RS^*$ the composite
+	\begin{align*}
+		S\simeq R\otimes_RS\xrightarrow{\psi\otimes\id_S}M\otimes_RS^*\otimes_RS\xrightarrow{\id_M\otimes \Tr_{L/K}}M\otimes_RR\simeq M\;.
+	\end{align*}
+	It's a straightforward check that $\Phi$ and $\Psi$ are mutually inverse and that $\Psi$ corresponds to the map $M\otimes_RS^*\morphism\Hom_R(S,M)$ sending $m\otimes\sigma\mapsto \Tr(\sigma\cdot(-))$. We are done.	
+\end{proof}
+We will now work towards $f^!\Omega_D\simeq \Omega_C$. To prove this, we will formulate a lemma first, and to do this, we need to justify that with $f$ as above, a point $d\in D$ has only finitely many preimages in $C$. Indeed, on an affine open neighbourhood $U\subseteq D$ of $d$ the situation looks like a finite extension of Dedekind domains\footnote{$R$ and $S$ are one-dimensional regular Noetherian rings, hence Dedekind domains.} $R=\Oo_D(U)$ and $S=\Oo_C(f^{-1}U)$, where $d$ corresponds to a prime ideal $\pp\in\Spec R$. The preimages of $d$ correspond to the prime ideals of $S$ lying above $\pp$, and it's well-known that there is a finite number $\PP_1,\ldots,\PP_N$ of them (the finitely many prime ideal factors of $\pp S$, cf.\ \cite[Ch.~I, \S 8]{NEUKIRCH}).
 
-Also, for $f\in\Oo_C(V)$ for some open $V\subseteq C$ let $f(c)$ denote the image of $f$ in the residue field $\KK(c)$ of $\Oo_{C,c}$. Note that all rings we are considering here are $k$-algebras. In particular, there is an embedding $k\monomorphism\Oo_{C,c}$ for every $c\in C$ and $k\monomorphism\KK(c)$ is even an isomorphism by Hilbert's Nullstellensatz and algebraic closedness of $k$.
-\begin{lem}
+However, for future use we prove a slightly stronger result.
+\begin{lem}\lbl{lem:finitelyManyPreimages}
+	Let $C\morphism[g] D$ be a morphism of Noetherian one-dimensional regular connected curves such that the induced extension of fraction fields $L/K$ is finite. Then every $d\in D$ has only finitely many preimages $c_1,\ldots,c_N$ in $C$.
+\end{lem}
+\begin{proof}
+	Let $U\simeq \Spec A$ be an affine open neighbourhood of $d$ and $\pp\in\Spec A$ the prime ideal corresponding to $d$. Since $C$ is Noetherian, every open subset is quasi-compact and we may cover $g^{-1}U$ by finitely many affine open subsets $V_i\simeq \Spec B_i$, $i=1,\ldots,n$. Then $A\subseteq B$ is an extension of Dedekind domains. In particular, $B_i$ contains the integral closure $B$ of $A$ in $L$, hence $B_i$ is the localization of $B$ at some multiplicative subset $S_i\subseteq B$ (we can take $S_i$ to be the set of all $s\in B$ that become units in $B_i$). Since there are only finitely many prime ideals of $\Spec B$ over $\pp$, and in $B_i=B_{S_i}$ the only thing happening is that some of them might be killed, $d$ has finitely many preimages in $V_i$ and thus in $C$.
+\end{proof}
+
+Now let $C\morphism[f]D$ be a finite separable morphism of regular connected curves of finite type over the algebraically closed field $k$ again. For $f\in\Oo_C(V)$ for some open $V\subseteq C$ let $f(c)$ denote the image of $f$ in the residue field $\KK(c)$ of $\Oo_{C,c}$. Note that all rings we are considering here are $k$-algebras. In particular, there is an embedding $k\monomorphism\Oo_{C,c}$ for every $c\in C$ and $k\monomorphism\KK(c)$ is even an isomorphism by Hilbert's Nullstellensatz and algebraic closedness of $k$.
+\begin{lem}\lbl{lem:interpolation}
 	Let $f$ be as above, $d\in D$ any closed point and $c_1,\ldots,c_N$ its preimages in $C$.
 	\begin{alphanumerate}
 		\item There are an affine open neighbourhood $U$ of $D$ and $\xi\in\Oo_C(f^{-1}U)$ such that $\xi(c_i)\neq\xi(c_j)$ and such that $\xi-\xi(c_i)\notin\mm_{C,c_i}^2\subseteq\Oo_{C,c_i}$ for $i=1,\ldots,N$.
@@ -3104,6 +3139,168 @@ Also, for $f\in\Oo_C(V)$ for some open $V\subseteq C$ let $f(c)$ denote the imag
 	\end{align*}
 	Note that $v_{\PP_i}(\psi_{i,r})=r$. Indeed, the construction from \itememph{a} was chosen in such a way to guarantee $v_{\PP_i}(\xi-\xi(c_j))=0$ for $j\neq i$ and $v_{\PP_i}(\xi-\xi(c_i))=1$. From this we deduce $\lambda_{i,r}=0$ for $r=0,\ldots,e_i-1$. Doing this for the other $\PP_j$ as well, we obtain $\lambda_{i,r}=0$ for all $i,r$. This shows the required linear independence.
 \end{proof}
+Recall the following well-known fact about extensions of Dedekind domains (actually this is \cite[Ch.\ III, (2.4)]{NEUKIRCH} and we follow the proof given there).
+\begin{prop}\lbl{prop:principalDifferent}
+	Let $R$ be a Dedekind domain, $L/K$ a finite separable extension of its quotient field $K$ and $S$ the integral closure of $R$ in $L$. Suppose that $S$ is generated by $\xi\in S$ as an $R$-algebra and let $p\in R[T]$ be its minimal polynomial. Then $\DD_{S/R}=(p'(\xi))$ is the principal ideal generated by $p'(\xi)$.
+\end{prop}
+\begin{lem}\lbl{lem:NeukirchDualBasis}
+	Let $n$ be the degree of $p$ and
+	\begin{align*}
+		\frac{p(T)}{T-\xi}=b_0+b_1T+\ldots+b_{n-1}T^{n-1}\;.
+	\end{align*}
+	Then the dual basis of $1,\xi,\ldots,\xi^{n-1}$ with respect to the trace form $\Tr_{L/K}(xy)$ is given by
+	\begin{align*}
+		\frac{b_0}{p'(\xi)},\ldots,\frac{b_{n-1}}{p'(\xi)}\;.
+	\end{align*}
+\end{lem}
+\begin{proof}
+	Let $\xi_1,\ldots,\xi_n$ be the roots of $p$ in some algebraic closure of $K$ and $\sigma_1,\ldots,\sigma_n\colon L\monomorphism\ov{K}$ the corresponding $K$-linear embeddings. Then
+	\begin{align*}
+		\sum_{i=1}^{n}\frac{p(T)}{T-\xi_i}\cdot\frac{\xi_i^r}{p'(\xi_i)}=T^r\quad\text{for all }r=0,\ldots,n-1\;.
+	\end{align*}
+	Indeed, for fixed $r$ both sides are polynomials of degree $\leq n-1$ which coincide when $T=\xi_i$ for $i=1,\ldots,n$. We can write this in the form
+	\begin{align*}
+		\Tr_{L/K}\left(\frac{p(T)}{T-\xi}\cdot\frac{\xi_i^r}{p'(\xi)}\right)=\sum_{i=1}^n\sigma_i\left(\frac{p(T)}{T-\xi}\cdot\frac{\xi_i^r}{p'(\xi)}\right)=T^r\;.
+	\end{align*}
+	Comparing coefficients of each power of $T$, we get
+	\begin{align*}
+		\Tr_{L/K}\left(\xi^i\frac{b_j}{p'(\xi)}\right)=\delta_{i,j}
+	\end{align*}
+	(with $\delta_{i,j}$ the Kronecker symbol), hence the assertion.
+\end{proof}
+\begin{proof}[Proof of Proposition~\reff{prop:principalDifferent}]
+	From Lemma~\reff{lem:NeukirchDualBasis} we know that $S^*=p'(\xi)^{-1}(b_0R+\ldots+b_{n-1}R)$. We show that the second factor equals $S$. Indeed, from $(T-\xi)(b_0+b_1T+\ldots+b_{n-1}T^{n-1})=p(T)$ we obtain the recursive relations
+	\begin{align*}
+		b_{n-1}&=1\\
+		 b_{n-2}-\xi b_{n-1}&=p_{n-1}\\
+		 &\vdots
+	\end{align*}
+	(in which $p_i$ are the coefficients of $p$ and $p_n=1$ since $p$ is the minimal polynomial of $\xi$), from which we deduce
+	\begin{align*}
+		b_{n-i}=\xi^{i-1}+p_{n-1}\xi^{i-2}+\ldots+p_{n-i+1}\;.
+	\end{align*}
+	Thus $b_0R+\ldots+b_{n-1}R=R[\xi]=S$ and therefore $\DD_{S/R}=(S^*)^{-1}=(p'(\xi))$.
+\end{proof}
+Using this in the situation of Lemma~\reff{lem:interpolation} with $R=\Oo_D(U)$, $S=\Oo_C(f^{-1}U)$ and the appropriate $\xi$, we obtain
+\begin{prop}\lbl{prop:f!OmegaIso}
+	If $C\morphism[f]D$ is a finite separable morphism between regular curves over the algebraically closed field $k$, then $f^*\Omega_D\morphism\Omega_C$ can be extended\footnote{Since $\DD_f$ is a sheaf of ideals in $\Oo_C$, there is a canonical inclusion $\Oo_C\monomorphism\DD_f^{-1}$ which we tensor with $f^*\Omega_D$.} to a unique isomorphism
+	\begin{align*}
+		f^!\Omega_D=f^*\Omega_D\otimes_{\Oo_C}\DD_f^{-1}\isomorphism\Omega_C
+	\end{align*}
+\end{prop}
+\begin{proof}
+	Of course, this is a local question. By Lemma~\reff{lem:interpolation} and Proposition~\reff{prop:principalDifferent} we may reduce this to the case where $R$ is a Dedekind domain with quotient field $K$ and the integral closure $S$ of $R$ in $L$ is generated by a single element $\xi\in S$; and what we need to show is that $(\Omega_{R/k}\otimes_RS)\otimes_R\DD_{S/R}^{-1}$ is isomorphic to $\Omega_{S/k}$ (up to verifying that the isomorphism is the correct one).
+	
+	Since $\DD_{S/R}^{-1}=p'(\xi)^{-1}S$, it suffices to show that $\Omega_{R/k}\otimes_RS$ is isomorphic to $p'(\xi)\Omega_{S/k}$.\footnote{\lbl{footnote:OmegaLocFree}Indeed, $R$ and $S$ are Dedekind domains, hence regular of dimension $1$. By \cite[Proposition~1.6.3]{alg2} (which can be applied here since $R$ and $S$ are of finite type over $k$, which is algebraically closed, hence perfect), $\Omega_{R/k}$ and $\Omega_{S/k}$ are locally free $R$- resp.\ $S$-modules of rank $1$ -- in particular, they are projective over their respective ground ring and tensoring with $\DD_{S/R}^{-1}=p'(\xi)^{-1}S$ behaves nicely.} We show surjectivity first. To do this, it suffices to prove this locally. That is, for $\PP\in\Spec S$ and its preimage $\pp=\PP\cap R\in\Spec R$ we need to show that $\Omega_{R_\pp/k}\otimes_{R_\pp}S_\PP\morphism p'(\xi)\Omega_{S_\PP/k}$ is surjective (here we use compatibility of Kähler differentials with localization, cf.\ \cite[Corollary~1.4.1a\itememph{d}]{alg2}). That is, replacing $R$ by $R_\pp$ and $S$ by $S_\PP$ we may reduce to the case where $S$ and $R$ are PIDs (DVRs even) and $\Omega_{S/k}\simeq S$ (as $\Omega_{S/k}$ is locally free of rank $1$ at $\PP$ by \hyperref[footnote:OmegaLocFree]{this} footnote). By \cite[Corollary~1.4.1\itememph{b}]{alg2}, we have a short exact sequence
+	\begin{align*}
+		\Omega_{R/k}\otimes_RS\morphism\Omega_{S/k}\morphism\Omega_{S/R}\morphism 0\;.
+	\end{align*}
+	By the classification of finitely generated modules over PIDs and unique prime factorization and stuff it suffices to prove $\Omega_{S/R}\simeq S/p'(\xi)S$. We have $S=R[\xi]$, hence $S=R[T]/(p)$. From \cite[Corollary~1.4.1\itememph{a}]{alg2} we get a short exact sequence
+	\begin{align*}
+		(p)/(p^2)\morphism\Omega_{R[T]/k}\otimes_RS\morphism\Omega_{S/k}\morphism 0\;,
+	\end{align*}
+	in which $\Omega_{R[T]/k}\otimes_RS\simeq S$ since $\Omega_{R[T]/k}$ is the free $R$-module generated by $dT$ and the morphism on the left is given by $p\bmod p^2\mapsto (p'\bmod p)dT=p'(\xi)dT$. This shows that $\Omega_{S/R}\simeq S/p'(\xi)S$ indeed.
+	
+	Let's prove injectivity of  $\Omega_{R/k}\otimes_RS\morphism p'(\xi)\Omega_{S/k}$. Let $P$ be the kernel. Tensoring with $L$ we obtain an exact sequence
+	\begin{align*}
+		\Tor_1^S\left(p'(\xi)\Omega_{S/k},L\right)\morphism P\otimes_SL\morphism \left(\Omega_{R/k}\otimes_RS\right)\otimes_SL\morphism p'(\xi)\Omega_{S/k}\otimes_SL\morphism 0\;.
+	\end{align*}
+	Since $\Omega_{S/k}$ is (locally free and thus) a projective $S$-module, so is its submodule $p'(\xi)\Omega_{S/k}$ since torsion-freeness suffices over Dedekind domains (cf.\ \cite[Corollary~1.1.6]{homalg}). We see that the $\Tor$ term vanishes. Also $p'(\xi)\Omega_{S/k}\otimes_SL\simeq p'(\xi)\Omega_{L/k}\simeq \Omega_{L/k}$ since tensoring with $L$ is the same as localizing the multiplicative subset $S\setminus \{0\}$ and Kähler differentials are compatible with localizations (and moreover $p'(\xi)\neq 0$ as $L/K$ is separable). By a similar argument, $(\Omega_{R/k}\otimes_RS)\otimes_SL\simeq \Omega_{K/k}\otimes_KL$. But the canonical map\footnote{We should actually check that we indeed obtain the canonical map. Let' see why this is plausible: Actually, nothing we do is non-canonical except for $p'(\xi)\Omega_{S/k}$ -- however, we could instead consider $\Omega_{R/k}\otimes_RS\morphism\Omega_{S/k}$ and tensor this guy with $L$, since we are only interested in injectivity.} $\Omega_{K/k}\otimes L\morphism\Omega_{L/k}$ is an isomorphism by \cite[Lemma~16.15]{eisenbudCommAlg}, so $P\otimes_SL=0$. Since $P$ is torsion-free as a submodule of the projective $S$-module $\Omega_{R/k}\otimes_RS$ (local freeness is inherited from $\Omega_{R/k}$), hence this implies $P=0$. We are done.
+\end{proof}
+Having proved $f^!\Omega_D\simeq\Omega_C$, we now show that the first Chern classes on $C$ and $D$ commute with the push-forward $f_*$.
+\begin{prop}
+	For the isomorphism $f^!\Omega_D\simeq \Omega_C$ defined in Proposition~\reff{prop:f!OmegaIso}, the following diagram commutes.
+	\begin{diagram*}
+		\node[ob] (a) at (0,1.5) {$f_*\Oo_C^\times$};
+		\node[ob] (b) at (4,1.5) {$f_*\Omega_C\simeq f_*f^!\Omega_D$};
+		\node[ob] (c) at (4,0) {$\Omega_D$};
+		\node[ob] (d) at (0,0) {$\Oo_D^\times$};
+		\scriptsize
+		\draw[->] (a) -- (b) node[pos=0.5, above]{$f_*(d_C\log)$};
+		\draw[->] (d) -- (c) node[pos=0.5, above]{$d_D\log$};
+		\draw[->] (b) -- (c) node[pos=0.5, right]{$\Tr_f$};
+		\draw[->] (a) -- (d) node[pos=0.5, left]{$N_{L/K}$};
+	\end{diagram*}
+	where $\Oo_C\morphism[d_C]\Omega_C$ and $\Oo_D\morphism[d_D]\Omega_D$ are the respective universal derivations.
+\end{prop}
+\begin{proof}
+	Because all involved sheaves are vector bundles on $C$ (ehm \ldots\ not really, but we can replace $f_*\Oo_C^\times$ and $\Oo_D^\times$ by $f_*\Oo_C$, $\Oo_D$), sections on an open subset $U\neq\emptyset$ injectively map to the stalks at the generic point $\eta_C$ of $C$. Therefore, it suffices to show the following.
+	\begin{claim}
+		Let $L/K$ be a finite separable field extension and $k\subseteq K$ a subfield. We consider
+		\begin{align*}
+			\Omega_{L/k}\simeq\Omega_{K/k}\otimes_KL\xrightarrow{\Tr_{L/K}}\Omega_{K/k}
+		\end{align*}
+		(the $\Tr_{L/K}$ here is abuse of notation and should actually be $\id_{\Omega_{K/k}}\otimes \Tr_{L/K}$). Then for $\ell\in L^\times$ we have $\Tr_{L/K}(d_{L/k}\log \ell)=d_{K/k}\log N_{L/K}(\ell)$.
+	\end{claim}
+	Note that the isomorphism $\Omega_{L/k}\simeq \Omega_{K/k}\otimes_KL$ is \cite[Lemma~16.15]{eisenbudCommAlg}. Let $M$ be the normal hull of $L/K$. Then $M/K$ is still separable, hence $\Omega_{M/k}\simeq \Omega_{K/k}\otimes_KM$ and there are $n=[L:K]$ $K$-linear embeddings $\sigma_1,\ldots,\sigma_n\colon L\monomorphism M$. Moreover, $d_{K/k}$ extends uniquely to $d_{L/k}$ and $d_{M/k}$ (this is quite easy to see and we proved it on exercise sheet \#5 of Algebra II)  -- in particular, $d_{M/k}$ extends $d_{L/k}$. Since $N_{L/K}(x)=\prod_{i=1}^n\sigma_i(x)$ and $\Tr_{L/K}(x)=\sum_{i=1}^n\sigma_i(x)$ for all $x$, we get
+	\begin{align*}
+		d_{K/k}\log N_{L/K}(\ell)&=\frac{d_{K/k}N_{L/K}(\ell)}{N_{L/K}(\ell)}=\frac{1}{N_{L/K}(\ell)}d_{K/k}\left(\prod_{i=1}^n\sigma_i(\ell)\right)\\	&=\frac{1}{N_{L/K}(\ell)}\sum_{i=1}^nd_{M/k}\sigma_i(\ell)\prod_{j\neq i}\sigma_i(\ell)=\sum_{i=1}^n\frac{d_{M/K}\sigma_i(\ell)}{\sigma_i(\ell)}\\
+		&=\sum_{i=1}^n\sigma_i\left(\frac{d_{M/K}(\ell)}{\ell}\right)=\sum_{i=1}^n\sigma_i(d_{M/k}\log \ell)\\
+		&=\Tr_{L/K}\left(d_{L/k}\log\ell\right)
+	\end{align*}
+	where the automorphism of $M/K$ induced by $\sigma_i$ was denoted by $\sigma_i$ as well, and the action of $\sigma$ on $\Omega_{M/k}$ is actually given by $\id_{\Omega_{K/k}}\otimes \sigma_i$ in the representation $\Omega_{M/k}\simeq \Omega_{K/k}\otimes_KM$.
+\end{proof}
+\section{Proof of Serre duality for curves}
+Let always $C$ be a proper regular curve over the algebraically closed field $k$.
+\begin{prop}
+	Let $\eta_C$ be the generic point of $C$ and $f\in\Oo_{C,\eta_C}$ a rational function on $C$ such that $d_Cf\neq 0$. Let $P$ be the set of poles of $f$. Then the morphism $C\setminus P\morphism\IA_k^1=\Spec k[T]$ (defined by $k[T]\morphism\Oo_C(C\setminus P)$ sending $T$ to $f$) extends to a unique finite separable morphism $C\morphism\IP_k^1$.
+\end{prop}
+\begin{rem}
+	\begin{alphanumerate}
+		\item \lbl{rem:d_Cfnot0}Why do we find such an $f$? Let $L=\Oo_{C,\eta_C}$ be the field of rational functions on $C$. Then the universal derivation $d_C\colon\Oo_C\morphism\Omega_C$ descends to $d_{L/k}\colon L\morphism\Omega_{L/k}$ on the stalk at $\eta$. If $d_{L/k}$ is the zero map, then $\Omega_{L/k}=0$ by the universal property. But locally, $C$ looks like $\Spec R$ for $R$ a Dedekind domain, and $R$ is of finite type over $k$ by properness. Hence $1=\dim R=\trdeg (L/k)$ by \cite[Theorem~10]{alg1} and $\dim_L\Omega_{L/k}\geq\trdeg(L/k)=1$ by \cite[Corollary~16.17]{eisenbudCommAlg}, contradicting $\Omega_{L/k}=0$.
+		\item Actually, we have $\dim_L\Omega_{L/k}=1$. Indeed, equality in the above inequality holds iff $L/k$ is separable \cite[Corollary~16.17]{eisenbudCommAlg}. But $k$ is algebraically closed, hence perfect and extensions (even transcendental ones) of perfect fields are always separable. The generalized notion of separability required here together with a proof can be found in \cite[Proposition~1.6.2\itememph{b}]{alg2}.
+	\end{alphanumerate}
+\end{rem}
+\begin{proof}
+	Denote the above morphism by $C\setminus P\morphism[f]\IA_k^1$ (this is actually abuse of notation) and let $K=k(T)=\Oo_{\IA_k^1,\eta}$, where $\eta$ is the generic point of $\IA_k^1$. The morphism induced on stalks at the generic points is $K\monomorphism L$. Composing with $d_{L/k}\colon L\morphism\Omega_{L/k}$ is a $k$-linear derivation of $K$, hence induces a morphism $\Omega_{K/k}\morphism \Omega_{L/k}$ of $K$-vector spaces. We obtain a commutative diagram
+	\begin{diagram*}
+		\node[ob] (a) at (0,1.5) {$K$};
+		\node[ob] (b) at (2.5,1.5) {$L$};
+		\node[ob] (c) at (2.5,0) {$\Omega_{K/k}$};
+		\node[ob] (d) at (0,0) {$\Omega_{L/k}$};
+		\scriptsize
+		\draw[right hook->] (a) -- (b);
+		\draw[->] (d) -- (c) node[pos=0.5, above]{$\phi$};
+		\draw[->] (b) -- (c) node[pos=0.5, right]{$d_{L/k}$};
+		\draw[->] (a) -- (d) node[pos=0.5, left]{$d_{K/k}$};
+	\end{diagram*}
+	The image of $T\in K$ under $\phi d_{K/k}$ is $d_{L/k}f\neq 0$. Thus, in the short exact sequence
+	\begin{align*}
+		\Omega_{K/k}\otimes_KL\morphism\Omega_{L/k}\morphism\Omega_{L/K}\morphism 0
+	\end{align*}
+	the left arrow is non-zero. Since $\Omega_{K/k}\otimes_KL$ and $\Omega_{L/k}$ are one-dimensional $L$-vector spaces (compare the argument from Remark~\reff{rem:d_Cfnot0}), this shows $\Omega_{L/K}=0$ and thus $L/K$ is separable by \cite[Corollary~16.17]{eisenbudCommAlg}.
+	
+	Let $N\subseteq C$ denote the (finite) set of zeros of $f$. An extension of $f|_{C\setminus (N\cup P)}\colon C\setminus (N\cup P)\morphism \IA_k^1$ to a morphism $C\setminus N\morphism\IP_k^1$ is given by
+	\begin{align*}
+		C\setminus N\morphism[1/f]\IA_k^1\morphism\IP_k^1\;.
+	\end{align*}
+	By construction of $\IP_k^1$ as gluing $\Spec k[t]$ and $\Spec k[t^{-1}]$ along $\Spec k[t,t^{-1}]$, we see that $C\setminus N\morphism\IP_k^1$ and $C\setminus P\morphism\IA_k^1\morphism\IP_k^1$ can be glued together. Thus, extistence of $f$ is shown.
+	
+	Uniqueness follows from the fact that $C\setminus P$ is dense in $C$, which is separated. Thus, for any other extension $g$ the equalizer $\Eq(f,g)\subseteq C$ must be closed, but it contains $C\setminus P$, hence $\Eq(f,g)=C$.
+	
+	Finiteness of the resulting morphism is usually deduced from \emph{Zariski's main theorem} (which we will proof in the last lecture). Alternatively, assuming that $C$ is projective such that any finite subset of $C$ is contained in an affine open subset, this can be shown as follows. Let $d\in\IP_k^1$ and $c_1,\ldots,c_N$ be its preimages in $C$ (kinda convenient we walked the extra mile to prove Lemma~\reff{lem:finitelyManyPreimages}, hm?). Let $U\subseteq C$ be an affine open neighbourhood of $\{c_1,\ldots,c_N\}$ whose image in $\IP_k^1$ is not $\IP_k^1$. Since $k$ is algebraically closed, an appropriate affine transformation (potentially followed by exchanging $t$ and $t^{-1}$) assures that the image of $U$ in $\IP_k^1$ is contained in $\IA_k^1=\Spec k[t]$. 
+	\begin{claim}
+		$C\setminus U$ consists of finitely many points.
+	\end{claim}
+	Indeed, $C\setminus U$ is a closed subprescheme, hence given by a sheaf of ideals $\Jj\subseteq \Oo_C$. Locally, $\Oo_C$ is given by a Dedekind domain $R$ and $\Jj$ by an ideal $I\subseteq R$. Since $R$ has unique prime ideal decomposition, $V(I)=\Spec R\setminus U$ consists of finitely many points -- the finitely many prime ideal factors of $I$. Now $C$ can be covered by finitely many affine open subsets (quasi-compactness of $C$ holds since $C$ is proper over $k$) and we are done.
+	
+	Consequently, $f(C\setminus U)$ is finite and we can choose an enumeration $t_1,\ldots,t_n$ of $f(C\setminus U)\cap \IA_k^1$. Then $d$ is different from all $t_i$, $V=\IA_k^1\setminus\{t_1,\ldots,t_n\}=\IA_k^1\setminus V\left(\prod_{i=1}^n(T-t_i)\right)$ is affine and so is $f^{-1}V=U\setminus V\left(f^*\prod_{i=1}^n(T-t_i)\right)$. Hence the affine open subsets $V\subseteq \IP_k^1$ such that $f^{-1}V$ is affine cover $\IP_k^1$, showing that $f$ is affine, hence finite when we take into account that $f_*\Oo_C$ is a coherent $\Oo_{\IP_k^1}$-module by Theorem~\reff{thm:ProperRpcoherent}.
+\end{proof}
+We are now able to apply the results of Section~\reff{sec:f^!} to $C\morphism[f]\IP_k^1$.
+As pointed out at the end of Section~\reff{sec:FirstProofs}, Serre duality for $\IP_k^1$ together with Proposition~\reff{prop:f^!Adjunction} and Proposition~\reff{prop:f!OmegaIso} provides isomorphisms (depending on $f$, but otherwise canonical)
+\begin{align*}
+	H^1(C,\Vv)^*\simeq H^1\big(\IP_k^1,f_*\Vv\big)^*\simeq \Hom_{\Oo_{\IP_k^1}}\big(f_*\Vv,\Omega_{\IP_k^1}\big)\simeq \Hom_{\Oo_{\IP_k^1}}\big(\Vv,f^!\Omega_{\IP_k^1}\big)\simeq \Hom_{\Oo_C}\big(\Vv,\Omega_C\big)
+\end{align*}
+(as usual, asterisks denote duals as long as they are clearly no push-forwards/pull-backs), proving a duality like Theorem~\reff{thm:CurvesSerreDuality}\itememph{c}. In particular, for $\Vv=\Omega_C$ we get $H^1(C,\Omega_C)\simeq k$ and it is sufficient to show that this isomorphism satisfies Theorem~\reff{thm:CurvesSerreDuality}\itememph{a}. 
+
+But this is not too hard to check: The isomorphism 
+\begin{align*}
+	H^1(C,\Omega_C)\isomorphism k\isomorphism H^1(\IP_k^1,\Omega_{\IP_k^1})
+\end{align*}
+obtained by these identifications is the one given by $\Tr_f\colon f_*\Omega_C\morphism\Omega_{\IP_k^1}$ from Proposition~\reff{prop:f!OmegaIso}. Also, if $D$ is any divisor on $C$, define its push-forward $f_*D$ by $f_*D(x)=\sum_{f(y)=x}D(y)$.\footnote{If $k$ was not algebraically closed, we would need to multiply $D(y)$ by the inertia degree $[\KK(y)\colon \KK(x)]$. As explained in \cite[Ch.\ I, \S 12]{NEUKIRCH}, affine-locally divisors correspond to ideals in a Dedekind domain; and the push-forward of a divisor (in the more general version explained here) corresponds to the \emph{norm map} $N_{L/K}$ on ideals from \cite[p.\ 197]{NEUKIRCH} -- which is pretty much what we show.} Then $\deg(f_*D)=\deg(D)$ and the image of the $\Oo_C^\times$-torsor $\Oo_C(D)^\times$ under $N_{L/K}\colon f_*\Oo_C^\times\morphism\Oo_{\IP_k^1}^\times$ is $\Oo_{\IP_k^1}(D)^\times$.
+
+
+
 
 \appendix
 \chapter{Appendix -- category theory corner}
@@ -3443,7 +3640,7 @@ We start by proving the $n=1$ case, which actually holds in more generality.
 	Let $\Ll$ be a line bundle on $\IP_k^m$. Then $\Ll\simeq\Oo(d)$ for some $d\in\IZ$.
 \end{prop}
 \begin{proof}
-	Let $R=k[X_0,\ldots,X_m]$ and $U_i=\IP_k^m\setminus V(X_i)$ the standard affine opens. On $U_i$, $\Ll$ is given by $\snake{L}_i$ for some $(R_{X_i})_0$-module $L_i$. Giving a line bundle, $L_i$ is invertible and it can be shown that any invertible module over a UFD is trivial, cf.\ \cite[Tag~0BCH]{stacks-project}. Hence $L_i\simeq(R_{X_i})_0$. Let $\ell_i\in L_i$ be a generator. Then both $\ell_i$ and $\ell_j$ are generators of $\Ll|_{U_{i,j}}$, hence the differ by a unit in $\Oo_{\IP_k^m}(U_{i,j})=(R_{X_iX_j})_0$. That is, there are $d_{i,j}\in\IZ$ and $\alpha_{i,j}\in k$ such that
+	Let $R=k[X_0,\ldots,X_m]$ and $U_i=\IP_k^m\setminus V(X_i)$ the standard affine opens. On $U_i$, $\Ll$ is given by $\snake{L}_i$ for some $(R_{X_i})_0$-module $L_i$. Giving a line bundle, $L_i$ is invertible and it can be shown that any invertible module over a UFD is trivial, cf.\ \cite[\stackstag{0BCH}]{stacks-project}. Hence $L_i\simeq(R_{X_i})_0$. Let $\ell_i\in L_i$ be a generator. Then both $\ell_i$ and $\ell_j$ are generators of $\Ll|_{U_{i,j}}$, hence the differ by a unit in $\Oo_{\IP_k^m}(U_{i,j})=(R_{X_iX_j})_0$. That is, there are $d_{i,j}\in\IZ$ and $\alpha_{i,j}\in k$ such that
 	\begin{align*}
 		\ell_i=\alpha_{i,j} \left(\frac{X_j}{X_i}\right)^{d_{i,j}} \ell_j\;.
 	\end{align*}
