@@ -132,6 +132,7 @@
 \newcommand{\newoperator}[1]{\expandafter\def\csname #1\endcsname{\operatorname{#1}}}
 
 \newcommand{\Ann}{\operatorname{Ann}}
+\newcommand{\Aann}{\operatorname{\Aa nn}}
 \newoperator{Ass}
 \newcommand{\Aut}{\operatorname{Aut}}
 \newcommand{\cha}{\operatorname{char}}
@@ -329,6 +330,8 @@
 %}
 \newcommand{\snake}[1]{\fixwidetilde{#1}}%space adjusting hack
 \newcommand{\roof}[1]{\fixwidehat{#1}}
+\newcommand{\complete}{\lowerwidehatsym}
+\newcommand{\qcmod}{\lowerwidetildesym}
 %---- MISCELLANEOUS ----
 %
 \newcommand{\defemph}[1]{\textbf{\upshape#1}} %emphasize style of a to-be-defined object in a definition
@@ -361,5 +364,8 @@
 	\advance\dimen0-0.2\ht0
 	\setbox2=\hbox{\vrule height\ht0 depth -\dimen0}%
 	{\box0\lower0.71pt\box2}}
+
+%fibre products
+\newcommand{\fprod}[1]{\sideset{}{_{#1}}\prod}
 
 
