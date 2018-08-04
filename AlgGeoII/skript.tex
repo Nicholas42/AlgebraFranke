@@ -3179,7 +3179,7 @@ Let $R$ be a Dedekind domain with field of fractions $K$, $L/K$ a finite separab
 \begin{align*}
 	S^*=\left\{\sigma\in L\st \Tr_{L/K}(\sigma s)\in R\text{ for all }s\in S\right\}\;.
 \end{align*}
-Then $S^*$ is a fractional ideal of $S$ and thus has an inverse, the \defemph{Dedekind different} $\DD_{S/R}\coloneqq (S^*)^{-1}$. The construction of $\DD_{S/R}$ commutes with localization (cf.\ \cite[Ch.\ III, (2.2)]{NEUKIRCH}), hence we obtain
+Then $S^*$ is a fractional ideal of $S$ and thus has an inverse, the \defemph{Dedekind different} $\DD_{S/R}\coloneqq (S^*)^{-1}$. The construction of $\DD_{S/R}$ commutes with localization (cf.\ \cite[Ch.\ III, (2.2)]{NEUKIRCH}). Also, if $U\subseteq D$ is an affine open subset, then $R=\Oo_D(U)$ and $S=\Oo_C(f^{-1}U)$ form an extension of Dedekind domains as in the above situation (indeed, $R$ and $S$ are one-dimensional regular Noetherian rings, hence Dedekind domains). Hence we obtain
 \begin{fact}
 	If $f$ is a morphism as above, there is a unique sheaf of ideals $\DD_f\subseteq \Oo_C$ such that 
 	\begin{align*}
@@ -3231,7 +3231,7 @@ when $\pp\in\Spec R$ is the prime ideal corresponding to $d$.} As $\Tr_{L/K}\col
 	\end{align*}
 	It's a straightforward check that $\Phi$ and $\Psi$ are mutually inverse and that $\Psi$ corresponds to the map $M\otimes_RS^*\morphism\Hom_R(S,M)$ sending $m\otimes\sigma\mapsto \Tr(\sigma\cdot(-))$. We are done.	
 \end{proof}
-We will now work towards $f^!\Omega_D\cong \Omega_C$. To prove this, we will formulate a lemma first, and to do this, we need to justify that with $f$ as above, a point $d\in D$ has only finitely many preimages in $C$. Indeed, on an affine open neighbourhood $U\subseteq D$ of $d$ the situation looks like a finite extension of Dedekind domains\footnote{$R$ and $S$ are one-dimensional regular Noetherian rings, hence Dedekind domains.} $R=\Oo_D(U)$ and $S=\Oo_C(f^{-1}U)$, where $d$ corresponds to a prime ideal $\pp\in\Spec R$. The preimages of $d$ correspond to the prime ideals of $S$ lying above $\pp$, and it's well-known that there is a finite number $\PP_1,\ldots,\PP_N$ of them (the finitely many prime ideal factors of $\pp S$, cf.\ \cite[Ch.~I, \S 8]{NEUKIRCH}).
+We will now work towards $f^!\Omega_D\cong \Omega_C$. To prove this, we will formulate a lemma first, and to do this, we need to justify that with $f$ as above, a point $d\in D$ has only finitely many preimages in $C$. Indeed, on an affine open neighbourhood $U\subseteq D$ of $d$ the situation looks like a finite extension of (one-dimensional regular Noetherian rings and hence) Dedekind domains. $R=\Oo_D(U)$ and $S=\Oo_C(f^{-1}U)$, where $d$ corresponds to a prime ideal $\pp\in\Spec R$. The preimages of $d$ correspond to the prime ideals of $S$ lying above $\pp$, and it's well-known that there is a finite number $\PP_1,\ldots,\PP_N$ of them (the finitely many prime ideal factors of $\pp S$, cf.\ \cite[Ch.~I, \S 8]{NEUKIRCH}).
 
 However, for future use we prove a slightly stronger result.
 \begin{lem}\lbl{lem:finitelyManyPreimages}
@@ -3470,7 +3470,7 @@ Recall that a module $M$ over a ring $R$ is called \emph{flat} if $M\otimes_R-$ 
 	\end{align*}
 \end{fact}
 \begin{proof}
-	If $X=\Spec R$, then $Y=\Spec R\otimes_AB$ is also affine and $\pi^*\Mm=(M\otimes_AB)^\qcmod$ if $\Mm\cong \snake{M}$ for some $R$-module $M$. Thus $\pi^*\Mm(Y)\cong \Mm(X)\otimes_AB$ in this situation. Applying this to the $U_{i_0,\ldots,i_p}$ of a finite affine open cover $\Uu\colon X=\bigcup_{i=0}^nU_i$ of $X$ we obtain 
+	If $X=\Spec R$, then $Y=\Spec (R\otimes_AB)$ is also affine and $\pi^*\Mm=(M\otimes_AB)^\qcmod$ if $\Mm\cong \snake{M}$ for some $R$-module $M$. Thus $\pi^*\Mm(Y)\cong \Mm(X)\otimes_AB$ in this situation. Applying this to the $U_{i_0,\ldots,i_p}$ of a finite affine open cover $\Uu\colon X=\bigcup_{i=0}^nU_i$ of $X$ we obtain 
 	\begin{align*}
 		\check{C}^\bullet\left(\pi^{-1}\Uu,\pi^*\Mm\right)\cong\check{C}^\bullet(\Uu,\Mm)\otimes_AB
 	\end{align*}
