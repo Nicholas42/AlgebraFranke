@@ -117,6 +117,7 @@ We will also introduce the notion of \emph{Cohen--Macaulay rings} and prove that
 \chapter{\texorpdfstring{$\Tor$}{Tor} and \texorpdfstring{$\Ext$}{Ext} of \texorpdfstring{$R$}{R}-modules}
 From now on, unless otherwise stated, our rings are commutative with $1$.
 \section{Injective and projective modules and properties of \texorpdfstring{$\Ext_R^\bullet $}{Ext}}
+\subsection{Injective modules and Baer's criterion}
 \begin{prop}[Baer's criterion]\lbl{prop:InjectiveModules}
 	For an $R$-module $N$, the following are equivalent.
 	\begin{alphanumerate}
@@ -129,19 +130,17 @@ From now on, unless otherwise stated, our rings are commutative with $1$.
 	\begin{alphanumerate}
 		\item \lbl{rem:Injective}Since there is a bijection
 		\begin{align*}
-			\Hom_R(R,M)&\isomorphism M\\
-			\left(r\mapsto r\cdot m\right)&\longmapsfrom m\\
-			\left(R\morphism[\phi]M\right)&\longmapsto \phi(1)\;,
+			\Hom_R(R,M)&\isomorphism M
 		\end{align*}
-		Proposition~\reff{prop:InjectiveModules}\itememph{c} can be reformulated as that any morphism $I\morphism N$ for $I\subseteq R$ an ideal has the form $i\mapsto i\cdot m$ for some $m\in M$.
-		\item Note that Proposition~\reff{prop:InjectiveModules}\itememph{c} is trivial when $I=0$.
+		(coming from the fact that a morphism $R\morphism[\phi]M$ is uniquely determined by $\phi(1)$), Proposition~\reff{prop:InjectiveModules}\itememph{c} can be reformulated as that any morphism $I\morphism N$ for $I\subseteq R$ an ideal has the form $i\mapsto i\cdot m$ for some $m\in M$.
+		\item Note that Proposition~\reff{prop:InjectiveModules}\itememph{c} is trivially satisfied when $I=0$.
 		\item When $R=\IZ$, every ideal $I\subseteq \IZ$ has the form $n\IZ$ for some $n\in\IZ$ and a morphism $n\IZ\morphism[\phi]N$ is uniquely determined by $\phi(n)$. Thus, an extension $\hat\phi$ of $\phi$ to $\IZ$ exists iff there is an element $\nu\in N$ such that $n\cdot\nu=\phi(n)$ (in that case, put $\hat\phi(1)=\nu$). Hence, Proposition~\reff{prop:InjectiveModules}\itememph{c}  amounts to whether the abelian group $N$ is \emph{divisible}, that is, whether $N\morphism[n\cdot ]N$ is surjective for all $n\in\IZ$ (also cf.\ Definition~\reff{def:Divisible}).
 	\end{alphanumerate}
 \end{rem}
 \begin{defi}
 	\begin{alphanumerate}
 		\item \lbl{def:injectiveModule}An $R$-module is called \defemph{injective} if it satisfies the equivalent conditions from Proposition~\reff{prop:InjectiveModules}.
-		\item In an arbitrary category $\Aa$, an object $I$ is called \defemph{injective} if for every monomorphism $X\monomorphism Y$, the induced map $\Hom_\Aa(Y,I)\morphism\Hom_\Aa(X,I)$ is surjective, that is, for every morphism $X\morphism[\phi]I$ there is a (usually non-unique) lift
+		\item In an arbitrary category $\Aa$, an object $I$ is called \defemph{injective} if for every monomorphism $X\monomorphism Y$ and every morphism $X\morphism[\phi]I$ there is a (usually non-unique) lift
 		\begin{diagram*}
 			\node[ob] (X) at (0,0) {$X$};			
 			\node[ob] (Y) at (1.75,0) {$Y$};
@@ -153,6 +152,9 @@ From now on, unless otherwise stated, our rings are commutative with $1$.
 		\end{diagram*}
 	\end{alphanumerate}
 \end{defi}
+\begin{rem*}
+	Note that Definition~\reff{def:injectiveModule}\itememph{b} equivalently says that the induced map $\Hom_\Aa(Y,I)\morphism\Hom_\Aa(X,I)$ is surjective. That is, injective $R$-modules are injective objects in the category of $R$-modules.
+\end{rem*}
 \begin{proof}[Proof of Proposition~\reff{prop:InjectiveModules}]
 	The implication \itememph{b} $\Rightarrow$ \itememph{c} is trivial. Let's prove \itememph{c} $\Rightarrow$ \itememph{b}. Let $M\morphism[f]N$ be a morphism of $R$-modules and consider
 	\begin{align*}
@@ -197,7 +199,7 @@ From now on, unless otherwise stated, our rings are commutative with $1$.
 \begin{proof}
 	The first assertion follows as the quotient of divisible modules is divisible again. Note that $K/R$ is divisible, $K$ being the quotient field of $R$, hence it is injective. If $M$ is any $R$-module and $m\in M\setminus\{0\}$. We have to distinguish to cases.
 	
-	\emph{Case 1.} Suppose $\Ann_R(m)$ is non-zero, i.e., $\Ann_R(m)=(\alpha)$ for some $\alpha\in R\setminus \{0\}$ (remember we have a principal ideal domain). Then we have a morphism from $Rm\subseteq M$ to $K/R$ given by $rm\mapsto \frac{r}{\alpha}\bmod R$ (note that modding out $R$ is necessary for this to be well-defined -- we couldn't just have used $K$). By injectivity of $K/R$, there is an extension $M\morphism[\phi_m]K/R$, satisfying $\phi_m(m)\neq 0$. Let $I_m\subseteq K/R$ be the target of $\phi_m$.
+	\emph{Case 1.} Suppose $\Ann_R(m)$ is non-zero, i.e., $\Ann_R(m)=(\alpha)$ for some $\alpha\in R\setminus \{0\}$ (remember we have a principal ideal domain). Then we have a morphism from $Rm\subseteq M$ to $K/R$ given by $rm\mapsto \frac{r}{\alpha}\bmod R$ (note that modding out $R$ is necessary for this to be well-defined -- we couldn't just have used $K$). By injectivity of $K/R$, there is an extension $M\morphism[\phi_m]K/R$, satisfying $\phi_m(m)\neq 0$. Let $I_m= K/R$ be the target of $\phi_m$.
 	
 	\emph{Case 2.} If $\Ann_R(m)=0$, we get a morphism from $Rm\subseteq M$ to $K$ instead, sending $rm\mapsto r$ (this time, using $K$ doesn't cause problems thanks to $\Ann_R(m)=0$). By injectivity of $K$, this extends to a morphism $M\morphism[\phi_m]K$ such that $\phi_m(m)\neq0$. Let $I_m=K$ be the target of $\phi_m$.
 	
@@ -254,7 +256,7 @@ From now on, unless otherwise stated, our rings are commutative with $1$.
 			\end{diagram*}
 		the lower horizontal arrow is surjective by injectivity of $I$, hence so is the upper horizontal arrow.
 	\end{proof}
-	Back to the proof of Lemma~\reff{lem:AdjointStuff} and let's prove \itememph{c}. Let $M\monomorphism[\phi]I$ be a monomorphism of abelian groups. The corresponding morphism $M\morphism[\psi]\Hom_\IZ(R,I)$ sends $m\in M$ to $\psi(m)\colon R\morphism I$ given by $\psi(m)(r)=\phi(rm)$. If $\psi(m)$ is the zero morphism for some $m\in M$, then $0=\psi(m)(1)=\phi(m)$, proving $m=0$ by injectivity of $\phi$. Then $\psi$ is also injective.
+	Back to the proof of Lemma~\reff{lem:AdjointStuff} and let's prove \itememph{c}. Let $\phi\colon M\monomorphism I$ be a monomorphism of abelian groups. The corresponding morphism $\psi\colon M\morphism \Hom_\IZ(R,I)$ sends $m\in M$ to $\psi(m)\colon R\morphism I$ given by $\psi(m)(r)=\phi(rm)$. If $\psi(m)$ is the zero morphism for some $m\in M$, then $0=\psi(m)(1)=\phi(m)$, proving $m=0$ by injectivity of $\phi$. Then $\psi$ is also injective.
 \end{proof}
 The dual concept of \emph{projective modules} should be known, but for the sake of completeness I will include it nevertheless.
 \begin{defi}
@@ -274,7 +276,8 @@ The dual concept of \emph{projective modules} should be known, but for the sake 
 \end{defi}
 Note that in the case of $R$-modules, Definition~\reff{def:projectiveModule}\itememph{a} and \itememph{b} are equivalent.
 
-We will now use the $\Ext_R^\bullet(-,-)$ functor, which was constructed (for arbitrary abelian categories rather than just $R\cat{-Mod}$) in Subsection~\reff{subsec:ConstructionOfExt}.
+\subsection{First properties of the \texorpdfstring{$\Ext_R^\bullet$}{Ext} functor}
+We will now use the $\Ext_R^\bullet(-,-)$ functor, which was constructed (for arbitrary abelian categories rather than just $R\cat{-Mod}$) in Subsection~\reff{subsec:ConstructionOfExt} as a \emph{right-derived functor} of $\Hom_R(-,-)$.
 \begin{prop}\lbl{prop:PIDExt2}
 	Let $R$ be a PID.
 	\begin{alphanumerate}
@@ -290,7 +293,7 @@ We will now use the $\Ext_R^\bullet(-,-)$ functor, which was constructed (for ar
 \begin{rem*}
 	\begin{alphanumerate}
 		\item We will soon generalize this to Dedekind domains, cf. Corollary~\reff{cor:DedekindInjective}.
-		\item Let $R$ be a PID again. For $a\in R\setminus \{0\}$, the identity $\id_{R/aR}$ does \emph{not} lift to a morphism $R/aR\morphism R$, showing that $R/aR$ is not projective. By the classification of finitely generated $R$-modules and the fact that any direct summand of a projective module is projective again (this is clear using the criterion that projective modules over any ring are precisely the direct summands of free modules, cf. Lemma~\reff{lem:projectiveDirectSummand} but also follows from Proposition~\reff{prop:PIDExt2}\itememph{b} in our case), this shows that a finitely generated $R$-module is projective iff it is free.
+		\item Let $R$ be a PID again. For $a\in R\setminus \{0\}$, the identity $\id_{R/aR}$ does \emph{not} lift to a morphism $R/aR\morphism R$, showing that $R/aR$ is not projective. By the classification of finitely generated $R$-modules and the fact that any direct summand of a projective module is projective again (this is clear using the criterion that projective modules over any ring are precisely the direct summands of free modules, cf. Lemma~\reff{lem:projectiveDirectSummand}; but also follows from Proposition~\reff{prop:PIDExt2}\itememph{b} in our case), this shows that a finitely generated $R$-module is projective iff it is free.
 		
 		This can be seen to hold without the assumption of being finitely generated. Therefore, ``projective'' in Proposition~\reff{prop:PIDExt2}\itememph{b} may be replaced by ``free''.
 	\end{alphanumerate}
@@ -381,11 +384,11 @@ Our goal now is to establish some properties of $\Ext$ groups over a ring $R$, n
 	If $M$ and $N$ are finitely generated modules over the Noetherian ring $R$, the $R$-modules $\Ext_R^p(M,N)$ are all finitely generated.
 \end{fact}
 \begin{proof}
-	Choose a free resolution $0\lmorphism M\lmorphism R^{n_0}\morphism R^{n_1}\lmorphism\ldots$ as in Fact~\reff{fact:freeResolution}, then $\Ext_R^k(M,N)$ can be calculated as $H^k\left(N^{n_0}\morphism N^{n_1}\morphism\ldots\right)$, which is finitely generated as the $N^{n_i}$ are finitely generated and we are all Noetherian and stuff.
+	Choose a free resolution $0\lmorphism M\lmorphism R^{n_0}\lmorphism R^{n_1}\lmorphism\ldots$ as in Fact~\reff{fact:freeResolution}, then $\Ext_R^k(M,N)$ can be calculated as $H^k\left(N^{n_0}\morphism N^{n_1}\morphism\ldots\right)$, which is finitely generated as the $N^{n_i}$ are finitely generated and we are all Noetherian and stuff.
 \end{proof}
 We will now examine when $\Ext_R^\bullet$ commutes with localization.
 
-Let $\Aa\doublelrmorphism[L][R]\Bb$ be an adjoint pair between abelian categories $\Aa,\Bb$. Then it's easy to see that $L$ preserves projective objects when $R$ is exact and $R$ preserves injectives when $L$ is exact. This may be applied to $\Aa=A\cat{-Mod}$ and $\Bb=A_S\cat{-Mod}$ where $A$ is some ring, $S\subseteq A$ a multiplicative subset, $A_S$ the localization of $A$ at $S$ and where $L$ is the functor $M\mapsto M_S$ for $M$ an $A$-module and $R$ is the forgetful functor. Note that both $L$ and $R$ are exact and we obtain
+Let $\Aa\doublelrmorphism[L][\smash{R}]\Bb$ be an adjoint pair between abelian categories $\Aa,\Bb$. Then it's easy to see that $L$ preserves projective objects when $R$ is exact and $R$ preserves injectives when $L$ is exact. Actually, Fact~\reff{fact:AdjointInjProj} (and it's dual version) show this under fairly weaker assumptions. This may be applied to $\Aa=A\cat{-Mod}$ and $\Bb=A_S\cat{-Mod}$ where $A$ is some ring, $S\subseteq A$ a multiplicative subset, $A_S$ the localization of $A$ at $S$ and where $L$ is the functor $M\mapsto M_S$ for $M$ an $A$-module and $R$ is the forgetful functor. Note that both $L$ and $R$ are exact and we obtain
 \begin{fact}\lbl{fact:InjProjLoc}
 	Let $R$ be any ring. If $M$ is a projective $R$-module, then $M_S$ is a projective $R_S$-module. If $N$ is an injective $R_S$-module, then it is injective as an $R$-module as well.
 \end{fact}
@@ -430,13 +433,14 @@ And now for the advertised compatibility with localization.
 	
 	For existence, choose a free resolution $0\lmorphism M\lmorphism R^{n_0}\morphism R^{n_1}\lmorphism\ldots$ as in Fact~\reff{fact:freeResolution}. By exactness of localization, $0\lmorphism M_S\lmorphism R_S^{n_0}\morphism R_S^{n_1}\lmorphism\ldots$ is a free resolution of $M_S$. Using these to compute $\Ext_R^\bullet(M,-)$ and $\Ext_{R_S}^\bullet(M_S,-)$ and the fact that localization commutes with cohomology (since it is exact), we obtain
 	\begin{align*}
-		\Ext_R^p(M,N)_S&=H^p\left(N^{n_0}\morphism N^{n_1}\morphism\ldots\right)_S\\
+		\Ext_R^p(M,N)_S&\cong H^p\left(N^{n_0}\morphism N^{n_1}\morphism\ldots\right)_S\\
 		&\cong H^p\left(N_S^{n_0}\morphism N_S^{n_1}\morphism\ldots\right)\\
-		&=\Ext_{R_S}^p(M_S,N_S)\;,
+		&\cong \Ext_{R_S}^p(M_S,N_S)\;,
 	\end{align*}
 	as required.
 \end{proof}
-\paragraph{Projective and injective dimension.} Let $\Aa$ be an abelian category. To have $\Ext_\Aa^\bullet$ available, we need to assume that $\Aa$ has sufficiently many injective or projective objects or we use Yoneda-$\Ext_\Aa^\bullet$ from Remark~\reff{rem:YonedaExt}\itememph{b}.
+\subsection{Projective and injective dimension}
+Let $\Aa$ be an abelian category. To have $\Ext_\Aa^\bullet$ available, we need to assume that $\Aa$ has sufficiently many injective or projective objects or we use Yoneda-$\Ext_\Aa^\bullet$ from Remark~\reff{rem:YonedaExt}\itememph{b}.
 \begin{defi}\lbl{def:idim/pdim}
 	Let $X$ be an objects of $\Aa$. Its \defemph{injective/projective dimension} is defined as
 	\begin{align*}
@@ -450,8 +454,8 @@ And now for the advertised compatibility with localization.
 	\begin{align*}
 		\idim_\Aa(X)&=\min\left\{\ell\st X\text{ has an injective resolution of length }\ell\right\}\\
 	&=	\min\left\{\ell\st\begin{array}{c}
-	\text{for any injective resolution }X\morphism I^\bullet\text{ the truncation}\\
-	X\morphism\tau_{\leq\ell}I^\bullet\text{ is an injective resolution of }X
+	\text{for any injective resolution }X\monomorphism I^\bullet\text{ the truncation}\\
+	X\monomorphism\tau_{\leq\ell}I^\bullet\text{ is an injective resolution of }X
 	\end{array}
 	\right\}
 	\end{align*}
@@ -477,7 +481,7 @@ In the case where $C^\bullet$ is acyclic (e.g., an injective resolution), $\tau_
 \begin{proof}[Proof of Fact~\reff{fact:injDim}]
 	Let $\idim_\Aa^{(1)}$, $\idim_\Aa^{(2)}$, and $\idim_\Aa^{(3)}$,  denote the three notions of injective dimension in the order in which they appear. Then $\idim_\Aa^{(1)}(X)\leq \idim_\Aa^{(2)}(X)\leq \idim_\Aa^{(3)}(X)$ is trivial.
 	
-	Let's show $\idim_\Aa^{(3)}(X)\leq \idim_\Aa^{(1)}(X)$. Let $X\morphism I^\bullet$ be any injective resolution of $X$. Denote $Z^k=\ker\left(I^k\morphism I^{k+1}\right)$. Then $Z^0=X$ and the short exact sequence $0\morphism Z^k\morphism I^k\morphism Z^{k+1}\morphism 0$ gives
+	Let's show $\idim_\Aa^{(3)}(X)\leq \idim_\Aa^{(1)}(X)$. Let $X\monomorphism I^\bullet$ be any injective resolution of $X$. Denote $Z^k=\ker\left(I^k\morphism I^{k+1}\right)$. Then $Z^0=X$ and the short exact sequence $0\morphism Z^k\morphism I^k\morphism Z^{k+1}\morphism 0$ gives
 	\begin{align*}
 		0=\Ext_\Aa^p(T,I^k)\morphism \Ext_\Aa^p(T,Z^{k+1})\morphism\Ext_\Aa^{p+1}(T,Z^k)\morphism\Ext_\Aa^{p+1}(T,I^k)=0
 	\end{align*}
@@ -489,8 +493,8 @@ In particular, this proof shows that $\Ext_\Aa^{\ell+1}(-,X)=0$ implies $\Ext_\A
 	\begin{align*}
 	\pdim_\Aa(X)&=\min\left\{\ell\st X\text{ has a projective resolution of length }\ell\right\}\\
 	&=	\min\left\{\ell\st\begin{array}{c}
-	\text{for any projective resolution }P_\bullet\morphism X\text{ the truncation}\\
-	\snake{\tau}_{\leq\ell}P_\bullet\morphism X\text{ is a projective resolution of }X
+	\text{for any projective resolution }P_\bullet\epimorphism X\text{ the truncation}\\
+	\snake{\tau}_{\leq\ell}P_\bullet\epimorphism X\text{ is a projective resolution of }X
 	\end{array}
 	\right\}\;,
 	\end{align*}
@@ -553,9 +557,9 @@ If $R$ is a Dedekind domain, the $R_\mm$ are fields (when $R$ is a field) or dis
 \begin{proof}
 	An $R$-module $M$ is injective iff $\idim_R(M)\leq 0$ (note that $0$ is also injective and $\idim_R(0)=-\infty$), so by Corollary~\reff{cor:injDimLocal}, $M$ is injective iff $M_\pp$ is injective for all $\pp\in \Spec R$. Note that $M_\pp$ is divisible iff $M_\pp\morphism[r\cdot]M_\pp$ is surjective for all $r\in R\setminus\{0\}$. Indeed, multiplication by $s^{-1}\in R_\pp$ for $s\in R\setminus \pp$ is automatically bijective, so it suffices to test divisibility on those $r\in R_\pp$ which are the image of some non-zero element of $R$.
 	
-	By a well-known lemma, a morphism $N\morphism[f]N'$ of $R$-modules is surjective iff every localization $N_\pp\morphism[f]N'_\pp$ is surjective (and this works for injectivity as well). Applying this to $N=N'=M$ and $f=r\cdot$ for $r\in R\setminus\{0\}$, we find that $M$ is divisible iff all its localizations $M_\pp$ are. Since the $R_\pp$ are PIDs, Corollary~\reff{cor:PIDInjDiv} proves our first assertion that $M$ is injective iff its divisible.
+	By a well-known lemma, a morphism $f\colon N\morphism N'$ of $R$-modules is surjective iff every localization $f_\pp\colon N_\pp\morphism N'_\pp$ is surjective (and this works for injectivity as well). Applying this to $N=N'=M$ in the case where $f$ is multiplication by $r\in R\setminus\{0\}$, we find that $M$ is divisible iff all its localizations $M_\pp$ are. Since the $R_\pp$ are PIDs, Corollary~\reff{cor:PIDInjDiv} proves our first assertion that $M$ is injective iff its divisible.
 	
-	Since quotients of divisible $R$-modules are divisible again, the second assertion follows immediately. If $M\morphism I^\bullet$ is an injective resolution of $M$, then so is $0\morphism M\morphism I^0\morphism I^0/M\morphism 0$ already, hence $\idim_R(M)\leq 1$.
+	Since quotients of divisible $R$-modules are divisible again, the second assertion follows immediately. If $M\monomorphism I^\bullet$ is an injective resolution of $M$, then so is $0\morphism M\morphism I^0\morphism I^0/M\morphism 0$ already, hence $\idim_R(M)\leq 1$.
 	
 	In particular, $\Ext_R^2(-,-)=0$, hence $\pdim_R(M)\leq 1$ holds as well by Definition~\reff{def:idim/pdim}. If $P$ is projective and $Q\subseteq P$ a submodule, we get an exact sequence 
 	\begin{align*}
@@ -579,23 +583,23 @@ If $R$ is Noetherian, $M$ a finitely generated $R$-module and $N\subseteq M$ a s
 
 When $M$ is finitely generated, $\Ext_R^\bullet(M,-)$ may be calculated using a resolution $F_\bullet \morphism M$ of $M$ by finitely generated free modules $F_i\cong R^{n_i}$. Then the $\roof{F}_i$ stay free (of the same rank), so $\roof{F}_\bullet\morphism \roof{M}$ is still a free resolution, and moreover
 \begin{align*}
-	\Hom_R(F_i,N)\roof{\phantom{)}}\cong \Hom_R(R^{n_i},N)\roof{\phantom{)}}\cong (N^{n_i})\roof{\phantom{)}}\cong \roof{N}^{n_i}\cong \Hom_{\roof{R}}(\roof{F_i},\roof{N})
+	\Hom_R(F_i,N)^\complete \cong \Hom_R(R^{n_i},N)^\complete \cong (N^{n_i})^\complete \cong \roof{N}^{n_i}\cong \Hom_{\roof{R}}(\roof{F_i},\roof{N})\;.
 \end{align*}
 Together with exactness of $\roof{\phantom{x}}$ on finitely generated $R$-modules, we obtain
 \begin{prop}\lbl{prop:ExtCompletion}
 	Let $R$ be a Noetherian ring, $I\subseteq R$ any ideal and $M$ and $N$ finitely generated $R$-modules. Let $p\geq 0$. Then
 	\begin{align*}
-		\Ext_R^p(M,N)\roof{\phantom{)}}\cong \Ext_{\roof{R}}^p(\roof{M},\roof{N})
+		\Ext_R^p(M,N)^\complete \cong \Ext_{\roof{R}}^p(\roof{M},\roof{N})
 	\end{align*}
 	holds for the $I$-adic completions.
 \end{prop}
-In particular, this implies $\Hom_R(M,N)\roof{\phantom{)}}\cong\Hom_{\roof{R}}(\roof{M},\roof{N})$ for finitely generated modules $M,N$ over a Noetherian ring $R$.
+In particular, this implies $\Hom_R(M,N)^\complete \cong\Hom_{\roof{R}}(\roof{M},\roof{N})$ for finitely generated modules $M,N$ over a Noetherian ring $R$.
 \begin{cor}\lbl{cor:projDimCompletion}
 	Let $R$ be Noetherian. For any finitely generated $R$-module $M$, 
 	\begin{align*}		
 		\pdim_R(M)\geq\pdim_{\roof{R}}(\roof{M})\;.
 	\end{align*}
-	When $R$ is local and $I\subseteq R$ a proper ideal, equality holds.
+	When $R$ is local and $I\subsetneq R$ a proper ideal, equality holds.
 \end{cor}
 \begin{rem*}
 	Note that the additional assumptions are \emph{necessary}, though they were missing in the lecture. If $I=R$, the involved completions vanish and equality clearly fails. If $R$ is not required to be local, there are less (but not much) stupid counterexamples such as $R=\IZ$, $I=(2)$ and $M=\IZ/3\IZ$. Then $M=IM$ and the completion $\roof{M}$ vanishes, so the right-hand side becomes $-\infty$ whereas the left-hand side is $1$ (I guess).
@@ -621,9 +625,9 @@ We use this to prove an analogue of \eqreff{eq:idim}.
 	is exact, so $\Hom_R(P,F)\morphism\Hom_R(P,P)$ is surjective. A preimage of $\id_P$ gives a split of $0\morphism K\morphism F\morphism P\morphism 0$, so $F\cong K\oplus P$ and $P$ is projective by Lemma~\reff{lem:projectiveDirectSummand}.
 \end{proof}
 \begin{proof}[Proof of Corollary~\reff{cor:projDimCompletion}]
-	Let $F_\bullet M$ be a resolution by finitely generated free $R$-modules. If $\Ext_R^p(-,M)=0$, then the truncation $\snake{\tau}_{\leq p-1}F_\bullet$ is a projective resolution. In particular, $B_{p-1}=\coker(F_p\morphism F_{p-1})$ is projective and by Lemma~\reff{lem:projectiveDirectSummand} we find an $R$-module $Q$ and $n\in\IN$ such that $B_{p-1}\oplus Q\cong R^n$. Then $\roof{B}_{p-1}\oplus\roof{Q}=\roof{R}^n$ and $\roof{B}_{p-1}$ is a projective $\roof{R}$-module by Lemma~\reff{lem:projectiveDirectSummand} again (we used that completion commutes with finite direct sums -- both are special cases of limits and limits commute with limits by the dual of \cite[Lemma~A.1.4]{alggeo2}). Then $\snake{\tau}_{\leq p-1}\roof{F}_\bullet$ is a projective resolution of $\roof{M}$ of length $p-1$. By Fact~\reff{fact:projDim}, this shows $\pdim_R(M)\geq\pdim_{\roof{R}}(\roof{M})$.
+	Let $F_\bullet M$ be a resolution by finitely generated free $R$-modules. If $\Ext_R^p(-,M)=0$, then the truncation $\snake{\tau}_{\leq p-1}F_\bullet$ is a projective resolution. In particular, $B_{p-1}=\coker(F_p\morphism F_{p-1})$ is projective and by Lemma~\reff{lem:projectiveDirectSummand} we find an $R$-module $Q$ and $n\in\IN$ such that $B_{p-1}\oplus Q\cong R^n$. Then $\roof{B}_{p-1}\oplus\roof{Q}=\roof{R}^n$ and $\roof{B}_{p-1}$ is a projective $\roof{R}$-module by Lemma~\reff{lem:projectiveDirectSummand} again (we used that completion commutes with finite direct sums -- both are special cases of limits and limits commute with limits by the dual of \cite[Corollary~A.1.1]{alggeo2}). Then $\snake{\tau}_{\leq p-1}\roof{F}_\bullet$ is a projective resolution of $\roof{M}$ of length $p-1$. By Fact~\reff{fact:projDim}, this shows $\pdim_R(M)\geq\pdim_{\roof{R}}(\roof{M})$.
 	
-	Now assume that $R$ is local and $\pdim_R(M)>p$. Then $\snake{\tau}_{\leq p}F_\bullet$ is no projective resolution of $M$ by Fact~\reff{fact:projDim}, and the reason for this must be that $B_p=\coker(F_{p+1}\morphism F_p)$ isn't projective. Then $\Ext_R^1(B_p,T)\neq 0$ for some $R$-module $T$, which we may choose finitely generated by Corollary~\reff{cor:projExtFiniteStuff}. We claim that then also $\Ext_R^1(B_p,T)\roof{\phantom{)}}\neq 0$. Indeed, $N=\Ext_R^1(B_p,T)$ is finitely generated by Fact~\reff{fact:ExtFinGen}. Let $\nu\in N\setminus IN$ (which exists by the Nakayama lemma and $N\neq 0$). Then the sequence of images of $\nu$ in $N/I^kN$ gives a non-zero element of $\roof{N}=\limit N/I^kN$. By Corollary~\reff{prop:ExtCompletion}, $\Ext_{\roof{R}}^1(\roof{B}_p,\roof{T})\neq 0$ and thus $\roof{B}_p$ is not projective. So $\snake{\tau}_{\leq p}\roof{F}_\bullet$ is no projective resolution of $\roof{M}$, proving $\pdim_{\roof{R}}(\roof{M})>p$ by Fact~\reff{fact:projDim}.
+	Now assume that $R$ is local and $\pdim_R(M)>p$. Then $\snake{\tau}_{\leq p}F_\bullet$ is no projective resolution of $M$ by Fact~\reff{fact:projDim}, and the reason for this must be that $B_p=\coker(F_{p+1}\morphism F_p)$ isn't projective. Then $\Ext_R^1(B_p,T)\neq 0$ for some $R$-module $T$, which we may choose finitely generated by Corollary~\reff{cor:projExtFiniteStuff}. We claim that then also $\Ext_R^1(B_p,T)^\complete \neq 0$. Indeed, $N=\Ext_R^1(B_p,T)$ is finitely generated by Fact~\reff{fact:ExtFinGen}. Let $\nu\in N\setminus IN$ (which exists by the Nakayama lemma and $N\neq 0$). Then the sequence of images of $\nu$ in $N/I^kN$ gives a non-zero element of $\roof{N}=\limit N/I^kN$. By Corollary~\reff{prop:ExtCompletion}, $\Ext_{\roof{R}}^1(\roof{B}_p,\roof{T})\neq 0$ and thus $\roof{B}_p$ is not projective. So $\snake{\tau}_{\leq p}\roof{F}_\bullet$ is no projective resolution of $\roof{M}$, proving $\pdim_{\roof{R}}(\roof{M})>p$ by Fact~\reff{fact:projDim}.
 \end{proof}
 \section{Torsion products and flat modules}
 \begin{defi}
@@ -633,7 +637,7 @@ That is,
 \begin{align}\lbl{eq:TorDef}
 	\Tor_i^R(M,N)=H_i(M\otimes_RP_\bullet)
 \end{align}
-where $P_\bullet \morphism N$ is any projective resolution.
+where $P_\bullet \epimorphism N$ is any projective resolution.
 \begin{rem*}
 	\begin{alphanumerate}
 		\item Recall that $M\otimes_RN$ has the universal property
@@ -645,14 +649,12 @@ where $P_\bullet \morphism N$ is any projective resolution.
 		\begin{multline}\lbl{eq:TorSeq1}
 			\ldots\morphism\Tor_{p+1}^R(M,N'')\morphism[\partial]\Tor_p^R(M,N')\morphism\Tor_p^R(M,N)\\
 			\morphism\Tor_p^R(M,N'')\morphism[\partial]\Tor_{p-1}^R(M,N')\morphism\ldots
-		\end{multline}
-		We will write $\partial_{M,\Nn}$ instead of $\partial$ to avoid confusion if necessary.
-		
+		\end{multline}		
 		If $\Mm\colon 0\morphism M'\morphism M\morphism M''\morphism 0$ is another short exact sequence of $R$-modules, then
 		\begin{align}\lbl{eq:TorFuncSeq}
 			0\morphism (M'\otimes_R -)\morphism (M\otimes _R-)\morphism (M''\otimes_R-)\morphism 0\tag{$*$}
 		\end{align}
-		is a sequence of functors from $R\cat{-Mod}$ to itself which is exact on free objects $F$. If $P$ is a projective $R$-module, there is a free $R$-module and a surjective morphism $F\epimorphism[\pi]P$. As $P$ is projective, $\pi$ has a section, making $P$ into a direct summand of $F$. Then the sequence \eqreff{eq:TorFuncSeq} for $P$ is a direct summand of \eqreff{eq:TorFuncSeq} for $F$ and thus exact as well. That is, \eqreff{eq:TorFuncSeq} is exact on projective objects, so Theorem~\reff{thm:LeftDerivedFunctors}\itememph{c} gives another connecting morphism $\partial=\partial_{\Mm,N}\colon \Tor_{p+1}^R(M,N'')\morphism\Tor_p^R(M,N')$ such that
+		is a sequence of functors from $R\cat{-Mod}$ to itself which is exact on free objects $F$. If $P$ is a projective $R$-module, it is a direct summand of some free module $F$ by Lemma~\reff{lem:projectiveDirectSummand}. Then the sequence \eqreff{eq:TorFuncSeq} for $P$ is a direct summand of \eqreff{eq:TorFuncSeq} for $F$ and thus exact as well. That is, \eqreff{eq:TorFuncSeq} is exact on projective objects, so Theorem~\reff{thm:LeftDerivedFunctors}\itememph{c} gives another connecting morphism $\partial\colon \Tor_{p+1}^R(M,N'')\morphism\Tor_p^R(M,N')$ such that
 		\begin{multline}\lbl{eq:TorSeq2}
 			\ldots\morphism\Tor_{p+1}^R(M'',N)\morphism[\partial]\Tor_p^R(M',N)\morphism\Tor_p^R(M,N)\\
 			\morphism\Tor_p^R(M'',N)\morphism[\partial]\Tor_{p-1}^R(M',N)\morphism\ldots\;.
@@ -666,7 +668,7 @@ where $P_\bullet \morphism N$ is any projective resolution.
 \begin{proof}
 	If $N$ is projective, it can be taken as a projective resolution of itself and calculating $\Tor_\bullet^R(M,N)$ using \eqreff{eq:TorDef} gives $\Tor_i^R(M,N)=0$ for all $i>0$. 
 	
-	Now assume that $M$ is projective and let $P_\bullet \morphism N$ be any projective resolution. If $M=\bigoplus_{s\in S}R$ (for some indexing set $S$) is free, then $M\otimes_RP_\bullet=\bigoplus_{s\in S}P_\bullet$ is a complex acyclic in positive degrees (as direct sums of exact sequences stay exact), hence the vanishing of $\Tor_\bullet^R(M,N)$ in positive degrees. For general $M$, there is a free $R$-module $F$ with a surjection $F\morphism M$ which splits by projectivity of $M$, making $M$ a direct summand of $F$, hence $M\otimes_RP_\bullet$ a direct summand of $F\otimes_RP_\bullet$ and thus $\Tor_i^R(M,N)$ one of $\Tor_i^R(F,N)=0$ when $i>0$. 
+	Now assume that $M$ is projective and let $P_\bullet \epimorphism N$ be any projective resolution. If $M=\bigoplus_{s\in S}R$ (for some indexing set $S$) is free, then $M\otimes_RP_\bullet=\bigoplus_{s\in S}P_\bullet$ is a complex acyclic in positive degrees (as direct sums of exact sequences stay exact), hence the vanishing of $\Tor_\bullet^R(M,N)$ in positive degrees. For general $M$, there is a free $R$-module $F$ with a surjection $F\morphism M$ which splits by projectivity of $M$, making $M$ a direct summand of $F$, hence $M\otimes_RP_\bullet$ a direct summand of $F\otimes_RP_\bullet$ and thus $\Tor_i^R(M,N)$ one of $\Tor_i^R(F,N)=0$ when $i>0$. 
 \end{proof}
 It follows that $\Tor_\bullet^R(-,N)$ for fixed $N$ has the properties characterizing derived functors (Theorem~\reff{thm:LeftDerivedFunctors}\itememph{b}). That is, $\Tor_\bullet^R(-,N)$ is also the left-derived functor of $-\otimes_RN$. As a consequence of the universal property of derived functors, we get
 \begin{prop}\lbl{prop:TorMN=TorNM}
@@ -683,10 +685,10 @@ It follows that $\Tor_\bullet^R(-,N)$ for fixed $N$ has the properties character
 			M/aM & \text{if }i=0\\
 			\ker(M\morphism[a\cdot ]M) & \text{if }i=1\\
 			0 & \text{else}
-		\end{cases}
+		\end{cases}\;.
 	\end{align*}
 \end{example}
-In the same way as Fact~\reff{fact:atimesExt} for $\Ext$ we have
+In the same way as Fact~\reff{fact:atimesExt} for $\Ext$, we see that the following Fact~\reff{fact:atimesTor} holds.
 \begin{fact}\lbl{fact:atimesTor}
 	For $a\in R$ and any $R$-modules $M$ and $N$ the following coincide.
 	\begin{alphanumerate}
@@ -715,20 +717,20 @@ And we need compatibility with localization of course.
 	\end{align*}
 \end{fact}
 \begin{proof}
-	The constructions on the right-hand side are homological functors of $M$ and $N$ which annullate free $R$-modules and hence also their direct summands, i.e., projective modules (Lemma~\reff{lem:projectiveDirectSummand}) in higher degrees as follows: Let $i>0$, then $\Tor_i^R(M,N_S)=0$ when $M$ is projective, $\Tor_i^R(M_S,N)=0$ when $N$ is projective, and $\Tor_i^{R_S}(M_S,N_S)=0$ when $M$ or $N$ are projective (indeed, localizing preserves the property of being a direct summand of some free module). In degree $0$ they agree up to the isomorphisms above. By Theorem~\reff{thm:LeftDerivedFunctors}\itememph{b} and the universal property of derived functors, the required canonical isomorphisms
+	The constructions on the right-hand side are homological functors of $M$ and $N$ which annullate free $R$-modules and hence also their direct summands, i.e., projective modules (Lemma~\reff{lem:projectiveDirectSummand}) in higher degrees as follows: Let $i>0$, then $\Tor_i^R(M,N_S)=0$ when $M$ is projective, $\Tor_i^R(M_S,N)=0$ when $N$ is projective, and $\Tor_i^{R_S}(M_S,N_S)=0$ when $M$ or $N$ are projective (indeed, localizing preserves the property of being a direct summand of some free module). In degree $0$ they agree up to the isomorphisms above. By Theorem~\reff{thm:LeftDerivedFunctors}\itememph{b} and the universal property of derived functors, we deduce the required canonical isomorphisms
 	\begin{align*}
 		\Tor_\bullet^R(M,N)_S\cong \Tor_\bullet^R(M,N_S)\cong \Tor_\bullet^R(M_S,N) \cong \Tor_\bullet^{R_S}(M_S,N_S)\;.
 	\end{align*}
 	It remains to prove $\Tor_\bullet^R(M,N)_S\cong \Tor_\bullet^R(M_S,N_S)$. But this can be obtained from the composition $\Tor_\bullet^R(M,N)_S\isomorphism \Tor_\bullet^R(M,N_S)\isomorphism \Tor_\bullet^R(M_S,N_S)$.
 \end{proof}
-The functor $M\otimes_R-$ is compatible with directed (or filtered) colimits (which may be proved by checking the universal property). That is, for a directed system $(N_\lambda)_{\lambda\in\Lambda}$ we have
+By the tensor-hom adjunction, the functor $M\otimes_R-$ is left-adjoint to $\Hom_R(M,-)$, hence commutes with arbitrary colimits (by \cite[Corollary~A.1.1]{alggeo2}). That is, for any system $(N_\lambda)_{\lambda\in\Lambda}$ we have
 \begin{align*}
 	M\otimes_R\colimit[\lambda\in\Lambda]N_\lambda&\isomorphism \colimit[\lambda\in\Lambda]M\otimes_RN_\lambda\\
 	m\otimes\left(\text{image of }n_\lambda\text{ in }\colimit N_\lambda\right)&\longmapsto \left(\text{image of }m\otimes n_\lambda\text{ in }\colimit M\otimes_RN_\lambda\right)\;.
 \end{align*}
-Also recall that direct colimits are exact\footnote{To see they commute with kernels you can use the explicit construction, commutativity with cokernels follows from the more general fact of colimits commuting with colimits, cf.\ \cite[Lemma~A.1.4]{alggeo2}.}, hence commute with taking homology. We thus obtain
+Also recall that \emph{filtered} colimits are exact\footnote{To see they commute with kernels you can use that filtered colimits taken in $R\cat{-Mod}$ are the same as being taken in $\cat{Set}$; commutativity with cokernels is automatically true by \cite[Corollary~A.1.1]{alggeo2}.}, hence commute with taking homology. We thus obtain
 \begin{fact}\lbl{fact:TorCommutesWithColims}
-	Torsion products are compatible with direct colimits. That is, for a directed system $(N_\lambda)_{\lambda\in\Lambda}$ of $R$-modules we have an isomorphism
+	Torsion products are compatible with filtered colimits. That is, for a filtered system $(N_\lambda)_{\lambda\in\Lambda}$ of $R$-modules we have an isomorphism
 	\begin{align*}
 		\Tor_\bullet^R\bigg(M,\colimit[\lambda\in\Lambda]N_\lambda\bigg)\lisomorphism \colimit[\lambda\in\Lambda]\Tor_\bullet^R(M,N_\lambda)\;.
 	\end{align*}
@@ -744,7 +746,7 @@ Also recall that direct colimits are exact\footnote{To see they commute with ker
 	\end{alphanumerate}
 \end{prop}
 \begin{proof}
-	The implication \itememph{a} $\Rightarrow$ \itememph{b} is clear from \eqreff{eq:TorDef}. Also \itememph{b} $\Rightarrow$ \itememph{c} $\Rightarrow$ \itememph{e} and \itememph{b} $\Rightarrow$ \itememph{d} $\Rightarrow$ \itememph{e} are trivial. To see \itememph{e} $\Rightarrow$ \itememph{d}, use that any $R$-module $N$ can be written as a direct colimit over its finitely generated submodules and then apply Fact~\reff{fact:TorCommutesWithColims}. Finally, the implication \itememph{e} $\Rightarrow$ \itememph{a} is clear from the long exact $\Tor$ sequence \eqreff{eq:TorSeq1}. 
+	The implication \itememph{a} $\Rightarrow$ \itememph{b} is clear from \eqreff{eq:TorDef}. Also \itememph{b} $\Rightarrow$ \itememph{c} $\Rightarrow$ \itememph{e} and \itememph{b} $\Rightarrow$ \itememph{d} $\Rightarrow$ \itememph{e} are trivial. To see \itememph{e} $\Rightarrow$ \itememph{d}, use that any $R$-module $N$ can be written as a filtered colimit over its finitely generated submodules and then apply Fact~\reff{fact:TorCommutesWithColims}. Finally, the implication \itememph{d} $\Rightarrow$ \itememph{a} is clear from the long exact $\Tor$ sequence \eqreff{eq:TorSeq1}. 
 \end{proof}
 \begin{defi}
 	An $R$-module with these properties is called \defemph{flat}.
@@ -806,7 +808,7 @@ For flatness, there is a criterion similar to Baer's (Proposition~\reff{prop:Inj
 	Every projective module is flat (Fact~\reff{fact:TorProj=0} and Proposition~\reff{prop:flatConditions}\itememph{b}).
 \end{example}
 \begin{fact}\lbl{fact:flatVeryLocal}
-	For a module $M$ over an arbitrary ring the following conditions are equivalent.
+	For a module $M$ over an arbitrary ring $R$ the following conditions are equivalent.
 	\begin{alphanumerate}
 		\item $M$ is flat.
 		\item For any multiplicative subset $S\subseteq R$, $M_S$ is a flat $R$-module.
@@ -836,7 +838,7 @@ For flatness, there is a criterion similar to Baer's (Proposition~\reff{prop:Inj
 \begin{proof}
 	For finitely generated $R$-modules $M$ we have an isomorphism $M\otimes_R\roof{R}\isomorphism \roof{M}$. Indeed, this is true when $M=R$ and both sides commute with taking cokernels and finite direct sums, since completion is exact on finitely generated $R$-modules (cf.\ \cite[Lemma~7.15]{eisenbudCommAlg}). Thus $-\otimes_R\roof{R}$ is an exact functor on finitely generated $R$-modules. Applying this to any finitely generated free resolution of $R/I$ shows $\Tor_1^R(\roof{R},R/I)=0$ for any ideal $I\subseteq R$, so $\roof{R}$ is flat by Proposition~\reff{prop:flatConditions}\itememph{b}.
 	
-	Now let $M$ be a finitely generated flat $R$-module. Since $\roof{M}\cong M\otimes_R\roof{R}$, the functor $-\otimes_{\roof{R}}\roof{M}$ is exact because both tensoring by $M$ and $\roof{R}$ is exact. Thus $\roof{M}$ stays flat\footnote{And more generally, tensor products of flat modules are clearly flat again.}.
+	Now let $M$ be a finitely generated flat $R$-module. Since $\roof{M}\cong M\otimes_R\roof{R}$, the functor $-\otimes_{\roof{R}}\roof{M}$ is exact because both tensoring by $M$ and $\roof{R}$ is exact. Thus $\roof{M}$ stays flat.\footnote{And more generally, tensor products of flat modules are clearly flat again.}
 \end{proof}
 \begin{example}\lbl{ex:productOfFlatsIsFlat}
 	The product of arbitrarily many flat modules over a Noetherian ring is flat again.
@@ -850,7 +852,7 @@ For flatness, there is a criterion similar to Baer's (Proposition~\reff{prop:Inj
 	and the right-hand side vanishes by Proposition~\reff{prop:TorVanishing} when $p>0$ and the $M_j$ are flat. Hence $\prod_{j\in J}M_j$ is flat by Proposition~\reff{prop:flatConditions}\itememph{b}.
 \end{proof}
 \begin{example}\lbl{ex:coprodOfFlatsIsFlat}
-	The coproduct of arbitrarily many flat modules over any ring is flat. Indeed, the $\bigoplus_{j\in J}-$ functor is exact and commutes with tensor products, hence with $\Tor$.
+	The coproduct of arbitrarily many flat modules over any ring is flat. Indeed, for arbitrary indexing sets $J$ the $\bigoplus_{j\in J}-$ functor is exact and commutes with tensor products, hence with $\Tor$.
 \end{example}
 \begin{fact}\lbl{fact:flatDim}
 	For any $R$-module $M$, the following are equivalent.
@@ -874,7 +876,7 @@ For flatness, there is a criterion similar to Baer's (Proposition~\reff{prop:Inj
 	hence $\Tor_{p+1}^R(M,T)=0$. This shows \itememph{a}.
 \end{proof}
 \begin{defi}\lbl{def:flatDim}
-	The largest natural number $d$ such that the equivalent properties from Fact~\reff{fact:flatDim} fail (or $+\infty$ if no such $d$ exists, or $-\infty$ if $M=0$) is called the \defemph{flat dimension} of $M$ and denoted $\fdim_R(M)$.
+	The largest natural number $d$ such that the equivalent properties from Fact~\reff{fact:flatDim} fail\footnote{\emph{Yes}, we want them to fail. The reason we define \emph{flat dimension} that way (in particular \emph{not} in the way the lecture did), is to be consistent with projective and injective dimension. Otherwise, stuff like Corollary~\reff{cor:pdim=fdim} fails for $M=0$.} (or $+\infty$ if no such $d$ exists, or $-\infty$ if $M=0$) is called the \defemph{flat dimension} of $M$ and denoted $\fdim_R(M)$.
 \end{defi}
 \begin{fact}\lbl{fact:flatDimLocal}
 	Let $M$ be a module over an arbitrary ring $R$. Then
@@ -925,13 +927,13 @@ And finally we prove that $\Tor$ -- for finitely generated modules over Noetheri
 \begin{prop}\lbl{prop:TorCompletion}
 	Let $\roof{\phantom{x}}$ denote the completion with respect to an arbitrary ideal $I$ in a Noetherian ring $R$. For all finitely generated $R$-modules $M,N$,
 	\begin{align*}
-		\Tor_i^{\roof{R}}(\roof{M},\roof{N})\cong \Tor_i^R(M,N)\roof{\phantom{)}}\;.
+		\Tor_i^{\roof{R}}(\roof{M},\roof{N})\cong \Tor_i^R(M,N)^\complete \;.
 	\end{align*}
 \end{prop}
 \begin{proof}
 	Choose a finitely generated free resolution $0\lmorphism N\lmorphism R^{n_0}\lmorphism R^{n_1}\lmorphism\ldots$ of $N$. Then $0\lmorphism \roof{N}\lmorphism \roof{R}^{n_0}\lmorphism \roof{R}^{n_1}\lmorphism\ldots$ is a free resolution of $\roof{N}$ by exactness of $\roof{\phantom{x}}$ on finitely generated $R$-modules. Thus
 	\begin{align*}
-		\Tor_i^{\roof{R}}(\roof{M},\roof{N})&\cong H_i\left(\roof{M}^{n_0}\lmorphism \roof{M}^{n_1}\lmorphism\ldots\right)\cong  H_i\left(M^{n_0}\lmorphism M^{n_1}\lmorphism\ldots\right)\roof{\phantom{)}}\cong \Tor_i^R(M,N)\roof{\phantom{)}}\;,
+		\Tor_i^{\roof{R}}(\roof{M},\roof{N})&\cong H_i\left(\roof{M}^{n_0}\lmorphism \roof{M}^{n_1}\lmorphism\ldots\right)\cong  H_i\left(M^{n_0}\lmorphism M^{n_1}\lmorphism\ldots\right)^\complete \cong \Tor_i^R(M,N)^\complete \;,
 	\end{align*}
 	since $\roof{\phantom{x}}$ commutes with (finitely generated) homology by exactness on finitely generated $R$-modules.
 \end{proof}
@@ -947,7 +949,7 @@ And finally we prove that $\Tor$ -- for finitely generated modules over Noetheri
 	\end{alphanumerate}
 \end{prop}
 \begin{proof}
-	The implications \itememph{a} $\Rightarrow$ \itememph{b} $\Rightarrow$ \itememph{c} $\Rightarrow$ \itememph{d} are pretty much clear (every free module is projective, and we have Example~\reff{ex:projFlat} and Proposition~\reff{prop:TorVanishing}\itememph{d}). To see \itememph{d} $\Leftrightarrow$ \itememph{e}, note that $\roof{R}$ is again a local ring with residue field $k$ (this is quite easy to see; also, cf.\ \cite[p.~192]{eisenbudCommAlg}). Recall that we have seen in the proof of Corollary~\reff{cor:projDimCompletion} that an $R$-module vanishes iff its completion (at any ideal $I\subseteq R$) does, provided $R$ is local. Then Proposition~\reff{prop:TorCompletion} does the job.
+	The implications \itememph{a} $\Rightarrow$ \itememph{b} $\Rightarrow$ \itememph{c} $\Rightarrow$ \itememph{d} are pretty much clear (every free module is projective, and we have Example~\reff{ex:projFlat} and Proposition~\reff{prop:TorVanishing}\itememph{d}). To see \itememph{d} $\Leftrightarrow$ \itememph{e}, note that $\roof{R}$ is again a local ring with residue field $k$ (this is quite easy to see; also, cf.\ \cite[p.~192]{eisenbudCommAlg}). Recall that we have seen in the proof of Corollary~\reff{cor:projDimCompletion} that an $R$-module vanishes iff its completion (at any proper ideal $I\subsetneq R$) does, provided $R$ is local. Then Proposition~\reff{prop:TorCompletion} does the job.
 	
 	Let's show \itememph{d} $\Rightarrow$ \itememph{a}. Choose elements $p_1,\ldots,p_n\in P$ whose images in $P/\mm P\cong P\otimes_Rk$ form a basis of this $k$-vector space. By Nakayama's lemma, $p_1,\ldots,p_n$ also generate $P$. Sending the standard basis vectors $e_i$ to $p_i$ thus gives a surjection $R^n\epimorphism[\pi]P$ which becomes an isomorphism when tensored with $k$. From \itememph{d} and the long exact $\Tor$ sequence we obtain
 	\begin{align*}
@@ -1049,11 +1051,11 @@ Note that the usual notation suggests $\gdim(R)$ is a property of $R$, whereas P
 	Let $R$ be a ring, $M$ be an $R$-module, $(x_1,\ldots,x_n)$ a sequence of elements of $R$. The (homological) \defemph{Koszul complex} $K_\bullet\big((x_1,\ldots,x_n),M\big)$ is a chain complex defined as follows. Let $[n]=\{1,\ldots,n\}$. For $p\geq0$, $K_p\big((x_1,\ldots,x_n),M\big)$ is the collection of maps $f\colon [n]^{n-p}\morphism M$ with the following properties:
 	\begin{alphanumerate}
 		\item $f(i_1,\ldots,i_{n-p})=0$ when $i_k=i_\ell$ for some integers $1\leq k<\ell\leq m$.
-		\item $f(i_{\pi(1)},\ldots,i_{\pi(n-p)})=\sgn(\pi)f(i_1,\ldots,i_{n-p})$ for every permutation $\pi\in\SS_{n-p}$.
+		\item $f\left(i_{\pi(1)},\ldots,i_{\pi(n-p)}\right)=\sgn(\pi)f(i_1,\ldots,i_{n-p})$ for every permutation $\pi\in\SS_{n-p}$.
 	\end{alphanumerate}
 	The differential $d_p\colon K_p\big((x_1,\ldots,x_n),M\big)\morphism K_{p-1}\big((x_1,\ldots,x_n),M\big)$ is given by 
 	\begin{align*}
-	d_pf=\sum_{j=0}^{n-p}(-1)^jd^jf\quad\text{where}\quad d^ jf(i_1,\ldots,i_{n-(p-1)})=x_{i_{j+1}}f(i_1,\ldots,\hat{i}_{j+1},\ldots,i_{n-(p-1)})\;.
+	d_pf=\sum_{j=0}^{n-p}(-1)^jd^jf\quad\text{where}\quad d^ jf\left(i_1,\ldots,i_{n-(p-1)}\right)=x_{i_{j+1}}f\left(i_1,\ldots,\hat{i}_{j+1},\ldots,i_{n-(p-1)}\right)\;.
 	\end{align*}
 	As usual, the hat $\hat{i}_{j+1}$ denotes the omission of $i_{j+1}$.
 \end{defi}
@@ -1114,10 +1116,10 @@ and the right-hand side gives $\Cone(\phi)$. No shift Sherlock!
 	\begin{align*}
 		M/(x_1M+\ldots+x_{i-1}M)\morphism[x_i\cdot ]M/(x_1M+\ldots+x_{i-1}M)
 	\end{align*}
-	is injective for all $1\leq i\leq n$.
+	is injective for all $i=1,\ldots,n$. An $R$-regular sequence is often just called \defemph{regular}.
 \end{defi}
 \begin{example}
-	The sequence $(1,0)$ is always $R$-regular, $(0,1)$ only if $R=0$.
+	The sequence $(1,0)$ is always $R$-regular, whereas $(0,1)$ is only if $R=0$.
 \end{example}
 We now put $H_i\big((x_1,\ldots,x_n),M\big)=H_i\left(K_\bullet\big((x_1,\ldots,x_n),M\big)\right)$ for short.
 \begin{prop}\lbl{prop:KoszulAndRegular}
@@ -1163,11 +1165,11 @@ Since our definition of $H_i\big((x_1,\ldots,x_n),M\big)$ doesn't depend on the 
 	\end{alphanumerate}
 \end{rem*}
 \begin{fact}\lbl{fact:KoszulResolutions}
-	Let $R$ be a ring, $x=(x_1,\ldots,x_n)$ an $R$-regular sequence such that $I=x_1R+\ldots+x_nR$ is a proper ideal of $R$.
+	Let $R$ be a ring, $x=(x_1,\ldots,x_n)$ an $R$-regular sequence and $I=x_1R+\ldots+x_nR$ the ideal of $R$ it generates.
 	\begin{alphanumerate}
 		\item $0\lmorphism R/I\lmorphism K_\bullet(x,R)$ is a free resolution of $R/I$.
 		\item For every $R$-module $M$ and all $p\geq 0$, $\Tor_p^R(M,R/I)\cong H_p(x,M)$ and  $\Ext_R^p(R/I,M)\cong H_{n-p}(x,M)$.
-		\item $\pdim_R(R/I)=\fdim_R(R/I)= n$.
+		\item If $I\subsetneq R$ is a proper ideal, then $\pdim_R(R/I)=\fdim_R(R/I)= n$.
 	\end{alphanumerate}
 \end{fact}
 \begin{proof}
@@ -1183,9 +1185,9 @@ Since our definition of $H_i\big((x_1,\ldots,x_n),M\big)$ doesn't depend on the 
 	\begin{align*}
 		\Hom_R\left(\bigwedge^{n-p}R^n,M\right)\morphism \bigwedge^pR^n\otimes_R M
 	\end{align*}
-	by sending $\delta_I(m)$ to $\epsilon\cdot \bigwedge_{j\notin I}e_j\otimes m$, where $\epsilon=(-1)^{n-p-1}\bigwedge_{i\in I}e_i\wedge\bigwedge_{j\notin I}e_j$, which can be viewed as an element (in fact, $\pm 1$) of $R$. One can show (easy) that this is an isomorphism and (ugly -- and hopefully true, I did my best to get the signs right) that this is in fact compatible with the Koszul differential.
+	by sending $\delta_I(m)$ to $\epsilon\cdot \bigwedge_{j\notin I}e_j\otimes m$, where $\epsilon=(-1)^{n-p-1}\bigwedge_{i\in I}e_i\wedge\bigwedge_{j\notin I}e_j$, which can be viewed as an element (in fact, $\pm 1$) of $R$. One can show (easy) that this is an isomorphism and (ugly -- and hopefully true; I did my best to get the signs right) that this is in fact compatible with the Koszul differential.
 	
-	Part \itememph{c}. From \itememph{b} and the fact that $K_\bullet(x,M)$ is only supported in homological degrees $0\leq p\leq n$ it is clear that $\pdim_R(R/I)=\fdim_R(R/I)\leq n$. But for $M=R/I$, the Koszul differentials vanish, so
+	Part \itememph{c}. From \itememph{b} and the fact that $K_\bullet(x,M)$ is only supported in homological degrees $0\leq p\leq n$ it is clear that $\pdim_R(R/I)\leq n$ and $\fdim_R(R/I)\leq n$. But for $M=R/I$, the Koszul differentials vanish, so
 	\begin{align*}
 		\Tor_n^R(R/I,R/I)\cong\Ext_R^n(R/I,R/I)\cong R/I\neq 0\;, 
 	\end{align*}
@@ -1218,7 +1220,7 @@ as a polynomial algebra over $k$. Moreover, this can be shown to imply that $R$ 
 	\end{alphanumerate}
 \end{prop}
 \begin{proof}
-	Assertion \itememph{b} follows from \itememph{a} and Fact~\reff{fact:KoszulResolutions}\itememph{a}. Also, \itememph{c} follows from Fact~\reff{fact:KoszulResolutions} and Corollary~\reff{cor:fdim(k)}. It remains to show \itememph{a}. Because regular local rings are domains, $(x_1)$ is a regular sequence. Moreover, the images of $x_2,\ldots,x_d$ generate the maximal ideal of $R/x_1R$. As $\gr(R/x_1R,\mm/x_1R)\cong \gr(R,\mm)/x_1\gr(R,\mm)$, we find that $\gr(R/x_1R,\mm/x_1R)$ is a polynomial ring in free generators $x_2,\ldots,x_d$ (resp.\ their images modulo $\mm^2$). Therefore the degree $d(R,\mm)$ of the Samuel polynomial of $R/x_1R$ and $\mm$ equals $d-1$, hence $R/x_1R$ has dimension $d-1$ by \cite[Theorem~20]{alg2} and we see that $R/x_1R$ is regular. The regularity of $x=(x_1,\ldots,x_d)$ now follows by assumption on $d$.
+	Assertion \itememph{b} follows from \itememph{a} and Fact~\reff{fact:KoszulResolutions}\itememph{a}. Also, \itememph{c} follows from Fact~\reff{fact:KoszulResolutions} and Corollary~\reff{cor:fdim(k)}. It remains to show \itememph{a}. Because regular local rings are domains, $(x_1)$ is a regular sequence. Moreover, the images of $x_2,\ldots,x_d$ generate the maximal ideal of $R/x_1R$. As $\gr(R/x_1R,\mm/x_1R)\cong \gr(R,\mm)/x_1\gr(R,\mm)$, we find that $\gr(R/x_1R,\mm/x_1R)$ is a polynomial ring in free generators $x_2,\ldots,x_d$ (resp.\ their images modulo $\mm^2$). Therefore the degree $d(R,\mm)$ of the Samuel polynomial of $R/x_1R$ and $\mm$ equals $d-1$, hence $R/x_1R$ has dimension $d-1$ by \cite[Theorem~20]{alg2}. Because its maximal ideal $\mm/x_1R$ can be generated by the $d-1$ elements $x_2,\ldots,x_d$, we see that $R/x_1R$ is regular. The regularity of $x=(x_1,\ldots,x_d)$ now follows by induction on $d$.
 \end{proof}
 And -- finally -- we are ready to prove Serre's famous characterization of regularity.
 \begin{thm}[Serre]\lbl{thm:SerreRegularity}
@@ -1245,7 +1247,7 @@ And -- finally -- we are ready to prove Serre's famous characterization of regul
 	
 	Moreover, $\mm\supsetneq\mm^2$ as otherwise $\mm=0$ by the Nakayama lemma and thus $R=k$ and $d=0$. Thus, by finiteness of $\Ass_R(R)$ (Corollary~\reff{cor:AssFinite}) and prime avoidance (cf.\ \cite[Lemma~2.5.1]{alg1}), it is possible to choose an $x\in\mm\setminus \left(\mm^2\cup\bigcup_{\pp\in\Ass_R(R)}\pp\right)$. Then $R\morphism[x\cdot]R$ is injective by Proposition~\reff{prop:AssProperties}. 
 	
-	We use the fact that if $0\lmorphism M\lmorphism F_\bullet$ is a free resolution of some $R$-module $M$ such that $(x)$ is an $M$-regular sequence, then $0\lmorphism M/xM\lmorphism F_\bullet/xF_\bullet$ is a free resolution of the $R/xR$-module $M/xM$ (pretty easy to see). Therefore,
+	We use the fact that if $0\lmorphism M\lmorphism F_\bullet$ is a free resolution of some $R$-module $M$ such that $(x)$ is an $M$-regular sequence, then $0\lmorphism M/xM\lmorphism F_\bullet/xF_\bullet$ is a free resolution of the $R/xR$-module $M/xM$ (pretty easy to see). Therefore, using that projective and free is the same over the local ring $R$ by Proposition~\reff{prop:FreeProjFlatTor},
 	\begin{align}\lbl{eq:pdimOfM/xMandM}
 		\pdim_{R/xR}(M/xM)\leq \pdim_R(M)\tag{$*$}\;.
 	\end{align}
@@ -1299,7 +1301,7 @@ And -- finally -- we are ready to prove Serre's famous characterization of regul
 		Let $\nn$ be any maximal ideal of $\roof{A}$. Then $\nn=\roof{\mm}$ for some maximal ideal $\mm$ of $A$ which contains $I$.
 	\end{lem}
 	\begin{proof}
-		Since $\nn$ contains $I\roof{A}$ by what we proved before, $\nn/I\roof{A}\subseteq \roof{A}/I\roof{A}\cong A/I$ is a proper ideal. Let $\mm\subseteq A$ be preimage of $\nn/I\roof{A}$. Clearly, $\mm$ is a proper ideal containing $I$. Then $\roof{\mm}=\mm\roof{A}\subseteq \roof{A}$ is a proper ideal (no $\mm/I^n$ contains $1$) and it is easy to see that $\roof{\mm}$ contains $\nn$, so $\nn=\roof{\mm}$. It remains to show that $\mm$ is maximal. But (using exactness of $I$-adic completions) $\roof{A}/\roof{\mm}\cong (A/\mm)\roof{\phantom{)}}$ is a field, and since $\mm\supseteq I$, the $I$-adic completion of $A/\mm$ is just $A/\mm$ as $I\cdot A/\mm=0$. Hence $\mm$ is maximal.
+		Since $\nn$ contains $I\roof{A}$ by what we proved before, $\nn/I\roof{A}\subseteq \roof{A}/I\roof{A}\cong A/I$ is a proper ideal. Let $\mm\subseteq A$ be preimage of $\nn/I\roof{A}$. Clearly, $\mm$ is a proper ideal containing $I$. Then $\roof{\mm}=\mm\roof{A}\subseteq \roof{A}$ is a proper ideal (no $\mm/I^n$ contains $1$) and it is easy to see that $\roof{\mm}$ contains $\nn$, so $\nn=\roof{\mm}$. It remains to show that $\mm$ is maximal. But (using exactness of $I$-adic completions) $\roof{A}/\roof{\mm}\cong (A/\mm)^\complete $ is a field, and since $\mm\supseteq I$, the $I$-adic completion of $A/\mm$ is just $A/\mm$ as $I\cdot A/\mm=0$. Hence $\mm$ is maximal.
 	\end{proof}
 	Before we proceed with the proof of Proposition~\reff{prop:completionRegular}, let us state a nice consequence.
 	\begin{cor}\lbl{cor:localCompletion}
@@ -1365,7 +1367,7 @@ From Proposition~\reff{prop:SmallExtVanishing} and additivity of $\Ext_R^p(k,-)$
 	\end{align}
 \end{thm}
 \begin{proof}
-	We use induction on $d=\pdim_R(M)$. When $d=0$, then $M$ is free by Proposition~\reff{prop:FreeProjFlatTor}, hence $\depth_R(M)=\depth_R(R)$ by Fact~\reff{fact:depthMinAdditive}. Now let $d\geq 1$ and assume that the induction is proved for smaller $d$. Let $x_1,\ldots,x_s$ be elements of $M$ whose images form a basis of $M/\mm M$ (hence also generate $M$ by Nakayama). Let $P=R^s\epimorphism[p] M$ be the surjection sending the $i\ordinalth$ standard basis vector to $x_i$. We obtain a short exact sequence
+	We use induction on $d=\pdim_R(M)$. When $d=0$, then $M$ is free by Proposition~\reff{prop:FreeProjFlatTor}, hence $\depth_R(M)=\depth_R(R)$ by Fact~\reff{fact:depthMinAdditive}. Now let $d\geq 1$ and assume that the assumption is proved for smaller $d$. Let $x_1,\ldots,x_s$ be elements of $M$ whose images form a basis of $M/\mm M$ (hence also generate $M$ by Nakayama). Let $P=R^s\epimorphism[p] M$ be the surjection sending the $i\ordinalth$ standard basis vector to $x_i$. We obtain a short exact sequence
 	\begin{align}\lbl{eq:exactSeq1}
 		0\morphism M'\morphism[i] P\morphism[p] M\morphism 0\;.\tag{$*$}
 	\end{align}
@@ -1373,7 +1375,7 @@ From Proposition~\reff{prop:SmallExtVanishing} and additivity of $\Ext_R^p(k,-)$
 	\begin{align}\lbl{eq:depthInduction}
 		\pdim_R(M')=\pdim_R(M)-1=d-1\;.\tag{\$}
 	\end{align}
-	If $d=1$, this means that $M'$ is free, say, $M'\cong R^\ell$ and $i$ is given by an $(s\times \ell)$-matrix with coefficients from $\mm$ (since $i(M')\subseteq \mm P$), hence the induced morphism $\Ext_R^p(k,M')\morphism\Ext_R^p(k,P)$ vanishes and from
+	If $d=1$, this means that $M'$ is free, say, $M'\cong R^\ell$ and $i$ is given by an $(s\times \ell)$-matrix with coefficients from $\mm$ (since $i(M')\subseteq \mm P$), hence the induced morphism $\Ext_R^p(k,M')\morphism\Ext_R^p(k,P)$ vanishes and the long exact $\Ext$ sequence
 	\begin{align*}
 		\Ext_R^p(k,M')\morphism[0]\Ext_R^p(k,P)\morphism\Ext_R^p(k,M)\morphism\Ext_R^{p+1}(k,M')\morphism[0]\Ext_R^{p+1}(k,P)
 	\end{align*}
@@ -1432,7 +1434,7 @@ We are now ready to prove the desired correspondence. In particular, Proposition
 	\end{align*}
 	hence we find $x_{j+1}\in\mm$ such that $M/(x_1M+\ldots+x_jM)\xrightarrow{x_{j+1}\cdot} M/(x_1M+\ldots+x_jM)$ is injective by Lemma~\reff{lem:depthAss}. Thus $(x_1,\ldots,x_{j+1})$ is $M$-regular. Now iterate.
 \end{proof}
-Let $I\subseteq \mm$ be an ideal and $\roof{\phantom{x}}$ the completion with respect to $I$. We have seen in Proposition~\reff{prop:ExtCompletion} that $\Ext_{\roof{R}}^p(k,\roof{M})\cong \Ext_R^p(k,M)\roof{\phantom{)}}\cong \Ext_R^p(k,M)$ (the last isomorphism comes from the fact that $\Ext_R^p(k,M)$ already has $I$-torsion, cf.\ Fact~\reff{fact:atimesExt2}). Hence, by Proposition~\reff{prop:SmallExtVanishing}\itememph{b},
+Let $I\subseteq \mm$ be an ideal and $\roof{\phantom{x}}$ the completion with respect to $I$. We have seen in Proposition~\reff{prop:ExtCompletion} that $\Ext_{\roof{R}}^p(k,\roof{M})\cong \Ext_R^p(k,M)^\complete \cong \Ext_R^p(k,M)$ (the last isomorphism comes from the fact that $\Ext_R^p(k,M)$ already has $I$-torsion, cf.\ Fact~\reff{fact:atimesExt2}). Hence, by Proposition~\reff{prop:SmallExtVanishing}\itememph{b},
 \begin{prop}\lbl{prop:depthCompletion}
 	We have $\depth_{\roof{R}}(\roof{M})=\depth_R(M)$.
 \end{prop}
@@ -1523,7 +1525,7 @@ And now we are ready for the second highlight of the lecture: Universal catenari
 	The equivalence of the conditions in \itememph{a} is clear since localizations of CM rings are CM again by Proposition~\reff{prop:CMcatenary}, and same for the first two conditions of \itememph{b}. Let's talk about the third one. When $X$ is quasi-compact, every closed subset contains a closed point by \cite[Proposition~2.1.1]{alggeo1}. In particular, for $x\in X$, $\ov{\{x\}}$ contains a closed point $y$. Since $x$ corresponds to a prime ideal of $\Oo_{X,y}$ by \cite[Proposition~2.1.3]{alggeo1}, $\Oo_{X,x}$ is a localization of $\Oo_{X,y}$ and thus CM as well.
 \end{proof}
 \begin{rem*}
-	Actually, quasi-compactness isn't needed for \itememph{b}, since \cite[\stackstag{02IL}]{stacks-project} shows that any closed subset of a locally Noetherian space contains a closed point as well. If you try to understand the proof, \cite[Proposition~2.1.3]{alggeo1} might be helpful. Also note that the $R=\Oo_{X_0,y}$ constructed there is a domain (which \cite[\stackstag{02IG}]{stacks-project} needs) since $X_0$ is (by construction) reduced and irreducible, i.e., integral, and we can apply \cite[Proposition~2.1.4]{alggeo1}.
+	Actually, quasi-compactness isn't needed for \itememph{b}, since \cite[\stackstag{02IL}]{stacks-project} shows that any closed subset of a locally Noetherian prescheme contains a closed point as well. If you try to understand the proof, \cite[Proposition~2.1.3]{alggeo1} might be helpful. Also note that the $R=\Oo_{X_0,y}$ constructed there is a domain (which \cite[\stackstag{02IG}]{stacks-project} needs) since $X_0$ is (by construction) reduced and irreducible, i.e., integral, and we can apply \cite[Proposition~2.1.4]{alggeo1}.
 \end{rem*}
 \begin{rem*}
 	\begin{alphanumerate}
@@ -1532,10 +1534,10 @@ And now we are ready for the second highlight of the lecture: Universal catenari
 	\end{alphanumerate}
 \end{rem*}
 \begin{prop}\lbl{prop:CMcompletion}
-	If $R$ is Cohen--Macaulay, then so is its $I$-adic completion $\roof{R}$ for any proper ideal $I\subseteq R$.
+	If $R$ is CM, then so is its $I$-adic completion $\roof{R}$ for any proper ideal $I\subseteq R$.
 \end{prop}
 \begin{proof}
-	By Lemma~\reff{lem:maximalIdealsCompletion}, any maximal ideal of $\roof{R}$ is of the form $\roof{\mm}$ for some maximal ideal $\mm$ of $R$. We have also seen in the proof of Proposition~\reff{prop:completionRegular} that $\dim R_\mm=\dim \roof{R}_{\roof{\mm}}$, so it remains to check $\depth_{R_\mm}(R_\mm)=\depth_{\roof{R}_{\roof{\mm}}}(\roof{R}_{\roof{\mm}})$. Unfortunately, this \emph{doesn't} follows from Proposition~\reff{prop:depthCompletion}. The problem here is that $\roof{R}_{\roof{\mm}}$ and $(R_\mm)\roof{\phantom{)}}$ usually don't coincide (one can show they do when $I=\mm$).
+	By Lemma~\reff{lem:maximalIdealsCompletion}, any maximal ideal of $\roof{R}$ is of the form $\roof{\mm}$ for some maximal ideal $\mm$ of $R$. We have also seen in the proof of Proposition~\reff{prop:completionRegular} that $\dim R_\mm=\dim \roof{R}_{\roof{\mm}}$, so it remains to check $\depth_{R_\mm}(R_\mm)=\depth_{\roof{R}_{\roof{\mm}}}(\roof{R}_{\roof{\mm}})$. Unfortunately, this \emph{doesn't} follow immediately from Proposition~\reff{prop:depthCompletion}. The problem here is that $\roof{R}_{\roof{\mm}}$ and $(R_\mm)^\complete $ usually don't coincide (though one can show they do when $I=\mm$).
 	
 	However, we can still use the idea given there. Note that $R_\mm$ and $\roof{R}_{\roof{\mm}}$ are both local rings with the same residue field $k$. By Proposition~\reff{prop:ExtLocalization}, $\Ext_{R_\mm}^p(k,R_\mm)\cong \Ext_R^p(k,R)_\mm\cong\Ext_R^p(k,R)$. The last isomorphism is due to the fact that $\Ext_R^p(k,R)$ has $\mm$-torsion by Fact~\reff{fact:atimesExt2}, i.e., it is a $k=R/\mm$-vector space. So localization at $\mm$ doesn't change anything and the same holds true for $I$-adic completions. Thus the same argument gives $\Ext_{\roof{R}_{\roof{\mm}}}(k,\roof{R}_{\roof{\mm}})\cong \Ext_R^p(k,R)$ and we are done.
 \end{proof}
@@ -1545,7 +1547,7 @@ And now we are ready for the second highlight of the lecture: Universal catenari
 \begin{proof}
 	As $R\llbracket X_1,\ldots,X_n\rrbracket$ is the completion of $R[X_1,\ldots,X_n]$ with respect to the ideal generated by $X_1,\ldots,X_n$, by Proposition~\reff{prop:CMcompletion} it is sufficient to show the first assertion. Moreover, using induction we may reduce to the case of the polynomial ring $R[T]$ in only one variable. 
 	
-	Now let $\pp$ be a maximal ideal of $R[T]$. Let $\mm=\pp\cap R$. Localizing the multiplicative subset $R\setminus \mm$ and replacing $R$ by $R_\mm$ we may assume that $R$ is local with maximal ideal $\mm$. Since $R[T]_\pp\cong R_\mm[T]_\pp$ (of which CMness is to be shown), the situation didn't change. Since $R/\mm[T]$ is not a field, $\pp$ (which was chosen maximal) must properly contain $\mm R[T]$. Then $\pp=\mm R[T]+(Q)$ where $Q\in R[T]$ is a monic polynomial such that $Q\bmod \mm$ is a minimal polynomial over the residue field $k=R/\mm$ of $T\bmod \pp$ viewed as an element of $\KK(\pp)$ (compare the aargument in the proof of Proposition~\reff{prop:polynomialRegular}). Let $d=\dim R$ and $(x_1,\ldots,x_d)$ an $R$-regular sequence. We claim that $(x_1,\ldots,x_d,Q)$ is $R[T]$-regular. Indeed, $R[T]$-regularity of $(x_1,\ldots,x_d)$ is easy to see. Now
+	Now let $\pp$ be a maximal ideal of $R[T]$. Let $\mm=\pp\cap R$. Localizing the multiplicative subset $R\setminus \mm$ and replacing $R$ by $R_\mm$ we may assume that $R$ is local with maximal ideal $\mm$. Since $R[T]_\pp\cong R_\mm[T]_\pp$ (of which CMness is to be shown), the situation didn't change. Since $R/\mm[T]$ is not a field, $\pp$ (which was chosen maximal) must properly contain $\mm R[T]$. Then $\pp=\mm R[T]+(Q)$ where $Q\in R[T]$ is a monic polynomial such that $Q\bmod \mm$ is a minimal polynomial over the residue field $k=R/\mm$ of $T\bmod \pp$ viewed as an element of $\KK(\pp)$ (compare the argument in the proof of Proposition~\reff{prop:polynomialRegular}). Let $d=\dim R$ and $(x_1,\ldots,x_d)$ a regular parameter sequence in $\mm$. We claim that $(x_1,\ldots,x_d,Q)$ is $R[T]$-regular. Indeed, $R[T]$-regularity of $(x_1,\ldots,x_d)$ is easy to see. Now
 	\begin{align*}
 		R[T]/\big(x_1R[T]+\ldots+x_dR[T]\big)\cong\big(R/(x_1R+\ldots+x_dR)\big)[T]
 	\end{align*}
@@ -1630,7 +1632,8 @@ and all of them are universally catenary.
 \setcounter{thm}{0}
 \renewcommand*{\thethm}{\Alph{thm}}
 
-\section{Derived functors and \texorpdfstring{$\Ext_R^\bullet $}{Ext}}
+\section{An excursion in derived functors}
+\subsection{Construction of derived functors}
 \begin{defi}\lbl{def:homologicalfunctor}
 	Let $\Aa$ and $\Bb$ be abelian categories (cf. \cite[Definition~A.1.4]{alggeo2}). A \defemph{homological $\partial$-functor} $F_\bullet \colon\Aa\morphism\Bb$ is a sequence $(F_n)_{n\geq 0}$  of additive functors $F_i\colon\Aa\morphism\Bb$ together with a natural transformation $\partial=\partial_F\colon F_{i+1}(A'')\morphism F_i(A')$ on the category of short exact sequences on $\Aa$, such that the sequence
 	\begin{multline*}
@@ -1912,7 +1915,7 @@ and all of them are universally catenary.
 					d_{J }^{n-1}s^n+s^{n+1}d_{I }^{n}=\psi^n-\phi^n
 				\end{align*}
 				and $s^0=0$.
-				\item If $0\morphism X\morphism[\alpha] Z\morphism[\beta] Y\morphism 0$ is a short exact sequence, there exists an injective resolution $Z\morphism[\zeta]K^\bullet $ of $Z$ such that 
+				\item If $0\morphism X\morphism[\alpha] Z\morphism[\beta] Y\morphism 0$ is a short exact sequence, there exists an injective resolution $Z\monomorphism[\zeta]K^\bullet $ of $Z$ such that 
 				\begin{diagram}[baseline=-2.25cm-0.5ex]{\lbl{diag:resolution}}
 					\node[ob] (0lO) at (-4,0) {$0$};
 					\node[ob] (X) at (-2,0) {$X$};
@@ -1969,7 +1972,7 @@ and all of them are universally catenary.
 				a long exact sequence in which the $I^n$ may fail to be injective. 
 			\end{alphanumerate}
 		\end{rem}
-		Before we prove Proposition~\reff{prop:Hufeisenlemma}, let's see how the rest of Theorem~\reff{thm:DerivedFunctors} follows from it. We first prove \itememph{a}. Let $F\colon\Aa\morphism \Bb$ be left-exact. For every object $X$ of $\Aa$, chose an injective resolution $X\morphism I_X^\bullet $ of $X$ (and we need the axiom of choice -- for \emph{classes!} -- to do this). For every morphism $f\colon X\morphism Y$ choose an extension $f^*\colon I_X^\bullet \morphism I_Y^\bullet $ of $f$. Let
+		Before we prove Proposition~\reff{prop:Hufeisenlemma}, let's see how the rest of Theorem~\reff{thm:DerivedFunctors} follows from it. We first prove \itememph{a}. Let $F\colon\Aa\morphism \Bb$ be left-exact. For every object $X$ of $\Aa$, chose an injective resolution $X\monomorphism I_X^\bullet $ of $X$ (and we need the axiom of choice -- for \emph{classes!} -- to do this). For every morphism $f\colon X\morphism Y$ choose an extension $f^*\colon I_X^\bullet \morphism I_Y^\bullet $ of $f$. Let
 		\begin{align*}
 			R^pF(X)=H^p(FI_X^\bullet )\quad\text{and}\quad R^pF(f)=H^p\Big(FI_X^\bullet \morphism[Ff^* ]FI_Y^\bullet \Big)\;.
 		\end{align*}
@@ -1977,7 +1980,7 @@ and all of them are universally catenary.
 		\begin{align*}
 			I_X^\bullet \xdoublemorphism[g^* f^* ][(gf)^* ]I_Z^\bullet 
 		\end{align*}
-		are cochain homotopic by Proposition~\reff{prop:Hufeisenlemma}\itememph{b}. Applying the additive functor $F$ ($F$ is left-exact, hence additive by Definition~\reff{def:leftrightexact} and Remark~\reff{rem:left-exactAdditive}) gives cochain homotopic morphisms $F(g^* f^* )$ and $F(g^* )F(f^*)$, showing that the induced morphisms in cohomology coincide, i.e., $R^pF(gf)=R^pF(g)\circ R^pF(f)$. Thus, $R^pF$ is indeed a functor.
+		are cochain homotopic by Proposition~\reff{prop:Hufeisenlemma}\itememph{b}. Applying the additive functor\footnote{This got me really confused in the lecture, because we never explicitly required $F$ to be additive (that was back then -- now we do in Definition~\reff{def:homologicalfunctor}). The reason is that \emph{left-exact} means more than it seems; cf. Definition~\reff{def:leftrightexact} and Remark~\reff{rem:left-exactAdditive}.} $F$ gives cochain homotopic morphisms $F(g^* f^* )$ and $F(g^* )F(f^*)$, showing that the induced morphisms in cohomology coincide, i.e., $R^pF(gf)=R^pF(g)\circ R^pF(f)$. Thus, $R^pF$ is indeed a functor.
 		
 		To construct the long exact cohomology sequence for $R^pF$, consider a short exact sequence $0\morphism X\morphism[\alpha]Z\morphism[\beta]Y\morphism 0$ and construct a short exact sequence $0\morphism I_X^\bullet \morphism[a ] K^\bullet \morphism[b ] I_Y^\bullet \morphism 0$ as in Proposition~\reff{prop:Hufeisenlemma}\itememph{c}. We obtain a short exact sequence $0\morphism FI_X^\bullet \morphism FK^\bullet \morphism FI_Y^\bullet \morphism 0$ (using Proposition~\reff{prop:injectiveSeqsStayExact}) and a long exact sequence 
 		\begin{diagram}[baseline=0.75cm-0.5ex]{\lbl{diag:derivedCohoSeq}}
@@ -2181,11 +2184,11 @@ If $P\in\Ob(\Aa)$ is projective, then $\Hom_\Aa(P,-)$ is exact, thus
 \begin{align*}
 	\Ext_\Aa^p(P,Y)=H^p\big(\Hom_\Aa(P,I^\bullet)\big)=\Hom_\Aa\big(P,H^p(I^\bullet)\big)=0
 \end{align*}
-for $p>0$ (where $Y\morphism I^\bullet$ is any injective resolution). If $\Aa$ also has sufficiently many projective objects, then, for fixed $Y$, the functor $\Ext_\Aa^\bullet(-,Y)\colon \Aa^\op\morphism\cat{Ab}$ annihilates the injective objects of $\Aa^\op$ (the projectives of $\Aa$) in positive degrees, hence is a right-derived functor of $\Hom_\Aa(-,Y)$. Using the right-derived functors of $\Hom_\Aa(-,Y)\colon \Aa ^\op\morphism\cat{Ab}$ one also obtains $\Ext_\Aa^\bullet$ groups with \eqreff{eq:ExtSeq1} as part of the derived functor structure and \eqreff{eq:ExtSeq2} from Theorem~\reff{thm:DerivedFunctors}\itememph{c}; and when $\Aa$ also has sufficiently many injective objects, then, by the previous arguments, the $\Ext_\Aa^\bullet$ groups are canonically isomorphic to the ones obtained using injective resolutions of $Y$. To cut a long story short: For all $p\geq 0$,
+for $p>0$ (where $Y\monomorphism I^\bullet$ is any injective resolution). If $\Aa$ also has sufficiently many projective objects, then, for fixed $Y$, the functor $\Ext_\Aa^\bullet(-,Y)\colon \Aa^\op\morphism\cat{Ab}$ annihilates the injective objects of $\Aa^\op$ (the projectives of $\Aa$) in positive degrees, hence is a right-derived functor of $\Hom_\Aa(-,Y)$. Using the right-derived functors of $\Hom_\Aa(-,Y)\colon \Aa ^\op\morphism\cat{Ab}$ one also obtains $\Ext_\Aa^\bullet$ groups with \eqreff{eq:ExtSeq1} as part of the derived functor structure and \eqreff{eq:ExtSeq2} from Theorem~\reff{thm:DerivedFunctors}\itememph{c}; and when $\Aa$ also has sufficiently many injective objects, then, by the previous arguments, the $\Ext_\Aa^\bullet$ groups are canonically isomorphic to the ones obtained using injective resolutions of $Y$. To cut a long story short: For all $p\geq 0$,
 \begin{align*}
 	\Ext_\Aa^p(X,Y)=H^p\big(\Hom(X,I^\bullet)\big)=H^p\big(\Hom(P_\bullet,Y)\big)
 \end{align*}
-when $Y\morphism I^\bullet$ is an injective resolution of $Y$ and $P_\bullet\morphism X$ a projective resolution of $X$.
+when $Y\monomorphism I^\bullet$ is an injective resolution of $Y$ and $P_\bullet\epimorphism X$ a projective resolution of $X$.
 
 An alternative construction of $\Ext_\Aa^1(-,-)$ is as follows. Let $\Ext_\Aa^1(X,Y)$ be the ``class of isomorphism classes'' of short exact sequences $\Ee\colon 0\morphism Y\morphism E\morphism X\morphism 0$. Two such extensions $\Ee,\Ee'$ are isomorphic iff there is a commutative diagram 
 \begin{diagram*}
@@ -2216,7 +2219,7 @@ An alternative construction of $\Ext_\Aa^1(-,-)$ is as follows. Let $\Ext_\Aa^1(
 	\draw[transform canvas={xshift=1pt}] (D) -- (D');
 	\draw[transform canvas={xshift=-1pt}] (D) -- (D');
 \end{diagram*}
-(in which the middle vertical arrow is necessarily an isomorphism, e.g., by the snake lemma). 
+(in which the middle vertical arrow is necessarily an isomorphism, e.g., by the five lemma). 
 To such a short exact sequence one may associate $c_\Ee$, the image of $\id_X$ under $\Hom_\Aa(X,X)\morphism\Ext_\Aa^1(X,Y)$, or $_\Ee c$, the image of $\id_Y$ under $\Hom_\Aa(Y,Y)\morphism\Ext_\Aa^1(X,Y)$.
 \begin{prop}\lbl{prop:ExtExtends}
 	If $\Aa$ has sufficiently many injective or projective objects, then $_\Ee c=c_\Ee$ and one has a bijection between the isomorphism classes of extensions and $\Ext_\Aa^1(X,Y)$.
@@ -2252,7 +2255,7 @@ To such a short exact sequence one may associate $c_\Ee$, the image of $\id_X$ u
 \begin{proof}
 	When $I$ is injective, there is a monomorphism $I\monomorphism X$ with $X\in \XX$. By injectivity of $I$, $\id_I$ extends to a projection $X\morphism[\pi]I$ yielding an isomorphism $X\cong I\oplus\ker(\pi)$. Then $I\in\XX$ by condition \itememph{a}.
 	
-	If $X\in\XX$ and $X\morphism I^\bullet$ is an injective resolution of $X$, let $B^p=\ker\left(I^p\morphism I^{p+1}\right)$ (thus $B^0\cong X$ and $B^{p+1}\cong \Im\left(I^p\morphism I^{p+1}\right)$ for $p\geq 0$). Applying \itememph{c} to the short exact sequence $0\morphism B^p\morphism I^p\morphism B^{p+1}\morphism 0$ inductively shows $B^p\in \XX$ and gives short exact sequences $0\morphism FB^p\morphism FI^p\morphism FB^{p+1}\morphism 0$ which may be spliced together to show exactness of the complex $FX\morphism FI^\bullet$ Then $R^pF(X)=H^p(FI^\bullet)=0$.
+	If $X\in\XX$ and $X\monomorphism I^\bullet$ is an injective resolution of $X$, let $B^p=\ker\left(I^p\morphism I^{p+1}\right)$ (thus $B^0\cong X$ and $B^{p+1}\cong \Im\left(I^p\morphism I^{p+1}\right)$ for $p\geq 0$). Applying \itememph{c} to the short exact sequence $0\morphism B^p\morphism I^p\morphism B^{p+1}\morphism 0$ inductively shows $B^p\in \XX$ and gives short exact sequences $0\morphism FB^p\morphism FI^p\morphism FB^{p+1}\morphism 0$ which may be spliced together to show exactness of the complex $FX\morphism FI^\bullet$ Then $R^pF(X)=H^p(FI^\bullet)=0$.
 \end{proof}
 
 \section{Some notes on additive categories and additive functors}
@@ -2394,7 +2397,7 @@ Professor Franke recalled some facts about associated primes which he considered
 	\end{align*}
 \end{prop}
 \begin{proof}
-	The first inclusion is obvious. For the second, let $\pp\in\Ass_R(M)$ and $m\in M$ such that $\pp=\Ann_R(m)$. Then $1\mapsto m$ gives an embedding of $R/\pp$ into $M$. Let $R/\pp\cong P\subseteq M$ be its image. If $P\cap M'=0$, then $P\cong (P+M')/M'\subseteq M/M'\cong M''$ shows that $M'$ has a submodule isomorphic to $R/\pp$ as well, hence $\pp\in\Ass_R(M'')$ by Example~\reff{ex:AssR/p}. If $P\cap M'\neq 0$, take a non-zero element $p$ in their intersection. By Example~\reff{ex:AssR/p}, $\Ann_R(p)=\pp$, hence $\pp\in\Ass_R(M')$.
+	The first inclusion is obvious. For the second, let $\pp\in\Ass_R(M)$ and $m\in M$ such that $\pp=\Ann_R(m)$. Then $1\mapsto m$ gives an embedding of $R/\pp$ into $M$. Let $R/\pp\cong P\subseteq M$ be its image. If $P\cap M'=0$, then $P\cong (P+M')/M'\subseteq M/M'\cong M''$ shows that $M''$ has a submodule isomorphic to $R/\pp$ as well, hence $\pp\in\Ass_R(M'')$ by Example~\reff{ex:AssR/p}. If $P\cap M'\neq 0$, take a non-zero element $p$ in their intersection. By Example~\reff{ex:AssR/p}, $\Ann_R(p)=\pp$, hence $\pp\in\Ass_R(M')$.
 \end{proof}
 \begin{cor}\lbl{cor:AssFinite}
 	When $R$ is Noetherian and $M$ is finitely generated, $\Ass_R(M)$ is a finite set, and non-empty unless $M=0$.
@@ -2437,7 +2440,7 @@ Now we prove that taking associated prime ideals commutes with localizations -- 
 	Let $R$ be a Noetherian ring (not necessarily local) and $M$ a finitely generated $R$-module. Then the irreducible components of $\supp M=\left\{\pp\in\Spec R\st M_\pp\neq 0\right\}$ are precisely given by the \defemph{non-embedded} primes of $M$ (i.e., the associated primes not containing any other associated prime).
 \end{fact}
 \begin{proof}
-	By Corollary~\reff{cor:AssFinite}, $M_\pp\neq 0$ iff $\Ass_{R_\pp}(M_\pp)\neq\emptyset$. By Proposition~\reff{prop:AssLocalization}, this is the case iff there is a $\qq\in \Ass_R(M)$ such that $\qq R_\pp$ is a prime ideal of $R_\pp$, i.e., $\pp\supseteq \qq$. Thus
+	By Corollary~\reff{cor:AssFinite}, $M_\pp\neq 0$ iff $\Ass_{R_\pp}(M_\pp)\neq\emptyset$. By Proposition~\reff{prop:AssLocalization}, this is the case iff there is an associated prime $\qq\in \Ass_R(M)$ such that $\qq R_\pp$ is a prime ideal of $R_\pp$, i.e., $\pp\supseteq \qq$. Thus
 	\begin{align*}
 		\supp M=\bigcup_{\qq\in\Ass_R(M)}V(\qq)\;.
 	\end{align*}
