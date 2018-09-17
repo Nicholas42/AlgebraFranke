@@ -158,7 +158,7 @@ From now on, unless otherwise stated, our rings are commutative with $1$.
 \begin{proof}[Proof of Proposition~\reff{prop:InjectiveModules}]
 	The implication \itememph{b} $\Rightarrow$ \itememph{c} is trivial. Let's prove \itememph{c} $\Rightarrow$ \itememph{b}. Let $M\morphism[f]N$ be a morphism of $R$-modules and consider
 	\begin{align*}
-		\MM=\left\{(Q,\phi)\st M\subseteq Q\subseteq M'\text{ and }\snake{\phi}\in\Hom_R(Q,N)\text{ such that }\phi|_M=f\right\}\;.
+		\MM=\left\{(Q,\phi)\st M\subseteq Q\subseteq M'\text{ and }\phi\in\Hom_R(Q,N)\text{ such that }\phi|_M=f\right\}\;.
 	\end{align*}
 	$\MM$ becomes a partially ordered set via $(Q_1,\phi_1)\preceq (Q_2,\phi_2)\Leftrightarrow Q_1\subseteq Q_2$ and $\phi_2|_{Q_1}=\phi_1$. Then it's easy to see that Zorn's lemma is applicable, hence $\MM$ has a $\preceq$-maximal element $(Q_*,\phi_*)$. If \itememph{c} is satisfied and $Q_*\subsetneq M'$, there is an $m\in M'\setminus Q_*$. Let $I=\left\{r\in R\st rm\in Q_*\right\}$ and let $I\morphism[g]N$ be given by $g(r)=\phi_*(rm)$. By \itememph{c}, there is a morphism $R\morphism[\gamma]N$ extending $g$, i.e., a $\nu\in N$ such that $\phi_*(rm)=r\nu$ when $r\in I$ (using Remark~\reff{rem:Injective}\itememph{a}). Let $\snake{Q}=Q_*+Rm$ and $\snake{\phi}(m_*+rm)=\phi_*(m_*)+r\nu$ for $m_*\in Q_*$ and $r\in R$, then it's easy to see that $\snake{\phi}$ is well-defined and $(Q_*,\phi_*)\prec (\snake{Q},\snake{\phi})$, a contradiction.
 	
@@ -197,7 +197,7 @@ From now on, unless otherwise stated, our rings are commutative with $1$.
 	with injective objects $I^0,I^1,I^2,\ldots$. In fact, any $R$-module, for $R$ a principal ideal domain, has an injective resolution $0\morphism X\morphism I^0\morphism I^1\morphism 0$ of length $1$.
 \end{cor}
 \begin{proof}
-	The first assertion follows as the quotient of divisible modules is divisible again. Note that $K/R$ is divisible, $K$ being the quotient field of $R$, hence it is injective. If $M$ is any $R$-module and $m\in M\setminus\{0\}$. We have to distinguish to cases.
+	The first assertion follows as the quotient of divisible modules is divisible again. Note that $K/R$ is divisible, $K$ being the quotient field of $R$, hence it is injective. Let $M$ be any $R$-module and $m\in M\setminus\{0\}$. We have to distinguish to cases.
 	
 	\emph{Case 1.} Suppose $\Ann_R(m)$ is non-zero, i.e., $\Ann_R(m)=(\alpha)$ for some $\alpha\in R\setminus \{0\}$ (remember we have a principal ideal domain). Then we have a morphism from $Rm\subseteq M$ to $K/R$ given by $rm\mapsto \frac{r}{\alpha}\bmod R$ (note that modding out $R$ is necessary for this to be well-defined -- we couldn't just have used $K$). By injectivity of $K/R$, there is an extension $M\morphism[\phi_m]K/R$, satisfying $\phi_m(m)\neq 0$. Let $I_m= K/R$ be the target of $\phi_m$.
 	
@@ -1635,7 +1635,7 @@ and all of them are universally catenary.
 \section{An excursion in derived functors}
 \subsection{Construction of derived functors}
 \begin{defi}\lbl{def:homologicalfunctor}
-	Let $\Aa$ and $\Bb$ be abelian categories (cf. \cite[Definition~A.1.4]{alggeo2}). A \defemph{homological $\partial$-functor} $F_\bullet \colon\Aa\morphism\Bb$ is a sequence $(F_n)_{n\geq 0}$  of additive functors $F_i\colon\Aa\morphism\Bb$ together with a natural transformation $\partial=\partial_F\colon F_{i+1}(A'')\morphism F_i(A')$ on the category of short exact sequences on $\Aa$, such that the sequence
+	Let $\Aa$ and $\Bb$ be abelian categories (cf. \cite[Definition~A.1.4]{alggeo2}). A \defemph{homological $\partial$-functor} $F_\bullet \colon\Aa\morphism\Bb$ is a sequence $(F_n)_{n\geq 0}$  of additive functors $F_i\colon\Aa\morphism\Bb$ together with a natural transformation $\partial=\partial_F\colon F_{i+1}(A'')\morphism F_i(A')$ on the category of short exact sequences in $\Aa$, such that the sequence
 	\begin{multline*}
 		\ldots\morphism F_{i+1}(A'')\morphism[\partial]F_i(A')\morphism F_i(A)\morphism F_i(A'')\morphism[\partial]\ldots\\
 		\ldots\morphism F_{1}(A'')\morphism[\partial]F_0(A')\morphism F_0(A)\morphism F_0(A'')\morphism 0\;.
@@ -1656,7 +1656,7 @@ and all of them are universally catenary.
 	\end{diagram*}
 	commutes.
 	
-	Similarly, a \defemph{cohomological $\partial$-functor} $F^\bullet \colon\Aa\morphism\Bb$ is a sequence $(F^n)_{n\geq 0}$ of additive functors $F^i\colon\Aa\morphism\Bb$ together with connecting morphism $\partial=\partial_F\colon F^i(A'')\morphism F^{i+1}(A')$ such that for a short exact sequence $0\morphism A'\morphism A\morphism A''\morphism 0$, the sequence 
+	Similarly, a \defemph{cohomological $\partial$-functor} $F^\bullet \colon\Aa\morphism\Bb$ is a sequence $(F^n)_{n\geq 0}$ of additive functors $F^i\colon\Aa\morphism\Bb$ together with a connecting morphism $\partial=\partial_F\colon F^i(A'')\morphism F^{i+1}(A')$ such that for a short exact sequence $0\morphism A'\morphism A\morphism A''\morphism 0$, the sequence 
 	\begin{multline*}
 		0\morphism F^0(A')\morphism F^0(A)\morphism F^0(A'')\morphism[\partial] F^1(A')\morphism\ldots\\
 		\ldots\morphism[\partial]F^i(A')\morphism F^i(A)\morphism F^i(A'')\morphism[\partial]F^{i+1}(A')\morphism\ldots
@@ -1671,16 +1671,17 @@ and all of them are universally catenary.
 	\begin{alphanumerate}
 		\item It follows (by the usual Yoneda argument) that derived functors are unique up to unique isomorphism of (co)homological functors if they exist.
 		\item If $F$ is left-exact in the above sense, it preserves monomorphisms and it can be shown that $0\morphism FX'\morphism FX\morphism FX''$ is exact even if only $0\morphism X'\morphism X\morphism X''$ is exact (a nasty technical proof which won't appear here). Similar for right-exact functors.
-		\item A generalized definition drops the exactness assumptions and requires $F\morphism L_0F$ with the universal property that any diagram
+		\item A generalized definition drops the exactness assumptions and requires a natural transformation $L_0F\morphism F$ with the universal property that for any homological functor $\Phi_\bullet$ with a natural transformation $\Phi_0\morphism F$, there is a unique natural transformation $\Phi_0\morphism L_0F$ such that the diagram
 		\begin{diagram*}
 			\node[ob] (F) at (0,1.25) {$F$};
 			\node[ob] (L) at (2.5,1.25) {$L_0F$};
 			\node[ob] (Phi) at (1.25,0) {$\Phi_0$};
-			\draw[->] (F) -- (L);
-			\draw[->] (F) -- (Phi);
-			\draw[->] (Phi) -- (L);
+			\scriptsize
+			\draw[<-] (F) -- (L);
+			\draw[<-] (F) -- (Phi);
+			\draw[->,dashed] (Phi) -- (L) node[pos=0.5, below right] {$\exists!$};
 		\end{diagram*}
-		can be uniquely extended to a morphism $\Phi_\bullet \morphism L_\bullet F$ of homological functors. Similar for right-derived functors.
+		commutes, and $\Phi_0\morphism L_0F$ can be uniquely extended to a morphism $\Phi_\bullet \morphism L_\bullet F$ of homological functors. Similar for right-derived functors.
 	\end{alphanumerate}
 \end{rem}
 \begin{example}
@@ -1732,7 +1733,7 @@ and all of them are universally catenary.
 	hence $\upsilon$ has indeed the required property.
 \end{proof}
 \begin{thm}\lbl{thm:DerivedFunctors}
-	Let $\Aa,\Bb$ be an abelian categories where $\Bb$ has sufficiently many injective objects.
+	Let $\Aa,\Bb$ be an abelian categories where $\Aa$ has sufficiently many injective objects.
 	\begin{alphanumerate}
 		\item Any left-exact functor $\Aa\morphism[F]\Bb$ has a right-derived functor $R^\bullet F$.
 		\item Let $\Phi^\bullet \colon \Aa\morphism\Bb$ be a cohomological functor, then $\Phi^\bullet $ is a right-derived functor of $\Phi^0$ iff $\Phi^pI=0$ for any injective object $I\in\Ob(\Aa)$ and all $p>0$.
@@ -1827,7 +1828,7 @@ and all of them are universally catenary.
 	
 	 Indeed, the front and back faces commute by definition of $\alpha_{X,\iota}^n$ and $\alpha_{Y,\kappa}^n$. The top and bottom face commute since the connecting homomorphisms $\partial_\Phi$ and $\partial_\Psi$ are natural, i.e., compatible with morphisms of short exact sequences by Definition~\reff{def:homologicalfunctor}. The left face commutes by the induction assumption. As $\partial_{X,\iota}$ and $\partial_{Y,\kappa}$ are isomorphisms, this implies commutativity of the right face, as required. For $n=1$, a slight modification of the argument works again.
 	
-	We have seen that $\alpha^n$ is a well-defined natural transformation. It remains to show $\alpha^n\partial_\Phi=\partial_\Psi\alpha^{n-1}$. Let $0\morphism X'\morphism X\morphism X''\morphism 0$ be a short exact sequence. We choose an embedding $X'\monomorphism[\iota]I$ into some injective object $\iota$. This gives a commutative diagram with exact rows
+	We have seen that $\alpha^n$ is a well-defined natural transformation. It remains to show $\alpha^n\partial_\Phi=\partial_\Psi\alpha^{n-1}$. Let $0\morphism X'\morphism X\morphism X''\morphism 0$ be a short exact sequence. We choose a monomorphism $X'\monomorphism[\iota]I$ into some injective object $I$. This gives a commutative diagram with exact rows
 		\begin{diagram*}
 			\node[ob] at (-0.75,1.5) {$\Xx\colon$};
 			\node[ob] at (-0.75,0) {$\Yy\colon$};
@@ -1972,7 +1973,7 @@ and all of them are universally catenary.
 				a long exact sequence in which the $I^n$ may fail to be injective. 
 			\end{alphanumerate}
 		\end{rem}
-		Before we prove Proposition~\reff{prop:Hufeisenlemma}, let's see how the rest of Theorem~\reff{thm:DerivedFunctors} follows from it. We first prove \itememph{a}. Let $F\colon\Aa\morphism \Bb$ be left-exact. For every object $X$ of $\Aa$, chose an injective resolution $X\monomorphism I_X^\bullet $ of $X$ (and we need the axiom of choice -- for \emph{classes!} -- to do this). For every morphism $f\colon X\morphism Y$ choose an extension $f^*\colon I_X^\bullet \morphism I_Y^\bullet $ of $f$. Let
+		Before we prove Proposition~\reff{prop:Hufeisenlemma}, let's see how the rest of Theorem~\reff{thm:DerivedFunctors} follows from it. We first prove \itememph{a}. Let $F\colon\Aa\morphism \Bb$ be left-exact. For every object $X$ of $\Aa$, choose an injective resolution $X\monomorphism I_X^\bullet $ of $X$ (and we need the axiom of choice -- for \emph{classes!} -- to do this). For every morphism $f\colon X\morphism Y$ choose an extension $f^*\colon I_X^\bullet \morphism I_Y^\bullet $ of $f$ (we may do this by Proposition~\reff{prop:Hufeisenlemma}\itememph{a}). Let
 		\begin{align*}
 			R^pF(X)=H^p(FI_X^\bullet )\quad\text{and}\quad R^pF(f)=H^p\Big(FI_X^\bullet \morphism[Ff^* ]FI_Y^\bullet \Big)\;.
 		\end{align*}
@@ -2010,9 +2011,9 @@ and all of them are universally catenary.
 		
 		This shows that $R^pF$ has the required long exact cohomology sequence. In a similar fashion one can show its functoriality on the category of short exact sequences in $\Aa$.
 		
-		If $X$ is injective, one can choose $I^\bullet \colon X\morphism 0\morphism 0\morphism\ldots$ and $X\monomorphism[\id_X]I^\bullet $ as injective resolution. Applying Proposition~\reff{prop:Hufeisenlemma}\itememph{b}, we get 
+		If $I$ is injective, one can choose $I\monomorphism[\id_I]I^\bullet $ as an injective resolution, where $I^\bullet \colon I\morphism 0\morphism 0\morphism\ldots$. Applying Proposition~\reff{prop:Hufeisenlemma}\itememph{b}, we get 
 		\begin{align*}
-			R^pF(X)=H^p(FI_X^\bullet )=H^p(FI^\bullet )=0\quad\text{when }p>0
+			R^pF(I)=H^p(FI_X^\bullet )=H^p(FI^\bullet )=0\quad\text{when }p>0
 		\end{align*}
 		and, for arbitrary $X\in\Ob(\Aa)$ (injective or not), a canonical isomorphism
 		\begin{align*}
@@ -2118,7 +2119,7 @@ and all of them are universally catenary.
 	 \end{align*}
 	 hence $d_{I }^{n+1}d^n$ factors over $\coker(d_{J }^{n-1})=\Im(d_{J }^n)$. This gives $\delta^{n+1}\colon \Im(d_{J }^n)\morphism I^{n+2}$, and $-\delta^{n+1}$ can be extended to some $d^{n+1}\colon J^{n+1}\morphism I^{n+2}$ (by injectivity of $I^{n+2}$) which satisfies $d_{I }^{n+1}d^{n}+d^{n+1}d_{J }^n=0$, i.e., \eqreff{eq:Horseshoe3} for $k=n+1$. Then $d_{K }^{n+1}=(d_{I }^{n+1}+d^{n+1})\times d_{J }^{n+1}$ fulfills $d_{K }^{n+1}d_{K }^n=0$ and the induction is complete.
 	
-	 It remains to verify that $Z\morphism[\zeta]K^\bullet $ is indeed a resolution, i.e., acyclic. But this is an immediate consequence of the long exact cohomology sequence for short exact sequences of chain complexes, since both $H^\bullet (I^\bullet )$ and $H^\bullet (J^\bullet )$ vanish.
+	 It remains to verify that $Z\morphism[\zeta]K^\bullet $ is indeed a resolution, i.e., acyclic. But this is an immediate consequence of the long exact cohomology sequence for short exact sequences of cochain complexes, since both $H^\bullet (I^\bullet )$ and $H^\bullet (J^\bullet )$ vanish.
 \end{proof}
 Left-derived functors of right-exact functors can be constructed by dualizing everything.
 \begin{defi}\lbl{def:projective}
@@ -2142,8 +2143,8 @@ Left-derived functors of right-exact functors can be constructed by dualizing ev
 \begin{thm}\lbl{thm:LeftDerivedFunctors}
 	Let $\Aa,\Bb$ be abelian categories where $\Aa$ has sufficiently many projective objects.
 	\begin{alphanumerate}
-		\item Any left-exact functor $\Aa\morphism[F]\Bb$ has a left-derived functor $L_\bullet F$.
-		\item Let $\Phi_\bullet \colon \Aa\morphism\Bb$ be a homological functor, then $\Phi_\bullet $ is a right-derived functor of $\Phi_0$ iff $\Phi_pP=0$ for any projective object $P\in\Ob(\Aa)$ and all $p>0$.
+		\item Any right-exact functor $\Aa\morphism[F]\Bb$ has a left-derived functor $L_\bullet F$.
+		\item Let $\Phi_\bullet \colon \Aa\morphism\Bb$ be a homological functor, then $\Phi_\bullet $ is a left-derived functor of $\Phi_0$ iff $\Phi_pP=0$ for any projective object $P\in\Ob(\Aa)$ and all $p>0$.
 		\item For a short sequence $\Ff\colon 0\morphism F'\morphism F\morphism F''\morphism0$ which is exact on projectives there is a long exact sequence
 		\begin{multline*}
 		\ldots\morphism L_{i+1} F''X\morphism[d_\Ff]L_i F'X\morphism L_i F X\morphism L_i F''X\morphism[d_\Ff]L_{i-1} F'X\morphism\ldots\\
@@ -2165,7 +2166,7 @@ Left-derived functors of right-exact functors can be constructed by dualizing ev
 	\end{alphanumerate}
 \end{thm}
 \begin{proof}
-	Dualize the proof of Theorem~\reff{thm:DerivedFunctors} and prove the dual analogues of Fact~\reff{fact:injectiveResolutions} and the Proposition~\reff{prop:Hufeisenlemma} on the way.
+	Dualize the proof of Theorem~\reff{thm:DerivedFunctors} and prove the dual analogues of Fact~\reff{fact:injectiveResolutions} and Proposition~\reff{prop:Hufeisenlemma} on the way.
 \end{proof}
 \subsection{Construction of \texorpdfstring{$\Ext_\Aa^\bullet$}{Ext}}\lbl{subsec:ConstructionOfExt}
 If the category $\Aa$ has sufficiently many injective objects, then, for fixed objects $X$, one has a right-derived functor $\Ext_\Aa^\bullet(X,-)$ of $\Hom_\Aa(X,-)\colon \Aa\morphism\cat{Ab}$. As $\Hom_\Aa(X,-)$ is functorial in $X$, so are the $\Ext_\Aa^\bullet(X,-)$. For a short exact sequence $0\morphism X''\morphism X\morphism X'\morphism 0$ and $I$ injective, one has a short exact sequence $0\morphism\Hom_\Aa(X',I)\morphism\Hom_\Aa(X,I)\morphism\Hom_\Aa(X'',I)\morphism 0$. One thus has a long exact cohomology sequence
@@ -2289,18 +2290,18 @@ The following lists and proves some first properties of additive categories and 
 \begin{proof}
 	We first show the characterization of the addition in $\Hom_\Aa(X,Y)$. First thing to check is that $0$ is indeed the neutral element. As $*$ is a final object, $\Hom_\Aa(X,*)$ has only one element $\pi$ and is thus the zero group. In particular, $\pi+\pi=\pi$ and if $\iota$ denotes $*\morphism Y$, then $0=\iota\pi=\iota(\pi+\pi)=0+0$, hence $0$ is indeed the neutral element.
 	
-	Now let $\Delta=\id_X\times \id_X$ be the diagonal and denote $i_1,i_2$ the inclusions of $X$ in $X\oplus X$ and $p_1,p_2$ the projections of $X\oplus X$ to $X$. We show $\Delta=i_1+i_2$. Indeed, we have $p_1(i_1+i_2)=p_1i_1+p_1i_2=\id_X+0=\id_X$ and similarly $p_2(i_1+i_2)j_2=\id_X$, which is exactly how $\Delta$ is characterized. Hence 
+	Now let $\Delta=\id_X\times \id_X$ be the diagonal and denote $i_1,i_2$ the inclusions of $X$ in $X\oplus X$ and $p_1,p_2$ the projections of $X\oplus X$ to $X$. We show $\Delta=i_1+i_2$. Indeed, we have $p_1(i_1+i_2)=p_1i_1+p_1i_2=\id_X+0=\id_X$ and similarly $p_2(i_1+i_2)=\id_X$, which is exactly how $\Delta$ is characterized. Hence 
 	\begin{align*}
 		(a\amalg b)\circ \Delta=(a\amalg b)\circ (i_1+i_2)=(a\amalg b)\circ i_1+(a\amalg b)\circ i_2=a+b\;.
 	\end{align*}
 	
 	For commutativity, we need to show $(a\amalg b)\circ\Delta=(b\amalg a)\circ\Delta$. The universal property of coproducts gives a unique $X\oplus X\morphism[\sigma]X\oplus X$ such that
 	\begin{diagram*}
-		\node (XX2) at (0,0) {$X\oplus X$};
-		\node (X1) at (-1,1.25) {$X$};
-		\node (X2) at (-1,-1.25) {$X$};
-		\node (XX1) at (-2,0) {$X\oplus X$};
-		\node (Y) at (2.5,0) {$Y$};
+		\node[ob] (XX2) at (0,0) {$X\oplus X$};
+		\node[ob] (X1) at (-1,1.25) {$X$};
+		\node[ob] (X2) at (-1,-1.25) {$X$};
+		\node[ob] (XX1) at (-2,0) {$X\oplus X$};
+		\node[ob] (Y) at (2.5,0) {$Y$};
 		\scriptsize
 		\draw[<-] (XX2) -- (X1) node[pos=0.5, above right] {$i_1$};
 		\draw[<-] (XX2) -- (X2) node[pos=0.5, below right] {$i_2$};
@@ -2314,7 +2315,7 @@ The following lists and proves some first properties of additive categories and 
 	commutes. Then $\sigma$ is easily seen to be an isomorphism and $b\amalg a=(a\amalg b)\circ \sigma$ by the uniqueness of $b\amalg a$. It thus suffices to show $\sigma\Delta=\Delta$. By the uniqueness of $\Delta$, this is equivalent to $p_1\sigma\Delta=\id_X$ and $p_2\sigma\Delta=\id_X$. We claim that $p_1\sigma=p_2$ and vice versa, which would finish the proof. To see this, note that $p_1\sigma=p_2$ is equivalent to $p_1\sigma i_1=p_2i_1=0$ and $p_1\sigma i_2=p_2i_2=\id_X$ by the universal property of the coproduct $X\oplus X$. This follows from $\sigma i_1=i_2$ and $\sigma i_2=i_1$ by definition of $\sigma$.
 \end{proof}
 \begin{defi}\lbl{def:additiveFunctor}
-	A functor between preadditive categories (cf. \cite[Definition~A.1.1\itememph{b}]{alggeo2}) is \defemph{additive} if it preserves finite biproducts together with the canonical inclusion and projection morphism to and from them.
+	A functor between preadditive categories is \defemph{additive} if it preserves finite biproducts together with the canonical inclusion and projection morphism to and from them.
 \end{defi}
 \begin{rem*}
 	Definition~\reff{def:additiveFunctor} seems kind of counterintuitive, as one would rather expect an additive functor to induce group homomorphisms on $\Hom$ sets. For additive categories, this alternative definition turns out to be equivalent.
@@ -2323,17 +2324,17 @@ The following lists and proves some first properties of additive categories and 
 	Let $F\colon \Aa\morphism\Bb$ be a functor between additive categories. Then $F$ is additive iff $F$ induces a group homomorphism $\Hom_\Aa(X,Y)\morphism[F]\Hom_\Bb(FX,FY)$ for every $X,Y\in\Ob(\Aa)$.
 \end{prop}
 \begin{proof}
-	If $F$ is an additive functor, i.e., preserves finite biproducts and the associated structure morphisms, then it is clear that $F$ is compatible with the addition as in constructed Proposition~\reff{prop:AdditiveStructureUnique}.
+	If $F$ is an additive functor, i.e., preserves finite biproducts and the associated structure morphisms, then it is clear that $F$ is compatible with the addition as constructed in Proposition~\reff{prop:AdditiveStructureUnique}.
 	
 	Conversely, suppose that $F$ is compatible with the addition. Let $X,Y\in\Ob(\Aa)$. Let $i_X,i_Y$ be the inclusions of $X,Y$ in $X\oplus Y$ and $p_X,p_Y$ the projections of $X\oplus Y$ onto $X,Y$. Define $j_X,j_Y$ and $q_X,q_Y$ analogously for $FX\oplus FY$. By the two universal properties of the biproduct $FX\oplus FY$ we get morphisms $F(X\oplus Y)\morphism[q]FX\oplus FY$ and $FX\oplus FY\morphism[j]F(X\oplus Y)$ such that 
 	\begin{center}
 		\begin{minipage}{0.4\textwidth}
 			\centering				
 			\begin{diagram*}
-				\node (XY) at (0,0) {$FX\oplus FY$};
-				\node (X) at (1,1.25) {$FX$};
-				\node (Y) at (1,-1.25) {$FY$};
-				\node (T) at (-3,0) {$F(X\oplus Y)$};
+				\node[ob] (XY) at (0,0) {$FX\oplus FY$};
+				\node[ob] (X) at (1,1.25) {$FX$};
+				\node[ob] (Y) at (1,-1.25) {$FY$};
+				\node[ob] (T) at (-3,0) {$F(X\oplus Y)$};
 				\scriptsize
 				\draw[->] (XY) -- (X) node[pos=0.5, above left] {$q_X$};
 				\draw[->] (XY) -- (Y) node[pos=0.5, below left] {$q_Y$};
@@ -2345,10 +2346,10 @@ The following lists and proves some first properties of additive categories and 
 		\begin{minipage}{0.4\textwidth}
 			\centering				
 			\begin{diagram*}
-				\node (XY) at (0,0) {$FX\oplus FY$};
-				\node (X) at (-1,1.25) {$FX$};
-				\node (Y) at (-1,-1.25) {$FY$};
-				\node (T) at (3,0) {$F(X\oplus Y)$};
+				\node[ob] (XY) at (0,0) {$FX\oplus FY$};
+				\node[ob] (X) at (-1,1.25) {$FX$};
+				\node[ob] (Y) at (-1,-1.25) {$FY$};
+				\node[ob] (T) at (3,0) {$F(X\oplus Y)$};
 				\scriptsize
 				\draw[<-] (XY) -- (X) node[pos=0.5, above right] {$j_X$};
 				\draw[<-] (XY) -- (Y) node[pos=0.5, below right] {$j_Y$};
