@@ -178,7 +178,7 @@ Background in homological algebra is not required safe for cohomology groups of 
 	Conversely, if \itememph{b} holds, then $\snake{M}\morphism\Mm|_U$ (with $M=\Mm(U)$) is an isomorphism for all affine open $U\subseteq X$, hence induces isomorphisms on stalks, which shows \itememph{b} $\Rightarrow$ \itememph{e}. Hence, \itememph{e} is equivalent to the other properties.
 \end{proof}
 
-Let $\Aa$ be the category $R\cat{-Mod}$ and $\Bb$ be $\Oo_{\Spec R}\cat{-Mod}$, then the functor $L$ given by $M\mapsto\snake{M}$ and the functor $\Mm\mapsto\Mm(\Spec R)$ are an adjoint pair of functors by \eqreff{eq:ROXAdjunction}. It follows that $L$ commutes with cokernels and coproducts. In particular, the full subcategory $\cat{QCoh}(X)\subseteq\Oo_X\cat{-Mod}$ of quasi-coherent $\Oo_X$-modules is closed under taking cokernels and direct sums for $X=\Spec R$, and by locality of quasi-coherentness this holds for all preschemes $X$.
+Let $\Aa$ be the category $R\cat{-Mod}$ and $\Bb$ be $\Oo_{\Spec R}\cat{-Mod}$, then the functor $L$ given by $M\mapsto\snake{M}$ and the functor $\Mm\mapsto\Mm(\Spec R)$ are an adjoint pair of functors by \eqreff{eq:ROXAdjunction}. It follows that $L$ commutes with cokernels and coproducts. In particular, the full subcategory $\cat{QCoh}(X)\subseteq\Oo_X\cat{-Mod}$ of quasi-coherent $\Oo_X$-modules is closed under taking cokernels and direct sums for $X=\Spec R$, and by locality of quasi-coherence this holds for all preschemes $X$.
 \begin{defi}[{\cite[Definition~2.1.1 and Definition~2.1.2]{alggeo1}}]\lbl{def:qcqs}
 	A morphism $X\morphism[f]Y$ of preschemes is \defemph{quasi-compact} if it satisfies the following equivalent conditions.
 	\begin{alphanumerate}
@@ -210,7 +210,7 @@ Let $\Aa$ be the category $R\cat{-Mod}$ and $\Bb$ be $\Oo_{\Spec R}\cat{-Mod}$, 
 	\end{alphanumerate}
 \end{prop}
 \begin{proof}
-	Part \itememph{a}. For cokernels and finite direct sums (which are finite coproducts since $\Oo_X\cat{-Mod}$ is an abelian category by Proposition~\reff{prop:RmodAbelian}), consider the case $X=\Spec R$ first. Then $R\cat{-Mod}\morphism[L]\Oo_X\cat{-Mod}$, $M\mapsto\snake{M}$ and $\Oo_X\cat{-Mod}\morphism R\cat{-Mod}$, $\Mm\mapsto\Mm(X)$ are adjoint functors by \eqreff{eq:ROXAdjunction}. By Remark~\reff{rem:AdjunctionPreservesStuff}, $L$ preserves cokernels and coproducts. By locality of quasi-coherentness, this follows for all preschemes $X$.
+	Part \itememph{a}. For cokernels and finite direct sums (which are finite coproducts since $\Oo_X\cat{-Mod}$ is an abelian category by Proposition~\reff{prop:RmodAbelian}), consider the case $X=\Spec R$ first. Then $R\cat{-Mod}\morphism[L]\Oo_X\cat{-Mod}$, $M\mapsto\snake{M}$ and $\Oo_X\cat{-Mod}\morphism R\cat{-Mod}$, $\Mm\mapsto\Mm(X)$ are adjoint functors by \eqreff{eq:ROXAdjunction}. By Remark~\reff{rem:AdjunctionPreservesStuff}, $L$ preserves cokernels and coproducts. By locality of quasi-coherence, this follows for all preschemes $X$.
 	
 	Closedness under taking kernels was proved in \cite[Fact~1.5.3]{alggeo1}. It's worth pointing out that in fact, the proof given there shows that $M\mapsto\snake{M}$ preserves kernels as well. 
 	
@@ -255,7 +255,7 @@ Our plan is to associate to any quasi-coherent $\Oo_X$-module on a scheme $X$ \e
 		\morphism[d] H^1(X,\Mm')\morphism H^1(X,\Mm)\morphism H^1(X,\Mm'')\morphism[d]H^2(X,\Mm')\morphism\ldots
 	\end{multline*}
 \end{itemize}
-But before we do this, we to introduce the notion of \emph{coherent} $\Oo_X$-modules.
+But before we do this, we introduce the notion of \emph{coherent} $\Oo_X$-modules.
 \begin{prop}
 	If $X$ is a prescheme, associating to (the isomorphism class of) a closed embedding $Y\monomorphism[i]X$ the sheaf of ideals $\Jj=\ker\Big(\Oo_X\morphism[i^*]i_*\Oo_Y\Big)$ gives a bijection between the set of closed subpreschemes of $X$ and the quasi-coherent sheaves of ideals in $\Oo_X$.
 \end{prop}
@@ -316,7 +316,7 @@ But before we do this, we to introduce the notion of \emph{coherent} $\Oo_X$-mod
 \end{proof}
 \begin{defi}
 	\begin{alphanumerate}
-		\item \lbl{def:locFinGenerated}We call a quasi-coherent $\Oo_X$-module \defemph{locally finitely generated} it it satisfies the equivalent conditions from Lemma~\reff{lem:locFinGen}.
+		\item \lbl{def:locFinGenerated}We call a quasi-coherent $\Oo_X$-module \defemph{locally finitely generated} if it satisfies the equivalent conditions from Lemma~\reff{lem:locFinGen}.
 		\item When $X$ is locally Noetherian (cf.\ \cite[Definition~2.2.2]{alggeo1}), an $\Oo_X$-module is called \defemph{coherent} if it is quasi-coherent and locally finitely generated.
 	\end{alphanumerate}
 \end{defi}
@@ -403,7 +403,7 @@ To see that $\check{C}^\bullet (\Uu,\Mm)$ is indeed a cochain complex, we need t
 		\end{align*}
 		(i.e., $s_\ell$ repeats the $\ell\ordinalth$ index) as well as \emph{transposition maps}
 		\begin{align*}
-			\check{C}^n(\Uu,\Mm)\morphism[t_\ell]\check{C}^n(\Uu,\Mm)\;,\quad (t_\ell\psi)_{i_0,\ldots,i_n}=\psi_{i_0,\ldots,i_{\ell-1},i_{\ell+1},i_\ell,i_{\ell+2},\ldots,i_{n-1}}\quad\text{for }\ell=0,\ldots,n-1
+			\check{C}^n(\Uu,\Mm)\morphism[t_\ell]\check{C}^n(\Uu,\Mm)\;,\quad (t_\ell\psi)_{i_0,\ldots,i_n}=\psi_{i_0,\ldots,i_{\ell-1},i_{\ell+1},i_\ell,i_{\ell+2},\ldots,i_{n}}\quad\text{for }\ell=0,\ldots,n-1
 		\end{align*}
 		(i.e., $t_\ell$ swaps the $\ell\ordinalth$ and $(\ell+1)\ordinalst$ index). As any permutation may be expressed as a composition of elementary transpositions, $\check{C}_\alt^n(\Uu,\Mm)\subseteq\check{C}^n(\Uu,\Mm)$ is given by the relations
 		\begin{align*}
@@ -471,7 +471,7 @@ To see that $\check{C}^\bullet (\Uu,\Mm)$ is indeed a cochain complex, we need t
 		\begin{align*}
 			\check{C}^\bullet (\Uu,\Mm\oplus\Nn)=\check{C}^\bullet (\Uu,\Mm)\oplus\check{C}^\bullet (\Uu,\Nn)
 		\end{align*}
-		and, more general, 
+		and, more generally, 
 		\begin{align*}
 			\check{C}^\bullet \bigg(\Uu,\prod_{i\in I}\Mm_i\bigg)=\prod_{i\in I}\check{C}^\bullet (\Uu,\Mm_i)\;.
 		\end{align*}
@@ -538,7 +538,7 @@ A refinement map $v$ induces a morphism
 Clearly, $v^*$ commutes with the $d_j$, $s_j$, and $t_j$, hence restricts to a morphism of chain complexes $\check{C}_\alt^\bullet (\Uu,\Mm)\morphism[v^*]\check{C}_\alt^\bullet (\Vv,\Mm)$.
 \begin{lem}
 	\begin{alphanumerate}
-		\item \lbl{lem:refinementPullback}A refinement $\Ww$ of a refinement $\Vv$ of $\Uu$ is a refinement of $\Uu$ and if $v$ and $w$ are associated refinement maps for $(\Vv,\Uu)$ and $(\Ww,\Uu)$, then $vw$ is a refinement map for $(\Ww,\Uu)$. Moreover, $(vw)^*=w^*v^*$ and the identity $\id_I$ is a refinement map for $(\Uu,\Uu)$ and $\id_I^*=\id_{\check{C}^*(\Uu,-)}$.
+		\item \lbl{lem:refinementPullback}A refinement $\Ww$ of a refinement $\Vv$ of $\Uu$ is a refinement of $\Uu$ and if $v$ and $w$ are associated refinement maps for $(\Vv,\Uu)$ and $(\Ww,\Vv)$, then $vw$ is a refinement map for $(\Ww,\Uu)$. Moreover, $(vw)^*=w^*v^*$ and the identity $\id_I$ is a refinement map for $(\Uu,\Uu)$ and $\id_I^*=\id_{\check{C}^*(\Uu,-)}$.
 		\item Two arbitrary open covers have a common refinement. When $X$ is a prescheme, this common refinement can be chosen affine.
 		\item If $v_1,v_2\colon J\morphism I$ are two refinement maps for $(\Vv,\Uu)$, then $v_1^*$ and $v_2^*$ induce the same morphism on \vC ech cohomology.
 	\end{alphanumerate}
@@ -623,7 +623,7 @@ Clearly, $v^*$ commutes with the $d_j$, $s_j$, and $t_j$, hence restricts to a m
 \end{rem}
 We now arrive at the main result of this section.
 \begin{prop}\lbl{prop:CechCohoOnScheme}
-	 Let $X$ be a quasi-compact scheme, $\Mm$ be a quasi-coherent $\Oo_X$-module and $\Uu$ and affine open cover of $X$.
+	 Let $X$ be a quasi-compact scheme, $\Mm$ be a quasi-coherent $\Oo_X$-module and $\Uu$ an affine open cover of $X$.
 	\begin{alphanumerate}
 		\item If $\Vv$ is another affine open cover of $X$ which is a refinement of $\Uu$, then
 		\begin{align*}
@@ -641,7 +641,7 @@ Before the proof, a lemma.
 	For an open cover $\Uu\colon X=\bigcup_{i\in I}\Uu_i$ of a topological space $X$ and a continuous map $f\colon Y\morphism X$, let $f^{-1}(\Uu)$ be the cover $Y=\bigcup_{i\in I}f^{-1}(U_i)$. Let $\Ff$ be a sheaf of abelian groups on $Y$.
 	\begin{alphanumerate}
 		\item We have an isomorphism of cochain complexes $\check{C}^\bullet (f^{-1}(\Uu),\Ff)\cong \check{C}^\bullet (\Uu,f_*\Ff)$ and this isomorphism restricts to an isomorphism $\check{C}_\alt^\bullet (f^{-1}(\Uu),\Ff)\cong \check{C}_\alt^\bullet (\Uu,f_*\Ff)$.
-		\item If the image of $f$ is contained in one of the open subsets $U_i$, then $\check{H}^i(\Uu,f_*\Ff)=\check{H}_\alt^i(\Uu,f_*\Ff)=0$ for $i>0$.
+		\item If the image of $f$ is contained in one of the open subsets $U_i$, then $\check{H}^p(\Uu,f_*\Ff)=\check{H}_\alt^p(\Uu,f_*\Ff)=0$ for $p>0$.
 	\end{alphanumerate}
 \end{lem}
 \begin{proof}
@@ -729,7 +729,7 @@ Before the proof, a lemma.
 	\begin{itemize}
 		\item $A_i(\Mm)$ is now the condition that $\check{H}_\alt^j(\Uu,\Mm)\morphism \check{H}^j(\Uu,\Mm)$ is an isomorphism when $j<i$ and injective for $j=i$.
 		\item Claim~\reff{claim:AiAi+1} also holds for the new $A_i$.
-		\item If $W\subseteq X$ is affine and contained in one of the $V_i$ and $\Ff\in\Ob(\cat{Qcoh}(W))$, then $(j_W)_*\Ff$ satisfies all $A_i$ (which follows like above from Lemma~\reff{lem:CohomologyOfPushforward}\itememph{b} and Example~\reff{ex:FirstCechComputations}).
+		\item If $W\subseteq X$ is affine and contained in one of the $V_i$ and $\Ff\in\Ob(\cat{QCoh}(W))$, then $(j_W)_*\Ff$ satisfies all $A_i$ (which follows like above from Lemma~\reff{lem:CohomologyOfPushforward}\itememph{b} and Example~\reff{ex:FirstCechComputations}).
 	\end{itemize}
 	
 	Part \itememph{c}. Apply \itememph{a} with $\Uu$ the trivial cover $X=X$ and $\Vv$ any affine open cover of $X$ to conclude $\check{H}^i(\Vv,\Mm)=0$ when $i>0$ and $\Mm$ is a quasi-coherent $\Oo_X$-module. Then one uses \itememph{b} to show that $\check{H}_\alt^\bullet (\Vv,\Mm)$ also vanishes in positive degrees.
@@ -795,7 +795,7 @@ Summing up our previous work, we obtain the following Theorem~\reff{thm:CohoOnSc
 \begin{proof}
 	We have seen in Proposition~\reff{prop:QCohHasKerCoker}\itememph{a} that the category $\cat{QCoh}(X)$ of quasi-coherent $\Oo_X$-modules is stable under kernels and cokernels. Therefore, $\Mm'$ is quasi-coherent when $\Mm$ and $\Mm''$ are and $\Mm''$ is quasi-coherent when $\Mm'$ and $\Mm$ are. We may thus assume that $\Mm'$ and $\Mm''$ are the quasi-coherent ones.
 	
-	To show exactness of \eqreff{eq:exactAffineSectionSequence}, we may replace $X$ by $U$ and the involved sheaves by their restriction to $U$ and thus assume that $X=U\cong\Spec R$ is affine. This may also be assumed in the proof of quasi-coherentness of $\Mm$, which is a local question.% At this point it would be nice to have the long exact cohomology sequence from Theorem~\reff{thm:CohoOnSchemes}\itememph{d} available, but we haven't, since $\Mm$ is not (yet) quasi-coherent. In the lecture, we fixed this by doing the cohomology argument ``on foot''. I would like to present a different way to circumvent this problem.
+	To show exactness of \eqreff{eq:exactAffineSectionSequence}, we may replace $X$ by $U$ and the involved sheaves by their restriction to $U$ and thus assume that $X=U\cong\Spec R$ is affine. This may also be assumed in the proof of quasi-coherence of $\Mm$, which is a local question.% At this point it would be nice to have the long exact cohomology sequence from Theorem~\reff{thm:CohoOnSchemes}\itememph{d} available, but we haven't, since $\Mm$ is not (yet) quasi-coherent. In the lecture, we fixed this by doing the cohomology argument ``on foot''. I would like to present a different way to circumvent this problem.
 	
 	Clearly, we only need to show surjectivity of $\Mm(X)\morphism[\beta]\Mm''(X)$, and for this, it suffices to pick an arbitrary $m''\in\Mm''(X)$ and show that it is in the image of $\beta$. Let $\Mm''=\snake{M}''$, where $M''$is the $R$-module defining $\Mm''$. Let $N''=\langle m''\rangle_R$ be the submodule generated by $m''$ and $\Nn''=\snake{N}''$. For every open $U\subseteq X$, let $\Nn(U)\subseteq \Mm(U)$ be the preimage of $\Nn''(U)\subseteq \Mm''(U)$ under $\beta$. Since $\Nn''$ is a subsheaf of $\Mm''$, it's easily seen that the sheaf axiom also holds for $\Nn$, so that $\Nn$ becomes a subsheaf of $\Mm$. Moreover, it's not hard to check that the stalk $\Nn_x$ is given by $\langle m_x\rangle_{\Oo_{X,x}}+\Mm_x'$, where $m_x\in\Mm_x$ is a lift of the image of $m''$ in $\Mm_x''$. Hence
 	\begin{align*}
@@ -1183,9 +1183,9 @@ and this is the desired presheaf structure.
  	\begin{align*}
  		R^pf_*\Mm|_U\cong R^p\left(f|_{f^{-1}(U)}\right)_*\Mm|_{f^{-1}(U)}\;.
  	\end{align*}
- 	Thus we may assume $Y=\Spec R$ to be affine (quasi-coherentness is a local property) for \itememph{b} and $Y=U=\Spec R$ in \itememph{d}. 
+ 	Thus we may assume $Y=\Spec R$ to be affine (quasi-coherence is a local property) for \itememph{b} and $Y=U=\Spec R$ in \itememph{d}. 
  	
- 	Put $M=H^p(X,\Mm)$. We consider $M$ (which has a natural $\Oo_X(X)$-module structure) as a $R=\Oo_Y(Y)$-module via $f^*\colon \Oo_Y(Y)\morphism f_*\Oo_X(Y)=\Oo_X(X)$.  If we show $R^pf_*\Mm=\snake{M}$, this will show \itememph{b} and \itememph{d} (with the above simplifiactions) at once.
+ 	Put $M=H^p(X,\Mm)$. We consider $M$ (which has a natural $\Oo_X(X)$-module structure) as a $R=\Oo_Y(Y)$-module via $f^*\colon \Oo_Y(Y)\morphism f_*\Oo_X(Y)=\Oo_X(X)$.  If we show $R^pf_*\Mm=\snake{M}$, this will show \itememph{b} and \itememph{d} (with the above simplifications) at once.
  	
  	Since $Y=\Spec R$ is affine, the set $\Bb=\left\{Y\setminus V(\lambda)\st \lambda\in R\right\}$ forms a topology base of $Y$ consisting of quasi-compact schemes. Restricting $\Phi^pf_*\Mm$ to $\Bb$ still gives $R^pf_*\Mm$ under sheafification by \cite[Proposition~1.2.1\itememph{c}]{alggeo1}. For $Y\setminus V(\lambda)\in\Bb$ we have
  	\begin{align*}
@@ -1982,7 +1982,7 @@ making $\Oo$ into a sheaf of graded rings with $\Oo(0)=\Oo_{\Proj R}$. Moreover,
 	\end{align*}
 	for every $\Rr$-module $\Tt$ (where the set $\operatorname{Bil}_\Rr(\Mm\times \Nn,\Tt)$ of bilinear morphisms of sheaves $\Mm\times \Nn\morphism \Tt$ is defined in the obvious way).
 	
-	Now let $X=\Spec R$ and $\Mm=\snake{M}$, $\Nn=\snake{N}$ for some $R$-modules $M,N$. Then $(M\otimes_RN)_\pp=M\otimes_RN\otimes_RR_\pp=M_\pp\otimes_{R_\pp}N_\pp$ shows that $\Mm\otimes _{\Oo_X}\Nn=(M\otimes_RN)^\qcmod$. Hence the tensor product over arbitrary preschemes preserves quasi-coherentness of modules. In fact, this is still true if the tensor product is taken over any quasi-coherent $\Oo_X$-algebra $\Rr$ rather than $\Oo_X$ itself.
+	Now let $X=\Spec R$ and $\Mm=\snake{M}$, $\Nn=\snake{N}$ for some $R$-modules $M,N$. Then $(M\otimes_RN)_\pp=M\otimes_RN\otimes_RR_\pp=M_\pp\otimes_{R_\pp}N_\pp$ shows that $\Mm\otimes _{\Oo_X}\Nn=(M\otimes_RN)^\qcmod$. Hence the tensor product over arbitrary preschemes preserves quasi-coherence of modules. In fact, this is still true if the tensor product is taken over any quasi-coherent $\Oo_X$-algebra $\Rr$ rather than $\Oo_X$ itself.
 	
 	When $\Ll$ is a line bundle on a ringed space $(X,\Oo_X)$ and $\Mm$ an $\Oo_X$-module, then $\Mm\otimes_{\Oo_X}\Ll$ is locally (non-canonically) isomorphic to $\Mm$, a local isomorphism being given by 
 	\begin{align*}
@@ -2181,7 +2181,7 @@ Our next aim is to investigate the trivialization of the $A$-module $H^n(\IP_A^n
 	\end{alphanumerate}
 \end{lem}
 \begin{rem*}
-	When $\Ll=\Oo_X$, this is identical with one of our definitions of quasi-coherentness for sheaves of $\Oo_X$-modules, as we will immediately see.
+	When $\Ll=\Oo_X$, this is identical with one of our definitions of quasi-coherence for sheaves of $\Oo_X$-modules, as we will immediately see.
 \end{rem*}
 \begin{proof}[Proof of Lemma~\reff{lem:powersOfLl}]
 	When $\Ll=\Oo_X$, assertion \itememph{a} is equivalent to the injectivity and \itememph{b} to the surjectivity of 
@@ -2404,7 +2404,7 @@ where the $\Rr_i$ are quasi-coherent $\Oo_X$-modules and are equipped with an $\
 	\item \emph{Local rings.} Put $P=\PROJ_X(\Rr)$ for brevity. There is an obvious candidate for the pretender stalks and it is $\Oo_{P,[x,\pp]} \coloneqq ((\Rr_x)_\pp)_0$.
 	\item \emph{Structure sheaf.} For $\Omega\subseteq P$ open, let
 	\begin{align*}
-	\Oo_Y(\Omega) = \left\{\rho=(\rho_{x,\pp})\in \prod_{(x,\pp)\in \Omega} \Oo_{P,[x,\pp]}\st 
+	\Oo_P(\Omega) = \left\{\rho=(\rho_{x,\pp})\in \prod_{(x,\pp)\in \Omega} \Oo_{P,[x,\pp]}\st 
 	\begin{array}{c}
 	\rho\text{ fulfills the \emph{cohe-}}\\
 	\text{\emph{rence condition}\texttrademark}
@@ -2646,7 +2646,7 @@ defined by the tensor product of $p_X^*\left(\pi_X^*\Rr_k\morphism[\epsilon_X]\O
 	Both definitions are in use.
 \end{rem*}
 \begin{fact}\lbl{fact:ProjectiveStableUnderBaseChange}
-	If $X\morphism[\xi]Y$ is projective (or strongly projective) and the base change
+	If $X\morphism[\xi]Y$ is projective (or strongly projective) then the base change
 	\begin{align*}
 		\snake{X}=X\times_Y\snake{Y}\morphism[\snake{\xi}]\snake{Y}
 	\end{align*}
@@ -2673,7 +2673,7 @@ defined by the tensor product of $p_X^*\left(\pi_X^*\Rr_k\morphism[\epsilon_X]\O
 	Let $X\monomorphism[i]Y$ be a closed immersion and $Y\morphism[f]S$ a projective (resp.\ strongly projective) morphism. Then $f i$ is (strongly) projective again.
 \end{prop}
 \begin{proof}
-	For strong projectiveness, this is trivial since the class of closed immersions is closed under composition. 
+	For strong projectivity, this is trivial since the class of closed immersions is closed under composition. 
 	
 	The proof for the projective for the projective case we did in the lecture was quite cumbersome and I don't think that's necessary (I hope I didn't miss the point). The following does pretty much the same, but in simpler words.
 	
@@ -2726,7 +2726,7 @@ defined by the tensor product of $p_X^*\left(\pi_X^*\Rr_k\morphism[\epsilon_X]\O
 			\Aa\cdot T^k & \text{if }k>0
 		\end{cases}\;,
 	\end{align*}
-	then $\PROJ_S(\Rr)\cong \SPEC_S(\Aa)$ (indeed, we may check this locally where it amounts to \cite[Example~2.5.2]{alggeo1}).
+	then $\PROJ_S(\Rr)\cong \SPEC_S(\Aa)$ (indeed, we may check this locally where it amounts to \cite[Example~2.6.2]{alggeo1}).
 \end{example}
 \begin{cor}
 	Finite morphisms are projective.
@@ -2768,7 +2768,7 @@ defined by the tensor product of $p_X^*\left(\pi_X^*\Rr_k\morphism[\epsilon_X]\O
 \end{proof}
 \section{Proper morphisms}
 \begin{defi}\lbl{def:proper}
-	Let $X\morphism[f]Y$ be a morphism of preschemes, where $Y$ is locally Noetherian. We call $f$ \defemph{proper} it it is of finite type, separated and \emph{universally closed}.
+	Let $X\morphism[f]Y$ be a morphism of preschemes, where $Y$ is locally Noetherian. We call $f$ \defemph{proper} if it is of finite type, separated and \emph{universally closed}.
 \end{defi}
 \begin{defi}\lbl{def:universallyClosed}
 	A morphism $X\morphism[f]Y$ of preschemes is \defemph{closed} if the image of any closed subset if $X$ is closed in $Y$. It is \defemph{universally closed} if all its base changes 
@@ -3382,7 +3382,7 @@ Having proved $f^!\Omega_D\cong\Omega_C$, we now show that the first Chern class
 	where the automorphism of $M/K$ induced by $\sigma_i$ was denoted by $\sigma_i$ as well, and the action of $\sigma_i$ on $\Omega_{M/k}$ is actually given by $\id_{\Omega_{K/k}}\otimes \sigma_i$ in the representation $\Omega_{M/k}\cong \Omega_{K/k}\otimes_KM$. We are done.
 \end{proof}
 \section{Proof of Serre duality for curves}
-Let always $C$ be a proper regular curve over the algebraically closed field $k$.
+Let $C$ always be a proper regular curve over the algebraically closed field $k$.
 \begin{prop}
 	Let $\eta_C$ be the generic point of $C$ and $f\in\Oo_{C,\eta_C}$ a rational function on $C$ such that $d_Cf\neq 0$. Let $P$ be the set of poles of $f$. Then the morphism $C\setminus P\morphism\IA_k^1=\Spec k[T]$ (defined by $k[T]\morphism\Oo_C(C\setminus P)$ sending $T$ to $f$) extends to a unique finite separable morphism $C\morphism\IP_k^1$.
 \end{prop}
@@ -3535,7 +3535,7 @@ We will postpone the proof to see some corollaries first.
 	When $X\morphism[f]Y$ is a proper morphism between locally Noetherian schemes whose fibers are zero-dimensional (e.g., finite), then $f$ is finite.
 \end{cor}
 \begin{proof}
-	One is tempted to use Proposition~\reff{prop:AffineMorphism} here, but somehow the fact that we can only use coherent modules needs to be circumvented. Which we do now. Let $U\subseteq Y$ be affine open. Since properness is base-local (Proposition~\reff{prop:er}), $f^{-1}(U)\morphism U$ is still proper and (abusing notation) we denote it by $f$ again. If $\Jj$ is a sheaf of ideals on $\Oo_{f^{-1}(U)}$, then it is a coherent $\Oo_{f^{-1}(U)}$-module since $X$ is locally Noetherian. By Corollary~\reff{cor:RpfVanishes}, $R^1f_*\Jj$ vanishes, hence $H^1\big(f^{-1}(U),\Jj\big)=0$. By Serre's affinity criterion (Proposition~\reff{prop:serreAffinity}), $f^{-1}(U)$ is affine.
+	One is tempted to use Proposition~\reff{prop:AffineMorphism} here, but somehow the fact that we can only use coherent modules needs to be circumvented. Which we do now. Let $U\subseteq Y$ be affine open. Since properness is base-local (Proposition~\reff{prop:er}), $f^{-1}(U)\morphism U$ is still proper and (abusing notation) we denote it by $f$ again. If $\Jj$ is a sheaf of ideals in $\Oo_{f^{-1}(U)}$, then it is a coherent $\Oo_{f^{-1}(U)}$-module since $X$ is locally Noetherian. By Corollary~\reff{cor:RpfVanishes}, $R^1f_*\Jj$ vanishes, hence $H^1\big(f^{-1}(U),\Jj\big)=0$. By Serre's affinity criterion (Proposition~\reff{prop:serreAffinity}), $f^{-1}(U)$ is affine.
 	
 	Hence $f$ (the original unrestricted $f$ is back!) is affine. Since $f_*\Oo_X$ is a coherent $\Oo_Y$-module by Theorem~\reff{thm:ProperRpcoherent}, $f$ is finite.
 \end{proof}
@@ -3638,6 +3638,8 @@ And now for the missing lemma (you will find a way more general version in \cite
 	\begin{align*}
 		H^p\left(\snake{X},\snake{\Mm}\right)\cong H^p\left(X,\snake{\pi}_*\snake{\Mm}\right)\cong H^p\bigg(X,\bigoplus_{n\geq 0}I^n\Mm\bigg)\cong\bigoplus_{n\geq 0}H^p(X,I^n\Mm)\;.
 	\end{align*}
+	The reason why we can swap $H^p$ and the direct sum is that $X$ is quasi-compact, so the \vC ech cohomology may be computed from a finite affine open cover and then products occurring in the \vC ech complex are finite, hence direct sums as well. Also direct sums commutes with taking global sections for sheaves on quasi-compact spaces, so in the end this comes down to direct sums commuting with direct sums, which is clearly fulfilled.
+	
 	Now $S$ is Noetherian ($I$ is finitely generated over $R$, hence $S$ is an $R$-algebra of finite type) and $\snake{f}$ is proper, so Theorem~\reff{thm:ProperRpcoherent} implies that $H^p\left(\snake{X},\snake{\Mm}\right)$ is a finitely generated $S$-module. We are done.
 \end{proof}
 
@@ -3764,7 +3766,8 @@ For instance, if $\Vv$ is a vector bundle on $X$ and the cohomology of the fibre
 	\begin{align*}
 		\Eq\Big(A\doublemorphism[\alpha][\beta]B\Big)=\ker\Big(A\xrightarrow{\alpha-\beta}B\Big)\quad\text{and}\quad \Coeq\Big(A\doublemorphism[\alpha][\beta]B\Big)=\coker\Big(A\xrightarrow{\alpha-\beta}B\Big)
 	\end{align*}
-	(the minus here is the one obtained from additivity of $\Aa$).
+	(the minus here is the one obtained from additivity of $\Aa$). 
+\end{rem}
 	
 	\begin{defi}\lbl{def:EffectiveMono}
 		A morphism $A\morphism[i]B$ is an \defemph{effective monomorphism}, if the following equivalent conditions hold.
@@ -3803,8 +3806,7 @@ For instance, if $\Vv$ is a vector bundle on $X$ and the cohomology of the fibre
 			\item $B^\op\morphism[p^\op]A^\op$ is an effective monomorphism in the dual category $\Aa^\op$.
 		\end{alphanumerate}
 	\end{varthm}
-	In any category, a morphism which is mono and effectively epi (or epi and effectively mono) is an isomorphism, but there are examples of morphisms which are simultaneously mono and epi but not an isomorphism (e.g.\ $\IZ\monomorphism\IQ$ in the category of rings). This needs to be ruled out by a definition, and that's what is happening now! 
-\end{rem}
+	In any category, a morphism which is mono and effectively epi (or epi and effectively mono) is an isomorphism, but there are examples of morphisms which are simultaneously mono and epi but not an isomorphism (e.g.\ $\IZ\monomorphism\IQ$ in the category of rings). This needs to be ruled out by a definition, and that's what is happening now!
 \begin{defi}
 	A category $\Aa$ is \defemph{abelian}, if it is additive, has kernels and cokernels and such that every monomorphism is effectively mono, every epimorphism is effectively epi, and (thus) any morphism which is both a mono- and an epimorphism is an isomorphism.
 \end{defi}
@@ -3813,7 +3815,7 @@ For instance, if $\Vv$ is a vector bundle on $X$ and the cohomology of the fibre
 		\item The three conditions on mono- and epimorphisms are not independent. The last condition, i.e.\ that every morphism which is both a mono- and an epimorphism is an isomorphism, follows from either of the former two.
 		\item Since equalizers and coequalizers in an abelian category $\Aa$ can be constructed from kernels and cokernels (cf.\ Remark~\reff{rem:KernelCokernel}) and we already have finite products and coproducts from additivity of $\Aa$, we deduce that $\Aa$ has arbitrary finite limits and colimits. Indeed, we proved on exercise sheet \#7 from Algebraic Geometry~I that finite limits can be constructed from equalizers and finite products, and, given coequalizers and finite coproducts instead, it's just the same for finite colimits.
 		
-		Conversely, the existence of finite limits and colimits guarantees that $\Aa$ has equalizers, coequalizers, finite products, and finite products, all of them being special cases of finite limits and colimits.
+		Conversely, the existence of finite limits and colimits guarantees that $\Aa$ has equalizers, coequalizers, finite products, and finite coproducts, all of them being special cases of finite limits and colimits.
 	\end{alphanumerate}
 	
 \end{rem*}
@@ -4091,7 +4093,7 @@ Now we prove a pretty useful lemma, enabling us to do all kinds of induction on 
 	It remains to show uniqueness. For this, note that an $\Oo(d_i)$ summand of $\Vv$ contributes to $\dim_kH^0(X,\Vv(d))$ iff $d\geq -d_i$ (by Theorem~\reff{thm:CohoOfIP^n}\itememph{a}). Hence by computing $\dim_kH^0(X,\Vv(d))$ for all $d\in\IZ$ we can filter out the number of $\Oo(d_i)$ summands, which means it is unique.
 \end{proof}
 \section{Chow's lemma}
-Chow's lemma is the key to prove results that hold for projective morphisms in the case of proper morphisms as well. We will see a slightly more general version of Chow's lemma than the one given on exercise sheet \#8, but the proof will still mostly be the same.
+Chow's lemma is the key to prove results that hold for projective morphisms in the case of proper morphisms as well. We will see a slightly more general version of Chow's lemma than the one given on exercise sheet \#9, but the proof will still mostly be the same.
 \begin{thm}[Chow's lemma]\lbl{thm:ChowsLemma}
 	Let $R$ be a Noetherian ring and $X\morphism[f]Y=\Spec R$ a proper morphism. Then there exists a projective morphism $\snake{X}\morphism[\pi]X$ such that the resulting morphism $\snake{X}\morphism Y$ is projective as well and moreover there is a dense open subset $U\subseteq X$ such that $\pi^{-1}(U)\morphism[\pi]U$ is an isomorphism.
 \end{thm}
@@ -4122,7 +4124,7 @@ Chow's lemma is the key to prove results that hold for projective morphisms in t
 	\end{rem}
 	Let $\pi$ be the restriction of the canonical projection $P\morphism[p]X$ to $\snake{X}$. We will show that $\snake{X}$ and $\pi$ have the required properties.
 	
-	\emph{Step 3.} We show that $\pi$ is projective and an isomorphism over $U$. To show projectiveness, note that
+	\emph{Step 3.} We show that $\pi$ is projective and an isomorphism over $U$. To show projectivity, note that
 	\begin{align*}
 		P=X\times_Y\fprod{Y}_{i=1}^m\IP_Y^{n_i}\cong\fprod{X}_{i=1}^m\IP_X^{n_i}\;.
 	\end{align*}
