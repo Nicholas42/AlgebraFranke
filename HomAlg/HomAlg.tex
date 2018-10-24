@@ -2,8 +2,8 @@
 %\usepackage[utf8]{inputenc}
 
 \usepackage{../header}
-\usepackage{../frankenumbering}
-\usepackage{../shortcuts}
+\usepackage{../frankenumbering2}
+\usepackage{../shortcuts2}
 
 \usepackage{csquotes}
 %\usepackage{tikz-cd}%I cannot draw diagrams without it - Felix. %well, I can - Ferdinand
@@ -22,6 +22,9 @@
 %\postdisplaypenalty=8000
 \widowpenalty=8000
 \clubpenalty=8000
+
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
 
 \begin{document}
 \pagenumbering{Alph}
@@ -92,7 +95,7 @@ extending the open ends of \eqreff{eq:TensorSequence}, \eqreff{eq:HomSequence}, 
 
 A highlight of this lecture will be \emph{Serre's characterization of regularity}.
 \begin{thm*}
-	For a  Noetherian local ring $R$ with maximal ideal $\mm$ and residue field $k$, the following are equivalent.
+	For a  noetherian local ring $R$ with maximal ideal $\mm$ and residue field $k$, the following are equivalent.
 	\begin{alphanumerate}
 		\item $\dim_k\mm/\mm^2=\dim R$ (i.e., $R$ is regular).
 		\item There is some vanishing bound for $\Tor_\bullet ^R(-,-)$.
@@ -103,12 +106,12 @@ A highlight of this lecture will be \emph{Serre's characterization of regularity
 \end{thm*}
 From this, one can deduce the following
 \begin{cor*}
-	If $R$ is a regular Noetherian local ring and $\pp\in\Spec R$, then $R_\pp$ is regular as well.
+	If $R$ is a regular noetherian local ring and $\pp\in\Spec R$, then $R_\pp$ is regular as well.
 \end{cor*}
 
 We will also introduce the notion of \emph{Cohen--Macaulay rings} and prove that they are \emph{universally catenary} (which is quite a generalization of what we did in Algebra I, cf. \cite[Theorem~10]{alg1}).
 \begin{thm*}
-	If $R$ is a regular Noetherian local ring or, more generally, a Cohen--Macaulay ring, then it is \defemph{universally catenary}: If $A$ is an $R$-algebra of finite type and $X\subseteq Y\subseteq Z$ are irreducible closed subsets of $\Spec A$, then
+	If $R$ is a regular noetherian local ring or, more generally, a Cohen--Macaulay ring, then it is \defemph{universally catenary}: If $A$ is an $R$-algebra of finite type and $X\subseteq Y\subseteq Z$ are irreducible closed subsets of $\Spec A$, then
 	\begin{align*}
 		\codim(X,Y)+\codim(Y,Z)=\codim(X,Z)\;.
 	\end{align*}
@@ -140,7 +143,7 @@ From now on, unless otherwise stated, our rings are commutative with $1$.
 \begin{defi}
 	\begin{alphanumerate}
 		\item \lbl{def:injectiveModule}An $R$-module is called \defemph{injective} if it satisfies the equivalent conditions from Proposition~\reff{prop:InjectiveModules}.
-		\item In an arbitrary category $\Aa$, an object $I$ is called \defemph{injective} if for every monomorphism $X\monomorphism Y$ and every morphism $X\morphism[\phi]I$ there is a (usually non-unique) lift
+		\item In an arbitrary category ${\cat A}$, an object $I$ is called \defemph{injective} if for every monomorphism $X\monomorphism Y$ and every morphism $X\morphism[\phi]I$ there is a (usually non-unique) lift
 		\begin{diagram*}
 			\node[ob] (X) at (0,0) {$X$};			
 			\node[ob] (Y) at (1.75,0) {$Y$};
@@ -153,7 +156,7 @@ From now on, unless otherwise stated, our rings are commutative with $1$.
 	\end{alphanumerate}
 \end{defi}
 \begin{rem*}
-	Note that Definition~\reff{def:injectiveModule}\itememph{b} equivalently says that the induced map $\Hom_\Aa(Y,I)\morphism\Hom_\Aa(X,I)$ is surjective. That is, injective $R$-modules are injective objects in the category of $R$-modules.
+	Note that Definition~\reff{def:injectiveModule}\itememph{b} equivalently says that the induced map $\Hom_{\cat A}(Y,I)\morphism\Hom_{\cat A}(X,I)$ is surjective. That is, injective $R$-modules are injective objects in the category of $R$-modules.
 \end{rem*}
 \begin{proof}[Proof of Proposition~\reff{prop:InjectiveModules}]
 	The implication \itememph{b} $\Rightarrow$ \itememph{c} is trivial. Let's prove \itememph{c} $\Rightarrow$ \itememph{b}. Let $M\morphism[f]N$ be a morphism of $R$-modules and consider
@@ -212,15 +215,12 @@ From now on, unless otherwise stated, our rings are commutative with $1$.
 	This will follow from Lemma~\reff{lem:AdjointStuff}\itememph{b} and \itememph{c} below.
 \end{proof}
 \begin{rem*}
-	This holds in vast more generality, and in particular, Proposition~\reff{prop:RModHasEnoughInjectives} follows immediately from the following theorem, which, however, we are not going to prove in this lecture.
-	\begin{thm*}[Grothendieck]
-		Any AB5 category with a generator has sufficiently many injective objects.
-	\end{thm*}
+	This holds in vast more generality, and in particular, Proposition~\reff{prop:RModHasEnoughInjectives} follows immediately from Grothendieck's theorem that any \emph{AB5} category with a \emph{generator} has sufficiently many injective objects, which, however, we are not going to prove in this lecture.
 \end{rem*}
 \begin{lem}\lbl{lem:AdjointStuff}
 	Let $R$ be any ring.
 	\begin{alphanumerate}
-		\item The forgetful functor from $R\cat{-Mod}$ to the category $\IZ\cat{-Mod}$ of abelian groups has a right-adjoint functor, namely $\Hom_\IZ(R,-)$. That is, there is a bijection
+		\item The forgetful functor from $\cat{Mod}(R)$ to the category $\cat{Mod}(\IZ)$ of abelian groups has a right-adjoint functor, namely $\Hom_\IZ(R,-)$. That is, there is a bijection
 		\begin{align}\lbl{eq:ForgetHomAdjunction}
 			\Hom_\IZ(M,A)\isomorphism\Hom_R(M,\Hom_\IZ(R,A))\tag{$*$}
 		\end{align}
@@ -230,24 +230,24 @@ From now on, unless otherwise stated, our rings are commutative with $1$.
 	\end{alphanumerate}
 \end{lem}
 \begin{proof}
-	Part \itememph{a}. The proof given in the lecture was rather computational, so I decided to include a more elegant one. It is easy to see that $\Hom_\IZ(R,-)$ is indeed a functor $\IZ\cat{-Mod}\morphism R\cat{-Mod}$. From the well-known tensor-hom adjunction we obtain a canonical bijection
+	Part \itememph{a}. The proof given in the lecture was rather computational, so I decided to include a more elegant one. It is easy to see that $\Hom_\IZ(R,-)$ is indeed a functor $\cat{Mod}(\IZ)\morphism \cat{Mod}(R)$. From the well-known tensor-hom adjunction we obtain a canonical bijection
 	\begin{align*}
 		\Hom_\IZ(M\otimes _RR,A)\isomorphism\Hom_R(M,\Hom_\IZ(R,A))\;.
 	\end{align*}
 	But $M$ is an $R$-module and so $M\otimes_RR\cong M$ canonically, proving \eqreff{eq:ForgetHomAdjunction}. 
 	%The bijection-in-question \eqreff{eq:ForgetHomAdjunction} sends $\phi\in\Hom_\IZ(M,A)$ to $\psi\in\Hom_R(M,\Hom_\IZ(R,A))$ given by $(\psi(m))(r)=\phi(rm)$ and 
 	
-	Part \itememph{b}. Since the forgetful functor $R\cat{-Mod}\morphism\IZ\cat{-Mod}$ clearly preserves injectivity of morphisms (i.e., monomorphisms), this comes down to the following more general fact about adjoint pairs of functors.
+	Part \itememph{b}. Since the forgetful functor $\cat{Mod}(R)\morphism\cat{Mod}(\IZ)$ clearly preserves injectivity of morphisms (i.e., monomorphisms), this comes down to the following more general fact about adjoint pairs of functors.
 	\begin{fact}\lbl{fact:AdjointInjProj}
-		Let $\Aa\doublelrmorphism[L][R]\Bb$ be an adjoint pairs of functors. Suppose that $L$ preserves monomorphisms. Then $R$ preserves injective objects.
+		Let ${\cat A}\doublelrmorphism[L][R]{\cat B}$ be an adjoint pairs of functors. Suppose that $L$ preserves monomorphisms. Then $R$ preserves injective objects.
 	\end{fact}
 	\begin{proof}[Proof of Fact~\reff{fact:AdjointInjProj}]
-		Let $I\in\Ob(\Bb)$ be injective and $X\monomorphism Y$ be a monomorphism in $\Aa$. By assumption, $LX\monomorphism  LY$ is a monomorphism in $\Bb$. In the diagram 
+		Let $I\in\Ob({\cat B})$ be injective and $X\monomorphism Y$ be a monomorphism in ${\cat A}$. By assumption, $LX\monomorphism  LY$ is a monomorphism in ${\cat B}$. In the diagram 
 			\begin{diagram*}
-				\node[ob] (Y) at (0,1.5) {$\Hom_\Aa(Y,RI)$};
-				\node[ob] (LY) at (0,0) {$\Hom_\Bb(LY,I)$};
-				\node[ob] (X) at (3.5,1.5) {$\Hom_\Aa(X,RI)$};
-				\node[ob] (LX) at (3.5,0) {$\Hom_\Bb(LX,I)$};
+				\node[ob] (Y) at (0,1.5) {$\Hom_{\cat A}(Y,RI)$};
+				\node[ob] (LY) at (0,0) {$\Hom_{\cat B}(LY,I)$};
+				\node[ob] (X) at (3.5,1.5) {$\Hom_{\cat A}(X,RI)$};
+				\node[ob] (LX) at (3.5,0) {$\Hom_{\cat B}(LX,I)$};
 				\scriptsize
 				\draw[->] (Y) -- (LY) node[pos=0.5, sloped, above=-0.25ex] {$\sim$};
 				\draw[->] (X) -- (LX) node[pos=0.5, sloped, above=-0.25ex] {$\sim$};
@@ -262,7 +262,7 @@ The dual concept of \emph{projective modules} should be known, but for the sake 
 \begin{defi}
 	\begin{alphanumerate}
 		\item \lbl{def:projectiveModule}An $R$-module $P$ is called \defemph{projective} iff $\Hom_R(P,-)$ is exact.
-		\item In an arbitrary category $\Aa$, an object $P$ is called \defemph{projective} if for every epimorphism $Y\epimorphism X$, the induced map $\Hom_\Aa(P,X)\morphism\Hom_\Aa(P,Y)$ is surjective, that is, for every morphism $P\morphism[\phi]X$ there is a (usually non-unique) lift
+		\item In an arbitrary category ${\cat A}$, an object $P$ is called \defemph{projective} if for every epimorphism $Y\epimorphism X$ and every morphism $P\morphism[\phi]X$ there is a (usually non-unique) lift
 		\begin{diagram*}
 			\node[ob] (P) at (0,0) {$P$};			
 			\node[ob] (X) at (1.75,0) {$X$};
@@ -277,7 +277,7 @@ The dual concept of \emph{projective modules} should be known, but for the sake 
 Note that in the case of $R$-modules, Definition~\reff{def:projectiveModule}\itememph{a} and \itememph{b} are equivalent.
 
 \subsection{First properties of the \texorpdfstring{$\Ext_R^\bullet$}{Ext} functor}
-We will now use the $\Ext_R^\bullet(-,-)$ functor, which was constructed (for arbitrary abelian categories rather than just $R\cat{-Mod}$) in Subsection~\reff{subsec:ConstructionOfExt} as a \emph{right-derived functor} of $\Hom_R(-,-)$.
+We will now use the $\Ext_R^\bullet(-,-)$ functor, which was constructed (for arbitrary abelian categories rather than just $\cat{Mod}(R)$) in Subsection~\reff{subsec:ConstructionOfExt} as a \emph{right-derived functor} of $\Hom_R(-,-)$.
 \begin{prop}\lbl{prop:PIDExt2}
 	Let $R$ be a PID.
 	\begin{alphanumerate}
@@ -308,7 +308,7 @@ We will now use the $\Ext_R^\bullet(-,-)$ functor, which was constructed (for ar
 		\end{cases}\;.
 	\end{align*}
 \end{example*}
-If $N$ is an injective $R$-module, then $\Ext_R^1(T,N)=0$ by Theorem~\reff{thm:DerivedFunctors}\itememph{b} for every test $R$-module $T$. Conversely, if $\Ext_R^1(-,N)=0$ is the zero functor, we see that $\Hom_R(-,N)$ is exact by the long exact $\Ext$ sequence, hence $N$ is injective by Definition~\reff{def:injectiveModule}\itememph{a}. The following proposition shows that this criterion can be sharpened.
+If $N$ is an injective $R$-module, then $\Ext_R^1(T,N)=0$ by Theorem~\ref{thm:DerivedFunctors}\itememph{b} for every test $R$-module $T$. Conversely, if $\Ext_R^1(-,N)=0$ is the zero functor, we see that $\Hom_R(-,N)$ is exact by the long exact $\Ext$ sequence, hence $N$ is injective by Definition~\reff{def:injectiveModule}\itememph{a}. The following proposition shows that this criterion can be sharpened.
 \begin{prop}\lbl{prop:Ext1(R/I)}
 	If $R$ is any ring, then an $R$-module $N$ is injective iff $\Ext_R^1(R/I,N)=0$ for every ideal $I\subseteq R$.
 \end{prop}
@@ -362,14 +362,14 @@ Our goal now is to establish some properties of $\Ext$ groups over a ring $R$, n
 	Follows from Fact~\reff{fact:atimesExt}.
 \end{proof}
 \begin{fact}\lbl{fact:freeResolution}
-	If $R$ is a Noetherian ring, then any finitely generated $R$-module $M$ has a projective resolution
+	If $R$ is a noetherian ring, then any finitely generated $R$-module $M$ has a projective resolution
 	\begin{align*}
 		0\lmorphism M\lmorphism P_0\lmorphism P_1\lmorphism P_2\lmorphism\ldots
 	\end{align*}
 	where the $P_i$ are finitely generated free $R$-modules.
 \end{fact}
 \begin{proof}
-	We construct the $P_i$ inductively. Since $M$ is finitely generated, we have a surjective morphism $P_0=R^n\epimorphism M$ for some $n$. $R$ being Noetherian, its kernel is finitely generated and we can apply the same construction to it.
+	We construct the $P_i$ inductively. Since $M$ is finitely generated, we have a surjective morphism $P_0=R^n\epimorphism M$ for some $n$. $R$ being noetherian, its kernel is finitely generated and we can apply the same construction to it.
 \end{proof}
 \begin{rem*}
 	\begin{alphanumerate}
@@ -381,14 +381,14 @@ Our goal now is to establish some properties of $\Ext$ groups over a ring $R$, n
 	An $R$-module $M$ is \defemph{finitely presented} if it may be written as a cokernel of some morphism $R^m\morphism R^n$.
 \end{defi}
 \begin{fact}\lbl{fact:ExtFinGen}
-	If $M$ and $N$ are finitely generated modules over the Noetherian ring $R$, the $R$-modules $\Ext_R^p(M,N)$ are all finitely generated.
+	If $M$ and $N$ are finitely generated modules over the noetherian ring $R$, the $R$-modules $\Ext_R^p(M,N)$ are all finitely generated.
 \end{fact}
 \begin{proof}
-	Choose a free resolution $0\lmorphism M\lmorphism R^{n_0}\lmorphism R^{n_1}\lmorphism\ldots$ as in Fact~\reff{fact:freeResolution}, then $\Ext_R^k(M,N)$ can be calculated as $H^k\left(N^{n_0}\morphism N^{n_1}\morphism\ldots\right)$, which is finitely generated as the $N^{n_i}$ are finitely generated and we are all Noetherian and stuff.
+	Choose a free resolution $0\lmorphism M\lmorphism R^{n_0}\lmorphism R^{n_1}\lmorphism\ldots$ as in Fact~\reff{fact:freeResolution}, then $\Ext_R^k(M,N)$ can be calculated as $H^k\left(N^{n_0}\morphism N^{n_1}\morphism\ldots\right)$, which is finitely generated as the $N^{n_i}$ are finitely generated and we are all noetherian and stuff.
 \end{proof}
 We will now examine when $\Ext_R^\bullet$ commutes with localization.
 
-Let $\Aa\doublelrmorphism[L][\smash{R}]\Bb$ be an adjoint pair between abelian categories $\Aa,\Bb$. Then it's easy to see that $L$ preserves projective objects when $R$ is exact and $R$ preserves injectives when $L$ is exact. Actually, Fact~\reff{fact:AdjointInjProj} (and it's dual version) show this under fairly weaker assumptions. This may be applied to $\Aa=A\cat{-Mod}$ and $\Bb=A_S\cat{-Mod}$ where $A$ is some ring, $S\subseteq A$ a multiplicative subset, $A_S$ the localization of $A$ at $S$ and where $L$ is the functor $M\mapsto M_S$ for $M$ an $A$-module and $R$ is the forgetful functor. Note that both $L$ and $R$ are exact and we obtain
+Let ${\cat A}\doublelrmorphism[L][\smash{R}]{\cat B}$ be an adjoint pair between abelian categories ${\cat A},{\cat B}$. Then it's easy to see that $L$ preserves projective objects when $R$ is exact and $R$ preserves injectives when $L$ is exact. Actually, Fact~\reff{fact:AdjointInjProj} (and it's dual version) show this under fairly weaker assumptions. This may be applied to $\cat A=\cat{Mod}(A)$ and $\cat B=\cat{Mod}(A_S)$ where $A$ is some ring, $S\subseteq A$ a multiplicative subset, $A_S$ the localization of $A$ at $S$ and where $L$ is the functor $M\mapsto M_S$ for $M$ an $A$-module and $R$ is the forgetful functor. Note that both $L$ and $R$ are exact and we obtain
 \begin{fact}\lbl{fact:InjProjLoc}
 	Let $R$ be any ring. If $M$ is a projective $R$-module, then $M_S$ is a projective $R_S$-module. If $N$ is an injective $R_S$-module, then it is injective as an $R$-module as well.
 \end{fact}
@@ -400,7 +400,7 @@ Let $\Aa\doublelrmorphism[L][\smash{R}]\Bb$ be an adjoint pair between abelian c
 	where $M$ is an $R$- and $N$ an $R_S$-module. It is uniquely determined by its compatibility with the long exact cohomology sequence and by the condition that in degree $0$ it coincides with the bijection $\Hom_{R_S}(M_S,N)\cong \Hom_R(M,N)$.
 \end{fact}
 \begin{proof}
-	When $M$ is fixed, $\Ext_R^\bullet(M,-)$ is a cohomological functor on the category $R_S\cat{-Mod}$. By the universal property of derived functors (in Definition~\reff{def:homologicalfunctor}), the bijection $\Hom_{R_S}(M_S,N)\cong \Hom_R(M,N)$ uniquely extends to the morphism \eqreff{eq:ExtRStoExtR}. By Fact~\reff{fact:InjProjLoc}, $\Ext_R^\bullet(M,-)$ annullates injective $R_S$-modules in positive degrees, hence by Theorem~\reff{thm:DerivedFunctors}\itememph{b} it is a right-derived functor of $\Hom_{R_S}(M_S,-)$. Then \eqreff{eq:ExtRStoExtR} is an isomorphism by the universal property of right-derived functors.
+	When $M$ is fixed, $\Ext_R^\bullet(M,-)$ is a cohomological functor on the category $\cat{Mod}(R_S)$. By the universal property of derived functors (in Definition~\reff{def:homologicalfunctor}), the bijection $\Hom_{R_S}(M_S,N)\cong \Hom_R(M,N)$ uniquely extends to the morphism \eqreff{eq:ExtRStoExtR}. By Fact~\reff{fact:InjProjLoc}, $\Ext_R^\bullet(M,-)$ annullates injective $R_S$-modules in positive degrees, hence by Theorem~\reff{thm:DerivedFunctors}\itememph{b} it is a right-derived functor of $\Hom_{R_S}(M_S,-)$. Then \eqreff{eq:ExtRStoExtR} is an isomorphism by the universal property of right-derived functors.
 \end{proof}
 When $M$ and $N$ are $R$-modules, we have a canonical morphism
 \begin{align*}
@@ -410,7 +410,7 @@ sending $M\morphism[f]N$ to $M_S\morphism[f_S]N_S$. This is a morphism of $R$-mo
 \begin{align}\lbl{eq:HomRtoHomRS}
 	\Hom_R(M,N)_S\morphism\Hom_{R_S}(M_S,N_S)\;.\tag{$*$}
 \end{align}
-In general, \eqreff{eq:HomRtoHomRS} fails to be injective or surjective. But when $M$ is finitely generated, it is injective, and when $M$ is finitely presented (e.g., when $M$ is finitely generated and $R$ Noetherian) it's an isomorphism. For instance, when $M\cong\coker(R^m\morphism R^n)$, then $M_S\cong \coker(R_S^m\morphism R_S^n)$ by exactness of localization and $\Hom_R(M,N)\cong \ker(N^n\morphism N^m)$ (and similar for $\Hom_{R_S}(M_S,N_S)$) by the universal property of cokernels. We obtain
+In general, \eqreff{eq:HomRtoHomRS} fails to be injective or surjective. But when $M$ is finitely generated, it is injective, and when $M$ is finitely presented (e.g., when $M$ is finitely generated and $R$ noetherian) it's an isomorphism. For instance, when $M\cong\coker(R^m\morphism R^n)$, then $M_S\cong \coker(R_S^m\morphism R_S^n)$ by exactness of localization and $\Hom_R(M,N)\cong \ker(N^n\morphism N^m)$ (and similar for $\Hom_{R_S}(M_S,N_S)$) by the universal property of cokernels. We obtain
 \begin{align*}
 	\Hom_R(M,N)_S\cong\ker(N^n\morphism N^m)_S\cong \ker(N_S^n\morphism N_S^m)\cong \Hom_{R_S}(M_S,N_S)
 \end{align*}
@@ -418,7 +418,7 @@ which can be seen to coincide with \eqreff{eq:HomRtoHomRS}.
 
 And now for the advertised compatibility with localization.
 \begin{prop}\lbl{prop:ExtLocalization}
-	Let $R$ be a Noetherian ring, $M$ a finitely generated $R$-module. Then for any $R$-module $N$ and any multiplicative subset $S\subseteq R$ there is a canonical isomorphism
+	Let $R$ be a noetherian ring, $M$ a finitely generated $R$-module. Then for any $R$-module $N$ and any multiplicative subset $S\subseteq R$ there is a canonical isomorphism
 	\begin{align}\lbl{eq:ExtCompatibleWithLoc}
 		\Ext_R^\bullet(M,N)_S\isomorphism\Ext_{R_S}^\bullet (M_S,N_S)\;.
 	\end{align}
@@ -429,7 +429,7 @@ And now for the advertised compatibility with localization.
 	in degree 0.
 \end{prop}
 \begin{proof}
-	For every $R$-module $M$, the functor $\Ext_{R_S}^\bullet (M_S, (-)_S)$ composed with the forgetful functor $R_S\cat{-Mod}\morphism R\cat{-Mod}$ is a cohomological functor on $R\cat{-Mod}$, hence there is a unique morphism $\Ext_R^\bullet(M,-)\morphism\Ext_{R_S}^\bullet (M_S,(-)_S)$ extending $\Hom_R(M,N)\morphism\Hom_{R_S}(M_S,N_S)$, and by the universal property of localization this factors uniquely over $\Ext_R^\bullet(M,-)_S$. This shows the uniqueness part.
+	For every $R$-module $M$, the functor $\Ext_{R_S}^\bullet (M_S, (-)_S)$ composed with the forgetful functor $\cat{Mod}(R_S)\morphism \cat{Mod}(R)$ is a cohomological functor on $\cat{Mod}(R)$, hence there is a unique morphism $\Ext_R^\bullet(M,-)\morphism\Ext_{R_S}^\bullet (M_S,(-)_S)$ extending $\Hom_R(M,N)\morphism\Hom_{R_S}(M_S,N_S)$, and by the universal property of localization this factors uniquely over $\Ext_R^\bullet(M,-)_S$. This shows the uniqueness part.
 	
 	For existence, choose a free resolution $0\lmorphism M\lmorphism R^{n_0}\morphism R^{n_1}\lmorphism\ldots$ as in Fact~\reff{fact:freeResolution}. By exactness of localization, $0\lmorphism M_S\lmorphism R_S^{n_0}\morphism R_S^{n_1}\lmorphism\ldots$ is a free resolution of $M_S$. Using these to compute $\Ext_R^\bullet(M,-)$ and $\Ext_{R_S}^\bullet(M_S,-)$ and the fact that localization commutes with cohomology (since it is exact), we obtain
 	\begin{align*}
@@ -440,19 +440,19 @@ And now for the advertised compatibility with localization.
 	as required.
 \end{proof}
 \subsection{Projective and injective dimension}
-Let $\Aa$ be an abelian category. To have $\Ext_\Aa^\bullet$ available, we need to assume that $\Aa$ has sufficiently many injective or projective objects or we use Yoneda-$\Ext_\Aa^\bullet$ from Remark~\reff{rem:YonedaExt}\itememph{b}.
+Let ${\cat A}$ be an abelian category. To have $\Ext_{\cat A}^\bullet$ available, we need to assume that ${\cat A}$ has sufficiently many injective or projective objects or we use Yoneda-$\Ext_{\cat A}^\bullet$ from Remark~\reff{rem:YonedaExt}\itememph{b}.
 \begin{defi}\lbl{def:idim/pdim}
-	Let $X$ be an objects of $\Aa$. Its \defemph{injective/projective dimension} is defined as
+	Let $X$ be an objects of ${\cat A}$. Its \defemph{injective/projective dimension} is defined as
 	\begin{align*}
-		\idim_\Aa(X)&=\sup\left\{p\st \Ext_\Aa^p(T,X)\neq 0\text{ for some object }T\in\Ob(\Aa)\right\}\\
-		\pdim_\Aa(X)&=\sup\left\{p\st \Ext_\Aa^p(X,T)\neq 0\text{ for some object }T\in\Ob(\Aa)\right\}
+		\idim_{\cat A}(X)&=\sup\left\{p\st \Ext_{\cat A}^p(T,X)\neq 0\text{ for some object }T\in\Ob({\cat A})\right\}\\
+		\pdim_{\cat A}(X)&=\sup\left\{p\st \Ext_{\cat A}^p(X,T)\neq 0\text{ for some object }T\in\Ob({\cat A})\right\}
 	\end{align*}
 	and we put $\sup\emptyset =-\infty$.
 \end{defi}
 \begin{fact}\lbl{fact:injDim}
-	When $\Aa$ has sufficiently many injective objects and $X\neq 0$ we have
+	When ${\cat A}$ has sufficiently many injective objects and $X\neq 0$ we have
 	\begin{align*}
-		\idim_\Aa(X)&=\min\left\{\ell\st X\text{ has an injective resolution of length }\ell\right\}\\
+		\idim_{\cat A}(X)&=\min\left\{\ell\st X\text{ has an injective resolution of length }\ell\right\}\\
 	&=	\min\left\{\ell\st\begin{array}{c}
 	\text{for any injective resolution }X\monomorphism I^\bullet\text{ the truncation}\\
 	X\monomorphism\tau_{\leq\ell}I^\bullet\text{ is an injective resolution of }X
@@ -461,7 +461,7 @@ Let $\Aa$ be an abelian category. To have $\Ext_\Aa^\bullet$ available, we need 
 	\end{align*}
 	The left-hand side is $-\infty$ for $X=0$ and $+\infty$ if no such $\ell$ exists. 
 \end{fact}
-For a cochain complex $C^\bullet$ in $\Aa$ we used the \emph{soft truncation}\footnote{As opposed to the \emph{hard truncation} in which everything above degree $k$ is just cut off.} $\tau_{\leq k}C^\bullet$ given by 
+For a cochain complex $C^\bullet$ in ${\cat A}$ we used the \emph{soft truncation}\footnote{As opposed to the \emph{hard truncation} in which everything above degree $k$ is just cut off.} $\tau_{\leq k}C^\bullet$ given by 
 \begin{align*}
 	\tau_{\leq k}C^\ell=\begin{cases}
 	C^\ell & \text{if }\ell<k\\
@@ -479,19 +479,19 @@ B^{k+1}=\coker(C^{k-1}\morphism C^k) & \text{if }\ell=k+1\\
 \end{align*}
 In the case where $C^\bullet$ is acyclic (e.g., an injective resolution), $\tau_{\leq k+1}C^\bullet$ and $\snake{\tau}_{\leq k}C^\bullet$ coincide.
 \begin{proof}[Proof of Fact~\reff{fact:injDim}]
-	Let $\idim_\Aa^{(1)}$, $\idim_\Aa^{(2)}$, and $\idim_\Aa^{(3)}$,  denote the three notions of injective dimension in the order in which they appear. Then $\idim_\Aa^{(1)}(X)\leq \idim_\Aa^{(2)}(X)\leq \idim_\Aa^{(3)}(X)$ is trivial.
+	Let $\idim_{\cat A}^{(1)}$, $\idim_{\cat A}^{(2)}$, and $\idim_{\cat A}^{(3)}$,  denote the three notions of injective dimension in the order in which they appear. Then $\idim_{\cat A}^{(1)}(X)\leq \idim_{\cat A}^{(2)}(X)\leq \idim_{\cat A}^{(3)}(X)$ is trivial.
 	
-	Let's show $\idim_\Aa^{(3)}(X)\leq \idim_\Aa^{(1)}(X)$. Let $X\monomorphism I^\bullet$ be any injective resolution of $X$. Denote $Z^k=\ker\left(I^k\morphism I^{k+1}\right)$. Then $Z^0=X$ and the short exact sequence $0\morphism Z^k\morphism I^k\morphism Z^{k+1}\morphism 0$ gives
+	Let's show $\idim_{\cat A}^{(3)}(X)\leq \idim_{\cat A}^{(1)}(X)$. Let $X\monomorphism I^\bullet$ be any injective resolution of $X$. Denote $Z^k=\ker\left(I^k\morphism I^{k+1}\right)$. Then $Z^0=X$ and the short exact sequence $0\morphism Z^k\morphism I^k\morphism Z^{k+1}\morphism 0$ gives
 	\begin{align*}
-		0=\Ext_\Aa^p(T,I^k)\morphism \Ext_\Aa^p(T,Z^{k+1})\morphism\Ext_\Aa^{p+1}(T,Z^k)\morphism\Ext_\Aa^{p+1}(T,I^k)=0
+		0=\Ext_{\cat A}^p(T,I^k)\morphism \Ext_{\cat A}^p(T,Z^{k+1})\morphism\Ext_{\cat A}^{p+1}(T,Z^k)\morphism\Ext_{\cat A}^{p+1}(T,I^k)=0
 	\end{align*}
-	for any test object $T\in\Ob(\Aa)$. Hence $\Ext_\Aa^p(T,Z^{k+1})\cong \Ext_\Aa^{p+1}(T,Z^k)$. By induction, $\Ext_\Aa^p(T,Z^k)\cong \Ext_\Aa^{p+k}(T,Z^0)=\Ext_\Aa^{p+k}(T,X)$. In particular, $\Ext_\Aa^1(T,Z^\ell)\cong \Ext_\Aa^{\ell+1}(T,X)$. When $\Ext_\Aa^{\ell+1}(-,X)$ vanishes, this shows injectivity of $Z^\ell$ and thus $\idim_R^{(3)}(X)\leq \ell$.
+	for any test object $T\in\Ob({\cat A})$. Hence $\Ext_{\cat A}^p(T,Z^{k+1})\cong \Ext_{\cat A}^{p+1}(T,Z^k)$. By induction, $\Ext_{\cat A}^p(T,Z^k)\cong \Ext_{\cat A}^{p+k}(T,Z^0)=\Ext_{\cat A}^{p+k}(T,X)$. In particular, $\Ext_{\cat A}^1(T,Z^\ell)\cong \Ext_{\cat A}^{\ell+1}(T,X)$. When $\Ext_{\cat A}^{\ell+1}(-,X)$ vanishes, this shows injectivity of $Z^\ell$ and thus $\idim_R^{(3)}(X)\leq \ell$.
 \end{proof}
-In particular, this proof shows that $\Ext_\Aa^{\ell+1}(-,X)=0$ implies $\Ext_\Aa^p(-,X)=0$ for all $p>\ell$. Dualizing the proof of Fact~\reff{fact:injDim}, we get the same for $\Ext_\Aa^p(X,-)$, as well as 
+In particular, this proof shows that $\Ext_{\cat A}^{\ell+1}(-,X)=0$ implies $\Ext_{\cat A}^p(-,X)=0$ for all $p>\ell$. Dualizing the proof of Fact~\reff{fact:injDim}, we get the same for $\Ext_{\cat A}^p(X,-)$, as well as 
 \begin{fact}\lbl{fact:projDim}
-	When $\Aa$ has sufficiently many projective objects and $X\neq 0$ we have
+	When ${\cat A}$ has sufficiently many projective objects and $X\neq 0$ we have
 	\begin{align*}
-	\pdim_\Aa(X)&=\min\left\{\ell\st X\text{ has a projective resolution of length }\ell\right\}\\
+	\pdim_{\cat A}(X)&=\min\left\{\ell\st X\text{ has a projective resolution of length }\ell\right\}\\
 	&=	\min\left\{\ell\st\begin{array}{c}
 	\text{for any projective resolution }P_\bullet\epimorphism X\text{ the truncation}\\
 	\snake{\tau}_{\leq\ell}P_\bullet\epimorphism X\text{ is a projective resolution of }X
@@ -523,7 +523,7 @@ Recall Proposition~\reff{prop:Ext1(R/I)}. By the above proof of equality of vari
 \end{align}
 as it is sufficient to use such $T$ as test objects for injectivity in our proof of $\idim_R^{(3)}(X)\leq \idim_R^{(1)}(X)$, hence the proof remains valid when $\idim_R^{(3)}(X)$ is replaced by \eqreff{eq:idim}. Using Proposition~\reff{prop:ExtLocalization}, we obtain
 \begin{cor}\lbl{cor:injDimLocal}
-	For any module $M$ over a Noetherian ring,
+	For any module $M$ over a noetherian ring,
 	\begin{align*}
 		\idim_R(M)&=\sup\left\{\idim_{R_\mm\vphantom{\pp}}(M_\mm)\st \mm\in\mSpec R\right\}\\
 		&=\sup\left\{\idim_{R_\pp}(M_\pp)\st \pp\in\Spec R\right\}\;.
@@ -537,7 +537,7 @@ as it is sufficient to use such $T$ as test objects for injectivity in our proof
 	for all $\mm\in\mSpec R$ by Proposition~\reff{prop:ExtLocalization}. Since every ideal $J\subseteq R_\mm$ is of the form $J=I_\mm$ for some ideal $I\subseteq R$, Proposition~\reff{prop:Ext1(R/I)} indeed implies $\idim_R(M)=\sup_\mm\idim_{R_\mm}(M_\mm)$. And $\idim_R(M)=\sup_\pp\idim_{R_\pp}(M_\pp)$ is just the same argument again. 
 \end{proof}
 \begin{cor}\lbl{cor:projDimLocal}
-	For any finitely generated module $M$ over a Noetherian ring,
+	For any finitely generated module $M$ over a noetherian ring,
 	\begin{align*}
 	\pdim_R(M)&=\sup\left\{\pdim_{R_\mm\vphantom{\pp}}(M_\mm)\st \mm\in\mSpec R\right\}\\
 	&=\sup\left\{\pdim_{R_\pp}(M_\pp)\st \pp\in\Spec R\right\}\;.
@@ -579,7 +579,7 @@ There is a similar result about completion. If $M$ is an $R$-module and $I$ any 
 \begin{align*}
 	\roof{M}=\limit[k\in\IN] M/I^kM\;. 
 \end{align*}
-If $R$ is Noetherian, $M$ a finitely generated $R$-module and $N\subseteq M$ a submodule, then $N\cap I^kM\subseteq I^{k-c}N$ for $k\geq c$ and a suitable $c$ by the Artin--Rees lemma (cf. \cite[Proposition~3.4.1]{alg2}). It follows that the $I$-adic topology on $N$ is induced from the $I$-adic topology on $M$ and the morphism $\roof{N}\morphism\roof{M}$ corresponding to $N\monomorphism M$ stays injective. Since $\roof{\phantom{x}}$ also commutes with forming quotients, $M\mapsto\roof{M}$ is an exact functor on \emph{finitely generated} $R$-modules (a complete proof may be found in \cite[Lemma~7.15]{eisenbudCommAlg}). 
+If $R$ is noetherian, $M$ a finitely generated $R$-module and $N\subseteq M$ a submodule, then $N\cap I^kM\subseteq I^{k-c}N$ for $k\geq c$ and a suitable $c$ by the Artin--Rees lemma (cf. \cite[Proposition~3.4.1]{alg2}). It follows that the $I$-adic topology on $N$ is induced from the $I$-adic topology on $M$ and the morphism $\roof{N}\morphism\roof{M}$ corresponding to $N\monomorphism M$ stays injective. Since $\roof{\phantom{x}}$ also commutes with forming quotients, $M\mapsto\roof{M}$ is an exact functor on \emph{finitely generated} $R$-modules (a complete proof may be found in \cite[Lemma~7.15]{eisenbudCommAlg}). 
 
 When $M$ is finitely generated, $\Ext_R^\bullet(M,-)$ may be calculated using a resolution $F_\bullet \morphism M$ of $M$ by finitely generated free modules $F_i\cong R^{n_i}$. Then the $\roof{F}_i$ stay free (of the same rank), so $\roof{F}_\bullet\morphism \roof{M}$ is still a free resolution, and moreover
 \begin{align*}
@@ -587,15 +587,15 @@ When $M$ is finitely generated, $\Ext_R^\bullet(M,-)$ may be calculated using a 
 \end{align*}
 Together with exactness of $\roof{\phantom{x}}$ on finitely generated $R$-modules, we obtain
 \begin{prop}\lbl{prop:ExtCompletion}
-	Let $R$ be a Noetherian ring, $I\subseteq R$ any ideal and $M$ and $N$ finitely generated $R$-modules. Let $p\geq 0$. Then
+	Let $R$ be a noetherian ring, $I\subseteq R$ any ideal and $M$ and $N$ finitely generated $R$-modules. Let $p\geq 0$. Then
 	\begin{align*}
 		\Ext_R^p(M,N)^\complete \cong \Ext_{\roof{R}}^p(\roof{M},\roof{N})
 	\end{align*}
 	holds for the $I$-adic completions.
 \end{prop}
-In particular, this implies $\Hom_R(M,N)^\complete \cong\Hom_{\roof{R}}(\roof{M},\roof{N})$ for finitely generated modules $M,N$ over a Noetherian ring $R$.
+In particular, this implies $\Hom_R(M,N)^\complete \cong\Hom_{\roof{R}}(\roof{M},\roof{N})$ for finitely generated modules $M,N$ over a noetherian ring $R$.
 \begin{cor}\lbl{cor:projDimCompletion}
-	Let $R$ be Noetherian. For any finitely generated $R$-module $M$, 
+	Let $R$ be noetherian. For any finitely generated $R$-module $M$, 
 	\begin{align*}		
 		\pdim_R(M)\geq\pdim_{\roof{R}}(\roof{M})\;.
 	\end{align*}
@@ -615,7 +615,7 @@ To prove Corollary~\reff{cor:projDimCompletion}, we need a lemma which has been 
 \end{proof}
 We use this to prove an analogue of \eqreff{eq:idim}.
 \begin{cor}\lbl{cor:projExtFiniteStuff}
-	Let $P$ be a finitely presented $R$-module (e.g., a finitely generated module over a Noetherian ring). Then $P$ is projective iff $\Ext_R^1(P,T)=0$ for all finitely generated $T$.
+	Let $P$ be a finitely presented $R$-module (e.g., a finitely generated module over a noetherian ring). Then $P$ is projective iff $\Ext_R^1(P,T)=0$ for all finitely generated $T$.
 \end{cor}
 \begin{proof}
 	Suppose $\Ext_R^1(P,-)$ vanishes on finitely generated $R$-modules (the other direction is trivial). Let $0\morphism K\morphism F\morphism P\morphism 0$ be a short exact sequence in which $K$ and $F$ are finitely generated and $F$ is free. Then 
@@ -654,7 +654,7 @@ where $P_\bullet \epimorphism N$ is any projective resolution.
 		\begin{align}\lbl{eq:TorFuncSeq}
 			0\morphism (M'\otimes_R -)\morphism (M\otimes _R-)\morphism (M''\otimes_R-)\morphism 0\tag{$*$}
 		\end{align}
-		is a sequence of functors from $R\cat{-Mod}$ to itself which is exact on free objects $F$. If $P$ is a projective $R$-module, it is a direct summand of some free module $F$ by Lemma~\reff{lem:projectiveDirectSummand}. Then the sequence \eqreff{eq:TorFuncSeq} for $P$ is a direct summand of \eqreff{eq:TorFuncSeq} for $F$ and thus exact as well. That is, \eqreff{eq:TorFuncSeq} is exact on projective objects, so Theorem~\reff{thm:LeftDerivedFunctors}\itememph{c} gives another connecting morphism $\partial\colon \Tor_{p+1}^R(M,N'')\morphism\Tor_p^R(M,N')$ such that
+		is a sequence of functors from $\cat{Mod}(R)$ to itself which is exact on free objects $F$. If $P$ is a projective $R$-module, it is a direct summand of some free module $F$ by Lemma~\reff{lem:projectiveDirectSummand}. Then the sequence \eqreff{eq:TorFuncSeq} for $P$ is a direct summand of \eqreff{eq:TorFuncSeq} for $F$ and thus exact as well. That is, \eqreff{eq:TorFuncSeq} is exact on projective objects, so Theorem~\reff{thm:LeftDerivedFunctors}\itememph{c} gives another connecting morphism $\partial\colon \Tor_{p+1}^R(M,N'')\morphism\Tor_p^R(M,N')$ such that
 		\begin{multline}\lbl{eq:TorSeq2}
 			\ldots\morphism\Tor_{p+1}^R(M'',N)\morphism[\partial]\Tor_p^R(M',N)\morphism\Tor_p^R(M,N)\\
 			\morphism\Tor_p^R(M'',N)\morphism[\partial]\Tor_{p-1}^R(M',N)\morphism\ldots\;.
@@ -697,15 +697,15 @@ In the same way as Fact~\reff{fact:atimesExt} for $\Ext$, we see that the follow
 		\item The endomorphism $\Tor_i^R(M,N)\morphism\Tor_i^R(M,N)$ induced by $N\morphism[a\cdot ]N$ and functoriality of $\Tor_i^R(M,-)$.
 	\end{alphanumerate}
 \end{fact}
-When the ring $R$ is Noetherian and $M$ is finitely generated, the torsion product may be calculated using a free resolution $0\lmorphism M\lmorphism R^{n_0}\lmorphism R^{n_1}\lmorphism\ldots$ by finitely generated $R$-modules. Using Proposition~\reff{prop:TorMN=TorNM} and \eqreff{eq:TorDef} we get
+When the ring $R$ is noetherian and $M$ is finitely generated, the torsion product may be calculated using a free resolution $0\lmorphism M\lmorphism R^{n_0}\lmorphism R^{n_1}\lmorphism\ldots$ by finitely generated $R$-modules. Using Proposition~\reff{prop:TorMN=TorNM} and \eqreff{eq:TorDef} we get
 \begin{align*}
 	\Tor_\bullet^R(M,N)=H_\bullet\left(N^{n_0}\lmorphism N^{n_1}\lmorphism\ldots\right)\;.
 \end{align*}
 When $N$ is also finitely generated, this clearly shows
 \begin{fact}
-	When $R$ is Noetherian  and $M,N$ finitely generated $R$-modules, then the $\Tor_i^R(M,N)$ are finitely generated $R$-modules as well.
+	When $R$ is noetherian  and $M,N$ finitely generated $R$-modules, then the $\Tor_i^R(M,N)$ are finitely generated $R$-modules as well.
 \end{fact}
-And we need compatibility with localization of course.
+And as we did for $\Ext$ (in Proposition~\reff{prop:ExtLocalization}), we need to find some conditions when $\Tor$ is compatible with localizations.
 \begin{fact}\lbl{fact:TorLocal}
 	Let $M$ and $N$ are modules over a ring $R$ and $S$ a multiplicative subset of $R$. Then there are unique isomorphisms
 	\begin{align*}
@@ -728,7 +728,7 @@ By the tensor-hom adjunction, the functor $M\otimes_R-$ is left-adjoint to $\Hom
 	M\otimes_R\colimit[\lambda\in\Lambda]N_\lambda&\isomorphism \colimit[\lambda\in\Lambda]M\otimes_RN_\lambda\\
 	m\otimes\left(\text{image of }n_\lambda\text{ in }\colimit N_\lambda\right)&\longmapsto \left(\text{image of }m\otimes n_\lambda\text{ in }\colimit M\otimes_RN_\lambda\right)\;.
 \end{align*}
-Also recall that \emph{filtered} colimits are exact\footnote{To see they commute with kernels you can use that filtered colimits taken in $R\cat{-Mod}$ are the same as being taken in $\cat{Set}$; commutativity with cokernels is automatically true by \cite[Corollary~A.1.1]{alggeo2}.}, hence commute with taking homology. We thus obtain
+Also recall that \emph{filtered} colimits are exact\footnote{To see they commute with kernels you can use that filtered colimits taken in $\cat{Mod}(R)$ are the same as being taken in $\cat{Set}$; commutativity with cokernels is automatically true by \cite[Corollary~A.1.1]{alggeo2}.}, hence commute with taking homology. We thus obtain
 \begin{fact}\lbl{fact:TorCommutesWithColims}
 	Torsion products are compatible with filtered colimits. That is, for a filtered system $(N_\lambda)_{\lambda\in\Lambda}$ of $R$-modules we have an isomorphism
 	\begin{align*}
@@ -760,7 +760,7 @@ For flatness, there is a criterion similar to Baer's (Proposition~\reff{prop:Inj
 		\item For any ideal $I\subseteq R$, the morphism $I\otimes_RM\morphism I\cdot M$ sending $i\otimes m$ to $i\cdot m$ is an isomorphism.
 		\item For any ideal $I\subseteq R$, the morphism $I\otimes_RM\morphism I\cdot M$ sending $i\otimes m$ to $i\cdot m$ is injective.
 	\end{alphanumerate}
-	When $R$ is Noetherian, each of \itememph{b}, \itememph{c} and \itememph{d} may be weakened to $I$ being a prime ideal.
+	When $R$ is noetherian, each of \itememph{b}, \itememph{c} and \itememph{d} may be weakened to $I$ being a prime ideal.
 \end{prop}
 \begin{proof}
 	The implication \itememph{a} $\Rightarrow$ \itememph{b} is trivial, as is \itememph{c} $\Leftrightarrow$ \itememph{d}, since the $i\cdot m$ generate $I\cdot M$, so the morphism in question is automatically surjective.
@@ -790,7 +790,7 @@ For flatness, there is a criterion similar to Baer's (Proposition~\reff{prop:Inj
 	\end{align*}
 	as part of the exact sequence \eqreff{eq:TorSeq2}, in which $\Tor_1^R(M,N')$ vanishes by the induction hypothesis and $\Tor_1^R(M,N'')$ by \itememph{b}. Hence $\Tor_1^R(M,N)$ vanishes as well.
 	
-	When $R$ is Noetherian, we can apply the same induction on a finite filtration $0=N_0\subsetneq N_1\subsetneq\ldots\subsetneq N_k=N$ having the property that $N_i/N_{i-1}\cong R/\pp_i$ for some $\pp_i\in\Spec R$ to show $\Tor_1^R(M,N_i)=0$ inductively. If you don't know the existence of such a filtration, Professor Franke suggests you spend 2 hours reading Matsumura's \href{http://www.math.unam.mx/javier/Matsumura.pdf}{\emph{Commutative Ring Theory}} \cite{matsumuraCRT} as a punishment, until you stumble upon that result\footnote{Alternatively (and providing a proof by Franke himself), have a look at \cite[Proposition~3.1.2\itememph{a}]{alg2}.} (and it seemed like he found that genuinely amusing).
+	When $R$ is noetherian, we can apply the same induction on a finite filtration $0=N_0\subsetneq N_1\subsetneq\ldots\subsetneq N_k=N$ having the property that $N_i/N_{i-1}\cong R/\pp_i$ for some $\pp_i\in\Spec R$ to show $\Tor_1^R(M,N_i)=0$ inductively. If you don't know the existence of such a filtration, Professor Franke suggests you spend 2 hours reading Matsumura's \href{http://www.math.unam.mx/javier/Matsumura.pdf}{\emph{Commutative Ring Theory}} \cite{matsumuraCRT} as a punishment, until you stumble upon that result\footnote{Alternatively (and providing a proof by Franke himself), have a look at \cite[Proposition~3.1.2\itememph{a}]{alg2}.} (and it seemed like he found that genuinely amusing).
 \end{proof}
 \begin{rem*}
 	As the proof shows, \itememph{b} $\Leftrightarrow$ \itememph{c} $\Leftrightarrow$ \itememph{d} already holds when $I$ is fixed.
@@ -833,7 +833,7 @@ For flatness, there is a criterion similar to Baer's (Proposition~\reff{prop:Inj
 	If $S\subseteq R$ is a multiplicative subset, $R_S$ is a flat $R$-module. Indeed, this follows from Fact~\reff{fact:flatVeryLocal}\itememph{b} since $R$ is flat over itself. $R_S$ being flat also follows from the localization functor being exact.
 \end{example}
 \begin{example}\lbl{ex:CompletionFlat}
-	The completion $\roof{R}$ of a Noetherian ring $R$ with respect to any ideal $I$ is a flat $R$-module. When $M$ is a finitely generated flat $R$-module, its completion $\roof{M}$ is a flat $\roof{R}$-module.
+	The completion $\roof{R}$ of a noetherian ring $R$ with respect to any ideal $I$ is a flat $R$-module. When $M$ is a finitely generated flat $R$-module, its completion $\roof{M}$ is a flat $\roof{R}$-module.
 \end{example}
 \begin{proof}
 	For finitely generated $R$-modules $M$ we have an isomorphism $M\otimes_R\roof{R}\isomorphism \roof{M}$. Indeed, this is true when $M=R$ and both sides commute with taking cokernels and finite direct sums, since completion is exact on finitely generated $R$-modules (cf.\ \cite[Lemma~7.15]{eisenbudCommAlg}). Thus $-\otimes_R\roof{R}$ is an exact functor on finitely generated $R$-modules. Applying this to any finitely generated free resolution of $R/I$ shows $\Tor_1^R(\roof{R},R/I)=0$ for any ideal $I\subseteq R$, so $\roof{R}$ is flat by Proposition~\reff{prop:flatConditions}\itememph{b}.
@@ -841,7 +841,7 @@ For flatness, there is a criterion similar to Baer's (Proposition~\reff{prop:Inj
 	Now let $M$ be a finitely generated flat $R$-module. Since $\roof{M}\cong M\otimes_R\roof{R}$, the functor $-\otimes_{\roof{R}}\roof{M}$ is exact because both tensoring by $M$ and $\roof{R}$ is exact. Thus $\roof{M}$ stays flat.\footnote{And more generally, tensor products of flat modules are clearly flat again.}
 \end{proof}
 \begin{example}\lbl{ex:productOfFlatsIsFlat}
-	The product of arbitrarily many flat modules over a Noetherian ring is flat again.
+	The product of arbitrarily many flat modules over a noetherian ring is flat again.
 \end{example}
 \begin{proof}
 	Let $(M_j)_{j\in J}$ be a family of $R$-modules. Let $I$ be any ideal of $R$ and $0\lmorphism R/I\lmorphism R^{n_0}\lmorphism R^{n_1}\lmorphism\ldots$ any free resolution by finitely generated free modules, then
@@ -864,10 +864,10 @@ For flatness, there is a criterion similar to Baer's (Proposition~\reff{prop:Inj
 		\item $\Tor_p^R(M,R/I)=0$ when $p>d$ for any ideal $I\subseteq R$.
 		\item $\Tor_{d+1}^R(M,R/I)=0$ for any ideal $I\subseteq R$.
 	\end{alphanumerate}
-	Moreover, when $R$ is Noetherian, it is enough to have \itememph{e} or \itememph{f} for prime ideals.
+	Moreover, when $R$ is noetherian, it is enough to have \itememph{e} or \itememph{f} for prime ideals.
 \end{fact}
 \begin{proof}
-	Clearly, it is enough to show that \itememph{f} $\Rightarrow$ \itememph{a}. Suppose that \itememph{f} holds (resp.\ the even weaker prime ideal condition when $R$ is Noetherian). We can use the inductive argument from the proof of Proposition~\reff{prop:flatConditions} to show $\Tor_{d+1}(M,T)=0$ for every finitely generated $R$-module $T$. Since every $R$-module $T$ is the direct colimit of its finitely generated submodules, Fact~\reff{fact:TorCommutesWithColims} allows us to drop the finitely generatedness of $T$, i.e., we obtain \itememph{b}.
+	Clearly, it is enough to show that \itememph{f} $\Rightarrow$ \itememph{a}. Suppose that \itememph{f} holds (resp.\ the even weaker prime ideal condition when $R$ is noetherian). We can use the inductive argument from the proof of Proposition~\reff{prop:flatConditions} to show $\Tor_{d+1}(M,T)=0$ for every finitely generated $R$-module $T$. Since every $R$-module $T$ is the direct colimit of its finitely generated submodules, Fact~\reff{fact:TorCommutesWithColims} allows us to drop the finitely generatedness of $T$, i.e., we obtain \itememph{b}.
 	
 	Now assume that for some $p>d$, vanishing of $\Tor_p^R(M,-)$ has been shown. Let $T$ be any $R$-module. Choose an epimorphism $F\epimorphism[\pi]T$ for some free $R$-module $F$. From the long exact $\Tor$ sequence associated to $0\morphism \ker(\pi)\morphism F\morphism T\morphism 0$ we obtain
 	\begin{align*}
@@ -902,7 +902,7 @@ For flatness, there is a criterion similar to Baer's (Proposition~\reff{prop:Inj
 		\begin{align}\lbl{eq:flatResolution}
 			0\lmorphism M\lmorphism F_0\lmorphism \ldots\lmorphism F_d\lmorphism 0
 		\end{align}
-		with flat $F_i$. When $M$ is finitely generated and $R$ is Noetherian, we may assume that the $F_i$ are finitely generated as well.
+		with flat $F_i$. When $M$ is finitely generated and $R$ is noetherian, we may assume that the $F_i$ are finitely generated as well.
 		\item For any sequence like \eqreff{eq:flatResolution} in which $F_0,\ldots,F_{d-1}$ are flat, $F_d$ is flat as well.
 	\end{alphanumerate}
 \end{prop}
@@ -923,9 +923,9 @@ Looking at the above proof again, we find
 		\fdim_R(N)=\max\{\fdim_R(M)-1,0\}\;.
 	\end{align*}
 \end{fact}
-And finally we prove that $\Tor$ -- for finitely generated modules over Noetherian rings -- is compatible with completions.
+%And finally we prove that $\Tor$ -- for finitely generated modules over noetherian rings -- is compatible with completions.
 \begin{prop}\lbl{prop:TorCompletion}
-	Let $\roof{\phantom{x}}$ denote the completion with respect to an arbitrary ideal $I$ in a Noetherian ring $R$. For all finitely generated $R$-modules $M,N$,
+	Let $\roof{\phantom{x}}$ denote the completion with respect to an arbitrary ideal $I$ in a noetherian ring $R$. For all finitely generated $R$-modules $M,N$,
 	\begin{align*}
 		\Tor_i^{\roof{R}}(\roof{M},\roof{N})\cong \Tor_i^R(M,N)^\complete \;.
 	\end{align*}
@@ -937,9 +937,9 @@ And finally we prove that $\Tor$ -- for finitely generated modules over Noetheri
 	\end{align*}
 	since $\roof{\phantom{x}}$ commutes with (finitely generated) homology by exactness on finitely generated $R$-modules.
 \end{proof}
-\section{The case of finitely generated modules over Noetherian rings}
+\section{The case of finitely generated modules over noetherian rings}
 \begin{prop}\lbl{prop:FreeProjFlatTor}
-	Let $P$ be a finitely generated module over a Noetherian local ring $R$ with maximal ideal $\mm$ and residue field $k=R/\mm$. Then the following are equivalent.
+	Let $P$ be a finitely generated module over a noetherian local ring $R$ with maximal ideal $\mm$ and residue field $k=R/\mm$. Then the following are equivalent.
 	\begin{alphanumerate}
 		\item $P$ is free.
 		\item $P$ is projective.
@@ -958,28 +958,28 @@ And finally we prove that $\Tor$ -- for finitely generated modules over Noetheri
 	Since $k^n\morphism P\otimes_Rk$ is an isomorphism, this shows $\ker(\pi)\otimes_Rk=0$, hence $\ker(\pi)=0$ by Nakayama's lemma. We find that $\pi$ is already an isomorphism and $P\cong R^n$ is free.
 \end{proof}
 \begin{cor}\lbl{cor:pdim=fdim}
-	For a finitely generated module $M$ over a Noetherian local ring $R$ with maximal ideal $\mm$ and residue field $k$, we have
+	For a finitely generated module $M$ over a noetherian local ring $R$ with maximal ideal $\mm$ and residue field $k$, we have
 	\begin{align*}
 		\pdim_R(M)=\fdim_R(M)=\sup\left\{d\st \Tor_d^R(M,k)\neq 0\right\}\;.
 	\end{align*}
 \end{cor}
 \begin{proof}
-	The first equality is immediate from Fact~\reff{fact:projDim} and Proposition~\reff{prop:flatResolution}\itememph{b} since flat and projective is the same for finitely generated modules over Noetherian local rings by Proposition~\reff{prop:FreeProjFlatTor}. The second equality follows by looking over the proof of Proposition~\reff{prop:flatResolution} again, since in our situation it suffices to check $\Tor_1^R(F,k)=0$ to show flatness of some finitely generated $R$-module $F$ by Proposition~\reff{prop:FreeProjFlatTor}\itememph{d}.
+	The first equality is immediate from Fact~\reff{fact:projDim} and Proposition~\reff{prop:flatResolution}\itememph{b} since flat and projective is the same for finitely generated modules over noetherian local rings by Proposition~\reff{prop:FreeProjFlatTor}. The second equality follows by looking over the proof of Proposition~\reff{prop:flatResolution} again, since in our situation it suffices to check $\Tor_1^R(F,k)=0$ to show flatness of some finitely generated $R$-module $F$ by Proposition~\reff{prop:FreeProjFlatTor}\itememph{d}.
 \end{proof}
 \begin{cor}\lbl{cor:fdim(k)}
-	For any module $M$ over a Noetherian local ring $R$, $\fdim_R(M)\leq \fdim_R(k)$.
+	For any module $M$ over a noetherian local ring $R$, $\fdim_R(M)\leq \fdim_R(k)$.
 \end{cor}
 \begin{proof}
 	By Proposition~\reff{prop:TorMN=TorNM} and Fact~\reff{fact:flatDim}\itememph{d}, $\fdim_R(k)$ is smallest integer $d$ such that $0=\Tor_{d+1}^R(k,M)\cong \Tor_{d+1}^R(M,k)$ for all finitely generated $R$-modules $M$. Then $\fdim_R(M)\leq \fdim_R(k)$ for $M$ finitely generated follows immediately from Corollary~\reff{cor:pdim=fdim}. Now let $M$ be arbitrary, $p>\fdim_R(k)$ and $I\subseteq R$ be any ideal. We have $\Tor_p^R(R/I,M)=0$ since $R/I$ is finitely generated and thus $p>\fdim_R(R/I)$ by what we just proved. But $\Tor_p^R(R/I,M)\cong\Tor_p^R(M,R/I)$, so Fact~\reff{fact:flatDim}\itememph{e} shows $\fdim_R(M)<p$ as well.
 \end{proof}
 \begin{cor}
-	If $M$ is a finitely generated module over a Noetherian ring $R$ (local or not), then $\pdim_R(M)=\fdim_R(M)$.
+	If $M$ is a finitely generated module over a noetherian ring $R$ (local or not), then $\pdim_R(M)=\fdim_R(M)$.
 \end{cor}
 \begin{proof}
 	Follows from Fact~\reff{fact:flatDimLocal}, Corollary~\reff{cor:projDimLocal} and Corollary~\reff{cor:pdim=fdim}.
 \end{proof}
 \begin{prop}
-	For a finitely generated module $M$ over a Noetherian ring $R$ the following are equivalent.
+	For a finitely generated module $M$ over a noetherian ring $R$ the following conditions are equivalent.
 	\begin{alphanumerate}
 		\item $M$ is projective.
 		\item $M$ is flat.
@@ -995,7 +995,7 @@ And finally we prove that $\Tor$ -- for finitely generated modules over Noetheri
 	To derive \itememph{f} $\Rightarrow$ \itememph{c} one uses the Nakayama argument from \cite[Corollary~1.5.1]{alg2}, but Professor Franke decided to repeat it here, so we will include it again in Lemma~\reff{lem:locFree}.
 \end{proof}
 \begin{lem}\lbl{lem:locFree}
-	Let $M$ be a finitely generated module over a Noetherian ring $R$ and $\pp\in\Spec R$ a prime ideal such that $M_\pp$ is a free $R_\pp$ module. Then there is an $f\in R\setminus\pp$ such that $M_f$ is already free over $R_f$.
+	Let $M$ be a finitely generated module over a noetherian ring $R$ and $\pp\in\Spec R$ a prime ideal such that $M_\pp$ is a free $R_\pp$ module. Then there is an $f\in R\setminus\pp$ such that $M_f$ is already free over $R_f$.
 \end{lem}
 \begin{proof}
 	Let $m_1,\ldots,m_k\in M$ whose images are free generators of $M_\pp$ over $R_\pp$ and let $g_1,\ldots,g_n\in M$ be generators of $M$ as an $R$-module. By assumption, there are $\rho_{i,j}\in R_\pp$ such that
@@ -1008,7 +1008,7 @@ And finally we prove that $\Tor$ -- for finitely generated modules over Noetheri
 	\end{align*}
 	Putting $f=f_1\cdots f_k$, we see that \eqreff{eq:gjInR_p} already holds in $M_f$. So replacing $R$ by $R_f$ and $M$ by $M_f$ again, we may assume that the $m_i$ generate $M$ as an $R$-module.
 	
-	Let $N\subseteq R^k$ be the kernel of $R^k\epimorphism M$ sending the $i\ordinalth$ standard basis vector to $m_i$. We have a short exact sequence $0\morphism N\morphism R^k\morphism M\morphism 0$. Localizing at $\pp$ gives $0\morphism N_\pp\morphism R_\pp^k\morphism M_\pp\morphism 0$ which is still exact, since localization is an exact functor. Moreover, $R_\pp^k\epimorphism M_\pp$ is an isomorphism by choice of the $m_i$, hence $N_\pp=0$. So if $g_1,\ldots,g_n$ are generators of $N$ (and here we use Noetherianness), then $f_ig_i=0$ in $R$ for some $f_i\in R\setminus \pp$. Putting $f=f_1\cdots f_n$, we get $N_f=0$, hence $R_f^k\cong M_f$ and we are done.
+	Let $N\subseteq R^k$ be the kernel of $R^k\epimorphism M$ sending the $i\ordinalth$ standard basis vector to $m_i$. We have a short exact sequence $0\morphism N\morphism R^k\morphism M\morphism 0$. Localizing at $\pp$ gives $0\morphism N_\pp\morphism R_\pp^k\morphism M_\pp\morphism 0$ which is still exact, since localization is an exact functor. Moreover, $R_\pp^k\epimorphism M_\pp$ is an isomorphism by choice of the $m_i$, hence $N_\pp=0$. So if $g_1,\ldots,g_n$ are generators of $N$ (and here we use noetherianness), then $f_ig_i=0$ in $R$ for some $f_i\in R\setminus \pp$. Putting $f=f_1\cdots f_n$, we get $N_f=0$, hence $R_f^k\cong M_f$ and we are done.
 \end{proof}
 \begin{rem*}
 	Somehow related is the \emph{Serre conjecture} (Serre, 1955) that every finitely generated projective module over a polynomial ring $k[X_1,\ldots,X_n]$ (with $k$ a field) is free. It was proved in 1976 independently by Quillen and Suslin.
@@ -1029,7 +1029,7 @@ Note that the usual notation suggests $\gdim(R)$ is a property of $R$, whereas P
 		\item $\sup\left\{\pdim_R(M)\st M\text{ is a finitely generated }R\text{-module}\right\}$.
 		\item The smallest $p$ such that $\Ext_R^{p+1}(-,-)$ vanishes.
 	\end{alphanumerate}
-	When $R$ is Noetherian, we can add 
+	When $R$ is noetherian, we can add 
 	\begin{alphanumerate}\setcounter{enumi}{4}
 		\item The smallest $p$ such that $\Tor_{p+1}^R(-,-)$ vanishes.
 		\item $\sup\left\{\fdim_R(M)\st M\text{ is an }R\text{-module}\right\}$.
@@ -1039,7 +1039,7 @@ Note that the usual notation suggests $\gdim(R)$ is a property of $R$, whereas P
 \begin{proof}
 	We get \itememph{a} $=$ \itememph{d} $=$ \itememph{b} (in this order) immediately from Definition~\reff{def:idim/pdim} and equation \eqreff{eq:idim} gives \itememph{b} $=$ \itememph{c}.
 	
-	Now let $R$ be Noetherian. That \itememph{e} $=$ \itememph{f} is again obvious from Definition~\reff{def:flatDim}. Now by Fact~\reff{fact:flatDimLocal}\itememph{b} and Corollary~\reff{cor:fdim(k)},
+	Now let $R$ be noetherian. That \itememph{e} $=$ \itememph{f} is again obvious from Definition~\reff{def:flatDim}. Now by Fact~\reff{fact:flatDimLocal}\itememph{b} and Corollary~\reff{cor:fdim(k)},
 	\begin{align*}
 	\fdim_R(M)=\sup\left\{\fdim_{R_\mm}(M_\mm)\st\mm\in\mSpec R\right\}\leq\sup\left\{\fdim_{R_\mm}\KK(\mm)\st\mm\in\mSpec R\right\}
 	\end{align*}
@@ -1126,12 +1126,12 @@ We now put $H_i\big((x_1,\ldots,x_n),M\big)=H_i\left(K_\bullet\big((x_1,\ldots,x
 	Let $R$ be a ring and $M$ an $R$-module.
 	\begin{alphanumerate}
 		\item If $x=(x_1,\ldots,x_n)$ is an $M$-regular sequence, then $H_i(x,M)=0$ for all $i>0$.
-		\item If $R$ is a Noetherian local ring with maximal ideal $\mm$, $M$ finitely generated, and $x=(x_1,\ldots,x_n)$ a sequence of elements of $\mm$, then $H_i(x,M)=0$ for $i>0$ already implies that $x$ is $M$-regular.
+		\item If $R$ is a noetherian local ring with maximal ideal $\mm$, $M$ finitely generated, and $x=(x_1,\ldots,x_n)$ a sequence of elements of $\mm$, then $H_i(x,M)=0$ for $i>0$ already implies that $x$ is $M$-regular.
 	\end{alphanumerate}
 \end{prop}
 Since our definition of $H_i\big((x_1,\ldots,x_n),M\big)$ doesn't depend on the order of the $x_i$, Proposition~\reff{prop:KoszulAndRegular}\itememph{b} implies
 \begin{cor}
-	If $R$ is a Noetherian local ring and $M$ finitely generated, then every permutation of an $M$-regular sequence of elements of the maximal ideal $\mm$ of $R$ stays regular.
+	If $R$ is a noetherian local ring and $M$ finitely generated, then every permutation of an $M$-regular sequence of elements of the maximal ideal $\mm$ of $R$ stays regular.
 \end{cor}
 \begin{proof}[Proof of Proposition~\reff{prop:KoszulAndRegular}]
 	Part \itememph{a}. We prove by induction on $n$ that \itememph{a} holds and moreover that $H_0(x,M)=M/(x_1M+\ldots+x_nM)$. For $n=0$, this is obvious. Now let $n\geq 1$ and the assertions be valid for $n-1$. Put $x'=(x_1,\ldots,x_{n-1})$. From the cone sequence \eqreff{eq:ConeSeq} applied to \eqreff{eq:KoszulCone} and the induction hypothesis, we obtain an exact sequence
@@ -1148,7 +1148,7 @@ Since our definition of $H_i\big((x_1,\ldots,x_n),M\big)$ doesn't depend on the 
 	\end{align*}
 	and since $x$ is $M$-regular, the map on the left has vanishing kernel, showing $H_1\big(x,M\big)=0$ as well.
 	
-	Part \itememph{b}. Again, we do induction on $n$. The case $n=0$ being trivial, let $n\geq 1$ and the assertion be valid for $n-1$. Keeping the above notation, we first prove that $x'$ is regular. Indeed, otherwise $H_i(x',M)\neq 0$ for some $i>0$ by the induction hypothesis. But Nakayama's lemma shows that $H_i(x',M)\lmorphism[x_n\cdot]H_i(x',M)$ is not surjective (it is easy to check that in the Noetherian case the $H_\bullet(x,M)$ are finitely generated provided that $M$ is), hence the exact sequence
+	Part \itememph{b}. Again, we do induction on $n$. The case $n=0$ being trivial, let $n\geq 1$ and the assertion be valid for $n-1$. Keeping the above notation, we first prove that $x'$ is regular. Indeed, otherwise $H_i(x',M)\neq 0$ for some $i>0$ by the induction hypothesis. But Nakayama's lemma shows that $H_i(x',M)\lmorphism[x_n\cdot]H_i(x',M)$ is not surjective (it is easy to check that in the noetherian case the $H_\bullet(x,M)$ are finitely generated provided that $M$ is), hence the exact sequence
 	\begin{align*}
 		H_i(x,M)\lmorphism H_i(x',M)\lmorphism[x_n\cdot]H_i(x',M)
 	\end{align*}
@@ -1194,7 +1194,7 @@ Since our definition of $H_i\big((x_1,\ldots,x_n),M\big)$ doesn't depend on the 
 	provided that $I$ is a proper ideal.
 \end{proof}
 \section{Regular rings}
-Let $R$ be a Noetherian local ring of dimension $d>0$ with maximal ideal $\mm$ and residue field $k=R/\mm$. Then
+Let $R$ be a noetherian local ring of dimension $d>0$ with maximal ideal $\mm$ and residue field $k=R/\mm$. Then
 \begin{align*}
 	\dim_k(\mm^i/\mm^{i+1})\sim \epsilon i^{d-1}
 \end{align*}
@@ -1212,7 +1212,7 @@ As in \cite[Proposition~1.3.1]{alg2} one shows $\dim_k(\mm/\mm^2)\geq d$. Recall
 \end{align*}
 as a polynomial algebra over $k$. Moreover, this can be shown to imply that $R$ is a domain.
 \begin{prop}\lbl{prop:RegularRingRegularSequence}
-	Let $R$ be a Noetherian local ring of dimension $d$ and $x_1,\ldots,x_d$ generators of its maximal ideal $\mm$.
+	Let $R$ be a noetherian local ring of dimension $d$ and $x_1,\ldots,x_d$ generators of its maximal ideal $\mm$.
 	\begin{alphanumerate}
 		\item The sequence $x=(x_1,\ldots,x_d)$ is a regular sequence.
 		\item The Koszul complex $K_\bullet(x,R)$ is a free resolution of length $d$ for the residue field $k=R/\mm$.
@@ -1224,7 +1224,7 @@ as a polynomial algebra over $k$. Moreover, this can be shown to imply that $R$ 
 \end{proof}
 And -- finally -- we are ready to prove Serre's famous characterization of regularity.
 \begin{thm}[Serre]\lbl{thm:SerreRegularity}
-	For a Noetherian local ring with maximal ideal $\mm$ and residue field $k=R/\mm$ the following are equivalent.
+	For a noetherian local ring with maximal ideal $\mm$ and residue field $k=R/\mm$ the following are equivalent.
 	\begin{alphanumerate}
 		\item $R$ is regular.
 		\item The cohomological dimension of the category of $R$-modules is finite.
@@ -1256,11 +1256,7 @@ And -- finally -- we are ready to prove Serre's famous characterization of regul
 		\pdim_{R/xR}(\mm/x\mm)<d\;.\tag{\$}
 	\end{align}
 	If $x=x_1,x_2,\ldots,x_e$ are elements of $\mm$ whose images form a basis of $\mm/\mm^2$ as a $k$-vector space, then we get a splitting of the short exact sequence $0\morphism k\morphism[x\cdot ]\mm/x\mm\morphism\mm/xR\morphism 0$
-	by sending an element $\mu\mod x\mm$ of $\mm/x\mm$ to the coefficient $c_1$ of $x=x_1$ in the (unique) expression
-	\begin{align*}
-		\mu\equiv\sum_{i=1}^ec_ix_i\bmod\mm^2
-	\end{align*}
-	as a linear combination of the above basis of $\mm/\mm^2$. Thus, $k$ as an $R/xR$-module is a direct summand of $\mm/x\mm$ and by \eqreff{eq:pdimIneq2} (and Corollary~\reff{cor:pdim=fdim} again) we get
+	by sending an element $\mu\bmod x\mm$ of $\mm/x\mm$ to the coefficient $c_1$ of $x=x_1$ in the (unique) expression $\mu\equiv\sum_{i=1}^ec_ix_i\bmod\mm^2$ as a linear combination of the above basis of $\mm/\mm^2$. Thus, $k$ as an $R/xR$-module is a direct summand of $\mm/x\mm$ and by \eqreff{eq:pdimIneq2} (and Corollary~\reff{cor:pdim=fdim} again) we get
 	\begin{align*}
 		\fdim_{R/xR}(k)= \pdim_{R/xR}(k)\leq \pdim_{R/xR}(\mm/x\mm)<d\;.
 	\end{align*}
@@ -1270,7 +1266,7 @@ And -- finally -- we are ready to prove Serre's famous characterization of regul
 	\end{claim}
 	Believing this for the moment, we see that there are $\xi_1,\ldots,\xi_\delta\in\mm$ whose images generate the maximal ideal $\mm/xR$ of $R/xR$. Then $\xi_1,\ldots,\xi_\delta,x$ are generators of $\mm$ as an ideal of $R$. Thus $\dim R\leq \delta+1$ and from $\delta<\dim R$ it follows that equality must hold. Thus $R$ is a regular local ring of dimension $d$.
 	
-	It remains to prove Claim~\reff{claim:delta<dim(R)}. Let $\qq_0\subsetneq\ldots\subsetneq\qq_\delta$ be a sequence of prime ideals in $R/xR$ with preimages $\pp_0,\ldots,\pp_\delta$ in $R$. Then $x\in\pp_i$ for all $i$. If $\pp_0$ contains another prime ideal of $R$, then $\dim R>\delta$ as claimed. Otherwise, $\pp_0$ is a minimal prime ideal of $R$. But the minimal prime ideals of any Noetherian ring are always associated prime ideals of it (Proposition~\reff{prop:AssProperties}\itememph{b}) and $x$ was chosen not to be contained in any associated prime ideal of $R$.
+	It remains to prove Claim~\reff{claim:delta<dim(R)}. Let $\qq_0\subsetneq\ldots\subsetneq\qq_\delta$ be a sequence of prime ideals in $R/xR$ with preimages $\pp_0,\ldots,\pp_\delta$ in $R$. Then $x\in\pp_i$ for all $i$. If $\pp_0$ contains another prime ideal of $R$, then $\dim R>\delta$ as claimed. Otherwise, $\pp_0$ is a minimal prime ideal of $R$. But the minimal prime ideals of any noetherian ring are always associated prime ideals of it (Proposition~\reff{prop:AssProperties}\itememph{b}) and $x$ was chosen not to be contained in any associated prime ideal of $R$.
 \end{proof}
 \begin{cor}[Serre]\lbl{cor:Rpregular}
 	Let $R$ be a regular local ring and $\pp\in\Spec R$. Then $R_\pp$ is also regular.
@@ -1280,7 +1276,7 @@ And -- finally -- we are ready to prove Serre's famous characterization of regul
 \end{proof}
 \begin{defi}
 	\begin{alphanumerate}
-		\item A Noetherian ring $R$ is called \defemph{regular} if it satisfies the following equivalent conditions.
+		\item A noetherian ring $R$ is called \defemph{regular} if it satisfies the following equivalent conditions.
 		\begin{alphanumerate}
 			\item[\itememph{\alpha}] For any $\pp\in\Spec R$, $R_\pp$ is a regular local ring.
 			\item[\itememph{\beta}] For any $\mm\in\mSpec R$, $R_\mm$ is a regular local ring.
@@ -1293,10 +1289,10 @@ And -- finally -- we are ready to prove Serre's famous characterization of regul
 	\end{alphanumerate}
 \end{defi}
 \begin{prop}\lbl{prop:completionRegular}
-	Let $A$ be a Noetherian ring regular in its ideal $I$, then its completion $\roof{A}$ with respect to $I$ is regular.
+	Let $A$ be a noetherian ring regular in its ideal $I$, then its completion $\roof{A}$ with respect to $I$ is regular.
 \end{prop}
 \begin{proof}
-	For $x\in I\roof{A}$ and any $a\in A$, the series $(1-ax)^{-1}=\sum_{i=0}^{\infty}a^ix^i$ converges in $\roof{A}$, hence $I\roof{A}$ is contained in the Jacobson radical $\rad(\roof{A})$ by \cite[Proposition~1.2.2]{alg2}, i.e., any maximal ideal of $\roof{A}$ contains $I\roof{A}$.  
+	For $x\in I\roof{A}$ and any $a\in A$, the series $(1-ax)^{-1}=\sum_{i=0}^{\infty}a^ix^i$ converges in $\roof{A}$, hence $I\roof{A}$ is contained in the Jacobson radical $\rad(\roof{A})$ by \cite[Proposition~1.2.2]{alg2}, i.e., any maximal ideal of $\roof{A}$ contains $I\roof{A}$. We need a lemma now.
 	\begin{lem}\lbl{lem:maximalIdealsCompletion}
 		Let $\nn$ be any maximal ideal of $\roof{A}$. Then $\nn=\roof{\mm}$ for some maximal ideal $\mm$ of $A$ which contains $I$.
 	\end{lem}
@@ -1311,10 +1307,10 @@ And -- finally -- we are ready to prove Serre's famous characterization of regul
 		Let $\mm$ be the maximal ideal of $A$. By Lemma~\reff{lem:maximalIdealsCompletion}, $\roof{\mm}$ is the only maximal ideal of $\roof{A}$.
 	\end{proof}
 	
-	Using Lemma~\reff{lem:maximalIdealsCompletion}, we see that $\gr(\roof{A}_{\roof{\mm}},\roof{\mm})\cong\gr(\roof{A},\roof{\mm})\cong \gr(A,\mm)\cong\gr(A_\mm,\mm)$ implying that $\roof{A}_{\roof{\mm}}$ and $A_\mm$ have the Samuel polynomial. Using \cite[Theorem~20]{alg2} (for which we need Noetherianness of $\roof{A}$ -- this is proved, e.g., in \cite[Theorem~7.1a]{eisenbudCommAlg}) this shows $\dim \dim \roof{A}_{\roof{\mm}}=A_\mm=d$. If $\mm$ is generated by $x_1,\ldots,x_d$ over $A_\mm$, then so is $\roof{\mm}\cong\mm\roof{A}$ by their images, showing that $\roof{A}_{\roof{\mm}}$ is regular.
+	Using Lemma~\reff{lem:maximalIdealsCompletion}, we see that $\gr(\roof{A}_{\roof{\mm}},\roof{\mm})\cong\gr(\roof{A},\roof{\mm})\cong \gr(A,\mm)\cong\gr(A_\mm,\mm)$ implying that $\roof{A}_{\roof{\mm}}$ and $A_\mm$ have the Samuel polynomial. Using \cite[Theorem~20]{alg2} (for which we need noetherianness of $\roof{A}$ -- this is proved, e.g., in \cite[Theorem~7.1a]{eisenbudCommAlg}) this shows $\dim \roof{A}_{\roof{\mm}}=\dim A_\mm=d$. If $\mm$ is generated by $x_1,\ldots,x_d$ over $A_\mm$, then so is $\roof{\mm}\cong\mm\roof{A}$ by their images, showing that $\roof{A}_{\roof{\mm}}$ is regular.
 \end{proof}
 \begin{prop}\lbl{prop:polynomialRegular}
-	If $A$ is a regular Noetherian ring, then so are the polynomial ring $A[X_1,\ldots,X_n]$ as well as the ring of formal power series $A\llbracket X_1,\ldots,X_n\rrbracket$.
+	If $A$ is a regular noetherian ring, then so are the polynomial ring $A[X_1,\ldots,X_n]$ as well as the ring of formal power series $A\llbracket X_1,\ldots,X_n\rrbracket$.
 \end{prop}
 \begin{proof}
 	Since $A\llbracket X_1,\ldots,X_n\rrbracket$ is the completion of $A[X_1,\ldots,X_n]$ with respect to the ideal $(X_1,\ldots,X_n)$, it's enough to show regularity of $A[X_1,\ldots,X_n]$ by Proposition~\reff{prop:completionRegular}. Clearly, we may reduce this inductively to the polynomial ring $A[T]$ in only one variable. 
@@ -1326,10 +1322,13 @@ And -- finally -- we are ready to prove Serre's famous characterization of regul
 	Now note that $\KK(\pp)=A[T]/\pp$ is an extension of $k$ of finite type, hence a finite extension. Let $Q\in A[T]$ be a polynomial such that $Q\bmod \pp$ is a minimal polynomial of $T\mod\pp$, then $Q,x_1,\ldots,x_d$ generate $\pp$ and thus $\hoehe(\pp)\leq d+1$ by Krull's height theorem (cf.\ \cite[Theorem~12]{alg2}). Since $\hoehe(\pp)>d$, equality holds and regularity follows.
 \end{proof}
 \begin{prop}[Hilbert's szyzygy theorem]
-	Finitely generated modules over regular Noetherian rings always have a finite free resolution.
+	Finitely generated modules over regular noetherian rings always have a finite free resolution.
 \end{prop}
+\begin{proof}
+	Omitted.
+\end{proof}
 \section{Regular sequences and depth}
-Throughout the section, let $R$ be a Noetherian local ring with maximal ideal $\mm$ and residue field $k$.
+Throughout the section, let $R$ be a noetherian local ring with maximal ideal $\mm$ and residue field $k$.
 \begin{prop}\lbl{prop:SmallExtVanishing}
 	Let $M$ be a finitely generated $R$-module. For a natural number $n$, the following conditions are equivalent.
 	\begin{alphanumerate}
@@ -1361,7 +1360,7 @@ From Proposition~\reff{prop:SmallExtVanishing} and additivity of $\Ext_R^p(k,-)$
 	The condition $\supp M=\{\mm\}$ is equivalent to $\dim (T)=0$ (as in \cite[Definition~3.4.1]{alg2} we put $\dim(T)\coloneqq\dim(\supp T)$ for $R$-modules $T$). Under this condition, we have $\Ext_R^p(T,M)=0$ when $p<\depth_R(M)$.
 \end{rem}
 \begin{thm}[Auslander--Buchsbaum]
-	Let $R$ be a Noetherian local ring and $M\neq 0$ a finitely generated $R$-module with $\pdim_R(M)<\infty$. Then
+	Let $R$ be a noetherian local ring and $M\neq 0$ a finitely generated $R$-module with $\pdim_R(M)<\infty$. Then
 	\begin{align}\lbl{eq:AuslanderBuchsbaum}
 		\pdim_R(M)+\depth_R(M)=\depth_R(R)
 	\end{align}
@@ -1434,7 +1433,7 @@ We are now ready to prove the desired correspondence. In particular, Proposition
 	\end{align*}
 	hence we find $x_{j+1}\in\mm$ such that $M/(x_1M+\ldots+x_jM)\xrightarrow{x_{j+1}\cdot} M/(x_1M+\ldots+x_jM)$ is injective by Lemma~\reff{lem:depthAss}. Thus $(x_1,\ldots,x_{j+1})$ is $M$-regular. Now iterate.
 \end{proof}
-Let $I\subseteq \mm$ be an ideal and $\roof{\phantom{x}}$ the completion with respect to $I$. We have seen in Proposition~\reff{prop:ExtCompletion} that $\Ext_{\roof{R}}^p(k,\roof{M})\cong \Ext_R^p(k,M)^\complete \cong \Ext_R^p(k,M)$ (the last isomorphism comes from the fact that $\Ext_R^p(k,M)$ already has $I$-torsion, cf.\ Fact~\reff{fact:atimesExt2}). Hence, by Proposition~\reff{prop:SmallExtVanishing}\itememph{b},
+Let $I\subseteq \mm$ be an ideal and $\roof{\phantom{x}}$ the completion with respect to $I$. We have seen in Proposition~\reff{prop:ExtCompletion} that $\Ext_{\roof{R}}^p(k,\roof{M})\cong \Ext_R^p(k,M)^\complete \cong \Ext_R^p(k,M)$ (the last isomorphism comes from the fact that $\Ext_R^p(k,M)$ already has $I$-torsion, cf.\ Fact~\reff{fact:atimesExt2}). Hence, by Proposition~\reff{prop:SmallExtVanishing}\itememph{b}, we obtain
 \begin{prop}\lbl{prop:depthCompletion}
 	We have $\depth_{\roof{R}}(\roof{M})=\depth_R(M)$.
 \end{prop}
@@ -1464,13 +1463,13 @@ Let $I\subseteq \mm$ be an ideal and $\roof{\phantom{x}}$ the completion with re
 \end{proof}
 \section{Cohen--Macaulay rings}
 \begin{fact}
-	For any finitely generated module $M$ over the Noetherian local ring $R$ we have $\dim(M)\geq\depth_R(M)$. In particular, $\dim(R)\geq\depth_R(R)$.
+	For any finitely generated module $M$ over the noetherian local ring $R$ we have $\dim(M)\geq\depth_R(M)$. In particular, $\dim(R)\geq\depth_R(R)$.
 \end{fact}
 \begin{proof}
 	Indeed, from Fact~\reff{fact:dimsuppM} we get $\dim(M)=\max\left\{\dim(R/\pp)\st \pp\in\Ass_R(M)\right\}$ and the assertion follows from Corollary~\reff{cor:dimRp>depthM}.
 \end{proof}
 \begin{defi}\lbl{def:localCM}
-	A Noetherian local ring is \defemph{Cohen--Macaulay} (\defemph{CM} for short) if equality occurs in $\dim(R)\geq\depth_R(R)$.
+	A noetherian local ring is \defemph{Cohen--Macaulay} (\defemph{CM} for short) if equality occurs in $\dim(R)\geq\depth_R(R)$.
 \end{defi}
 Recall that $I\subseteq R$ is an \emph{ideal of definition} if $\sqrt{I}=\mm$ (cf.\ \cite[Definition~3.4.2]{alg2}). 
 \begin{defi}
@@ -1490,7 +1489,7 @@ And now we are ready for the second highlight of the lecture: Universal catenari
 	\end{align*}
 \end{prop}
 \begin{proof}
-	In our Noetherian finitely generated situation, $\Ext$ commutes with localization (Proposition~\reff{prop:ExtLocalization}). Hence $\Ext_{R_\pp}^p(\KK(\pp),R_\pp)=\Ext_R^p(R/\pp,R)_\pp$ and in particular,
+	In our noetherian finitely generated situation, $\Ext$ commutes with localization (Proposition~\reff{prop:ExtLocalization}). Hence $\Ext_{R_\pp}^p(\KK(\pp),R_\pp)=\Ext_R^p(R/\pp,R)_\pp$ and in particular,
 	\begin{align*}
 		\Ext_{R_\pp}^p(\KK(\pp),R_\pp)=0\quad\text{when }p<\depth_R(R)-\dim(R/\pp)\;.
 	\end{align*}
@@ -1516,16 +1515,16 @@ And now we are ready for the second highlight of the lecture: Universal catenari
 \end{proof}
 \begin{defi}
 	\begin{alphanumerate}
-		\item A Noetherian ring $R$ is called \defemph{Cohen--Macaulay} if all $R_\pp$ for $\pp\in\Spec R$ are Cohen--Macaulay in the sense of Definition~\reff{def:localCM}. Equivalently, we only need to ask for $R_\mm$ being Cohen--Macaulay for all maximal ideals $\mm$ of $R$.
-		\item A locally Noetherian prescheme $X$ is \defemph{Cohen--Macaulay} if the local rings $\Oo_{X,x}$ are Cohen--Macaulay for all $x\in X$. This is the case iff $\Oo_X(U)$ is Cohen--Macaulay when $U\subseteq X$ is affine. If $X$ is quasi-compact, it suffices that $\Oo_{X,x}$ is Cohen--Macaulay when $x\in X$ is closed.
-		\item (Serre) A locally Noetherian prescheme $X$ is $\boldsymbol{S_k}$ if $\depth_{\Oo_{X,x}}(\Oo_{X,x})\geq \min\left\{k,\dim\Oo_{X,x}\right\}$ for all $x\in X$. It is $\boldsymbol{R_k}$ if $\Oo_{X,x}$ is regular whenever $\dim\Oo_{X,x}\leq k$.
+		\item A noetherian ring $R$ is called \defemph{Cohen--Macaulay} if all $R_\pp$ for $\pp\in\Spec R$ are Cohen--Macaulay in the sense of Definition~\reff{def:localCM}. Equivalently, we only need to ask for $R_\mm$ being Cohen--Macaulay for all maximal ideals $\mm$ of $R$.
+		\item A locally noetherian prescheme $X$ is \defemph{Cohen--Macaulay} if the local rings $\Oo_{X,x}$ are Cohen--Macaulay for all $x\in X$. This is the case iff $\Oo_X(U)$ is Cohen--Macaulay when $U\subseteq X$ is affine. If $X$ is quasi-compact, it suffices that $\Oo_{X,x}$ is Cohen--Macaulay when $x\in X$ is closed.
+		\item (Serre) A locally noetherian prescheme $X$ is $\boldsymbol{S_k}$ if $\depth_{\Oo_{X,x}}(\Oo_{X,x})\geq \min\left\{k,\dim\Oo_{X,x}\right\}$ for all $x\in X$. It is $\boldsymbol{R_k}$ if $\Oo_{X,x}$ is regular whenever $\dim\Oo_{X,x}\leq k$.
 	\end{alphanumerate}
 \end{defi}
 \begin{proof}
 	The equivalence of the conditions in \itememph{a} is clear since localizations of CM rings are CM again by Proposition~\reff{prop:CMcatenary}, and same for the first two conditions of \itememph{b}. Let's talk about the third one. When $X$ is quasi-compact, every closed subset contains a closed point by \cite[Proposition~2.1.1]{alggeo1}. In particular, for $x\in X$, $\ov{\{x\}}$ contains a closed point $y$. Since $x$ corresponds to a prime ideal of $\Oo_{X,y}$ by \cite[Proposition~2.1.3]{alggeo1}, $\Oo_{X,x}$ is a localization of $\Oo_{X,y}$ and thus CM as well.
 \end{proof}
 \begin{rem*}
-	Actually, quasi-compactness isn't needed for \itememph{b}, since \cite[\stackstag{02IL}]{stacks-project} shows that any closed subset of a locally Noetherian prescheme contains a closed point as well. If you try to understand the proof, \cite[Proposition~2.1.3]{alggeo1} might be helpful. Also note that the $R=\Oo_{X_0,y}$ constructed there is a domain (which \cite[\stackstag{02IG}]{stacks-project} needs) since $X_0$ is (by construction) reduced and irreducible, i.e., integral, and we can apply \cite[Proposition~2.1.4]{alggeo1}.
+	Actually, quasi-compactness isn't needed for \itememph{b}, since \cite[\stackstag{02IL}]{stacks-project} shows that any closed subset of a locally noetherian prescheme contains a closed point as well. If you try to understand the proof, \cite[Proposition~2.1.3]{alggeo1} might be helpful. Also note that the $R=\Oo_{X_0,y}$ constructed there is a domain (which \cite[\stackstag{02IG}]{stacks-project} needs) since $X_0$ is (by construction) reduced and irreducible, i.e., integral, and we can apply \cite[Proposition~2.1.4]{alggeo1}.
 \end{rem*}
 \begin{rem*}
 	\begin{alphanumerate}
@@ -1542,7 +1541,7 @@ And now we are ready for the second highlight of the lecture: Universal catenari
 	However, we can still use the idea given there. Note that $R_\mm$ and $\roof{R}_{\roof{\mm}}$ are both local rings with the same residue field $k$. By Proposition~\reff{prop:ExtLocalization}, $\Ext_{R_\mm}^p(k,R_\mm)\cong \Ext_R^p(k,R)_\mm\cong\Ext_R^p(k,R)$. The last isomorphism is due to the fact that $\Ext_R^p(k,R)$ has $\mm$-torsion by Fact~\reff{fact:atimesExt2}, i.e., it is a $k=R/\mm$-vector space. So localization at $\mm$ doesn't change anything and the same holds true for $I$-adic completions. Thus the same argument gives $\Ext_{\roof{R}_{\roof{\mm}}}(k,\roof{R}_{\roof{\mm}})\cong \Ext_R^p(k,R)$ and we are done.
 \end{proof}
 \begin{prop}\lbl{prop:polynomialCM}
-	If $R$ is Cohen--Macaulay, then so are $R[X_1,\ldots,X_n]$ and $R\llbracket X_1,\ldots,X_n\rrbracket$.
+	If $R$ is Cohen--Macaulay, then so are the polynomial ring $R[X_1,\ldots,X_n]$ and the power series ring $R\llbracket X_1,\ldots,X_n\rrbracket$.
 \end{prop}
 \begin{proof}
 	As $R\llbracket X_1,\ldots,X_n\rrbracket$ is the completion of $R[X_1,\ldots,X_n]$ with respect to the ideal generated by $X_1,\ldots,X_n$, by Proposition~\reff{prop:CMcompletion} it is sufficient to show the first assertion. Moreover, using induction we may reduce to the case of the polynomial ring $R[T]$ in only one variable. 
@@ -1577,7 +1576,7 @@ We have everything together to prove
 \section{Gorenstein rings and local complete intersection rings}
 To finish the final lecture, Professor Franke teases us with another two classes of rings lying between regular local and CM rings. Unfortunately, we didn't have the time to go into any detail.
 \begin{thm}\lbl{thm:Gorenstein}
-	For a Noetherian local ring $R$ with maximal ideal $\mm$ and residue field $k$, the following conditions are equivalent.
+	For a noetherian local ring $R$ with maximal ideal $\mm$ and residue field $k$, the following conditions are equivalent.
 	\begin{alphanumerate}
 		\item $\idim_R(R)<\infty$.
 		\item $\idim_R(R)=\dim R$.
@@ -1592,7 +1591,7 @@ To finish the final lecture, Professor Franke teases us with another two classes
 	Cf.\ \cite[Theorem~18.1]{matsumuraCRT}
 \end{proof}
 \begin{defi}
-	A Noetherian local ring with the equivalent properties from Theorem~\reff{thm:Gorenstein} is called \defemph{Gorenstein} ring.
+	A noetherian local ring with the equivalent properties from Theorem~\reff{thm:Gorenstein} is called \defemph{Gorenstein} ring.
 \end{defi}
 \begin{example*}
 	\begin{alphanumerate}
@@ -1600,7 +1599,7 @@ To finish the final lecture, Professor Franke teases us with another two classes
 		\item $R/(p^n)$ is Gorenstein when $R$ is a PID. The same holds for $R/\pp^n$ when $R$ is a Dedekind domain and $\pp\in\Spec R$.
 		\item The ring $A=k[X,Y]/(X^{2018},Y^{2018})$ is Gorenstein. Indeed, it is zero-dimensional, so $(0)$ is a parameter ideal. Also, $(0)$ can't be written as the intersection of two non-zero ideals as it is easy to see that any non-zero ideal must contain $X^{2017}Y^{2017}$. Thus Theorem~\reff{thm:Gorenstein}\itememph{f} applies.
 		
-		However, $B=k[X,Y]/(X^2,XY,Y^2)$ is not Gorenstein. Indeed, $(0)$ is a parameter ideal again that can be written as $(0)=(X)\cap (Y)$. But $B$ is CM, as is any zero-dimensional Noetherian ring (since then equality is trivial in Definition~\reff{def:localCM}).
+		However, $B=k[X,Y]/(X^2,XY,Y^2)$ is not Gorenstein. Indeed, $(0)$ is a parameter ideal again that can be written as $(0)=(X)\cap (Y)$. But $B$ is CM, as is any zero-dimensional noetherian ring (since then equality is trivial in Definition~\reff{def:localCM}).
 		
 		It is also easy to give examples of universally catenary rings which are not CM. Indeed, it suffices to take an algebra of finite type over a field $k$ (or a CM ring) which is not equidimensional -- e.g., the coordinate ring of a variety with irreducible components of different dimension such as $k[X,Y,Z]/(XY,XZ)$.
 	\end{alphanumerate}
@@ -1635,14 +1634,14 @@ and all of them are universally catenary.
 \section{An excursion in derived functors}
 \subsection{Construction of derived functors}
 \begin{defi}\lbl{def:homologicalfunctor}
-	Let $\Aa$ and $\Bb$ be abelian categories (cf. \cite[Definition~A.1.4]{alggeo2}). A \defemph{homological $\partial$-functor} $F_\bullet \colon\Aa\morphism\Bb$ is a sequence $(F_n)_{n\geq 0}$  of additive functors $F_i\colon\Aa\morphism\Bb$ together with a natural transformation $\partial=\partial_F\colon F_{i+1}(A'')\morphism F_i(A')$ on the category of short exact sequences in $\Aa$, such that the sequence
+	Let ${\cat A}$ and ${\cat B}$ be abelian categories (cf. \cite[Definition~A.1.4]{alggeo2}). A \defemph{homological $\partial$-functor} $F_\bullet \colon{\cat A}\morphism{\cat B}$ is a sequence $(F_n)_{n\geq 0}$  of additive functors $F_i\colon{\cat A}\morphism{\cat B}$ together with a natural transformation $\partial=\partial_F\colon F_{i+1}(A'')\morphism F_i(A')$ on the category of short exact sequences in ${\cat A}$, such that the sequence
 	\begin{multline*}
 		\ldots\morphism F_{i+1}(A'')\morphism[\partial]F_i(A')\morphism F_i(A)\morphism F_i(A'')\morphism[\partial]\ldots\\
 		\ldots\morphism F_{1}(A'')\morphism[\partial]F_0(A')\morphism F_0(A)\morphism F_0(A'')\morphism 0\;.
 	\end{multline*}
-	is exact whenever $0\morphism A'\morphism A\morphism A''\morphism 0$ is a short exact sequence in $\Aa$.
+	is exact whenever $0\morphism A'\morphism A\morphism A''\morphism 0$ is a short exact sequence in ${\cat A}$.
 	
-	A \defemph{morphism} $F_\bullet \morphism[\phi]G_\bullet $ of homological $\partial$-functors is a sequence $(\phi_n)_{n\geq0}$ of natural transformations $F_i\morphism[\phi_i]G_i$ such that for any short exact sequence $0\morphism A'\morphism A\morphism A''\morphism 0$ in $\Aa$ the diagram 
+	A \defemph{morphism} $F_\bullet \morphism[\phi]G_\bullet $ of homological $\partial$-functors is a sequence $(\phi_n)_{n\geq0}$ of natural transformations $F_i\morphism[\phi_i]G_i$ such that for any short exact sequence $0\morphism A'\morphism A\morphism A''\morphism 0$ in ${\cat A}$ the diagram 
 	\begin{diagram*}
 		\node[ob] (F1A) at (0,1.5) {$F_{i+1}(A'')$};
 		\node[ob] (G1A) at (0,0) {$G_{i+1}(A'')$};
@@ -1656,16 +1655,16 @@ and all of them are universally catenary.
 	\end{diagram*}
 	commutes.
 	
-	Similarly, a \defemph{cohomological $\partial$-functor} $F^\bullet \colon\Aa\morphism\Bb$ is a sequence $(F^n)_{n\geq 0}$ of additive functors $F^i\colon\Aa\morphism\Bb$ together with a connecting morphism $\partial=\partial_F\colon F^i(A'')\morphism F^{i+1}(A')$ such that for a short exact sequence $0\morphism A'\morphism A\morphism A''\morphism 0$, the sequence 
+	Similarly, a \defemph{cohomological $\partial$-functor} $F^\bullet \colon{\cat A}\morphism{\cat B}$ is a sequence $(F^n)_{n\geq 0}$ of additive functors $F^i\colon{\cat A}\morphism{\cat B}$ together with a connecting morphism $\partial=\partial_F\colon F^i(A'')\morphism F^{i+1}(A')$ such that for a short exact sequence $0\morphism A'\morphism A\morphism A''\morphism 0$, the sequence 
 	\begin{multline*}
 		0\morphism F^0(A')\morphism F^0(A)\morphism F^0(A'')\morphism[\partial] F^1(A')\morphism\ldots\\
 		\ldots\morphism[\partial]F^i(A')\morphism F^i(A)\morphism F^i(A'')\morphism[\partial]F^{i+1}(A')\morphism\ldots
 	\end{multline*}
 	 is required to be exact. And the notion of a \defemph{morphism} $F^\bullet \morphism[\phi]G^\bullet $ of cohomological $\partial$-functors is defined in the obvious way.
 	
-	Let $F\colon\Aa\morphism\Bb$ be a \emph{right-exact} functor, i.e., for any short exact sequence $0\morphism A'\morphism A\morphism A''\morphism 0$, the sequence $FA'\morphism FA\morphism FA''\morphism 0$ is exact (but that's not quite it, cf. Definition~\reff{def:leftrightexact}). A \defemph{left-derived functor} of $F$ is a homological functor $L_\bullet F$ from $\Aa$ to $\Bb$ with a natural isomorphism $L_0F\cong F$ such that for any homological functor $\Phi_\bullet \colon \Aa\morphism\Bb$, any natural transformation $\Phi_0\morphism L_0F$ extends in a unique way to a morphism $\Phi_\bullet \morphism L_\bullet F$ of homological functors.
+	Let $F\colon{\cat A}\morphism{\cat B}$ be a \emph{right-exact} functor, i.e., for any short exact sequence $0\morphism A'\morphism A\morphism A''\morphism 0$, the sequence $FA'\morphism FA\morphism FA''\morphism 0$ is exact (but that's not quite it, cf. Definition~\reff{def:leftrightexact}). A \defemph{left-derived functor} of $F$ is a homological functor $L_\bullet F$ from ${\cat A}$ to ${\cat B}$ with a natural isomorphism $L_0F\cong F$ such that for any homological functor $\Phi_\bullet \colon {\cat A}\morphism{\cat B}$, any natural transformation $\Phi_0\morphism L_0F$ extends in a unique way to a morphism $\Phi_\bullet \morphism L_\bullet F$ of homological functors.
 	
-	Similar, a functor $F\colon\Aa\morphism\Bb$ is \emph{right-exact} functor if $FA'\morphism FA\morphism FA''\morphism 0$ is exact for any short exact sequence $0\morphism A'\morphism A\morphism A''\morphism 0$ (and $F$ is \emph{additive}, cf. Definition~\reff{def:leftrightexact}). A \defemph{right-derived functor} of $F$ is a cohomological functor $R^\bullet F$ from $\Aa$ to $\Bb$ with a natural isomorphism $R^0F\cong F$ such that for any homological functor $\Psi^\bullet \colon \Aa\morphism\Bb$, any natural transformation $R^0F\morphism \Psi^0$ extends in a unique way to a morphism $R^\bullet F\morphism \Psi^\bullet $ of homological functors.
+	Similar, a functor $F\colon{\cat A}\morphism{\cat B}$ is \emph{right-exact} functor if $FA'\morphism FA\morphism FA''\morphism 0$ is exact for any short exact sequence $0\morphism A'\morphism A\morphism A''\morphism 0$ (and $F$ is \emph{additive}, cf. Definition~\reff{def:leftrightexact}). A \defemph{right-derived functor} of $F$ is a cohomological functor $R^\bullet F$ from ${\cat A}$ to ${\cat B}$ with a natural isomorphism $R^0F\cong F$ such that for any homological functor $\Psi^\bullet \colon {\cat A}\morphism{\cat B}$, any natural transformation $R^0F\morphism \Psi^0$ extends in a unique way to a morphism $R^\bullet F\morphism \Psi^\bullet $ of homological functors.
 \end{defi}
 \begin{rem}
 	\begin{alphanumerate}
@@ -1688,12 +1687,12 @@ and all of them are universally catenary.
 	If $F$ is an exact functor, then left- and right-derived functors of $F$ are given by $L_0F=R^0F=F$ and $L_iF=R^iF=0$ for $i\geq 1$.
 \end{example}
 \begin{defi}\lbl{def:injective}
-	An object $I$ in an abelian category $\Aa$ is \defemph{injective} iff the following equivalent conditions hold.
+	An object $I$ in an abelian category ${\cat A}$ is \defemph{injective} iff the following equivalent conditions hold.
 	\begin{alphanumerate}
 		\item If $X\monomorphism[\xi] Y$ is a monomorphism, then any morphism $X\morphism[\iota] I$ extends to a morphism $Y\morphism I$ (i.e., $I$ is injective in the sense of Definition~\reff{def:injectiveModule}\itememph{b}).
 		\item Any short exact sequence $0\morphism I\morphism X\morphism X''\morphism 0$ splits.
 	\end{alphanumerate}
-	The category $\Aa$ has \defemph{sufficiently many injective objects} if every object $X$ has a monomorphism $X\monomorphism I$ with $I$ injective.
+	The category ${\cat A}$ has \defemph{sufficiently many injective objects} if every object $X$ has a monomorphism $X\monomorphism I$ with $I$ injective.
 \end{defi}
 \begin{proof}
 	To see \itememph{a} $\Rightarrow$ \itememph{b}, extend $\id_I$ to $X\morphism[\pi]I$, then $\pi$ gives a split of the exact sequence (the argument used in the case of $R$-modules still works in arbitrary abelian categories).
@@ -1732,17 +1731,17 @@ and all of them are universally catenary.
 	\end{align*}
 	hence $\upsilon$ has indeed the required property.
 \end{proof}
-\begin{thm}\lbl{thm:DerivedFunctors}
-	Let $\Aa,\Bb$ be an abelian categories where $\Aa$ has sufficiently many injective objects.
+\begin{thm}\label{thm:DerivedFunctors}
+	Let ${\cat A},{\cat B}$ be an abelian categories where ${\cat A}$ has sufficiently many injective objects.
 	\begin{alphanumerate}
-		\item Any left-exact functor $\Aa\morphism[F]\Bb$ has a right-derived functor $R^\bullet F$.
-		\item Let $\Phi^\bullet \colon \Aa\morphism\Bb$ be a cohomological functor, then $\Phi^\bullet $ is a right-derived functor of $\Phi^0$ iff $\Phi^pI=0$ for any injective object $I\in\Ob(\Aa)$ and all $p>0$.
-		\item Let $\Ff\colon 0\morphism F'\morphism F\morphism F''\morphism0$ be a sequence of left-exact functors $\Aa\morphism\Bb$ and functor morphisms between them such that $0\morphism F'I\morphism F I\morphism F'' I\morphism 0$ is exact when $I$ is an injective object of $\Aa$. Then there is a unique sequence of natural transformations $R^iF''\morphism[d_\Ff]R^{i+1}F'$ such that
+		\item Any left-exact functor ${\cat A}\morphism[F]{\cat B}$ has a right-derived functor $R^\bullet F$.
+		\item Let $\Phi^\bullet \colon {\cat A}\morphism{\cat B}$ be a cohomological functor, then $\Phi^\bullet $ is a right-derived functor of $\Phi^0$ iff $\Phi^pI=0$ for any injective object $I\in\Ob({\cat A})$ and all $p>0$.
+		\item Let $\Ff\colon 0\morphism F'\morphism F\morphism F''\morphism0$ be a sequence of left-exact functors ${\cat A}\morphism{\cat B}$ and functor morphisms between them such that $0\morphism F'I\morphism F I\morphism F'' I\morphism 0$ is exact when $I$ is an injective object of ${\cat A}$. Then there is a unique sequence of natural transformations $R^iF''\morphism[d_\Ff]R^{i+1}F'$ such that
 		\begin{multline*}
 			0\morphism F'X\morphism F X\morphism F''X\morphism[d_\Ff]R^1 F'X\morphism\ldots\\
 			\ldots\morphism R^{i-1} F''X\morphism[d_\Ff]R^i F'X\morphism R^i F X\morphism R^i F''X\morphism[d_\Ff]R^{i+1} F'X\morphism\ldots
 		\end{multline*}
-		is exact for arbitrary $X\in\Ob(\Aa)$ and such that the diagram
+		is exact for arbitrary $X\in\Ob({\cat A})$ and such that the diagram
 		\begin{diagram*}
 			\node[ob] (F1A) at (0,1.5) {$R^i F''(X'')$};
 			\node[ob] (G1A) at (0,0) {$R^{i+1} F''(X')$};
@@ -1754,11 +1753,11 @@ and all of them are universally catenary.
 			\draw[->] (F1A) -- (FA) node[pos=0.5, above] {$d_\Ff$};
 			\draw[->] (G1A) -- (GA) node[pos=0.5, above] {$d_\Ff$};
 		\end{diagram*}
-		commutes when $0\morphism X'\morphism X\morphism X''\morphism 0$ is a short exact sequence in $\Aa$ (note the minus sign on the right vertical arrow!).
+		commutes when $0\morphism X'\morphism X\morphism X''\morphism 0$ is a short exact sequence in ${\cat A}$ (note the minus sign on the right vertical arrow!).
 	\end{alphanumerate}
 \end{thm}
 \begin{proof}
-	We start by proving the \emph{if} part of \itememph{b}. Assume that $\Phi^pI=0$ for any injective $I$ and all $p>0$. Let $\alpha^0\colon\Phi^0\morphism\Psi^0$ be given. By induction on $n$, we construct $\alpha^k\colon\Phi^k\morphism\Psi^k$ for $k\leq n$ such that $\alpha^k\partial_\Phi=\partial_\Psi\alpha^{k-1}$ for $k=1,\ldots n$. For $ n=0$, this is trivial. Let $ n>0$ and $\alpha^k$ be constructed for $k< n$. To construct $\alpha^ n$, we consider any object $X$ of $\Aa$ and choose a monomorphism $X\monomorphism[\iota]I$ where $I$ is injective. When $ n>1$, we have a part of the long exact cohomology sequence for $0\morphism X\morphism[\iota]I\morphism X'=\coker(\iota)\morphism 0$,
+	We start by proving the \emph{if} part of \itememph{b}. Assume that $\Phi^pI=0$ for any injective $I$ and all $p>0$. Let $\alpha^0\colon\Phi^0\morphism\Psi^0$ be given. By induction on $n$, we construct $\alpha^k\colon\Phi^k\morphism\Psi^k$ for $k\leq n$ such that $\alpha^k\partial_\Phi=\partial_\Psi\alpha^{k-1}$ for $k=1,\ldots n$. For $ n=0$, this is trivial. Let $ n>0$ and $\alpha^k$ be constructed for $k< n$. To construct $\alpha^ n$, we consider any object $X$ of ${\cat A}$ and choose a monomorphism $X\monomorphism[\iota]I$ where $I$ is injective. When $ n>1$, we have a part of the long exact cohomology sequence for $0\morphism X\morphism[\iota]I\morphism X'=\coker(\iota)\morphism 0$,
 	\begin{align*}
 		0=\Phi^{ n-1}I\morphism\Phi^{ n-1}X'\morphism[\partial_\Phi]\Phi^ n X\morphism\Phi^ n I=0\;,
 	\end{align*}
@@ -1770,7 +1769,7 @@ and all of them are universally catenary.
 	\end{align*}
 	and we put $\alpha_{X,\iota}^1=\ov{\partial}_\Psi\ov{\alpha}^0\partial_{X,\iota}^{-1}$, where $\ov{\partial}_\Psi\colon \coker\big(\Psi^0I\morphism\Psi^0X'\big)\morphism\Psi^1X$ is obtained from $\partial_\Psi\colon\Psi^0X'\morphism\Psi^1X$ using the universal property of cokernels.
 	
-	We want to show that $\alpha_{X,\iota}^ n$ does not depend on $\iota$ and that $\alpha_X\coloneqq \alpha_{X,\iota}^n$ induces a natural transformation $\alpha^n\colon\Phi^n\morphism\Psi^n$. We can show both assertions at once by considering monomorphisms $X\monomorphism[\iota]I$ and $Y\monomorphism[\kappa]K$ into injective objects $I,K$ and any morphism $\xi\in\Hom_\Aa(X,Y)$ and showing $\Psi^n(\xi)\alpha_{X,\iota}^n=\alpha_{Y,\kappa}^n\Phi^n(\xi)$. When $X=Y$ and $\xi=\id_X$, this shows that $\alpha_{X,\iota}^n$ is independent of $\iota$ and the general case implies that $\alpha^n$ is a natural transformation. 
+	We want to show that $\alpha_{X,\iota}^ n$ does not depend on $\iota$ and that $\alpha_X\coloneqq \alpha_{X,\iota}^n$ induces a natural transformation $\alpha^n\colon\Phi^n\morphism\Psi^n$. We can show both assertions at once by considering monomorphisms $X\monomorphism[\iota]I$ and $Y\monomorphism[\kappa]K$ into injective objects $I,K$ and any morphism $\xi\in\Hom_{\cat A}(X,Y)$ and showing $\Psi^n(\xi)\alpha_{X,\iota}^n=\alpha_{Y,\kappa}^n\Phi^n(\xi)$. When $X=Y$ and $\xi=\id_X$, this shows that $\alpha_{X,\iota}^n$ is independent of $\iota$ and the general case implies that $\alpha^n$ is a natural transformation. 
 	
 	Now let's do this! By injectivity of $K$ there exists some morphism $\hat{\xi}\colon I\morphism K$ such that $\hat{\xi}\iota=\kappa\xi$. We have an induced morphism $\xi'\colon X'\morphism Y'$ on the cokernels $X'=\coker(\iota)$ and $Y'=\coker(\kappa)$. This gives a commutative diagram 
 	\begin{diagram*}
@@ -1828,7 +1827,7 @@ and all of them are universally catenary.
 	
 	 Indeed, the front and back faces commute by definition of $\alpha_{X,\iota}^n$ and $\alpha_{Y,\kappa}^n$. The top and bottom face commute since the connecting homomorphisms $\partial_\Phi$ and $\partial_\Psi$ are natural, i.e., compatible with morphisms of short exact sequences by Definition~\reff{def:homologicalfunctor}. The left face commutes by the induction assumption. As $\partial_{X,\iota}$ and $\partial_{Y,\kappa}$ are isomorphisms, this implies commutativity of the right face, as required. For $n=1$, a slight modification of the argument works again.
 	
-	We have seen that $\alpha^n$ is a well-defined natural transformation. It remains to show $\alpha^n\partial_\Phi=\partial_\Psi\alpha^{n-1}$. Let $0\morphism X'\morphism X\morphism X''\morphism 0$ be a short exact sequence. We choose a monomorphism $X'\monomorphism[\iota]I$ into some injective object $I$. This gives a commutative diagram with exact rows
+	We have seen that $\alpha^n$ is a well-defined natural transformation. It remains to show compatibility with the connecting morphisms, i.e.\ $\alpha^n\partial_\Phi=\partial_\Psi\alpha^{n-1}$. Let $0\morphism X'\morphism X\morphism X''\morphism 0$ be a short exact sequence. We choose a monomorphism $X'\monomorphism[\iota]I$ into some injective object $I$. This gives a commutative diagram
 		\begin{diagram*}
 			\node[ob] at (-0.75,1.5) {$\Xx\colon$};
 			\node[ob] at (-0.75,0) {$\Yy\colon$};
@@ -1856,7 +1855,7 @@ and all of them are universally catenary.
 			\draw[->,dashed] (C) -- (C') node[pos=0.5, left] {$i$};
 			\draw[->,dotted] (D) -- (D') node[pos=0.5, left] {$i''$};
 		\end{diagram*}
-		where $i$ exists by injectivity of $I$ and $i''$ is the induced morphism on cokernels. Now the claim $\alpha^n\partial_\Phi=\partial_\Psi\alpha^{n-1}$ follows by another cubic diagram chase. We have
+		with exact rows. The arrow $i$ exists by injectivity of $I$ and $i''$ is the induced morphism on cokernels. Now the claim $\alpha^n\partial_\Phi=\partial_\Psi\alpha^{n-1}$ follows by another cubic diagram chase (well \ldots\ if you argue that this is actually a triangular prism diagram chase I might have to admit you have a point there). We have
 		\begin{diagram*}
 			\node[ob] (A) at (0,3) {$\Phi^{n-1}X''$};
 			\node[ob] (B) at (4,3) {$\Phi^nX'$};
@@ -1895,17 +1894,17 @@ and all of them are universally catenary.
 		Before we can pursue the proof, we need some homological algebra, namely, the horseshoe lemma.
 		
 		\begin{defi}
-			An \defemph{injective resolution} of an object $X$ of an abelian category $\Aa$ is a long exact sequence
+			An \defemph{injective resolution} of an object $X$ of an abelian category ${\cat A}$ is a long exact sequence
 			\begin{align*}
 				0\morphism X\morphism[\xi]I^0\morphism[d^0]I^ 1\morphism[d^1]\ldots
 			\end{align*}
 			with $I^0,I^1,\ldots$ injective.
 		\end{defi}
 		\begin{fact}\lbl{fact:injectiveResolutions}
-			In an abelian category $\Aa$ with sufficiently many injective objects, injective resolutions exist for any object.
+			In an abelian category ${\cat A}$ with sufficiently many injective objects, injective resolutions exist for any object.
 		\end{fact}
 		\begin{proof}
-			Indeed, for $X\in\Ob(\Aa)$ choose a monomorphism $X\monomorphism[\xi]I^0$, then a monomorphism $\coker(\xi)\monomorphism I^1$, then a monomorphism $\coker\big(I^0\morphism I^1\big)\monomorphism I^2$ and so on.
+			Indeed, for $X\in\Ob({\cat A})$ choose a monomorphism $X\monomorphism[\xi]I^0$, then a monomorphism $\coker(\xi)\monomorphism I^1$, then a monomorphism $\coker\big(I^0\morphism I^1\big)\monomorphism I^2$ and so on.
 		\end{proof}
 		\begin{prop}[Horseshoe lemma]\lbl{prop:Hufeisenlemma}
 			Let $X\monomorphism[\xi]I^\bullet $ and $Y\monomorphism[\upsilon]J^\bullet $ be injective resolutions of $X$ and $Y$. 
@@ -1966,14 +1965,14 @@ and all of them are universally catenary.
 		\begin{rem}
 			\begin{alphanumerate}
 				\item \lbl{rem:Hufeisen}Let $Z^n(I^\bullet )=\ker(d_{I }^n)$ and $Z^n(J^\bullet )=\ker(d_{J }^n)$. Then $\phi$ and $\psi$ induce morphisms $\phi,\psi\colon Z^n(I^\bullet )\morphism Z^n(J^\bullet )$ and Proposition~\reff{prop:Hufeisenlemma}\itememph{b} shows that $\psi-\phi=d_{J }^{n-1}s^n$ on $Z^n(I^\bullet )$, that is, they differ by a coboundary and thus induce the same morphisms in cohomology.
-				\item The assumption that $\Aa$ has sufficiently many injective objects is not required. As the proof will show, it also suffices to have $0\morphism Y\morphism[\upsilon]J^\bullet $ a cochain complex with injective $J^n$ (thus dropping exactness) and 
+				\item The assumption that ${\cat A}$ has sufficiently many injective objects is not required. As the proof will show, it also suffices to have $0\morphism Y\morphism[\upsilon]J^\bullet $ a cochain complex with injective $J^n$ (thus dropping exactness) and 
 				\begin{align*}
 					0\morphism X\morphism[\xi]I^0\morphism[d_I^0]I^1\morphism[d_I^1]\ldots 
 				\end{align*}
 				a long exact sequence in which the $I^n$ may fail to be injective. 
 			\end{alphanumerate}
 		\end{rem}
-		Before we prove Proposition~\reff{prop:Hufeisenlemma}, let's see how the rest of Theorem~\reff{thm:DerivedFunctors} follows from it. We first prove \itememph{a}. Let $F\colon\Aa\morphism \Bb$ be left-exact. For every object $X$ of $\Aa$, choose an injective resolution $X\monomorphism I_X^\bullet $ of $X$ (and we need the axiom of choice -- for \emph{classes!} -- to do this). For every morphism $f\colon X\morphism Y$ choose an extension $f^*\colon I_X^\bullet \morphism I_Y^\bullet $ of $f$ (we may do this by Proposition~\reff{prop:Hufeisenlemma}\itememph{a}). Let
+		Before we prove Proposition~\reff{prop:Hufeisenlemma}, let's see how the rest of Theorem~\reff{thm:DerivedFunctors} follows from it. We first prove \itememph{a}. Let $F\colon{\cat A}\morphism {\cat B}$ be left-exact. For every object $X$ of ${\cat A}$, choose an injective resolution $X\monomorphism I_X^\bullet $ of $X$ (and we need the axiom of choice -- for \emph{classes!} -- to do this). For every morphism $f\colon X\morphism Y$ choose an extension $f^*\colon I_X^\bullet \morphism I_Y^\bullet $ of $f$ (we may do this by Proposition~\reff{prop:Hufeisenlemma}\itememph{a}). Let
 		\begin{align*}
 			R^pF(X)=H^p(FI_X^\bullet )\quad\text{and}\quad R^pF(f)=H^p\Big(FI_X^\bullet \morphism[Ff^* ]FI_Y^\bullet \Big)\;.
 		\end{align*}
@@ -2009,13 +2008,13 @@ and all of them are universally catenary.
 		
 		Also, to verify commutativity of \eqreff{diag:derivedCohoSeq}, one notes that $\alpha $ and $\kappa_1a $, and hence $F(\alpha )$ and $F(\kappa_1a )$, are cochain homotopic by Proposition~\reff{prop:Hufeisenlemma}\itememph{a}. Same for $\beta $ and $b \kappa_2$.
 		
-		This shows that $R^pF$ has the required long exact cohomology sequence. In a similar fashion one can show its functoriality on the category of short exact sequences in $\Aa$.
+		This shows that $R^pF$ has the required long exact cohomology sequence. In a similar fashion one can show its functoriality on the category of short exact sequences in ${\cat A}$.
 		
 		If $I$ is injective, one can choose $I\monomorphism[\id_I]I^\bullet $ as an injective resolution, where $I^\bullet \colon I\morphism 0\morphism 0\morphism\ldots$. Applying Proposition~\reff{prop:Hufeisenlemma}\itememph{b}, we get 
 		\begin{align*}
 			R^pF(I)=H^p(FI_X^\bullet )=H^p(FI^\bullet )=0\quad\text{when }p>0
 		\end{align*}
-		and, for arbitrary $X\in\Ob(\Aa)$ (injective or not), a canonical isomorphism
+		and, for arbitrary $X\in\Ob({\cat A})$ (injective or not), a canonical isomorphism
 		\begin{align*}
 			R^0F(X)=\ker(FI_X^0\morphism FI_X^1)\cong F\big(\ker(I_X^0\morphism I_X^1)\big)\cong F(X)\;.
 		\end{align*}
@@ -2123,34 +2122,34 @@ and all of them are universally catenary.
 \end{proof}
 Left-derived functors of right-exact functors can be constructed by dualizing everything.
 \begin{defi}\lbl{def:projective}
-	An object $P$ in an abelian category $\Aa$ is \defemph{projective} iff the following equivalent conditions hold.
+	An object $P$ in an abelian category ${\cat A}$ is \defemph{projective} iff the following equivalent conditions hold.
 	\begin{alphanumerate}
 		\item If $X\epimorphism[\xi] Y$ is an epimorphism, then any morphism $P\morphism[\pi] Y$ extends to a morphism $P\morphism X$ (i.e., $P$ is projective in the sense of Definition~\reff{def:projectiveModule}\itememph{b}).
 		\item Any short exact sequence $0\morphism X'\morphism X\morphism P\morphism 0$ splits.
 	\end{alphanumerate}
-	The category $\Aa$ has \defemph{sufficiently many projective objects} if every object $X$ has an epimorphism $P\epimorphism X$ with $P$ injective.
+	The category ${\cat A}$ has \defemph{sufficiently many projective objects} if every object $X$ has an epimorphism $P\epimorphism X$ with $P$ injective.
 \end{defi}
 \begin{proof}
 	Equivalence of \itememph{a} and \itememph{b} follows by dualizing the proof of Definition~\reff{def:injective}.
 \end{proof}
 \begin{defi}
-	A \defemph{projective resolution} of an object $Y$ of an abelian category $\Aa$ is a long exact sequence
+	A \defemph{projective resolution} of an object $Y$ of an abelian category ${\cat A}$ is a long exact sequence
 	\begin{align*}
 		\ldots\morphism[d_1]P_1\morphism[d_0] P_0\morphism[\upsilon] Y\morphism 0
 	\end{align*}
 	with $P_0,P_1,\ldots$ projective.
 \end{defi}
 \begin{thm}\lbl{thm:LeftDerivedFunctors}
-	Let $\Aa,\Bb$ be abelian categories where $\Aa$ has sufficiently many projective objects.
+	Let ${\cat A},{\cat B}$ be abelian categories where ${\cat A}$ has sufficiently many projective objects.
 	\begin{alphanumerate}
-		\item Any right-exact functor $\Aa\morphism[F]\Bb$ has a left-derived functor $L_\bullet F$.
-		\item Let $\Phi_\bullet \colon \Aa\morphism\Bb$ be a homological functor, then $\Phi_\bullet $ is a left-derived functor of $\Phi_0$ iff $\Phi_pP=0$ for any projective object $P\in\Ob(\Aa)$ and all $p>0$.
+		\item Any right-exact functor ${\cat A}\morphism[F]{\cat B}$ has a left-derived functor $L_\bullet F$.
+		\item Let $\Phi_\bullet \colon {\cat A}\morphism{\cat B}$ be a homological functor, then $\Phi_\bullet $ is a left-derived functor of $\Phi_0$ iff $\Phi_pP=0$ for any projective object $P\in\Ob({\cat A})$ and all $p>0$.
 		\item For a short sequence $\Ff\colon 0\morphism F'\morphism F\morphism F''\morphism0$ which is exact on projectives there is a long exact sequence
 		\begin{multline*}
 		\ldots\morphism L_{i+1} F''X\morphism[d_\Ff]L_i F'X\morphism L_i F X\morphism L_i F''X\morphism[d_\Ff]L_{i-1} F'X\morphism\ldots\\
 		\ldots\morphism L_1 F'X\morphism[d_\Ff]\morphism F'X\morphism F X\morphism F''X\morphism 0
 		\end{multline*}
-		functorial in $X\in\Ob(\Aa)$ and such that the diagram
+		functorial in $X\in\Ob({\cat A})$ and such that the diagram
 		\begin{diagram*}
 			\node[ob] (F1A) at (0,1.5) {$L_i F''(X'')$};
 			\node[ob] (G1A) at (0,0) {$L_{i-1} F''(X')$};
@@ -2162,36 +2161,36 @@ Left-derived functors of right-exact functors can be constructed by dualizing ev
 			\draw[->] (F1A) -- (FA) node[pos=0.5, above] {$d_\Ff$};
 			\draw[->] (G1A) -- (GA) node[pos=0.5, above] {$d_\Ff$};
 		\end{diagram*}
-		commutes when $0\morphism X'\morphism X\morphism X''\morphism 0$ is a short exact sequence in $\Aa$ (again, note the minus!).
+		commutes when $0\morphism X'\morphism X\morphism X''\morphism 0$ is a short exact sequence in ${\cat A}$ (again, note the minus!).
 	\end{alphanumerate}
 \end{thm}
 \begin{proof}
 	Dualize the proof of Theorem~\reff{thm:DerivedFunctors} and prove the dual analogues of Fact~\reff{fact:injectiveResolutions} and Proposition~\reff{prop:Hufeisenlemma} on the way.
 \end{proof}
-\subsection{Construction of \texorpdfstring{$\Ext_\Aa^\bullet$}{Ext}}\lbl{subsec:ConstructionOfExt}
-If the category $\Aa$ has sufficiently many injective objects, then, for fixed objects $X$, one has a right-derived functor $\Ext_\Aa^\bullet(X,-)$ of $\Hom_\Aa(X,-)\colon \Aa\morphism\cat{Ab}$. As $\Hom_\Aa(X,-)$ is functorial in $X$, so are the $\Ext_\Aa^\bullet(X,-)$. For a short exact sequence $0\morphism X''\morphism X\morphism X'\morphism 0$ and $I$ injective, one has a short exact sequence $0\morphism\Hom_\Aa(X',I)\morphism\Hom_\Aa(X,I)\morphism\Hom_\Aa(X'',I)\morphism 0$. One thus has a long exact cohomology sequence
+\subsection{Construction of \texorpdfstring{$\Ext_{\boldsymbol A}^\bullet$}{Ext}}\lbl{subsec:ConstructionOfExt}
+If the category ${\cat A}$ has sufficiently many injective objects, then, for fixed objects $X$, one has a right-derived functor $\Ext_{\cat A}^\bullet(X,-)$ of $\Hom_{\cat A}(X,-)\colon {\cat A}\morphism\cat{Ab}$. As $\Hom_{\cat A}(X,-)$ is functorial in $X$, so are the $\Ext_{\cat A}^\bullet(X,-)$. For a short exact sequence $0\morphism X''\morphism X\morphism X'\morphism 0$ and $I$ injective, one has a short exact sequence $0\morphism\Hom_{\cat A}(X',I)\morphism\Hom_{\cat A}(X,I)\morphism\Hom_{\cat A}(X'',I)\morphism 0$. One thus has a long exact cohomology sequence
 \begin{multline}\lbl{eq:ExtSeq1}
-	0\morphism\Ext_\Aa^0(X'',Y)\morphism\Ext_\Aa^0(X,Y)\morphism\Ext_\Aa^0(X',Y)\morphism\Ext_\Aa^1(X'',Y)\morphism\ldots\\
-	\ldots\morphism\Ext_\Aa^p(X'',Y)\morphism\Ext_\Aa^p(X,Y)\morphism\Ext_\Aa^p(X',Y)\morphism\Ext_\Aa^{p+1}(X'',Y)\morphism\ldots\tag{$*$}
+	0\morphism\Ext_{\cat A}^0(X'',Y)\morphism\Ext_{\cat A}^0(X,Y)\morphism\Ext_{\cat A}^0(X',Y)\morphism\Ext_{\cat A}^1(X'',Y)\morphism\ldots\\
+	\ldots\morphism\Ext_{\cat A}^p(X'',Y)\morphism\Ext_{\cat A}^p(X,Y)\morphism\Ext_{\cat A}^p(X',Y)\morphism\Ext_{\cat A}^{p+1}(X'',Y)\morphism\ldots\tag{$*$}
 \end{multline}
-for every $Y\in\Ob(\Aa)$ coming from Theorem~\reff{thm:DerivedFunctors}\itememph{c} (somewhere we have to take contravariance into account, i.e., we consider the opposite category somewhere). Moreover, if $0\morphism Y'\morphism Y\morphism Y''\morphism 0$ is  a short exact sequence, we have a long exact sequence
+for every $Y\in\Ob({\cat A})$ coming from Theorem~\reff{thm:DerivedFunctors}\itememph{c} (somewhere we have to take contravariance into account, i.e., we consider the opposite category somewhere). Moreover, if $0\morphism Y'\morphism Y\morphism Y''\morphism 0$ is  a short exact sequence, we have a long exact sequence
 \begin{multline}\lbl{eq:ExtSeq2}
-0\morphism\Ext_\Aa^0(X,Y')\morphism\Ext_\Aa^0(X,Y)\morphism\Ext_\Aa^0(X,Y'')\morphism\Ext_\Aa^1(X,Y')\morphism\ldots\\
-\ldots\morphism\Ext_\Aa^p(X,Y')\morphism\Ext_\Aa^p(X,Y)\morphism\Ext_\Aa^p(X,Y'')\morphism\Ext_\Aa^{p+1}(X,Y')\morphism\ldots\tag{\#}
+0\morphism\Ext_{\cat A}^0(X,Y')\morphism\Ext_{\cat A}^0(X,Y)\morphism\Ext_{\cat A}^0(X,Y'')\morphism\Ext_{\cat A}^1(X,Y')\morphism\ldots\\
+\ldots\morphism\Ext_{\cat A}^p(X,Y')\morphism\Ext_{\cat A}^p(X,Y)\morphism\Ext_{\cat A}^p(X,Y'')\morphism\Ext_{\cat A}^{p+1}(X,Y')\morphism\ldots\tag{\#}
 \end{multline}
-since $\Ext_\Aa^\bullet(X,-)$ is a cohomological functor; and the squares formed by the connecting morphisms of  \eqreff{eq:ExtSeq1} and \eqreff{eq:ExtSeq2} anticommute.
+since $\Ext_{\cat A}^\bullet(X,-)$ is a cohomological functor; and the squares formed by the connecting morphisms of  \eqreff{eq:ExtSeq1} and \eqreff{eq:ExtSeq2} anticommute.
 
-If $P\in\Ob(\Aa)$ is projective, then $\Hom_\Aa(P,-)$ is exact, thus
+If $P\in\Ob({\cat A})$ is projective, then $\Hom_{\cat A}(P,-)$ is exact, thus
 \begin{align*}
-	\Ext_\Aa^p(P,Y)=H^p\big(\Hom_\Aa(P,I^\bullet)\big)=\Hom_\Aa\big(P,H^p(I^\bullet)\big)=0
+	\Ext_{\cat A}^p(P,Y)=H^p\big(\Hom_{\cat A}(P,I^\bullet)\big)=\Hom_{\cat A}\big(P,H^p(I^\bullet)\big)=0
 \end{align*}
-for $p>0$ (where $Y\monomorphism I^\bullet$ is any injective resolution). If $\Aa$ also has sufficiently many projective objects, then, for fixed $Y$, the functor $\Ext_\Aa^\bullet(-,Y)\colon \Aa^\op\morphism\cat{Ab}$ annihilates the injective objects of $\Aa^\op$ (the projectives of $\Aa$) in positive degrees, hence is a right-derived functor of $\Hom_\Aa(-,Y)$. Using the right-derived functors of $\Hom_\Aa(-,Y)\colon \Aa ^\op\morphism\cat{Ab}$ one also obtains $\Ext_\Aa^\bullet$ groups with \eqreff{eq:ExtSeq1} as part of the derived functor structure and \eqreff{eq:ExtSeq2} from Theorem~\reff{thm:DerivedFunctors}\itememph{c}; and when $\Aa$ also has sufficiently many injective objects, then, by the previous arguments, the $\Ext_\Aa^\bullet$ groups are canonically isomorphic to the ones obtained using injective resolutions of $Y$. To cut a long story short: For all $p\geq 0$,
+for $p>0$ (where $Y\monomorphism I^\bullet$ is any injective resolution). If ${\cat A}$ also has sufficiently many projective objects, then, for fixed $Y$, the functor $\Ext_{\cat A}^\bullet(-,Y)\colon {\cat A}^\op\morphism\cat{Ab}$ annihilates the injective objects of ${\cat A}^\op$ (the projectives of ${\cat A}$) in positive degrees, hence is a right-derived functor of $\Hom_{\cat A}(-,Y)$. Using the right-derived functors of $\Hom_{\cat A}(-,Y)\colon {\cat A} ^\op\morphism\cat{Ab}$ one also obtains $\Ext_{\cat A}^\bullet$ groups with \eqreff{eq:ExtSeq1} as part of the derived functor structure and \eqreff{eq:ExtSeq2} from Theorem~\reff{thm:DerivedFunctors}\itememph{c}; and when ${\cat A}$ also has sufficiently many injective objects, then, by the previous arguments, the $\Ext_{\cat A}^\bullet$ groups are canonically isomorphic to the ones obtained using injective resolutions of $Y$. To cut a long story short: For all $p\geq 0$,
 \begin{align*}
-	\Ext_\Aa^p(X,Y)=H^p\big(\Hom(X,I^\bullet)\big)=H^p\big(\Hom(P_\bullet,Y)\big)
+	\Ext_{\cat A}^p(X,Y)=H^p\big(\Hom(X,I^\bullet)\big)=H^p\big(\Hom(P_\bullet,Y)\big)
 \end{align*}
 when $Y\monomorphism I^\bullet$ is an injective resolution of $Y$ and $P_\bullet\epimorphism X$ a projective resolution of $X$.
 
-An alternative construction of $\Ext_\Aa^1(-,-)$ is as follows. Let $\Ext_\Aa^1(X,Y)$ be the ``class of isomorphism classes'' of short exact sequences $\Ee\colon 0\morphism Y\morphism E\morphism X\morphism 0$. Two such extensions $\Ee,\Ee'$ are isomorphic iff there is a commutative diagram 
+An alternative construction of $\Ext_{\cat A}^1(-,-)$ is as follows. Let $\Ext_{\cat A}^1(X,Y)$ be the ``class of isomorphism classes'' of short exact sequences $\Ee\colon 0\morphism Y\morphism E\morphism X\morphism 0$. Two such extensions $\Ee,\Ee'$ are isomorphic iff there is a commutative diagram 
 \begin{diagram*}
 	\node[ob] at (-0.75,1.5) {$\Ee\colon$};
 	\node[ob] at (-0.75,0) {$\Ee'\colon$};
@@ -2221,34 +2220,34 @@ An alternative construction of $\Ext_\Aa^1(-,-)$ is as follows. Let $\Ext_\Aa^1(
 	\draw[transform canvas={xshift=-1pt}] (D) -- (D');
 \end{diagram*}
 (in which the middle vertical arrow is necessarily an isomorphism, e.g., by the five lemma). 
-To such a short exact sequence one may associate $c_\Ee$, the image of $\id_X$ under $\Hom_\Aa(X,X)\morphism\Ext_\Aa^1(X,Y)$, or $_\Ee c$, the image of $\id_Y$ under $\Hom_\Aa(Y,Y)\morphism\Ext_\Aa^1(X,Y)$.
+To such a short exact sequence one may associate $c_\Ee$, the image of $\id_X$ under $\Hom_{\cat A}(X,X)\morphism\Ext_{\cat A}^1(X,Y)$, or $_\Ee c$, the image of $\id_Y$ under $\Hom_{\cat A}(Y,Y)\morphism\Ext_{\cat A}^1(X,Y)$.
 \begin{prop}\lbl{prop:ExtExtends}
-	If $\Aa$ has sufficiently many injective or projective objects, then $_\Ee c=c_\Ee$ and one has a bijection between the isomorphism classes of extensions and $\Ext_\Aa^1(X,Y)$.
+	If ${\cat A}$ has sufficiently many injective or projective objects, then $_\Ee c=c_\Ee$ and one has a bijection between the isomorphism classes of extensions and $\Ext_{\cat A}^1(X,Y)$.
 \end{prop}
 \begin{proof}
 	\sout{Omitted} Left as an exercise.
 \end{proof}
 \begin{rem}
 	\begin{alphanumerate}
-		\item \lbl{rem:YonedaExt}The construction may have set theoretic difficulties, e.g., if $\Aa=\left\{(X,S,f)\right\}$ where $X$ is an abelian group, $S$ a set and $f\colon S\morphism\End(X)$ any function such that two elements in the image of $f$ commute; and $\Hom_\Aa((X,S,f),(Y,T,g))$ are the set of homomorphisms $\xi\colon X\morphism Y$ of abelian groups such that $\xi f(s)=g(s)\xi$ when $s\in S\cap T$, $\xi f(s)=0$ when $s\in S\setminus T$, $g(t)\xi=0$ when $t\in T\setminus S$. Then there is no set of extensions of $(\IZ,\emptyset,\emptyset)$ by itself intersecting all isomorphism classes of such extensions.
-		\item The higher order versions of the construction of $\Ext_\Aa^1$ by extensions involves longer exact sequences. This is called \emph{Yoneda}-$\Ext_\Aa^\bullet$ and allows to construct $\Ext_\Aa^\bullet$ groups even when there aren't sufficiently many injective or projective objects.
+		\item \lbl{rem:YonedaExt}The construction may have set theoretic difficulties, e.g., if ${\cat A}=\left\{(X,S,f)\right\}$ where $X$ is an abelian group, $S$ a set and $f\colon S\morphism\End(X)$ any function such that two elements in the image of $f$ commute; and $\Hom_{\cat A}((X,S,f),(Y,T,g))$ are the set of homomorphisms $\xi\colon X\morphism Y$ of abelian groups such that $\xi f(s)=g(s)\xi$ when $s\in S\cap T$, $\xi f(s)=0$ when $s\in S\setminus T$, $g(t)\xi=0$ when $t\in T\setminus S$. Then there is no set of extensions of $(\IZ,\emptyset,\emptyset)$ by itself intersecting all isomorphism classes of such extensions.
+		\item The higher order versions of the construction of $\Ext_{\cat A}^1$ by extensions involves longer exact sequences. This is called \emph{Yoneda}-$\Ext_{\cat A}^\bullet$ and allows to construct $\Ext_{\cat A}^\bullet$ groups even when there aren't sufficiently many injective or projective objects.
 	\end{alphanumerate}
 \end{rem}
 \begin{cor}
-	If $\Ext_\Aa^1(X,Y)=0$, then every short exact sequence $0\morphism Y\morphism E\morphism X\morphism 0$ splits.
+	If $\Ext_{\cat A}^1(X,Y)=0$, then every short exact sequence $0\morphism Y\morphism E\morphism X\morphism 0$ splits.
 \end{cor}
 \begin{proof}
 	This follows immediately from Proposition~\reff{prop:ExtExtends}, but it's also easy to prove without. From the long exact cohomology sequence \eqreff{eq:ExtSeq1} we get that
 	\begin{align*}
-		0\morphism\Hom_\Aa(X,Y)\morphism\Hom_\Aa(E,Y)\morphism\Hom_\Aa(Y,Y)\morphism \Ext_\Aa^1(X,Y)=0
+		0\morphism\Hom_{\cat A}(X,Y)\morphism\Hom_{\cat A}(E,Y)\morphism\Hom_{\cat A}(Y,Y)\morphism \Ext_{\cat A}^1(X,Y)=0
 	\end{align*}
-	is exact, hence $\Hom_\Aa(E,Y)\morphism\Hom_\Aa(Y,Y)$ is surjective. Choosing a preimage of $\id_Y$ gives a split of the sequence (cf. the proof of Definition~\reff{def:injective}).
+	is exact, hence $\Hom_{\cat A}(E,Y)\morphism\Hom_{\cat A}(Y,Y)$ is surjective. Choosing a preimage of $\id_Y$ gives a split of the sequence (cf. the proof of Definition~\reff{def:injective}).
 \end{proof}
 \begin{prop}
-	Let $F\colon \Aa\morphism\Bb$ be a left-exact functor between abelian categories where $\Aa$ has sufficiently many injective objects. Let $\XX$ be a class of objects in $\Aa$ with the following properties.
+	Let $F\colon {\cat A}\morphism{\cat B}$ be a left-exact functor between abelian categories where ${\cat A}$ has sufficiently many injective objects. Let $\XX$ be a class of objects in ${\cat A}$ with the following properties.
 	\begin{alphanumerate}
 		\item Let $X\cong Y\oplus Z$, then $X\in\XX$ if and only if $Y,Z\in\XX$.
-		\item Every object of $\Aa$ has a monomorphism into some element of $\XX$.
+		\item Every object of ${\cat A}$ has a monomorphism into some element of $\XX$.
 		\item If $0\morphism X\morphism Y\morphism Z\morphism 0$ is exact and $X,Y\in\XX$, then $Z\in\XX$ and $0\morphism FX\morphism FY\morphism FZ\morphism 0$  is exact.
 	\end{alphanumerate}
 	Then $\XX$ contains all injective objects, and $R^pF(X)=0$ when $X\in\XX$.
@@ -2263,13 +2262,13 @@ To such a short exact sequence one may associate $c_\Ee$, the image of $\id_X$ u
 The following lists and proves some first properties of additive categories and additive functors that Professor Franke assumed known in the lecture without explicitly mentioning them.
 \begin{defi}
 	\begin{alphanumerate}
-		\item \lbl{def:additiveCategory}A \defemph{preadditive} category $\Aa$ is a category in which each $\Hom_\Aa(X,Y)$ for $X,Y\in\Ob(\Aa)$ is given a group structure behaving bilinearly under compositions.
-		\item An \defemph{additive category} is a preadditive category which has finite products and coproducts such that the canonical morphism $\coprod_{k=1}^nX_k\morphism[c] \prod_{k=1}^{n}X_k$ is an isomorphism for all objects $X_1,\ldots,X_n\in\Ob(\Aa)$.
+		\item \lbl{def:additiveCategory}A \defemph{preadditive} category ${\cat A}$ is a category in which each $\Hom_{\cat A}(X,Y)$ for $X,Y\in\Ob({\cat A})$ is given a group structure behaving bilinearly under compositions.
+		\item An \defemph{additive category} is a preadditive category which has finite products and coproducts such that the canonical morphism $\coprod_{k=1}^nX_k\morphism[c] \prod_{k=1}^{n}X_k$ is an isomorphism for all objects $X_1,\ldots,X_n\in\Ob({\cat A})$.
 	\end{alphanumerate}
 \end{defi}
 \begin{rem*}
 	\begin{alphanumerate}
-		\item When $\Aa$ is additive, letting $n=0$ in Definition~\reff{def:additiveCategory}\itememph{b} gives an object $*\in\Ob(\Aa)$ which is both an initial and a final object. For $X,Y\in\Ob(\Aa)$, let the \emph{zero morphism} (which we denote $0$) $X\morphism[0]Y$ be defined by $X\morphism *\morphism Y$.
+		\item When ${\cat A}$ is additive, letting $n=0$ in Definition~\reff{def:additiveCategory}\itememph{b} gives an object $*\in\Ob({\cat A})$ which is both an initial and a final object. For $X,Y\in\Ob({\cat A})$, let the \emph{zero morphism} (which we denote $0$) $X\morphism[0]Y$ be defined by $X\morphism *\morphism Y$.
 		\item We will construct the canonical morphism $\coprod_{k=1}^nX_k\morphism[c] \prod_{k=1}^{n}X_k$ from Definition~\reff{def:additiveCategory}\itememph{b}. Let $X_k\morphism[i_k]\coprod_{k=1}X_k$ and $\prod_{k=1}^nX_k\morphism[p_k]X_k$ be the associated inclusion and projection morphisms.
 		
 		Using the universal property of $\prod_{k=1}^{n}X_k$, we get unique morphisms $X_j\morphism[\alpha_j]\prod_{k=1}^{n}X_k$ such that $p_k\alpha_j=\id_X$ if $k=j$ and $0$ else. Then 
@@ -2281,14 +2280,14 @@ The following lists and proves some first properties of additive categories and 
 	\end{alphanumerate}
 \end{rem*}
 \begin{prop}\lbl{prop:AdditiveStructureUnique}
-	Suppose that $\Aa$ is additive. The group structure on $\Hom_\Aa(X,Y)$ for $X,Y\in\Ob(\Aa)$ is automatically abelian and given as follows. For a pair of morphisms $X\doublemorphism[a][b]Y$, their sum $a+b$ is the composition
+	Suppose that ${\cat A}$ is additive. The group structure on $\Hom_{\cat A}(X,Y)$ for $X,Y\in\Ob({\cat A})$ is automatically abelian and given as follows. For a pair of morphisms $X\doublemorphism[a][b]Y$, their sum $a+b$ is the composition
 	\begin{align*}
 	X\xrightarrow{\id_X\times\id_X}X\oplus X\xrightarrow{a\amalg b}Y
 	\end{align*}
 	and $0$ is the neutral element.
 \end{prop}
 \begin{proof}
-	We first show the characterization of the addition in $\Hom_\Aa(X,Y)$. First thing to check is that $0$ is indeed the neutral element. As $*$ is a final object, $\Hom_\Aa(X,*)$ has only one element $\pi$ and is thus the zero group. In particular, $\pi+\pi=\pi$ and if $\iota$ denotes $*\morphism Y$, then $0=\iota\pi=\iota(\pi+\pi)=0+0$, hence $0$ is indeed the neutral element.
+	We first show the characterization of the addition in $\Hom_{\cat A}(X,Y)$. First thing to check is that $0$ is indeed the neutral element. As $*$ is a final object, $\Hom_{\cat A}(X,*)$ has only one element $\pi$ and is thus the zero group. In particular, $\pi+\pi=\pi$ and if $\iota$ denotes $*\morphism Y$, then $0=\iota\pi=\iota(\pi+\pi)=0+0$, hence $0$ is indeed the neutral element.
 	
 	Now let $\Delta=\id_X\times \id_X$ be the diagonal and denote $i_1,i_2$ the inclusions of $X$ in $X\oplus X$ and $p_1,p_2$ the projections of $X\oplus X$ to $X$. We show $\Delta=i_1+i_2$. Indeed, we have $p_1(i_1+i_2)=p_1i_1+p_1i_2=\id_X+0=\id_X$ and similarly $p_2(i_1+i_2)=\id_X$, which is exactly how $\Delta$ is characterized. Hence 
 	\begin{align*}
@@ -2321,12 +2320,12 @@ The following lists and proves some first properties of additive categories and 
 	Definition~\reff{def:additiveFunctor} seems kind of counterintuitive, as one would rather expect an additive functor to induce group homomorphisms on $\Hom$ sets. For additive categories, this alternative definition turns out to be equivalent.
 \end{rem*}
 \begin{prop}
-	Let $F\colon \Aa\morphism\Bb$ be a functor between additive categories. Then $F$ is additive iff $F$ induces a group homomorphism $\Hom_\Aa(X,Y)\morphism[F]\Hom_\Bb(FX,FY)$ for every $X,Y\in\Ob(\Aa)$.
+	Let $F\colon {\cat A}\morphism{\cat B}$ be a functor between additive categories. Then $F$ is additive iff $F$ induces a group homomorphism $\Hom_{\cat A}(X,Y)\morphism[F]\Hom_{\cat B}(FX,FY)$ for every $X,Y\in\Ob({\cat A})$.
 \end{prop}
 \begin{proof}
 	If $F$ is an additive functor, i.e., preserves finite biproducts and the associated structure morphisms, then it is clear that $F$ is compatible with the addition as constructed in Proposition~\reff{prop:AdditiveStructureUnique}.
 	
-	Conversely, suppose that $F$ is compatible with the addition. Let $X,Y\in\Ob(\Aa)$. Let $i_X,i_Y$ be the inclusions of $X,Y$ in $X\oplus Y$ and $p_X,p_Y$ the projections of $X\oplus Y$ onto $X,Y$. Define $j_X,j_Y$ and $q_X,q_Y$ analogously for $FX\oplus FY$. By the two universal properties of the biproduct $FX\oplus FY$ we get morphisms $F(X\oplus Y)\morphism[q]FX\oplus FY$ and $FX\oplus FY\morphism[j]F(X\oplus Y)$ such that 
+	Conversely, suppose that $F$ is compatible with the addition. Let $X,Y\in\Ob({\cat A})$. Let $i_X,i_Y$ be the inclusions of $X,Y$ in $X\oplus Y$ and $p_X,p_Y$ the projections of $X\oplus Y$ onto $X,Y$. Define $j_X,j_Y$ and $q_X,q_Y$ analogously for $FX\oplus FY$. By the two universal properties of the biproduct $FX\oplus FY$ we get morphisms $F(X\oplus Y)\morphism[q]FX\oplus FY$ and $FX\oplus FY\morphism[j]F(X\oplus Y)$ such that 
 	\begin{center}
 		\begin{minipage}{0.4\textwidth}
 			\centering				
@@ -2375,13 +2374,13 @@ The following lists and proves some first properties of additive categories and 
 	Again, this is not quite what one would expect, and again, it turns out to be essentially equivalent to the expected definition under the right circumstances. A left-exact functor in the sense of Definition~\reff{def:leftrightexact} between abelian categories preserves, in particular, kernels, and thus short left-exact sequences. Also, it preserves finite products and their projection morphisms (as certain limits) and hence direct sums, i.e., is additive (one easily checks that the inclusion morphisms are then preserved as well). Conversely, an additive functor between abelian categories that preserves kernels is already left-exact, since every finite limit can be built from finite products and equalizers (which we have, since there are kernels).
 \end{rem}
 \begin{prop}\lbl{prop:injectiveSeqsStayExact}
-	If $F\colon \Aa\morphism\Bb$ is a left-exact functor between abelian categories $\Aa,\Bb$ and $0\morphism I\morphism X\morphism X''\morphism 0$ a short exact sequence in $\Aa$ with $I$ an injective object of $\Aa$, then $0\morphism FI\morphism FX\morphism FX''\morphism 0$ is a short exact sequence in $\Bb$.
+	If $F\colon {\cat A}\morphism{\cat B}$ is a left-exact functor between abelian categories ${\cat A},{\cat B}$ and $0\morphism I\morphism X\morphism X''\morphism 0$ a short exact sequence in ${\cat A}$ with $I$ an injective object of ${\cat A}$, then $0\morphism FI\morphism FX\morphism FX''\morphism 0$ is a short exact sequence in ${\cat B}$.
 \end{prop}
 \begin{proof}
 	Since $I$ is injective, the sequence $0\morphism I\morphism X\morphism X''\morphism 0$ splits due to Definition~\reff{def:injective}\itememph{b}, i.e., $X\cong I\oplus X''$. Since $F$ is additive, $FX\cong FI\oplus FX''$, and $FI\morphism FX$ and $FX\morphism FX''$ correspond to the inclusion of $FI$ respectively projection onto $FX''$.
 \end{proof}
 \section{Associated primes}\lbl{sec:AssociatedPrimes}
-Professor Franke recalled some facts about associated primes which he considered well-known at this level. However, I somehow managed to dodge every associated prime thrown at me till now, so I will include this here. Also, the proofs are my own so this might not be the most elegant presentation.
+Professor Franke recalled some facts about associated primes which he considered well-known at this level. However, I somehow managed to dodge every associated prime thrown at me till now, so I will include this here. Also, the proofs are my own so they might not be the most elegant ones.
 \begin{defi}
 	Let $R$ be a ring and $M$ an $R$-module. The set of \defemph{associated primes} of $M$ is defined as
 	\begin{align*}
@@ -2401,14 +2400,14 @@ Professor Franke recalled some facts about associated primes which he considered
 	The first inclusion is obvious. For the second, let $\pp\in\Ass_R(M)$ and $m\in M$ such that $\pp=\Ann_R(m)$. Then $1\mapsto m$ gives an embedding of $R/\pp$ into $M$. Let $R/\pp\cong P\subseteq M$ be its image. If $P\cap M'=0$, then $P\cong (P+M')/M'\subseteq M/M'\cong M''$ shows that $M''$ has a submodule isomorphic to $R/\pp$ as well, hence $\pp\in\Ass_R(M'')$ by Example~\reff{ex:AssR/p}. If $P\cap M'\neq 0$, take a non-zero element $p$ in their intersection. By Example~\reff{ex:AssR/p}, $\Ann_R(p)=\pp$, hence $\pp\in\Ass_R(M')$.
 \end{proof}
 \begin{cor}\lbl{cor:AssFinite}
-	When $R$ is Noetherian and $M$ is finitely generated, $\Ass_R(M)$ is a finite set, and non-empty unless $M=0$.
+	When $R$ is noetherian and $M$ is finitely generated, $\Ass_R(M)$ is a finite set, and non-empty unless $M=0$.
 \end{cor}
 \begin{proof}
 	Apply Proposition~\reff{prop:AssExactSeqs} and Example~\reff{ex:AssR/p} to a filtration $0=M_0\subseteq\ldots\subseteq M_k=M$ such that $M_i/M_{i-1}\cong R/\pp_i$ for some $\pp_i\in\Spec R$ (which exists by \cite[Proposition~3.1.2]{alg2}). This pretty much shows both assertions.
 \end{proof}
-Now we prove that taking associated prime ideals commutes with localizations -- in the following sense. 
+The next thing to do is investigating how associated primes behave under localization.
 \begin{prop}\lbl{prop:AssLocalization}
-	Let $R$ be a Noetherian ring and $M$ an arbitrary $R$-module. If $S\subseteq R$ is a multiplicative subset, then
+	Let $R$ be a noetherian ring and $M$ an arbitrary $R$-module. If $S\subseteq R$ is a multiplicative subset, then
 	\begin{align*}
 		\Ass_{R_S}(M_S)=\left\{\pp R_S\st \pp\in\Ass_R(M)\text{ and }\pp\cap S=\emptyset\right\}\;.
 	\end{align*}
@@ -2418,8 +2417,9 @@ Now we prove that taking associated prime ideals commutes with localizations -- 
 	
 	Now let $\qq\in\Spec R_S$ be an associated prime ideal of $M_S$. Then $\qq=\pp R_S$ for some prime ideal $\pp\in\Spec R$, $\pp\cap S=\emptyset$ (cf.\ \cite[Corollary~2.3.1\itememph{e}]{alg1}) and there is an element $\mu=\frac{m}{s}\in M_S$ such that $\qq=\Ann_{R_S}(\mu)$. Our goal is to modify $m$ such that $\Ann_R(m)=\pp$. Clearly, $\Ann_R(M)\subseteq \qq\cap R=\pp$. Moreover, since every element of $\pp$ anullates $m$ in $M_S$ we see that for every $p\in\pp$ there is a $t\in S$ such that $tp\in\Ann_R(m)$. Choose generators $p_1,\ldots,p_n$ of $\pp$ and such $t_1,\ldots,t_n$. Replacing $m$ by $t_1\cdots t_nm$ doesn't change $\Ann_{R_S}(m)$, as the $t_i$ are units in $R_S$, but gives $p_1,\ldots,p_n\in\Ann_R(m)$, hence $\pp=\Ann_R(m)$.
 \end{proof}
+The following proposition is the main reason we did all this -- we use it several times in the above text.
 \begin{prop}\lbl{prop:AssProperties}
-	Let $R$ be a Noetherian and $M$ any $R$-module.
+	Let $R$ be a noetherian and $M$ any $R$-module.
 	\begin{alphanumerate}
 		\item We have
 		\begin{align*}
@@ -2433,12 +2433,12 @@ Now we prove that taking associated prime ideals commutes with localizations -- 
 	\begin{align*}
 		\MM=\left\{\Ann_R(m)\st m\in M\text{ satisfies }rm=0\right\}\;.
 	\end{align*}
-	of ideals of $R$. Since $R$ is Noetherian and $\MM$ is non-empty by assumption, $\MM$ has a maximal element $\Ann_R(\mu)$ for some $\mu\in M\setminus\{0\}$ satisfying $r\mu=0$. We claim that $\Ann_R(\mu)$ is prime. Indeed, let $a,b\in R$ such that $ab\in \Ann_R(\mu)$. If neither $a$ nor $b$ are in $\Ann_R(\mu)$, we find that $\Ann_R(a\mu)\in\MM$ (since $a\mu\neq 0$) and $\Ann_R(m)$ is properly contained in $\Ann_R(a\mu)$ (since $b\notin\Ann_R(m)$), contradiction.
+	of ideals of $R$. Since $R$ is noetherian and $\MM$ is non-empty by assumption, $\MM$ has a maximal element $\Ann_R(\mu)$ for some $\mu\in M\setminus\{0\}$ satisfying $r\mu=0$. We claim that $\Ann_R(\mu)$ is prime. Indeed, let $a,b\in R$ such that $ab\in \Ann_R(\mu)$. If neither $a$ nor $b$ are in $\Ann_R(\mu)$, we find that $\Ann_R(a\mu)\in\MM$ (since $a\mu\neq 0$) and $\Ann_R(m)$ is properly contained in $\Ann_R(a\mu)$ (since $b\notin\Ann_R(m)$), contradiction.
 	
 	Part \itememph{b}. Let $\pp\in\Spec R$ be minimal above $\Ann_R(M)$. By \cite[Lemma~3.4.1]{alg2}, $\pp\in\supp(M)$, i.e., $M_\pp\neq 0$. Hence $\Ass_{R_\pp}(M_\pp)\neq\emptyset$ by Corollary~\reff{cor:AssFinite}. Clearly, every $\qq\in\Ass_R(M)$ contains $\Ann_R(M)$, and since $\pp$ is minimal above $\Ann_R(M)$, Proposition~\reff{prop:AssLocalization} shows that no prime ideal of $R_\pp$ except $\pp R_\pp$ can be contained in $\Ass_{R_\pp}(M_\pp)$. Therefore, $\Ass_{R_\pp}(M_\pp)=\{\pp R_\pp\}$, hence $\pp\in\Ass_R(M)$ by Proposition~\reff{prop:AssLocalization} again.
 \end{proof}
 \begin{fact}\lbl{fact:dimsuppM}
-	Let $R$ be a Noetherian ring (not necessarily local) and $M$ a finitely generated $R$-module. Then the irreducible components of $\supp M=\left\{\pp\in\Spec R\st M_\pp\neq 0\right\}$ are precisely given by the \defemph{non-embedded} primes of $M$ (i.e., the associated primes not containing any other associated prime).
+	Let $R$ be a noetherian ring (not necessarily local) and $M$ a finitely generated $R$-module. Then the irreducible components of $\supp M=\left\{\pp\in\Spec R\st M_\pp\neq 0\right\}$ are precisely given by the \defemph{non-embedded} primes of $M$ (i.e., the associated primes not containing any other associated prime).
 \end{fact}
 \begin{proof}
 	By Corollary~\reff{cor:AssFinite}, $M_\pp\neq 0$ iff $\Ass_{R_\pp}(M_\pp)\neq\emptyset$. By Proposition~\reff{prop:AssLocalization}, this is the case iff there is an associated prime $\qq\in \Ass_R(M)$ such that $\qq R_\pp$ is a prime ideal of $R_\pp$, i.e., $\pp\supseteq \qq$. Thus
