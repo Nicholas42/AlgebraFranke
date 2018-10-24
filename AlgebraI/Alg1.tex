@@ -2,8 +2,8 @@
 \usepackage[utf8]{inputenc}
 
 \usepackage{../header}
-\usepackage{../frankenumbering}
-\usepackage{../shortcuts}
+\usepackage{../frankenumbering2}
+\usepackage{../shortcuts2}
 
 \usepackage{csquotes}
 %\usepackage{tikz-cd}%I cannot draw diagrams without it - Felix. %well, I can - Ferdinand
@@ -22,6 +22,9 @@
 %\postdisplaypenalty=8000
 \widowpenalty=8000
 \clubpenalty=8000
+
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
 
 \begin{document}
 	\pagenumbering{Alph}
@@ -81,7 +84,7 @@
 	\end{proof}
 	
 	\begin{defi}\lbl{def:Noetherian}
-		A ring with these properties is called \defemph{Noetherian}.
+		A ring with these properties is called \defemph{noetherian}.
 	\end{defi}
 	\begin{example}
 		Fields and principal ideal domains are noetherian. 
@@ -224,7 +227,7 @@
 	% end 2017-04-20
 	% start 2017-04-24
 	\begin{defi}\lbl{def:NoetherianModule}
-		A module over a ring $R$ is \emph{Noetherian} iff the equivalent conditions above are fulfilled.
+		A module over a ring $R$ is \emph{noetherian} iff the equivalent conditions above are fulfilled.
 	\end{defi}
 	\begin{rem}\lbl{rem:subQuotientNoetherian}
 		Sub- and quotient modules of noetherian rings are noetherian. If $N$ is a submodule of $M$ and if $N$ and $M/N$ are noetherian, then $M$ is noetherian.
@@ -275,13 +278,21 @@
 	Recall the Hilbert Basissatz (Theorem~\reff{thm:Basissatz}) from Section~\ref{sec:NoetherianRings}.
 	\setcounter{thm}{0}
 	\begin{thm}
-		If $R$ is noetherian, so is the polynomial ring $R[T]$.
+		If $R$ is noetherian, so is the polynomial ring $R[T]$.\nopagebreak
 	\end{thm}
-	\setcounter{thm}{2}
 	\begin{proof}\lbl{proof:HilbertBasis}
-		Let $R$ be a noetherian ring and $I\subseteq R[T]$ be an ideal. Let $R[T]_{\leq n}$ be the set of polynomials over $R$ of degree smaller or equal to $n$. This is isomorphic to $R^{n+1}$ ($1,\ldots, T^n$ being free generators) as $R$-modules, thus noetherian (Proposition~\reff{prop:ringNoetherianModule}) which implies that $I_{\leq n} = I \cap R[T]_{\leq n}$ is a finitely generated $R$-module. Let $I_n$ be the set of all $a_n\in R$, such that $a_0+a_1T+\ldots+a_nT^n\in I$ for some $a_0,\ldots,a_{n-1}\in R$. This is an ideal of $R$, being the image of $I_{\leq n} \to R$ sending $a_0+a_1T+\ldots+a_nT^n\in I_{\leq n}$ to $a_n$. We have $I_n\subseteq I_{n+1}$ as $T\cdot I_{\leq n}\subseteq I_{\leq n+1}$. As $R$ is noetherian, this chain terminates at some $N\in\IN$ with $I_n = I_N$ for $n\geq N$. Let $f_1,\ldots, f_k$ be generators of $I_{\leq N}$ as an $R$-module. We claim that they generate $I$ as an $R[T]$-module. Since they generate $I_{\leq N}$ as an $R$-module, their $N$-th coefficients $f_N^{(i)}$, where $i\leq k$, generate $I_n = I_N$, for $n\geq N$, as an $R$-module.
+		Let $I\subseteq R[T]$ be an ideal. Let $R[T]_{\leq n}$ be the set of polynomials over $R$ of degree $\leq n$. This is isomorphic to $R^{n+1}$ ($1,T,\ldots, T^n$ being free generators) as $R$-modules, thus noetherian (Proposition~\reff{prop:ringNoetherianModule}) which implies that $I_{\leq n} = I \cap R[T]_{\leq n}$ is a finitely generated $R$-module. \newpage
+		We put 
+		\begin{align*}
+			I_n=\left\{a_n\in R\st a_0+a_1T+\ldots+a_nT^n\in I\text{ for some }a_0,\ldots,a_{n-1}\in R\right\}\;.
+		\end{align*}
+		This is an ideal of $R$, being the image of $I_{\leq n} \to R$ sending $a_0+a_1T+\ldots+a_nT^n\in I_{\leq n}$ to $a_n$. We have $I_n\subseteq I_{n+1}$ as $T\cdot I_{\leq n}\subseteq I_{\leq n+1}$. As $R$ is noetherian, this chain terminates at some $N\in\IN$ with $I_n = I_N$ for $n\geq N$. Let $f_1,\ldots, f_k$ be generators of $I_{\leq N}$ as an $R$-module. We claim that they generate $I$ as an $R[T]$-module. Since they generate $I_{\leq N}$ as an $R$-module, their $N$-th coefficients $f_N^{(i)}$, where $i\leq k$, generate $I_n = I_N$, for $n\geq N$, as an $R$-module.
 		
-		We show by induction on $n$, that any $g\in I_{\leq n}$ belongs to $\left(f_1,\ldots,f_k\right)_{R[T]}$, thus establishing $I= \left(f_1,\ldots, f_k\right)_{R[T]}$. For $n\leq k$ we have $g\in I_{\leq N}$ and the assertion is obvious. Let $n>N$ let the assertion be valid for all $h \in I_{\leq n-1}$. Let $g=\sum_{i=1}^n g_iT^i$, $g_n = \sum_{i=1}^k \gamma_i f_N^{(i)}$ and $h = g-\sum_{i=1}^k\gamma_i T^{n-N} f_i$, then $h\in I_{\leq n-1}$ as the coefficient of $T^n$ cancels. Thus, $h = \sum_{i=1}^k\rho_i f_i$ with $\rho_i\in R[T]$ by the induction assumption and
+		We show by induction on $n$, that any $g\in I_{\leq n}$ belongs to $\left(f_1,\ldots,f_k\right)_{R[T]}$, thus establishing $I= \left(f_1,\ldots, f_k\right)_{R[T]}$. For $n\leq k$ we have $g\in I_{\leq N}$ and the assertion is obvious. Let $n>N$ let the assertion be valid for all $h \in I_{\leq n-1}$. Let 
+		\begin{align*}
+			g=\sum_{i=1}^n g_iT^i\;,\quad g_n = \sum_{i=1}^k \gamma_i f_N^{(i)}\quad\text{and}\quad h = g-\sum_{i=1}^k\gamma_i T^{n-N} f_i\;,
+		\end{align*}
+		then $h\in I_{\leq n-1}$ as the coefficient of $T^n$ cancels. Thus, $h = \sum_{i=1}^k\rho_i f_i$ with $\rho_i\in R[T]$ by the induction assumption and
 		\begin{align*}
 		g=\sum_{i=1}^k(\gamma_i T^{n-k} +\rho_i) f_i \in \left( f_1,\ldots,f_k\right)_{R[T]}
 		\end{align*}
@@ -293,6 +304,7 @@
 	\begin{proof}
 		Follows from Theorem~\reff{thm:Basissatz} by induction on $n$.
 	\end{proof}
+\setcounter{thm}{2}
 	\section{Finiteness properties of \texorpdfstring{$R$}{R}-algebras}
 	\begin{defi}
 		Let $R$ be a ring. An \defemph{$R$-algebra} is a ring $A$ (commutative, with 1) together with a ring homomorphism $R\overset{\alpha}{\longto} A$. Then $A$ becomes an $R$-module via $r\cdot a \coloneqq \alpha(r) \cdot a$. We call $A$ \defemph{finite over $R$} (or \emph{finite as an $R$-algebra}) if it is finitely generated as an $R$-module. We call $A$ of \defemph{finite type} over $R$ if it is finitely generated as an $R$-algebra in the sense that there are $f_1,\ldots, f_k\in A$, $k\in \IN$, such that any $R$-subalgebra $B\subseteq A$ (i.e. any subring $B\subseteq A$ which is also a $R$-submodule, or, equivalently, a subring containing the image of $\alpha$) containing the $f_i$ must equal $A$.
@@ -346,8 +358,7 @@
 		Let $R$ be a noetherian ring, $A$ an $R$-algebra of finite type and $B\subseteq A$ an $R$-subalgebra such that $A$ is finite over $B$. Then $B$ is an $R$-algebra of finite type.
 	\end{prop}
 	\begin{proof}
-		Let $a_1,\ldots,a_m$ generate $A$ as an $R$-algebra and let $\alpha_1,\ldots,\alpha_n$ generate it as a $B$-module. We have expressions
-		
+		Let $a_1,\ldots,a_m$ generate $A$ as an $R$-algebra and let $\alpha_1,\ldots,\alpha_n$ generate it as a $B$-module. We have expressions		
 		\begin{align}
 		a_i =\sum_{j=1}^n b_{i,j} \alpha_j\quad\text{and}\quad
 		\alpha_k\cdot \alpha_k = \sum_{j=1}^n \beta_{j,k,l} \alpha_j\;.\tag{$*$}\lbl{eq:Prop142*}
@@ -360,7 +371,7 @@
 	\begin{proof}
 		See H. Matsumura, \href{http://www.math.unam.mx/javier/Matsumura.pdf}{\emph{Commutative Ring Theory}} \cite[Theorem~3.7]{matsumuraCRT}.
 	\end{proof}
-	\section{The notion of integrity and the Noether Normalization Theorem}
+	\section{The notion of integrity and the Noether normalization theorem}
 	Remark of the authors: It's called integrity not entireness \ldots
 	\begin{defi}\lbl{def:integrity}
 		Let $A\subseteq B$ be a ring extension. We call $b\in B$ \defemph{integral} over $A$ if it satisfies an equation
@@ -461,7 +472,7 @@
 		is injective, hence $k[X_1,\ldots, X_n]\cong k[a_1,\ldots, a_n]$ as $k$-algebras.
 	\end{rem}
 	
-	\begin{thm}[Noether Normalization Theorem]\lbl{thm:NoetherNormalization}
+	\begin{thm}[Noether normalization nheorem]\lbl{thm:NoetherNormalization}
 		Let $k$ be a field and $A$ a $k$-algebra of finite type. Then there are $k$-algebraically independent $a_1\ldotspam a_n\in A$ such that $A$ is integral over $k[a_1\ldotspam a_n]$.
 	\end{thm}
 	\begin{proof}
@@ -473,11 +484,7 @@
 		\begin{align*}
 		\sum_{\alpha\in\IN_0^n} \lambda_\alpha \cdot x^\alpha =0\lbl{eq:1.5.1a}\tag{$*$}
 		\end{align*}
-		where 
-		\begin{align*}
-		S\coloneqq \left\{\alpha\in\IN_0^n\st\lambda_\alpha\neq 0\right\}
-		\end{align*}
-		is finite but not empty. Let $y_1=x_1$ and $y_k = x_k +y_1^{d_k}$ (the $d_i$ will be chosen later on). Since the $x_i$ can be recovered from the $y_i$, we have $k[x_1,\ldots,x_n] = k[y_1,\ldots,y_n]$. The idea is to choose the $d_i$ such that $y_1$ is integral over $k[y_2,\ldots,y_n]$. Then $A$ is integral over $k[y_2,\ldots,y_n]$, contradicting the minimality of $n$. 
+		where  $S\coloneqq \left\{\alpha\in\IN_0^n\st\lambda_\alpha\neq 0\right\}$ is finite but not empty. Let $y_1=x_1$ and $y_k = x_k +y_1^{d_k}$ (the $d_i$ will be chosen later on). Since the $x_i$ can be recovered from the $y_i$, we have $k[x_1,\ldots,x_n] = k[y_1,\ldots,y_n]$. The idea is to choose the $d_i$ such that $y_1$ is integral over $k[y_2,\ldots,y_n]$. Then $A$ is integral over $k[y_2,\ldots,y_n]$, contradicting the minimality of $n$. 
 		
 		Let $\omega_d(\alpha) =\alpha_1 +\sum_{i=2}^nd_i\cdot \alpha_i$. The summands can be expressed as 
 		\begin{align*}
@@ -504,7 +511,7 @@
 		Let $L/K$ be a field extension such that $L$ is a $K$-algebra of finite type. Then $L/K$ is finite.
 	\end{thm}
 	\begin{proof}
-		By Noether's Normalization Theorem (Theorem~\reff{thm:NoetherNormalization})  there are $y_1, \ldots, y_n\in L$ algebraically independent over $K$ such that $L$ is integral over $K[y_1,\ldots,y_n]$. By Proposition~\reff{prop:integralStuff}\itememph{d}, $K[y_1,\ldots,y_n]$ is a field. But as $y_1,\ldots, y_n$ are algebraically independent, $K[y_1,\ldots, y_n]$ is isomorphic to the polynomial ring $K[X_1,\ldots,X_n]$, which is only a field for $n=0$. Thus $L/K$ is integral (i.e. algebraic) and since the extension is finitely generated it must be finite. 
+		By Noether's normalization theorem (Theorem~\reff{thm:NoetherNormalization})  there are $y_1, \ldots, y_n\in L$ algebraically independent over $K$ such that $L$ is integral over $K[y_1,\ldots,y_n]$. By Proposition~\reff{prop:integralStuff}\itememph{d}, $K[y_1,\ldots,y_n]$ is a field. But as $y_1,\ldots, y_n$ are algebraically independent, $K[y_1,\ldots, y_n]$ is isomorphic to the polynomial ring $K[X_1,\ldots,X_n]$, which is only a field for $n=0$. Thus $L/K$ is integral (i.e. algebraic) and since the extension is finitely generated it must be finite. 
 	\end{proof}
 	\begin{rem}
 		When $K$ is uncountable, the following argument would also work. If $\lambda\in L$ is non-algebraic over $K$, the subfield $K(\lambda)\subseteq L$ is isomorphic to $K(X)$, the field of rational functions over $K$, which has uncountable dimension as a $K$-vector space as the $\frac{1}{X-\gamma}$, $\gamma\in K$, are linearly independent. But the dimension (as a $K$-vector space) of a $K$-algebra of finite type must be countable, as there are only countable many monomials in finitely many elements.
@@ -707,7 +714,7 @@
 	\end{rem}
 	Professor Franke recalled a bunch of notation from topology, which can be found in Section~\ref{sec:PrereqFromTopo}.
 	\begin{defi}\lbl{def:topologicalNoetherian}
-		A topological space $T$ is \defemph{Noetherian} if it satisfies the following equivalent properties:
+		A topological space $T$ is \defemph{noetherian} if it satisfies the following equivalent properties:
 		\begin{alphanumerate}
 			\item There is no infinite properly descending sequence of closed subsets $T\supseteq M_0 \supsetneq M_1 \supsetneq\ldots $.
 			\item Any set $\mathfrak{X}\neq \emptyset$ of closed subsets of $T$ contains a $\subseteq$-minimal element.
@@ -762,7 +769,7 @@
 		\end{align*}
 		and $A$ would fail to be irreducible, or $A=A\cap Y_j$ for some $j\not=i$, but then $Y_i\subseteq A\subseteq Y_j$. Hence $\left\{ Y_1,\ldots,Y_k\right\}$ contains all irreducible subsets containing a non-empty open subset of $Y$. Conversely, $U_i = Y\setminus \bigcup_{j=1, j\neq i}^k Y_j$, then $U_i$ is open in $Y$ and non-empty since $Y_i$ is no subset of the subtracted union and $U_i\subseteq Y_i$. Thus $Y_i$ is an irreducible subset of $Y$ which contains a non-empty open subset. This establishes uniqueness and characterization \itememph{a}. 
 		
-		Characterization \itememph{b} can be easily deduced from this. Indeed, if $A$ is a maximal irreducible subset of $Y$ not listed in $\{Y_1,\ldots,Y_k\}$, then $A$ could be added to $Y=\bigcup_{i=1}^kY_i$ (deleting all $Y_i$ such that $Y_i\subseteq A$), contradicting uniqueness. Conversely, every irreducible subset of $Y$ is contained in some maximal irreducible subset, hence in some of the $Y_i$. But we have no inclusions among the $Y_i$, hence all of them must be maximal.
+		Characterization \itememph{b} can be easily deduced from this. Indeed, if $A$ is a maximal irreducible subset of $Y$ not listed in $\{Y_1,\ldots,Y_k\}$, then $A$ could be added to $Y=\bigcup_{i=1}^kY_i$ (deleting all $Y_i$ such that $Y_i\subseteq A$), contradicting uniqueness. It remains to show that all $Y_i$ are maximal. If $Y_i\subseteq A$ for some irreducible $A$, then $A$ could be added then $A$ could be added to $Y=\bigcup_{i=1}^kY_i$ (deleting all $Y_i$ such that $Y_i\subseteq A$), and again this would contradict uniqueness. 
 	\end{proof}
 	
 	\begin{example}
@@ -808,13 +815,14 @@
 	%\setcounter{equation}{0}
 	\begin{rem}[a.k.a. Remark 5]
 		\begin{alphanumerate}
-			\item Let $X$ be noetherian and $A\supseteq B\supseteq C$ are irreducible, then
+			\item \lbl{rem:codimIneqs}Let $X$ be noetherian and $A\supseteq B\supseteq C$ are irreducible, then
 			\begin{align}\lbl{eq:codimIneqs}
 			\begin{split}
 			\codim(C,B) +\codim(B,A) &\leq \codim(C,A) \\
 			\dim (A) + \codim(A,X) &\leq \dim (X)
 			\end{split}\;.
-			\end{align}\lbl{rem:codimIneqs}
+			\end{align}
+			Indeed, we can concatenate ascending chains of irreducible subsets, so this follows immediately from Definition~\reff{def:dimension}.
 			\item Let $Y$ be irreducible and $U\subseteq X$ open such that $Y\cap U\neq\emptyset$. Then there is a bijection% between the irreducible subsets $A$ of $X$ with $A\supseteq Y$ and the irreducible subsets $M$ of $U$ with $M\supseteq U\cap Y$
 			\begin{align*}
 			\left\{\begin{array}{c}
@@ -945,26 +953,24 @@
 		\end{align*}
 		is Zariski-continuous on some neighbourhood of $z$.
 	\end{prop}
-	\begin{proof}
-		This will follow easily from the fact that the following classes of maps are Zariski-continuous:
-		\begin{alphanumerate}
-			\item $f\colon Z\to k^m$ where $f=(f_1,\ldots,f_m)$ with $f_i\in S=k[X_1,\ldots,X_n]$. Indeed, if $A\subseteq k^m$ is Zariski-closed, then $A=V(I)$ with the ideal $I\subseteq R$ being generated by $I=(g_1,\ldots,g_\ell)_R$, where $R=k[X_1,\ldots,X_m]$. Then
-			\begin{align*}
-				f^{-1}(A)=V\big(g_1(f(-)),\ldots,g_\ell(f(-))\big)\;,
-			\end{align*} 
-			where $g_i(f(-))=g_i\big(f_1(X_1,\ldots,X_n),\ldots,f_m(X_1,\ldots,X_n)\big)\in S$.
-			\item The map
-			\begin{align*}
-				\Omega=k^m\times(k^\times)^m&\morphism[q]k^m\\
-				(x_1,\ldots,x_m,y_1,\ldots,y_m)&\longmapsto \left(\frac{x_1}{y_1},\ldots,\frac{x_m}{y_m}\right)
-			\end{align*}
-			is continuous. Indeed, let $A\subseteq k^m$, $A=V(g_1,\ldots,g_\ell)$ be Zariski-closed. If $N$ is the maximum total degree of the $g_i$, then $h_1,\ldots,h_\ell$ defined by 
-			\begin{align*}
-				h_i(X_1,\ldots,X_m,Y_1,\ldots,Y_m)=(Y_1\cdots Y_m)^Ng_i\left(\frac{X_1}{Y_1},\ldots,\frac{X_m}{Y_m}\right)\in k[X_1,\ldots,X_m,Y_1,\ldots,Y_m]
-			\end{align*}
-			are polynomials and $q^{-1}(A)=\Omega\cap V(h_1,\ldots,h_\ell)$, as the factor $(Y_1\cdots Y_m)^N$ vanishes nowhere on $\Omega$.
-		\end{alphanumerate}
-		If now $f$ is as in the formulation above, then there are $p_i,q_i\in k[X_1,\ldots,X_n]$ such that in some neighbourhood $U\ni z$ in $Z$ none of the $q_i$ has zeros and $f_i=\frac{p_i}{q_i}$. Then $f|_U$ is equal to the composition of continuous maps
+	\begin{proof}\emph{Step 1.} Let $f\colon Z\to k^m$ where $f=(f_1,\ldots,f_m)$ with $f_i\in S=k[X_1,\ldots,X_n]$. Then $f$ is Zariski-continous. Indeed, let $A\subseteq k^m$ is Zariski-closed, then $A=V(I)$ with the ideal $I\subseteq R$ being generated by $I=(g_1,\ldots,g_\ell)_R$, where $R=k[X_1,\ldots,X_m]$. Then
+	\begin{align*}
+		f^{-1}(A)=V\big(g_1(f(-)),\ldots,g_\ell(f(-))\big)\;,
+	\end{align*} 
+	where $g_i(f(-))=g_i\big(f_1(X_1,\ldots,X_n),\ldots,f_m(X_1,\ldots,X_n)\big)\in S$.
+
+	\emph{Step 2.} The map
+	\begin{align*}
+		\Omega=k^m\times(k^\times)^m&\morphism[q]k^m\\
+		(x_1,\ldots,x_m,y_1,\ldots,y_m)&\longmapsto \left(\frac{x_1}{y_1},\ldots,\frac{x_m}{y_m}\right)
+	\end{align*}
+	is Zariski-continuous. Indeed, let $A\subseteq k^m$, $A=V(g_1,\ldots,g_\ell)$ be Zariski-closed. If $N$ is the maximum total degree of the $g_i$, then $h_1,\ldots,h_\ell$ defined by 
+	\begin{align*}
+		h_i(X_1,\ldots,X_m,Y_1,\ldots,Y_m)=(Y_1\cdots Y_m)^Ng_i\left(\frac{X_1}{Y_1},\ldots,\frac{X_m}{Y_m}\right)\in k[X_1,\ldots,X_m,Y_1,\ldots,Y_m]
+	\end{align*}
+	are polynomials and $q^{-1}(A)=\Omega\cap V(h_1,\ldots,h_\ell)$, as the factor $(Y_1\cdots Y_m)^N$ vanishes nowhere on $\Omega$.
+	
+	\emph{Step 3.} Now let $f_1,\ldots,f_m\colon Z\morphism k$ be be functions which are regular in $z\in Z$ and let $f =(f_1,\ldots,f_m):Z\morphism k^m$. Then there are $p_i,q_i\in k[X_1,\ldots,X_n]$ such that in some neighbourhood $U\ni z$ in $Z$ none of the $q_i$ has zeros and $f_i=\frac{p_i}{q_i}$. Then $f|_U$ is equal to the composition of continuous maps
 		\begin{align*}
 			U\xrightarrow{(p_1,\ldots,p_m,q_1,\ldots,q_m)}k^m\times(k^\times)^m\morphism[q]k^m
 		\end{align*}
@@ -999,7 +1005,7 @@
 		\begin{alphanumerate}
 			\item The subsets $X\subseteq k^n$ occurring here are precisely the affine algebraic varieties in $k^n$.
 			\item In particular, the ring extension $\Oo(X)/k$ is of finite type for such $X$.
-			\item If $X$ is a quasi-affine algebraic variety, $\Oo(X)$ may fail to be of finite type over $k$. See M. Nagata (the Lord of the Rings), \href{http://www.math.tifr.res.in/~publ/ln/tifr31.pdf}{\emph{Lecture on the fourteenth problem of Hilbert}} \cite{nagata}.
+			\item If $X$ is a quasi-affine algebraic variety, $\Oo(X)$ may fail to be of finite type over $k$. See M. Nagata (whom Franke likes to refer to as \emph{the Lord of the Rings}), \href{http://www.math.tifr.res.in/~publ/ln/tifr31.pdf}{\emph{Lecture on the fourteenth problem of Hilbert}} \cite{nagata}.
 		\end{alphanumerate}
 	\end{rem*}
 	\begin{proof}[Proof of Proposition~\reff{prop:primeIdealIso}]
@@ -1081,10 +1087,10 @@
 	\begin{rem}
 	 \begin{alphanumerate}
 	  \item Note that $f\in \Oo(X)$ if and only if $X\morphism[f] k$ is a morphism of varieties in the sense of Definition~\reff{def:varietymorphism}\itememph{a}.
-	  \item Using characterization Definition~\reff{def:varietymorphism}\itememph{b} of morphisms, it is clear that the composition of morphisms is a morphism and that $\id_X$ is a morphism $X\longto X$. Quasi-affine varieties in some $k^n$ with morphisms as in Definition~\reff{def:varietymorphism} and the ordinary composition of maps therefore form a \emph{category} $\cat{Var}_k$ (cf. Definition~\reff{def:category}).
+	  \item Using characterization Definition~\reff{def:varietymorphism}\itememph{b} of morphisms, it is clear that the composition of morphisms is a morphism and that $\id_X$ is a morphism $X\longto X$. Quasi-affine varieties in some $k^n$ with morphisms as in Definition~\reff{def:varietymorphism} and the ordinary composition of maps therefore form a \emph{category} $\cat{Var}/k$ (cf. Definition~\reff{def:category}).
 	 \end{alphanumerate}
 	\end{rem}
-	\begin{prop}\lbl{prop:varietiesIsomAlgebras} For affine algebraic varieties $X\subseteq k^m$ and $Y\subseteq k^n$ we have a bijection% $\Hom_{\cat{Var}_k}(M,N)\cong \Hom_{k\cat{-Alg}}(\Oo(N),\Oo(M))$, that is,
+	\begin{prop}\lbl{prop:varietiesIsomAlgebras} For affine algebraic varieties $X\subseteq k^m$ and $Y\subseteq k^n$ we have a bijection% $\Hom_{\cat{Var}/k}(M,N)\cong \Hom_{\cat{Alg}(k)}(\Oo(N),\Oo(M))$, that is,
 		\begin{align*}
 			\left\{\text{Morphisms }X\morphism[f]Y\right\}&\isomorphism\left\{\begin{array}{c}
 			\text{{Morphisms of }}k\text{-algebras}\\
@@ -1096,16 +1102,16 @@
 		where $Y\morphism[Y_i]k,(\nu_1,\ldots,\nu_n)\mapsto\nu_i$ denotes the projection onto the $i\ordinalth$ coordinate.
 	\end{prop}
 	\begin{rem*}
-		Actually the condition on $X$ may be relaxed to $X$ being quasi-affine (as the proof will show). If $Y$ is quasi-affine, the map $\Hom_{\cat{Var}_k}(X,Y)\morphism \Hom_{k\cat{-Alg}}(\Oo(Y),\Oo(X))$ is still well-defined, but may fail to be bijective. For example, $\Oo(k^n\setminus\{0\})\cong \Oo(k^n)$ from Remark~\reff{rem:NotAffineVariety} doesn't correspond to a morphism of varieties $k^n\morphism k^n\setminus\{0\}$.%to be added!
+		Actually the condition on $X$ may be relaxed to $X$ being quasi-affine (as the proof will show). If $Y$ is quasi-affine, the map $\Hom_{\cat{Var}/k}(X,Y)\morphism \Hom_{\cat{Alg}(k)}(\Oo(Y),\Oo(X))$ is still well-defined, but may fail to be bijective. For example, $\Oo(k^n\setminus\{0\})\cong \Oo(k^n)$ from Remark~\reff{rem:NotAffineVariety} doesn't correspond to a morphism of varieties $k^n\morphism k^n\setminus\{0\}$.%to be added!
 	\end{rem*}
 	\begin{proof}[Proof of Proposition~\reff{prop:varietiesIsomAlgebras}]
 		It is obvious from Definition~\reff{def:varietymorphism}\itememph{b} that the map 
 		\begin{align*}
-			\Hom_{\cat{Var}_k}(X,Y)\morphism \Hom_{k\cat{-Alg}}(\Oo(Y),\Oo(X))
+			\Hom_{\cat{Var}/k}(X,Y)\morphism \Hom_{\cat{Alg}(k)}(\Oo(Y),\Oo(X))
 		\end{align*}
 		 is well-defined. To show that the other direction 
 		 \begin{align*}
-		 	\Hom_{k\cat{-Alg}}(\Oo(Y),\Oo(X))\lmorphism\Hom_{\cat{Var}_k}(X,Y)
+		 	\Hom_{\cat{Alg}(k)}(\Oo(Y),\Oo(X))\lmorphism\Hom_{\cat{Var}/k}(X,Y)
 		 \end{align*}
 		 is well-defined as well, it is sufficient (by Definition~\reff{def:varietymorphism}\itememph{a}) to check that $f_\phi(X)\subseteq k^n$ is in fact a subset of $Y$. To prove this, let $Y=V(\qq)$ for some prime ideal $\qq\in\Spec S$ (with $S=k[Y_1,\ldots,Y_n]$). If $g\in\qq$ and $x\in X$, then
 		\begin{align*}
@@ -1184,9 +1190,7 @@
 	 	If $Z\subseteq k^n$ is Zariski-closed, then any element $f$ of $\Oo(k^n\setminus Z)$ has the form $f=\frac{p}{q}$ where $p,q$ are elements of $R= k[X_1,\ldots, X_n]$ where $V(q)\cap (k^n\setminus Z) = \emptyset$.
 	\end{prop}
 	\begin{proof} 
-		The proof given in the lecture was quite messy, so we decided to do the technical details somewhat differently.
-		
-		Let $\Omega= k^n\setminus Z$. By definition of $\Oo(\Omega)$, there is a non-empty open subset $U\subseteq\Omega$ such that $f=\frac pq$ on $U$, where $p,q\in R$ are polynomials such that $V(q)\cap U=\emptyset$. Let
+		The proof given in the lecture was quite messy, so we decided to do the technical details somewhat differently. Let $\Omega= k^n\setminus Z$. By definition of $\Oo(\Omega)$, there is a non-empty open subset $U\subseteq\Omega$ such that $f=\frac pq$ on $U$, where $p,q\in R$ are polynomials such that $V(q)\cap U=\emptyset$. Let
 		\begin{align*}
 			\frac pq=u\prod_{(\pi)\in\Spec R} \pi^{\nu_\pi}
 		\end{align*}
@@ -1199,9 +1203,9 @@
 		Now let $x\in\Omega$. We find an open neighbourhood $x\in V\subseteq \Omega$ and polynomials $p,q\in R$ such that $f=\frac pq$ on $V$ and $V(q)\cap V=\emptyset$. Since any two non-empty Zariski-open subsets of $k^n$ intersect, we have $pq_0=p_0q$ on the open and thus Zariski-dense subset $U\cap V\subseteq k^n$ (recall that $k^n=V\left(\{0\}\right)$ is irreducible since $\{0\}\subseteq R$ is prime). As polynomials are continuous, we get $pq_0=p_0q$ on all of $k^n$. By Proposition~\reff{prop:varietyOfRadical}, the set of polynomials vanishing on all of $k^n$ is $\sqrt{(0)}=\{0\}$, hence $pq_0=p_0q$ holds as an identity in $R$. Now since $q_0\mid q$ and $V(q)\cap V=\emptyset$ we also have $V(q_0)\cap V=\emptyset$. Therefore, $f=\frac{p_0}{q_0}$ on $V$, proving the assertion.
 	\end{proof}
 	\begin{prop}\lbl{prop:productAffineVarieties}
-		Let $X\subseteq k^m$ and $Y\subseteq k^n$ be quasi-affine algebraic varieties. Then $X\times Y \subseteq k^{m+n}$ is quasi-affine and, together with the two projections $X\overset{p_1}{\longot} X\times Y \morphism[p_2] Y$, $x \mapsfrom (x,y) \mapsto y$, satisfies the universal property of the \emph{product} of $X$ and $Y$ in the category of quasi-affine algebraic varieties over $k$. That is,
+		Let $X\subseteq k^m$ and $Y\subseteq k^n$ be quasi-affine algebraic varieties. Then the cartesian product $X\times Y \subseteq k^{m+n}$ is quasi-affine and, together with the two projections $X\times Y\morphism[p_1]X$, $(x,y)\mapsto x$ and $X\times Y\morphism[p_2]Y$, $(x,y) \mapsto y$, satisfies the universal property of the \defemph{product} of $X$ and $Y$ in the category of quasi-affine algebraic varieties over $k$. That is,
 		\begin{align*}
-			\Hom_{\cat{Var}_k}(T, X\times Y) &\longto \Hom_{\cat{Var}_k}(T,X)\times \Hom_{\cat{Var}_k}(T,Y)\\
+			\Hom_{\cat{Var}/k}(T, X\times Y) &\longto \Hom_{\cat{Var}/k}(T,X)\times \Hom_{\cat{Var}/k}(T,Y)\\
 			\phi &\longmapsto (p_1\phi, p_2\phi)
 		\end{align*}
 		is bijective for any object $T$ of that category. Equivalently, if $T\morphism[f]X$ and $T\morphism[g]Y$ are morphisms, then there is precisely one morphism $T\morphism[\phi]X\times Y$ such that the following diagram commutes
@@ -1226,25 +1230,7 @@
 	\end{prop}
 	\begin{rem*}
 		\begin{alphanumerate}
-		\item 
-			Arbitrary products in any category $\Aa$ must satisfy \begin{align*}
-				\Hom_\Aa\left(T, \prod_{\lambda\in \Lambda} X_\lambda\right) \isomorphism \prod_{\lambda\in\Lambda} \Hom_\Aa(T,X_\lambda)
-			\end{align*} 
-			for any $T$, where $P=\prod_{\lambda\in\Lambda} X_\lambda$ is equipped with morphisms $P\to X_\lambda$. This universal properties uniquely determines $P$ if it exists. 
-			
-			The empty product is the \emph{final object}, characterized up to unique isomorphism by the requirement that $\Hom_\Aa(T,F)$ has for every object $T$ of $\Aa$ precisely one element. In the categories of sets, abelian groups, $R$-modules, rings the products are given by the usual (possibly infinite) product set, together with the product structures and the projections to each factor. The empty product in the category of varieties is the one-point variety.
-		\item 
-			A \emph{coproduct} or \emph{dual product} $\coprod_{\lambda\in \Lambda} X_\lambda$ in $\Aa$ is an object of $\Aa$ together with the morphisms $X_\lambda \morphism[i_\lambda] \coprod_{\lambda\in\Lambda} X_\lambda$ such that the universal property is fulfilled, i.e. 
-			\begin{align*}
-				\Hom_\Aa\left(\coprod_{\lambda\in\Lambda} X_\lambda, T\right) &\isomorphism \prod_{\lambda\in\Lambda} \Hom_\Aa(X_\lambda, T)\\
-				f &\longmapsto (fi_\lambda)_{\lambda\in\Lambda}
-			\end{align*}
-			is bijective. 
-			
-			In particular, empty coproducts are \emph{initial} objects $I$ characterized by $\#\Hom_\Aa(I,T) = 1$ for any object $T$. In the category of sets, groups, abelian groups, $R$-modules, rings the initial objects are $\emptyset$, $\{0\}$, $\{0\}$, $\{0\}$, $\IZ$ and $X\amalg Y$ is the disjoint union of $X$ and $Y$, (complicated), $X\times Y$, $X\times Y$, $X\otimes_\IZ Y$. If $\Lambda$ is arbitrary and for abelian groups or $R$-modules, 
-			\begin{align*}
-				\coprod_{\lambda\in \Lambda}X_\lambda = \left\{(x_\lambda) \in \prod_{\lambda\in \Lambda} X_\lambda\st x_\lambda = 0 \text{ for all but finitely many } \lambda \right\}\;.
-			\end{align*}
+		\item Products can be defined in arbitrary categories, cf.\ Definition~\reff{def:productsAndCoproducts}
 		\item 
 			The tensor product $V\otimes_k W$, together with $V\times W\morphism[\otimes] V\otimes_k W$, $(v,w) \mapsto v\otimes w$ (which must be $k$-bilinear) is characterized by the universal property
 			\begin{align*}
@@ -1266,7 +1252,6 @@
 				\draw[->, dashed] (c) -- (b) node[pos=0.5, below right] {$\exists!\ f$};
 			\end{diagram*}
 	\end{alphanumerate}
-
 	\end{rem*}
 	\begin{proof}[Proof of Proposition~\reff{prop:productAffineVarieties}]
 		Let $X$ and $Y$ be affine $X=V(\pp)$, $Y=V(\qq)$. Then $X\times Y=V(I)$ where $I$ is the ideal generated by $\left\{(x,y) \mapsto f(x)\st f\in \pp\right\}$ and $\left\{(x,y) \mapsto g(y)\st g\in \qq\right\}$. Thus, $X\times Y$ is closed. Let $X\times Y = A\cup B$ with $A$ and $B$ closed in $X\times Y$. Then for each $y\in Y$ we have $X = A_y\cup B_y$ where $A_y=\left\{ x\in X\st (x,y)\in A \right\}$ and $B_y = \left\{x\in X \st (x,y)\in B\right\}$ are easily seen to be closed. As $X$ is irreducible, this implies that for each $y\in Y$ the condition $A_y = X$ or $B_y = X$ are satisfied. Thus, $Y=\snake A\cup \snake B$ where $\snake A = \left\{ y\in A_y\st A_y=X\right\}$ and $\snake B =\left\{y\in Y\st B_y = x\right\}$ turn out to be closed, e.g. $\snake A = \bigcap_{x\in X} A^{(x)}$ with $A^{(x)} =\left\{y\in Y\st (x,y)\in S\right\}$. Thus, $Y= \snake A$ or $Y=\snake B$ and $X\times Y = A$ or $X\times Y = B$, proving that $X\times Y$ is irreducible. 
@@ -1501,7 +1486,7 @@
 		\end{alphanumerate}
 	\end{prop}
 	\begin{rem*}
-		Recall $\Aa \morphism[F] \Bb$ faithful (fully faithful) if $\Hom_\Aa(X, Y)\morphism[F] \Hom_\Bb(F(X), F(Y))$ is injective (bijective). The essential image is the set (or class?) of all objects of $\Bb$ isomorphic to $FX$ for some object $X$ of $\Aa$. 
+		Recall ${\cat A} \morphism[F] {\cat B}$ faithful (fully faithful) if $\Hom_{\cat A}(X, Y)\morphism[F] \Hom_{\cat B}(F(X), F(Y))$ is injective (bijective). The essential image is the set (or class?) of all objects of ${\cat B}$ isomorphic to $FX$ for some object $X$ of ${\cat A}$. 
 	\end{rem*}
 	\begin{rem*}
 		The functors from Proposition~\reff{prop:modulesOfLocalizations}\itememph{a} and \itememph{c} form an \emph{adjoint} pair of functors (cf. Definition~\reff{def:adjoint})
@@ -1680,6 +1665,7 @@
 		\end{align*}
 		where $\KK(\pp)$ denotes the quotient field of $R/\pp$ (cf. Proposition~\reff{prop:QuotientFieldOfR/p})
 	\end{prop}
+	We need to send two lemmas in advance.
 	\begin{lem}\lbl{lem:prop2.4.1forMaximals}
 		This holds when $\pp_2$ is a maximal ideal.
 	\end{lem}
@@ -1711,7 +1697,7 @@
 		hence $\trdeg(K(X)/k)\geq d$.
 	\end{proof}
 	\begin{cor}
-		If $k$ is algebraically closed, $\dim(k^n) = n$.
+		If $k$ is algebraically closed, then $\dim(k^n) = n$.
 	\end{cor}
 	\begin{proof}
 		The fact that $\dim (k^n) \geq n$ follows from $k^n\supsetneq k^{n-1}\times\{0\}\supsetneq \ldots\supseteq k\times\{0\}^{n-1}\supsetneq \{0\}^n$ being irreducible subsets (Remark~\reff{rem:chainOfIrreducibles}). Putting $X=k^n$ we have $\Oo(X)=k[X_1,\ldots,X_n]$ by Proposition~\reff{prop:primeIdealIso}, hence $K(X) = k(X_1,\ldots,X_n)$ has transcendence degree $n$ over $k$ and thus $\dim(k^n)\leq n$  by Corollary~\reff{cor:transcendenceDegreeDimension}.
@@ -1773,7 +1759,7 @@
 		sending $(\lambda,W)/_\sim$ to $(f^*\lambda,f^{-1}W)/_\sim$ (where $W\subseteq Y$ is an open neighbourhood of $y$ and $\lambda\in\Oo_Y(W)$).
 		\begin{fact}
 			\begin{alphanumerate}
-			\item The preimage of $\mm_{X,x}\subseteq\Oo_{X,x}$ under $f^*$ is $(f^*)^{-1}\mm_{X,x}=\mm_{Y,y}$ (where $\mm_{X,x}$, $\mm_{Y,y}$ denote the maximal ideals of the stalks $\Oo_{X,x}$ and $\Oo_{Y,y}$).
+			\item The preimage of $\mm_{X,x}\subseteq\Oo_{X,x}$ under $f^*$ is $(f^*)^{-1}\mm_{X,x}=\mm_{Y,y}$, where $\mm_{X,x}$, $\mm_{Y,y}$ denote the maximal ideals of the stalks $\Oo_{X,x}$ and $\Oo_{Y,y}$.
 			\item If $I\subseteq \Oo_X(X)$ is an ideal, then $V\big((f^*)^{-1}I\big)=\ov{f(V(I))}$ (the closure with respect to the Zariski topology on $Y$). 
 			
 			If $V(I)$ is irreducible in $X$ then so is $f(V(I))$ in $Y$ and the diagram (of sets)
@@ -1806,10 +1792,10 @@
 				\node[ob] (or1) at ($(or.west) + (0,1.5)$) [right] {\scriptsize{$\snake \pp=\left\{f\in B\st f|_K=0\right\}$}};
 				\node[ob] (ol2) at ($(ol.east) + (0,1)$) [left] {\scriptsize{$K=V\left(\snake \pp\right)$}};
 				\node[ob] (or2) at ($(or.west) + (0,1)$) [right] {\scriptsize{$\snake \pp$}};
-				\node[ob] (oll) at ($(ol.south) + (-3.5,0)$) [above]{\scriptsize{$K$}};
-				\node[ob] (ull) at ($(ul.north) + (-3.5,0)$) [below]{\scriptsize{$L=\ov{f(K)}$}};
-				\node[ob] (orr) at ($(or.south) + (3.5,0)$) [above]{\scriptsize{$\snake \pp$}};
-				\node[ob] (urr) at ($(ur.north) + (3.5,0)$) [below]{\scriptsize{$\pp=(f^*)^{-1}(\snake \pp)$}};
+				\node[ob] (oll) at ($(ol.south) + (-3.4,0)$) [above]{\scriptsize{$K$}};
+				\node[ob] (ull) at ($(ul.north) + (-3.4,0)$) [below]{\scriptsize{$L=\ov{f(K)}$}};
+				\node[ob] (orr) at ($(or.south) + (3.4,0)$) [above]{\scriptsize{$\snake \pp$}};
+				\node[ob] (urr) at ($(ur.north) + (3.4,0)$) [below]{\scriptsize{$\pp=(f^*)^{-1}(\snake \pp)$}};
 				\scriptsize
 				\draw[->](ul) -- (ur) node[pos=0.5, above=-0.25ex] {$\sim$};
 				\draw[->](ol) -- (or) node[pos=0.5, above=-0.25ex] {$\sim$};
@@ -1891,7 +1877,7 @@
 		Finally, part \itememph{c}. Let $\pp\subseteq \qq\subseteq A$ be a chain of prime ideals in $A$ and let $\snake \pp\in \Spec B$ be above $\pp$. Replacing $A\subseteq B$ by $\snake A = A/\pp\subseteq  B/\snake \pp=\snake B $, it suffices to find $\rr\in \Spec \snake B$ such that $\rr\cap \snake A = \qq/\pp$ (as the preimage $\snake \qq$ of $\rr$ under $B\to B/\snake \pp$ will have the desired property). As $\snake A\subseteq \snake B$ still is an integral ring extension, the existence of $\rr$ follows from \itememph{a}.
 	\end{proof}
 	\begin{proof}[Proof out of the blue of $\dim (X) = \trdeg (K(X)/k)$, for $X$ affine]
-		By Noether Normalization (Theorem~\reff{thm:NoetherNormalization}) there are $f_1,\ldots, f_d\in \Oo(X)$ algebraically independent over $k$, such that the ring extension $\Oo(X)/k[f_1,\ldots,f_d]$ is integral. Thus $\trdeg (K(X)/k) = d$ as the $f$ form a transcendence basis. By Theorem~\reff{thm:goingupInIntegralRingExtensions}\itememph{c}, going-up holds for $k[X_1,\ldots, X_d]\subseteq \Oo(X)$. The chain 
+		By Noether normalization (Theorem~\reff{thm:NoetherNormalization}) there are $f_1,\ldots, f_d\in \Oo(X)$ algebraically independent over $k$, such that the ring extension $\Oo(X)/k[f_1,\ldots,f_d]$ is integral. Thus $\trdeg (K(X)/k) = d$ as the $f$ form a transcendence basis. By Theorem~\reff{thm:goingupInIntegralRingExtensions}\itememph{c}, going-up holds for $k[X_1,\ldots, X_d]\subseteq \Oo(X)$. The chain 
 		\begin{align*}\lbl{eq:idealchain}\tag{$*$}
 			\pp_0=\{0\} \subsetneq \pp_1 = (X_1)\subsetneq \pp_2=(X_1,X_2)\subsetneq\ldots\subsetneq \pp_d = (X_1,\ldots, X_d)
 		\end{align*}
@@ -2058,9 +2044,9 @@
 		\begin{align*}
 			0\leq\trdeg(\KK(\mm)/k)<\trdeg(\KK(\pp_1)/k)<\ldots<\trdeg(\KK(\pp_\ell)/k)\leq\trdeg(K/k)\;,
 		\end{align*}
-		hence $\hoehe(\mm) \leq \trdeg(K/k)$. 	For the opposite inequality let $x_1,\ldots,x_n\in B$ be algebraically independent over $k$ such that $B$ is finite over $k[x_1,\ldots,x_n]$. By the Noether Normalization Theorem it is possible to find such elements. Let $\xi_i$ denote the image of $x_i$ in $\KK(\mm) = B/\mm$. As this field is finite over $k$ (Nullstellensatz), there are $P_i\in k[X]$ such that $P_i(\xi_i) = 0$ in $\KK(\mm)$. Let $y_i=P_i(x_i)$. The $y_i$ are algebraically independent over $k$ since the $x_i$ are, and each $x_i$ is integral over $A=k[y_1,\ldots,y_n]$ as $P_i(x_i)-y_i=0$.  Thus, $B$ is integral over $A$ since $B$ is integral over $k[x_1,\ldots,x_n]$, the latter being integral over $A$. Moreover, $P(\xi_i)=0$ implies $y_i\in\mm$. If $\nn = \mm\cap A$ we thus obtain $\nn=(y_1,\ldots,y_n)_A$, as $\nn$ contains $y_1,\ldots,y_n$ and $(y_1,\ldots,y_n)_A\subseteq A$ is a maximal ideal. We consider the chain of prime ideals $\nn = \pp_0\supsetneq \pp_1\supsetneq\ldots\supsetneq \pp_n = \{0\}$ with $\pp_i = ( y_{i+1},\ldots,y_n)_A$ in $A$. This may be lifted to a chain $\mm=\qq_0\supsetneq \qq_1\supsetneq\ldots\supsetneq \qq_n$ of prime ideals $\qq_i\in\Spec B$ because $A$ is factorial, hence normal and by Theorem~\reff{thm:goingdownRingExtension}, going down holds for $B/A$. Thus $\hoehe(\mm) \geq n$. But $\trdeg(K/k) = n$ as the $y_i$ form (a maximal algebraically independent set and thus) a transcendence basis.
+		hence $\hoehe(\mm) \leq \trdeg(K/k)$. 	For the opposite inequality let $x_1,\ldots,x_n\in B$ be algebraically independent over $k$ such that $B$ is finite over $k[x_1,\ldots,x_n]$. By the Noether normalization theorem it is possible to find such elements. Let $\xi_i$ denote the image of $x_i$ in $\KK(\mm) = B/\mm$. As this field is finite over $k$ (Nullstellensatz), there are $P_i\in k[X]$ such that $P_i(\xi_i) = 0$ in $\KK(\mm)$. Let $y_i=P_i(x_i)$. The $y_i$ are algebraically independent over $k$ since the $x_i$ are, and each $x_i$ is integral over $A=k[y_1,\ldots,y_n]$ as $P_i(x_i)-y_i=0$.  Thus, $B$ is integral over $A$ since $B$ is integral over $k[x_1,\ldots,x_n]$, the latter being integral over $A$. Moreover, $P(\xi_i)=0$ implies $y_i\in\mm$. If $\nn = \mm\cap A$ we thus obtain $\nn=(y_1,\ldots,y_n)_A$, as $\nn$ contains $y_1,\ldots,y_n$ and $(y_1,\ldots,y_n)_A\subseteq A$ is a maximal ideal. We consider the chain of prime ideals $\nn = \pp_0\supsetneq \pp_1\supsetneq\ldots\supsetneq \pp_n = \{0\}$ with $\pp_i = ( y_{i+1},\ldots,y_n)_A$ in $A$. This may be lifted to a chain $\mm=\qq_0\supsetneq \qq_1\supsetneq\ldots\supsetneq \qq_n$ of prime ideals $\qq_i\in\Spec B$ because $A$ is factorial, hence normal and by Theorem~\reff{thm:goingdownRingExtension}, going down holds for $B/A$. Thus $\hoehe(\mm) \geq n$. But $\trdeg(K/k) = n$ as the $y_i$ form (a maximal algebraically independent set and thus) a transcendence basis.
 		
-		For the case of general prime ideals $\pp$ we use reduction to the case just established, similar to the proof of Proposition~\reff{prop:transcendenceDegreeMonotonic}. Let $x_1,\ldots,x_d\in B$ such that their images $\xi_i$ in $B/\pp$ are algebraically independent and such that $B/\pp$ is finite over $k[\xi_1,\ldots,\xi_d]$. It is possible to find such elements by Noether Normalization. Let $R=k[x_1,\ldots,x_d]\subseteq A$, $S = R\setminus\{0\}$, $\snake B = B_S$, $\snake k = R_S = k(x_1,\ldots, x_d)$. Then $\snake B$ is a domain (being a subring of the quotient field of $B$) and $\snake B/\snake k$ is of finite type. Let $\snake\pp = \pp \snake B$. By our description of prime ideals in localizations, there is a one-to-one correspondence between the elements $\qq\subseteq\pp$ of $\Spec B$ (note that $\pp$ is disjoint from $S$ as the $\xi_i$ are algebraically independent) and the prime ideals $\snake\qq\subseteq\snake{\pp}$ of $\snake B$ via $\qq = \snake \qq\cap B$ and $\snake \qq = \qq \snake B$. Thus $\hoehe(\pp) = \hoehe(\snake\pp)$. On the other side, $B/\pp$ is finite over $R$, hence $\snake B/\snake \pp$ is finite-dimensional as a vector space over $\snake k$, hence a finite $\snake k$-extension. Thus $\snake \pp$ is a maximal ideal and $\hoehe(\pp) = \hoehe(\snake \pp) = \trdeg(K/\snake k)$ (note that $K$ is the quotient field of $\snake B$ as well). On the other side, it is possible to extend the ($k$-algebraically independent) $x_1,\ldots,x_d$ to a maximal $k$-algebraically independent subset $x_1,\ldots,x_n\in B$, that is, to a transcendence basis of $K/k$. We claim that the $x_{d+1},\ldots,x_n$ form a transcendence basis of $K$ over $\snake k$. If we believe this for the moment, 
+		For the case of general prime ideals $\pp$ we use reduction to the case just established, similar to the proof of Proposition~\reff{prop:transcendenceDegreeMonotonic}. Let $x_1,\ldots,x_d\in B$ such that their images $\xi_i$ in $B/\pp$ are algebraically independent and such that $B/\pp$ is finite over $k[\xi_1,\ldots,\xi_d]$. It is possible to find such elements by Noether normalization. Let $R=k[x_1,\ldots,x_d]\subseteq A$, $S = R\setminus\{0\}$, $\snake B = B_S$, $\snake k = R_S = k(x_1,\ldots, x_d)$. Then $\snake B$ is a domain (being a subring of the quotient field of $B$) and $\snake B/\snake k$ is of finite type. Let $\snake\pp = \pp \snake B$. By our description of prime ideals in localizations, there is a one-to-one correspondence between the elements $\qq\subseteq\pp$ of $\Spec B$ (note that $\pp$ is disjoint from $S$ as the $\xi_i$ are algebraically independent) and the prime ideals $\snake\qq\subseteq\snake{\pp}$ of $\snake B$ via $\qq = \snake \qq\cap B$ and $\snake \qq = \qq \snake B$. Thus $\hoehe(\pp) = \hoehe(\snake\pp)$. On the other side, $B/\pp$ is finite over $R$, hence $\snake B/\snake \pp$ is finite-dimensional as a vector space over $\snake k$, hence a finite $\snake k$-extension. Thus $\snake \pp$ is a maximal ideal and $\hoehe(\pp) = \hoehe(\snake \pp) = \trdeg(K/\snake k)$ (note that $K$ is the quotient field of $\snake B$ as well). On the other side, it is possible to extend the ($k$-algebraically independent) $x_1,\ldots,x_d$ to a maximal $k$-algebraically independent subset $x_1,\ldots,x_n\in B$, that is, to a transcendence basis of $K/k$. We claim that the $x_{d+1},\ldots,x_n$ form a transcendence basis of $K$ over $\snake k$. If we believe this for the moment, 
 		\begin{align*}
 			\hoehe(\pp) = \trdeg(K/\snake k) = n-d = \trdeg(K/k) -\trdeg(\KK(\pp)/k)
 		\end{align*}
@@ -2302,11 +2288,11 @@
 	\end{proof}
 	\section{First steps in category theory}
 	\begin{defi}\lbl{def:category}
-		A \defemph{category} is a triple $\Aa = (O,M,s,t,\circ)$ consisting of five elements:
+		A \defemph{category} is a triple ${\cat A} = (O,M,s,t,\circ)$ consisting of five elements:
 		\begin{alphanumerate}
-			\item A class of \defemph{objects} $O=\Ob(\Aa)$.
+			\item A class of \defemph{objects} $O=\Ob({\cat A})$.
 			\item A class $M$ of \defemph{morphisms}.
-			\item Maps $O\overset{s}{\longot} M \morphism[t] O$ where we put $\Hom_\Aa(X,Y)$ for $\left\{a\in M\st s(a) = X, \ t(a) = Y\right\}$.
+			\item Maps $O\overset{s}{\longot} M \morphism[t] O$ where we put $\Hom_{\cat A}(X,Y)$ for $\left\{a\in M\st s(a) = X, \ t(a) = Y\right\}$.
 			\item A \defemph{composition}
 			\begin{align*}
 			\circ\colon \left\{(a,b)\in M\times M \st t(a) = s(b)\right\} &\longto M\\
@@ -2315,7 +2301,7 @@
 			with the following conditions:
 			\begin{alphanumerate}
 				\item[\itememph{\alpha}] $c\circ(b\circ a) = (c\circ b) \circ a$
-				\item[\itememph{\beta}] For every object $X\in O$, there is a unique $\id_X\in \Hom_\Aa(X,X)$ such that $f\circ \id_X = f$ and $\id_X\circ g = g$ for morphisms $X\morphism[f] T$, $S\morphism[g] X$.
+				\item[\itememph{\beta}] For every object $X\in O$, there is a unique $\id_X\in \Hom_{\cat A}(X,X)$ such that $f\circ \id_X = f$ and $\id_X\circ g = g$ for morphisms $X\morphism[f] T$, $S\morphism[g] X$.
 			\end{alphanumerate}
 		\end{alphanumerate}
 	\end{defi}
@@ -2332,38 +2318,38 @@
 	\end{example*}
 	\begin{rem*}
 		\begin{alphanumerate}
-			\item It is normally assumed, that $\Hom_\Aa(X,Y)$ form a set.
+			\item It is normally assumed, that $\Hom_{\cat A}(X,Y)$ form a set.
 			\item If the classes of objects and morphisms are sets, the category is called \emph{small}.
 		\end{alphanumerate}
 	\end{rem*}
 	\begin{defi}
-		Let $\Aa$ be some category, $X,Y\in\Ob(\Aa)$ be objects of $\Aa$ and $X\morphism[f]Y$ a morphism in $\Aa$. We say that $f$ is an \defemph{isomorphism} in $\Aa$ if there is a morphism $g\in\Hom_\Aa(Y,X)$ which is both left- and right-inverse (i.e. $gf=\id_X$ and $fg=\id_Y$).
+		Let ${\cat A}$ be some category, $X,Y\in\Ob({\cat A})$ objects of ${\cat A}$ and $X\morphism[f]Y$ a morphism in ${\cat A}$. We say that $f$ is an \defemph{isomorphism} in ${\cat A}$ if there is a morphism $g\in\Hom_{\cat A}(Y,X)$ which is both left- and right-inverse (i.e. $gf=\id_X$ and $fg=\id_Y$).
 	\end{defi}
 	\begin{defi}
 		\begin{alphanumerate}
-			\item A \defemph{covariant functor} $F\colon\Aa\to\Bb$ between categories consists of a map associating an object $F(X)\in\Ob(\Bb)$ to each $X\in\Ob(\Aa)$ and, for objects $X,Y\in\Ob(\Aa)$, a map 
+			\item A \defemph{covariant functor} $F\colon{\cat A}\to{\cat B}$ between categories consists of a map associating an object $F(X)\in\Ob({\cat B})$ to each $X\in\Ob({\cat A})$ and, for objects $X,Y\in\Ob({\cat A})$, a map 
 			\begin{align*}
-				\Hom_\Aa(X,Y)\morphism[F]\Hom_\Bb(F(X),F(Y))
+				\Hom_{\cat A}(X,Y)\morphism[F]\Hom_{\cat B}(F(X),F(Y))
 			\end{align*}
 			such that $F(\id_X)=\id_{F(X)}$ and $F(\alpha\circ\beta)=F(\alpha)\circ F(\beta)$ for composable morphisms $X\morphism[\alpha]Y\morphism[\beta]Z$. 
 			\item For a \defemph{contravariant functor}, one requires instead that $F$ maps 
 			\begin{align*}
-				\Hom_\Aa(X,Y)\morphism[F]\Hom_\Bb(F(Y),F(X))\;,
+				\Hom_{\cat A}(X,Y)\morphism[F]\Hom_{\cat B}(F(Y),F(X))\;,
 			\end{align*}
 			$F(\id_X)=\id_{F(X)}$ and $F(\alpha\circ\beta)=F(\beta)\circ F(\alpha)$.
 		\end{alphanumerate}
 	\end{defi}
 	\begin{defi}\lbl{def:opCategory}
-		For $\Aa$ a category, let $\Aa^\op$ (the \defemph{dual} or \defemph{opposite} category) be $\Aa$ with every morphism reversed. That is, $\Ob(\Aa^\op)=\Ob(\Aa)$ and $\Hom_{\Aa^\op}(X,Y)=\Hom_\Aa(Y,X)$ for all $X,Y\in\Ob(\Aa)$ and the composition $\alpha\circ\beta$ in $\Aa^\op$ is given by $\beta\circ\alpha$ in $\Aa$ (with $X\morphism[\alpha]Y\morphism[\beta]Z$ in $\Aa$, hence $Z\morphism[\beta]Y\morphism[\alpha]X$ in $\Aa^\op$). 
+		For a category ${\cat A}$, let ${\cat A}^\op$ (the \defemph{dual} or \defemph{opposite} category) be ${\cat A}$ with every morphism reversed. That is, $\Ob({\cat A}^\op)=\Ob({\cat A})$ and $\Hom_{{\cat A}^\op}(X,Y)=\Hom_{\cat A}(Y,X)$ for all $X,Y\in\Ob({\cat A})$ and the composition $\alpha\circ\beta$ in ${\cat A}^\op$ is given by $\beta\circ\alpha$ in ${\cat A}$ (with $X\morphism[\alpha]Y\morphism[\beta]Z$ in ${\cat A}$, hence $Z\morphism[\beta]Y\morphism[\alpha]X$ in ${\cat A}^\op$). 
 	\end{defi}
 	\begin{rem*}
-		Obviously, each covariant functor $\Aa\to\Bb$ corresponds to a covariant functor $\Aa^\op\to\Bb^\op$ and a contravariant functor $\Aa^\op\to\Bb$. Together with $(\Aa^\op)^\op=\Aa$, the reader will easily find two sets of each four similar correspondences.
+		Obviously, each covariant functor ${\cat A}\to{\cat B}$ corresponds to a covariant functor ${\cat A}^\op\to{\cat B}^\op$ and a contravariant functor ${\cat A}^\op\to{\cat B}$. Together with $({\cat A}^\op)^\op={\cat A}$, the reader will easily find two sets of each four similar correspondences.
 	\end{rem*}
 	\begin{defi}\lbl{def:functor}
-		A (co- or contravariant) functor $F\colon\Aa\to\Bb$ is an \defemph{equivalence of categories} if it induces bijections $\Hom_\Aa(X,Y)\isomorphism\Hom_\Bb(F(X),F(Y))$ resp. $\Hom_\Bb(F(Y),F(X))$ and if every object $Y\in\Ob(\Bb)$ is $\Bb$-isomorphic to $F(X)$ for some $X\in\Ob(\Aa)$.
+		A (co- or contravariant) functor $F\colon{\cat A}\to{\cat B}$ is an \defemph{equivalence of categories} if it induces bijections $\Hom_{\cat A}(X,Y)\isomorphism\Hom_{\cat B}(F(X),F(Y))$ resp. $\Hom_{\cat B}(F(Y),F(X))$ and if every object $Y\in\Ob({\cat B})$ is ${\cat B}$-isomorphic to $F(X)$ for some $X\in\Ob({\cat A})$.
 	\end{defi}
 	\begin{defi}\lbl{def:functormorphism}
-		A \defemph{functormorphism} (or \defemph{natural transformation}) between two functors $F,G\colon\Aa\to\Bb$ (both covariant or both contravariant) is a map $\phi$ associating a morphism $F(X)\morphism[\phi_X]G(X)$ to each $X\in\Ob(\Aa)$ such that for any morphism $X\morphism[\alpha]Y$ in $\Aa$ the diagram
+		A \defemph{functormorphism} (or \defemph{natural transformation}) between two functors $F,G\colon{\cat A}\to{\cat B}$ (both covariant or both contravariant) is a map $\phi$ associating a morphism $F(X)\morphism[\phi_X]G(X)$ to each $X\in\Ob({\cat A})$ such that for any morphism $X\morphism[\alpha]Y$ in ${\cat A}$ the diagram
 		\begin{center}
 			\begin{minipage}{0.35\textwidth}
 				\centering
@@ -2402,18 +2388,18 @@
 		commutes.
 	\end{defi}
 	\begin{rem*}
-		If $F\morphism[\phi]G\morphism[\psi]H$ are functormorphisms, then so is $F\xrightarrow{\psi\circ\phi}H$ defined by $(\psi\circ\phi)_X=\psi_X\circ\phi_X$. Obviously, there is a functormorphism $F\morphism[\id_F]F$ given by $\left(\id_F\right)_X=\id_F(X)$. We thus have a \emph{category} $\Funct(\Aa,\Bb)$ of co- resp. contravariant functors $\Aa\morphism[F]\Bb$ between given categories $\Aa,\Bb$.
+		If $F\morphism[\phi]G\morphism[\psi]H$ are functormorphisms, then so is $F\xrightarrow{\psi\circ\phi}H$ defined by $(\psi\circ\phi)_X=\psi_X\circ\phi_X$. Obviously, there is a functormorphism $F\morphism[\id_F]F$ given by $\left(\id_F\right)_X=\id_F(X)$. We thus have a \emph{category} $\Funct({\cat A},{\cat B})$ of co- resp. contravariant functors ${\cat A}\morphism[F]{\cat B}$ between given categories ${\cat A},{\cat B}$.
 	\end{rem*}
 	 \begin{defi}\lbl{def:faithful}
-	 	Let $F\colon\Aa \to \Bb$ be co- or contravariant functor. 
+	 	Let $F\colon{\cat A} \to {\cat B}$ be co- or contravariant functor. 
 	 	\begin{alphanumerate}
-	 		\item We call $F$ \defemph{faithful} (respectively \defemph{fully faithful}) if for objects $X, Y$ of $\Aa$ the map $\Hom_\Aa(X,Y) \morphism[F] \Hom_\Bb(FX, FY)$ (respectively $\Hom_\Aa(X,Y) \morphism[F] \Hom_\Bb(FY,FX)$ if $F$ is contravariant) is injective (if $F$ is to be faithful) or bijective (if $F$ is to be fully faithful). 
-	 		\item It is \defemph{essentially surjective} if every object $M$ of $\Bb$ is isomorphic to $FX$ for some $X\in \Aa$. 
-	 		\item $F$ is an \defemph{equivalence of categories}, if it is fully faithful and essentially surjective. The \defemph{essential image} of $F$ is the set (or class?) of all objects of $\Bb$ isomorphic to $FX$ for some object $X$ of $\Aa$.
+	 		\item We call $F$ \defemph{faithful} (respectively \defemph{fully faithful}) if for objects $X, Y$ of ${\cat A}$ the map $\Hom_{\cat A}(X,Y) \morphism[F] \Hom_{\cat B}(FX, FY)$ (respectively $\Hom_{\cat A}(X,Y) \morphism[F] \Hom_{\cat B}(FY,FX)$ if $F$ is contravariant) is injective (if $F$ is to be faithful) or bijective (if $F$ is to be fully faithful). 
+	 		\item It is \defemph{essentially surjective} if every object $M$ of ${\cat B}$ is isomorphic to $FX$ for some $X\in {\cat A}$. 
+	 		\item $F$ is an \defemph{equivalence of categories}, if it is fully faithful and essentially surjective. The \defemph{essential image} of $F$ is the set (or class?) of all objects of ${\cat B}$ isomorphic to $FX$ for some object $X$ of ${\cat A}$.
 	 	\end{alphanumerate}
 	 \end{defi}
 	 \begin{rem*}
-	 	Assuming the axiom of choice (for classes!), a functor $\Aa \morphism[F] \Bb$ is an equivalence of categories iff there is an inverse functor $\Bb \morphism[G] \Aa$  (contravariant iff $F$ is) such that there are functormorphisms $FG \cong \id_\Bb$ and $GF \cong \id_\Aa$. To construct $G$, chose for any object $M$ of $\Bb$ an object $X_M$ of $\Aa$ with an isomorphism $j_M\colon F(X_M) \isomorphism X$. Put $G(M) = X_M$ and $G(M\morphism[\mu] N)$ is determined by the commutativity of 
+	 	Assuming the axiom of choice (for classes!), a functor ${\cat A} \morphism[F] {\cat B}$ is an equivalence of categories iff there is an inverse functor ${\cat B} \morphism[G] {\cat A}$  (contravariant iff $F$ is) such that there are functormorphisms $FG \cong \id_{\cat B}$ and $GF \cong \id_{\cat A}$. To construct $G$, chose for any object $M$ of ${\cat B}$ an object $X_M$ of ${\cat A}$ with an isomorphism $j_M\colon F(X_M) \isomorphism X$. Put $G(M) = X_M$ and $G(M\morphism[\mu] N)$ is determined by the commutativity of 
 	 	\begin{diagram*}
 	 		\node[ob] (a) at (0,1.5) {$F(G(M))$};
 	 		\node[ob] (b) at (3,(1.5) {$F(G(N))$};
@@ -2427,7 +2413,7 @@
 	 	\end{diagram*}
 	 \end{rem*}
 	\begin{fact}\lbl{fact:isomorphismFaithful}
-		If $\Aa\morphism[F] \Bb$ is an equivalence of categories (or just fully faithful) and $X\morphism[\phi]Y$ a morphism in $\Aa$, then $\phi$ is an isomorphism in $\Aa$ iff $F(\phi)$ is isomorphism in $\Bb$. 
+		If ${\cat A}\morphism[F] {\cat B}$ is an equivalence of categories (or just fully faithful) and $X\morphism[\phi]Y$ a morphism in ${\cat A}$, then $\phi$ is an isomorphism in ${\cat A}$ iff $F(\phi)$ is isomorphism in ${\cat B}$. 
 	\end{fact}
 	\begin{proof}
 		If $\phi$ is an isomorphism and $\psi$ its inverse, then $F(\psi)$ is inverse to $F(\phi)$ as $F(\phi)F(\psi)=F(\phi\psi)=F(\id_Y)=\id_{F(Y)}$ and similarly $F(\psi)F(\phi)=\id_{F(X)}$.
@@ -2435,31 +2421,64 @@
 		Conversely, $f=F(\phi)$ is an isomorphism and $F(Y) \morphism[g] F(X)$ its inverse, then $g= F(\gamma)$ for a unique $Y\morphism[\psi] X$ as $F$ is fully faithful. Then $F(\phi\gamma)=fg=\id_{F(Y)}=F(\id_Y)$, hence $\phi\psi=\id_Y$ by full faithfulness again. Similarly, $\psi\phi=\id_X$.
 	\end{proof}
 	\begin{defi}\lbl{def:subcategory}
-		A category $\Cc$ is a \defemph{subcategory} of $\Bb$ iff the class of objects of $\Cc$ is a subclass of the class of objects of $\Bb$, $\Hom_\Cc(X,Y) \subseteq \Hom_\Bb(X,Y)$ for all objects $X,Y$ of $\Cc$ respecting compositions of morphisms and such that every $\id_X\in\Hom_\Cc(X,X)$ is also the identity in $\Hom_\Bb(X,X)$. 
+		A category ${\cat C}$ is a \defemph{subcategory} of ${\cat B}$ iff the class of objects of ${\cat C}$ is a subclass of the class of objects of ${\cat B}$, $\Hom_{\cat C}(X,Y) \subseteq \Hom_{\cat B}(X,Y)$ for all objects $X,Y$ of ${\cat C}$ respecting compositions of morphisms and such that every $\id_X\in\Hom_{\cat C}(X,X)$ is also the identity in $\Hom_{\cat B}(X,X)$. 
 		
-		Then there is an inclusion functor $\Cc\hookrightarrow\Bb$ given by identities on objects and morphisms which is faithful. It is fully faithful iff $\Hom_\Cc(X,Y)=\Hom_\Bb(X,Y)$ for all objects $X,Y$ of $\Cc$. In this case, $\Cc$ is said to be a \defemph{full subcategory} of $\Bb$. 
+		Then there is an inclusion functor ${\cat C}\hookrightarrow{\cat B}$ given by identities on objects and morphisms which is faithful. It is fully faithful iff $\Hom_{\cat C}(X,Y)=\Hom_{\cat B}(X,Y)$ for all objects $X,Y$ of ${\cat C}$. In this case, ${\cat C}$ is said to be a \defemph{full subcategory} of ${\cat B}$. 
 	\end{defi}
 	\begin{example}
 		For instance, finite-dimensional $k$-vector spaces with linear maps between them form a full subcategory of all $k$-vector spaces.
 	\end{example}
 	 \begin{defi}\lbl{def:adjoint}
-	 	We say that functors $\Aa\morphism[L] \Bb$ and $\Aa\lmorphism[R]\Bb$ form an \defemph{adjoint functor pair}, with $L$ being left adjoint to $R$ and $R$ right adjoint to $L$, if we are given canonical bijections 
+	 	We say that functors ${\cat A}\morphism[L] {\cat B}$ and ${\cat A}\lmorphism[R]{\cat B}$ form an \defemph{adjoint functor pair}, with $L$ being left adjoint to $R$ and $R$ right adjoint to $L$, if we are given canonical bijections 
 	 	\begin{align*}   
-	 	\Hom_\Aa(X, RY) \isomorphism \Hom_\Bb(LX, Y)\;.
+	 	\Hom_{\cat A}(X, RY) \isomorphism \Hom_{\cat B}(LX, Y)\;.
 	 	\end{align*}
 	 \end{defi}
 	 \begin{example}
 	 	The following are adjoint pairs of functors.
 	 	\begin{alphanumerate}
 	 		\item 
-	 		$\Bb=R\cat{-Mod}$, $\Aa=\cat{Set}$, $R$ the forgetful functor, $L(X)$ the free module generated by $X$.
+	 		${\cat B}=\cat{Mod}(R)$, ${\cat A}=\cat{Set}$, $R$ the forgetful functor, $L(X)$ the free module generated by $X$.
 	 		\item
-	 		$\Bb=\cat{Groups}$, $\Aa=\cat{Set}$, $R$ the forgetful functor, $L(X)$ the free group generated by $X$.
+	 		${\cat B}=\cat{Groups}$, ${\cat A}=\cat{Set}$, $R$ the forgetful functor, $L(X)$ the free group generated by $X$.
 	 		\item
-	 		$\Bb=\cat{Compact Spaces}$, $\Aa=\cat{Set}$, $R$ the forgetful functor, $L(X)$ the Stone-\v Cech compactification of $X$.
+	 		${\cat B}=\cat{Compact Spaces}$, ${\cat A}=\cat{Set}$, $R$ the forgetful functor, $L(X)$ the Stone-\v Cech compactification of $X$.
 	 	\end{alphanumerate}
 	 \end{example}
-	
+ \begin{defi}\lbl{def:productsAndCoproducts}
+ 	Let $\cat A$ be any category and $(X_\lambda)_{\lambda\in\Lambda}$ a family of objects in $\cat A$.
+ 	\begin{alphanumerate}
+ 		\item 
+ 		A \defemph{product} of the $X_\lambda$ is an object $P=\Ob({\cat A})$ equipped with morphisms $P\morphism[p_\lambda] X_\lambda$ which satisfy the universal property
+ 		\begin{align*}
+ 		\Hom_{\cat A}(T, P) &\isomorphism \prod_{\lambda\in\Lambda} \Hom_{\cat A}(T,X_\lambda)\\
+ 		f&\longmapsto (p_\lambda f)_{\lambda\in\Lambda}
+ 		\end{align*} 
+ 		(the product sign here means the cartesian product of the $\Hom$ sets) for any test object $T\in\Ob(\cat A)$. One denotes $P=\prod_{\lambda\in\Lambda}X_\lambda$ in this case.
+ 		\item A \defemph{coproduct} or \defemph{dual product} of the $X_\lambda$ is an object $C\in\Ob({\cat A})$ together with the morphisms $X_\lambda \morphism[i_\lambda] C$ such that the universal property i
+ 		\begin{align*}
+ 		\Hom_{\cat A}\left(C, T\right) &\isomorphism \prod_{\lambda\in\Lambda} \Hom_{\cat A}(X_\lambda, T)\\
+ 		f &\longmapsto (fi_\lambda)_{\lambda\in\Lambda}
+ 		\end{align*}
+ 		is fulfilled for all $T\in\Ob(\cat A)$. One denotes $C=\coprod_{\lambda\in\Lambda} X_\lambda$ in this case.
+ 	\end{alphanumerate}
+ \end{defi}
+\begin{rem}
+	\begin{alphanumerate}
+		\item As usual, the respective universal properties determine the product $\prod_{\lambda\in\Lambda}X_\lambda$ and the coproduct $\coprod_{\lambda\in\Lambda} X_\lambda$ up to unique isomorphism.
+		\item  In the case $\Lambda=\emptyset$, the product (if it exists) is a \defemph{final object} of $\cat A$, characterized up to unique isomorphism by the requirement that $\Hom_{\cat A}(T,F)$ has precisely one element for every object $T$ of ${\cat A}$. The empty product in the category of varieties is the one-point variety.
+		
+		Dually, empty coproducts are \emph{initial} objects $I$ characterized by $\#\Hom_{\cat A}(I,T) = 1$ for any object $T$. In the category of sets, groups, abelian groups, $R$-modules, rings the initial objects are $\emptyset$, $0$, $0$, $0$, and $\IZ$ respectively.
+		\item In the categories of sets, abelian groups, $R$-modules, and rings, the products are given by the usual (possibly infinite) cartesian product set, together with the product structures and the projections to each factor. 
+		
+		Moreover, if $X$ and $Y$ are objects of one of these categories, then the coproduct $X\amalg Y$ is given by the disjoint union of $X$ and $Y$, (something complicated), $X\times Y$, $X\times Y$, and $X\otimes_\IZ Y$ respectively.
+		
+		\item If $\Lambda$ is arbitrary and $\cat A$ is the category of abelian groups or $R$-modules, then
+		\begin{align*}
+		\coprod_{\lambda\in \Lambda}X_\lambda = \left\{(x_\lambda) \in \prod_{\lambda\in \Lambda} X_\lambda\st x_\lambda = 0 \text{ for all but finitely many } \lambda \right\}\;.
+		\end{align*}
+	\end{alphanumerate}
+\end{rem}
 	
 	
 	\printbibliography
