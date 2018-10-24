@@ -3,8 +3,8 @@
 
 
 \usepackage{../header}
-\usepackage{../frankenumbering}
-\usepackage{../shortcuts}
+\usepackage{../frankenumbering2}
+\usepackage{../shortcuts2}
 
 \usepackage{pgfplots}
 \usetikzlibrary{hobby}
@@ -23,6 +23,9 @@
 
 \widowpenalty=10000
 \clubpenalty=10000
+
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
 
 \begin{document}
 \pagenumbering{Alph}
@@ -43,7 +46,7 @@ After a slight delay due to the Professor being confused by the large attendance
  \item the Noether Normalization Theorem,
  \item the Zariski topology on $k^n$,
  \item irreducible topological spaces and their correspondence to the prime ideals of $k[X_1, \ldots, X_n]$,
- \item Noetherian topological spaces and their unique decomposition into irreducible subsets,
+ \item noetherian topological spaces and their unique decomposition into irreducible subsets,
  \item the dimension of topological spaces and codimension of their irreducible subsets,
  \item catenary topological spaces,
  \item the fact that $k^n$ is catenary and $\dim(k^n) = n$,
@@ -77,7 +80,7 @@ as well. \textbf{Warning!} Somewhere in the middle of the last-mentioned text, t
 \begin{thm}[Krull's principal ideal theorem]\lbl{thm:krullPrincipalIdeal}
     %Should be Theorem 11, because we continue from Algebra I, Ferdi, that's your job
     %done
-    Let $R$ be Noetherian, $f\in R$, $\pp\in \Spec R$ minimal among all prime ideals containing $f$. Then $\hoehe(\pp) \leq 1$. In other words, $\pp$ is a minimal prime ideal (if $\hoehe(\pp) =0$) or all prime ideals strictly contained in $\pp$ are minimal.
+    Let $R$ be noetherian, $f\in R$, $\pp\in \Spec R$ minimal among all prime ideals containing $f$. Then $\hoehe(\pp) \leq 1$. In other words, $\pp$ is a minimal prime ideal (if $\hoehe(\pp) =0$) or all prime ideals strictly contained in $\pp$ are minimal.
 \end{thm}
 \begin{rem*}
     \begin{alphanumerate}
@@ -101,7 +104,7 @@ as well. \textbf{Warning!} Somewhere in the middle of the last-mentioned text, t
             V(I\cdot J ) &= V(I) \cup V(J)\\
             V\bigg(\sum_{\lambda\in\Lambda} I_\lambda\bigg) &= \bigcap_{\lambda\in\Lambda} V(I_\lambda)\;.
         \end{align*}
-        This implies (together with $V(0) = \Spec R$ and $V(R) = \emptyset$) that $\Spec R$ can be equipped with a topology in which the closed subsets are precisely the subsets of them for $V(I)$ where $I$ is some ideal in $R$. This topology is Noetherian when $R$ is, hence any closed subset can be decomposed into irreducible components. For $V(f) = V(f\cdot R)$, they are precisely those $V(\pp)$ for which $\pp$ is minimal among all prime ideals containing $f$. Theorem~\reff{thm:krullPrincipalIdeal} thus states that all irreducible components of $V(f)$ have codimension smaller or equal to 1 in $\Spec R$. 
+        This implies (together with $V(0) = \Spec R$ and $V(R) = \emptyset$) that $\Spec R$ can be equipped with a topology in which the closed subsets are precisely the subsets of them for $V(I)$ where $I$ is some ideal in $R$. This topology is noetherian when $R$ is, hence any closed subset can be decomposed into irreducible components. For $V(f) = V(f\cdot R)$, they are precisely those $V(\pp)$ for which $\pp$ is minimal among all prime ideals containing $f$. Theorem~\reff{thm:krullPrincipalIdeal} thus states that all irreducible components of $V(f)$ have codimension smaller or equal to 1 in $\Spec R$. 
     \end{alphanumerate}
 \end{rem*}
 \begin{cor}\lbl{cor:V(f)codimension1}
@@ -172,7 +175,7 @@ as well. \textbf{Warning!} Somewhere in the middle of the last-mentioned text, t
 	for some $b=N_{L/K}(a)\in B$. This proves $q\in\sqrt{(f_0)}$.
 \end{proof}
 \begin{thm}[Krull's height theorem]\lbl{thm:krullIdeal}
-    Let $A$ be a Noetherian ring, $f_1,\ldots,f_r\in A$ and $\pp$ any prime ideal minimal among the prime ideals containing all the $f_i$. Then $\hoehe(\pp)\leq r$.
+    Let $A$ be a noetherian ring, $f_1,\ldots,f_r\in A$ and $\pp$ any prime ideal minimal among the prime ideals containing all the $f_i$. Then $\hoehe(\pp)\leq r$.
 \end{thm}    
 The following corollary can be derived in the same way as Corollary~\reff{cor:V(f)codimension1} from Theorem~\reff{thm:krullPrincipalIdeal}.
 \begin{cor}\lbl{cor:capV(f)codimension}
@@ -189,7 +192,7 @@ The derivation from Corollary~\reff{cor:V(f)codimension1} by induction on $r$ is
     as claimed.
 \end{proof}
 \begin{cor}
-    If $R$ is any Noetherian ring and $\pp\in\Spec R$, then $\hoehe(\pp) < \infty$. In particular, any local Noetherian ring is finite-dimensional.
+    If $R$ is any noetherian ring and $\pp\in\Spec R$, then $\hoehe(\pp) < \infty$. In particular, any local noetherian ring is finite-dimensional.
 \end{cor}
 \begin{rem*}
     The dimension of $R$ (or $\Spec R$) may still be infinite for lack of a finite common bound for the heights of the maximal ideals.
@@ -252,7 +255,7 @@ The derivation from Corollary~\reff{cor:V(f)codimension1} by induction on $r$ is
    proving the assertion.
 \end{proof}
 \begin{thm}
- Let $R$ be a Noetherian domain. 
+ Let $R$ be a noetherian domain. 
  \begin{alphanumerate}
     \item 
         Every $r\in R\setminus (R^\times \cup\{0\})$ can be written as a product $r = \prod_{i=1}^k r_i$ of irreducible factors $r_i$. 
@@ -330,7 +333,7 @@ Applying Proposition~\reff{prop:NAK} to $M/N$, we obtain the following corollary
 
 \section{Regular rings}
 \begin{prop}\lbl{prop:dimLeqGeneratorsMaximal}
-    Let $R$ be a Noetherian local ring with maximal ideal $\mm$ and residue field $k=R/\mm$, then $\mm/\mm^2$ is a $k$-vector space of finite dimension and 
+    Let $R$ be a noetherian local ring with maximal ideal $\mm$ and residue field $k=R/\mm$, then $\mm/\mm^2$ is a $k$-vector space of finite dimension and 
     \begin{align*}
     	\dim(R) \leq \dim_k(\mm/\mm^2)\;.
     \end{align*}
@@ -346,23 +349,23 @@ Applying Proposition~\reff{prop:NAK} to $M/N$, we obtain the following corollary
 \end{proof}
 \begin{defi}[Regularity]\lbl{def:regular}
 	\begin{alphanumerate}
-		\item A Noetherian local ring is called \defemph{regular} if equality occurs in $\dim (R) \leq\dim_k(\mm/\mm^2)$. 
+		\item A noetherian local ring is called \defemph{regular} if equality occurs in $\dim (R) \leq\dim_k(\mm/\mm^2)$. 
 		\item For algebraic varieties $X$, we call $X$ \defemph{regular at} $\boldsymbol{x\in X}$ if $\Oo_{X,x}$ is regular. $X$ is called \defemph{regular} if it is regular at all $x\in X$.
 	\end{alphanumerate}
 \end{defi}
 \begin{rem}
-    If $R$ is any Noetherian ring and $\pp\in \Spec R$, then $(\pp R_\pp)/(\pp R_\pp)^2 \cong (\pp/\pp^2)_\pp$ and $R_\pp$ is regular (or $R$ is \emph{regular at} $\pp$) iff $\pp/\pp^2$ has dimension $\hoehe(\pp)$ as a $\KK(\pp)$-vector space. In particular, $R$ is regular at $\mm\in\mSpec R$ iff $\dim(R_\mm) = \hoehe(\mm)$ equals $\dim_{R/\mm} (\mm/\mm^2)$. By a result by Serre (which has an easier proof in the classical situation $R=\Oo_{X,x}$), a regular local ring is regular at all of its prime ideals, i.e.\ if $R$ is a regular local ring, then so is $R_\pp$ for any $\pp\in \Spec R$. 
+    If $R$ is any noetherian ring and $\pp\in \Spec R$, then $(\pp R_\pp)/(\pp R_\pp)^2 \cong (\pp/\pp^2)_\pp$ and $R_\pp$ is regular (or $R$ is \emph{regular at} $\pp$) iff $\pp/\pp^2$ has dimension $\hoehe(\pp)$ as a $\KK(\pp)$-vector space. In particular, $R$ is regular at $\mm\in\mSpec R$ iff $\dim(R_\mm) = \hoehe(\mm)$ equals $\dim_{R/\mm} (\mm/\mm^2)$. By a result by Serre (which has an easier proof in the classical situation $R=\Oo_{X,x}$), a regular local ring is regular at all of its prime ideals, i.e.\ if $R$ is a regular local ring, then so is $R_\pp$ for any $\pp\in \Spec R$. 
     
-    A Noetherian ring $R$ is called \emph{regular} iff $R_\pp$ is regular for all $\pp\in\Spec R$ or (equivalently) iff $R_\mm$ is regular for any $\mm\in\mSpec R$. These two definitions are equivalent as $R_\pp\cong (R_\mm)_\pp$ if $\pp\in\Spec R$ is prime and $\mm$ a maximal ideal containing $\pp$. Hence, if $R_\mm$ is regular then so is $R_\pp$ by Serre's result. 
+    A noetherian ring $R$ is called \emph{regular} iff $R_\pp$ is regular for all $\pp\in\Spec R$ or (equivalently) iff $R_\mm$ is regular for any $\mm\in\mSpec R$. These two definitions are equivalent as $R_\pp\cong (R_\mm)_\pp$ if $\pp\in\Spec R$ is prime and $\mm$ a maximal ideal containing $\pp$. Hence, if $R_\mm$ is regular then so is $R_\pp$ by Serre's result. 
     
-    Note that despite Serre's theorem there are Noetherian rings $R$ such that 
+    Note that despite Serre's theorem there are noetherian rings $R$ such that 
     \begin{align*}
     	\left\{\pp\in\Spec R\st R_\pp\text{ is \emph{not} regular}\right\}
     \end{align*}
     fails to be closed in $\Spec R$.
 \end{rem}
 \begin{rem*}
-    In other words, a Noetherian local ring $R$ with maximal ideal $\mm$ is regular at $\mm$ iff $\mm$ may be generated by $\dim (R)$ elements. In general, $R$ is regular at its maximal ideal $\mm$ if (this \emph{if} intentionally contains only one \emph{f}!) $\mm$ may be generated by $\hoehe(\mm)$ elements.
+    In other words, a noetherian local ring $R$ with maximal ideal $\mm$ is regular at $\mm$ iff $\mm$ may be generated by $\dim (R)$ elements. In general, $R$ is regular at its maximal ideal $\mm$ if (this \emph{if} intentionally contains only one \emph{f}!) $\mm$ may be generated by $\hoehe(\mm)$ elements.
 \end{rem*}
 \begin{example*}
     \begin{alphanumerate}
@@ -502,6 +505,8 @@ Applying Proposition~\reff{prop:NAK} to $M/N$, we obtain the following corollary
     Now let $\phi_1,\ldots,\phi_N$ generate $\dd$. Since $\qq =\dd\cdot R_{\mm_\xi}$ is generated by the images of the $g_i$, there are $h_i\not\in \mm_\xi$ and such that $h_i\cdot \phi_i \in(g_1,\ldots,g_n)_R$. Then $h=h_1\cdots h_N$ fulfills $h(\xi)=h(x,x)\not=0$ and $h\cdot\dd\subseteq(g_1,\ldots,g_n)_R$.
     
     \emph{Step 5.} Let $f_1,\ldots, f_d$ be elements of $S= k[X_1,\ldots, X_n]$ such that their images in $\Oo_{X,x}$ form a basis of $\mm_{X,x}/\mm_{X,x}^2$ (again, $\mm_{X,x}$ is the maximal ideal of the local ring $\Oo_{X,x}$, which Professor Franke would like to express as $\mm_{X,x}=\rad \Oo_{X,x}$). Let $f_{d+1},\ldots, f_n$ be chosen in such a way that the images of $f_1,\ldots, f_n$ form a basis of $\mm_x/\mm_x^2$. Why is this possible? We have $\mm_{X,x}/\mm_{X,x}^2=\nn/\nn^2$, $\nn\subseteq\Oo(X)$ denoting the maximal ideal of $\Oo(X)$ of functions vanishing at $x$. Then $\nn/\nn^2$ is a quotient of $\mm_x/\mm_x^2$ (as we saw in the proof of Proposition~\reff{prop:Jacobian}). If $h$ is as in the previous step, $U= X\setminus V(h)$ has the required property.
+    
+    We're finally done.
 \end{proof}
 \begin{rem}[on \eqreff{eq:thm15}]
     Let $R$ be an arbitrary ring, $S\subseteq R$ a multiplicative subset, $I$ and $J$ ideals in $R$. Then 
@@ -586,7 +591,7 @@ Applying Proposition~\reff{prop:NAK} to $M/N$, we obtain the following corollary
 \begin{rem*}
     \begin{alphanumerate}
         \item 
-            The universal property characterizes $\Omega_{A/R}$ up to unique isomorphism (if it exists): If $\snake d_{A/R} \in\Der_R(A,\snake \Omega_{A/R})$ has the same universal property, there is a unique isomorphism $\Omega_{A/R}\isomorphism[i] \snake \Omega_{A/R}$ such that $\snake d _{A/R} = i \circ d_{A/R}$. In fact, the universal property of $d_{A/R}$ shows the existence and uniqueness of a homomorphism $i$ with this property. Reversing the roles of $d_{A/R}$ and $\snake d_{A/R}$ we also obtain $\snake\Omega_{A/R} \morphism[j]\Omega_{A/R}$ such that $d_{A/R} = j\circ \snake d_{A/R}$. Then $\alpha = j\circ i$ satisfies $d_{A/R} = \alpha\circ d_{A/R}$ which implies $\alpha= \id_{\Omega_{A/R}}$ by the universal property of $\Omega_{A/R}$. Exchanging $d_{A/R}$ and $\snake d_{A/R}$ gives $i \circ j = \id_{\snake\Omega_{A/R}}$. Thus, $i$ is an isomorphism.
+            By the usual argument, the universal property characterizes $\Omega_{A/R}$ up to unique isomorphism (if it exists).
         \item
             For $A= R[X_1,\ldots,X_n]$, $\Omega_{A/R} = \bigoplus_{i=1}^n A\cdot dX_i \cong A^n$ with $d_{A/R} (P) = \sum_{i=1}^n \frac{\partial P }{\partial X_i} \cdot dX_i$ is a module of Kähler differentials.
         \item 
@@ -608,7 +613,7 @@ Applying Proposition~\reff{prop:NAK} to $M/N$, we obtain the following corollary
                 \upsilon &\longmapsto \bigg(f\mapsto \sum_{m\in M} f(m) \upsilon(m)\bigg)\\
                 \big(m\mapsto \phi(\delta_m) \big) &\longmapsfrom \phi\;.
             \end{align*}
-            In other words, the functor $\cat{Set}\morphism A\cat{-Mod}$ from the category of sets to the category of $A$-modules mapping $X$ to the free $A$-module generated by $X$ is \emph{left-adjoint} to the forgetful functor from the category of $A$-modules to $\cat{Set}$, the category of sets.
+            In other words, the functor $\cat{Set}\morphism \cat{Mod}(A)$ from the category of sets to the category of $A$-modules mapping $X$ to the free $A$-module generated by $X$ is \emph{left-adjoint} to the forgetful functor from the category of $A$-modules to $\cat{Set}$, the category of sets.
     \end{alphanumerate}
 \end{rem*}
 
@@ -632,7 +637,7 @@ Applying Proposition~\reff{prop:NAK} to $M/N$, we obtain the following corollary
     \end{align*}
     as $\delta_{ab}-a\delta_b -\delta_a\in K$ and by the definition of $d_{A/R}$.
     
-    Let $(A\morphism[d] M)\in \Der_R(A,M)$. By the universal property of $F_A$ there is a unique morphism $c\in \Hom_A(F_A,M)$ such that $d(a) = c(\delta_a)$. We claim that $c$ vanishes on $K$.
+    Let $(A\morphism[d] M)\in \Der_R(A,M)$. By the universal property of $F_A$ there is a unique morphism $c\in \Hom_A(F_A,M)$ such that $d(a) = c(\delta_a)$. We claim that $c$ vanishes on $K$. Indeed, we have
     \begin{itemize}
       \item 
         $c(\delta_a +\delta_b -\delta_{a+b}) = c(\delta_a) +c(\delta_b) -c(\delta_{a+b}) = d(a)+d(b)-d(a+b) = 0$ as $d$ is additive.
@@ -781,12 +786,12 @@ In many cases, the module of Kähler differentials can be calculated using $\Ome
       \item[\itememph{c}]
         When $X\subseteq R$ is multiplicative and $M$ an $A_X$-module, then we have an isomorphism of $A_X$-modules
         \begin{align}\lbl{eq:DerLocalizationIso1}
-            \Der_{R_X}(A_X,M) \isomorphism \Der_R(A,M).
+            \Der_{R_X}(A_X,M) \isomorphism \Der_R(A,M)\;.
         \end{align}
       \item[\itememph{d}]
         When $S\subseteq A$ is multiplicative and $M$ an $A_S$-module, then we have an isomorphism of $A_S$-modules
         \begin{align}\lbl{eq:DerLocalizationIso2}
-            \Der_R(A_S,M)\isomorphism \Der_R(A,M).
+            \Der_R(A_S,M)\isomorphism \Der_R(A,M)\;.
         \end{align}
     \end{itemize}
 \end{varthm} 
@@ -829,7 +834,7 @@ As we did with Fact~\reff{fact:DerExactSequences} and Corollary~\reff{cor:kahler
 \begin{proof}
 	As in the proof of Corollary~\reff{cor:kahlerExactSequences}, we should first agree on how the morphisms are supposed to look like.
 	\begin{itemize}
-		\item As $A\morphism A_X \xrightarrow{d_{A_X/R_X}} \Omega_{A_X/R_X}$ is an $R$-linear derivative of $A$, there is a unique morphism $\Omega_{A/R}\morphism[\alpha] \Omega_{A_X/R_X}$ of $A$-modules such that the left of the below diagrams commutes. By the universal property of the localization $\Omega_{A/R}\morphism(\Omega_{A/R})_X=\Omega_{A/R}\otimes_AA_X$ there is a unique $A_X$-module homomorphism $\iota$ such that the right diagram commutes.
+		\item[\itememph{c}] As $A\morphism A_X \xrightarrow{d_{A_X/R_X}} \Omega_{A_X/R_X}$ is an $R$-linear derivative of $A$, there is a unique morphism $\Omega_{A/R}\morphism[\alpha] \Omega_{A_X/R_X}$ of $A$-modules such that the left of the below diagrams commutes. By the universal property of the localization $\Omega_{A/R}\morphism(\Omega_{A/R})_X=\Omega_{A/R}\otimes_AA_X$ there is a unique $A_X$-module homomorphism $\iota$ such that the right diagram commutes.
 		\begin{center}
 			\begin{minipage}{0.4\textwidth}
 				\centering				
@@ -858,7 +863,7 @@ As we did with Fact~\reff{fact:DerExactSequences} and Corollary~\reff{cor:kahler
 				\end{diagram*}
 			\end{minipage}
 		\end{center}
-		\item Similarly, since $A\morphism A_S\xrightarrow{d_{A_S/R}} \Omega_{A_S/R}$ is an element of $\Der_R(A,\Omega_{A_S/R})$ there is a unique morphism $\Omega_{A/R} \morphism[\alpha]\Omega_{A_S/R}$ of $A$-modules such that the left of the below diagrams commutes. By the universal property of $\Omega_{A/R}\morphism(\Omega_{A/R})_S=\Omega_{A/R}\otimes_AA_S$ there is a unique $\iota$ such that the right diagram commutes. 
+		\item[\itememph{d}] Similarly, since $A\morphism A_S\xrightarrow{d_{A_S/R}} \Omega_{A_S/R}$ is an element of $\Der_R(A,\Omega_{A_S/R})$ there is a unique morphism $\Omega_{A/R} \morphism[\alpha]\Omega_{A_S/R}$ of $A$-modules such that the left of the below diagrams commutes. By the universal property of $\Omega_{A/R}\morphism(\Omega_{A/R})_S=\Omega_{A/R}\otimes_AA_S$ there is a unique $\iota$ such that the right diagram commutes. 
 		\begin{center}
 			\begin{minipage}{0.4\textwidth}
 				\centering				
@@ -901,7 +906,9 @@ As we did with Fact~\reff{fact:DerExactSequences} and Corollary~\reff{cor:kahler
 	 Part \itememph{d} works just the same.
 \end{proof}
 
-\paragraph{An alternative construction of $\Omega_{A/R}$.} Consider the map $A\otimes_R A\morphism[m] A$, $a\otimes \alpha \mapsto a\cdot \alpha$. It turns out that this morphism of $R$-modules is a ring morphism. Let $I$ denote its kernel. Let $\Omega_{A/R} = I/I^2$, turned into an $A$-module using $A\morphism A\otimes_R A$, $a\mapsto a\otimes 1$. Let $d\colon A\morphism\Omega_{A/R}$ be given by $a\mapsto (a\otimes 1-1\otimes a)\bmod I^2$. It turns out that the Leibniz rule holds and that the universal property for $R$-linear derivatives of $A$ is satisfied.
+\begin{rem*}
+	There is an alternative construction of $\Omega_{A/R}$ and it is given as follows: Consider the multiplication map $A\otimes_R A\morphism[m] A$, $a\otimes b \mapsto a\cdot b$. It turns out that this morphism of $R$-modules is a ring morphism. Let $I$ denote its kernel. Let $\Omega_{A/R} = I/I^2$, turned into an $A$-module using $A\morphism A\otimes_R A$, $a\mapsto a\otimes 1$. Let $d\colon A\morphism\Omega_{A/R}$ be given by $a\mapsto (a\otimes 1-1\otimes a)\bmod I^2$. It turns out that the Leibniz rule holds and that the universal property for $R$-linear derivatives of $A$ is satisfied.
+\end{rem*}
 
 
 
@@ -920,7 +927,7 @@ As we did with Fact~\reff{fact:DerExactSequences} and Corollary~\reff{cor:kahler
 			M_\pp=M_f\otimes_RR_\pp\cong R_f^d\otimes_R R_\pp=(R_f\otimes_RR_\pp)^d=R_\pp^d\;.
 		\end{align*}
 		In particular, $M_\pp$ is a free $R_\pp$-module and its rank obviously doesn't depend on $f$. Thus, in the above situation the rank function $d(\pp)$ is well-defined. Moreover, our argument shows that it is constant on the open set $\Spec R\setminus V(f)\subseteq \Spec R$ for any $f$ such that $M_f$ is free over $R_f$, hence $d$ is indeed locally constant.
-		\item Probably this definition is not quite what you would expect from a \emph{locally free} module and rather one would like to have an $R$-module $M$ locally free if every localization $M_\pp$ at a prime ideal $\pp$ is free over $R_\pp$. For \emph{finitely presented} modules $M$ (in particular, every finitely generated module over a Noetherian ring) this is indeed equivalent. It even suffices to have the $M_\mm$ free over $R_\mm$ for all maximal ideals $\mm$ of $R$. If you are brave enough to face The Stacks Project, a proof of this can be found in \cite[\stackstag{00NX}]{stacks-project}. If not, have a look at Corollary~\reff{cor:locallyFreeStuff}. \lbl{rem:IMPORTANTSTUFFFRANKEDIDNTMENTION}
+		\item Probably this definition is not quite what you would expect from a \emph{locally free} module and rather one would like to have an $R$-module $M$ locally free if every localization $M_\pp$ at a prime ideal $\pp$ is free over $R_\pp$. For \emph{finitely presented} modules $M$ (in particular, every finitely generated module over a noetherian ring) this is indeed equivalent. It even suffices to have the $M_\mm$ free over $R_\mm$ for all maximal ideals $\mm$ of $R$. If you are brave enough to face The Stacks Project, a proof of this can be found in \cite[\stackstag{00NX}]{stacks-project}. If not, have a look at Corollary~\reff{cor:locallyFreeStuff}. \lbl{rem:IMPORTANTSTUFFFRANKEDIDNTMENTION}
 	\end{alphanumerate}
 \end{rem*}
 
@@ -945,14 +952,14 @@ As we did with Fact~\reff{fact:DerExactSequences} and Corollary~\reff{cor:kahler
 \end{proof}
 The following wasn't treated in the lecture but we include it anyway (at the price of postponing the proof of Proposition~\reff{prop:locallyFreeDim}) because we think it really helps understanding the notion of local freeness.
 \begin{cor}\lbl{cor:locallyFreeStuff}
-	If $R$ is Noetherian, $M$ a finitely generated $R$-module and $\pp\in\Spec R$ a prime ideal such that $M_\pp$ is free over $R_\pp$, then there is an $f\in R\setminus \pp$ such that $M_f$ is already free over $R_f$.
+	If $R$ is noetherian, $M$ a finitely generated $R$-module and $\pp\in\Spec R$ a prime ideal such that $M_\pp$ is free over $R_\pp$, then there is an $f\in R\setminus \pp$ such that $M_f$ is already free over $R_f$.
 \end{cor}
 \begin{proof}
 	Let $\mu_1,\ldots,\mu_n\in M$ be such that their images generate $M_\pp\otimes_R\KK(\pp)$. By Lemma~\reff{lem:locallyFreeStuff}, there is an $f\in R\setminus \pp$ such that their images generate $M_f$. We then obtain a surjective map $R_f^n\morphism[\phi]M_f$ and thus an exact sequence
 	\begin{align*}
 		0\morphism\ker\phi\morphism R_f^n\morphism[\phi]M_f\morphism 0\;.
 	\end{align*}
-	Localizing at $\pp$ turns $\phi$ into an isomorphism $R_\pp^n\isomorphism M_\pp$, hence $(\ker\phi)_\pp=0$ as localization is an exact functor. Then $0=\ker\phi\otimes_R\KK(\pp)$ can be generated by zero elements and $\ker\phi$ is finitely generated as $R$ is Noetherian, hence $(\ker\phi)_g$ can be generated by zero elements as well for some $g\in R\setminus \pp$ by Lemma~\reff{lem:locallyFreeStuff}. Then also $(\ker\phi)_{fg}=(\ker\phi)_g\otimes R_f=0$ and localizing the above exact sequence at $fg$ we obtain an isomorphism $R_{fg}^n\isomorphism M_{fg}$.
+	Localizing at $\pp$ turns $\phi$ into an isomorphism $R_\pp^n\isomorphism M_\pp$, hence $(\ker\phi)_\pp=0$ as localization is an exact functor. Then $0=\ker\phi\otimes_R\KK(\pp)$ can be generated by zero elements and $\ker\phi$ is finitely generated as $R$ is noetherian, hence $(\ker\phi)_g$ can be generated by zero elements as well for some $g\in R\setminus \pp$ by Lemma~\reff{lem:locallyFreeStuff}. Then also $(\ker\phi)_{fg}=(\ker\phi)_g\otimes R_f=0$ and localizing the above exact sequence at $fg$ we obtain an isomorphism $R_{fg}^n\isomorphism M_{fg}$.
 \end{proof}
 \begin{proof}[Proof of Proposition \reff{prop:locallyFreeDim}]
     We first prove that \itememph{b} implies \itememph{a}. Let $R=\Oo(X)$, if \itememph{b} holds, then for any $\mm_x$ as in \itememph{a} there are $\mu_1,\ldots,\mu_n\in M_f$, for some $f\in R\setminus \mm_x$ which freely generate $M_f$ as an $R_f$-module. Then their images in $M/\mm_x M$ generate this as a $k$-vector space and from 
@@ -965,7 +972,7 @@ The following wasn't treated in the lecture but we include it anyway (at the pri
     \begin{align*}
     	0 = \sum_{i=1}^nr_i \mu_i\quad\text{in }M_f\;,
     \end{align*}
-    where $r_i\in R_f$ not all zero. Multiplying by a suitable power of $f$ we may assume $r_i\in R$ and 
+    with coefficients $r_i\in R_f$ not all zero. Multiplying by a suitable power of $f$ we may assume $r_i\in R$ and 
     \begin{align*}
     	 0=\sum_{i=1}^n r_i \mu_i \quad\text{in }M\;.
     \end{align*}
@@ -1134,7 +1141,7 @@ It should be mentioned, though, that an exhaustive, self-contained, and very rea
 \end{rem*}
 \begin{proof}[Proof of Proposition~\reff{prop:finiteTypeAlgebrasRegular}] We start with the following lemma, which together with its proof is taken from \cite[\stackstag{00TU}]{stacks-project}.
 \begin{lem}\lbl{lem:kahlerQuotientIsomorphism}
-	Let $k$ be a field and $R$ a Noetherian local $k$-algebra with maximal ideal $\mm$ such that the residue field $R/\mm=\KK(\mm)$ is finitely generated and separable over $k$. Then the canonical homomorphism
+	Let $k$ be a field and $R$ a noetherian local $k$-algebra with maximal ideal $\mm$ such that the residue field $R/\mm=\KK(\mm)$ is finitely generated and separable over $k$. Then the canonical homomorphism
 	\begin{align*}
 		\mm/\mm^2\morphism\Omega_{R/k}\otimes_R\KK(\mm)
 	\end{align*}
@@ -1161,7 +1168,7 @@ It should be mentioned, though, that an exhaustive, self-contained, and very rea
 	
 	We thus have $R\cong \KK(\mm)\oplus\mm$ (we just constructed a split of the exact sequence $0\morphism \mm\morphism R\morphism\KK(\mm)\morphism 0$). We want to construct a homomorphism $\Omega_{R/k}\otimes_R\KK(\mm)\morphism\mm/\mm^2$ of $\KK(\mm)$-vector spaces which is left-inverse to the to-be-injective map. Forgetting about left-inverseness at first, we may equivalently give a map $\Omega_{R/k}\morphism\mm/\mm^2$ of $R$-modules, that is, a derivation $R\morphism[d]\mm/\mm^2$. Define $d$ by $d(x+\mu)=\mu$ for $x\in\KK(\mm)$, $\mu\in\mm$. It's a straightforward check that $d$ fulfills the Leibniz rule and is left-inverse to $\mm/\mm^2\morphism\Omega_{R/k}\otimes_R\KK(\mm)$. We're done.
 \end{proof}
-Let's see how this applies to our situation. Since $A$ is Noetherian and of finite type, $\KK(\pp)/k$ is a field extension of finite type, hence finite by the Nullstellensatz (cf. \cite[Theorem~4]{alg1}). Then $\KK(\pp)$ must be separable over $k$ since $k$ is perfect. We thus obtain an exact sequence
+Let's see how this applies to our situation. Since $A$ is noetherian and of finite type, $\KK(\pp)/k$ is a field extension of finite type, hence finite by the Nullstellensatz (cf. \cite[Theorem~4]{alg1}). Then $\KK(\pp)$ must be separable over $k$ since $k$ is perfect. We thus obtain an exact sequence
 \begin{align*}
 	0\morphism\pp/\pp^2\morphism\Omega_{A_\pp/k}\otimes_A\KK(\pp)\morphism\Omega_{\KK(\pp)/k}\morphism 0
 \end{align*}
@@ -1175,7 +1182,7 @@ Conversely, suppose that $A_\pp$ is regular. Then we may assume that $A$ is a do
 
 To see local freeness of $\Omega_{A/k}$ at $\pp$ in the case of $A$ a domain, we need another tiny lemma.
 \begin{lem}\lbl{lem:dimConditionForFreeness}
-	Let $R$ be a Noetherian local domain with maximal ideal $\mm$, residue field $\KK(\mm)$ and field of quotients $K$. Then a finitely generated $R$-module $M$ is free iff 
+	Let $R$ be a noetherian local domain with maximal ideal $\mm$, residue field $\KK(\mm)$ and field of quotients $K$. Then a finitely generated $R$-module $M$ is free iff 
 	\begin{align*}
 		\dim_{\KK(\mm)}M\otimes_R\KK(\mm)=\dim_KM\otimes_RK\;.
 	\end{align*}
@@ -1252,7 +1259,7 @@ To see local freeness of $\Omega_{A/k}$ at $\pp$ in the case of $A$ a domain, we
 \end{defi}
 
 \begin{example}[Riemann sphere]
-    Let $k=\IC$, $V$ a two-dimensional $k$-vector space, $L$ a one-dimensional subspace, $W\supseteq L$ a real subspace of real dimension 3, $S$ a sphere in $W$ containing $0$ and having $L$ as the tangent plane there. Then 
+    Let $k=\IC$, $V$ a two-dimensional $k$-vector space, $L$ a one-dimensional subspace, $W\supseteq L$ a real subspace of real dimension 3, $S$ a sphere in $W$ containing $0$ and having $L$ as the tangent plane there. Then there is a map
     \begin{align*}
         \IP(V) &\morphism S\\
         \ell &\longmapsto \begin{cases} 0 &\text{if } \ell= L\\
@@ -1319,7 +1326,7 @@ For now on let $k$ be an algebraically closed field.
     For an $\IN$-graded ring $R$ the following conditions are equivalent:
     \begin{alphanumerate}
         \item 
-            $R$ is Noetherian.
+            $R$ is noetherian.
         \item 
             Any homogeneous ideal of $R$ is finitely generated.
         \item
@@ -1327,9 +1334,9 @@ For now on let $k$ be an algebraically closed field.
         \item 
             Any ascending chain $I_0\subseteq I_1\subseteq \ldots$ of homogeneous ideals in $R$ becomes stationary for some $N\in\IN$, i.e.\ $I_n = I_N$ for all $n\geq N$.
         \item 
-            $R_0$ is a Noetherian ring and $R_+$ is a finitely generated ideal in $R$.
+            $R_0$ is a noetherian ring and $R_+$ is a finitely generated ideal in $R$.
         \item 
-            $R_0$ is a Noetherian ring and $R$ is an $R_0$-algebra of finite type.
+            $R_0$ is a noetherian ring and $R$ is an $R_0$-algebra of finite type.
     \end{alphanumerate}
 \end{prop}
 
@@ -1337,7 +1344,7 @@ For now on let $k$ be an algebraically closed field.
     Note that a homogeneous ideal in $R$ is finitely generated iff it can be generated by finitely many homogeneous elements.
 \end{rem}
 \begin{proof}[Proof of Proposition~\reff{prop:gradedNoetherian}]
-    The implication \itememph{f} $\Rightarrow$ \itememph{a} follows from Hilbert's Basissatz. That \itememph{a} implies \itememph{b} to \itememph{d} is trivial since these are special cases of the definitions of Noetherianness. We conclude \itememph{d} from \itememph{c} by applying \itememph{c} to $\MM=\{I_0,I_1,\ldots\}$. For the implication \itememph{d} $\Rightarrow$ \itememph{b} the proof for the ungraded case still applies, as the ideal generated by a set of homogeneous elements of $R$ is homogeneous and for every inclusion $J\subsetneq I$ of ideals in $R$ with homogeneous $I$ there is some homogeneous $f\in I\setminus J$.
+    The implication \itememph{f} $\Rightarrow$ \itememph{a} follows from Hilbert's Basissatz. That \itememph{a} implies \itememph{b} to \itememph{d} is trivial since these are special cases of the definitions of noetherianness. We conclude \itememph{d} from \itememph{c} by applying \itememph{c} to $\MM=\{I_0,I_1,\ldots\}$. For the implication \itememph{d} $\Rightarrow$ \itememph{b} the proof for the ungraded case still applies, as the ideal generated by a set of homogeneous elements of $R$ is homogeneous and for every inclusion $J\subsetneq I$ of ideals in $R$ with homogeneous $I$ there is some homogeneous $f\in I\setminus J$.
     
     We obtain \itememph{e} from \itememph{b} since $R_+$ is a homogeneous ideal in $R$ and for any ideal $I$ of $R_0$ the sum $I+R_+$ is a homogeneous ideal of $R$ and when $I+R_+$ is generated by $f_1,\ldots, f_d\in R_0$ and $f_{d+1},\ldots,f_e$ (homogeneous of positive degree) then $I$ is generated by $f_1,\ldots, f_d$.
     
@@ -1400,15 +1407,15 @@ resp. $\{x\}$ is closed).
 \end{itemize}
 \end{rem*}
 \begin{prop}\lbl{prop:projectiveZariskiIdealSpecialCorrespondence}
-$\IP^n(k)$ is a Noetherian $T_1$-space. The correspondence from  Proposition~\reff{prop:projectiveZariskiIdealCorrespondence} induces a bijection between the points of $\IP^n(k)$ and the homogeneous
-ideals $I=\sqrt I\subsetneq R_+$ maximal with this property as well as between irreducible closed subsets and homogeneous prime ideals $\pp\subsetneq R_+$.
+$\IP^n(k)$ is a noetherian $T_1$-space. The correspondence from  Proposition~\reff{prop:projectiveZariskiIdealCorrespondence} induces a bijection between the points of $\IP^n(k)$ and the homogeneous
+ideals $I=\sqrt I\subsetneq R_+$ maximal with this property, as well as between irreducible closed subsets and homogeneous prime ideals $\pp\subsetneq R_+$.
 \end{prop}
 \begin{proof}
 A point $\{\xi\} = \{[\xi_0,\ldots,\xi_n]\}$ is closed as 
 \begin{align*}
 	\{\xi\}=\bigcap_{0\leq i<j\leq n} V( \xi_i X_j - \xi_j X_i)\;.
 \end{align*}
-The fact that $\IP^n(k)$ is Noetherian follows from Noetherianness of $R$ and Proposition~\reff{prop:projectiveZariskiIdealCorrespondence}
+The fact that $\IP^n(k)$ is noetherian follows from noetherianness of $R$ and Proposition~\reff{prop:projectiveZariskiIdealCorrespondence}
 as an infinite strictly decreasing chain of closed subsets becomes a strictly increasing chain of ideals in $R$.
 
 The correspondence between points and maximal homogeneous ideals also follows from Proposition~\reff{prop:projectiveZariskiIdealCorrespondence}. For the last one, note that a homogeneous ideal $I$ is prime iff $fg\in I$ implies $f\in I$ or $g\in I$ for all \emph{homogeneous} elements $f,g\in R$. Indeed, suppose that $I$ has this property and $f,g\in R$ (not necessarily homogeneous) are such that $fg\in I$. Assume that $f,g\notin I$. Hence, if $f_i,g_i\in R_i$ are their homogeneous components, there are minimal indices $k$ and $\ell$ such that $f_k,g_\ell\notin I$. Since $I$ is homogeneous, the $(k+\ell)\ordinalth$-degree homogeneous component of $fg$ must be contained in $I$ as well. However, $(fg)_{k+\ell}=\sum_{i+j=k+\ell}f_ig_j\notin I$ as only $f_kg_\ell$ in this sum is not contained in $I$. Having established this, the arguments from the affine case may be used.
@@ -1417,13 +1424,13 @@ The correspondence between points and maximal homogeneous ideals also follows fr
 $\IP^n(k) = V(0)$ is irreducible.
 \end{cor*}
 \begin{prop}\lbl{prop:projectiveAffineTopology}
-The topology on $\IA^n(k) \cong \IP^n\setminus V(X_0)$ induced from the Zariski topology on $\IP^n(k)$ is the Zariski topology on $k^n$.
+For all $j=0,\ldots, n$ the topology on $\IA^n(k) \cong \IP^n\setminus V(X_j)$ induced from the Zariski topology on $\IP^n(k)$ is the Zariski topology on $\IA^n(k)$.
 \end{prop}
-\begin{rem*}
-The same, of course, holds for $\IP^n\setminus V(X_j)$.
-\end{rem*}
-\begin{proof}[Proof of Proposition \reff{prop:projectiveAffineTopology}]
-Let $\IA^n(k)\morphism[i]\IP^n(k)$, $i(x_1,\ldots,x_n) = [1,x_1,\ldots,x_n]$, be the inclusion to investigate. Let $k[X_0,\ldots,X_n]\morphism[\pi]k[X_1,\ldots,X_n]$ be the ring homomorphism induced by $X_0\mapsto 1$. Then 
+\begin{proof}
+W.l.o.g.\ let $j=0$. Then $\IA^n(k)\morphism[i]\IP^n(k)$, $i(x_1,\ldots,x_n) = [1,x_1,\ldots,x_n]$, is the inclusion to investigate. The task is to show that $i$ is an immersion, i.e., a homeomorphism onto its image.
+
+%\newpage
+Let $k[X_0,\ldots,X_n]\morphism[\pi]k[X_1,\ldots,X_n]$ be the ring homomorphism induced by $X_0\mapsto 1$. Then 
 \begin{align*}
 	i^{-1}\big(V(I)\big)=\left\{(x_1,\ldots,x_n) \st f(1,x_1,\ldots,x_n) = 0\text{ for all }f\in I\right\}=V\big(\pi(I)\big)
 \end{align*}
@@ -1431,10 +1438,11 @@ and $\pi(I)\subseteq k[X_1,\ldots,X_n]$ is an ideal by surjectivity of $\pi$, he
 
 To show that any closed $A\subseteq \IA^n(k)$ can be represented as $i^{-1}(B)$ for some closed $B\subseteq \IP^n(k)$, we first construct,
 for any $f\in S = k[X_1,\ldots,X_n]$, a homogeneous polynomial $\snake f\in R$ such that $i^{-1}\big(V_\proj(\snake f)\big) = V_\aff(f)$.
-This can be done by putting \begin{align*}
+This can be done by putting
+\begin{align*}
 \snake f (X_0,\ldots,X_n)  = X_0^d f\left(\frac{X_1}{X_0},\ldots,\frac{X_n}{X_0}\right) \in R_d
 \end{align*}
-where $d$ is large enough. If $A = V_\aff(I)$ and $J$ denotes the ideal generated by the $\snake f$, for all $f\in I$,
+where $d$ is large enough (so that all exponents in $\snake{f}$ are non-negative). If $A = V_\aff(I)$ and $J$ denotes the ideal generated by the $\snake f$, for all $f\in I$,
 then $B = V_\proj(J)$ has the desired property.
 \end{proof}
 \begin{cor}
@@ -1591,10 +1599,9 @@ i.e.\ $\lambda$ not a $d\ordinalth$ root of unity for all $d\leq\deg p$).
 \begin{defi}[Field of rational functions]
     If $Z$ is any \emph{prevariety} (cf. Definition~\reff{def:prevariety}), let the \defemph{field of rational functions} $K$ be the set of all pairs $(U,f)$ where $U$ is a non-empty open subset, $f\in\Oo_Z(U)$ modulo the equivalence relation $(U,f)\sim (V,\phi)$ iff there is a non-empty $W\subseteq U\cap V$ such that $f|_W= \phi|_W$.
 \end{defi}
-\begin{rem*}
+\begin{rem}
     \begin{alphanumerate}
-        \item 
-            By Corollary \reff{cor:restrictionInjective}, $f|_W = \phi|_W$ is equivalent to $f|_{U\cap V} = \phi|_{U\cap V}$. One may think of $K=\bigcup_{U\neq\emptyset,\text{ open}} \Oo(U)$ but of course that would be imprecise. However, by the sheaf axiom and Corollary \reff{cor:restrictionInjective} it follows that for any $f\in K$ there are a largest open subset $U$ and $\phi \in \Oo_Z(U)$ such that $f=(U,\phi)/_\sim$, and $\phi$ is uniquely determined by $f$. This $U$ is called the \emph{domain of definition} of the rational function $f$.
+        \item \lbl{rem:FieldOfRationalFunctions}By Corollary \reff{cor:restrictionInjective}, $f|_W = \phi|_W$ is equivalent to $f|_{U\cap V} = \phi|_{U\cap V}$. One may think of $K=\bigcup_{U\neq\emptyset,\text{ open}} \Oo(U)$ but of course that would be imprecise. However, by the sheaf axiom and Corollary \reff{cor:restrictionInjective} it follows that for any $f\in K$ there are a largest open subset $U$ and $\phi \in \Oo_Z(U)$ such that $f=(U,\phi)/_\sim$, and $\phi$ is uniquely determined by $f$. This $U$ is called the \emph{domain of definition} of the rational function $f$.
         \item 
             If $Z$ had a point $\eta_Z$ which is dense in $Z$ (a \emph{generic} point), we would have $K = \Oo_{Z,\eta_Z}$ as any open $U\neq \emptyset$ must contain $\eta_Z$.
         \item
@@ -1602,10 +1609,10 @@ i.e.\ $\lambda$ not a $d\ordinalth$ root of unity for all $d\leq\deg p$).
         \item 
             If $U\subseteq Z$ is non-empty, the fields $K(U)$ and $K(Z)$ of rational functions on the respective spaces are canonically isomorphic as any $f\in K(Z)$ has a representative $(W,\phi)$ with $W\subseteq U$ (if $(V,\snake\phi)$ is any representative of $f$, $W=V\cap U$ and $\phi=\snake \phi|_W$ will do).
     \end{alphanumerate}
-\end{rem*}
+\end{rem}
 This enables us to derive the relation between dimension and transcendence degree from the quasi-affine case.
 \begin{prop}\lbl{prop:prevarietyCatenary}
-    If $Z\subseteq \IP^n(k)$ is quasi-projective (or, more generally, if $Z$ is any prevariety) then $\dim(Z) = \trdeg(K(Z)/k)$, $\codim(\{z\},Z) = \dim(Z)$ for any point $z\in Z$. Moreover, $Z$ is catenary, i.e.
+    If $Z\subseteq \IP^n(k)$ is quasi-projective (or, more generally, if $Z$ is any prevariety) then $\dim(Z) = \trdeg(K(Z)/k)$ and $\codim(\{z\},Z) = \dim(Z)$ for any point $z\in Z$. Moreover, $Z$ is catenary, i.e.
     \begin{align*}
         \codim(A,B) +\codim(B,C) = \codim(A,C)
     \end{align*}
@@ -1620,11 +1627,14 @@ This enables us to derive the relation between dimension and transcendence degre
 \begin{cor}
     The Krull dimension of $\IP^n(k)$ equals $n$.
 \end{cor}
-\begin{prop}
+\begin{proof}
+	We have $K(\IP^n(k))\cong K(\IA^n(k))\cong k(X_1,\ldots,X_n)$ by Remark~\reff{rem:FieldOfRationalFunctions}\itememph{d}, hence the transcendence degree considered in the above Proposition~\reff{prop:prevarietyCatenary} equals $n$.
+\end{proof}
+\begin{prop}\lbl{prop:affineConeCorrespondenceAgain}
     Let $Z$ be quasi-projective variety and $Y\subseteq Z$ irreducible closed, then 
     \begin{align*}
         \dim(C(Z)) = \dim(Z) +1\quad\text{and}\quad
-        \dim(Y,Z) = \dim(C(Y), C(Z))\;.
+        \codim(Y,Z) = \codim(C(Y), C(Z))\;.
     \end{align*}
 \end{prop}
 \begin{proof}
@@ -1634,10 +1644,10 @@ This enables us to derive the relation between dimension and transcendence degre
     When $X$ and $Y$ are irreducible closed subsets of $\IP^n(k)$, of codimension $\xi$ and $\upsilon$ in $\IP^n(k)$, then every irreducible component of $X\cap Y$ has codimension smaller or equal to $\xi +\upsilon$ in $\IP^n(k)$. If we have $\xi+\upsilon \leq n$, it follows $X\cap Y \neq \emptyset$.
 \end{thm}
 \begin{rem*}
-    For instance, if $C$ and $D$ are curves in $\IP^2(k)$ (given by $P(x,y,z) = 0$ or $Q(x,y,z)= 0$ where $P$ and $Q$ are homogeneous of degree $c$ and $d$) it follows that $C\cap D \neq \emptyset$. When the intersection is finite, it has $c\cdot d$ elements counted by multiplicity, by B\'ezout's Theorem.
+    For instance, if $C$ and $D$ are curves in $\IP^2(k)$ (given by $P(x,y,z) = 0$ or $Q(x,y,z)= 0$ where $P$ and $Q$ are homogeneous of degree $c$ and $d$) it follows that $C\cap D \neq \emptyset$. When the intersection is finite, it has $c\cdot d$ elements counted by multiplicity, by B\'ezout's Theorem (as we will see, cf.\ Theorem~\reff{thm:bezoutGeneral}).
 \end{rem*}
 \begin{proof}[Proof of Theorem \reff{thm:projectiveIntersection}]
-    We have $C(X)\cap C(Y) = C(X\cap Y)$. If $X\cap Y= \bigcup_{i=1}^\ell C_i$ is the decomposition of $X\cap Y$ into irreducible components, $C(X)\cap C(Y) = \bigcup_{i=1}^\ell C(C_i)$ or $C(X) \cap C(Y) = \{0\}$ (if $X\cap Y=\emptyset$, i.e.\ $\ell=0$). By the previous Proposition and Theorem \reff{thm:codimIneq}, 
+    We have $C(X)\cap C(Y) = C(X\cap Y)$. If $X\cap Y\neq \emptyset$, then it has a decomposition $X\cap Y=\bigcup_{i=1}^\ell C_i$ into irreducible components, and $C(X)\cap C(Y) = \bigcup_{i=1}^\ell C(C_i)$. If $X\cap Y=\emptyset$, then $C(X) \cap C(Y) = \{0\}$. By the previous Proposition~\reff{prop:affineConeCorrespondenceAgain} and Theorem \reff{thm:codimIneq}, 
     \begin{align*}
     	 \codim(C_i, \IP^n(k)) &= \codim\big(C(C_i), \IA^{n+1}(k)\big)\\
     	 & \leq \codim\big(C(X), \IA^{n+1}(k)\big) +\codim\big(C(Y), \IA^{n+1}(k)\big)= \xi+\upsilon 
@@ -1687,8 +1697,8 @@ As $\pp$ is homogeneous, $S(X)$ inherits a grading $S(X)=\bigoplus_{d\geq 0}S_d(
     \begin{align*}
         \eta(y_0,\ldots, y_n) = \frac{p_x(y_0,\ldots, y_n)}{q_x(y_0,\ldots, y_n)}
     \end{align*}
-    when $(y_0,\ldots, y_n)\in C(U_x)\setminus\{0\}\subseteq C(X^\circ)\setminus \{0\}=C(X)\setminus V_\aff(f)$. The topological space $\IP^n(k)$, and thus also $X$, being Noetherian, the open subset $X^\circ=X\setminus V(f)$ is quasi-compact, hence covered by finitely many $U_{x_i}=U_i$ for $i=1,\ldots, N$. Let $p_i=p_{x_i}$ and $q_i=q_{x_i}$ for brevity. Since $V(q_i)\cap U_i=\emptyset$, we have $X^\circ\cap V(q_i)\subseteq X^\circ\setminus U_i$, hence $\emptyset=X^\circ\cap\bigcap_{i=1}^NV(q_i)$.
-    %Let $U\subseteq \IP^n(k)$ be open such that $U\cap X=U_x$. The set $\IP^n(k)\setminus U$ is closed, hence the vanishing set of some homogeneous ideal $J\subseteq k[X_0,\ldots,X_n]$. As $x\notin V(J)$, there is some generator $r$ of $J$ such that $x\notin V(r)$ and we may even choose $r$ homogeneous. Replacing $p_x$ by $p_x\cdot r$, $q_x$ by $q_x\cdot r$, and $U_x$ by $U_x\setminus V(r) = X\setminus V(r)$, we may assume that $U_x= X\setminus V(q_x)\subseteq X\setminus V(f)$. The topological space $\IP^n(k)$ (and thus also $X$) being Noetherian, $X\setminus V(f)$ is quasi-compact, hence is covered by finitely many $X\setminus V(q_{x_i})$, $i=1,\ldots,N$. Let $p_i= p_{x_i}$ and $q_i = q_{x_i}$. 
+    when $(y_0,\ldots, y_n)\in C(U_x)\setminus\{0\}\subseteq C(X^\circ)\setminus \{0\}=C(X)\setminus V_\aff(f)$. The topological space $\IP^n(k)$, and thus also $X$, being noetherian, the open subset $X^\circ=X\setminus V(f)$ is quasi-compact, hence covered by finitely many $U_{x_i}=U_i$ for $i=1,\ldots, N$. Let $p_i=p_{x_i}$ and $q_i=q_{x_i}$ for brevity. Since $V(q_i)\cap U_i=\emptyset$, we have $X^\circ\cap V(q_i)\subseteq X^\circ\setminus U_i$, hence $\emptyset=X^\circ\cap\bigcap_{i=1}^NV(q_i)$.
+    %Let $U\subseteq \IP^n(k)$ be open such that $U\cap X=U_x$. The set $\IP^n(k)\setminus U$ is closed, hence the vanishing set of some homogeneous ideal $J\subseteq k[X_0,\ldots,X_n]$. As $x\notin V(J)$, there is some generator $r$ of $J$ such that $x\notin V(r)$ and we may even choose $r$ homogeneous. Replacing $p_x$ by $p_x\cdot r$, $q_x$ by $q_x\cdot r$, and $U_x$ by $U_x\setminus V(r) = X\setminus V(r)$, we may assume that $U_x= X\setminus V(q_x)\subseteq X\setminus V(f)$. The topological space $\IP^n(k)$ (and thus also $X$) being noetherian, $X\setminus V(f)$ is quasi-compact, hence is covered by finitely many $X\setminus V(q_{x_i})$, $i=1,\ldots,N$. Let $p_i= p_{x_i}$ and $q_i = q_{x_i}$. 
     Then 
     \begin{align*}
         V(\phi) \supseteq X\cap \bigcap_{i=1}^n V(q_i) = V\big(\pp+ (q_1,\ldots, q_N)_R\big)
@@ -1818,7 +1828,7 @@ As $\pp$ is homogeneous, $S(X)$ inherits a grading $S(X)=\bigoplus_{d\geq 0}S_d(
 \end{proof}
 %[sic!] @definition without number %but that's retarded, I am going to change that
 \begin{defi}[Graded module]\lbl{def:gradedModule}
-    A \defemph{graded module} $M$ over a graded ring $R$ is an $R$-module $M$ with a decomposition $M=\bigoplus_{d=-\infty}^\infty M_d$ of its additive group such that $R_k\cdot M_\ell \subseteq M_{k+\ell}$. We call $M$ \emph{finitely generated} (respectively \emph{Noetherian}) if it is finitely generated (respectively Noetherian) as an ungraded $R$-module. 
+    A \defemph{graded module} $M$ over a graded ring $R$ is an $R$-module $M$ with a decomposition $M=\bigoplus_{d=-\infty}^\infty M_d$ of its additive group such that $R_k\cdot M_\ell \subseteq M_{k+\ell}$. We call $M$ \emph{finitely generated} (respectively \emph{noetherian}) if it is finitely generated (respectively noetherian) as an ungraded $R$-module. 
 \end{defi}
 \begin{rem}
     If $M$ is finitely generated, it may be generated by finitely many homogeneous elements.
@@ -1862,7 +1872,7 @@ As $\pp$ is homogeneous, $S(X)$ inherits a grading $S(X)=\bigoplus_{d\geq 0}S_d(
     \item 
         The zero module has length 0.
     \item 
-        Any submodule or quotient module of an $R$-module $M$ of finite length has again finite length, and for any strictly increasing chain $M_0\subsetneq M_1\subsetneq\ldots\subsetneq M_d$ of submodules of $M$, the sequence $\length_R(M_i)$ is strictly increasing. Thus $d\leq \length_R(M)$, and any module of finite length is Noetherian.
+        Any submodule or quotient module of an $R$-module $M$ of finite length has again finite length, and for any strictly increasing chain $M_0\subsetneq M_1\subsetneq\ldots\subsetneq M_d$ of submodules of $M$, the sequence $\length_R(M_i)$ is strictly increasing. Thus $d\leq \length_R(M)$, and any module of finite length is noetherian.
     \item 
         If $0\morphism M' \morphism[\alpha] M\morphism[\beta] M'' \morphism 0$ is a short exact sequence then $\length_R(M) = \length_R(M') +\length_R(M'')$. This is an easy consequence of Artin--Schreier. Indeed, if $0=M_0'\subsetneq\ldots M_{\ell'}'=M'$ and $0=M_0''\subsetneq\ldots\subsetneq M_{\ell''}''=M''$ are filtrations of $M'$ and $M''$ with simple quotients $M_i'/M_{i-1}'$ and $M_j''/M_{j-1}''$, then 
         \begin{align*}
@@ -1881,7 +1891,7 @@ As $\pp$ is homogeneous, $S(X)$ inherits a grading $S(X)=\bigoplus_{d\geq 0}S_d(
     For a ring $R$ the following conditions are equivalent:
     \begin{alphanumerate}
     \item
-        $R$ is Noetherian of Krull dimension $0$.
+        $R$ is noetherian of Krull dimension $0$.
     \item  
         $R$ has finite length as an $R$-module.
     \item
@@ -1896,21 +1906,21 @@ We postpone the quite lengthy proof of Proposition~\reff{prop:Akizuki--Hopkins} 
 \begin{prop}
     \begin{alphanumerate}
     \item \lbl{prop:filtrationByPrimeIdeals}
-        Let $R$ be a Noetherian ring, $M$ a finitely generated $R$-module. Then there is a finite filtration $0 = M_0\subsetneq M_1\subsetneq\ldots\subsetneq M_k = M$ such that $M_i/M_{i-1} \cong R/\pp_i$ for some $\pp_i\in \Spec R$.
+        Let $R$ be a noetherian ring, $M$ a finitely generated $R$-module. Then there is a finite filtration $0 = M_0\subsetneq M_1\subsetneq\ldots\subsetneq M_k = M$ such that $M_i/M_{i-1} \cong R/\pp_i$ for some $\pp_i\in \Spec R$.
     \item  
         If $R$ and $M$ are graded ($R$ being $\IN$-graded), we may chose this filtration in such a way that the $M_i$ are graded submodules and the $\pp_i$ homogeneous and $M_i/M_{i-1} \cong (R/\pp_i)[t_i]$ (this is the shift from Definition~\reff{def:gradedSubmodule} and not some polynomial ring thingy), where $t_i\in \IN_0$ and the isomorphism respects the grading.
     \end{alphanumerate}
 \end{prop}
 \begin{lem}\lbl{lem:submoduleRp}
-    Let $M\neq0$ be a module over a Noetherian ring $R$,  then it contains a submodule isomorphic to $R/\pp$ for some $\pp\in \Spec R$. If $M$ and $R$ are graded, then $\pp$ may be chosen homogeneous and such that the isomorphism respects the grading up to shift.
+    Let $M\neq0$ be a module over a noetherian ring $R$,  then it contains a submodule isomorphic to $R/\pp$ for some $\pp\in \Spec R$. If $M$ and $R$ are graded, then $\pp$ may be chosen homogeneous and such that the isomorphism respects the grading up to shift.
 \end{lem}
 \begin{proof}
-    The set of ideals $\left\{\Ann_R(m) = \left\{r\in R\st r\cdot m = 0\right\} \st m\in M\setminus \{0\}\right\}$ in $R$ has a $\subseteq$-maximal element, as $R$ is Noetherian. Let $m\neq 0$ such that $\Ann_R(m) = \pp$ is $\subseteq$-maximal in the above set of ideals. Then the submodule $R\cdot m \subseteq M$ is isomorphic to $R/\pp$. We have $1\not\in \pp$ as $m\neq 0$. Let $ab\in \pp$. If $a\not\in\pp$, then $a\cdot m \neq 0$ and $\Ann_R(a\cdot m)\supseteq \Ann_R(m)$, and equality must occur by our choice of $m$. Thus $b\in \Ann_R(a\cdot m)$ implies $b\in \Ann_R(m)$, and $\pp$ is prime.
+    The set of ideals $\left\{\Ann_R(m) = \left\{r\in R\st r\cdot m = 0\right\} \st m\in M\setminus \{0\}\right\}$ in $R$ has a $\subseteq$-maximal element, as $R$ is noetherian. Let $m\neq 0$ such that $\Ann_R(m) = \pp$ is $\subseteq$-maximal in the above set of ideals. Then the submodule $R\cdot m \subseteq M$ is isomorphic to $R/\pp$. We have $1\not\in \pp$ as $m\neq 0$. Let $ab\in \pp$. If $a\not\in\pp$, then $a\cdot m \neq 0$ and $\Ann_R(a\cdot m)\supseteq \Ann_R(m)$, and equality must occur by our choice of $m$. Thus $b\in \Ann_R(a\cdot m)$ implies $b\in \Ann_R(m)$, and $\pp$ is prime.
     
     In the graded case, consider $\left\{\Ann_R(m)\st m\in M\setminus\{0\}\text{ homogeneous}\right\}$, then the ideals of this set are automatically homogeneous and thanks to Proposition~\reff{prop:gradedNoetherian}, the arguments for the ungraded can be recycled.
 \end{proof}
 \begin{proof}[Proof of Proposition~\reff{prop:filtrationByPrimeIdeals}]
-    Part \itememph{a}. By our assumption, $M$ is Noetherian. Hence the set $\MM$ of submodules of $M$ with such a filtration has an $\subseteq$-maximal element $M'$. If $M'\neq M$ we could find a submodule $Q\subseteq M/M'$ which is isomorphic to $R/\pp$ for some $\pp\in \Spec R$ by Lemma~\reff{lem:submoduleRp}. Then the preimage of $Q$ in $M$ also has a filtration of the desired kind, contradicting maximality of $M'$.
+    Part \itememph{a}. By our assumption, $M$ is noetherian. Hence the set $\MM$ of submodules of $M$ with such a filtration has an $\subseteq$-maximal element $M'$. If $M'\neq M$ we could find a submodule $Q\subseteq M/M'$ which is isomorphic to $R/\pp$ for some $\pp\in \Spec R$ by Lemma~\reff{lem:submoduleRp}. Then the preimage of $Q$ in $M$ also has a filtration of the desired kind, contradicting maximality of $M'$.
     
     The graded version \itememph{b} follows in the exact same way from the graded case of Lemma~\reff{lem:submoduleRp}.
 \end{proof}
@@ -1934,7 +1944,7 @@ We postpone the quite lengthy proof of Proposition~\reff{prop:Akizuki--Hopkins} 
     To close the circle we have to prove that \itememph{c} implies \itememph{a}. For this we will not need the famous prime avoidance lemma, but it is pretty neat so I will let it stand here:
     
     \begin{lem}[Prime avoidance]\lbl{lem:primeAvoidance}
-        Let $\pp_1,\ldots, \pp_r$ be ideals of a ring $R$ such that there at most two among them who are not prime. If $I$ is an ideal of $R$ not contained in any $\pp_i$, then it is also not contained in the union of all the $\pp_i$. 
+        Let $\pp_1,\ldots, \pp_r$ be ideals of a ring $R$ such that there at most two among them which are not prime. If $I$ is an ideal of $R$ not contained in any $\pp_i$, then it is also not contained in the union of all the $\pp_i$. 
     \end{lem}
     Professor Franke does not want to prove this here and recommends the appropriate chapter in Eisenbud, \cite[Section~3.2]{eisenbudCommAlg}. You can also find a proof by Franke himself in \cite[Lemma~2.5.1]{alg1}.
     
@@ -1960,7 +1970,7 @@ We postpone the quite lengthy proof of Proposition~\reff{prop:Akizuki--Hopkins} 
     \end{align*}
     Then each $N_j/N_{j+1}$  is annihilated by $\mm_{j+1}$, hence has finite length by Step~4.  Using Remark~\reff{rem:ArtinSchreier}\itememph{g}, we deduce that $\nil(R)^i/\nil(R)^{i+1}$ has finite length as well.
     
-    As $\nil(R)^n=0$, this shows that $\length_R(R) <\infty$ (again by Remark~\reff{rem:ArtinSchreier}\itememph{g}). In particular, $R$ must be Noetherian and this finishes our proof.
+    As $\nil(R)^n=0$, this shows that $\length_R(R) <\infty$ (again by Remark~\reff{rem:ArtinSchreier}\itememph{g}). In particular, $R$ must be noetherian and this finishes our proof.
 \end{proof}
 
 \begin{defi}[Artinian]\lbl{def:artinian}
@@ -1970,7 +1980,7 @@ We postpone the quite lengthy proof of Proposition~\reff{prop:Akizuki--Hopkins} 
     Let $R$ be an $\IN$-graded ring satisfying the following equivalent conditions:
     \begin{alphanumerate}
     \item 
-        $R$ is Noetherian and $R_0$ is Artinian and $R_+$ is generated by $R_1$ as an ideal.
+        $R$ is noetherian and $R_0$ is Artinian and $R_+$ is generated by $R_1$ as an ideal.
     \item 
         $R_0$ is Artinian, $R$ is generated by $R_0$ and $R_1$, and $R_1$ is a finitely generated $R_0$-module.
     \end{alphanumerate}
@@ -1991,7 +2001,7 @@ We postpone the quite lengthy proof of Proposition~\reff{prop:Akizuki--Hopkins} 
     If $M=R=k[X_0,\ldots, X_n]/\pp$ is the graded coordinate ring of a projective algebraic variety $Z=V(\pp)$, the polynomial $P_M$ is called the \defemph{Hilbert polynomial} of $Z$.
 \end{defi}
 \begin{proof}[Proof of Theorem~\reff{thm:hilbertPolynomial}]
-    It is easy to see that \itememph{a} and \itememph{b} are equivalent; the arguments are similar to Proposition~\reff{prop:gradedNoetherian}, except for Noetherianness in \itememph{a} if \itememph{b} is given. This can be seen as follows: As $R_1$ is a finitely generated $R_0$-module and $R$ is generated by $R_0$ and $R_1$, $R$ must be a $R_0$-algebra of finite type. As $R_0$ is (Artinian and thus) Noetherian, so is $R$ by Hilbert's Basissatz. Also it's clear that $P_M$ is unique.
+    It is easy to see that \itememph{a} and \itememph{b} are equivalent; the arguments are similar to Proposition~\reff{prop:gradedNoetherian}, except for noetherianness in \itememph{a} if \itememph{b} is given. This can be seen as follows: As $R_1$ is a finitely generated $R_0$-module and $R$ is generated by $R_0$ and $R_1$, $R$ must be a $R_0$-algebra of finite type. As $R_0$ is (Artinian and thus) noetherian, so is $R$ by Hilbert's Basissatz. Also it's clear that $P_M$ is unique.
     
     For existence we use induction on $d$. \emph{Step 1.} If $d=0$, $R=R_0$. As $M$ is finitely generated, $M_k = 0$ when $k\gge0$ and $P_M =0$ does it. 
     
@@ -2435,14 +2445,14 @@ and we have bijections
 
 \section{The Samuel polynomial and the principal ideal theorem}
 
-Let $R$ be a local ring, $M$ a finitely generated $R$-module. When $R$ is Noetherian, $M$ has a filtration (Proposition~\reff{prop:filtrationByPrimeIdeals})
+Let $R$ be a local ring, $M$ a finitely generated $R$-module. When $R$ is noetherian, $M$ has a filtration (Proposition~\reff{prop:filtrationByPrimeIdeals})
 \begin{align}
     0 = M_0\subsetneq M_1\subsetneq\ldots \subsetneq M_k = M\;, \lbl{eq:filtrationByPrimeIdeals}
 \end{align}
 where $M_i/M_{i+1} \cong R/\pp_i$ with $\pp_i\in\Spec R$ some prime ideals.
 
 \begin{lem}\lbl{lem:support}
-    Let $M$ be a finitely generated module over any (not necessarily Noetherian) ring $R$, then we have
+    Let $M$ be a finitely generated module over any (not necessarily noetherian) ring $R$, then we have
     \begin{align*}
         V(\Ann_R(M)) = \left\{\pp\in \Spec R\st M_\pp\neq 0\right\}\;.
     \end{align*}
@@ -2473,7 +2483,7 @@ where $M_i/M_{i+1} \cong R/\pp_i$ with $\pp_i\in\Spec R$ some prime ideals.
         \end{align*}
     \end{alphanumerate}
 \end{rem*}
-From now on, let $R$ be a Noetherian local ring with maximal ideal $\mm$ and $M$ a finitely generated $R$-module.
+From now on, let $R$ be a noetherian local ring with maximal ideal $\mm$ and $M$ a finitely generated $R$-module.
 
 \begin{fact}
     The set $\supp(M)$ is Zariski-closed. Let $\supp(M) = \bigcup_{i=1}^\ell V(\qq_i)$ be its decomposition into irreducible components (cf. Proposition~\reff{prop:irreducibleDecomposition}\itememph{b}) and $\QQ_M= \left\{\qq_1,\ldots,\qq_\ell\right\}$. Then 
@@ -2522,7 +2532,7 @@ From now on, let $R$ be a Noetherian local ring with maximal ideal $\mm$ and $M$
     \begin{align*}
     	\gr(R,I) = \bigoplus_{k=0}^\infty I^k/I^{k+1}\;. 
     \end{align*}
-    Then $\gr_0(R,I) = R/I$ is Artinian (by the previous remark) and $\gr(R,I)$ is generated by $\gr_0(R,I)$ and $\gr_1(R,I)$. Since $\gr_1(R,I)$ is finitely generated over $R/I$ (indeed, as $R$ is Noetherian, $I =  (x_1,\ldots, x_n)_R$ and the $x_i\bmod I^2$ generate $I/I^2$ as an $R/I$-module), therefore Theorem~\reff{thm:hilbertPolynomial} can be applied to any finitely generated graded $\gr(R,I)$-module. We apply it to the graded module associated to $M$ and $I$, i.e.
+    Then $\gr_0(R,I) = R/I$ is Artinian (by the previous remark) and $\gr(R,I)$ is generated by $\gr_0(R,I)$ and $\gr_1(R,I)$. Since $\gr_1(R,I)$ is finitely generated over $R/I$ (indeed, as $R$ is noetherian, $I =  (x_1,\ldots, x_n)_R$ and the $x_i\bmod I^2$ generate $I/I^2$ as an $R/I$-module), therefore Theorem~\reff{thm:hilbertPolynomial} can be applied to any finitely generated graded $\gr(R,I)$-module. We apply it to the graded module associated to $M$ and $I$, i.e.
     \begin{align*}
     	\gr(M,I) = \bigoplus_{k=0}^\infty I^kM/I^{k+1}M
     \end{align*}	
@@ -2554,17 +2564,17 @@ From now on, let $R$ be a Noetherian local ring with maximal ideal $\mm$ and $M$
     \end{alphanumerate}
 \end{rem*}
 \begin{thm}\lbl{thm:idealOfDefinition}
-    For any ideal of definition $I$ of any Noetherian local ring $R$ with maximal ideal $\mm$ and any finitely generated $R$-module $M$, we have 
+    For any ideal of definition $I$ of any noetherian local ring $R$ with maximal ideal $\mm$ and any finitely generated $R$-module $M$, we have 
     \begin{align*}
     	\dim (M) = d(M,I) = \delta(M,I)\;.
     \end{align*}    
 \end{thm}
 \emph{Of course}, before proving this, we will give some corollaries.
 \begin{cor}\lbl{cor:dimFinite}
-    We have $\dim(M) <\infty$. In particular, with $M=R$, $\supp R= V(0) = \Spec R$, we have $\dim(R)<\infty$, when $R$ is a Noetherian local ring.
+    We have $\dim(M) <\infty$. In particular, with $M=R$, $\supp R= V(0) = \Spec R$, we have $\dim(R)<\infty$, when $R$ is a noetherian local ring.
 \end{cor}
 \begin{cor}\lbl{cor:dimOfGr}
-    The dimension of any Noetherian local ring $(R,\mm)$ is equal to dimension of its associated graded ring $\gr(R,\mm)$.
+    The dimension of any noetherian local ring $(R,\mm)$ is equal to dimension of its associated graded ring $\gr(R,\mm)$.
 \end{cor}
 \begin{proof}
     This proof captures only the case where $k=R/\mm$ is algebraically closed and $\gr(R,\mm)$ is a domain. For a unconditional proof, cf. Eisenbud, \cite[Corollary~12.5]{eisenbudCommAlg}.
@@ -2572,27 +2582,27 @@ From now on, let $R$ be a Noetherian local ring with maximal ideal $\mm$ and $M$
     If $\gr(R,\mm)$ has no zero divisors, then it is a graded domain of finite type over $k=R/\mm=\gr_0(R,\mm)$, hence $\gr(R,\mm) = k[X_0,\ldots, X_n]/\pp$ with $\pp\subseteq k[X_0,\ldots,X_n]$ a homogeneous prime ideal and $\gr(R,\mm)$ corresponds to the graded ring of some projective variety $Y\subseteq \IP^{n}(k)$. Then $\dim\gr(R,\mm) = \dim(C(Y)) = \dim(Y) +1 = \deg P+1 $ where $P$ is the Hilbert polynomial of $Y$ (using Proposition~\reff{prop:HilbertDegreeEqualsDimension}), hence the same $P$ as in Fact~\reff{fact:samuelPolynomial} and $\deg Q_{R,\mm} = \deg P+1$ by Fact~\reff{fact:discreteIntegration}\itememph{b} and $\deg Q_{R,\mm}=d(R,\mm)=\dim R$ by Theorem~\reff{thm:idealOfDefinition}.
 \end{proof}
 \begin{cor}\lbl{cor:dimRMaxIdeal}
-    If $R$ is a Noetherian local ring and $\mm =( x_1,\ldots, x_n)_R$, then $\dim(R) \leq n$.
+    If $R$ is a noetherian local ring and $\mm =( x_1,\ldots, x_n)_R$, then $\dim(R) \leq n$.
 \end{cor}
 \begin{proof}
     We have $\length_R(R/(x_1R+\ldots +x_nR) ) = \length_R(R/\mm) = 1< \infty$, hence $\delta(R,\mm) \leq n$ and $\dim(R) \leq n$ by Theorem~\reff{thm:idealOfDefinition}.
 \end{proof}
 \begin{cor}\lbl{cor:dimGeneratorsDefinition}
-    If $R$ is Noetherian local, $\dim(R)$ is the minimal number of elements of $R$ generating an ideal of definition $J$.
+    If $R$ is noetherian local, $\dim(R)$ is the minimal number of elements of $R$ generating an ideal of definition $J$.
 \end{cor}
 \begin{proof}
     If $J= (x_1,\ldots,x_n)_R$ is an ideal of definition then $\dim(R) = \delta(R,J) \leq n$ as before. Vice versa, if $d=\dim(R) = \delta(R,\mm)$, there are $x_1,\ldots, x_d\in R$ such that $\length_R(R/(x_1,\ldots, x_d)_R)$ is finite, hence $J= (x_1,\ldots, x_d)_R$ is an ideal of definition.
 \end{proof}
 And finally, we are able to prove Theorem~\reff{thm:krullIdeal} and thus also Krull's (who, as we all know from \cite{alg1}, was a \emph{n00b} compared to Grothendieck) principal ideal theorem, Theorem~\reff{thm:krullPrincipalIdeal}, at last!
 \begin{cor}[Krull's height theorem]\lbl{cor:KrullHeight}
-    If $R$ is any Noetherian ring and $\pp$ minimal among all prime ideals containing $x_1,\ldots, x_k\in R$, then $\hoehe(\pp) \leq k$.
+    If $R$ is any noetherian ring and $\pp$ minimal among all prime ideals containing $x_1,\ldots, x_k\in R$, then $\hoehe(\pp) \leq k$.
 \end{cor}
 \begin{proof}
     As the prime ideals of the localization $R_\pp$ correspond to the prime ideals contained in $\pp$, its maximal ideal $\mm=\pp R_\pp$ is the only prime ideal containing the images of the $x_i$ in $R_\pp$. Then $V(x_1,\ldots, x_k) =\{\mm\}$ in $\Spec R_\pp$ and $\sqrt{(x_1,\ldots,x_k)_{R_\pp}}=\mm$ hence $I=(x_1,\ldots, x_k)_{R_\pp}$ is an ideal of definition and $\hoehe(\pp)=\dim R_\pp \leq k$ by the previous Corollary~\reff{cor:dimGeneratorsDefinition}.
 \end{proof}
 We now start proving Theorem~\reff{thm:idealOfDefinition}. To do this, we will invoke the famous \emph{Artin--Rees lemma}, which had almost been upgraded to a theorem itself.
 \begin{prop}[Artin--Rees] \lbl{prop:artinRees}
-    If $R$ is an Noetherian ring, $I\subseteq R$ an ideal, $N\subseteq M$ a submodule of a finitely generated $R$-module $M$, then there exists a number $c\in\IN_0$ such that 
+    If $R$ is an noetherian ring, $I\subseteq R$ an ideal, $N\subseteq M$ a submodule of a finitely generated $R$-module $M$, then there exists a number $c\in\IN_0$ such that 
     \begin{align*}
     	N\cap I^{k+c}M \subseteq I^kN\quad\text{for all }k\geq 0\;. 
     \end{align*}
@@ -2602,11 +2612,11 @@ We now start proving Theorem~\reff{thm:idealOfDefinition}. To do this, we will i
     \begin{align*}
         B_IR = \left\{\sum_{k=0}^\infty a_kT^k\in R[T] \st a_k\in I^k\right\}\cong R\oplus I\oplus I^2\oplus\cdots= R\oplus\bigoplus_{n=1}^\infty I^n
     \end{align*}
-    be the \emph{Rees-algebra} (or \emph{blowup-algebra}). One may note, that due to $B_IR$ being a subset of the polynomial ring, in each element all but finitely many $a_k$ have to be $0$. This is an $R$-algebra of finite type, hence Noetherian by Hilbert's Basissatz. Indeed, if $I$ is generated by $i_1,\ldots,i_n$ then $A$ is generated over $R$ by $i_1T,\ldots,i_nT$. The module 
+    be the \emph{Rees-algebra} (or \emph{blowup-algebra}). One may note, that due to $B_IR$ being a subset of the polynomial ring, in each element all but finitely many $a_k$ have to be $0$. This is an $R$-algebra of finite type, hence noetherian by Hilbert's Basissatz. Indeed, if $I$ is generated by $i_1,\ldots,i_n$ then $A$ is generated over $R$ by $i_1T,\ldots,i_nT$. The module 
     \begin{align*}
         B_IM = \left\{\sum_{k=0}^\infty \mu_kT^k\in M[T] \st \mu_k \in I^kM\right\}\cong M\oplus IM\oplus I^2M\oplus\cdots=\bigoplus_{n=0}^\infty I^nM
     \end{align*}
-    is finitely generated (by $m_1T^0,\ldots,m_\ell T^0$ when $m_1,\ldots,m_\ell$ generate $M$ as an $R$-module) as an $B_IR$-module. As $B_IR$ is Noetherian, $\widehat N = N[T]\cap B_IM \subseteq B_IM$ is also finitely generated. Let $n_1T^{c_1},\ldots,n_sT^{c_s}$ be generators of $\widehat N$ over $B_IR$ (decomposing arbitrary generators into homogeneous components, we may assume that we have generators which are all homogeneous). We claim that the assertion holds for $c = \max\left\{c_1,\ldots,c_s\right\}$. 
+    is finitely generated (by $m_1T^0,\ldots,m_\ell T^0$ when $m_1,\ldots,m_\ell$ generate $M$ as an $R$-module) as an $B_IR$-module. As $B_IR$ is noetherian, $\widehat N = N[T]\cap B_IM \subseteq B_IM$ is also finitely generated. Let $n_1T^{c_1},\ldots,n_sT^{c_s}$ be generators of $\widehat N$ over $B_IR$ (decomposing arbitrary generators into homogeneous components, we may assume that we have generators which are all homogeneous). We claim that the assertion holds for $c = \max\left\{c_1,\ldots,c_s\right\}$. 
     
     The set of homogeneous elements of degree $k+c$ of $\widehat N$ equals $(I^{k+c}M\cap N)\cdot T^{k+c}$ and its elements must be of the form
     \begin{align*}
@@ -2615,7 +2625,7 @@ We now start proving Theorem~\reff{thm:idealOfDefinition}. To do this, we will i
     where $a_j \in I^{k+c-c_j} \subseteq I^k$ as $c\geq c_j$. The result follows as $a_j n_j \in I^k N$.
 \end{proof}
 \begin{cor}[This is not Corollary~\reff{cor:dimRMaxIdeal}]\lbl{cor:shortExactd}
-    Let $0\morphism M'\morphism M \morphism M''\morphism 0$ be short exact sequence of finitely generated modules over a Noetherian local ring $R$ in which some ideal $I$ of definition has been fixed. Then 
+    Let $0\morphism M'\morphism M \morphism M''\morphism 0$ be short exact sequence of finitely generated modules over a noetherian local ring $R$ in which some ideal $I$ of definition has been fixed. Then 
     \begin{align*}
     	d(M,I) = \max\{d(M',I), d(M'',I)\}
     \end{align*}
@@ -2653,7 +2663,7 @@ We now start proving Theorem~\reff{thm:idealOfDefinition}. To do this, we will i
     (as in \eqreff{eq:filtrationByPrimeIdeals}) but the $\qq\in \QQ_M$ are the $\subseteq$-minimal elements of $\left\{\pp_1,\ldots,\pp_k\right\}$ and if $\pp_i\supseteq \qq$ we have $R/\qq \epimorphism R/\pp_i$, hence $\length_R\big(R/(I^k+\qq)\big) \geq \length_R\big(R/(I^k +\pp_i)\big)$, hence $d(R/\pp_i,I) \leq d(R/\qq,I)$.
 \end{proof}
 \begin{cor}[Krull's intersection theorem]\lbl{cor:KrullIntersection}
-    If $R$ is a local Noetherian ring with maximal ideal $\mm$, $I\subseteq R$ a proper ideal and $M$ a finitely generated $R$-module, then 
+    If $R$ is a local noetherian ring with maximal ideal $\mm$, $I\subseteq R$ a proper ideal and $M$ a finitely generated $R$-module, then 
     \begin{align*}
         \bigcap_{k=0}^\infty I^kM =0\;.
     \end{align*}
@@ -2710,7 +2720,7 @@ We now start proving Theorem~\reff{thm:idealOfDefinition}. To do this, we will i
 \end{proof}
 To finish the proof, we only need to note that $\supp(N)\subseteq \supp(M)$ is a trivial consequence of $N$ being a quotient of $M$. But a more precise statement can be made and shall be made as it is -- as Professor Franke would say -- perhaps worthwhile to know. %The following fact again looks obvious at first glance, whichbut it actually isn't -- or maybe it is for Professor Franke, but certainly not for the authors of this notes.
 \begin{lem}\lbl{lem:radicalOfAnnihilator}
-	Let $R$ be an arbitrary ring (i.e.\ commutative, but neither necessarily Noetherian nor local). Let $I\subseteq R$ be an ideal and $M$ a finitely generated $R$-module. Then
+	Let $R$ be an arbitrary ring (i.e.\ commutative, but neither necessarily noetherian nor local). Let $I\subseteq R$ be an ideal and $M$ a finitely generated $R$-module. Then
 	\begin{align*}
 		\sqrt{\Ann_R(M/IM)}=\sqrt{I+\Ann_R(M)}\;.
 	\end{align*}
@@ -2739,10 +2749,10 @@ The following proof was suggested to us by Felix and is a lot shorter and more e
 	\end{align*}
 	where we applied Lemma~\reff{lem:support} to $M$. We are done.
 \end{proof}
- Recall that for a Noetherian local ring $R$ with maximal ideal $\mm$ and residue field $k=R/\mm$, the dimension $\dim_k(\mm/\mm^2)$ equals the minimal number of generators of $\mm$ and $\dim(R) \leq \dim_k(\mm/\mm^2)$ (cf. Proposition~\reff{prop:dimLeqGeneratorsMaximal}). If equality occurs, $R$ is called \emph{regular}.
+ Recall that for a noetherian local ring $R$ with maximal ideal $\mm$ and residue field $k=R/\mm$, the dimension $\dim_k(\mm/\mm^2)$ equals the minimal number of generators of $\mm$ and $\dim(R) \leq \dim_k(\mm/\mm^2)$ (cf. Proposition~\reff{prop:dimLeqGeneratorsMaximal}). If equality occurs, $R$ is called \emph{regular}.
 \begin{example*}%1. The first curve Franke drew was certainly some 8 shaped thing, but y^2=x^2+x^4 doesn't look like this, so I assume what he meant is y^2=x^2-x^4.
 	%2. The power series is just wrong.
-    Consider the curves given by the ideals $(Y^2-X^2+X^4)$ and $(Y^2-X^2)$ in $k[X,Y]$ over a field $k$ of characteristic not equal to $2$. Similar to \hyperref[ex:singularPoints]{this} example, both have \emph{singularities} in the origin.
+    Consider the curves given by the ideals $(Y^2-X^2+X^4)$ and $(Y^2-X^2)$ in $k[X,Y]$ over a field $k$ of characteristic not equal to $2$. Similar to the example on page~\pageref{ex:singularPoints}, both have \emph{singularities} in the origin.
      \begin{center}
     	\begin{minipage}{0.42\textwidth}
     		\centering
@@ -2763,7 +2773,7 @@ The following proof was suggested to us by Felix and is a lot shorter and more e
 One would intuitively expect, that there are always singularities, where irreducible components meet or where the stalk of the structure sheaf has any non-zero zero-divisors. The following corollary shows that this is indeed the case
 
 \begin{cor}\lbl{cor:regLocRingsAreDomains}
-    Let $R$ be a Noetherian local ring maximal ideal $\mm$. Suppose that $R$ is regular of dimension $d$.
+    Let $R$ be a noetherian local ring maximal ideal $\mm$. Suppose that $R$ is regular of dimension $d$.
     \begin{alphanumerate}
     \item 
         If $\mu_1,\ldots, \mu_d$ generate $\mm$ then 
@@ -2808,7 +2818,7 @@ One would intuitively expect, that there are always singularities, where irreduc
     \item 
         It easily follows $v(\epsilon) = 0$ for $\epsilon \in R^\times$. Hence $v(x) = v(-x)$ and $v(x) = v(x+y-y) \geq \min\{v(x+y), v(y)\}$ showing equality in \itememph{c}, when $v(x) \neq v(y)$.
     \item 
-        Ordered groups other than $\IZ$ (e.g $\IZ\times \IZ$ ordered lexicographically) may be considered as target of the valuation, giving a more general notion. But these will fail to be Noetherian, unless they are discrete valuation rings.
+        Ordered groups other than $\IZ$ (e.g $\IZ\times \IZ$ ordered lexicographically) may be considered as target of the valuation, giving a more general notion. But these will fail to be noetherian, unless they are discrete valuation rings.
     \end{alphanumerate}
 \end{rem}
 \begin{defi}[Normal ring]\lbl{def:normal}
@@ -2818,7 +2828,7 @@ Recall that $x\in K$ is in the integral closure of $R$ in $K$ iff there is a fin
 \begin{defi}[Fractional ideal] \lbl{def:fractionalIdeal} %At least, it was just a remark, not a fact....
     A \defemph{fractional ideal} of a domain $R$ is an $R$-submodule $I\subseteq K$ with $a I \subseteq R$ for some $a\in R\setminus \{0\}$. We put $I^{-1} = \left\{x\in K\st xI\subseteq R\right\}$. The ideal $I$ is called \defemph{invertible} iff $I\cdot I^{-1}  = R$. 
 \end{defi}
-If $0\neq I\subseteq K$ is any $R$-submodule, then $I^{-1}$ is a fractional ideal (in particular, this holds when $I$ is fractional itself). Indeed, $I$ always contains an element $r\in R\setminus\{0\}$ (take the numerator of any nonzero element of $I$) and then $rI^{-1}\subseteq R$ by definition of $I^{-1}$. The invertible fractional ideals thus form a group under ideal multiplication. If $R$ is Noetherian, the fractional ideals are precisely the finitely generated $R$-submodules of $K$.
+If $0\neq I\subseteq K$ is any $R$-submodule, then $I^{-1}$ is a fractional ideal (in particular, this holds when $I$ is fractional itself). Indeed, $I$ always contains an element $r\in R\setminus\{0\}$ (take the numerator of any nonzero element of $I$) and then $rI^{-1}\subseteq R$ by definition of $I^{-1}$. The invertible fractional ideals thus form a group under ideal multiplication. If $R$ is noetherian, the fractional ideals are precisely the finitely generated $R$-submodules of $K$.
 \begin{prop}\lbl{prop:invertPrincipal}
     A fractional ideal $I$ is invertible iff it is finitely generated and $I_\pp=I\cdot R_\pp$ is a principal fractional ideal of $R_\pp$ (i.e.\ of the form $\alpha_\pp R_\pp$ for some $\alpha_\pp\in K$) for any $\pp\in \Spec R$.
 \end{prop}
@@ -2835,7 +2845,7 @@ If $0\neq I\subseteq K$ is any $R$-submodule, then $I^{-1}$ is a fractional idea
 \end{proof}
 
 \begin{thm}\lbl{thm:regularDVR}
-    For a Noetherian local ring $R$ of positive dimension, the following are equivalent:
+    For a noetherian local ring $R$ of positive dimension, the following are equivalent:
     \begin{alphanumerate}
     \item 
         $R$ is a discrete valuation ring (DVR from now on).
@@ -2876,11 +2886,11 @@ If $0\neq I\subseteq K$ is any $R$-submodule, then $I^{-1}$ is a fractional idea
     \item 
         Any fractional ideal is invertible.
     \item 
-        $R$ is Noetherian and for any non-zero $\pp\in\Spec R$, the localization $R_\pp$ is a field or a DVR.
+        $R$ is noetherian and for any non-zero $\pp\in\Spec R$, the localization $R_\pp$ is a field or a DVR.
     \item 
-        $R$ is a field or one-dimensional Noetherian normal.
+        $R$ is a field or one-dimensional noetherian normal.
     \item
-        $R$ is a field or one-dimensional Noetherian regular.
+        $R$ is a field or one-dimensional noetherian regular.
     \item 
         Any ideal of $R$ may be written as a product of prime ideals.
     \end{alphanumerate}
@@ -2903,11 +2913,11 @@ Hence $I$ is invertible.
 Now for \itememph{a} $\Rightarrow$ \itememph{c}. As invertibility for fractional ideals is equivalent to being finitely generated and locally principal
 (by Proposition~\reff{prop:invertPrincipal}),
 \itememph{a} implies that any ideal is finitely generated, hence
-$R$ is Noetherian. If $\pp \in \Spec R$ and $\pp\neq 0$, then  $\pp R_\pp$ is principal again by Proposition~\reff{prop:invertPrincipal}, $\pp$ being invertible.  Hence $R_{\pp}$ is a DVR by Theorem~\reff{thm:regularDVR}. 
+$R$ is noetherian. If $\pp \in \Spec R$ and $\pp\neq 0$, then  $\pp R_\pp$ is principal again by Proposition~\reff{prop:invertPrincipal}, $\pp$ being invertible.  Hence $R_{\pp}$ is a DVR by Theorem~\reff{thm:regularDVR}. 
 
 The converse implication \itememph{c} $\Rightarrow$ \itememph{a} also follows from Proposition~\reff{prop:invertPrincipal} and the fact that DVRs are always PIDs.
 
-Let's prove \itememph{c} $\Rightarrow$ \itememph{d}. It is clear that $R$ is Noetherian, and $\dim R\leq 1$ follows easily from
+Let's prove \itememph{c} $\Rightarrow$ \itememph{d}. It is clear that $R$ is noetherian, and $\dim R\leq 1$ follows easily from
 $\dim R_\pp\leq 1$ for all $\pp\in \Spec R$ (using \itememph{c} and Theorem \ref{thm:regularDVR}). We still have to show $R$ is normal.
 
 We have seen that DVRs are normal. For any domain $R$, we have $R=\bigcap_{\mm \in \mSpec R} R_\mm$ (the intersection being
@@ -2935,7 +2945,7 @@ Uniqueness of the decomposition
 also follows from these considerations.
 
 
-In the lecture, we proved \itememph{f} $\Rightarrow$ \itememph{c} under the assumption that $R$ is Noetherian, but actually we also silently assumed $R$ to be one-dimensional, for which there seems to be no quick proof from \itememph{f} directly. Instead, we will present a proof for \itememph{f} $\Rightarrow$ \itememph{a}, which is taken from \cite[pp.~83-84]{matsumuraCRT}. 
+In the lecture, we proved \itememph{f} $\Rightarrow$ \itememph{c} under the assumption that $R$ is noetherian, but actually we also silently assumed $R$ to be one-dimensional, for which there seems to be no quick proof from \itememph{f} directly. Instead, we will present a proof for \itememph{f} $\Rightarrow$ \itememph{a}, which is taken from \cite[pp.~83-84]{matsumuraCRT}. 
 
 \emph{Step 1.} First note that if $I$ and $J$ are fractional ideals such that $\aa=IJ$ is invertible, then so are $I$ and $J$. Indeed, we have $I^{-1}J^{-1}\aa\subseteq R$, hence $I^{-1}J^{-1}\subseteq \aa^{-1}$. Moreover, from $\aa^{-1}IJ\subseteq R$ we get $\aa^{-1}I\subseteq J^{-1}$ and $\aa^{-1}J\subseteq I^{-1}$. Multiplying the latter equations together and using that $\aa$ is invertible, we see that $\aa^{-1}=\aa^{-1}\left(\aa^{-1}IJ\right)\subseteq I^{-1}J^{-1}$, hence $\aa^{-1}=I^{-1}J^{-1}$. Then
 \begin{align*}
@@ -2956,11 +2966,11 @@ Let w.l.o.g. $\ov \pp_1$ be $\subseteq$-minimal among the $\ov \pp_i$. By primal
 \emph{Step 4.} Let $\pp$ be a non-zero prime ideal. Then $\pp$ is maximal and invertible. Indeed, take a $0\neq \alpha\in\pp$ and consider its factorization $(\alpha)=\pp_1\cdots \pp_n$. By Step~3, each $\pp_i$ is maximal, but their product is also contained in $\pp$, hence $\pp_i\subseteq\pp$ for some $i$ which must be an equality by maximality of $\pp_i$. Since $(\alpha)$ is invertible, so is $\pp$ by Step~1. As every ideal of $R$ can be decomposed into primes, every non-zero ideal is invertible and we obtain \itememph{f} $\Rightarrow$ \itememph{a}.
 \end{proof}
 
-%We prove the converse \itememph{f} $\Rightarrow$ \itememph{c} under the assumption that $R$ is Noetherian. It is easy to see that \itememph{f} is inherited by localizations, hence it suffices to show that any local Noetherian domain $R$ with \itememph{f} is a field or a DVR. Let $\mm\subseteq R$ be the maximal ideal, $k=R/\mm$ its residue field. Our first goal is to show $\dim_k\mm/\mm^2\leq1$. Assume not, then there are $x,y\in \mm/\mm^2$ linearly independent over $k$ (in particular $x,y\neq 0$). Let $V,W\subseteq \mm/\mm^2$ be $k$-subvector spaces spanned by $x$ resp. $y$ and let $I,J\subseteq \mm$ be the preimages of $V$ and $W$. Let moreover $I=\prod_{i=1}^n \pp_i$ be a decomposition of $I$ into prime ideals as in \itememph{f} (the $\pp_i$ need not be distinct). We have $\pp_i\subseteq \mm$, hence $I\subseteq \mm^n$ implying $n\leq 1$ since $\mm^2\subsetneq I$. As $n=0$ would imply $I=R$, we get $n=1$. Hence $I=\pp$ and $\pp = \sqrt \pp = \sqrt I = \mm$ since $I\supseteq \mm^2$. This shows $I=\pp = \mm$ and the same holds for $J$, a contradiction. We conclude $\dim(\mm/\mm^2)=0$, so $\mm=0$ and $R$ is a field, or $\dim_k\mm/\mm^2=1$.  and $R$ is a DVR (Theorem \ref{thm:regularDVR})).
+%We prove the converse \itememph{f} $\Rightarrow$ \itememph{c} under the assumption that $R$ is noetherian. It is easy to see that \itememph{f} is inherited by localizations, hence it suffices to show that any local noetherian domain $R$ with \itememph{f} is a field or a DVR. Let $\mm\subseteq R$ be the maximal ideal, $k=R/\mm$ its residue field. Our first goal is to show $\dim_k\mm/\mm^2\leq1$. Assume not, then there are $x,y\in \mm/\mm^2$ linearly independent over $k$ (in particular $x,y\neq 0$). Let $V,W\subseteq \mm/\mm^2$ be $k$-subvector spaces spanned by $x$ resp. $y$ and let $I,J\subseteq \mm$ be the preimages of $V$ and $W$. Let moreover $I=\prod_{i=1}^n \pp_i$ be a decomposition of $I$ into prime ideals as in \itememph{f} (the $\pp_i$ need not be distinct). We have $\pp_i\subseteq \mm$, hence $I\subseteq \mm^n$ implying $n\leq 1$ since $\mm^2\subsetneq I$. As $n=0$ would imply $I=R$, we get $n=1$. Hence $I=\pp$ and $\pp = \sqrt \pp = \sqrt I = \mm$ since $I\supseteq \mm^2$. This shows $I=\pp = \mm$ and the same holds for $J$, a contradiction. We conclude $\dim(\mm/\mm^2)=0$, so $\mm=0$ and $R$ is a field, or $\dim_k\mm/\mm^2=1$.  and $R$ is a DVR (Theorem \ref{thm:regularDVR})).
 
-%Prof. Franke claims he \emph{has} a proof that \itememph{e} implies that $R$ is Noetherian, but does not give to us. This implication can nevertheless be seen as follows: Suppose first that $I,J$ are non-zero ideals of $R$ such that $I\subseteq J$. Fix decompositions of $I$ and $J$ as in \itememph{e}. If $\pp$ is any maximal ideal and $e\in \IN$ (resp. $f\in \IN$) the multiplicity of $\pp$ in the decomposition of $I$ (resp. $J$) then $\pp^e R_{\pp}=IR_\pp \subseteq JR_\pp=\pp^f R_{\pp}$. Pick an a non-zero $\alpha \in\pp$ and decompose $\alpha R_\pp = \pp^g R_\pp$ (since \itememph{e} is inherited by $R_\pp$). Then $\alpha^e R_\pp = \left(\pp^{e} R_\pp\right)^g \subseteq \left(\pp^{f} R_\pp\right)^g = \alpha^f R_\pp$, so $\alpha^f$ divides $\alpha^e$. Since $R_\pp$ is a domain, we conclude $e\leq f$.
+%Prof. Franke claims he \emph{has} a proof that \itememph{e} implies that $R$ is noetherian, but does not give to us. This implication can nevertheless be seen as follows: Suppose first that $I,J$ are non-zero ideals of $R$ such that $I\subseteq J$. Fix decompositions of $I$ and $J$ as in \itememph{e}. If $\pp$ is any maximal ideal and $e\in \IN$ (resp. $f\in \IN$) the multiplicity of $\pp$ in the decomposition of $I$ (resp. $J$) then $\pp^e R_{\pp}=IR_\pp \subseteq JR_\pp=\pp^f R_{\pp}$. Pick an a non-zero $\alpha \in\pp$ and decompose $\alpha R_\pp = \pp^g R_\pp$ (since \itememph{e} is inherited by $R_\pp$). Then $\alpha^e R_\pp = \left(\pp^{e} R_\pp\right)^g \subseteq \left(\pp^{f} R_\pp\right)^g = \alpha^f R_\pp$, so $\alpha^f$ divides $\alpha^e$. Since $R_\pp$ is a domain, we conclude $e\leq f$.
 
-%We see: Once we fixed a decomposition of $I$ as in \itememph{e}, there are only finitely many possibilities for the decompositions of ideals $J\supseteq I$. In particular, an increasing chain of ideals $I=I_0\subseteq I_1\subseteq I_2\subseteq\cdots$ in $R$ will satisfy that only finitely many different ideals occur in it! This shows that any increasing chain of ideals in $R$ must become stationary, so $R$ is Noetherian.
+%We see: Once we fixed a decomposition of $I$ as in \itememph{e}, there are only finitely many possibilities for the decompositions of ideals $J\supseteq I$. In particular, an increasing chain of ideals $I=I_0\subseteq I_1\subseteq I_2\subseteq\cdots$ in $R$ will satisfy that only finitely many different ideals occur in it! This shows that any increasing chain of ideals in $R$ must become stationary, so $R$ is noetherian.
 
 \section{Relation with intersection multiplicities}Let $C\subseteq \IP^2$ be a curve in the projective plane which is regular at $c\in C$:
 By Theorem \reff{thm:regularDVR}, $\Oo_{C,c}$ is a DVR. Let $v_c : \Oo_{C,c} \rightarrow\IN_0\cup\{\infty\}$ be its valuation.
@@ -3066,7 +3076,7 @@ Professor Franke recapitulated on some topics of his previous lecture, Algebra~I
 \begin{defi}[{\cite[Definition~2.1.2]{alg1}}]
 	A topological space $X$ is called \defemph{quasi-compact} if every open cover $X = \bigcup_{\lambda\in\Lambda} U_\lambda$ admits a finite subcover.
 	
-	$X$ is \defemph{Noetherian} if it satisfies the following equivalent conditions:
+	$X$ is \defemph{noetherian} if it satisfies the following equivalent conditions:
 	\begin{alphanumerate}
 		\item Every open subset is quasi-compact.
 		\item There is no infinite properly descending chain of closed subsets.
@@ -3087,12 +3097,14 @@ For any finite cover $X= \bigcup_{i=1}^n X_i$ by closed subsets, there is $1\leq
 \begin{prop}
 	\begin{alphanumerate}
 		\item 
-		Any subset of a Noetherian topological space is Noetherian with its induced subspace topology \emph{(cf. \cite[Remark~2.2.1]{alg1})}. \lbl{prop:irreducibleDecomposition}
+		Any subset of a noetherian topological space is noetherian with its induced subspace topology. \lbl{prop:irreducibleDecomposition}
 		\item 
-		If $X$ is Noetherian, there is a unique (that is, up to permutation of the $X_i$) decomposition $X = \bigcup_{i=1}^n X_i$ into irreducible closed subsets $X_i\subseteq X$ such that $X_i\not\subseteq X_j$ for $i\neq j$ \emph{(cf. \cite[Proposition~2.1.1]{alg1})}, called the \defemph{irreducible components} of $X$.
+		If $X$ is noetherian, there is a unique (that is, up to permutation of the $X_i$) decomposition $X = \bigcup_{i=1}^n X_i$ into irreducible closed subsets $X_i\subseteq X$ such that $X_i\not\subseteq X_j$ for $i\neq j$, called the \defemph{irreducible components} of $X$.
 	\end{alphanumerate}
-	
 \end{prop}
+\begin{proof}
+	Part \itememph{a} is \cite[Remark~2.2.1]{alg1} and \itememph{b} is \cite[Proposition~2.1.1]{alg1}.
+\end{proof}
 \begin{defi}[{\cite[Definition~2.1.4]{alg1}}]\lbl{def:KrullDimension}
 	Let $X$ be a topological space, $Z\subseteq X$ irreducible and closed. We put 
 	\begin{align*}
@@ -3126,7 +3138,7 @@ For any finite cover $X= \bigcup_{i=1}^n X_i$ by closed subsets, there is $1\leq
 	\left\{f\in R\st V(f)\supseteq A\right\} &\longmapsfrom A\\
 	I&\longmapsto V(I)\;.
 	\end{align*}
-	(cf. \cite[Remark~2.1.1]{alg1}). As $R$ is Noetherian, any strictly ascending chain of ideals in $R$ terminates, implying that $k^n$ is a Noetherian topological space. Under the above correspondence prime ideals correspond to irreducible subsets and vice versa (cf. \cite[Proposition~2.1.2]{alg1}).  
+	(cf. \cite[Remark~2.1.1]{alg1}). As $R$ is noetherian, any strictly ascending chain of ideals in $R$ terminates, implying that $k^n$ is a noetherian topological space. Under the above correspondence prime ideals correspond to irreducible subsets and vice versa (cf. \cite[Proposition~2.1.2]{alg1}).  
 \end{example}
 \begin{rem}[{\cite[Remark~2.1.3]{alg1}}]
 	In general, for $A\subseteq B\subseteq C\subseteq X$
@@ -3134,7 +3146,7 @@ For any finite cover $X= \bigcup_{i=1}^n X_i$ by closed subsets, there is $1\leq
 	\codim(A,B) +\codim(B,C) &\leq \codim(A,C) \\ 
 	\codim(A,X)+\dim (A) &\leq \dim (X)\;.\lbl{eq:codimIneq2}
 	\end{align}
-	may be strict. A Noetherian topological space is called \emph{catenary} if \eqreff{eq:codimIneq} is an equality whenever $A$, $B$ and $C$ are irreducible.
+	may be strict. A noetherian topological space is called \emph{catenary} if \eqreff{eq:codimIneq} is an equality whenever $A$, $B$ and $C$ are irreducible.
 \end{rem}
 \begin{thm}[{\cite[Theorem~5]{alg1}}]\lbl{thm:knIsCatenary}
 	The space $X=k^n$ is catenary and in this case equality always occurs in \eqreff{eq:codimIneq2}.
@@ -3213,7 +3225,7 @@ One may check that locally closed sets are precisely the open subsets of closed 
 
 It turns out (by a Yoneda-style argument) that this universal property characterizes $R_S$ uniquely up to unique isomorphism. One constructs $R_S$ (and thereby proves its existence) by $R_S = (R\times S)/_\sim$ where $(r,s)\sim (\rho, \sigma)$ iff there is $t\in S$ such that $t\cdot r\cdot \sigma = t\cdot\rho\cdot s$ (note that since $R$ is not necessarily a domain the factor $t$ on both sides cannot be omitted). One thinks of $(r,s)/_\sim$ as $\frac{r}{s}$ and introduces the ring operations in an obvious way. 
 
-If $I\subseteq R$ is any ideal then $I_S = I\cdot R_S = \left\{\frac{i}{s}\st i\in I, s\in S\right\}$ is an ideal in $R_S$, and any ideal in $R_S$ can be obtained in this way: $J= (J\sqcap R)\cdot R_S$ for any ideal $J\subseteq R_S$ where $J\sqcap R$ denotes the preimage of $J$ in $R$ under $\psi_S$. It follows then $R_S$ is Noetherian when $R$ is. For prime ideals one obtains a bijection (cf. \cite[Corollary~2.3.1\itememph{e}]{alg1})
+If $I\subseteq R$ is any ideal then $I_S = I\cdot R_S = \left\{\frac{i}{s}\st i\in I, s\in S\right\}$ is an ideal in $R_S$, and any ideal in $R_S$ can be obtained in this way: $J= (J\sqcap R)\cdot R_S$ for any ideal $J\subseteq R_S$ where $J\sqcap R$ denotes the preimage of $J$ in $R$ under $\psi_S$. It follows then $R_S$ is noetherian when $R$ is. For prime ideals one obtains a bijection (cf. \cite[Corollary~2.3.1\itememph{e}]{alg1})
 \begin{align*}
 \Spec R_S & \isomorphism\left\{\qq\in\Spec R\st \qq\cap S=\emptyset\right\}\\
 \pp &\longmapsto \pp\sqcap R\\
@@ -3391,7 +3403,7 @@ In the case where $R=k$ is a field, we also have
 \end{align*}
 but this does not hold in general. The last two isomorphisms are just a non-abstract nonsense way of stating the following
 \begin{fact}\lbl{fact:tensorProductRightExact}
-	If $N$ is any $R$-module (not necessarily an $R$-algebra), then $-\otimes_RN\colon R\cat{-mod}\morphism R\cat{-mod}$ is a \emph{right-exact} functor (i.e.\ if $M'\morphism M\morphism M''\morphism0$ is an exact sequence of $R$-modules, then so is $M'\otimes_RN\morphism M\otimes_RN\morphism M''\otimes_RN\morphism 0$) but it need not be \emph{exact}. Those $R$-modules $N$ for which it is exact are called \defemph{flat}.
+	If $N$ is any $R$-module (not necessarily an $R$-algebra), then $-\otimes_RN\colon \cat{Mod}(R)\morphism \cat{Mod}(R)$ is a \emph{right-exact} functor (i.e.\ if $M'\morphism M\morphism M''\morphism0$ is an exact sequence of $R$-modules, then so is $M'\otimes_RN\morphism M\otimes_RN\morphism M''\otimes_RN\morphism 0$) but it need not be \emph{exact}. Those $R$-modules $N$ for which it is exact are called \defemph{flat}.
 \end{fact}
 The above assertion about cokernels is an immediate consequence. Moreover, when $R=k$ is a field, then an $k$-module $N$ is a $k$-vector space, hence free, hence \emph{projective} and thus flat (by some standard facts from commutative algebra), proving that in this case the above assertion about kernels holds.
 
@@ -3419,17 +3431,17 @@ and we can say $c\cdot d = \mu(c,d)$ for $c,d\in A\otimes_R B$.
 
 There are morphisms $A\morphism A\otimes_R B$, $a\mapsto a\otimes 1$ and $B\morphism A\otimes_R B$, $b\mapsto 1\otimes b$ of $R$-algebras and the universal property
 \begin{align*}
-    \Hom_{R\cat{-Alg}} (A,T) &\cong \Hom_{B\cat{-Alg}}(A\otimes_R B, T)\\
-    \Hom_{R\cat{-Alg}} (B,S) &\cong \Hom_{A\cat{-Alg}}(A\otimes_R B, S)
+    \Hom_{\cat{Alg}(R)} (A,T) &\cong \Hom_{\cat{Alg}(B)}(A\otimes_R B, T)\\
+    \Hom_{\cat{Alg}(R)} (B,S) &\cong \Hom_{\cat{Alg}(A)}(A\otimes_R B, S)
 \end{align*}
 hold for any $A$-algebra $S$ and any $B$-algebra $T$.
 
 \section{Sheaves}
 
 \begin{defi}[Presheaf]\lbl{def:presheaf}
-    A \defemph{presheaf} $\Gg$ (with values in the category $\Aa$ of sets, groups, rings, etc.) on a topological space $X$ associates
+    A \defemph{presheaf} $\Gg$ (with values in the category $\cat A$ of sets, groups, rings, etc.) on a topological space $X$ associates
     \begin{itemize}
-    	\item every open subset $U\subseteq X$ with an object $\Gg(U)\in\Ob(\Aa)$ (called the set (group, ring, etc.) of \emph{sections} of $\Gg$ on  $U$)
+    	\item every open subset $U\subseteq X$ with an object $\Gg(U)\in\Ob(\cat A)$ (called the set (group, ring, etc.) of \emph{sections} of $\Gg$ on  $U$)
     	\item and for every inclusion $V\subseteq U$ of open subsets, a morphism $(-)|_V\colon \Gg(U)\morphism \Gg(V)$ such that $g|_U = g$ when $g\in \Gg(U)$ and such that $(g|_V)|_W = g|_W$ for open $W\subseteq V\subseteq U$ and $g\in \Gg(U)$. 
     \end{itemize}
     This can also be expressed as $\Gg$ being a \emph{functor} from the category of open subsets of $X$ (the inclusions being the morphisms) to the given category.
@@ -3448,7 +3460,7 @@ hold for any $A$-algebra $S$ and any $B$-algebra $T$.
 \begin{rem}
     \begin{alphanumerate}
         \item 
-            The sheaf axiom is interesting even if $I=\emptyset$ when it implies that $\Aa(\emptyset) = 0$ (if $\Aa$ is a sheaf of groups or rings).
+            The sheaf axiom is interesting even if $I=\emptyset$ when it implies that $\Gg(\emptyset) = 0$ (if $\Gg$ is a sheaf of groups or rings).
         \item
             A typical example is the sheaf of $k$-valued functions on $X$, associating to any $U\subseteq X$ the rings of $k$-valued functions on $U$. Normally, one considers \emph{subsheaves} defined by conditions like being locally constant, $C^\infty$, holomorphic, regular in some sense and so on.
         \item 
@@ -3467,7 +3479,7 @@ Professor Franke would like to point out that the following definition being giv
     defining the structure of an $\Rr(U)$-module on $\Mm(U)$ and such that $(\rho\cdot \mu)|_V = (\rho|_V)\cdot (\mu|_V)$ when $V\subseteq U$ are open subsets of $X$, $\mu\in \Mm(U)$, $\rho \in \Rr(U)$. A sheaf of modules is \defemph{locally free} of rank $n$ if every $x\in X$ has a neighbourhood $U$ such that $\Mm|_U\cong(R|_U)^n$. When $n=1$ this is called a \emph{line bundle}.
 \end{defi}
 \begin{defi}[Prevariety]\lbl{def:prevariety}
-    A \defemph{prevariety} over an algebraically closed field $k$ is a Noetherian, irreducible topological space $X$ together with a subsheaf $\Oo_X$ of the sheaf of $k$-valued functions on $X$ such that 
+    A \defemph{prevariety} over an algebraically closed field $k$ is a noetherian, irreducible topological space $X$ together with a subsheaf $\Oo_X$ of the sheaf of $k$-valued functions on $X$ such that 
     \begin{itemize}
     	\item any $x\in X$ has an open neighbourhood $U$ for which there is a homeomorphism $U\smash{\lisomorphism[\phi] }V\subseteq k^n$ where $V$ is an affine variety in $k^n$
     	\item and such that a $k$-valued function $\lambda$ on the open subset $W\subseteq U$ satisfies $\lambda \in \Oo_X(W)$ if and only if $\phi^*\lambda = (y\mapsto \lambda(\phi(y))$ defines an element of $\Oo_V(\phi^{-1}(W))$. 
