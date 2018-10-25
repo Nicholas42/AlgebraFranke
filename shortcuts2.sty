@@ -1,13 +1,16 @@
 %---- ENVIRONMENTS ----
 %
-%\newenvironment{diagram*}[1][]{\begin{center}\begin{tikzpicture}[line join=round, line cap=round,#1]}{\end{tikzpicture}\end{center}}  
 \NewDocumentEnvironment{diagram*}{O{} O{}}{\diagramenvv{#1}{#2}}{\enddiagramenvv}
 \NewEnviron{diagramenvv}[2]{\begin{align*}#2\begin{tikzpicture}[line cap=round, line join=round,#1]\BODY\end{tikzpicture}\end{align*}}
 
 \NewDocumentEnvironment{diagram}{O{} O{}}{\diagramenv{#1}{#2}}{\enddiagramenv}
 \NewEnviron{diagramenv}[2]{\begin{align}#2\begin{tikzpicture}[line cap=round, line join=round,#1]\BODY\end{tikzpicture}\end{align}}
-%\NewDocumentEnvironment{diagram*}{O{} O{}}{\diagramenvv{#1}{#2}}{\enddiagramenvv}
-%\NewEnviron{diagramenvv}[2]{\begin{align*}#2\begin{tikzpicture}[line cap=round, line join=round,#1]\BODY\end{tikzpicture}\end{align*}}
+
+\NewDocumentCommand\object{O{ob} m m O{}}{\node[#1] (#4) at (#2) {#3}}
+\NewDocumentCommand\arrow{O{->} m m O{} O{}}{\draw[#1] (#2) to node[pos=0.5,#4] {#5} (#3)}
+\NewDocumentCommand\isoarrow{O{->} m m O{} O{}}{\draw[#1] (#2) to node[pos=0.5, above=-0.25ex, sloped] {$\sim$} node[pos=0.5,#4] {#5} (#3)}
+\newcommand{\pushout}[1]{\draw (#1) ++ (-0.75ex,-0.75ex) -- ++(0ex,1.5ex) -- ++ (1.5ex,0ex);\fill (#1) ++ (0.5ex,-0.5ex) circle (0.5pt)}
+\newcommand{\pullback}[1]{\draw (#1) ++ (-0.75ex,-0.75ex) -- ++(1.5ex,0ex) -- ++ (0ex,1.5ex);\fill (#1) ++ (-0.5ex,0.5ex) circle (0.5pt)}
 
 \newlength{\arrowlength}
 \settowidth{\arrowlength}{$\longrightarrow$}
@@ -145,6 +148,7 @@
 \newcommand{\id}{\operatorname{id}}
 \newoperator{lcm}
 \renewcommand{\Im}{\operatorname{Im}}
+\newoperator{Coim}
 \newcommand{\mSpec}{\mm\operatorname{-Spec}}
 \newoperator{Ob}
 \newoperator{GL}
@@ -184,6 +188,7 @@
 \newoperator{gr}
 \renewcommand{\div}{\operatorname{div}}
 \newoperator{Tor}
+\newoperator{Tot}
 \newoperator{Ext}
 \newoperator{sgn}
 \DeclareMathOperator{\SPEC}{\mathbf{Spec}}
@@ -193,21 +198,30 @@
 \newcommand{\nil}{\operatorname{nil}}
 \newcommand{\Spec}{\operatorname{Spec}}
 \newoperator{Proj}
+\newoperator{res}
+\newcommand{\hor}{\mathrm{hor}}
+\newcommand{\ver}{\mathrm{vert}}
 \newcommand{\tr}{\operatorname{tr}}
-\newcommand{\cat}[1]{\operatorname{#1}}%style of categories
+\newcommand{\cat}[1]{\StrLen{#1}[\temp]%\temp
+	\ifnum\temp=1%
+	\boldsymbol{#1}%
+	\else%
+	\mathbf{#1}%
+	\fi%
+}%style of categories
 %inductive limit
-\newcommand\colimit[1][]{
-	\mathchoice{\underset{\substack{\displaystyle{\longrightarrow}\\[-1pt]#1}}{\lim}}%displaystyle
-	{\underset{\textstyle\longrightarrow}{\lim}\underset{#1}{}}%textstyle
-	{\underset{\scriptstyle\longrightarrow}{\lim}\underset{#1}{}}
-	{\underset{\longrightarrow}{\lim}\underset{#1}{}}\ %
+\NewDocumentCommand\colimit{O{} O{}}{
+	\mathchoice{\underset{\substack{\displaystyle{\longrightarrow}\\[-1pt]#1}}{\lim}#2}%displaystyle
+	{\underset{\textstyle\longrightarrow}{\lim}#2_{#1}}%textstyle
+	{\underset{\scriptstyle\longrightarrow}{\lim}#2_{#1}}
+	{\underset{\longrightarrow}{\lim}#2_{#1}}\ %
 }
 %projective limit
-\newcommand\limit[1][]{
-	\mathchoice{\underset{\substack{\displaystyle{\longleftarrow}\\[-1pt]#1}}{\lim}}%displaystyle
-	{\underset{\textstyle\longleftarrow}{\lim}\underset{#1}{}}%textstyle
-	{\underset{\scriptstyle\longleftarrow}{\lim}\underset{#1}{}}
-	{\underset{\longleftarrow}{\lim}\underset{#1}{}}\ %
+\NewDocumentCommand\limit{O{} O{}}{
+	\mathchoice{\underset{\substack{\displaystyle{\longleftarrow}\\[-1pt]#1}}{\lim}#2}%displaystyle
+	{\underset{\textstyle\longleftarrow}{\lim}#2_{#1}}%textstyle
+	{\underset{\scriptstyle\longleftarrow}{\lim}#2_{#1}}
+	{\underset{\longleftarrow}{\lim}#2_{#1}}\ %
 }
 
 %---- FANCY ARROWS ----
@@ -345,28 +359,5 @@
 \newcommand{\st}{\ \middle|\ }
 %\newcommand{\dashed}{dash pattern = on 2pt off 2pt}
 
-\def\clap#1{\hbox to 0pt{\hss#1\hss}}
-\def\mathllap{\mathpalette\mathllapinternal}
-\def\mathrlap{\mathpalette\mathrlapinternal}
-\def\mathclap{\mathpalette\mathclapinternal}
-\def\mathllapinternal#1#2{%
-	\llap{$\mathsurround=0pt#1{#2}$}}
-\def\mathrlapinternal#1#2{%
-	\rlap{$\mathsurround=0pt#1{#2}$}}
-\def\mathclapinternal#1#2{%
-	\clap{$\mathsurround=0pt#1{#2}$}}
-
-%nice sqrt
-\LetLtxMacro{\oldsqrt}{\sqrt} 
-\renewcommand{\sqrt}[1][\ ]{%
-	\def\DHLindex{#1}\mathpalette\DHLhksqrt}
-\def\DHLhksqrt#1#2{%
-	\setbox0=\hbox{$#1\oldsqrt[\DHLindex]{#2\,}$}\dimen0=\ht0
-	\advance\dimen0-0.2\ht0
-	\setbox2=\hbox{\vrule height\ht0 depth -\dimen0}%
-	{\box0\lower0.71pt\box2}}
-
 %fibre products
 \newcommand{\fprod}[1]{\sideset{}{_{#1}}\prod}
-
-

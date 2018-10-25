@@ -48,7 +48,7 @@ Please report bugs, typos etc. through the \emph{Issues} feature of github.
 \pagenumbering{arabic}
 %Nothing here yet. 
 
-\chapter{Introduction}
+\chapter{Introduction and preparations}
 
 \section{A note on limits and their derived functors}
 	Let $X_\bullet\colon \ldots\xrightarrow{p_{i+1}}X_i\morphism[p_i]\ldots\morphism[p_2]X_1\morphism[p_1]X_0$ be a diagram of abelian groups or $R$-modules. As usual, we may view $X_\bullet$ as a functor $X_\bullet\colon (\IN,\geq)\morphism \cat{Ab}$ or $\cat{Mod}(R)$, where the category $(\IN,\geq)$ has the nonnegative integers as objects and an arrow $j\morphism i$ iff $j\geq i$. Let 
@@ -239,6 +239,7 @@ Using this, Theorem~\reff{thm:FormalFunctions} can be restated as follows.
 	by a bit abstract nonsense. Now Theorem~\reff{thm:FormalFunctions} may be applied to $X\times_Y\Spec A_\pp\morphism \Spec A_\pp$ (the base change of $f$) and the assertion follows.
 \end{proof}
 \section{Application to Zariski's main theorem}
+\subsection{A lot of (not necessarily main) theorems by Zariski}
 Out there in the real world, there are multiple \emph{main theorems} of Zariski around, and usually they're only loosely related. Professor Franke recommends Mumford's \emph{The red book of varieties and schemes} for a discussion of various such version.
 \begin{cor}\lbl{cor:Rpvanishing}
 	Let $f\colon X\morphism Y$ be any proper morphism between locally noetherian preschemes and let $d=\sup_{y\in Y}\dim \left(f^{-1}\{y\}\right)$. If $\Ff$ is a coherent $\Oo_X$-module and $p>d$, then $R^pf_*\Ff=0$.
@@ -287,7 +288,7 @@ The following fact wasn't mentioned in the lecture, but it's \emph{definitely} (
 \begin{thm}[Grothendieck's version of Zariski's main theorem]
 	\begin{alphanumerate}
 		\item \lbl{thm:ZariskiMain}Let $f\colon X\morphism Y$ be a quasi-finite proper morphism between locally noetherian preschemes. Then $f$ is finite.
-		\item Let $f\colon X\morphism Y$ be a quasi-finite morphism between noetherian preschemes. Then there exists a factorization $X\monomorphism[j]\ov{X}\morphism[g]Y$ of $f$ where $j$ is an open immersion and $g$ is finite.
+		\item Let $f\colon X\morphism Y$ be a quasi-finite and separated morphism between noetherian preschemes. Then there exists a factorization $X\monomorphism[j]\ov{X}\morphism[g]Y$ of $f$ where $j$ is an open immersion and $g$ is finite.
 		\item If $f\colon X\morphism Y$ is any morphism of finite type between locally noetherian preschemes, then 
 		\begin{align*}
 			U=\left\{x\in X\st f\text{ is quasi-finite at }x\right\}
@@ -316,7 +317,7 @@ The following fact wasn't mentioned in the lecture, but it's \emph{definitely} (
 	\begin{align*}
 		\limit[n\in\IN]H^0(X_n,\Oo_{X_n})\cong (f_*\Oo_X)_y^\complete\cong \roof{\Oo}_{Y,y}\;.
 	\end{align*}
-	The left isomorphism here is due to Theorem~\reff{thm:FormalFunctions2} and the fact that $\Oo_{X_n}=\Oo_X|_{X_n}$, and the right one holds by assumption. Hence $\roof{\Oo}_{Y,y}$ is a local ring (by Corollary~\reff{completionLocal}) with an idempotent $\epsilon\neq 0,1$. Then $1-\epsilon\neq 0,1$ is another non-trivial idempotent. Both $\epsilon$ and $1-\epsilon$ can't be units in $\roof{\Oo}_{Y,y}$, otherwise $\epsilon^2=\epsilon$ implies $\epsilon=1$. But then they are elements of the maximal ideal $\mm$, so $\epsilon+(1-\epsilon)=1$ is an element of $\mm$ as well, contradiction!
+	The left isomorphism here is due to Theorem~\reff{thm:FormalFunctions2} and the fact that $\Oo_{X_n}=\Oo_X|_{X_n}$, and the right one holds by assumption. Hence $\roof{\Oo}_{Y,y}$ is a local ring (by Corollary~\reff{completionLocal}) with an idempotent $\epsilon\neq 0,1$. Then $1-\epsilon\neq 0,1$ is another non-trivial idempotent. Both $\epsilon$ and $1-\epsilon$ can't be units in $\roof{\Oo}_{Y,y}$, otherwise $\epsilon^2=\epsilon$ implies $\epsilon=1$ (and similar for $1-\epsilon$). But then they are elements of the maximal ideal $\mm$, so $\epsilon+(1-\epsilon)=1$ is an element of $\mm$ as well, contradiction!
 	
 	Part \itememph{b}. By \itememph{a}, any point $x\in X$ is open and closed in its fibre iff $f^{-1}\{f(x)\}=\{x\}$. Therefore the two definitions of $U$ indeed coincide. 
 	
@@ -370,14 +371,14 @@ The following fact wasn't mentioned in the lecture, but it's \emph{definitely} (
 	\end{align*}
 	so $g$ is affine. Moreover, $\Oo_X(X)$ is a finitely generated $A$-module because $f_*\Oo_X$ is a coherent $\Oo_Y$-module (by \cite[Theorem~5]{alggeo2}, as usual), so $g$ is actually finite. Also proving that $\snake{f}_*\Oo_X=\Oo_{\Spec \Oo_X(X)}$ is straightforward, so it remains to show that $\snake{f}$ is proper. But $g$ is finite, hence separated, and $g\snake{f}=f$ is proper, so $\snake{f}$ is proper as well by \cite[Proposition~2.4.1]{alggeo2}.
 \end{proof}
-\begin{proof}[Discussion of Theorem~\reff{thm:ZariskiMain}\itememph{b} and \itememph{c}]\label{proof:discussionOfThm3}
+\subsection[Discussion of Theorem~\getrefnumber{thm:ZariskiMain}\itememph{b} and \itememph{c}]{Discussion of Theorem~\reff{thm:ZariskiMain}\itememph{b} and \itememph{c}}%}
+\label{proof:discussionOfThm3}
+\begin{proof}[Proof of Theorem~\reff{thm:ZariskiMain}\itememph{c}]
 	Let's assume that $f\colon X\morphism Y$ factors over
-	\begin{align*}
+	\begin{align}\lbl{eq:properCompactification}
 		f\colon X\monomorphism[j]\ov{X}\morphism[\smash{\ov{f}}]Y\;,
-	\end{align*}
-	where $j$ is an open immersion and $\ov{f}$ is proper. It can be shown that such a factorization always exists for morphisms of finite type between noetherian schemes, for which Professor Franke refers to notes of \emph{Brian Conrad} or \emph{Paul Vojta}, although he isn't sure whether using their results to prove Theorem~\reff{thm:ZariskiMain}\itememph{b} doesn't involve any circular reasoning.
-	
-	Be that as it may, if we can factorize $f$ as above, then
+	\end{align}
+	where $j$ is an open immersion and $\ov{f}$ is proper. Then
 	\begin{align}\lbl{eq:fandfbar}
 		\left\{x\in X\st f\text{ is quasi-finite at }x\right\}=X\cap \left\{x\in \ov{X}\st \ov{f}\text{ is quasi-finite at }x\right\}\;.
 	\end{align}
@@ -395,63 +396,195 @@ The following fact wasn't mentioned in the lecture, but it's \emph{definitely} (
 	\end{align*}
 	in which $\ov{f}\colon \ov{X}\monomorphism \IP_Y^n\morphism Y$ is (strongly) projective, hence proper by \cite[Proposition~2.4.2]{alggeo2}. But \itememph{c} is completely local on both $X$ and $Y$ (thanks to Fact~\reff{fact:openDiscrete}), so by checking the affine case we have actually covered all of \itememph{c}. 
 \end{proof}
+	The rest of this subsection will be used to sketch a proof of Theorem~\reff{thm:ZariskiMain}\itememph{b}. We begin with the observation that Theorem~\reff{thm:ZariskiMain}\itememph{b} becomes much easier when things are proper.
+	\begin{lem}\lbl{lem:ZMTLemma1}
+		Let $f\colon X\morphism Y$ be a quasi-finite separated morphism between noetherian schemes, and assume that $f$ factors as in \eqreff{eq:properCompactification}. Then Theorem~\reff{thm:ZariskiMain}\itememph{b} holds for $f$.
+	\end{lem}
+\begin{rem}
+	 It can be shown that such a factorization \eqreff{eq:properCompactification} always exists for morphisms of finite type between noetherian schemes, for which Professor Franke refers to notes of \emph{Brian Conrad} or \emph{Paul Vojta}, although he isn't sure whether using their results to prove Theorem~\reff{thm:ZariskiMain}\itememph{b} doesn't involve any circular reasoning.
+\end{rem}
+\begin{proof}[Proof of Lemma~\reff{lem:ZMTLemma1}]
+	Let $\ov{f}=g\circ \snake{f}$ be the Stein factorization of $\ov{f}$. Put $\ov{Y}=\SPEC_Y\ov{f}_*\Oo_{\ov{X}}$ for convenience. Since $g\colon \ov{Y}\morphism Y$ is finite by Fact~\reff{fact:steinFactorization} (for which we need properness of $\ov{f}$), we're done if we show that the composition $\snake{f}|_X\colon X\monomorphism \ov{X}\morphism \ov{Y}$ is an open embedding. Since $f=g\snake{f}|_X$ and $g$ are quasi-finite ($g$ is even finite), Fact~\reff{fact:annoyingQF}\itememph{c} shows that $\snake{f}|_X$ is quasi-finite as well.
+	
+	In particular $\snake{f}|_X$ is injective, and for all $x\in X$ we have $\snake{f}^{-1}\{\snake{f}(x)\}=\{x\}$, because $\Oo_{\ov{Y}}\cong \snake{f}_*\Oo_{\ov{X}}$ (by Fact~\reff{fact:steinFactorization}), so the argument from Theorem~\reff{thm:ZariskiConnectedness}\itememph{b} can be applied. If $V$ is any open neighbourhood of $x\in X$, then $\snake{f}(\ov{X}\setminus V)\subseteq \ov{Y}$ is closed because $\snake{f}$ is proper (by Fact~\reff{fact:steinFactorization}), hence closed. Moreover, $\snake{f}(\ov{X}\setminus V)$ doesn't contain $\snake{f}(x)$ as $\snake{f}^{-1}\{\snake{f}(x)\}=\{x\}$. Thus, the complement $U$ of $\snake{f}(\ov{X}\setminus V)$ in $\ov{Y}$ is open and $\snake{f}^{-1}(U)\subseteq V$ is an open neighbourhood of $x$. This shows that $\snake{f}|_X$ is actually an open map! Together with $\Oo_{\ov{Y}}\cong \snake{f}_*\Oo_{\ov{X}}$ we see that $\snake{f}|_X$ is an open embedding, as claimed.
+\end{proof}
+\begin{defi}\lbl{def:quasiAffine}
+	A morphism $f\colon X\morphism Y$ of preschemes is called \defemph{quasi-affine}, if it satisfies the following equivalent conditions:
+	\begin{alphanumerate}
+		\item For all affine open $U\subseteq Y$, $f^{-1}(U)$ is a quasi-affine scheme (that is, a quasi-compact open subscheme of an affine scheme).
+		\item $Y$ can be covered by affine open $U$ such that $f^{-1}(U)$ is quasi-affine.
+		\item $f$ factors as $X\monomorphism[j]\ov{X}\morphism[\smash{\ov{f}}]Y$, where $j$ is an open embedding and $\ov{f}$ is affine.
+		\item The canonical morphism $X\morphism\SPEC_Y(f_*\Oo_X)$ in the Stein factorization is an open immersion.
+	\end{alphanumerate}
+\end{defi}
+For a proof of equivalence, check out \cite[\stackstag{01SJ}]{stacks-project}. Note that Franke apparently had a different proof (for the case of quasi-affine morphisms of finite type) in mind than the Stacks Project guys, but I have no idea how this was going to work (whereas the Stacks Project proof is pretty clear to me and works without restrictions on $f$). Nevertheless, the following lemma he suggested is perhaps worthwhile to know.
+\begin{lem}
+	Let $X$ be a noetherian prescheme, $\Mm$ a quasi-coherent $\Oo_X$-module, and $U\subseteq X$ an open subset. Let $\Nn\subseteq \Mm|_U$ be a coherent submodule. Then there is a coherent $\snake{\Nn}\subseteq \Mm$ such that $\snake{\Nn}|_U=\Nn$. In particular, $\Mm$ is the union of its coherent submodules.
+\end{lem}
+\begin{proof}
+	We proceed by noetherian induction. Because $Y$ is noetherian, there is a $\subseteq$-maximal open subset $U$ to which $\Nn$ extends (and, with slight abuse of notation, we denote some fixed extension to $U$ by $\Nn$ as well). Assuming $U\neq X$, we will derive a contradiction. Pick $x\in X\setminus U$ and let $V\cong \Spec A$ be an affine open neighbourhood of $x$. 
+	\begin{claim*}
+		There is a coherent $\Qq\subseteq \Mm|_V$ such that $\Qq|_{U\cap V}\supseteq \Nn|_{U\cap V}$.
+	\end{claim*}
+	Indeed, $V\cong \Spec A$ is a noetherian topological space (because $Y$ is noetherian), so the open subset $U\cap V$ is quasi-compact. This means that we can cover it by finitely many affine open subsets $V_i\cong \Spec A_{f_i}$ for $i=1,\ldots,n$. For every $i$ we know that $\Nn(V_i)\subseteq \Mm(V_i)\cong \Mm(V)_{f_i}$ is a finitely generated $A_{f_i}$-module (because $\Nn$ is coherent), so we can choose finitely many $\mu_{i,j}\in \Mm(V)$, $j=1,\ldots,k_i$, whose images in $\Nn(V_i)$ form a set of generators. Let $\Qq\subseteq \Mm|_V$ be the subsheaf generated by $\left\{\mu_{i,j}\st i\leq n,\ j\leq k_i\right\}\in\Mm(V)$. Then $\Qq$ has the required property, proving the claim.
+	
+	Let $j\colon U\cap V\monomorphism V$ be the obvious inclusion and put $\ov{\Nn}=\Qq\cap j_*\Nn|_{U\cap V}$. This guy is coherent (because subsheaves of a coherent one are coherent again on locally noetherian preschemes) and satisfies $\ov{\Nn}|_{U\cap V}=\Nn|_{U\cap V}$. But then $\Nn$ can be extended to a coherent sheaf $\snake{\Nn}$ on $U\cup V$ via $\snake{\Nn}|_U=\Nn$ and $\Nn|_V=\Kk$. This contradicts maximality of $U$.
+\end{proof}
+\begin{lem}\lbl{lem:ZMTLemma2}
+	If $f\colon X\morphism Y$ is a quasi-finite and quasi-affine morphism between noetherian preschemes. Then Theorem~\reff{thm:ZariskiMain}\itememph{b} holds for $f$.
+\end{lem}
+\begin{proof}
+	Note that quasi-affine morphisms are automatically separated. We will show that $g\colon \SPEC_Y(f_*\Oo_X)\morphism Y$ is proper, which shows that $f$ factors as in \eqreff{eq:properCompactification}. Then Theorem~\reff{thm:ZariskiMain}\itememph{b} holds by Lemma~\reff{lem:ZMTLemma1}. To show properness of $g$, we define
+	\begin{align*}
+		\Rr=\bigoplus_{n\geq 0}f_*\Oo_X\;,
+	\end{align*}
+	viewed as a graded quasi-coherent $\Oo_Y$-algebra. Note that $\SPEC_Y(f_*\Oo_X)\cong \PROJ_Y(\Rr)$ as $Y$-preschemes (indeed, locally this reduces to \cite[Example~2.6.2]{alggeo1}). Moreover, $\Rr$ is locally of finite type over $\Oo_Y$. In fact, the $0\ordinalth$ homogeneous component $\Rr_0\cong f_*\Oo_X$ is locally of finite type over $\Oo_Y$ (because $f$ is of finite type), and $\Rr$ is generated by $\Rr_0$ and the element $1\in\Rr_1(Y)$ (which acts as a shift). Therefore, $\PROJ_Y(\Rr)\morphism Y$ is proper by \cite[Proposition~2.4.2]{alggeo2}, whence we're done.
+\end{proof}
+So we see that to prove Theorem~\reff{thm:ZariskiMain}\itememph{b} it is sufficient to show that any quasi-finite and separated morphism between noetherian preschemes is quasi-affine. This is a base-local question again (since quasi-affinity is base-local again by Definition~\reff{def:quasiAffine}), so we may assume that $Y=\Spec A$ for some noetherian ring $A$.
 
+Professor Franke sketches a proof following \cite[Exposé~VIII.6]{sga1}, where the technique of \emph{faithfully flat descent} is used to reduce the question to the case of complete local rings.
+
+So we may assume $Y=\Spec A$, where $A$ is a noetherian complete local ring (with respect to its maximal ideal $\mm$) and that Zariski's main theorem is true for morphisms $f'\colon X'\morphism Y'$, where in addition to the other assumptions we have $\dim Y'<\dim Y$. Let $s$ be the unique closed point of $A$ (given by $\mm$).
+\begin{lem}\lbl{lem:connectedComponents}
+	If $B$ is any finite $A$-algebra, then $\Spec B$ has a decomposition $\Spec B=\bigcup_{i=1}^nU_i$, where the $U_i$ are disjoint open subsets such that the only closed point $s$ of $\Spec A$ has precisely one preimage in each $U_i$.
+\end{lem}
+\begin{proof}
+	By Corollary~\reff{cor:finiteAlgebras}, $B$ has finitely many maximal ideals $\qq_1,\ldots,\qq_n$ and these are precisely the prime ideals over $\mm$. For every $\qq_i$ we will construct an idempotent $e_i\in B$ such that $e_i\in \qq_i$ but $e_i\notin\qq_j$ for $j\neq i$. Then $\qq_i\in V(e_i)$ but $\qq_j\neq V(e_i)$ for $j\neq i$, and $V(e_i)$ is an open and closed subset of $B$ (because $e_i$ is an idempotent), so we see that the $\qq_i$ are contained in distinct connected components of $\Spec B$. But $B$ is noetherian, so $\Spec B$ has finitely many connected components (as pointed out in \cite[Lemma~2.4.2]{alggeo1}). Then every connected component is open and we can construct the required $U_i$ as unions of suitable connected components of $\Spec B$.
+	
+	Let $\ov{\qq}_i=\qq_i/\mm$ be the prime ideals of $B/\mm B$ (which are automatically maximal). Then the intersection $\bigcap_{j=1}^n\qq_j$ is the nilradical $\nil(B/\mm B)$, so by the Chinese remainder theorem we find an element $\ov{e}_i\in (B/\mm B)/\nil(B/\mm B)$ such that $\ov{e}_i\equiv 0\bmod \ov{\qq}_i$ and $\ov{e}_j\equiv 1\bmod\ov{\qq}_j$ for $j\neq i$. Note that $\ov{e}_i^2=\ov{e}_i$. Since $B/\mm B$ is noetherian, there is an $N\in\IN$ such that $\nil(B/\mm B)^N=0$. Hence $B/\mm B$ is $\nil(B/\mm B)$-adically complete, which means we can lift $\ov{e}_i$ to an idempotent $\snake{e}_i\in B/\mm B$ by Hensel's lemma (cf.\ Proposition~\reff{prop:HenselsLemma}). Now $B$ is $\mm B$-adically complete by Proposition~\reff{prop:modulesComplete}, so using Hensel's lemma once again we can lift $\snake{e}_i$ to an idempotent $e_i\in B$ with the required properties. We're done.
+\end{proof}
+
+Let $f\colon X\morphism Y=\Spec A$ be quasi-finite and separated, and let $x\in f^{-1}\{s\}$. Because the fibre $f^{-1}\{s\}$ is discrete, there is an affine open $U\subseteq X$ such that $U\cap f^{-1}\{s\}=\{x\}$. Zariski's main theorem applies to the affine morphism $f|_U\colon U\morphism \Spec A$, which therefore factors as
+\begin{align*}
+	U\monomorphism[j]\Spec B\morphism Y
+\end{align*}
+where $B$ is as above and $j$ is an open embedding. By Lemma~\reff{lem:connectedComponents} (and shrinking $U$ if necessary) we may assume that $B$ has only one closed point $j(x)$, i.e.\ is local itself. But then the only open subset of $\Spec B$ containing the closed point $j(x)$ is $\Spec B$ itself, hence $j$ is an isomorphism. We have thus found an affine open neighbourhood $U\cong \Spec B$ of $x$ which is finite over $Y$. Then $U\morphism X$ is proper (as $U\morphism Y$ is finite, hence proper, and $f$ is separated, so \cite[Proposition~2.4.1]{alggeo2} applies), so $U$ is also closed. Putting $U=U_1$ and $X\setminus U=X_1$, what we proved is that $X=X_1\amalg U_1$ is the disjoint union of its open subsets $X_1$ and $U_1$.
+
+Iterating this for the remaining preimages\footnote{There are finitely many of them. Indeed, $f^{-1}\{s\}\subseteq X$ is closed (as the preimage of the closed point $s$), hence quasi-compact (because $X$ is noetherian, hence quasi-compact). But the fibre $f^{-1}\{s\}$ is supposed to be discrete, so it must be finite.} of $s$ in $X$ provides a decomposition 
+\begin{align*}
+	X=X'\amalg \coprod_{i=1}^nU_i
+\end{align*}
+into disjoint open subsets, where $\coprod_{i=1}^nU_i\cong \coprod_{i=1}^n\Spec \Oo_X(U_i)\cong \Spec\big(\bigoplus_{i=1}^n\Oo_X(U_i)\big)$ is finite over $Y$ and $f'=f|_{X'}\colon X'\morphism Y$ has image in $Y'=Y\setminus \{s\}$, hence the induction assumption applies to $f'\colon X'\morphism Y'$. This means that $f'$ can be written as $f'\colon X'\monomorphism \ov{X}'\morphism Y'$, where $X'$ is an open subprescheme of $\ov{X}'$, which in turn is finite over $Y'$. Still we aren't done yet, as we need something finite over $Y$ rather than $Y'$.
+
+Here it is time for our final lemma.
+\begin{lem}
+	Let $A$ be a noetherian ring and $S\subseteq \Spec A$ an open subprescheme. If $f\colon X\morphism S$ is a finite morphism, then there is a finite $A$-algebra $B$ such that $X$ is an open subprescheme of $\Spec B$ and the diagram
+	\begin{diagram*}
+		\object{0,1.5}{$\Spec B$}[a];
+		\object{2,1.5}{$\Spec A$}[b];
+		\object{0,0}{$X$}[c];
+		\object{2,0}{$S$}[d];
+		\scriptsize
+		\arrow ab;
+		\arrow[right hook->] ca;
+		\arrow[right hook->] db;
+		\arrow cd[above][f];
+	\end{diagram*}
+	commutes.
+\end{lem}
+\begin{proof}
+	Since $\Spec A$ is a noetherian space, its open subset $S$ is quasi-compact. We thus find a finite cover $S=\bigcup_{i=1}^n S_i$, where $S_i\cong \Spec A_{\alpha_i}$ (for some $f_i\in A$) are affine open subschemes. Putting $X_i=f^{-1}(S_i)$ we get an affine open cover $X=\bigcup_{i=1}^nX_i$, where $X_i\cong \Spec B_i$ for some finite $A_{\alpha_i}$-algebra $B_i$ by finiteness of $f$.
+	
+	Note that $X$ is quasi-compact because $S$ and $f$ are. Moreover, $S$ is separated as an open subprescheme of a separated prescheme, hence $X$ is separated as well, as finite morphisms are separated. If we denote the image of $\alpha_i$ under the restriction $A\morphism \Oo_S(S)$ by $\alpha_i$ as well, we see that $S_i=S\setminus V(\alpha_i)$, so $A_{\alpha_i}\cong \Oo_S(S\setminus V(\alpha_i))\cong \Oo_S(S)_{\alpha_i}$. Note that this works because $S$ is quasi-compact and separated, so \cite[Proposition~1.5.1\itememph{c}]{alggeo1} applies. By the same argument applied to $X$, we get $B_i\cong \Oo_X(X\setminus V(f^*\alpha_i))\cong \Oo_X(X)_{f^*\alpha_i}$.
+	
+	Note that $\Oo_X(X)$ becomes an $A$-algebra via $A\morphism \Oo_S(S)\morphism \Oo_X(X)$. For every $i$ let $x_{i,j}\in B_i$, $j=1,\ldots,k_i$ be generators of $B_i$ as an $A_{\alpha_i}$-module. Multiplying by a suitable power of $f^*\alpha_i$ we can assume that the $x_{i,j}$ are from $\Oo_X(X)$ and integral over $A$ (rather than just integral over $A_{\alpha_i}$). Now let $\Lambda$ be the image of $A$ in $\Oo_X(X)$ and put
+	\begin{align*}
+		B=\Lambda\left[x_{i,j}\st i\leq n,\ j\leq k_i\right]\;.
+	\end{align*}
+	Then $B$ is finite over $A$ and contains the $f^*\alpha_i$ (because these guys are already in $\Lambda$). Moreover, we have $B_{f^*\alpha_i}=\Oo_X(X)_{f^*\alpha_i}\cong B_i$, because $B$ already contains a set of generators of $B_i$ over $A_{\alpha_i}$. So $X=\bigcup_{i=1}^nX_i$ is a union of open subpreschemes of $\Spec B$, hence an open subprescheme itself and $\Spec B\morphism \Spec A$ clearly has the required properties.
+\end{proof}
+
+Hence Zariski's main theorem may likely be proved if we were able to reduce the case of general $Y$ to the case of noetherian complete local rings.
+
+\chapter{Flat morphisms}
+\begin{defi}
+	A morphism $f\colon X\morphism Y$ of preschemes is called \defemph{flat} iff it has the following equivalent properties.
+	\begin{alphanumerate}
+		\item If $U\subseteq X$ and $V\subseteq Y$ are affine opens such that $f(U)\subseteq V$, then $\Oo_X(U)$ is flat as an $\Oo_Y(V)$-module.
+		\item It is possible to cover $X$ by affine open subsets for which such $V$ may be found.
+		\item For any $x\in X$ the stalk $\Oo_{X,x}$ is a flat $\Oo_{Y,y}$-module, where $y=f(x)$.
+	\end{alphanumerate}
+	We call $f$ \defemph{faithfully flat} if it is flat and surjective.
+\end{defi}
+\begin{proof}[Sketch of a proof of equivalence]
+	The implication \itememph{a} $\Rightarrow$ \itememph{b} is trivial. If you think about it, showing \itememph{b} $\Rightarrow$ \itememph{c} $\Rightarrow$ \itememph{a} comes down to the following fact from commutative algebra: An $A$-algebra $B$ is flat if and only if $B_\qq$ is a flat $A_\pp$ algebra for all primes $\pp\in\Spec A$ and $\qq\in\Spec B$ above $\pp$.
+	
+	Indeed, if $B$ is flat over $A$, then so is $B_\qq$ (by exactness of localization), hence $B_\qq$ is also flat over $A_\pp$. Conversely, if $B_\qq$ is flat over $A_\pp$, then also over $A$ because $A_\pp$ is flat over $A$ (exactness of localization again). But then the localizations of $B$ at any prime are flat over $A$, hence so is $B$ itself (cf.\ \cite[Fact~1.2.6\itememph{d}]{homalg}).
+\end{proof}
+\section{Flat base change and cohomology}
+Let $A$ be a ring, $B$ an $A$-algebra and $f\colon X\morphism \Spec A$ a quasi-compact and separated morphism. Let 
+\begin{align*}
+	\snake{f}\colon\snake{X}=X\times_{\Spec A}\Spec B\morphism\Spec B%.
+\end{align*}
+its base change along $\Spec B\morphism\Spec A$. Also let $\pi\colon \snake{X}\morphism X$ be projection to the other fibre product factor. We want to investigate the relation between the cohomology of $X$ and $\snake{X}$. For a quasi-coherent $\Oo_X$-module $\Ff$ and an affine \v Cech cover $\Uu\colon X=\bigcup_{i\in I}U_i$ of $X$, the \v Cech complex $\check{C}^\bullet(\Uu,\Ff)$ calculates $H^\bullet(X,\Ff)$. Pulling back $\Uu$ gives a \v Cech cover
+\begin{align*}
+	\pi^{-1}\Uu\colon \snake{X}=\bigcup_{i\in I}U_i\times_{\Spec A}\Spec B\;,
+\end{align*}
+of $\snake{X}$, whose components $U_i\times_{\Spec A}\Spec B$ are affine again (as fibre products of affine schemes), hence $\pi^{-1}\Uu$ may be used to compute $H^\bullet(\snake{X},\pi^*\Ff)$. Explicitly, we obtain
+\begin{align}\lbl{eq:tensoredCechComplex}
+	\check{C}^\bullet\left(\pi^{-1}\Uu,\pi^*\Ff\right)\cong \check{C}^\bullet(\Uu,\Ff)\otimes_AB\;.
+\end{align}
+This gives a morphism
+\begin{align}\lbl{eq:tensoredCohomology}
+	H^\bullet(X,\Ff)\otimes_AB\morphism H^\bullet(\snake{X},\pi^*\Ff)\;,
+\end{align}
+which clearly is an isomorphism if $B$ is flat over $A$.
 
 \Appendix
 \chapter{Appendix}
 \section{Some prerequisites about completions}
 We briefly recall the most important facts about completions. An excellent introduction to this subject can be found in \cite[Section~10]{atiyahMacdonald}.
 \begin{defi}
-	Let $R$ be a ring (commutative with $1$) and $I$ an ideal in $R$. Let $M$ be an $R$-module.
+	Let $A$ be a ring (commutative with $1$) and $I$ an ideal in $A$. Let $M$ be an $A$-module.
 	\begin{alphanumerate}
 		\item The \defemph{$I$-adic topology} on $M$ is the unique topology such that $\{I^n\}_{n\in \IN}$ is a fundamental system of neighbourhoods of $0$ and $M$ (with its additive structure) becomes a topological group in this topology.
 		\item The \defemph{completion} of $M$ with respect to the $I$-adic topology is
 		\begin{align*}
 			\roof{M}=\limit[n\in \IN]M/I^nM\;.
 		\end{align*}
-		Note that $\roof{R}$ is a ring again. We call $M$ \defemph{complete} in the $I$-adic topology if the canonical morphism $M\morphism\roof{M}$ is an isomorphism.
+		Note that $\roof{A}$ is a ring again. We call $M$ \defemph{complete} in the $I$-adic topology if the canonical morphism $M\morphism\roof{M}$ is an isomorphism.
 	\end{alphanumerate}
 \end{defi}
 \begin{rem}
 	$M$ with its $I$-adic topology is \emph{pseudo-metrizable} via $d(x,y)=\mathrm{e}^{-\sup\left\{n\st x-y\in I^n\right\}}$. It is easy to check that $\roof{M}$ is also the completion of $M$ in the analytical sense, i.e.\ the set of Cauchy sequences modulo the zero sequences.
 \end{rem}
 \begin{example}
-	If $I^n=0$ for some $n\in \IN$, then any $R$-module is complete in the $I$-adic topology.
+	If $I^n=0$ for some $n\in \IN$, then any $A$-module is complete in the $I$-adic topology.
 \end{example}
 \begin{example}
-	If $R=\IZ$ and $I=p\IZ$ for some prime $p$, then $\roof{R}=\IZ_p$ is the ring of $p$-adic integers.
+	If $A=\IZ$ and $I=p\IZ$ for some prime $p$, then $\roof{A}=\IZ_p$ is the ring of $p$-adic integers.
 \end{example}
 \begin{prop}[Hensel's lemma]\lbl{prop:HenselsLemma}
-	Suppose the ring $R$ is complete in the $I$-adic topology. Let $P\in R[T]$ be a polynomial and $a_0\in R$ such that $P(a_0)\equiv 0\bmod I$ and $P'(a_0)$ is a unit in $R/I$. Then there is a unique $a\in R$ such that $a\equiv a_0\bmod I$ and $P(a)=0$.
+	Suppose the ring $A$ is complete in the $I$-adic topology. Let $P\in A[T]$ be a polynomial and $a_0\in A$ such that $P(a_0)\equiv 0\bmod I$ and $P'(a_0)$ is a unit in $A/I$. Then there is a unique $a\in A$ such that $a\equiv a_0\bmod I$ and $P(a)=0$.
 \end{prop}
 \begin{proof}
-	\emph{Step 1.} Consider the special case $I^2=0$. For $\delta\in I$ we have $P(a_0+\delta)=P(a_0)+\delta P'(a_0)$ since all terms of order $\delta^2$ or higher vanish in the binomial expansion. Now $P'(a_0)$ being a unit in $R/I$ gives a unique $\delta\in I$ such that $a=a_0+\delta$ satisfies $P(a)=0$.
+	\emph{Step 1.} Consider the special case $I^2=0$. For $\delta\in I$ we have $P(a_0+\delta)=P(a_0)+\delta P'(a_0)$ since all terms of order $\delta^2$ or higher vanish in the binomial expansion. Now $P'(a_0)$ being a unit in $A/I$ gives a unique $\delta\in I$ such that $a=a_0+\delta$ satisfies $P(a)=0$.
 	
-	\emph{Step 2.} Suppose that $I^{2^n}=0$ for some $n\in \IN$. Using induction on $n$ (with the base case being precisely Step~1) we may assume that Hensel's lemma holds for $R/I^{2^{n-1}}$. In particular, there is a unique $a_{n-1}$ such that $P(a_{n-1})\equiv 0\bmod I^{2^{n-1}}$ and $a_{n-1}\equiv a_0\bmod I$. Moreover, $P'(a_{n-1})$ is invertible in $R/I^{2^{n-1}}$. Indeed, this follows from Hensel's lemma applied to $R/I^{2^{n-1}}$ (for which it holds by induction hypothesis) and the polynomial $Q=P'(a_{n-1})T-1$. The derivative $Q'(a_{n-1})$ equals $P'(a_{n-1})$ which is invertible in $R/I$ since $P'(a_{n-1})\equiv P'(a_0)\bmod I$, so Hensel's lemma is indeed applicable. Now replacing $I$ by $I^{2^{n-1}}$ and $a_0$ by $a_{n-1}$ reduces the situation to Step~1, proving the inductive step.
+	\emph{Step 2.} Suppose that $I^{2^n}=0$ for some $n\in \IN$. Using induction on $n$ (with the base case being precisely Step~1) we may assume that Hensel's lemma holds for $A/I^{2^{n-1}}$. In particular, there is a unique $a_{n-1}$ such that $P(a_{n-1})\equiv 0\bmod I^{2^{n-1}}$ and $a_{n-1}\equiv a_0\bmod I$. Moreover, $P'(a_{n-1})$ is invertible in $A/I^{2^{n-1}}$. Indeed, this follows from Hensel's lemma applied to $A/I^{2^{n-1}}$ (for which it holds by induction hypothesis) and the polynomial $Q=P'(a_{n-1})T-1$. The derivative $Q'(a_{n-1})$ equals $P'(a_{n-1})$ which is invertible in $A/I$ since $P'(a_{n-1})\equiv P'(a_0)\bmod I$, so Hensel's lemma is indeed applicable. Now replacing $I$ by $I^{2^{n-1}}$ and $a_0$ by $a_{n-1}$ reduces the situation to Step~1, proving the inductive step.
 	
-	\emph{Step 3.} Now let $I$ be arbitrary. By Step~2 there is for every $n\in\IN$ a unique $a_n\in R/I^{2^n}$ such that $P(a_n)\equiv 0\bmod I^{2^n}$ and $a_n\equiv a_0\bmod I$. Then $a_n\equiv a_{n-1}\bmod I^{2^{n-1}}$ is forced by uniqueness. Hence $a=(a_n)_{n\in \IN}$ defines an element of
+	\emph{Step 3.} Now let $I$ be arbitrary. By Step~2 there is for every $n\in\IN$ a unique $a_n\in A/I^{2^n}$ such that $P(a_n)\equiv 0\bmod I^{2^n}$ and $a_n\equiv a_0\bmod I$. Then $a_n\equiv a_{n-1}\bmod I^{2^{n-1}}$ is forced by uniqueness. Hence $a=(a_n)_{n\in \IN}$ defines an element of
 	\begin{align*}
-		\limit[n\in \IN]R/I^{2^n}=\limit[n\in\IN] R/I^n=\roof{R}\;,
+		\limit[n\in \IN]A/I^{2^n}=\limit[n\in\IN] A/I^n=\roof{A}\;,
 	\end{align*}
-	providing the desired element $a\in\roof{R}$.
+	providing the desired element $a\in\roof{A}$.
 \end{proof}
-\begin{cor}
-	Let $R$ be complete in the $I$-adic topology.
+\begin{cor}\lbl{cor:HenselApplications}
+	Let $A$ be complete in the $I$-adic topology.
 	\begin{alphanumerate}
-		\item If $a\in R$ becomes a unit in $R/I$, then already $a\in R^\times$.
-		\item For every idempotent $\pi\in R/I$ there is a unique idempotent in $R$ whose image modulo $I$ is $\pi $. Therefore, $\Spec R$ and $\Spec R/I$ have the same connected components.
-		\item $I$ is contained in the Jacobson radical $\rad R$.
+		\item If $a\in A$ becomes a unit in $A/I$, then already $a\in A^\times$.
+		\item For every idempotent $\pi\in A/I$ there is a unique idempotent in $A$ whose image modulo $I$ is $\pi $. Therefore, $\Spec A$ and $\Spec A/I$ have the same connected components.
+		\item $I$ is contained in the Jacobson radical $\rad A$.
 	\end{alphanumerate}
 \end{cor}
 \begin{proof}
-	Part \itememph{a} follows from Proposition~\ref{prop:HenselsLemma} applied to $P=aT-1$ (whose derivative $a$ is a unit in $R/I$ by assumption, so this is fine). For \itememph{b} we use the polynomial $P=T^2-T$. Again, $P'(\pi )=2\pi -1$ is a unit in $R/I$ since $(2\pi -1)^2=4\pi ^2-4\pi +1=1$ in $R/I$. To prove \itememph{c} recall the characterization
+	Part \itememph{a} follows from Proposition~\ref{prop:HenselsLemma} applied to $P=aT-1$ (whose derivative $a$ is a unit in $A/I$ by assumption, so this is fine). For \itememph{b} we use the polynomial $P=T^2-T$. Again, $P'(\pi )=2\pi -1$ is a unit in $A/I$ since $(2\pi -1)^2=4\pi ^2-4\pi +1=1$ in $A/I$. To prove \itememph{c} recall the characterization
 	\begin{align*}
-		\rad R=\left\{x\in R\st 1-rx\in R^\times\text{ for all }r\in R\right\}\;.
+		\rad A=\left\{x\in A\st 1-ax\in A^\times\text{ for all }a\in A\right\}\;.
 	\end{align*}
-	If $x\in I$, then $1-rx$ is a unit in $R/I$, hence also in $R$ by \itememph{a}.
+	If $x\in I$, then $1-ax$ is a unit in $A/I$, hence also in $A$ by \itememph{a}.
 \end{proof}
 \begin{prop}
-	Let $R$ be noetherian and $N\subseteq M$ finitely generated $R$-modules. Then the $I$-adic topology on $N$ coincides with the induced topology by the $I$-adic topology on $M$.
+	Let $A$ be noetherian and $N\subseteq M$ finitely generated $A$-modules. Then the $I$-adic topology on $N$ coincides with the induced topology by the $I$-adic topology on $M$.
 \end{prop}
 \begin{proof}[Sketch of a proof]
 	By the Artin--Rees lemma (cf.\ \cite[Proposition~3.4.1]{alg2}) there exists a number $c\in\IN$ such that $N\cap I^{n+c}M\subseteq I^nN$. From this, the assertion is easily deduced.
@@ -459,17 +592,17 @@ We briefly recall the most important facts about completions. An excellent intro
 \begin{fact}
 	\begin{alphanumerate}
 		\item \lbl{fact:completion101}The canonical morphism $\roof{M}=\limit M/I^nM\morphism M/IM$ is surjective.
-		\item If $M$ is finitely generated and $I$ is contained in the Jacobson radical of $R$, then $\roof{M}=0$ implies $M=0$.
+		\item If $M$ is finitely generated and $I$ is contained in the Jacobson radical of $A$, then $\roof{M}=0$ implies $M=0$.
 	\end{alphanumerate}
 \end{fact}
 \begin{proof}
 	For \itememph{a}, note that the composition $M\morphism\roof{M}\morphism M/IM$ equals the projection $M\morphism M/IM$ by definition of the limit. Since the latter is surjective, so is $\roof{M}\morphism M/IM$. In particular, part \itememph{a} shows that $\roof{M}=0$ implies $M=IM$. In the situation of \itememph{b} this is equivalent to $M=0$ by Nakayama's lemma (which -- as we all know -- Professor Franke also likes to attribute to Azumaya and Krull, even though he regards Krull as a noob compared to Grothendieck).
 \end{proof}
 \begin{cor}\lbl{cor:completionExact}
-	If $R$ is noetherian, then the functor $M\mapsto \roof{M}$ is exact on the category of finitely generated $R$-modules.
+	If $A$ is noetherian, then the functor $M\mapsto \roof{M}$ is exact on the category of finitely generated $A$-modules.
 \end{cor}
 \begin{proof}
-	Let $0\morphism M'\morphism M\morphism M''\morphism 0$ be a short exact sequence of finitely generated $R$-modules. Then $M'+I^nM$ is the kernel of $M\epimorphism M''/I^nM''$. Using $(M'+I^nM)/I^nM\cong M'/(M'\cap I^nM)$ we get short exact sequences
+	Let $0\morphism M'\morphism M\morphism M''\morphism 0$ be a short exact sequence of finitely generated $A$-modules. Then $M'+I^nM$ is the kernel of $M\epimorphism M''/I^nM''$. Using $(M'+I^nM)/I^nM\cong M'/(M'\cap I^nM)$ we get short exact sequences
 	\begin{align}\lbl{eq:completion}
 		0\morphism M'/(M'\cap I^nM)\morphism M/I^nM\morphism M''/I^nM''\morphism 0\tag{$*$}
 	\end{align}
@@ -484,66 +617,86 @@ We briefly recall the most important facts about completions. An excellent intro
 	Thus, taking the limit over \eqreff{eq:completion} gives a short exact sequence $0\morphism \roof{M}'\morphism \roof{M}\morphism\roof{M}''\morphism 0$ by Fact~\reff{fact:6termLimitSequence}. We are done.
 \end{proof}
 \begin{cor}
-	Let $R$ be a Noetherian ring.
+	Let $A$ be a Noetherian ring.
 	\begin{alphanumerate}
-		\item When $M$ is a finitely generated $R$-module, then $\roof{M}\cong M\otimes_R\roof{R}$.
-		\item $\roof{R}$ is flat as an $R$-module.
-		\item Suppose that $I$ is contained in the Jacobson radical of $R$. If $\mu\colon M\morphism N$ is a morphism of finitely generated $R$-modules such that $\roof{\mu}\colon \roof{M}\morphism\roof{N}$ is an isomorphism, then $\mu$ is an isomorphism.
+		\item When $M$ is a finitely generated $A$-module, then $\roof{M}\cong M\otimes_A\roof{A}$.
+		\item $\roof{A}$ is flat as an $A$-module.
+		\item Suppose that $I$ is contained in the Jacobson radical of $A$. If $\mu\colon M\morphism N$ is a morphism of finitely generated $A$-modules such that $\roof{\mu}\colon \roof{M}\morphism\roof{N}$ is an isomorphism, then $\mu$ is an isomorphism.
 	\end{alphanumerate}
 \end{cor}
 \begin{proof}
-	Part \itememph{a}. Every finitely generated $R$-module is finitely presented as well since $R$ is noetherian. So take a representation $M\cong \coker(R^m\morphism R^n)$ for some $m,n\in\IN$. It's obvious that $(R^n)^\complete\cong \roof{R}^n\cong R^n\otimes_R\roof{R}$. Since both completion and tensor products commute with cokernels, this shows $\roof{M}\cong M\otimes_R\roof{R}$ as well.
+	Part \itememph{a}. Every finitely generated $A$-module is finitely presented as well since $A$ is noetherian. So take a representation $M\cong \coker(A^m\morphism A^n)$ for some $m,n\in\IN$. It's obvious that $(A^n)^\complete\cong \roof{A}^n\cong A^n\otimes_A\roof{A}$. Since both completion and tensor products commute with cokernels, this shows $\roof{M}\cong M\otimes_A\roof{A}$ as well.
 	
-	Part\itememph{b}. By Corollary~\reff{cor:completionExact} and \itememph{a}, $-\otimes_R\roof{R}$ is exact on finitely generated $R$-modules. By \cite[Proposition~1.2.2]{homalg} this is sufficient for flatness.
+	Part\itememph{b}. By Corollary~\reff{cor:completionExact} and \itememph{a}, $-\otimes_A\roof{A}$ is exact on finitely generated $A$-modules. By \cite[Proposition~1.2.2]{homalg} this is sufficient for flatness.
 	
-	Part \itememph{c}. Let $K=\ker\mu$ and $Q=\coker\mu$. Since completion is exact on finitely generated $R$-modules, we get an exact sequence
+	Part \itememph{c}. Let $K=\ker\mu$ and $Q=\coker\mu$. Since completion is exact on finitely generated $A$-modules, we get an exact sequence
 	\begin{align*}
 		0\morphism \roof{K}\morphism\roof{M}\morphism[\roof{\mu}]\roof{N}\morphism\roof{Q}\morphism 0\;.
 	\end{align*}
 	But $\roof{\mu}$ is an isomorphism, so $\roof{K}=0$ and $\roof{Q}=0$. By Fact~\reff{fact:completion101} this shows $K=0$ and $Q=0$. We are done.
 \end{proof}
 \begin{cor}\lbl{cor:JM}
-	If $J\subseteq R$ is any ideal and $M$ a finitely generated $R$-module, then $(JM)^\complete\morphism\roof{M}$ defines an isomorphism $(JM)^\complete\isomorphism J\roof{M}$.
+	If $J\subseteq A$ is any ideal and $M$ a finitely generated $A$-module, then $(JM)^\complete\morphism\roof{M}$ defines an isomorphism $(JM)^\complete\isomorphism J\roof{M}$.
 \end{cor}
 \begin{proof}
 	We may view $(JM)^\complete$ as a submodule of $\roof{M}$ since completion preserves injectivity of the inclusion $JM\subseteq M$ by Corollary~\reff{cor:completionExact}. It's easy to see that $J\roof{M}$ is contained in $(JM)^\complete$. To prove the converse, take generators $j_1,\ldots,j_n$ of $J$. Then completion preserves surjectivity of $(j_1,\ldots,j_n)\colon M^n\epimorphism JM$ and we are done.
 \end{proof}
 \begin{cor}\lbl{completionLocal}
-	If $R$ is a noetherian local ring with maximal ideal $\mm$, then $\roof{R}$ is local with maximal ideal $\mm \roof{R}$.
+	If $A$ is a noetherian local ring with maximal ideal $\mm$, then $\roof{A}$ is local with maximal ideal $\mm \roof{A}$.
 \end{cor}
 \begin{proof}
 	We proved this in \cite[Corollary~2.2.2]{homalg}.
 \end{proof}
 \begin{prop}\lbl{prop:completionNoetherian}
-	Let $R$ be noetherian and $I\subseteq R$ any ideal, then the $I$-adic completion $\roof{R}$ is noetherian again.
+	Let $A$ be noetherian and $I\subseteq A$ any ideal, then the $I$-adic completion $\roof{A}$ is noetherian again.
 \end{prop}
 To prove this, we need to prove the evil twin of Hilbert's Basissatz first.
 \begin{lem}\lbl{lem:(not)HilbertBasis}
-	If $R$ is noetherian, then so is the power series ring $R\llbracket T\rrbracket$.
+	If $A$ is noetherian, then so is the power series ring $A\llbracket T\rrbracket$.
 \end{lem}
 \begin{proof}
-	We can (and will) basically copy the proof of Hilbert's Basissatz. Let $J\subseteq R\llbracket T\rrbracket$ be any ideal and put $J_n=\left\{a_n\st \sum_{k=n}^\infty a_kT^k\in J\right\}$ for $n\geq 0$. Then $(J_n)_{n\in \IN}$ form an ascending sequence of ideals in $R$. Noetherianness of $R$ tells us that this sequence becomes eventually stationary, say, at $n=s$. So we may choose $a^{(i)}=\sum_{k=s}^\infty a_kT^k\in R\llbracket T\rrbracket$ for $i=1,\ldots,N$ such that $a_s^{(1)},\ldots,a_s^{(N)}$ generate $J_s$. Then $a^{(1)},\ldots,a^{(N)}$ generate $J\cap T^sR\llbracket T\rrbracket$. Indeed, given any $b=\sum_{k=s}^{\infty}b_kT^k\in J$ we can inductively choose coefficients $r_k^{(1)},\ldots,r_k^{(N)}\in R$ such that $r^{(i)}=\sum_{k=0}^{\infty}r_k^{(i)}T^k$ satisfy $r^{(1)}a^{(1)}+\ldots+r^{(N)}a^{(N)}=b$ up to degree $T^{s+k}$. This works because $J_{k+s}=J_s$ for all $k\geq 0$ is generated by $a_s^{(1)},\ldots,a_s^{(N)}$ again.
+	We can (and will) basically copy the proof of Hilbert's Basissatz. Let $J\subseteq A\llbracket T\rrbracket$ be any ideal and put $J_n=\left\{a_n\st \sum_{k=n}^\infty a_kT^k\in J\right\}$ for $n\geq 0$. Then $(J_n)_{n\in \IN}$ form an ascending sequence of ideals in $A$. Noetherianness of $A$ tells us that this sequence becomes eventually stationary, say, at $n=s$. So we may choose $a^{(i)}=\sum_{k\geq s}a_kT^k\in A\llbracket T\rrbracket$ for $i=1,\ldots,N$ such that $a_s^{(1)},\ldots,a_s^{(N)}$ generate $J_s$. Then $a^{(1)},\ldots,a^{(N)}$ generate $J\cap T^sA\llbracket T\rrbracket$. Indeed, given any $b=\sum_{k\geq s}b_kT^k\in J$ we can inductively choose coefficients $r_k^{(1)},\ldots,r_k^{(N)}\in A$ such that $r^{(i)}=\sum_{k\geq 0}r_k^{(i)}T^k$ satisfy $r^{(1)}a^{(1)}+\ldots+r^{(N)}a^{(N)}=b$ up to degree $T^{s+k}$. This works because $J_{k+s}=J_s$ for all $k\geq 0$ is generated by $a_s^{(1)},\ldots,a_s^{(N)}$ again.
 	
-	Now $R\llbracket T\rrbracket/T^sR\llbracket T\rrbracket$ is a finitely generated $R$-module, hence the image of $J$ in it is finitely generated as well, $R$ being noetherian. We thus may choose $a^{(N+1)},\ldots,a^{(N+M)}\in J$ whose images modulo $T^sR\llbracket T\rrbracket$ generate the image of $J$ in $R\llbracket T\rrbracket/T^sR\llbracket T\rrbracket$. Then $a^{(1)},\ldots,a^{(N+M)}$ generate $J$ and our job's done here.
+	Now $A\llbracket T\rrbracket/T^sA\llbracket T\rrbracket$ is a finitely generated $A$-module, hence the image of $J$ in it is finitely generated as well, $A$ being noetherian. We thus may choose $a^{(N+1)},\ldots,a^{(N+M)}\in J$ whose images modulo $T^sA\llbracket T\rrbracket$ generate the image of $J$ in $A\llbracket T\rrbracket/T^sA\llbracket T\rrbracket$. Then $a^{(1)},\ldots,a^{(N+M)}$ generate $J$ and our job's done here.
 \end{proof}
 \begin{proof}[Proof of Proposition~\reff{prop:completionNoetherian}]
-	Let $r_1,\ldots,r_n$ be generators of $I$. Then sending $X_i\mapsto r_i$ defines a surjective morphism $R\llbracket X_1,\ldots,X_n\rrbracket\epimorphism \roof{R}$. Since $R\llbracket X_1,\ldots,X_n\rrbracket$ is noetherian by Lemma~\reff{lem:(not)HilbertBasis} and induction on $n$, so is its quotient $\roof{R}$.
+	Let $r_1,\ldots,r_n$ be generators of $I$. Then sending $X_i\mapsto r_i$ defines a surjective morphism $A\llbracket X_1,\ldots,X_n\rrbracket\epimorphism \roof{A}$. Since $A\llbracket X_1,\ldots,X_n\rrbracket$ is noetherian by Lemma~\reff{lem:(not)HilbertBasis} and induction on $n$, so is its quotient $\roof{A}$.
 \end{proof}
 \begin{cor}
-	Suppose that $R$ is a noetherian local ring and $I\subseteq R$ any (proper) ideal. Then $\dim R=\dim\roof{R}$. In particular, $R$ is regular iff $\roof{R}$ is regular.
+	Suppose that $A$ is a noetherian local ring and $I\subseteq A$ any (proper) ideal. Then $\dim A=\dim\roof{A}$. In particular, $A$ is regular iff $\roof{A}$ is regular.
 \end{cor}
 \begin{proof}
-	Let $\mm$ be the maximal ideal of $R$. Then $\roof{\mm}=\mm\roof{R}$ (this equality holds because of Corollary~\ref{cor:JM}) is the maximal ideal of the local ring $\roof{R}$ as was shown in the proof of \cite[Corollary~2.2.2]{homalg}. Since $I\subseteq \mm$, the quotients $\mm^i/\mm^{i+1}$ already have $I$-torsion, hence 
+	Let $\mm$ be the maximal ideal of $A$. Then $\roof{\mm}=\mm\roof{A}$ (this equality holds because of Corollary~\ref{cor:JM}) is the maximal ideal of the local ring $\roof{A}$ as was shown in the proof of \cite[Corollary~2.2.2]{homalg}. Since $I\subseteq \mm$, the quotients $\mm^i/\mm^{i+1}$ already have $I$-torsion, hence 
 	\begin{align*}
 		\mm^i/\mm^{i+1}\cong \left(\mm^i/\mm^{i+1}\right)^\complete\cong \roof{\mm}^i/\roof{\mm}^{i+1}
 	\end{align*}
-	(the last isomorphism follows from exactness of completion). This shows that the associated graded rings $\gr(R,\mm)$ and $\gr(\roof{R},\roof{\mm})$ agree, hence $(R,\mm)$ and $(\roof{R},\roof{\mm})$ have the same Hilbert--Samuel polynomials, which shows $\dim R=\dim\roof{R}$ by \cite[Theorem~20]{alg2}.
+	(the last isomorphism follows from exactness of completion). This shows that the associated graded rings $\gr(A,\mm)$ and $\gr(\roof{A},\roof{\mm})$ agree, hence $(A,\mm)$ and $(\roof{A},\roof{\mm})$ have the same Hilbert--Samuel polynomials, which shows $\dim A=\dim\roof{A}$ by \cite[Theorem~20]{alg2}.
 	
-	Now $R$ and $\roof{R}$ have the same residue field $k$ and $\mm/\mm^2\cong \roof{\mm}/\roof{\mm}^2$ by the $I$-torsion arguments we have seen several times now, so $\dim_k\mm/\mm^2=\dim_k\roof{\mm}/\roof{\mm}^2$. Clearly this implies that $R$ is regular iff $\roof{R}$ is.
+	Now $A$ and $\roof{A}$ have the same residue field $k$ and $\mm/\mm^2\cong \roof{\mm}/\roof{\mm}^2$ by the $I$-torsion arguments we have seen several times now, so $\dim_k\mm/\mm^2=\dim_k\roof{\mm}/\roof{\mm}^2$. Clearly this implies that $A$ is regular iff $\roof{A}$ is.
 \end{proof}
 \begin{rem}
-	In a similar fashion one can show that a noetherian local ring is Cohen--Macaulay, or Gorenstein, or a complete intersection, iff its $I$-adic completion is one as well. For example, for Cohen--Macaulayness one would need to show $\depth_R(R)=\depth_{\roof{R}}(\roof{R})$, which follows from the isomorphism $\Ext_R^p(k,R)\cong\Ext_{\roof{R}}^p(k,\roof{R})$ that was described in the proof of \cite[Proposition~2.4.2]{homalg}.
+	In a similar fashion one can show that a noetherian local ring is Cohen--Macaulay, or Gorenstein, or a complete intersection, iff its $I$-adic completion is one as well. For example, for Cohen--Macaulayness one would need to show $\depth_A(A)=\depth_{\roof{A}}(\roof{A})$, which follows from the isomorphism $\Ext_A^p(k,A)\cong\Ext_{\roof{A}}^p(k,\roof{A})$ that was described in the proof of \cite[Proposition~2.4.2]{homalg}.
 \end{rem}
+\begin{prop}\lbl{prop:modulesComplete}
+	Let $A$ be a noetherian ring which is complete in the $I$-adic topology and let $M$ be a finitely generated $A$-module. Then $M$ is $I$-adically complete.
+\end{prop}
+\begin{proof}
+	Note that this is clearly fulfilled if $M=A^n$ is a finitely generated free $A$-module. Now let $M$ be arbitrary. Since $A$ is noetherian, $M$ can be represented as $\coker\left(A^m\morphism A^n\right)$. Because $A^m$, $A^n$ equal their own completions (as we have just seen) and  completion is exact (by Corollary~\reff{cor:completionExact}), $M=\roof{M}$ holds as well.
+\end{proof}
+\begin{cor}\lbl{cor:finiteAlgebras}
+	Let $A$ be a noetherian local ring maximal ideal $\mm$. Let $B$ be a finite $A$-algebra.
+	\begin{alphanumerate}
+		\item Then $B$ has only finitely many prime ideals over $\mm$, and all of them are maximal.
+		\item If $A$ is, in addition, $\mm$-adically complete, then all maximal ideals of $B$ lie over $\mm$. In particular, $B$ is \defemph{semi-local} (i.e.\ has finitely many maximal ideals). The same is true if $A\subseteq B$.
+	\end{alphanumerate}
+\end{cor}
+\begin{proof}
+	Part \itememph{a}. If $\qq\in\Spec B$ is a prime ideal over $\mm$, then $B/\qq$ is a finitely generated domain over the residue field $k=A/\mm$, hence a finite field extension of $k$, so $\qq$ is maximal. Moreover, $B/\mm B$ is a finite-dimensional $k$-algebra, hence it has only finitely many maximal ideals by the argument from Fact~\reff{fact:annoyingQF}\itememph{b}.
+	
+	Part \itememph{b}. If $A$ is $\mm$-adically complete, then $B$ is $\mm B$-adically complete by Proposition~\reff{prop:modulesComplete}, so $\mm B$ is contained in the Jacobson radical $\rad B$ by Corollary~\reff{cor:HenselApplications}\itememph{c}. Then all maximal ideals of $B$ lie over $\mm$.
+	
+	Now assume $A\subseteq B$. Let $\qq\in\Spec B$ be a maximal ideal and $\pp=\qq\cap A$. Then $A/\pp\subseteq B/\qq$ is an integral ring extension in which $B/\qq$ is a field, hence so is $A/\pp$, (by \cite[Proposition~1.5.1\itememph{d}]{alg1}) which proves $\pp=\mm$.
+\end{proof}
 
 \printbibliography
 
