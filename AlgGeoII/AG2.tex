@@ -19,7 +19,8 @@
 
 % Title Page
 \title{Algebraic Geometry II}
-\author{Ferdinand Wagner}
+\author{\textsc{Lecturer:} Jens Franke\\
+	\textsc{Notes:} Ferdinand Wagner}
 \date{Sommersemester 2018}
 
 \displaywidowpenalty=8000
@@ -3485,10 +3486,11 @@ Recall that a module $M$ over a ring $R$ is called \emph{flat} if $M\otimes_R-$ 
 \end{proof}
 \begin{rem}
 	\begin{alphanumerate}
-		\item\lbl{rem:flatBaseChange} Flatness is only needed in the last step. If flatness is not provided, we only obtain a spectral sequence\footnote{Which I'm \emph{not} going to abbreviate SS.} 
+		\item\lbl{rem:flatBaseChange} Flatness is only needed in the last step. If flatness of $f$ is not provided, but $\Mm$ is \emph{flat} over $\Oo_Y$ we only obtain a spectral sequence\footnote{Which I'm \emph{not} going to abbreviate SS.} 
 		\begin{align*}
-		E_2^{p,q}=\Tor_p^A(B,H^q(X,\Mm))\converge H^{p+q}(Y,\pi^*\Mm)\;.
+		E_2^{p,q}=\Tor_{-p}^A(B,H^q(X,\Mm))\converge H^{p+q}(Y,\pi^*\Mm)
 		\end{align*}
+		(see \cite[Proposition~1.4.1a]{jacobians} for an explanation and a proof).
 		\item More generally, assume that $X\morphism[f]Y$ is quasi-compact and quasi-separated and $\snake{Y}\morphism[\pi] Y$ flat (in the sense that $\Oo_{\snake{Y},y}$ is a flat $\Oo_{Y,\pi(y)}$-module for all $y\in \snake{Y}$). Consider the pull-back
 		\begin{diagram*}
 			\node[ob] (a) at (0,1.5) {\llap{$\snake{X}=\:$}$\snake{Y}\times_YX$};
