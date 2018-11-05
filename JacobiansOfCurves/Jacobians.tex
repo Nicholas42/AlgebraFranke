@@ -145,13 +145,13 @@ for all $p\geq 0$ (the isomorphism on the right-hand side comes from the fact th
 \end{align*}
 This is compatible with the canonical morphisms $H^p(X_{n+1},\Ff|_{X_{n+1}})\morphism H^p(X_n,\Ff|_{X_n})$ (you can just check that on an affine \v Cech covers). Passing to the limit gives a morphism
 \begin{align}\lbl{eq:formalFunctions}
-	H^p(X,\Ff)^\complete\morphism\limit[n\in\IN]H^p(X_n,\Ff|_{X_n})\;,
+	H^p(X,\Ff)^\complete\morphism\limit[n\geq 1]H^p(X_n,\Ff|_{X_n})\;,
 \end{align}
 where $\roof{\phantom{x}}$ denotes the $I$-adic completion.
 \begin{thm}[Grothendieck--Zariski]\lbl{thm:FormalFunctions}
 	When $f\colon X\morphism Y=\Spec A$ is proper (in which case $X$ is automatically a quasi-compact scheme), $A$ is noetherian and $\Ff$ is a coherent sheaf of $\Oo_X$-modules, then \eqreff{eq:formalFunctions} is an isomorphism
 	\begin{align*}
-		H^p(X,\Ff)^\complete\isomorphism \limit[n\in\IN]H^p(X_n,\Ff|_{X_n})\;.
+		H^p(X,\Ff)^\complete\isomorphism \limit[n\geq 1]H^p(X_n,\Ff|_{X_n})\;.
 	\end{align*}
 \end{thm}
 
@@ -214,13 +214,13 @@ where $\roof{\phantom{x}}$ denotes the $I$-adic completion.
 	The question is easily seen to be local on both $X$ and $Y$. So let's consider the affine situation where $Y=\Spec A$, $X=\Spec B$, and $\Jj=\snake{J}$ for some ideal $J\subseteq A$. Let $\phi\colon A\morphism B$ be the morphism of rings corresponding to $f$. Then $f^{-1}\Jj=\snake{I}$ where $I$ is the image of $B\otimes_AJ\morphism B$ sending $b\otimes j\mapsto b\cdot \phi(j)$. All three assertions are then easily checked.
 \end{proof}
 \begin{rem}\lbl{rem:fibres}
-	Recall that for a morphism $f\colon X\morphism Y$ of preschemes and a point $y\in Y$ the \defemph{fibre} $f^{-1}\{y\}$ of $f$ at $y$ is defined as the prescheme $f^{-1}\{y\}=X\times_Y\Spec \KK(y)$. This makes sense, since $f^{-1}\{y\}$ is indeed -- topologically -- the preimage of $y$, as proved in \cite[Corollary~1.3.3]{alggeo1}. Moreover, $\Spec \Oo_{Y,y}/\mm_{Y,y}^n\morphism Y$ is immersive for all $n\geq 1$ and has image $\{y\}$ as well. So \cite[Corollary~1.3.3]{alggeo1} is applicable again and shows that $X_n=X\times_Y\Spec (\Oo_{Y,y}/\mm_{Y,y}^n)$ has $f^{-1}\{y\}$ as underlying topological space too (but, of course, the prescheme structure differs in general). We may thus think of $X_n$ as the $n\ordinalth$ infinitesimal thickening of $f^{-1}\{y\}$. 
+	Recall that for a morphism $f\colon X\morphism Y$ of preschemes and a point $y\in Y$ the \defemph{fibre} $f^{-1}\{y\}$ of $f$ at $y$ is defined as the prescheme $f^{-1}\{y\}=X\times_Y\Spec \KK(y)$. This makes sense, since $f^{-1}\{y\}$ is indeed -- topologically -- the preimage of $y$, as proved in \cite[Corollary~1.3.3]{alggeo1}. Moreover, $\Spec \Oo_{Y,y}/\mm_{Y,y}^n\morphism Y$ is immersive for all $n\geq 1$ and has image $\{y\}$ as well. So \cite[Corollary~1.3.3]{alggeo1} is applicable again and shows that $X_n=X\times_Y\Spec (\Oo_{Y,y}/\mm_{Y,y}^n)$ has $f^{-1}\{y\}$ as underlying topological space too (but, of course, the prescheme structure differs in general). We may thus think of $X_n$ as the $(n-1)\ordinalst$ infinitesimal thickening of $f^{-1}\{y\}$. 
 \end{rem}
 Using this, Theorem~\reff{thm:FormalFunctions} can be restated as follows.
 \begin{varthm}{thm}\lbl{thm:FormalFunctions2}
-	Let $f\colon X\morphism Y$ be a proper morphism between locally noetherian\footnote{Franke only assumes $Y$ to be locally noetherian, but $f$ being of (locally) finite type implies that $X$ is locally noetherian as well by Hilbert's Basissatz. This happens multiple times throughout the text.} preschemes. Let $\Ff$ be a coherent $\Oo_X$-module. For every $y\in Y$ let $X_n=X\times_Y\Spec (\Oo_{Y,y}/\mm_{Y,y}^n)$ be the $n\ordinalth$ infinitesimal thickening of $f^{-1}\{y\}$. Then there is an isomorphism
+	Let $f\colon X\morphism Y$ be a proper morphism between locally noetherian\footnote{Franke only assumes $Y$ to be locally noetherian, but $f$ being of (locally) finite type implies that $X$ is locally noetherian as well by Hilbert's Basissatz. This happens multiple times throughout the text.} preschemes. Let $\Ff$ be a coherent $\Oo_X$-module. For every $y\in Y$ let $X_n=X\times_Y\Spec (\Oo_{Y,y}/\mm_{Y,y}^n)$ be the $(n-1)\ordinalst$ infinitesimal thickening of $f^{-1}\{y\}$. Then there is an isomorphism
 	\begin{align*}
-		(R^pf_*\Ff)_y^\complete\isomorphism\limit[n\in\IN] H^p(X_n,\Ff|_{X_n})\;,
+		(R^pf_*\Ff)_y^\complete\isomorphism\limit[n\geq 1] H^p(X_n,\Ff|_{X_n})\;,
 	\end{align*}
 	where $\roof{\phantom{x}}$ denotes the $\mm_{Y,y}$-adic completion.
 \end{varthm}
@@ -323,7 +323,7 @@ The following fact wasn't mentioned in the lecture, but it's \emph{definitely} (
 \begin{proof}
 	Part \itememph{a}. Assume $f^{-1}\{y\}$ is not connected, say, $f^{-1}\{y\}=U_1\cup U_2$ for disjoint non-empty open subsets $U_1,U_2\subseteq f^{-1}\{y\}$. Since all infinitesimal thickenings $X_n=X\times_Y\Spec(\Oo_{Y,y}/\mm_{Y,y}^n)$ have underlying topological space $f^{-1}\{y\}$, there is a unique $\epsilon_n\in\Oo_{X_n}(X_n)=H^0(X_n,\Oo_{X_n})$ such that $\epsilon_n|_{U_1}=0$ and $\epsilon_n|_{U_2}=1$. The sequence $(\epsilon_n)_{n\in\IN}$ clearly defines an element $\epsilon$ of
 	\begin{align*}
-		\limit[n\in\IN]H^0(X_n,\Oo_{X_n})\cong (f_*\Oo_X)_y^\complete\cong \roof{\Oo}_{Y,y}\;.
+		\limit[n\geq 1]H^0(X_n,\Oo_{X_n})\cong (f_*\Oo_X)_y^\complete\cong \roof{\Oo}_{Y,y}\;.
 	\end{align*}
 	The left isomorphism here is due to Theorem~\reff{thm:FormalFunctions2} and the fact that $\Oo_{X_n}=\Oo_X|_{X_n}$, and the right one holds by assumption. Hence $\roof{\Oo}_{Y,y}$ is a local ring (by Corollary~\reff{cor:completionLocal}) with an idempotent $\epsilon\neq 0,1$. Then $1-\epsilon\neq 0,1$ is another non-trivial idempotent. Both $\epsilon$ and $1-\epsilon$ can't be units in $\roof{\Oo}_{Y,y}$, otherwise $\epsilon^2=\epsilon$ implies $\epsilon=1$ (and similar for $1-\epsilon$). But then they are elements of the maximal ideal $\mm$, so $\epsilon+(1-\epsilon)=1$ is an element of $\mm$ as well, contradiction!
 	
@@ -679,7 +679,7 @@ The minus sign in $\Tor_{-p}^A$ is not a typo. This spectral sequence is support
 		\item The vertical morphisms $d_\ver^{\bullet,q}\colon J^{\bullet,q}\morphism J^{\bullet,q+1}$ are \emph{split} in the sense that there is a decomposition $J^{\bullet,q}\cong B^{\bullet,q}\oplus H^{\bullet,q}\oplus B^{\bullet,q+1}$ and $d_\ver^{\bullet,q}$ corresponds to the projection onto the summand $B^{\bullet,q+1}$.
 		\item The induced cochain complex $H_\ver^q(J^{\bullet,\bullet})\cong H^{\bullet,q}\morphism \check{H}_\alt^q(\Uu,\Ff)\cong H^q(X,\Ff)$ is a projective resolution as well.
 	\end{itemize}
-It's well-known that Cartan--Eilenberg resolutions exist in the category $\cat{Mod}(A)$ (in fact, in any abelian category with sufficiently many injectives). Moreover, since $\check{C}^q_\alt(\Uu,\Ff)=0$ when $q$ is sufficiently large, say $q\geq q_0$, we may choose $J ^{\bullet,\bullet}$ such that $J^{\bullet,q}=0$ when $q\geq q_0$. Then $J^{\bullet,\bullet}$ is bounded from above in both directions (that is, a $3\ordinalrd$ quadrant double complex, except it's supported completely in the $2\ordinalnd$ quadrant -- you know what I mean).
+It's well-known that Cartan--Eilenberg resolutions exist in the category $\cat{Mod}(A)$ (in fact, in any abelian category with sufficiently many projectives). Moreover, since $\check{C}^q_\alt(\Uu,\Ff)=0$ when $q$ is sufficiently large, say $q\geq q_0$, we may choose $J ^{\bullet,\bullet}$ such that $J^{\bullet,q}=0$ when $q\geq q_0$. Then $J^{\bullet,\bullet}$ is bounded from above in both directions (that is, a $3\ordinalrd$ quadrant double complex, except it's supported completely in the $2\ordinalnd$ quadrant -- you know what I mean).
 
 The same is true for the double complex $J^{\bullet,\bullet}\otimes_AB$, hence both its horizontal and its vertical spectral sequence converge -- and even to the same limit. Note that $H_\ver^q(J^{\bullet,\bullet}\otimes_AB)\cong H^{\bullet,q}\otimes_AB$ because of the nice splitness condition for $d_\ver^{\bullet,q}$. We thus have 
 \begin{align*}
@@ -718,7 +718,7 @@ By \eqreff{eq:tensoredCechComplex} we get $\vphantom{E}^\hor E^{0,q}\cong H^q(\s
 		\begin{align*}
 			H^p\left(\snake{X},\pi_X^*\Ff\right)\cong H^p(P^\bullet\otimes_AB)\;.
 		\end{align*}
-		It is possible to choose $d$ to be the largest number with $H^d(X,\Ff)\neq 0$ (or $P^\bullet=0$ if there's no such $d$). Moreover, if $d'\geq 0$ is such that $H^p(X_y,\Ff|_{X_y})=0$ for all $y\in Y$ when $p<d'$, then it is possible to choose $P^\bullet$ such that $P^i=0$ unless $d'\leq i\leq d$.
+		It is possible to choose $d$ to be the largest number with $H^d(X,\Ff)\neq 0$, or $P^\bullet=0$ if $H^\bullet(X,\Ff)=0$. Moreover, if $d'\geq 0$ is such that $H^p(X_y,\Ff|_{X_y})=0$ for all $y\in Y$ when $p<d'$, then it is possible to choose $P^\bullet$ such that $P^i=0$ unless $d'\leq i\leq d$.
 		\item The function $h^p(-,\Ff)\colon Y\morphism \IN$ given by
 		\begin{align*}
 		h^p(y,\Ff)=\dim_{\KK(y)}H^p(X_y,\Ff|_{X_y})
@@ -736,7 +736,7 @@ By \eqreff{eq:tensoredCechComplex} we get $\vphantom{E}^\hor E^{0,q}\cong H^q(\s
 		\begin{align}\lbl{eq:RpfFy}
 			(R^pf_*\Ff)_y\isomorphism H^p\left(X_y,\Ff|_{X_y}\right)\;.
 		\end{align}
-		\item If reducedness wasn't required in \itememph{c}, the canonical morphism $(BC_f)$ is bijective (for given $p$ and $y$) if and only if it is surjective. Moreover, for any $p\geq 0$ the set $U_p$ of all $y\in Y$ for which this is the case is open in $Y$.
+		\item If reducedness wasn't required in \itememph{c}, the canonical morphism \eqreff{eq:RpfFy} is bijective (for given $p$ and $y$) if and only if it is surjective. Moreover, for any $p\geq 0$ the set $U_p$ of all $y\in Y$ for which this is the case is open in $Y$.
 		\item Let $y\in U_p$, then the following assertions are equivalent.
 		\begin{itemize}
 			\item[\itememph{\alpha}] We also have $y\in U_{p-1}$.
@@ -751,16 +751,17 @@ By \eqreff{eq:tensoredCechComplex} we get $\vphantom{E}^\hor E^{0,q}\cong H^q(\s
 		\item From Theorem~\reff{thm:GrauertGrothendieck}\itememph{d} it follows that $R^pf_*\Ff=0$ when $H^p(X_y,\Ff|_{X_y})=0$ for all $y\in Y$.
 	\end{alphanumerate}
 \end{rem}
-\begin{proof}[Proof of Theorem~\reff{thm:GrauertGrothendieck}]
-	The first step will be to prove \itememph{a}, from which the other assertions will be deduced. These are all base-local, hence without losing generality we may assume $Y=\Spec A$ for the remainder of this proof. The strategy for \itememph{a} is to modify the anti-symmetric \v Cech complex $\check{C}^\bullet=\check{C}_\alt^\bullet(\Uu,\Ff)$, where $\Uu$ is some fixed affine open cover of $X$. As $\Ff$ is flat over $\Oo_Y$, the $\Ff(U_{i_0,\ldots,i_n})$ are flat $A$-modules, hence $\check{C}^\bullet$ is a complex of flat $A$-modules, but the finite generation assertions will typically fail, as will the vanishing assertions. However, from \eqreff{eq:tensoredCechComplex} we know that
-	\begin{align*}
+	The strategy for Theorem~\reff{thm:GrauertGrothendieck}\itememph{a} is to modify the anti-symmetric \v Cech complex $\check{C}^\bullet=\check{C}_\alt^\bullet(\Uu,\Ff)$, where $\Uu$ is some fixed affine open cover of $X$. As $\Ff$ is flat over $\Oo_Y$, the $\Ff(U_{i_0,\ldots,i_n})$ are flat $A$-modules, hence $\check{C}^\bullet$ is a complex of flat $A$-modules, but the finite generation assertions will typically fail, as will the vanishing assertions. However, from \eqreff{eq:tensoredCechComplex} we know that
+	\begin{align}\lbl{eq:baseChangeProperty}
 		H^p(\snake{X},\pi_X^*\Ff)\cong H^p(\check{C}^\bullet\otimes_AB)
-	\end{align*}
+	\end{align}
 	when $B$ and $\snake{X}$ are as in \itememph{a}. We will construct cochain complexes $P^\bullet$ and $Q^\bullet$ with morphisms $c\colon Q^\bullet\morphism\check{C}^\bullet$ and $p\colon Q^\bullet\morphism P^\bullet$ such that $P^\bullet$ has all the required properties and $c$, $p$ induce isomorphisms on $H^\bullet(-\otimes_AM)$ for arbitrary $A$-modules $M$.
 	
-	The rest of the proof of \itememph{a} doesn't concern any $\check{C}^\bullet$-specific properties except flatness and the base change property. We will need a sequence of lemmas.
+	The rest of the proof of \itememph{a} doesn't concern any $\check{C}^\bullet$-specific properties except flatness and the base change property. However, we will rather freely use facts from homological algebra. If you want to brush up your knowledge, have a look at \cite{homalg}.
+	
+	We start with a sequence of lemmas now.
 	\begin{lem}\lbl{lem:TensorQuasiIsomorphism}
-		Let $A$ be a (not necessarily noetherian) ring and $\phi\colon C^\bullet\morphism D^\bullet$ a quasi-isomorphism\footnote{That is, $\phi$ induces isomorphisms on cohomology} between bounded-from-above cochain complexes of flat $A$-modules. Then for any $A$-module $M$,
+		Let $A$ be a (not necessarily noetherian) ring and $\phi\colon C^\bullet\morphism D^\bullet$ a quasi-isomorphism\footnote{That is, $\phi$ induces isomorphisms on cohomology} between bounded-from-above cochain complexes of flat $A$-modules. Then, for any $A$-module $M$,
 		\begin{align*}
 			\phi\otimes\id_M\colon C^\bullet\otimes_AM\morphism D^\bullet\otimes_AM
 		\end{align*}
@@ -771,7 +772,7 @@ By \eqreff{eq:tensoredCechComplex} we get $\vphantom{E}^\hor E^{0,q}\cong H^q(\s
 \end{proof}
 \begin{rem}
 	\begin{alphanumerate}
-		\item If you're uncomfortable with the $\Tor$ shortcut argument at the end of the proof above, Professor Franke suggests an alternative proof as follows. If $Z^p$ is the kernel of $\Cone(\phi)^p\morphism\Cone(\phi)^{p+1}$, then one can show that all $Z^p$ are are flat (using boundedness from above and downward induction on $p$). Then the short exact sequences
+		\item\lbl{rem:TorFishy?} If you're uncomfortable with the $\Tor$ shortcut argument at the end of the proof above, Professor Franke suggests an alternative proof as follows. If $Z^p$ is the kernel of $\Cone(\phi)^p\morphism\Cone(\phi)^{p+1}$, then one can show that all $Z^p$ are are flat (using boundedness from above and downward induction on $p$). Then the short exact sequences
 		\begin{align*}
 			0\morphism Z^p\morphism \Cone(\phi)^p\morphism Z^{p+1}\morphism 0
 		\end{align*}
@@ -785,6 +786,105 @@ By \eqreff{eq:tensoredCechComplex} we get $\vphantom{E}^\hor E^{0,q}\cong H^q(\s
 		$D^\bullet=0$, and $M=\IZ/p\IZ$. Then $D^\bullet\otimes_AM=0$, but $C^\bullet\otimes_AM$ has cohomology $\IZ/p\IZ$ in every degree.
 	\end{alphanumerate}
 \end{rem}
+Recall that if $C^\bullet$ is a cochain complex, one can form its \defemph{soft truncation from above}
+\begin{align*}
+	\tau_{\leq d}C^\bullet\colon \ldots\morphism C^n\morphism C^{n+1}\morphism \ldots \morphism C^{d-1}\morphism Z^d\morphism 0\morphism 0\morphism \ldots\;,
+\end{align*} 
+where $Z^d=\ker\left(C^{d}\morphism C^{d+1}\right)$. We have $H^p(\tau_{\leq d}C^\bullet)=H^p(C^\bullet)$ if $p\leq d$ and $H^p(\tau_{\leq d}C^\bullet)=0$ otherwise.
+\begin{lem}\lbl{lem:TruncQuasiIso}
+	Let $F^\bullet$ be a bounded-from-above cochain complex of flat modules over an arbitrary ring $A$. If $F$ is acyclic in degrees $>d$, then $\tau_{\leq d}F^\bullet\monomorphism F^\bullet$ is a quasi-isomorphism and $\tau_{\leq d}F^\bullet$ is still flat over $A$.
+\end{lem}
+\begin{proof}
+	Using induction, we may assume $F^\bullet$ to be concentrated in degrees $\leq d+1$. Then $0\morphism Z^d\morphism C^d\morphism C^{d+1}\morphism 0$ is exact. Let $M$ be any $A$-module. Since $C^d$, $C^{d+1}$ are flat, we get
+	\begin{align*}
+		0=\Tor_2^A\big(C^{d+1},M\big)\morphism \Tor_1^A\big(Z^d,M\big)\morphism \Tor_1^A\big(C^{d},M\big)=0
+	\end{align*}
+	as part of the long exact $\Tor$ sequence. Hence $\Tor_1^A\big(Z^d,M\big)=0$ for all $M$, so $Z^d$ is flat as well, proving that $\tau_{\leq d}F^\bullet$ is flat over $A$. The other assertion about $\tau_{\leq d}F^\bullet$ is trivial.
+\end{proof}
+\begin{rem}
+	\begin{alphanumerate}
+		\item In particular, Lemma~\reff{lem:TensorQuasiIsomorphism} applies to $\tau_{\leq d}F^\bullet\monomorphism F^\bullet$.
+		\item Without boundedness, Lemma~\reff{lem:TruncQuasiIso} counterexample from Remark~\reff{rem:TorFishy?} still applies.
+	\end{alphanumerate}
+\end{rem}
+\begin{lem}\lbl{lem:FiniteApproximation}
+	Let $A$ be a noetherian ring and $F^\bullet$ a flat cochain complex of $A$-modules which is concentrated in degrees $< d$. Then there is a cochain complex $Q^\bullet$, consisting of finitely generated free $A$-modules and concentrated in degrees $<d$, together with a quasi-isomorphism $\rho^\bullet\colon Q^\bullet\morphism F^\bullet$.
+\end{lem}
+\begin{proof}
+	Denote the differentials of $F^\bullet$ and $Q^\bullet$ by $d_F^\bullet$, $d_Q^\bullet$ (the latter of which is yet to be constructed). We will construct the $Q^i$ by downward induction. We start by putting $Q^i=0$ when $i\geq d$. Now let $k\in\IZ$ and suppose we have already constructed $Q^i$ and $d_Q^i$ for $i\geq i$ together with $\rho^i\colon Q^i\morphism F^i$ (compatible with the differentials) such that
+	\begin{itemize}
+		\item $H^p(Q^\bullet)\isomorphism H^p(F^\bullet)$ is an isomorphism when $p>k$.
+		\item $\ker(d_Q^k)\morphism H^k(F^\bullet)$ is surjective.
+	\end{itemize}
+Now it's about constructing suitable $Q^{k-1}$, $d_Q^{k-1}$ such that the above conditions remain valid for $k-1$. Let $\beta_1,\ldots,\beta_\ell$ be generators of $\left\{x\in Q^k\st \rho^k(x)\in\Im\big(d_F^{k-1}\big)\right\}$
+(that's where we really need that $A$ is noetherian) and let $\phi_i\in F^{k-1}$ such that $d_F^{k-1}(\phi_i)=\rho^k(x)$ for all $i=1,\ldots,\ell$. Also choose $\psi_1,\ldots,\psi_m\in\ker\big(d_F^{k-1}\big)$ whose images in $H^{k-1}(F^\bullet)$ generate that $A$-module. Put $Q^{k-1}=A^{\ell+m}$ and let $e_i$ be the $i\ordinalth$ standard basis vector. Now define $d_Q^{k-1}\colon Q^{k-1}\morphism Q^k$ and $\rho^{k-1}\colon Q^{k-1}\morphism F^{k-1}$ by
+\begin{align*}
+	d_Q^{k-1}(e_i)=
+	\begin{cases}
+		\beta_i &\text{if }i\leq \ell\\
+		0 & \text{if }\ell <i\leq \ell+m
+	\end{cases}\quad\text{and}\quad\rho^{k-1}(e_i)=
+	\begin{cases}
+		\phi_i & \text{if }i\leq \ell\\
+		\psi_{i-\ell} & \text{if }\ell <i\leq \ell+m
+	\end{cases}\;.
+\end{align*}
+This does it, as is easily checked.
+\end{proof}
+Let $C^\bullet$ be any cochain complex. Similar to the soft truncation from above (from above), there's a \defemph{soft truncation from below} given by
+\begin{align*}
+\tau_{\geq d}C^\bullet\colon\ldots\morphism 0\morphism 0\morphism C^d/B^d\morphism C^{d+1}\morphism C^{d+2}\morphism \ldots\;,
+\end{align*}
+in which $B^d=\Im\left(C^{d-1}\morphism C^d\right)$. It has the property that $H^p(\tau_{\geq d}C^\bullet)=H^p(C^\bullet)$ if $p\geq d$ and $H^p(\tau_{\geq d}C^\bullet)=0$ otherwise.
+\begin{lem}\lbl{lem:TruncQuasiIso2}
+	Let $A$ be a Noetherian ring and $Q^\bullet$ be a cochain complex of finitely generated projective $A$-modules. Suppose there's $d'\in\IZ$ such that $H^p(Q^\bullet\otimes_A\KK(\mm))=0$ for all $p<d'$ and all maximal ideals $\mm\subseteq A$. Then $\tau_{\geq d'}Q^\bullet$ is a cochain complex of projective $A$-modules. Also $Q^\bullet\morphism \tau_{\geq d'}Q^\bullet$ is a quasi-isomorphism if $H^p(Q^\bullet)=0$ for all $p\leq d'$.
+\end{lem}
+\begin{proof}
+	W.l.o.g.\ let $d'=0$ and $B^0=\Im\left(Q^{-1}\morphism Q^0\right)$. Then
+	\begin{align*}
+		\ldots \morphism Q^{-2}\morphism Q^{-1}\morphism Q^0\morphism Q^0/B^0\morphism 0
+	\end{align*}
+	is a projective resolution of $Q^0/B^0$. Hence $\Tor_p^A(Q^0/B^0,\KK(\mm))=H^{-p}(Q^\bullet\otimes_A\KK(\mm))=0$ for all $\mm\in\mSpec A$ and all $p>0$. Since $Q^0/B^0$ is finitely generated over the noetherian ring $A$, this implies that $Q^0/B^0$ is projective (this is essentially \cite[Propositions~1.3.1 and~1.3.2]{homalg}, but you should combine them with \cite[Fact~1.2.4]{homalg} first). The other assertion about $Q^\bullet\morphism \tau_{\geq d'}Q^\bullet$ is trivial again.
+\end{proof}
+\begin{exc}
+	Under the assumptions of Theorem~\reff{thm:GrauertGrothendieck}, derive Theorem~\reff{thm:FormalFunctions} for $f\colon X\morphism Y$ and $\Ff$ from what has been shown until Lemma~\reff{lem:FiniteApproximation}.
+\end{exc}
+\begin{lem}\lbl{lem:TechnicalVanishingAssertion}
+	If $d'$ is as in Theorem~\reff{thm:GrauertGrothendieck}\itememph{a}, i.e., has the property that $H^p\left(X_y,\Ff|_{X_y}\right)=0$ for all $y\in Y$ and $p<d'$, then also $H^p(X,\Ff)=0$ when $p<d'$.
+\end{lem}
+\begin{proof}
+	Professor Franke outsourced a part of this proof to an external fact -- however, this fact looked rather fishy to me (if not to say \emph{wrong} unless $f$ is flat). I think the following captures what he actually had in mind.
+	
+	By Corollary~\reff{cor:completionFaithfullyFlat2} it's sufficient to show that the $\mm$-adic completions $H^p(X,\Ff)^\complete$ vanish for all maximal ideals $\mm\subseteq A$ and all $p<d'$. Let $y\in Y$ be the point corresponding to $\mm$. For all $n\leq 0$ let
+	\begin{align*}
+		X_y^{(n)}=X\times_Y\Spec A/\mm^{n+1}
+	\end{align*}
+	be the $n\ordinalth$ infinitesimal thickening of the fibre $X_y$, and let $\kappa_n\colon X_y^{(n)}\morphism X$ be the projection to the first fibre product factor. We will show $H^p\Big(X_y^{(n)},\Ff|_{X_y^{(n)}}\Big)=0$ for all $n\geq 1$. Note that
+	\begin{align*}
+		H^p\Big(X_y^{(n)},\Ff|_{X_y^{(n)}}\Big)\cong H^p\left(X,\kappa_{n,*}\kappa_n^*\Ff\right)
+	\end{align*}
+	and $\kappa_{n,*}\kappa_n^*\Ff\cong \Ff/\mm^{n+1}\Ff$ (we have already seen this in the discussion before Theorem~\reff{thm:FormalFunctions}). Now $H^p(X,\Ff/\mm^{n+1}\Ff)=0$ follows by induction on $n$ as follows. The case $n=0$ is just the assumption that $H^p(X_y,\Ff|_{X_y})=0$. Now let $n\geq 1$ and suppose that $H^p(X,\Ff/\mm^n\Ff)=0$ has already been shown. Consider the short exact sequence
+	\begin{align*}
+		0\morphism \mm^n\Ff/\mm^{n+1}\Ff\morphism \Ff/\mm^{n+1}\Ff\morphism \Ff/\mm^n\Ff\morphism 0\;.
+	\end{align*}
+	If we show that $H^p\left(X,\mm^n\Ff/\mm^{n+1}\Ff\right)=0$, then $H^p\left(X,\Ff/\mm^{n+1}\Ff\right)=0$ follows from the long exact cohomology sequence and the induction hypothesis. Note that $\mm^n\otimes_A\Ff\cong \mm^n\Ff$ (and same for $n+1$). Indeed, this follows from \cite[Proposition~1.2.3\itememph{d}]{homalg} because $\Ff$ is flat over $\Oo_Y$. Hence
+	\begin{align*}
+		\mm^n\Ff/\mm^{n+1}\cong \mm^n/\mm^{n+1}\otimes_A\Ff\cong \mm^n/\mm^{n+1}\otimes_{\KK(\mm)}\Ff/\mm\Ff
+	\end{align*}
+	is isomorphic to a direct sum of $\dim_{\KK(\mm)}\left(\mm^n/\mm^{n+1}\right)$ copies of $\Ff/\mm \Ff$, because $\mm^n/\mm^{n+1}$ is a finite-dimensional $\KK(\mm)$-vector space. By the $n=0$ case, this shows $H^p\left(X,\mm^n\Ff/\mm^{n+1}\Ff\right)=0$ and we're done.
+\end{proof}
+\begin{rem}
+	As the above proof shows, it's actually sufficient to have $H^p\left(X_y,\Ff|_{X_y}\right)=0$ for all \emph{closed} $y\in Y$.
+\end{rem}
+We now have all the technicalities together to prove Theorem~\reff{thm:GrauertGrothendieck}.
+\begin{proof}[Proof of Theorem~\reff{thm:GrauertGrothendieck}]
+	The first step will be to prove \itememph{a}, from which the other assertions will be deduced. In \itememph{a}, $Y$ is affine and the other assertions are all base-local, hence without losing generality we may assume $Y=\Spec A$ for the remainder of this proof. 
+	
+	Fix a finite affine open cover $\Uu$ of $X$ and let $\check{C}^\bullet=\check{C}_\alt^\bullet(\Uu,\Ff)$. Using Lemma~\reff{lem:TruncQuasiIso} we see that $\tau_{\leq d}\check{C}^\bullet$ consists of flat $A$-modules again. Then we choose a finitely generated free approximation $Q^\bullet\morphism\tau_{\leq d}\check{C}^\bullet$ as in Lemma~\reff{lem:FiniteApproximation}. By Lemma~\reff{lem:TensorQuasiIsomorphism} we get
+	\begin{align*}
+		H^p\left(Q^\bullet\otimes_A\KK(\mm)\right)\cong H^p\left(\tau_{\geq d}\check{C}\otimes_A\KK(\mm)\right)\cong H^p\left(\check{C}\otimes_A\KK(\mm)\right)\overset{\text{\eqreff{eq:baseChangeProperty}}}{\cong} H^p\left(X_y,\Ff|_{X_y}\right)\;,
+	\end{align*}
+	where $y\in Y$ on the right-hand side is the point corresponding to the maximal ideal $\mm$, so that we have $X_y\cong X\times_Y\Spec\KK(\mm)$. In particular, we see $H^p\left(Q^\bullet\otimes_A\KK(\mm)\right)=0$ if $p<d'$ and also $H^p(Q^\bullet)\cong H^p(X,\Ff)=0$ if $p<d'$ by Lemma~\reff{lem:TechnicalVanishingAssertion}, hence Lemma~\reff{lem:TruncQuasiIso2} may be applied. Therefore, $P^\bullet=\tau_{\geq d'}Q^\bullet$ is complex of finitely generated projective $A$-modules with is supported only between $d'$ and $d$, and $P^\bullet$ has the required base change property because of \eqreff{eq:baseChangeProperty} and Lemma~\reff{lem:TensorQuasiIsomorphism}. In other words, $P^\bullet$ is what we want. This proves \itememph{a}.
 \end{proof}
 
 
@@ -823,7 +923,7 @@ We briefly recall the most important facts about completions. An excellent intro
 	
 	\emph{Step 3.} Now let $I$ be arbitrary. By Step~2 there is for every $n\in\IN$ a unique $a_n\in A/I^{2^n}$ such that $P(a_n)\equiv 0\bmod I^{2^n}$ and $a_n\equiv a_0\bmod I$. Then $a_n\equiv a_{n-1}\bmod I^{2^{n-1}}$ is forced by uniqueness. Hence $a=(a_n)_{n\in \IN}$ defines an element of
 	\begin{align*}
-		\limit[n\in \IN]A/I^{2^n}=\limit[n\in\IN] A/I^n=\roof{A}\;,
+		\limit[n\in \IN]A/I^{2^n}=\limit[n\geq 1] A/I^n=\roof{A}\;,
 	\end{align*}
 	providing the desired element $a\in\roof{A}$.
 \end{proof}
@@ -870,11 +970,11 @@ We briefly recall the most important facts about completions. An excellent intro
 	\end{align}
 	for every $n\in\IN$. Since $M'/(M'\cap I^nM)$ is sandwiched between $M'/I^nM'$ and $M'/I^{n+c}M'$ for some $c\in\IN$ by the Artin--Rees lemma, it's easy to see that 
 	\begin{align*}
-		\limit[n\in \IN] M'/(M'\cap I^nM)=\limit[n\in\IN]M'/I^{n+c}M'=\limit[n\in\IN]M'/I^nM'=\roof{M}'\;. 
+		\limit[n\in \IN] M'/(M'\cap I^nM)=\limit[n\geq 1]M'/I^{n+c}M'=\limit[n\geq 1]M'/I^nM'=\roof{M}'\;. 
 	\end{align*}
 	Moreover, each $M'/(M'+I^{n+1}M)\morphism M'/(M'+I^nM)$ is clearly surjective, so Fact~\reff{fact:MittagLeffler} gives 
 	\begin{align*}
-		\limit[n\in\IN][^1]M'/(M'\cap I^nM)=0\;.
+		\limit[n\geq 1][^1]M'/(M'\cap I^nM)=0\;.
 	\end{align*}
 	Thus, taking the limit over \eqreff{eq:completion} gives a short exact sequence $0\morphism \roof{M}'\morphism \roof{M}\morphism\roof{M}''\morphism 0$ by Fact~\reff{fact:6termLimitSequence}. We are done.
 \end{proof}
@@ -915,6 +1015,12 @@ We briefly recall the most important facts about completions. An excellent intro
 \end{cor}
 \begin{proof}
 	Follows from Corollary~\reff{cor:completionFaithfullyFlat}\itememph{a} and \itememph{c}.
+\end{proof}
+\begin{cor}\lbl{cor:completionFaithfullyFlat2}
+	Let $A$ be noetherian. A sequence $0\morphism M'\morphism M\morphism M''\morphism 0$ of finitely generated $A$-modules is exact iff for all maximal ideals $\mm\subseteq A$ the sequence $0\morphism\roof{M}'\morphism \roof{M}\morphism \roof{M}''\morphism 0$ of $\mm$-adic completions is exact.
+\end{cor}
+\begin{proof}
+	This sequence is exact iff its localizations at the maximal ideals $\mm\subseteq A$ are all exact. Having localized at $\mm$, we may check exactness after going over to $\mm A_\mm$-adic completions by Corollary~\reff{cor:completionFaithfullyFlat}\itememph{c}. So all that's left to do is to show that $\roof{M}\cong \roof{M}_\mm$ holds for the $\mm$-adic resp.\ $\mm A_\mm$-adic completions. This follows from $M/\mm^nM\cong M_\mm/\mm^nM_\mm$ for all $n\geq 1$. Indeed, $A/\mm^n$ is a local ring with maximal ideal $\mm/\mm^n$, hence multiplication by $a\in A\setminus \mm$ is already bijective on $M/\mm^nM$.
 \end{proof}
 \begin{cor}\lbl{cor:JM}
 	If $J\subseteq A$ is any ideal and $M$ a finitely generated $A$-module, then $(JM)^\complete\morphism\roof{M}$ defines an isomorphism $(JM)^\complete\isomorphism J\roof{M}$.
@@ -1034,7 +1140,7 @@ To prove this, we need to prove the evil twin of Hilbert's Basissatz first.
 	\end{align*}
 	Let $x\in I^nM\cap N$. Then $x$ can be written as $x=\sum_i\alpha_i m_i$, where $\alpha_i\in I^n$ and $m_i\in M$. Because $N/IN\morphism M/IM$ is surjective, we may write $m_i=n_i+\mu_i$ where $n_i\in N$ and $\mu_i\in IM$. Then $y=\sum_i\alpha_i\mu_i$ is an element in $I^{n+1}M\cap N$ and has the same image in $(I^nM\cap N)/N$ as $x$. This shows that $\left((I^nM\cap N)/I^nN\right)_{n\geq 1}$ has the Mittag-Leffler property from Fact~\reff{fact:MittagLeffler}. This proves $\limit[][^1](I^nM\cap N)/I^nN=0$, hence 
 	\begin{align*}
-		N\cong \limit[n\in\IN]N/I^nN\morphism \limit[n\in\IN]M/I^nM\cong M
+		N\cong \limit[n\geq 1]N/I^nN\morphism \limit[n\geq 1]M/I^nM\cong M
 	\end{align*}
 	is surjective by the six-term exact sequence from Fact~\reff{fact:6termLimitSequence}.
 \end{proof}
