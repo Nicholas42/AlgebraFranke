@@ -727,7 +727,7 @@ By \eqreff{eq:tensoredCechComplex} we get $\vphantom{E}^\hor E^{0,q}\cong H^q(\s
 		\begin{align*}
 			\chi(y,\Ff)=\sum_{p\geq 0}(-1)^ph^p(y,\Ff)\;,
 		\end{align*}
-		is locally constant on $Y$ and $h^p(-,\Ff)$ is locally constant on $Y$.
+		is locally constant on $Y$.
 		\item If $Y$ is reduced and $h^p(-,\Ff)$ is locally constant on $Y$, then the base change morphism
 		\begin{align*}
 			\pi_Y^*R^pf_*\Ff\morphism[\text{\eqreff{eq:baseChangeMorphism}}] R^p\snake{f}_*\left(\pi_X^*\Ff\right)
@@ -749,6 +749,7 @@ By \eqreff{eq:tensoredCechComplex} we get $\vphantom{E}^\hor E^{0,q}\cong H^q(\s
 		\item Note that in Theorem~\reff{thm:GrauertGrothendieck}\itememph{a}, $H^p(X,\Ff)=0$ for $p$ sufficiently large, because $X$ is quasicompact, hence we can calculate its cohomology from the antisymmetric \v Cech complex of a finite affine open cover (even though $X$ could have infinite dimension).
 		\item For instance, the assumptions of Theorem~\reff{thm:GrauertGrothendieck} are fulfilled when $f$ is a proper and flat morphism and $\Ff$ a vector bundle on $X$.
 		\item From Theorem~\reff{thm:GrauertGrothendieck}\itememph{d} it follows that $R^pf_*\Ff=0$ when $H^p(X_y,\Ff|_{X_y})=0$ for all $y\in Y$.
+		\item Note that $B$ in Theorem~\reff{thm:GrauertGrothendieck}\itememph{a} is completely arbitrary. In particular, it needn't be noetherian!
 	\end{alphanumerate}
 \end{rem}
 	The strategy for Theorem~\reff{thm:GrauertGrothendieck}\itememph{a} is to modify the anti-symmetric \v Cech complex $\check{C}^\bullet=\check{C}_\alt^\bullet(\Uu,\Ff)$, where $\Uu$ is some fixed affine open cover of $X$. As $\Ff$ is flat over $\Oo_Y$, the $\Ff(U_{i_0,\ldots,i_n})$ are flat $A$-modules, hence $\check{C}^\bullet$ is a complex of flat $A$-modules, but the finite generation assertions will typically fail, as will the vanishing assertions. However, from \eqreff{eq:tensoredCechComplex} we know that
@@ -876,15 +877,117 @@ in which $B^d=\Im\left(C^{d-1}\morphism C^d\right)$. It has the property that $H
 \begin{rem}
 	As the above proof shows, it's actually sufficient to have $H^p\left(X_y,\Ff|_{X_y}\right)=0$ for all \emph{closed} $y\in Y$.
 \end{rem}
-We now have all the technicalities together to prove Theorem~\reff{thm:GrauertGrothendieck}.
+We now have all the technicalities together to prove Theorem~\reff{thm:GrauertGrothendieck} (ok, actually we there are still three commutative algebra lemmas to follow, but we can start now anyway).
 \begin{proof}[Proof of Theorem~\reff{thm:GrauertGrothendieck}]
-	The first step will be to prove \itememph{a}, from which the other assertions will be deduced. In \itememph{a}, $Y$ is affine and the other assertions are all base-local, hence without losing generality we may assume $Y=\Spec A$ for the remainder of this proof. 
+	The first step will be to prove \itememph{a}, from which the other assertions will be deduced. In \itememph{a}, $Y$ is affine and the other assertions are all base-local, hence without losing generality we may assume $Y=\Spec A$ for the remainder of this proof.
 	
 	Fix a finite affine open cover $\Uu$ of $X$ and let $\check{C}^\bullet=\check{C}_\alt^\bullet(\Uu,\Ff)$. Using Lemma~\reff{lem:TruncQuasiIso} we see that $\tau_{\leq d}\check{C}^\bullet$ consists of flat $A$-modules again. Then we choose a finitely generated free approximation $Q^\bullet\morphism\tau_{\leq d}\check{C}^\bullet$ as in Lemma~\reff{lem:FiniteApproximation}. By Lemma~\reff{lem:TensorQuasiIsomorphism} we get
 	\begin{align*}
 		H^p\left(Q^\bullet\otimes_A\KK(\mm)\right)\cong H^p\left(\tau_{\geq d}\check{C}\otimes_A\KK(\mm)\right)\cong H^p\left(\check{C}\otimes_A\KK(\mm)\right)\overset{\text{\eqreff{eq:baseChangeProperty}}}{\cong} H^p\left(X_y,\Ff|_{X_y}\right)\;,
 	\end{align*}
 	where $y\in Y$ on the right-hand side is the point corresponding to the maximal ideal $\mm$, so that we have $X_y\cong X\times_Y\Spec\KK(\mm)$. In particular, we see $H^p\left(Q^\bullet\otimes_A\KK(\mm)\right)=0$ if $p<d'$ and also $H^p(Q^\bullet)\cong H^p(X,\Ff)=0$ if $p<d'$ by Lemma~\reff{lem:TechnicalVanishingAssertion}, hence Lemma~\reff{lem:TruncQuasiIso2} may be applied. Therefore, $P^\bullet=\tau_{\geq d'}Q^\bullet$ is complex of finitely generated projective $A$-modules with is supported only between $d'$ and $d$, and $P^\bullet$ has the required base change property because of \eqreff{eq:baseChangeProperty} and Lemma~\reff{lem:TensorQuasiIsomorphism}. In other words, $P^\bullet$ is what we want. This proves \itememph{a}.
+	
+	Note that for the rest of the proof we may even assume that $P^\bullet$ is a complex of \emph{free} modules. Indeed, our construction of $P^\bullet$ provided free modules except in degree $d'$, where $P^{d'}$ might only be projective. However, assertions \itememph{b} to \itememph{e} are base-local, so we may replace $\Spec A$ by $\Spec A_f$ such that $P_f^{d'}$ is free over $A_f$.%Dunno if that's needed.
+	
+	Let $Q^p=\coker\left(P^{p-1}\morphism P^p\right)$. Then $\coker\left(P^{p-1}\otimes_AB\morphism P^p\otimes_AB\right)\cong Q^p\otimes_AB$. If we put $\delta^p\colon Q^p\morphism P^{p+1}$, then $H^p(P^\bullet\otimes_AB)\cong \ker\left(\delta^p\otimes\id_B\right)$ for all $A$-algebras $B$ (actually, we don't even need $B$ to be an algebra).
+	
+	Now for part \itememph{b}. We prove that $\chi(-,\Ff)$ is locally constant on $Y$ first. Indeed, since the $P^i$ are free over $A$ (or rather we may assume them to be, as explained above) we have
+	\begin{align*}
+		\chi(y,\Ff)=\sum_{p\geq 0}(-1)^p\dim_{\KK(y)}H^p(X_y,\Ff|_{X_y})&=\sum_{p\geq 0}(-1)^p\dim_{\KK(y)}H^p(P^\bullet\otimes_A\KK(y))\\
+		&=\sum_{p\geq 0}(-1)^p\dim_{\KK(y)}\left(P^p\otimes_A\KK(y)\right)\\
+		&=\sum_{p\geq 0}(-1)^p\rank P^p
+	\end{align*}
+	(the transition from the first to the second line is a well-known fact from homological algebra). The last line is clearly constant on $Y$ and we're done.
+	
+	To prove the rest of \itememph{b} as well as \itememph{c}, we invoke another lemma.
+	\begin{lem}\lbl{lem:BasicallyThm4bc}
+		Let $A$ be a noetherian ring and $\delta\colon M\morphism F$ a morphism of finitely generated $A$-modules, of which $F$ is free of rank $n$. 
+		\begin{alphanumerate}
+			\item The function $g\colon \Spec A\morphism\IN$ given by
+			\begin{align*}
+				g(\pp)=\dim_{\KK(\pp)}\ker\left(\delta_\pp=\delta\otimes\id_{\KK(\pp)}\colon M\otimes_A\KK(\pp)\morphism F\otimes_A\KK(\pp)\right)
+			\end{align*}
+			is upper-semicontinuous on $\Spec A$.
+			\item If in addition $g$ is locally constant and $A$ is reduced, then $M$, $\ker\delta$, and $\coker\delta$ are all projective $A$-modules, and the canonical morphism
+			\begin{align*}
+				\ker\delta\otimes_AN\morphism\ker\left(\delta\otimes\id_N\right)
+			\end{align*}
+			is an isomorphism for all $A$-modules $N$.
+		\end{alphanumerate}
+	\end{lem}
+	\begin{proof}
+		Part \itememph{a}. Let $\mu_1,\ldots,\mu_s\in M$ be elements whose images $\ov{\mu}_1,\ldots,\ov{\mu}_s$ in $M\otimes_A\KK(\pp)$ form a basis of that $\KK(\pp)$-vector space.\footnote{Why can we do this? Start with any basis of $M\otimes_A\KK(\pp)\cong M_\pp/\pp M_\pp$ and lift it to $M_\pp$. Then the numerators (which are elements of $M$) will do. We will use this argument implicitly in the proofs to come.} Moreover, we may choose them in such a way that their images $\delta_\pp(\ov{\mu}_1),\ldots,\delta_\pp(\ov{\mu}_r)$ (for some $r\leq s$) in $F\otimes_A\KK(\pp)$ vanish while the images $\delta_\pp(\ov{\mu}_{r+1}),\ldots,\delta_\pp(\ov{\mu}_s)$ form a basis of $\Im\delta_\pp$. 
+		
+		Then we have $r=g(\pp)$. Since the assertions are all local near any given $\pp\in\Spec A$, we are free to replace $A$ by $A_f$ for $f\notin\pp$.
+		\begin{claim}\lbl{claim:MatrixShit}
+			Choosing $f$ appropriately we can assure that $\mu_1,\ldots,\mu_s$ generate $M$ as an $A$-module, and also that their images in $M\otimes_A\KK(\qq)$ stay $\KK(\qq)$-linearly independent for all $\qq\in\Spec A$. 
+		\end{claim}
+		The first of these two assertions is a Nakayama-style argument that you can find in  \cite[Lemma~1.5.1]{alg2}. The latter, however, needs a bit more care, and we'll explain how this works now. Choose a basis of $F$ (which is free of rank $n$ by assumption) and represent $\delta(\mu_{r+1}),\ldots,\delta(\mu_s)$ as linear combinations of that basis. The resulting coefficient matrix $C\in A^{(s-r)\times n}$ has a $(s-r)\times (s-r)$-minor $D\in A^{(s-r)\times (s-r)}$ whose image in $\KK(\pp)^{(s-r)\times (s-r)}$ is invertible, because $\delta_\pp(\ov{\mu}_{r+1}),\ldots,\delta_\pp(\ov{\mu}_s)$ are $\KK(\pp)$-linearly independent. In particular, we must have $\det D\not\equiv 0\bmod \pp$, so we may localize $A$ at $\det D$ to make $D$ invertible over $A$. Then the images of $\mu_{r+1},\ldots,\mu_s$ in $M\otimes_A\KK(\qq)$ are linearly independent for all $\qq\in\Spec A$, because they are still linearly independent after applying $\delta_\qq$. This justifies the above Claim~\reff{claim:MatrixShit}.
+		
+		Now we have $g(\qq)=\dim_{\KK(\qq)}\ker\delta_\qq=\dim_{\KK(\qq)}(M\otimes_A\KK(\qq))-\dim_{\KK(\qq)}\Im\delta_\qq$, in which the inequalities
+		\begin{align}\lbl{eq:dimIneqs}
+			\dim_{\KK(\qq)}(M\otimes_A\KK(\qq))\leq s\quad\text{and}\quad\dim_{\KK(\qq)}\Im\delta_\qq\geq s-r
+		\end{align}
+		hold true because of Claim~\reff{claim:MatrixShit}. Hence $g(\qq)\leq r$ for all $\qq\in\Spec A$, and this proves upper-semicontinuity. We're done with \itememph{a}.
+		
+		Part \itememph{b}. Replacing $A$ by some localization again, we may assume that $g(\qq)=r$ for all $\qq\in\Spec A$. Then equality must hold in both inequalities from \eqreff{eq:dimIneqs}. In particular, $\dim_{\KK(\qq)}(M\otimes_A\KK(\qq))=s$ for all $\qq\in\Spec A$, which implies that $M$ is locally free (of rank $s$) by the upcoming Lemma~\reff{lem:ReducedLocallyFree}. Similarly, we have
+		\begin{align*}
+			\dim_{\KK(\qq)}\left(\coker\delta\otimes_A\KK(\qq)\right)=\dim_{\KK(\qq)}\coker\delta_\qq&=\dim_{\KK(\qq)}\left(F\otimes_A\KK(\qq)\right)-\dim_{\KK(\qq)}\Im\delta_\qq\\
+			&=n-s+r
+		\end{align*}
+		(where $n=\rank F$, remember?), so $\coker\delta$ is locally free by Lemma~\reff{lem:ReducedLocallyFree} again. In particular, $\coker\delta$ is projective, so $F\epimorphism\coker\delta$ splits and we get $F\cong \Im\delta\oplus\coker\delta$ (\emph{non}-canonically). Then $\Im\delta$ is projective as well, so $M\epimorphism\Im\delta$ splits as well, hence $M\cong \ker\delta\oplus\Im\delta$ and $\ker\delta$ lines up with the other projective modules. Therefore, $\delta$ has the form $\delta\colon \ker\delta\oplus\Im\delta\morphism\Im\delta\oplus\coker\delta$, and this nice splitting behaviour is preserved after tensoring with some $A$-module $N$. This shows \itememph{b}.
+	\end{proof}
+	Die-hard Franke fans might remember the next lemma from Franke's Algebra II lecture, where it appeared as a remark though; see \cite[p.~25]{alg2}. We'll prove it here again.
+	\begin{lem}\lbl{lem:ReducedLocallyFree}
+		Let $A$ be a reduced noetherian ring and $M$ a finitely generated $A$-module, such that the function
+		\begin{align*}
+			\pp\longmapsto \dim_{\KK(\pp)}M\otimes_A\KK(\pp)
+		\end{align*}
+		is locally constant on $\Spec A$. Then $M$ is locally free.
+	\end{lem}
+	\begin{proof}
+		Again, the question is local on $\Spec A$, so after localizing $A$ appropriately we may assume that $\dim_{\KK(\pp)}(M\otimes_A\KK(\pp))=\ell$ for all $\pp\in\Spec A$ and some $\ell\in\IN$. Choose some $\pp\in\Spec A$ and let $\mu_1,\ldots,\mu_\ell\in M$ be elements whose images form a basis of $M\otimes_\KK(\pp)$. Without losing generality (or rather after another localization, using \cite[Lemma~1.5.1]{alg2}) the $\mu_i$ generate $M$ as an $A$-module. We claim they do so freely. Indeed, if $\alpha_1\mu_1+\ldots+\alpha_\ell\mu_\ell=0$ for some $\alpha_i\in A$ is any relation in $M$, then $\alpha_i\in\qq$ for any $\qq\in\Spec A$ as $\dim_{\KK(\qq)}(M\otimes_A\KK(\qq))<\ell$ otherwise. Hence $\alpha_i\in\bigcap_{\qq\in\Spec A}\qq=\nil A=0$ and we're done.
+	\end{proof}
+	We come back to the proof of Theorem~\reff{thm:GrauertGrothendieck}\itememph{b} and \itememph{c}. The upper-semicontinuity part of \itememph{b} follows immediately from Lemma~\reff{lem:BasicallyThm4bc}\itememph{a} applied to $M=Q^p$ und $F=P^{p+1}$. For part \itememph{c}, we may assume the base change was done along $\pi_Y\colon \snake{Y}=\Spec B\morphism Y=\Spec A$ because the question is local on $Y$ and $\snake{Y}$. Then $R^p\snake{f}_*(\pi_X^*\Ff)$ is a quasi-coherent $\Oo_{\snake{Y}}$-module given by
+	\begin{align*}
+		H^p(\snake{X},\pi_X^*\Ff)\cong H^p(P^\bullet\otimes_AB)\cong \ker\left(\delta^p\otimes\id_B\colon Q^p\otimes_AB\morphism P^{p+1}\otimes_AB\right)\;,
+	\end{align*}
+	and $\pi_Y^*R^pf_*\Ff$ is given by
+	\begin{align*}
+		H^p(X,\Ff)\otimes_AB\cong H(P^\bullet)\otimes_AB\cong\ker\left(\delta^p\colon Q^p\morphism P^{p+1}\right)\otimes_AB\;.
+	\end{align*}
+	That these two agree is precisely what Lemma~\reff{lem:BasicallyThm4bc}\itememph{c} says.
+	
+	For \itememph{d} and \itememph{e} we need yet another lemma, but I promise this will be the last technical commutative algebra lemma required to prove Theorem~\reff{thm:GrauertGrothendieck}.
+	\begin{lem}
+		In the above situation, the following conditions on a prime ideal $\pp\in\Spec A$ are equivalent.
+		\begin{alphanumerate}
+			\item The canonical morphism
+			\begin{align*}
+				\ker\delta^p\otimes_A\KK(\pp)\morphism\ker\left(\delta^p_\pp=\delta^p\otimes \id_{\KK(\pp)}\colon Q^p\otimes_A\KK(\pp)\morphism P^{p+1}\otimes_A\KK(\pp)\right)
+			\end{align*}
+			is surjective.
+			\item Same as \itememph{a}, but the morphism is even bijective.
+			\item The localization $Q^{p+1}_\pp$ is a free $A_\pp$-module.
+		\end{alphanumerate}
+	\end{lem}
+\begin{proof}
+	We use similar arguments as in Lemma~\reff{lem:BasicallyThm4bc}. Let's do the implication \itememph{a} $\Rightarrow$ \itememph{c} first. If assertion \itememph{a} holds, then we may choose $\mu_1,\ldots,\mu_r\in\ker \delta^p$ whose images $\ov{\mu}_i$ in $\ker\left(\delta^p\otimes\id_{\KK(\pp)}\right)$ form a basis. We may extend $\mu_1,\ldots,\mu_r$ by some $\mu_{r+1},\ldots,\mu_s\in Q^p$ such that $\ov{\mu}_1,\ldots,\ov{\mu}_s$ form a basis of $Q^p\otimes_A\KK(\pp)$. Then the images $\delta_\pp^p(\ov{\mu}_{r+1}),\ldots,\delta_\pp^p(\ov{\mu}_s)\in P^{p+1}\otimes_A\KK(\pp)$ are $\KK(\pp)$-linearly independent, so we may choose $\pi_1,\ldots,\pi_n\in P^{p+1}$ whose images in $P^{p+1}\otimes_A\KK(\pp)$ extend $\delta_\pp^p(\ov{\mu}_{r+1}),\ldots,\delta_\pp^p(\ov{\mu}_s)$ to a basis.
+	
+	By the same argument as in Claim~\reff{claim:MatrixShit} from the proof of Lemma~\reff{lem:BasicallyThm4bc}\itememph{a}, we can replace $A$ by some localization so that $\delta^p(\mu_{r+1}),\ldots,\delta^p(\mu_s)$ and $\pi_1,\ldots,\pi_n$ generate $P^{p+1}$ -- and we may even assume they do so \emph{freely}! Indeed, write $\delta^p(\mu_{r+1}),\ldots,\delta^p(\mu_s)$ and $\pi_1,\ldots,\pi_n$ as linear combinations of some basis of $P^{p+1}$. Then the coefficient matrix $C$ becomes invertible when reduced to $\KK(\pp)$, hence after localizing at $\det C$ we may assume that $C$ is already invertible over $A$. Therefore, after suitable localization, we see that $\Im\delta^p$ is a direct summand of $P^{p+1}$. Then $Q^{p+1}=\coker\delta^p$ is a direct summand of $P^{p+1}\cong \Im\delta^p\oplus\coker\delta^p$ as well. This proves that $Q^{p+1}$ is projective, hence $Q^{p+1}_\pp$ is free over $A_\pp$. This proves the implication \itememph{a} $\Rightarrow$ \itememph{c}.
+	
+	Now for \itememph{c} $\Rightarrow$ \itememph{b}. By \cite[Corollary~1.5.1]{alg2}, we may replace $A$ (and $Q^{p+1}$) by some localization such that $Q^{p+1}$ is already free over $A$. Then $P^{p+1}\epimorphism Q^{p+1}=\coker\delta^p$ is split, hence $P^{p+1}\cong \Im\delta^p\oplus \coker\delta^p$ (non-canonically). Then $\Im\delta^p$ is projective as well, so $Q^p\cong \ker\delta^p\oplus\Im\delta^p$ (non-canonically). That is, $\delta^p$ splits as $\delta^p\colon \ker\delta^p\oplus\Im\delta^p\oplus\Im\delta^p\oplus\coker\delta^p$, and this nice splitting behaviour is preserved after tensoring with $\KK(\pp)$. This shows $\ker\delta^p\otimes_A\KK(\pp)\cong \ker\left(\delta^p\otimes\id_{\KK(\pp)}\right)$, i.e., \itememph{b} holds.
+	
+	Finally \itememph{b} $\Rightarrow$ \itememph{a} is trivial and we're done.
+\end{proof}
+
+	Now there isn't really much left to prove of \itememph{d} and \itememph{e}, which we'll do in the next lecture.%Let's prove part \itememph{d} now. Let $y\in Y$. The base-chan
+\end{proof}
+\begin{cor}
+	In the situation of Theorem~\reff{thm:GrauertGrothendieck}, if $h^p(y,\Ff)=0$, then $R^pf_*\Ff$ vanishes in some neighbourhood of $x$.
+\end{cor}
+\begin{proof}
+	By Theorem~\reff{thm:GrauertGrothendieck}\itememph{d} we have $(R^pf_*\Ff)_y=0$, hence $R^pf_*\Ff=0$ near $y$ by Nakayama-style arguments (to be precise, this follows from \cite[Corollary~1.5.1]{alg2}).
 \end{proof}
 
 
