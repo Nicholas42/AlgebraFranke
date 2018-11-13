@@ -535,7 +535,7 @@ Professor Franke intended to use Chevalley's theorem (Proposition~\reff{prop:Che
 	%Let $x\in X$. We need to show that some neighbourhood of $f(x)$ is contained in the image of $f$. Otherwise, apply the previous Proposition~\reff{prop:noetherianAffine} (with some care) to show that there is a closed subset of $Y$ containing the image of $f$ and not containing any neighbourhood of $f(x)$. There is $\lambda\in A$ such that $f(X)\subseteq V(\lambda)$. Then $\emptyset =f^{-1}(Y\setminus V(\lambda))=X\setminus V(f^*\lambda)$ implies that $f^*\lambda\in B$ is nilpotent. But then the image of $\lambda$ in $\Oo_{Y,f(x)}$ is nilpotent as well, which means that $V(\lambda)=\Spec A$ contains an open neighbourhood of $f(x)$.
 \end{proof}
 \begin{proof}[Proof of Theorem~\reff{thm:ZariskiMain}\itememph{b} \textsc{(finally)}]
-Now let $f\colon X\morphism Y$ be a quasi-finite separated morphism between noetherian preschemes such that Zariski's main theorem holds with $Y$ replaced by $\Spec \roof{\Oo}_{Y,y}$. Note that $\pi_Y\colon \Spec \roof{\Oo}_{Y,y}\morphism Y$ is flat (in the sense of the upcoming Definition~\reff{def:flat}) because of Corollary~\reff{cor:completionFaithfullyFlat}\itememph{b}. Therefore, in the pullback diagram
+Now let $f\colon X\morphism Y$ be a quasi-finite separated morphism between noetherian preschemes such that Zariski's main theorem holds with $Y$ replaced by $\Spec \roof{\Oo}_{Y,y}$. Note that $\upsilon\colon \Spec \roof{\Oo}_{Y,y}\morphism Y$ is flat (in the sense of the upcoming Definition~\reff{def:flat}) because of Corollary~\reff{cor:completionFaithfullyFlat}\itememph{b}. Therefore, in the pullback diagram
 \begin{diagram}[baseline=0.75cm-0.5ex][\lbl{diag:completionBaseChange}]
 	\object{2.5,1.5}{$\Spec \roof{\Oo}_{Y,y}$}[a];
 	\object{0,1.5}{$\roof{X}$}[b];
@@ -546,7 +546,7 @@ Now let $f\colon X\morphism Y$ be a quasi-finite separated morphism between noet
 	\arrow ba[above][$\roof{f}$];
 	\arrow dc[above][$f$];
 	\arrow bd;
-	\arrow ac[right][$\pi_Y$];
+	\arrow ac[right][$\upsilon$];
 \end{diagram}
 we obtain
 \begin{align}\lbl{eq:froof*}
@@ -554,7 +554,7 @@ we obtain
 \end{align}
 Indeed, this is just the base change morphism \eqreff{eq:baseChangeMorphism} from Proposition~\reff{prop:baseChangeMorphism}, applied to $\Ff=\Oo_X$ and $p=0$ -- and also we've taken global sections and we used that $(f_*\Oo_X)(U)\otimes_{\Oo_Y(U)}\roof{\Oo}_{Y,y}\cong (f_*\Oo_X)_y\otimes_{\Oo_{Y,y}}\roof{\Oo}_{Y,y}$ when $U$ is an affine open neighbourhood of $y$ in $Y$.
 
-Note that the local rings $\roof{\Oo}_{Y,y}$ and $\Oo_{Y,y}$ have the same residue field $\KK(y)$. Hence $\Spec \KK(y)\morphism Y$ can be factored through $\pi_Y\colon \Spec \roof{\Oo}_{Y,y}\morphism Y$ and together with the Stein factorizations of $f$ and $\roof{f}$ this gives a diagram
+Note that the local rings $\roof{\Oo}_{Y,y}$ and $\Oo_{Y,y}$ have the same residue field $\KK(y)$. Hence $\Spec \KK(y)\morphism Y$ can be factored through $\upsilon\colon \Spec \roof{\Oo}_{Y,y}\morphism Y$ and together with the Stein factorizations of $f$ and $\roof{f}$ this gives a diagram
 \begin{diagram}[baseline=1.5cm-0.5ex][\lbl{diag:PullbacksEverywhere}]
 	\object{9,1.5}{$\Spec \roof{\Oo}_{Y,y}$}[Ycomplete];
 	\object{0,1.5}{$\roof{X}$}[Xcomplete];
@@ -571,14 +571,14 @@ Note that the local rings $\roof{\Oo}_{Y,y}$ and $\Oo_{Y,y}$ have the same resid
 	\pullback{6.75,2.25};
 	\scriptsize
 	\arrow{X}{SPEC}[above][$j$];
-	\arrow{SPEC}{Y};[above][$g$]
+	\arrow{SPEC}{Y}[above][$g$];
 	\arrow{Xcomplete}{SPECcomplete}[above][$\roof{\jmath}$];
 	\arrow{SPECcomplete}{Ycomplete}[above][$\roof{g}$];
 	\arrow{XxSpeck}{Specfk};
 	\arrow{Specfk}{Speck};
 	\arrow{Xcomplete}{X};
 	\arrow{XxSpeck}{Xcomplete};
-	\arrow{Ycomplete}{Y}[right][$\pi_Y$];
+	\arrow{Ycomplete}{Y}[right][$\upsilon$];
 	\arrow{Speck}{Ycomplete};
 	\arrow{Specfk}{SPECcomplete};
 	\arrow{SPECcomplete}{SPEC};
@@ -586,7 +586,7 @@ Note that the local rings $\roof{\Oo}_{Y,y}$ and $\Oo_{Y,y}$ have the same resid
 \begin{claim}\lbl{claim:PullbacksEverywhere}
 	In the diagram \eqreff{diag:PullbacksEverywhere} every subrectangle (not only those indicated) is a pullback.
 \end{claim}
-Indeed, it is clear that the whole diagram as well as its bottom half (both can be viewed as subrectangles) are pullbacks, since that's how $X\times_Y\Spec \KK(y)$ and $\roof{X}$ are defined. Moreover, we have the relation $\SPEC \big(\pi_Y^*(f_*\Oo_X)\big)\cong \SPEC (f_*\Oo_X)\times_Y\Spec \roof{\Oo}_{Y,y}$ by \cite[Corollary~1.6.2]{alggeo2}, which together with \eqreff{eq:froof*} implies $\SPEC (\roof{f}_*\Oo_{\roof{X}})\cong \SPEC (f_*\Oo_X)\times_Y\Spec \roof{\Oo}_{Y,y}$. This shows that the bottom right rectangle in \eqreff{diag:PullbacksEverywhere} is a pullback. By a similar argument the right half rectangle is a pullback as well. Now it's a matter of abstract nonsense to show that the remaining subrectangles are pullbacks too.
+Indeed, it is clear that the whole diagram as well as its bottom half (both can be viewed as subrectangles) are pullbacks, since that's how $X\times_Y\Spec \KK(y)$ and $\roof{X}$ are defined. Moreover, we have the relation $\SPEC \big(\upsilon^*(f_*\Oo_X)\big)\cong \SPEC (f_*\Oo_X)\times_Y\Spec \roof{\Oo}_{Y,y}$ by \cite[Corollary~1.6.2]{alggeo2}, which together with \eqreff{eq:froof*} implies $\SPEC (\roof{f}_*\Oo_{\roof{X}})\cong \SPEC (f_*\Oo_X)\times_Y\Spec \roof{\Oo}_{Y,y}$. This shows that the bottom right rectangle in \eqreff{diag:PullbacksEverywhere} is a pullback. By a similar argument the right half rectangle is a pullback as well. Now it's a matter of abstract nonsense to show that the remaining subrectangles are pullbacks too.
 
 Because quasi-finiteness and separatedness are preserved under base change, $\roof{f}$ satisfies all assumptions from Theorem~\reff{thm:ZariskiMain}\itememph{b} and has target $\Spec \roof{\Oo}_{Y,y}$. Hence Zariski's main theorem may be applied to $\roof{f}$. In particular, this means that $\roof{f}$ is quasi-affine, so $\roof \jmath \colon\roof{X}\morphism\SPEC (\roof{f}_*\Oo_{\roof{X}})$ is an open embedding  by Definition~\reff{def:quasiAffine}\itememph{d}. 
 
@@ -626,17 +626,17 @@ Let $A$ be a ring, $B$ an $A$-algebra and $f\colon X\morphism \Spec A$ a quasi-c
 \begin{align*}
 	\snake{f}\colon\snake{X}=X\times_{\Spec A}\Spec B\morphism\Spec B%.
 \end{align*}
-its base change along $\Spec B\morphism\Spec A$. Also let $\pi_X\colon \snake{X}\morphism X$ be projection to the other fibre product factor. We want to investigate the relation between the cohomology of $X$ and $\snake{X}$. For a quasi-coherent $\Oo_X$-module $\Ff$ and an affine \v Cech cover $\Uu\colon X=\bigcup_{i\in I}U_i$ of $X$, the \v Cech complex $\check{C}^\bullet(\Uu,\Ff)$ calculates $H^\bullet(X,\Ff)$. Pulling back $\Uu$ gives a \v Cech cover
+its base change along $\Spec B\morphism\Spec A$. Also let $\xi\colon \snake{X}\morphism X$ be projection to the other fibre product factor. We want to investigate the relation between the cohomology of $X$ and $\snake{X}$. For a quasi-coherent $\Oo_X$-module $\Ff$ and an affine \v Cech cover $\Uu\colon X=\bigcup_{i\in I}U_i$ of $X$, the \v Cech complex $\check{C}^\bullet(\Uu,\Ff)$ calculates $H^\bullet(X,\Ff)$. Pulling back $\Uu$ gives a \v Cech cover
 \begin{align*}
-	\pi_X^{-1}\Uu\colon \snake{X}=\bigcup_{i\in I}U_i\times_{\Spec A}\Spec B\;,
+	\xi^{-1}\Uu\colon \snake{X}=\bigcup_{i\in I}U_i\times_{\Spec A}\Spec B\;,
 \end{align*}
-of $\snake{X}$, whose components $U_i\times_{\Spec A}\Spec B$ are affine again (as fibre products of affine schemes), hence $\pi_X^{-1}\Uu$ may be used to compute $H^\bullet(\snake{X},\pi_X^*\Ff)$. Explicitly, we obtain
+of $\snake{X}$, whose components $U_i\times_{\Spec A}\Spec B$ are affine again (as fibre products of affine schemes), hence $\xi^{-1}\Uu$ may be used to compute $H^\bullet(\snake{X},\xi^*\Ff)$. Explicitly, we obtain
 \begin{align}\lbl{eq:tensoredCechComplex}
-	\check{C}^\bullet\left(\pi_X^{-1}\Uu,\pi_X^*\Ff\right)\cong \check{C}^\bullet(\Uu,\Ff)\otimes_AB\;.
+	\check{C}^\bullet\big(\xi^{-1}\Uu,\xi^*\Ff\big)\cong \check{C}^\bullet(\Uu,\Ff)\otimes_AB\;.
 \end{align}
 This gives a canonical morphism
 \begin{align}\lbl{eq:tensoredCohomology}
-	H^\bullet(X,\Ff)\otimes_AB\morphism H^\bullet(\snake{X},\pi_X^*\Ff)\;,
+	H^\bullet(X,\Ff)\otimes_AB\morphism H^\bullet(\snake{X},\xi^*\Ff)\;,
 \end{align}
 which clearly is an isomorphism if $B$ is flat over $A$.
 \begin{prop}\lbl{prop:baseChangeMorphism}
@@ -650,14 +650,14 @@ which clearly is an isomorphism if $B$ is flat over $A$.
 		\scriptsize
 		\arrow ba[left][$\snake{f}$];
 		\arrow dc[right][$f$];
-		\arrow bd[above][$\pi_X$];
-		\arrow ac[above][$\pi_Y$];
+		\arrow bd[above][$\xi$];
+		\arrow ac[above][$\upsilon$];
 	\end{diagram*}
 	in which $f$ is quasi-compact and separated, and let $\Ff$ be a quasi-coherent $\Oo_X$-module. Then we get a morphism of $\Oo_{\snake{Y}}$-modules, called the \defemph{base change morphism},
 	\begin{align}\lbl{eq:baseChangeMorphism}
-		\pi_Y^*R^pf_*\Ff\morphism R^p\snake{f}_*(\pi_X^*\Ff)
+		\upsilon^*R^pf_*\Ff\morphism R^p\snake{f}_*(\xi^*\Ff)
 	\end{align}
-	which is an isomorphism when $\pi_Y$ is flat in the sense of Definition~\reff{def:flat}.
+	which is an isomorphism when $\upsilon$ is flat in the sense of Definition~\reff{def:flat}.
 \end{prop}
 \begin{proof}
 	We may check \eqreff{eq:baseChangeMorphism} locally, where it is just \eqreff{eq:tensoredCohomology}.
@@ -666,7 +666,7 @@ which clearly is an isomorphism if $B$ is flat over $A$.
 \begin{varthm}{prop}\lbl{prop:baseChangeMorphismA}
 	Suppose that $Y=\Spec A$ and $\snake{Y}=\Spec B$ are affine in the situation from Proposition~\reff{prop:baseChangeMorphism}. If $\Ff$ is flat over $\Oo_Y$ in the sense of Definition~\reff{def:flat}, then the base change morphism \eqreff{eq:baseChangeMorphism} is part of a spectral sequence
 	\begin{align*}
-		E_2^{p,q}=\Tor_{-p}^A\big(B,H^q(X,\Ff)\big)\converge H^{p+q}\left(\snake{X},\pi_X^*\Ff\right)\;.
+		E_2^{p,q}=\Tor_{-p}^A\big(B,H^q(X,\Ff)\big)\converge H^{p+q}\left(\snake{X},\xi^*\Ff\right)\;.
 	\end{align*}
 \end{varthm}
 \begin{rem}
@@ -697,14 +697,15 @@ since $J^{\bullet,q}$ is a projective resolution of $\check{C}^q(\Uu,\Ff)$. But 
 	\check{C}_\alt^q(\Uu,\Ff)\otimes_AB & \text{if }p=0
 	\end{cases}\;.
 \end{align*}
-By \eqreff{eq:tensoredCechComplex} we get $\vphantom{E}^\hor E^{0,q}\cong H^q(\snake{X},\pi_X^*\Ff)$ and $\vphantom{E}^\hor E^{p,q}=0$ if $p<0$. Therefore the horizontal spectral sequence immediately degenerates, and its limit is $H^{p+q}(\snake{X},\pi_X^*\Ff)$. That's precisely what we need.
+By \eqreff{eq:tensoredCechComplex} we get $\vphantom{E}^\hor E^{0,q}\cong H^q(\snake{X},\xi^*\Ff)$ and $\vphantom{E}^\hor E^{p,q}=0$ if $p<0$. Therefore the horizontal spectral sequence immediately degenerates, and its limit is $H^{p+q}(\snake{X},\xi^*\Ff)$. That's precisely what we need.
 \end{proof}
 \subsection{The Grauert--Grothendieck theorem}
-\begin{con}
+\begin{con}\lbl{con:AON}
 	Let $f\colon X\morphism Y$ be a morphism of preschemes. Let's make the following conventions.
 	\begin{alphanumerate}
 		\item If $y\in Y$, then $X_y$ denotes the fibre $f^{-1}\{y\}=X\times_Y\Spec\KK(y)$.
-		\item We keep the abuse of notation that $\Ff|_{X_y}=i_y^*\Ff$ when $\Ff$ is a quasi-coherent sheaf of $\Oo_X$-modules. Here $i_y\colon X_y=X\times _Y\Spec \KK(y)\morphism X$ is the canonical projection to the first fibre product factor. 
+		\item We keep the abuse of notation that $\Ff|_{X_y}=i_y^*\Ff$ when $\Ff$ is a quasi-coherent sheaf of $\Oo_X$-modules. Here $i_y\colon X_y=X\times _Y\Spec \KK(y)\morphism X$ is the canonical projection to the first fibre product factor.
+		\item If $\Gg$ is a quasi-coherent $\Oo_Y$-module and $y\in Y$, then we put $\Gg(y)=\Gg_y\otimes_{\Oo_{Y,y}}\KK(y)$.
 	\end{alphanumerate}
 \end{con}
 \begin{thm}\lbl{thm:GrauertGrothendieck}
@@ -714,9 +715,9 @@ By \eqreff{eq:tensoredCechComplex} we get $\vphantom{E}^\hor E^{0,q}\cong H^q(\s
 		\begin{align*}
 			P^\bullet\colon 0\morphism P^0\morphism P^1\morphism \ldots \morphism P^d\morphism 0
 		\end{align*}
-		of finitely generated projective $A$-modules with the following property. If $B$ is an $A$-algebra and $\pi_X\colon \snake{X}=X\times_Y\Spec B\morphism X$ is the projection of the fibre product to its first factor, then
+		of finitely generated projective $A$-modules with the following property. If $B$ is an $A$-algebra and $\xi\colon \snake{X}=X\times_Y\Spec B\morphism X$ is the projection of the fibre product to its first factor, then
 		\begin{align*}
-			H^p\left(\snake{X},\pi_X^*\Ff\right)\cong H^p(P^\bullet\otimes_AB)\;.
+			H^p\left(\snake{X},\xi^*\Ff\right)\cong H^p(P^\bullet\otimes_AB)\;.
 		\end{align*}
 		It is possible to choose $d$ to be the largest number with $H^d(X,\Ff)\neq 0$, or $P^\bullet=0$ if $H^\bullet(X,\Ff)=0$. Moreover, if $d'\geq 0$ is such that $H^p(X_y,\Ff|_{X_y})=0$ for all $y\in Y$ when $p<d'$, then it is possible to choose $P^\bullet$ such that $P^i=0$ unless $d'\leq i\leq d$.
 		\item The function $h^p(-,\Ff)\colon Y\morphism \IN$ given by
@@ -730,12 +731,13 @@ By \eqreff{eq:tensoredCechComplex} we get $\vphantom{E}^\hor E^{0,q}\cong H^q(\s
 		is locally constant on $Y$.
 		\item If $Y$ is reduced and $h^p(-,\Ff)$ is locally constant on $Y$, then the base change morphism
 		\begin{align*}
-			\pi_Y^*R^pf_*\Ff\morphism[\text{\eqreff{eq:baseChangeMorphism}}] R^p\snake{f}_*\left(\pi_X^*\Ff\right)
+			\upsilon^*R^pf_*\Ff\morphism[\text{\eqreff{eq:baseChangeMorphism}}] R^p\snake{f}_*\left(\xi^*\Ff\right)
 		\end{align*}
 		(with notation from Proposition~\reff{prop:baseChangeMorphism}) is an isomorphism. In particular, for $\snake Y=\Spec \KK(y)$ we get
 		\begin{align}\lbl{eq:RpfFy}
-			(R^pf_*\Ff)_y\isomorphism H^p\left(X_y,\Ff|_{X_y}\right)\;.
+			(R^pf_*\Ff)(y)\isomorphism H^p\left(X_y,\Ff|_{X_y}\right)\;,
 		\end{align}
+		where $(R^pf_*\Ff)(y)$ is to be interpreted as in Convention~\reff{con:AON}\itememph{c}.
 		\item If reducedness wasn't required in \itememph{c}, the canonical morphism \eqreff{eq:RpfFy} is bijective (for given $p$ and $y$) if and only if it is surjective. Moreover, for any $p\geq 0$ the set $U_p$ of all $y\in Y$ for which this is the case is open in $Y$.
 		\item Let $y\in U_p$, then the following assertions are equivalent.
 		\begin{itemize}
@@ -754,13 +756,11 @@ By \eqreff{eq:tensoredCechComplex} we get $\vphantom{E}^\hor E^{0,q}\cong H^q(\s
 \end{rem}
 	The strategy for Theorem~\reff{thm:GrauertGrothendieck}\itememph{a} is to modify the anti-symmetric \v Cech complex $\check{C}^\bullet=\check{C}_\alt^\bullet(\Uu,\Ff)$, where $\Uu$ is some fixed affine open cover of $X$. As $\Ff$ is flat over $\Oo_Y$, the $\Ff(U_{i_0,\ldots,i_n})$ are flat $A$-modules, hence $\check{C}^\bullet$ is a complex of flat $A$-modules, but the finite generation assertions will typically fail, as will the vanishing assertions. However, from \eqreff{eq:tensoredCechComplex} we know that
 	\begin{align}\lbl{eq:baseChangeProperty}
-		H^p(\snake{X},\pi_X^*\Ff)\cong H^p(\check{C}^\bullet\otimes_AB)
+		H^p(\snake{X},\xi^*\Ff)\cong H^p(\check{C}^\bullet\otimes_AB)
 	\end{align}
 	when $B$ and $\snake{X}$ are as in \itememph{a}. We will construct cochain complexes $P^\bullet$ and $Q^\bullet$ with morphisms $c\colon Q^\bullet\morphism\check{C}^\bullet$ and $p\colon Q^\bullet\morphism P^\bullet$ such that $P^\bullet$ has all the required properties and $c$, $p$ induce isomorphisms on $H^\bullet(-\otimes_AM)$ for arbitrary $A$-modules $M$.
 	
-	The rest of the proof of \itememph{a} doesn't concern any $\check{C}^\bullet$-specific properties except flatness and the base change property. However, we will rather freely use facts from homological algebra. If you want to brush up your knowledge, have a look at \cite{homalg}.
-	
-	We start with a sequence of lemmas now.
+	The rest of the proof of \itememph{a} doesn't concern any $\check{C}^\bullet$-specific properties except flatness and the base change property. However, in the upcoming sequence of commutative algebra lemmas we will rather freely use facts from homological algebra (usually you find them in \cite{homalg}).
 	\begin{lem}\lbl{lem:TensorQuasiIsomorphism}
 		Let $A$ be a (not necessarily noetherian) ring and $\phi\colon C^\bullet\morphism D^\bullet$ a quasi-isomorphism\footnote{That is, $\phi$ induces isomorphisms on cohomology} between bounded-from-above cochain complexes of flat $A$-modules. Then, for any $A$-module $M$,
 		\begin{align*}
@@ -948,19 +948,19 @@ We now have all the technicalities together to prove Theorem~\reff{thm:GrauertGr
 	\begin{proof}
 		Again, the question is local on $\Spec A$, so after localizing $A$ appropriately we may assume that $\dim_{\KK(\pp)}(M\otimes_A\KK(\pp))=\ell$ for all $\pp\in\Spec A$ and some $\ell\in\IN$. Choose some $\pp\in\Spec A$ and let $\mu_1,\ldots,\mu_\ell\in M$ be elements whose images form a basis of $M\otimes_\KK(\pp)$. Without losing generality (or rather after another localization, using \cite[Lemma~1.5.1]{alg2}) the $\mu_i$ generate $M$ as an $A$-module. We claim they do so freely. Indeed, if $\alpha_1\mu_1+\ldots+\alpha_\ell\mu_\ell=0$ for some $\alpha_i\in A$ is any relation in $M$, then $\alpha_i\in\qq$ for any $\qq\in\Spec A$ as $\dim_{\KK(\qq)}(M\otimes_A\KK(\qq))<\ell$ otherwise. Hence $\alpha_i\in\bigcap_{\qq\in\Spec A}\qq=\nil A=0$ and we're done.
 	\end{proof}
-	We come back to the proof of Theorem~\reff{thm:GrauertGrothendieck}\itememph{b} and \itememph{c}. The upper-semicontinuity part of \itememph{b} follows immediately from Lemma~\reff{lem:BasicallyThm4bc}\itememph{a} applied to $M=Q^p$ und $F=P^{p+1}$. For part \itememph{c}, we may assume the base change was done along $\pi_Y\colon \snake{Y}=\Spec B\morphism Y=\Spec A$ because the question is local on $Y$ and $\snake{Y}$. Then $R^p\snake{f}_*(\pi_X^*\Ff)$ is a quasi-coherent $\Oo_{\snake{Y}}$-module given by
+	We come back to the proof of Theorem~\reff{thm:GrauertGrothendieck}\itememph{b} and \itememph{c}. The upper-semicontinuity part of \itememph{b} follows immediately from Lemma~\reff{lem:BasicallyThm4bc}\itememph{a} applied to $M=Q^p$ und $F=P^{p+1}$. For part \itememph{c}, we may assume the base change was done along $\upsilon\colon \snake{Y}=\Spec B\morphism Y=\Spec A$ because the question is local on $Y$ and $\snake{Y}$. Then $R^p\snake{f}_*(\xi^*\Ff)$ is a quasi-coherent $\Oo_{\snake{Y}}$-module given by
 	\begin{align*}
-		H^p(\snake{X},\pi_X^*\Ff)\cong H^p(P^\bullet\otimes_AB)\cong \ker\left(\delta^p\otimes\id_B\colon Q^p\otimes_AB\morphism P^{p+1}\otimes_AB\right)\;,
+		H^p(\snake{X},\xi^*\Ff)\cong H^p(P^\bullet\otimes_AB)\cong \ker\left(\delta^p\otimes\id_B\colon Q^p\otimes_AB\morphism P^{p+1}\otimes_AB\right)\;,
 	\end{align*}
-	and $\pi_Y^*R^pf_*\Ff$ is given by
+	and $\upsilon^*R^pf_*\Ff$ is given by
 	\begin{align*}
 		H^p(X,\Ff)\otimes_AB\cong H(P^\bullet)\otimes_AB\cong\ker\left(\delta^p\colon Q^p\morphism P^{p+1}\right)\otimes_AB\;.
 	\end{align*}
 	That these two agree is precisely what Lemma~\reff{lem:BasicallyThm4bc}\itememph{c} says.
 	
 	For \itememph{d} and \itememph{e} we need yet another lemma, but I promise this will be the last technical commutative algebra lemma required to prove Theorem~\reff{thm:GrauertGrothendieck}.
-	\begin{lem}
-		In the above situation, the following conditions on a prime ideal $\pp\in\Spec A$ are equivalent.
+	\begin{lem}\lbl{lem:BasicallyThm4de}
+		Let $\pp\in \Spec A$. In the above situation, the following conditions are equivalent.
 		\begin{alphanumerate}
 			\item The canonical morphism
 			\begin{align*}
@@ -970,26 +970,120 @@ We now have all the technicalities together to prove Theorem~\reff{thm:GrauertGr
 			\item Same as \itememph{a}, but the morphism is even bijective.
 			\item The localization $Q^{p+1}_\pp$ is a free $A_\pp$-module.
 		\end{alphanumerate}
+		Moreover, in this case the localization $B^{p+1}_\pp$ of $B^{p+1}=\Im\delta^p$ is free over $A_\pp$ as well.
 	\end{lem}
 \begin{proof}
 	We use similar arguments as in Lemma~\reff{lem:BasicallyThm4bc}. Let's do the implication \itememph{a} $\Rightarrow$ \itememph{c} first. If assertion \itememph{a} holds, then we may choose $\mu_1,\ldots,\mu_r\in\ker \delta^p$ whose images $\ov{\mu}_i$ in $\ker\left(\delta^p\otimes\id_{\KK(\pp)}\right)$ form a basis. We may extend $\mu_1,\ldots,\mu_r$ by some $\mu_{r+1},\ldots,\mu_s\in Q^p$ such that $\ov{\mu}_1,\ldots,\ov{\mu}_s$ form a basis of $Q^p\otimes_A\KK(\pp)$. Then the images $\delta_\pp^p(\ov{\mu}_{r+1}),\ldots,\delta_\pp^p(\ov{\mu}_s)\in P^{p+1}\otimes_A\KK(\pp)$ are $\KK(\pp)$-linearly independent, so we may choose $\pi_1,\ldots,\pi_n\in P^{p+1}$ whose images in $P^{p+1}\otimes_A\KK(\pp)$ extend $\delta_\pp^p(\ov{\mu}_{r+1}),\ldots,\delta_\pp^p(\ov{\mu}_s)$ to a basis.
 	
-	By the same argument as in Claim~\reff{claim:MatrixShit} from the proof of Lemma~\reff{lem:BasicallyThm4bc}\itememph{a}, we can replace $A$ by some localization so that $\delta^p(\mu_{r+1}),\ldots,\delta^p(\mu_s)$ and $\pi_1,\ldots,\pi_n$ generate $P^{p+1}$ -- and we may even assume they do so \emph{freely}! Indeed, write $\delta^p(\mu_{r+1}),\ldots,\delta^p(\mu_s)$ and $\pi_1,\ldots,\pi_n$ as linear combinations of some basis of $P^{p+1}$. Then the coefficient matrix $C$ becomes invertible when reduced to $\KK(\pp)$, hence after localizing at $\det C$ we may assume that $C$ is already invertible over $A$. Therefore, after suitable localization, we see that $\Im\delta^p$ is a direct summand of $P^{p+1}$. Then $Q^{p+1}=\coker\delta^p$ is a direct summand of $P^{p+1}\cong \Im\delta^p\oplus\coker\delta^p$ as well. This proves that $Q^{p+1}$ is projective, hence $Q^{p+1}_\pp$ is free over $A_\pp$. This proves the implication \itememph{a} $\Rightarrow$ \itememph{c}.
+	By the same argument as in Claim~\reff{claim:MatrixShit} from the proof of Lemma~\reff{lem:BasicallyThm4bc}\itememph{a}, we can replace $A$ by some localization so that $\delta^p(\mu_{r+1}),\ldots,\delta^p(\mu_s)$ and $\pi_1,\ldots,\pi_n$ generate $P^{p+1}$ -- and we may even assume they do so \emph{freely}! Indeed, write $\delta^p(\mu_{r+1}),\ldots,\delta^p(\mu_s)$ and $\pi_1,\ldots,\pi_n$ as linear combinations of some basis of $P^{p+1}$. Then the coefficient matrix $C$ becomes invertible when reduced to $\KK(\pp)$, hence after localizing at $\det C$ we may assume that $C$ is already invertible over $A$. Therefore, after suitable localization, we see that $\Im\delta^p$ is a direct summand of $P^{p+1}$. Then $Q^{p+1}=\coker\delta^p$ is a direct summand of $P^{p+1}\cong \Im\delta^p\oplus\coker\delta^p$ as well. This proves that $Q^{p+1}$ is projective, hence $Q^{p+1}_\pp$ is free over $A_\pp$. Thereby the implication \itememph{a} $\Rightarrow$ \itememph{c} has been shown.
 	
-	Now for \itememph{c} $\Rightarrow$ \itememph{b}. By \cite[Corollary~1.5.1]{alg2}, we may replace $A$ (and $Q^{p+1}$) by some localization such that $Q^{p+1}$ is already free over $A$. Then $P^{p+1}\epimorphism Q^{p+1}=\coker\delta^p$ is split, hence $P^{p+1}\cong \Im\delta^p\oplus \coker\delta^p$ (non-canonically). Then $\Im\delta^p$ is projective as well, so $Q^p\cong \ker\delta^p\oplus\Im\delta^p$ (non-canonically). That is, $\delta^p$ splits as $\delta^p\colon \ker\delta^p\oplus\Im\delta^p\oplus\Im\delta^p\oplus\coker\delta^p$, and this nice splitting behaviour is preserved after tensoring with $\KK(\pp)$. This shows $\ker\delta^p\otimes_A\KK(\pp)\cong \ker\left(\delta^p\otimes\id_{\KK(\pp)}\right)$, i.e., \itememph{b} holds.
+	Now for \itememph{c} $\Rightarrow$ \itememph{b}. By \cite[Corollary~1.5.1]{alg2}, we may replace $A$ (and $Q^{p+1}$) by some localization such that $Q^{p+1}$ is already free over $A$. Then $P^{p+1}\epimorphism Q^{p+1}=\coker\delta^p$ is split, hence $P^{p+1}\cong \Im\delta^p\oplus \coker\delta^p$ (non-canonically). Then $\Im\delta^p$ is projective as well, so $Q^p\cong \ker\delta^p\oplus\Im\delta^p$ (non-canonically). That is, $\delta^p$ splits as $\delta^p\colon \ker\delta^p\oplus\Im\delta^p\morphism\Im\delta^p\oplus\coker\delta^p$, and this nice splitting behaviour is preserved after tensoring with $\KK(\pp)$. This shows $\ker\delta^p\otimes_A\KK(\pp)\cong \ker\left(\delta^p\otimes\id_{\KK(\pp)}\right)$, i.e., \itememph{b} holds.
 	
-	Finally \itememph{b} $\Rightarrow$ \itememph{a} is trivial and we're done.
+	Finally \itememph{b} $\Rightarrow$ \itememph{a} is trivial, and also we've already seen the additional assertion in the proof of \itememph{a} $\Rightarrow$ \itememph{c}. We're done.
 \end{proof}
 
-	Now there isn't really much left to prove of \itememph{d} and \itememph{e}, which we'll do in the next lecture.%Let's prove part \itememph{d} now. Let $y\in Y$. The base-chan
+	Now there isn't really much left to prove \itememph{d} and \itememph{e}. Since $Y=\Spec A$ is affine (or rather we reduced it to this case), $R^pf_*\Ff$ is the quasi-coherent $\Oo_Y$-module given by the $A$-module $H^p(X,\Ff)\cong H^p(P^\bullet)\cong \ker\delta^p$. Then Lemma~\reff{lem:BasicallyThm4de}\itememph{a} and \itememph{b} shows that $(R^pf_*\Ff)(y)\morphism H^p(X_y,\Ff|_{X_y})$ is bijective iff it is surjective. Moreover, the set of $\pp\in\Spec A$ such that Lemma~\reff{lem:BasicallyThm4de}\itememph{c} holds is open by \cite[Corollary~1.5.1]{alg2}, which directly translates into $U_p\subseteq Y$ being open. This shows \itememph{d}.
+	
+	Finally, part \itememph{e}. If $y\in U_p$, then $Q^{p+1}$ as well as $B^{p+1}=\Im \delta^p$ are locally free at the prime $\pp\in\Spec A$ corresponding to $y$ (by Lemma~\reff{lem:BasicallyThm4de}\itememph{c}). Therefore, from the short exact sequence
+	\begin{align*}
+		0\morphism H^p(X,\Ff)\morphism Q^p\morphism B^{p+1}\morphism 0
+	\end{align*}
+	we obtain $\Tor_1^A\big(H^p(X,\Ff),\KK(y)\big)\cong \Tor_1^A(Q^p,\KK(y))$. By \cite[Proposition~1.3.1]{homalg}, this shows that $Q^p$ is locally free at $\pp$ iff so is $H^p(X,\Ff)$. Using Lemma~\reff{lem:BasicallyThm4de}\itememph{c} we see that $y\in U_{p-1}$ iff $H^p(X,\Ff)$ is locally free at $\pp$ -- and that's precisely what we want.
 \end{proof}
 \begin{cor}
 	In the situation of Theorem~\reff{thm:GrauertGrothendieck}, if $h^p(y,\Ff)=0$, then $R^pf_*\Ff$ vanishes in some neighbourhood of $x$.
 \end{cor}
 \begin{proof}
-	By Theorem~\reff{thm:GrauertGrothendieck}\itememph{d} we have $(R^pf_*\Ff)_y=0$, hence $R^pf_*\Ff=0$ near $y$ by Nakayama-style arguments (to be precise, this follows from \cite[Corollary~1.5.1]{alg2}).
+	By Theorem~\reff{thm:GrauertGrothendieck}\itememph{d} we have $(R^pf_*\Ff)(y)=0$, hence $R^pf_*\Ff=0$ near $y$ by Nakayama-style arguments (to be precise, this follows from \cite[Corollary~1.5.1]{alg2}).
 \end{proof}
-
+\begin{cor}
+	If $\upsilon\colon \snake{Y}\morphism Y$ is a morphism with image contained in $U_p$, and $\xi\colon \snake{X}=X\times_Y\snake{Y}\morphism X$ its base change along $f$, then the base change morphism is an isomorphism
+	\begin{align*}
+		\upsilon^*R^pf_*\Ff\isomorphism R^p\snake{f}_*(\xi^*\Ff)\;.
+	\end{align*}
+\end{cor}
+\begin{proof}
+	The assertion is local on $Y$ and $\snake{Y}$, so let's assume $Y=\Spec A$ and $\snake{Y}=\Spec B$. We may assume that $\upsilon$ factors over $\Spec A_\alpha\monomorphism \Spec A$ for some $\alpha\in A$ such that $\Spec A\setminus V(\alpha)\subseteq U_p$. Then
+	\begin{align*}
+		H^p(\snake{X},\xi^*\Ff)\cong H^p\left(P^\bullet\otimes_AB\right)\cong H^p\left(P_\alpha^\bullet\otimes_{A_\alpha}B\right)
+	\end{align*}
+	and
+	\begin{align*}
+		H^p(X,\Ff)\otimes_AB\cong H^p(P^\bullet)\otimes_AB\cong H^p(P_\alpha^\bullet)\otimes_{A_\alpha}B\;.
+	\end{align*}
+	Since Lemma~\reff{lem:BasicallyThm4de} is applicable to all $\pp\in \Spec A_\alpha$, we see that $Q_\alpha^{p+1}$ is projective. As in the proof of Lemma~\reff{lem:BasicallyThm4de}, this implies that the localization $\delta_\alpha^p=\delta^p\otimes_A\id_{A_\alpha}$ of $\delta^p$ splits as $\delta_\alpha^p\colon \ker\delta_\alpha^p\oplus \Im \delta_\alpha^p\morphism \Im\delta_\alpha^p\oplus\coker\delta_\alpha^p$, hence it behaves well under tensoring with the $A_\alpha$-algebra $B$. Thus $H^p(X,\Ff)\otimes_AB\morphism H^p(\snake{X},\xi^*\Ff)$ is an isomorphism, which is precisely what we need.
+\end{proof}
+\subsection{Application to the group structure of elliptic curves}
+\begin{defi}
+	A \defemph{flat family} of curves of genus $g$ is a faithfully flat proper morphism $f\colon C\morphism X$ whose \defemph{geometric fibres}
+	\begin{align*}
+		C_{\ov{x}}=C\times_X\Spec\ov{\KK(x)}
+	\end{align*}
+	are connected curves of genus $g$ over the algebraic closure $\ov{\KK(x)}$. If $g=1$ and in addition a section  $s\colon X\morphism C$  of $f$ is given, we call $(f,s)$ an \defemph{elliptic curve} over $X$.
+\end{defi}
+We will typically assume $X$ to be locally noetherian, although Professor Franke says one could generalize the situation to allow arbitrary $X$.
+\begin{prop}
+	Let $f\colon C\morphism X$ be a flat family of curves of genus $g$, where $X$ is locally noetherian. Moreover, let $\Ll$ be a line bundle on $C$ whose pullbacks to the geometric fibres of $p$ have degree $d$.
+	\begin{alphanumerate}
+		\item If $d>2g-2$, then $f_*\Ll$ is a vector bundle of dimension $d+1-g$ on $X$, and $R^1f_*\Ll=0$.
+		\item If $d<0$, then $f_*\Ll$ vanishes, and $R^1f_*\Ll$ is a vector bundle of dimension $g-1-d$.
+		\item If $\Ll=\Oo_C$ (hence $d=0$), then $f^*\colon \Oo_X\morphism f_*\Oo_C$ is an isomorphism and $R^1f_*\Oo_C$ is a vector bundle of dimension $g$.
+	\end{alphanumerate}
+	Moreover, if we take a base change
+	\begin{diagram*}
+		\object{0,0}{$C$}[a];
+		\object{0,1.5}{$\snake{C}$}[b];
+		\object{2,0}{$X$}[c];
+		\object{2,1.5}{$\snake{X}$}[d];
+		\pullback{1,0.75};
+		\scriptsize
+		\arrow ba[left][$\gamma$];
+		\arrow ac[above][$f$];
+		\arrow dc[right][$\xi$];
+		\arrow bd[above][$\snake{f}$];
+	\end{diagram*}
+	then the base change morphism $\xi^*R^pf_*\Ll\morphism R^p\snake{f}_*(\gamma^*\Ll)$ is an isomorphism for $p\in\{0,1\}$ in each of the above cases.
+\end{prop}
+\begin{proof}
+	First of all, if $\Ff$ is any quasi-coherent $\Oo_C$-module, then
+	\begin{align}\lbl{eq:GeometricFibreIso}
+		H^p\left(C_{\ov{x}},\Ff|_{C_{\ov{x}}}\right)\cong H^p\left(C_x,\Ff|_{C_x}\right)\otimes_{\KK(x)}\ov{\KK(x)}
+	\end{align}
+	for all $x\in X$. Indeed, $\ov{\KK(x)}/\KK(x)$ is a (pretty lame) flat ring extension, so \eqreff{eq:GeometricFibreIso} follows immediately from \eqreff{eq:tensoredCohomology}.
+	
+	Now let's get to business. First of all, we may assume $X=\Spec A$ for some noetherian ring $A$ because all assertions are local. Also Theorem~\reff{thm:GrauertGrothendieck} is applicable since $f$ is flat, so every line bundle on $C$ is flat over $\Oo_X$. Let $P^\bullet$ be the complex from Theorem~\reff{thm:GrauertGrothendieck}\itememph{a}, concentrated within minimum and maximum of the set
+	\begin{align*}
+		S&=\left\{p\in\IN\st H^p\left(C_x,\Ll|_{C_x}\right)\neq 0\text{ for some }x\in X\right\}\\
+		&=\left\{p\in\IN\st H^p\left(C_{\ov{x}},\Ll|_{C_{\ov{x}}}\right)\neq 0\text{ for some }x\in X\right\}
+	\end{align*}
+	(where we use \eqreff{eq:GeometricFibreIso}). Note that $S=\{0\}$ in the case of \itememph{a} and $S=\{1\}$ in the case of \itememph{b}. Indeed, in both cases $S$ is contained in $\{0,1\}$ by Grothendieck's theorem on cohomological dimension (cf.\ \cite[Proposition~1.4.1]{alggeo2}), and then Lemma~\reff{lem:Hpvanishing} determines $S$ (ok, actually it doesn't, but we'll see immediately why $S=\emptyset$ is impossible).\footnote{\ldots except that Lemma~\reff{lem:Hpvanishing} needs regularity of the $C_{\ov{x}}$. But we're talking about Riemann--Roch anyway, so I assume Franke just forgot to mention regularity; I'll ask him about that.} Then $P^\bullet$ consists of at most one non-zero term, which defines a vector bundle on $X=\Spec A$. The assertions about dimension follow immediately from Riemann--Roch in the form of \cite[equation~(3.1.3)]{alggeo2}.
+	
+	For \itememph{c}, let $U_p\subseteq X$ be as in Theorem~\reff{thm:GrauertGrothendieck}\itememph{d} and \itememph{e}. By Serre duality -- or more precisely, \cite[Theorem~7\itememph{b} and \itememph{c}]{alggeo2} -- we see that
+	\begin{align*}
+		H^0\left(C_{\ov{x}},\Oo_{C_{\ov{x}}}\right)\cong \Hom_{\ov{\KK(x)}}\left(H^1\left(C_{\ov{x}},\Omega_{C_{\ov{c}}}\right),\ov{\KK(x)}\right)\cong\ov{\KK(x)}\cong \KK(x)
+	\end{align*}
+	is a one-dimensional vector space with the constant function $1$ as a basis, and the same holds thus for $H^0(C_x,\Oo_{C_x})$. Therefore, the canonical morphism
+	\begin{align}\lbl{eq:H0OC}
+		H^0(C,\Oo_C)\otimes_A\KK(x)\cong\big(R^0f_*\Oo_C\big)(x)\morphism H^0(C_x,\Oo_{C_x})
+	\end{align}
+	is an surjective for all $x\in X$ (because the constant function $1$ is always hit), so $U_0=X$ by Theorem~\reff{thm:GrauertGrothendieck}\itememph{d}. But $U_{-1}=X$ for trivial reasons, hence $f_*\Oo_C$ is a vector bundle by Theorem~\reff{thm:GrauertGrothendieck}\itememph{e}. Moreover, from \eqreff{eq:H0OC} (which is actually an isomorphism, as we now know) we see that $\Oo_C(C)\otimes_A\KK(x)$ is a one-dimensional $\KK(x)$-vector space with $1\otimes 1$ as a basis for all $x\in X$. Using \cite[Lemma~1.5.1]{alg2}, this implies that $f_*\Oo_C$ is generated by $1\in\Oo_C(C)$ as an $\Oo_X$-algebra. But $f_*\Oo_C$ is a vector bundle, so $f^*\colon \Oo_X\morphism f_*\Oo_C$ must be indeed an isomorphism.
+	
+	To show the second part of \itememph{c}, note that $H^2(C_x,\Oo_{C_x})=0$ for all $x\in X$ (by Grothendieck's dimension theorem), so $U_2=X$. Then $(R^2f_*\Oo_C)(x)=0$ for all $x\in X$, which proves $R^2f_*\Oo_C=0$ (this uses \cite[Lemma~1.5.1]{alg2} again). In particular, $R^2f_*\Oo_C$ is a vector bundle and Theorem~\reff{thm:GrauertGrothendieck}\itememph{e} gives $U_1=X$. Since $U_0=X$ as well, reversing the argument shows that $R^1f_*\Oo_C$ is a vector bundle too. The fact that it has dimension $g$ can be seen as follows. We have
+	\begin{align*}
+		\dim R^1f_*\Oo_C=\dim_{\KK(x)}(R^1f_*\Oo_C)(x)=\dim_{\ov{\KK(x)}}H^1\left(C_{\ov{x}},\Oo_{C_{\ov{x}}}\right)
+	\end{align*}
+	by \eqreff{eq:GeometricFibreIso} and Theorem~\reff{thm:GrauertGrothendieck}\itememph{d}. Now Serre duality gives
+	\begin{align*}
+		\dim_{\ov{\KK(x)}}H^1\left(C_{\ov{x}},\Oo_{C_{\ov{x}}}\right)=\dim_{\ov{\KK(x)}}H^0\left(C_{\ov{x}},\Omega_{C_{\ov{c}}}\right)=g\;,
+	\end{align*}
+	in which the right-most equality holds by definition of $g$. This proves \itememph{c}.
+	
+	Finally, let's see why the additional base change assertion holds. For \itememph{a} and \itememph{b}, we've seen that $P^\bullet$ has only one non-vanishing term, so the required isomorphism is immediate. However, I wasn't able to find a equally down-to-the-earth argument in the case of \itememph{c}. Instead, consider the special case $X=\Spec A$ and $\snake{X}=\Spec B$ (the assertion is local, so that's fine). Then the base change spectral sequence (cf.\ Proposition~\reff{prop:baseChangeMorphismA})
+	\begin{align*}
+		E_2^{p,q}=\Tor_{-p}^A\big(H^q(C,\Oo_C),B\big)\converge H^{p+q}(\snake{C},\Oo_{\snake{C}})\;.
+	\end{align*}
+	immediately degenerates because we just showed that $f_*\Oo_C$ and $R^1f_*\Oo_C$ are vector bundles (and the higher derived images vanish anyway), so the base change morphism is an isomorphism in this case as well.
+\end{proof}
 
 \Appendix
 \chapter{Appendix}
@@ -1272,6 +1366,32 @@ Professor Franke points out that there are multiple approaches for Generic freen
 	By Noetherian induction, we may assume that the assertion is true for all closed subsets of $\Spec A$. Let $\alpha\in A$ such that $B_\alpha$ is free as an $A_\alpha$-module (we can do this by Proposition~\reff{prop:GenericFreeness}). We claim that any $\pp\in\Spec A\setminus V(\alpha)$ is in the image of $f$. Indeed, such $\pp$ may be regarded as prime ideals $\pp\in\Spec A_\alpha$. Then $B_\pp\cong B\otimes_AA_\pp$ is still free as an $A_\pp$-module, say, $B_\pp\cong \bigoplus_{i\in I}A_\pp$ for some indexing set $I$ (which is non-empty as $A_\pp\subseteq B_\pp$). Hence $B_\pp/\pp B_\pp\cong B_\pp\otimes_{A_\pp}A_\pp/\pp A_\pp\cong \bigoplus_{i\in I}\KK(\pp)$ is not the zero ring because $\KK(\pp)\neq 0$. If $\qq\subseteq B$ is the preimage of any prime ideal of $B_\pp/\pp B_\pp$, then it's easily seen that $f(\qq)=\pp$, proving that $\pp$ is in the image of $f$, as claimed.
 	
 	By the Noetherian induction hypothesis, the image of $f$ in $V(\alpha)$ -- which equals the image of $\ov{f}\colon\Spec(B/\alpha B)\morphism\Spec (A/\alpha A)$ -- is constructible. We are done.		
+\end{proof}
+\section{Quick reminder about curves and divisors}
+This section collects some results which Professor Franke considers known, but I can't find in \cite{alggeo2} (which doesn't mean they haven't been used implicitly, though). 
+\begin{lem}\lbl{lem:Hpvanishing}
+	Let $k$ be an algebraically closed field, $C\morphism\Spec k$ a proper regular connected curve of genus $g$ over $k$. Let $\Ll$ be a line bundle on $C$.
+	\begin{alphanumerate}
+		\item If $\deg \Ll<0$, then $H^0(C,\Ll)=0$.
+		\item If $\deg \Ll>2g-2$, then $H^1(C,\Ll)=0$.
+	\end{alphanumerate}
+\end{lem}
+\begin{proof}
+	Part \itememph{a}. Let $D$ be a divisor such that $\Ll\cong \Oo_C(D)$ (recall that we can do this by \cite[Proposition~3.0.1\itememph{b}]{alggeo2} -- and writing things like $\deg \Ll$ already assumed this implicitly). We need to show that $\Oo_C(D)$ has vanishing global section. Indeed, if $K$ denotes the field of fractions of $C$ (that is, the stalk at the generic point), then
+	\begin{align*}
+		\Gamma(C,\Oo_C(D))=\left\{f\in K\st \div(f)+D\geq 0\right\}
+	\end{align*}
+	by definition. But $\sum_{c\in C_1}v_c(f)=0$ for all $f\in K^\times$ (this follows from the fact that $\deg$ is well-defined -- and \emph{no}, that's no circular reasoning if we use the rather odd proof from \cite[p.\:79]{alggeo2}), hence 
+	\begin{align*}
+		\sum_{c\in C_1}\big(\div(f)_c+D(c)\big)=\deg D<0
+	\end{align*}
+	for all $f\in K^\times$, which proves that $\Gamma(C,\Oo_C(D))=0$.
+	
+	Part \itememph{b} is an easy consequence of \itememph{a} and Serre duality. By \cite[Corollary~3.1.2]{alggeo2} we have $\deg\Omega_C=2g-2$. Hence $\Omega_C\otimes_{\Oo_C}\Ll^*$ (where $\Ll^*$ denotes the dual of $\Ll$) has negative degree (which uses \cite[Proposition~3.0.2]{alggeo2}). Also note that $\Omega_C\otimes_{\Oo_C}(\Omega_C\otimes_{\Oo_C}\Ll^*)^*\cong \Ll$. By Serre duality as in \cite[Theorem~7\itememph{c}]{alggeo2} this implies
+	\begin{align*}
+		H^0\left(C,\Omega_C\otimes_{\Oo_C}\Ll^*\right)\cong \Hom_k\left(H^1(C,\Ll),k\right)\;.
+	\end{align*}
+	But $H^0\left(C,\Omega_C\otimes_{\Oo_C}\Ll^*\right)=0$ by \itememph{a}, so $H^1(C,\Ll)$ vanishes too.
 \end{proof}
 
 \printbibliography
