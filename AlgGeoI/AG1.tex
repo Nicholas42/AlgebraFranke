@@ -833,8 +833,10 @@ of presheaves on $\Bb$.
       \item 
         $K$ is a topological space, $\kappa$ is continuous, $\Oo_{K,[k]}$ is a local ring (by Fact~\reff{fact:coequalizerOfRings} about coequalizers of local ring morphisms, also see exercise sheet \#5), and $\Oo_{X,k} \morphism \Oo_{K,[k]}$ is local (it is, in fact, a quotient projection, i.e., surjective).
       \item 
-        $\Oo_K$ is a sheaf of rings, $\Oo_X \morphism[\kappa^*] \kappa_*\Oo_K$ is a morphism of sheaves of rings.
+        $\Oo_K$ is a sheaf of rings and $\kappa^*\colon \Oo_X \morphism \kappa_*\Oo_K$ is a morphism of sheaves of rings.
     \end{itemize} 
+	We divide the non-trivial part of the proof into several steps.\newpage
+
     \emph{Step 1.} We start proving that $\Oo_{K,k}\isomorphism\Oo_{K,[k]}$ is indeed an isomorphism. 
     
     To show injectivity of $\Oo_{K,k}\morphism\Oo_{K,[k]}$, let $U\subseteq K$ be an open neighbourhood of $k$ and let $f= (f_\ell)_{\ell\in U} \in \Oo_K(U) \subseteq \prod_{\ell\in U} \Oo_{K,[\ell]}$ be such that $f_k$ vanishes. We have to show that the image if $f$ in $\Oo_{K,k}$ vanishes. By the coherence condition for sections of $\Oo_K$, there are an open neighbourhood $V$ of $k$ in $X$ and $\phi\in \Oo_X(V)$ such that 
@@ -982,7 +984,7 @@ of presheaves on $\Bb$.
 			\Oo_T(\tau^{-1}V)\morphism\Oo_T(W)\morphism\Oo_{T,t}
 		\end{array}\right)
 	\end{align*}
-	by the commutativity of
+	by commutativity of
 	\begin{diagram*}
 		\node[ob](kz) at (0,0) {$\Oo_{X,k}$};
 		\node[ob](kx) at (2.5,0) {$\Oo_{T,t}$};
@@ -1125,7 +1127,11 @@ We're now prepared to describe the fibre product $F=X\times_SY$:
     \begin{align*}
         \Rr(U,V)_\theta = (\Oo_{X}(U)\otimes_{\Oo_S(S)}\Oo_{Y}(V)) \morphism (\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y})_\pp\;.
     \end{align*}
-    Since $\lambda_{(x,y,\pp)}=0$, there is $h\in (\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y})\setminus \pp$ such that $n \cdot h = 0$ in $\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y} \cong \colimit \Oo_{X}(\snake U) \otimes_{\Oo_S(W)}\Oo_{Y}(\snake V)$. We may assume that $h$ is the image of $\eta\in \Rr(\snake U, \snake V)$ in $\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y}$ and that $n\cdot \eta = 0$ in $\Rr\smash{(\snake U, \snake V};W)$. Replacing both $\eta$ and $\theta$ by $\eta\cdot \theta$ as well as $U$ by $\snake U$ and $V$ by $\snake V$, we may assume $U=\snake U$, $V=\snake V$ and $\eta = \theta$. Then the image of $\ell = \frac{n}{\theta}$ under $\Rr(U,V)_\theta \morphism \Rr(U,V;W)_\theta$ vanishes. But the map $\Rr(U,V)_\theta\morphism \Oo_F(\Omega(U,V,\theta))$ factors over $\Rr(U,V;W)_\theta$ as this is the case for the maps
+    Since $\lambda_{(x,y,\pp)}=0$, there is $h\in (\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y})\setminus \pp$ such that 
+    \begin{align*}
+    	n \cdot h = 0\quad\text{in}\quad\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y} \cong \colimit \Oo_{X}(\snake U) \otimes_{\Oo_S(W)}\Oo_{Y}(\snake V)\;. 
+    \end{align*}
+    We may assume that $h$ is the image of $\eta\in \Rr(\snake U, \snake V)$ in $\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y}$ and that $n\cdot \eta = 0$ in $\Rr\smash{(\snake U, \snake V};W)$. Replacing both $\eta$ and $\theta$ by $\eta\cdot \theta$ as well as $U$ by $\snake U$ and $V$ by $\snake V$, we may assume $U=\snake U$, $V=\snake V$ and $\eta = \theta$. Then the image of $\ell = \frac{n}{\theta}$ under $\Rr(U,V)_\theta \morphism \Rr(U,V;W)_\theta$ vanishes. But the map $\Rr(U,V)_\theta\morphism \Oo_F(\Omega(U,V,\theta))$ factors over $\Rr(U,V;W)_\theta$ as this is the case for the maps
     \begin{diagram*}
     	\node[ob](a) at (0,1.5) {$\left(\Oo_X(U)\otimes_{\Oo_S(S)}\Oo_Y(V)\right)_\theta$};
     	\node[ob](c) at (2.5,0) {$\Big(\Oo_X(U)\otimes_{\Oo_S(W)}\Oo_Y(V)\Big)_{\theta|_{\Rr(U,V;W)}}$};
@@ -1592,11 +1598,9 @@ If $M$ is an $R$-module, we have a similar presheaf (of abelian groups or of mod
     Let $\Oo_{\Spec R}$ and $\snake M$ be the sheafifications of these presheaves \eqreff{eq:SpecRingLoc}, \eqreff{eq:SpecModuleLoc} on $\Bb$.
 \end{defi}
 \begin{rem*}
-    Note that the stalks of the presheaves are easily calculated: The stalk of \eqreff{eq:SpecRingLoc} at $\pp$ is 
-    \begin{align*}
-        \colimit[f\not \in \pp] R_f \isomorphism R_\pp
-    \end{align*}
-    (the $f\notin\pp$ are ordered by divisibility) while the stalk of \eqreff{eq:SpecModuleLoc} is $M_\pp$. Thus
+    Note that the stalks of the presheaves are easily calculated: The stalk of \eqreff{eq:SpecRingLoc} at $\pp$ is $\colimit[f\not \in \pp] R_f \cong R_\pp$ (the $f\notin\pp$ are ordered by divisibility). Similarly the stalk of \eqreff{eq:SpecModuleLoc} at a prime $\pp$ is given by $M_\pp$.
+    
+    Thus
     \begin{align*}
         \Oo_{\Spec R}(U) &\cong \left\{(r_\pp)_{\pp\in U}\in \prod_{\pp\in U} R_\pp \st
         \begin{array}{c}
@@ -1666,7 +1670,7 @@ If $M$ is an $R$-module, we have a similar presheaf (of abelian groups or of mod
     As $U_\lambda = \bigcup_{i=1}^n(U_\lambda\cap U_{\lambda_i})$ the map $\Ff(U_\lambda) \morphism \prod_{i=1}^n \Ff(U_\lambda\cap U_{\lambda_i})$, $f\mapsto (f|_{U_{\lambda,\lambda_i}})_{i=1}^n$ is injective by our assumptions. This implies $f|_{U_\lambda}=f_\lambda$ as stated.
 \end{proof}
 \begin{rem*}
-    Another way to apply the principle of the proof of Lemma~\reff{lem:finCover} is to use the fact that when $\bigcap_{i=1}^n V(f_i) = \emptyset$ the \emph{Koszul complex} $K\big((f_1,\ldots,f_n),M\big)$
+    Another way to apply the principle of the proof of Lemma~\reff{lem:finCover} is to use the fact that when $\bigcap_{i=1}^n V(f_i) = \emptyset$ the \emph{Koszul complex} $K^\bullet\big((f_1,\ldots,f_n),M\big)$
     \begin{diagram*}
     	\node (0) at (0,0) {$0$};
     	\node (M) [right=0.75cm of 0] {$M$};
@@ -1703,7 +1707,7 @@ If $M$ is an $R$-module, we have a similar presheaf (of abelian groups or of mod
     \end{align*}
      (where $m_{i,j}=-m_{j,i}$ if $i>j$ and $m_{i,i}=0$). But if $\Uu$ denotes the cover $\Spec R = \bigcup_{i=1}^n \Spec R_{f_i}$ then 
      \begin{align*}
-     	0\morphism M\morphism \check{C}^\bullet\Big(\Uu,\text{the presheaf giving } \snake M\Big)\lisomorphism \colimit[k\in\IN] K\big((f_1^k, \ldots, f_n^k),M\big)
+     	0\morphism M\morphism \check{C}^\bullet\Big(\Uu,\text{the presheaf giving } \snake M\Big)\lisomorphism \colimit[k\in\IN] K^\bullet\big((f_1^k, \ldots, f_n^k),M\big)
      \end{align*}
      which is the argument used in EGA to show Proposition~\reff{prop:RequalsGlobalSection} and the vanishing of higher cohomologies (an introduction to Koszul complexes and their connection to \v{C}ech complexes can be found in \cite[Section~2.1 and proof of Theorem~2]{alggeo2}).
 \end{rem*}
