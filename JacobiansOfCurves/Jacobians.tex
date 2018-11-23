@@ -1018,26 +1018,26 @@ We now have all the technicalities together to prove Theorem~\reff{thm:GrauertGr
 \end{proof}
 \section{Application to the group structure of elliptic curves}
 \begin{defi}
-	A \defemph{flat family} of curves of genus $g$ is a faithfully flat proper morphism $f\colon C\morphism X$ whose \defemph{geometric fibres}
+	A \defemph{flat family} of curves of genus $g$ is a (faithfully) flat proper morphism $f\colon C\morphism S$ whose \defemph{geometric fibres}
 	\begin{align*}
-		C_{\ov{x}}=C\times_X\Spec\ov{\KK(x)}
+		C_{\ov{s}}=C\times_S\Spec\ov{\KK(s)}
 	\end{align*}
-	are regular connected curves of genus $g$ over the algebraic closure $\ov{\KK(x)}$. If $g=1$ and in addition a section  $s\colon X\morphism C$  of $f$ is given, we call $(f,s)$ an \defemph{elliptic curve} over $X$.
+	are regular connected curves of genus $g$ over the algebraic closure $\ov{\KK(s)}$ for all $s\in S$. If $g=1$ and in addition a section  $\sigma\colon S\morphism C$  of $f$ is given, we call $(f,\sigma)$ an \defemph{elliptic curve} over $S$.
 \end{defi}
-We will typically assume $X$ to be locally noetherian, although Professor Franke says one could generalize the situation to allow arbitrary $X$ if $f$ is of \emph{finite presentation}.
+We will typically assume $S$ to be locally noetherian, although Professor Franke says one could generalize the situation to allow arbitrary $S$ if $f$ is of \emph{finite presentation}.
 \begin{prop}\lbl{prop:RpLl}
-	Let $f\colon C\morphism X$ be a flat family of curves of genus $g$, where $X$ is locally noetherian. Moreover, let $\Ll$ be a line bundle on $C$ whose pullbacks to the geometric fibres of $f$ have degree $d$.
+	Let $f\colon C\morphism S$ be a flat family of curves of genus $g$, where $S$ is locally noetherian. Moreover, let $\Ll$ be a line bundle on $C$ whose pullbacks to the geometric fibres of $f$ have degree $d$.
 	\begin{alphanumerate}
-		\item If $d>2g-2$, then $f_*\Ll$ is a vector bundle of dimension $d+1-g$ on $X$, and $R^1f_*\Ll=0$.
+		\item If $d>2g-2$, then $f_*\Ll$ is a vector bundle of dimension $d+1-g$ on $S$, and $R^1f_*\Ll=0$.
 		\item If $d<0$, then $f_*\Ll$ vanishes, and $R^1f_*\Ll$ is a vector bundle of dimension $g-1-d$.
-		\item If $\Ll=\Oo_C$ (hence $d=0$), then $f^*\colon \Oo_X\morphism f_*\Oo_C$ is an isomorphism and $R^1f_*\Oo_C$ is a vector bundle of dimension $g$.
+		\item If $\Ll=\Oo_C$ (hence $d=0$), then $f^*\colon \Oo_S\morphism f_*\Oo_C$ is an isomorphism and $R^1f_*\Oo_C$ is a vector bundle of dimension $g$.
 	\end{alphanumerate}
 	Moreover, if we take a base change
 	\begin{diagram*}
 		\object{0,0}{$C$}[a];
 		\object{0,1.5}{$\snake{C}$}[b];
-		\object{2,0}{$X$}[c];
-		\object{2,1.5}{$\snake{X}$}[d];
+		\object{2,0}{$S$}[c];
+		\object{2,1.5}{$\snake{S}$}[d];
 		\pullback{1,0.75};
 		\scriptsize
 		\arrow ba[left][$\gamma$];
@@ -1051,94 +1051,94 @@ We will typically assume $X$ to be locally noetherian, although Professor Franke
 	\begin{alphanumerate}
 		\item \lbl{rem:GeometricFibres}First of all, if $\Ff$ is any quasi-coherent $\Oo_C$-module, then
 		\begin{align}\lbl{eq:GeometricFibreIso}
-		H^p\left(C_{\ov{x}},\Ff|_{C_{\ov{x}}}\right)\cong H^p\left(C_x,\Ff|_{C_x}\right)\otimes_{\KK(x)}\ov{\KK(x)}
+		H^p\left(C_{\ov{s}},\Ff|_{C_{\ov{s}}}\right)\cong H^p\left(C_s,\Ff|_{C_s}\right)\otimes_{\KK(s)}\ov{\KK(s)}
 		\end{align}
-		for all $x\in X$. Indeed, $\ov{\KK(x)}/\KK(x)$ is a (pretty lame) flat ring extension, so \eqreff{eq:GeometricFibreIso} follows immediately from \eqreff{eq:tensoredCohomology}.
-		\item Note that the degree of the pullbacks of $\Ll$ to the geometrix fibres of $f$ is locally constant on $X$. Indeed, by Riemann--Roch (in the form of \cite[Theorem~8]{alggeo2}) and \itememph{a} we have
+		for all $s\in S$. Indeed, $\ov{\KK(s)}/\KK(s)$ is a (pretty lame) flat ring extension, so \eqreff{eq:GeometricFibreIso} follows immediately from \eqreff{eq:tensoredCohomology}.
+		\item Note that the degree of the pullbacks of $\Ll$ to the geometric fibres of $f$ is locally constant on $S$. Indeed, by Riemann--Roch (in the form of \cite[Theorem~8]{alggeo2}) and \itememph{a} we have
 		\begin{align*}
-			\deg(\Ll|_{C_{\ov{x}}})=\chi\left(C_{\ov{x}},\Ll|_{C_{\ov{x}}}\right)+g-1=\chi\left(x,\Ll\right)+g-1\;,
+			\deg(\Ll|_{C_{\ov{s}}})=\chi\left(C_{\ov{s}},\Ll|_{C_{\ov{s}}}\right)+g-1=\chi\left(s,\Ll\right)+g-1\;,
 		\end{align*}
-		where $\chi(x,\Ll)$ on the right-hand side is the Euler--Poincaré characteristic from Theorem~\reff{thm:GrauertGrothendieck}\itememph{c}. But $\chi(-,\Ll)$ is locally constant on $X$. So the assumption of Proposition~\reff{prop:RpLl} is not really restrictive at all.
+		where $\chi(s,\Ll)$ on the right-hand side is the Euler--Poincaré characteristic from Theorem~\reff{thm:GrauertGrothendieck}\itememph{c}. But $\chi(-,\Ll)$ is locally constant on $S$. So the assumption of Proposition~\reff{prop:RpLl} is not really restrictive at all.
 	\end{alphanumerate}
 \end{rem}
 \begin{proof}[Proof of Proposition~\reff{prop:RpLl}]
-	Throughout the proof, we may assume $X=\Spec A$ for some noetherian ring $A$ because all assertions are local. Also Theorem~\reff{thm:GrauertGrothendieck} is applicable since $f$ is flat, so every line bundle on $C$ is flat over $\Oo_X$. Let $P^\bullet$ be the complex from Theorem~\reff{thm:GrauertGrothendieck}\itememph{a}, concentrated within minimum and maximum of the set
+	Throughout the proof, we may assume $S=\Spec A$ for some noetherian ring $A$ because all assertions are local. Also Theorem~\reff{thm:GrauertGrothendieck} is applicable since $f$ is flat, so every line bundle on $C$ is flat over $\Oo_S$. Let $P^\bullet$ be the complex from Theorem~\reff{thm:GrauertGrothendieck}\itememph{a}, concentrated within minimum and maximum of the set
 	\begin{align*}
-		S&=\left\{p\in\IN\st H^p\left(C_x,\Ll|_{C_x}\right)\neq 0\text{ for some }x\in X\right\}\\
-		&=\left\{p\in\IN\st H^p\left(C_{\ov{x}},\Ll|_{C_{\ov{x}}}\right)\neq 0\text{ for some }x\in X\right\}
+		D&=\left\{p\in\IN\st H^p\left(C_s,\Ll|_{C_s}\right)\neq 0\text{ for some }s\in S\right\}\\
+		&=\left\{p\in\IN\st H^p\left(C_{\ov{s}},\Ll|_{C_{\ov{s}}}\right)\neq 0\text{ for some }s\in S\right\}
 	\end{align*}
-	(where we use \eqreff{eq:GeometricFibreIso}). Note that $S=\{0\}$ in the case of \itememph{a} and $S=\{1\}$ in the case of \itememph{b}. Indeed, in both cases $S$ is contained in $\{0,1\}$ by Grothendieck's theorem on cohomological dimension (cf.\ \cite[Proposition~1.4.1]{alggeo2}), and then Lemma~\reff{lem:Hpvanishing} determines $S$ (ok, actually it doesn't, but we'll see immediately why $S=\emptyset$ is impossible). Then $P^\bullet$ consists of at most one non-zero term, which defines a vector bundle on $X=\Spec A$. The assertions about dimension follow immediately from Riemann--Roch in the form of \cite[equation~(3.1.3)]{alggeo2}.
+	(where we use \eqreff{eq:GeometricFibreIso}). Note that $D=\{0\}$ in the case of \itememph{a} and $D=\{1\}$ in the case of \itememph{b}. Indeed, in both cases $D$ is contained in $\{0,1\}$ by Grothendieck's theorem on cohomological dimension (cf.\ \cite[Proposition~1.4.1]{alggeo2}), and then Lemma~\reff{lem:Hpvanishing} determines $D$ (ok, actually it doesn't, but we'll see immediately why $D=\emptyset$ is impossible). Then $P^\bullet$ consists of at most one non-zero term, which defines a vector bundle on $S=\Spec A$. The assertions about dimension follow immediately from Riemann--Roch in the form of \cite[equation~(3.1.3)]{alggeo2}.
 	
-	For \itememph{c}, let $U_p\subseteq X$ be as in Theorem~\reff{thm:GrauertGrothendieck}\itememph{d} and \itememph{e}. By Serre duality -- or more precisely, \cite[Theorem~7\itememph{b} and \itememph{c}]{alggeo2} -- we see that
+	For \itememph{c}, let $U_p\subseteq S$ be as in Theorem~\reff{thm:GrauertGrothendieck}\itememph{d} and \itememph{e}. By Serre duality -- or more precisely, \cite[Theorem~7\itememph{b} and \itememph{c}]{alggeo2} -- we see that
 	\begin{align*}
-		H^0\left(C_{\ov{x}},\Oo_{C_{\ov{x}}}\right)\cong \Hom_{\ov{\KK(x)}}\left(H^1\left(C_{\ov{x}},\Omega_{C_{\ov{c}}}\right),\ov{\KK(x)}\right)\cong\ov{\KK(x)}\cong \KK(x)
+		H^0\left(C_{\ov{s}},\Oo_{C_{\ov{s}}}\right)\cong \Hom_{\ov{\KK(s)}}\left(H^1\left(C_{\ov{s}},\Omega_{C_{\ov{c}}}\right),\ov{\KK(s)}\right)\cong\ov{\KK(s)}\cong \KK(s)
 	\end{align*}
-	is a one-dimensional vector space with the constant function $1$ as a basis, and the same holds thus for $H^0(C_x,\Oo_{C_x})$. Therefore, the canonical morphism
+	is a one-dimensional vector space with the constant function $1$ as a basis, and the same holds thus for $H^0(C_s,\Oo_{C_s})$. Therefore, the canonical morphism
 	\begin{align}\lbl{eq:H0OC}
-		H^0(C,\Oo_C)\otimes_A\KK(x)\cong\big(R^0f_*\Oo_C\big)(x)\morphism H^0(C_x,\Oo_{C_x})
+		H^0(C,\Oo_C)\otimes_A\KK(s)\cong\big(R^0f_*\Oo_C\big)(s)\morphism H^0(C_s,\Oo_{C_s})
 	\end{align}
-	is an surjective for all $x\in X$ (because the constant function $1$ is always hit), so $U_0=X$ by Theorem~\reff{thm:GrauertGrothendieck}\itememph{d}. But $U_{-1}=X$ for trivial reasons, hence $f_*\Oo_C$ is a vector bundle by Theorem~\reff{thm:GrauertGrothendieck}\itememph{e}. Moreover, from \eqreff{eq:H0OC} (which is actually an isomorphism, as we now know) we see that $\Oo_C(C)\otimes_A\KK(x)$ is a one-dimensional $\KK(x)$-vector space with $1\otimes 1$ as a basis for all $x\in X$. Using \cite[Lemma~1.5.1]{alg2}, this implies that $f_*\Oo_C$ is generated by $1\in\Oo_C(C)$ as an $\Oo_X$-algebra. But $f_*\Oo_C$ is a vector bundle, so $f^*\colon \Oo_X\morphism f_*\Oo_C$ must be indeed an isomorphism.
+	is an surjective for all $s\in S$ (because the constant function $1$ is always hit), so $U_0=S$ by Theorem~\reff{thm:GrauertGrothendieck}\itememph{d}. But $U_{-1}=S$ for trivial reasons, hence $f_*\Oo_C$ is a vector bundle by Theorem~\reff{thm:GrauertGrothendieck}\itememph{e}. Moreover, from \eqreff{eq:H0OC} (which is actually an isomorphism, as we now know) we see that $\Oo_C(C)\otimes_A\KK(s)$ is a one-dimensional $\KK(s)$-vector space with $1\otimes 1$ as a basis for all $s\in S$. Using \cite[Lemma~1.5.1]{alg2}, this implies that $f_*\Oo_C$ is generated by $1\in\Oo_C(C)$ as an $\Oo_S$-algebra. But $f_*\Oo_C$ is a vector bundle, so $f^*\colon \Oo_S\morphism f_*\Oo_C$ must be indeed an isomorphism.
 	
-	To show the second part of \itememph{c}, note that $H^2(C_x,\Oo_{C_x})=0$ for all $x\in X$ (by Grothendieck's dimension theorem), so $U_2=X$. Then $(R^2f_*\Oo_C)(x)=0$ for all $x\in X$, which proves $R^2f_*\Oo_C=0$ (this uses \cite[Lemma~1.5.1]{alg2} again). In particular, $R^2f_*\Oo_C$ is a vector bundle and Theorem~\reff{thm:GrauertGrothendieck}\itememph{e} gives $U_1=X$. Since $U_0=X$ as well, reversing the argument shows that $R^1f_*\Oo_C$ is a vector bundle too. The fact that it has dimension $g$ can be seen as follows. We have
+	To show the second part of \itememph{c}, note that $H^2(C_s,\Oo_{C_s})=0$ for all $s\in S$ (by Grothendieck's dimension theorem), so $U_2=S$. Then $(R^2f_*\Oo_C)(s)=0$ for all $s\in S$, which proves $R^2f_*\Oo_C=0$ (this uses \cite[Lemma~1.5.1]{alg2} again). In particular, $R^2f_*\Oo_C$ is a vector bundle and Theorem~\reff{thm:GrauertGrothendieck}\itememph{e} gives $U_1=S$. Since $U_0=S$ as well, reversing the argument shows that $R^1f_*\Oo_C$ is a vector bundle too. The fact that it has dimension $g$ can be seen as follows. We have
 	\begin{align*}
-		\dim R^1f_*\Oo_C=\dim_{\KK(x)}(R^1f_*\Oo_C)(x)=\dim_{\ov{\KK(x)}}H^1\left(C_{\ov{x}},\Oo_{C_{\ov{x}}}\right)
+		\dim R^1f_*\Oo_C=\dim_{\KK(s)}(R^1f_*\Oo_C)(s)=\dim_{\ov{\KK(s)}}H^1\left(C_{\ov{s}},\Oo_{C_{\ov{s}}}\right)
 	\end{align*}
 	by \eqreff{eq:GeometricFibreIso} and Theorem~\reff{thm:GrauertGrothendieck}\itememph{d}. Now Serre duality gives
 	\begin{align*}
-		\dim_{\ov{\KK(x)}}H^1\left(C_{\ov{x}},\Oo_{C_{\ov{x}}}\right)=\dim_{\ov{\KK(x)}}H^0\left(C_{\ov{x}},\Omega_{C_{\ov{x}}}\right)=g\;,
+		\dim_{\ov{\KK(s)}}H^1\left(C_{\ov{s}},\Oo_{C_{\ov{s}}}\right)=\dim_{\ov{\KK(s)}}H^0\left(C_{\ov{s}},\Omega_{C_{\ov{s}}}\right)=g\;,
 	\end{align*}
-	in which the right-most equality holds simply by definition (indeed, $g$ is supposed to be the $\ov{\KK(x)}$-dimension of $\Omega_{C_{\ov{x}}}(C_{\ov{x}})\cong H^0(C_{\ov{c}},\Omega_{C_{\ov{x}}})$). This proves \itememph{c}.
+	in which the right-most equality holds simply by definition (indeed, $g$ is supposed to be the $\ov{\KK(s)}$-dimension of $\Omega_{C_{\ov{s}}}(C_{\ov{s}})\cong H^0(C_{\ov{c}},\Omega_{C_{\ov{s}}})$). This proves \itememph{c}.
 	
-	Finally, let's see why the additional base change assertion holds. For \itememph{a} and \itememph{b}, we've seen that $P^\bullet$ has only one non-vanishing term, so the required isomorphism is immediate. However, I wasn't able to find a equally down-to-the-earth argument in the case of \itememph{c}. Instead, consider the special case $X=\Spec A$ and $\snake{X}=\Spec B$ (the assertion is local, so that's fine). Then the base change spectral sequence (cf.\ Proposition~\reff{prop:baseChangeMorphismA})
+	Finally, let's see why the additional base change assertion holds. For \itememph{a} and \itememph{b}, we've seen that $P^\bullet$ has only one non-vanishing term, so the required isomorphism is immediate. However, I wasn't able to find a equally down-to-the-earth argument in the case of \itememph{c}. Instead, consider the special case $S=\Spec A$ and $\snake{S}=\Spec B$ (the assertion is local, so that's fine). Then the base change spectral sequence (cf.\ Proposition~\reff{prop:baseChangeMorphismA})
 	\begin{align*}
 		E_2^{p,q}=\Tor_{-p}^A\big(H^q(C,\Oo_C),B\big)\converge H^{p+q}(\snake{C},\Oo_{\snake{C}})\;.
 	\end{align*}
 	immediately degenerates because we just showed that $f_*\Oo_C$ and $R^1f_*\Oo_C$ are vector bundles (and the higher derived images vanish anyway), so the base change morphism is an isomorphism in this case as well.
 \end{proof}
 \begin{rem}
-	When $g=d=1$ we have a line bundle $\Ll_0=f_*\Ll$ on $X$ with a canonical morphism $f^*\Ll_0=f^*f_*\Ll\morphism\Ll$ as $f^*$ is left-adjoint to $f_*$. It will turn out (in Proposition~\reff{prop:canonicalSection}) there is a unique section $s\colon X\morphism C$ such that said canonical morphism constitutes an isomorphism $f^*\Ll_0\isomorphism\Ii\Ll$, where $\Ii$ is the sheaf of ideals defined by the closed subprescheme $s\colon X\monomorphism C$ of $C$.
+	When $g=d=1$ we have a line bundle $\Ll_0=f_*\Ll$ on $S$ with a canonical morphism $f^*\Ll_0=f^*f_*\Ll\morphism\Ll$ as $f^*$ is left-adjoint to $f_*$. It will turn out (in Proposition~\reff{prop:canonicalSection}) there is a unique section $\sigma\colon S\morphism C$ such that said canonical morphism constitutes an isomorphism $f^*\Ll_0\isomorphism\Ii\Ll$, where $\Ii$ is the sheaf of ideals defined by the closed subprescheme $\sigma\colon S\monomorphism C$ of $C$.
 	
-	Wait \ldots\ why is $s$ a closed embedding? Note that $f$ is proper, hence separated, so any section of it is a closed embedding by \cite[Proposition~1.5.5]{alggeo1}.
+	Wait \ldots\ why is $\sigma$ a closed embedding? Note that $f$ is proper, hence separated, so any section of it is a closed embedding by \cite[Proposition~1.5.5]{alggeo1}.
 \end{rem}
 \begin{lem}\lbl{lem:I(s)LineBundle}
-	Let $f\colon C\morphism X$ be a flat family of curves and let $s\colon X\morphism C$ be a section of $f$. Let $\Ii=\Ii(s)\subseteq \Oo_C$ denote the sheaf of ideals defining the closed subprescheme $s(X)$ of $C$. Then $\Ii$ is a line bundle.
+	Let $f\colon C\morphism S$ be a flat family of curves and let $\sigma\colon S\morphism C$ be a section of $f$. Let $\Ii=\Ii(\sigma)\subseteq \Oo_C$ denote the sheaf of ideals defining the closed subprescheme $\sigma(S)$ of $C$. Then $\Ii$ is a line bundle.
 \end{lem}
 \begin{proof}
-	The assertion is local, hence it is sufficient to prove it near any $c\in C$. When $c\neq s(f(x))$ (in other words, when $c\in C\setminus s(X)$) this is trivial since $\Ii$ then equals $\Oo_C$ in some neighbourhood of $c$. Thus let $c=s(x)$ where $x=f(c)$. We have a short exact sequence
-	\begin{align}\lbl{eq:s(X)closedSES}
-		0\morphism \Ii_c\morphism \Oo_{C,c}\morphism[s^*]\Oo_{X,x}\morphism 0
+	The assertion is local, hence it is sufficient to prove it near any $c\in C$. When $c\neq \sigma(f(c))$ (in other words, when $c\in C\setminus \sigma(S)$) this is trivial since $\Ii$ then equals $\Oo_C$ in some neighbourhood of $c$. Thus let $c=\sigma(s)$ where $s=f(c)$. We have a short exact sequence
+	\begin{align}\lbl{eq:s(S)closedSES}
+		0\morphism \Ii_c\morphism \Oo_{C,c}\morphism[\sigma^*]\Oo_{S,s}\morphism 0
 	\end{align}
-	(because $X\cong s(X)$ is the closed subprescheme cut out by $\Ii$) of $\Oo_{X,x}$-modules. Since $\Oo_{C,c}$ is flat over $\Oo_{X,x}$ by assumption, this already shows that $\Ii_c$ is a flat module over $\Oo_{X,x}$ (with the $\Oo_{X,x}$-action given by $f^*$) via the long exact $\Tor$ sequence. Also we see that $\Oo_{C,c}$ and $\Oo_{X,x}\cong \Oo_{C,c}/\Ii_c$ have the same residue field $k$.
+	(because $S\cong \sigma(S)$ is the closed subprescheme cut out by $\Ii$) of $\Oo_{S,s}$-modules. Since $\Oo_{C,c}$ is flat over $\Oo_{S,s}$ by assumption, this already shows that $\Ii_c$ is a flat module over $\Oo_{S,s}$ (with the $\Oo_{S,s}$-action given by $f^*$) via the long exact $\Tor$ sequence. Also we see that $\Oo_{C,c}$ and $\Oo_{S,s}\cong \Oo_{C,c}/\Ii_c$ have the same residue field $k$.
 	
 	To show local freeness of $\Ii$, we wish to show that $\Tor_1^{\Oo_{C,c}}(k,\Ii_c)=0$. Since the algebraic closure $\ov{k}$ is (as an $\Oo_{C,c}$-module) isomorphic to a direct sum of copies of $k$, we may equivalently show that $\Tor_1^{\Oo_{C,c}}(\ov{k},\Ii_c)=0$. To do so, consider the (homological) spectral sequence
 	\begin{align}\lbl{eq:TorSS1}
-		E_{p,q}^2=\Tor_p^{\Oo_{C_{\ov{x}},c}}\left(\ov{k},\Tor_q^{\Oo_{C,c}}(\Ii_c,\Oo_{C_{\ov{x}},c})\right)\converge\Tor_{p+q}^{\Oo_{C,c}}(\ov{k},\Ii_c)\;,
+		E_{p,q}^2=\Tor_p^{\Oo_{C_{\ov{s}},c}}\left(\ov{k},\Tor_q^{\Oo_{C,c}}(\Ii_c,\Oo_{C_{\ov{s}},c})\right)\converge\Tor_{p+q}^{\Oo_{C,c}}(\ov{k},\Ii_c)\;,
 	\end{align}
-	where $c$ is used to denote the unique preimage of itself in $C_{\ov{x}}$ as well (which makes sense by Lemma~\reff{lem:stalkOfGeometricFibres}).	One obtains \eqreff{eq:TorSS1} as a special case of the general spectral sequence
+	where $c$ is used to denote the unique preimage of itself in $C_{\ov{s}}$ as well (which makes sense by Lemma~\reff{lem:stalkOfGeometricFibres}).	One obtains \eqreff{eq:TorSS1} as a special case of the general spectral sequence
 	\begin{align}\lbl{eq:TorGrothendieckSS}
 		E_{p,q}^2=\Tor_p^B\left(N,\Tor_q^A(M,B)\right)\converge\Tor_{p+q}^A(M,N)\;,
 	\end{align}
 	in which $A$ may be any ring, $B$ an $A$-algebra, $M$ an $A$-module and $N$ a $B$-module. The sequence \eqreff{eq:TorGrothendieckSS} is in turn a special case of the Grothendieck spectral sequence. 
 	
-	Another special case of \eqreff{eq:TorGrothendieckSS} using $A=\Oo_{X,x}$, $B=\Oo_{C,c}$ (which becomes an $A$-module via $f^*$), $M=\ov{k}$, and $N$ arbitrary (for now) is
+	Another special case of \eqreff{eq:TorGrothendieckSS} using $A=\Oo_{S,s}$, $B=\Oo_{C,c}$ (which becomes an $A$-module via $f^*$), $M=\ov{k}$, and $N$ arbitrary (for now) is
 	\begin{align}\lbl{eq:TorSS2}
-		E_{p,q}^2=\Tor_p^{\Oo_{C,c}}\left(N,\Tor_q^{\Oo_{X,x}}(\ov{k},\Oo_{C,c})\right)\converge\Tor_{p+q}^{\Oo_{X,x}}(\ov{k},N)\;.
+		E_{p,q}^2=\Tor_p^{\Oo_{C,c}}\left(N,\Tor_q^{\Oo_{S,s}}(\ov{k},\Oo_{C,c})\right)\converge\Tor_{p+q}^{\Oo_{S,s}}(\ov{k},N)\;.
 	\end{align}
-	But since $\Oo_{C,c}$ is flat over $\Oo_{X,x}$, we have $E_{p,q}^2=0$ unless $q=0$, so \eqreff{eq:TorSS2} collapses to an isomorphism
+	But since $\Oo_{C,c}$ is flat over $\Oo_{S,s}$, we have $E_{p,q}^2=0$ unless $q=0$, so \eqreff{eq:TorSS2} collapses to an isomorphism
 	\begin{align}\lbl{eq:TorSS3}
-	 	\Tor_p^{\Oo_{C,c}}(N,\Oo_{C_{\ov{x}},c})\cong\Tor_p^{\Oo_{C,c}}(N,\Oo_{C,c}\otimes_{\Oo_{X,x}}\ov{k})\cong\Tor_p^{\Oo_{X,x}}(\ov{k},N)
+	 	\Tor_p^{\Oo_{C,c}}(N,\Oo_{C_{\ov{s}},c})\cong\Tor_p^{\Oo_{C,c}}(N,\Oo_{C,c}\otimes_{\Oo_{S,s}}\ov{k})\cong\Tor_p^{\Oo_{S,s}}(\ov{k},N)
 	\end{align}
-	(the isomorphism on the left-hand side is due to Lemma~\reff{lem:stalkOfGeometricFibres}). Plugging in $N=\Ii_c$, which is a flat $\Oo_{X,x}$-module, we obtain $\Tor_p^{\Oo_{C,c}}(N,\Oo_{C_{\ov{x}},c})=0$ when $p\neq 0$. Thus \eqreff{eq:TorSS1} immediately degenerates to an isomorphism
+	(the isomorphism on the left-hand side is due to Lemma~\reff{lem:stalkOfGeometricFibres}). Plugging in $N=\Ii_c$, which is a flat $\Oo_{S,s}$-module, we obtain $\Tor_p^{\Oo_{C,c}}(N,\Oo_{C_{\ov{s}},c})=0$ when $p\neq 0$. Thus \eqreff{eq:TorSS1} immediately degenerates to an isomorphism
 	\begin{align*}
-		\Tor_p^{\Oo_{C_{\ov{x}},c}}(\ov{k},\Ii_c\otimes_{\Oo_{C,c}}\Oo_{C_{\ov{x}},c})\cong\Tor_p^{\Oo_{C,c}}(\ov{k},\Ii_c)\;.
+		\Tor_p^{\Oo_{C_{\ov{s}},c}}(\ov{k},\Ii_c\otimes_{\Oo_{C,c}}\Oo_{C_{\ov{s}},c})\cong\Tor_p^{\Oo_{C,c}}(\ov{k},\Ii_c)\;.
 	\end{align*}
-	Applying \eqreff{eq:TorSS3} to $N=\Ii_c$ and $p=0$ gives $\Ii_c\otimes_{\Oo_{C,c}}\Oo_{C_{\ov{x}},c}\cong \Ii_c\otimes_{\Oo_{X,x}}\ov{k}$. Since $\Ii_c$ is flat over $\Oo_{X,x}$, \eqreff{eq:s(X)closedSES} gives an exact sequence
+	Applying \eqreff{eq:TorSS3} to $N=\Ii_c$ and $p=0$ gives $\Ii_c\otimes_{\Oo_{C,c}}\Oo_{C_{\ov{s}},c}\cong \Ii_c\otimes_{\Oo_{S,s}}\ov{k}$. Since $\Ii_c$ is flat over $\Oo_{S,s}$, \eqreff{eq:s(S)closedSES} gives an exact sequence
 	\begin{align*}
-		0=\Tor_1^{\Oo_{X,x}}(\ov{k},\Ii_c)\morphism \Ii_c\otimes_{\Oo_{X,x}}\ov{k}\morphism\Oo_{C,c}\otimes_{\Oo_{X,x}}\ov{k}=\Oo_{C_{\ov{x}},c}\;,
+		0=\Tor_1^{\Oo_{S,s}}(\ov{k},\Ii_c)\morphism \Ii_c\otimes_{\Oo_{S,s}}\ov{k}\morphism\Oo_{C,c}\otimes_{\Oo_{S,s}}\ov{k}=\Oo_{C_{\ov{s}},c}\;,
 	\end{align*}
-	hence $\Ii_c\otimes_{\Oo_{X,x}}\ov{k}$ is isomorphic to some ideal of $\Oo_{C_{\ov{x}},c}$. But the latter is a DVR (because we assume our fibres to be regular curves), so all ideals are projective, which finally shows $\Tor_p^{\Oo_{C,c}}(\ov{k},\Ii_c)=0$, so $\Tor_p^{\Oo_{C,c}}(k,\Ii_c)=0$. Therefore, $\Ii_c$ is a free $\Oo_{C,c}$-module by \cite[Proposition~1.3.1]{homalg}, which shows that $\Ii$ is locally free near $c$ (for which we need noetherianness of $C$ to have something like \cite[Corollary~1.5.1]{alg2} available).
+	hence $\Ii_c\otimes_{\Oo_{S,s}}\ov{k}$ is isomorphic to some ideal of $\Oo_{C_{\ov{s}},c}$. But the latter is a DVR (because we assume our fibres to be regular curves), so all ideals are projective, which finally shows $\Tor_p^{\Oo_{C,c}}(\ov{k},\Ii_c)=0$, so $\Tor_p^{\Oo_{C,c}}(k,\Ii_c)=0$. Therefore, $\Ii_c$ is a free $\Oo_{C,c}$-module by \cite[Proposition~1.3.1]{homalg}, which shows that $\Ii$ is locally free near $c$ (for which we need noetherianness of $C$ to have something like \cite[Corollary~1.5.1]{alg2} available).
 	
-	It remains to show that $\rank_{\Oo_C} \Ii=1$. If $c\notin s(X)$, then $\Ii_c=\Oo_{C,c}$, so $\rank_{\Oo_{C,c}}\Ii_c=1$ is trivial. If $c\in s(X)$ and $\Ii_c\cong \Oo_{C,c}^n$ for some $n\geq 0$, then $\Ii_c\otimes_{\Oo_{C,c}}\Oo_{C_{\ov{x}},c}\cong \Oo_{C_{\ov{x}},c}^n$. But we've seen above that this is isomorphic to some ideal in the DVR $\Oo_{C_{\ov{x}},c}$, hence $n=1$.
+	It remains to show that $\rank_{\Oo_C} \Ii=1$. If $c\notin \sigma(S)$, then $\Ii_c=\Oo_{C,c}$, so $\rank_{\Oo_{C,c}}\Ii_c=1$ is trivial. If $c\in s(S)$ and $\Ii_c\cong \Oo_{C,c}^{\oplus n}$ for some $n\geq 0$, then $\Ii_c\otimes_{\Oo_{C,c}}\Oo_{C_{\ov{s}},c}\cong \Oo_{C_{\ov{s}},c}^{\oplus n}$. But we've seen above that this is isomorphic to some ideal in the DVR $\Oo_{C_{\ov{s}},c}$, hence $n=1$.
 \end{proof}
 \begin{rem}
 	As was already mentioned, equation \eqreff{eq:TorSS2} is a special case of the \emph{Grothendieck spectral sequence}
@@ -1148,102 +1148,101 @@ We will typically assume $X$ to be locally noetherian, although Professor Franke
 	This requires $F\colon \cat A\morphism \cat B$ and $G\colon \cat B\morphism\cat C$ to be right-exact functors between abelian categories, of which $\cat A$ and $\cat B$ have enough projectives (for the left-derived functors to exist) and $F$ takes projective objects in $\cat A$ to $G$-acyclic objects in $\cat B$; $X$ may be any object of $\cat A$.
 \end{rem}
 \begin{rem}
-	If the geometric fibres $C_{\ov{x}}$ are regular curves, then so are the ordinary fibres $C_x$ (Franke didn't prove this in the lecture, but we do in Proposition~\reff{prop:GeometricFibres101}). In the proof of Lemma~\reff{lem:I(s)LineBundle} we could have worked with $C_x$ instead of $C_{\ov{x}}$ as well, so the assertion still holds if $f\colon C\morphism X$ is only assumed flat with one-dimensional regular fibres.
+	If the geometric fibres $C_{\ov{s}}$ are regular curves, then so are the ordinary fibres $C_s$ (Franke didn't prove this in the lecture, but we do in Proposition~\reff{prop:GeometricFibres101}). In the proof of Lemma~\reff{lem:I(s)LineBundle} we could have worked with $C_s$ instead of $C_{\ov{s}}$ as well, so the assertion still holds if $f\colon C\morphism S$ is only assumed flat with one-dimensional regular fibres.
 \end{rem}
 \begin{lem}\lbl{lem:I(s)degree-1}
-	The ideal $\Ii=\Ii(s)$ in Lemma~\reff{lem:I(s)LineBundle} has automatically (geometric and ordinary) fibre-wise degree $1$, that is, its pullbacks to the geometric and ordinary fibres have degree $-1$.
+	The ideal $\Ii=\Ii(\sigma)$ in Lemma~\reff{lem:I(s)LineBundle} has automatically (geometric and ordinary) fibre-wise degree $1$, that is, its pullbacks to the geometric and ordinary fibres have degree $-1$.
 \end{lem}
 \begin{proof}
-	Indeed, let $i_x\colon C_x\morphism C$ and $i_{\ov{x}}\colon C_{\ov{x}}\morphism C$ be the inclusion of the fibres. If $D=s(X)$ is the closed subprescheme cut out by $\Ii$, then $D\cap C_x=\{s(x)\}$ has precisely one point for all $x\in X$. Put $d=s(x)$ and $k=\KK(x)$. Since $\Ii=\Oo_C$ outside $D$, it follows that $\Ii_c\otimes_{\Oo_{X,x}}k\cong \Oo_{C_x,c}$ for all $c\neq d$. Moreover, $\Ii_d\otimes_{\Oo_{X,x}}k$ is a maximal ideal of $\Oo_{C_x,d}\cong \Oo_{C,c}\otimes_{\Oo_{X,x}}k$ since
+	Indeed, let $i_s\colon C_s\morphism C$ and $i_{\ov{s}}\colon C_{\ov{s}}\morphism C$ be the inclusion of the fibres. If $D=\sigma(S)$ is the closed subprescheme cut out by $\Ii$, then $D\cap C_s=\{\sigma(s)\}$ has precisely one point for all $s\in S$. Put $d=\sigma(s)$ and $k=\KK(s)$. Since $\Ii=\Oo_C$ outside $D$, it follows that $\Ii_c\otimes_{\Oo_{S,s}}k\cong \Oo_{C_s,c}$ for all $c\neq d$. Moreover, $\Ii_d\otimes_{\Oo_{S,s}}k$ is a maximal ideal of $\Oo_{C_s,d}\cong \Oo_{C,c}\otimes_{\Oo_{S,s}}k$ since
 	\begin{align*}
-		(\Oo_{C,d}\otimes_{\Oo_{X,x}}k)/(\Ii_d\otimes_{\Oo_{X,x}}k)\cong (\Oo_{C,d}/\Ii_d)\otimes_{\Oo_{X,x}}k\cong \Oo_{X,x}\otimes_{\Oo_{X,x}}k\cong k\;.
+		(\Oo_{C,d}\otimes_{\Oo_{S,s}}k)/(\Ii_d\otimes_{\Oo_{S,s}}k)\cong (\Oo_{C,d}/\Ii_d)\otimes_{\Oo_{S,s}}k\cong \Oo_{S,s}\otimes_{\Oo_{S,s}}k\cong k\;.
 	\end{align*}
-	Thus $v_c(i_x^*\Ii)=0$ if $c\neq d$ and $v_d(i_x^*\Ii)=1$, which means that $i_x^*\Ii$ has degree $-1$.
+	Thus $v_c(i_s^*\Ii)=0$ if $c\neq d$ and $v_d(i_s^*\Ii)=1$, which means that $i_s^*\Ii$ has degree $-1$.
 	
-	For the geometric fibre, we can use the exact same argument since $C_{\ov{x}}$ has a unique point over $d$ (which we denote $d$ too, as before) by Lemma~\reff{lem:stalkOfGeometricFibres}, and $\Ii_d\otimes_{\Oo_{C,d}}\Oo_{C_{\ov{x}},d}\cong \Ii_d\otimes_{\Oo_{X,x}}\ov{k}$ is a maximal ideal of $\Oo_{C_{\ov{x}},d}\cong \Oo_{C,d}\otimes_{\Oo_{X,x}}\ov{k}$ by the same reason as above, the only difference being that the quotient is $\ov{k}$ instead of $k$ this time.
+	For the geometric fibre, we can use the exact same argument since $C_{\ov{s}}$ has a unique point over $d$ (which we denote $d$ too, as before) by Lemma~\reff{lem:stalkOfGeometricFibres}, and $\Ii_d\otimes_{\Oo_{C,d}}\Oo_{C_{\ov{s}},d}\cong \Ii_d\otimes_{\Oo_{S,s}}\ov{k}$ is a maximal ideal of $\Oo_{C_{\ov{s}},d}\cong \Oo_{C,d}\otimes_{\Oo_{S,s}}\ov{k}$ by the same reason as above, the only difference being that the quotient is $\ov{k}$ instead of $k$ this time.
 \end{proof}
 \begin{defi}\lbl{def:OC(s)}
-	In the situation where $s\colon X\monomorphism C$ defines a an invertible sheaf of ideals $\Ii(s)$, we put $\Oo_C(s)=\Ii(s)^{-1}$.
+	In the situation where $\sigma\colon S\monomorphism C$ defines a an invertible sheaf of ideals $\Ii(\sigma)$, we put $\Oo_C(\sigma)=\Ii(\sigma)^{-1}$.
 \end{defi}
 \begin{rem}
-	We will generalize this to $\Oo_C(D)$, where $D\subseteq C$ is finite and flat over $X$. The letter $D$ is purposely chosen: You should think of $D$ as an \emph{effective relative Cartier divisors}. Professor Franke suggests to read the first chapter of Katz/Mazur, \emph{Arithmetic Moduli of Elliptic Curves} \cite{katzmazur} -- in particular, the definition of effective relative Cartier divisors and the group structure on elliptic curves (which we are going to sketch now) are explained there.
+	We will generalize this to $\Oo_C(D)$, where $D\subseteq C$ is finite and flat over $S$. The letter $D$ is purposely chosen: You should think of $D$ as an \emph{effective relative Cartier divisors}. Professor Franke suggests to read the first chapter of Katz/Mazur, \emph{Arithmetic Moduli of Elliptic Curves} \cite{katzmazur} -- in particular, the definition of effective relative Cartier divisors and the group structure on elliptic curves (which we are going to sketch now) are explained there.
 \end{rem}
 \begin{prop}\lbl{prop:canonicalSection}
-	Let $f\colon C\morphism X$ (with $X$ locally noetherian) be a flat family of curves of genus $g=1$ and $\Ll$ a line bundle of geometric fibre-wise degree $1$ on $C$. Then $\Ll_0=f_*\Ll$ is a line bundle on $X$, and there is a unique section $s\colon X\morphism C$ of $f$ such that the canonical morphism $f^*\Ll_0=f^*f_*\Ll\morphism\Ll$ (corresponding to $\id_{f_*\Ll}$ under the $f^*$-$f_*$ adjunction) is a monomorphism with image $\Ii(s)\Ll$. In particular, we have a canonical isomorphism
+	Let $f\colon C\morphism S$ (with $S$ locally noetherian) be a flat family of curves of genus $g=1$ and $\Ll$ a line bundle of geometric fibre-wise degree $1$ on $C$. Then $\Ll_0=f_*\Ll$ is a line bundle on $S$, and there is a unique section $\sigma\colon S\morphism C$ of $f$ such that the canonical morphism $f^*\Ll_0=f^*f_*\Ll\morphism\Ll$ (corresponding to $\id_{f_*\Ll}$ under the $f^*$-$f_*$ adjunction) is a monomorphism with image $\Ii(\sigma)\Ll$. In particular, we have a canonical isomorphism
 	\begin{align*}
-		f^*\Ll_0\otimes_{\Oo_C}\Oo_C(s)\isomorphism\Ll\;,
+		f^*\Ll_0\otimes_{\Oo_C}\Oo_C(\sigma)\isomorphism\Ll\;,
 	\end{align*}
-	using that $\Ii(s)\otimes_{\Oo_C}\Oo_C(s)\cong \Oo_C$ by Definition~\reff{def:OC(s)}.
+	using that $\Ii(\sigma)\otimes_{\Oo_C}\Oo_C(\sigma)\cong \Oo_C$ by Definition~\reff{def:OC(s)}.
 \end{prop}
 \begin{proof}
-	The assertion is local\footnote{\textbf{Attention!} This is not a priori obvious, but can be seen as follows: By the uniqueness assertion we see that local sections of $f$ with the required property glue well to a section $s$ defined on all of $X$ (and $s$ is automatically unique). Also the isomorphism $f^*\Ll_0\otimes_{\Oo_C}\Oo_C(s)\cong\Ll$ is going to be canonical, hence gluing shouldn't be a problem.} with respect to $X$, hence we may assume that $X=\Spec A$ is affine. Also the claim that $\Mm=f_*\Ll$ is a line bundle is just Proposition~\reff{prop:RpLl}\itememph{a}, so without losing generality $\Mm$ is trivial with $\lambda\in\Mm(X)$ a free generator. Then $\lambda$ is also an element of $f_*\Mm(X)=\Ll(C)$ and it's easy to check that $f^*f_*\Ll$ is isomorphic to the subbundle of $\Ll$ generated by $\lambda$. Let $i\colon D\monomorphism C$ be the closed subscheme defined by the vanishing set of $\lambda$, or in other words, by the short exact sequence
+	The assertion is local\footnote{\textbf{Attention!} This is not a priori obvious, but can be seen as follows: By the uniqueness assertion we see that local sections of $f$ with the required property glue well to a section $\sigma$ defined on all of $S$ (and $\sigma$ is automatically unique). Also the isomorphism $f^*\Ll_0\otimes_{\Oo_C}\Oo_C(\sigma)\cong\Ll$ is going to be canonical, hence gluing shouldn't be a problem.} with respect to $S$, hence we may assume that $S=\Spec A$ is affine. Also the claim that $\Ll_0=f_*\Ll$ is a line bundle is just Proposition~\reff{prop:RpLl}\itememph{a}, so without losing generality $\Ll_0$ is trivial with $\lambda\in\Ll_0(S)$ a free generator. Then $\lambda$ is also an element of $f_*\Ll_0(S)=\Ll(C)$ and it's easy to check that $f^*f_*\Ll$ is isomorphic to the subbundle of $\Ll$ generated by $\lambda$. Let $i\colon D\monomorphism C$ be the closed subscheme defined by the vanishing set of $\lambda$, or in other words, by the short exact sequence
 	\begin{align}\lbl{eq:SESforD}
 		0\morphism\Ll^{-1}\xrightarrow{\lambda\otimes-}\Oo_C\morphism i_*\Oo_D\morphism 0\;.
 	\end{align}
-	\begin{claim}\lbl{claim:DcongX}
-		The composition $g=fi\colon D\morphism X$ is an isomorphism.
+	\begin{claim}\lbl{claim:DcongS}
+		The composition $g=fi\colon D\morphism S$ is an isomorphism.
 	\end{claim}
-	Believing this for the moment, the proof can be finished as follows. Note that \eqreff{eq:SESforD} induces an isomorphism $\Ll^{-1}\isomorphism\Jj$ onto some quasi-coherent sheaf of ideals $\Jj\subseteq \Oo_C$. One readily checks that $\Jj$ is the uniquely defined ideal such that $\Jj\Ll$ is the subbundle generated by $\lambda$, i.e.\ the image of $f^*f_*\Ll$. So $s$ -- if it exists -- necessarily identifies $X$ with $D$ via the composition $g=fi$. This settles the uniqueness part, but also existence is immediate: Since we know that $g$ is an isomorphism, we \emph{actually can} choose $s=ig^{-1}\colon X\isomorphism D\monomorphism C$, which gives $\Ii(s)=\Jj$ whence we're be done.
+	Believing this for the moment, the proof can be finished as follows. Note that \eqreff{eq:SESforD} induces an isomorphism $\Ll^{-1}\isomorphism\Jj$ onto some quasi-coherent sheaf of ideals $\Jj\subseteq \Oo_C$. One readily checks that $\Jj$ is the uniquely defined ideal such that $\Jj\Ll$ is the subbundle generated by $\lambda$, i.e.\ the image of $f^*f_*\Ll$. So $\sigma$ -- if it exists -- necessarily identifies $S$ with $D$ via the composition $g=fi$. This settles the uniqueness part, but also existence is immediate: Since we know that $g$ is an isomorphism, we \emph{actually can} choose $\sigma=ig^{-1}\colon S\isomorphism D\monomorphism C$, which gives $\Ii(\sigma)=\Jj$ whence we're be done.
 	
 	To show that $g$ is an isomorphism, first apply the long exact cohomology sequence for $R^\bullet f_*$ to \eqreff{eq:SESforD} to obtain a six-term exact sequence
 	\begin{align}\lbl{eq:sixtermRpSequence}
 		0\morphism f_*\Ll^{-1}\morphism f_*\Oo_C\morphism f_*i_*\Oo_D\morphism R^1f_*\Ll^{-1}\morphism R^1f_*\Oo_C\morphism R^1f_*(i_*\Oo_D)\morphism 0\;.
 	\end{align}
-	The $0$ on the right end comes from the fact that $R^2f_*\Ll^{-1}=0$ (we've seen this for $\Ll^{-1}=\Oo_C$ in the proof of Proposition~\reff{prop:RpLl}\itememph{c}; it's just the same for arbitary $\Ll^{-1}$). Also note that $f_*\Ll^{-1}=0$ and $f_*\Oo_C\cong\Oo_X$ by Proposition~\reff{prop:RpLl}\itememph{b} and \itememph{c}.
+	The $0$ on the right end comes from the fact that $R^2f_*\Ll^{-1}=0$ (we've seen this for $\Ll^{-1}=\Oo_C$ in the proof of Proposition~\reff{prop:RpLl}\itememph{c}; it's just the same for arbitary $\Ll^{-1}$). Also note that $f_*\Ll^{-1}=0$ and $f_*\Oo_C\cong\Oo_S$ by Proposition~\reff{prop:RpLl}\itememph{b} and \itememph{c}.
 	\begin{claim}\lbl{claim:DCxfiniteIntersection}
-		For every $x\in X$, the intersection $D\cap C_x=g^{-1}\{x\}$ is finite.
+		For every $s\in S$, the intersection $D\cap C_s=g^{-1}\{s\}$ is finite.
 	\end{claim}
-	To prove Claim~\reff{claim:DCxfiniteIntersection}, we first remark that $\Ll|_{C_x}(C_x)$ is a one-dimensional $\KK(x)$-vector space. To show this, it suffices to prove the same for $H^0(C_{\ov{x}},\Ll|_{C_{\ov{x}}})$ by Remark~\reff{rem:GeometricFibres}\itememph{A}. If we could show $H^1(C_{\ov{x}},\Ll|_{C_{\ov{x}}})=0$, then the required one-dimensionality follows from $\deg(\Ll|_{C_{\ov{x}}})=1$ and Riemann--Roch. 
+	To prove Claim~\reff{claim:DCxfiniteIntersection}, we first remark that $\Ll|_{C_s}(C_s)$ is a one-dimensional $\KK(s)$-vector space. To show this, it suffices to prove the same for $H^0(C_{\ov{s}},\Ll|_{C_{\ov{s}}})$ by Remark~\reff{rem:GeometricFibres}\itememph{A}. If we could show $H^1(C_{\ov{s}},\Ll|_{C_{\ov{s}}})=0$, then the required one-dimensionality follows from $\deg(\Ll|_{C_{\ov{s}}})=1$ and Riemann--Roch. 
 	
-	To see the vanishing of the $1\ordinalst$ cohomology of $\Ll|_{C_{\ov{x}}}$, we use that $H^2(C_{\ov{x}},\Ll|_{C_{\ov{x}}})=0$ for all $x\in X$ by Grothendieck's dimension theorem. Hence $U_2=X$ in Theorem~\reff{thm:GrauertGrothendieck}\itememph{d}. Then Theorem~\reff{thm:GrauertGrothendieck}\itememph{e} shows $U_1=X$ as well, since $R^1f_*\Ll=0$ is a vector bundle by Proposition~\reff{prop:RpLl}\itememph{a}. But then $0=(R^1f_*\Ll^{-1})(x)\cong H^1(C_x,\Ll|_{C_x})$ for all $x\in X$. Together with Remark~\reff{rem:GeometricFibres}\itememph{a} this shows $H^1(C_{\ov{x}},\Ll|_{C_{\ov{x}}})=0$, as required.
+	To see the vanishing of the $1\ordinalst$ cohomology of $\Ll|_{C_{\ov{s}}}$, we use that $H^2(C_{\ov{s}},\Ll|_{C_{\ov{s}}})=0$ for all $s\in S$ by Grothendieck's dimension theorem. Hence $U_2=S$ in Theorem~\reff{thm:GrauertGrothendieck}\itememph{d}. Then Theorem~\reff{thm:GrauertGrothendieck}\itememph{e} shows $U_1=S$ as well, since $R^1f_*\Ll=0$ is a vector bundle by Proposition~\reff{prop:RpLl}\itememph{a}. But then $0=(R^1f_*\Ll^{-1})(s)\cong H^1(C_s,\Ll|_{C_s})$ for all $s\in S$. Together with Remark~\reff{rem:GeometricFibres}\itememph{a} this shows $H^1(C_{\ov{s}},\Ll|_{C_{\ov{s}}})=0$, as required.
 	
-	Now $\lambda|_{C_x}$ is a generator of the one-dimensional $\KK(x)$-vector space $\Ll|_{C_x}(C_x)$ by the base change assertion from Proposition~\reff{prop:RpLl}. In particular, $\lambda|_{C_x}\neq 0$. Since $C_x$ is a regular connected curve by Corollary~\reff{cor:FibresAreCurvesToo}, thus reduced, irreducible, and one-dimensional, this shows that $D\cap C_x\subsetneq C_x$ must be zero-dimensional. Then it is already finite. Indeed, $D\cap C_x$ is quasi-compact (as a closed subscheme of the irreducible $C_x$), hence can be covered by finitely many $U_i=\Spec R_i$ where $R_i$ is some zero-dimensional noetherian ring. But such a ring has finitely many prime ideals, as follows e.g.\ from Step~2 in the proof of \cite[Proposition~3.1.1]{alg2}. This settles Claim~\reff{claim:DCxfiniteIntersection}.
+	Now $\lambda|_{C_s}$ is a generator of the one-dimensional $\KK(s)$-vector space $\Ll|_{C_s}(C_s)$ by the base change assertion from Proposition~\reff{prop:RpLl}. In particular, $\lambda|_{C_s}\neq 0$. Since $C_s$ is a regular connected curve by Corollary~\reff{cor:FibresAreCurvesToo}, thus reduced, irreducible, and one-dimensional, this shows that $D\cap C_s\subsetneq C_s$ must be zero-dimensional. Then it is already finite. Indeed, $D\cap C_s$ is quasi-compact (as a closed subscheme of the irreducible $C_s$), hence can be covered by finitely many $U_i=\Spec R_i$ where $R_i$ is some zero-dimensional noetherian ring. But such a ring has finitely many prime ideals, as follows e.g.\ from Step~2 in the proof of \cite[Proposition~3.1.1]{alg2}. This settles Claim~\reff{claim:DCxfiniteIntersection}.
 	
 	In particular, we see that $g$ is quasi-finite. It is also proper because $g=fi$, wherein $f$ is proper and $i$ a closed embedding, hence $g$ is even finite by Theorem~\reff{thm:ZariskiMain}\itememph{a}. As $i$ is affine, being a closed embedding, we see that $R^1q_*\Oo_D\cong R^1f_*(i_*\Oo_D)$ (this follows e.g.\ from Leray's spectral sequence $R^pf_*R^qi_*\Oo_D\converge R^{p+q}(fi)_*\Oo_D$, which degenerates as $R^qi_*\Oo_D=0$, $i$ being affine). But $q$ is affine as well, so $R^1f_*(i_*\Oo_D)=0$. Thus \eqreff{eq:sixtermRpSequence} reduces to 
 	\begin{align}
-		0\morphism \Oo_X\morphism q_*\Oo_D\morphism R^1f_*\Ll^{-1}\morphism R^1f_*\Oo_C\morphism 0\;.
+		0\morphism \Oo_S\morphism q_*\Oo_D\morphism R^1f_*\Ll^{-1}\morphism R^1f_*\Oo_C\morphism 0\;.
 	\end{align}
-	By Proposition~\reff{prop:RpLl}\itememph{b} and \itememph{c}, we see that $R^1f_*\Ll^{-1}$ and $R^1f_*\Oo_C$ are line bundles. But every epimorphism of line bundles must be an isomorphism (which is easily checked affine-locally), so $\Oo_X\morphism q_*\Oo_D$ is an isomorphism of $\Oo_X$-modules. But then it is an isomorphism of $\Oo_X$-algebras. Using that $q$ is affine, we thus obtain $D\cong \SPEC (q_*\Oo_D)\cong \SPEC\Oo_X\cong X$. This shows Claim~\reff{claim:DcongX} and we're done.
+	By Proposition~\reff{prop:RpLl}\itememph{b} and \itememph{c}, we see that $R^1f_*\Ll^{-1}$ and $R^1f_*\Oo_C$ are line bundles. But every epimorphism of line bundles must be an isomorphism (which is easily checked affine-locally), so $\Oo_S\morphism q_*\Oo_D$ is an isomorphism of $\Oo_S$-modules. But then it is an isomorphism of $\Oo_S$-algebras. Using that $q$ is affine, we thus obtain $D\cong \SPEC (q_*\Oo_D)\cong \SPEC\Oo_S\cong S$. This shows Claim~\reff{claim:DcongS} and we're done.
 \end{proof}
 \begin{rem}
-	Note that despite Proposition~\reff{prop:canonicalSection}, a flat family $f\colon C\morphism X$ of genus $1$ curves may fail to have a section (think of an elliptic curve without a rational point over $\IQ$). An elliptic curve $E$ over $X$ may always be obtained from $C$, but there may be several non-isomorphic $C$ giving the same $E$. When $X=\Spec K$ where $K/\IQ$ is a number field, then all these $C$ are isomorphic over $\ov{\IQ}$ and their isomorphism classes (over $K$) form a group, the \defemph{Tate--Shafarevich group} $\Sha(E/K)$.
+	Note that despite Proposition~\reff{prop:canonicalSection}, a flat family $f\colon C\morphism S$ of genus $1$ curves may fail to have a section (think of an elliptic curve without a rational point over $\IQ$). An elliptic curve $E$ over $S$ may always be obtained from $C$, but there may be several non-isomorphic $C$ giving the same $E$. When $S=\Spec K$ where $K/\IQ$ is a number field, then all these $C$ are isomorphic over $\ov{\IQ}$ and their isomorphism classes (over $K$) form a group, the \defemph{Tate--Shafarevich group} $\Sha(E/K)$.
 \end{rem}
-\begin{rem}
-	Let $f\colon E\morphism X$ with a section $e\colon X\morphism E$ be an elliptic curve over $X$. Then Proposition~\reff{prop:canonicalSection} may be used to obtain a bijection
+	Let $f\colon E\morphism S$ with a section $e\colon S\morphism E$ be an elliptic curve over $S$. Then Proposition~\reff{prop:canonicalSection} may be used to obtain a bijection
 	\begin{align*}
-		\Pic^{(0)}(E/X)\coloneqq\left\{\begin{tabular}{c}
+		\Pic^0(E/S)\coloneqq\left\{\begin{tabular}{c}
 			isomorphism classes of line bundles\\
 			$\Ll$ over $E$ of geometric fibre-wise de-\\
-			gree 0 with a trivialization $e^*\Ll\cong\Oo_X$
-		\end{tabular}\right\}\isomorphism\left\{\text{sections }s\colon X\to E\text{ of }f\right\}\;.
+			gree 0 with a trivialization $e^*\Ll\cong\Oo_S$
+		\end{tabular}\right\}\isomorphism\left\{\text{sections }\sigma\colon S\to E\text{ of }f\right\}\;.
 	\end{align*}
-	Note that \cite[pp.~63--67]{katzmazur} define $\Pic^{(0)}(E/X)$ as the quotient of the group $\Pic^{(0)}(E)$ of line bundles with geometric fibre-wise degree $0$ by the subgroup of line bundles of the form $f^*\Ll_0$ where $\Ll_0$ is a line bundle on $X$. These definitions are equivalent by sending $\Ll\mapsto \Ll\otimes_{\Oo_E}f^*\big((e^*\Ll)^{-1}\big)$. We'll work with the Katz/Mazur definition, since this is somewhat easier.
+	Note that \cite[pp.~63--67]{katzmazur} define $\Pic^0(E/S)$ as the quotient of the group $\Pic^0(E)$ of line bundles with geometric fibre-wise degree $0$ by the subgroup of line bundles of the form $f^*\Ll_0$ where $\Ll_0$ is a line bundle on $S$. These definitions are equivalent by sending $\Ll\mapsto \Ll\otimes_{\Oo_E}f^*\big((e^*\Ll)^{-1}\big)$. We'll work with the Katz/Mazur definition, since this is somewhat easier.
 	
-	The map $\Pic^{(0)}(E/X)\morphism\{\text{sections }s\text{ of }f\}$ sends $\Ll$ to the canonical section $s$ associated to $\Ll\otimes_{\Oo_E}\Oo_E(e)$ by Proposition~\reff{prop:canonicalSection} (note that this makes sense because $\Ll$ has fibre-wise degree $0$ and $\Ii(e)$ has fibre-wise degree $-1$ by Lemma~\reff{lem:I(s)degree-1}, hence $\Ll\otimes_{\Oo_E}\Oo_E(e)$ has fibre-wise degree $1$). The inverse map sends a section $s$ to $\Ii(e)\otimes_{\Oo_E}\Oo_E(s)$.
+	The map $\Pic^0(E/S)\morphism\{\text{sections }\sigma\text{ of }f\}$ sends $\Ll$ to the canonical section $\sigma$ associated to $\Ll\otimes_{\Oo_E}\Oo_E(e)$ by Proposition~\reff{prop:canonicalSection} (note that this makes sense because $\Ll$ has fibre-wise degree $0$ and $\Ii(e)$ has fibre-wise degree $-1$ by Lemma~\reff{lem:I(s)degree-1}, hence $\Ll\otimes_{\Oo_E}\Oo_E(e)$ has fibre-wise degree $1$). The inverse map sends a section $\sigma$ to $\Ii(e)\otimes_{\Oo_E}\Oo_E(\sigma)$.
 	
-	To show that these guys are indeed inverse, let $\Ll\in\Pic^{(0)}(E/X)$ and $s$ the section of $p$ associated to $\Ll\otimes_{\Oo_E}\Oo_E(e)$. By Proposition~\reff{prop:canonicalSection}, we have
+	To show that these guys are indeed inverse, let $\Ll\in\Pic^0(E/S)$ and $\sigma$ the section of $p$ associated to $\Ll\otimes_{\Oo_E}\Oo_E(e)$. By Proposition~\reff{prop:canonicalSection}, we have
 	\begin{align*}
-		f^*f_*\left(\Ll\otimes_{\Oo_E}\Oo_E(e)\right)\otimes_{\Oo_E}\Oo_E(s)\cong\Ll\otimes_{\Oo_E}\Oo_E(e)\;.
+		f^*f_*\left(\Ll\otimes_{\Oo_E}\Oo_E(e)\right)\otimes_{\Oo_E}\Oo_E(\sigma)\cong\Ll\otimes_{\Oo_E}\Oo_E(e)\;.
 	\end{align*}
-	But $f^*f_*\left(\Ll\otimes_{\Oo_E}\Oo_E(e)\right)$ vanishes in $\Pic^{(0)}(E/X)$ (by definition), so $\Ll=\Ii(e)\otimes_{\Oo_E}\Oo_E(s)$ in $\Pic^{(0)}(E/X)$. This shows that the composition $\Pic^{(0)}(E/X)\morphism\{\text{sections }s\text{ of }p\}\morphism\Pic^{(0)}(E/X)$ is the identity. The other direction can be shown in quite the same way.
+	But $f^*f_*\left(\Ll\otimes_{\Oo_E}\Oo_E(e)\right)$ vanishes in $\Pic^0(E/S)$ (by definition), so $\Ll=\Ii(e)\otimes_{\Oo_E}\Oo_E(\sigma)$ in $\Pic^0(E/S)$. This shows that the composition $\Pic^0(E/S)\morphism\{\text{sections }\sigma\text{ of }p\}\morphism\Pic^0(E/S)$ is the identity. The other direction can be shown in quite the same way.
 	
-	Let $\cat C$ be a full subcategory of $\cat{PSch}/X$ containing $E$, closed under fibre products over $X$, and such that all its objects are locally noetherian (we could save ourselves these technicalities by working with $f$ of finite presentation). For any $X$-prescheme $Y$ let $E(Y)$ denote the set of morphisms $Y\morphism E$ in $\cat{PSch}/X$. Then $E(Y)$ is in canonical bijection with the set of sections of the base change $f_Y\colon E_Y=Y\times_XE\morphism Y$ of $f$ and $E(-)=\Hom_{\cat{PSch}/X}(-,E)$ is a contravariant functor $(\cat{PSch}/X)^\op\morphism\cat{Set}$. The set $E(Y)$ should be thought of and is called the set of \defemph{$Y$-valued points} of $E$.
+	Let $\cat C$ be a full subcategory of $\cat{PSch}/S$ containing $E$, closed under fibre products over $S$, and such that all its objects are locally noetherian (we could save ourselves these technicalities by working with $f$ of finite presentation). For any $S$-prescheme $T$ let $E(T)$ denote the set of morphisms $T\morphism E$ in $\cat{PSch}/S$. Then $E(T)$ is in canonical bijection with the set of sections of the base change $f_T\colon E_T=T\times_SE\morphism T$ of $f$ and $E(-)=\Hom_{\cat{PSch}/S}(-,E)$ is a contravariant functor $(\cat{PSch}/S)^\op\morphism\cat{Set}$. The set $E(T)$ should be thought of and is called the set of \defemph{$T$-valued points} of $E$.
 	
-	%This functor can be introduced for any $X$-prescheme $E$ (and not only those that happen to be elliptic curves over $X$). We have, e.g., $(E\times_XF)(Y)=E(Y)\times F(Y)$ by the universal property of fibre products.
-	If $Y$ is in $\cat C$, then we get canonical isomorphisms
+	%This functor can be introduced for any $S$-prescheme $E$ (and not only those that happen to be elliptic curves over $S$). We have, e.g., $(E\times_SF)(Y)=E(Y)\times F(Y)$ by the universal property of fibre products.
+	If $T$ is in $\cat C$, then we get canonical isomorphisms
 	\begin{align*}
-		E(Y)\cong\left\{\text{sections of }f_Y\colon E_Y\to Y\right\}\cong\Pic^{(0)}(E_Y/Y)\;.
+		E(T)\cong\left\{\text{sections of }f_T\colon E_T\to T\right\}\cong\Pic^0(E_T/T)\;.
 	\end{align*}
 	The right-hand side forms an abelian group with $-\otimes_{\Oo_E}-$. Therefore the functor (or rather its restriction to $\cat C$) $E(-)\colon \cat C^\op\morphism\cat{Set}$ factors over $\cat{Ab}$. That is, $E(-)$ is an \emph{abelian group object} in the functor category $\Funct(\cat{C}^\op,\cat{Set})$. Since $\cat C^\op$ is a full subcategory of $\Funct(\cat{C}^\op,\cat{Set})$ via the Yoneda embedding, this means that $E$ is already an \emph{abelian group object} in $\cat C$.
 	
-	Explicitly, this means the following: There are morphisms $m\colon E\times_XE\morphism E$ and $\iota\colon E\morphism E$ of $X$-preschemes (the \emph{multiplication} and the \emph{inversion}) such that the following diagrams commute (which is an abstract way of proposing that the ``group axioms'' hold for $E$):
+	Explicitly, this means the following: There are morphisms $m\colon E\times_SE\morphism E$ and $\iota\colon E\morphism E$ of $S$-preschemes (the \emph{multiplication} and the \emph{inversion}) such that the following diagrams commute (which is an abstract way of proposing that the ``group axioms'' hold for $E$):
 	\begin{center}
 		\begin{minipage}[b]{0.4\textwidth}
 			\centering
 			\begin{diagram*}
-				\object{0,1.5}{$E\times_XE\times_XE$}[EEE];
-				\object{0,0}{$E\times_XE$}[EE];
-				\object{3.5,1.5}{$E\times_XE$}[ExE];
+				\object{0,1.5}{$E\times_SE\times_SE$}[EEE];
+				\object{0,0}{$E\times_SE$}[EE];
+				\object{3.5,1.5}{$E\times_SE$}[ExE];
 				\object{3.5,0}{$E$}[E];
 				\scriptsize
 				\arrow{EEE}{ExE}[above][$(\id_E,m)$];
@@ -1256,17 +1255,17 @@ We will typically assume $X$ to be locally noetherian, although Professor Franke
 		\begin{minipage}[b]{0.5\textwidth}
 			\centering
 			\begin{diagram*}
-				\object{0,1.5}{$X\times_XE$}[XE];
+				\object{0,1.5}{$S\times_SE$}[SE];
 				\object{2.5,1.5}{$E$}[E1];
-				\object{5,1.5}{$E\times_XX$}[EX];
-				\object{0,0}{$E\times_XE$}[EE1];
+				\object{5,1.5}{$E\times_SS$}[ES];
+				\object{0,0}{$E\times_SE$}[EE1];
 				\object{2.5,0}{$E$}[E2];
-				\object{5,0}{$E\times_XE$}[EE2];
+				\object{5,0}{$E\times_SE$}[EE2];
 				\scriptsize
-				\isoarrow{E1}{XE};
-				\isoarrow{E1}{EX};
-				\arrow{XE}{EE1}[left][$(e,\id_E)$];
-				\arrow{EX}{EE2}[right][$(\id_E,e)$];
+				\isoarrow{E1}{SE};
+				\isoarrow{E1}{ES};
+				\arrow{SE}{EE1}[left][$(e,\id_E)$];
+				\arrow{ES}{EE2}[right][$(\id_E,e)$];
 				\arrow{EE1}{E2}[above][$m$];
 				\arrow{EE2}{E2}[above][$m$];
 				\draw[transform canvas={xshift=1pt}] (E1) -- (E2);
@@ -1277,8 +1276,8 @@ We will typically assume $X$ to be locally noetherian, although Professor Franke
 			\begin{minipage}[b]{0.4\textwidth}
 			\centering
 			\begin{diagram*}
-				\object{0,1.5}{$E\times_XE$}[EE1];
-				\object{3.5,1.5}{$E\times_XE$}[EE2];
+				\object{0,1.5}{$E\times_SE$}[EE1];
+				\object{3.5,1.5}{$E\times_SE$}[EE2];
 				\object{1.75,0}{$E$}[E];
 				\scriptsize
 				\draw[->] (EE1) -- (EE2) node[pos=0.5,above] {exchange} node[pos=0.5,below] {factors};
@@ -1290,24 +1289,84 @@ We will typically assume $X$ to be locally noetherian, although Professor Franke
 		\begin{minipage}[b]{0.5\textwidth}
 			\centering
 			\begin{diagram*}
-				\object{0,2}{$E\times_XE$}[XE];
-				\object{2.5,2}{$E\times_XE$}[E1];
-				\object{5,2}{$E\times_XE$}[EX];
-				\object{2.5,1}{$X$}[X];
+				\object{0,2}{$E\times_SE$}[SE];
+				\object{2.5,2}{$E\times_SE$}[E1];
+				\object{5,2}{$E\times_SE$}[ES];
+				\object{2.5,1}{$S$}[S];
 				\object{2.5,0}{$E$}[E2];
 				\scriptsize
-				\arrow{E1}{XE}[above][$(\iota,\id_E)$];
-				\arrow{E1}{EX}[above][$(\id_E,\iota)$];
-				\arrow{E1}{X};
-				\arrow{X}{E2}[right][$e$];
-				\arrow{XE}{E2}[below left][$m$];
-				\arrow{EX}{E2}[below right][$m$];
+				\arrow{E1}{SE}[above][$(\iota,\id_E)$];
+				\arrow{E1}{ES}[above][$(\id_E,\iota)$];
+				\arrow{E1}{S};
+				\arrow{S}{E2}[right][$e$];
+				\arrow{SE}{E2}[below left][$m$];
+				\arrow{ES}{E2}[below right][$m$];
 			\end{diagram*}
 			($\iota$ is a left- and right-inverse)
 		\end{minipage}
 	\end{center}
 	For the definition of a group object we don't need $E$ to be an elliptic curve (actually, this works in any category $\cat C$ with finite products and a final object). A group object in some prescheme category is called a \defemph{group prescheme}.
-\end{rem}
+	
+Now consider the more general situation where $f\colon C\morphism S$ is only assumed to be a flat family of curves of genus $g$ together with a section $\sigma\colon S\morphism C$. When $g=1$ (i.e.\ we have an elliptic curve over $S$) we've seen above that $C$ represents the functor $\Pic_{C/S}^{0}\colon \cat{C}^\op\morphism\cat{Ab}$ defined by $\Pic_{C/S}^0(T)=\Pic^0(C_T/T)$ for all locally noetherian $S$-preschemes $T$ (where $C_T$ denotes the base change $T\times_SC$ as above). Dropping the fibre-wise degree $0$ condition, we get a functor $\Pic_{C/S}\colon \cat{C}^\op\morphism\cat{Ab}$, which in the case of an elliptic curve $E=C$ is represented by $\coprod_{n\in\IZ}E$, with one component for every fibre-wise degree a line bundle can have.
+
+If one is only interested in $\Pic_{C/S}$, then the conditions on $C$ (properness, flatness, one-dimensional geometric fibres) could be dropped, and so can the restriction to $\cat{C}$. We also don't need to assume a section $\sigma\colon S\morphism C$ exists if we define $\Pic_{C/S}(T)$ in the clever way (like Katz/Mazur do) as
+\begin{align}\lbl{eq:PicCS}
+	\Pic_{C/S}(T)=\Pic(C_T)/f_T^*\big(\Pic(T)\big)
+\end{align}
+rather than in terms of trivializations. This gives a functor $\Pic_{C/S}\colon (\cat{PSch}/S)^\op\morphism\cat{Ab}$.
+
+However, if one moreover tries to get rid of the quotient in \eqreff{eq:PicCS}, one cannot hope to end up with a representable functor $\Pic_C\colon\cat{C}^\op\morphism\cat{Ab}$ defined by $\Pic_C(T)=\Pic(C_T)$. Indeed, suppose on the contrary there was a representing object $\PIC_C$. If $\Ll$ is a line bundle on $C_T$ and $\Ll_0$ a line bundle on $T$, then $\Ll$ and $\Ll\otimes_{\Oo_{C_T}}f_T^*\Ll_0$ are usually not isomorphic. Yet locally with respect to $T$ they are, as $\Ll_0$ is locally trivial. Hence if $T=\bigcup_{i\in I}U_i$ is a sufficiently fine open cover, then the morphisms $T\morphism\PIC_C$ defined by (the isomorphism classes of) $\Ll$ and $\Ll\otimes_{\Oo_{C_T}}f_T^*\Ll_0$ coincide when restricted to $f_T^{-1}(U_i)$ for all $i\in I$. But then they coincide on all of $T$, which implies that $\Ll$ and $\Ll\otimes_{\Oo_{C_T}}f_T^*\Ll_0$ are isomorphic, contradiction!
+
+Thus $\Pic_C$ is a hopeless candidate for a representable functor, and we've seen that the main problem is basically its lack of ``sheaf-like'' properties. So the natural thing to ask is whether $\Pic_C$ can be ``sheafified'' in an appropriate way. What makes things complicated here is that the Zariski topology might not be suited to do this, at least when no section $\sigma\colon S\morphism C$ exists. That's where the \emph{étale} and \emph{fpqc topology} come in to save the day. We'll briefly introduce these notions in the proceeding of the lecture.
+
+Also note that ``sheafifying'' the $\Pic_C$ functor should give the same result as with $\Pic_{C/S}$. Indeed, the ``sheafification'' of $\Pic_{C/S}$ should be the ``sheaf quotient'' of the ``sheafifications'' of $\Pic_C$ and of $f_-^*(\Pic(-))\colon(\cat{PSch}/S)^\op\morphism\cat{Ab}$. But $f_T^*(\Pic(T))$ locally trivial on the base $T$ for every $S$-prescheme $T$, so $f_-(\Pic(-))$ should have trivial ``sheafification''.
+
+The strategy for representing $\Pic_{C/S}$ by a prescheme $\PIC_{C/S}$ for a flat family $f\colon C\morphism S$ of curves of genus $g$ will be to look at an open subset $\PIC_{C/S}^g$ of line bundles for which (in the case where $S$ is a field) $\Ll(C)$ is a one-dimensional vector space (it always has dimension at least $1$). Then the open subpreschemes of $\PIC_{C/S}$ which are constructed in this way must be glued in a suitably.
+
+If $\Ll$ is a line bundle of fibre-wise degree $g$ and $f_*\Ll$ is a line bundle on $S$, then the proof of Proposition~\reff{prop:canonicalSection} will only give us a unique subscheme $D\subseteq C$ which is finite and flat of degree $g$ over $S$. These $D$ (we already dropped the name \emph{effective relative Cartier divisor}) turn out to be representable by the \emph{symmetric power} $C^{(g)}\coloneqq C^{g}/\SS_g$, where $C^{g}$ is taken in the categorie of $S$-schemes (i.e., it is the $g$-fold fibre product of $C$ with itself over $S$) and the symmetric group $\SS_g$ acts by permuting factors. This will be our battle plan:
+\begin{enumerate}
+	\item Construct $C^{(g)}$.
+	\item Show that they represent effective relative Cartier divisors.
+	\item Use this to represent an open subgroup of $\PIC_{C/S}$.
+	\item Glue these open subgroups.
+\end{enumerate}
+\section{The seesaw theorem (and potentially the theorem of the cube)}
+As literature for this section Professor Franke recommends \cite{mumford1974abelian}, \cite{cornell1986arithmetic}, and \cite{kleiman}, as well as Grothendieck's FGA.
+
+Note that even without knowing whether a representing object $\PIC_{C/S}$ of $\Pic_{C/S}$ exists, we can still decide whether it is separated over $S$, since this property can be read off the functor $\Hom_{\cat{PSch}/S}(-,\PIC_{C/S})\cong\Pic_{C/S}$. From that point of view, the seesaw theorem simply states that under certain (essential) assumptions on $f\colon C\morphism S$, the morphism $\Pic_{C/S}\morphism S$ is a \emph{separated} morphism. We need some preparations first.
+\begin{prop}
+	Let $k$ be an algebraically closed field and $X$ an integral proper $k$-scheme.
+	\begin{alphanumerate}
+		\item We have $\Oo_X(X)\cong k$.
+		\item A line bundle $\Ll$ on $X$ is trivial iff $\Ll(X)$ and $\Ll^{-1}(X)$ are both non-zero (and in this case they're both one-dimensional).
+	\end{alphanumerate}
+\end{prop}
+\begin{proof}
+	Part \itememph{a}. Since $X$ is integral, $\Oo_X(X)$ is a domain. It is also a finite-dimensional $k$-algebra by \cite[Theorem~5]{alggeo2} as $X/k$ is proper. Therefore $\Oo_X(X)$ is a finite field extension of $k$, hence isomorphic to $k$ itself.
+	
+	Part \itememph{b}. If $s\in\Ll(X)$, $t\in\Ll^{-1}(X)$ are non-vanishing global sections, then $U=X\setminus(V(s)\cup V(t))$ is an open dense subset of $X$ (where we use that $X$ is irreducible). The global section $s\otimes t$ of $\Ll\otimes_{\Oo_X}\Ll^{-1}\cong \Oo_X$ doesn't vanish on $U$, hence is given by some $\kappa\in k^\times$ (using \itememph{a}). Then
+	\begin{align*}
+		s\otimes-\colon \Oo_X\morphism \Ll\quad\text{and}\quad-\otimes\kappa^{-1}t\colon \Ll\morphism\Oo_X
+	\end{align*}
+	are mutually inverse morphisms, proving $\Ll\cong \Oo_X$.
+\end{proof}
+Now let $f\colon X\morphism S$ be proper and $\Ff$ a coherent $\Oo_X$-module which is flat over $\Oo_S$. Recall
+\begin{align*}
+	U_p&=\left\{s\in S\st(R^pf_*\Ff)(s)\to H^p(X_s,\Ff|_{X_s})\text{ is surjective}\right\}\\
+	&=\left\{s\in S\st(R^pf_*\Ff)(s)\to H^p(X_s,\Ff|_{X_s})\text{ is surjective}\right\}
+\end{align*}
+is open in $S$ by Theorem~\reff{thm:GrauertGrothendieck}\itememph{d}. Also we defined
+\begin{align*}
+	h^p(s,\Ff)=\dim_{\KK(s)}H^p\left(X_s,\Ff|_{X_s}\right)=\dim_{\ov{\KK(s)}}H^p\left(X_{\ov{s}},\Ff|_{X_{\ov{s}}}\right)
+\end{align*}
+(the right equality uses Remark~\reff{rem:GeometricFibres}\itememph{a}).
+\begin{prop}
+	Let $f\colon X\morphism S$ be a proper flat morphism and $\Ll$ a line bundle on $X$. Then the following are equivalent.
+	\begin{alphanumerate}
+		\item $\Ll\cong f^*\Ll_0$ for some $\Ll_0\in\Pic(S)$.
+		\item For both $\Ff=\Ll$ and $\Ff=\Ll^{-1}$, $h^0(-,\Ff)$ doesn't vanish, and $U_0=S$.
+	\end{alphanumerate}
+\end{prop}
 
 \Appendix
 \chapter{Appendix}
