@@ -35,6 +35,8 @@
 
 \DeclareSymbolFont{cyrletters}{OT2}{wncyr}{m}{n}
 \DeclareMathSymbol{\Sha}{\mathalpha}{cyrletters}{"58}
+\usetikzlibrary{backgrounds}
+\newcommand{\tikzentry}[3][]{\tikz[remember picture, baseline =(#2.base)]\node[#1, inner sep=0pt, outer sep=0pt] (#2) {$#3$};}
 
 \begin{document}
 \pagenumbering{Alph}
@@ -203,7 +205,7 @@ where $\roof{\phantom{x}}$ denotes the $I$-adic completion.
 	Note that in the lecture Franke used $\Kk_n\cong \Jj^n\Ff$ instead of $I^n\Ff$, where $\Jj=f^{-1}\Ii$ is the inverse image (in the sense of Definition~\reff{def:f-1}). But $\Jj^n\Ff\cong I^n\Ff$ -- which is not that surprising, since the $I^n$-action on $\Ff$ is given via the algebraic component $\Oo_Y\morphism f_*\Oo_X$ of $f$, so $I^n\Ff=\Jj^n\Ff$ is pretty obvious from the construction of $f^{-1}$ described in the proof of Lemma~\reff{lem:f-1} below. I prefer the notation $I^n\Ff$ -- in particular, this is how Grothendieck denotes it in \cite[(4.1.7)]{egaIII}, so I believe it's my right to do so as well. Nevertheless, Lemma~\reff{lem:f-1} is \emph{perhaps worthwhile to know} (if you get what I mean), so we will include it now.
 \end{rem}
 \begin{defi}\lbl{def:f-1}
-	Let $f\colon X\morphism Y$ be any morphism of preschemes and $\Jj\subseteq \Oo_Y$ a sheaf of ideals on $Y$. Then define $f^{-1}\Jj$ to be the image of $f^*\Jj\morphism\Oo_X$ (which is obtained as the composition of the pull-back of $\Jj\morphism \Oo_Y$ with the isomorphism $f^*\Oo_Y\cong \Oo_X$).
+	Let $f\colon X\morphism Y$ be any morphism of preschemes and $\Jj\subseteq \Oo_Y$ a sheaf of ideals on $Y$. Then define $f^{-1}\Jj$ to be the image of $f^*\Jj\morphism\Oo_X$ (which is obtained as the composition of the pullback of $\Jj\morphism \Oo_Y$ with the isomorphism $f^*\Oo_Y\cong \Oo_X$).
 \end{defi}
 \begin{lem}\lbl{lem:f-1}
 	Let $f\colon X\morphism Y$ be any morphism of preschemes and $\Jj\subseteq \Oo_Y$ quasi-coherent.
@@ -890,7 +892,7 @@ We now have all the technicalities together to prove Theorem~\reff{thm:GrauertGr
 	\end{align*}
 	where $y\in Y$ on the right-hand side is the point corresponding to the maximal ideal $\mm$, so that we have $X_y\cong X\times_Y\Spec\KK(\mm)$. In particular, we see $H^p\left(Q^\bullet\otimes_A\KK(\mm)\right)=0$ if $p<d'$ and also $H^p(Q^\bullet)\cong H^p(X,\Ff)=0$ if $p<d'$ by Lemma~\reff{lem:TechnicalVanishingAssertion}, hence Lemma~\reff{lem:TruncQuasiIso2} may be applied. Therefore, $P^\bullet=\tau_{\geq d'}Q^\bullet$ is complex of finitely generated projective $A$-modules with is supported only between $d'$ and $d$, and $P^\bullet$ has the required base change property because of \eqreff{eq:baseChangeProperty} and Lemma~\reff{lem:TensorQuasiIsomorphism}. In other words, $P^\bullet$ is what we want. This proves \itememph{a}.
 	
-	Note that for the rest of the proof we may even assume that $P^\bullet$ is a complex of \emph{free} modules. Indeed, our construction of $P^\bullet$ provided free modules except in degree $d'$, where $P^{d'}$ might only be projective. However, assertions \itememph{b} to \itememph{e} are base-local, so we may replace $\Spec A$ by $\Spec A_f$ such that $P_f^{d'}$ is free over $A_f$.%Dunno if that's needed.
+	\lbl{page:Pfree}Note that for the rest of the proof we may even assume that $P^\bullet$ is a complex of \emph{free} modules. Indeed, our construction of $P^\bullet$ provided free modules except in degree $d'$, where $P^{d'}$ might only be projective. However, assertions \itememph{b} to \itememph{e} are base-local, so we may replace $\Spec A$ by $\Spec A_f$ such that $P_f^{d'}$ is free over $A_f$.%Dunno if that's needed.
 	
 	Let $Q^p=\coker\left(P^{p-1}\morphism P^p\right)$. Then $\coker\left(P^{p-1}\otimes_AB\morphism P^p\otimes_AB\right)\cong Q^p\otimes_AB$. If we put $\delta^p\colon Q^p\morphism P^{p+1}$, then $H^p(P^\bullet\otimes_AB)\cong \ker\left(\delta^p\otimes\id_B\right)$ for all $A$-algebras $B$ (actually, we don't even need $B$ to be an algebra).
 	
@@ -985,7 +987,7 @@ We now have all the technicalities together to prove Theorem~\reff{thm:GrauertGr
 	Finally \itememph{b} $\Rightarrow$ \itememph{a} is trivial, and also we've already seen the additional assertion in the proof of \itememph{a} $\Rightarrow$ \itememph{c}. We're done.
 \end{proof}
 
-	Now there isn't really much left to prove \itememph{d} and \itememph{e}. Since $Y=\Spec A$ is affine (or rather we reduced it to this case), $R^pf_*\Ff$ is the quasi-coherent $\Oo_Y$-module given by the $A$-module $H^p(X,\Ff)\cong H^p(P^\bullet)\cong \ker\delta^p$. Then Lemma~\reff{lem:BasicallyThm4de}\itememph{a} and \itememph{b} shows that $(R^pf_*\Ff)(y)\morphism H^p(X_y,\Ff|_{X_y})$ is bijective iff it is surjective. Moreover, the set of $\pp\in\Spec A$ such that Lemma~\reff{lem:BasicallyThm4de}\itememph{c} holds is open by \cite[Corollary~1.5.1]{alg2}, which directly translates into $U_p\subseteq Y$ being open. This shows \itememph{d}.
+	Now there isn't really much left to prove \itememph{d} and \itememph{e}. Since $Y=\Spec A$ is affine (or rather we reduced it to this case), $R^pf_*\Ff$ is the quasi-coherent $\Oo_Y$-module given by the $A$-module $H^p(X,\Ff)\cong H^p(P^\bullet)\cong \ker\delta^p$. Then Lemma~\reff{lem:BasicallyThm4de}\itememph{a} and \itememph{b} shows that $(R^pf_*\Ff)(y)\morphism H^p(X_y,\Ff|_{X_y})$ is bijective iff it is surjective. Moreover, the set of $\pp\in\Spec A$ such that the canonical morphism Lemma~\reff{lem:BasicallyThm4de}\itememph{c} holds is open by \cite[Corollary~1.5.1]{alg2}, which directly translates into $U_p\subseteq Y$ being open. This shows \itememph{d}.
 	
 	Finally, part \itememph{e}. If $y\in U_p$, then $Q^{p+1}$ as well as $B^{p+1}=\Im \delta^p$ are locally free at the prime $\pp\in\Spec A$ corresponding to $y$ (by Lemma~\reff{lem:BasicallyThm4de}\itememph{c}). Therefore, from the short exact sequence
 	\begin{align*}
@@ -1193,7 +1195,7 @@ We will typically assume $S$ to be locally noetherian, although Professor Franke
 	\begin{claim}\lbl{claim:DCxfiniteIntersection}
 		For every $s\in S$, the intersection $D\cap C_s=g^{-1}\{s\}$ is finite.
 	\end{claim}
-	To prove Claim~\reff{claim:DCxfiniteIntersection}, we first remark that $\Ll|_{C_s}(C_s)$ is a one-dimensional $\KK(s)$-vector space. To show this, it suffices to prove the same for $H^0(C_{\ov{s}},\Ll|_{C_{\ov{s}}})$ by Remark~\reff{rem:GeometricFibres}\itememph{A}. If we could show $H^1(C_{\ov{s}},\Ll|_{C_{\ov{s}}})=0$, then the required one-dimensionality follows from $\deg(\Ll|_{C_{\ov{s}}})=1$ and Riemann--Roch. 
+	To prove Claim~\reff{claim:DCxfiniteIntersection}, we first remark that $\Ll|_{C_s}(C_s)$ is a one-dimensional $\KK(s)$-vector space. To show this, it suffices to prove the same for $H^0(C_{\ov{s}},\Ll|_{C_{\ov{s}}})$ by Remark~\reff{rem:GeometricFibres}\itememph{a}. If we could show $H^1(C_{\ov{s}},\Ll|_{C_{\ov{s}}})=0$, then the required one-dimensionality follows from $\deg(\Ll|_{C_{\ov{s}}})=1$ and Riemann--Roch. 
 	
 	To see the vanishing of the $1\ordinalst$ cohomology of $\Ll|_{C_{\ov{s}}}$, we use that $H^2(C_{\ov{s}},\Ll|_{C_{\ov{s}}})=0$ for all $s\in S$ by Grothendieck's dimension theorem. Hence $U_2=S$ in Theorem~\reff{thm:GrauertGrothendieck}\itememph{d}. Then Theorem~\reff{thm:GrauertGrothendieck}\itememph{e} shows $U_1=S$ as well, since $R^1f_*\Ll=0$ is a vector bundle by Proposition~\reff{prop:RpLl}\itememph{a}. But then $0=(R^1f_*\Ll^{-1})(s)\cong H^1(C_s,\Ll|_{C_s})$ for all $s\in S$. Together with Remark~\reff{rem:GeometricFibres}\itememph{a} this shows $H^1(C_{\ov{s}},\Ll|_{C_{\ov{s}}})=0$, as required.
 	
@@ -1208,23 +1210,23 @@ We will typically assume $S$ to be locally noetherian, although Professor Franke
 \begin{rem}
 	Note that despite Proposition~\reff{prop:canonicalSection}, a flat family $f\colon C\morphism S$ of genus $1$ curves may fail to have a section (think of an elliptic curve without a rational point over $\IQ$). An elliptic curve $E$ over $S$ may always be obtained from $C$, but there may be several non-isomorphic $C$ giving the same $E$. When $S=\Spec K$ where $K/\IQ$ is a number field, then all these $C$ are isomorphic over $\ov{\IQ}$ and their isomorphism classes (over $K$) form a group, the \defemph{Tate--Shafarevich group} $\Sha(E/K)$.
 \end{rem}
-	Let $f\colon E\morphism S$ with a section $e\colon S\morphism E$ be an elliptic curve over $S$. Then Proposition~\reff{prop:canonicalSection} may be used to obtain a bijection
+	Let $f\colon E\morphism S$ with a section $\epsilon\colon S\morphism E$ be an elliptic curve over $S$. Then Proposition~\reff{prop:canonicalSection} may be used to obtain a bijection
 	\begin{align*}
 		\Pic^0(E/S)\coloneqq\left\{\begin{tabular}{c}
 			isomorphism classes of line bundles\\
 			$\Ll$ over $E$ of geometric fibre-wise de-\\
-			gree 0 with a trivialization $e^*\Ll\cong\Oo_S$
+			gree 0 with a trivialization $\epsilon^*\Ll\cong\Oo_S$
 		\end{tabular}\right\}\isomorphism\left\{\text{sections }\sigma\colon S\to E\text{ of }f\right\}\;.
 	\end{align*}
-	Note that \cite[pp.~63--67]{katzmazur} define $\Pic^0(E/S)$ as the quotient of the group $\Pic^0(E)$ of line bundles with geometric fibre-wise degree $0$ by the subgroup of line bundles of the form $f^*\Ll_0$ where $\Ll_0$ is a line bundle on $S$. These definitions are equivalent by sending $\Ll\mapsto \Ll\otimes_{\Oo_E}f^*\big((e^*\Ll)^{-1}\big)$. We'll work with the Katz/Mazur definition, since this is somewhat easier.
+	Note that \cite[pp.~63--67]{katzmazur} define $\Pic^0(E/S)$ as the quotient of the group $\Pic^0(E)$ of line bundles with geometric fibre-wise degree $0$ by the subgroup of line bundles of the form $f^*\Ll_0$ where $\Ll_0$ is a line bundle on $S$. These definitions are equivalent by sending $\Ll\mapsto \Ll\otimes_{\Oo_E}f^*\big((\epsilon^*\Ll)^{-1}\big)$. We'll work with the Katz/Mazur definition, since this is somewhat easier.
 	
-	The map $\Pic^0(E/S)\morphism\{\text{sections }\sigma\text{ of }f\}$ sends $\Ll$ to the canonical section $\sigma$ associated to $\Ll\otimes_{\Oo_E}\Oo_E(e)$ by Proposition~\reff{prop:canonicalSection} (note that this makes sense because $\Ll$ has fibre-wise degree $0$ and $\Ii(e)$ has fibre-wise degree $-1$ by Lemma~\reff{lem:I(s)degree-1}, hence $\Ll\otimes_{\Oo_E}\Oo_E(e)$ has fibre-wise degree $1$). The inverse map sends a section $\sigma$ to $\Ii(e)\otimes_{\Oo_E}\Oo_E(\sigma)$.
+	The map $\Pic^0(E/S)\morphism\{\text{sections }\sigma\text{ of }f\}$ sends $\Ll$ to the canonical section $\sigma$ associated to $\Ll\otimes_{\Oo_E}\Oo_E(\epsilon)$ by Proposition~\reff{prop:canonicalSection} (note that this makes sense because $\Ll$ has fibre-wise degree $0$ and $\Ii(\epsilon)$ has fibre-wise degree $-1$ by Lemma~\reff{lem:I(s)degree-1}, hence $\Ll\otimes_{\Oo_E}\Oo_E(\epsilon)$ has fibre-wise degree $1$). The inverse map sends a section $\sigma$ to $\Ii(\epsilon)\otimes_{\Oo_E}\Oo_E(\sigma)$.
 	
-	To show that these guys are indeed inverse, let $\Ll\in\Pic^0(E/S)$ and $\sigma$ the section of $p$ associated to $\Ll\otimes_{\Oo_E}\Oo_E(e)$. By Proposition~\reff{prop:canonicalSection}, we have
+	To show that these guys are indeed inverse, let $\Ll\in\Pic^0(E/S)$ and $\sigma$ the section of $f$ associated to $\Ll\otimes_{\Oo_E}\Oo_E(\epsilon)$. By Proposition~\reff{prop:canonicalSection}, we have
 	\begin{align*}
-		f^*f_*\left(\Ll\otimes_{\Oo_E}\Oo_E(e)\right)\otimes_{\Oo_E}\Oo_E(\sigma)\cong\Ll\otimes_{\Oo_E}\Oo_E(e)\;.
+		f^*f_*\left(\Ll\otimes_{\Oo_E}\Oo_E(\epsilon)\right)\otimes_{\Oo_E}\Oo_E(\sigma)\cong\Ll\otimes_{\Oo_E}\Oo_E(\epsilon)\;.
 	\end{align*}
-	But $f^*f_*\left(\Ll\otimes_{\Oo_E}\Oo_E(e)\right)$ vanishes in $\Pic^0(E/S)$ (by definition), so $\Ll=\Ii(e)\otimes_{\Oo_E}\Oo_E(\sigma)$ in $\Pic^0(E/S)$. This shows that the composition $\Pic^0(E/S)\morphism\{\text{sections }\sigma\text{ of }p\}\morphism\Pic^0(E/S)$ is the identity. The other direction can be shown in quite the same way.
+	But $f^*f_*\left(\Ll\otimes_{\Oo_E}\Oo_E(\epsilon)\right)$ vanishes in $\Pic^0(E/S)$ (by definition), so $\Ll=\Ii(e)\otimes_{\Oo_E}\Oo_E(\sigma)$ in $\Pic^0(E/S)$. This shows that the composition $\Pic^0(E/S)\morphism\{\text{sections }\sigma\text{ of }p\}\morphism\Pic^0(E/S)$ is the identity. The other direction can be shown in quite the same way.
 	
 	Let $\cat C$ be a full subcategory of $\cat{PSch}/S$ containing $E$, closed under fibre products over $S$, and such that all its objects are locally noetherian (we could save ourselves these technicalities by working with $f$ of finite presentation). For any $S$-prescheme $T$ let $E(T)$ denote the set of morphisms $T\morphism E$ in $\cat{PSch}/S$. Then $E(T)$ is in canonical bijection with the set of sections of the base change $f_T\colon E_T=T\times_SE\morphism T$ of $f$ and $E(-)=\Hom_{\cat{PSch}/S}(-,E)$ is a contravariant functor $(\cat{PSch}/S)^\op\morphism\cat{Set}$. The set $E(T)$ should be thought of and is called the set of \defemph{$T$-valued points} of $E$.
 	
@@ -1264,8 +1266,8 @@ We will typically assume $S$ to be locally noetherian, although Professor Franke
 				\scriptsize
 				\isoarrow{E1}{SE};
 				\isoarrow{E1}{ES};
-				\arrow{SE}{EE1}[left][$(e,\id_E)$];
-				\arrow{ES}{EE2}[right][$(\id_E,e)$];
+				\arrow{SE}{EE1}[left][$(\epsilon,\id_E)$];
+				\arrow{ES}{EE2}[right][$(\id_E,\epsilon)$];
 				\arrow{EE1}{E2}[above][$m$];
 				\arrow{EE2}{E2}[above][$m$];
 				\draw[transform canvas={xshift=1pt}] (E1) -- (E2);
@@ -1298,7 +1300,7 @@ We will typically assume $S$ to be locally noetherian, although Professor Franke
 				\arrow{E1}{SE}[above][$(\iota,\id_E)$];
 				\arrow{E1}{ES}[above][$(\id_E,\iota)$];
 				\arrow{E1}{S};
-				\arrow{S}{E2}[right][$e$];
+				\arrow{S}{E2}[right][$\epsilon$];
 				\arrow{SE}{E2}[below left][$m$];
 				\arrow{ES}{E2}[below right][$m$];
 			\end{diagram*}
@@ -1333,8 +1335,8 @@ If $\Ll$ is a line bundle of fibre-wise degree $g$ and $f_*\Ll$ is a line bundle
 \section{The seesaw theorem (and potentially the theorem of the cube)}
 As literature for this section Professor Franke recommends \cite{mumford1974abelian}, \cite{cornell1986arithmetic}, and \cite{kleiman}, as well as Grothendieck's FGA.
 
-Note that even without knowing whether a representing object $\PIC_{C/S}$ of $\Pic_{C/S}$ exists, we can still decide whether it is separated over $S$, since this property can be read off the functor $\Hom_{\cat{PSch}/S}(-,\PIC_{C/S})\cong\Pic_{C/S}$. From that point of view, the seesaw theorem simply states that under certain (essential) assumptions on $f\colon C\morphism S$, the morphism $\Pic_{C/S}\morphism S$ is a \emph{separated} morphism. We need some preparations first.
-\begin{prop}
+Note that even without knowing whether a representing object $\PIC_{C/S}$ of $\Pic_{C/S}$ exists, we can still decide whether it is separated over $S$, since this property can be read off the functor $\Hom_{\cat{PSch}/S}(-,\PIC_{C/S})\cong\Pic_{C/S}$. From that point of view, the seesaw theorem simply states that under certain (essential) assumptions on $f\colon C\morphism S$, the morphism $\PIC_{C/S}\morphism S$ is a \emph{separated} morphism. Before we prove this we'll need some preparations.
+\begin{prop}\lbl{prop:trivialLineBundlesOnProperX/k}
 	Let $k$ be an algebraically closed field and $X$ an integral proper $k$-scheme.
 	\begin{alphanumerate}
 		\item We have $\Oo_X(X)\cong k$.
@@ -1353,20 +1355,168 @@ Note that even without knowing whether a representing object $\PIC_{C/S}$ of $\P
 Now let $f\colon X\morphism S$ be proper and $\Ff$ a coherent $\Oo_X$-module which is flat over $\Oo_S$. Recall
 \begin{align*}
 	U_p&=\left\{s\in S\st(R^pf_*\Ff)(s)\to H^p(X_s,\Ff|_{X_s})\text{ is surjective}\right\}\\
-	&=\left\{s\in S\st(R^pf_*\Ff)(s)\to H^p(X_s,\Ff|_{X_s})\text{ is surjective}\right\}
+	&=\left\{s\in S\st(R^pf_*\Ff)(s)\to H^p(X_s,\Ff|_{X_s})\text{ is injective}\right\}
 \end{align*}
 is open in $S$ by Theorem~\reff{thm:GrauertGrothendieck}\itememph{d}. Also we defined
 \begin{align*}
 	h^p(s,\Ff)=\dim_{\KK(s)}H^p\left(X_s,\Ff|_{X_s}\right)=\dim_{\ov{\KK(s)}}H^p\left(X_{\ov{s}},\Ff|_{X_{\ov{s}}}\right)
 \end{align*}
 (the right equality uses Remark~\reff{rem:GeometricFibres}\itememph{a}).
-\begin{prop}
-	Let $f\colon X\morphism S$ be a proper flat morphism and $\Ll$ a line bundle on $X$. Then the following are equivalent.
+\begin{prop}\lbl{prop:LineBundlesFromTheBase}
+	Let $f\colon X\morphism S$ be a proper flat morphism with integral geometric fibres $X_{\ov{s}}$ (in particular, the geometric fibres are non-empty) and $\Ll$ a line bundle on $X$. Also assume that $S$ is locally noetherian. Then the following are equivalent.
 	\begin{alphanumerate}
-		\item $\Ll\cong f^*\Ll_0$ for some $\Ll_0\in\Pic(S)$.
-		\item For both $\Ff=\Ll$ and $\Ff=\Ll^{-1}$, $h^0(-,\Ff)$ doesn't vanish, and $U_0=S$.
+		\item $\Ll\cong f^*\Ll_0$ for some $\Ll_0\in\Pic(S)$ -- that is, $\Ll$ is trivial in $\Pic(X/S)$.
+		\item For both $\Ll$ and $\Ll^{-1}$, the functions $h^0\left(-,\Ll^{\pm 1}\right)$ don't vanish on $S$ and $U_0=S$.
 	\end{alphanumerate}
+	If this is the case, $h^0\left(s,\Ll^{\pm1}\right)=1$ for all $s\in S$ and the canonical morphism $f^*f_*\Ll\morphism\Ll$ is an isomorphism. Also $\Ll_0\cong f_*\Ll$ in this case.
 \end{prop}
+\begin{proof}
+	Assume for the moment that \itememph{a} and \itememph{b} are equivalent. We'll prove the additional assertion about $\Ll_0$ and $f_*\Ll$, i.e.\ that $f^*\Ll_0\cong \Ll$ implies that the corresponding morphism (under the $f^*$-$f_*$ adjunction) $\Ll_0\morphism f_*\Ll$ is an isomorphism. This is true more generally for a morphism $\Ff\morphism\Ff'$ of quasi-coherent $\Oo_S$-modules which becomes an isomorphism after applying $f^*$ (and this can be applied to $\Ll_0$ and $f_*\Ll$ as we assume \itememph{a} $\Rightarrow$ \itememph{b}). Indeed, note that $f$ is faithfully flat (it is flat and its geometric fibres are non-empty, hence the ordinary fibres are non-empty too), hence for every $s\in S$ we may choose an $x\in X$ such that $s=f(x)$. Then $\Oo_{X,x}$ is faithfully flat over $\Oo_{S,s}$ (e.g.\ by \cite[\stackstag{00HP}]{stacks-project}), so $\Ff_s\otimes_{\Oo_{S,s}}\Oo_{X,x}\morphism\Ff'_s\otimes_{\Oo_{S,s}}\Oo_{X,x}$ being an isomorphism implies that $\Ff_s \morphism\Ff'_s$ is one as well.
+	
+	We prove \itememph{a} $\Rightarrow$ \itememph{b} first. Since the assertion is local on $S$, we may assume $\Ll_0\cong\Oo_S$, so that $\Ll\cong f^*\Oo_S\cong \Oo_X$. Then
+	\begin{align*}
+		h^0\big(s,\Ll^{\pm 1}\big)=\dim_{\ov{\KK(s)}}H^0\left(X_{\ov{s}},\Oo_{X_{\ov{s}}}\right)=1\quad\text{for all}\quad s\in S 
+	\end{align*}
+	by Proposition~\reff{prop:trivialLineBundlesOnProperX/k}. Then $H^0(X_s,\Oo_{X_s})$ is a one-dimensional $\KK(s)$-vector space as well the constant function $1$ is a generator. But $1$ is clearly in the image of $(f_*\Oo_X)(s)\morphism H^0(X_s,\Oo_{X_s})$, so $U_0=S$ by Theorem~\reff{thm:GrauertGrothendieck}\itememph{d}.
+	
+	Now for \itememph{b} $\Rightarrow$ \itememph{a}. Since $U_0=S$ (by assumption) and $U_{-1}=S$ (for trivial reasons), we see that $f_*\Ll$ is locally free by Theorem~\reff{thm:GrauertGrothendieck}\itememph{e}. To see that $f_*\Ll$ is one-dimensional, it suffices to show that $(f_*\Ll)(s)\cong H^0(X_s,\Ll|_{X_s})$ are one-dimensional $\KK(s)$-vector spaces for all $s\in S$. But condition \itememph{b} together with Proposition~\reff{prop:trivialLineBundlesOnProperX/k} (which is needed for both the middle and the right equality) implies that 
+	\begin{align*}
+		H^0\left(X_s,\Ll|_{X_s}\right)\otimes_{\KK(s)}\ov{\KK(s)}= \dim_{\ov{\KK(s)}}H^0\left(X_{\ov{s}},\Ll|_{X_{\ov{s}}}\right)=\dim_{\ov{\KK(s)}}H^0\left(X_{\ov{s}},\Oo_{X_{\ov{s}}}\right)=1\;,
+	\end{align*}
+	so $f_*\Ll$ is indeed a line bundle. 
+	
+	Having established this, all we need to do is proving that $f^*f_*\Ll\morphism\Ll$ is an isomorphism. This is a local question on $S$ again, so we may assume that $f_*\Ll$ is trivial. Let $\lambda\in\Ll(X)=f_*\Ll(S)$ 
+	be a generator. Let $x\in X$ and $s=f(x)$. As $(f_*\Ll)(s)\cong H^0(X_s,\Ll|_{X_s})$ (because $U_0=X$) and the left-hand side is generated by the image of $\lambda$, we see that $\lambda|_{X_s}$ is a non-vanishing global section of $\Ll|_{X_s}$. But $\Ll|_{X_s}(X_s)\cong \KK(s)$ (as seen above), so in particular $\lambda|_{X_s}$ generates the stalk of $\Ll|_{X_s}$ at $x$, which is given by $\Ll_x\otimes_{\Oo_{S,s}}\KK(s)\cong \Ll_x/\mm_{S,s}\Ll_x$. Then $\lambda$ can't vanish in $\Ll_x/\mm_{X,x}\Ll$, so $x\notin V(\lambda)$. Therefore,
+	\begin{align*}
+		\lambda\otimes-\colon \Oo_X\morphism\Ll
+	\end{align*}
+	is an isomorphism at $x$. Since $x$ was chosen arbitrarily, this shows $f^*f_*\Ll\isomorphism\Ll$ and \itememph{a} follows. We're done.
+\end{proof}
+\begin{thm}[Seesaw theorem]\lbl{thm:seesaw}
+	Let $f\colon X\morphism S$ be a flat proper morphism with integral (in particular, non-empty) geometric fibres $X_{\ov{s}}$ for $s\in S$, and $S$ is locally noetherian. If $\Ll$ is a line bundle on $X$, then there's a closed subprescheme $Z\subseteq S$ having the following universal property: For any locally noetherian $S$-prescheme $\tau\colon T\morphism S$, the pullback $\tau_X^*\Ll$ of $\Ll$ under
+	\begin{align*}
+		\tau_X\colon X_T=X\times_ST\morphism T
+	\end{align*}
+	satisfies the equivalent conditions of Proposition~\reff{prop:LineBundlesFromTheBase} iff $\tau$ factors over $Z\monomorphism S$.
+\end{thm}
+\begin{rem}
+	\begin{alphanumerate}
+		\item A related assertion of the general form \emph{You cannot express a non-trivial line bundle as a limit of trivial ones} was shown by A.\ Weil. See \cite{cornell1986arithmetic}, \cite{mumford1974abelian}, or the Wikipedia article for a historical discussion.
+		\item Let us assume that $f$ has a section $\sigma\colon S\morphism X$ (so that it doesn't matter in which topology whe sheafify the Picard functor). Assume that $\Pic_{X/S}$ can be represented by an $S$-(group-)prescheme $\pi\colon\PIC_{X/S}\morphism S$. Let $\epsilon\colon S\morphism\PIC_{X/S}$ be the neutral section and denote by $\lambda\colon S\morphism\PIC_{X/S}$ the morphism corresponding to (the isomorphism class of) $\Ll\in\Pic_{X/S}(S)=\Pic(X/S)$.
+		
+		If $f_T^*\colon \Oo_T\isomorphism f_{T,*}\Oo_{X_T}$ is an isomorphism for all $S$-preschemes $T$ (i.e.\ $f_*\Oo_X\cong \Oo_S$ \emph{holds universally} -- for example, this is the case in the situation of Proposition~\reff{prop:RpLl}), then $\tau_X^*\Ll$ is trivial in $\Pic_{X/S}(T)=\Pic(X_T/T)$ iff the compositions
+		\begin{align*}
+			T\morphism[\tau]S\doublemorphism[\lambda][\epsilon]\PIC_{X/S}
+		\end{align*}
+		coincide (since that's how the functor isomorphism $\Pic_{X/S}\cong \Hom_{\cat{PSch}/S}(-,\PIC_{X/S})$ works), which is the case iff $\tau$ factors over $\Eq(\lambda,\epsilon)$. This shows that $Z=\Eq(\lambda,\epsilon)$ in Theorem~\reff{thm:seesaw}.
+		
+		In particular, the equalizer $\Eq(\lambda,\epsilon)$ is \emph{closed}! If you play around with the definitions a bit (you should use that $\Hom_{\cat{PSch}/S}(S,\PIC_{X/S})$ is an abelian group) this shows that $\pi\colon \PIC_{X/S}\morphism S$ is separated. This justifies the interpretation of the seesaw theorem from the beginning of the current section.
+	\end{alphanumerate}
+\end{rem}
+\begin{proof}[Proof of Theorem~\reff{thm:seesaw}]
+	\emph{Step 1.} We first define $Z$ as a set. Put
+	\begin{align*}
+		Z_+=\left\{s\in S\st h^0\big(s,\Ll\big)\text{ doesn't vanish}\right\}\quad\text{and}\quad Z_-=\left\{s\in S\st h^0\big(s,\Ll^{-1}\big)\text{ doesn't vanish}\right\}
+	\end{align*}
+	Put $Z=Z_+\cap Z_-$. Then
+	\begin{align*}
+		Z=\left\{s\in S\st h^0\big(s,\Ll^{\pm 1}\big)=1\right\}
+	\end{align*}
+	due to Proposition~\reff{prop:trivialLineBundlesOnProperX/k}). By Theorem~\reff{thm:GrauertGrothendieck}\itememph{b}, $Z_\pm$ and thus also $Z$ are closed subsets of $S$. Note that this preliminary definition of $Z$ doesn't cover the second condition from Proposition~\reff{prop:LineBundlesFromTheBase}\itememph{b}, i.e., that $U_0$ contains all of the base. This will be taken care of once we define the prescheme structure on $Z$. The proof now proceeds in three steps.
+	
+	 \emph{Step 2.} Let $\tau\colon T\morphism S$ be an $S$-prescheme such that $\tau_X^*\Ll$ is the trivial element in $\Pic_{X/S}(T)=\Pic(X_T/T)$. We show that the image of $\tau$ (as a map between topological spaces) is contained in $Z$.  Let $t\in T$ and $s=\tau(t)$. Then
+	\begin{align*}
+		X_{T,t}=X_T\times_T\Spec\KK(t)\cong X\times_S\Spec\KK(t)\cong X_s\times_{\Spec\KK(s)}\Spec\KK(t)\;,
+	\end{align*}
+	hence
+	\begin{align*}
+		H^\bullet\left(X_{T,t},\tau_X^*\Ll^{\pm 1}|_{X_{T,t}}\right)\cong H^\bullet\left(X_s,\Ll^{\pm 1}|_{X_s}\right)\otimes_{\KK(s)}\KK(t)
+	\end{align*}
+	by \eqreff{eq:tensoredCohomology} as $\KK(t)$ is a flat ring extension of $\KK(s)$ (it is free actually). Therefore $h\left(t,\tau_X^*\Ll^{\pm 1}\right)=1$ holds if and only if $h\left(s,\Ll^{\pm 1}\right)=1$. Since $h\left(t,\tau_X^*\Ll^{\pm 1}\right)=1$ for all $t\in T$ by Proposition~\reff{prop:LineBundlesFromTheBase} and the assumption on $\tau_X^*\Ll$, this shows $s\in Z$, as claimed.
+	
+	Conversely, if $\tau\colon T\morphism S$ is any $S$-prescheme such that the image of  $\tau$ is contained in $Z$, then the above argument shows $h\left(t,\tau_X^*\Ll^{\pm 1}\right)=1$ for all $t\in T$.
+	
+	\emph{Step 3.} We describe the prescheme structure on $Z$. This task is local on $S$ for the following reason: $Z$ (as a prescheme, not just a topological space) is uniquely determined by the universal property we imposed, and if $U\subseteq S$ is any open subset, then $Z\cap U$ has the corresponding universal property for $U$. So once once we proved that the universal property is fulfilled locally (which we'll do in Step~4), everything will glue together nicely. 
+	
+	Therefore, we may choose an $s\in Z$ and restrict ourselves to an affine open neighbourhood $U\cong \Spec A$ of $s\in S$, where $A$ is noetherian. Moreover, we may replace $A$ by some localization whenever we feel like it, as long as still $s\in\Spec A$. Moreover, we'll relax the assumption $s\in Z$ to only $s\in Z_+$ to describe a prescheme structure on $Z_+$ instead of $Z$. Since $Z_-$ can then be equipped with an analogous prescheme structure, this will define the required prescheme structure on $Z=Z_+\cap Z_-$.
+	
+	Now let's get to business. Let $P^\bullet$ be the cochain complex of $A$-modules from Theorem~\reff{thm:GrauertGrothendieck}\itememph{a}. As described on page~\pageref{page:Pfree}, we may assume that all $P^i$ are free (after replacing $A$ by some localization). Since $s\in Z_+$, we know that
+	\begin{align*}
+		H^0\left(X_s,\Ll|_{X_s}\right)\cong\ker\left(\delta_s^0=\delta^0\otimes \id_{\KK(s)}\colon P^0\otimes_A\KK(s)\morphism P^1\otimes_A\KK(s)\right)
+	\end{align*}
+	has dimension $1$ over $\KK(s)$. Let $\ov{e}_0, \ldots,\ov{e}_n$ be a basis of $P^0\otimes_A\KK(s)$ such that $\ov{e}_0$ is a basis of $\ker \delta_s^0$. Choose an arbitrary basis of $\ov{f}_0,\ldots,\ov{f}_m$ of $P^1\otimes_A\KK(s)$, where $m\geq n-1$. Then the matrix representation $\ov{D}$ of $\delta_s^0$ looks like
+		\begin{align*}
+	\begin{tikzpicture}[remember picture]
+	\node at (0,0) {$\ov{D}=
+		\begin{pmatrix}
+		 0 & \tikzentry{a}{\phantom{0}} \\
+		 \vdots & & \phantom{\ov{C}_1}\\
+		 \vdots & & & \tikzentry{b}{\phantom{0}} &\\
+		 \vdots & \tikzentry{c}{\phantom{0}} \\
+		 0 &  & & \tikzentry{d}{\phantom{0}}
+		\end{pmatrix}
+		$};
+		\draw[rounded corners=0.75] ($(a.north west) +(-2pt,3pt)$) rectangle ($(b.south east) +(2pt,-3pt)$) node[pos=0.5] {$\ov{C}_1$};
+		\draw[rounded corners=0.75] ($(c.north west) +(-2pt,3pt)$) rectangle ($(d.south east) +(2pt,-3pt)$) node[pos=0.5] {$\ov{C}_2$};
+	\end{tikzpicture}
+	\end{align*}
+	in which $\ov{C}_1$ is an $n\times n$ matrix and $\ov{C}_2$ is $(m-n+1)\times n$. Since $\ov{D}$ has rank $n$ by assumption, it must contain an invertible $n\times n$ minor. So permuting $\ov{f}_0,\ldots,\ov{f}_m$, we may assume that $\ov{C}_1$ is invertible.
+	
+	By Nakayama-style arguments like \cite[Lemma~1.5.1]{alg2} we may replace $A$ by some localization such that the $\ov{e}_i$ and $\ov{f}_j$ possess lifts $e_i\in P^0$ and $f_j\in P^1$ such that $e_0,\ldots,e_n$ form a basis of $P^0$ and $f_0,\ldots,f_m$ a basis of $P^1$. Then the matrix representation $D$ of $\delta^0$ looks like
+	\begin{align*}
+	\begin{tikzpicture}[remember picture]
+	\node at (0,0) {$D=
+		\begin{pmatrix}
+		 & \tikzentry{e}{\vphantom{0}\hphantom{c_1}}\vphantom{0} & \tikzentry{a}{\phantom{0}} \\
+		 &  \vphantom{\vdots} & & \phantom{\ov{C}_1}\\
+		 & \tikzentry{f}{\vphantom{0}\hphantom{c_1}}\vphantom{\vdots} & & & \tikzentry{b}{\phantom{0}} &\\
+		 & \tikzentry{g}{\vphantom{0}\hphantom{c_2}}\vphantom{\vdots} & \tikzentry{c}{\phantom{0}} \\
+		 & \tikzentry{h}{\vphantom{0}\hphantom{c_2}}\vphantom{0} &  & & \tikzentry{d}{\phantom{0}}
+		\end{pmatrix}
+		$};
+	\draw[rounded corners=0.75] ($(a.north west) +(-2pt,3pt)$) rectangle ($(b.south east) +(2pt,-3pt)$) node[pos=0.5] {$C_1$};
+	\draw[rounded corners=0.75] ($(c.north west) +(-2pt,3pt)$) rectangle ($(d.south east) +(2pt,-3pt)$) node[pos=0.5] {$C_2$};
+	\draw[rounded corners=0.75] ($(e.north west) +(-2pt,3pt)$) rectangle ($(f.south east) +(2pt,-3pt)$) node[pos=0.5] {$c_1$};
+	\draw[rounded corners=0.75] ($(g.north west) +(-2pt,3pt)$) rectangle ($(h.south east) +(2pt,-3pt)$) node[pos=0.5] {$c_2$};
+	\end{tikzpicture}
+	\end{align*}
+	in which $c_1$ and $c_2$ are column vectors whose images in $\KK(s)$ vanish, and the images of $C_1$ and $C_2$ in $\KK(s)$ are $\ov{C}_1$ and $\ov{C_2}$ respectively. Since $\det\ov{C}_1$ doesn't vanish in $\KK(s)$, we may replace $A$ by some localization such that $C_1\in A^{n\times n}$ becomes invertible (cf.\ the argument in the proof of Lemma~\reff{lem:BasicallyThm4bc}). But then $c_1$ as well as the rows of $C_2$ may be represented as linear combinations of the columns and rows of $C_1$ respectively. So by performing column and row transformations (that is, replacing $e_0$ and $f_n,\ldots,f_m$ appropriately) we may assume that $c_1=0$ and $C_2=0$, leaving only 
+		\begin{align*}
+	\begin{tikzpicture}[remember picture]
+	\node at (0,0) {$D=
+		\begin{pmatrix}
+		& 0 & \tikzentry{a}{\phantom{0}} \\
+		&  \vdots & & \phantom{\ov{C}_1}\\
+		& 0\vphantom{\vdots} & & & \tikzentry{b}{\phantom{0}} &\\
+		& \tikzentry{g}{\vphantom{0}\hphantom{c_2}}\vphantom{\vdots} & \tikzentry{c}{\phantom{0}} \\
+		& \tikzentry{h}{\vphantom{0}\hphantom{c_2}}\vphantom{0} &  & & \tikzentry{d}{\phantom{0}}
+		\end{pmatrix}
+		$};
+	\draw[rounded corners=0.75] ($(a.north west) +(-2pt,3pt)$) rectangle ($(b.south east) +(2pt,-3pt)$) node[pos=0.5] {$C_1$};
+	\path (c) -- (d) node[pos=0.5] {$0$};
+	\draw[rounded corners=0.75] ($(g.north west) +(-2pt,3pt)$) rectangle ($(h.south east) +(2pt,-3pt)$) node[pos=0.5] {$c_2$};
+	\end{tikzpicture}
+	\end{align*}
+	(that's the last blocky matrix, I promise). Now note that $Z_+=V(c_2)$. Indeed, since $C_1$ will be invertible in $\KK(\pp)$ for all $\pp\in\Spec A$, the kernel of $\delta_\pp^0=\delta^0\otimes\id_{\KK(\pp)}$ is one-dimensional iff $c_2$ vanishes in $\KK(\pp)$. Therefore, it seems sensible to equip $Z_+$ with the prescheme structure of $\Spec A/(c_2)$, and that's what we'll do.
+	
+	\emph{Step 4.} We show that locally $Z=Z_+\cap Z_-$ has the required universal property. We already know from Step~2 that an $S$-prescheme $\tau\colon T\morphism S$ satisfies $h\left(t,\tau_X^*\Ll^{\pm 1}\right)=1$ for all $t\in T$ iff the image of $\tau$ is contained in $Z$. Now we prove that $U_0=T$ for such $\tau_X^*\Ll$ if and only if $\tau$ factors over $Z_+$ (and likewise with $\tau_X^*\Ll^{-1}$ and $Z_-$), which suffices to finish the proof.
+	
+	Again, we may do this locally, so let's assume $S=\Spec A$ and $Z_+=V(c_2)$. By definition, we have $U_0=T$ iff the base change morphism
+	\begin{align*}
+		\big(f_{T,*}(\tau_X^*\Ll)\big)(t)\morphism H^0\left(X_{T,t},\tau_X^*\Ll|_{X_{T,t}}\right)
+	\end{align*}
+	is surjective for all $t\in T$. We know 
+	\begin{align*}
+		H^0\big(X_{T,t},\tau_X^*\Ll|_{X_{T,t}}\big)=\ker\left(\delta_t^0\delta^0\otimes\id_{\KK(t)}\colon P^0\otimes_A\KK(t)\morphism P^1\otimes_A\KK(t)\right)
+	\end{align*}
+	by Theorem~\reff{thm:GrauertGrothendieck}\itememph{a}, so $\ker \delta^0_t$ is one-dimensional (since the image of $\tau$ lies in $Z_+$ by assumption) and thus generated by $e_0\otimes1$. Now let $V\cong \Spec B$ be a small affine open neighbourhood of $t\in T$. By Theorem~\reff{thm:GrauertGrothendieck}\itememph{a} again, $f_{T,*}(\tau_X^*\Ll)(V)$ is given by
+	\begin{align*}
+		K=\ker\left(\delta^0\otimes\id_B\colon P^0\otimes_AB\morphism P^1\otimes_AB\right)\;.
+	\end{align*}
+	So the question is whether $K\otimes_B\KK(t)\morphism \ker\delta_t^0$ is surjective. Since the image of $C_1$ in $B^{n\times n}$ stays invertible, an element $\sum_{i=0}^n\beta_i(e_i\otimes1)$ of $P^0\otimes_AB$ (where $\beta_i\in B$ are some coefficients) is in $K$ iff $\beta_1=\ldots=\beta_n=0$ and $\beta_0c_2=0$. Thus $e_0\otimes1\in\ker\delta_t^0$ is hit by $K\otimes_B\KK(t)\morphism \ker\delta_t^0$ if and only if $c_2=0$ in $\KK(t)$, that is, iff $t\in V(\tau^*c_2)$.
+	
+	Thus $U_0=T$ for $\tau_X ^*\Ll$ iff $\tau$ factors over $Z_+$ as a prescheme. The same is true for $\tau_X^*\Ll^{-1}$ and $Z_-$, so $Z=Z_+\cap Z_-$ has the required universal property.
+\end{proof}
 
 \Appendix
 \chapter{Appendix}
