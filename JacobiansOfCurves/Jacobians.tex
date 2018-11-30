@@ -1450,73 +1450,173 @@ is open in $S$ by Theorem~\reff{thm:GrauertGrothendieck}\itememph{d}. Also we de
 	\node at (0,0) {$\ov{D}=
 		\begin{pmatrix}
 		 0 & \tikzentry{a}{\phantom{0}} \\
-		 \vdots & & \phantom{\ov{C}_1}\\
+		 \vdots & & \phantom{\ov{D}_1}\\
 		 \vdots & & & \tikzentry{b}{\phantom{0}} &\\
 		 \vdots & \tikzentry{c}{\phantom{0}} \\
 		 0 &  & & \tikzentry{d}{\phantom{0}}
 		\end{pmatrix}
 		$};
-		\draw[rounded corners=0.75] ($(a.north west) +(-2pt,3pt)$) rectangle ($(b.south east) +(2pt,-3pt)$) node[pos=0.5] {$\ov{C}_1$};
-		\draw[rounded corners=0.75] ($(c.north west) +(-2pt,3pt)$) rectangle ($(d.south east) +(2pt,-3pt)$) node[pos=0.5] {$\ov{C}_2$};
+		\draw[rounded corners=0.75] ($(a.north west) +(-2pt,3pt)$) rectangle ($(b.south east) +(2pt,-3pt)$) node[pos=0.5] {$\ov{D}_1$};
+		\draw[rounded corners=0.75] ($(c.north west) +(-2pt,3pt)$) rectangle ($(d.south east) +(2pt,-3pt)$) node[pos=0.5] {$\ov{D}_2$};
 	\end{tikzpicture}
 	\end{align*}
-	in which $\ov{C}_1$ is an $n\times n$ matrix and $\ov{C}_2$ is $(m-n+1)\times n$. Since $\ov{D}$ has rank $n$ by assumption, it must contain an invertible $n\times n$ minor. So permuting $\ov{f}_0,\ldots,\ov{f}_m$, we may assume that $\ov{C}_1$ is invertible.
+	in which $\ov{D}_1$ is an $n\times n$ matrix and $\ov{D}_2$ is $(m-n+1)\times n$ (I don't know why Franke needed six blocks in the lecture; it seemed rather unnecessarily complicated). Since $\ov{D}$ has rank $n$ by assumption, it must contain an invertible $n\times n$ minor. So permuting $\ov{f}_0,\ldots,\ov{f}_m$, we may assume that $\ov{D}_1$ is invertible.
 	
 	By Nakayama-style arguments like \cite[Lemma~1.5.1]{alg2} we may replace $A$ by some localization such that the $\ov{e}_i$ and $\ov{f}_j$ possess lifts $e_i\in P^0$ and $f_j\in P^1$ such that $e_0,\ldots,e_n$ form a basis of $P^0$ and $f_0,\ldots,f_m$ a basis of $P^1$. Then the matrix representation $D$ of $\delta^0$ looks like
 	\begin{align*}
 	\begin{tikzpicture}[remember picture]
 	\node at (0,0) {$D=
 		\begin{pmatrix}
-		 & \tikzentry{e}{\vphantom{0}\hphantom{c_1}}\vphantom{0} & \tikzentry{a}{\phantom{0}} \\
-		 &  \vphantom{\vdots} & & \phantom{\ov{C}_1}\\
-		 & \tikzentry{f}{\vphantom{0}\hphantom{c_1}}\vphantom{\vdots} & & & \tikzentry{b}{\phantom{0}} &\\
-		 & \tikzentry{g}{\vphantom{0}\hphantom{c_2}}\vphantom{\vdots} & \tikzentry{c}{\phantom{0}} \\
-		 & \tikzentry{h}{\vphantom{0}\hphantom{c_2}}\vphantom{0} &  & & \tikzentry{d}{\phantom{0}}
+		 & \tikzentry{e}{\vphantom{0}\hphantom{d_1}}\vphantom{0} & \tikzentry{a}{\phantom{0}} \\
+		 &  \vphantom{\vdots} & & \phantom{\ov{D}_1}\\
+		 & \tikzentry{f}{\vphantom{0}\hphantom{d_1}}\vphantom{\vdots} & & & \tikzentry{b}{\phantom{0}} &\\
+		 & \tikzentry{g}{\vphantom{0}\hphantom{d_2}}\vphantom{\vdots} & \tikzentry{c}{\phantom{0}} \\
+		 & \tikzentry{h}{\vphantom{0}\hphantom{d_2}}\vphantom{0} &  & & \tikzentry{d}{\phantom{0}}
 		\end{pmatrix}
 		$};
-	\draw[rounded corners=0.75] ($(a.north west) +(-2pt,3pt)$) rectangle ($(b.south east) +(2pt,-3pt)$) node[pos=0.5] {$C_1$};
-	\draw[rounded corners=0.75] ($(c.north west) +(-2pt,3pt)$) rectangle ($(d.south east) +(2pt,-3pt)$) node[pos=0.5] {$C_2$};
-	\draw[rounded corners=0.75] ($(e.north west) +(-2pt,3pt)$) rectangle ($(f.south east) +(2pt,-3pt)$) node[pos=0.5] {$c_1$};
-	\draw[rounded corners=0.75] ($(g.north west) +(-2pt,3pt)$) rectangle ($(h.south east) +(2pt,-3pt)$) node[pos=0.5] {$c_2$};
+	\draw[rounded corners=0.75] ($(a.north west) +(-2pt,3pt)$) rectangle ($(b.south east) +(2pt,-3pt)$) node[pos=0.5] {$D_1$};
+	\draw[rounded corners=0.75] ($(c.north west) +(-2pt,3pt)$) rectangle ($(d.south east) +(2pt,-3pt)$) node[pos=0.5] {$D_2$};
+	\draw[rounded corners=0.75] ($(e.north west) +(-2pt,3pt)$) rectangle ($(f.south east) +(2pt,-3pt)$) node[pos=0.5] {$d_1$};
+	\draw[rounded corners=0.75] ($(g.north west) +(-2pt,3pt)$) rectangle ($(h.south east) +(2pt,-3pt)$) node[pos=0.5] {$d_2$};
 	\end{tikzpicture}
 	\end{align*}
-	in which $c_1$ and $c_2$ are column vectors whose images in $\KK(s)$ vanish, and the images of $C_1$ and $C_2$ in $\KK(s)$ are $\ov{C}_1$ and $\ov{C_2}$ respectively. Since $\det\ov{C}_1$ doesn't vanish in $\KK(s)$, we may replace $A$ by some localization such that $C_1\in A^{n\times n}$ becomes invertible (cf.\ the argument in the proof of Lemma~\reff{lem:BasicallyThm4bc}). But then $c_1$ as well as the rows of $C_2$ may be represented as linear combinations of the columns and rows of $C_1$ respectively. So by performing column and row transformations (that is, replacing $e_0$ and $f_n,\ldots,f_m$ appropriately) we may assume that $c_1=0$ and $C_2=0$, leaving only 
+	in which $d_1$ and $d_2$ are column vectors whose images in $\KK(s)$ vanish, and the images of $D_1$ and $D_2$ in $\KK(s)$ are $\ov{D}_1$ and $\ov{D}_2$ respectively. Since $\det\ov{D}_1$ doesn't vanish in $\KK(s)$, we may replace $A$ by some localization such that $D_1\in A^{n\times n}$ becomes invertible (cf.\ the argument in the proof of Lemma~\reff{lem:BasicallyThm4bc}). But then $d_1$ as well as the rows of $D_2$ may be represented as linear combinations of the columns and rows of $D_1$ respectively. So by performing column and row transformations (that is, replacing $e_0$ and $f_n,\ldots,f_m$ appropriately) we may assume that $d_1=0$ and $D_2=0$, leaving only 
 		\begin{align*}
 	\begin{tikzpicture}[remember picture]
 	\node at (0,0) {$D=
 		\begin{pmatrix}
 		& 0 & \tikzentry{a}{\phantom{0}} \\
-		&  \vdots & & \phantom{\ov{C}_1}\\
+		&  \vdots & & \phantom{\ov{D}_1}\\
 		& 0\vphantom{\vdots} & & & \tikzentry{b}{\phantom{0}} &\\
-		& \tikzentry{g}{\vphantom{0}\hphantom{c_2}}\vphantom{\vdots} & \tikzentry{c}{\phantom{0}} \\
-		& \tikzentry{h}{\vphantom{0}\hphantom{c_2}}\vphantom{0} &  & & \tikzentry{d}{\phantom{0}}
+		& \tikzentry{g}{\vphantom{0}\hphantom{d_2}}\vphantom{\vdots} & \tikzentry{c}{\phantom{0}} \\
+		& \tikzentry{h}{\vphantom{0}\hphantom{d_2}}\vphantom{0} &  & & \tikzentry{d}{\phantom{0}}
 		\end{pmatrix}
 		$};
-	\draw[rounded corners=0.75] ($(a.north west) +(-2pt,3pt)$) rectangle ($(b.south east) +(2pt,-3pt)$) node[pos=0.5] {$C_1$};
+	\draw[rounded corners=0.75] ($(a.north west) +(-2pt,3pt)$) rectangle ($(b.south east) +(2pt,-3pt)$) node[pos=0.5] {$D_1$};
 	\path (c) -- (d) node[pos=0.5] {$0$};
-	\draw[rounded corners=0.75] ($(g.north west) +(-2pt,3pt)$) rectangle ($(h.south east) +(2pt,-3pt)$) node[pos=0.5] {$c_2$};
+	\draw[rounded corners=0.75] ($(g.north west) +(-2pt,3pt)$) rectangle ($(h.south east) +(2pt,-3pt)$) node[pos=0.5] {$d_2$};
 	\end{tikzpicture}
 	\end{align*}
-	(that's the last blocky matrix, I promise). Now note that $Z_+=V(c_2)$. Indeed, since $C_1$ will be invertible in $\KK(\pp)$ for all $\pp\in\Spec A$, the kernel of $\delta_\pp^0=\delta^0\otimes\id_{\KK(\pp)}$ is one-dimensional iff $c_2$ vanishes in $\KK(\pp)$. Therefore, it seems sensible to equip $Z_+$ with the prescheme structure of $\Spec A/(c_2)$, and that's what we'll do.
+	(that's the last blocky matrix, I promise). Now note that $Z_+=V(d_2)$. Indeed, since $D_1$ will be invertible in $\KK(\pp)$ for all $\pp\in\Spec A$, the kernel of $\delta_\pp^0=\delta^0\otimes\id_{\KK(\pp)}$ is one-dimensional iff $d_2$ vanishes in $\KK(\pp)$. Therefore, it seems sensible to equip $Z_+$ with the prescheme structure of $\Spec A/(d_2)$, and that's what we'll do.
 	
 	\emph{Step 4.} We show that locally $Z=Z_+\cap Z_-$ has the required universal property. We already know from Step~2 that an $S$-prescheme $\tau\colon T\morphism S$ satisfies $h\left(t,\tau_X^*\Ll^{\pm 1}\right)=1$ for all $t\in T$ iff the image of $\tau$ is contained in $Z$. Now we prove that $U_0=T$ for such $\tau_X^*\Ll$ if and only if $\tau$ factors over $Z_+$ (and likewise with $\tau_X^*\Ll^{-1}$ and $Z_-$), which suffices to finish the proof.
 	
-	Again, we may do this locally, so let's assume $S=\Spec A$ and $Z_+=V(c_2)$. By definition, we have $U_0=T$ iff the base change morphism
+	Again, we may do this locally, so let's assume $S=\Spec A$ and $Z_+=V(d_2)$. By definition, we have $U_0=T$ iff the base change morphism
 	\begin{align*}
 		\big(f_{T,*}(\tau_X^*\Ll)\big)(t)\morphism H^0\left(X_{T,t},\tau_X^*\Ll|_{X_{T,t}}\right)
 	\end{align*}
 	is surjective for all $t\in T$. We know 
 	\begin{align*}
-		H^0\big(X_{T,t},\tau_X^*\Ll|_{X_{T,t}}\big)=\ker\left(\delta_t^0\delta^0\otimes\id_{\KK(t)}\colon P^0\otimes_A\KK(t)\morphism P^1\otimes_A\KK(t)\right)
+		H^0\big(X_{T,t},\tau_X^*\Ll|_{X_{T,t}}\big)=\ker\left(\delta_t^0=\delta^0\otimes\id_{\KK(t)}\colon P^0\otimes_A\KK(t)\morphism P^1\otimes_A\KK(t)\right)
 	\end{align*}
 	by Theorem~\reff{thm:GrauertGrothendieck}\itememph{a}, so $\ker \delta^0_t$ is one-dimensional (since the image of $\tau$ lies in $Z_+$ by assumption) and thus generated by $e_0\otimes1$. Now let $V\cong \Spec B$ be a small affine open neighbourhood of $t\in T$. By Theorem~\reff{thm:GrauertGrothendieck}\itememph{a} again, $f_{T,*}(\tau_X^*\Ll)(V)$ is given by
 	\begin{align*}
 		K=\ker\left(\delta^0\otimes\id_B\colon P^0\otimes_AB\morphism P^1\otimes_AB\right)\;.
 	\end{align*}
-	So the question is whether $K\otimes_B\KK(t)\morphism \ker\delta_t^0$ is surjective. Since the image of $C_1$ in $B^{n\times n}$ stays invertible, an element $\sum_{i=0}^n\beta_i(e_i\otimes1)$ of $P^0\otimes_AB$ (where $\beta_i\in B$ are some coefficients) is in $K$ iff $\beta_1=\ldots=\beta_n=0$ and $\beta_0c_2=0$. Thus $e_0\otimes1\in\ker\delta_t^0$ is hit by $K\otimes_B\KK(t)\morphism \ker\delta_t^0$ if and only if $c_2=0$ in $\KK(t)$, that is, iff $t\in V(\tau^*c_2)$.
+	So the question is whether $K\otimes_B\KK(t)\morphism \ker\delta_t^0$ is surjective. Since the image of $D_1$ in $B^{n\times n}$ stays invertible, an element $\sum_{i=0}^n\beta_i(e_i\otimes1)$ of $P^0\otimes_AB$ (where $\beta_i\in B$ are some coefficients) is in $K$ iff $\beta_1=\ldots=\beta_n=0$ and $\beta_0d_2=0$. Thus $e_0\otimes1\in\ker\delta_t^0$ is hit by $K\otimes_B\KK(t)\morphism \ker\delta_t^0$ if and only if $\beta d_2=0$ in $\Oo_{T,t}$ for some $\beta\in B$ that doesn't vanish in $\KK(t)$. But such $\beta$ is a unit in $\Oo_{T,t}$ (since $\beta\notin\mm_{T,t}$), which shows $d_2=0$ in $\Oo_{T,t}$. Since this is true for all $t\in T$, we see that $\tau^*d_2=0$.
 	
 	Thus $U_0=T$ for $\tau_X ^*\Ll$ iff $\tau$ factors over $Z_+$ as a prescheme. The same is true for $\tau_X^*\Ll^{-1}$ and $Z_-$, so $Z=Z_+\cap Z_-$ has the required universal property.
 \end{proof}
+\begin{rem}
+	If the fibres of $f\colon X\morphism S$ are no longer assumed irreducible, then $\pi\colon \PIC_{X/S}\morphism S$ may fail to be separated (while $\PIC_{X/S}$ still exists), even in fairly simple cases where all other assumptions of Theorem~\reff{thm:seesaw} remain valid. Here is one: Let $S=\Spec A$, where $A$ is a DVR with a uniformizer $\pi$. Let $s=(\pi)\in S$ be the closed point and $\eta\in S$ the generic point and let $X=V(xy-\pi z^2)\subseteq \IP_S^2$. Then
+	\begin{align*}
+		\IP_{S_\eta}^1&\isomorphism X_\eta\\
+		[x,y]&\longmapsto [x^2,\pi y^2,xy]
+	\end{align*}
+	is an isomorphism, while $X_s=V(xy)\subseteq \IP_{S_s}^2$ is the union of two irreducible components $X_s^{(x)}=V(x)$ and $X_s^{(y)}=V(y)$ glued on $\xi=[0,0,1]\in\IP_{S_s}^2$. Line bundles on $X_\eta\cong \IP_{S_\eta}^1$ are parametrized by their degree (we proved this, e.g., in \cite[Corollary~A.2.1]{alggeo2}), while line bundles on $X_s$ are given by triples $\big(\Ll^{(x)},\Ll^{(y)},\iota\big)$ (up to isomorphism), where $\Ll^{(*)}$ are line bundles on $X_s^{(*)}$ for $*\in\{x,y\}$, and $\iota\colon \Ll^{(x)}(\xi)\morphism\Ll^{(y)}(\xi)$ is an isomorphism. Since $X_s^{(*)}\cong \IP_{S_s}^1$ for $*\in\{x,y\}$, we see that line bundles on $X_s$ are characterized by $\big(d^{(x)},d^{(y)}\big)\in\IZ^2$, where $d^{(*)}=\deg\Ll^{(*)}$.
+	
+	Following these observations, one finds after some work that $\PIC_{X/S}$ is given by 
+	\begin{align*}
+		\bigcup_{(m,n)\in\IZ^2}S_{m,n}\Bigm/\sim\;,
+	\end{align*}
+	where each $S_{m,n}$ is a copy of $S$. The equivalence relation $\sim$ identifies $S_{m,n}\setminus\{s_{m,n}\}$ and $S_{i,j}\setminus\{s_{i,j}\}$ whenever $m+n=i+j$ (and $s_{m,n}$ denotes the closed point of $S_{m,n}\cong S$).
+\end{rem}
+\begin{thm}[Theorem of the cube]\lbl{thm:cube}
+	Consider a pullback diagram
+	\begin{diagram*}
+		\object{0,1.5}{$X\times_SY$}[F];
+		\object{0,0}{$X$}[X];
+		\object{2.5,1.5}{$Y$}[Y];
+		\object{2.5,0}{$S$}[S];
+		\pullback{1.25,0.75};
+		\scriptsize
+		\arrow{F}{X}[left][$p_X$];
+		\arrow{F}{Y}[above][$p_Y$];
+		\arrow{X}{S}[above][$\xi$];
+		\arrow{Y}{S}[left][$\upsilon$];
+		\arrow[dotted,->,bend left]{S}{X}[below][$\sigma_X$];
+		\arrow[dotted,->,bend right]{S}{Y}[right][$\sigma_Y$];
+	\end{diagram*}
+	 such that Theorem~\reff{thm:seesaw} is applicable to $\xi\colon X\morphism S$ and $\upsilon\colon Y\morphism S$. Also let $\sigma_X\colon S\morphism X$ and $\sigma_Y\colon S\morphism Y$ be sections of $\xi$ and $\upsilon$ respectively. Suppose that $\Ll$ is a line bundle on $X\times_SY$ for which there is a line bundle $\Ll_0$ on $S$ such that
+	 \begin{align*}
+	 	(\sigma_Y\xi,\id_X)^*\Ll\cong \xi^*\Ll_0\text{ on }X\quad\text{and}\quad(\sigma_X\upsilon,\id_Y)^*\Ll\cong \upsilon^*\Ll_0\text{ on }Y\;.
+	 \end{align*}
+	 Then the closed subprescheme $Z\subseteq S$ obtained from Theorem~\reff{thm:seesaw} applied to $X\times_SY\morphism S$ is also open.
+\end{thm}
+\begin{rem}
+	It's perhaps worthwhile to remark that Theorem~\reff{thm:seesaw} \emph{does} apply to $X\times_SY\morphism S$. The only subtle part is whether the geometric fibres $(X\times_SY)_{\ov{s}}$ remain integral. To see this, put $k=\ov{\KK(s)}$ and note that
+	\begin{align*}
+		(X\times_SY)_{\ov{s}}\cong X_{\ov{s}}\times_{\Spec k}Y_{\ov{s}}\;,
+	\end{align*}
+	in which $X_{\ov{s}}$ and $Y_{\ov{s}}$ are integral by assumption. If $U\cong \Spec B$ and $V\cong \Spec C$ are affine open subsets of $X_{\ov{s}}$ and $Y_{\ov{s}}$ respectively, then $B$ and $C$ are domains of finite type over $k$, hence $U\times_{\Spec k}V\cong \Spec (B\otimes_kC)$ is integral again -- we proved this (for algebraic varieties, but this makes no difference) in \cite[Proposition~2.2.6]{alg1}.
+	
+	If $U'\subseteq X_{\ov{s}}$ and $V'\subseteq Y_{\ov{s}}$ is another pair of affine open subsets, then $U\cap U'$ and $V\cap V'$ are non-empty because $X_{\ov{s}}$ and $Y_{\ov{s}}$ are irreducible, so every non-empty open subset is dense. Hence $U\times_{\Spec k}V$ and $U'\times_{\Spec k}V'\neq \emptyset$ intersect. This means $X_{\ov{s}}\times_{\Spec k}Y_{\ov{s}}$ can be covered by finitely many integral open subpreschemes, mutually intersecting each other in non-empty (thus dense) subsets. This shows that $X_{\ov{s}}\times_{\Spec k}Y_{\ov{s}}$ is integral itself.
+\end{rem}
+\begin{rem}
+	\begin{alphanumerate}
+		\item When $S$ is connected and $Z\neq\emptyset$ one has $Z=S$. That is, the line bundle $\Ll$ is trivial in $\Pic(X\times_SY/S)$.
+		\item Theorem~\reff{thm:cube} is typically applied in the following situation: Assume $X\cong A^m$ and $Y\cong A^n$ (and thus also $X\times_SY\cong A^{m+n}$) are powers of some abelian (group-)prescheme $A$ over $S$. Let morphisms
+		\begin{align*}
+			f_i\colon X\times_SY\morphism A\quad\text{for }i=1,\ldots,N
+		\end{align*}
+		be given by $f_i=\sum_{j=1}^{m+n}g_{i,j}$, where $g_{i,j}\colon A\morphism A$ is either $0_A$ or $\id_A$ (both $0_A$ as well as the above sum should be interpreted as taken in the group $\Hom_{\cat{PSch}/S}(A,A)$). If $\Ll_0$ is a line bundle on $A$ and exponents $\epsilon_i\in\{\pm 1\}$ are suitably chosen such that ``cancellations occur on the coordinate axes'' (that is, after pulling back to $X$ or $Y$), then Theorem~\reff{thm:cube} can be applied to a line bundle of the form 
+		\begin{align*}
+			\Ll=\bigotimes_{i=1}^N(f_i^*\Ll_0)^{\epsilon_i}\;.
+		\end{align*}
+	\end{alphanumerate}
+\end{rem}
+\begin{rem}
+	Before proving Theorem~\reff{thm:cube}, Professor Franke would like to give some motivation why such a result should hold by comparing it to a similar situation in the complex analytic case. This will need a lot of complex analytic theory, which we'll just cite without a proof (for this is only a motivational example).
+	
+	Let $X$ be a smooth projective variety over $\IC$. It's set of complex points (i.e., the closed points) endowed with the complex topology form a \emph{complex analytic space} $X^\an$ with a structure sheaf $\Oo_{X^\an}$; and to every sheaf $\Ff$ on $X$ one can assign a sheaf $\Ff^\an$ on $X^\an$. By Serre's famous \emph{GAGA theorem} we have $H^\bullet(X^\an,\Ff^\an)\cong H^\bullet(X,\Ff)$ whenever $\Ff$ is a coherent $\Oo_X$-module. For the rest of the remark, we'll drop the superscripts $^\an$ and assume everything to be understood in the complex analytic setting.
+	
+	Put $\IZ_X(n)\coloneqq (2\pi\mathrm{i})^n\IZ_X$. On $X$ we obtain a short exact sequence
+	\begin{align}\lbl{eq:ComplexSeq}
+		0\morphism \IZ_X(1)\morphism\Oo_X\morphism[\exp]\Oo_X\times\morphism 0
+	\end{align}
+	We have $\Pic(X)\cong H^1(X,\Oo_X^\times)$ (compare this to the classification of $\Oo_X^\times$-torsors in \cite[Section~1.7]{alggeo2} -- this also works in the complex analytic case). To compute $\Pic(X)$, we thus need to investigate the long exact cohomology sequence associated to \eqreff{eq:ComplexSeq}.
+	
+	In degree $0$, this sequence looks like
+	\begin{diagram*}
+		\node[ob] (0o) at (0,1.5) {$0$};
+		\node[ob]  (H0J) [right=0.5cm of 0o] {$H^0(X,\IZ_X(1))$};
+		\node[ob]  (H0O) [right=0.5cm of H0J] {$H^0(X,\Oo_X)$};
+		\node[ob]  (H0OX) [right=0.5cm of H0O] {$H^0(X,\Oo_X^\times)$};
+		\node[ob]  (H1J) [right=0.5cm of H0OX]  {$H^1(X,\IZ_X(1))$};
+		\node[ob]  (0u) at (0,0) {$0$};
+		\node[ob]  (p) at (0u -| H0J) {$2\pi\mathrm{i}\IZ$};
+		\node[ob]  (kX) at (0u -| H0O) {$\IC$};
+		\node[ob]  (Ol) at (0u -| H0OX) {$\IC^\times$};
+		\scriptsize
+		\draw[->] (0o) -- (H0J);
+		\draw[->] (H0J) -- (H0O);
+		\draw[->] (H0O) -- (H0OX);
+		\draw[->] (H0OX) -- (H1J);
+		\draw[->] (0u) -- (p);
+		\draw[->] (p) -- (kX);
+		\draw[->] (kX) -- (Ol) node[pos=0.5, above] {$\exp$};
+		\draw[->] (H0J) -- (p) node[pos=0.5, sloped, above=-0.25ex] {$\sim$};
+		\draw[->] (H0O) -- (kX) node[pos=0.5, sloped, above=-0.25ex] {$\sim$};
+		\draw[->] (H0OX) -- (Ol) node[pos=0.5, sloped, above=-0.25ex] {$\sim$};
+	\end{diagram*}
+(using that $X$ is connected). But $\exp\colon \IC\morphism\IC^\times$ in the bottom line is surjective, so the morphism $H^0(X,\Oo_X^\times)\morphism H^1(X,\IZ_X(1))$ actually vanishes. Therefore, we'd expect $H^1(X,\Oo_X^\times)$ to be a product of $H^1(X,\Oo_X)/H^1(X,\IZ_X(1))$ (which is a complex torus, because $H^1(X,\IZ_X(1))$ turns out to be a complete lattice in the $\IC$-vector space $H^1(X,\Oo_X)$) and a subgroup of $H^2(X,\IZ_X(1))$, which should be discrete. But $H^1(X\times Y,\Oo_{X\times Y})\cong H^1(X,\Oo_X)\oplus H^1(Y,\Oo_Y)$ by a Künneth-type result. This makes it plausible that the non-discrete (or connected) part of $\Pic(X)$ is compatible with products.
+
+Professor Franke also mentions that the image of $c_1\colon \Pic(X)\morphism H^2(X,\IZ_X(1))$ is the kernel of the composition
+\begin{align*}
+	H^2(X,\IZ_X(1))\morphism H^2(X,\IC_X)\cong\bigoplus_{p+q=2}H^p(X,\Omega_X^q)\morphism H^2(X,\Oo_X)\oplus H^0(X,\Omega_X^2)\;,
+\end{align*}
+in which the isomorphism in the middle is the \emph{Hodge decomposition} (and indeed this makes some sense, since I'd expect the first Chern class to have target $H^1(X,\Omega_X^1)$).
+\end{rem}
 
 \Appendix
 \chapter{Appendix}
