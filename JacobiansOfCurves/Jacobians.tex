@@ -9,6 +9,7 @@
 
 \usepackage{eurosym}
 \usetikzlibrary{fadings}
+\usepackage{tikzsymbols}
 
 \usepackage{csquotes}
 %\usepackage{tikz-cd}%I cannot draw diagrams without it - Felix. %well, I can - Ferdinand
@@ -238,7 +239,7 @@ Using this, Theorem~\reff{thm:FormalFunctions} can be restated as follows.
 	\end{align*}
 	Also
 	\begin{align*}
-		\left(X\times_Y\Spec A_\pp\right)\times_{\Spec A_\pp}\Spec(A_\pp/\mm^n)&\cong X\times_Y\left(\Spec A_\pp\times_{\Spec_{A_\pp}}\Spec (A_\pp/\mm^n)\right)\\
+		\left(X\times_Y\Spec A_\pp\right)\times_{\Spec A_\pp}\Spec(A_\pp/\mm^n)&\cong X\times_Y\left(\Spec A_\pp\times_{\Spec A_\pp}\Spec (A_\pp/\mm^n)\right)\\
 		&\cong X\times_Y\Spec(A_\pp/\mm^n)\\
 		&\cong X_n
 	\end{align*}
@@ -1210,7 +1211,7 @@ We will typically assume $S$ to be locally noetherian, although Professor Franke
 \begin{rem}
 	Note that despite Proposition~\reff{prop:canonicalSection}, a flat family $f\colon C\morphism S$ of genus $1$ curves may fail to have a section (think of an elliptic curve without a rational point over $\IQ$). An elliptic curve $E$ over $S$ may always be obtained from $C$, but there may be several non-isomorphic $C$ giving the same $E$. When $S=\Spec K$ where $K/\IQ$ is a number field, then all these $C$ are isomorphic over $\ov{\IQ}$ and their isomorphism classes (over $K$) form a group, the \defemph{Tate--Shafarevich group} $\Sha(E/K)$.
 \end{rem}
-	Let $f\colon E\morphism S$ with a section $\epsilon\colon S\morphism E$ be an elliptic curve over $S$. Then Proposition~\reff{prop:canonicalSection} may be used to obtain a bijection
+	\lbl{par:EllipticCurves}Let $f\colon E\morphism S$ with a section $\epsilon\colon S\morphism E$ be an elliptic curve over $S$. Then Proposition~\reff{prop:canonicalSection} may be used to obtain a bijection
 	\begin{align*}
 		\Pic^0(E/S)\coloneqq\left\{\begin{tabular}{c}
 			isomorphism classes of line bundles\\
@@ -1332,7 +1333,7 @@ If $\Ll$ is a line bundle of fibre-wise degree $g$ and $f_*\Ll$ is a line bundle
 	\item Use this to represent an open subgroup of $\PIC_{C/S}$.
 	\item Glue these open subgroups.
 \end{enumerate}
-\section{The seesaw theorem (and potentially the theorem of the cube)}
+\section{The seesaw theorem and the theorem of the cube}
 As literature for this section Professor Franke recommends \cite{mumford1974abelian}, \cite{cornell1986arithmetic}, and \cite{kleiman}, as well as Grothendieck's FGA.
 
 Note that even without knowing whether a representing object $\PIC_{C/S}$ of $\Pic_{C/S}$ exists, we can still decide whether it is separated over $S$, since this property can be read off the functor $\Hom_{\cat{PSch}/S}(-,\PIC_{C/S})\cong\Pic_{C/S}$. From that point of view, the seesaw theorem simply states that under certain (essential) assumptions on $f\colon C\morphism S$, the morphism $\PIC_{C/S}\morphism S$ is a \emph{separated} morphism. Before we prove this we'll need some preparations.
@@ -1540,8 +1541,8 @@ is open in $S$ by Theorem~\reff{thm:GrauertGrothendieck}\itememph{d}. Also we de
 		\object{2.5,0}{$S$}[S];
 		\pullback{1.25,0.75};
 		\scriptsize
-		\arrow{F}{X}[left][$p_X$];
-		\arrow{F}{Y}[above][$p_Y$];
+		\arrow{F}{X}[left][$\upsilon_X$];
+		\arrow{F}{Y}[above][$\xi_Y$];
 		\arrow{X}{S}[above][$\xi$];
 		\arrow{Y}{S}[left][$\upsilon$];
 		\arrow[dotted,->,bend left]{S}{X}[below][$\sigma_X$];
@@ -1549,22 +1550,24 @@ is open in $S$ by Theorem~\reff{thm:GrauertGrothendieck}\itememph{d}. Also we de
 	\end{diagram*}
 	 such that Theorem~\reff{thm:seesaw} is applicable to $\xi\colon X\morphism S$ and $\upsilon\colon Y\morphism S$. Also let $\sigma_X\colon S\morphism X$ and $\sigma_Y\colon S\morphism Y$ be sections of $\xi$ and $\upsilon$ respectively. Suppose that $\Ll$ is a line bundle on $X\times_SY$ for which there is a line bundle $\Ll_0$ on $S$ such that
 	 \begin{align*}
-	 	(\sigma_Y\xi,\id_X)^*\Ll\cong \xi^*\Ll_0\text{ on }X\quad\text{and}\quad(\sigma_X\upsilon,\id_Y)^*\Ll\cong \upsilon^*\Ll_0\text{ on }Y\;.
+	 	\Ll|_X\coloneqq\Ll(\sigma_Y\xi,\id_X)^*\Ll\cong \xi^*\Ll_0\text{ on }X\quad\text{and}\quad\Ll|_Y\coloneqq(\sigma_X\upsilon,\id_Y)^*\Ll\cong \upsilon^*\Ll_0\text{ on }Y\;.
 	 \end{align*}
 	 Then the closed subprescheme $Z\subseteq S$ obtained from Theorem~\reff{thm:seesaw} applied to $X\times_SY\morphism S$ is also open.
 \end{thm}
+Before proving Theorem~\reff{thm:cube} (which starts on page~\pageref{proof:cube}), Professor Franke decided to go through a sequence of remarks.
 \begin{rem}
 	It's perhaps worthwhile to remark that Theorem~\reff{thm:seesaw} \emph{does} apply to $X\times_SY\morphism S$. The only subtle part is whether the geometric fibres $(X\times_SY)_{\ov{s}}$ remain integral. To see this, put $k=\ov{\KK(s)}$ and note that
 	\begin{align*}
-		(X\times_SY)_{\ov{s}}\cong X_{\ov{s}}\times_{\Spec k}Y_{\ov{s}}\;,
+		(X\times_SY)_{\ov{s}}\cong X_{\ov{s}}\times_kY_{\ov{s}}\;,
 	\end{align*}
-	in which $X_{\ov{s}}$ and $Y_{\ov{s}}$ are integral by assumption. If $U\cong \Spec B$ and $V\cong \Spec C$ are affine open subsets of $X_{\ov{s}}$ and $Y_{\ov{s}}$ respectively, then $B$ and $C$ are domains of finite type over $k$, hence $U\times_{\Spec k}V\cong \Spec (B\otimes_kC)$ is integral again -- we proved this (for algebraic varieties, but this makes no difference) in \cite[Proposition~2.2.6]{alg1}.
+	(the second fibre product should be taken over $\Spec k$ actually -- we'll keep this abuse of notation for convenience) in which $X_{\ov{s}}$ and $Y_{\ov{s}}$ are integral by assumption. If $U\cong \Spec B$ and $V\cong \Spec C$ are affine open subsets of $X_{\ov{s}}$ and $Y_{\ov{s}}$ respectively, then $B$ and $C$ are domains of finite type over $k$, hence $U\times_{\Spec k}V\cong \Spec (B\otimes_kC)$ is integral again -- we proved this (for algebraic varieties, but this makes no difference) in \cite[Proposition~2.2.6]{alg1}.
 	
-	If $U'\subseteq X_{\ov{s}}$ and $V'\subseteq Y_{\ov{s}}$ is another pair of affine open subsets, then $U\cap U'$ and $V\cap V'$ are non-empty because $X_{\ov{s}}$ and $Y_{\ov{s}}$ are irreducible, so every non-empty open subset is dense. Hence $U\times_{\Spec k}V$ and $U'\times_{\Spec k}V'\neq \emptyset$ intersect. This means $X_{\ov{s}}\times_{\Spec k}Y_{\ov{s}}$ can be covered by finitely many integral open subpreschemes, mutually intersecting each other in non-empty (thus dense) subsets. This shows that $X_{\ov{s}}\times_{\Spec k}Y_{\ov{s}}$ is integral itself.
+	If $U'\subseteq X_{\ov{s}}$ and $V'\subseteq Y_{\ov{s}}$ is another pair of affine open subsets, then $U\cap U'$ and $V\cap V'$ are non-empty because $X_{\ov{s}}$ and $Y_{\ov{s}}$ are irreducible, so every non-empty open subset is dense. Hence $U\times_{\Spec k}V$ and $U'\times_{\Spec k}V'\neq \emptyset$ intersect. This means $X_{\ov{s}}\times_{\Spec k}Y_{\ov{s}}$ can be covered by finitely many (using quasi-compactness) integral open subpreschemes, mutually intersecting each other in non-empty (thus dense) subsets. This shows that $X_{\ov{s}}\times_{\Spec k}Y_{\ov{s}}$ is integral itself.
 \end{rem}
 \begin{rem}
 	\begin{alphanumerate}
 		\item When $S$ is connected and $Z\neq\emptyset$ one has $Z=S$. That is, the line bundle $\Ll$ is trivial in $\Pic(X\times_SY/S)$.
+		\item If $\Ll_0$ and $\Ll_0'$ satisfy $\Ll|_X\cong \xi^*\Ll_0$ and $\Ll|_Y\cong \upsilon^*\Ll_0'$, then already $\Ll_0\cong \Ll_0'$ (so Theorem~\reff{thm:cube} can be applied). Indeed, in this case both $\Ll_0$ and $\Ll_0'$ equal the pullback of $\Ll$ onto $S$.
 		\item Theorem~\reff{thm:cube} is typically applied in the following situation: Assume $X\cong A^m$ and $Y\cong A^n$ (and thus also $X\times_SY\cong A^{m+n}$) are powers of some abelian (group-)prescheme $A$ over $S$. Let morphisms
 		\begin{align*}
 			f_i\colon X\times_SY\morphism A\quad\text{for }i=1,\ldots,N
@@ -1576,13 +1579,13 @@ is open in $S$ by Theorem~\reff{thm:GrauertGrothendieck}\itememph{d}. Also we de
 	\end{alphanumerate}
 \end{rem}
 \begin{rem}
-	Before proving Theorem~\reff{thm:cube}, Professor Franke would like to give some motivation why such a result should hold by comparing it to a similar situation in the complex analytic case. This will need a lot of complex analytic theory, which we'll just cite without a proof (for this is only a motivational example).
+	In this remark Professor Franke sketches how an analogue of Theorem~\reff{thm:cube} can be obtained in the complex analytic case. This will need a lot of complex analytic theory, which we'll just cite without a proof (for this is only a motivational example).
 	
-	Let $X$ be a smooth projective variety over $\IC$. It's set of complex points (i.e., the closed points) endowed with the complex topology form a \emph{complex analytic space} $X^\an$ with a structure sheaf $\Oo_{X^\an}$; and to every sheaf $\Ff$ on $X$ one can assign a sheaf $\Ff^\an$ on $X^\an$. By Serre's famous \emph{GAGA theorem} we have $H^\bullet(X^\an,\Ff^\an)\cong H^\bullet(X,\Ff)$ whenever $\Ff$ is a coherent $\Oo_X$-module. For the rest of the remark, we'll drop the superscripts $^\an$ and assume everything to be understood in the complex analytic setting.
+	Let $X$ be a smooth projective variety over $\IC$. Its set of complex points (i.e., the closed points) endowed with the complex topology form a \emph{complex analytic space} $X^\an$ with a structure sheaf $\Oo_{X^\an}$; and to every sheaf $\Ff$ on $X$ one can assign a sheaf $\Ff^\an$ on $X^\an$. By Serre's famous \emph{GAGA theorem} we have $H^\bullet(X^\an,\Ff^\an)\cong H^\bullet(X,\Ff)$ whenever $\Ff$ is a coherent $\Oo_X$-module. For the rest of this remark, we'll drop the superscripts $^\an$ and assume everything to be understood in the complex analytic setting.
 	
 	Put $\IZ_X(n)\coloneqq (2\pi\mathrm{i})^n\IZ_X$. On $X$ we obtain a short exact sequence
 	\begin{align}\lbl{eq:ComplexSeq}
-		0\morphism \IZ_X(1)\morphism\Oo_X\morphism[\exp]\Oo_X\times\morphism 0
+		0\morphism \IZ_X(1)\morphism\Oo_X\morphism[\exp]\Oo_X^\times\morphism 0
 	\end{align}
 	We have $\Pic(X)\cong H^1(X,\Oo_X^\times)$ (compare this to the classification of $\Oo_X^\times$-torsors in \cite[Section~1.7]{alggeo2} -- this also works in the complex analytic case). To compute $\Pic(X)$, we thus need to investigate the long exact cohomology sequence associated to \eqreff{eq:ComplexSeq}.
 	
@@ -1617,6 +1620,283 @@ Professor Franke also mentions that the image of $c_1\colon \Pic(X)\morphism H^2
 \end{align*}
 in which the isomorphism in the middle is the \emph{Hodge decomposition} (and indeed this makes some sense, since I'd expect the first Chern class to have target $H^1(X,\Omega_X^1)$).
 \end{rem}
+In general there is no exponential map available in the algebraic setting. However, if $x^2=0$, then ``$\exp(x)=1+x$'' is a good candidate. The following lemma exploits this idea.
+\begin{lem}\lbl{lem:kerPicH1}
+	Let $X$ be a quasi-compact scheme and $X_0=V(\Jj)$ the closed subscheme cut out by a quasi-coherent sheaf of ideals $\Jj\subseteq \Oo_X$ such that $\Jj^2=0$. Assume that the map of global sections $\Oo_X(X)\morphism \Oo_{X_0}(X_0)$ is surjective. Then there is an isomorphism
+	\begin{align*}
+		\ker\big(\Pic(X)\morphism\Pic(X_0)\big)\isomorphism H^1(X,\Jj)
+	\end{align*}
+	which is functorial in the pair $(X,X_0)$, i.e., compatible with pullbacks $Y_0=X_0\times_XY$ along arbitrary morphisms $f\colon Y\morphism X$.
+\end{lem}
+\begin{proof}
+	Define the set
+	\begin{align*}
+		\PP=\left\{(\Ll,\iota)\st\Ll\text{ is a line bundle on }X\text{ and }\iota\colon \Ll|_{X_0}\isomorphism\Oo_{X_0}\right\}\Bigm/\sim\;,
+	\end{align*}
+	in which we put $(\Ll,\iota)\sim(\Mm,\kappa)$ iff there is a $\lambda\colon \Ll\isomorphism \Mm$ such that $\iota=\kappa\lambda|_{X_0}$. The idea of the proof is to identify $\TT=\left\{\text{isomorphism classes of }\Jj\text{-torsors on }X\right\}$ with $\PP$ and then $\PP$ with $K=\ker\big(\Pic(X)\morphism\Pic(X_0)\big)$. Since $\TT\cong H^1(X,\Jj)$ by \cite[Proposition~1.7.1\itememph{b}]{alggeo2}, this will do the trick.
+	
+	A map $\PP\morphism\TT$ can be obtained by sending an equivalence class $[\Ll,\iota]\in\PP$ to the $\Jj$-torsor $\Tt$ defined by
+	\begin{align*}
+		\Tt(U)=\left\{\ell\in\Ll(U)\st\iota(\ell|_{U\cap X_0})=1\right\}.
+	\end{align*}
+	The $\Jj$-action is given by multiplication with $\exp(j)=1+j$ for $j\in\Jj(U)$. Since $\Jj^2=0$, this indeed transforms the ``additive'' group structure on $\Jj$ into a ``multiplicative'' one, and since $X_0=V(\Jj)$ this action is well-defined. Moreover, if $[\Mm,\kappa]\in\PP$ is another equivalence class, then the image of $[\Ll\otimes_{\Oo_X}\Mm,\iota\otimes\kappa]$ under $\PP\morphism\TT\isomorphism H^1(X,\Jj)$ is the sum of the images of $[\Ll,\iota]$ and $[\Mm,\kappa]$ (this can be checked explicitly using the construction from \cite[p.~32]{alggeo2}; I'm not going to do this here). This will eventually imply that $K\morphism H^1(X,\Jj)$ is an isomorphism of groups and not only a bijection of sets.
+	
+	An inverse map $\TT\morphism\PP$ sends a $\Jj$-torsor $\Tt$ to a line bundle $\Ll$ defined as follows: We put
+	\begin{align*}
+		\Ll_{[x]}=\left\{(a,\tau)\st a\in \Oo_{X,x}\text{ and }\tau\in\Tt_x\right\}/\approx\;,
+	\end{align*}
+	in which $(a_1,\tau_1)\approx(a_2,\tau_2)$ iff there is a $j\in \Jj_x$ such that $a_1(1+j)=a_2$ and $\tau=j\tau_2$ (where $j\tau_2$ denotes the $\Jj_x$-action on $\Tt_x$). Then $\Ll$ is the sheaf glued together from the $\Ll_{[x]}$ using a coherence condition. In precise terms,
+	\begin{align*}
+		\Ll(U)=\left\{(\ell_x)_{x\in U}\in\prod_{x\in U}\Ll_{[x]}\st
+		\begin{tabular}{c}
+			for all $y\in U$ there is an open neighbourhood $V\ni y$\\
+			 together with an $\ell=(a,\tau)\in\Oo_X(V)\times\Tt(V)$ such\\
+			that $\ell_x$ is the image of $\ell$ in $\Oo_{X,x}\times\Tt_x$ for all $x\in V$
+		\end{tabular}\right\}
+	\end{align*}
+	Note that for fixed $\tau\in\Tt_x$, every element $\ell\in\Ll_{[x]}$ has a unique representation $\ell=[a,\tau]$ for some $a\in \Oo_{X,x}$ (because $1+j$ is invertible with inverse $1-j$ for all $j\in \Jj_x$, using that $\Jj_x^2=0$). Thus it's possible to define an $\Oo_{X,x}$-module structure on $\Ll_{[x]}$ by fixing $\tau$ and then looking at the first components of elements $[a,\tau]\in\Ll_{[x]}$. This turns $\Ll$ into a line bundle over $\Oo_X$. Moreover, if $x\in X_0$, then the image of $[1,\tau]$ in $\Ll_{[x]}\otimes_{\Oo_{X,x}}\Oo_{X_0,x}\cong \Ll_{[x]}/\Jj_x\Ll_{[x]}$ is the same regardless what $\tau$ is. This provides a trivialization $\iota\colon \Ll|_{X_0}\isomorphism \Oo_{X_0}$.
+	
+	It's easy to see that the constructed maps $\PP\morphism\TT$ and $\TT\morphism\PP$ are well-defined and mutually inverse. This shows $\PP\cong \TT$.
+	
+	It remains to identify $\PP$ with $K=\ker\big(\Pic(X)\morphism\Pic(X_0)\big)$. Sending $[\Ll,\iota]$ to the isomorphism class of $\Ll$ clearly defines a surjective map $\PP\morphism K$. To show injectivity of this map, assume that $[\Ll,\iota]$ and $[\Mm,\kappa]\in\PP$ are such that $\Ll\cong \Mm$. Then we may assume $\Ll=\Mm$, but still $\iota$ and $\kappa$ could be ``non-isomorphic trivializations'' of $\Ll|_{X_0}$, which should be ruled out. That's where we'll need the hypothesis that $\Oo_X(X)\morphism\Oo_{X_0}(X_0)$ is surjective.
+	
+	On every affine open $U\subseteq X$ where $\Ll|_U$ trivializes there's an $\epsilon_U\in\Oo_{X_0}(U\cap X_0)^\times$ such that $\iota(\ell)=\epsilon_U\kappa(\ell)$ for all $\ell\in\Ll(U)$. Clearly we have $\epsilon_{U_1}|_{U_1\cap U_2}=\epsilon_{U_1\cap U_2}=\epsilon_{U_2}|_{U_1\cap U_2}$, so the $\epsilon_U$ glue together to an element $\epsilon\in\Oo_{X_0}(X_0)^\times$ such that $\epsilon|_U=\epsilon_U$. Let $\epsilon'\in\Oo_X(X)$ be any preimage of $\epsilon$. Since $\Jj^2=0$, $\epsilon'$ is invertible as well, hence multiplication with $\epsilon'$ is an automorphism of $\Ll$ that identifies $\iota$ and $\kappa$. Therefore $\ker\big(\Pic(X)\morphism\Pic(X_0)\big)\cong H^1(X,\Jj)$ as sets, and as indicated above, this bijection is compatible with the group structure on both sides.
+	
+	Finally, let's leave some remarks on functoriality. That is, if $f\colon Y\morphism X$ is any morphism (such that $Y$ is a quasi-compact scheme, or we need to work with the more general construction of sheaf cohomology instead of \v Cech cohomology) and $f_0\colon Y_0=X_0\times_XY\morphism X_0$, then the diagram
+	\begin{diagram}[baseline=0.75cm-0.5ex][\lbl{diag:H1Pic}]
+		\object{0,1.5}{$H^1(Y,f^{-1}\Jj)$}[H1Y];
+		\object{0,0}{$H^1(X,\Jj)$}[H1X];
+		\object{3,1.5}{$\Pic(Y)$}[PicY];
+		\object{6,1.5}{$\Pic(Y_0)$}[PicY0];
+		\object{3,0}{$\Pic(X)$}[PicX];
+		\object{6,0}{$\Pic(X_0)$}[PicX0];
+		\scriptsize
+		\arrow{H1X}{H1Y}[left][$f^*$];
+		\arrow{PicX}{PicY}[left][$f^*$];
+		\arrow{PicX0}{PicY0}[right][$f_0^*$];
+		\arrow{H1Y}{PicY};
+		\arrow{PicY}{PicY0};
+		\arrow{H1X}{PicX};
+		\arrow{PicX}{PicX0};
+	\end{diagram}
+	(in which $f^{-1}\Jj$ denotes the sheaf inverse image as in Definition~\reff{def:f-1} -- in particular, it's easy to check that $Y_0=V(f^{-1}\Jj)$ holds) commutes and has exact rows. To see why this works, we should probably explain the pullback map $f^*\colon H^1(X,\Jj)\morphism H^1(Y,f^{-1}\Jj)$ first (the other two guys should be clear). Let $\Uu\colon X=\bigcup_{i\in I}U_i$ be an affine open cover of $X$ and let $\Vv\colon Y=\bigcup_{j\in J} V_j$ be any affine refinement of $f^{-1}(\Uu)$. For any $j\in J$ let $v(j)\in I$ such that $V_j\subseteq f^{-1}(U_{v(j)})$. Then $(f^*\psi)_{j_0,\ldots,j_n}=\psi_{v(j_0),\ldots,v(j_n)}$ (this makes sense since we're working with $f^{-1}\Jj$ rather than $f^*\Jj$) defines a morphism of \v Cech complexes
+	\begin{align*}
+		f^*\colon \check{C}^\bullet(\Uu,\Jj)\morphism\check{C}^\bullet(\Vv,f^{-1}\Jj)\;.
+	\end{align*}
+	By choosing common affine refinements and using \cite[Lemma~1.2.1]{alggeo2}, it's not hard to show that the induced morphism $f^*\colon H^\bullet(X,\Jj)\morphism H^\bullet(Y,f^{-1}\Jj)$ in fact doesn't depend on the choice of $\Uu$ and $\Vv$. Also that $f^*$ defined in this way indeed makes \eqreff{diag:H1Pic} commute is just a matter of unwinding definitions.
+\end{proof}
+\begin{rem}
+	Let $k$ be an algebraically closed field. Put $S=\Spec k$ and $S^{(1)}=\Spec k[T]/(T^2)$. For any \emph{$k$-variety} $X$ (that is, $X$ is an integral prescheme of finite type and separated over $k$) we have bijections
+	\begin{align}\lbl{eq:ZariskiTangentSpace}
+		\begin{split}
+			\Hom_{\cat{PSch}/k}(S,X)&\cong\left\{\text{closed points of }X\right\}\\
+			\Hom_{\cat{PSch}/k}\big(S^{(1)},X\big)&\cong\left\{(x,v)\st x\text{ closed point, }v\in\Omega_{X/k}(x)^*\right\}\;.
+		\end{split}
+	\end{align}
+	The first of these bijections is quite clear. For the second one, note that a local  morphism of $k$-algebras $\phi\colon \Oo_{X,x}\morphism k[T]/(T^2)$ is uniquely determined by $\Oo_{X,x}\epimorphism\Oo_{X,x}/\mm_{X,x}\cong k$ (this isomorphism uses Hilbert's Nullstellensatz) and the morphism $d\colon \Oo_{X,x}\morphism k$ that sends $a\in \Oo_{X,x}$ to the linear coefficient of $\phi(a)$. Then $d$ is a $k$-linear derivation, hence uniquely determined by a $\Oo_{X,x}$-linear morphism $\Omega_{\Oo_{X,x}/k}\morphism k$. Now
+	\begin{align*}
+		\Hom_{\Oo_{X,x}}(\Omega_{\Oo_{X,x}/k},k)\cong \Hom_k(\Omega_{\Oo_{X,x}/k}\otimes_{\Oo_{X,x}}k,k)\cong \Omega_{X/k}(x)^*\;, 
+	\end{align*}
+	so the second bijection in \eqreff{eq:ZariskiTangentSpace} makes sense as well.
+	
+	As usual, $\Omega_{X/k}(x)^*\cong \Hom_k(\mm_{X,x}/\mm_{X,x}^2,k)$ (this isomorphism follows from \cite[Lemma~1.6.1]{alg2} and $\Omega_{k/k}=0$) can be interpreted as the \emph{tangent space} of $X$ at $x$. Hence, if $\PIC_{X/k}$ can be constructed\footnote{Actually it should be $\PIC_{X/S}$, (and also $\cat{PSch}/S$ rather than $\cat{PSch}/k$) but this abuse of notation is commonly agreed on.} we would expect its \emph{tangent space at the origin} to be
+	\begin{align}\lbl{eq:TangentSpaceAtTheOrigin}
+		\ker\left(\Pic_{X/k}\big(S^{(1)}\big)\morphism\Pic_{X/k}(S)\right)\;.%\cong\ker\big(\Pic(X\times_SS^{(1)})\morphism\Pic(X)\big)\cong H^1(X,\Oo_X)\;.
+	\end{align}
+	Why does this make sense and what does \emph{origin} even mean? Well, we have $\Pic_{X/k}\big(S^{(1)}\big)\cong \Hom_{\cat{PSch}/k}\big(S^{(1)},\PIC_{X/k}\big)$ and similarly $\Pic_{X/k}(S)\cong \Hom_{\cat{PSch}/k}(S,\PIC_{X/k})$ since $\PIC_{X/k}$ is supposed to represent the functor $\Pic_{X/k}$. In view of \eqreff{eq:ZariskiTangentSpace}, the kernel in \eqreff{eq:TangentSpaceAtTheOrigin} consists of those pairs $(x_0,v)$ (where $x_0\in X$ is closed and $v\in\Omega_{X/k}(x_0)^*$) such that $x_0$ corresponds to the morphism $\epsilon\colon S\morphism X$ that in turn corresponds to the trivial element in the group $\Pic_{X/k}(S)$. That is, $\epsilon$ is the \emph{zero section}, which plays the same role as the $\epsilon$ from page~\pageref{par:EllipticCurves} in the case of an elliptic curve. Then $x_0\in X$ is what we call the \emph{origin} of $X$. Therefore, we identified the kernel $\ker\big(\Pic_{X/k}\big(S^{(1)}\big)\morphism\Pic_{X/k}(S)\big)$ with $\{x_0\}\times\Omega_{X/k}(x_0)^*$, so it makes sense to call this kernel the \emph{tangent space at the origin}.
+	
+	Moreover, we have $\Pic_{X/k}\big(S^{(1)}\big)\cong \Pic\big(X^{(1)}\big)$, where $X^{(1)}=X\times_SS^{(1)}$. Indeed, $S=\Spec k$ consists of a single point, so every line bundle on $S$ is trivial. Then also every pullback of a line bundle on $S$ to $X^{(1)}$ is trivial, so $\Pic_{X/k}\big(S^{(1)}\big)$ is obtained from $\Pic\big(X^{(1)}\big)$ by quotienting out the trivial subgroup -- in other words, they're isomorphic, as claimed. The same reasoning applies, of course, to $\Pic_{X/k}(S)\cong \Pic(X)$.
+	
+	Let $i\colon X\monomorphism X^{(1)}$ the inclusion of $X$ as a closed subprescheme of its $1\ordinalst$ infinitesimal thickening. We denote by $\Jj=T\Oo_{X^{(1)}}\subseteq \Oo_{X^{(1)}}$ the sheaf of ideals defined by $X$. Then $\Jj^2=0$ and also $\Jj\cong i_*\Oo_X$. The latter isomorphism is a rather weird one -- locally, it corresponds to $A\cong TA[T]/T^2A[T]$ (given by multiplication with $T$) when $A$ is any ring and $T$ a formal variable. Thus we get $H^1\big(X^{(1)},\Jj\big)\cong H^1\big(X^{(1)},i_*\Oo_X\big)\cong H^1(X,\Oo_X)$, using that $i$ is affine, so \cite[Corollary~1.6.1]{alggeo2} can be applied. Also $\Oo_{X^{(1)}}\big(X^{(1)}\big)\cong \Oo_X(X)[T]/(T^2)\morphism\Oo_X(X)$ is surjective. Therefore Lemma~\reff{lem:kerPicH1} can be applied. Combining this with our previous considerations gives
+	\begin{align*}
+		\Omega_{X/k}(x_0)^*\cong \ker\left(\Pic_{X/k}\big(S^{(1)}\big)\morphism\Pic_{X/k}(S)\right)&\cong\ker\left(\Pic\big(X^{(1)}\big)\morphism\Pic(X)\right)\\
+		&\cong H^1\big(X^{(1)},\Jj\big)\\
+		&\cong H^1(X,\Oo_X)
+	\end{align*}
+	So one would expect $\PIC_{X/k}$ to have dimension $\dim_kH^1(X,\Oo_X)$ if it exists and its connected components are given by varieties. For instance, if $X$ is a regular curve of genus $g$ over $k$, then \cite[Proposition~1.6.3]{alg2} suggests that
+	\begin{align*}
+		\dim(\PIC_{X/k})=\dim_k\Omega_{X/k}(x_0)=\dim_kH^1(X,\Oo_X)=\dim_kH^0(X,\Omega_{X/k})=g
+	\end{align*}
+	(where we used Serre duality in the last step of the calculation).
+\end{rem}
+\begin{rem}
+	%The following part of a Künneth-type formula for $H^1(X,\Oo_X)$ then is a further indication that
+	By the following Künneth-type result in Lemma~\reff{lem:Künneth}, the functor 
+	\begin{align*}
+		X\longmapsto \text{tangent space of }\PIC_{X/k}\text{ at the origin}\cong H^1(X,\Oo_X)
+	\end{align*}
+	is compatible with products. This is further indication that a line bundle on $X\times_SY$ whose pullbacks to $X$ and $Y$ are trivial in $\Pic(X/S)$ and $\Pic(Y/S)$ cannot be ``deformed''.
+\end{rem}
+\begin{lem}\lbl{lem:Künneth}
+	Let $X$ and $Y$ be proper integral schemes over $\Spec k$, where $k$ is algebraically closed. Denote by $f\colon X\times_kY\morphism X$ and $g\colon X\times_kY\morphism Y$ the projections to the fibre product factors. Then the pullback morphisms (we sketched the construction in the proof of Lemma~\reff{lem:kerPicH1}) $f^*\colon H^1(X,\Oo_X)\morphism H^1(X\times_k Y,\Oo_{X\times_kY})$ and $g^*\colon H^1(Y,\Oo_Y)\morphism H^1(X\times_k Y,\Oo_{X\times_kY})$ give an isomorphism
+	\begin{align*}
+		(f^*,g^*)\colon H^1(X,\Oo_X)\oplus H^1(Y,\Oo_Y)\isomorphism H^1(X\times_k Y,\Oo_{X\times_kY})\;.
+	\end{align*}
+\end{lem}
+\begin{proof}[First proof (sketch)]
+	Denote by . Let $\Ff$ and $\Gg$ be quasi-coherent modules over $\Oo_X$ and $\Oo_Y$ and let $\Uu\colon X=\bigcup_{i\in I}U_i$, $\Vv\colon Y=\bigcup_{j\in J}V_j$ be affine open covers of $X$ and $Y$ respectively. Then the cohomology of $\Ff$ and $\Gg$ can be computed from the \v Cech complexes $\check{C}_X^\bullet=\check{C}^\bullet(\Uu,\Ff)$ and $\check{C}_Y^\bullet=\check{C}^\bullet(\Vv,\Gg)$. Moreover, $f^{-1}(\Uu)\cap g^{-1}(\Vv)\colon X\times_kY=\bigcup_{(i,j)\in I\times J}U_i\times_kV_j$ is an affine open cover of $X\times_kY$, so the \v Cech complex $\check{C}_{X\times_kY}^\bullet=\check{C}^\bullet(f^{-1}(\Uu)\cap g^{-1}(\Vv),f^*\Ff\otimes g^*\Gg)$ computes the cohomology of $f^*\Ff\otimes g^*\Gg$ (the tensor product is taken over $\Oo_{X\times_kY}$, but this would become utterly unreadable).
+	
+	The ``right'' way to think about these \v Cech complexes is not as some cochain complexes, but as \emph{cosimplicial objects} in their respective categories, as indicated in \cite[Remark~1.2.1]{alggeo2}. In this much more general context it can be shown that $\check{C}_{X\times_kY}^\bullet$ is homotopy equivalent to the tensor product $\check{C}_X^\bullet\otimes_k\check{C}_Y^\bullet$.\footnote{This is a tensor product of chain complexes. That is, $\check{C}_X^\bullet\otimes_k\check{C}_Y^\bullet$ is the total complex $\Tot^\bullet(\check{C})$ of the double complex $\check{C}^{\bullet,\bullet}$ defined by $\check{C}^{p,q}=\check{C}_X^p\otimes_k\check{C}_Y^q$.} In fact, there is an \emph{Alexander--Whitney map} $\Delta\colon \check{C}_{X\times_kY}^\bullet\morphism\check{C}_X^\bullet\otimes_k\check{C}_Y^\bullet$ and a \emph{shuffle map} (or \emph{Eilenber--Zilber map}) $\nabla\colon\check{C}_X^\bullet\otimes_k\check{C}_Y^\bullet\morphism\check{C}_{X\times_kY}^\bullet$ which are homotopy inverses of each other. For a quick description of these maps you may wish to consult the \href{https://ncatlab.org/nlab/show/Alexander-Whitney+map}{$n$Lab}.
+	
+	Therefore we see that
+	\begin{align}\lbl{eq:Künneth}
+		H^n\left(X\times_kY,f^*\Ff\otimes g^*\Gg\right)\cong H^n\left(\check{C}_X^\bullet\otimes_k\check{C}_Y^\bullet\right)\cong \bigoplus_{p+q=n}H^p(X,\Ff)\otimes_kH^q(Y,\Gg)\;,
+	\end{align}
+	from which the assertion follows as a special case since $H^0(X,\Oo_X)\cong k$ (and same for $Y$) by Proposition~\reff{prop:trivialLineBundlesOnProperX/k}\itememph{a} (and we still need to show that $(f^*,g^*)$ is actually the isomorphism which we obtained). The second isomorphism in \eqreff{eq:Künneth} follows from any of the two spectral sequences associated to the double complex $\check{C}^{\bullet,\bullet}$. Indeed, both spectral sequences converge to the cohomology of $\Tot^\bullet(\check{C})\cong \check{C}_X^\bullet\otimes_k\check{C}_Y^\bullet$, and since we're taking tensor products over a field, they degenerate pretty soon.
+\end{proof}
+\begin{proof}[Second proof (sketch)]
+	This proof is more down-to-the-earth and doesn't need the heavy theory of the first one -- however, it only shows the special case we're interested in. Note that $X\morphism \Spec k$ is automatically flat since $k$ is a field. Hence the base change morphism from Proposition~\reff{prop:baseChangeMorphism} becomes an isomorphism 
+	\begin{align}\lbl{eq:baseChangeXxY}
+		H^p(Y,\Oo_Y)\otimes_k\Oo_X\isomorphism R^pf_*\Oo_{X\times_kY}\;.
+	\end{align}
+	Hence the Leray spectral sequence $E_2^{p,q}=H^p(X,R^qf_*\Oo_{X\times_kY})\converge H^{p+q}(X\times_kY,\Oo_{X\times_kY})$ gives rise to a commutative diagram
+	\begin{diagram*}
+		\node[ob] (0o) at (0,1.5) {$0$};
+		\node[ob]  (H0J) [right=0.35cm of 0o] {$H^1(X,f_*\Oo_{X\times_kY})$};
+		\node[ob]  (H0O) [right=0.35cm of H0J] {$H^1(X\times_kY,\Oo_{X\times_kY})$};
+		\node[ob]  (H0OX) [right=0.35cm of H0O] {$H^0(X,R^1f_*\Oo_{X\times_kY})$};
+		\node[ob]  (H1J) [right=0.35cm of H0OX]  {$H^2(X,f_*\Oo_{X\times_kY})$};
+		\node[ob]  (0u) at (0,0) {$0$};
+		\node[ob]  (p) at (0u -| H0J) {$H^1(X,\Oo_X)$};
+		\node[ob]  (kX) at (0u -| H0O) {$H^1(X\times_kY,\Oo_{X\times_kY})$};
+		\node[ob]  (Ol) at (0u -| H0OX) {$H^1(Y,\Oo_Y)$};
+		\scriptsize
+		\draw[->] (0o) -- (H0J);
+		\draw[->] (H0J) -- (H0O);
+		\draw[->] (H0O) -- (H0OX);
+		\draw[->] (H0OX) -- (H1J);
+		\draw[->] (0u) -- (p);
+		\draw[->] (p) -- (kX) node[pos=0.5, above] {$f^*$};
+		\draw[->] (kX) -- (Ol);
+		\draw[->, bend left,dotted] (Ol) to node[pos=0.5, below] {$g^*$} (kX);
+		\draw[->] (H0J) -- (p) node[pos=0.5, sloped, above=-0.25ex] {$\sim$};
+		\draw[transform canvas={xshift=1pt}] (H0O) -- (kX);
+		\draw[transform canvas={xshift=-1pt}] (H0O) -- (kX);
+		\draw[->] (H0OX) -- (Ol) node[pos=0.5, sloped, above=-0.25ex] {$\sim$};
+	\end{diagram*}
+	with exact rows. The top row is just the usual low-degree exact sequence of a spectral sequence. The vertical isomorphisms use $H^0(Y,\Oo_Y)\cong k\cong \Oo_X(X)$ and the base change isomorphism \eqreff{eq:baseChangeXxY}. Then it can be shown that $g^*$ gives a split of the rightmost map in the bottom row, which shows that $(f^*,g^*)\colon H^1(X,\Oo_X)\oplus H^1(Y,\Oo_Y)\isomorphism H^1(X\times_k Y,\Oo_{X\times_kY})$ is indeed an isomorphism. We're done.
+\end{proof}
+\begin{proof}[Proof of Theorem~\reff{thm:cube} \textsc{(Finally)}.]\lbl{proof:cube}
+	Recall the shortcut (abuse of) notations $\Ll|_X=(\sigma_Y\xi,\id_X)^*\Ll$ and $\Ll|_Y=(\sigma_X\upsilon,\id_Y)^*\Ll$ introduced in the formulation of the theorem. Throughout the proof we'll denote pullbacks of $\Ll$ in that fashion.
+	
+	As usual, the assertion is local on $S$, whence we may assume that $S\cong \Spec A$ is affine and $\Ll_0$ is trivial on $S$, so that $\Ll|_X\cong \xi^*\Ll_0$ and $\Ll|_Y\cong \upsilon^*\Ll_0$ trivialize as well. The proof proceeds now in two steps.
+	
+	\emph{Step 1.} We first deal with the case that $A$ is an artinian local ring with maximal ideal $\mm$. That is, $\Spec A$ consists of a single point $s=\{\mm\}$ since $A$ is zero-dimensional (cf.~\cite[Proposition~3.1.1]{alg2}). In this case we can do induction on $\length_A(\mm)$. If $\length_A(\mm)=0$, then $\mm=0$, so $A$ is a field and any closed subprescheme of $\Spec A$ is open as well. Now assume the assertion is valid for all $S'=\Spec A'$ with $\length_{A'}(\mm')<\length_A(\mm)$. Choosing any $x\in \mm\setminus \{0\}$ such that $x\mm =0$ (such $x$ exists when $\mm\neq 0$ -- indeed, since $\mm$ is the only prime ideal of $A$ and $\Ass_A(A)\neq \emptyset$ by \cite[Corollary~A.3.1]{homalg}, $\mm$ is necessarily an associated prime of $A$) and applying the induction assumption to $A'=A/xA$ gives $Z'\cap S'=\emptyset$ or $Z'\cap S'=S'$ (using that $S'$ consists of a single point too). 
+	
+	In the first case, $Z'=\emptyset$ implies $Z=\emptyset$ (and we're done). Indeed, if $\tau\colon T\morphism S$ has the property that $\tau_{X\times_SY}^*\Ll$ is the trivial element in $\Pic_{X\times_SY/S}(T)$, then the base change $\tau'\colon T'=T\times_SS'\morphism S'$ a fortiori has the same property. But $Z'=\emptyset$, so $T'$ and thus also $T$ must be the empty scheme.
+	
+	So let's assume $Z'=S'$. Then $\Ll|_{X\times_SY\times_SS'}$ is trivial (in the sense that it is the pullback of some line bundle on $S'$ -- but $S'$ consists of a single point, so all line bundles are trivial, whence $\Ll|_{X\times_SY\times_SS'}$ is even in trivial in the sense that it is isomorphic to $\Oo_{X\times_SY\times_SS'}$), i.e., we have
+	\begin{align*}
+		\Ll\in\ker\left(\Pic(X\times_SY)\morphism\Pic(X\times_SY\times_SS')\right)\;.
+	\end{align*}
+	This looks like Lemma~\reff{lem:kerPicH1} can be applied, but to do this, we need to check that all conditions are satisfied. Let $\Jj\subseteq \Oo_{X\times_SY}$ be the sheaf of ideals defined by the closed subprescheme $X\times_SY\times_SS'\subseteq X\times_SY$. Since $x\mm=0$ and $x\in\mm$ we get $x^2=0$. Then also $\Jj^2=0$. To check surjectivity on global sections, we  apply Lemma~\reff{lem:GlobalSectionOverArtinianScheme} to $X\times_SY$ and $X\times_SY\times_SS'$ to obtain that the morphism on global sections is $A\epimorphism A/xA$, hence surjective. Therefore all requirements are met and Lemma~\reff{lem:kerPicH1} shows that $\Ll$ corresponds to an element of $H^1(X\times_SY,\Jj)$.
+	
+	Now put $k=\KK(s)$ and let $i\colon X_s\times_kY_s\cong (X\times_SY)\times_S\Spec k\monomorphism X\times_SY$ denote the closed embedding of the fibre. Since $x\mm=0$, the multiplication with $x$ map $x\cdot\colon A\epimorphism xA$ factors over an isomorphism $k\cong xA$. This induces an isomorphism $i_*\Oo_{X_s\times_kY_s}\cong \Jj$. Hence
+	\begin{align*}
+		H^1(X\times_SY,\Jj)\cong H^1\left(X\times_SY,i_*\Oo_{X_s\times_kY_s}\right)\cong H^1\left(X_s\times_kY_s,\Oo_{X_s\times_kY_s}\right)\;.
+	\end{align*}
+	Tensoring with $k\monomorphism \ov{k}$ and going over to geometric fibres we finally see that $\Ll$ corresponds to an element of
+	\begin{align*}
+		H^1\left(X_s\times_kY_s,\Oo_{X_s\times_kY_s}\right)\otimes_k\ov{k}\cong H^1\left(X_{\ov{s}}\times_{\ov{k}}Y_{\ov{s}},\Oo_{X_{\ov{s}}\times_{\ov{k}}Y_{\ov{s}}}\right)\;.
+	\end{align*}
+	In the same way, $\Ll|_X$ and $\Ll|_Y$ correspond to elements of $H^1\big(X_{\ov{s}},\Oo_{X_{\ov{s}}}\big)$ and $H^1\big(Y_{\ov{s}},\Oo_{Y_{\ov{s}}}\big)$ respectively -- and actually we know they correspond to the trivial elements since we have $\Ll|_X\cong\xi^*\Ll_s$ and $\Ll|_Y\cong \upsilon^*\Ll_s$. But then the Künneth isomorphism from Lemma~\reff{lem:Künneth} shows that $\Ll$ represents the trivial element in
+	\begin{align*}
+		H^1\left(X_{\ov{s}},\Oo_{X_{\ov{s}}}\right)\oplus H^1\left(Y_{\ov{s}},\Oo_{Y_{\ov{s}}}\right)\cong H^1\left(X_{\ov{s}}\times_{\ov{k}}Y_{\ov{s}},\Oo_{X_{\ov{s}}\times_{\ov{k}}Y_{\ov{s}}}\right)\;,
+	\end{align*}
+	thus also in $H^1(X\times_SY,\Jj)$. Therefore $\Ll$ is already trivial and we obtain $Z=S$. This settles the special case of artinian local rings.
+	
+	\emph{Step 2.} We reduce to the case of artinian local rings. Let $S'\morphism S$ be any morphism with $S'\cong \Spec A$, where $A$ is artinian local with residue field $k$. Let $Z'\subseteq S'$ be the closed subprescheme associated with $\Ll|_{X\times_SY\times_SS'}$. By Step~1 we know that $Z'$ is also open, hence $Z'=\emptyset$ or $Z'=S'$. But if the restriction $\Spec k\morphism S$ of $j$ to $\Spec k$ factors over $Z$, then this shows that $Z'$ can't be empty. Hence $Z'=S'$, so $\Ll|_{X\times_SY\times_SS'}$ is already trivial in $\Pic_{X\times_SY/S}(S')$. But then $j\colon S'\morphism S$ factors over $Z$.
+	
+	That is, the upcoming Lemma~\reff{lem:ZClopen} can be applied, whence we are done.
+\end{proof}
+Last but not least we prove the two lemmas that have been outsourced during the above proof of Theorem~\reff{thm:cube}.
+\begin{lem}\lbl{lem:GlobalSectionOverArtinianScheme}
+	Let $A$ be a artinian local ring and $f\colon X\morphism S=\Spec A$ a flat proper morphism with integral geometric fibres $X_{\ov{s}}$. Then $\Oo_X(X)\cong A$.
+\end{lem}
+\begin{proof}
+	Let $s$ be the only point of $S$ and put $k=\KK(s)$. By Proposition~\reff{prop:trivialLineBundlesOnProperX/k}, $H^0(X_{\ov{s}},\Oo_{X_{\ov{s}}})\cong \ov k$. Since $H^0(X_{\ov{s}},\Oo_{X_{\ov{s}}})\cong H^0(X_s,\Oo_{X_s})\otimes_k\ov{k}$, this shows that $H^0(X_s,\Oo_{X_s})$ is a one-dimensional $k$-vector space as well, hence generated by $1$. Since $1$ is in the image of $(f_*\Oo_X)(s)\morphism H^0(X_s,\Oo_{X_s})$, this morphism is surjective. Then it must be bijective because of Theorem~\reff{thm:GrauertGrothendieck}\itememph{d}, which means that $(f_*\Oo_X)(s)\cong \Oo_X(X)\otimes_Ak$ is generated (as a $k$-vector space) by $1$. Then $1$ is also a generator of $\Oo_X(X)$ as an $A$-module by Nakayama's lemma. Since $\Oo_X(X)$ is flat (and thus free) over the local ring $A$, this shows $\Oo_X(X)\cong A$.
+\end{proof}
+\begin{lem}\lbl{lem:ZClopen}
+	Let $S$ be a locally noetherian prescheme, $Z\subseteq S$ a closed subprescheme with the property that for any Artinian local ring $A$ with residue field $k$, a morphism $\Spec A\morphism S$ factors over $Z$ iff its restriction to $\Spec k$ does. Then $Z$ is also open.
+\end{lem}
+\begin{proof}
+	It suffices to show that for any element $s\in S$ that lies in (the underlying set of) $Z$, there is an open neighbourhood $U\ni s$ contained in $Z$. We choose a preliminary $U$ to be an affine open neighbourhood $U\cong \Spec R$ of $s$, with $s$ corresponding to $\pp\in\Spec R$. Then $Z\cap U$ is given by an ideal $I\subseteq R$ and since $s\in Z$, the morphism $\Spec\KK(\pp)\morphism S$ factors over $Z$, so the same holds for $\Spec(R_\pp/\pp^nR_\pp)\morphism S$ for any $n\in \IN$ by our assumption. It follows that $I_\pp\subseteq \pp^nR_\pp$ for all $n\in \IN$. But $\bigcap_{n\geq 1}\pp^nR_\pp=0$ by the Krull intersection theorem (cf.\ \cite[Corollary~3.4.8]{alg2}). Then $I_\pp=0$, hence also $I_f=0$ for some $f\in R\setminus \pp$. Hence $Z$ contains the open neighbourhood $\Spec R\setminus V(f)$ of $s$.
+\end{proof}
+\section{Topological properties}
+The following proposition shouldn't be in a section titled \emph{Topological properties} at all, but we need to do this technical stuff at some point.
+\begin{prop}\lbl{prop:faithfullyFlatModule}
+	Let $A$ be a ring, $M$ a flat $A$-module, then the following conditions are equivalent.
+	\begin{alphanumerate}
+		\item $M\otimes_AT\neq 0$ for any $A$-module $T\neq 0$.
+		\item For any maximal ideal $\mm\subseteq A$ we have $\mm M\subsetneq M$.
+		\item For any proper ideal $I\subseteq A$ we have $IM\subsetneq M$.
+	\end{alphanumerate}
+	When $M=B$ is an $A$-algebra, this is moreover equivalent to
+	\begin{alphanumerate}\setcounter{enumi}{3}
+		\item Any maximal ideal is in the image of $\Spec B\morphism\Spec A$.
+		\item $\Spec B\morphism\Spec A$ is surjective.
+	\end{alphanumerate}
+\end{prop}
+\begin{proof}
+	To see \itememph{a} $\Rightarrow$ \itememph{b} take $T=A/\mm$. For \itememph{b} $\Rightarrow$ \itememph{c}, take $\mm$ to be any maximal ideal containg $I$. Now let's prove \itememph{c} $\Rightarrow$ \itememph{a}. For any $t\in T\setminus\{0\}$ , the annullator $\Ann_A(t)$ is some proper ideal $I\subseteq A$, and multiplication by $t$ defines an injective morphism $A/I\monomorphism T$. Hence
+	\begin{align*}
+		M/IM\cong M\otimes_AA/I\monomorphism M\otimes_AT
+	\end{align*}
+	(injectivity of the right-most map is the only thing we need flatness of $M$ for), showing $M\otimes_AT\neq 0$ since $M/IM\neq 0$ by \itememph{c}.
+	
+	Now let $M=B$ be as above and let $f\colon \Spec B\morphism\Spec A$. It's well-known (and we used this several time before) that 
+	\begin{align*}
+		f^{-1}\{\pp\}\cong \Spec (B\otimes_A\KK(\pp))\quad\text{for all primes }\pp\in\Spec A\;,
+	\end{align*}
+	hence \itememph{a} $\Rightarrow$ \itememph{e} is trivial. Also \itememph{e} $\Rightarrow$ \itememph{d} for trivial reasons. Now if $\mm$ is a maximal ideal of $A$, then $\mm$ has a preimage in $\Spec B$ iff $0\neq \Spec (B\otimes_A\KK(\mm))\cong \Spec B/\mm B$. Hence \itememph{b} and \itememph{d} are equivalent and we're done.
+\end{proof}
+\begin{defi}\lbl{def:faithfullyFlat}
+	In this case, $M$ (resp.\ $B$) is called \defemph{faithfully flat} over $A$.
+\end{defi}
+\begin{prop}\lbl{prop:flatGoingDown}
+	Let $A$ be a ring and $B$ a flat $A$-algebra. Then the going-down theorem holds for the ring extension $B/A$. If $A$ is noetherian and $B$ of finite type over $R$, this implies that $\Spec B\morphism\Spec A$ is an open map.
+\end{prop}
+\begin{proof}
+	Let $\pp'\subseteq \pp$ be primes in $\Spec A$ and let $\qq\in\Spec B$ such that $\qq\cap A=\pp$ (this is a lazy notation -- or actually \emph{abuse} of such -- for the preimage of $\qq$ in $\Spec A$). Then $B_\qq$ is a flat $A_\pp$-algebra to which Proposition~\reff{prop:faithfullyFlatModule} may be applied. As $\pp A_\pp$ is the only maximal ideal of $A_\pp$ and it is the preimage of $\qq B_\qq$, we see that $B_\qq/\pp B_\qq\neq 0$, hence $B_\qq$ is faithfully flat over $A_\pp$. Then there is $\snake{\qq}'\in\Spec B_\qq$ such that $\snake{\qq}'\cap A_\pp=\pp'A_\pp$. Then $\qq'=\snake{\qq}'\cap B$ does it.
+	
+	If $B$ is of finite type over $A$ and $A$ is noetherian, then to show that $\Spec B\morphism \Spec A$ is an open map it suffices to show that the image of $\Spec B_f$ in $\Spec A$ is open for all $f\in B$. Since $B_f$ is again flat and of finite type over $A$, we may as well replace $B$ by $B_f$. Then the image of $\Spec B$ is \emph{constructible} by Chevalley's theorem (Proposition~\reff{prop:Chevalley}, Definition~\reff{def:constructible}). It is also \emph{stable under generalization} in the sense of Definition~\reff{def:specialization}\itememph{b} since this is precisely what going-down says. By Proposition~\reff{prop:constructible2}\itememph{b} this implies that the image of $\Spec B$ open, as required.
+\end{proof}
+\begin{cor}\lbl{cor:flatMorphismOpen}
+	A flat morphism of locally finite type $f\colon X\morphism Y$ between locally noetherian preschemes defines an open map of the underlying topological spaces.
+\end{cor}
+\begin{proof}
+	Affine-locally on $X$ and $Y$ this is just Proposition~\reff{prop:flatGoingDown}.
+\end{proof}
+\begin{prop}\lbl{prop:toplogicalQuotient}
+	If $f\colon X\morphism Y$ is a quasi-compact and faithfully flat morphism of arbitrary preschemes, then the underlying topological space $Y_\Top$ is the quotient of $X_\Top$ by the equivalence relation $X_\Top\times_{Y_\Top}X_{\Top}\subseteq X_\Top\times X_\Top$, which is the image of $(X\times_YX)_\Top$ in $X_\Top\times X_\Top$. In less fancy words, the equivalence relation under consideration is given by $x\sim x'\Leftrightarrow f(x)=f(x')$ (i.e., the one we would expect).
+\end{prop}
+\begin{proof}
+	From the general fact that $(X\times_YX)_\Top\morphism X_\Top\times_{Y_\Top}X_\Top$ is surjective (cf.\ \cite[Corollary~1.3.1\itememph{a}]{alggeo1}), all set-theoretic properties follow. It remains to show the topological assertion, which is equivalent to the condition that the image in $Y$ of an open subset $U\subseteq X$ closed under the equivalence relation is open. When $Y$ is noetherian and $X$ of locally finite type over it, this follows from Corollary~\reff{cor:flatMorphismOpen}. In general we may equivalently show that if $A\subseteq X$ is a closed subset and closed under the equivalence relation, then $f(A)$ is closed in $Y$. If $A$ has this property, then applying Lemma~\reff{lem:closurePreimage} to $Z=f(A)$ (so that $A=f^{-1}(Z)$) gives $f^{-1}(\ov{Z})=\ov{A}=A=f^{-1}(Z)$. Hence $\ov{Z}=Z$ as $f$ is surjective, so $Z$ is closed in $Y$. Our job is done.
+\end{proof}
+\begin{lem}[{\cite[Exposé VII Théorème 4.1]{sga1}}\footnote{Actually, what the SGA$_1$ table of contents says about Exposé VII is \emph{n'existe pas}, which even my non-existent French knowledge translates to \emph{doesn't exist}. It should be Exposé VIII (and I find it quite remarkable that Professor Franke managed to hit the only existing non-existing exposé in SGA$_1$ \Winkey[1.2]).}]\lbl{lem:closurePreimage}
+	Let $f\colon X\morphism Y$ be a flat morphism of preschemes and $Z\subseteq Y$ a subset which is the image of a quasi-compact $\tau\colon T\morphism Y$. Then 
+	\begin{align*}
+		f^{-1}(\ov{Z})=\ov{f^{-1}(Z)}\;.
+	\end{align*}
+\end{lem}
+\begin{proof}
+	The assertion is local with respect to $Y$, hence we may assume $Y\cong\Spec A$ to be affine. Then $T$ is quasi-compact, hence a finite union of affine open subsets. Clearly $T$ may be replaced by the disjoint union of these finitely many affine open subset, hence without losing generality we may assume that $T$ itself is affine, say, $T\cong\Spec R$ for some $A$-algebra $R$. Moreover, the assertion is also local with respect to $X$, hence we may assume $X=\Spec B$ where $B$ is a flat $A$-algebra.
+	
+	Let $I=\ker(\rho\colon A\morphism R)$ so that $\ov{Z}=V(I)$. Indeed, this is a general fact that just hasn't shown up until now. To see why this is true, note $\ov{Z}=V\left(\bigcap_{\pp\in Z}\pp\right)$. Now 
+	\begin{align*}
+		\bigcap_{\pp\in Z}\pp=\bigcap_{\qq\in \Spec R}\rho^{-1}(\qq)=\rho^{-1}\bigg(\bigcap_{\qq\in \Spec R}\qq\bigg)=\rho^{-1}(\nil R)=\sqrt{I}\;,
+	\end{align*}
+	whence $\ov{Z}=V(\sqrt{I})=V(I)$ as claimed. Also $f^{-1}(Z)$ is the image of $X\times_YT\morphism X$, as is easily checked. Since $X\times_YT\cong \Spec(B\otimes_AR)$, the same argument as for $\ov{Z}$ provides $\ov{f^{-1}(Z)}=V(J)$ where $J=\ker(B\morphism B\otimes_AR)$. But $B\cong B\otimes_AA$, hence $J=I\otimes_AB=IB$ by flatness of $B$. Therefore
+	\begin{align*}
+		\ov{f^{-1}(Z)}=V(IB)=f^{-1}(V(I))=f^{-1}(\ov{Z})\;,
+	\end{align*}
+	as required. We're done.
+\end{proof}
+\begin{rem}
+	The quasi-compactness of $f\colon X\morphism Y$ is needed unless $Y$ is locally noetherian and $f$ locally of finite type.
+\end{rem}
+\section{Faithfully flat descent and the fpqc topology (and related ones)}
+Let $f\colon X\morphism Y$ be a morphism of preschemes and $\Ff$ a quasi-coherent $\Oo_Y$-module. We would like to reconstruct $\Ff$ from its inverse image $f^*\Ff$. This will need some assumptions (in fact, faithful flatness and quasi-compactness, as in Proposition~\reff{prop:toplogicalQuotient}). For example, assume that $Y=\Spec K$ and $X=\Spec L$ where $L/K$ is some field extension. Then $\Ff=\snake{V}$ for some $K$-vector space $V$ and $f^*\Ff\cong (V\otimes_KL)^\qcmod$. Not every endomorphism of $f^*\Ff$ will thus come from an endomorphism of $\Ff$ and we must take care of some additional structure on $f^*\Ff$. For instance, if $L/K$ is Galois in the above situation, we will have $\Gal(L/K)$ acting on $V\otimes_KL$.
 
 \Appendix
 \chapter{Appendix}
@@ -1708,17 +1988,28 @@ We briefly recall the most important facts about completions. An excellent intro
 	\end{align*}
 	Thus, taking the limit over \eqreff{eq:completion} gives a short exact sequence $0\morphism \roof{M}'\morphism \roof{M}\morphism\roof{M}''\morphism 0$ by Fact~\reff{fact:6termLimitSequence}. We are done.
 \end{proof}
+Recall the notion of an $A$-module $F$ being \emph{faithfully flat} (cf.\ Definition~\reff{def:faithfullyFlat}). We will eventually see that $\roof{A}$ has this property, but before that let's prove another property of faithfully flat modules (which then also explains the name \emph{faithful}).
+\begin{lem}
+	An $A$-module $F$ is faithfully flat (in the sense of Definition~\reff{def:faithfullyFlat}) iff the following condition holds: Whenever one of the sequences of $A$-modules
+	\begin{gather*}
+		M'\morphism[\alpha]M\morphism[\beta]M''\\
+		M'\otimes_AF\xrightarrow{\alpha\otimes\id}M\otimes_AF\xrightarrow{\beta\otimes\id}M''\otimes_AF
+	\end{gather*}
+	is exact, then so is the other.
+\end{lem}
+\begin{proof}
+	If $F$ has the property of (faithfully) preserving exact sequences, then $F$ is flat and for all $A$-modules $T$ we have $F\otimes_AT= 0$ iff $T=0$. Hence $F$ is faithfully flat in the sense of Definition~\reff{def:faithfullyFlat}.
+	
+	Conversely, let $F$ be faithfully flat and let $M'\otimes_AF\morphism M\otimes_AF\morphism M''\otimes_AF$ be exact (the other direction is trivial since $F$ is flat). We first claim that $\beta\alpha=0$. Indeed, if $B$ is the image of $M'$ in $M''$, then $B\otimes_AF$ is the image of $M'\otimes_AF$ in $M''\otimes_AF$ (using flatness of $B$). Since $B\otimes_AF=0$ by assumption, this implies $B=0$ since $F$ is faithfully flat.
+	
+	This induces a morphism $M'\morphism\ker\beta$, and we need to show that this is an epimorphism. So let $Q$ be its cokernel. Then $Q\otimes_AF$ is the cokernel of $M'\otimes_AF\morphism\ker\beta\otimes_AF\cong \ker(\beta\otimes\id_F)$ (using flatness of $F$), hence $Q\otimes_AF=0$ by assumption. Then $Q=0$ by faithful flatness again and we're done.
+\end{proof}
 \begin{cor}\lbl{cor:completionFaithfullyFlat}
 	Let $A$ be a Noetherian ring and $\roof{\phantom{x}}$ the $I$-completion for some ideal $I\subseteq A$.
 	\begin{alphanumerate}
 		\item When $M$ is a finitely generated $A$-module, then $\roof{M}\cong M\otimes_A\roof{A}$.
 		\item $\roof{A}$ is flat as an $A$-module.
-		\item If $I$ is contained in the Jacobson radical of $A$, then $\roof{A}$ is \defemph{faithfully flat} over $A$. That is, if one of the sequences of $A$-modules
-		\begin{gather*}
-			0\morphism M'\morphism[\alpha] M\morphism[\beta] M''\morphism 0\\
-			0\morphism M'\otimes_A\roof{A}\xrightarrow{\alpha\otimes\id} M\otimes_A\roof{A}\xrightarrow{\beta\otimes\id} M''\otimes_A\roof{A}\morphism 0
-		\end{gather*}
-		is exact, then so is the other. In particular, this holds when $A$ is local and $I=\mm$ the maximal ideal of $A$.%Suppose that $I$ is contained in the Jacobson radical of $A$. If $\mu\colon M\morphism N$ is a morphism of finitely generated $A$-modules such that $\roof{\mu}\colon \roof{M}\morphism\roof{N}$ is an isomorphism, then $\mu$ is an isomorphism.
+		\item If $I$ is contained in the Jacobson radical of $A$, then $\roof{A}$ is faithfully flat over $A$.
 	\end{alphanumerate}
 \end{cor}
 \begin{proof}
@@ -1726,19 +2017,7 @@ We briefly recall the most important facts about completions. An excellent intro
 	
 	This immediately shows \itememph{b}. Indeed, by Corollary~\reff{cor:completionExact} and \itememph{a}, $-\otimes_A\roof{A}$ is exact on finitely generated $A$-modules -- which is sufficient for flatness by \cite[Proposition~1.2.2]{homalg}.
 	
-	For \itememph{c}, we first prove an auxiliary statement.
-	\begin{claim}\lbl{claim:completionFaithfullyFlat}
-		If $M$ is any $A$-module, then $M\otimes_A\roof{A}=0$ implies $M=0$.
-	\end{claim}
-	Indeed, to see this, let $N\monomorphism M$ be any finitely generated submodule. Because $\roof{A}$ is flat over $A$ by \itememph{b}, $N\otimes_A\roof{A}\morphism M\otimes_A\roof{A}$ is still injective, so $0=N\otimes_A\roof{A}=\roof{N}$ by assumption and part~\itememph{a}. Hence $N=0$ by Fact~\reff{fact:completion101}. But $M$ is the union of its finitely generated submodules, so $M=0$ as well.
-	
-	Suppose now that $0\morphism M'\otimes_A\roof{A}\morphism M\otimes_A\roof{A}\morphism M''\otimes_A\roof{A}\morphism 0$ is exact (the other direction is clear because we proved in \itememph{b} that $\roof{A}$ is flat over $A$). First note that $\beta\alpha=0$. Indeed, if $B$ is the image of $M'$ in $M''$, then $B\otimes_A\roof{A}$ is the image of $M'\otimes_A\roof{A}$ in $M''\otimes_A\roof{A}$ (using that $\roof{A}$ is flat). Hence $B\otimes_A\roof{A}=0$, so $B=0$ by Claim~\reff{claim:completionFaithfullyFlat}.
-	
-	This induces a morphism $M'\morphism\ker \beta$. Let $K$ and $Q$ be its kernel and cokernel. Then $\ker\left(\beta\otimes\id_{\roof{A}}\right)\cong \ker \beta \otimes_A\roof{A}$ because $\roof{A}$ is flat, hence the sequence
-	\begin{align*}
-		0\morphism K\otimes_A\roof{A}\morphism M'\otimes_A\roof{A}\morphism \ker\left(\beta\otimes\id_{\roof{A}}\right)\morphism Q\otimes_A\roof{A}\morphism 0\;.
-	\end{align*}
-	is exact (using flatness of $\roof{A}$ once again). But $M'\otimes_A\roof{A}\morphism \ker\left(\beta\otimes\id_{\roof{A}}\right)$ must be an isomorphism, so $K\otimes_A\roof{A}=0$ and $Q\otimes_A\roof{A}$. By Claim~\reff{claim:completionFaithfullyFlat} this shows $K=0$ and $Q=0$ and we conclude $M'\cong \ker\beta$. In the same way one can show $M''\cong \coker\alpha$. We are done.
+	For \itememph{c}, we need to show that if $M$ is any $A$-module, then $M\otimes_A\roof{A}=0$ implies $M=0$. Indeed, to see this, let $N\monomorphism M$ be any finitely generated submodule. Because $\roof{A}$ is flat over $A$ by \itememph{b}, $N\otimes_A\roof{A}\morphism M\otimes_A\roof{A}$ is still injective, so $0=N\otimes_A\roof{A}=\roof{N}$ by assumption and part~\itememph{a}. Hence $N=0$ by Fact~\reff{fact:completion101}. But $M$ is the union of its finitely generated submodules, so $M=0$ as well.
 \end{proof}
 \begin{cor}
 	Suppose that $I$ is contained in the Jacobson radical of the noetherian ring $A$. If $\mu\colon M\morphism N$ is a morphism of finitely generated $A$-modules whose $I$-adic completion $\roof{\mu}\colon \roof{M}\morphism\roof{N}$ is an isomorphism, then $\mu$ is an isomorphism.
@@ -1773,12 +2052,12 @@ To prove this, we need to prove the evil twin of Hilbert's Basissatz first.
 	If $A$ is noetherian, then so is the power series ring $R=A\llbracket T\rrbracket$.
 \end{lem}
 \begin{proof}
-	We can (and will) basically copy the proof of Hilbert's Basissatz. Let $J\subseteq R$ be any ideal and put $J_n=\left\{a_n\st \sum_{k=n}^\infty a_kT^k\in J\right\}$ for $n\geq 0$. Then $(J_n)_{n\in \IN}$ form an ascending sequence of ideals in $A$. Noetherianness of $A$ tells us that this sequence becomes eventually stationary, say, at $n=s$. So we may choose $a^{(i)}=\sum_{k\geq s}a_kT^k\in R$ for $i=1,\ldots,N$ such that $a_s^{(1)},\ldots,a_s^{(N)}$ generate $J_s$. Then $a^{(1)},\ldots,a^{(N)}$ generate $J\cap T^sR$. Indeed, given any $b=\sum_{k\geq s}b_kT^k\in J$ we can inductively choose coefficients $r_k^{(1)},\ldots,r_k^{(N)}\in A$ such that $r^{(i)}=\sum_{k\geq 0}r_k^{(i)}T^k$ satisfy $r^{(1)}a^{(1)}+\ldots+r^{(N)}a^{(N)}=b$ up to degree $T^{s+k}$. This works because $J_{k+s}=J_s$ for all $k\geq 0$ is generated by $a_s^{(1)},\ldots,a_s^{(N)}$ again.
+	We can (and will) basically copy the proof of Hilbert's Basissatz. Let $J\subseteq R$ be any ideal and put $J_n=\left\{a_n\st \sum_{k=n}^\infty a_kT^k\in J\right\}$ for $n\geq 0$. Then $(J_n)_{n\in \IN}$ form an ascending sequence of ideals in $A$. Noetherianness of $A$ tells us that this sequence becomes eventually stationary, say, at $n=s$. So we may choose $a^i=\sum_{k\geq s}a_k^iT^k\in R$ for $i=1,\ldots,N$ such that $a_s^1,\ldots,a_s^N$ generate $J_s$. Then $a^1,\ldots,a^N$ generate $J\cap T^sR$. Indeed, given any $b=\sum_{k\geq s}b_kT^k\in J$ we can inductively choose coefficients $r_k^1,\ldots,r_k^N\in A$ such that $r^i=\sum_{k\geq 0}r_k^iT^k$ satisfy $r^1a^1+\ldots+r^Na^N=b$ up to degree $T^{s+k}$. This works because $J_{k+s}=J_s$ for all $k\geq 0$ is generated by $a_s^1,\ldots,a_s^N$ again.
 	
-	Now $R/T^sR$ is a finitely generated $A$-module, hence the image of $J$ in it is finitely generated as well, $A$ being noetherian. We thus may choose $a^{(N+1)},\ldots,a^{(N+M)}\in J$ whose images modulo $T^sR$ generate the image of $J$ in $R/T^sR$. Then $a^{(1)},\ldots,a^{(N+M)}$ generate $J$ and our job's done here.
+	Now $R/T^sR$ is a finitely generated $A$-module, hence the image of $J$ in it is finitely generated as well, $A$ being noetherian. We thus may choose $a^{N+1},\ldots,a^{N+M}\in J$ whose images modulo $T^sR$ generate the image of $J$ in $R/T^sR$. Then $a^{1},\ldots,a^{N+M}$ generate $J$ and our job's done here.
 \end{proof}
 \begin{proof}[Proof of Proposition~\reff{prop:completionNoetherian}]
-	Let $r_1,\ldots,r_n$ be generators of $I$. Then sending $X_i\mapsto r_i$ defines a surjective morphism $A\llbracket X_1,\ldots,X_n\rrbracket\epimorphism \roof{A}$. Since $A\llbracket X_1,\ldots,X_n\rrbracket$ is noetherian by Lemma~\reff{lem:(not)HilbertBasis} and induction on $n$, so is its quotient $\roof{A}$.
+	Let $r_1,\ldots,r_n$ be generators of $I$. Then sending $X_i\mapsto r_i$ defines a surjective morphism $A\llbracket X_1,\ldots,X_n\rrbracket\epimorphism \roof{A}$. Since $A\llbracket X_1,\ldots,X_n\rrbracket$ is noetherian by Lemma~\reff{lem:(not)HilbertBasis} and induction on $n$, its quotient $\roof{A}$ must be noetherian as well.
 \end{proof}
 \begin{cor}
 	Suppose that $A$ is a noetherian local ring and $I\subseteq A$ any (proper) ideal. Then $\dim A=\dim\roof{A}$. In particular, $A$ is regular iff $\roof{A}$ is regular.
@@ -1790,7 +2069,7 @@ To prove this, we need to prove the evil twin of Hilbert's Basissatz first.
 	\end{align*}
 	(the last isomorphism follows from exactness of completion). This shows that the associated graded rings $\gr(A,\mm)$ and $\gr(\roof{A},\roof{\mm})$ agree, hence $(A,\mm)$ and $(\roof{A},\roof{\mm})$ have the same Hilbert--Samuel polynomials, which shows $\dim A=\dim\roof{A}$ by \cite[Theorem~20]{alg2}.
 	
-	Now $A$ and $\roof{A}$ have the same residue field $k$ and $\mm/\mm^2\cong \roof{\mm}/\roof{\mm}^2$ by the $I$-torsion arguments we have seen several times now, so $\dim_k\mm/\mm^2=\dim_k\roof{\mm}/\roof{\mm}^2$. Clearly this implies that $A$ is regular iff $\roof{A}$ is.
+	Now $A$ and $\roof{A}$ have the same residue field $k$ and $\mm/\mm^2\cong \roof{\mm}/\roof{\mm}^2$ as seen above, so $\dim_k\mm/\mm^2=\dim_k\roof{\mm}/\roof{\mm}^2$. Clearly this implies that $A$ is regular iff $\roof{A}$ is.
 \end{proof}
 \begin{rem}
 	In a similar fashion one can show that a noetherian local ring is Cohen--Macaulay, or Gorenstein, or a complete intersection, iff its $I$-adic completion is one as well. For example, for Cohen--Macaulayness one would need to show $\depth_A(A)=\depth_{\roof{A}}(\roof{A})$, which follows from the isomorphism $\Ext_A^p(k,A)\cong\Ext_{\roof{A}}^p(k,\roof{A})$ that was described in the proof of \cite[Proposition~2.4.2]{homalg}.
@@ -1798,7 +2077,7 @@ To prove this, we need to prove the evil twin of Hilbert's Basissatz first.
 \section{Generic freeness and Chevalley's theorem}
 A good reference for this section is \cite[Section~14.2 and 14.3]{eisenbudCommAlg}. 
 
-Professor Franke points out that there are multiple approaches for Generic freeness: a clever \emph{dévissage}-style proof due to Grothendieck (cf.\ \cite[Theorem~14.4]{eisenbudCommAlg}), which Franke says he could not have come up with, or a more natural proof similar to that of Hilbert's Basissatz (cf.\ \cite[\S 24]{matsumuraCRT}). However, both references assume $R$ to be noetherian, which we will circumvent by Gröbner basis theory.\footnote{True Franke fans will remember \ldots}
+Professor Franke points out that there are multiple approaches for Generic freeness: A clever \emph{dévissage}-style proof due to Grothendieck (cf.\ \cite[Theorem~14.4]{eisenbudCommAlg}), which Franke says he could not have come up with, or a more natural proof similar to that of Hilbert's Basissatz (cf.\ \cite[\S 24]{matsumuraCRT}). However, both references assume $R$ to be noetherian, which we will circumvent by Gröbner basis theory.\footnote{True Franke fans will remember \ldots}
 \begin{prop}[Grothendieck's generic freeness theorem]\lbl{prop:GenericFreeness}
 	Let $R$ be a domain, $A$ an $R$-algebra of finite type, and $M$ a finitely generated $A$-module. Then there is $f\in R\setminus\{0\}$ such that $M_f$ is a free $R_f$-module
 \end{prop}
@@ -1811,7 +2090,7 @@ Professor Franke points out that there are multiple approaches for Generic freen
 	If $f\colon \Spec B\morphism\Spec A$ is a morphism of finite type between affine noetherian schemes, then the image of $f$ is contained in a proper closed subset of $\Spec A$ or contains a dense open subset.
 \end{prop}
 \begin{proof}
-	What Chevalley's theorem actually says is that the image of $f$ is \defemph{constructible}, that is, a finite union of open subsets of closed subsets of $\Spec A$ (cf.\ \cite[Corollary~14.6]{eisenbudCommAlg}). This is what we're going to prove now (and we leave it to the reader to show that this implies the assertion -- which I found quite a pain, actually).
+	What Chevalley's theorem actually says is that the image of $f$ is \emph{constructible}, that is, a finite union of open subsets of closed subsets of $\Spec A$ (cf.\ \cite[Corollary~14.6]{eisenbudCommAlg} and Definition~\reff{def:constructible}). This is what we're going to prove now (and we leave it to the reader to show that this implies the assertion -- which I found quite a pain, actually).
 	
 	It suffices to prove the assertion for every irreducible component of $\Spec A$ (as these guys are closed and there are finitely many of them). Hence, if $\pp\in\Spec A$ is a minimal prime corresponding to the irreducible component $V(\pp)$ of $\Spec A$, then we may replace $A$ and $B$ by $A/\pp$ and $B/\pp B$. Therefore, we can assume that $A$ is a domain. Moreover, suppose that $A\subseteq B$. Otherwise, $A$ could be replaced by $A/\ker(A\morphism B)$, and since that cuts out a closed subset of $\Spec A$, we're fine with that. 
 	
@@ -1820,7 +2099,7 @@ Professor Franke points out that there are multiple approaches for Generic freen
 	By the Noetherian induction hypothesis, the image of $f$ in $V(\alpha)$ -- which equals the image of $\ov{f}\colon\Spec(B/\alpha B)\morphism\Spec (A/\alpha A)$ -- is constructible. We are done.		
 \end{proof}
 \section{Some additions to the lectures}
-Occasionally it happens that Professor Franke without explanation uses some technical facts I wish afterwards he had proved, because they seems not at all obvious (at least to me). I usually notice only after the lecture as these facts are subtle and get lost easily in the flow of the presentation. In this section I collect those facts which I couldn't possibly fit into the lecture notes without bursting their overarching structure.
+Occasionally it happens that Professor Franke without explanation uses some technical facts I wish afterwards he had proved, because they seem not at all obvious (at least to me). I usually notice only after the lecture as these facts are subtle and get lost easily in the flow of the presentation. And sometimes he just states such facts without proving them because of the lectures limited time, which I then often take as an invitation to figure out the proof myself. In this section I collect those facts which I couldn't possibly fit into the lecture notes without bursting their overarching structure.
 
 %\textbf{Warning 1!} I see no point in reading this section if you don't look for a specific result. There's no real coherence between the listed lemmas and propositions.
 %
@@ -1867,7 +2146,7 @@ Occasionally it happens that Professor Franke without explanation uses some tech
 	\end{align*}
 	is a field, which shows that $\qq B_\qq\otimes_{A_\pp}\roof{A}_\pp$ is a maximal ideal.
 	
-	Part \itememph{b}. Brace yourself, because this proof is \emph{horrible}. I'm trying my best to cite The Stacks Project as rarely as possible, but I make no promises. We will separate the agonizing process into tiny lemmas.
+	Part \itememph{b}. Brace yourself, because the proof to come is \emph{horrible}. I'm trying my best to cite The Stacks Project as rarely as possible, but I make no promises. We will separate the agonizing process into tiny lemmas.
 	\begin{lem}\lbl{lem:ANNOYING1}
 		In the situation of Proposition~\reff{prop:technicalAF}\itememph{b}, $B_\qq\otimes_{A_\pp}\KK(\pp)$ is a finite-dimensional $\KK(\pp)$-vector space as well.
 	\end{lem}
@@ -1987,7 +2266,7 @@ Occasionally it happens that Professor Franke without explanation uses some tech
 \begin{rem}
 	\begin{alphanumerate}
 		\item Some people like to use Kähler differentials together with \cite[Proposition~1.6.3]{alg2} to prove Proposition~\reff{prop:GeometricFibres101}\itememph{b}. However, it seems quite delicate to bypass the separability requirements there, so the proof by Serre's regularity criterion seemed more clean and straightforward to me.
-		\item Both Lemma~\reff{lem:stalkOfGeometricFibres} and Proposition~\reff{prop:GeometricFibres101} still hold when $\ov{k}$ is replaced by an arbitrary algebraic extension $\ell/k$ -- in fact, that's all we needed.
+		\item Both Lemma~\reff{lem:stalkOfGeometricFibres} and Proposition~\reff{prop:GeometricFibres101} still hold when $\ov{k}$ is replaced by an arbitrary algebraic extension $\ell/k$ -- in fact, that's all we used in the proofs.
 	\end{alphanumerate}
 \end{rem}
 \begin{cor}\lbl{cor:FibresAreCurvesToo}
@@ -1995,6 +2274,36 @@ Occasionally it happens that Professor Franke without explanation uses some tech
 \end{cor}
 \begin{proof}
 	By Proposition~\reff{prop:GeometricFibres101} it's clear that the fibres $C_x$ for $x\in X$ are one-dimensional and regular. To show connectedness, note that $C_{\ov{x}}\morphism C_x$ is surjective as a map of topological spaces. Indeed, locally the question becomes whether $\Spec(B\otimes_A\ov{k})\morphism\Spec (B\otimes_Ak)$ is surjective. But we've seen several times now that $B\otimes_A\ov{k}$ is integral over $B\otimes_Ak$, so surjectivity follows from \cite[Theorem~7\itememph{a}]{alg1}. Therefore, $C_x$ is the surjective image of the connected space $C_{\ov{x}}$, hence connected itself.
+\end{proof}
+\subsection{A remark about constructible subsets}
+We already talked about \emph{constructible subsets} in the proof of Chevalley's theorem (Proposition~\reff{prop:Chevalley}). Here we'll prove a technical property of them.
+\begin{defi}\lbl{def:constructible}
+	Let $X$ be any topological space. A subset $E\subseteq X$ is called \defemph{constructible} if $E$ is a finite union of locally closed subsets of $X$.
+\end{defi}
+\begin{lem}\lbl{lem:constructible1}
+	Finite unions and finite intersections of constructible sets are constructible again. If $E\subseteq X$ is constructible, then so is $X\setminus E$.
+\end{lem}
+\begin{proof}
+	The first two assertions are quite trivial. Now if $E$ is constructible, write $E=\bigcup_{i=1}^nC_i$ where $C_i=Z_i\subseteq X$ is locally closed with $Z_i$ being closed and $U_i$ being open. Then the complement $X\setminus C_i=(X\setminus Z_i)\cup (X\setminus U_i)$ is constructible (being a union of a closed and an open subset). Hence $X\setminus E=\bigcap_{i=1}^n(X\setminus C_i)$ is constructible as well.
+\end{proof}
+\begin{defi}\lbl{def:specialization}
+	Let $X$ be any topological space.
+	\begin{alphanumerate}
+		\item If $x,y\in X$ satisfy $x\in\ov{\{y\}}$, we call $x$ a \defemph{specialization} of $y$ and $y$ a \defemph{generalization} of $x$. A common notation is $y\leadsto x$.
+		\item A subset $T\subseteq X$ is called \defemph{stable under specialization} if for all $y\in T$ and all specializations $y\leadsto x$ we have $x\in T$ as well. In the same way $T$ being \defemph{stable under generalization} is defined.
+	\end{alphanumerate}
+\end{defi}
+\begin{prop}\lbl{prop:constructible2}
+	Let $X$ be a noetherian sober space and $E\subseteq X$ a constructible subset.
+	\begin{alphanumerate}
+		\item If $E$ is stable under specialization, then $E$ is closed.
+		\item If $E$ is stable under generalization, then $E$ is open.
+	\end{alphanumerate}
+\end{prop}
+\begin{proof}
+	It suffices to show \itememph{a}, for $E$ is stable under specialization iff $X\setminus E$ is stable under generalization and we've seen that $X\setminus E$ is constructible as well in Lemma~\reff{lem:constructible1}. So suppose that $E$ is stable under specialization. It suffices to find finitely many $x_1,\ldots,x_n\in E$ such that $E\subseteq \bigcup_{i=1}^n\ov{\{x_i\}}$ since then $E=\bigcup_{i=1}^n\ov{\{x_i\}}$ because $E$ is closed under specialization.
+	
+	To prove that such $x_i$ exist, we may assume that $E$ is locally closed, i.e., $E=Z\cap U$ where $Z$ is closed and $U$ is open. Since $X$ is noetherian, we can decompose $Z$ into finitely many irreducible components, and since $X$ is sober, each irreducible component of $Z$ has a generic point. Thus $Z=\bigcup_{i=1}^n\ov{\{\eta_i\}}$ for some $\eta_i\in Z$. Moreover, $U$ intersects $\ov{\{\eta_i\}}$ iff $\eta_i\in U$. Hence we can choose $\eta_{i_1},\ldots,\eta_{i_m}\in E$ such that $E=Z\cap U\subseteq \bigcup_{j=1}^m\ov{\{\eta_{i_j}\}}$. We're done.
 \end{proof}
 
 \printbibliography
