@@ -1898,6 +1898,256 @@ The following proposition shouldn't be in a section titled \emph{Topological pro
 \section{Faithfully flat descent and the fpqc topology (and related ones)}
 Let $f\colon X\morphism Y$ be a morphism of preschemes and $\Ff$ a quasi-coherent $\Oo_Y$-module. We would like to reconstruct $\Ff$ from its inverse image $f^*\Ff$. This will need some assumptions (in fact, faithful flatness and quasi-compactness, as in Proposition~\reff{prop:toplogicalQuotient}). For example, assume that $Y=\Spec K$ and $X=\Spec L$ where $L/K$ is some field extension. Then $\Ff=\snake{V}$ for some $K$-vector space $V$ and $f^*\Ff\cong (V\otimes_KL)^\qcmod$. Not every endomorphism of $f^*\Ff$ will thus come from an endomorphism of $\Ff$ and we must take care of some additional structure on $f^*\Ff$. For instance, if $L/K$ is Galois in the above situation, we will have $\Gal(L/K)$ acting on $V\otimes_KL$.
 
+\lbl{page:ZariskiDescent}As another example of what we're up to, let $\Uu\colon Y=\bigcup_{i\in I}U_i$ be an open cover of $Y$ and let $X=\coprod_{i\in I}U_i\morphism Y$ be the obvious morphism. We ask which quasi-coherent $\Oo_X$-modules $\Gg$ can be represented as $\Gg\cong f^*\Ff$ for some quasi-coherent $\Oo_Y$-module $\Ff$. If $\Gg_i$ is the restriction of $\Gg$ to the copy of $U_i$ in $X$, then clearly we must have an isomorphism $\Gg_i\cong \Ff|_{U_i}$. So the the problem in this case becomes whether the $\Gg_i$ can be glued together to form a sheaf over all of $Y$. This requires some auxiliary structure on the $\Gg_i$. First, we have isomorphisms $(\Ff|_{U_i})|_{U_{i,j}}\cong (\Ff|_{U_j})|_{U_{i,j}}$, where $U_{i,j}=U_i\cap U_j$ as usual. Hence the $\Gg_i$ must come with isomorphisms $\mu_{i,j}\colon \Gg_i|_{U_{i,j}}\isomorphism \Gg_j|_{U_{i,j}}$. Moreover, these $\mu_{i,j}$ must be compatible in the sense that
+\begin{diagram}[baseline=0.625cm-0.5pt][\lbl{diag:muij}]
+	\object{0,1.25}{$\Gg_i|_{U_{i,j,k}}$}[i];
+	\object{1.5,0}{$\Gg_k|_{U_{i,j,k}}$}[k];
+	\object{3,1.25}{$\Gg_j|_{U_{i,j,k}}$}[j];
+	\scriptsize
+	\arrow{i}{j}[above][$\mu_{i,j}|_{U_{i,j,k}}$];
+	\arrow{i}{k}[below left][$\mu_{i,k}|_{U_{i,j,k}}$];
+	\arrow{j}{k}[below right][$\mu_{j,k}|_{U_{i,j,k}}$];
+\end{diagram}
+commutes (since this is also the case for the $\Ff|_{U_i}$). On the other hand, if $(\Gg_i)_{i\in I}$ and $(\mu_{i,j})_{(i,j)\in I^2}$ are given such that \eqreff{diag:muij} is commutative, then it's easy to see that these data define a sheaf on $Y$.
+
+ Note that $U_i\cap U_j$ can also be written as $U_i\times_YU_j$. Also the disjoint union $\coprod_{(i,j)\in I^2}U_{i,j}$ can be written as $X\times_YX$ in the case where $X=\bigcup_{i\in I}U_i$. Therefore, providing a family of isomorphisms $\mu_{i,j}\colon \Gg_i|_{U_{i,j}}\isomorphism \Gg_j|_{U_{i,j}}$ is equivalent to giving a single isomorphism $\pi_1^*\Gg\cong \pi_2^*\Gg$, where $\pi_1,\pi_2\colon X\times_YX\morphism X$ are the projections to the two factors. Also the diagrams \eqreff{diag:muij} can be reformulated as a single large diagram. We'll immediately make this precise. 
+ 
+ To this end, let $\pi_i\colon X\times_YX\morphism X$ be the canonical projection to the $i\ordinalth$ factor (as above). Moreover, for triple fibre products we denote by $p_i\colon X\times_YX\times_YX\morphism X$ the projection to the $i\ordinalth$ factor and by $\pi_{i,j}\colon X\times_YX\times_YX\morphism X\times_YX$ the projection to the $i\ordinalth$ and $j\ordinalth$ factors.
+\begin{defi}\lbl{def:descentData}
+	Let $f\colon X\morphism Y$ be a morphism of preschemes. A \defemph{descent datum} for quasi-coherent sheaves of modules along $f$ is a pair $(\Gg,\nu)$, where $\Gg$ is a quasi-coherent $\Oo_X$-module and $\nu\colon \pi_1^*\Gg\isomorphism\pi_2^*\Gg$ an isomorphism, such that the following \sout{monster} moderately large diagram commutes.
+	\begin{diagram*}
+		\object{60:3.5}{$\pi_{1,2}^*\pi_2^*\Gg$}[a];
+		\object{120:3.5}{$\pi_{1,2}^*\pi_1^*\Gg$}[b];
+		\object{180:3.5}{$\pi_{1,3}^*\pi_1^*\Gg$}[c];
+		\object{240:3.5}{$\pi_{1,3}^*\pi_2^*\Gg$}[d];
+		\object{300:3.5}{$\pi_{2,3}^*\pi_2^*\Gg$}[e];
+		\object{0:3.5}{$\pi_{2,3}^*\pi_1^*\Gg$}[f];
+		\object{30:3.5}{$p_2^*\Gg$}[1];
+		\object{150:3.5}{$p_1^*\Gg$}[2];
+		\object{270:3.5}{$p_3^*\Gg$}[3];
+		\scriptsize
+		\isoarrow{2}{b};
+		\isoarrow2c;
+		\isoarrow d3;
+		\isoarrow e3;
+		\isoarrow a1;
+		\isoarrow 1f;
+		\isoarrow ba[below][$\pi_{1,2}^*(\nu)$];
+		\isoarrow cd[below left][$\pi_{1,3}^*(\nu)$];
+		\isoarrow fe[below right][$\pi_{2,3}^*(\nu)$];
+	\end{diagram*}
+	
+	A \defemph{morphism of descent data} $\phi\colon (\Gg,\nu)\morphism(\Gg',\nu')$ is consists of a morphism $\phi\colon \Gg\morphism\Gg'$ of $\Oo_X$-modules such that
+	\begin{diagram*}
+		\object{0,1.5}{$\pi_1^*\Gg$}[a];
+		\object{2.5,1.5}{$\pi_2^*\Gg$}[b];
+		\object{0,0}{$\pi_1^*\Gg'$}[c];
+		\object{2.5,0}{$\pi_2^*\Gg'$}[d];
+		\scriptsize
+		\isoarrow{a}{b}[below][$\nu$];
+		\isoarrow{c}{d}[below][$\nu'$];
+		\arrow ac[left][$\pi_1^*(\phi)$];
+		\arrow bd[right][$\pi_2^*(\phi)$];
+	\end{diagram*}
+	commutes. We thus obtain a category $\cat{Desc}_f=\cat{Desc}_{X/Y}$ of descent data for quasi-coherent sheaves of modules along $f$.
+\end{defi}
+\begin{rem}
+	It's easy to see that in the case where $X$ results from a Zariski-open cover of $Y$ as above, the definition is equivalent to the gluing data that was briefly sketched there.
+\end{rem}
+\begin{rem}\lbl{rem:equivalentDefOfDescentData}
+	An equivalent (and somewhat easier) approach is to require a family of isomorphisms $\nu_{g,h}\colon g^*\Gg\isomorphism h^*\Gg$ for arbitrary morphisms $g,h\colon T\morphism X$ such that $fg=fh$, rather than a single $\nu$. These $\nu_{g,h}$ should satisfy the following relations.
+		\begin{alphanumerate}
+			\item If $\tau\colon \snake{T}\morphism T$ is any morphism, then $\nu_{g\tau,h\tau}=\tau^*(\nu_{g,h})$. More precisely (that is, without surpressing canonical isomorphisms in our notation), the following diagram is supposed to commute.
+			\begin{diagram*}
+				\object{0,1.5}{$\tau^*g^*\Gg$}[a];
+				\object{2.5,1.5}{$\tau^*h^*\Gg$}[b];
+				\object{0,0}{$(g\tau)^*\Gg$}[c];
+				\object{2.5,0}{$(h\tau)^*\Gg$}[d];
+				\scriptsize
+				\isoarrow ac;
+				\isoarrow bd;
+				\arrow{a}{b}[above][$\tau^*(\nu_{g,h})$];
+				\arrow{c}{d}[above][$\nu_{g\tau,h\tau}$];
+			\end{diagram*}
+			\item If $g,h,k\colon T\morphism X$ is a triple of morphisms such that $fg=fh=fk$, then the diagram
+			\begin{diagram*}
+				\object{0,1.25}{$g^*\Gg$}[i];
+				\object{1.25,0}{$h^*\Gg$}[k];
+				\object{2.5,1.25}{$k^*\Gg$}[j];
+				\scriptsize
+				\arrow{i}{j}[above][$\nu_{g,h}$];
+				\arrow{i}{k}[below left][$\nu_{g,k}$];
+				\arrow{j}{k}[below right][$\nu_{h,k}$];
+			\end{diagram*}
+			commutes.
+		\end{alphanumerate}
+		Such a family is obtained from $\nu$ by $\nu_{g,h}=(g,h)^*(\nu)$, where $(g,h)\colon T\morphism X\times_YX$ is defined in the obvious way via the universal property of fibre products. Conversely, $\nu$ can be recovered from such a family by $\nu=\nu_{\pi_1,\pi_2}$.
+\end{rem}
+\begin{rem}
+	If $\Ff$ is a quasi-coherent $\Oo_Y$-module, then $\Gg=f^*\Ff$ together with the canonical isomorphism
+	\begin{align*}
+		\nu\colon \pi_1^*\Gg=\pi_1^*f_*\Ff\isomorphism (f\pi_1)^*\Ff=(f\pi_2)^*\Ff\isomorphism \pi_2^*f^*\Ff=\pi_2^*\Gg
+	\end{align*}
+	is an object of the category $\cat{Desc}_{X/Y}$. Moreover, for any morphism $\phi\colon \Ff\morphism \Ff'$ the morphism $f^*(\phi)\colon \Gg=f^*\Ff\morphism f^*\Ff'=\Gg'$ is a morphism in $\cat{Desc}_{X/Y}$ (this is straightforward to check). One thus obtains a functor $f^*\colon\cat{QCoh}(Y)\morphism \cat{Desc}_{X/Y}$.
+\end{rem}
+\begin{thm}\lbl{thm:faithfullyFlatDescent}
+	If $f\colon X\morphism Y$ is a faithfully flat and quasi-compact morphism, then the above functor $f^*\colon\cat{QCoh}(Y)\morphism\cat{Desc}_{X/Y}$ is an equivalence of categories.
+\end{thm}
+\begin{proof}[Sketch of a proof]
+	If we tried to prove Theorem~\reff{thm:faithfullyFlatDescent} directly, we would get into trouble for our \emph{ad-hoc} construction of cohomology in \cite[Section~1.2]{alggeo2} via the \v Cech complex only works for quasi-compact schemes (which $X$ and $Y$ are not, in general). However, even if we define sheaf cohomology the Grothendieck way as a derived functor, some of the arguments below (to be precise, those in Step~2) wouldn't work, e.g.\ since the direct image under $f$ of a quasi-coherent module is, in general, only quasi-coherent again if $f$ is quasi-separated in addition to being quasi-compact (cf.\ \cite[Proposition~1.5.2]{alggeo1}). That's why we first have to reduce to a sufficiently nice situation.
+	
+	\emph{Step $-\text{1}$.} We reduce the situation to the case where $Y$ is affine. Suppose this special case has been settled and choose an affine open cover $Y=\bigcup_{j\in J}V_j$. Then each $\cat{QCoh}(V_j)\morphism\cat{Desc}_{f^{-1}(V_j)/V_j}$ is an equivalence of categories. Hence given an object $(\Gg,\nu)$ of $\cat{Desc}_{X/Y}$, we find quasi-coherent sheaves $\Ff_j$ on $V_j$ such that $\Gg|_{f^{-1}(V_j)}$ is the oullback of $\Ff_j$ along $f$. We need to show that the $\Ff_j$ can be glued together. If we construct a morphism $\mu_{i,j}\colon \Ff_i|_{V_{i,j}}\morphism\Ff_j|_{V_{i,j}}$ in a ``sufficiently canonical'' way, then $\mu_{i,j}$ will be an isomorphism since the pullback of $\mu_{i,j}$ along $f$ will become an isomorphism (roughly speaking the identity on $\Gg|_{f^{-1}(V_{i,j})}$), and $f$ is faithfully flat, so $\mu_{i,j}$ must have already been an isomorphism.
+	
+	To construct $\mu_{i,j}$, we cover $V_{i,j}=\bigcup_{k\in K}W_k$ by affine open $W_k$. Then we get canonical morphisms $\mu_k\colon \Ff_i|_{W_k}\morphism\Ff_j|_{W_k}$ since $\cat{QCoh}(W_k)\morphism\cat{Desc}_{f^{-1}(W_k)/W_k}$ is fully faithful. Also $\mu_k$ and $\mu_\ell$ coincide on $W_k\cap W_\ell$, which can be seen by covering $W_k\cap W_\ell$ with affine opens and using full faithfulness in the affine case once again. Thus the $\mu_k$ glue together to some $\mu_{i,j}$, and these guys have property \eqreff{diag:muij}, as is easily checked.
+	
+	\emph{Step 0.} We reduce to the case where $X$ is affine too (hence $X$ and $Y$ are quasi-compact schemes, which suffices for the rest of the proof). Let $X=\bigcup_{i=1}^nU_i$ be an affine open cover and put $X'=\coprod_{i=1}^nU_i$ (finiteness of $n$ is fine because $f$ and thus $X$ are quasi-compact). It's easy to see that descent data $(\Gg,\nu)$ along $f\colon X\morphism Y$ can be pulled back to descent data $(\Gg',\nu')$ along $f'\colon X'\morphism Y$. Then $X'$ is affine, so assuming the affine case can be shown there is a quasi-coherent $\Oo_Y$-module $\Ff$ such that $\Gg'\cong f'^*\Ff$. That is, $f^*\Ff$ pulls back to $\Gg'$, as does $\Gg$, hence $f^*\Ff\cong \Gg$ by ``Zariski descent'' (i.e., the special case of gluing sheaves that was discussed on page~\pageref{page:ZariskiDescent}; I also admit I'm really handwavy here).
+	
+	\emph{Step 1.} Assume that $f\colon X\morphism Y$ has a section $\sigma\colon Y\morphism X$. Then $\sigma^*\colon\cat{Desc}_{X/Y}\morphism\cat{QCoh}(Y)$ given by $(\Gg,\nu)\mapsto \sigma^*\Gg$ is an inverse to $f^*$ up to canonical isomorphism. If $\Gg=f^*\Ff$, said isomorphisms are $\sigma^*\Gg=\sigma^*f^*\Ff\cong (f\sigma)^*\Ff=\id_Y^*\Ff\cong \Ff$. And if $(\Gg,\nu)$ is a descent datum and $\Ff=\sigma^*\Ff$, then
+	\begin{align*}
+		f^*\Ff=f^*\sigma^*\Gg\cong(\sigma f)^*\Gg\isomorphism[\nu_{\sigma f,\id}]\id_X^*\Gg\cong \Gg\;,
+	\end{align*}
+	where $\nu_{\sigma f,\id}$ is as in Remark~\reff{rem:equivalentDefOfDescentData} (and for this we use $f\sigma f=\id_Yf=f=f\id_X$). The fact that this is an isomorphism of descent data is left as an exercise. 
+	
+	\emph{Step 2.} We construct an adjoint functor $R\colon \cat{Desc}_{X/Y}\morphism\cat{QCoh}(Y)$. Put
+	\begin{align*}
+		R(\Gg,\nu)=\Eq\left(\begin{tikzpicture}[line cap=round, line join=round,baseline=0.625cm-0.5ex]
+			\object{0,0}{$f_*\Gg$}[a];
+			\object{1.75,1.25}{$(f_*\pi_1)_*\pi_1^*\Gg$}[b];
+			\object{3.5,0}{$(f\pi_2)_*\pi_2^*\Gg$}[c];
+			\scriptsize
+			\arrow ac;
+			\arrow ab;
+			\draw[->] (b) to node[pos=0.5,above right]{$(f\pi_1)_*(\nu)$} node[pos=0.5,sloped,below=-0.25ex]{$\sim$} (c);
+		\end{tikzpicture}\right)\;,
+	\end{align*}
+	where the left and the bottom arrows are induced by the canonical morphisms $\Gg\morphism\pi_{i,*}\pi_i^*\Gg$ for $i\in\{1,2\}$ and the right arrow uses $f\pi_1=f\pi_2$. Note that we really need $f_*$ to be quasi-compact and quasi-separated here, otherwise $f_*\Gg$ wouldn't necessarily be a quasi-coherent $\Oo_Y$-module (cf.\ \cite[Proposition~1.5.2]{alggeo1}). It's straightforward to check that this $R$ is indeed a right-adjoint of $f^*$. Also $R$ is compatible with base change by flat morphisms using Proposition~\reff{prop:baseChangeMorphism}.
+	
+	To show that $R$ is an equivalence of categories, all we need to do is to show that the canonical morphisms $\Ff\morphism Rf^*\Ff$ and $f^*R\Gg\morphism \Gg$ are isomorphisms. It's sufficient to do this after some faithfully flat base change $\upsilon\colon\snake{Y}\morphism Y$ (or in fancy words, we may check this \emph{locally in the fpqc topology}). We apply this to $\upsilon=f\colon\snake{Y}=X\morphism Y$. Then the base change $\pi_2\colon\snake{X}=X\times_YX\morphism X$ of $f$ has a section given by the diagonal $\Delta$, hence $\pi_2^*$ is an equivalence of categories by Step~1. Since $R$ is compatible with flat base change, we get $\upsilon^*Rf^*\Ff\cong R\pi_2^*(\upsilon^*\Ff)$. Hence showing that $\Ff\cong Rf^*\Ff$ becomes equivalent to $\upsilon^*\Ff\morphism R\pi_2^*(\upsilon^*\Ff)$ being an isomorphism. Since $\pi_2^*$ is an equivalence of categories and $R$ a right-adjoint of it, this follows from some general abstract nonsense. The same argument goes for $f^*R\Gg\cong \Gg$ as well, whence we are done.
+\end{proof}
+\begin{rem}
+	As pointed out several times during the proof, quasi-compactness cannot be omitted. Here is an explicit counterexample. Let $R$ be a non-semilocal Dedekind domain (e.g.\ $R=\IZ$, the point is we need infinitely many primes) and put $Y=\Spec R$, $X=\coprod_{\pp\neq 0}\Spec R_\pp$. Take $f\colon X\morphism Y$ to be the obvious morphism. Consider the morphism
+	\begin{align}\lbl{eq:nonSplitButSplit}
+		\bigoplus_{\pp\neq 0}R/\pp\monomorphism\prod_{\pp\neq 0}R/\pp\;.\tag{$*$}
+	\end{align}
+	of $R$-modules. We'll show that \eqreff{eq:nonSplitButSplit} is non-split over $R$, hence also the corresponding morphism of $\Oo_Y$-modules is non-split, but its pullback to $X$ becomes split. Then $f^*$ can't be an equivalence of categories (because this fails on the level of morphisms).
+	
+	\emph{Step 1.} Let's first show that the pullback of \eqreff{eq:nonSplitButSplit} to $X$ becomes split. This can be tested on each $\Spec R_\qq$ component separately, so it suffices to show that \eqreff{eq:nonSplitButSplit} splits (uniquely) after tensoring with $-\otimes_RR_\qq$. Let $O=\bigoplus_{\pp\neq \qq,0}R/\pp$ and $P=\prod_{\pp\neq \qq,0}R/\pp$. Then $O\otimes_RR_\qq=0$ and $P\otimes_RR_\qq=V$ is a vector space over the quotient field $K$ of $R$ (to see this, we only need to check that multiplication with a uniformizer $\pi\in R_\qq$ is bijective, which is easy to check). Then
+	\begin{align*}
+		\bigg(\bigoplus_{\pp\neq 0}R/\pp\bigg)\otimes_RR_\qq\cong R/\qq\oplus 0\monomorphism R/\qq\oplus V\cong \bigg(\prod_{\pp\neq 0}R/\pp\bigg)\otimes_RR_\qq
+	\end{align*}
+	has a unique split since the only morphism of $R_\qq$-modules $V\morphism R/\qq$ is $0$ (e.g.\ multiplication with $\pi$ is bijective on the $K$-vector space $V$ but $0$ on $R/\qq$). Using
+	\begin{align*}
+		X\times_YX\cong \coprod_{\pp,\pp'\neq 0}\Spec(R_\pp\otimes_RR_{\pp'})\cong \coprod_{\substack{\pp,\pp'\neq 0\\\pp\neq \pp'}}\Spec K\amalg \coprod_{\pp\neq 0}\Spec R_\pp\;,
+	\end{align*}
+	it's easy to see that the obtained split of the pullback of \eqreff{eq:nonSplitButSplit} is indeed a morphism of descent data.
+	
+	\emph{Step 2.} We show that \eqreff{eq:nonSplitButSplit} is not split. Any morphism $\prod_{\pp\neq 0}R/\pp\morphism R/\qq$ must be of the form $(r_\pp)_{\pp\neq 0}\mapsto \lambda r_\qq$ for some $\lambda\in R$ (which is unique modulo $\qq$). Indeed, this follows from
+	\begin{align*}
+		\Hom_R\bigg(\prod_{\pp\neq\qq,0}R/\pp,R/\qq\bigg)=0\;.
+	\end{align*}
+	For $R=\IZ$, this is easy to see since multiplication by $q$ (which is chosen such that $\qq=(q)$) is bijective on the source, but $0$ on the target. For general Dedekind domains some variation of this argument still works. In order for $\prod_{\pp\neq 0}R/\pp\morphism R/\qq$ to be part of a split of \eqreff{eq:nonSplitButSplit}, we must have $\lambda=1$ (or $\lambda\equiv1\mod \qq$). But then there's no way the image of $(r_\pp)_{\pp\neq 0}$ has only finitely many non-zero entries if $(r_\pp)_{\pp\neq 0}$ doesn't already have this property -- contradiction!
+\end{rem}
+\begin{rem}
+	However, there are situations where quasi-compactness can be dropped. For example, when $f\colon X\morphism Y$ has a split $\sigma$ (as follows from the proof of Theorem~\reff{thm:faithfullyFlatDescent}). Also, ``Zariski descent'' -- the case of gluing sheaves defined an open cover -- works regardless of quasi-compactness (which in this case is equivalent to the open cover being locally finite).
+\end{rem}
+Often we would like to descend more general objects than just quasi-coherent sheaves on $Y$. The usual setting for descent theory are \defemph{fibred categories} over $\cat{PSch}/S$ (or another category). This roughly means the following: To every $S$-prescheme\footnote{This $S$ is really just there for technical reasons; it wasn't involved at all in Theorem~\reff{thm:faithfullyFlatDescent}. We could take $S=\Spec \IZ$ to drop $S$ for good.} $T$ we assign a category $\cat C_T$ of objects we would like to descend (like $\cat C_T=\cat{QCoh}(T)$ in Theorem~\reff{thm:faithfullyFlatDescent}) and to every morphism $g\colon T'\morphism T$ we require a pullback functor $g^*\colon \cat{C}_T\morphism\cat C_{T'}$. Then we probably need some more technical conditions (like $g^*h^*$ and $(hg)^*$ being naturally isomorphic), but we didn't get into details in the lecture.
+
+If $\cat C=(\cat C_T)_{T\in\Ob(\cat{PSch}/S)}$ is such a fibred category over $\cat{PSch}/S$ and $f\colon X\morphism Y$ a morphism of $S$-preschemes, we can define \defemph{$\cat C$-valued descent data} along $f$ as pairs $(\Gg,\nu)$, where $\Gg\in\Ob(\cat C_X)$ and $\nu\colon \pi_1^*\Gg\isomorphism\pi_2^*\Gg$ is an isomorphism, such that the moderately large diagram from Definition~\reff{def:descentData} commutes. This gives a category $\cat{Desc}_{X/Y}^{\cat{C}}$, and, like in the situation before, there is a functor
+\begin{align*}
+	f^*\colon \cat C_Y\morphism\cat{Desc}_{X/Y}^{\cat{C}}
+\end{align*}
+into it (it's intentional that $f^*$ uses the same notation as the pullback functors that are part of the structure of $\cat C$). Then the general question of descent is whether $f^*$ is an equivalence of categories.
+\begin{cor}
+	If $f\colon X\morphism Y$ is a faithfully flat quasi-compact morphism of preschemes, then $f^*$ is an equivalence of categories for the following choices of a fibred category $\cat C$ over $\cat{PSch}/S$.
+	\begin{alphanumerate}
+		\item $\cat C_T=\left\{\text{affine morphisms }V\morphism T\right\}$ for all $S$-preschemes $T$ and the pullback functors are defined by $g^*V=V\times_TT'$.
+		\item[\itememph{a'}] $\cat C_T=\left\{\text{quasi-coherent }\Oo_T\text{-algebras}\right\}$, and $g^*$ is the usual pullback for sheaves of modules.
+		\item $\cat C_T=\left\{\text{closed subpreschemes }V\subseteq T\right\}$, regarded as a full subcategory of \itememph{a}.
+		\item Here we put
+		\begin{align*}
+			\cat C_T=\left\{(P,\Ll)\st\begin{tabular}{c}
+				$\pi\colon P\morphism T$ is a proper $T$-scheme, $\Ll$ is an ample line\\
+				bundle on $P$ defining a closed embedding $P\monomorphism \IP(\pi_*\Ll)$
+			\end{tabular}\right\}\;,
+		\end{align*}
+		and morphisms $(P,\Ll)\morphism (P',\Ll')$ in $\cat C_T$ are given by pairs $(h,\lambda)$ such that $h\colon P\morphism P'$ is a morphism over $T$ and $\lambda\colon h^*\Ll'\isomorphism \Ll$.\footnote{This probably needs \emph{much} more explanation. By $\IP(\pi_*\Ll)$ we denote $\PROJ_T\left(\Sym(\pi_*\Ll)\right)$, where $\Sym(\pi_*\Ll)$ is the symmetric algebra as in \cite[p.~67]{alggeo2}. Then the canonical morphism $\pi^*\pi_*\Ll\morphism\Ll$ defines a morphism $\pi^*\Sym(\pi_*\Ll)\morphism \bigoplus_{n\geq 0}\Ll^{\otimes n}$, which again leads to a morphism $P\morphism\IP(\pi_*\Ll)$ via \cite[Corollary~2.3.1]{alggeo2}}
+		\item[\itememph{c'}] We may also use
+		\begin{align*}
+			\cat C_T=\left\{\begin{tabular}{c}
+				quasi-coherent $\IN$-graded $\Oo_T$-algebras $\Rr$ of lo-\\
+				cally finite type that are generated by $\Rr_0$ and $\Rr_1$
+			\end{tabular}\right\}\;,
+		\end{align*}
+		and $g^*$ is the usual pullback of sheaves of modules.
+		\item[\itememph{c''}] $\cat C_T=\left\{(P,\Ll)\text{ as in \itememph{c}, but }\Ll\text{ is only assumed ample}\right\}$.
+	\end{alphanumerate}
+\end{cor}
+\begin{proof}
+	Omitted.
+\end{proof}
+Let us introduce the shortcut \emph{fpqc} for ``faithfully flat and quasi-compact''. In case you wondered, \emph{fpqc} is an abbreviation of the original French phrase ``fidélement plat et quasi-compact''.
+\begin{cor}\lbl{cor:fpqcSheaf}
+	Let $f\colon X\morphism Y$ be an fpqc morphism of $S$-preschemes and let $T$ be another $S$-prescheme. Then there is a bijection
+	\begin{align*}
+		\Hom_{\cat{PSch}/S}(Y,T)&\isomorphism \left\{h\in\Hom_{\cat{PSch}/S}(X,T)\st h\pi_1=h\pi_2\text{ in }\Hom_{\cat{PSch}/S}(X\times_YX,T)\right\}\\
+		g&\longmapsto h=gf\;.
+	\end{align*}
+\end{cor}
+\begin{proof}[Sketch of a proof]
+	On topological level this follows from the fact that $Y$ carries the quotient topology obtained from $X$ (by Proposition~\reff{prop:toplogicalQuotient}). So we only need to show that this bijection is fine with topological components. 
+	
+	Put $\pi=f\pi_1=f\pi_2$. By the proof of Theorem~\reff{thm:faithfullyFlatDescent} there is an isomorphism $\Oo_Y\isomorphism Rf^*\Oo_Y\cong R\Oo_X$. Unraveling what this actually means, we obtain for all open subsets $U\subseteq Y$ an isomorphism
+	\begin{align}\lbl{eq:OYcongROX}
+		\begin{split}
+			\Oo_Y(U)&\isomorphism \left\{\phi\in\Oo_X\big(f^{-1}(U)\big)\st \pi_1^*\phi=\pi_2^*\phi\text{ in }\Oo_{X\times_YX}\big(\pi^{-1}(U)\big)=\Oo_{X\times_YX}\big(\pi^{-1}(U)\big)\right\}\\
+			\lambda&\longmapsto \phi=f^*\lambda
+		\end{split}		
+	\end{align}
+	(note that $f^*$, $\pi_1^*$, and $\pi_2^*$ here denote the \emph{algebraic components} of the respective morphism and \emph{not} some sheaf pullback thingy!). As $f^*\colon\Oo_Y\morphism f_*\Oo_X$ therefore is a monomorphism, the algebraic component $g^*$ of a morphism $g\colon Y\morphism T$ is uniquely determined by $h=gf$. This shows injectivity of the bijection-in-question.
+	
+	But also surjectivity is easy to see from \eqreff{eq:OYcongROX}. Indeed, suppose $h\colon X\morphism T$ has the property that $h\pi_1=h\pi_2$. If $W\subseteq T$ is open and $\theta\in\Oo_T(W)$, then $h^*\theta$ clearly satisfies 
+	\begin{align*}
+		\pi_1^*h^*\theta=(h\pi_1)^*\theta=(h\pi_2)^*\theta=\pi_2^*h^*\theta\;.
+	\end{align*}
+	That is, $h^*\theta$ is contained in the right-hand side of \eqreff{eq:OYcongROX}. It requires some more (trivial, technical) checks, but this basically shows that a $g^*\colon \Oo_T\morphism g_*\Oo_Y$ can be reconstructed from $h^*$.
+\end{proof}
+Corollary~\reff{cor:fpqcSheaf} can be viewed as a version of the \emph{sheaf axiom}. Indeed, in the special case $X=\coprod_{i\in I}U_i$ where $Y=\bigcup_{i\in I} U_i$ is an open cover, we obtain
+\begin{align*}
+	X\times_YX=\bigg(\coprod_{i\in I}U_i\bigg)\times_Y\bigg(\coprod_{j\in I}U_j\bigg)\cong\coprod_{(i,j)\in I^2}U_{i,j}\;,
+\end{align*}
+and the property that the ``pullbacks along $\pi_1$ and $\pi_2$'' of some object coincide becomes the usual intersection property. This finally brings us to \emph{Grothendieck topologies}.
+\begin{defi}
+	Let $\cat C$ be any category and let $X\in\Ob(\cat C)$ be an object. A \defemph{sieve} over $X$ is a class $\Ss$ of morphisms $U\morphism X$, such that $(V\morphism U\morphism X)\in \Ss$ whenever $(U\morphism X)\in \Ss$ and $V\morphism U$ is an arbitrary morphism in $\cat C$.
+\end{defi}
+\begin{defi}
+	A \defemph{Grothendieck topology} on a category $\cat C$ is given by specifying a class $\TT_X$ of sieves over $X$ (the so-called \defemph{covering sieves}) for every object $X\in\Ob(\cat C)$, such that the following conditions hold.
+	\begin{alphanumerate}
+		\item If $\Ss\in\TT_X$ and $\Ss'\supseteq \Ss$, then $\Ss'\in\TT_X$.
+		\item If $\Ss\in\TT_X$ and $\upsilon\colon Y\morphism X$ is any morphism, then
+		\begin{align*}
+			\upsilon^*\Ss\coloneqq\left\{\iota\colon U\morphism Y\st \upsilon\iota\in\Ss\right\}
+		\end{align*}
+		is an element of $\TT_Y$.
+		\item The set (or class) of all morphisms $U\morphism X$ (the \emph{all-sieve}) is an element of $\TT_X$.
+		\item[\itememph{c'}] We have $\TT_X\neq\emptyset$.
+		\item Let $\Ss\in\TT_X$ and $\Ss'$ be another sieve over $X$ such that for all $(\iota\colon U\morphism X)\in\Ss$ it is true that $\iota^*\Ss'\in\TT_U$. Then $\Ss'\in\TT_X$.
+	\end{alphanumerate}
+\end{defi}
+\begin{rem}
+	These axioms are redundant. We have \itememph{c} $\Rightarrow$ \itememph{c'} assuming \itememph{a} holds. Also \itememph{d} and \itememph{c} imply \itememph{a}. Hence \itememph{a}, \itememph{b}, \itememph{c'}, \itememph{d}, or \itememph{b}, \itememph{c}, \itememph{d} would suffice.
+\end{rem}
+\begin{example}
+	\begin{alphanumerate}
+		\item Let $\cat C=\cat{PSch}/S$ be the category of all $S$-preschemes. For every $S$-prescheme $X$, let a sieve $\Ss$ over $X$ be a covering sieve iff there exists an open cover $X=\bigcup_{i\in I}U_i$ such that every $U_i\monomorphism X$ lies in $\Ss$. Then this defines a Grothendieck topology on $\cat C=\cat{PSch}/S$, called the \emph{big Zariski topology}.
+		\item Same as \itememph{a}, but $S$ is assumed locally noetherian and we restrict $\cat C$ to the category of locally noetherian $S$-preschemes.
+		\item Let $\cat C=\cat{PSch}/S$ and call a sieve $\Ss$ over $X$ a covering sieve iff the following equivalent conditions hold.
+		\begin{itemize}
+			\item[\itememph{\alpha}] It is possible to cover $X$ by open subsets $X=\bigcup_{i\in I}U_i$ for which there are fpqc morphisms $P_i\morphism U_i$ such that $(P_i\morphism U_i\monomorphism X)\in\Ss$.
+			\item[\itememph{\beta}] Same as \itememph{\alpha}, but $P_i\morphism U_i$ is even affine.
+		\end{itemize}
+	\end{alphanumerate}
+\end{example}
+
 \Appendix
 \chapter{Appendix}
 \section{Some prerequisites about completions}
