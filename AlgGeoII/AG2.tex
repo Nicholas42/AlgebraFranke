@@ -2650,9 +2650,9 @@ defined by the tensor product of $p_X^*\left(\pi_X^*\Rr_k\morphism[\epsilon_X]\O
 \begin{rem*}
 	Definition~\reff{def:projectiveMorphism}\itememph{a} (at least in the noetherian case) is the EGA definition while \itememph{b} is Hartshorne's. It turns out that \itememph{b} implies \itememph{a}. In between these two is the class of morphisms $\xi$ which may be factored $X\morphism\IP(\Ee)\morphism S$, where $\Ee$ is a vector bundle and
 	\begin{align*}
-		\IP(\Ee)=\PROJ_S\bigg(\bigoplus_{k=0}^\infty\Ee^{\otimes k}\bigg)\;.
+		\IP(\Ee)=\PROJ_S\bigg(\bigoplus_{k=0}^\infty\Sym^k(\Ee)\bigg)\;.
 	\end{align*} 
-	Both definitions are in use.
+	Here $\Sym^k(\Ee)$ is the $k\ordinalth$ symmetric power, i.e., $\Ee^{\otimes k}$ modulo the relations that turn $\bigoplus_{k=0}^\infty\Ee^{\otimes k}$ into a \emph{commutative} $\Oo_S$-algebra. Both definitions are in use.
 \end{rem*}
 \begin{fact}\lbl{fact:ProjectiveStableUnderBaseChange}
 	If $X\morphism[\xi]Y$ is projective (or strongly projective) then the base change
@@ -3655,11 +3655,11 @@ And now for the missing lemma (you will find a way more general version in \cite
 Another approach to prove Theorem~\reff{thm:formalFunctions1} (e.g.\ in Hartshorne) would be to use our calculations from Theorem~\reff{thm:CohoOfIP^n} when $X=\IP_R^n$ and $\Mm=\Oo(k)$, then using exactness of $\roof{\phantom{x}}$ (and/or Mittag-Leffler type results) to obtain the result for other coherent $\Oo_{\IP_R^n}$-modules, then (not done by Hartshorne) using Chow's lemma to deduce the proper case from the projective one.
 
 \section{Base change for flat morphisms}
-If $X\morphism[f]\Spec A$ is a flat proper morphisms, $A$ a noetherian ring, and $\Vv$ a vector bundle on $X$, one obtains a finite complex $\Gg^\bullet$ of locally free $A$-modules such that 
+If $X\morphism[f]\Spec A$ is a flat proper morphisms, $A$ a noetherian ring, and $\Vv$ a vector bundle on $X$, one obtains a finite complex $P^\bullet$ of locally free $A$-modules such that 
 \begin{align*}
-	H^p\left(X\times_{\Spec A}\Spec B,\pi^*\Vv\right)\cong H^p(\Gg^\bullet\otimes_AB)\;.
+	H^p\left(X\times_{\Spec A}\Spec B,\pi^*\Vv\right)\cong H^p(P^\bullet\otimes_AB)
 \end{align*}
-For instance, if $\Vv$ is a vector bundle on $X$ and the cohomology of the fibres vanishes in cohomological degrees $\neq p$, then $R^qf_*\Vv=0$ when $q\neq p$ and $R^pf_*\Vv$ is a vector bundle compatible with base-change to any $A$-algebra $B$.
+(this is elaborated in \cite[Theorem~4]{jacobians}). For instance, if $\Vv$ is a vector bundle on $X$ and the cohomology of the fibres vanishes in cohomological degrees $\neq p$, then $R^qf_*\Vv=0$ when $q\neq p$ and $R^pf_*\Vv$ is a vector bundle compatible with base-change to any $A$-algebra $B$.
 
 
 \Appendix
