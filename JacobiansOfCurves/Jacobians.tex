@@ -233,7 +233,7 @@ Using this, Theorem~\reff{thm:FormalFunctions} can be restated as follows.
 \begin{proof}
 	We may assume that $Y=\Spec A$ is affine, and that $A$ is a noetherian ring. Indeed, replacing $Y$ by an affine neighbourhood $U\cong \Spec A$ and $X$ by $f^{-1}(U)$ doesn't change $(R^pf_*\Ff)_y$ (because the construction of $R^pf_*\Ff$ is base-local) and also $X_n$ is preserved since $f^{-1}\{y\}$ is already contained in $f^{-1}(U)$ (by \cite[postnote]{alggeo2}).
 	
-	In this case, $R^pf_*\Ff=H^p(X,\Ff)^\qcmod$ by \cite[Proposition~1.5.1\itememph{d}]{alggeo2}. Let $\pp\in\Spec A$ be the prime ideal associated to $y$. Then $R^pf_*\Ff\cong H^p(X,\Ff)_\pp$ and $\Oo_{Y,y}\cong A_\pp$ is flat over $A$. Let $\mm=\pp A_\pp\cong \mm_{Y,y}$ be its maximal ideal. We denote $\pi\colon \Spec A_\pp\morphism \Spec A$. Applying \cite[Fact~4.1.1]{alggeo2} to $\pi$ gives 
+	In this case, $R^pf_*\Ff=H^p(X,\Ff)^\qcmod$ by \cite[Proposition~1.5.1\itememph{d}]{alggeo2}. Let $\pp\in\Spec A$ be the prime ideal associated to $y$. Then $(R^pf_*\Ff)_y\cong H^p(X,\Ff)_\pp$ and $\Oo_{Y,y}\cong A_\pp$ is flat over $A$. Let $\mm=\pp A_\pp\cong \mm_{Y,y}$ be its maximal ideal. We denote $\pi\colon \Spec A_\pp\morphism \Spec A$. Applying \cite[Fact~4.1.1]{alggeo2} to $\pi$ gives 
 	\begin{align*}
 		H^p(X\times_Y\Spec A_\pp,\pi^*\Ff)\cong H^p(X,\Ff)_\pp\cong (R^pf_*\Ff)_y\;.
 	\end{align*}
@@ -527,7 +527,7 @@ This finishes the case of complete noetherian local rings.
 
 \paragraph{Part III -- reduction to complete noetherian local rings.} We will show that Zariski's main theorem is valid for (quasi-finite separated) $f\colon X\morphism Y$ with target $Y$ (which is locally noetherian) if for all $y\in Y$ it is valid with $\Spec \roof{\Oo}_{Y,y}$ as target. But before that, some technical preparations need to be done.
 
-Professor Franke intended to use Chevalley's theorem (Proposition~\reff{prop:Chevalley}) to prove Lemma~\reff{lem:OpenEmbedding}, but I don't understand how that's supposed to work. The proof I came up with doesn't need Chevalley's theorem, but it's surely worthwhile to know, so I put it in the appendix (page~\pageref{prop:GenericFreeness}).
+Professor Franke intended to use Chevalley's theorem (Proposition~\reff{prop:Chevalley}) to prove Lemma~\reff{lem:OpenEmbedding}, but I don't understand how that's supposed to work. The proof I came up with doesn't need Chevalley's theorem, but this theorem is surely worthwhile to know, so I put it in the appendix (page~\pageref{prop:GenericFreeness}).
 \begin{lem}\lbl{lem:OpenEmbedding}
 	Let $f\colon X\morphism Y$ be a morphism of locally finite type between locally noetherian preschemes such that $f$ induces an injective map of topological spaces and isomorphisms $f^*\colon \Oo_{Y,f(x)}\isomorphism \Oo_{X,x}$ on stalks. Then $f$ is an open embedding.
 \end{lem}
@@ -1227,7 +1227,7 @@ We will typically assume $S$ to be locally noetherian, although Professor Franke
 	\begin{align*}
 		f^*f_*\left(\Ll\otimes_{\Oo_E}\Oo_E(\epsilon)\right)\otimes_{\Oo_E}\Oo_E(\sigma)\cong\Ll\otimes_{\Oo_E}\Oo_E(\epsilon)\;.
 	\end{align*}
-	But $f^*f_*\left(\Ll\otimes_{\Oo_E}\Oo_E(\epsilon)\right)$ vanishes in $\Pic^0(E/S)$ (by definition), so $\Ll=\Ii(e)\otimes_{\Oo_E}\Oo_E(\sigma)$ in $\Pic^0(E/S)$. This shows that the composition $\Pic^0(E/S)\morphism\{\text{sections }\sigma\text{ of }p\}\morphism\Pic^0(E/S)$ is the identity. The other direction can be shown in quite the same way.
+	But $f^*f_*\left(\Ll\otimes_{\Oo_E}\Oo_E(\epsilon)\right)$ vanishes in $\Pic^0(E/S)$ (this is clear by definition -- at least if we work with the Katz/Mazur definition of $\Pic^0(E/S)$), so $\Ll=\Ii(e)\otimes_{\Oo_E}\Oo_E(\sigma)$ in $\Pic^0(E/S)$. This shows that the composition $\Pic^0(E/S)\morphism\{\text{sections }\sigma\text{ of }f\}\morphism\Pic^0(E/S)$ is the identity. The other direction can be shown in quite the same way.
 	
 	Let $\cat C$ be a full subcategory of $\cat{PSch}/S$ containing $E$, closed under fibre products over $S$, and such that all its objects are locally noetherian (we could save ourselves these technicalities by working with $f$ of finite presentation). For any $S$-prescheme $T$ let $E(T)$ denote the set of morphisms $T\morphism E$ in $\cat{PSch}/S$. Then $E(T)$ is in canonical bijection with the set of sections of the base change $f_T\colon E_T=T\times_SE\morphism T$ of $f$ and $E(-)=\Hom_{\cat{PSch}/S}(-,E)$ is a contravariant functor $(\cat{PSch}/S)^\op\morphism\cat{Set}$. The set $E(T)$ should be thought of and is called the set of \defemph{$T$-valued points} of $E$.
 	
@@ -1322,11 +1322,11 @@ However, if one moreover tries to get rid of the quotient in \eqreff{eq:PicCS}, 
 
 Thus $\Pic_C$ is a hopeless candidate for a representable functor, and we've seen that the main problem is basically its lack of ``sheaf-like'' properties. So the natural thing to ask is whether $\Pic_C$ can be ``sheafified'' in an appropriate way. What makes things complicated here is that the Zariski topology might not be suited to do this, at least when no section $\sigma\colon S\morphism C$ exists. That's where the \emph{étale} and \emph{fpqc topology} come in to save the day. We'll briefly introduce these notions in the proceeding of the lecture.
 
-Also note that ``sheafifying'' the $\Pic_C$ functor should give the same result as with $\Pic_{C/S}$. Indeed, the ``sheafification'' of $\Pic_{C/S}$ should be the ``sheaf quotient'' of the ``sheafifications'' of $\Pic_C$ and of $f_-^*(\Pic(-))\colon(\cat{PSch}/S)^\op\morphism\cat{Ab}$. But $f_T^*(\Pic(T))$ locally trivial on the base $T$ for every $S$-prescheme $T$, so $f_-(\Pic(-))$ should have trivial ``sheafification''.
+Also note that ``sheafifying'' the $\Pic_C$ functor should give the same result as with $\Pic_{C/S}$. Indeed, the ``sheafification'' of $\Pic_{C/S}$ should be the ``sheaf quotient'' of the ``sheafifications'' of $\Pic_C$ and of $f_-^*(\Pic(-))\colon(\cat{PSch}/S)^\op\morphism\cat{Ab}$. But $f_T^*(\Pic(T))$ is locally trivial on the base $T$ for every $S$-prescheme $T$, so $f_-(\Pic(-))$ should have trivial ``sheafification''.
 
-The strategy for representing $\Pic_{C/S}$ by a prescheme $\PIC_{C/S}$ for a flat family $f\colon C\morphism S$ of curves of genus $g$ will be to look at an open subset $\PIC_{C/S}^g$ of line bundles for which (in the case where $S$ is a field) $\Ll(C)$ is a one-dimensional vector space (it always has dimension at least $1$). Then the open subpreschemes of $\PIC_{C/S}$ which are constructed in this way must be glued in a suitably.
+The strategy for representing $\Pic_{C/S}$ by a prescheme $\PIC_{C/S}$ for a flat family $f\colon C\morphism S$ of curves of genus $g$ will be to look at an open subset $\PIC_{C/S}^g$ of line bundles for which (in the case where $S$ is a field) $\Ll(C)$ is a one-dimensional vector space (it always has dimension at least $1$). Then the open subpreschemes of $\PIC_{C/S}$ which are constructed in this way must be glued suitably.
 
-If $\Ll$ is a line bundle of fibre-wise degree $g$ and $f_*\Ll$ is a line bundle on $S$, then the proof of Proposition~\reff{prop:canonicalSection} will only give us a unique subscheme $D\subseteq C$ which is finite and flat of degree $g$ over $S$. These $D$ (we already dropped the name \emph{effective relative Cartier divisor}) turn out to be representable by the \emph{symmetric power} $C^{(g)}\coloneqq C^{g}/\SS_g$, where $C^{g}$ is taken in the categorie of $S$-schemes (i.e., it is the $g$-fold fibre product of $C$ with itself over $S$) and the symmetric group $\SS_g$ acts by permuting factors. This will be our battle plan:
+If $\Ll$ is a line bundle of fibre-wise degree $g$ and $f_*\Ll$ is a line bundle on $S$, then the proof of Proposition~\reff{prop:canonicalSection} will only give us a unique subscheme $D\subseteq C$ which is finite and flat of degree $g$ over $S$. These $D$ (we already dropped the name \emph{effective relative Cartier divisor}) turn out to be representable by the \emph{symmetric power} $C^{(g)}\coloneqq C^{g}/\SS_g$, where $C^{g}$ is taken in the category of $S$-schemes (i.e., it is the $g$-fold fibre product of $C$ with itself over $S$) and the symmetric group $\SS_g$ acts by permuting factors. This will be our battle plan:
 \begin{enumerate}
 	\item Construct $C^{(g)}$.
 	\item Show that they represent effective relative Cartier divisors.
@@ -1693,7 +1693,7 @@ In general there is no exponential map available in the algebraic setting. Howev
 			\Hom_{\cat{PSch}/k}\big(S^{(1)},X\big)&\cong\left\{(x,v)\st x\text{ closed point, }v\in\Omega_{X/k}(x)^*\right\}\;.
 		\end{split}
 	\end{align}
-	The first of these bijections is quite clear. For the second one, note that a local  morphism of $k$-algebras $\phi\colon \Oo_{X,x}\morphism k[T]/(T^2)$ is uniquely determined by $\Oo_{X,x}\epimorphism\Oo_{X,x}/\mm_{X,x}\cong k$ (this isomorphism uses Hilbert's Nullstellensatz) and the morphism $d\colon \Oo_{X,x}\morphism k$ that sends $a\in \Oo_{X,x}$ to the linear coefficient of $\phi(a)$. Then $d$ is a $k$-linear derivation, hence uniquely determined by a $\Oo_{X,x}$-linear morphism $\Omega_{\Oo_{X,x}/k}\morphism k$. Now
+	The first of these bijections is quite clear. For the second one, note that a local  morphism of $k$-algebras $\phi\colon \Oo_{X,x}\morphism k[T]/(T^2)$ is uniquely determined by $\Oo_{X,x}\epimorphism\Oo_{X,x}/\mm_{X,x}\cong k$ (this isomorphism uses Hilbert's Nullstellensatz) and the map $d\colon \Oo_{X,x}\morphism k$ that sends $a\in \Oo_{X,x}$ to the linear coefficient of $\phi(a)$. Then $d$ is a $k$-linear derivation, hence uniquely determined by an $\Oo_{X,x}$-linear morphism $\Omega_{\Oo_{X,x}/k}\morphism k$. Now
 	\begin{align*}
 		\Hom_{\Oo_{X,x}}(\Omega_{\Oo_{X,x}/k},k)\cong \Hom_k(\Omega_{\Oo_{X,x}/k}\otimes_{\Oo_{X,x}}k,k)\cong \Omega_{X/k}(x)^*\;, 
 	\end{align*}
@@ -1914,7 +1914,7 @@ commutes (since this is also the case for the $\Ff|_{U_i}$). On the other hand, 
  
  To this end, let $\pi_i\colon X\times_YX\morphism X$ be the canonical projection to the $i\ordinalth$ factor (as above). Moreover, for triple fibre products we denote by $p_i\colon X\times_YX\times_YX\morphism X$ the projection to the $i\ordinalth$ factor and by $\pi_{i,j}\colon X\times_YX\times_YX\morphism X\times_YX$ the projection to the $i\ordinalth$ and $j\ordinalth$ factors.
 \begin{defi}\lbl{def:descentData}
-	Let $f\colon X\morphism Y$ be a morphism of preschemes. A \defemph{descent datum} for quasi-coherent sheaves of modules along $f$ is a pair $(\Gg,\nu)$, where $\Gg$ is a quasi-coherent $\Oo_X$-module and $\nu\colon \pi_1^*\Gg\isomorphism\pi_2^*\Gg$ an isomorphism, such that the following \sout{monster} moderately large diagram commutes.
+	Let $f\colon X\morphism Y$ be a morphism of preschemes. A \defemph{descent datum} for quasi-coherent sheaves of modules along $f$ is a pair $(\Gg,\nu)$, where $\Gg$ is a quasi-coherent $\Oo_X$-module and $\nu\colon \pi_1^*\Gg\isomorphism\pi_2^*\Gg$ an isomorphism, such that the following \sout{monster} moderately large diagram commutes (which is often called the \emph{cocycle condition}).
 	\begin{diagram*}
 		\object{60:3.5}{$\pi_{1,2}^*\pi_2^*\Gg$}[a];
 		\object{120:3.5}{$\pi_{1,2}^*\pi_1^*\Gg$}[b];
@@ -2085,7 +2085,7 @@ into it (it's intentional that $f^*$ uses the same notation as the pullback func
 \begin{proof}
 	Omitted.
 \end{proof}
-Let us introduce the shortcut \emph{fpqc} for ``faithfully flat and quasi-compact''. In case you wondered, \emph{fpqc} is an abbreviation of the original French phrase ``fidélement plat et quasi-compact''.
+Let us introduce the shortcut \emph{fpqc} for ``faithfully flat and quasi-compact''. In case you wondered, \emph{fpqc} is an abbreviation of the original French phrase ``fidélement plat et quasi-compact''. Similarly, \emph{fppf} denotes ``faithfully flat and of finite presentation (or ``fidélement plat de présentation finie'' in French).
 \begin{cor}\lbl{cor:fpqcSheaf}
 	Let $f\colon X\morphism Y$ be an fpqc morphism of $S$-preschemes and let $T$ be another $S$-prescheme. Then there is a bijection
 	\begin{align*}
@@ -2119,34 +2119,312 @@ and the property that the ``pullbacks along $\pi_1$ and $\pi_2$'' of some object
 \begin{defi}
 	Let $\cat C$ be any category and let $X\in\Ob(\cat C)$ be an object. A \defemph{sieve} over $X$ is a class $\Ss$ of morphisms $U\morphism X$, such that $(V\morphism U\morphism X)\in \Ss$ whenever $(U\morphism X)\in \Ss$ and $V\morphism U$ is an arbitrary morphism in $\cat C$.
 \end{defi}
-\begin{defi}
-	A \defemph{Grothendieck topology} on a category $\cat C$ is given by specifying a class $\TT_X$ of sieves over $X$ (the so-called \defemph{covering sieves}) for every object $X\in\Ob(\cat C)$, such that the following conditions hold.
+\begin{defi}\lbl{def:GrothendieckTopology}
+	A \defemph{Grothendieck topology} $J$ on a category $\cat C$ is given by specifying a class $J_X$ of sieves over $X$ (the so-called \defemph{covering sieves}) for every object $X\in\Ob(\cat C)$, such that the following conditions hold.
 	\begin{alphanumerate}
-		\item If $\Ss\in\TT_X$ and $\Ss'\supseteq \Ss$, then $\Ss'\in\TT_X$.
-		\item If $\Ss\in\TT_X$ and $\upsilon\colon Y\morphism X$ is any morphism, then
+		\item If $\Ss\in J_X$ and $\Ss'\supseteq \Ss$, then $\Ss'\in J_X$.
+		\item If $\Ss\in J_X$ and $\upsilon\colon Y\morphism X$ is any morphism, then
 		\begin{align*}
 			\upsilon^*\Ss\coloneqq\left\{\iota\colon U\morphism Y\st \upsilon\iota\in\Ss\right\}
 		\end{align*}
-		is an element of $\TT_Y$.
-		\item The set (or class) of all morphisms $U\morphism X$ (the \emph{all-sieve}) is an element of $\TT_X$.
-		\item[\itememph{c'}] We have $\TT_X\neq\emptyset$.
-		\item Let $\Ss\in\TT_X$ and $\Ss'$ be another sieve over $X$ such that for all $(\iota\colon U\morphism X)\in\Ss$ it is true that $\iota^*\Ss'\in\TT_U$. Then $\Ss'\in\TT_X$.
+		is an element of $ J_Y$.
+		\item The set (or class) of all morphisms $U\morphism X$ (the \emph{all-sieve}) is an element of $ J_X$.
+		\item[\itememph{c'}] We have $ J_X\neq\emptyset$.
+		\item Let $\Ss\in J_X$ and $\Ss'$ be another sieve over $X$ such that for all $(\iota\colon U\morphism X)\in\Ss$ it is true that $\iota^*\Ss'\in J_U$. Then $\Ss'\in J_X$.
 	\end{alphanumerate}
+	A category $\cat C$ together with a Grothendieck topology $J$ on it is called a \defemph{site}.
 \end{defi}
 \begin{rem}
 	These axioms are redundant. We have \itememph{c} $\Rightarrow$ \itememph{c'} assuming \itememph{a} holds. Also \itememph{d} and \itememph{c} imply \itememph{a}. Hence \itememph{a}, \itememph{b}, \itememph{c'}, \itememph{d}, or \itememph{b}, \itememph{c}, \itememph{d} would suffice.
 \end{rem}
+\begin{rem}\lbl{rem:coveringFamily}
+	Definition~\reff{def:GrothendieckTopology} is one of two common ways to define Grothendieck topologies. The other approach via \emph{covering families} (see e.g.\ \cite[\stackstag{00VH}]{stacks-project}) retains more of the feeling of an ordinary topology and is generally more intuitive (which is why most people use this today), but has the disadvantage that different choices of covering families may lead to the same topology (which is why Franke doesn't).
+	
+	If we have a Grothendieck topology defined by covering sieves, we can get one via covering families out of it as follows: We say a sieve $\Ss$ over $X$ is \emph{generated} by a class $\left\{U_i\morphism X\right\}_{i\in I}$ if every $(U\morphism X)\in \Ss$ factors over some $U_i$. Then we can take all generating classes of covering sieves to be our covering families.
+\end{rem}
 \begin{example}
 	\begin{alphanumerate}
-		\item Let $\cat C=\cat{PSch}/S$ be the category of all $S$-preschemes. For every $S$-prescheme $X$, let a sieve $\Ss$ over $X$ be a covering sieve iff there exists an open cover $X=\bigcup_{i\in I}U_i$ such that every $U_i\monomorphism X$ lies in $\Ss$. Then this defines a Grothendieck topology on $\cat C=\cat{PSch}/S$, called the \emph{big Zariski topology}.
+		\item \lbl{ex:bigZariski}Let $\cat C=\cat{PSch}/S$ be the category of all $S$-preschemes. For every $S$-prescheme $X$, let a sieve $\Ss$ over $X$ be a covering sieve iff there exists an open cover $X=\bigcup_{i\in I}U_i$ such that every $U_i\monomorphism X$ lies in $\Ss$. Then this defines a Grothendieck topology on $\cat C=\cat{PSch}/S$, and the resulting site is called the \emph{big Zariski site} $(\cat{PSch}/S)_\Zar$.
 		\item Same as \itememph{a}, but $S$ is assumed locally noetherian and we restrict $\cat C$ to the category of locally noetherian $S$-preschemes.
-		\item Let $\cat C=\cat{PSch}/S$ and call a sieve $\Ss$ over $X$ a covering sieve iff the following equivalent conditions hold.
-		\begin{itemize}
-			\item[\itememph{\alpha}] It is possible to cover $X$ by open subsets $X=\bigcup_{i\in I}U_i$ for which there are fpqc morphisms $P_i\morphism U_i$ such that $(P_i\morphism U_i\monomorphism X)\in\Ss$.
-			\item[\itememph{\beta}] Same as \itememph{\alpha}, but $P_i\morphism U_i$ is even affine.
-		\end{itemize}
 	\end{alphanumerate}
 \end{example}
+\begin{example}\lbl{ex:bigfpqc}
+	Let $\cat C=\cat{PSch}/S$ and call a sieve $\Ss$ over an $S$-prescheme $X$ a covering sieve iff the following equivalent conditions hold.
+	\begin{alphanumerate}
+		\item It is possible to cover $X$ by open subsets $X=\bigcup_{i\in I}U_i$ for which there are finitely many flat quasi-compact morphisms $V_{i,j}\morphism U_i$, $j=1,\ldots,n_i$ such that $\coprod_{j=1}^{n_i}V_{i,j}\morphism U_i$ is fpqc and $(V_{i,j}\morphism U_i\monomorphism X)\in\Ss$.
+		\item Same as \itememph{a}, but the $V_{i,j}$ and $U_i$ are all affine.
+	\end{alphanumerate}
+	This gives the \emph{(big) fpqc site} $(\cat{PSch}/S)_\fpqc$. In contrast to Example~\reff{ex:bigZariski}\itememph{b}, it is usually \emph{not} possible to restrict this to the category of locally noetherian $S$-preschemes (we'll see below where precisely this fails).
+\end{example}
+\begin{example}\lbl{ex:bigfppf}
+	Let $\cat C=\cat{PSch}/S$ and define covering sieves $\Ss$ over an $S$-prescheme $X$ by the following equivalent conditions.
+	\begin{alphanumerate}
+		\item As in Example~\reff{ex:bigfppf}\itememph{a}, but the $V_{i,j}\morphism U_i$ are flat and of finite presentation and $\coprod_{j=1}^{n_i}V_{i,j}\morphism U_i$ is fppf.
+		\item As in \itememph{a}, but all $V_{i,j}$ and $U_i$ are affine.
+		\item As in \itememph{b}, but the $V_{i,j}\morphism U_i$ are quasi-finite in addition to being affine.
+		\item It is possible to cover $X$ by open subsets $X=\bigcup_{i\in I}U_i$ for which there are fppf morphisms $V_i\morphism U_i$ such that $(V_i\morphism U_i)\in \Ss$. That is, the condition is the same as in \itememph{a}, but $n_i=1$ for all $i$.
+	\end{alphanumerate}
+	The resulting site is called the \emph{(big) fppf site} $(\cat{PSch}/S)_\fppf$. As in Example~\reff{ex:bigZariski}\itememph{b}, it is actually possible to restrict this to locally noetherian $S$-preschemes if $S$ is locally noetherian itself.
+\end{example}
+\begin{proof}[Sketch of a proof of Example~\reff{ex:bigfpqc} and \reff{ex:bigfppf}]
+	Before we show that the fpqc and fppf topologies are indeed Grothendieck topologies, let's discuss why the involved conditions are indeed equivalent. It's easy to see that \itememph{a} $\Leftrightarrow$ \itememph{b} holds both in Example~\reff{ex:bigfpqc} and Example~\reff{ex:bigfppf} (basically this is just the observation that quasi-compact preschemes have finite affine open covers).
+	
+	So the interesting ones are Example~\reff{ex:bigfppf}\itememph{c} and \itememph{d}. The proof of \itememph{c} $\Leftrightarrow$ \itememph{a} uses Cohen--Macaulay properties and can be found in \cite[\stackstag{056X}]{stacks-project}. For \itememph{d} $\Leftrightarrow$ \itememph{a}, the crucial thing to notice is that every flat morphism of locally finite presentation is an open map\footnote{Indeed, in the case of locally noetherian preschemes we proved this in Corollary~\reff{cor:flatMorphismOpen}. The strategy in the general case is pretty much the same: First one has to tweak our notion of constructibility so that it behaves well in the non-noetherian case (see \cite[\stackstag{04ZC} and  \stackstag{00I0}]{stacks-project}). Then one proves a generalization of Chevalley's theorem to arbitrary morphisms of locally finite presentation. The key idea in the proof is a really nice trick that reduces everything to the noetherian case. You can find a very nice exposition of this in \url{https://amathew.wordpress.com/2010/12/26/}.}, so that for every $V_{i,j}$ we may replace $U_i$ by the image $U_{i,j}$ of $V_{i,j}\morphism U_i$. Then $X=\bigcup_{i,j}U_{i,j}$ is an open cover which satisfies condition \itememph{c}.
+	
+	Now let's prove that the fpqc and fppf topologies satisfy the Grothendieck topology axioms. The fact that the all-sieve is covering is trivial both for fpqc and fppf, as is the fact that any sieve containing a covering sieve is covering itself.
+	
+	Let's check the condition from Definition~\reff{def:GrothendieckTopology}\itememph{d}. Let $\Ss\in J_X$ and choose $U_i$ and $V_{i,j}$ as in Example~\reff{ex:bigfpqc}\itememph{b} (for fpqc) or Example~\reff{ex:bigfppf}\itememph{b} (for fppf), so that the $U_i$ and the $V_{i,j}$ are affine. Now let $\Ss'$ be another sieve over $X$ satisfying the condition from Definition~\reff{def:GrothendieckTopology}\itememph{d}. This means that for all $(i,j)$ there's an indexing set $K_{i,j}$ and an open cover $V_{i,j}=\bigcup_{k\in K_{i,j}}U'_{i,j,k}$, such that for all $(i,j,k)$ there is a finite number of flat and quasi-compact/finitely presented morphisms $V'_{i,j,k,\ell}\morphism U'_{i,j,k}$, where $\ell=1,\ldots,n'_{i,j,k}$, such that
+	\begin{align*}
+		\coprod_{\ell=1}^{n'_{i,j,k}}V'_{i,j,k,\ell}\morphism U'_{i,j,k}
+	\end{align*}
+	is fpqc/fppf and we have $(V'_{i,j,k,\ell}\morphism V_{i,j}\morphism X)\in \Ss$ for all $(i,j,k,\ell)$ (this is horribly confusing, but all we actually did was unraveling definitions). Since the $V_{i,j}$ are (affine and thus) quasi-compact, we may assume that the $K_{i,j}$ are finite indexing sets, and also we may choose the $U'_{i,j,k}$ to be affine. Then each $V'_{i,j,k,\ell}\morphism U_i$ is flat and quasi-compact/finitely presented since it factors as the composition $V'_{i,j,k,\ell}\morphism U'_{i,j,k}\monomorphism V_{i,j}\morphism U_i$ in which the outer arrows are flat and quasi-compact/finitely presented and the middle arrow is an open immersion of affine schemes (hence flat, quasi-compact, and even finitely presented -- that's why we need $V_{i,j}$ affine and not only quasi-compact as in the lecture). For similar reasons,
+	\begin{align*}
+		\coprod_{j=1}^{n_i}\coprod_{k\in K_{i,j}}\coprod_{\ell=1}^{n'_{i,j,k}}V'_{i,j,k,\ell}\morphism U_i
+	\end{align*}
+	is fpqc/fppf. Also each $V'_{i,j,k,\ell}\morphism X$ is contained in $\Ss$ (as mentioned above), which shows that $\Ss'$ is an fpqc-/fppf-covering sieve as well.
+	
+	Finally, let's check the pullback condition, i.e., Definition~\reff{def:GrothendieckTopology}\itememph{b}. Let $\Ss\in J_X$ be an fpqc- or fppf-covering sieve and $\upsilon\colon Y\morphism X$ any morphism. We need to show that $v^*\Ss\in J_Y$. Let $U_i$ and $V_{i,j}$ be as in Example~\reff{ex:bigfpqc}\itememph{a} (in the case of fpqc) or Example~\reff{ex:bigfppf}\itememph{a} (in the case of fppf). Put $\snake{U}_i=\upsilon^{-1}(U_i)$ and $\snake{V}_{i,j}=V_{i,j}\times_{U_i}\snake{U}_{i,j}$. Then $\snake{V}_{i,j}\morphism\snake{U}_i$ is flat and quasi-compact of finitely presented, since these properties are preserved under base change. For the same reason the canonical morphims
+	\begin{align*}
+		\coprod_{j=1}^{n_i}\snake{V}_{i,j}\cong \bigg(\coprod_{j=1}^{n_i}V_{i,j}\bigg)\times_{U_i}\snake{U}_i\morphism \snake{U}_i
+	\end{align*}
+	are fpqc/fppf. Also $(\snake{V}_{i,j}\morphism \snake{U}_i)\in\upsilon^*\Ss$ since $\snake{V}_{i,j}\morphism U_i$ factors over $V_{i,j}$ (by definition of the fibre product), hence it is an element of $\Ss$. Therefore, since $Y=\bigcup_{i\in I}\snake{U}_i$ is an open cover, we obtain $\upsilon^*\Ss\in J_Y$.
+\end{proof}
+\begin{rem}
+	\defemph{Caveat!} The pullback condition is where the trouble starts when one tries to equip the category of locally noetherian $S$-preschemes with the fpqc topology. The problem is that (local) noetherianness is usually not inherited by a fibre product $X\times_SY$, even when both factors and the base are (locally) noetherian. For example, $\IC\otimes_\IQ\IC$ is non-noetherian since the kernel $I$ of the multiplication map $\IC\otimes_\IQ\IC\morphism\IC$ has $\dim_\IC I/I^2=\dim_\IC\Omega_{\IC/\IQ}$ (by Lemma~\reff{lem:smartKählerDifferentials}) and the latter has the cardinality of the continuum.
+\end{rem}
+\begin{example}
+	Let $p\in\IZ$ be a prime. Then the sieve generated by $\Spec \IZ_p\morphism\Spec\IZ$ and $\Spec\IZ[p^{-1}]\morphism\Spec \IZ$ is an fpqc-covering of $\Spec \IZ$.
+\end{example}
+Grothendieck topologies are designed to make sheaf theory work in a more general context. In the rest of the section we'll introduce sheaves on arbitrary sites and prove some properties of fpqc-/fppf-sheaves.
+\begin{defi}
+	Let $\cat C$ be a category and $\cat A$ whatever target category we want to have (like sets, (abelian) groups, rings, \ldots). An \defemph{$\cat A$-valued presheaf on $\cat C$} is a contravariant functor $\Ff\colon \cat C^\op\morphism\cat A$. 
+	
+	If $\cat C$ is equipped with a Grothendieck topology $J$, then a presheaf $\Ff$ is called a \defemph{sheaf} if for all objects $X$ and all $\Ss\in J_X$ the following condition holds: The morphisms $\Ff(f)\colon\Ff(X)\morphism\Ff(Y)$ for all $(f\colon Y\morphism X)\in\Ss$ induce an isomorphism
+	\begin{align}\lbl{eq:sheafAxiom}
+		\Ff(X)\isomorphism \limit[f\in\Ss]\Ff(Y)
+	\end{align}%=\left\{(\phi_f)_{f\in\Ss}\in\prod_{f\in\Ss}\st \phi_{fg}=\Ff(g)\phi_f\text{ for all morphisms }g\colon Z\to Y\right\}
+	(in particular, the limit on the right-hand side is supposed to exist in $\cat A$).
+\end{defi}
+\begin{rem}
+	\begin{alphanumerate}
+		\item \lbl{rem:sheafAxiom}If $\cat A$ is one of the usual target categories (like sets, (abelian) groups, or rings), the limit on the right-hand side of \eqreff{eq:sheafAxiom} can be written as
+		\begin{align*}
+			\limit[f\in\Ss]\Ff(Y)=\left\{(\phi_f)_{f\in\Ss}\in\prod_{f\in\Ss}\Ff(Y)\st
+			\begin{tabular}{c}
+				$\phi_{fg}=\Ff(g)\phi_f$ holds for\\
+				all morphisms $g\colon Z\to Y$
+			\end{tabular} \right\}\;,
+		\end{align*}
+		and $\Ff(X)$ maps into it via $\phi\mapsto (\Ff(f)\phi)_{f\in\Ss}$ for all $\phi\in\Ff(X)$.
+		\item If $\Ss$ is generated by a covering family $\{U_i\morphism X\}_{i\in I}$ (i.e., we use the covering family formalism as in Remark~\reff{rem:coveringFamily}), then every $\Ff(f)\colon \Ff(X)\morphism \Ff(Y)$ factors over some $\Ff(U_i)$. It's easy to check that the limit taken over the diagram of all $\Ff(Y)$ for $(f\colon Y\morphism X)\in\Ss$ equals the limit taken over the subdiagram consisting only of $\Ff(U_i)\morphism\Ff(U_i\times_XU_j)$ and $\Ff(U_j)\morphism\Ff(U_i\times_XU_j)$ for all $(i,j)\in I^2$. The latter limit is clearly given by
+		\begin{align*}
+			\Eq\bigg(\prod_{i\in I}\Ff(U_i)\doublemorphism[\pi_1^*][\pi_2^*]\prod_{(i,j)\in I^2}\Ff(U_i\times_XU_j)\bigg)
+		\end{align*}
+		(assuming products and equalizers exist, which they usually do for reasonable target categories $\cat A$), where $\pi_1^*$ and $\pi_2^*$ correspond to the two classes of morphisms $\pi_1\colon U_i\times_XU_j\morphism U_ i$ and $\pi_2\colon U_i\times_XU_j\morphism U_j$.
+		
+		Hence another way of stating the sheaf axiom using covering families is that for every covering family $\{U_i\morphism X\}_{i\in I}$ the diagram
+		\begin{align*}
+			\Ff(X)\morphism\prod_{i\in I}\Ff(U_i)\doublemorphism[\pi_1^*][\pi_2^*]\prod_{(i,j)\in I^2}\Ff(U_i\times_XU_j)
+		\end{align*}
+		is an equalizer diagram. Now this \emph{really} looks like the sheaf axiom we used to know.
+	\end{alphanumerate}
+\end{rem}
+\begin{rem}
+	One can define the \emph{sheafification} of a presheaf $\Ff$ as follows. Put
+	\begin{align}\lbl{eq:+construction}
+		\Ff^+(X)=\colimit[\Ss\in J_X]\limit[f\in S]\Ff(Y)\;,
+	\end{align}
+	where the colimit on the right-hand side is taken over all covering sieves ordered by \emph{reverse inclusion}. That is, if $\Ss\subseteq \Ss'$ are covering sieves over $X$, then there are canonical projections
+	\begin{align*}
+		\limit[f'\in \Ss']\Ff(Y')\morphism \Ff(Y)\quad\text{for all}\quad(f\colon Y\to X)\in \Ss\;,
+	\end{align*}
+	since every such $f$ is an element of $\Ss'$ as well (using $\Ss\subseteq \Ss'$). These projections induce a canonical morphism 
+	\begin{align*}
+		\limit[f'\in\Ss']\Ff(Y')\morphism\limit[f\in \Ss]\Ff(Y)\;,
+	\end{align*}
+	and the colimit in \eqreff{eq:+construction} is taken over the ensuing diagram. It can be shown that $(-)^+\colon \cat{PSh}(\cat C)\morphism\cat{PSh}(\cat C)$ is a functor from the category of presheaves on $\cat C$ to itself, and moreover that applying it twice always gives a sheaf $\Ff^\sh=\Ff^{++}$.\footnote{In particular, $\Ff^+$ is \emph{not yet} the sheafification of $\Ff$, which  I believe -- correct me if I'm wrong -- Professor Franke falsely claimed in the heat of the lecture.} Then $(-)^\sh$ is the required sheafification functor and it has all reasonable properties we could hope for (e.g.\ it is right-adjoint to the forgetful functor $\cat {Sh}(\cat C)\morphism\cat{PSh}(C)$). Relevant proofs can be found in \cite[\stackstag{00W1}]{stacks-project}.
+	
+	Also note that \eqreff{eq:+construction} assumes that our target category has the required (co)limits as well as that one is able to deal with the involved set-theoretic difficulties (in particular when fpqc is used), such as taking (co)limits over potentially proper classes.\footnote{Professor Franke remarked that \eqreff{eq:+construction} probably already contains half a dozen violations of von Neumann--Bernays--Gödel set theory.}
+\end{rem}
+\begin{example}\lbl{ex:ZariskiSheaf}
+	$\Ff$ is a sheaf on the big Zariski site site iff for every %(locally noetherian)
+	$S$-prescheme $X$ the map $U\mapsto \Ff(U)$ on Zariski-open subsets of $X$ defines a Zariski sheaf in the ordinary sense. This is still true if we restrict to locally noetherian $S$-preschemes and $S$ is locally noetherian itself.
+\end{example}
+\begin{prop}\lbl{prop:fpqcSheaf}
+	A functor $\Ff$ on the category of $S$-preschemes $X$ is a fpqc sheaf iff it is a Zariski sheaf in the sense of Example~\reff{ex:ZariskiSheaf} and for every fpqc morphism $f\colon X\morphism Y$ over $S$, the map
+	\begin{align*}
+		\Ff(Y)\morphism\left\{f\in\Ff(X)\st \Ff(\pi_1)f=\Ff(\pi_2)f\text{ in }\Ff(X\times_YX)\right\}
+	\end{align*}
+	is bijective. In particular, if $T$ is an $S$-prescheme, then $\Hom_{\cat{PSch}/S}(-,T)$ is an fpqc sheaf on $\cat{PSch}/S$.
+	
+	The same is true if we equip $\cat{PSch}/S$ with the fppf topology instead (and consider $f\colon X\morphism Y$ which are fppf). In this case, we may moreover restrict ourselves to locally noetherian $S$-preschemes if $S$ itself is locally noetherian.
+\end{prop}
+\begin{proof}
+	It is clear that every fpqc sheaf has the asserted properties, so we only need to prove the converse. Let $\Ff$ satisfy the above properties. To check the fpqc sheaf axiom for $\Ff$, we may use the version with covering families from Remark~\reff{rem:sheafAxiom}\itememph{b}. Let $\left\{V_{i,j}\morphism U_i\monomorphism X\st i\in I, j=1,\ldots, n_i\right\}$ be such a covering family. Then what we need to show is that any element
+	\begin{align}\lbl{eq:phiEq1}
+		\phi=(\phi_{i,j})\in\Eq\bigg(\prod_{i,j}\Ff(V_{i,j})\doublemorphism[\pi_1^*][\pi_2^*]\prod_{i,j}\prod_{k,\ell}V_{i,j}\times_XV_{k,\ell}\bigg)
+	\end{align}
+	has a unique preimage in $\Ff(X)$. Since $\coprod_{j=1}^{n_i}V_{i,j}\morphism U_i$ is fpqc, the assumption shows that 
+	\begin{align}\lbl{eq:phiEq2}
+		\Ff(U_i)\morphism\Ff\bigg(\coprod_{j=1}^{n_i}V_{i,j}\bigg)\doublemorphism[\pi_1^*][\pi_2^*]\Ff\bigg(\coprod_{j=1}^{n_i}\coprod_{\ell=1}^{n_i}V_{i,j}\times_{U_i}V_{i,\ell}\bigg)
+	\end{align}
+	is an equalizer diagram (where $\pi_1^*$ and $\pi_2^*$ correspond to $\Ff(\pi_1)$ and $\Ff(\pi_2)$ in this case). But $\Ff$ is also a Zariski sheaf, so the ordinary sheaf axiom yields $\Ff\left(\coprod_{j=1}^{n_i}V_{i,j}\right)\cong\prod_{j=1}^{n_i}\Ff(V_{i,j})$, and likewise for the term on the right of the above diagram. By \eqreff{eq:phiEq1} we see that for every fixed $i$ the sequence $(\phi_{i,j})_{j=1,\ldots,n_i}$ is an element of the equalizer in equation \eqreff{eq:phiEq2}. That is, the $(\phi_{i,j})_{j=1,\ldots,n_i}$ correspond to a unique element $\phi_i\in \Ff(U_i)$.
+	
+	If we can show that the $(\phi_i)_{i\in I}$ satisfy the ordinary Zariski sheaf axiom, then we're done since $\Ff$ is a Zariski sheaf. To show that $\phi_i$ and $\phi_k$ have the same image in $\Ff(U_i\cap U_k)\cong \Ff(U_i\times_XU_k)$ for all $i,k\in I$, it's sufficient to note that the images of $\phi_i$ and $\phi_k$ in $\Ff(V_{i,j}\times_XV_{k,\ell})$ coincide for all $(j,\ell)$ (and indeed they do because of \eqreff{eq:phiEq1}), because $\coprod_{j,\ell}V_{i,j}\times_XV_{k,\ell}\morphism U_i\times_XU_k$ is fpqc, so the fpqc property of $\Ff$ can be applied.
+	
+	If $T$ is an $S$-prescheme, then $\Hom_{\cat{PSch}/S}(-,T)$ is clearly a Zariski sheaf, and Corollary~\reff{cor:fpqcSheaf} shows that the fpqc property is fulfilled, hence $\Hom_{\cat{PSch}/S}(-,T)$ is an fpqc sheaf as well by what we just proved. Also the fppf case follows by the exact same arguments.
+\end{proof}
+\begin{example}\lbl{ex:sheafifyingPic}
+	Let $f\colon X\morphism S$ be a morphism of preschemes. For any $S$-prescheme $T$ we denote $X_T=X\times_ST$. On the big Zariski site $(\cat{PSch}/S)_\Zar$ we have a presheaf $\Pic_X$ given by $\Pic_X(T)=\Pic(X_T)$. Let $\Pic_{X/S}$ denote its sheafification with respect to the Zariski topology. We wish to describe $\Pic_{X/S}$, provided $f$ is ``sufficiently nice''.
+	
+	To this end, assume that $f$ is fppf, has a section $\sigma\colon S\morphism X$, and the canonical morphism $\Oo_T\morphism f_{T,*}\Oo_{X_T}$ is an isomorphism for all $S$-preschemes $T$.\footnote{The last condition was missing in the lecture, but it is needed in the proof of \cite[\stackstag{0B9N}]{stacks-project}.} We claim that
+	\begin{align}\lbl{eq:PicX/SInNiceCases}
+		\Pic_{X/S}(T)=\ker\big(\sigma_T^*\colon \Pic(X_T)\morphism\Pic(T)\big)
+	\end{align}
+	in this case. To prove this, let temporarily $K(T)$ denote the right-hand side of \eqreff{eq:PicX/SInNiceCases}. Note that $\sigma_T^*$ is a section of $f_T^*\colon \Pic(T)\morphism\Pic(X_T)$ making $\Pic(T)$ into a direct summand of $\Pic(X_T)$, so $K(T)\cong \Pic(X_T)/f^*\Pic(T)=\Pic(X_T/T)$ is what we would $\Pic_{X/S}$ expect to be after the discussion starting on page~\pageref{par:EllipticCurves}. 
+	
+	Also, pretending for the moment we didn't know that $K$ is supposed to be a sheaf, then still $K$ and $\Pic_X$ necessarily have the same sheafification. Indeed, sheafification is exact (this is still true for sites, cf.\ \cite[\stackstag{00WJ}]{stacks-project}), hence the sheafification of $K$ will be the kernel of the morphism from $\Pic_{X/S}$ to the sheafification of $\Pic$. But $\Pic$ has trivial sheafification (because line bundles are locally trivial in the Zariski topology), hence said kernel is all of $\Pic_{X/S}$.
+	
+	Therefore, if we show that $K$ is a Zariski sheaf, then it must be equal to $\Pic_{X/S}$. To show the Zariski sheaf axiom, we take the proof from \cite[\stackstag{0B9N}]{stacks-project} (note that the Stacks Project guys actually show the fppf sheaf axiom). Let $T=\bigcup_{i\in I}U_i$ be an open cover. We use the usual convention $U_{i,j}\eqqcolon U_i\cap U_j$. Let us also introduce the shortcut $X_i=X_{U_i}$ (and likewise for more indices) to save us some notational pain. Now suppose we're given $\Ll_i\in K(U_i)$ for $i\in I$ such that $\Ll_i$ and $\Ll_j$ have the same image in $K(U_{i,j})$. Hence we may fix isomorphisms $\phi_{i,j}\colon \Ll_i|_{X_{i,j}}\isomorphism\Ll_j|_{X_{i,j}}$, and also isomorphisms $\alpha_i\colon \Oo_{U_i}\isomorphism \sigma_{U_i}^*\Ll_i$ (by definition of $K(U_i)$). Then the composition
+	\begin{align*}
+		(\alpha_j|_{U_{i,j}})^{-1}\circ\sigma_{U_{i,j}}^*(\phi_{i,j})\circ\alpha_i|_{U_{i,j}}\colon \Oo_{U_{i,j}}\isomorphism \Oo_{U_{i,j}}
+	\end{align*}
+	is an isomorphism as well, hence given by multiplication with some invertible scalar $u_{i,j}$. Rescaling $\phi_{i,j}$ by $u_{i,j}^{-1}$ (or rather its image under $\Oo_{U_{i,j}}\morphism f_{U_{i,j},*}\Oo_{X_{i,j}}$), we may assume that $u_{i,j}=1$ (rescaling is fine because there's no cocycle condition yet that we could destroy).
+	
+	Our goal now is to show the cocycle condition for the $\phi_{i,j}$, i.e., that
+	\begin{diagram}[baseline=0.75cm-0.5ex][\lbl{diag:phiijCocycle}]
+		\object{0,1.5}{$\Ll_i|_{\smash{X_{i,j,k}}}$}[i];
+		\object{0,1.5}{$\phantom{\Ll_i|_{X_{i,j,k}}}$}[ii];
+		\object{1.5,0}{$\Ll_k|_{X_{i,j,k}}$}[k];
+		\object{3.5,1.5}{$\Ll_j|_{\smash{X_{i,j,k}}}$}[j];
+		\scriptsize
+		\arrow{i}{j}[above][$\phi_{i,j}|_{X_{i,j,k}}$];
+		\arrow{ii}{k}[below left][$\phi_{i,k}|_{X_{i,j,k}}$];
+		\arrow{j}{k}[below right][$\phi_{j,k}|_{X_{i,j,k}}$];
+	\end{diagram}
+	commutes. Since all arrows are isomorphisms, we know at least that \eqreff{diag:phiijCocycle} commutes up to some scalar $u_{i,j,k}$. But if we apply $\sigma_{U_{i,j,k}}^*$ to everything, then the diagram will surely become commutative since all the $u_{i,j}$ are equal to $1$. Hence the image of $u_{i,j,k}$ under the canonical morphism 
+	\begin{align*}
+		f_*(\sigma^*)\colon f_*\Oo_{X_{i,j,k}}\morphism f_*\sigma_*\Oo_{U_{i,j,k}}
+	\end{align*}
+	equals $1$ (since this will be the scalar we get after applying $\sigma^*$). Note that I dropped the base change indices $U_{i,j,k}$ of $f_{U_{i,j,k}}$ and $\sigma_{U_{i,j,k}}$ because this is better for my mental health. But the composition
+	\begin{align*}
+		\Oo_{U_{i,j,k}}\morphism[f^*] f_*\Oo_{X_{i,j,k}}\xrightarrow{f_*(\sigma^*)} f_*\sigma_*\Oo_{U_{i,j,k}}
+	\end{align*}
+	is an isomorphism since $f_*\sigma_*=(f\sigma)_*=\id_*$, and also the first arrow $f^*$ is an isomorphism by our assumption that $\Oo_T\cong f_{T,*}\Oo_{X_T}$ for every $S$-prescheme $T$. Hence $f_*(\sigma^*)$ is an isomorphism as well. This shows $u_{i,j,k}=1$, so \eqreff{diag:phiijCocycle} commutes indeed. But then the $\Ll_i$ can be glued together to form a line bundle $\Ll$ on $X_T$. We have $\Ll\in K(T)$ since the $\alpha_i$ can be glued together to an isomorphism $\alpha\colon \Oo_T\isomorphism \sigma_T^*\Ll$ (since all the $u_{i,j}$ are equal to $1$).
+	
+	This shows the surjectivity part of the sheaf axiom, but we still need to argue why $\Ll$ is unique (up to isomorphism). This will be a bit handwavy. Note that since we rescaled the $\phi_{i,j}$ afterwards, their choice wasn't arbitrary (and rescaling was necessary to obtain $\Ll$ with $\sigma_T^*\Ll$ trivial), so the only real choice we had was how to choose the $\alpha_i$. If we replace each $\alpha_i$ by $\alpha_i'=u_i\alpha_i$ for some unit $u_i$, then this leads to rescalation of each $\phi_{i,j}$ by $u_j^{-1}u_i$. Let $\phi_{i,j}'$ be the new gluing maps and $\Ll'$ the new line bundle glued together via the $\phi_{i,j}'$. By \cite[Section~1.7]{alggeo2}, what we need to show is that $\Ll$ and $\Ll'$ have the same image in $\check{H}^1(X,\Oo_X^\times)$. But $[\Ll]$ and $[\Ll']$ differ by the image of $(u_j^{-1}u_i)_{i,j\in I}=\hacek{d}^0(u_i)_{i\in I}$ which is a coboundary, hence they coincide.
+	
+	This shows that $K$ is a sheaf on the big Zariski site, so $K=\Pic_{X/S}$ as explained above. But we can show even more: $\Pic_{X/S}$ is even an fpqc sheaf! To show this, it suffices (by Proposition~\reff{prop:fpqcSheaf}) to show that for any fpqc morphism $U\morphism T$,
+	\begin{align}\lbl{eq:PicfpqcSheaf}
+		\Pic_{X/S}(T)\morphism \Pic_{X/S}(U)\doublemorphism[\pi_1^*][\pi_2^*]\Pic_{X/S}(U\times_TU)
+	\end{align}
+	is an equalizer diagram. Let $\Ll\in\Pic(X_U)$ be a line bundle such that $\pi_1^*\Ll=\pi_2^*\Ll$ holds in $\Pic(X_{U\times_TU})\cong\Pic(X_U\times_{X_T}X_U)$. Choose an isomorphism $\alpha\colon \Oo_U\isomorphism \sigma_U^*\Ll$ and an isomorphism $\phi\colon \pi_1^*\Ll\isomorphism \pi_2^*\Ll$. As in the Zariski case, we may rescale $\phi$ and use the $\Oo_T\cong f_{T,*}\Oo_{X_T}$ assumption to show that $(\Ll,\phi)$ satisfies the cocycle condition (i.e., the moderately large diagram from Definition~\reff{def:descentData}). Hence we may descend $\Ll$ to a line bundle $\Ll_0$ on $X_T$ by Theorem~\reff{thm:faithfullyFlatDescent} (and the descent is a line bundle again by Lemma~\reff{lem:descentIsALineBundleAgain}). Also the pullback of $\sigma_T^*\Ll_0$ to $U$ is trivial (since $\Oo_U\cong \sigma_U^*\Ll$), hence $\sigma_T^*\Ll_0$ must already be trivial by the uniqueness part in Theorem~\reff{thm:faithfullyFlatDescent}. This shows that $\Pic_{X/S}(T)$ surjects onto $\Eq(\pi_1^*,\pi_2^*)$ in \eqreff{eq:PicfpqcSheaf}. Injectivity can be done as in the Zariski case, so $\Pic_{X/S}$ is indeed an fpqc sheaf.
+	
+	Now let's drop the condition that $f\colon X\morphism S$ has a section (but keep the others). Note that fppf-locally on $S$ one always has a section (e.g.\ the diagonal $\Delta\colon X\morphism X\times_SX$ after base-change by $f$ itself). Hence in absence of a section of $f$, we can sheafify $\Pic_X$ with respect to the fppf topology (little or no set-theoretic difficulties) to obtain $\Pic_{X/S}$, which is automatically an fpqc sheaf (because this can be checked fppf-locally, where sections exist, so the above discussion does it). This is a way to work around the set-theoretic difficulties that would arise if one had tried to sheafify $\Pic_X$ directly in the fpqc topology.
+\end{example}
+\begin{example}[I'm not sure what exactly this illustrates]
+	For a division algebra $D$ over a field $k$ such that the center of $D$ is $k$ one has a \emph{Brauer--Severi manifold} $X$ with the property that
+	\begin{align*}
+		\Hom_{\cat{PSch}/k}(\Spec A,X)\cong \left\{k\text{-isomorphisms }D\otimes_kA\isomorphism A^{d\times d}\right\}\;,
+	\end{align*}
+	where $\dim_kD=d^2$. Then the base change $X_{\ov{k}}$ to an algebraic closure of $k$ is isomorphic to $\IP_{\ov{k}}^{d-1}$, and for any algebraic extension $\ell/k$ one has a line bundle on $X_\ell$ whose pullback to $X_{\ov{k}}$ is $\Oo(1)$ iff $D\otimes_k\ell\cong\ell^{d\times d}$.
+\end{example}
+\section{Étale and smooth morphisms}
+\begin{prop}\lbl{prop:unramified}
+	Let $f\colon X\morphism S$ be a morphism of locally finite type between locally noetherian schemes. Then the following conditions are equivalent.
+	\begin{alphanumerate}
+		\item We have $\Omega_{X/S}=0$.
+		\item The diagonal $\Delta_{X/S}\colon X\morphism X\times_SX$ is an open embedding.
+	\end{alphanumerate}
+\end{prop}
+To prove this, we first recall the \emph{smart} contruction of Kähler differentials (in contrast to the \emph{brute force} approach as in \cite[Proposition~1.4.1]{alg2}).
+\begin{lem}\lbl{lem:smartKählerDifferentials}
+	Let $B$ be an algebra over $A$. Then $\Omega_{B/A}\cong I/I^2$, where $I$ is the kernel of the multiplication map $B\otimes_AB\morphism B$.
+\end{lem}
+\begin{proof}[Sketch of a proof]
+	In fact, for any $B$-module $M$ we obtain a canonical bijection
+	\begin{align*}
+		\Hom_B(I/I^2,M)&\isomorphism \Der_A(B,M)\\
+		\phi(b_1\otimes b_2)=b_1d(b_2)&\longmapsfrom d\\
+		\phi&\longmapsto d(b)=\phi(1\otimes b-b\otimes 1)
+	\end{align*}
+	(lots of things are to check here actually, but we leave it like that since this is also a pretty well-known fact).
+\end{proof}
+\begin{proof}[Proof of Proposition~\reff{prop:unramified}]
+	The diagonal in $X\times_SX$ (but not all of $X\times_SX$ though!) can be covered by open subsets of the form $U\times_WU$, where $U\subseteq X$ and $W\subseteq S$ are affine such that $f(U)\subseteq W$. Since both \itememph{a} and \itememph{b} are local with respect to such a cover, we may assume that $X=\Spec B$ and $S=\Spec A$ are affine, with $B$ of finite type over $A$, for the rest of the proof.
+	
+	Let's first assume $\Omega_{X/S}=0$. Then, with notation as above, $0=\Omega_{B/A}\cong I/I^2$ implies $I_\pp=0$ for all prime ideals of $B\otimes_AB$ in which $I$ is contained, using the Nakayama lemma. Hence $V(I)$ consists precisely of those prime ideals for which $I_\pp=0$. In particular, we see that $\Delta_{X/S}$ induces isomorphisms on stalks, so it only remains to show that the image of $\Delta_{X/S}$ is open. Since $I$ is finitely generated, we may apply Nakayama-style arguments (like \cite[Lemma~1.5.1]{alg2}) to see that $I_\pp=0$ implies $I_\lambda=0$ for some $\lambda\notin\pp$, hence $V(I)$ is also open. But since $(B\otimes_AB)/I\cong B$, $V(I)$ is the image of $X=\Spec B$ under the diagonal $\Delta_{X/S}$, thus we have finished the proof of \itememph{a} $\Rightarrow$ \itememph{b}.
+	
+	Conversely, if $\Delta_{X/S}$ is an open immersion in addition to being closed (note that we only have closedness since $X$ and $S$ are affine -- in general, this fails if $f$ isn't separated, cf.\ \cite[Fact~1.5.7]{alggeo1}), then it induces isomorphisms on stalks. Hence $I_\pp=0$ for all prime ideals of $B\otimes_AB$ in the image of $\Delta_{X/S}$ (i.e., in $V(I)$) and $I_\pp=(B\otimes_AB)_\pp$ else. In either case, $I_\pp/I_\pp^2=0$, hence also $I/I^2=0$. This shows \itememph{b} $\Rightarrow$ \itememph{a}. 
+\end{proof}
+\begin{defi}\lbl{defi:etale}
+	A morphism $f\colon X\morphism S$ with the equivalent properties of Proposition~\reff{prop:unramified} is called \defemph{unramified}. If $f$ is unramified and flat, it is called \defemph{étale}.
+\end{defi}
+\begin{prop}
+	A finite flat morphism $f\colon X\cong \SPEC_S\Aa\morphism S$ with $S$ locally noetherian is étale iff
+	\begin{align*}
+		(a,b)\longmapsto \Tr_{\Aa/\Oo_S}(ab)
+	\end{align*}
+	defines a non-degenerate self-duality on the locally free $\Oo_S$-module $\Aa$.
+\end{prop}
+\begin{rem}
+	\begin{alphanumerate}
+		\item Such \emph{étale coverings} are used to define  $\pi_1^\et(X)$ in SGA 1.
+		\item Assuming the $V_{i,j}\morphism U_i$ in the above definition of fppf to be unramified in addition to the other conditions, one obtains the famous \emph{étale topology}.
+	\end{alphanumerate}
+\end{rem}
+\begin{defi}
+	Let $f\colon X\morphism S$ be a morphism between locally noetherian preschemes.
+	\begin{alphanumerate}
+		\item We call $f$ \defemph{smooth} at $x\in X$ iff there is an étale morphism $U\morphism \IA_S^n$ for $S$-preschemes for some open neighbourhood $U$ of $x\in X$.
+		\item We call $f$ a \defemph{regular embedding} if it is a closed embedding and the corresponding sheaf of ideals can be locally generated by a regular sequence.
+		\item We call $f$ a \defemph{local complete intersection} if (locally) one (and thus any) closed embedding of $X$ into a smooth $S$-prescheme is regular.
+	\end{alphanumerate}
+\end{defi}
+\chapter{Abelian varieties}
+\section{Application of a rigidity principle}
+\begin{defi}
+	An \defemph{abelian scheme} over $S$ is a proper flat $S$-prescheme $\alpha\colon A\morphism S$ with the structure of a group scheme over $S$ and such that all geometric fibres $A_{\ov{s}}=A\times_S\Spec\ov{\KK(s)}$ are varieties.\footnote{That is, integral and of finite type (but the latter is automatically implied by properness of $\alpha$). It's about time we define what a variety is, really.}
+\end{defi}
+\begin{prop}
+	Let $S$ be locally noetherian and $\xi\colon X\morphism S$ be a proper morphism whose geometric fibres $X_{\ov{s}}=X\times_S\Spec\ov{\KK(s)}$ are varieties. Let $\upsilon \colon Y\morphism S$ be another $S$-prescheme and $f\colon X\morphism Y$ be any morphism over $S$. Then
+	\begin{align*}
+		U=\left\{s\in S\st \text{the image of }f_{\ov{s}}\colon X_{\ov{s}}\to Y_{\ov{s}}\text{ consists of  a single point}\right\}
+	\end{align*}
+	is open in $X$. Moreover, for a morphism $\tau\colon T\morphism S$ the base change $f_T\colon X_T\morphism Y_T$ factors over $\xi_T\colon X_T\morphism T$ iff the image of $\tau$ is contained in $U$. If, in addition, $\xi$ is flat, then $U$ is also closed.
+\end{prop}
+\begin{proof}
+	The first step is as usual to replace as much as possible of the occuring schemes by affine ones. Since the assertion is local on $S$, we may assume that $S$ is affine.	Let $s\in U$, then $f(X_s)=\{y\}\subseteq Y_s$ consists of a single point, since this is also true for the geometric fibres. Let $W\subseteq Y$ be an affine open neighbourhood. As $\xi$ is proper (hence universally closed), the subset $Z=\xi(X\setminus f^{-1}(W))$ is closed in $S$ and moreover $s\notin Z$. Let $\lambda\in\Oo_S(S)$ such that $s\notin V(\lambda)$ and $V(\lambda)\supseteq Z$. Replacing $S$ by $S\setminus V(\lambda)$ and $Y$ by $\upsilon^{-1}(S\setminus V(\lambda))=W\setminus V(\upsilon ^*\lambda)$ we achieve that both $S$ and $Y$ are affine.
+	
+	Put $S=\Spec A$ and $Y=\Spec B$. Then $\Hom_{\cat{PSch}/S}(X,Y)\cong \Hom_{\cat{Alg}(A)}(B,\Oo_X(X))$ (by a well-known adjunction). But $\Oo_X(X)\cong A$ by assumption, hence $f$ is given by a section $B\morphism A$ of $\upsilon^*\colon A\morphism B$. Hence [TODO].
+	
+	For the flatness assertion, assume first that $\xi$ is faithfully flat. If $\xi$ has a section $\sigma\colon S\morphism X$, then [TODO] is closed as $\xi$ is proper. In general, forming $U$ is compatible with base change, and after the fpqc base change by $\xi$ itself, $\xi$ has a section (the diagonal). Thus $U$ is closed when $\xi$ is faithfully flat. If $\xi$ is only flat, then the image of $\xi$ is open (by flatness) and closed (by properness), hence we may reduce to the faithfully flat case.
+\end{proof}
+\begin{rem*}
+	Without the flatness assumption one could take $X$ to be a blow-up of  a point of $S$ and $f$ to be the identity $\id_X\colon X\morphism X$. Then the closedness assumption fails.
+\end{rem*}
+\begin{thm}
+	Let $S$ be locally noetherian and $\alpha\colon A\morphism S$ an abelian scheme.
+	\begin{alphanumerate}
+		\item The group law on $A$ is abelian (hence the name).
+		\item If $\beta\colon B\morphism S$ is another abelian scheme, then any morphism $f\colon A\morphism B$ over $S$ has the form
+		\begin{align*}
+			f=\phi+_Bb\alpha\;,
+		\end{align*}
+		where $\phi\colon A\morphism B$ is a morphism of group schemes over $S$ and $b\colon S\morphism B$ a section of $\beta$; and $+_B$ denotes the group structure on $\Hom_{\cat{PSch}/S}(-,B)$.
+		\item Let $\pi_1,\pi_2\colon A\times_SA\morphism A$ be the two canonical projections. Then
+		\begin{align*}
+			s_A^{[TODO]}\colon s_A^*\Omega_A\morphism \Omega_{A\times_SA}\lisomorphism \pi_1^*\Omega_A\oplus\pi_2^*\Omega_A
+		\end{align*}
+		is the graph of an isomorphism $\nu\colon \pi_1^*\Omega_A\isomorphism\pi_2^*\Omega_A$ giving the structure of a descent datum for $\Omega_A$ with respect to $\alpha$. Thus $\Omega_A\cong \alpha^*\omega_A$ for some vector bundle $\omega_A$ on $S$.
+		\item Let $P\morphism S$ be a proper flat morphism whose geometric fibres $P_{\ov{s}}$ are projective spaces (i.e., isomorphic to $\IP_k^n$, where $k=\ov{{\KK(s)}}$ and $n$ may depend on $s$), then any morphism $f\colon P\morphism A$ of $S$-preschemes factors over $\pi$.
+	\end{alphanumerate}
+\end{thm}
+\begin{proof}
+	We start with \itememph{b}.
+\end{proof}
+
+
 
 \Appendix
 \chapter{Appendix}
@@ -2526,10 +2804,13 @@ Occasionally it happens that Professor Franke without explanation uses some tech
 	By Proposition~\reff{prop:GeometricFibres101} it's clear that the fibres $C_x$ for $x\in X$ are one-dimensional and regular. To show connectedness, note that $C_{\ov{x}}\morphism C_x$ is surjective as a map of topological spaces. Indeed, locally the question becomes whether $\Spec(B\otimes_A\ov{k})\morphism\Spec (B\otimes_Ak)$ is surjective. But we've seen several times now that $B\otimes_A\ov{k}$ is integral over $B\otimes_Ak$, so surjectivity follows from \cite[Theorem~7\itememph{a}]{alg1}. Therefore, $C_x$ is the surjective image of the connected space $C_{\ov{x}}$, hence connected itself.
 \end{proof}
 \subsection{A remark about constructible subsets}
-We already talked about \emph{constructible subsets} in the proof of Chevalley's theorem (Proposition~\reff{prop:Chevalley}). Here we'll prove a technical property of them.
+We already talked about \emph{constructible subsets} in the proof of Chevalley's theorem (Proposition~\reff{prop:Chevalley}). Here we'll prove a technical property of these guys, which is needed in the proof of Proposition~\reff{prop:flatGoingDown}.
 \begin{defi}\lbl{def:constructible}
-	Let $X$ be any topological space. A subset $E\subseteq X$ is called \defemph{constructible} if $E$ is a finite union of locally closed subsets of $X$.
+	Let $X$ be a noetherian topological space. A subset $E\subseteq X$ is called \defemph{constructible} if $E$ is a finite union of locally closed subsets of $X$.
 \end{defi}
+\begin{rem}
+	In case you wonder where the noetherianness hypothesis comes from: In general, this is \emph{not} the right definition of ``constructible subsets''. A definition for arbitrary spaces (and some useful results in the non-noetherian case) can be found in \cite[\stackstag{04ZC}]{stacks-project}.
+\end{rem}
 \begin{lem}\lbl{lem:constructible1}
 	Finite unions and finite intersections of constructible sets are constructible again. If $E\subseteq X$ is constructible, then so is $X\setminus E$.
 \end{lem}
@@ -2554,6 +2835,28 @@ We already talked about \emph{constructible subsets} in the proof of Chevalley's
 	It suffices to show \itememph{a}, for $E$ is stable under specialization iff $X\setminus E$ is stable under generalization and we've seen that $X\setminus E$ is constructible as well in Lemma~\reff{lem:constructible1}. So suppose that $E$ is stable under specialization. It suffices to find finitely many $x_1,\ldots,x_n\in E$ such that $E\subseteq \bigcup_{i=1}^n\ov{\{x_i\}}$ since then $E=\bigcup_{i=1}^n\ov{\{x_i\}}$ because $E$ is closed under specialization.
 	
 	To prove that such $x_i$ exist, we may assume that $E$ is locally closed, i.e., $E=Z\cap U$ where $Z$ is closed and $U$ is open. Since $X$ is noetherian, we can decompose $Z$ into finitely many irreducible components, and since $X$ is sober, each irreducible component of $Z$ has a generic point. Thus $Z=\bigcup_{i=1}^n\ov{\{\eta_i\}}$ for some $\eta_i\in Z$. Moreover, $U$ intersects $\ov{\{\eta_i\}}$ iff $\eta_i\in U$. Hence we can choose $\eta_{i_1},\ldots,\eta_{i_m}\in E$ such that $E=Z\cap U\subseteq \bigcup_{j=1}^m\ov{\{\eta_{i_j}\}}$. We're done.
+\end{proof}
+\subsection{Descent of vector bundles gives vector bundles again}
+Not much to say here -- we're going to prove what is said in the title, since we need it for Example~\reff{ex:sheafifyingPic}. We start with a technical lemma.
+\begin{lem}\lbl{lem:descentOfFinGen}
+	Let $f\colon X\morphism \Spec A$ be an fpqc morphism and $M$ an $A$-module such that $f^*\snake{M}$ is locally finitely generated. Then $M$ is finitely generated.
+\end{lem}
+\begin{proof}
+	Since $f$ is quasi-compact, so is $X$, hence we may cover it by finitely many affine opens $\Spec B_i$ such that $B_i\otimes_AM$ is finitely generated over $B_i$. For all $i$ let $\mu_{i,j}=\sum_k b_{i,j,k}\otimes m_{i,j,k}$ be finitely many generators of $B_i\otimes_AM$. Let $I=\left\{m_{i,j,k}\right\}$ be the set of all the $m_{i,j,k}$. We claim that $I$ is a generating set of $M$, which would suffice since $I$ is finite.
+	
+	To show the claim, consider $A^I\morphism M$, sending the standard basis vectors to the elements of $I$. To show this map is surjective, it suffices to prove surjectivity holds after localizing at an arbitrary prime ideal $\pp\in\Spec A$. Let $x\in X$ be a point over $\pp$ and let $i$ be chosen such that $x\in B_i$. Then $\Oo_{X,x}^I\morphism \Oo_{X,x}\otimes_{A_\pp}M_\pp$ hits all the generators $\mu_{i,j}$ of $B_i\otimes_AM$, hence also all generators of $\Oo_{X,x}\otimes_{A_\pp}M_\pp$ and is therefore surjective. But $\Oo_{X,x}$ is faithfully flat over $A_\pp$, hence $A_\pp^I\morphism M_\pp$ must be surjective as well.
+\end{proof}
+\begin{lem}\lbl{lem:descentIsALineBundleAgain}
+	Let $f\colon X\morphism Y$ be an fpqc morphism and let $(\Gg,\nu)$ be a descent datum, where $\Gg$ is a vector bundle on $X$. Then the descent of $\Gg$ is a vector bundle of the same rank again.
+\end{lem}
+\begin{proof}
+	Let $\Vv$ be a quasi-coherent $\Oo_Y$-module such that $f^*\Vv$ is a line bundle. Since proving that $\Vv$ is a vector bundle is a local question on $Y$, we may assume $Y=\Spec A$ and $\Vv=\snake{V}$. It suffices that $V$ is finitely presented and for every $y\in Y$ the stalk $\Vv_y$ is a free $\Oo_{Y,y}$-module of the same rank as $(f^*\Vv)_x$ for all $x$ over $y$, since every finitely presented module whose localizations at all prime ideals are free must be projective (and then the rank also fits).
+	
+	To show that $V$ is finitely presented, apply Lemma~\reff{lem:descentOfFinGen} to $V$ to obtain a surjection $A^n\epimorphism V$. We need to show that its kernel $K$ is finitely generated as well. This will be another application of Lemma~\reff{lem:descentOfFinGen}. If $\Spec B$ is an affine open in $X$, then $0\morphism B\otimes_AK\morphism B^n\morphism B\otimes_AV\morphism 0$ is exact again because $X$ is flat over $A$. But $B\otimes_AV$ is projective by assumption on $f^*\Vv$, hence this sequence splits, which shows that $B\otimes_AK$ must be finitely generated as well. Then so is $K$ by Lemma~\reff{lem:descentOfFinGen}.
+	
+	To show $\Vv_y\cong \Oo_{Y,y}$, let $x\in X$ be a point over $y$, so $\Oo_{X,x}$ is faithfully flat over $\Oo_{Y,y}$. Then $\Oo_{X,x}\otimes_{\Oo_{Y,y}}\Vv_y$ is isomorphic to $\Oo_{X,x}^n$ for some $n$, hence we can choose a basis $\lambda_1,\ldots,\lambda_n$. Each $\lambda_i$ has a representation $\lambda_i=\sum_jb_{i,j}\otimes\ell_{i,j}$, where $b_{i,j}\in\Oo_{X,x}$ and $\ell_{i,j}\in \Vv_y$. Then the $1\otimes\ell_{i,j}$ form a generating set of the vector space $\KK(x)\otimes_{\Oo_{Y,y}}\Vv_y$, so we can choose a subset $I\subseteq\{\ell_{i,j}\}$ such that $\#I=n$ and $I$ is a basis of that vector space. By Nakayama's lemma, $I$ is also a generating set of $\Oo_{X,x}\otimes_{\Oo_{Y,y}}\Vv_y$, hence a basis since this free module has rank $n$.
+	
+	 Now consider $\Oo_{Y,y}^I\morphism V$ given by sending the standard basis vectors to the corresponding elements of $I$. This morphism becomes an isomorphism after tensoring with $\Oo_{X,x}$, hence it must already be an isomomorphism itself by faithful flatness.
 \end{proof}
 
 \printbibliography
