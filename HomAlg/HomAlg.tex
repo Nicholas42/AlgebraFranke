@@ -1248,7 +1248,9 @@ And -- finally -- we are ready to prove Serre's famous characterization of regul
 	
 	Moreover, $\mm\supsetneq\mm^2$ as otherwise $\mm=0$ by the Nakayama lemma and thus $R=k$ and $d=0$. Thus, by finiteness of $\Ass_R(R)$ (Corollary~\reff{cor:AssFinite}) and prime avoidance (cf.\ \cite[Lemma~2.5.1]{alg1}), it is possible to choose an $x\in\mm\setminus \left(\mm^2\cup\bigcup_{\pp\in\Ass_R(R)}\pp\right)$. Then $R\morphism[x\cdot]R$ is injective by Proposition~\reff{prop:AssProperties}. 
 	
-	We use the fact that if $0\lmorphism M\lmorphism F_\bullet$ is a free resolution of some $R$-module $M$ such that $(x)$ is an $M$-regular sequence, then $0\lmorphism M/xM\lmorphism F_\bullet/xF_\bullet$ is a free resolution of the $R/xR$-module $M/xM$ (pretty easy to see). Therefore, using that projective and free is the same over the local ring $R$ by Proposition~\reff{prop:FreeProjFlatTor},
+	We use the fact that if $0\lmorphism M\lmorphism F_\bullet$ is a free resolution of some $R$-module $M$ such that $(x)$ is an $M$-regular sequence, then $0\lmorphism M/xM\lmorphism F_\bullet/xF_\bullet$ is a free resolution of the $R/xR$-module $M/xM$. To see this, let $Z_0$ be the kernel of $F_0\morphism M$. By Example~\reff{ex:TorR/aR} we get $\Tor_p^R(M,R/xR)=0$ for all $p\geq 1$ (for $p=1$ we use $(x)$ is $M$-regular). Also $\Tor_1^R(F,R/xR)=0$ since $F$ is free. Hence the long exact $\Tor$ sequence shows $\Tor_1^R(Z_0,R/xR)=0$ as well, so $(x)$ is also $Z_0$-regular. Now exactness of $0\lmorphism M/xM\lmorphism F_\bullet/xF_\bullet$ is an easy inductive argument.
+	
+	Therefore, using that projective and free is the same over the local ring $R$ by Proposition~\reff{prop:FreeProjFlatTor},
 	\begin{align}\lbl{eq:pdimOfM/xMandM}
 		\pdim_{R/xR}(M/xM)\leq \pdim_R(M)\tag{$*$}\;.
 	\end{align}
@@ -1322,6 +1324,7 @@ And -- finally -- we are ready to prove Serre's famous characterization of regul
 	
 	Now note that $\KK(\pp)=A[T]/\pp$ is an extension of $k$ of finite type, hence a finite extension. Let $Q\in A[T]$ be a polynomial such that $Q\bmod \pp$ is a minimal polynomial of $T\mod\pp$, then $Q,x_1,\ldots,x_d$ generate $\pp$ and thus $\hoehe(\pp)\leq d+1$ by Krull's height theorem (cf.\ \cite[Theorem~12]{alg2}). Since $\hoehe(\pp)>d$, equality holds and regularity follows.
 \end{proof}
+To finish the section about regular rings, Professor Franke mentions Hilbert's famous szyzygy theorem (which Hilbert probably only proved in the case of polynomial rings $k[X_1,\ldots,X_n]$).
 \begin{prop}[Hilbert's szyzygy theorem]
 	Finitely generated modules over regular noetherian rings always have a finite free resolution.
 \end{prop}
@@ -1602,7 +1605,7 @@ To finish the final lecture, Professor Franke teases us with another two classes
 		
 		However, $B=k[X,Y]/(X^2,XY,Y^2)$ is not Gorenstein. Indeed, $(0)$ is a parameter ideal again that can be written as $(0)=(X)\cap (Y)$. But $B$ is CM, as is any zero-dimensional noetherian ring (since then equality is trivial in Definition~\reff{def:localCM}).
 		
-		It is also easy to give examples of universally catenary rings which are not CM. Indeed, it suffices to take an algebra of finite type over a field $k$ (or a CM ring) which is not equidimensional -- e.g., the coordinate ring of a variety with irreducible components of different dimension such as $k[X,Y,Z]/(XY,XZ)$.
+		It is also easy to give examples of universally catenary rings which are not CM. Indeed, it suffices to take an algebra of finite type over a field $k$ (or any CM ring) which is not equidimensional -- e.g., the coordinate ring of a variety with irreducible components of different dimension such as $k[X,Y,Z]/(XY,XZ)$.
 	\end{alphanumerate}
 \end{example*}
 At this point, Professor Franke tried to define the notion of \defemph{local complete intersection} rings, but it's probably best you look this up in \cite[\S 21]{matsumuraCRT}. One has a chain of proper inclusions
