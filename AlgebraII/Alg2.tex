@@ -775,7 +775,7 @@ In many cases, the module of Kähler differentials can be calculated using $\Ome
 		 \end{align*}
 		 In other words, $\alpha$ is obtained by applying $\Der_R(A,M) \morphism \Hom_{A/I} (I/I^2, M)$ from Fact~\reff{fact:DerExactSequences} to the derivation $A\xrightarrow{\smash{d}_{A/R}} \Omega_{A/R} \morphism \Omega_{A/R}/I \cdot \Omega_{A/R} \eqqcolon M$.
 	\end{itemize}
-	It remains to show exactness. By \hyperref[fact:HomRightExact]{this} unnamed fact, it is sufficient to show that exactness holds after applying the functor $\Hom_B(-,T)$ for any $B$-module $T$ (where in \itememph{a} we have the special case $B=A/I$). Note that 
+	It remains to show exactness. By the unnamed fact from page~\pageref{fact:HomRightExact}, it is sufficient to show that exactness holds after applying the functor $\Hom_B(-,T)$ for any $B$-module $T$ (where in \itememph{a} we have the special case $B=A/I$). Note that 
 	\begin{align*}
 		\Hom_A\left(\Omega_{A/R},T\right)\cong\Der_R(A,T)\quad\text{and}\quad \Hom_B\left(\Omega_{A/R}\otimes_AB,T\right)\cong \Hom_A\left(\Omega_{A/R},T\right) 
 	\end{align*}
@@ -894,7 +894,7 @@ As we did with Fact~\reff{fact:DerExactSequences} and Corollary~\reff{cor:kahler
 			\end{minipage}
 		\end{center}
 	\end{itemize}
-	 To show that $\iota$ is an isomorphism in \itememph{c}, it is sufficient to show that we have an isomorphism after applying $\Hom_{A_X}(-,T)$ to both sides for every $A_X$--module $T$. This is so because of \hyperref[fact:HomRightExact]{this} unfortunately unnamed fact applied to the sequence $0\morphism \Omega_{A/R}\otimes_AA_X\morphism[\iota]\Omega_{A_X/R_X}\to0$ (which is exact iff $\iota$ is an isomorphism). But
+	 To show that $\iota$ is an isomorphism in \itememph{c}, it is sufficient to show that we have an isomorphism after applying $\Hom_{A_X}(-,T)$ to both sides for every $A_X$-module $T$. This is so because of the unfortunately unnamed fact from page~\pageref{fact:HomRightExact} applied to the sequence $0\morphism \Omega_{A/R}\otimes_AA_X\morphism[\iota]\Omega_{A_X/R_X}\to0$ (which is exact iff $\iota$ is an isomorphism). But
 	 \begin{align*}
 	 	\Hom_{A_X}(\Omega_{A_X/R_X},T)\cong\Der_{R_X}(A_X,T)
 	 \end{align*}
@@ -1179,7 +1179,7 @@ Let's see how this applies to our situation. Since $A$ is noetherian and of fini
 \end{align}
 in which equality holds, by definition, iff $A$ is regular at $\pp$. In particular, we see that $\Omega_{A/k}$ being locally free at $\pp$ of rank $\dim(A_\pp)+\trdeg(\KK(\pp)/k)$ implies that $A_\pp$ is regular.
 
-Conversely, suppose that $A_\pp$ is regular. Then we may assume that $A$ is a domain. Indeed, let $\qq$ be a minimal prime ideal of $A$ contained in $\pp$. Then $\qq$ has height $0$, hence so has $\qq A_\pp\in \Spec A_\pp$. But every regular local ring is a domain by Corollary~\reff{cor:regLocRingsAreDomains}\itememph{b}, hence $\qq A_\pp=0$. Then $A_\pp=A_\pp/\qq A_\pp=(A/\qq)_\pp$ and we may replace $A$ by $A/\qq$. This is also compatible with the assertion we want to prove, that is, $(\Omega_{A/k})_\pp=\Omega_{A_\pp/k}$ being free, since the left-hand side doesn't change when $A$ is replaced by $A/\qq$ (as we have just shown).
+Conversely, suppose that $A_\pp$ is regular. Then we may assume that $A$ is a domain. Indeed, let $\qq$ be a minimal prime ideal of $A$ contained in $\pp$. Then $\qq$ has height $0$, hence so has $\qq A_\pp\in \Spec A_\pp$. But every regular local ring is a domain by Corollary~\reff{cor:regLocRingsAreDomains}\itememph{b}, hence $\qq A_\pp=0$. Then $A_\pp\cong A_\pp/\qq A_\pp\cong (A/\qq)_\pp$ and we may replace $A$ by $A/\qq$. This is also compatible with the assertion we want to prove, that is, $(\Omega_{A/k})_\pp\cong\Omega_{A_\pp/k}$ being free, since the left-hand side doesn't change when $A$ is replaced by $A/\qq$ (as we have just shown).
 
 To see local freeness of $\Omega_{A/k}$ at $\pp$ in the case of $A$ a domain, we need another tiny lemma.
 \begin{lem}\lbl{lem:dimConditionForFreeness}
@@ -1201,13 +1201,20 @@ To see local freeness of $\Omega_{A/k}$ at $\pp$ in the case of $A$ a domain, we
 	\end{align}
 	Now $\Omega_{A/k}\otimes_AK$ equals $\Omega_{K/k}$ (tensoring with $K$ is localization at $A\setminus\{0\}$), which by Proposition~\reff{prop:kahlerFieldExtension1}\itememph{b} has dimension $\trdeg(K/k)$ over $K$. But $\trdeg(K/k)-\trdeg(\KK(\pp)/k)=\hoehe(\pp)=\dim(A_\pp)$ by \cite[Theorem~10]{alg1} and we're done.
 	
-	Now assume that $\Omega_{A/k}$ is locally free at $\pp$ and $A$ is reduced or $\cha k=0$. We will reduce this to the case where $A$ is a domain by considering $A/\qq$, where $\qq$ is a minimal prime ideal of $A$ contained in $\pp$. We first show that $\qq/\qq^2=0$. Consider the localization $A_\qq$. We have $\dim(A_\qq)=\hoehe(\qq)=0$. If $A$ is reduced, so is $A_\qq$ and we deduce that $A_\qq$ is a field. Then $A_\qq=A_\qq/\qq A_\qq$ can be no other than the quotient field $\KK(\qq)$ of $A/\qq$ and we have $\dim_{\KK(\qq)}\Omega_{\KK(\qq)/k}=\trdeg(\KK(\qq)/k)$ by Proposition~\reff{prop:OmegaL/K}\itememph{b}.
+	Now assume that $\Omega_{A/k}$ is locally free at $\pp$ and $A$ is reduced or $\cha k=0$. We will show that the rank of $\Omega_{A/k}$ at $\pp$ is necessarily equal to $\dim(A_\pp)+\trdeg (\KK(\pp)/k)$. To do this, let $\qq$ be a minimal prime of $A$ which is contained in $\pp$ and such that $\qq A_\pp$ is part of  a maximal ascending chain of prime ideals in $A_\pp$ (i.e., to find $\qq$ we choose such a maximal chain in $A_\pp$ and take the preimage of the smallest prime ideal in that chain). Then $\dim(A_\pp)=\dim(A_\pp/\qq A_\pp)$ and our goal is to reduce everything to $A/\qq$. This is done in two steps.
 	
-	Now suppose that $\cha k=0$ and let $x\in \qq A_\qq$. Since $\qq A_\qq$ is the only prime ideal of $A_\qq$, every element $x\in \qq A_\qq$ is nilpotent by Proposition~\reff{prop:nilradicalCapPrimeIdeals}. Choose $n$ such that $x^n=0$ but $x^{n-1}\neq 0$. Denoting $d_{A_\qq/k}$ the derivation associated to $\Omega_{A_\qq/k}$, we have $0=d_{A_\qq/k}x^n=nx^{n-1}d_{A_\qq/k}x$ by the Leibniz rule. Since $k$ has characteristic $0$, $n$ is invertible in $k$ and thus also in the $k$-algebra $A_\qq$. Hence $x^{n-1}d_{A_\qq/k}x=0$. Also $\Omega_{A_\qq/k}=(\Omega_{A_\pp/k})_{\qq A_\pp}$ is a free $A_\qq$-module since $\Omega_{A_\pp/k}$ is a free $A_\pp$-module. Hence we must have $d_{A_\qq/k}x\in \qq\Omega_{A_\qq/k}$ and therefore $d_{A_\qq/k}$ descends to a morphism
+	\emph{Step 1.} We first show that $\qq/\qq^2=0$. To do so, we'll give an argument that works both when $A$ is reduced and when $\cha k=0$ -- but for different reasons, so we start with some case work.
+	
+	\emph{Case 1.} If $A$ is reduced, so is the localization $A_\qq$. Hence from $\dim(A_\qq)=\hoehe(\qq)=0$ we deduce that $A_\qq$ is a field. Then $A_\qq\cong A_\qq/\qq A_\qq$ can be no other than the quotient field $\KK(\qq)$ of $A/\qq$ and we have $\dim_{\KK(\qq)}\Omega_{\KK(\qq)/k}=\trdeg(\KK(\qq)/k)$ by Proposition~\reff{prop:OmegaL/K}\itememph{b}.
+	
+	\emph{Case 2.} Now suppose that $\cha k=0$ and let $x\in \qq A_\qq$. Since $\qq A_\qq$ is the only prime ideal of $A_\qq$, every element $x\in \qq A_\qq$ is nilpotent by Proposition~\reff{prop:nilradicalCapPrimeIdeals}. Choose $n$ such that $x^n=0$ but $x^{n-1}\neq 0$. Denoting $d_{A_\qq/k}$ the derivation associated to $\Omega_{A_\qq/k}$, we have $0=d_{A_\qq/k}x^n=nx^{n-1}d_{A_\qq/k}x$ by the Leibniz rule. Since $k$ has characteristic $0$, $n$ is invertible in $k$ and thus also in the $k$-algebra $A_\qq$. Hence $x^{n-1}d_{A_\qq/k}x=0$. Also $\Omega_{A_\qq/k}=(\Omega_{A_\pp/k})_{\qq A_\pp}$ is a free $A_\qq$-module since $\Omega_{A_\pp/k}$ is a free $A_\pp$-module. Hence we must have $d_{A_\qq/k}x\in \qq\Omega_{A_\qq/k}$ and therefore $d_{A_\qq/k}$ descends to a morphism
 	\begin{align*}
 		\ov{d_{A_\qq/k}}\colon \KK(\qq)\morphism \Omega_{A_\qq/k}/\qq\Omega_{A_\qq/k}\;.
 	\end{align*}
-	Clearly $	\ov{d_{A_\qq/k}}$ is a $k$-linear derivation, hence induces a morphism $\Omega_{\KK(\qq)/k}\morphism[\delta] \Omega_{A_\qq/k}/\qq\Omega_{A_\qq/k}$ by the universal property of $\Omega_{\KK(\qq)/k}$. Then $\delta$ is left-inverse to the canonical morphism $\Omega_{A_\qq/k}/\qq\Omega_{A_\qq/k}\morphism \Omega_{\KK(\qq)/k}$ (indeed, their composition must be $\id_{\Omega_{\KK(\qq)/k}}$ by the universal property of $\Omega_{\KK(\qq)/k}$) which is thus injective. It follows that $\dim_{\KK(\qq)}\Omega_{A_\qq/k}/\qq\Omega_{A_\qq/k}\leq \dim_{\KK(\qq)}\Omega_{\KK(\qq)/k}$.
+	Clearly $	\ov{d_{A_\qq/k}}$ is a $k$-linear derivation, hence induces a morphism $\Omega_{\KK(\qq)/k}\morphism[\delta] \Omega_{A_\qq/k}/\qq\Omega_{A_\qq/k}$ by the universal property of $\Omega_{\KK(\qq)/k}$. It's easy to check that $\delta$ is left-inverse to the canonical morphism $\Omega_{A_\qq/k}/\qq\Omega_{A_\qq/k}\morphism \Omega_{\KK(\qq)/k}$ (indeed, their composition must be $\id_{\Omega_{\KK(\qq)/k}}$ by the universal property of $\Omega_{\KK(\qq)/k}$). Thus $\Omega_{A_\qq/k}/\qq\Omega_{A_\qq/k}\morphism \Omega_{\KK(\qq)/k}$  is injective and it follows that 
+	\begin{align*}
+		\dim_{\KK(\qq)}\Omega_{A_\qq/k}/\qq\Omega_{A_\qq/k}\leq \dim_{\KK(\qq)}\Omega_{\KK(\qq)/k}\;.
+	\end{align*}
 	
 	In either case, we can conclude that
 	\begin{align*}
@@ -1215,18 +1222,19 @@ To see local freeness of $\Omega_{A/k}$ at $\pp$ in the case of $A$ a domain, we
 	\end{align*}
 	Comparing with \eqreff{eq:dimOmega}, this can only happen if $\dim_{\KK(\qq)}\qq/\qq^2=0$, i.e., $\qq/\qq^2=0$.
 	
-	From the sequence
+	\emph{Step 2.} We can finish the reduction to $A/\qq$ as follows. From the sequence
 	\begin{align*}
 		\qq/\qq^2\morphism \Omega_{A/k}\otimes_A A/\qq\morphism\Omega_{(A/\qq)/k}\morphism 0
 	\end{align*}
-	we thus get $\Omega_{A/k}\otimes_A A/\qq\cong\Omega_{(A/\qq)/k}$. Since $A_\pp=(A/\qq)_{\pp/\qq}$ (by the argument we used to reduce local freeness of $\Omega_{A/k}$ at $\pp$ to the case where $A$ is a domain) we see that $\Omega_{A/k}$ being locally free at $\pp$ implies that $\Omega_{(A/\qq)/k}$ is locally free of the same rank at $\pp/\qq$.
+	we thus get $\Omega_{A/k}\otimes_A A/\qq\cong\Omega_{(A/\qq)/k}$. Hence $\Omega_{A/k}$ being locally free at $\pp$ implies that $\Omega_{(A/\qq)/k}$ is locally free of the same rank at $\pp/\qq$.
 	
-	Hence, by Lemma~\reff{lem:dimConditionForFreeness} we see that \eqreff{eq:CondForLocFree} holds for $A/\qq$ and its quotient field $\KK(\qq)$ instead of $A$ and $K$. By Proposition~\reff{prop:OmegaL/K}\itememph{b} and \cite[Theorem~10]{alg2},
+	Hence, by Lemma~\reff{lem:dimConditionForFreeness} we see that \eqreff{eq:CondForLocFree} holds for $A/\qq$ and its quotient field $\KK(\qq)$ instead of $A$ and $K$. By Proposition~\reff{prop:OmegaL/K}\itememph{b} and \cite[Theorem~10]{alg1},
 	\begin{align*}
-		\dim_K\left(\Omega_{(A/\qq)/k}\otimes_A\KK(\qq)\right)&=\dim_{\KK(\qq)}\Omega_{\KK(\qq)/k}=\trdeg (\KK(\qq)/k)
-		=\dim(A/\qq)\\&=\dim(A_\pp)+\trdeg(\KK(\pp)/k)\;,
+		\dim_{\KK(\qq)}\left(\Omega_{(A/\qq)/k}\otimes_A\KK(\qq)\right)&=\dim_{\KK(\qq)}\Omega_{\KK(\qq)/k}=\trdeg (\KK(\qq)/k)
+		=\dim(A/\qq)\\
+		&=\dim(A_\pp/\qq A_\pp)+\trdeg(\KK(\pp/\qq)/k)\;.
 	\end{align*}
-	hence equality holds in \eqreff{eq:dimOmega}, proving that $A_\pp$ is indeed regular.
+	But $A_\pp$ and $A_\pp/\qq A_\pp$ have the same dimension (by construction of $\qq$) and the same residue field $\KK(\pp)=\KK(\pp/\qq)$, hence the last line of the above equation equals $\dim(A_\pp)+\trdeg(\KK(\pp)/k)$. This shows that equality holds in \eqreff{eq:dimOmega}, proving that $A_\pp$ is indeed regular.
 \end{proof}
 
 \chapter{Projective spaces and graded rings}
@@ -2446,11 +2454,11 @@ and we have bijections
 
 \section{The Samuel polynomial and the principal ideal theorem}
 
-Let $R$ be a local ring, $M$ a finitely generated $R$-module. When $R$ is noetherian, $M$ has a filtration (Proposition~\reff{prop:filtrationByPrimeIdeals})
+Let $R$ be a noetherian ring, $M$ a finitely generated $R$-module. By Proposition~\reff{prop:filtrationByPrimeIdeals},  $M$ has a filtration
 \begin{align}
     0 = M_0\subsetneq M_1\subsetneq\ldots \subsetneq M_k = M\;, \lbl{eq:filtrationByPrimeIdeals}
 \end{align}
-where $M_i/M_{i+1} \cong R/\pp_i$ with $\pp_i\in\Spec R$ some prime ideals.
+where $M_i/M_{i+1} \cong R/\pp_i$ with $\pp_i\in\Spec R$ some prime ideals. We'll investigate some properties of such filtrations.
 
 \begin{lem}\lbl{lem:support}
     Let $M$ be a finitely generated module over any (not necessarily noetherian) ring $R$, then we have
@@ -2467,7 +2475,7 @@ where $M_i/M_{i+1} \cong R/\pp_i$ with $\pp_i\in\Spec R$ some prime ideals.
     \item 
         The set characterized in the above Lemma~\reff{lem:support} is called the \defemph{support} $\supp(M)$.
     \item  
-        For the duration of  the next 1 to 2 lectures or so, we set 
+        For the duration of  the next 1 or 2 lectures or so, we set 
         \begin{align*}
             \dim(M) \coloneqq \dim(\supp(M))\;.
         \end{align*}
@@ -2578,7 +2586,7 @@ From now on, let $R$ be a noetherian local ring with maximal ideal $\mm$ and $M$
     The dimension of any noetherian local ring $(R,\mm)$ is equal to dimension of its associated graded ring $\gr(R,\mm)$.
 \end{cor}
 \begin{proof}
-    This proof captures only the case where $k=R/\mm$ is algebraically closed and $\gr(R,\mm)$ is a domain. For a unconditional proof, cf. Eisenbud, \cite[Corollary~12.5]{eisenbudCommAlg}.
+    This proof captures only the case where $k=R/\mm$ is algebraically closed and $\gr(R,\mm)$ is a domain. For an unconditional proof, cf.\ Eisenbud, \cite[Corollary~12.5]{eisenbudCommAlg}.
     
     If $\gr(R,\mm)$ has no zero divisors, then it is a graded domain of finite type over $k=R/\mm=\gr_0(R,\mm)$, hence $\gr(R,\mm) = k[X_0,\ldots, X_n]/\pp$ with $\pp\subseteq k[X_0,\ldots,X_n]$ a homogeneous prime ideal and $\gr(R,\mm)$ corresponds to the graded ring of some projective variety $Y\subseteq \IP^{n}(k)$. Then $\dim\gr(R,\mm) = \dim(C(Y)) = \dim(Y) +1 = \deg P+1 $ where $P$ is the Hilbert polynomial of $Y$ (using Proposition~\reff{prop:HilbertDegreeEqualsDimension}), hence the same $P$ as in Fact~\reff{fact:samuelPolynomial} and $\deg Q_{R,\mm} = \deg P+1$ by Fact~\reff{fact:discreteIntegration}\itememph{b} and $\deg Q_{R,\mm}=d(R,\mm)=\dim R$ by Theorem~\reff{thm:idealOfDefinition}.
 \end{proof}
@@ -2774,7 +2782,7 @@ The following proof was suggested to us by Felix and is a lot shorter and more e
 One would intuitively expect, that there are always singularities, where irreducible components meet or where the stalk of the structure sheaf has any non-zero zero-divisors. The following corollary shows that this is indeed the case
 
 \begin{cor}\lbl{cor:regLocRingsAreDomains}
-    Let $R$ be a noetherian local ring maximal ideal $\mm$. Suppose that $R$ is regular of dimension $d$.
+    Let $R$ be a noetherian local ring with maximal ideal $\mm$. Suppose that $R$ is regular of dimension $d$.
     \begin{alphanumerate}
     \item 
         If $\mu_1,\ldots, \mu_d$ generate $\mm$ then 
