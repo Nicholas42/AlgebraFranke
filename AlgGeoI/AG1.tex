@@ -602,6 +602,7 @@ of presheaves on $\Bb$.
     \end{example}
 
 \section{Locally ringed spaces}\lbl{sec:locRingedSpaces}
+\subsection{Definition and basic properties}
 \begin{defi}[Ringed space]\lbl{def:ringedSpace}
     A \defemph{ringed space} is a pair $(X,\Oo_X)$ consisting of a topological space $X$ and a \emph{structure sheaf} which is a sheaf of rings. A \defemph{locally ringed space} is ringed space $(X,\Oo_X)$ such that for any $x\in X$, the stalk $\Oo_{X,x}$ is a local ring, called the \emph{local ring of $X$ at} $x$. Its maximal ideal is denoted $\mm_{X,x}\subseteq \Oo_{X,x}$, or sometimes just $\mm_x$. Finally, let $\KK(x) = \Oo_{X,x}/\mm_x$ be the residue field.
 \end{defi}
@@ -744,7 +745,7 @@ of presheaves on $\Bb$.
     \end{alphanumerate}
 \end{fact}
 \begin{proof}
-	\itememph{a} is just \itememph{\alpha} from Definition~\reff{def:localMorphisms}\itememph{b}, in case you didn't notice. And part \itememph{b} is immediately follows from the fact that $\Oo_{Z,z}\morphism[g^*]\Oo_{Y,y}\morphism[f^*]\Oo_{X,x}$ equals $\Oo_{Z,z}\morphism[(gf)^*]\Oo_{X,x}$ by Remark~\reff{rem:pullbackthingyAtStalks}.
+	Part \itememph{a} is just \itememph{\alpha} from Definition~\reff{def:localMorphisms}\itememph{b}, in case you didn't notice. And \itememph{b} immediately follows from the fact that $\Oo_{Z,z}\morphism[g^*]\Oo_{Y,y}\morphism[f^*]\Oo_{X,x}$ equals $\Oo_{Z,z}\morphism[(gf)^*]\Oo_{X,x}$ by Remark~\reff{rem:pullbackthingyAtStalks}.
 	
 	Now about part \itememph{c}. Point (i) is trivial. For (ii), note that $\sigma^{-1}(\mm_T)\subseteq\mm_S$ by Remark~\reff{rem:localMorphismStuff}\itememph{b}, hence
 	\begin{align*}
@@ -2295,9 +2296,9 @@ A Franke lecture is no Franke lecture without a definition being proved.
 	Closedness under composition holds because homeomorphisms work that way and compositions of surjections are surjective. Stability under base change follows from Corollary~\reff{cor:immersionBaseChange}. Base-locality is clear as both being a homeomorphism and being surjective on stalks are local properties. Finally, the cancellation property is due to the fact that if $ij$ and $i$ are homeomorphisms onto their image, then so is $j$, and if the morphisms $j^*i^*$ and $i^*$ induced on stalks are surjective, then so is $j^*$.
 \end{proof}
 \begin{fact}\lbl{fact:equalizerImmersive}
-	For a pair $X\doublemorphism[a][b]Y$ of morphisms of preschemes, the morphism $\Eq\Big(X\doublemorphism[a][b]Y\Big)\morphism X$ is immersive and its image is locally closed. It is a closed immersion if and only if the above set $K$ (described in \eqreff{eq:equalizer1.5}) is closed.
+	For a pair $X\doublemorphism[a][b]Y$ of morphisms of preschemes, the morphism $\Eq\Big(X\doublemorphism[a][b]Y\Big)\morphism X$ is immersive and its image is locally closed. It is a closed immersion if and only if the above set $K$ described in \eqreff{eq:equalizer1.5} (on page~\pageref{eq:equalizer1.5}) is closed.
 	
-	When $Y$ has the property that arbitrary points $x,y\in Y$ have a common affine neighbourhood (this is e.g., the case when $Y$ is affine), then $K$ is always closed.
+	When $Y$ has the property that arbitrary points $x,y\in Y$ have a common affine neighbourhood (this is, e.g., the case when $Y$ is affine), then $K$ is always closed.
 \end{fact}
 \begin{proof}
 	With the possible exception of local closedness and the last assertion, this follows from our construction of equalizers in Proposition~\reff{prop:equalizerLRS}. 
@@ -2512,7 +2513,7 @@ A Franke lecture is no Franke lecture without a definition being proved.
     If $X$ is affine, say $X=\Spec R$, then $X\setminus V(f) \cong \Spec R_f$ is affine, thus quasi-compact. If $X$ is quasi-compact, $X=\bigcup_{i=1}^n U_i$ with $U_i$ affine. Then $X\setminus V(f) = \bigcup_{i=1}^n(U_i\setminus V(f))$ is a finite union of quasi-compact open subsets, thus quasi-compact.
 \end{proof}
 \begin{fact}\lbl{fact:qcIsBaseLocalAndStuff}
-    The class of quasi-compact morphisms is base-local (cf.\ Definition~\reff{def:baseLocal}\itememph{b}) and closed under composition and base change. 
+    The class of quasi-compact morphisms is base-local, cf.\ Definition~\reff{def:baseLocal}\itememph{b}, and closed under composition and base change. 
 \end{fact}
 \begin{proof}
     Closedness under composition is obvious from Fact~\reff{fact:qcmorphism}\itememph{a} and base-locality is obvious from Fact~\reff{fact:qcmorphism}\itememph{c}. Closedness under base change may, by base-locality and Corollary~\reff{cor:fibreProductsInLRS}\itememph{b}, be reduced to the case $X\morphism[f]Y$ where $Y$ is affine and the base change is along $\snake Y\morphism Y$ with $\snake Y$ affine. In this case, $X=f^{-1}(Y)$ is quasi-compact, hence $X=\bigcup_{i=1}^nX_i$ with $X_i\subseteq X$ is affine open and $X\times_Y\snake Y=\bigcup_{i=1}^n X_i\times_Y \snake Y$ in which the factors $X_i\times_Y \snake Y$ are affine (as was seen in Corollary~\reff{cor:affineSchemesFibreProduct}) and thus quasi-compact. Then $X\times_Y\snake Y$, as a finite union of quasi-compact sets, is quasi-compact as well. 
@@ -3238,10 +3239,10 @@ Recall (not from this lecture but from Algebra~II, so if you do not participate 
 \end{rem}
 The following lemma wasn't covered in the lecture, but is perhaps worthwhile to know.
 \begin{lem}\lbl{lem:noetherianConnectedComponentsOpen}
-	When $R$ is noetherian, $\Spec R$ has finitely many irreducible components. In particular, any connected component of $\Spec R$ is open.
+	When $X$ is a noetherian prescheme (e.g., $X=\Spec R$ with $R$ a noetherian ring), then $X$ has finitely many irreducible components. In particular, every connected component of $X$ is open.
 \end{lem}
 \begin{proof}
-	If $R$ is noetherian, then so is $\Spec R$ as a topological space. By \cite[Proposition~2.1.1]{alg1}, $\Spec R$ can be expressed as a finite union of irreducible components. Irreducible sets being connected, we conclude that every connected component must contain an irreducible component, hence there are finitely many of them.
+	Since $X$ is a noetherian topological space by assumption, we may express it as a finite union of irreducible components, as proved in \cite[Proposition~2.1.1]{alg1}. Irreducible sets being connected, we conclude that every connected component must contain an irreducible component, hence there are finitely many connected components. Therefore, every connected component of $X$ is open.
 \end{proof}
 
 \section{Affine and finite morphisms}
