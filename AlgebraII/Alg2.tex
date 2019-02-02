@@ -81,7 +81,7 @@ as well. \textbf{Warning!} Somewhere in the middle of the last-mentioned text, t
 \begin{thm}[Krull's principal ideal theorem]\lbl{thm:krullPrincipalIdeal}
     %Should be Theorem 11, because we continue from Algebra I, Ferdi, that's your job
     %done
-    Let $R$ be noetherian, $f\in R$, $\pp\in \Spec R$ minimal among all prime ideals containing $f$. Then $\hoehe(\pp) \leq 1$. In other words, $\pp$ is a minimal prime ideal (if $\hoehe(\pp) =0$) or all prime ideals strictly contained in $\pp$ are minimal.
+    Let $R$ be a noetherian ring, $f\in R$, $\pp\in \Spec R$ minimal among all prime ideals containing $f$. Then $\hoehe(\pp) \leq 1$.
 \end{thm}
 \begin{rem*}
     \begin{alphanumerate}
@@ -178,11 +178,11 @@ as well. \textbf{Warning!} Somewhere in the middle of the last-mentioned text, t
 \begin{thm}[Krull's height theorem]\lbl{thm:krullIdeal}
     Let $A$ be a noetherian ring, $f_1,\ldots,f_r\in A$ and $\pp$ any prime ideal minimal among the prime ideals containing all the $f_i$. Then $\hoehe(\pp)\leq r$.
 \end{thm}    
-The following corollary can be derived in the same way as Corollary~\reff{cor:V(f)codimension1} from Theorem~\reff{thm:krullPrincipalIdeal}.
+We'll eventually prove Theorem~\reff{thm:krullPrincipalIdeal} and \reff{thm:krullIdeal} in Section~\reff{sec:PROOOFS} (page~\pageref{cor:KrullHeight}) using Hilbert polynomial arguments. The following corollary can be derived in the same way as Corollary~\reff{cor:V(f)codimension1} from Theorem~\reff{thm:krullPrincipalIdeal}, but again we also give a standalone proof.
 \begin{cor}\lbl{cor:capV(f)codimension}
     Let $X$ be a quasi-affine variety in $k^n$ (for $k$ an algebraically closed field), and let $f_1,\ldots,f_r\in \Oo(X)$. Let $Z$ be any irreducible component of $\bigcap_{i=1}^r V(f_i)=V(f_1,\ldots,f_r)$. Then $\codim(Z,X)\leq r$.
 \end{cor}
-The derivation from Corollary~\reff{cor:V(f)codimension1} by induction on $r$ is significantly easier then the similar inductive derivation of Theorem~\reff{thm:krullIdeal} from Theorem~\reff{thm:krullPrincipalIdeal} due to the fact that $k^n$ is catenary. We will eventually prove Theorem~\reff{thm:krullIdeal} by Hilbert polynomial arguments.
+The derivation from Corollary~\reff{cor:V(f)codimension1} by induction on $r$ is significantly easier then the similar inductive derivation of Theorem~\reff{thm:krullIdeal} from Theorem~\reff{thm:krullPrincipalIdeal} due to the fact that $k^n$ is catenary.
 \begin{proof}[Proof of Corollary~\reff{cor:capV(f)codimension}]
     We use Corollary~\reff{cor:V(f)codimension1} and induction on $r$. The case $r=0$ is trivial. Now let $r\geq1$ and the assertion be true for for fewer than $r$ equations. If $f_r=0$ we drop $f_r$ and apply the induction assumption: $\codim(Z,X) \leq r-1< r $. 
     
@@ -2452,7 +2452,7 @@ and we have bijections
 \end{proof}
 
 
-\section{The Samuel polynomial and the principal ideal theorem}
+\section{The Samuel polynomial and the principal ideal theorem}\lbl{sec:PROOOFS}
 
 Let $R$ be a noetherian ring, $M$ a finitely generated $R$-module. By Proposition~\reff{prop:filtrationByPrimeIdeals},  $M$ has a filtration
 \begin{align}
