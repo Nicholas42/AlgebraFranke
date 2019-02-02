@@ -300,7 +300,11 @@ We will now use the $\Ext_R^\bullet(-,-)$ functor, which was constructed (for ar
 	\end{alphanumerate}
 \end{rem*}
 \begin{example*}
-	Let $R$ be any ring. If $a\in R$ is not a zero divisor. We can calculate $\Ext_R^\bullet(R/aR,M)$ for any $R$-module $M$ using the projective resolution $0\morphism R\morphism[ a\cdot]R\morphism R/aR\morphism 0$. We get
+	Let $R$ be any ring. If $a\in R$ is not a zero divisor. We can calculate $\Ext_R^\bullet(R/aR,M)$ for any $R$-module $M$ using the projective resolution
+	\begin{align*}
+		0\morphism R\morphism[ a\cdot]R\morphism R/aR\morphism 0\;.
+	\end{align*}
+	of $R/aR$. We thus get
 	\begin{align*}
 		\Ext_R^k(R/aR,M)=H^k\left(\Hom_R(R\morphism[ a\cdot]R,M)\right)=\begin{cases}
 			\ker(M\morphism[ a\cdot]M) & \text{if }k=0\\
@@ -669,7 +673,7 @@ where $P_\bullet \epimorphism N$ is any projective resolution.
 \begin{proof}
 	If $N$ is projective, it can be taken as a projective resolution of itself and calculating $\Tor_\bullet^R(M,N)$ using \eqreff{eq:TorDef} gives $\Tor_i^R(M,N)=0$ for all $i>0$. 
 	
-	Now assume that $M$ is projective and let $P_\bullet \epimorphism N$ be any projective resolution. If $M=\bigoplus_{s\in S}R$ (for some indexing set $S$) is free, then $M\otimes_RP_\bullet=\bigoplus_{s\in S}P_\bullet$ is a complex acyclic in positive degrees (as direct sums of exact sequences stay exact), hence the vanishing of $\Tor_\bullet^R(M,N)$ in positive degrees. For general $M$, there is a free $R$-module $F$ with a surjection $F\morphism M$ which splits by projectivity of $M$, making $M$ a direct summand of $F$, hence $M\otimes_RP_\bullet$ a direct summand of $F\otimes_RP_\bullet$ and thus $\Tor_i^R(M,N)$ one of $\Tor_i^R(F,N)=0$ when $i>0$. 
+	Now assume that $M$ is projective let $P_\bullet \epimorphism N$ be any projective resolution. If $M=\bigoplus_{s\in S}R$ (for some indexing set $S$) is free, then $M\otimes_RP_\bullet=\bigoplus_{s\in S}P_\bullet$ is a complex acyclic in positive degrees (as direct sums of exact sequences stay exact), hence the vanishing of $\Tor_\bullet^R(M,N)$ in positive degrees. For general $M$, there is a free $R$-module $F$ with a surjection $F\morphism M$ which splits by projectivity of $M$, making $M$ a direct summand of $F$, hence $M\otimes_RP_\bullet$ a direct summand of $F\otimes_RP_\bullet$ and thus $\Tor_i^R(M,N)$ one of $\Tor_i^R(F,N)=0$ when $i>0$. 
 \end{proof}
 It follows that $\Tor_\bullet^R(-,N)$ for fixed $N$ has the properties characterizing derived functors (Theorem~\reff{thm:LeftDerivedFunctors}\itememph{b}). That is, $\Tor_\bullet^R(-,N)$ is also the left-derived functor of $-\otimes_RN$. As a consequence of the universal property of derived functors, we get
 \begin{prop}\lbl{prop:TorMN=TorNM}
@@ -680,7 +684,11 @@ It follows that $\Tor_\bullet^R(-,N)$ for fixed $N$ has the properties character
 	is the identity.
 \end{prop}
 \begin{example}\lbl{ex:TorR/aR}
-	Let $a$ be an element of $R$ which is not a zero divisor. Then $0\morphism R\morphism[a\cdot ]R\morphism R/aR\morphism 0$ is a projective resolution of $R/aR$ which may be used to calculate $\Tor_i^R(M,R/aR)$. We obtain
+	Let $a$ be an element of $R$ which is not a zero divisor. Then  $\Tor_i^R(M,R/aR)$ can be calculated from the projective resolution 
+	\begin{align*}
+		0\morphism R\morphism[a\cdot ]R\morphism R/aR\morphism 0
+	\end{align*}
+	of $R/aR$. We obtain
 	\begin{align*}
 		\Tor_i^R(M,R/aR)\cong\begin{cases}
 			M/aM & \text{if }i=0\\
@@ -714,7 +722,7 @@ And as we did for $\Ext$ (in Proposition~\reff{prop:ExtLocalization}), we need t
 	\end{align*}
 	compatible with \eqreff{eq:TorSeq1} and \eqreff{eq:TorSeq2} and in degree $0$ equal to the isomorphisms
 	\begin{align*}
-		(M\otimes _RN)_S\cong M\otimes _RN_S\cong M_S\otimes _RN\cong M_S\otimes _RN_S\cong {M_S}\otimes _{R_S}N_S
+		(M\otimes _RN)_S\cong M\otimes _RN_S\cong M_S\otimes _RN\cong M_S\otimes _RN_S\cong {M_S}\otimes _{R_S}N_S\;.
 	\end{align*}
 \end{fact}
 \begin{proof}
@@ -1213,7 +1221,7 @@ As in \cite[Proposition~1.3.1]{alg2} one shows $\dim_k(\mm/\mm^2)\geq d$. Recall
 \end{align*}
 as a polynomial algebra over $k$. Moreover, this can be shown to imply that $R$ is a domain.
 \begin{prop}\lbl{prop:RegularRingRegularSequence}
-	Let $R$ be a noetherian local ring of dimension $d$ and $x_1,\ldots,x_d$ generators of its maximal ideal $\mm$.
+	Let $R$ be a noetherian local ring of dimension $d$ and $x_1,\ldots,x_d$ generators of its maximal ideal $\mm$ (so that $R$ is regular).
 	\begin{alphanumerate}
 		\item The sequence $x=(x_1,\ldots,x_d)$ is a regular sequence.
 		\item The Koszul complex $K_\bullet(x,R)$ is a free resolution of length $d$ for the residue field $k=R/\mm$.
@@ -1630,10 +1638,8 @@ At this point, Professor Franke tried to define the notion of \defemph{local com
 and all of them are universally catenary.
 
 
-\appendix
+\Appendix
 \chapter{Appendix}
-\setcounter{thm}{0}
-\renewcommand*{\thethm}{\Alph{thm}}
 
 \section{An excursion in derived functors}
 \subsection{Construction of derived functors}
