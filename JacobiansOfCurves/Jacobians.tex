@@ -1410,7 +1410,7 @@ is open in $S$ by Theorem~\reff{thm:GrauertGrothendieck}\itememph{d}. Also we de
 \end{thm}
 \begin{rem}
 	\begin{alphanumerate}
-		\item A related assertion of the general form \emph{You cannot express a non-trivial line bundle as a limit of trivial ones} was shown by A.\ Weil. See \cite{cornell1986arithmetic}, \cite{mumford1974abelian}, or the Wikipedia article for a historical discussion.
+		\item \lbl{rem:PICscheme}A related assertion of the general form \emph{You cannot express a non-trivial line bundle as a limit of trivial ones} was shown by A.\ Weil. See \cite{cornell1986arithmetic}, \cite{mumford1974abelian}, or the Wikipedia article for a historical discussion.
 		\item Let us assume that $f$ has a section $\sigma\colon S\morphism X$ (so that it doesn't matter in which topology whe sheafify the Picard functor). Assume that $\Pic_{X/S}$ can be represented by an $S$-(group-)prescheme $\pi\colon\PIC_{X/S}\morphism S$. Let $\epsilon\colon S\morphism\PIC_{X/S}$ be the neutral section and denote by $\lambda\colon S\morphism\PIC_{X/S}$ the morphism corresponding to (the isomorphism class of) $\Ll\in\Pic_{X/S}(S)=\Pic(X/S)$.
 		
 		If $f_T^*\colon \Oo_T\isomorphism f_{T,*}\Oo_{X_T}$ is an isomorphism for all $S$-preschemes $T$ (i.e.\ $f_*\Oo_X\cong \Oo_S$ \emph{holds universally} -- for example, this is the case in the situation of Proposition~\reff{prop:RpLl}), then $\tau_X^*\Ll$ is trivial in $\Pic_{X/S}(T)=\Pic(X_T/T)$ iff the compositions
@@ -2049,7 +2049,7 @@ If $\cat C=(\cat C_T)_{T\in\Ob(\cat{PSch}/S)}$ is such a fibred category over $\
 	f^*\colon \cat C_Y\morphism\cat{Desc}_{X/Y}^{\cat{C}}
 \end{align*}
 into it (it's intentional that $f^*$ uses the same notation as the pullback functors that are part of the structure of $\cat C$). Then the general question of descent is whether $f^*$ is an equivalence of categories.
-\begin{cor}
+\begin{cor}\lbl{cor:stuff2Bdescended}
 	If $f\colon X\morphism Y$ is a faithfully flat quasi-compact morphism of preschemes, then $f^*$ is an equivalence of categories for the following choices of a fibred category $\cat C$ over $\cat{PSch}/S$.
 	\begin{alphanumerate}
 		\item $\cat C_T=\left\{\text{affine morphisms }V\morphism T\right\}$ for all $S$-preschemes $T$ and the pullback functors are defined by $g^*V=V\times_TT'$.
@@ -3281,7 +3281,7 @@ Let $R\subseteq S$ be a finite ring extension\footnote{If $R$ is not a subring o
 
 \chapter{Construction of the Jacobian}
 \setcounter{section}{-1}
-\section{Strategy of the construction}
+\section{Strategy of the construction}\lbl{sec:Strategy}
 Let $D$ be a divisor on a regular curve $C$ of genus $g=\dim_k\Gamma(C,\Omega_C)$ over an algebraically closed field $k$. Recall the notation $\ell(D)=\dim_k\Gamma(C,\Oo_C(D))$. If $\deg D=g$ and $K$ is a divisor such that $\Oo_C(K)\cong \Omega_C$, then Riemann--Roch (in the form of \cite[Corollary~3.1.1]{alggeo2}) shows
 \begin{align*}
 	\ell(D)-\ell(K-D)=\deg D+1-g=1\;.
@@ -3475,11 +3475,13 @@ We start the proof with a lemma, which essentially says that all linear dependen
 	\end{align*}
 	where $\Lambda$ is a filtered category and the $F_\lambda$ are finite free $R$-modules. Hence every $x\in N^{(n)}$ has a preimage $\phi\in F_\lambda^{(n)}$ for some $\lambda$. But since $F_\lambda$ is free and $M\morphism N$ is surjective, $F_\lambda\morphism N$ can be lifted to a morphism $F_\lambda\morphism M$. Then the image of $\phi$ under $F_\lambda^{(n)}\morphism M^{(n)}$ provides a preimage of $x$.
 \end{proof}
-For any $R$-algebra $A$, we have canonical morphisms $\iota_1,\ldots,\iota_n\colon A\morphism A^{\otimes n}$, where $\iota_i(a)=1\otimes \cdots \otimes a\otimes \cdots \otimes 1$ for all $a\in A$, with $a$ occcuring in the $i\ordinalth$ position. Let $\sigma_j$ denote the $j\ordinalth$ elementary symmetric polynomial. It defines a morphism (which -- by abuse of notation -- we also denote $\sigma_j$)
-\begin{align*}
-\sigma_j\colon A&\morphism A^{\otimes n}\\
-a&\longmapsto \sigma_j(\iota_1(a),\ldots,\iota_n(a))\;.
-\end{align*}
+\begin{con}\lbl{con:sigmaja}
+	For any $R$-algebra $A$, we have canonical morphisms $\iota_1,\ldots,\iota_n\colon A\morphism A^{\otimes n}$, where $\iota_i(a)=1\otimes \cdots \otimes a\otimes \cdots \otimes 1$ for all $a\in A$, with $a$ occcuring in the $i\ordinalth$ position. Let $\sigma_j$ denote the $j\ordinalth$ elementary symmetric polynomial. It defines a morphism (which -- by abuse of notation -- we also denote $\sigma_j$)
+	\begin{align*}
+	\sigma_j\colon A&\morphism A^{\otimes n}\\
+	a&\longmapsto \sigma_j(\iota_1(a),\ldots,\iota_n(a))\;.
+	\end{align*}
+\end{con}
 \begin{cor}\lbl{cor:AngeneratedBySigma}
 	If $A$ is a flat $R$-algebra, then $A^{(n)}$ is generated (as an $R$-algebra) by the $\sigma_j(a)$ for $a\in A$ and $j=1,\ldots,n$.
 \end{cor}
@@ -3502,7 +3504,7 @@ a&\longmapsto \sigma_j(\iota_1(a),\ldots,\iota_n(a))\;.
 \end{proof}
 For an $S$-prescheme $f\colon X\morphism S$ we denote the $n$-fold fibre product of $X$ over $S$ by $(X/S)^n$. If the base is clear from the context, we often just write $X^n$. Connecting Theorem~\reff{thm:QuotientByGroup} with the results of this section, we obtain the following proposition.
 \begin{prop}\lbl{prop:symmetricPowers}
-	Let $f\colon X\morphism S$ be a morphism\footnote{Professor Franke additionally required that $f$ be separated. However, this follows rather easily from our assumption on the fibres $f^{-1}\{s\}$ (and it might well be he mentioned that too).} of preschemes such that for every finite subset $F$ of a fibre $f^{-1}\{s\}$ there are affine open $V\subseteq X$ and $W\subseteq S$ such that $f(V)\subseteq W$ and $F\subseteq V$.
+	Let $f\colon X\morphism S$ be a morphism\footnote{Professor Franke additionally required that $f$ be separated. However, this follows rather easily from our assumption on the fibres $f^{-1}\{s\}$ (and it might well be he mentioned that too). We explain the argument in the proof of Theorem~\reff{thm:final}\itememph{a}.} of preschemes such that for every finite subset $F$ of a fibre $f^{-1}\{s\}$ there are affine open $V\subseteq X$ and $W\subseteq S$ such that $f(V)\subseteq W$ and $F\subseteq V$.
 	\begin{alphanumerate}
 		\item The symmetric power $X^{(n)}=(X/S)^{(n)}$ exists and is covered by affine open $V^{(n)}$, where $V$ is as above. Moreover, $V_1^{(n)}\cap V_2^{(n)}=(V_1\cap V_2)^{(n)}$ for all $V_1,V_2$ as above (and assuming their intersection is affine again).
 		\item If $f$ is flat, then $X^{(n)}$ is flat over $S$ and its construction commutes with base change. Moreover, $\Oo_{X^{(n)}}(V^{(n)})$ is generated by the $\sigma_i(\phi)$ for $\phi\in\Oo_X(V)$ and $i=1,\ldots,n$.
@@ -3518,7 +3520,7 @@ For an $S$-prescheme $f\colon X\morphism S$ we denote the $n$-fold fibre product
 	
 	Part~\itememph{b} follows from Corollary~\reff{cor:HorrorBasis} and Corollary~\reff{cor:AngeneratedBySigma}. The two finiteness assertions in \itememph{c} follow immediately from Theorem~\reff{thm:QuotientByGroup}\itememph{b}, and so does the isomorphism $\roof{\Oo}_{X^{(n)},y}\cong (\roof{\Oo}_{X^n,x})^{G_x}$. The second isomorphism follows from the explicit description of fibre products in \cite[Proposition~1.3.2]{alggeo2}.
 \end{proof}
-\section{Symmetric powers of a curve and effective relative Cartier divisors}
+\section{Symmetric powers of a curve and effective relative Cartier divisors}\lbl{sec:curveSymmetricPowers}
 Let $f\colon C\morphism S$ be a flat projective morphism such that the geometric fibres $C_{\ov{s}}=C\times_S\Spec \ov{\KK(s)}$ are regular connected curves of some genus $g_s$ for all $s\in S$. When $S$ is locally noetherian and $g_s>1$ for all $s\in S$, then $f$ being projective is no real restriction compared to  $f$ just being proper, since the line bundle $\Omega_{C/S}$ is relatively ample in this case, so $f$ is locally (strongly) projective by \cite[Theorem~6]{alggeo2}.
 \begin{rem}\lbl{rem:gLocallyConstant}
 	Note that $g_s$ is locally constant on $S$. Indeed, by Riemann--Roch (and an argument similar to Remark~\reff{rem:GeometricFibres}\itememph{b}) we have $\chi(s,\Oo_C)=1-g_s$ and $\chi(-,\Oo_C)$ is locally constant on $S$ by Theorem~\reff{thm:GrauertGrothendieck}\itememph{b}. Therefore it is ok to call $f$ a \emph{flat family of curves}, even though Definition~\reff{def:flatFamily} assumes $g$ to be constant.
@@ -3561,13 +3563,13 @@ Let $f\colon C\morphism S$ be a flat projective morphism such that the geometric
 \begin{defi}\lbl{def:CartierDivisor}
 	If the equivalent properties of Lemma~\reff{lem:CartierDivisor} are satisfied, $D$ is called a \defemph{relative effective Cartier divisor}. The set of relative (with respect to $f\colon C\morphism S$) effective Cartier divisors is denoted $\Div_f=\Div_{C/S}$.
 \end{defi}
-\begin{rem}
-	If $D$ and $E$ are such divisors given by sheaves of ideals $\Jj$ and $\Kk$, then the multiplictation $\Jj\otimes_{\Oo_C}\Kk \morphism\Oo_C$ is a monomorphism with image $\Jj\Kk$, which is a line bundle again and has vanishing set $D\cup E$. Therefore, $\Jj\Kk$ defines an effective relative Cartier divisor again, which we denote $D+E$. Also, if $D\subseteq E$, then using that $\Jj$ and $\Kk$ are locally generated by non-zero divisors in $\Oo_C$ it's easy to see that the multiplication $\Jj^{\otimes -1}\otimes_{\Oo_C}\Kk\morphism \Oo_C$ is well-defined and induces an isomorphism onto some sheaf of ideals in $\Oo_C$. Thus we get an effective relative Cartier divisor $E-D$. Since $\Jj^{\otimes -1}\otimes_{\Oo_C}\Jj\otimes_{\Oo_C}\Kk\cong \Kk$, we get $(D+E)-D=E$.
+\begin{rem}\lbl{rem:CartierSemigroup}
+	If $D$ and $E$ are such divisors given by sheaves of ideals $\Jj$ and $\Kk$, then the multiplication $\Jj\otimes_{\Oo_C}\Kk \morphism\Oo_C$ is a monomorphism with image $\Jj\Kk$, which is a line bundle again and has vanishing set $D\cup E$. Therefore, $\Jj\Kk$ defines an effective relative Cartier divisor again, which we denote $D+E$. Also, if $D\subseteq E$, then using that $\Jj$ and $\Kk$ are locally generated by non-zero divisors in $\Oo_C$ it's easy to see that the multiplication $\Jj^{\otimes -1}\otimes_{\Oo_C}\Kk\morphism \Oo_C$ is well-defined and induces an isomorphism onto some sheaf of ideals in $\Oo_C$. Thus we get an effective relative Cartier divisor $E-D$. Since $\Jj^{\otimes -1}\otimes_{\Oo_C}\Jj\otimes_{\Oo_C}\Kk\cong \Kk$, we get $(D+E)-D=E$.
 		
 	In this way, $\Div_{C/S}$ forms a semigroup with cancellation. By some standard construction, it can be turned into a group, in which $E-D$ for some effective divisors $D$ and $E$ is effective again iff $D\subseteq E$.
 \end{rem}
-\begin{rem}
-	We denote the restriction of $f$ to $D$ by $f|_D$. The \emph{degree of $D/S$} is defined as the rank of the vector bundle $f|_{D,*}\Oo_D$ -- this is a vector bundle since $D$ is finite and flat over $S$, which is locally noetherian; in the non-noetherian case we would need $f$ (and thus $f|_D$) to be finitely presented. Note that the degree is in general only a locally constant function on $S$, but nevermind.
+\begin{rem}\lbl{rem:degree}
+	We denote the restriction of $f$ to $D$ by $f|_D$. The \defemph{degree of $D/S$} is defined as the rank of the vector bundle $f|_{D,*}\Oo_D$ -- this is a vector bundle since $D$ is finite and flat over $S$, which is locally noetherian; in the non-noetherian case we would need $f$ (and thus $f|_D$) to be finitely presented. Note that the degree is in general only a locally constant function on $S$, but nevermind.
 		
 	The degree defines a semigroup homomorphism
 	\begin{align*}
@@ -3579,6 +3581,15 @@ Let $f\colon C\morphism S$ be a flat projective morphism such that the geometric
 	\end{align*}
 	on $S$. Since rank is additive on short exact sequences, this shows that the degree is indeed additive, i.e., a semigroup homomorphism.
 \end{rem}
+\begin{rem}\lbl{rem:degree=degree}
+	If $D$ has degree $d$, then for every point $s\in S$ the pullback $\Jj^{\otimes -1}|_{C_{\ov{s}}}$ to the geometric fibre over $s$ is a line bundle of degree $d$ in the sense of \cite[Theorem~7\itememph{a}]{alggeo2}. Indeed, from Lemma~\reff{lem:CartierDivisor} we know that $D_s$ is finite over $\KK(s)$, hence $D_{\ov{s}}$ is finite over $\ov{\KK(s)}$. In particular, $D_{\ov{s}}$ has only finitely many points (since artinian rings have only finitely many prime ideals). Since we assume that $f$ is projective, we find an affine subset $U\cong \Spec R$ of $C_{\ov{s}}$ containing $D_{\ov{s}}$ by \cite[Proposition~2.2.1\itememph{b}]{alggeo2}. Hence $D\cong \Spec R/J$ for some ideal $J$ (which is given by the pullback of $\Jj$).
+	
+	 We put $k=\ov{\KK(s)}$. Since $D$ is finite locally free of degree $d$ over $S$-- that's how the degree was defined in Remark~\reff{rem:degree} -- it's easy to check that $d=\dim_k R/J$. But if $J=\pp_1^{e_1}\cdots\pp_n^{e_n}$ is the decomposition of $J$ into prime ideals in the Dedekind domain $R$, then $R/J\cong \prod_{i=1}^nR/\pp_i^{e_i}$ by the Chinese remainder theorem, and $\dim_k R/\pp_i^{e_i}=e_i$ since the residue field extension $\KK(\pp)/k$ must be trivial by Hilbert's Nullstellensatz and the fact that $k$ is algebraically closed. Hence
+	 \begin{align*}
+	 	d=\sum_{i=1}^ne_i=\sum_\pp v_\pp(J)\;.
+	 \end{align*}
+	 But this is how the degree of line bundles (or to be precise, of line bundles given by Weil divisors) was defined before.
+\end{rem}
 \begin{rem}
 	\begin{alphanumerate}
 		\item \lbl{rem:CartierBaseChange}If $S'\morphism S$ is any morphism, then $D'=D\times_SS'$ is an effective relative Cartier divisor for $C'=C\times_SS'\morphism S'$ since finiteness and flatness are stable under base change.
@@ -3586,15 +3597,15 @@ Let $f\colon C\morphism S$ be a flat projective morphism such that the geometric
 		\item Since $D$ is locally free over $S$ -- because it is finite and flat (and finitely presented in the non-noetherian case) over $S$ -- it's easy to check that the degree is preserved under base change, i.e., $\deg(D'/S')=\deg(D/S)$.
 	\end{alphanumerate}
 	\end{rem}
-\begin{lem}
+\begin{lem}\lbl{lem:fppfLocallySumOfSections}
 	If $D\subseteq C$ is an effective relative Cartier divisor of constant degree $d$, then there is an fppf morphism $S'\morphism S$ such that $D'=D\times_SS'\subseteq C\times_SS'=C'$ is given by $\sum_{i=1}^d\sigma_i(S')$, where $\sigma_i\colon S'\morphism C'$ are sections of $f'\colon C'\morphism S'$.
 \end{lem}
-\begin{rem}
-	If the degree $d=\deg (D/S)$ is only locally constant, then (by the above argument) there is always an fppf cover $\{S'_i\morphism S\}_{i\in I}$ such that each $D_i'=D\times_SS'_i$ is a sum of sections of $f'_i\colon C'_i=C\times_SS'_i\morphism S'_i$.
-\end{rem}
 \begin{proof}
 	We do induction on $d=\deg(D/S)$. If $d=0$, then $D=\emptyset$ and the assertion becomes trivial. For $d\geq 1$, then $D$ is faithfully flat over $S$, since $S$ may be covered by affine open subsets $U\cong \Spec R$ such that $f|_D^{-1}(U)\cong \Spec A$ is affine as well and $A$ is finite free of rank $d\geq 1$ over $R$, so that $\Spec A\morphism\Spec R$ is surjective. Hence base changing along $S'=D\morphism S$ is an fppf base change. Then $f'\colon C'=C\times_SS'\morphism S'$ has a section $\sigma=(i_D,\id_D)$, where $i_D\colon D\monomorphism C$ is the inclusion of the closed subprescheme $D$. Clearly $\sigma$ is a closed embedding (as a base change of $i_D$) and defines a degree-$1$ relative effective Cartier divisor for $f'$ since the identity on $S'=D$ is obviously finite flat of rank $1$. Moreover, $\sigma$ factors over $D'=D\times_SS'$. Hence $D'-\sigma(S')$ is an effective relative Cartier divisor of degree $d-1$, to which the induction assumption (together with Remark~\reff{rem:CartierBaseChange}\itememph{c}) may be applied.
 \end{proof}
+\begin{rem}
+If the degree $d=\deg (D/S)$ is only locally constant, then (by the above argument) there is always an fppf cover $\{S'_i\morphism S\}_{i\in I}$ such that each $D_i'=D\times_SS'_i$ is a sum of sections of $f'_i\colon C'_i=C\times_SS'_i\morphism S'_i$.
+\end{rem}
 \begin{lem}\lbl{lem:fppfBaseChange}
 	Let $S$ be any prescheme, $s\in S$ a point and $\ell$ a finite field extension of $k=\KK(s)$.
 	\begin{alphanumerate}
@@ -3622,10 +3633,10 @@ Let $f\colon C\morphism S$ be a flat projective morphism such that the geometric
 	In particular, $\ell\otimes_{\ell_1}\ell_2\otimes_{\ell_2}\cdots\otimes_{\ell_{r-1}}\ell_r$ has a nilpotent maximal ideal given by $(X_2-x_2,\ldots,X_r-x_r)$, hence it is a zero dimensional local ring with residue field $\ell$, as claimed.
 \end{proof}
 Now we are going to prove the final theorem of the lecture. Since the statement is quite long, we will break it into parts and alternate between proofs and more parts of the theorem.
-\begin{thm}\lbl{thm:final}
+\begin{thm}[beginning]\lbl{thm:final}
 	Let $f\colon C\morphism S$ be a flat family of curves with $S$ locally noetherian. Let $g\geq 0$. Moreover, let (for all parts of the theorem) $V\subseteq C$ be an affine open subset for which there is an affine open subset $W\subseteq S$ such that $f(V)\subseteq W$.
 	\begin{alphanumerate}
-		\item $X=C^{(g)}\morphism S$ exists and is proper and flat. Its formation commutes with base change $S'\morphism S$, and its geometric fibres $X_{\ov{s}}=X\times_S\Spec \ov{\KK(s)}$ are regular. Moreover, the $V^{(g)}\subseteq C^{(g)}$ are affine open subsets covering $C^{(g)}$, and $\Oo_{C^{(g)}}(V^{(g)})$ is generated over $\Oo_S(W)$ by elementary symmetric polynomials in  the elements of $\Oo_C(V)$.
+		\item $X=C^{(g)}\morphism S$ exists and is proper and flat. Its formation commutes with base change $S'\morphism S$, and its geometric fibres $X_{\ov{s}}=X\times_S\Spec \ov{\KK(s)}$ are regular. Moreover, the $V^{(g)}\subseteq C^{(g)}$ are affine open subsets covering $C^{(g)}$, and $\Oo_{C^{(g)}}(V^{(g)})$ is generated over $\Oo_S(W)$ by elements of the form $\sigma_j(\lambda)$ (following Convention~\reff{con:sigmaja})  for $\lambda\in \Oo_C(V)$.
 		\item The morphism $C^g\morphism C^{(g)}$ is finite flat of degree $g!$. 
 	\end{alphanumerate}
 \end{thm}
@@ -3654,13 +3665,19 @@ Before we dive into the proof, let us discuss a lemma on how to compute the loca
 	\end{align}
 	Combining \eqreff{eq:completion1} and \eqreff{eq:completion2} proves the assertion.
 \end{proof}
-Throughout the proof, let us fix the following notation: Let $x\in C^g$ and $\{x_1,\ldots,x_\ell\}$ the set (!) of projections of $x$ to the $g$ factors (in particular, the sequence of $x_i$ is free of repetition). We call $x$ a \emph{sorted} point if the sequence of projections (now including repetitions) is $(x_1,\ldots,x_1,x_2,\ldots,x_2,\ldots,x_\ell,\ldots,x_\ell)$ in this order.
+\begin{con}\lbl{con:sorted}
+	Throughout the proof, let us fix the following notation: Let $x\in C^g$ and $\{x_1,\ldots,x_\ell\}$ the set (!) of projections of $x$ to the $g$ factors (in particular, the sequence of $x_i$ is free of repetition). We call $x$ a \emph{sorted} point if the sequence of projections (now including repetitions) is $(x_1,\ldots,x_1,x_2,\ldots,x_2,\ldots,x_\ell,\ldots,x_\ell)$ in this order.
+\end{con}
 \begin{proof}[Proof of Theorem~\reff{thm:final}\itememph{a} and \itememph{b}.]
-	Part~\itememph{a}. First note that any finite subset of any fibre of $f\colon C\morphism S$ since we assume $f$ (and thus its fibres) to be projective, so \cite[Proposition~2.2.1\itememph{b}]{alggeo2} is applicable. Hence Proposition~\reff{prop:symmetricPowers}\itememph{a} and \itememph{b} may be applied, which shows everything except the regularity assertion. By compatibility with base change, what we need to show is that $C^{(g)}$ is regular over $k$ in the special case where $S=\Spec k$ with $k$ algebraically closed. Then $C^{(g)}$ has finite type over $k$, hence it is Jacobson (cf.\ \cite[Definition~2.4.2]{alggeo1}), and thus by Serre's characterization of regular rings (or more precisely, we use \cite[Corollary~2.2.1]{homalg}) it suffices to show regularity at closed points.
+	Part~\itememph{a}. First note that any finite subset of any fibre of $f\colon C\morphism S$ is contained in an affine open subset of $C$, since we assume $f$ (and thus its fibres) to be projective, so \cite[Proposition~2.2.1\itememph{b}]{alggeo2} is applicable. Hence Proposition~\reff{prop:symmetricPowers} may be applied, which shows everything except separatedness and universal closedness of $C^{(g)}\morphism S$ (which we need for properness), and the regularity assertion. 
+	
+	Let's prove separatedness first. Let $y_1,y_2\in X^{(g)}$ be two points in the same fibre over $S$ and let $x_1,x_2\in X^g$ be preimages. Then the $2g$ projections of $x_1$ and $x_2$ to the $g$ factors are contained in some affine open subset $V\subseteq C$ such that $f(V)\subseteq W$ for some affine open subset $W\subseteq S$. Thus $U=(V/W)^{(g)}$ is an affine open neighbourhood of $y_1, y_2$ in $C^{(g)}$. This shows that $C^{(g)}\times_SC^{(g)}$ can be covered by affine open subsets of the form $V\times_WV$. Indeed, just consider any point $y$ and let $y_1,y_2\in C^{(g)}$ be its projections to the two factors. Then apply the above. By an easy argument, we thus get that the diagonal $\Delta\colon C^{(g)}\morphism C^{(g)}\times_SC^{(g)}$ is a closed embedding, proving separatedness by \cite[Fact~1.5.7\itememph{c}]{alggeo1}. For universal closedness, it suffices to show closedness of $C^{(g)}\morphism S$ since the construction of $C^{(g)}$ is compatible with base change. But $C^{(g)}$ carries the quotient topology from $C^g$, hence closedness follows from closedness of $C^g\morphism S$.
+	
+	Now we prove the regularity assertion. By compatibility with base change, what we need to show is that $C^{(g)}$ is regular over $k$ in the special case where $S=\Spec k$ with $k$ algebraically closed. Then $C^{(g)}$ has finite type over $k$, hence it is Jacobson (cf.\ \cite[Definition~2.4.2]{alggeo1}), and thus by Serre's characterization of regular rings (or more precisely, we use \cite[Corollary~2.2.1]{homalg}) it suffices to show regularity at closed points.
 	
 	If $y\in C^{(g)}$ is a closed point (i.e., corresponds to some maximal ideal affine-locally), then $\KK(y)$ has finite type over $k$ since $C^{(g)}$ has finite type over $k$ too. But $k$ is algebraically closed, hence $\KK(y)=k$ by Hilbert's Nullstellensatz. Moreover, $C^g$ is finite over $C^{(g)}$ by Theorem~\reff{thm:QuotientByGroup}\itememph{b}. Hence it's easy to see (but not entirely trivial; you need some artinianness stuff) that for all points $x$ over $y$ the residue field $\KK(x)$ is finite over $\KK(y)$, hence $\KK(x)=k$ too. Now choose such an $x$ and let $\{x_1,\ldots,x_\ell\}$ be the (repetition-free) set of projections of $x$ to the $g$ factors. Assume that each $x_i$ occurs $j_i$ times, such that $j_1+\ldots+j_\ell=g$.
 	
-	Without losing generality we may assume that $x$ is \emph{sorted} (using the above terminology). We claim that the stabilizer group of $x$ under $\SS_n$ is given by $G_x=\SS_{j_1}\times\cdots\times\SS_{j_\ell}$. Indeed, note that $\KK(x_i)=k$ since $\KK(x_i)$ is sandwiched between $\KK(x)$ and $k$. Hence, by an argument like \eqreff{eq:manyks}, every permutation of the $x_i$ (with repetitions) determines a unique point in $C^g$, which shows $G_x=\SS_{j_1}\times\cdots\times\SS_{j_\ell}$ as claimed. Therefore, using Theorem~\reff{thm:QuotientByGroup}\itememph{b} and Lemma~\reff{lem:completionOfStalks}, we obtain
+	Without losing generality we may assume that $x$ is \emph{sorted} (using the terminology from Convention~\reff{con:sorted}). We claim that the stabilizer group of $x$ under $\SS_n$ is given by $G_x=\SS_{j_1}\times\cdots\times\SS_{j_\ell}$. Indeed, note that $\KK(x_i)=k$ since $\KK(x_i)$ is sandwiched between $\KK(x)$ and $k$. Hence, by an argument like \eqreff{eq:manyks}, every permutation of the $x_i$ (with repetitions) determines a unique point in $C^g$, which shows $G_x=\SS_{j_1}\times\cdots\times\SS_{j_\ell}$ as claimed. Therefore, using Theorem~\reff{thm:QuotientByGroup}\itememph{b} and Lemma~\reff{lem:completionOfStalks}, we obtain
 	\begin{align}\lbl{eq:OCgx}
 		\roof{\Oo}_{C^{(g)},y}\cong (\roof{\Oo}_{C^g,x})^{G_x}\cong k\llbracket X_1,\ldots,X_g\rrbracket^{\SS_{j_1}\times\cdots\times\SS_{j_\ell}}\;,
 	\end{align}
@@ -3673,14 +3690,14 @@ Throughout the proof, let us fix the following notation: Let $x\in C^g$ and $\{x
 	
 	Part~\itememph{b}. Finiteness follows from Proposition~\reff{prop:symmetricPowers}\itememph{c}. For flatness, we will do three reduction steps to arrive at a sufficiently nice situation.
 	
-	\emph{Step~1.} We claim it is sufficient to show that $\Oo_{C^g,x}$ is flat over $\Oo_{C^{(g)},y}$ whenever $x$ lies over $y$ (this is the usual condition from Definition~\reff{def:flat}\itememph{c}) and $x$ is closed in its fibre over $S$. Why the second condition? Note that every maximal ideal of an affine open subset of $C^g$ corresponds to a point which is closed in its fibre, since the fibres are Jacobson (being of finite type over a field), hence closedness may be tested locally by \cite[Fact~2.4.1\itememph{c}]{alggeo1}. And since flatness can be tested at maximal ideals, it is indeed ok to restrict to $x$ which are closed in their fibre over $S$.
+	\emph{Step~1.} We claim it is sufficient to show that $\Oo_{C^g,x}$ is flat over $\Oo_{C^{(g)},y}$ whenever $x$ lies over $y$ and $x$ is closed in its fibre over $S$. The first condition here is the usual one from Definition~\reff{def:flat}\itememph{c}. But why the second condition? Note that every maximal ideal of an affine open subset of $C^g$ corresponds to a point which is closed in its fibre, since the fibres are Jacobson (being of finite type over a field), hence closedness may be tested locally by \cite[Fact~2.4.1\itememph{c}]{alggeo1}. And since flatness can be tested at maximal ideals, it is indeed ok to restrict to $x$ which are closed in their fibre over $S$.
 	
 	\emph{Step~2.} Let $x\in C^g$ have this property, and let $y\in C^{(g)}$ and $s\in S$ be the images of $x$. Since $C^g$ has finite type over $S$ and $x$ is given by a maximal ideal of some open neighbourhood in its fibre, we see that $\KK(x)$ is a field of finite type over $\KK(s)$, hence a finite extension of $\KK(s)$ by Hilbert's Nullstellensatz. Hence, by Lemma~\reff{lem:fppfBaseChange}, we may take an fppf base change to obtain $\KK(x)=\KK(s)\eqqcolon k$ (and also flatness may be tested after fppf base change, using the silly flatness criterion from Lemma~\reff{lem:sillyFlatness}, so that's ok). 
 	
-	\emph{Step~3.} Now, since completion is faithfully flat by Corollary~\reff{cor:completionFaithfullyFlat}\itememph{c}, it suffices to show that $\roof{\Oo}_{C^g,x}$ is flat over $\roof{\Oo}_{C^{(g)},y}$. Let $\{x_1,\ldots,x_\ell\}$ be the set of projections of $x$ and $j_i$ the multiplicity of $x_i$. Also let's assume without loss of generality that $x$ is a sorted point. Since each $\KK(x_i)$ is sandwiched between $\KK(x)$ and $\KK(s)$, we see $\KK(x_i)=k$. From the same argument we get $\KK(y)=k$. Hence we find ourselves in a situation where Lemma~\reff{lem:completionOfStalks} is applicable. Together with arguments analogous to \eqreff{eq:OCgx} and \eqreff{eq:OCgx2} we thus get
-	\begin{align*}
+	\emph{Step~3.} Now, since completion is faithfully flat by Corollary~\reff{cor:completionFaithfullyFlat}\itememph{c}, it suffices to show that $\roof{\Oo}_{C^g,x}$ is flat over $\roof{\Oo}_{C^{(g)},y}$. Let $\{x_1,\ldots,x_\ell\}$ be the set of projections of $x$ and $j_i$ the multiplicity of $x_i$. Also let's assume without loss of generality that $x$ is a sorted point (as in Convention~\reff{con:sorted}). Since each $\KK(x_i)$ is sandwiched between $\KK(x)$ and $\KK(s)$, we see $\KK(x_i)=k$. From the same argument we get $\KK(y)=k$. Hence we find ourselves in a situation where Lemma~\reff{lem:completionOfStalks} is applicable. Together with arguments analogous to \eqreff{eq:OCgx} and \eqreff{eq:OCgx2} we thus get
+	\begin{align}\lbl{eq:OCgx3}
 		\roof{\Oo}_{C^g,x}\cong \roof{\Oo}_{S,s}\llbracket X_1,\ldots,X_g\rrbracket\quad\text{and}\quad\roof{\Oo}_{C^{(g)},y}\cong \roof{\Oo}_{S,s}\llbracket S_{1,1},\ldots,S_{1,j_1},\ldots,S_{\ell,1},\ldots,S_{\ell,j_\ell}\rrbracket\;.
-	\end{align*}
+	\end{align}
 	Adapting Example~\reff{ex:symmetricPolynomials}\itememph{b} to our situation proves shows that $\roof{\Oo}_{C^g,x}$ is free over $\roof{\Oo}_{C^{(g)},y}$ with a basis given by $X_1^{\alpha_1}\cdots X_g^{\alpha_g}$, where $0\leq \alpha_j<j-r_{i-1}$ whenever $r_{i-1}<j\leq r_i$ (and as in the proof of part~\itememph{a} we put $r_i=j_1+\ldots+j_i$). This shows flatness.
 	
 	We still need to show that the degree is $g!$. Note that the above basis has only $j_1!\cdots j_\ell!$ elements, but this is compensated by the fact that there are $\frac{g!}{j_1!\cdots j_\ell!}$ distinct permutations of the $x_i$, each having multiplicity $j_i$. Let's make this argument precise! First note that the degree of a finite flat morphism is preserved under base change. Hence we may assume that we are in the situation from Step~3 again. Let $U\cong \Spec B$ be a $\SS_g$-invariant affine open neighbourhood of the preimage of $y$ (i.e., the orbit of $x$) and let $V\cong \Spec A$ for $A=B^{\SS_g}$ be the corresponding affine open neighbourhood of $y$. Let $\pp\in \Spec A$ be the prime ideal corresponding to $y$ and $\qq_1,\ldots,\qq_m\in\Spec B$ the prime ideals over $\pp$ (i.e., the orbit of $x$ by the proof of Lemma~\reff{lem:ringInvariants}). Then the proof of Theorem~\reff{thm:QuotientByGroup}\itememph{b} (or more precisely, equation \eqreff{eq:ChineseRemainderTheorem} together with the discussion after \eqreff{eq:OXxG}) shows that
@@ -3689,12 +3706,187 @@ Throughout the proof, let us fix the following notation: Let $x\in C^g$ and $\{x
 	\end{align}
 	where $\roof{B}_\pp$ on the left-hand side is the $\pp B_\pp$-adic completion, whereas $\roof{B}_{\qq_i}$ on the right-hand side denotes the $\qq_iB_{\qq_i}$-adic one. Now $m=\#(\SS_g/G_x)=\#(\SS_g/\SS_{j_1}\times\cdots\times\SS_{j_\ell})=\frac{g!}{j_1!\cdots j_\ell!}$ and each $\roof{B}_{\qq_i}$ is free of rank $j_1!\cdots j_\ell!$ over $\roof{A}_\pp$ by Step~3. Therefore, the $\pp B_\pp$-adic completion $\roof{B}_\pp\cong B_\pp\otimes_{A_\pp}\roof{A}_\pp$ is free of rank $g!$ over $\roof{A}_\pp$. Since completion is faithfully flat, this shows that the rank of $B_\pp$ over $A_\pp$ is $g!$ as well, and we are done.
 \end{proof}
-%\begin{thm}
-%	\begin{alphanumerate}
-%		\item Let $\pi\colon C^g\morphism C^{(g)}$ be the finite flat projection from \itememph{b}. Let $\snake{D}\subseteq C^g\times_SC$ be the relative (with respect to $C^g\times_SC\morphism C^g$) effective Cartier divisor of degree $g$ given by 
-%	\end{alphanumerate}
-%\end{thm}
+\setcounter{thm}{11}
+\begin{thm}[continuation]
+	Let $\pi\colon C^g\morphism C^{(g)}$ be the finite flat projection from \itememph{b}. Let $\varsigma_i\colon C^g\morphism C^g\times_SC$ for $i=1,\ldots,g$ be given $\varsigma_i=(\id_{C^g},p_i)$, where $p_i\colon C^g\morphism C$ denotes the projection to the $i\ordinalth$ factor. Consider the relative (with respect to $C^g\times_SC\morphism C^g$) effective Cartier divisor $\snake{D}\subseteq C^g\times_SC$ of degree $g$ given by
+	\begin{align*}
+		\snake{D}=\sum_{i=1}^g\varsigma_i(C^g)\;.
+	\end{align*}
+	\begin{alphanumerate}\setcounter{enumi}{2}
+		\item Then $\snake{D}$ descends to a unique effective Cartier divisor $D\subseteq C^{(g)}\times_SC$ of degree $g$.
+		\item Let $D$ be as in \itememph{c} and $V\subseteq C$ an affine open subset as in the beginning of Theorem~\reff{thm:final}. Then $D\cap (V^{(g)}\times_SC)\subseteq V^{(g)}\times_SV$.
+	\end{alphanumerate}
+\end{thm}
+\begin{proof}
+	Part~\itememph{c}. Since $\pi$ is fpqc (even fppf) by part~\itememph{b}, one could try to use the machinery of faithfully flat descent here, but this could get nasty. Instead we use a direct approach.
+	
+	 Let $U\subseteq C^g\times_SC$ be an $\SS_g$-invariant affine open subset, and let $\Jj$ be the sheaf of ideals giving $\snake{D}$ on  $U$. Let $\Jj'\subseteq \Jj$ be its subsheaf generated by sections which are contained in the image of $\pi^*\colon \Oo_{C^{(g)}\times_SC}(U/\SS_g)\morphism\Oo_{C^g\times_SC}(U)$. If we show $\Jj'=\Jj$, then $\Jj$ is given by $\Jj=\pi^*\Jj_0$ for some sheaf of ideals $\Jj_0$ on $U/\SS_g$. To test whether $D=V(\Jj_0)$ is a relative effective Cartier divisor for $C^{(g)}\times_SC\morphism C^{(g)}$, we may check the two conditions from Lemma~\reff{lem:CartierDivisor}\itememph{a}. By descent of line bundles (Lemma~\reff{lem:descentIsALineBundleAgain}), $\Jj_0$ is a line bundle again, so the first condition holds. Also the intersection of $V(\Jj_0)$ with each fibre of $C^{(g)}\times_SC\morphism C^{(g)}$ is finite since we know the same is true for $V(\Jj)=\snake{D}$, since $\snake{D}$ is a relative effective Cartier divisor for $C^g\times_SC\morphism C^g$.
+	 
+	 To prove $\Jj'=\Jj$, we may check this on stalks, and as in Step~1 of \itememph{b}, it is sufficient to consider points $x$ which are closed in their fibre over $S$. Moreover, $\Jj'_x=\Jj_x$ may be tested after a faithfully flat base change. Hence, as in Step~2 and 3 of \itememph{b} we may take fppf base change to ensure that all appearing residue fields coincide, and then take completions everywhere. Let $\{x_1,\ldots,x_\ell\}$ be the projections of $x\in C^g\times_S C$ to the first $g$ factors, each $x_i$ appearing with multiplicity $j_i$, and let $z$ be the projection to the last factor. As usual, we assume that $x$ is sorted (Convention~\reff{con:sorted}) in its first $g$ coordinates. If $y$ denotes the image of $x$ in $C^{(g)}\times_SC$, then as in \eqreff{eq:OCgx3}, we obtain
+	 \begin{align}\lbl{eq:OCgx4}
+	 	\roof{\Oo}_{C^g\times_SC,x}\cong \roof{\Oo}_{S,s}\llbracket X_1,\ldots,X_g,Z\rrbracket\quad\text{and}\quad\roof{\Oo}_{C^{(g)}\times_SC,y}\cong \roof{\Oo}_{S,s}\llbracket S_{1,1},\ldots,S_{\ell,j_\ell},Z\rrbracket\;.
+	 \end{align}
+	 The additional variable $Z$ represents the fact that the $\SS_g$-action only permutes the first $g$ factors.
+	 
+	 If $z\notin\{x_1,\ldots,x_\ell\}$, then $x$ is not in the image of any $\varsigma_i$. Since the $\varsigma_i$ are closed embeddings (being sections of the proper and thus separated morphism $C^g\times_SC\morphism C^g$, so \cite[Proposition~1.5.5]{alggeo1} applies), we obtain $\Jj_x=\Oo_{C^g\times_SC,x}$ in this case, hence $\Jj_x$ and $\Jj'_x$ are both generated by $1$, and the assertion is true. 
+	 
+	 Otherwise, assume w.l.o.g.\ $x'=x_1$, so that $x$ is in the image of $\varsigma_1,\ldots,\varsigma_{j_1}$, but not in the image of any $\varsigma_i$ for $i>j_1$. Let's describe $\Jj_x$ in this case! Let $x'$ be the image of $x$ under $C^g\times_SC\morphism C^g$, so that $x=\varsigma_j(x')$ for all $j=1,\ldots,j_1$. It's easy to see\footnote{\lbl{footnote:varsigmai}Indeed, let $V\cong \Spec A$ and $W\cong \Spec R$ be affine open neighbourhoods of $C$ and $S$ respectively, such that $f(V)\subseteq W$. Then the projection $p_i\colon C^g\morphism C$ corresponds to $\iota_i\colon A\morphism A^{\otimes g}$ defined by $\iota_i(a)=1\otimes\cdots\otimes a\otimes\cdots\otimes 1$, with $a$ occuring in the $i\ordinalth$ position. Hence $\varsigma_i^*\colon A^{\otimes g}\otimes_RA\morphism A^{\otimes g}$ is given by
+	 \begin{align*}
+	 	\varsigma_i^*(a_1\otimes\cdots\otimes a_g\otimes b)=a_1\otimes\cdots\otimes ba_i\otimes\cdots \otimes a_g\;.
+	 \end{align*}	
+	 This coincides with what we claim.} that the induced morphism on completions of stalks
+	 \begin{align*}
+	 	\varsigma_j^*\colon \roof{\Oo}_{C^g\times_SC,x}\cong \roof{\Oo}_{S,s}\llbracket X_1,\ldots,X_g,Z\rrbracket\morphism\roof{\Oo}_{S,s}\llbracket X_1,\ldots,X_g\rrbracket\cong \roof{\Oo}_{C^g,x'}
+	 \end{align*}
+	 is given by $Z\mapsto X_j$ (and everything else stays fixed). Hence $\ker\varsigma_j^*$ is the principal ideal generated by $(Z-X_j)$.
+	 
+	 Since $\roof{\Jj}_x=\Jj_x\roof{\Oo}_{C^g\times_SC,x}$ is given by $\prod_{j=1}^{j_1}\ker\varsigma_j^*$ (this is clear from the construction in Remark~\reff{rem:CartierSemigroup}), we conclude that $\roof{\Jj}_x$ is the principal ideal generated by
+	 \begin{align*}
+	 	\prod_{j=1}^{j_1}(Z-X_j)=Z^{j_1}+\sum_{j=1}^{j_1}(-1)^j\sigma_j(X_1,\ldots,X_{j_1})Z^{j_1-j}=Z^{j_1}+\sum_{j=1}^{j_1}(-1)^jS_{1,j}Z^{j_1-j}\;.
+	 \end{align*}
+	 Hence the generator is an element of $\roof{\Oo}_{C^{(g)}\times_SC,y}$, and moreover it only depends on $y$, but not on the choice of a preimage $x$. This shows $\vphantom{\widehat{\Jj}}\roof{\Jj}'_x=\roof{\Jj}_x$ and we are done, as explained above.
+	 
+	 Part~\itememph{d}. From the definition of the $\varsigma_i$ it is clear that $\varsigma_i(V^g)\subseteq V^g\times_SV$. Hence we get $\snake{D}\cap (V^g\times_SC)\subseteq V^g\times_SV$, and since $\snake{D}$ is the preimage of $D$ in $C^g\times_SC$, the assertion becomes rather obvious.
+\end{proof}
+Now let $V$ and $W$ be affine open subsets of $C$ and $S$ respectively, such that $f(V)\subseteq W$. Let $T$ be an affine scheme and $\tau\colon T\morphism W$ a morphism, making $T$ into an $S$-prescheme. For a morphism $t\in \Hom_{\cat{PSch}/S}(T,V^{(g)})$ let $D_t$ be the pullback of the Cartier divisor $D$ from \itememph{c} under the morphism
+\begin{align*}
+	(t,\id_C)\colon T\times_SC\morphism V^{(g)}\times_SC\monomorphism C^{(g)}\times_SC\;.
+\end{align*}
+From \itememph{d} we get $D_t\subseteq T\times_SV$. We would like to show that $t$ is uniquely determined by $D_t$. This will be done using the following technical result.
+\setcounter{thm}{11}
+\begin{thm}[continuation]
+	Let $p_2\colon T\times_SV\morphism V$ be the projection to the second factor, and $q\colon D_t\morphism T$ the projection to the first.
+	\begin{alphanumerate}\setcounter{enumi}{4}
+		\item Let $\lambda\in\Oo_C(V)$. The pullback $p_2^*\lambda$ of $\lambda$ acts by multiplication on $q_*\Oo_{D_t}$, which is a vector bundle on $T$ since $D_t$ -- being a Cartier divisor -- is finite flat over $T$. Then the characteristic polynomial of $p_2^*\lambda$ over $\Oo_T$ is given by
+		\begin{align*}
+			\chi=X^g+\sum_{j=1}^g(-1)^jt^*(\sigma_j(\lambda))X^{g-j}\;.
+		\end{align*}
+		This implies that $t$ is uniquely determined by $D_t$.
+	\end{alphanumerate}
+\end{thm}
+\begin{proof}
+	It's easy to see that the characteristic polynomial commutes with arbitrary base change, and so does the above expression for $\chi$. Therefore it's ok to prove the assertion after performing an fppf base change  $t'\colon T'\morphism T$ (since it's easy to check that $\Oo_T\morphism t'_*\Oo_{T'}$ is injective). Thus, using \itememph{b}, we may replace $T$ by $T\times_{V^{(g)}}V^g$. Hence we may assume that $t\colon T\morphism V^{(g)}$ factors over $V^g$. In this case $D_t$ is also a pullback of $\snake{D}$. Since, again, $\chi$ doesn't change under base change, it therefore suffices to consider the case $T=V^g$ and $D_t=\snake{D}$.
+	
+	 Put $V\cong \Spec A$ and $W\cong \Spec R$. Then the morphisms $\varsigma_i^*\colon A^{\otimes g}\otimes_RA\morphism A^{\otimes g}$ are given by $\varsigma_i^*(a_1\otimes\cdots\otimes a_g\otimes b)=a_1\otimes\cdots \otimes ba_i\otimes\cdots\otimes a_g$, as explained in the footnote on page~\pageref{footnote:varsigmai}. Let $J_i=\ker\varsigma_i^*$ and put $J=\prod_{i=1}^g$.
+	 
+	 Then $(A^{\otimes g}\otimes_RA)/J$ is the finite locally free $A^{\otimes g}$-module we are interested in, and $p_2^*\lambda=1\otimes\cdots\otimes 1\otimes \lambda$ acts on it by multiplication. We need to show that its characteristic polynomial is given by
+	 \begin{align*}
+	 	\chi=X^g+\sum_{j=1}^g(-1)^j\sigma_j(\lambda)X^{g-j}=X^g+\sum_{j=1}^g(-1)^j\sigma_j\big(\iota_1(\lambda),\ldots,\iota_g(\lambda)\big)X^{g-j}=\prod_{j=1}^g\big(X-\iota_j(\lambda)\big)\;,
+	 \end{align*}
+	 wherein the middle equality comes from unraveling the definition of $\sigma_j(\lambda)$ in Covention~\reff{con:sigmaja}. In particular, it suffices to show that each $\iota_i(\lambda)$ is an eigenvalue of $p_2^*\lambda$.
+	 
+	 To construct such eigenvectors, consider the short exact sequence
+	 \begin{align*}
+	 	0\morphism J_j/J\morphism (A^{\otimes g}\otimes_RA)/J\morphism (A^{\otimes g}\otimes_RA)/J_j\morphism 0\;.
+	 \end{align*}
+	 The right-most term can be identified with $A^{\otimes g}$ via $\varsigma_j^*$. In particular, the above sequence is split exact as a sequence of $A^{\otimes g}$-modules. Thus $A^{\otimes g}\otimes_RA)/J_j$ is a direct summand of $(A^{\otimes g}\otimes_RA)/J$. Moreover, by definition of $\varsigma_j^*$ multiplication by $p_2^*\lambda=1\otimes\cdots\otimes 1\otimes \lambda$ on $A^{\otimes g}\otimes_RA)/J_j$ is the same as multiplication by $\iota_j(\lambda)$ as an $A^{\otimes g}$-module. This gives the desired eigenvectors, proving that $\chi$ has the above form.
+	 
+	 This implies that $t$ is uniquely determined by $D_t$. Indeed, the characteristic polynomial of $p_2^*\lambda$ acting by multiplication on $q_*\Oo_{D_t}$ over $\Oo_T$ only depends on $D_t$. Hence the $t^*(\sigma_j(\lambda))$ are uniquely determined. But $\Oo_{C^{(g)}}(V^{(g)})$ is generated over $\Oo_S(W)$ by elements of the form $\sigma_j(\lambda)$ for $\lambda\in\Oo_C(V)$. This shows that the morphism of affine schemes $t\colon T\morphism V^{(g)}$ is indeed uniquely determined by $D_t$.
+\end{proof}
+We are now able to prove the highlight of Theorem~\reff{thm:final}. For every $S$-prescheme $T$ put 
+\begin{align*}
+	\Div_{C/S}^g(T)=\left\{\text{relative effective Cartier divisors of degree $g$ for }C_T\to T\right\}\;.
+\end{align*}
+By Remark~\reff{rem:CartierBaseChange}\itememph{a} and \itememph{c}, we use pullbacks of Cartier divisors to make $\Div_{C/S}^g$ into a functor $\Div_{C/S}^g\colon (\cat{PSch}/S)^\op\morphism\cat{Set}$.
+\setcounter{thm}{11}
+\begin{thm}[end]
+	Let $D\in \Div_{C/S}^g(C^{(g)})$ be the relative effective Cartier divisor from \itememph{c}.
+	\begin{alphanumerate}\setcounter{enumi}{5}
+		\item The functor $\Div_{C/S}^g$ is represented by $C^{(g)}$, and a functor isomorphism is given by
+		\begin{align*}
+			\Hom_{\cat{PSch}/S}\left(-,C^{(g)}\right)&\isomorphism\Div_{C/S}^g\\
+			\big(t\colon T\to C^{(g)}\big)&\longmapsto D_t\;.
+		\end{align*}
+	\end{alphanumerate}
+\end{thm}
+\begin{proof}
+	The key observation is that both sides are actually sheaves in the fppf topology! Indeed, for $\Hom_{\cat{PSch}/S}(-,C^{(g)})$ this was proved in Proposition~\reff{prop:fpqcSheaf}. For $\Div_{C/S}^g$, what we need to prove is that relative effective Cartier divisors satisfy fppf descent. But this is an easy corollary of faithfully flat descent (Theorem~\reff{thm:faithfullyFlatDescent}) together the fact that descent of line bundles preserves line bundles (Lemma~\reff{lem:descentIsALineBundleAgain}) and descent of sheaves of ideals preserves sheaves of ideals (easy to see from faithful flatness). It's also easy to see that the isomorphism in question is a morphism of fppf sheaves.
+	
+	In particular, we have a morphism of Zariski sheaves. Thus by \itememph{e} (and the fact that $C^{(g)}$ can be covered by such $V^{(g)}$ by \itememph{a}) we see that $\Hom_{\cat{PSch}/S}(-,C^{(g)})\morphism\Div_{C/S}^g$ is a monomorphism. Now let $E\in \Div_{C/S}^g(T)$. We need to show that $E$ is in the image. Since we have already shown injectivity (this is crucial here!), this can be checked fppf-locally. Thus, by Lemma~\reff{lem:fppfLocallySumOfSections}, it suffices to consider the case where $E=\sum_{i=1}^g\sigma_i(T)$ is a sum of sections $\sigma_i$ of $C_T\morphism T$. For $i=1,\ldots,g$ let $t_i$ denote the composition $t_i\colon T\morphism[\sigma_i]C_T\morphism C$. Then it is easily verified that
+	\begin{align*}
+		t\colon T\xrightarrow{(t_1,\ldots,t_g)} C^g\morphism[\pi]C^{(g)}
+	\end{align*}
+	provides a preimage of $E$. We are done!
+\end{proof}
 
+\section{Construction of the Jacobian in a special case}
+The proofs in this final section will be pretty sketchy and only cover a special case, due to the lecture running out of time. However, I think there is a good chance Professor Franke might explain this section in a bit more detail at the beginning of his lecture on the Mordell conjecture next semester! He also plans explaining how the construction of $\PIC_{C/S}$ in the general case can be reduced to the special case that is treated below, via faithfully flat descent (for which a canonical ample line bundle on $\PIC_{C/S}$ is needed, which will be given by the \emph{$\theta$-divisor}). So be sure to attend!
+
+To formulate our results appropriately, we need a relative notion of representability of functors (or fppf-sheaves, actually). This covers only the special case we're interested in; a general notion can be found in \cite[\stackstag{0021}]{stacks-project}.
+\begin{defi}\lbl{def:relativeRepresentable}
+	Let $\phi\colon\Ff\morphism\Gg$ be a morphism of sheaves (of sets) on the big fppf site $(\cat{PSch}/S)_\fppf$.
+	\begin{alphanumerate}
+		\item We call $\phi$ \defemph{representable} if for every $S$-prescheme $T$ and each $\gamma\in\Gg(T)$ the fppf sheaf $\Ff\times_\Gg T$ is representable by some $T$-prescheme $X_{\gamma,T}\morphism T$. Here $\Ff\times_\Gg T$ denotes the sheaf on $(\cat{PSch}/S)_\fppf$ given by
+		\begin{align*}
+			(\Ff\times_\Gg T)(T')=\left\{(f,\tau)\st
+		\begin{tabular}{c}
+			$f\in \Ff(T')$, $\tau\colon T'\morphism T$ is a morphism of $S$-preschemes,\\
+			 and $\phi(f)\in\Gg(T')$ equals the restriction of $\gamma$ along $\tau$
+		\end{tabular}\right\}\;.
+		\end{align*}
+		\item Let $\Pp$ be any property of morphisms of preschemes (like being flat, proper, or an open or closed embedding). We say \defemph{$\boldsymbol{\phi}$ has $\boldsymbol{\Pp}$} if all the $X_{\gamma,T}\morphism T$ have $\Pp$.
+		\item Let open immersions (in the sense of \itememph{b}) $\{\phi_i\colon \Ff_i\morphism \Gg\}_{i\in I}$ be given. If, for all $T$ and $\gamma$, the $\{X_{i,\gamma,T}\morphism T\}_{i\in I}$ are an open cover of $T$, then the $\Ff_i$ are said to be an \defemph{open cover} of $\Gg$.
+	\end{alphanumerate}
+\end{defi}
+Now let $f\colon C\morphism S$ be as at the beginning of Section~\reff{sec:curveSymmetricPowers}, and assume, additionally, that all geometric fibres $C_{\ov{s}}$ are curves of genus $g>1$. Also let $f$ be finitely presented or $S$ be locally noetherian. Then for all $S$-preschemes $T$ the canonical morphism $\Oo_T\morphism f_{T,*}\Oo_{C_T}$ is an isomorphism by Proposition~\reff{prop:RpLl}\itememph{c}\footnote{Here we need a strengthened version that works for finitely presented morphisms (which is easy) or restrict to $T$ which are locally noetherian.}. If moreover a section $\sigma\colon S\morphism C$ of $f$ exists (which is always the case fppf-locally), then our situation is nice enough that Example~\reff{ex:sheafifyingPic} provides an elegant description of the fppf-sheafified functor $\Pic_{C/S}$, and thus also of $\Pic_{C/S}^g$, the functor characterizing all line bundles of geometric fibre-wise degree $g$.
+\begin{defi}\lbl{def:UCS}
+	For all $S$-preschemes $T$ let $U_C(T)\subseteq \Pic^g(C_T)$ be given by the line bundles $\Ll\in\Pic(C_T)$ such that $H^1(C_{\ov{t}},\Ll|_{C_{\ov{t}}})=0$ for all $t\in T$. The fppf-sheafification of $U_C$ gives a subsheaf $U_{C/S}\subseteq \Pic_{C/S}^g$.
+\end{defi}
+\begin{rem}
+	\begin{alphanumerate}
+		\item $U_{C/S}(T)$ does \emph{not} consist of line bundles, and not even of isomorphism classes of line bundles -- that's simply not how $\Pic_{C/S}(T)$ works! You should think of the above $\Ll$ as a representative of some residue class modulo $f_T^*\Pic(T)$ instead.
+		\item It's not hard to deduce from Theorem~\reff{thm:GrauertGrothendieck}\itememph{b} that $U_{C/S}$ is an open subsheaf of $\Pic_{C/S}^g$ in the sense of Definition~\reff{def:relativeRepresentable}\itememph{b}.
+	\end{alphanumerate}
+\end{rem}
+Recall that Theorem~\reff{thm:final}\itememph{f} shows that $\Div_{C/S}^g$ is represented by $C^{(g)}$. Moreover, by Remark~\reff{rem:degree=degree} we have a morphism $\gamma\colon\Div_{C/S}^g\morphism\Pic_{C/S}^g$, given by sending a relative effective Cartier divisor $E\in\Div_{C/S}^g(T)$, which is cut out by a sheaf $\Jj_E\subseteq \Oo_{C_T}$ of invertible ideals, to $\Jj_E^{\otimes -1}$. It is common to denote $\Jj_E^{\otimes -1}=\Oo_{C_T}(E)$.
+\begin{prop}
+	\begin{alphanumerate}
+		\item \lbl{prop:UCS}The morphism $\gamma\colon\Div_{C/S}^g\morphism\Pic_{C/S}^g$ is proper and an isomorphism over the open subsheaf $U_{C/S}\subseteq \Pic_{C/S}^g$.
+		\item If $T\morphism S$ is a morphism with $T=\Spec k$ the spectrum of a field, then $\gamma$ defines a surjection on $k$-valued points.
+	\end{alphanumerate}
+ \end{prop}
+\begin{proof}[Sketch of a proof]
+	Part~\itememph{a}. Let $T$ be an $S$-prescheme; we assume that $T$ is locally noetherian for simplicity (since we proved most results, like the seesaw theorem, only in this case). Let $[\Ll]\in\Pic_{C/S}^g(T)$ an element given by a line bundle $\Ll$ on $C_T$. We need to show that $F=\Div_{C/S}^g\times_{\Pic_{C/S}^g}T$ is representable by some $Z$, and that $Z$ is proper over $T$.
+	
+	Unwinding Definition~\reff{def:relativeRepresentable}\itememph{a}, we see that $F(T')$ consists of pairs $(E,\tau)$ such that $E\in \Div_{C/S}^g(T')$, $\tau\colon T'\morphism T$ is a morphism of $S$-preschemes, and $[\Oo_{C_{T'}}(E)]=[\tau^*\Ll]$ holds in $\Pic_{C/S}^g(T')$. Since
+	\begin{align*}
+		\Div_{C/S}^g(T')\cong\Div_{C_T/T}^g(T')\cong \Hom_{\cat{PSch}/T}\left(T',C_T^{(g)}\right)
+	\end{align*}
+	(the right bijections follows from applying Theorem~\reff{thm:final}\itememph{f} to $T$ instead of $S$), we get $E=D_t$ for some $t\colon T'\morphism C_T^{(g)}$, hence $\Oo_{C_T'}(E)=\Jj_{D_t}^{\otimes -1}$. If we are in a sufficiently nice situation such that Example~\reff{ex:sheafifyingPic} is applicable, then $[\Jj_{D_t}^{\otimes -1}]=[\tau^*\Ll]$ is equivalent to
+	\begin{align*}
+		\Jj_{D_t}\otimes\tau^*\Ll\cong f_{T'}^*\Ll_0
+	\end{align*}
+	for some line bundle $\Ll_0$ on $T'$. But now the seesaw theorem (Theorem~\reff{thm:seesaw}) can be applied to $p_1\colon C_T^{(g)}\times_TC_T\morphism C_T^{(g)}$ and the line bundle $\Jj_D\otimes p_1^*\Ll$ on $C_T^{(g)}\times_TC_T$, which proves that $\gamma$ is representable by some closed subprescheme $Z\subseteq C_T^{(g)}$. Since $C_T^{(g)}$ (and thus is closed subprescheme $Z$ as well) is proper over $T$ by Theorem~\reff{thm:final}\itememph{a}, we get properness of $\gamma$ for free.
+	
+	In general, a section of $f\colon C\morphism S$ exists only fppf-locally, so we need to descend the closed subpreschemes $Z$ we obtain fppf-locally. However, fppf descent of closed subpreschemes is innocuous (see Corollary~\reff{cor:stuff2Bdescended}\itememph{b}).
+	
+	Now let $[\Ll]\in U_{C/S}(T)$, where $\Ll$ is some line bundle on $C_T$. Then $H^1(C_{\ov{t}},\Ll|_{C_{\ov{t}}})=0$ for all $t\in T$, and by the same argument as in the proof of Proposition~\reff{prop:RpLl}\itememph{a} (unfortunately we can't use this proposition straightaway) we see that $f_{T,t}*\Ll$ is a line bundle on $T$. We may replace $\Ll$ by $\Ll\otimes f_T^*f_{T,*}\Ll$, which doesn't change $[\Ll]$, to obtain that $f_{T,*}\Ll$ is a trivial line bundle on $T$ (this is not hard to check), hence generated by some global section $\lambda$ of $\Ll$. Now consider
+	\begin{align*}
+		\lambda\otimes -\colon \Ll^{\otimes -1}\morphism \Oo_{C_T}\;.
+	\end{align*}
+	It's image is a sheaf of ideals $\Jj\subseteq \Oo_{C_T}$, and it can be checked that $\Jj$ defines an effective relative Cartier divisor $E\in\Div_{C/S}^g(T)$ which is mapped to $[\Ll]$. This construction can be reversed, which shows that $\gamma$ is an isomorphism over $U_{C/S}$.
+	
+	Part~\itememph{b}. Let $T=\Spec k$ and $\Ll$ be a line bundle on $C_T$. Let $C_{\ov{T}}=C_T\times_T\Spec\ov{k}$. Since $\ov{\Ll}$ has degree $g$, Riemann--Roch shows $\dim_{\ov{k}}H^0(C_{\ov{T}},\Ll|_{C_{\ov{T}}})\geq 1$ (compare the argument at the beginning of Section~\reff{sec:Strategy}). Since $\ov{k}$ is flat over $k$, we get $\dim_kH^0(C_T,\Ll)\geq 1$ as well. Hence we may choose a non-vanishing global section $\lambda$ of $\Ll$ which defines a divisor $E$ mapping to $[\Ll]$ as in \itememph{a}.
+\end{proof}
+\begin{prop}
+	\begin{alphanumerate}
+		\item \lbl{prop:covering}Let $\{\sigma_i\}_{i\in I}$ be sections of $C\morphism S$ and $\Gamma\subseteq \Pic(C/S)$ the subgroup generated by the $\sigma_i$. If the translations of $U_{C/S}(T)$ by the elements of $\Gamma$ cover $\Pic_{C/S}(T)$ whenever $T=\Spec k$ is the spectrum of an algebraically closed field, then $\Pic_{C/S}$ is representable, and for every $d\in \IZ$ the representing prescheme $\PIC_{C/S}^d\morphism S$ of line bundles of degree $d$ is proper over $S$.
+		\item If $\Gamma$ is any indexing set and $\Gg$ is any sheaf (of sets) on $(\cat{PSch}/S)_\fppf$ which can be covered, in the sense of Definition~\reff{def:relativeRepresentable}\itememph{c}, by representable open subsheaves $\{U_\gamma\}_{\gamma\in\Gamma}$, then $\Gg$ is representable itself.
+	\end{alphanumerate}
+\end{prop}
+\begin{proof}[Sketch of a proof.]
+	Part~\itememph{b}. Let $U_\gamma$ be represented by an $S$-prescheme $\boldsymbol{U}_\gamma$. Since $U_\vartheta\monomorphism \Gg$ is an open embedding, we obtain that $U_\gamma\cap U_\vartheta$ is representable by some open subset $\boldsymbol{U}_{\gamma,\vartheta}\subseteq \boldsymbol{U}_{\gamma}$ for all $\gamma,\vartheta\in\Gamma$. But the representing object is unique up to unique isomorphism, hence $\boldsymbol{U}_{\gamma,\vartheta}\cong \boldsymbol{U}_{\vartheta,\gamma}$ canonically. Then it's easy to see that the $\boldsymbol{U}_\gamma$ can glued together to a representing object of $\Gg$.
+	
+	Part~\itememph{a}. By \itememph{b} and the fact that the covering property can be tested fibre-wise, hence also geometric fibre-wise, we see that $\Pic_{C/S}^g$ is representable by some $S$-prescheme $\PIC_{C/S}^g$. But $f\colon C\morphism S$ has sections, hence we can construct relative effective Cartier divisors of degree $1$, hence also line bundles $\Ll_1$ of fibre-wise degree $1$ by Remark~\reff{rem:degree=degree}. Such an $\Ll_1$ can be used to shift line bundles of arbitrary fibre-wise degree to line bundles of fibre-wise degree $g$. Hence $\Pic_{C/S}$ is representable by $\PIC_{C/S}=\coprod_{d\in\IZ}\PIC_{C/S}^g$.
+	
+	For properness, it suffices to consider the case $d=g$ as the above shows $\PIC_{C/S}^d\cong \PIC_{C/S}^g$ for all $d\in\IZ$. But still this needs to be done by hand. Note that separatedness of $\PIC_{C/S}^g\morphism S$ is automatic from the seesaw theorem (as explained in Remark~\reff{rem:PICscheme}\itememph{b}). Finally universal closedness is easy if one shows that $C^{(g)}\morphism\PIC_{C/S}^g$ is surjective on points, since then properness of $C^{(g)}\morphism S$ (by Theorem~\reff{thm:final}\itememph{a}) can be used. But surjectivity is a fibre-wise problem, hence it may be reduced to the case where $S$ is a field, which was dealt with in Proposition~\reff{prop:UCS}\itememph{b}.
+\end{proof}
+\begin{prop}
+	Fppf-locally with respect to $S$, Proposition~\reff{prop:covering} can be applied.
+\end{prop}
+\begin{proof}
+	Omitted.
+\end{proof}
 
 
 \Appendix
@@ -3714,7 +3906,7 @@ We briefly recall the most important facts about completions. An excellent intro
 	\end{alphanumerate}
 \end{defi}
 \begin{rem}
-	$M$ with its $I$-adic topology is \emph{pseudo-metrizable} via $d(x,y)=\mathrm{e}^{-\sup\left\{n\st x-y\in I^n\right\}}$. It is easy to check that $\roof{M}$ is also the completion of $M$ in the analytical sense, i.e.\ the set of Cauchy sequences modulo the zero sequences.
+	$M$ with its $I$-adic topology is \emph{pseudo-metrizable} via $d(x,y)=\mathrm{e}^{-\sup\left\{n\st x-y\in I^n\right\}}$. It is easy to check that $\roof{M}$ is also the completion of $M$ in the analytical sense, i.e., the set of Cauchy sequences modulo the zero sequences.
 \end{rem}
 \begin{example}
 	If $I^n=0$ for some $n\in \IN$, then any $A$-module is complete in the $I$-adic topology.
