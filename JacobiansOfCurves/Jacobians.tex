@@ -109,7 +109,7 @@ Please report bugs, typos etc. through the \emph{Issues} feature of github.
 	with exact rows. Then the snake lemma finishes the job.
 \end{proof}
 \begin{fact}\lbl{fact:limVanishing}
-	Let $X_\bullet$ have the property that for every $i\in\IN$ there is a $j\geq i$ such that the composition $p_{j,i}\colon X_j\morphism[p_j]X_{j-1}\xrightarrow{p_{j-1}}\ldots\xrightarrow{p_{i+1}}X_i$ vanishes. Then
+	Let $X_\bullet$ have the property that for every $i\in\IN$ there is some $j\geq i$ such that the composition $p_{j,i}\colon X_j\morphism[p_j]X_{j-1}\xrightarrow{p_{j-1}}\ldots\xrightarrow{p_{i+1}}X_i$ vanishes. Then
 	\begin{align*}
 		\limit[i\in\IN]X_i=\limit[i\in\IN][^1]X_i=0\;.
 	\end{align*}
@@ -138,23 +138,25 @@ Please report bugs, typos etc. through the \emph{Issues} feature of github.
 	Now let $X_\bullet$ be arbitrary with the Mittag-Leffler property. Let $Y_i=\bigcap_{j\geq i}p_{j,i}(X_j)\subseteq X_i$. Then $\limit[][^1]Y_i=0$ by the special case we just treated, and $\limit[][^1]X_i/Y_i=0$ by Fact~\reff{fact:limVanishing}. Since $\limit[][^1]X_i$ is sandwiched between these two in the exact sequence from Fact~\reff{fact:6termLimitSequence}, this shows $\limit[][\smash{^1}]X_i=0$, as required.
 \end{proof}
 \section{The theorem about formal functions}
-Let $f\colon X\morphism Y=\Spec A$ be a  morphism of quasi-compact schemes. Let $I\subseteq A$ be any ideal. Consider
+Let $f\colon X\morphism Y=\Spec A$ be a  morphism of quasi-compact schemes. Let $I\subseteq A$ be any ideal. For every $n\geq 0$ consider the morphism
 \begin{align*}
 	i_n\colon X_n=X\times_Y\Spec (A/I^n)\morphism X\;,
 \end{align*}
-which is a base change of the closed immersion $Y_n=\Spec (A/I^n)\monomorphism \Spec A$, hence indeed a closed immersion itself. Also, if $f$ is proper, then so is $X_n\morphism Y_n$ because properness is another \emph{proper}ty (tee-hee) that is stable under base change (by \cite[Remark~2.4.1]{alggeo2}).
+which is a base change of the closed immersion $Y_n=\Spec (A/I^n)\monomorphism \Spec A$, hence a closed immersion itself. Also, if $f$ is proper, then so is $X_n\morphism Y_n$ because properness is another \emph{proper}ty (tee-hee) that is stable under base change (by \cite[Remark~2.4.1]{alggeo2}).
 
-Let $\Ff$ be a quasi-coherent sheaf of $\Oo_X$-modules and $\Ff|_{X_n}=i_n ^*\Ff$ its restriction to $X_n$ (this notation is slightly abusive, but convenient). We put $\Ff_n=i_{n,*}\Ff|_{X_n}$. It's easy to check (e.g.\ affine-locally) that $\Ff_n\cong \Ff/I^n\Ff$. Since $i_n$ is a closed immersion and thus affine, we have an isomorphism $H^p(X,\Ff_n)\cong H^p(X_n,\Ff|_{X_n})$ for all $p\geq 0$ by \cite[Corollary~1.5.1]{alggeo2}. Together with the canonical projection $\Ff_{n+1}\cong \Ff/I^{n+1}\Ff\morphism \Ff/I^n\Ff\cong \Ff_n$ this gives canonical morphisms $H^p(X_{n+1},\Ff|_{X_{n+1}})\morphism H^p(X_n,\Ff|_{X_n})$ for all $n\in\IN$.
-
-The canonical morphism $\Ff\morphism i_{n,*}i_n^*\Ff=\Ff_n$ induces a morphism
-\begin{align}\lbl{eq:Hmorphism}
-	H^p(X,\Ff)\morphism H^p(X,\Ff_n)\cong H^p(X_n,\Ff|_{X_n})
+Let $\Ff$ be a quasi-coherent sheaf of $\Oo_X$-modules ($\Ff$ will eventually be assumed coherent, but for now this suffices) and $\Ff|_{X_n}=i_n ^*\Ff$ its restriction to $X_n$ (this notation is slightly abusive, but convenient).  Since $i_n$ is a closed immersion and thus affine, we have an isomorphism $H^p(X,i_{n,*}\Ff|_{X_n})\cong H^p(X_n,\Ff|_{X_n})$ for all $p\geq 0$ by \cite[Corollary~1.6.1]{alggeo2}. But it's also easy to check (e.g.\ affine-locally) that $i_{n,*}\Ff|_{X_n}\cong \Ff/I^n\Ff$. Together with the projection $ \Ff/I^{n+1}\Ff\morphism \Ff/I^n\Ff$ this gives canonical morphisms 
+\begin{align}\lbl{eq:HpXn+1toHpXn}
+	H^p(X_{n+1},\Ff|_{X_{n+1}})\cong H^p(X,\Ff/I^{n+1}\Ff)\morphism H^p(X,\Ff/I^n\Ff)\cong H^p(X_n,\Ff|_{X_n})\;.
 \end{align}
-for all $p\geq 0$ (the isomorphism on the right-hand side comes from the fact that $i_n$ is a closed immersion, hence affine, and we can apply \cite[Corollary~1.6.1]{alggeo2}). This is a morphism of $A$-modules, but $H^p(X_n,\Ff|_{X_n})$ is actually an $A/I^n$-module, so \eqreff{eq:Hmorphism} factors over
-\begin{align*}
+We have another canonical projection $\Ff\morphism \Ff/I^n\Ff$, which induces a morphism
+\begin{align}\lbl{eq:Hmorphism}
+	H^p(X,\Ff)\morphism H^p(X,\Ff/I^n\Ff)\cong H^p(X_n,\Ff|_{X_n})
+\end{align}
+for all $p\geq 0$. This is a morphism of $A$-modules, but $H^p(X_n,\Ff|_{X_n})$ is actually an $A/I^n$-module, so \eqreff{eq:Hmorphism} factors over
+\begin{align}\lbl{eq:Hmorphism2}
 	H^p(X,\Ff)/I^nH^p(X,\Ff)\morphism H^p(X_n,\Ff|_{X_n})\;.
-\end{align*}
-This is compatible with the canonical morphisms $H^p(X_{n+1},\Ff|_{X_{n+1}})\morphism H^p(X_n,\Ff|_{X_n})$ (you can just check that on an affine \v Cech covers). Passing to the limit gives a morphism
+\end{align}
+This is compatible with the canonical morphisms $H^p(X_{n+1},\Ff|_{X_{n+1}})\morphism H^p(X_n,\Ff|_{X_n})$ from equation \eqreff{eq:HpXn+1toHpXn} -- you can just check that on affine \v Cech covers. Taking the limit over \eqreff{eq:Hmorphism2} gives a morphism
 \begin{align}\lbl{eq:formalFunctions}
 	H^p(X,\Ff)^\complete\morphism\limit[n\geq 1]H^p(X_n,\Ff|_{X_n})\;,
 \end{align}
@@ -175,11 +177,11 @@ where $\roof{\phantom{x}}$ denotes the $I$-adic completion.
 	\begin{claim}\lbl{claim:FFclaim1}
 		$K^p$ is a finitely generated $R$-module for all $p\geq 0$.
 	\end{claim}
-	Assuming this for the moment, recall that $\Ff_n\cong \Ff/I^n\Ff$ and $H^p(X_,\Ff|_{X_n})\cong H^p(X,\Ff_n)$, so the long exact cohomology sequence associated to $0\morphism I^n\Ff\morphism \Ff\morphism \Ff_n\morphism 0$ appears as
-	\begin{align}\lbl{eq:FFSeq1}
-		H^p(X,I^n\Ff)\morphism H^p(X,\Ff)\morphism H^p(X_n,\Ff|_{X_n})\morphism H^{p+1}(X,I^n\Ff)\;.
-	\end{align}
-	As pointed out after \eqreff{eq:Hmorphism}, $H^p(X,\Ff)\morphism H^p(X_n,\Ff|_{X_n})$ factors over $H^p(X,\Ff)/I^nH^p(X,\Ff)$, hence we can turn equation \eqreff{eq:FFSeq1} into an exact sequence
+	Assuming this for the moment, recall that $H^p(X,\Ff/I^n\Ff)\cong H^p(X_n,\Ff|_{X_n})$, so the long exact cohomology sequence associated to $0\morphism I^n\Ff\morphism \Ff\morphism \Ff_n\morphism 0$ appears as
+	\begin{align*}%\lbl{eq:FFSeq1}
+		\ldots\morphism H^p(X,I^n\Ff)\morphism H^p(X,\Ff)\morphism H^p(X_n,\Ff|_{X_n})\morphism H^{p+1}(X,I^n\Ff)\morphism\ldots \;.
+	\end{align*}
+	By \eqreff{eq:Hmorphism2}, we can turn the above long exact sequence into four-term exact sequences
 	\begin{align}\lbl{eq:FFSeq2}
 		0\morphism U_n\morphism H^p(X,\Ff)/I^nH^p(X,\Ff)\morphism H^p(X_n,\Ff|_{X_n})\morphism V_n\morphism 0\;,
 	\end{align}
@@ -187,7 +189,12 @@ where $\roof{\phantom{x}}$ denotes the $I$-adic completion.
 	\begin{claim}\lbl{claim:FFclaim2}
 		We have $\limit U_n=\limit[][^1]U_n=0$ and $\limit V_n=\limit[][^1]V_n=0$.
 	\end{claim}
-	Before we prove this (and Claim~\reff{claim:FFclaim1}), let's see how Theorem~\reff{thm:FormalFunctions} follows from it. Let $W_n$ be the image of $H^p(X,\Ff)/I^nH^p(X,\Ff)$ in $H^p(X_n,\Ff|_{X_n})$. We may split \eqreff{eq:FFSeq2} into two short exact sequences $0\morphism U_n\morphism H^p(X,\Ff)/I^nH^p(X,\Ff)\morphism W_n\morphism 0$ and $0\morphism W_n\morphism H^p(X_,\Ff|_{X_n})\morphism V_n\morphism 0$. Applying Fact~\reff{fact:6termLimitSequence} to the first one gives $H^p(X,\Ff)^\complete\cong \limit[][^1]W_n$. Then the six-term exact sequence associated to the second proves $\limit W_n\cong \limit H^p(X_n\Ff|_{X_n})$ and we are done.
+	Before we prove this (and Claim~\reff{claim:FFclaim1}), let's see how Theorem~\reff{thm:FormalFunctions} follows from it. Let $W_n$ be the image of $H^p(X,\Ff)/I^nH^p(X,\Ff)\morphism H^p(X_n,\Ff|_{X_n})$. We may split \eqreff{eq:FFSeq2} into two short exact sequences
+	\begin{gather*}
+		0\morphism U_n\morphism H^p(X,\Ff)/I^nH^p(X,\Ff)\morphism W_n\morphism 0\\
+		\hphantom{\;.}0\morphism W_n\morphism H^p(X_,\Ff|_{X_n})\morphism V_n\morphism 0\;.
+	\end{gather*}
+	Applying Fact~\reff{fact:6termLimitSequence} to the first one gives $H^p(X,\Ff)^\complete\cong \limit[][^1]W_n$. Then the six-term exact sequence associated to the second proves $\limit W_n\cong \limit H^p(X_n\Ff|_{X_n})$ and we are done.
 	
 	It remains to show the two claims. Note that the Rees algebra $R$ is noetherian. Indeed, $I$ is finitely generated as an ideal in the noetherian ring $A$, hence $R$ is of finite type over $A$. Let's also make the following convention: Whenever we write $I^kU_n$ or $I^kV_n$ in the following, this means multiplication as $A$-modules and the result is contained in $U_n$ resp.\ $V_n$ again, whereas $R_kU_n$ or $R_kV_n$ means multiplication by the $k\ordinalth$ homogeneous component of $R$ (which equals $I^k$ as well, but multiplication in a graded module has a shifting effect, which is what we want to stress by this distinction), so the result is contained on $U_{k+n}$ resp.\ $V_{k+n}$.
 	
@@ -203,12 +210,12 @@ where $\roof{\phantom{x}}$ denotes the $I$-adic completion.
 	\begin{align*}
 		H^p(\snake{X},\xi^*\Ff)\cong H^p(X,\xi_*\xi^*\Ff)\cong H^p\bigg(X,\bigoplus_{n\geq 0}I^n\Ff\bigg)\cong \bigoplus_{n\geq 0}H^p(X,I^n\Ff)=K^p\;.
 	\end{align*}
-	Note that direct sums usually \emph{don't} commute with cohomology, but here they do, because $X$ is quasi-compact and $\bigoplus_{n\geq 0}I^n\Ff$ is quasi-coherent (for which we need quasi-compactness as well), so we may compute $H^p\left(X,\bigoplus_{n\geq 0}I^n\Ff\right)$ via finite affine \v Cech covers. In this case, the products in the \v Cech complex are all finite, hence commute with the direct sum, which is what we needed.
+	Note that direct sums usually \emph{don't} commute with cohomology, but here they do, because $X$ is quasi-compact and $\bigoplus_{n\geq 0}I^n\Ff$ is quasi-coherent (for which we already need that $X$ is quasi-compact, otherwise direct sums of quasi-coherent sheaves aren't necessarily quasi-coherent again), so we may compute $H^p\left(X,\bigoplus_{n\geq 0}I^n\Ff\right)$ via finite affine \v Cech covers. In this case, the products in the \v Cech complex are all finite, hence commute with the direct sum, which is what we needed.
 	
 	Now $\snake{f}\colon \snake{X}\morphism\snake{Y}=\Spec R$ is proper (as a base change of the proper morphism $f$), hence the right-hand side is a finitely generated $R$-module by our finiteness results for the cohomology of proper morphisms (cf.\ \cite[Theorem~5]{alggeo2}). We win.
 \end{proof}
 \begin{rem}
-	Note that in the lecture Franke used $\Kk_n\cong \Jj^n\Ff$ instead of $I^n\Ff$, where $\Jj=f^{-1}\Ii$ is the inverse image (in the sense of Definition~\reff{def:f-1}). But $\Jj^n\Ff\cong I^n\Ff$ -- which is not that surprising, since the $I^n$-action on $\Ff$ is given via the algebraic component $\Oo_Y\morphism f_*\Oo_X$ of $f$, so $I^n\Ff=\Jj^n\Ff$ is pretty obvious from the construction of $f^{-1}$ described in the proof of Lemma~\reff{lem:f-1} below. I prefer the notation $I^n\Ff$ -- in particular, this is how Grothendieck denotes it in \cite[Ch.\:III (4.1.7)]{egaIII}, so I believe it's my right to do so as well. Nevertheless, Lemma~\reff{lem:f-1} is \emph{perhaps worthwhile to know} (if you get what I mean), so we will include it now.
+	Note that in the lecture Franke used $\Kk_n\cong \Jj^n\Ff$ instead of $I^n\Ff$, where $\Jj=f^{-1}\snake I$ denotes the inverse image in the sense of the upcoming Definition~\reff{def:f-1}. But since the $I^n$-action on $\Ff$ is given via the algebraic component $\Oo_Y\morphism f_*\Oo_X$ of $f$, it is not very surprising that $I^n\Ff= \Jj^n\Ff$ (actually, this is pretty obvious from the construction of $f^{-1}$ described in the proof of Lemma~\reff{lem:f-1} below). I prefer the notation $I^n\Ff$ -- in particular, this is how Grothendieck denotes it in \cite[Ch.\:III (4.1.7)]{egaIII}, so I believe it's my right to do so as well. Nevertheless, Lemma~\reff{lem:f-1} is \emph{perhaps worthwhile to know} (as Professor Franke would likely phrase it), so we will include it now.
 \end{rem}
 \begin{defi}\lbl{def:f-1}
 	Let $f\colon X\morphism Y$ be any morphism of preschemes and $\Jj\subseteq \Oo_Y$ a sheaf of ideals on $Y$. Then define $f^{-1}\Jj$ to be the image of $f^*\Jj\morphism\Oo_X$ (which is obtained as the composition of the pullback of $\Jj\morphism \Oo_Y$ with the isomorphism $f^*\Oo_Y\cong \Oo_X$).
@@ -216,8 +223,8 @@ where $\roof{\phantom{x}}$ denotes the $I$-adic completion.
 \begin{lem}\lbl{lem:f-1}
 	Let $f\colon X\morphism Y$ be any morphism of preschemes and $\Jj\subseteq \Oo_Y$ quasi-coherent.
 	\begin{alphanumerate}
-		\item $f^{-1}\Jj\subseteq \Oo_X$ is quasi-coherent.
-		\item Let $Y_0$ and $X_0$ be the closed subpreschemes of $Y$ and $X$ defined by $\Jj$, $f^{-1}\Jj$ respectively. Then $X_0\cong X\times_YY_0$.
+		\item $f^{-1}\Jj\subseteq \Oo_X$ is a quasi-coherent sheaf of ideals.
+		\item Let $Y_0$ and $X_0$ be the closed subpreschemes of $Y$ and $X$ defined by $\Jj$ and $f^{-1}\Jj$ respectively. Then $X_0\cong X\times_YY_0$.
 		\item For all $n\geq 0$ we have $f^{-1}(\Jj^n)\cong (f^{-1}\Jj)^n$.
 	\end{alphanumerate}
 \end{lem}
@@ -225,9 +232,12 @@ where $\roof{\phantom{x}}$ denotes the $I$-adic completion.
 	The question is easily seen to be local on both $X$ and $Y$. So let's consider the affine situation where $Y=\Spec A$, $X=\Spec B$, and $\Jj=\snake{J}$ for some ideal $J\subseteq A$. Let $\phi\colon A\morphism B$ be the morphism of rings corresponding to $f$. Then $f^{-1}\Jj=\snake{I}$ where $I$ is the image of $B\otimes_AJ\morphism B$ sending $b\otimes j\mapsto b\cdot \phi(j)$. All three assertions are then easily checked.
 \end{proof}
 \begin{rem}\lbl{rem:fibres}
-	Recall that for a morphism $f\colon X\morphism Y$ of preschemes and a point $y\in Y$ the \defemph{fibre} $f^{-1}\{y\}$ of $f$ at $y$ is defined as the prescheme $f^{-1}\{y\}=X\times_Y\Spec \KK(y)$. This makes sense, since $f^{-1}\{y\}$ is indeed -- topologically -- the preimage of $y$, as proved in \cite[Corollary~1.3.3]{alggeo1}. Moreover, $\Spec \Oo_{Y,y}/\mm_{Y,y}^n\morphism Y$ is immersive for all $n\geq 1$ and has image $\{y\}$ as well. So \cite[Corollary~1.3.3]{alggeo1} is applicable again and shows that $X_n=X\times_Y\Spec (\Oo_{Y,y}/\mm_{Y,y}^n)$ has $f^{-1}\{y\}$ as underlying topological space too (but, of course, the prescheme structure differs in general). We may thus think of $X_n$ as the $(n-1)\ordinalst$ infinitesimal thickening of $f^{-1}\{y\}$. 
+	\begin{alphanumerate}
+		\item Recall that for a morphism $f\colon X\morphism Y$ of preschemes and a point $y\in Y$ the \defemph{fibre} $f^{-1}\{y\}$ of $f$ at $y$ is defined as the prescheme $f^{-1}\{y\}=X\times_Y\Spec \KK(y)$. This makes sense, since $f^{-1}\{y\}$ is indeed -- topologically -- the preimage of $y$, because $\Spec \KK(y)\morphism Y$ is an immersion with image $\{y\}$, so \cite[Corollary~1.3.3]{alggeo1} is applicable.
+		\item Moreover, $\Spec \Oo_{Y,y}/\mm_{Y,y}^n\morphism Y$ is immersive for all $n\geq 1$ and has image $\{y\}$ too. So the same argument shows that $X_n=X\times_Y\Spec (\Oo_{Y,y}/\mm_{Y,y}^n)$ has $f^{-1}\{y\}$ as underlying topological space too (but, of course, the prescheme structure differs in general). We may thus think of $X_n$ as the \defemph{$\boldsymbol{(n-1)\ordinalst}$ infinitesimal thickening} of $f^{-1}\{y\}$.
+	\end{alphanumerate}
 \end{rem}
-Using this, Theorem~\reff{thm:FormalFunctions} can be restated as follows.
+Using Remark~\reff{rem:fibres}, Theorem~\reff{thm:FormalFunctions} can be restated as follows.
 \begin{varthm}{thm}\lbl{thm:FormalFunctions2}
 	Let $f\colon X\morphism Y$ be a proper morphism between locally noetherian\footnote{Franke only assumes $Y$ to be locally noetherian, but $f$ being of (locally) finite type implies that $X$ is locally noetherian as well by Hilbert's Basissatz. This happens multiple times throughout the text.} preschemes. Let $\Ff$ be a coherent $\Oo_X$-module. For every $y\in Y$ let $X_n=X\times_Y\Spec (\Oo_{Y,y}/\mm_{Y,y}^n)$ be the $(n-1)\ordinalst$ infinitesimal thickening of $f^{-1}\{y\}$. Then there is an isomorphism
 	\begin{align*}
@@ -238,26 +248,20 @@ Using this, Theorem~\reff{thm:FormalFunctions} can be restated as follows.
 \begin{proof}
 	We may assume that $Y=\Spec A$ is affine, and that $A$ is a noetherian ring. Indeed, replacing $Y$ by an affine neighbourhood $U\cong \Spec A$ and $X$ by $f^{-1}(U)$ doesn't change $(R^pf_*\Ff)_y$ (because the construction of $R^pf_*\Ff$ is base-local by \cite[Proposition~1.5.1]{alggeo2}) and also $X_n$ is preserved since $f^{-1}\{y\}$ is already contained in $f^{-1}(U)$.
 	
-	In this case, $R^pf_*\Ff=H^p(X,\Ff)^\qcmod$ by \cite[Proposition~1.5.1\itememph{d}]{alggeo2}. Let $\pp\in\Spec A$ be the prime ideal associated to $y$. Then $(R^pf_*\Ff)_y\cong H^p(X,\Ff)_\pp$ and $\Oo_{Y,y}\cong A_\pp$ is flat over $A$. Let $\mm=\pp A_\pp\cong \mm_{Y,y}$ be its maximal ideal. We denote $\pi\colon \Spec A_\pp\morphism \Spec A$. Applying \cite[Fact~4.1.1]{alggeo2} to $\pi$ gives 
+	In this case, $R^pf_*\Ff=H^p(X,\Ff)^\qcmod$ by \cite[Proposition~1.5.1\itememph{d}]{alggeo2}. Let $\pp\in\Spec A$ be the prime ideal associated to $y$. Then $(R^pf_*\Ff)_y\cong H^p(X,\Ff)_\pp$ and $\Oo_{Y,y}\cong A_\pp$ is flat over $A$. Let $\mm=\pp A_\pp\cong \mm_{Y,y}$ be its maximal ideal. We denote $\pi\colon \Spec A_\pp\morphism \Spec A$. By flat base change, which is unfortunately discussed way in the future in Section~\reff{sec:flatBaseChange} (but we have already seen it in \cite[Fact~4.1.1]{alggeo2}) we get
 	\begin{align*}
 		H^p(X\times_Y\Spec A_\pp,\pi^*\Ff)\cong H^p(X,\Ff)_\pp\cong (R^pf_*\Ff)_y\;.
 	\end{align*}
-	Also
-	\begin{align*}
-		\left(X\times_Y\Spec A_\pp\right)\times_{\Spec A_\pp}\Spec(A_\pp/\mm^n)&\cong X\times_Y\left(\Spec A_\pp\times_{\Spec A_\pp}\Spec (A_\pp/\mm^n)\right)\\
-		&\cong X\times_Y\Spec(A_\pp/\mm^n)\\
-		&\cong X_n
-	\end{align*}
-	by a bit abstract nonsense. Now Theorem~\reff{thm:FormalFunctions} may be applied to $X\times_Y\Spec A_\pp\morphism \Spec A_\pp$ (the base change of $f$) and the assertion follows.
+	Also $(X\times_Y\Spec A_\pp)\times_{\Spec A_\pp}\Spec(A_\pp/\mm^n)\cong X\times_Y\Spec(A_\pp/\mm^n)\cong X_n$ by a bit abstract nonsense. Now Theorem~\reff{thm:FormalFunctions} may be applied to $X\times_Y\Spec A_\pp\morphism \Spec A_\pp$ (the base change of $f$) and the assertion follows.
 \end{proof}
 \section{Application to Zariski's main theorem}
-\subsection{A lot of (not necessarily main) theorems by Zariski}
+\subsection{Quasi-finite morphisms and a lot of (not necessarily main) theorems by Zariski}
 Out there in the real world, there are multiple \emph{main theorems} of Zariski around, and usually they're only loosely related. Professor Franke recommends Mumford's \emph{The red book of varieties and schemes} for a discussion of various such version.
 \begin{cor}\lbl{cor:Rpvanishing}
 	Let $f\colon X\morphism Y$ be any proper morphism between locally noetherian preschemes and let $d=\sup_{y\in Y}\dim \left(f^{-1}\{y\}\right)$. If $\Ff$ is a coherent $\Oo_X$-module and $p>d$, then $R^pf_*\Ff=0$.
 \end{cor}
 \begin{proof}
-	Since $R^pf_*\Ff$ is coherent (this is \cite[Theorem~5]{alggeo2}), $(R^pf_*\Ff)_y$ is a finitely generated $\Oo_{Y,y}$-module, hence it vanishes iff it $\mm_{Y,y}$-adic completion vanishes by Fact~\reff{fact:completion101}\itememph{b}. But $X_n=X\times_Y\Spec (\Oo_{Y,y}/\mm_{Y,y}^n)$ has underlying space $f^{-1}\{y\}$ (as explained in Remark~\reff{rem:fibres}), hence $H^p(X_n,\Ff|_{X_n})=0$ when $p>d$ by Grothendieck's theorem on cohomological dimension (cf.\ \cite[Proposition~1.4.1]{alggeo2}). The assertion now follows from Theorem~\reff{thm:FormalFunctions2}.
+	Since $R^pf_*\Ff$ is coherent (this is \cite[Theorem~5]{alggeo2}), $(R^pf_*\Ff)_y$ is a finitely generated $\Oo_{Y,y}$-module, hence it vanishes iff it $\mm_{Y,y}$-adic completion vanishes by Fact~\reff{fact:completion101}\itememph{b}. But $X_n=X\times_Y\Spec (\Oo_{Y,y}/\mm_{Y,y}^n)$ has underlying space $f^{-1}\{y\}$ (as explained in Remark~\reff{rem:fibres}\itememph{b}), hence $H^p(X_n,\Ff|_{X_n})=0$ when $p>d$ by Grothendieck's theorem on cohomological dimension (cf.\ \cite[Proposition~1.4.1]{alggeo2}). The assertion now follows from Theorem~\reff{thm:FormalFunctions2}.
 \end{proof}
 \begin{defi}\lbl{def:quasiFinite}
 	A morphism $f\colon X\morphism Y$ of finite type is called \defemph{quasi-finite at $\boldsymbol{x\in X}$} if $x$ is discrete in its fibre, i.e., if $\{x\}$ is an open and closed subset of $f^{-1}\{y\}$ where $y=f(x)$. We call $f$ \defemph{quasi-finite} if it is quasi-finite at every $x\in X$. 
@@ -274,7 +278,7 @@ The following fact wasn't mentioned in the lecture, but it's \emph{definitely} (
 		\item \lbl{fact:annoyingQF}Any finite morphism is quasi-finite.
 		\item If $k$ is a field, a morphism $f\colon X\morphism\Spec k$ of finite type is quasi-finite iff it is finite.
 		\item Let $f\colon X\morphism Y$ and $g\colon Y\morphism Z$ be morphisms of finite type such that $g$ is quasi-finite at $y=f(x)$ for some $x\in X$. Then $gf$ is quasi-finite at $x$ iff $f$ is quasi-finite at $x$.
-		\item Base changes of a quasi-finite morphism is quasi-finite again.
+		\item Any base change of a quasi-finite morphism is quasi-finite again.
 	\end{alphanumerate}
 \end{fact}
 \begin{proof}
@@ -282,7 +286,7 @@ The following fact wasn't mentioned in the lecture, but it's \emph{definitely} (
 	\begin{align*}
 		f^{-1}\{y\}=X\times_Y\Spec \KK(y)\morphism \Spec \KK(y)
 	\end{align*}
-	is finite again, as a base changes of finite morphisms are finite again (cf.\ \cite[Corollary~1.5.1]{alggeo1}). Letting $k=\KK(y)$ this puts us in the situation from \itememph{b}, so it's sufficient to prove \itememph{b}.
+	is finite again, as a base changes of finite morphisms are finite again (cf.\ \cite[Corollary~2.5.1]{alggeo1}). Letting $k=\KK(y)$ this puts us in the situation from \itememph{b}, so it's sufficient to prove \itememph{b}.
 	
 	In the case of \itememph{b} we have $f^{-1}\{y\}=X$, so what we need to show is that $X$ carries the discrete topology if $f$ is finite. We know that $X\cong \Spec R$ where $R$ is some finite-dimensional $k$-algebra (using finiteness of $f$). For $x\in X$ let $\pp$ be the corresponding prime ideal of $R$. Then $R/\pp$ is a domain and a finite-dimensional $k$-vector space, hence a finite field extension of $k$. This means that $\pp$ is a maximal ideal of $R$. Consequently, all points of $X$ are closed, so it suffices to show that $X$ has finitely many points. Let $\{x_1,\ldots,x_n\}$ be any finite subset of $X$ and $\{\mm_1,\ldots,\mm_n\}$ the corresponding maximal ideals of $R$. For every $i$, we may choose an element $\alpha_i\in\mm_i$ which is not contained in any $\mm_j$ for $j\neq i$ (e.g.\ by the prime avoidance lemma, cf.\ \cite[Lemma~2.5.1]{alg1}). Put $\beta_i=\prod_{j\neq i}\alpha_j$ (so that $\beta_i\in\mm_j$ for all $j\neq i$ but $\beta_i\notin \mm_i$). We claim that $\beta_1,\ldots,\beta_n$ are $k$-linearly independent. Indeed, if $\lambda_1\beta_1+\ldots+\lambda_n\beta_n=0$ for some coefficients $\lambda_1,\ldots,\lambda_n\in k$, then reducing modulo $\mm_i$ gives $\lambda_i\beta_i=0$ in $R/\mm_i=\KK(\mm_i)$. But $\beta_i\neq 0$ in $\KK(\mm_i)$, so $\lambda_i=0$ for all $i=1,\ldots,n$. This proves $\dim_kR\geq n$. But $R$ is finite-dimensional over $k$, hence $X$ must have finitely many points, as claimed.
 	
@@ -300,7 +304,8 @@ The following fact wasn't mentioned in the lecture, but it's \emph{definitely} (
 	
 	Part~\itememph{d}. Let $f\colon X\morphism S$ be quasi-finite and $g\colon Y\morphism S$ another morphism of preschemes. The base change $\snake{f}\colon \snake{X}=X\times_SY\morphism Y$ is of finite type by \cite[Fact~2.2.2]{alggeo1}. Now let $y\in Y$ and put $s=g(y)$. By \itememph{b} we see that $X\times_S\Spec \KK(s)$ is finite over $\Spec \KK(s)$. Then
 	\begin{align*}
-		\snake{X}\times_Y\Spec\KK(y)\cong X\times_S\big(\Spec\KK(s)\times_S\Spec\KK(y)\big)\cong \big(X\times_S\Spec \KK(s)\big)\times_{\Spec \KK(s)}\Spec \KK(y)
+		\snake{X}\times_Y\Spec\KK(y)&\cong X\times_S\big(\Spec\KK(s)\times_S\Spec\KK(y)\big)\\
+		&\cong \big(X\times_S\Spec \KK(s)\big)\times_{\Spec \KK(s)}\Spec \KK(y)
 	\end{align*}
 	is finite over $\Spec\KK(y)$, so $\snake{f}$ is indeed quasi-finite by \itememph{b} again.
 \end{proof}
@@ -315,12 +320,13 @@ The following fact wasn't mentioned in the lecture, but it's \emph{definitely} (
 		is open in $X$, and the restriction $f|_U$ is quasi-finite (by definition).
 	\end{alphanumerate}
 \end{thm}
-\begin{proof}
-	Part \itememph{a}. We may assume that $Y=\Spec A$ is affine (indeed, all involved properties are base-local). Let $\Jj\subseteq \Oo_X$ be a sheaf of ideals, then $\Jj$ is coherent as $X$ is locally noetherian. Since $f$ is quasi-finite, all fibres carry the discrete topology. In particular, they are zero-dimensional and Corollary~\reff{cor:Rpvanishing} shows that $R^1f_*\Jj=0$. Then also $0=R^1f_*\Jj(Y)=H^1(X,\Jj)$ (using \cite[Proposition~1.5.1\itememph{d}]{alggeo2}), hence $X$ is affine by Serre's affinity criterion. This shows that $f$ is affine. Moreover, $f_*\Oo_X$ is a coherent $\Oo_Y$-module by \cite[Theorem~5]{alggeo2}, hence $f$ is finite.
-	
-	Part \itememph{b} is hard and occupies most of Subsection~\reff{subsec:discussionOfThm3}. Part \itememph{c} is easier, but postponed as well until we have the required theory available.
+\begin{rem}
+	If $\Pp$ is a property of morphisms of preschemes, then a \emph{quasi-$\Pp$} morphism usually means an open immersion followed by a morphism which has property $\Pp$. So Theorem~\reff{thm:ZariskiMain}\itememph{b} essentially says that -- under the right circumstances -- quasi-finiteness as in Definition~\reff{def:quasiFinite} coincides with our expectations.
+\end{rem}
+\begin{proof}[Proof of Theorem~\reff{thm:ZariskiMain}\itememph{a}]
+	For \itememph{a} we may assume that $Y=\Spec A$ is affine as all involved properties are base-local. Let $\Jj\subseteq \Oo_X$ be a sheaf of ideals, then $\Jj$ is coherent as $X$ is locally noetherian. Since $f$ is quasi-finite, all fibres carry the discrete topology. In particular, they are zero-dimensional and Corollary~\reff{cor:Rpvanishing} shows that $R^1f_*\Jj=0$. Then also $0=\Gamma(Y,R^1f_*\Jj)=H^1(X,\Jj)$ (using \cite[Proposition~1.5.1\itememph{d}]{alggeo2}), hence $X$ is affine by Serre's affinity criterion. This shows that $f$ is affine. Moreover, $f_*\Oo_X$ is a coherent $\Oo_Y$-module by \cite[Theorem~5]{alggeo2}, hence $f$ is finite.
 \end{proof}
-To warm up for Theorem~\reff{thm:ZariskiMain}\itememph{b} and \itememph{c}, we're going to prove more of Zariski's theorems!
+ The proof of \itememph{b} is hard and occupies most of Subsection~\reff{subsec:discussionOfThm3}. Part \itememph{c} is easier, but postponed as well until we have the required theory available. To warm up for Theorem~\reff{thm:ZariskiMain}\itememph{b} and \itememph{c}, we're going to prove more of Zariski's theorems!
 \begin{thm}[Zariski's connectedness theorem]\lbl{thm:ZariskiConnectedness}
 	Let $f\colon X\morphism Y$ be a proper morphism between locally noetherian schemes, whose algebraic component $f^*\colon \Oo_Y\morphism f_*\Oo_X$ is an isomorphism.
 	\begin{alphanumerate}
@@ -333,7 +339,7 @@ To warm up for Theorem~\reff{thm:ZariskiMain}\itememph{b} and \itememph{c}, we'r
 	\end{alphanumerate}
 \end{thm}
 \begin{proof}
-	Part \itememph{a}. Assume $f^{-1}\{y\}$ is not connected, say, $f^{-1}\{y\}=U_1\cup U_2$ for disjoint non-empty open subsets $U_1,U_2\subseteq f^{-1}\{y\}$. Since all infinitesimal thickenings $X_n=X\times_Y\Spec(\Oo_{Y,y}/\mm_{Y,y}^n)$ have underlying topological space $f^{-1}\{y\}$, there is a unique $\epsilon_n\in\Oo_{X_n}(X_n)=H^0(X_n,\Oo_{X_n})$ such that $\epsilon_n|_{U_1}=0$ and $\epsilon_n|_{U_2}=1$. The sequence $(\epsilon_n)_{n\in\IN}$ clearly defines an element $\epsilon$ of
+	Part \itememph{a}. Assume $f^{-1}\{y\}$ is disconnected, say, $f^{-1}\{y\}=U_1\cup U_2$ for disjoint non-empty open subsets $U_1,U_2\subseteq f^{-1}\{y\}$. Since all infinitesimal thickenings $X_n=X\times_Y\Spec(\Oo_{Y,y}/\mm_{Y,y}^n)$ have underlying topological space $f^{-1}\{y\}$, we see that the $X_n$ are disconnected too. Hence for all $n\geq 1$ there is a unique $\epsilon_n\in\Oo_{X_n}(X_n)=H^0(X_n,\Oo_{X_n})$ such that $\epsilon_n|_{U_1}=0$ and $\epsilon_n|_{U_2}=1$. The sequence $(\epsilon_n)_{n\geq 1}$ clearly defines an element $\epsilon$ of
 	\begin{align*}
 		\limit[n\geq 1]H^0(X_n,\Oo_{X_n})\cong (f_*\Oo_X)_y^\complete\cong \roof{\Oo}_{Y,y}\;.
 	\end{align*}
@@ -386,7 +392,7 @@ To warm up for Theorem~\reff{thm:ZariskiMain}\itememph{b} and \itememph{c}, we'r
 	in which every arrow except the top one is injective, hence $A\morphism B$ is injective as well.
 \end{proof}
 \begin{fact}\lbl{fact:steinFactorization}
-	Every proper morphism $f\colon X\morphism Y$ between locally noetherian preschemes can be factorized via the \defemph{Stein factorization} as
+	Every proper morphism $f\colon X\morphism Y$ between locally noetherian preschemes can be factorized as
 	\begin{align*}
 		f\colon X\morphism[\snake{f}]\SPEC(f_*\Oo_X)\morphism[g]Y\;.
 	\end{align*}
@@ -397,12 +403,19 @@ To warm up for Theorem~\reff{thm:ZariskiMain}\itememph{b} and \itememph{c}, we'r
 	\begin{align*}
 		f\colon X\morphism[\snake{f}]\Spec \Oo_X(X)\morphism[g]\Spec A\;,
 	\end{align*}
-	so $g$ is affine. Moreover, $\Oo_X(X)$ is a finitely generated $A$-module because $f_*\Oo_X$ is a coherent $\Oo_Y$-module (by \cite[Theorem~5]{alggeo2}, as usual), so $g$ is actually finite. Also proving that $\snake{f}_*\Oo_X=\Oo_{\Spec \Oo_X(X)}$ is straightforward, so it remains to show that $\snake{f}$ is proper. But $g$ is finite, hence separated, and $g\snake{f}=f$ is proper, so $\snake{f}$ is proper as well by \cite[Proposition~2.4.1]{alggeo2}.
+	so $g$ is affine. Moreover, $\Oo_X(X)$ is a finitely generated $A$-module because $f_*\Oo_X$ is a coherent $\Oo_Y$-module (by \cite[Theorem~5]{alggeo2}, as usual), so $g$ is actually finite. Also proving that $\snake{f}_*\Oo_X=\Oo_{\Spec \Oo_X(X)}$ is straightforward, so it remains to show that $\snake{f}$ is proper. But $g$ is finite, hence separated, and $g\snake{f}=f$ is proper, so $\snake{f}$ is proper as well by the two-out-of-three property from \cite[Proposition~2.4.1]{alggeo2}.
 \end{proof}
+\begin{rem}
+	If $f\colon X\morphism Y$ is a quasi-compact and quasi-separated morphism of preschemes (we need these two conditions for $f_*\Oo_X$ to be quasi-coherent, cf.\ \cite[Proposition~1.5.2\itememph{b}]{alggeo1}). Then there always is a factorization
+	\begin{align*}
+		f\colon X\morphism\SPEC(f_*\Oo_X)\morphism Y
+	\end{align*}
+	as in Fact~\reff{fact:steinFactorization} (but it usually doesn't have as convenient properties as above). This is called the \defemph{Stein factorization} of $f$.
+\end{rem}
 \subsection{Proof of Zariski's main theorem}
 \label{subsec:discussionOfThm3}
 \begin{proof}[Proof of Theorem~\reff{thm:ZariskiMain}\itememph{c}]
-	Let's assume that $f\colon X\morphism Y$ factors over
+	Note that Theorem~\reff{thm:ZariskiMain}\itememph{c} is actually a generalization of Theorem~\reff{thm:ZariskiConnectedness}\itememph{b}. We will reduce it to this special case.	Let's first assume that $f\colon X\morphism Y$ factors over
 	\begin{align}\lbl{eq:properCompactification}
 		f\colon X\monomorphism[j]\ov{X}\morphism[\smash{\ov{f}}]Y\;,
 	\end{align}
@@ -418,7 +431,7 @@ To warm up for Theorem~\reff{thm:ZariskiMain}\itememph{b} and \itememph{c}, we'r
 	\end{align*}
 	But the right-hand side is open in $X$ by Fact~\reff{fact:steinFactorization} and Theorem~\reff{thm:ZariskiConnectedness}\itememph{b} and we're happy!
 	
-	Note that such an $\ov{f}$ always exists when $X$ and $Y$ are affine. Indeed, if $X$ has finite type over $Y$ and both are affine, we get a closed embedding $X\monomorphism\IA_Y^n$ for some $n\in \IN$. Together with the open embedding $\IA_Y^n\monomorphism\IP_Y^n$ this makes $X$ a closed subprescheme of an open subprescheme of $\IP_Y^n$. But then $X$ is also an open subprescheme of some closed subprescheme $\ov{X}\subseteq \IP_Y^n$. This gives a factorization
+	Note that such an $\ov{f}$ as in \eqreff{eq:properCompactification} always exists when $X$ and $Y$ are affine. Indeed, if $X$ has finite type over $Y$ and both are affine, we get a closed embedding $X\monomorphism\IA_Y^n$ for some $n\in \IN$. Together with the open embedding $\IA_Y^n\monomorphism\IP_Y^n$ this makes $X$ a closed subprescheme of an open subprescheme of $\IP_Y^n$. But then $X$ is also an open subprescheme of some closed subprescheme $\ov{X}\subseteq \IP_Y^n$ (here we use \cite[\stackstag{01R8}]{stacks-project}). This gives a factorization
 	\begin{align*}
 		f\colon X\monomorphism[j]\ov{X}\morphism[\smash{\ov{f}}]Y
 	\end{align*}
@@ -430,10 +443,10 @@ To warm up for Theorem~\reff{thm:ZariskiMain}\itememph{b} and \itememph{c}, we'r
 	
 	\paragraph{Part~I -- proving quasi-affinity is sufficient.} We begin with the observation that things become much easier when we are proper.
 	\begin{lem}\lbl{lem:ZMTLemma1}
-		Let $f\colon X\morphism Y$ be a quasi-finite separated morphism between noetherian schemes, and assume that $f$ factors as in \eqreff{eq:properCompactification}. Then Zariski's main theorem holds for $f$.
+		Let $f\colon X\morphism Y$ be a quasi-finite separated morphism between noetherian preschemes, and assume that $f$ factors as in \eqreff{eq:properCompactification}. Then Zariski's main theorem holds for $f$.
 	\end{lem}
 \begin{rem}
-	 It can be shown that such a factorization \eqreff{eq:properCompactification} always exists for morphisms of finite type between noetherian schemes, for which Professor Franke refers to notes of \emph{Brian Conrad} or \emph{Paul Vojta}, although he isn't sure whether using their results to prove Theorem~\reff{thm:ZariskiMain}\itememph{b} doesn't involve any circular reasoning.
+	 It can be shown that such a factorization \eqreff{eq:properCompactification} always exists for morphisms of finite type between noetherian preschemes, for which Professor Franke refers to notes of \emph{Brian Conrad} or \emph{Paul Vojta}, although he isn't sure whether using their results to prove Theorem~\reff{thm:ZariskiMain}\itememph{b} doesn't involve any circular reasoning.
 \end{rem}
 \begin{proof}[Proof of Lemma~\reff{lem:ZMTLemma1}]
 	Let $\ov{f}=g\circ \snake{f}$ be the Stein factorization of $\ov{f}$. Put $\ov{Y}=\SPEC(\ov{f}_*\Oo_{\ov{X}})$ for convenience. Since $g\colon \ov{Y}\morphism Y$ is finite by Fact~\reff{fact:steinFactorization} (for which we need properness of $\ov{f}$), we're done if we show that the composition $\snake{f}|_X\colon X\monomorphism \ov{X}\morphism \ov{Y}$ is an open embedding. Since $f=g\snake{f}|_X$ and $g$ are quasi-finite ($g$ is even finite), Fact~\reff{fact:annoyingQF}\itememph{c} shows that $\snake{f}|_X$ is quasi-finite as well.
@@ -449,16 +462,14 @@ To warm up for Theorem~\reff{thm:ZariskiMain}\itememph{b} and \itememph{c}, we'r
 		\item $f$ is quasi-compact and quasi-separated and the canonical morphism $X\morphism\SPEC(f_*\Oo_X)$ (which also appears in the Stein factorization, but exists in general) is an open immersion.
 	\end{alphanumerate}
 \end{defi}
-For a proof of equivalence, check out \cite[\stackstag{01SJ}]{stacks-project}. Note that Franke apparently had a different proof (for the case of quasi-affine morphisms of finite type) in mind than the Stacks Project guys, but I have no idea how this was going to work (whereas the Stacks Project proof is pretty clear to me and works without restrictions on $f$). Nevertheless, the following lemma he suggested is perhaps worthwhile to know.
-\begin{lem}
+For a proof of equivalence, check out \cite[\stackstag{01SJ}]{stacks-project}. Note that Franke apparently had a different proof (for the case of quasi-affine morphisms of finite type) in mind than the Stacks Project guys, but I have no idea how this was going to work (whereas the Stacks Project proof is pretty clear to me and works without restrictions on $f$). Nevertheless, we are going to need the following lemma he suggested.
+\begin{lem}\lbl{lem:coherentExtension}
 	Let $X$ be a noetherian prescheme, $\Mm$ a quasi-coherent $\Oo_X$-module, and $U\subseteq X$ an open subset. Let $\Nn\subseteq \Mm|_U$ be a coherent submodule. Then there is a coherent $\snake{\Nn}\subseteq \Mm$ such that $\snake{\Nn}|_U=\Nn$. In particular, $\Mm$ is the union of its coherent submodules.
 \end{lem}
 \begin{proof}
 	We proceed by noetherian induction. Because $Y$ is noetherian, there is a $\subseteq$-maximal open subset $U$ to which $\Nn$ extends (and, with slight abuse of notation, we denote some fixed extension to $U$ by $\Nn$ as well). Assuming $U\neq X$, we will derive a contradiction. Pick $x\in X\setminus U$ and let $V\cong \Spec A$ be an affine open neighbourhood of $x$. 
-	\begin{claim*}
-		There is a coherent $\Qq\subseteq \Mm|_V$ such that $\Qq|_{U\cap V}\supseteq \Nn|_{U\cap V}$.
-	\end{claim*}
-	Indeed, $V\cong \Spec A$ is a noetherian topological space (because $Y$ is noetherian), so the open subset $U\cap V$ is quasi-compact. This means that we can cover it by finitely many affine open subsets $V_i\cong \Spec A_{f_i}$ for $i=1,\ldots,n$. For every $i$ we know that $\Nn(V_i)\subseteq \Mm(V_i)\cong \Mm(V)_{f_i}$ is a finitely generated $A_{f_i}$-module (because $\Nn$ is coherent), so we can choose finitely many $\mu_{i,j}\in \Mm(V)$, $j=1,\ldots,k_i$, whose images in $\Nn(V_i)$ form a set of generators. Let $\Qq\subseteq \Mm|_V$ be the subsheaf generated by $\left\{\mu_{i,j}\st i\leq n,\ j\leq k_i\right\}\in\Mm(V)$. Then $\Qq$ has the required property, proving the claim.
+	
+	We claim that there is a coherent $\Qq\subseteq \Mm|_V$ such that $\Qq|_{U\cap V}\supseteq \Nn|_{U\cap V}$. Indeed, $V\cong \Spec A$ is a noetherian topological space (because $Y$ is noetherian), so the open subset $U\cap V$ is quasi-compact. This means that we can cover it by finitely many affine open subsets $V_i\cong \Spec A_{f_i}$ for $i=1,\ldots,n$. For every $i$ we know that $\Nn(V_i)\subseteq \Mm(V_i)\cong \Mm(V)_{f_i}$ is a finitely generated $A_{f_i}$-module (because $\Nn$ is coherent), so we can choose finitely many $\mu_{i,j}\in \Mm(V)$, $j=1,\ldots,k_i$, whose images in $\Nn(V_i)$ form a set of generators. Let $\Qq\subseteq \Mm|_V$ be the subsheaf generated by $\left\{\mu_{i,j}\st i\leq n,\ j\leq k_i\right\}\in\Mm(V)$. Then $\Qq$ has the required property, proving the claim.
 	
 	Let $j\colon U\cap V\monomorphism V$ be the obvious inclusion and put $\ov{\Nn}=\Qq\cap j_*\Nn|_{U\cap V}$. This guy is coherent (because subsheaves of a coherent one are coherent again on locally noetherian preschemes) and satisfies $\ov{\Nn}|_{U\cap V}=\Nn|_{U\cap V}$. But then $\Nn$ can be extended to a coherent sheaf $\snake{\Nn}$ on $U\cup V$ via $\snake{\Nn}|_U=\Nn$ and $\Nn|_V=\Kk$. This contradicts maximality of $U$.
 \end{proof}
@@ -466,17 +477,33 @@ For a proof of equivalence, check out \cite[\stackstag{01SJ}]{stacks-project}. N
 	If $f\colon X\morphism Y$ is a quasi-finite and quasi-affine morphism between noetherian preschemes, then Theorem~\reff{thm:ZariskiMain}\itememph{b} holds for $f$.
 \end{lem}
 \begin{proof}
-	Note that quasi-affine morphisms are automatically separated. We will show that $g\colon \SPEC (f_*\Oo_X)\morphism Y$ is proper, which shows that $f$ factors as in \eqreff{eq:properCompactification}. Then Theorem~\reff{thm:ZariskiMain}\itememph{b} holds by Lemma~\reff{lem:ZMTLemma1}. To show properness of $g$, we define
+	The proof I put here before is \emph{horribly wrong}! I hope I can fix it in the following. If you are interested in the more general theory, you may want to have a look at \cite[\S5]{egaII} or \cite[\stackstag{01VV}]{stacks-project} (but I'm not sure if the latter actually proves what we need).
+	
+	Let $W\cong \Spec A$ be an affine open subset of $Y$. Then $U=f^{-1}(W)$ is an open subset of some affine scheme $\Spec B$, hence $U$ can be covered by affine open subsets of the form $U\setminus V(\beta_i)\cong \Spec B_{\beta_i}$ for $\beta_i\in B$. We can choose a finite cover of this form, using $\beta_1,\ldots,\beta_n$ say, since $U$ is quasi-compact (because $V$ is quasi-compact, and the morphism $f$ is quasi-finite, hence of finite type, hence quasi-compact). Also note that $U$ is separated (being an open subprescheme of the separated prescheme $\Spec B$), so \cite[Proposition~1.5.1\itememph{c}]{alggeo1} shows $B_{\beta_i}\cong \Oo_X(U\setminus V(\beta_i))\cong \Oo_X(U)_{\beta_i}$.
+	
+	Since $f$ is quasi-finite, it has finite type, hence the $B_{\beta_i}\cong \Oo_X(U)_{\beta_i}$ have finite type over $A$. Then we may choose a finite generating set $\{b_{i,j}\}_j$ of $\Oo_X(U)_{\beta_i}$ over $A$. Without loss of generality we may assume the $b_{i,j}$ are already contained in $\Oo_X(U)$. Let $E$ be the $A$-submodule of $\Oo_X(U)$ generated by the $\{b_{i,j}\}_{i,j}$ for all $i,j$ and $\{\beta_1,\ldots,\beta_n\}$. By Lemma~\reff{lem:coherentExtension} we may extend $E$ to a coherent $\Oo_Y$-submodule $\Ee^{(W)}\subseteq f_*\Oo_X$.
+	
+	Now since $Y$ is quasi-compact, we may cover it by finitely many affine open subsets $W$. Let $\Ee\subseteq f_*\Oo_X$ be the sum of all $\Ee^{(W)}$. Then $\Ee$ is coherent again. Now consider the graded $\Oo_Y$-algebra
 	\begin{align*}
-		\Rr=\bigoplus_{n\geq 0}f_*\Oo_X\;,
+		\Sym_{\Oo_Y}^*(\Ee)=\bigoplus_{d\geq 0}\Sym_{\Oo_Y}^d(\Ee)\;.
 	\end{align*}
-	viewed as a graded quasi-coherent $\Oo_Y$-algebra. Note that $\SPEC (f_*\Oo_X)\cong \PROJ (\Rr)$ as $Y$-preschemes (indeed, locally this reduces to \cite[Example~2.6.2]{alggeo1}). Moreover, $\Rr$ is locally of finite type over $\Oo_Y$. In fact, the $0\ordinalth$ homogeneous component $\Rr_0\cong f_*\Oo_X$ is locally of finite type over $\Oo_Y$ (because $f$ is of finite type), and $\Rr$ is generated by $\Rr_0$ and the element $1\in\Rr_1(Y)$ (which acts as a shift). Therefore, $\PROJ (\Rr)\morphism Y$ is proper by \cite[Proposition~2.4.2]{alggeo2}, whence we're done.
+	That is, $\Sym_{\Oo_Y}^*(\Ee)$ is the symmetric algebra associated to $\Ee$ -- which is, loosely speaking, given by $\bigoplus_{d\geq 0}\Ee^{\otimes d}$ modulo the minimal equivalence relation that turns it into a \emph{commutative} (!) graded $\Oo_Y$-algebra. We put $\IA(\Ee)=\SPEC(\Sym_{\Oo_Y}^*(\Ee))$. Moreover, let $\Rr=(\Sym_{\Oo_Y}^*(\Ee))[T]$ be the polynomial algebra over $\Sym_{\Oo_Y}^*(\Ee)$. We equip $\Rr$ with the grading inherited from $\Sym_{\Oo_Y}^*(\Ee)$ plus the polynomial variable $T$ gets homogeneous degree $1$. Now put $\IP(\Ee)=\PROJ(\Rr)$.
+	
+	Then $\IA(\Ee)$ is isomorphic to the open subprescheme $\iota\colon \IP(\Ee)\setminus V(T)\monomorphism \IP(\Ee)$. Moreover, we get a canonical morphism $\mu^*\colon \Sym_{\Oo_Y}^*(\Ee)\morphism f_*\Oo_X$ induced by multiplication. This induces a morphism $\mu\colon \SPEC(f_*\Oo_X)\morphism\IA(\Ee)$. Note that $\mu$ need not be a closed immersion since $\mu^*\colon \Gamma(W,\Sym_{\Oo_Y}^*(\Ee))\morphism\Gamma(W,f_*\Oo_X)\cong \Oo_X(U)$ is not necessarily surjective for affine open subsets $W\subseteq Y$ and $U=f^{-1}(U)$ as above. However, it will certainly become surjective after localizing at some $\beta_i$ as above. This shows that $\mu$ is actually a locally closed immersion!
+	
+	Hence the composition $\mu\circ\iota\colon \SPEC(f_*\Oo_X)\morphism \IP(\Ee)$ is a locally closed immersion too. Since $\mu$ is clearly affine, hence quasi-compact, and $\iota\colon \IA(\Ee)\monomorphism \IP(\Ee)$ is an open immersion of noetherian preschemes, hence quasi-compact too.  Thus we see that the scheme theoretic image of $\mu\circ\iota$ is well-behaved (by \cite[\stackstag{01R8}]{stacks-project}), so $\mu\circ\iota$ may be factored as $\SPEC(f_*\Oo_X)\monomorphism \ov{X}\monomorphism\IP(\Ee)$, in which the first arrow is an open immersion and the second is a closed one. So all in all, $f$ can be factored as 
+	\begin{align*}
+		f\colon X\monomorphism\ov{X}\morphism Y\;,
+	\end{align*}
+	in which the first arrow is an open immersion. It remains to show that $\ov{X}$ is proper over $Y$. But $\IP(\Ee)$ is clearly proper over $Y$ by \cite[Proposition~2.4.2]{alggeo2} (actually, $\IP(\Ee)$ is even projective over $Y$), so the closed subprescheme $\ov{X}$ is proper over $Y$ as well. Now Lemma~\reff{lem:ZMTLemma1} does the rest.
 \end{proof}
-So we see that to prove Zariski's main theorem it is sufficient to show that any quasi-finite and separated morphism between noetherian preschemes is quasi-affine (note that this is actually \emph{weaker} than Theorem~\reff{thm:ZariskiMain}\itememph{b}).
+So we see that to prove Zariski's main theorem it is sufficient to show that any quasi-finite and separated morphism between noetherian preschemes is quasi-affine (which is a weaker assertion than the original one).% (note that this is actually \emph{weaker} than Theorem~\reff{thm:ZariskiMain}\itememph{b}).
 
 \paragraph{Part II -- the case of complete noetherian local rings.} In this part Professor Franke follows \cite[Exposé~VIII.6]{sga1}. Assume $Y=\Spec A$, where $A$ is a noetherian complete local ring (with respect to its maximal ideal $\mm$) and that Zariski's main theorem is true for morphisms $f'\colon X'\morphism Y'$, where in addition to the other assumptions we have $\dim Y'<\dim Y$. Let $s$ be the unique closed point of $A$ (given by $\mm$).
+
+We start with a technical lemma.
 \begin{lem}\lbl{lem:connectedComponents}
-	If $B$ is any finite $A$-algebra, then $\Spec B$ has a decomposition $\Spec B=\bigcup_{i=1}^nU_i$, where the $U_i$ are disjoint open subsets such that the only closed point $s$ of $\Spec A$ has precisely one preimage in each $U_i$.
+	Assume we are in the above situation. If $B$ is any finite $A$-algebra, then $\Spec B$ has a decomposition $\Spec B=\bigcup_{i=1}^nU_i$, where the $U_i$ are disjoint open subsets such that the only closed point $s$ of $\Spec A$ has precisely one preimage in each $U_i$.
 \end{lem}
 \begin{proof}
 	By Corollary~\reff{cor:finiteAlgebras}, $B$ has finitely many maximal ideals $\qq_1,\ldots,\qq_n$ and these are precisely the prime ideals over $\mm$. For every $\qq_i$ we will construct an idempotent $e_i\in B$ such that $e_i\in \qq_i$ but $e_i\notin\qq_j$ for $j\neq i$. Then $\qq_i\in V(e_i)$ but $\qq_j\neq V(e_i)$ for $j\neq i$, and $V(e_i)$ is an open and closed subset of $B$ (because $e_i$ is an idempotent), so we see that the $\qq_i$ are contained in distinct connected components of $\Spec B$. But $B$ is noetherian, so $\Spec B$ has finitely many connected components (as pointed out in \cite[Lemma~2.4.2]{alggeo1}). Then every connected component is open and we can construct the required $U_i$ as unions of suitable connected components of $\Spec B$.
@@ -484,11 +511,11 @@ So we see that to prove Zariski's main theorem it is sufficient to show that any
 	Let $\ov{\qq}_i=\qq_i/\mm$ be the prime ideals of $B/\mm B$ (which are automatically maximal). Then the intersection $\bigcap_{j=1}^n\qq_j$ is the nilradical $\nil(B/\mm B)$, so by the Chinese remainder theorem we find an element $\ov{e}_i\in (B/\mm B)/\nil(B/\mm B)$ such that $\ov{e}_i\equiv 0\bmod \ov{\qq}_i$ and $\ov{e}_j\equiv 1\bmod\ov{\qq}_j$ for $j\neq i$. Note that $\ov{e}_i^2=\ov{e}_i$. Since $B/\mm B$ is noetherian, there is an $N\in\IN$ such that $\nil(B/\mm B)^N=0$. Hence $B/\mm B$ is $\nil(B/\mm B)$-adically complete, which means we can lift $\ov{e}_i$ to an idempotent $\snake{e}_i\in B/\mm B$ by Hensel's lemma (cf.\ Proposition~\reff{prop:HenselsLemma}). Now $B$ is $\mm B$-adically complete by Proposition~\reff{prop:modulesComplete}, so using Hensel's lemma once again we can lift $\snake{e}_i$ to an idempotent $e_i\in B$ with the required properties. We're done.
 \end{proof}
 
-Let $f\colon X\morphism Y=\Spec A$ be quasi-finite and separated, and let $x\in f^{-1}\{s\}$. Because the fibre $f^{-1}\{s\}$ is discrete, there is an affine open $U\subseteq X$ such that $U\cap f^{-1}\{s\}=\{x\}$. Zariski's main theorem applies to the affine morphism $f|_U\colon U\morphism \Spec A$, which therefore factors as
+Now let $f\colon X\morphism Y=\Spec A$ be quasi-finite and separated, and let $x\in f^{-1}\{s\}$. Because the fibre $f^{-1}\{s\}$ is discrete, there is an affine open $U\subseteq X$ such that $U\cap f^{-1}\{s\}=\{x\}$. Zariski's main theorem applies to the affine morphism $f|_U\colon U\morphism \Spec A$, which therefore factors as
 \begin{align*}
 	U\monomorphism[j]\Spec B\morphism Y
 \end{align*}
-where $B$ is as above and $j$ is an open embedding. By Lemma~\reff{lem:connectedComponents} (and shrinking $U$ if necessary) we may assume that $B$ has only one closed point $j(x)$, i.e.\ is local itself. But then the only open subset of $\Spec B$ containing the closed point $j(x)$ is $\Spec B$ itself, hence $j$ is an isomorphism. We have thus found an affine open neighbourhood $U\cong \Spec B$ of $x$ which is finite over $Y$. Then $U\morphism X$ is proper (as $U\morphism Y$ is finite, hence proper, and $f$ is separated, so \cite[Proposition~2.4.1]{alggeo2} applies), so $U$ is also closed. Putting $U=U_1$ and $X\setminus U=X_1$, what we proved is that $X=X_1\amalg U_1$ is the disjoint union of its open subsets $X_1$ and $U_1$.
+where $B$ is as above and $j$ is an open embedding. By Lemma~\reff{lem:connectedComponents} (and shrinking $U$ if necessary) we may assume that $B$ has only one closed point $j(x)$, i.e., is local itself. But then the only open subset of $\Spec B$ containing the closed point $j(x)$ is $\Spec B$ itself, hence $j$ is an isomorphism. We have thus found an affine open neighbourhood $U\cong \Spec B$ of $x$ which is finite over $Y$. Then $U\morphism X$ is proper (as $U\morphism Y$ is finite, hence proper, and $f$ is separated, so \cite[Proposition~2.4.1]{alggeo2} applies), so $U$ is also closed. Putting $U=U_1$ and $X\setminus U=X_1$, what we proved is that $X=X_1\amalg U_1$ is the disjoint union of its open subsets $X_1$ and $U_1$.
 
 Iterating this for the remaining preimages\footnote{There are finitely many of them. Indeed, $f^{-1}\{s\}\subseteq X$ is closed (as the preimage of the closed point $s$), hence quasi-compact (because $X$ is noetherian, hence quasi-compact). But the fibre $f^{-1}\{s\}$ is supposed to be discrete, so it must be finite.} of $s$ in $X$ provides a decomposition 
 \begin{align*}
@@ -511,11 +538,7 @@ into disjoint open subsets, where $\coprod_{i=1}^nU_i\cong \coprod_{i=1}^n\Spec 
 	commutes.
 \end{lem}
 \begin{proof}
-	By Lemma~\reff{lem:ZMTLemma2} it is enough to show that $X\morphism\Spec A$ is quasi-affine (which removes the condition that $B$ is finite over $A$). The Stein factorization of $X\morphism\Spec A$ reads
-	\begin{align*}
-		X\morphism\Spec \Oo_X(X)\morphism\Spec A\;,
-	\end{align*}
-	so it is enough to show that the canonical morphism $X\morphism\Spec\Oo_X(X)$ is an open embedding.
+	By Lemma~\reff{lem:ZMTLemma2} it is enough to show that $X\morphism\Spec A$ is quasi-affine (which removes the condition that $B$ is finite over $A$ -- this wouldn't be too hard to show by hand, but it's more convenient this way). By Definition~\reff{def:quasiAffine}\itememph{d} it suffices to show that $X\morphism\Spec\Oo_X(X)$ is an open embedding.
 	
 	Since $\Spec A$ is a noetherian space, its open subset $S$ is quasi-compact. We thus find a finite cover $S=\bigcup_{i=1}^n S_i$, where $S_i\cong \Spec A_{\alpha_i}$ (for some $\alpha_i\in A$) are affine open subschemes. Putting $X_i=f^{-1}(S_i)$ we get an affine open cover $X=\bigcup_{i=1}^nX_i$ of $X$. %, where $X_i\cong \Spec B_i$ for some finite $A_{\alpha_i}$-algebra $B_i$ by finiteness of $f$.
 	Note that $X$ is quasi-compact because $S$ and $f$ are. Moreover, $S$ is separated as an open subprescheme of a separated prescheme, hence $X$ is separated as well, as finite morphisms are separated. If we denote the image of $\alpha_i$ under the restriction $A\morphism \Oo_S(S)$ by $\alpha_i$ as well, we see that $S_i=S\setminus V(\alpha_i)$, so $A_{\alpha_i}\cong \Oo_S(S\setminus V(\alpha_i))\cong \Oo_S(S)_{\alpha_i}$. This works because $S$ is quasi-compact and separated, so \cite[Proposition~1.5.1\itememph{c}]{alggeo1} applies. By the same argument applied to $X$, we get $\Oo_X(X_i)=\Oo_X(X\setminus V(f^*\alpha_i))\cong \Oo_X(X)_{f^*\alpha_i}$, so $X_i\cong \Spec \Oo_X(X)_{f^*\alpha_i}$ because the $X_i$ are affine.
@@ -565,9 +588,9 @@ Now let $f\colon X\morphism Y$ be a quasi-finite separated morphism between noet
 \end{diagram}
 we obtain
 \begin{align}\lbl{eq:froof*}
-(f_*\Oo_X)_y\otimes_{\Oo_{Y,y}}\roof{\Oo}_{Y,y}\cong \roof{f}_*\Oo_{\roof{X}}(\Spec \roof{\Oo}_{Y,y})\;.
+(f_*\Oo_X)_y\otimes_{\Oo_{Y,y}}\roof{\Oo}_{Y,y}\cong \Gamma\big(\Spec \roof{\Oo}_{Y,y},\roof{f}_*\Oo_{\roof{X}}\big)\;.
 \end{align}
-Indeed, this is just the base change morphism \eqreff{eq:baseChangeMorphism} from Proposition~\reff{prop:baseChangeMorphism}, applied to $\Ff=\Oo_X$ and $p=0$ -- and also we've taken global sections and we used that $(f_*\Oo_X)(U)\otimes_{\Oo_Y(U)}\roof{\Oo}_{Y,y}\cong (f_*\Oo_X)_y\otimes_{\Oo_{Y,y}}\roof{\Oo}_{Y,y}$ when $U$ is an affine open neighbourhood of $y$ in $Y$.
+Indeed, this is how the base change isomorphism \eqreff{eq:baseChangeMorphism} from Proposition~\reff{prop:baseChangeMorphism} looks like when applied to $\Ff=\Oo_X$ and $p=0$, and also after taking global sections.% and using the fact that $\Gamma(U,f_*\Oo_X)\otimes_{\Oo_Y(U)}\roof{\Oo}_{Y,y}\cong (f_*\Oo_X)_y\otimes_{\Oo_{Y,y}}\roof{\Oo}_{Y,y}$ when $U\subseteq Y$ is an affine open neighbourhood of $y$.
 
 Note that the local rings $\roof{\Oo}_{Y,y}$ and $\Oo_{Y,y}$ have the same residue field $\KK(y)$. Hence $\Spec \KK(y)\morphism Y$ can be factored through $\upsilon\colon \Spec \roof{\Oo}_{Y,y}\morphism Y$ and together with the Stein factorizations of $f$ and $\roof{f}$ this gives a diagram
 \begin{diagram}[baseline=1.5cm-0.5ex][\lbl{diag:PullbacksEverywhere}]
@@ -613,7 +636,7 @@ is injective on points. But this means that $j\colon X\morphism \SPEC(f_*\Oo_X)$
 \begin{claim}
 	Let $x\in X$ be such that $y=f(x)$. Then $x$ has a unique preimage $\roof{x}\in\roof{X}$ and the local ring $\Oo_{\roof{X},\roof{x}}$ is given by $\Oo_{X,x}\otimes_{\Oo_{Y,y}}\roof{\Oo}_{Y,y}$.
 \end{claim}
-The easiest way to see that $\roof{x}$ is unique is probably that the fibres $f^{-1}\{y\}$ and $\roof{f}^{-1}\{y\}$ coincide, but it also follows from the fact that $\mm_{X,x}\otimes_{\Oo_{Y,y}}\roof{\Oo}_{Y,y}$ is a maximal ideal of $\Oo_{X,x}\otimes_{\Oo_{Y,y}}\roof{\Oo}_{Y,y}$ (by Proposition~\reff{prop:technicalAF}\itememph{a}) and our explicit description of fibre products in \cite[p.~24]{alggeo1}. By Proposition~\reff{prop:technicalAF}\itememph{b}, the ring $\Oo_{X,x}\otimes_{\Oo_{Y,y}}\roof{\Oo}_{Y,y}$ is already local, hence it is isomorphic to $\Oo_{\roof{X},\roof{x}}$ (again by the explicit construction of fibre products).
+The easiest way to see that $\roof{x}$ is unique is probably that the fibres $f^{-1}\{y\}$ and $\roof{f}^{-1}\{y\}$ coincide, but it also follows from the fact that $\mm_{X,x}\otimes_{\Oo_{Y,y}}\roof{\Oo}_{Y,y}$ is a maximal ideal of $\Oo_{X,x}\otimes_{\Oo_{Y,y}}\roof{\Oo}_{Y,y}$ (by Proposition~\reff{prop:technicalAF}\itememph{a}) and our explicit description of fibre products in \cite[Proposition~1.3.2]{alggeo1}. By Proposition~\reff{prop:technicalAF}\itememph{b}, the ring $\Oo_{X,x}\otimes_{\Oo_{Y,y}}\roof{\Oo}_{Y,y}$ is already local, hence it is isomorphic to $\Oo_{\roof{X},\roof{x}}$ (again by the explicit construction of fibre products).
 
 In the same way we see that $\Oo_{\SPEC(\roof{f}_*\Oo_{\roof{X}}),\roof{\jmath}(\roof{x})}\cong \Oo_{\SPEC(f_*\Oo_X),j(x)}\otimes_{\Oo_{Y,y}}\roof{\Oo}_{Y,y}$. This means that the morphism on stalks $j^*\colon \Oo_{X,x}\morphism \Oo_{\SPEC(f_*\Oo_X),j(x)}$ becomes an isomorphism after tensoring with $\roof{\Oo}_{Y,y}$, because $\roof{\jmath}$ is an open embedding and induces isomorphisms on stalks. But the completion $\roof{\Oo}_{Y,y}$ is faithfully flat over $\Oo_{Y,y}$ by Corollary~\reff{cor:completionFaithfullyFlat}\itememph{c}, hence $j$ already induces isomorphisms on stalks.
 
@@ -636,7 +659,7 @@ By Lemma~\reff{lem:OpenEmbedding}, $j\colon X\morphism\SPEC(f_*\Oo_X)$ is an ope
 	
 	Indeed, if $F$ is flat over $A$, then so is $F_\qq$ (by exactness of localization), hence $F_\qq$ is also flat over $A_\pp$. Conversely, if $F_\qq$ is flat over $A_\pp$, then also over $A$ because $A_\pp$ is flat over $A$ (exactness of localization again). Now let $M'\morphism M\morphism M''$ be an exact sequence of $A$-modules. Then the sequence of $B$-modules $M'\otimes_AF\morphism M\otimes_AF\morphism M''\otimes_AF$ is exact iff its localization at any prime $\qq\in \Spec B$ is exact. But $(M\otimes_AF)_\qq\cong M\otimes_AF_\qq$ (and same for $M'$, $M''$), so the localizations are indeed exact by flatness of the $F_\qq$, proving that $F$ is flat itself.
 \end{proof}
-\section{Flat base change and cohomology}
+\section{Flat base change and cohomology}\lbl{sec:flatBaseChange}
 \subsection{The base change morphism}
 Let $A$ be a ring, $B$ an $A$-algebra and $f\colon X\morphism \Spec A$ a quasi-compact and separated morphism. Let 
 \begin{align*}
@@ -695,7 +718,7 @@ The minus sign in $\Tor_{-p}^A$ is not a typo. This spectral sequence is support
 		\item The vertical morphisms $d_\ver^{\bullet,q}\colon J^{\bullet,q}\morphism J^{\bullet,q+1}$ are \emph{split} in the sense that there is a decomposition $J^{\bullet,q}\cong B^{\bullet,q}\oplus H^{\bullet,q}\oplus B^{\bullet,q+1}$ and $d_\ver^{\bullet,q}$ corresponds to the projection onto the summand $B^{\bullet,q+1}$.
 		\item The induced cochain complex $H_\ver^q(J^{\bullet,\bullet})\cong H^{\bullet,q}\morphism \check{H}_\alt^q(\Uu,\Ff)\cong H^q(X,\Ff)$ is a projective resolution as well.
 	\end{itemize}
-It's well-known that Cartan--Eilenberg resolutions exist in the category $\cat{Mod}(A)$ (in fact, in any abelian category with sufficiently many projectives). Moreover, since $\check{C}^q_\alt(\Uu,\Ff)=0$ when $q$ is sufficiently large, say $q\geq q_0$, we may choose $J ^{\bullet,\bullet}$ such that $J^{\bullet,q}=0$ when $q\geq q_0$. Then $J^{\bullet,\bullet}$ is bounded from above in both directions (that is, a $3\ordinalrd$ quadrant double complex, except it's supported completely in the $2\ordinalnd$ quadrant -- you know what I mean).
+It's well-known that Cartan--Eilenberg resolutions exist in the category $\cat{Mod}(A)$ (in fact, in any abelian category with sufficiently many projectives). Moreover, since $\check{C}^q_\alt(\Uu,\Ff)=0$ when $q$ is sufficiently large, say $q\geq q_0$, we may choose $J ^{\bullet,\bullet}$ such that $J^{\bullet,q}=0$ when $q\geq q_0$. Then $J^{\bullet,\bullet}$ is bounded from above in both directions (that is, a $3\ordinalrd$ quadrant double complex, except it's supported completely in the $2\ordinalnd$ quadrant -- do I sound like an idiot? You know what I mean!).
 
 The same is true for the double complex $J^{\bullet,\bullet}\otimes_AB$, hence both its horizontal and its vertical spectral sequence converge -- and even to the same limit. Note that $H_\ver^q(J^{\bullet,\bullet}\otimes_AB)\cong H^{\bullet,q}\otimes_AB$ because of the nice splitness condition for $d_\ver^{\bullet,q}$. We thus have 
 \begin{align*}
@@ -3410,7 +3433,7 @@ Before we prove Theorem~\reff{thm:QuotientByGroup}, we study the affine case.
 \end{defi}
 \begin{rem}
 	\begin{alphanumerate}
-		\item This is different (in general) from $\Sym^nM=\left\{\SS_n\text{-coinvariants of }M^{\otimes n}\right\}$, which is also commonly referred to as the \emph{$n\ordinalth$ symmetric power}.
+		\item This is different (in general) from $\Sym_R^nM=\left\{\SS_n\text{-coinvariants of }M^{\otimes n}\right\}$, which is also commonly referred to as the \emph{$n\ordinalth$ symmetric power}.
 		\item The functor $(-)^{(n)}$ commutes with base change along $R\morphism R'$ if $R'$ is flat over $R$ or $n!$ is invertible in $R'$. To prove this, one can use essentially the same argument as in Remark~\reff{rem:X/GbaseChange}.
 		\item If $M$ and $N$ are both flat and $M\morphism N$ is injective, then $M^{\otimes n}\morphism N^{\otimes n}$ is injective again. Indeed, using the factorization $M^{\otimes n}\morphism M^{\otimes n-1}\otimes_RN\morphism\ldots\morphism M\otimes_RN^{\otimes n-1}\morphism N^{\otimes n}$ and flatness of $M$ and $N$, this is easily verified. 
 	\end{alphanumerate}
