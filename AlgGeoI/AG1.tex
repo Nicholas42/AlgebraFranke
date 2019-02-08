@@ -1422,9 +1422,9 @@ Since the preimage of this ideal in $\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y}$ equ
 \end{rem}
 
 \begin{defi}[Immersive morphisms] \lbl{def:immersiveMorphism}
-    A morphism $Y\morphism[\upsilon] S$ of locally ringed spaces is called \defemph{immersive} if, topologically, $\upsilon$ is a homeomorphism onto its image (equipped with the induced topology with respect to $S$), and for every $y\in Y$ the map $\Oo_{S,\upsilon(y)} \morphism[\upsilon^*]\Oo_{Y,y}$ is surjective. 
+    A morphism $Y\morphism[\upsilon] S$ of locally ringed spaces is called \defemph{immersive} (or an \defemph{embedding}) if, topologically, $\upsilon$ is a homeomorphism onto its image equipped with the induced topology with respect to $S$, and for every $y\in Y$ the map $\Oo_{S,\upsilon(y)} \morphism[\upsilon^*]\Oo_{Y,y}$ is surjective. 
        
-    If $\upsilon(Y)\subseteq S$ is a closed subset, $\upsilon$ is called a \defemph{closed immersion}. If it is open and additionally, $\Oo_S\morphism[\upsilon^*]\upsilon_*\Oo_Y$ restricts to an isomorphism of sheaves $\Oo_S|_{\upsilon(Y)}\isomorphism\upsilon_*\Oo_Y$, $\upsilon$ is called an \defemph{open immersion}.
+    If $\upsilon(Y)\subseteq S$ is a closed subset, $\upsilon$ is called a \defemph{closed immersion}. If $\upsilon(Y)$ is open and, additionally, $\Oo_S\morphism[\upsilon^*]\upsilon_*\Oo_Y$ restricts to an isomorphism of sheaves $\Oo_S|_{\upsilon(Y)}\isomorphism\upsilon_*\Oo_Y$, $\upsilon$ is called an \defemph{open immersion}.
 \end{defi}
 
 \begin{cor}\lbl{cor:immersionBaseChange}
@@ -1436,7 +1436,7 @@ Since the preimage of this ideal in $\Oo_{X,x}\otimes_{\Oo_{S,s}} \Oo_{Y,y}$ equ
 \begin{proof}[Proof of Corollary~\reff{cor:immersionBaseChange}]
     For $(x,y,\pp)$ and $s$ as in the description of $F$, let $I_s\subseteq \Oo_{S,s}$ be the kernel of $\Oo_{S,s}\morphism[\upsilon^*] \Oo_{Y,y}$. Then $\Oo_{Y,y}\cong \Oo_{S,s}/I_s$ (as $\upsilon^*$ is assumed surjective), hence 
     \begin{align*}
-    	\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y} \cong \Oo_{X,x}/(\xi^*(I_s) \cdot \Oo_{X,x}) \eqqcolon \Oo_{X,x}/(I_s\Oo_{X,x})\;. 
+    	\Oo_{X,x}\otimes_{\Oo_{S,s}}\Oo_{Y,y} \cong \Oo_{X,x}/(\xi^*(I_s) \cdot \Oo_{X,x}) \eqqcolon \Oo_{X,x}/I_s\Oo_{X,x}\;. 
     \end{align*}
     Since $\alpha^{-1}(\pp)$ equals $\mm_{X,x}$, we have $\pp\supseteq \mm_{X,x}/(I_s \Oo_{X,x})$ which must be an equality as the right-hand side is the maximal ideal of local ring $\Oo_{X,x}/(I_s \Oo_{X,x})$. Thus, $\pp$ and $y$ are uniquely determined by $x$ ($y$ actually because $\upsilon$ has to be injective) and $\Oo_{F,[x,y,\pp]}\cong \Oo_{X,x}/(I_s \Oo_{X,x})$ is a quotient of $\Oo_{X,x}$ implying surjectivity of $\xi^*$ on stalks and that $F$ is mapped to $\xi^{-1}(\upsilon(Y))$. It remains to confirm that the topology is indeed the induced topology. Note that
     \begin{align}\lbl{eq:omegaCover}
