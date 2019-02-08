@@ -2178,17 +2178,17 @@ Left-derived functors of right-exact functors can be constructed by dualizing ev
 	Dualize the proof of Theorem~\reff{thm:DerivedFunctors} and prove the dual analogues of Fact~\reff{fact:injectiveResolutions} and Proposition~\reff{prop:Hufeisenlemma} on the way.
 \end{proof}
 \subsection{Construction of \texorpdfstring{$\Ext_{\boldsymbol A}^\bullet$}{Ext}}\lbl{subsec:ConstructionOfExt}
-If the category ${\cat A}$ has sufficiently many injective objects, then, for fixed objects $X$, one has a right-derived functor $\Ext_{\cat A}^\bullet(X,-)$ of $\Hom_{\cat A}(X,-)\colon {\cat A}\morphism\cat{Ab}$. As $\Hom_{\cat A}(X,-)$ is functorial in $X$, so are the $\Ext_{\cat A}^\bullet(X,-)$. For a short exact sequence $0\morphism X''\morphism X\morphism X'\morphism 0$ and $I$ injective, one has a short exact sequence $0\morphism\Hom_{\cat A}(X',I)\morphism\Hom_{\cat A}(X,I)\morphism\Hom_{\cat A}(X'',I)\morphism 0$. One thus has a long exact cohomology sequence
+If the category ${\cat A}$ has sufficiently many injective objects, then, for fixed objects $X$, one has a right-derived functor $\Ext_{\cat A}^\bullet(X,-)$ of $\Hom_{\cat A}(X,-)\colon {\cat A}\morphism\cat{Ab}$. As $\Hom_{\cat A}(X,-)$ is functorial in $X$, so are the $\Ext_{\cat A}^\bullet(X,-)$. For a short exact sequence $0\morphism X''\morphism X\morphism X'\morphism 0$ and $I$ injective, one has a short exact sequence $0\morphism\Hom_{\cat A}(X',I)\morphism\Hom_{\cat A}(X,I)\morphism\Hom_{\cat A}(X'',I)\morphism 0$. We thus obtain a long exact cohomology sequence
 \begin{multline}\lbl{eq:ExtSeq1}
 	0\morphism\Ext_{\cat A}^0(X'',Y)\morphism\Ext_{\cat A}^0(X,Y)\morphism\Ext_{\cat A}^0(X',Y)\morphism\Ext_{\cat A}^1(X'',Y)\morphism\ldots\\
 	\ldots\morphism\Ext_{\cat A}^p(X'',Y)\morphism\Ext_{\cat A}^p(X,Y)\morphism\Ext_{\cat A}^p(X',Y)\morphism\Ext_{\cat A}^{p+1}(X'',Y)\morphism\ldots\tag{$*$}
 \end{multline}
-for every $Y\in\Ob({\cat A})$ coming from Theorem~\reff{thm:DerivedFunctors}\itememph{c} (somewhere we have to take contravariance into account, i.e., we consider the opposite category somewhere). Moreover, if $0\morphism Y'\morphism Y\morphism Y''\morphism 0$ is  a short exact sequence, we have a long exact sequence
+for every $Y\in\Ob({\cat A})$ coming from Theorem~\reff{thm:DerivedFunctors}\itememph{c} (somewhere we have to take contravariance into account, i.e., we consider the opposite category somewhere). Moreover, if we have a short exact sequence $0\morphism Y'\morphism Y\morphism Y''\morphism 0$, then we get a long exact sequence
 \begin{multline}\lbl{eq:ExtSeq2}
 0\morphism\Ext_{\cat A}^0(X,Y')\morphism\Ext_{\cat A}^0(X,Y)\morphism\Ext_{\cat A}^0(X,Y'')\morphism\Ext_{\cat A}^1(X,Y')\morphism\ldots\\
 \ldots\morphism\Ext_{\cat A}^p(X,Y')\morphism\Ext_{\cat A}^p(X,Y)\morphism\Ext_{\cat A}^p(X,Y'')\morphism\Ext_{\cat A}^{p+1}(X,Y')\morphism\ldots\tag{\#}
 \end{multline}
-since $\Ext_{\cat A}^\bullet(X,-)$ is a cohomological functor; and the squares formed by the connecting morphisms of  \eqreff{eq:ExtSeq1} and \eqreff{eq:ExtSeq2} anticommute.
+since $\Ext_{\cat A}^\bullet(X,-)$ is a cohomological $\partial$-functor; and the squares formed by the connecting morphisms of  \eqreff{eq:ExtSeq1} and \eqreff{eq:ExtSeq2} anticommute.
 
 If $P\in\Ob({\cat A})$ is projective, then $\Hom_{\cat A}(P,-)$ is exact, thus
 \begin{align*}
