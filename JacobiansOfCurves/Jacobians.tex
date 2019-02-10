@@ -231,9 +231,9 @@ where $\roof{\phantom{x}}$ denotes the $I$-adic completion.
 \begin{proof}[Sketch of a proof]
 	The question is easily seen to be local on both $X$ and $Y$. So let's consider the affine situation where $Y=\Spec A$, $X=\Spec B$, and $\Jj=\snake{J}$ for some ideal $J\subseteq A$. Let $\phi\colon A\morphism B$ be the morphism of rings corresponding to $f$. Then $f^{-1}\Jj=\snake{I}$ where $I$ is the image of $B\otimes_AJ\morphism B$ sending $b\otimes j\mapsto b\cdot \phi(j)$. All three assertions are then easily checked.
 \end{proof}
-\begin{rem}\lbl{rem:fibres}
+\begin{rem}
 	\begin{alphanumerate}
-		\item Recall that for a morphism $f\colon X\morphism Y$ of preschemes and a point $y\in Y$ the \defemph{fibre} $f^{-1}\{y\}$ of $f$ at $y$ is defined as the prescheme $f^{-1}\{y\}=X\times_Y\Spec \KK(y)$. This makes sense, since $f^{-1}\{y\}$ is indeed -- topologically -- the preimage of $y$, because $\Spec \KK(y)\morphism Y$ is an immersion with image $\{y\}$, so \cite[Corollary~1.3.3]{alggeo1} is applicable.
+		\item \lbl{rem:fibres}Recall that for a morphism $f\colon X\morphism Y$ of preschemes and a point $y\in Y$ the \defemph{fibre} $f^{-1}\{y\}$ of $f$ at $y$ is defined as the prescheme $f^{-1}\{y\}=X\times_Y\Spec \KK(y)$. This makes sense, since $f^{-1}\{y\}$ is indeed -- topologically -- the preimage of $y$, because $\Spec \KK(y)\morphism Y$ is an immersion with image $\{y\}$, so \cite[Corollary~1.3.3]{alggeo1} is applicable.
 		\item Moreover, $\Spec \Oo_{Y,y}/\mm_{Y,y}^n\morphism Y$ is immersive for all $n\geq 1$ and has image $\{y\}$ too. So the same argument shows that $X_n=X\times_Y\Spec (\Oo_{Y,y}/\mm_{Y,y}^n)$ has $f^{-1}\{y\}$ as underlying topological space too (but, of course, the prescheme structure differs in general). We may thus think of $X_n$ as the \defemph{$\boldsymbol{(n-1)\ordinalst}$ infinitesimal thickening} of $f^{-1}\{y\}$.
 	\end{alphanumerate}
 \end{rem}
@@ -425,7 +425,7 @@ The following fact wasn't mentioned in the lecture, but it's \emph{definitely} (
 	\end{align}
 	Indeed, a point $x\in X$ is open in $\ov{f}^{-1}\{y\}$ (where $y=f(x)$) iff it is open in the open subset $f^{-1}\{y\}=X\cap \ov{f}^{-1}\{y\}\subseteq \ov{f}^{-1}\{y\}$. In view of Fact~\reff{fact:openDiscrete} this shows \eqreff{eq:fandfbar}. We thus have reduced \itememph{c} (under the assumption that $\ov{f}$ exists) to the case of proper morphisms. 
 	
-	If $f\colon X\morphism Y$ is proper, then consider its Stein factorization. Since $g$ is finite, it's quasi-finite as well by Fact~\reff{fact:annoyingQF}\itememph{a}. So Fact~\reff{fact:annoyingQF}\itememph{c} shows that
+	If $f\colon X\morphism Y$ is proper, then consider its Stein factorization $f=g\circ \snake{f}$. Since $g$ is finite, it's quasi-finite as well by Fact~\reff{fact:annoyingQF}\itememph{a}. So Fact~\reff{fact:annoyingQF}\itememph{c} shows that
 	\begin{align*}
 		\left\{x\in X\st f\text{ is quasi-finite at }x\right\}=\left\{x\in X\st \snake{f}\text{ is quasi-finite at }x\right\}\;.
 	\end{align*}
@@ -446,7 +446,7 @@ The following fact wasn't mentioned in the lecture, but it's \emph{definitely} (
 		Let $f\colon X\morphism Y$ be a quasi-finite separated morphism between noetherian preschemes, and assume that $f$ factors as in \eqreff{eq:properCompactification}. Then Zariski's main theorem holds for $f$.
 	\end{lem}
 \begin{rem}
-	 It can be shown that such a factorization \eqreff{eq:properCompactification} always exists for morphisms of finite type between noetherian preschemes, for which Professor Franke refers to notes of \emph{Brian Conrad} or \emph{Paul Vojta}, although he isn't sure whether using their results to prove Theorem~\reff{thm:ZariskiMain}\itememph{b} doesn't involve any circular reasoning.
+	 It can be shown (but this is hard) that such a factorization \eqreff{eq:properCompactification} always exists for morphisms of finite type between noetherian preschemes, for which Professor Franke refers to notes of \emph{Brian Conrad} or \emph{Paul Vojta}, although he isn't sure whether using their results to prove Theorem~\reff{thm:ZariskiMain}\itememph{b} doesn't involve any circular reasoning.
 \end{rem}
 \begin{proof}[Proof of Lemma~\reff{lem:ZMTLemma1}]
 	Let $\ov{f}=g\circ \snake{f}$ be the Stein factorization of $\ov{f}$. Put $\ov{Y}=\SPEC(\ov{f}_*\Oo_{\ov{X}})$ for convenience. Since $g\colon \ov{Y}\morphism Y$ is finite by Fact~\reff{fact:steinFactorization} (for which we need properness of $\ov{f}$), we're done if we show that the composition $\snake{f}|_X\colon X\monomorphism \ov{X}\morphism \ov{Y}$ is an open embedding. Since $f=g\snake{f}|_X$ and $g$ are quasi-finite ($g$ is even finite), Fact~\reff{fact:annoyingQF}\itememph{c} shows that $\snake{f}|_X$ is quasi-finite as well.
@@ -471,15 +471,16 @@ For a proof of equivalence, check out \cite[\stackstag{01SJ}]{stacks-project}. N
 	
 	We claim that there is a coherent $\Qq\subseteq \Mm|_V$ such that $\Qq|_{U\cap V}\supseteq \Nn|_{U\cap V}$. Indeed, $V\cong \Spec A$ is a noetherian topological space (because $Y$ is noetherian), so the open subset $U\cap V$ is quasi-compact. This means that we can cover it by finitely many affine open subsets $V_i\cong \Spec A_{f_i}$ for $i=1,\ldots,n$. For every $i$ we know that $\Nn(V_i)\subseteq \Mm(V_i)\cong \Mm(V)_{f_i}$ is a finitely generated $A_{f_i}$-module (because $\Nn$ is coherent), so we can choose finitely many $\mu_{i,j}\in \Mm(V)$, $j=1,\ldots,k_i$, whose images in $\Nn(V_i)$ form a set of generators. Let $\Qq\subseteq \Mm|_V$ be the subsheaf generated by $\left\{\mu_{i,j}\st i\leq n,\ j\leq k_i\right\}\in\Mm(V)$. Then $\Qq$ has the required property, proving the claim.
 	
-	Let $j\colon U\cap V\monomorphism V$ be the obvious inclusion and put $\ov{\Nn}=\Qq\cap j_*\Nn|_{U\cap V}$. This guy is coherent (because subsheaves of a coherent one are coherent again on locally noetherian preschemes) and satisfies $\ov{\Nn}|_{U\cap V}=\Nn|_{U\cap V}$. But then $\Nn$ can be extended to a coherent sheaf $\snake{\Nn}$ on $U\cup V$ via $\snake{\Nn}|_U=\Nn$ and $\Nn|_V=\Kk$. This contradicts maximality of $U$.
+	Let $j\colon U\cap V\monomorphism V$ be the obvious inclusion which is quasi-compact (as $V$ is noetherian) and separated. Hence $\ov{\Nn}=\Qq\cap j_*\Nn|_{U\cap V}$ is quasi-coherent, using \cite[Proposition~1.5.2\itememph{b}]{alggeo1}. Then $\ov{\Nn}$ is even coherent, being a subsheaf of $\Qq$, and satisfies $\ov{\Nn}|_{U\cap V}=\Nn|_{U\cap V}$. But then $\Nn$ can be extended to a coherent sheaf $\snake{\Nn}$ on $U\cup V$ via $\snake{\Nn}|_U=\Nn$ and $\snake{\Nn}|_V=\ov{\Nn}$. This contradicts maximality of $U$.
 \end{proof}
 \begin{lem}\lbl{lem:ZMTLemma2}
-	If $f\colon X\morphism Y$ is a quasi-finite and quasi-affine morphism between noetherian preschemes, then Theorem~\reff{thm:ZariskiMain}\itememph{b} holds for $f$.
+	If $f\colon X\morphism Y$ is quasi-affine and morphism of finite type between noetherian preschemes, then $f$ factors as in \eqreff{eq:properCompactification}. In particular,  Theorem~\reff{thm:ZariskiMain}\itememph{b} holds for quasi-affine and quasi-finite morphisms.
 \end{lem}
 \begin{proof}
 	The proof I put here before is \emph{horribly wrong}! I hope I can fix it in the following. If you are interested in the more general theory, you may want to have a look at \cite[\S5]{egaII} or \cite[\stackstag{01VV}]{stacks-project} (but I'm not sure if the latter actually proves what we need).
 	
-	Let $W\cong \Spec A$ be an affine open subset of $Y$. Then $U=f^{-1}(W)$ is an open subset of some affine scheme $\Spec B$, hence $U$ can be covered by affine open subsets of the form $U\setminus V(\beta_i)\cong \Spec B_{\beta_i}$ for $\beta_i\in B$. We can choose a finite cover of this form, using $\beta_1,\ldots,\beta_n$ say, since $U$ is quasi-compact (because $V$ is quasi-compact, and the morphism $f$ is quasi-finite, hence of finite type, hence quasi-compact). Also note that $U$ is separated (being an open subprescheme of the separated prescheme $\Spec B$), so \cite[Proposition~1.5.1\itememph{c}]{alggeo1} shows $B_{\beta_i}\cong \Oo_X(U\setminus V(\beta_i))\cong \Oo_X(U)_{\beta_i}$.
+	Let $W\cong \Spec A$ be an affine open subset of $Y$. Then $U=f^{-1}(W)$ is an open subset of some affine scheme $\Spec B$, hence $U$ can be covered by affine open subsets of the form $U\setminus V(\beta_i)\cong \Spec B_{\beta_i}$ for $\beta_i\in B$. We can choose a finite cover of this form, using $\beta_1,\ldots,\beta_n$ say, since $U$ is quasi-compact (because $V$ is quasi-compact, and the morphism $f$ is 
+	of finite type, hence quasi-compact). Also note that $U$ is separated (being an open subprescheme of the separated prescheme $\Spec B$), so \cite[Proposition~1.5.1\itememph{c}]{alggeo1} shows $B_{\beta_i}\cong \Oo_X(U\setminus V(\beta_i))\cong \Oo_X(U)_{\beta_i}$.
 	
 	Since $f$ is quasi-finite, it has finite type, hence the $B_{\beta_i}\cong \Oo_X(U)_{\beta_i}$ have finite type over $A$. Then we may choose a finite generating set $\{b_{i,j}\}_j$ of $\Oo_X(U)_{\beta_i}$ over $A$. Without loss of generality we may assume the $b_{i,j}$ are already contained in $\Oo_X(U)$. Let $E$ be the $A$-submodule of $\Oo_X(U)$ generated by the $\{b_{i,j}\}_{i,j}$ for all $i,j$ and $\{\beta_1,\ldots,\beta_n\}$. By Lemma~\reff{lem:coherentExtension} we may extend $E$ to a coherent $\Oo_Y$-submodule $\Ee^{(W)}\subseteq f_*\Oo_X$.
 	
@@ -495,9 +496,11 @@ For a proof of equivalence, check out \cite[\stackstag{01SJ}]{stacks-project}. N
 	\begin{align*}
 		f\colon X\monomorphism\ov{X}\morphism Y\;,
 	\end{align*}
-	in which the first arrow is an open immersion. It remains to show that $\ov{X}$ is proper over $Y$. But $\IP(\Ee)$ is clearly proper over $Y$ by \cite[Proposition~2.4.2]{alggeo2} (actually, $\IP(\Ee)$ is even projective over $Y$), so the closed subprescheme $\ov{X}$ is proper over $Y$ as well. Now Lemma~\reff{lem:ZMTLemma1} does the rest.
+	in which the first arrow is an open immersion. It remains to show that $\ov{X}$ is proper over $Y$. But $\IP(\Ee)$ is clearly proper over $Y$ by \cite[Proposition~2.4.2]{alggeo2} (actually, $\IP(\Ee)$ is even projective over $Y$), so the closed subprescheme $\ov{X}$ is proper over $Y$ as well. This gives a factorization as in \eqreff{eq:properCompactification}.
+	
+	To show that Theorem~\reff{thm:ZariskiMain}\itememph{b} applies when $f$ is quasi-finite in addition to being of finite type, first note that quasi-affine morphisms are separated (just use any characterization from Definition~\reff{def:quasiAffine}). Then Lemma~\reff{lem:ZMTLemma1} does the rest.
 \end{proof}
-So we see that to prove Zariski's main theorem it is sufficient to show that any quasi-finite and separated morphism between noetherian preschemes is quasi-affine (which is a weaker assertion than the original one).% (note that this is actually \emph{weaker} than Theorem~\reff{thm:ZariskiMain}\itememph{b}).
+So we see that to prove Zariski's main theorem it is sufficient to show that any quasi-finite and separated morphism between noetherian preschemes is quasi-affine.% (which is a weaker assertion than the original one).% (note that this is actually \emph{weaker} than Theorem~\reff{thm:ZariskiMain}\itememph{b}).
 
 \paragraph{Part II -- the case of complete noetherian local rings.} In this part Professor Franke follows \cite[Exposé~VIII.6]{sga1}. Assume $Y=\Spec A$, where $A$ is a noetherian complete local ring (with respect to its maximal ideal $\mm$) and that Zariski's main theorem is true for morphisms $f'\colon X'\morphism Y'$, where in addition to the other assumptions we have $\dim Y'<\dim Y$. Let $s$ be the unique closed point of $A$ (given by $\mm$).
 
@@ -633,14 +636,26 @@ Note that Claim~\reff{claim:PullbacksEverywhere} implies that the fibres $f^{-1}
 	f^{-1}\{y\}=\roof{f}^{-1}\{y\}=X\times_Y\Spec \KK(y)\morphism \Spec \left((f_*\Oo_X)_y\otimes_{\Oo_{Y,y}}\KK(y)\right)=\roof{g}^{-1}\{y\}=g^{-1}\{y\}
 \end{align*}
 is injective on points. But this means that $j\colon X\morphism \SPEC(f_*\Oo_X)$ is injective on $f^{-1}\{y\}$ -- and since $y$ was chosen arbitrarily, we see that $j$ is actually injective on points! So the only thing left to do is to show that $j$ induces isomorphisms on stalks, then Lemma~\reff{lem:OpenEmbedding} does the rest.
-\begin{claim}
+
+So how do we prove that $j$ induces isomorphisms on stalks? Intuitively it is pretty clear what to do: Choose $x\in X$ such that $y=f(x)$, and let $\roof{x}\in\roof{X}$ be a preimage of $x$. We put
+\begin{align*}
+	\Oo=\Oo_{\SPEC(f_*\Oo_X),j(x)}\quad\text{and}\quad\roof{\Oo}=\Oo_{\SPEC(\roof{f}_*\Oo_{\roof{X}}),\roof{\jmath}(\roof{x})}
+\end{align*}
+for convenience. Then $\roof{\jmath}^*\colon\roof{\Oo} \morphism \Oo_{\roof{X},\roof{x}}$ is an isomorphism since $\roof{\jmath}$ is an open embedding. Intuitively, $\roof{\jmath}^*$ should be given by tensoring $j^*\colon \Oo\morphism \Oo_{X,x}$ with $\roof{\Oo}_{Y,y}$. Now faithful flatness of $\roof{\Oo}_{Y,y}$ over $\Oo_{Y,y}$ shows that $j^*$ must already be an isomorphism.
+
+However, the real life is more complicated, since the stalk $\roof{\Oo}$ is usually \emph{only a localization} of $\Oo\otimes_{\Oo_{Y,y}}\roof{\Oo}_{Y,y}$, and the same goes for $\Oo_{\roof{X},\roof{x}}$ and $\Oo_{X,x}\otimes_{\Oo_{Y,y}}\roof{\Oo}_{Y,y}$, cf.\ the construction in \cite[Proposition~1.3.2]{alggeo1}. We first argue why the latter problem is no problem at all in our situation.
+\begin{claim}\lbl{claim:Oxxhat}
 	Let $x\in X$ be such that $y=f(x)$. Then $x$ has a unique preimage $\roof{x}\in\roof{X}$ and the local ring $\Oo_{\roof{X},\roof{x}}$ is given by $\Oo_{X,x}\otimes_{\Oo_{Y,y}}\roof{\Oo}_{Y,y}$.
 \end{claim}
 The easiest way to see that $\roof{x}$ is unique is probably that the fibres $f^{-1}\{y\}$ and $\roof{f}^{-1}\{y\}$ coincide, but it also follows from the fact that $\mm_{X,x}\otimes_{\Oo_{Y,y}}\roof{\Oo}_{Y,y}$ is a maximal ideal of $\Oo_{X,x}\otimes_{\Oo_{Y,y}}\roof{\Oo}_{Y,y}$ (by Proposition~\reff{prop:technicalAF}\itememph{a}) and our explicit description of fibre products in \cite[Proposition~1.3.2]{alggeo1}. By Proposition~\reff{prop:technicalAF}\itememph{b}, the ring $\Oo_{X,x}\otimes_{\Oo_{Y,y}}\roof{\Oo}_{Y,y}$ is already local, hence it is isomorphic to $\Oo_{\roof{X},\roof{x}}$ (again by the explicit construction of fibre products).
 
-In the same way we see that $\Oo_{\SPEC(\roof{f}_*\Oo_{\roof{X}}),\roof{\jmath}(\roof{x})}\cong \Oo_{\SPEC(f_*\Oo_X),j(x)}\otimes_{\Oo_{Y,y}}\roof{\Oo}_{Y,y}$. This means that the morphism on stalks $j^*\colon \Oo_{X,x}\morphism \Oo_{\SPEC(f_*\Oo_X),j(x)}$ becomes an isomorphism after tensoring with $\roof{\Oo}_{Y,y}$, because $\roof{\jmath}$ is an open embedding and induces isomorphisms on stalks. But the completion $\roof{\Oo}_{Y,y}$ is faithfully flat over $\Oo_{Y,y}$ by Corollary~\reff{cor:completionFaithfullyFlat}\itememph{c}, hence $j$ already induces isomorphisms on stalks.
+Still this doesn't solve our problem with $\roof{\Oo}$ and $\Oo\otimes_{\Oo_{Y,y}}\roof{\Oo}_{Y,y}$, since I can't see why Proposition~\reff{prop:technicalAF}\itememph{b} should be applicable here. So we use a workaround. Since the bottom left square in \eqreff{diag:PullbacksEverywhere} is a pullback square, we see that $\Oo_{\roof{X},\roof{x}}$ is a localization of $\Oo_{X,x}\otimes_\Oo\roof{\Oo}$, in which $\roof{\Oo}$ in turn is a localization of $\Oo\otimes_{\Oo_{Y,y}}\roof{\Oo}_{Y,y}$. But $\Oo_{\roof{X},\roof{x}}\cong \Oo_{X,x}\otimes_{\Oo_{Y,y}}\roof{\Oo}_{Y,y}$ by Claim~\reff{claim:Oxxhat}, so an easy argument shows that already $\Oo_{\roof{X},\roof{x}}\cong \Oo_{X,x}\otimes_\Oo\roof{\Oo}$, without needing to localize.
 
-By Lemma~\reff{lem:OpenEmbedding}, $j\colon X\morphism\SPEC(f_*\Oo_X)$ is an open embedding, hence $f$ is quasi-affine by Definition~\reff{def:quasiAffine}\itememph{d}.  Then we're done by Lemma~\reff{lem:ZMTLemma1}.
+Therefore, $\roof{\jmath}^*\colon \roof{\Oo}\morphism\Oo_{\roof{X},\roof{x}}$ is given by applying $-\otimes_\Oo\roof{\Oo}$ to $j^*\colon \Oo\morphism\Oo_{X,x}$. Thus we can do the argument, which we planned to do with $\roof{\Oo}_{Y,y}$, with $\roof{\Oo}$ instead, provided we are able to show that $\roof{\Oo}$ is faithfully flat over $\Oo$.
+
+But this is not hard. Since $\Oo\morphism\roof{\Oo}$ is a local morphism between local rings, it will be automatically faithfully flat if it is only flat (this follows from Proposition~\reff{prop:faithfullyFlatModule}\itememph{d}, \itememph{a} in the future). Now $\Oo\otimes_{\Oo_{Y,y}}\roof{\Oo}_{Y,y}$ is flat over $\Oo$ because $\roof{\Oo}_{Y,y}$ is flat over $\Oo_{Y,y}$ by Corollary~\reff{cor:completionFaithfullyFlat}. Hence any localization of $\Oo\otimes_{\Oo_{Y,y}}\roof{\Oo}_{Y,y}$ is flat over $\Oo$ as well, which includes $\roof{\Oo}$.
+
+This shows that $j^*\colon \Oo\morphism\Oo_{X,x}$ is an isomorphism. By Lemma~\reff{lem:OpenEmbedding}, $j\colon X\morphism\SPEC(f_*\Oo_X)$ is an open embedding, hence $f$ is quasi-affine by Definition~\reff{def:quasiAffine}\itememph{d}.  Then we're done by Lemma~\reff{lem:ZMTLemma1}.
 \end{proof}
 
 
@@ -681,16 +696,16 @@ which clearly is an isomorphism if $B$ is flat over $A$.
 \begin{prop}\lbl{prop:baseChangeMorphism}
 	Consider a cartesian diagram
 	\begin{diagram*}
-		\object{0,0}{$\snake{Y}$}[a];
+		\object{2,1.5}{$\snake{Y}$}[a];
 		\object{0,1.5}{$\snake{X}$}[b];
 		\object{2,0}{$Y$}[c];
-		\object{2,1.5}{$X$}[d];
+		\object{0,0}{$X$}[d];
 		\pullback{1,0.75};
 		\scriptsize
-		\arrow ba[left][$\snake{f}$];
-		\arrow dc[right][$f$];
-		\arrow bd[above][$\xi$];
-		\arrow ac[above][$\upsilon$];
+		\arrow ba[above][$\snake{f}$];
+		\arrow dc[above][$f$];
+		\arrow bd[left][$\xi$];
+		\arrow ac[right][$\upsilon$];
 	\end{diagram*}
 	in which $f$ is quasi-compact and separated, and let $\Ff$ be a quasi-coherent $\Oo_X$-module. Then we get a morphism of $\Oo_{\snake{Y}}$-modules, called the \defemph{base change morphism},
 	\begin{align}\lbl{eq:baseChangeMorphism}
@@ -800,7 +815,7 @@ Before we state the theorem, let us once and for all fix some pretty convenient 
 	\end{align}
 	when $B$ and $\snake{X}$ are as in \itememph{a}. We will construct cochain complexes $P^\bullet$ and $Q^\bullet$ with morphisms $c\colon Q^\bullet\morphism\check{C}^\bullet$ and $p\colon Q^\bullet\morphism P^\bullet$ such that $P^\bullet$ has all the required properties and $c$, $p$ induce isomorphisms on $H^\bullet(-\otimes_AM)$ for arbitrary $A$-modules $M$.
 	
-	The rest of the proof of \itememph{a} doesn't concern any $\check{C}^\bullet$-specific properties except flatness and the base change property. However, in the upcoming sequence of commutative algebra lemmas we will rather freely use facts from homological algebra (usually you find them in \cite{homalg}).
+	The rest of the proof of \itememph{a} doesn't concern any $\check{C}^\bullet$-specific properties except flatness and the base change property. However, in the upcoming sequence of commutative algebra lemmas we will rather freely use facts from homological algebra (most should be known at this level, and usually you can look them up in \cite{homalg} or any textbook).
 	\begin{lem}\lbl{lem:TensorQuasiIsomorphism}
 		Let $A$ be a (not necessarily noetherian) ring and $\phi\colon C^\bullet\morphism D^\bullet$ a quasi-isomorphism\footnote{That is, $\phi$ induces isomorphisms on cohomology} between bounded-from-above cochain complexes of flat $A$-modules. Then, for any $A$-module $M$,
 		\begin{align*}
@@ -833,7 +848,7 @@ Recall that if $C^\bullet$ is a cochain complex, one can form its \emph{soft tru
 \end{align*} 
 where $Z^d=\ker\left(C^{d}\morphism C^{d+1}\right)$. We have $H^p(\tau_{\leq d}C^\bullet)=H^p(C^\bullet)$ if $p\leq d$ and $H^p(\tau_{\leq d}C^\bullet)=0$ otherwise.
 \begin{lem}\lbl{lem:TruncQuasiIso}
-	Let $F^\bullet$ be a bounded-from-above cochain complex of flat modules over an arbitrary ring $A$. If $F$ is acyclic in degrees $>d$, then $\tau_{\leq d}F^\bullet\monomorphism F^\bullet$ is a quasi-isomorphism and $\tau_{\leq d}F^\bullet$ is still flat over $A$.
+	Let $F^\bullet$ be a bounded-from-above cochain complex of flat modules over an arbitrary ring $A$. If $F$ is acyclic in degrees $>d$, then $\tau_{\leq d}F^\bullet$ is still flat over $A$ and $\tau_{\leq d}F^\bullet\monomorphism F^\bullet$ is a quasi-isomorphism.
 \end{lem}
 \begin{proof}
 	Using induction, we may assume $F^\bullet$ to be concentrated in degrees $\leq d+1$. Then $0\morphism Z^d\morphism C^d\morphism C^{d+1}\morphism 0$ is exact. Let $M$ be any $A$-module. Since $C^d$, $C^{d+1}$ are flat, we get
@@ -849,10 +864,10 @@ where $Z^d=\ker\left(C^{d}\morphism C^{d+1}\right)$. We have $H^p(\tau_{\leq d}C
 	\end{alphanumerate}
 \end{rem}
 \begin{lem}\lbl{lem:FiniteApproximation}
-	Let $A$ be a noetherian ring and $F^\bullet$ a flat cochain complex of $A$-modules which is concentrated in degrees $< d$. Then there is a cochain complex $Q^\bullet$, consisting of finitely generated free $A$-modules and concentrated in degrees $<d$, together with a quasi-isomorphism $\rho^\bullet\colon Q^\bullet\morphism F^\bullet$.
+	Let $A$ be a noetherian ring and $F^\bullet$ a cochain complex of (not necessarily flat) $A$-modules which is concentrated in degrees $< d$. Then there is a cochain complex $Q^\bullet$, consisting of finitely generated free $A$-modules and concentrated in degrees $<d$, together with a quasi-isomorphism $\rho^\bullet\colon Q^\bullet\morphism F^\bullet$.
 \end{lem}
 \begin{proof}
-	Denote the differentials of $F^\bullet$ and $Q^\bullet$ by $d_F^\bullet$, $d_Q^\bullet$ (the latter of which is yet to be constructed). We will construct the $Q^i$ by downward induction. We start by putting $Q^i=0$ when $i\geq d$. Now let $k\in\IZ$ and suppose we have already constructed $Q^i$ and $d_Q^i$ for $i\geq k$ together with $\rho^i\colon Q^i\morphism F^i$ (compatible with the differentials) such that $H^p(Q^\bullet)\isomorphism H^p(F^\bullet)$ is an isomorphism when $p>k$ and $\ker(d_Q^k)\morphism H^k(F^\bullet)$ is surjective.
+	Denote the differentials of $F^\bullet$ and $Q^\bullet$ by $d_F^\bullet$, $d_Q^\bullet$ (the latter of which is yet to be constructed). We will construct the $Q^i$ by downward induction. We start by putting $Q^p=0$ when $p\geq d$. Now let $k\in\IZ$ and suppose we have already constructed $Q^p$ and $d_Q^p$ for $p\geq k$ together with $\rho^p\colon Q^p\morphism F^p$ (compatible with the differentials) such that $H^p(Q^\bullet)\isomorphism H^p(F^\bullet)$ is an isomorphism when $p>k$ and $\ker(d_Q^k)\morphism H^k(F^\bullet)$ is surjective.
 	
 Now it's about constructing suitable $Q^{k-1}$, $d_Q^{k-1}$ such that the above conditions remain valid for $k-1$. Let $\beta_1,\ldots,\beta_\ell$ be generators of $\left\{x\in Q^k\st \rho^k(x)\in\Im\big(d_F^{k-1}\big)\right\}$
 (that's where we really need that $A$ is noetherian) and let $\phi_i\in F^{k-1}$ such that $d_F^{k-1}(\phi_i)=\rho^k(x)$ for all $i=1,\ldots,\ell$. Also choose $\psi_1,\ldots,\psi_m\in\ker\big(d_F^{k-1}\big)$ whose images in $H^{k-1}(F^\bullet)$ generate that $A$-module. Put $Q^{k-1}=A^{\ell+m}$ and let $e_i$ be the $i\ordinalth$ standard basis vector. Now define $d_Q^{k-1}\colon Q^{k-1}\morphism Q^k$ and $\rho^{k-1}\colon Q^{k-1}\morphism F^{k-1}$ by
@@ -875,20 +890,21 @@ Let $C^\bullet$ be any cochain complex. Similar to the soft truncation from abov
 \end{align*}
 in which $B^d=\Im\left(C^{d-1}\morphism C^d\right)$. It has the property that $H^p(\tau_{\geq d}C^\bullet)=H^p(C^\bullet)$ if $p\geq d$ and $H^p(\tau_{\geq d}C^\bullet)=0$ otherwise.
 \begin{lem}\lbl{lem:TruncQuasiIso2}
-	Let $A$ be a Noetherian ring and $Q^\bullet$ be a cochain complex of finitely generated projective $A$-modules. Suppose there's $d'\in\IZ$ such that $H^p(Q^\bullet\otimes_A\KK(\mm))=0$ for all $p<d'$ and all maximal ideals $\mm\subseteq A$. Then $\tau_{\geq d'}Q^\bullet$ is a cochain complex of projective $A$-modules. Also $Q^\bullet\morphism \tau_{\geq d'}Q^\bullet$ is a quasi-isomorphism if $H^p(Q^\bullet)=0$ for all $p\leq d'$.
+	Let $A$ be a noetherian ring and $Q^\bullet$ be a cochain complex of finitely generated projective $A$-modules. Suppose there's $d'\in\IZ$ such that $H^p(Q^\bullet\otimes_A\KK(\mm))=0$ for all $p<d'$ and all maximal ideals $\mm\subseteq A$. Then $\tau_{\geq d'}Q^\bullet$ is a cochain complex of projective $A$-modules. Also $Q^\bullet\morphism \tau_{\geq d'}Q^\bullet$ is a quasi-isomorphism if $H^p(Q^\bullet)=0$ for all $p< d'$.
 \end{lem}
 \begin{proof}
 	W.l.o.g.\ let $d'=0$ and $B^0=\Im\left(Q^{-1}\morphism Q^0\right)$. Then
 	\begin{align*}
 		\ldots \morphism Q^{-2}\morphism Q^{-1}\morphism Q^0\morphism Q^0/B^0\morphism 0
 	\end{align*}
-	is a projective resolution of $Q^0/B^0$. Hence $\Tor_p^A(Q^0/B^0,\KK(\mm))=H^{-p}(Q^\bullet\otimes_A\KK(\mm))=0$ for all $\mm\in\mSpec A$ and all $p>0$. Since $Q^0/B^0$ is finitely generated over the noetherian ring $A$, this implies that $Q^0/B^0$ is projective (this is essentially \cite[Propositions~1.3.1 and~1.3.2]{homalg}, but you should combine them with \cite[Fact~1.2.4]{homalg} first). The other assertion about $Q^\bullet\morphism \tau_{\geq d'}Q^\bullet$ is trivial again.
+	is a projective resolution of $Q^0/B^0$. Hence $\Tor_p^A(Q^0/B^0,\KK(\mm))=H^{-p}(Q^\bullet\otimes_A\KK(\mm))=0$ for all $\mm\in\mSpec A$ and all $p>0$. Since $Q^0/B^0$ is finitely generated over the noetherian ring $A$, this implies that $Q^0/B^0$ is projective (this is essentially \cite[Propositions~1.3.1 and~1.3.2]{homalg}, but you should combine them with \cite[Fact~1.2.4]{homalg} first). The other assertion about $Q^\bullet\morphism \tau_{\geq d'}Q^\bullet$ being a quasi-isomorphism is trivial again.
 \end{proof}
 \begin{exc}
 	Under the assumptions of Theorem~\reff{thm:GrauertGrothendieck}, derive Theorem~\reff{thm:FormalFunctions} for $f\colon X\morphism Y$ and $\Ff$ from what has been shown until Lemma~\reff{lem:FiniteApproximation}.
 \end{exc}
 \begin{lem}\lbl{lem:TechnicalVanishingAssertion}
-	If $d'$ is as in Theorem~\reff{thm:GrauertGrothendieck}\itememph{a}, i.e., has the property that $H^p\left(X_y,\Ff|_{X_y}\right)=0$ for all $y\in Y$ and $p<d'$, then also $H^p(X,\Ff)=0$ when $p<d'$.
+	If some $p\geq 0$ has the property that $H^p\left(X_y,\Ff|_{X_y}\right)=0$ for all $y\in Y$, then also $H^p(X,\Ff)=0$. In particular,
+	if $d'$ is as in Theorem~\reff{thm:GrauertGrothendieck}\itememph{a}, i.e., $H^p\left(X_y,\Ff|_{X_y}\right)=0$ holds for all $y\in Y$ and $p<d'$, then also $H^p(X,\Ff)=0$ when $p<d'$.
 \end{lem}
 \begin{proof}
 	Professor Franke outsourced a part of this proof to an external fact -- however, this fact looked rather fishy to me (if not to say \emph{wrong} unless $f$ is flat). I think the following captures what he actually had in mind.
@@ -926,7 +942,7 @@ We now have all the technicalities together to prove Theorem~\reff{thm:GrauertGr
 	
 	\lbl{page:Pfree}Note that for the rest of the proof we may even assume that $P^\bullet$ is a complex of \emph{free} modules. Indeed, our construction of $P^\bullet$ provided free modules except in degree $d'$, where $P^{d'}$ might only be projective. However, assertions \itememph{b} to \itememph{e} are base-local, so we may replace $\Spec A$ by $\Spec A_f$ such that $P_f^{d'}$ is free over $A_f$.%Dunno if that's needed.
 	
-	Let $Q^p=\coker\left(P^{p-1}\morphism P^p\right)$. Then $\coker\left(P^{p-1}\otimes_AB\morphism P^p\otimes_AB\right)\cong Q^p\otimes_AB$. If we put $\delta^p\colon Q^p\morphism P^{p+1}$, then $H^p(P^\bullet\otimes_AB)\cong \ker\left(\delta^p\otimes\id_B\right)$ for all $A$-algebras $B$ (actually, we don't even need $B$ to be an algebra).
+	Let $C^p=\coker\left(P^{p-1}\morphism P^p\right)$. Then $\coker\left(P^{p-1}\otimes_AB\morphism P^p\otimes_AB\right)\cong C^p\otimes_AB$. If we put $\delta^p\colon C^p\morphism P^{p+1}$, then $H^p(P^\bullet\otimes_AB)\cong \ker\left(\delta^p\otimes\id_B\right)$ for all $A$-algebras $B$ (actually, we don't even need $B$ to be an algebra).
 	
 	Now for part \itememph{b}. We prove that $\chi(-,\Ff)$ is locally constant on $Y$ first. Indeed, since the $P^i$ are free over $A$ (or rather we may assume them to be, as explained above) we have
 	\begin{align*}
@@ -953,13 +969,13 @@ We now have all the technicalities together to prove Theorem~\reff{thm:GrauertGr
 		\end{alphanumerate}
 	\end{lem}
 	\begin{proof}
-		Part \itememph{a}. Let $\mu_1,\ldots,\mu_s\in M$ be elements whose images $\ov{\mu}_1,\ldots,\ov{\mu}_s$ in $M\otimes_A\KK(\pp)$ form a basis of that $\KK(\pp)$-vector space.\footnote{Why can we do this? Start with any basis of $M\otimes_A\KK(\pp)\cong M_\pp/\pp M_\pp$ and lift it to $M_\pp$. Then the numerators (which are elements of $M$) will do. We will use this argument implicitly in the proofs to come.} Moreover, we may choose them in such a way that their images $\delta_\pp(\ov{\mu}_1),\ldots,\delta_\pp(\ov{\mu}_r)$ (for some $r\leq s$) in $F\otimes_A\KK(\pp)$ vanish while the images $\delta_\pp(\ov{\mu}_{r+1}),\ldots,\delta_\pp(\ov{\mu}_s)$ form a basis of $\Im\delta_\pp$. 
+		Part \itememph{a}. Let $\mu_1,\ldots,\mu_s\in M$ be elements whose images $\ov{\mu}_1,\ldots,\ov{\mu}_s$ in $M\otimes_A\KK(\pp)$ form a basis of that $\KK(\pp)$-vector space.\footnote{Why can we do this? Start with any basis of $M\otimes_A\KK(\pp)\cong M_\pp/\pp M_\pp$ and lift it to $M_\pp$. Then the numerators (which are elements of $M$) will do. We will use this argument multiple times (and without further mentioning) in the proofs to come.} Moreover, we may choose them in such a way that their images $\delta_\pp(\ov{\mu}_1),\ldots,\delta_\pp(\ov{\mu}_r)$ (for some $r\leq s$) in $F\otimes_A\KK(\pp)$ vanish while the images $\delta_\pp(\ov{\mu}_{r+1}),\ldots,\delta_\pp(\ov{\mu}_s)$ form a basis of $\Im\delta_\pp$. 
 		
 		Then we have $r=g(\pp)$. Since the assertions are all local near any given $\pp\in\Spec A$, we are free to replace $A$ by $A_f$ for $f\notin\pp$.
 		\begin{claim}\lbl{claim:MatrixShit}
-			Choosing $f$ appropriately we can assure that $\mu_1,\ldots,\mu_s$ generate $M$ as an $A$-module, and also that their images in $M\otimes_A\KK(\qq)$ stay $\KK(\qq)$-linearly independent for all $\qq\in\Spec A$. 
+			Choosing $f$ appropriately we can assure that $\mu_1,\ldots,\mu_s$ generate $M$ as an $A$-module, and also that $\delta_\qq(\mu_{r+1}),\ldots,\delta_\qq(\mu_s)\in F\otimes_A\KK(\qq)$ are $\KK(\qq)$-linearly independent for all $\qq\in\Spec A$. 
 		\end{claim}
-		The first of these two assertions is a Nakayama-style argument that you can find in  \cite[Lemma~1.5.1]{alg2}. The latter, however, needs a bit more care, and we'll explain how this works now. Choose a basis of $F$ (which is free of rank $n$ by assumption) and represent $\delta(\mu_{r+1}),\ldots,\delta(\mu_s)$ as linear combinations of that basis. The resulting coefficient matrix $C\in A^{(s-r)\times n}$ has a $(s-r)\times (s-r)$-minor $D\in A^{(s-r)\times (s-r)}$ whose image in $\KK(\pp)^{(s-r)\times (s-r)}$ is invertible, because $\delta_\pp(\ov{\mu}_{r+1}),\ldots,\delta_\pp(\ov{\mu}_s)$ are $\KK(\pp)$-linearly independent. In particular, we must have $\det D\not\equiv 0\bmod \pp$, so we may localize $A$ at $\det D$ to make $D$ invertible over $A$. Then the images of $\mu_{r+1},\ldots,\mu_s$ in $M\otimes_A\KK(\qq)$ are linearly independent for all $\qq\in\Spec A$, because they are still linearly independent after applying $\delta_\qq$. This justifies the above Claim~\reff{claim:MatrixShit}.
+		The first of these two assertions is a Nakayama-style argument that you can find in  \cite[Lemma~1.5.1]{alg2}. The latter, however, needs a bit more care, and we'll explain how this works now. Choose a basis of $F$ (which is free of rank $n$ by assumption) and represent $\delta(\mu_{r+1}),\ldots,\delta(\mu_s)$ as linear combinations of that basis. The resulting coefficient matrix $C\in A^{(s-r)\times n}$ has a $(s-r)\times (s-r)$-minor $D\in A^{(s-r)\times (s-r)}$ whose image in $\KK(\pp)^{(s-r)\times (s-r)}$ is invertible, because $\delta_\pp(\ov{\mu}_{r+1}),\ldots,\delta_\pp(\ov{\mu}_s)$ are $\KK(\pp)$-linearly independent. In particular, we must have $\det D\not\equiv 0\bmod \pp$, so we may localize $A$ at $\det D$ to make $D$ invertible over $A$. Then the images of $\mu_{r+1},\ldots,\mu_s$ under $\delta_\qq\colon M\otimes_A\KK(\qq)\morphism F\otimes_A\KK(\qq)$ are linearly independent for all $\qq\in\Spec A$. This justifies the above Claim~\reff{claim:MatrixShit}.
 		
 		Now we have $g(\qq)=\dim_{\KK(\qq)}\ker\delta_\qq=\dim_{\KK(\qq)}(M\otimes_A\KK(\qq))-\dim_{\KK(\qq)}\Im\delta_\qq$, in which the inequalities
 		\begin{align}\lbl{eq:dimIneqs}
@@ -974,7 +990,7 @@ We now have all the technicalities together to prove Theorem~\reff{thm:GrauertGr
 		\end{align*}
 		(where $n=\rank F$, remember?), so $\coker\delta$ is locally free by Lemma~\reff{lem:ReducedLocallyFree} again. In particular, $\coker\delta$ is projective, so $F\epimorphism\coker\delta$ splits and we get $F\cong \Im\delta\oplus\coker\delta$ (\emph{non}-canonically). Then $\Im\delta$ is projective as well, so $M\epimorphism\Im\delta$ splits as well, hence $M\cong \ker\delta\oplus\Im\delta$ and $\ker\delta$ lines up with the other projective modules. Therefore, $\delta$ has the form $\delta\colon \ker\delta\oplus\Im\delta\morphism\Im\delta\oplus\coker\delta$, and this nice splitting behaviour is preserved after tensoring with some $A$-module $N$. This shows \itememph{b}.
 	\end{proof}
-	Die-hard Franke fans might remember the next lemma from Franke's Algebra II lecture, where it appeared as a remark though; see \cite[p.~25]{alg2}. We'll prove it here again.
+	Die-hard Franke fans might remember the next lemma from Franke's Algebra II lecture, where it appeared as a remark though; see \cite[25]{alg2}. We'll prove it here again.
 	\begin{lem}\lbl{lem:ReducedLocallyFree}
 		Let $A$ be a reduced noetherian ring and $M$ a finitely generated $A$-module, such that the function
 		\begin{align*}
@@ -985,13 +1001,13 @@ We now have all the technicalities together to prove Theorem~\reff{thm:GrauertGr
 	\begin{proof}
 		Again, the question is local on $\Spec A$, so after localizing $A$ appropriately we may assume that $\dim_{\KK(\pp)}(M\otimes_A\KK(\pp))=\ell$ for all $\pp\in\Spec A$ and some $\ell\in\IN$. Choose some $\pp\in\Spec A$ and let $\mu_1,\ldots,\mu_\ell\in M$ be elements whose images form a basis of $M\otimes_\KK(\pp)$. Without losing generality (or rather after another localization, using \cite[Lemma~1.5.1]{alg2}) the $\mu_i$ generate $M$ as an $A$-module. We claim they do so freely. Indeed, if $\alpha_1\mu_1+\ldots+\alpha_\ell\mu_\ell=0$ for some $\alpha_i\in A$ is any relation in $M$, then $\alpha_i\in\qq$ for any $\qq\in\Spec A$ as $\dim_{\KK(\qq)}(M\otimes_A\KK(\qq))<\ell$ otherwise. Hence $\alpha_i\in\bigcap_{\qq\in\Spec A}\qq=\nil A=0$ and we're done.
 	\end{proof}
-	We come back to the proof of Theorem~\reff{thm:GrauertGrothendieck}\itememph{b} and \itememph{c}. The upper-semicontinuity part of \itememph{b} follows immediately from Lemma~\reff{lem:BasicallyThm4bc}\itememph{a} applied to $M=Q^p$ und $F=P^{p+1}$. For part \itememph{c}, we may assume the base change was done along $\upsilon\colon \snake{Y}=\Spec B\morphism Y=\Spec A$ because the question is local on $Y$ and $\snake{Y}$. Then $R^p\snake{f}_*(\xi^*\Ff)$ is a quasi-coherent $\Oo_{\snake{Y}}$-module given by
+	We come back to the proof of Theorem~\reff{thm:GrauertGrothendieck}\itememph{b} and \itememph{c}. The upper-semicontinuity part of \itememph{b} follows immediately from Lemma~\reff{lem:BasicallyThm4bc}\itememph{a} applied to $M=C^p$ und $F=P^{p+1}$. For part \itememph{c}, we may assume the base change was done along $\upsilon\colon \snake{Y}=\Spec B\morphism Y=\Spec A$ because the question is local on $Y$ and $\snake{Y}$. Then $R^p\snake{f}_*(\xi^*\Ff)$ is a quasi-coherent $\Oo_{\snake{Y}}$-module given by
 	\begin{align*}
-		H^p(\snake{X},\xi^*\Ff)\cong H^p(P^\bullet\otimes_AB)\cong \ker\left(\delta^p\otimes\id_B\colon Q^p\otimes_AB\morphism P^{p+1}\otimes_AB\right)\;,
+		H^p(\snake{X},\xi^*\Ff)\cong H^p(P^\bullet\otimes_AB)\cong \ker\left(\delta^p\otimes\id_B\colon C^p\otimes_AB\morphism P^{p+1}\otimes_AB\right)\;,
 	\end{align*}
 	and $\upsilon^*R^pf_*\Ff$ is given by
 	\begin{align*}
-		H^p(X,\Ff)\otimes_AB\cong H(P^\bullet)\otimes_AB\cong\ker\left(\delta^p\colon Q^p\morphism P^{p+1}\right)\otimes_AB\;.
+		H^p(X,\Ff)\otimes_AB\cong H(P^\bullet)\otimes_AB\cong\ker\left(\delta^p\colon C^p\morphism P^{p+1}\right)\otimes_AB\;.
 	\end{align*}
 	That these two agree is precisely what Lemma~\reff{lem:BasicallyThm4bc}\itememph{c} says.
 	
@@ -1001,31 +1017,32 @@ We now have all the technicalities together to prove Theorem~\reff{thm:GrauertGr
 		\begin{alphanumerate}
 			\item The canonical morphism
 			\begin{align*}
-				\ker\delta^p\otimes_A\KK(\pp)\morphism\ker\left(\delta^p_\pp=\delta^p\otimes \id_{\KK(\pp)}\colon Q^p\otimes_A\KK(\pp)\morphism P^{p+1}\otimes_A\KK(\pp)\right)
+				(\ker\delta^p)\otimes_A\KK(\pp)\morphism\ker\left(\delta^p_\pp=\delta^p\otimes \id_{\KK(\pp)}\colon C^p\otimes_A\KK(\pp)\morphism P^{p+1}\otimes_A\KK(\pp)\right)
 			\end{align*}
 			is surjective.
 			\item Same as \itememph{a}, but the morphism is even bijective.
-			\item The localization $Q^{p+1}_\pp$ is a free $A_\pp$-module.
+			\item The localization $C^{p+1}_\pp$ is a free $A_\pp$-module.
 		\end{alphanumerate}
 		Moreover, in this case the localization $B^{p+1}_\pp$ of $B^{p+1}=\Im\delta^p$ is free over $A_\pp$ as well.
 	\end{lem}
 \begin{proof}
-	We use similar arguments as in Lemma~\reff{lem:BasicallyThm4bc}. Let's do the implication \itememph{a} $\Rightarrow$ \itememph{c} first. If assertion \itememph{a} holds, then we may choose $\mu_1,\ldots,\mu_r\in\ker \delta^p$ whose images $\ov{\mu}_i$ in $\ker\left(\delta^p\otimes\id_{\KK(\pp)}\right)$ form a basis. We may extend $\mu_1,\ldots,\mu_r$ by some $\mu_{r+1},\ldots,\mu_s\in Q^p$ such that $\ov{\mu}_1,\ldots,\ov{\mu}_s$ form a basis of $Q^p\otimes_A\KK(\pp)$. Then the images $\delta_\pp^p(\ov{\mu}_{r+1}),\ldots,\delta_\pp^p(\ov{\mu}_s)\in P^{p+1}\otimes_A\KK(\pp)$ are $\KK(\pp)$-linearly independent, so we may choose $\pi_1,\ldots,\pi_n\in P^{p+1}$ whose images in $P^{p+1}\otimes_A\KK(\pp)$ extend $\delta_\pp^p(\ov{\mu}_{r+1}),\ldots,\delta_\pp^p(\ov{\mu}_s)$ to a basis.
+	We use similar arguments as in Lemma~\reff{lem:BasicallyThm4bc}. Let's do the implication \itememph{a} $\Rightarrow$ \itememph{c} first. If assertion \itememph{a} holds, then we may choose $\mu_1,\ldots,\mu_r\in\ker \delta^p$ whose images $\ov{\mu}_i$ in $\ker\big(\delta^p\otimes\id_{\KK(\pp)}\big)$ form a basis. We may extend $\mu_1,\ldots,\mu_r$ by some $\mu_{r+1},\ldots,\mu_s\in C^p$ such that $\ov{\mu}_1,\ldots,\ov{\mu}_s$ form a basis of $C^p\otimes_A\KK(\pp)$. By the same argument as in Claim~\reff{claim:MatrixShit} we may replace $A$ by some localization to achieve that $\mu_1,\ldots,\mu_s$ generate $M$. Then $\Im \delta^p$ is generated by $\delta^p(\mu_{r+1}),\ldots,\delta^p(\mu_s)$, since the other generators are contained in $\ker \delta^p$. We claim that $\delta^p(\mu_{r+1}),\ldots,\delta^p(\mu_s)$ are (up to localizing $A$) actually \emph{free} generators of $\Im\delta^p$!
 	
-	By the same argument as in Claim~\reff{claim:MatrixShit} from the proof of Lemma~\reff{lem:BasicallyThm4bc}\itememph{a}, we can replace $A$ by some localization so that $\delta^p(\mu_{r+1}),\ldots,\delta^p(\mu_s)$ and $\pi_1,\ldots,\pi_n$ generate $P^{p+1}$ -- and we may even assume they do so \emph{freely}! Indeed, write $\delta^p(\mu_{r+1}),\ldots,\delta^p(\mu_s)$ and $\pi_1,\ldots,\pi_n$ as linear combinations of some basis of $P^{p+1}$. Then the coefficient matrix $C$ becomes invertible when reduced to $\KK(\pp)$, hence after localizing at $\det C$ we may assume that $C$ is already invertible over $A$. Therefore, after suitable localization, we see that $\Im\delta^p$ is a direct summand of $P^{p+1}$. Then $Q^{p+1}=\coker\delta^p$ is a direct summand of $P^{p+1}\cong \Im\delta^p\oplus\coker\delta^p$ as well. This proves that $Q^{p+1}$ is projective, hence $Q^{p+1}_\pp$ is free over $A_\pp$. Thereby the implication \itememph{a} $\Rightarrow$ \itememph{c} has been shown.
+	Indeed, the images $\delta_\pp^p(\ov{\mu}_{r+1}),\ldots,\delta_\pp^p(\ov{\mu}_s)\in P^{p+1}\otimes_A\KK(\pp)$ are $\KK(\pp)$-linearly independent, so we may choose $\pi_1,\ldots,\pi_n\in P^{p+1}$ whose images in $P^{p+1}\otimes_A\KK(\pp)$ extend $\delta_\pp^p(\ov{\mu}_{r+1}),\ldots,\delta_\pp^p(\ov{\mu}_s)$ to a basis.
+	By the same argument as in Claim~\reff{claim:MatrixShit}, we can replace $A$ by some localization so that $\delta^p(\mu_{r+1}),\ldots,\delta^p(\mu_s)$ and $\pi_1,\ldots,\pi_n$ generate $P^{p+1}$ -- and we may even assume they do so \emph{freely}! Indeed, write $\delta^p(\mu_{r+1}),\ldots,\delta^p(\mu_s)$ and $\pi_1,\ldots,\pi_n$ as linear combinations of some basis of $P^{p+1}$. Then the coefficient matrix $C$ becomes invertible when reduced to $\KK(\pp)$, hence after localizing $A$ at $\det C$ we may assume that $C$ is already invertible over $A$. Therefore, after replacing $A$ by a suitable localization, we see that $\Im\delta^p$ is a direct summand of $P^{p+1}$. Then $C^{p+1}=\coker\delta^p$ is a direct summand of $P^{p+1}\cong \Im\delta^p\oplus\coker\delta^p$ as well. This proves that $C^{p+1}$ is projective, hence $C^{p+1}_\pp$ is free over $A_\pp$. Thereby the implication \itememph{a} $\Rightarrow$ \itememph{c} has been shown.
 	
-	Now for \itememph{c} $\Rightarrow$ \itememph{b}. By \cite[Corollary~1.5.1]{alg2}, we may replace $A$ (and $Q^{p+1}$) by some localization such that $Q^{p+1}$ is already free over $A$. Then $P^{p+1}\epimorphism Q^{p+1}=\coker\delta^p$ is split, hence $P^{p+1}\cong \Im\delta^p\oplus \coker\delta^p$ (non-canonically). Then $\Im\delta^p$ is projective as well, so $Q^p\cong \ker\delta^p\oplus\Im\delta^p$ (non-canonically). That is, $\delta^p$ splits as $\delta^p\colon \ker\delta^p\oplus\Im\delta^p\morphism\Im\delta^p\oplus\coker\delta^p$, and this nice splitting behaviour is preserved after tensoring with $\KK(\pp)$. This shows $\ker\delta^p\otimes_A\KK(\pp)\cong \ker\left(\delta^p\otimes\id_{\KK(\pp)}\right)$, i.e., \itememph{b} holds.
+	Now for \itememph{c} $\Rightarrow$ \itememph{b}. By \cite[Corollary~1.5.1]{alg2}, we may replace $A$ (and $C^{p+1}$) by some localization such that $C^{p+1}$ is already free over $A$. Then $P^{p+1}\epimorphism C^{p+1}=\coker\delta^p$ is split, hence $P^{p+1}\cong \Im\delta^p\oplus \coker\delta^p$ (non-canonically). Then $\Im\delta^p$ is projective as well, so $C^p\cong \ker\delta^p\oplus\Im\delta^p$ (non-canonically). That is, $\delta^p$ splits as $\delta^p\colon \ker\delta^p\oplus\Im\delta^p\morphism\Im\delta^p\oplus\coker\delta^p$, and this nice splitting behaviour is preserved after tensoring with $\KK(\pp)$. This shows $\ker\delta^p\otimes_A\KK(\pp)\cong \ker\left(\delta^p\otimes\id_{\KK(\pp)}\right)$, i.e., \itememph{b} holds.
 	
-	Finally \itememph{b} $\Rightarrow$ \itememph{a} is trivial, and also we've already seen the additional assertion in the proof of \itememph{a} $\Rightarrow$ \itememph{c}. We're done.
+	Finally \itememph{b} $\Rightarrow$ \itememph{a} is trivial, and also we've already seen that $B_\pp^{p+1}$ is free over $A_\pp$ in the proof of \itememph{a} $\Rightarrow$ \itememph{c}. We're done.
 \end{proof}
 
-	Now there isn't really much left to prove \itememph{d} and \itememph{e}. Since $Y=\Spec A$ is affine (or rather we reduced it to this case), $R^pf_*\Ff$ is the quasi-coherent $\Oo_Y$-module given by the $A$-module $H^p(X,\Ff)\cong H^p(P^\bullet)\cong \ker\delta^p$. Then Lemma~\reff{lem:BasicallyThm4de}\itememph{a} and \itememph{b} shows that $(R^pf_*\Ff)(y)\morphism H^p(X_y,\Ff|_{X_y})$ is bijective iff it is surjective. Moreover, the set of $\pp\in\Spec A$ such that the canonical morphism Lemma~\reff{lem:BasicallyThm4de}\itememph{c} holds is open by \cite[Corollary~1.5.1]{alg2}, which directly translates into $U_p\subseteq Y$ being open. This shows \itememph{d}.
+	Now there isn't really much left to prove \itememph{d} and \itememph{e}. Since $Y=\Spec A$ is affine (or rather we reduced it to this case), $R^pf_*\Ff$ is the quasi-coherent $\Oo_Y$-module given by the $A$-module $H^p(X,\Ff)\cong H^p(P^\bullet)\cong \ker\delta^p$. Then Lemma~\reff{lem:BasicallyThm4de}\itememph{a}, \itememph{b} show that $(R^pf_*\Ff)(y)\morphism H^p(X_y,\Ff|_{X_y})$ is bijective iff it is surjective. Moreover, the set of $\pp\in\Spec A$, for which $C_\pp^{p+1}$ is free, is open by \cite[Corollary~1.5.1]{alg2}. Using Lemma~\reff{lem:BasicallyThm4de}\itememph{c} this implies that $U_p\subseteq Y$ is open, proving \itememph{d}.
 	
-	Finally, part \itememph{e}. If $y\in U_p$, then $Q^{p+1}$ as well as $B^{p+1}=\Im \delta^p$ are locally free at the prime $\pp\in\Spec A$ corresponding to $y$ (by Lemma~\reff{lem:BasicallyThm4de}\itememph{c}). Therefore, from the short exact sequence
+	Finally, part \itememph{e}. If $y\in U_p$ corresponds to $\pp\in\Spec A$, then $C_\pp^{p+1}$ as well as $B_\pp^{p+1}$ are free over $A_\pp$ by Lemma~\reff{lem:BasicallyThm4de}\itememph{c}. Therefore the short exact sequence
 	\begin{align*}
-		0\morphism H^p(X,\Ff)\morphism Q^p\morphism B^{p+1}\morphism 0
+		0\morphism H^p(X,\Ff)_\pp\morphism C_\pp^p\morphism B_\pp^{p+1}\morphism 0
 	\end{align*}
-	we obtain $\Tor_1^A\big(H^p(X,\Ff),\KK(y)\big)\cong \Tor_1^A(Q^p,\KK(y))$. By \cite[Proposition~1.3.1]{homalg}, this shows that $Q^p$ is locally free at $\pp$ iff so is $H^p(X,\Ff)$. Using Lemma~\reff{lem:BasicallyThm4de}\itememph{c} we see that $y\in U_{p-1}$ iff $H^p(X,\Ff)$ is locally free at $\pp$ -- and that's precisely what we want.
+	is split. This shows that $C_\pp^p$ is free over $A_\pp$ iff so is $H^p(X,\Ff)_\pp$. Using Lemma~\reff{lem:BasicallyThm4de}\itememph{c} we thus see that $y\in U_{p-1}$ iff $H^p(X,\Ff)$ is locally free at $\pp$ -- and that's precisely what we want.
 \end{proof}
 \begin{cor}
 	In the situation of Theorem~\reff{thm:GrauertGrothendieck}, if $h^p(y,\Ff)=0$, then $R^pf_*\Ff$ vanishes in some neighbourhood of $x$.
@@ -1076,10 +1093,10 @@ We will typically assume $S$ to be locally noetherian, although Professor Franke
 		\scriptsize
 		\arrow ba[left][$\gamma$];
 		\arrow ac[above][$f$];
-		\arrow dc[right][$\xi$];
+		\arrow dc[right][$\varsigma$];
 		\arrow bd[above][$\snake{f}$];
 	\end{diagram*}
-	then the base change morphism $\xi^*R^pf_*\Ll\morphism R^p\snake{f}_*(\gamma^*\Ll)$ is an isomorphism for $p\in\{0,1\}$ in each of the above cases.
+	then the base change morphism $\varsigma^*R^pf_*\Ll\morphism R^p\snake{f}_*(\gamma^*\Ll)$ is an isomorphism for $p\in\{0,1\}$ in each of the above cases.
 \end{prop}
 \begin{rem}
 	\begin{alphanumerate}
@@ -1098,22 +1115,23 @@ We will typically assume $S$ to be locally noetherian, although Professor Franke
 \begin{proof}[Proof of Proposition~\reff{prop:RpLl}]
 	Throughout the proof, we may assume $S=\Spec A$ for some noetherian ring $A$ because all assertions are local. Also Theorem~\reff{thm:GrauertGrothendieck} is applicable since $f$ is flat, so every line bundle on $C$ is flat over $\Oo_S$. Let $P^\bullet$ be the complex from Theorem~\reff{thm:GrauertGrothendieck}\itememph{a}, concentrated within minimum and maximum of the set
 	\begin{align*}
-		D&=\left\{p\in\IN\st H^p\left(C_s,\Ll|_{C_s}\right)\neq 0\text{ for some }s\in S\right\}\\
+		\DD&=\left\{p\in\IN\st H^p\left(C_s,\Ll|_{C_s}\right)\neq 0\text{ for some }s\in S\right\}\\
 		&=\left\{p\in\IN\st H^p\left(C_{\ov{s}},\Ll|_{C_{\ov{s}}}\right)\neq 0\text{ for some }s\in S\right\}
 	\end{align*}
-	(where we use \eqreff{eq:GeometricFibreIso}). Note that $D=\{0\}$ in the case of \itememph{a} and $D=\{1\}$ in the case of \itememph{b}. Indeed, in both cases $D$ is contained in $\{0,1\}$ by Grothendieck's theorem on cohomological dimension (cf.\ \cite[Proposition~1.4.1]{alggeo2}), and then Lemma~\reff{lem:Hpvanishing} determines $D$ (ok, actually it doesn't, but we'll see immediately why $D=\emptyset$ is impossible). Then $P^\bullet$ consists of at most one non-zero term, which defines a vector bundle on $S=\Spec A$. The assertions about dimension follow immediately from Riemann--Roch in the form of \cite[equation~(3.1.3)]{alggeo2}.
+	(where we use Lemma~\reff{lem:TechnicalVanishingAssertion} in combination with \eqreff{eq:GeometricFibreIso}). Note that $\DD=\{0\}$ in the case of \itememph{a} and $\DD=\{1\}$ in the case of \itememph{b}. Indeed, in both cases $\DD$ is contained in $\{0,1\}$ by Grothendieck's theorem on cohomological dimension (cf.\ \cite[Proposition~1.4.1]{alggeo2}), and then Lemma~\reff{lem:Hpvanishing} determines $\DD$ (ok, actually it doesn't, but we'll see immediately why $\DD=\emptyset$ is impossible). Then $P^\bullet$ consists of at most one non-zero term, which defines a vector bundle on $S=\Spec A$. The assertions about dimension follow immediately from Riemann--Roch in the form of \cite[equation~(3.1.3)]{alggeo2}.
 	
-	For \itememph{c}, let $U_p\subseteq S$ be as in Theorem~\reff{thm:GrauertGrothendieck}\itememph{d} and \itememph{e}. By Serre duality -- or more precisely, \cite[Theorem~7\itememph{b} and \itememph{c}]{alggeo2} -- we see that
+	For \itememph{c}, let $U_p\subseteq S$ be as in Theorem~\reff{thm:GrauertGrothendieck}\itememph{d} and \itememph{e}. %By Serre duality -- or more precisely, \cite[Theorem~7\itememph{b}, \itememph{c}]{alggeo2} -- we see that
+	Since $C_{\ov{s}}$ is proper and integral over $\ov{\KK(s)}$, we see that $H^0\left(C_{\ov{s}},\Oo_{C_{\ov{s}}}\right)$ is a domain and a $\ov{\KK}(s)$-vector space of finite dimension. Since $\ov{\KK(s)}$ is algebraically closed, we deduce that
 	\begin{align*}
-		H^0\left(C_{\ov{s}},\Oo_{C_{\ov{s}}}\right)\cong \Hom_{\ov{\KK(s)}}\left(H^1\left(C_{\ov{s}},\Omega_{C_{\ov{c}}}\right),\ov{\KK(s)}\right)\cong\ov{\KK(s)}\cong \KK(s)
+		H^0\left(C_{\ov{s}},\Oo_{C_{\ov{s}}}\right)\cong \ov{\KK(s)}
 	\end{align*}
-	is a one-dimensional vector space with the constant function $1$ as a basis, and the same holds thus for $H^0(C_s,\Oo_{C_s})$. Therefore, the canonical morphism
+	is a one-dimensional vector space with the constant function $1$ as a basis, and the same holds thus for $H^0(C_s,\Oo_{C_s})$ by \eqreff{eq:GeometricFibreIso}. Therefore, the canonical morphism
 	\begin{align}\lbl{eq:H0OC}
-		H^0(C,\Oo_C)\otimes_A\KK(s)\cong\big(R^0f_*\Oo_C\big)(s)\morphism H^0(C_s,\Oo_{C_s})
+		(f_*\Oo_C)(s)\cong\big(R^0f_*\Oo_C\big)(s)\morphism H^0(C_s,\Oo_{C_s})
 	\end{align}
-	is an surjective for all $s\in S$ (because the constant function $1$ is always hit), so $U_0=S$ by Theorem~\reff{thm:GrauertGrothendieck}\itememph{d}. But $U_{-1}=S$ for trivial reasons, hence $f_*\Oo_C$ is a vector bundle by Theorem~\reff{thm:GrauertGrothendieck}\itememph{e}. Moreover, from \eqreff{eq:H0OC} (which is actually an isomorphism, as we now know) we see that $\Oo_C(C)\otimes_A\KK(s)$ is a one-dimensional $\KK(s)$-vector space with $1\otimes 1$ as a basis for all $s\in S$. Using \cite[Lemma~1.5.1]{alg2}, this implies that $f_*\Oo_C$ is generated by $1\in\Oo_C(C)$ as an $\Oo_S$-algebra. But $f_*\Oo_C$ is a vector bundle, so $f^*\colon \Oo_S\morphism f_*\Oo_C$ must be indeed an isomorphism.
+	is an surjective for all $s\in S$ (because the constant function $1$ is always hit), so $U_0=S$ by Theorem~\reff{thm:GrauertGrothendieck}\itememph{d}. But $U_{-1}=S$ for trivial reasons, hence $f_*\Oo_C$ is a vector bundle by Theorem~\reff{thm:GrauertGrothendieck}\itememph{e}. Moreover, from \eqreff{eq:H0OC} (which is actually an isomorphism, as we now know from Theorem~\reff{thm:GrauertGrothendieck}\itememph{d}) we see that $(f_*\Oo_C)(s)\cong (f_*\Oo_C)_s\otimes_{\Oo_{S,s}}\KK(s)$ is a one-dimensional $\KK(s)$-vector space with $1\otimes 1$ as a basis for all $s\in S$. Using \cite[Lemma~1.5.1]{alg2}, this implies that $f_*\Oo_C$ is generated by $1\in\Oo_C(C)$ as an $\Oo_S$-algebra. But $f_*\Oo_C$ is a vector bundle, so $f^*\colon \Oo_S\morphism f_*\Oo_C$ must be indeed an isomorphism.
 	
-	To show the second part of \itememph{c}, note that $H^2(C_s,\Oo_{C_s})=0$ for all $s\in S$ (by Grothendieck's dimension theorem), so $U_2=S$. Then $(R^2f_*\Oo_C)(s)=0$ for all $s\in S$, which proves $R^2f_*\Oo_C=0$ (this uses \cite[Lemma~1.5.1]{alg2} again). In particular, $R^2f_*\Oo_C$ is a vector bundle and Theorem~\reff{thm:GrauertGrothendieck}\itememph{e} gives $U_1=S$. Since $U_0=S$ as well, reversing the argument shows that $R^1f_*\Oo_C$ is a vector bundle too. The fact that it has dimension $g$ can be seen as follows. We have
+	To show the second part of \itememph{c}, note that $H^2(C_s,\Oo_{C_s})=0$ for all $s\in S$ (by Grothendieck's dimension theorem), so $U_2=S$. Then $(R^2f_*\Oo_C)(s)=0$ for all $s\in S$, which proves $R^2f_*\Oo_C=0$ (this uses \cite[Lemma~1.5.1]{alg2} again). In particular, $R^2f_*\Oo_C$ is a vector bundle, and Theorem~\reff{thm:GrauertGrothendieck}\itememph{e} gives $U_1=S$. Since $U_0=S$ as well, reversing the argument shows that $R^1f_*\Oo_C$ is a vector bundle too. The fact that it has dimension $g$ can be seen as follows. We have
 	\begin{align*}
 		\dim R^1f_*\Oo_C=\dim_{\KK(s)}(R^1f_*\Oo_C)(s)=\dim_{\ov{\KK(s)}}H^1\left(C_{\ov{s}},\Oo_{C_{\ov{s}}}\right)
 	\end{align*}
@@ -1121,7 +1139,7 @@ We will typically assume $S$ to be locally noetherian, although Professor Franke
 	\begin{align*}
 		\dim_{\ov{\KK(s)}}H^1\left(C_{\ov{s}},\Oo_{C_{\ov{s}}}\right)=\dim_{\ov{\KK(s)}}H^0\left(C_{\ov{s}},\Omega_{C_{\ov{s}}}\right)=g\;,
 	\end{align*}
-	in which the right-most equality holds simply by definition (indeed, $g$ is supposed to be the $\ov{\KK(s)}$-dimension of $\Omega_{C_{\ov{s}}}(C_{\ov{s}})\cong H^0(C_{\ov{c}},\Omega_{C_{\ov{s}}})$). This proves \itememph{c}.
+	in which the right-most equality holds simply by definition (indeed, $g$ is supposed to be the $\ov{\KK(s)}$-dimension of $\Gamma(C_{\ov{s}},\Omega_{C_{\ov{s}}})\cong H^0(C_{\ov{c}},\Omega_{C_{\ov{s}}})$). This proves \itememph{c}.
 	
 	Finally, let's see why the additional base change assertion holds. For \itememph{a} and \itememph{b}, we've seen that $P^\bullet$ has only one non-vanishing term, so the required isomorphism is immediate. However, I wasn't able to find a equally down-to-the-earth argument in the case of \itememph{c}. Instead, consider the special case $S=\Spec A$ and $\snake{S}=\Spec B$ (the assertion is local, so that's fine). Then the base change spectral sequence (cf.\ Proposition~\reff{prop:baseChangeMorphismA})
 	\begin{align*}
@@ -1132,7 +1150,7 @@ We will typically assume $S$ to be locally noetherian, although Professor Franke
 \begin{rem}
 	When $g=d=1$ we have a line bundle $\Ll_0=f_*\Ll$ on $S$ with a canonical morphism $f^*\Ll_0=f^*f_*\Ll\morphism\Ll$ as $f^*$ is left-adjoint to $f_*$. It will turn out (in Proposition~\reff{prop:canonicalSection}) that there is a unique section $\sigma\colon S\morphism C$ such that said canonical morphism constitutes an isomorphism $f^*\Ll_0\isomorphism\Ii\Ll$, where $\Ii$ is the sheaf of ideals defined by $\sigma\colon S\monomorphism C$, which can be regarded as a closed subprescheme of $C$.
 	
-	Wait \ldots\ why is $\sigma$ a closed embedding? Note that $f$ is proper, hence separated, so any section of it is a closed embedding by \cite[Proposition~1.5.5]{alggeo1}.
+	Wait \ldots\ why is $\sigma$ a closed embedding? This is because $f$ is proper, hence separated, so any section of it is a closed embedding by \cite[Proposition~1.5.5]{alggeo1}.
 \end{rem}
 \begin{lem}\lbl{lem:I(s)LineBundle}
 	Let $f\colon C\morphism S$ be a flat family of curves and let $\sigma\colon S\morphism C$ be a section of $f$. Let $\Ii=\Ii(\sigma)\subseteq \Oo_C$ denote the sheaf of ideals defining the closed subprescheme $\sigma(S)$ of $C$. Then $\Ii$ is a line bundle.
@@ -1144,7 +1162,7 @@ We will typically assume $S$ to be locally noetherian, although Professor Franke
 	\end{align}
 	(because $S\cong \sigma(S)$ is the closed subprescheme cut out by $\Ii$) of $\Oo_{S,s}$-modules. Since $\Oo_{C,c}$ is flat over $\Oo_{S,s}$ by assumption, this already shows that $\Ii_c$ is a flat module over $\Oo_{S,s}$ (with the $\Oo_{S,s}$-action given by $f^*$) via the long exact $\Tor$ sequence. Also we see that $\Oo_{C,c}$ and $\Oo_{S,s}\cong \Oo_{C,c}/\Ii_c$ have the same residue field $k$.
 	
-	To show local freeness of $\Ii$, we wish to show that $\Tor_1^{\Oo_{C,c}}(k,\Ii_c)=0$. Since the algebraic closure $\ov{k}$ is (as an $\Oo_{C,c}$-module) isomorphic to a direct sum of copies of $k$, we may equivalently show that $\Tor_1^{\Oo_{C,c}}(\ov{k},\Ii_c)=0$. To do so, consider the (homological) spectral sequence
+	To show local freeness of $\Ii$, we wish to show that $\Tor_1^{\Oo_{C,c}}(k,\Ii_c)=0$. Since the algebraic closure $\ov{k}$ is (as an $\Oo_{C,c}$-module) isomorphic to a direct sum of copies of $k$, we may equivalently show that $\Tor_1^{\Oo_{C,c}}(\ov{k},\Ii_c)=0$. To do so, consider the (homological) spectral sequence\footnote{If you think using spectral sequences is a little bit overkill, have a look at the proof of Lemma~\reff{lem:CartierDivisor}.}
 	\begin{align}\lbl{eq:TorSS1}
 		E_{p,q}^2=\Tor_p^{\Oo_{C_{\ov{s}},c}}\left(\ov{k},\Tor_q^{\Oo_{C,c}}(\Ii_c,\Oo_{C_{\ov{s}},c})\right)\converge\Tor_{p+q}^{\Oo_{C,c}}(\ov{k},\Ii_c)\;,
 	\end{align}
@@ -1185,7 +1203,7 @@ We will typically assume $S$ to be locally noetherian, although Professor Franke
 	If the geometric fibres $C_{\ov{s}}$ are regular curves, then so are the ordinary fibres $C_s$ (Franke didn't prove this in the lecture, but we do in Proposition~\reff{prop:GeometricFibres101}). In the proof of Lemma~\reff{lem:I(s)LineBundle} we could have worked with $C_s$ instead of $C_{\ov{s}}$ as well, so the assertion still holds if $f\colon C\morphism S$ is only assumed flat with one-dimensional regular fibres.
 \end{rem}
 \begin{lem}\lbl{lem:I(s)degree-1}
-	The ideal $\Ii=\Ii(\sigma)$ in Lemma~\reff{lem:I(s)LineBundle} has automatically (geometric and ordinary) fibre-wise degree $1$, that is, its pullbacks to the geometric and ordinary fibres have degree $-1$.
+	The ideal $\Ii=\Ii(\sigma)$ in Lemma~\reff{lem:I(s)LineBundle} has automatically (geometric and ordinary) fibre-wise degree $-1$ -- that is, its pullbacks to the geometric and ordinary fibres have degree $-1$.
 \end{lem}
 \begin{proof}
 	Indeed, let $i_s\colon C_s\morphism C$ and $i_{\ov{s}}\colon C_{\ov{s}}\morphism C$ be the inclusion of the fibres. If $D=\sigma(S)$ is the closed subprescheme cut out by $\Ii$, then $D\cap C_s=\{\sigma(s)\}$ has precisely one point for all $s\in S$. Put $d=\sigma(s)$ and $k=\KK(s)$. Since $\Ii=\Oo_C$ outside $D$, it follows that $\Ii_c\otimes_{\Oo_{S,s}}k\cong \Oo_{C_s,c}$ for all $c\neq d$. Moreover, $\Ii_d\otimes_{\Oo_{S,s}}k$ is a maximal ideal of $\Oo_{C_s,d}\cong \Oo_{C,c}\otimes_{\Oo_{S,s}}k$ since
@@ -1200,7 +1218,7 @@ We will typically assume $S$ to be locally noetherian, although Professor Franke
 	In the situation where $\sigma\colon S\monomorphism C$ defines a an invertible sheaf of ideals $\Ii(\sigma)$, we put $\Oo_C(\sigma)=\Ii(\sigma)^{-1}$.
 \end{defi}
 \begin{rem}
-	We will eventually generalize this to $\Oo_C(D)$, where $D\subseteq C$ is finite and flat over $S$. The letter $D$ is purposefully chosen: You should think of $D$ as an \emph{effective relative Cartier divisors} (see Definition~\reff{def:CartierDivisor}). Professor Franke suggests to read the first chapter of Katz/Mazur, \emph{Arithmetic Moduli of Elliptic Curves} \cite{katzmazur} -- in particular, the definition of effective relative Cartier divisors and the group structure on elliptic curves (which we are going to sketch now) are explained there.
+	We will eventually generalize this to $\Oo_C(D)$, where $D\subseteq C$ is finite and flat over $S$. The letter $D$ is purposefully chosen: You should think of $D$ as an \emph{effective relative Cartier divisors} (see Definition~\reff{def:CartierDivisor}). Professor Franke suggests you read the first chapter of Katz/Mazur, \emph{Arithmetic Moduli of Elliptic Curves} \cite{katzmazur} -- in particular, the definition of effective relative Cartier divisors and the group structure on elliptic curves (which we are going to sketch now) are explained there.
 \end{rem}
 \begin{prop}\lbl{prop:canonicalSection}
 	Let $f\colon C\morphism S$ (with $S$ locally noetherian) be a flat family of curves of genus $g=1$ and $\Ll$ a line bundle of geometric fibre-wise degree $1$ on $C$. Then $\Ll_0=f_*\Ll$ is a line bundle on $S$, and there is a unique section $\sigma\colon S\morphism C$ of $f$ such that the canonical morphism $f^*\Ll_0=f^*f_*\Ll\morphism\Ll$ (corresponding to $\id_{f_*\Ll}$ under the $f^*$-$f_*$ adjunction) is a monomorphism with image $\Ii(\sigma)\Ll$. In particular, we have a canonical isomorphism
@@ -1215,25 +1233,27 @@ We will typically assume $S$ to be locally noetherian, although Professor Franke
 		0\morphism\Ll^{\otimes -1}\xrightarrow{\lambda\otimes-}\Oo_C\morphism i_*\Oo_D\morphism 0\;.
 	\end{align}
 	\begin{claim}\lbl{claim:DcongS}
-		The composition $g=fi\colon D\morphism S$ is an isomorphism.
+		The composition $q=fi\colon D\morphism S$ is an isomorphism.
 	\end{claim}
-	Believing this for the moment, the proof can be finished as follows. Note that \eqreff{eq:SESforD} induces an isomorphism $\Ll^{\otimes -1}\isomorphism\Jj$ onto some quasi-coherent sheaf of ideals $\Jj\subseteq \Oo_C$. One readily checks that $\Jj$ is the uniquely defined ideal such that $\Jj\Ll$ is the subbundle generated by $\lambda$, i.e.\ the image of $f^*f_*\Ll$. So $\sigma$ -- if it exists -- necessarily identifies $S$ with $D$ via the composition $g=fi$. This settles the uniqueness part, but also existence is immediate: Since we know that $g$ is an isomorphism, we \emph{actually can} choose $\sigma=ig^{-1}\colon S\isomorphism D\monomorphism C$, which gives $\Ii(\sigma)=\Jj$ whence we're be done.
+	Believing this for the moment, the proof can be finished as follows. Note that \eqreff{eq:SESforD} induces an isomorphism $\Ll^{\otimes -1}\isomorphism\Jj$ onto some quasi-coherent sheaf of ideals $\Jj\subseteq \Oo_C$. One readily checks that $\Jj$ is the uniquely defined ideal such that $\Jj\Ll$ is the subbundle generated by $\lambda$, i.e.\ the image of $f^*f_*\Ll$. So $\sigma$ -- if it exists -- necessarily identifies $S$ with $D$ via the composition $q=fi$. This settles the uniqueness part, but also existence is immediate: Since we know that $q$ is an isomorphism, we \emph{actually can} choose $\sigma=iq^{-1}\colon S\isomorphism D\monomorphism C$, which gives $\Ii(\sigma)=\Jj$ whence we're done.
 	
-	To show that $g$ is an isomorphism, first apply the long exact cohomology sequence for $R^\bullet f_*$ to \eqreff{eq:SESforD} to obtain a six-term exact sequence
+	To show that $q$ is an isomorphism, first apply the long exact cohomology sequence for $R^\bullet f_*$ to \eqreff{eq:SESforD} to obtain a six-term exact sequence
 	\begin{align*}%\lbl{eq:sixtermRpSequence}
 		0\morphism f_*\Ll^{\otimes -1}\morphism f_*\Oo_C\morphism f_*i_*\Oo_D\morphism R^1f_*\Ll^{\otimes -1}\morphism R^1f_*\Oo_C\morphism R^1f_*(i_*\Oo_D)\morphism 0\;.
 	\end{align*}
 	The $0$ on the right end comes from the fact that $R^2f_*\Ll^{\otimes -1}=0$ (we've seen this for $\Ll^{\otimes -1}=\Oo_C$ in the proof of Proposition~\reff{prop:RpLl}\itememph{c}; it's just the same for arbitary $\Ll^{\otimes -1}$). Also note that $f_*\Ll^{\otimes -1}=0$ and $f_*\Oo_C\cong\Oo_S$ by Proposition~\reff{prop:RpLl}\itememph{b} and \itememph{c}.
 	\begin{claim}\lbl{claim:DCxfiniteIntersection}
-		For every $s\in S$, the intersection $D\cap C_s=g^{-1}\{s\}$ is finite.
+		For every $s\in S$, the intersection $D\cap C_s=q^{-1}\{s\}$ is finite.
 	\end{claim}
-	To prove Claim~\reff{claim:DCxfiniteIntersection}, we first remark that $\Ll|_{C_s}(C_s)$ is a one-dimensional $\KK(s)$-vector space. To show this, it suffices to prove the same for $H^0(C_{\ov{s}},\Ll|_{C_{\ov{s}}})$ by Remark~\reff{rem:GeometricFibres}\itememph{a}. If we could show $H^1(C_{\ov{s}},\Ll|_{C_{\ov{s}}})=0$, then the required one-dimensionality follows from $\deg(\Ll|_{C_{\ov{s}}})=1$ and Riemann--Roch. 
+	To prove Claim~\reff{claim:DCxfiniteIntersection}, we first remark that $H^0(C_s,\Ll|_{C_s})$ is a one-dimensional $\KK(s)$-vector space. Indeed, to show this, it suffices to prove the same for $H^0(C_{\ov{s}},\Ll|_{C_{\ov{s}}})$ by Remark~\reff{rem:GeometricFibres}\itememph{a}. Now $C_{\ov{s}}$ is proper and integral over $\ov{\KK(s)}$, hence $H^0(C_{\ov{s}},\Ll|_{C_{\ov{s}}})$ is a domain and a finite-dimensional vector space over the algebraically closed field $\ov{\KK(s)}$, which only leaves
+	\begin{align*}
+		H^0\left(C_{\ov{s}},\Oo_{C_{\ov{s}}}\right)\cong \ov{\KK(s)}\;,
+	\end{align*}
+	as claimed.
 	
-	To see the vanishing of the $1\ordinalst$ cohomology of $\Ll|_{C_{\ov{s}}}$, we use that $H^2(C_{\ov{s}},\Ll|_{C_{\ov{s}}})=0$ for all $s\in S$ by Grothendieck's dimension theorem. Hence $U_2=S$ in Theorem~\reff{thm:GrauertGrothendieck}\itememph{d}. Then Theorem~\reff{thm:GrauertGrothendieck}\itememph{e} shows $U_1=S$ as well, since $R^1f_*\Ll=0$ is a vector bundle by Proposition~\reff{prop:RpLl}\itememph{a}. But then $0=(R^1f_*\Ll^{\otimes -1})(s)\cong H^1(C_s,\Ll|_{C_s})$ for all $s\in S$. Together with Remark~\reff{rem:GeometricFibres}\itememph{a} this shows $H^1(C_{\ov{s}},\Ll|_{C_{\ov{s}}})=0$, as required.
+	Now $\lambda|_{C_s}$ is a generator of the one-dimensional $\KK(s)$-vector space $H^0(C_s,\Ll|_{C_s})$ by the base change assertion from Proposition~\reff{prop:RpLl}. In particular, $\lambda|_{C_s}\neq 0$. Since $C_s$ is a regular connected curve by Corollary~\reff{cor:FibresAreCurvesToo}, thus reduced, irreducible, and one-dimensional, this shows that $D\cap C_s\subsetneq C_s$, hence $D\cap C_s$ must be zero-dimensional. Then it is already finite. Indeed, $D\cap C_s$ is quasi-compact (as a closed subscheme of the irreducible $C_s$), hence can be covered by finitely many $U_i=\Spec R_i$ where $R_i$ is some zero-dimensional noetherian ring. But such a ring has finitely many prime ideals, as follows e.g.\ from Step~2 in the proof of \cite[Proposition~3.1.1]{alg2}. This settles Claim~\reff{claim:DCxfiniteIntersection}.
 	
-	Now $\lambda|_{C_s}$ is a generator of the one-dimensional $\KK(s)$-vector space $\Ll|_{C_s}(C_s)$ by the base change assertion from Proposition~\reff{prop:RpLl}. In particular, $\lambda|_{C_s}\neq 0$. Since $C_s$ is a regular connected curve by Corollary~\reff{cor:FibresAreCurvesToo}, thus reduced, irreducible, and one-dimensional, this shows that $D\cap C_s\subsetneq C_s$ must be zero-dimensional. Then it is already finite. Indeed, $D\cap C_s$ is quasi-compact (as a closed subscheme of the irreducible $C_s$), hence can be covered by finitely many $U_i=\Spec R_i$ where $R_i$ is some zero-dimensional noetherian ring. But such a ring has finitely many prime ideals, as follows e.g.\ from Step~2 in the proof of \cite[Proposition~3.1.1]{alg2}. This settles Claim~\reff{claim:DCxfiniteIntersection}.
-	
-	In particular, we see that $g$ is quasi-finite. It is also proper because $g=fi$, wherein $f$ is proper and $i$ a closed embedding, hence $g$ is even finite by Theorem~\reff{thm:ZariskiMain}\itememph{a}. As $i$ is affine, being a closed embedding, we see that $R^1q_*\Oo_D\cong R^1f_*(i_*\Oo_D)$ (this follows e.g.\ from Leray's spectral sequence $R^pf_*R^qi_*\Oo_D\converge R^{p+q}(fi)_*\Oo_D$, which degenerates as $R^qi_*\Oo_D=0$, $i$ being affine). But $q$ is affine as well, so $R^1f_*(i_*\Oo_D)=0$. Thus the above six-term sequence reduces to 
+	In particular, we see that $q$ is quasi-finite. It is also proper because $q=fi$, wherein $f$ is proper and $i$ a closed embedding, hence $q$ is even finite by Theorem~\reff{thm:ZariskiMain}\itememph{a}. As $i$ is affine, being a closed embedding, we see that $R^1q_*\Oo_D\cong R^1f_*(i_*\Oo_D)$ (this follows e.g.\ from Leray's spectral sequence $R^pf_*R^ri_*\Oo_D\converge R^{p+r}(fi)_*\Oo_D$, which degenerates as $R^ri_*\Oo_D=0$, $i$ being affine). But $q$ is affine as well, so $R^1f_*(i_*\Oo_D)=0$. Thus the above six-term sequence reduces to 
 	\begin{align}
 		0\morphism \Oo_S\morphism q_*\Oo_D\morphism R^1f_*\Ll^{\otimes -1}\morphism R^1f_*\Oo_C\morphism 0\;.
 	\end{align}
@@ -1258,9 +1278,9 @@ We will typically assume $S$ to be locally noetherian, although Professor Franke
 	\begin{align*}
 		f^*f_*\left(\Ll\otimes_{\Oo_E}\Oo_E(\epsilon)\right)\otimes_{\Oo_E}\Oo_E(\sigma)\cong\Ll\otimes_{\Oo_E}\Oo_E(\epsilon)\;.
 	\end{align*}
-	But $f^*f_*\left(\Ll\otimes_{\Oo_E}\Oo_E(\epsilon)\right)$ vanishes in $\Pic^0(E/S)$ (this is clear by definition -- at least if we work with the Katz/Mazur definition of $\Pic^0(E/S)$), so $\Ll=\Ii(e)\otimes_{\Oo_E}\Oo_E(\sigma)$ in $\Pic^0(E/S)$. This shows that the composition $\Pic^0(E/S)\morphism\{\text{sections }\sigma\text{ of }f\}\morphism\Pic^0(E/S)$ is the identity. The other direction can be shown in quite the same way.
+	But $f^*f_*\left(\Ll\otimes_{\Oo_E}\Oo_E(\epsilon)\right)$ vanishes in $\Pic^0(E/S)$ (this is clear by definition -- at least if we work with the Katz/Mazur definition of $\Pic^0(E/S)$), so $\Ll=\Ii(\epsilon)\otimes_{\Oo_E}\Oo_E(\sigma)$ in $\Pic^0(E/S)$. This shows that the composition $\Pic^0(E/S)\morphism\{\text{sections }\sigma\text{ of }f\}\morphism\Pic^0(E/S)$ is the identity. The other direction can be shown in quite the same way.
 	
-	Let $\cat C$ be a full subcategory of $\cat{PSch}/S$ containing $E$, closed under fibre products over $S$, and such that all its objects are locally noetherian (we could save ourselves these technicalities by working with $f$ of finite presentation). For any $S$-prescheme $T$ let $E(T)$ denote the set of morphisms $T\morphism E$ in $\cat{PSch}/S$. Then $E(T)$ is in canonical bijection with the set of sections of the base change $f_T\colon E_T=T\times_SE\morphism T$ of $f$ and $E(-)=\Hom_{\cat{PSch}/S}(-,E)$ is a contravariant functor $(\cat{PSch}/S)^\op\morphism\cat{Set}$. The set $E(T)$ should be thought of and is called the set of \defemph{$T$-valued points} of $E$.
+	Let $\cat C$ be a full subcategory of $\cat{PSch}/S$ containing $E$, closed under fibre products over $S$, and such that all its objects are locally noetherian (we could save ourselves these technicalities by working with $f$ of finite presentation). For any $S$-prescheme $T$ let $E(T)$ denote the set of morphisms $T\morphism E$ in $\cat{PSch}/S$. Then $E(T)$ is in canonical bijection with the set of sections of the base change $f_T\colon E_T=T\times_SE\morphism T$ of $f$ and $E(-)=\Hom_{\cat{PSch}/S}(-,E)$ is a contravariant functor $(\cat{PSch}/S)^\op\morphism\cat{Set}$. The set $E(T)$ should be thought of and is called the set of \defemph{$\boldsymbol{T}$-valued points} of $E$.
 	
 	%This functor can be introduced for any $S$-prescheme $E$ (and not only those that happen to be elliptic curves over $S$). We have, e.g., $(E\times_SF)(Y)=E(Y)\times F(Y)$ by the universal property of fibre products.
 	If $T$ is in $\cat C$, then we get canonical isomorphisms
@@ -1349,7 +1369,7 @@ If one is only interested in $\Pic_{C/S}$, then the conditions on $C$ (propernes
 \end{align}
 rather than in terms of trivializations. This gives a functor $\Pic_{C/S}\colon (\cat{PSch}/S)^\op\morphism\cat{Ab}$.
 
-However, if one moreover tries to get rid of the quotient in \eqreff{eq:PicCS}, one cannot hope to end up with a representable functor $\Pic_C\colon\cat{C}^\op\morphism\cat{Ab}$ defined by $\Pic_C(T)=\Pic(C_T)$. Indeed, suppose on the contrary there was a representing object $\PIC_C$. If $\Ll$ is a line bundle on $C_T$ and $\Ll_0$ a line bundle on $T$, then $\Ll$ and $\Ll\otimes_{\Oo_{C_T}}f_T^*\Ll_0$ are usually not isomorphic. Yet locally with respect to $T$ they are, as $\Ll_0$ is locally trivial. Hence if $T=\bigcup_{i\in I}U_i$ is a sufficiently fine open cover, then the morphisms $T\morphism\PIC_C$ defined by (the isomorphism classes of) $\Ll$ and $\Ll\otimes_{\Oo_{C_T}}f_T^*\Ll_0$ coincide when restricted to $f_T^{-1}(U_i)$ for all $i\in I$. But then they coincide on all of $T$, which implies that $\Ll$ and $\Ll\otimes_{\Oo_{C_T}}f_T^*\Ll_0$ are isomorphic, contradiction!
+However, if one moreover tries to get rid of the quotient in \eqreff{eq:PicCS}, one cannot hope to end up with a representable functor $\Pic_C\colon\cat{C}^\op\morphism\cat{Ab}$ defined by $\Pic_C(T)=\Pic(C_T)$. Indeed, suppose on the contrary there was a representing object $\PIC_C$. If $\Ll$ is a line bundle on $C_T$ and $\Ll_0$ a line bundle on $T$, then $\Ll$ and $\Ll\otimes_{\Oo_{C_T}}f_T^*\Ll_0$ are usually not isomorphic. Yet locally with respect to $T$ they are, as $\Ll_0$ is locally trivial. Hence if $T=\bigcup_{i\in I}U_i$ is a sufficiently fine open cover, then the morphisms $T\morphism\PIC_C$ defined by (the isomorphism classes of) $\Ll$ and $\Ll\otimes_{\Oo_{C_T}}f_T^*\Ll_0$ coincide when restricted to $f_T^{-1}(U_i)$ for all $i\in I$. But then they coincide on all of $T$, which implies that $\Ll$ and $\Ll\otimes_{\Oo_{C_T}}f_T^*\Ll_0$ are isomorphic, which is (usually) contradiction!
 
 Thus $\Pic_C$ is a hopeless candidate for a representable functor, and we've seen that the main problem is basically its lack of ``sheaf-like'' properties. So the natural thing to ask is whether $\Pic_C$ can be ``sheafified'' in an appropriate way. What makes things complicated here is that the Zariski topology might not be suited to do this, at least when no section $\sigma\colon S\morphism C$ exists. That's where the \emph{étale} and \emph{fpqc topology} come in to save the day. We'll briefly introduce these notions in the proceeding of the lecture.
 
@@ -1364,10 +1384,11 @@ If $\Ll$ is a line bundle of fibre-wise degree $g$ and $f_*\Ll$ is a line bundle
 	\item Use this to represent an open subgroup of $\PIC_{C/S}$.
 	\item Glue these open subgroups.
 \end{enumerate}
+We will eventually realize this plan in Chapter~\reff{sec:Jac}. Step~1 is done in Proposition~\reff{prop:symmetricPowers}. Step~2 is treated in Theorem~\reff{thm:final}\itememph{f}. Finally Step~3 and 4 follow from the combined efforts of Section~\reff{sec:Construction}.
 \section{The seesaw theorem and the theorem of the cube I}
 As literature for this section Professor Franke recommends \cite{mumford1974abelian}, \cite{cornell1986arithmetic}, and \cite{kleiman}, as well as Grothendieck's FGA.
 
-Note that even without knowing whether a representing object $\PIC_{C/S}$ of $\Pic_{C/S}$ exists, we can still decide whether it is separated over $S$, since this property can be read off the functor $\Hom_{\cat{PSch}/S}(-,\PIC_{C/S})\cong\Pic_{C/S}$. From that point of view, the seesaw theorem simply states that under certain (essential) assumptions on $f\colon C\morphism S$, the morphism $\PIC_{C/S}\morphism S$ is a \emph{separated} morphism. Before we prove this we'll need some preparations.
+Note that even without knowing whether a representing object $\PIC_{C/S}$ of $\Pic_{C/S}$ exists, we can still decide whether it should be separated over $S$, since this property can be read off the functor $\Hom_{\cat{PSch}/S}(-,\PIC_{C/S})\cong\Pic_{C/S}$. From that point of view, the seesaw theorem simply states that under certain (essential) assumptions on $f\colon C\morphism S$, the morphism $\PIC_{C/S}\morphism S$ is a \emph{separated} morphism. Before we prove this we'll need some preparations.
 \begin{prop}\lbl{prop:trivialLineBundlesOnProperX/k}
 	Let $k$ be an algebraically closed field and $X$ an integral proper $k$-scheme.
 	\begin{alphanumerate}
@@ -1459,9 +1480,9 @@ is open in $S$ by Theorem~\reff{thm:GrauertGrothendieck}\itememph{d}. Also we de
 	
 	 \emph{Step 2.} Let $\tau\colon T\morphism S$ be an $S$-prescheme such that $\tau_X^*\Ll$ is the trivial element in $\Pic_{X/S}(T)=\Pic(X_T/T)$. We show that the image of $\tau$ (as a map between topological spaces) is contained in $Z$.  Let $t\in T$ and $s=\tau(t)$. Then
 	\begin{align*}
-		X_t=X_T\times_T\Spec\KK(t)\cong X\times_S\Spec\KK(t)\cong X_s\times_{\Spec\KK(s)}\Spec\KK(t)\;,
+		X_t=X_T\times_T\Spec\KK(t)\cong X\times_S\Spec\KK(t)\cong X_s\times_{\Spec\KK(s)}\Spec\KK(t)
 	\end{align*}
-	hence, using \eqreff{eq:tensoredCohomology} and the fact that $\KK(t)$ is a flat ring extension of $\KK(s)$ (as is any field extension), we obtain
+	by some abstract nonsense, hence, using \eqreff{eq:tensoredCohomology} and the fact that $\KK(t)$ is a flat ring extension of $\KK(s)$ (as is any field extension), we obtain
 	\begin{align*}
 		H^\bullet\left(X_t,\tau_X^*\Ll^{\otimes \pm 1}|_{X_t}\right)\cong H^\bullet\left(X_s,\Ll^{\otimes \pm 1}|_{X_s}\right)\otimes_{\KK(s)}\KK(t)\;.
 	\end{align*}
@@ -1928,7 +1949,7 @@ commutes (since this is also the case for the $\Ff|_{U_i}$). On the other hand, 
  
  To this end, let $\pi_i\colon X\times_YX\morphism X$ be the canonical projection to the $i\ordinalth$ factor (as above). Moreover, for triple fibre products we denote by $p_i\colon X\times_YX\times_YX\morphism X$ the projection to the $i\ordinalth$ factor and by $\pi_{i,j}\colon X\times_YX\times_YX\morphism X\times_YX$ the projection to the $i\ordinalth$ and $j\ordinalth$ factors.
 \begin{defi}\lbl{def:descentData}
-	Let $f\colon X\morphism Y$ be a morphism of preschemes. A \defemph{descent datum} for quasi-coherent sheaves of modules along $f$ is a pair $(\Gg,\nu)$, where $\Gg$ is a quasi-coherent $\Oo_X$-module and $\nu\colon \pi_1^*\Gg\isomorphism\pi_2^*\Gg$ an isomorphism, such that the following \sout{monster} moderately large diagram commutes (which is often.
+	Let $f\colon X\morphism Y$ be a morphism of preschemes. A \defemph{descent datum} for quasi-coherent sheaves of modules along $f$ is a pair $(\Gg,\nu)$, where $\Gg$ is a quasi-coherent $\Oo_X$-module and $\nu\colon \pi_1^*\Gg\isomorphism\pi_2^*\Gg$ an isomorphism, such that the following \sout{monster} moderately large diagram commutes.
 	\begin{diagram*}
 		\object{60:3.5}{$\pi_{1,2}^*\pi_2^*\Gg$}[a];
 		\object{120:3.5}{$\pi_{1,2}^*\pi_1^*\Gg$}[b];
@@ -2011,7 +2032,9 @@ commutes (since this is also the case for the $\Ff|_{U_i}$). On the other hand, 
 \begin{proof}[Sketch of a proof]
 	If we tried to prove Theorem~\reff{thm:faithfullyFlatDescent} directly, we would get into trouble, because our \emph{ad-hoc} construction of cohomology in \cite[Section~1.2]{alggeo2} via the \v Cech complex only works for quasi-compact schemes (which $X$ and $Y$ are not, in general). However, even if we define sheaf cohomology the Grothendieck way as a derived functor, some of the arguments below (to be precise, those in Step~2) wouldn't work, e.g.\ since the direct image under $f$ of a quasi-coherent module is, in general, only quasi-coherent again if $f$ is quasi-separated in addition to being quasi-compact (cf.\ \cite[Proposition~1.5.2]{alggeo1}). That's why we first have to reduce to a sufficiently nice situation.
 	
-	\emph{Step $-\text{1}$.} We reduce the situation to the case where $Y$ is affine. Suppose this special case has been settled and choose an affine open cover $Y=\bigcup_{j\in J}V_j$. Then each $\cat{QCoh}(V_j)\morphism\cat{Desc}_{f^{-1}(V_j)/V_j}$ is an equivalence of categories. Hence given an object $(\Gg,\nu)$ of $\cat{Desc}_{X/Y}$, we find quasi-coherent sheaves $\Ff_j$ on $V_j$ such that $\Gg|_{f^{-1}(V_j)}$ is the oullback of $\Ff_j$ along $f$. We need to show that the $\Ff_j$ can be glued together. If we construct a morphism $\mu_{i,j}\colon \Ff_i|_{V_{i,j}}\morphism\Ff_j|_{V_{i,j}}$ in a ``sufficiently canonical'' way, then $\mu_{i,j}$ will be an isomorphism since the pullback of $\mu_{i,j}$ along $f$ will become an isomorphism (roughly speaking the identity on $\Gg|_{f^{-1}(V_{i,j})}$), and $f$ is faithfully flat, so $\mu_{i,j}$ must have already been an isomorphism.
+	Also note that Step~$-1$ and 0 weren't discussed in the lecture, so this is again me filling in the blanks Professor Franke (intentionally) let.
+	
+	\emph{Step $-\text{1}$.} We reduce the situation to the case where $Y$ is affine. Suppose this special case has been settled and choose an affine open cover $Y=\bigcup_{j\in J}V_j$. Then each $\cat{QCoh}(V_j)\morphism\cat{Desc}_{f^{-1}(V_j)/V_j}$ is an equivalence of categories. Hence given an object $(\Gg,\nu)$ of $\cat{Desc}_{X/Y}$, we find quasi-coherent sheaves $\Ff_j$ on $V_j$ such that $\Gg|_{f^{-1}(V_j)}$ is the pullback of $\Ff_j$ along $f$. We need to show that the $\Ff_j$ can be glued together. If we construct a morphism $\mu_{i,j}\colon \Ff_i|_{V_{i,j}}\morphism\Ff_j|_{V_{i,j}}$ in a ``sufficiently canonical'' way, then $\mu_{i,j}$ will be an isomorphism since the pullback of $\mu_{i,j}$ along $f$ will become an isomorphism (roughly speaking the identity on $\Gg|_{f^{-1}(V_{i,j})}$), and $f$ is faithfully flat, so $\mu_{i,j}$ must have already been an isomorphism.
 	
 	To construct $\mu_{i,j}$, we cover $V_{i,j}=\bigcup_{k\in K}W_k$ by affine open $W_k$. Then we get canonical morphisms $\mu_k\colon \Ff_i|_{W_k}\morphism\Ff_j|_{W_k}$ since $\cat{QCoh}(W_k)\morphism\cat{Desc}_{f^{-1}(W_k)/W_k}$ is fully faithful. Also $\mu_k$ and $\mu_\ell$ coincide on $W_k\cap W_\ell$, which can be seen by covering $W_k\cap W_\ell$ with affine opens and using full faithfulness in the affine case once again. Thus the $\mu_k$ glue together to some $\mu_{i,j}$, and these guys have property \eqreff{diag:muij}, as is easily checked.
 	
@@ -2581,7 +2604,7 @@ A typical application of Lemma~\reff{lem:tensorTrick}, which is quite useful in 
 \end{proof}
 A common and useful variant is the following.
 \begin{cor}\lbl{cor:localFlatnees}
-	Let $A\morphism B$ be a local morphism of noetherian local rings and let $M$ be a finitely generated $B$-module. Suppose for some proper ideal $I\subsetneq B$ the quotient $M/IM$ is flat over $A/I$ and $\Tor_1^A(A/I,M)=0$. Then $M$ is flat over $A$.
+	Let $A\morphism B$ be a local morphism of noetherian local rings and let $M$ be a finitely generated $B$-module. Suppose for some proper ideal $I\subsetneq A$ the quotient $M/IM$ is flat over $A/I$ and $\Tor_1^A(A/I,M)=0$. Then $M$ is flat over $A$.
 \end{cor}
 \begin{proof}
 	Consider the sequence $0\morphism\mm_A/I\morphism A/I\morphism A/\mm_A\morphism 0$. Tensoring with $M$ gives an exact sequence
@@ -3302,7 +3325,7 @@ Let $R\subseteq S$ be a finite ring extension\footnote{If $R$ is not a subring o
 \end{rem}
 
 
-\chapter{Construction of the Jacobian}
+\chapter{Construction of the Jacobian}\lbl{sec:Jac}
 \setcounter{section}{-1}
 \section{Strategy of the construction}\lbl{sec:Strategy}
 Let $D$ be a divisor on a regular curve $C$ of genus $g=\dim_k\Gamma(C,\Omega_C)$ over an algebraically closed field $k$. Recall the notation $\ell(D)=\dim_k\Gamma(C,\Oo_C(D))$. If $\deg D=g$ and $K$ is a divisor such that $\Oo_C(K)\cong \Omega_C$, then Riemann--Roch (in the form of \cite[Corollary~3.1.1]{alggeo2}) shows
@@ -3802,7 +3825,7 @@ From \itememph{d} we get $D_t\subseteq T\times_SV$. We would like to show that $
 	 \begin{align*}
 	 	0\morphism J_j/J\morphism (A^{\otimes g}\otimes_RA)/J\morphism (A^{\otimes g}\otimes_RA)/J_j\morphism 0\;.
 	 \end{align*}
-	 The right-most term can be identified with $A^{\otimes g}$ via $\varsigma_j^*$. In particular, the above sequence is split exact as a sequence of $A^{\otimes g}$-modules. Thus $A^{\otimes g}\otimes_RA)/J_j$ is a direct summand of $(A^{\otimes g}\otimes_RA)/J$. Moreover, by definition of $\varsigma_j^*$ multiplication by $p_2^*\lambda=1\otimes\cdots\otimes 1\otimes \lambda$ on $A^{\otimes g}\otimes_RA)/J_j$ is the same as multiplication by $\iota_j(\lambda)$ as an $A^{\otimes g}$-module. This gives the desired eigenvectors, proving that $\chi$ has the above form.
+	 The right-most term can be identified with $A^{\otimes g}$ via $\varsigma_j^*$. In particular, the above sequence is split exact as a sequence of $A^{\otimes g}$-modules. Thus $A^{\otimes g}\otimes_RA)/J_j$ is a direct summand of $(A^{\otimes g}\otimes_RA)/J$. Moreover, by definition of $\varsigma_j^*$ multiplication by $p_2^*\lambda=1\otimes\cdots\otimes 1\otimes \lambda$ on $(A^{\otimes g}\otimes_RA)/J_j$ is the same as multiplication by $\iota_j(\lambda)$ as an $A^{\otimes g}$-module. This gives the desired eigenvectors, proving that $\chi$ has the above form.
 	 
 	 This implies that $t$ is uniquely determined by $D_t$. Indeed, the characteristic polynomial of $p_2^*\lambda$ acting by multiplication on $q_*\Oo_{D_t}$ over $\Oo_T$ only depends on $D_t$. Hence the $t^*(\sigma_j(\lambda))$ are uniquely determined. But $\Oo_{C^{(g)}}(V^{(g)})$ is generated over $\Oo_S(W)$ by elements of the form $\sigma_j(\lambda)$ for $\lambda\in\Oo_C(V)$. This shows that the morphism of affine schemes $t\colon T\morphism V^{(g)}$ is indeed uniquely determined by $D_t$.
 \end{proof}
@@ -3832,7 +3855,7 @@ By Remark~\reff{rem:CartierBaseChange}\itememph{a} and \itememph{c}, we use pull
 	provides a preimage of $E$. We are done!
 \end{proof}
 
-\section{Construction of the Jacobian in a special case}
+\section{Construction of the Jacobian in a special case}\lbl{sec:Construction}
 The proofs in this final section will be pretty sketchy and only cover a special case, due to the lecture running out of time. However, I think there is a good chance Professor Franke might explain this section in a bit more detail at the beginning of his lecture on the Mordell conjecture next semester! He also plans explaining how the construction of $\PIC_{C/S}$ in the general case can be reduced to the special case that is treated below, via faithfully flat descent (for which a canonical ample line bundle on $\PIC_{C/S}$ is needed, which will be given by the \emph{$\theta$-divisor}). So be sure to attend!
 
 To formulate our results appropriately, we need a relative notion of representability of functors (or fppf-sheaves, actually). This covers only the special case we're interested in; a general notion can be found in \cite[\stackstag{0021}]{stacks-project}.
@@ -4019,7 +4042,7 @@ Recall the notion of an $A$-module $F$ being \emph{faithfully flat} (cf.\ Defini
 	This induces a morphism $M'\morphism\ker\beta$, and we need to show that this is an epimorphism. So let $Q$ be its cokernel. Then $Q\otimes_AF$ is the cokernel of $M'\otimes_AF\morphism\ker\beta\otimes_AF\cong \ker(\beta\otimes\id_F)$ (using flatness of $F$), hence $Q\otimes_AF=0$ by assumption. Then $Q=0$ by faithful flatness again and we're done.
 \end{proof}
 \begin{cor}\lbl{cor:completionFaithfullyFlat}
-	Let $A$ be a Noetherian ring and $\roof{\phantom{x}}$ the $I$-completion for some ideal $I\subseteq A$.
+	Let $A$ be a noetherian ring and $\roof{\phantom{x}}$ the $I$-completion for some ideal $I\subseteq A$.
 	\begin{alphanumerate}
 		\item When $M$ is a finitely generated $A$-module, then $\roof{M}\cong M\otimes_A\roof{A}$.
 		\item $\roof{A}$ is flat as an $A$-module.
@@ -4098,7 +4121,7 @@ Professor Franke points out that there are multiple approaches for Generic freen
 \begin{proof}
 	Every finitely generated $A$-module $M$ has a filtration $0=M_0\subseteq M_1\subseteq \ldots\subseteq M_n=M$ such that $M_i/M_{i-1}$ has the form $A/I_i$ for some ideal $I_i\subseteq A$. If all $M_i/M_{i-1}$ are free $R$-modules, then each sequence $0\morphism M_{i-1}\morphism M_i\morphism M_i/M_{i-1}\morphism 0$ is split, so $M$ is a free $R$-module as well. This argument shows that we only need to deal with the case $M\cong A/I$ for some ideal $I\subseteq A$. Replacing $A$ by $A/I$ this can be further reduced to $M=A$.
 	
-	We can represent $A$ as $A\cong R[X_1,\ldots,X_n]/I$ for some ideal $I\subseteq R[X_1,\ldots,X_n]$. Let $K$ be the field of quotients of $R$ and $J\subseteq K[X_1,\ldots,X_n]$ the ideal generated by the image of $I$. Let $(\beta_1,\ldots,\beta_r)$ be a Gröbner basis of $J$ (for some fixed monomial order), then $\beta_i=\frac{b_i}{d_i}$ for some $b_i\in I$ and $d_i\neq 0$ and the $\beta_i$ have leading term $1$. Replacing $R$ by the localization $R_{d_1\cdots d_r}$ we may assume $\beta_i\in I$. Using generalized division with remainder (i.e.\ Gröbner basis stuff) one easily derives that the $\beta_i$ generate $I$. Then the monomials $X_1^{\alpha_1}\cdots X_n^{\alpha_n}$ where $\alpha=(\alpha_1,\ldots,\alpha_n)$ has the property that there is no $i$ such that $\alpha$ dominates the leading term of $\beta_i$, form a basis of $A$ as an $R$-module.
+	We can present $A$ as $A\cong R[X_1,\ldots,X_n]/I$ for some ideal $I\subseteq R[X_1,\ldots,X_n]$. Let $K$ be the field of quotients of $R$ and $J\subseteq K[X_1,\ldots,X_n]$ the ideal generated by the image of $I$. Let $(\beta_1,\ldots,\beta_r)$ be a Gröbner basis of $J$ (for some fixed monomial order), then $\beta_i=\frac{b_i}{d_i}$ for some $b_i\in I$ and $d_i\neq 0$ and the $\beta_i$ have leading term $1$. Replacing $R$ by the localization $R_{d_1\cdots d_r}$ we may assume $\beta_i\in I$. Using generalized division with remainder (i.e.\ Gröbner basis stuff) one easily derives that the $\beta_i$ generate $I$. Then the monomials $X_1^{\alpha_1}\cdots X_n^{\alpha_n}$ where $\alpha=(\alpha_1,\ldots,\alpha_n)$ has the property that there is no $i$ such that $\alpha$ dominates the leading term of $\beta_i$, form a basis of $A$ as an $R$-module.
 \end{proof}
 \begin{prop}[Chevalley's theorem]\lbl{prop:Chevalley}
 	If $f\colon \Spec B\morphism\Spec A$ is a morphism of finite type between affine noetherian schemes, then the image of $f$ is contained in a proper closed subset of $\Spec A$ or contains a dense open subset.
@@ -4108,7 +4131,7 @@ Professor Franke points out that there are multiple approaches for Generic freen
 	
 	It suffices to prove the assertion for every irreducible component of $\Spec A$ (as these guys are closed and there are finitely many of them). Hence, if $\pp\in\Spec A$ is a minimal prime corresponding to the irreducible component $V(\pp)$ of $\Spec A$, then we may replace $A$ and $B$ by $A/\pp$ and $B/\pp B$. Therefore, we can assume that $A$ is a domain. Moreover, suppose that $A\subseteq B$. Otherwise, $A$ could be replaced by $A/\ker(A\morphism B)$, and since that cuts out a closed subset of $\Spec A$, we're fine with that. 
 	
-	By Noetherian induction, we may assume that the assertion is true for all closed subsets of $\Spec A$. Let $\alpha\in A$ such that $B_\alpha$ is free as an $A_\alpha$-module (we can do this by Proposition~\reff{prop:GenericFreeness}). We claim that any $\pp\in\Spec A\setminus V(\alpha)$ is in the image of $f$. Indeed, such $\pp$ may be regarded as prime ideals $\pp\in\Spec A_\alpha$. Then $B_\pp\cong B\otimes_AA_\pp$ is still free as an $A_\pp$-module, say, $B_\pp\cong \bigoplus_{i\in I}A_\pp$ for some indexing set $I$ (which is non-empty as $A_\pp\subseteq B_\pp$). Hence $B_\pp/\pp B_\pp\cong B_\pp\otimes_{A_\pp}A_\pp/\pp A_\pp\cong \bigoplus_{i\in I}\KK(\pp)$ is not the zero ring because $\KK(\pp)\neq 0$. If $\qq\subseteq B$ is the preimage of any prime ideal of $B_\pp/\pp B_\pp$, then it's easily seen that $f(\qq)=\pp$, proving that $\pp$ is in the image of $f$, as claimed.
+	By noetherian induction, we may assume that the assertion is true for all closed subsets of $\Spec A$. Let $\alpha\in A$ such that $B_\alpha$ is free as an $A_\alpha$-module (we can do this by Proposition~\reff{prop:GenericFreeness}). We claim that any $\pp\in\Spec A\setminus V(\alpha)$ is in the image of $f$. Indeed, such $\pp$ may be regarded as prime ideals $\pp\in\Spec A_\alpha$. Then $B_\pp\cong B\otimes_AA_\pp$ is still free as an $A_\pp$-module, say, $B_\pp\cong \bigoplus_{i\in I}A_\pp$ for some indexing set $I$ (which is non-empty as $A_\pp\subseteq B_\pp$). Hence $B_\pp/\pp B_\pp\cong B_\pp\otimes_{A_\pp}A_\pp/\pp A_\pp\cong \bigoplus_{i\in I}\KK(\pp)$ is not the zero ring because $\KK(\pp)\neq 0$. If $\qq\subseteq B$ is the preimage of any prime ideal of $B_\pp/\pp B_\pp$, then it's easily seen that $f(\qq)=\pp$, proving that $\pp$ is in the image of $f$, as claimed.
 	
 	By the Noetherian induction hypothesis, the image of $f$ in $V(\alpha)$ -- which equals the image of $\ov{f}\colon\Spec(B/\alpha B)\morphism\Spec (A/\alpha A)$ -- is constructible. We are done.		
 \end{proof}
@@ -4154,13 +4177,13 @@ Occasionally it happens that Professor Franke uses some technical facts without 
 	\begin{align*}
 	\left(B_\qq\otimes_{A_\pp}\roof{A}_\pp\right)/\left(\qq B_\qq\otimes_{A_\pp}\roof{A}_\pp\right)\cong \KK(\qq)\otimes_{A_\pp}\roof{A}_\pp\;.
 	\end{align*}
-	Denote $\phi\colon A\morphism B$ the ring morphism that makes $B$ an $A$-algebra. If $x\in \KK(\qq)\otimes_{A_\pp}\roof{\pp}$, then $x$ can be written as $x=\sum_{i=1}^{n}b_i\otimes p_ia_i$ where $b_i\in B_\qq$, $a_i\in A_\pp$, and $p_i\in \pp$. But then $x=\sum_{i=1}^{n}\phi(p_i)b_i\otimes a_i=0$, because the $\phi(p_i)$ are elements of $\qq$ as $\pp$ is the preimage of $\qq$ under $\phi$. Hence
+	Denote $\phi\colon A\morphism B$ the ring morphism that makes $B$ an $A$-algebra. If $x\in \KK(\qq)\otimes_{A_\pp}\roof{\pp}$, then $x$ can be written as $x=\sum_{i=1}^{n}b_i\otimes p_ia_i$ where $b_i\in B_\qq$, $a_i\in A_\pp$, and $p_i\in \pp$. But then $x=\sum_{i=1}^{n}\phi(p_i)b_i\otimes a_i=0$, because the $\phi(p_i)$ are elements of $\qq$ as $\pp=\phi^{-1}(\qq)$ by assumption. Hence
 	\begin{align*}
 	\KK(\qq)\otimes_{A_\pp}\roof{A}_\pp\cong \left(\KK(\qq)\otimes_{A_\pp}\roof{A}_\pp\right)/\left(\KK(\qq)\otimes_{A_\pp}\roof{\pp}\right)\cong \KK(\qq)\otimes_{A_\pp}\KK(\pp)\cong \KK(\qq)
 	\end{align*}
 	is a field, which shows that $\qq B_\qq\otimes_{A_\pp}\roof{A}_\pp$ is a maximal ideal.
 	
-	Part \itememph{b}. Brace yourself, because the proof to come is \emph{horrible}. I'm trying my best to cite The Stacks Project as rarely as possible, but I make no promises. We will separate the agonizing process into tiny lemmas.
+	Part \itememph{b}. Brace yourself, because the proof to come is \emph{horrible}. I'm trying my best to self-contained and cite The Stacks Project as rarely as possible, but I make no promises. We will separate the agonizing process into tiny lemmas.
 	\begin{lem}\lbl{lem:ANNOYING1}
 		In the situation of Proposition~\reff{prop:technicalAF}\itememph{b}, $B_\qq\otimes_{A_\pp}\KK(\pp)$ is a finite-dimensional $\KK(\pp)$-vector space as well.
 	\end{lem}
