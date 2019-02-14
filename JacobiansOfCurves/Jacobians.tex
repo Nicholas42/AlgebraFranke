@@ -848,14 +848,10 @@ Recall that if $C^\bullet$ is a cochain complex, one can form its \emph{soft tru
 \end{align*} 
 where $Z^d=\ker\left(C^{d}\morphism C^{d+1}\right)$. We have $H^p(\tau_{\leq d}C^\bullet)=H^p(C^\bullet)$ if $p\leq d$ and $H^p(\tau_{\leq d}C^\bullet)=0$ otherwise.
 \begin{lem}\lbl{lem:TruncQuasiIso}
-	Let $F^\bullet$ be a bounded-from-above cochain complex of flat modules over an arbitrary ring $A$. If $F$ is acyclic in degrees $>d$, then $\tau_{\leq d}F^\bullet$ is still flat over $A$ and $\tau_{\leq d}F^\bullet\monomorphism F^\bullet$ is a quasi-isomorphism.
+	Let $F^\bullet$ be a bounded-from-above cochain complex of flat modules over an arbitrary ring $A$. If $F^\bullet$ is acyclic in degrees $>d$, then $\tau_{\leq d}F^\bullet$ is still flat over $A$ and $\tau_{\leq d}F^\bullet\monomorphism F^\bullet$ is a quasi-isomorphism.
 \end{lem}
 \begin{proof}
-	Using induction, we may assume $F^\bullet$ to be concentrated in degrees $\leq d+1$. Then $0\morphism Z^d\morphism C^d\morphism C^{d+1}\morphism 0$ is exact. Let $M$ be any $A$-module. Since $C^d$, $C^{d+1}$ are flat, we get
-	\begin{align*}
-		0=\Tor_2^A\big(C^{d+1},M\big)\morphism \Tor_1^A\big(Z^d,M\big)\morphism \Tor_1^A\big(C^{d},M\big)=0
-	\end{align*}
-	as part of the long exact $\Tor$ sequence. Hence $\Tor_1^A\big(Z^d,M\big)=0$ for all $M$, so $Z^d$ is flat as well, proving that $\tau_{\leq d}F^\bullet$ is flat over $A$. The other assertion about $\tau_{\leq d}F^\bullet$ is trivial.
+	Flatness of $\tau_{\geq d}F^\bullet$ is only critical in degree $d$. Since $F^\bullet$ is bounded from above, we may do downward induction on $d$, so let's assume that $\tau_{\leq d+1}F^\bullet$ is flat. Then $F^\bullet$ can be replaced by $\tau_{\leq d+1}F^\bullet$. Together with the fact that $F^\bullet$ is acyclic in degrees $>d$, we may thus assume that $0\morphism Z^d\morphism F^d\morphism F^{d+1}\morphism 0$ is exact. Since $F^d$, $F^{d+1}$ are flat by assumption, the long exact $\Tor$ sequence shows that $\Tor_1^A(Z^d,M)$ vanishes for any $A$-module $M$, hence $Z^d$ is flat as well. This proves that $\tau_{\leq d}F^\bullet$ is flat over $A$. The other assertion about $\tau_{\leq d}F^\bullet\monomorphism F^\bullet$ is trivial.
 \end{proof}
 \begin{rem}
 	\begin{alphanumerate}
@@ -864,13 +860,13 @@ where $Z^d=\ker\left(C^{d}\morphism C^{d+1}\right)$. We have $H^p(\tau_{\leq d}C
 	\end{alphanumerate}
 \end{rem}
 \begin{lem}\lbl{lem:FiniteApproximation}
-	Let $A$ be a noetherian ring and $F^\bullet$ a cochain complex of (not necessarily flat) $A$-modules which is concentrated in degrees $< d$. Then there is a cochain complex $Q^\bullet$, consisting of finitely generated free $A$-modules and concentrated in degrees $<d$, together with a quasi-isomorphism $\rho^\bullet\colon Q^\bullet\morphism F^\bullet$.
+	Let $A$ be a noetherian ring and $F^\bullet$ a cochain complex of (not necessarily flat) $A$-modules which is concentrated in degrees $< d$ and such that the cohomology groups $H^p(F^\bullet)$ are finitely generated over $A$. Then there is a cochain complex $Q^\bullet$, consisting of finitely generated free $A$-modules and concentrated in degrees $<d$, together with a quasi-isomorphism $\rho^\bullet\colon Q^\bullet\morphism F^\bullet$.
 \end{lem}
 \begin{proof}
 	Denote the differentials of $F^\bullet$ and $Q^\bullet$ by $d_F^\bullet$, $d_Q^\bullet$ (the latter of which is yet to be constructed). We will construct the $Q^i$ by downward induction. We start by putting $Q^p=0$ when $p\geq d$. Now let $k\in\IZ$ and suppose we have already constructed $Q^p$ and $d_Q^p$ for $p\geq k$ together with $\rho^p\colon Q^p\morphism F^p$ (compatible with the differentials) such that $H^p(Q^\bullet)\isomorphism H^p(F^\bullet)$ is an isomorphism when $p>k$ and $\ker(d_Q^k)\morphism H^k(F^\bullet)$ is surjective.
 	
 Now it's about constructing suitable $Q^{k-1}$, $d_Q^{k-1}$ such that the above conditions remain valid for $k-1$. Let $\beta_1,\ldots,\beta_\ell$ be generators of $\left\{x\in Q^k\st \rho^k(x)\in\Im\big(d_F^{k-1}\big)\right\}$
-(that's where we really need that $A$ is noetherian) and let $\phi_i\in F^{k-1}$ such that $d_F^{k-1}(\phi_i)=\rho^k(x)$ for all $i=1,\ldots,\ell$. Also choose $\psi_1,\ldots,\psi_m\in\ker\big(d_F^{k-1}\big)$ whose images in $H^{k-1}(F^\bullet)$ generate that $A$-module. Put $Q^{k-1}=A^{\ell+m}$ and let $e_i$ be the $i\ordinalth$ standard basis vector. Now define $d_Q^{k-1}\colon Q^{k-1}\morphism Q^k$ and $\rho^{k-1}\colon Q^{k-1}\morphism F^{k-1}$ by
+(that's where we really need that $A$ is noetherian) and let $\phi_i\in F^{k-1}$ such that $d_F^{k-1}(\phi_i)=\rho^k(\beta_i)$ for all $i=1,\ldots,\ell$. Also choose $\psi_1,\ldots,\psi_m\in\ker\big(d_F^{k-1}\big)$ whose images in $H^{k-1}(F^\bullet)$ generate that $A$-module (here we need that the cohomology of $F^\bullet$ is finitely generated). Put $Q^{k-1}=A^{\ell+m}$ and let $e_i$ be the $i\ordinalth$ standard basis vector. Now define $d_Q^{k-1}\colon Q^{k-1}\morphism Q^k$ and $\rho^{k-1}\colon Q^{k-1}\morphism F^{k-1}$ by
 \begin{align*}
 	d_Q^{k-1}(e_i)=
 	\begin{cases}
@@ -934,9 +930,9 @@ We now have all the technicalities together to prove Theorem~\reff{thm:GrauertGr
 \begin{proof}[Proof of Theorem~\reff{thm:GrauertGrothendieck}]
 	The first step will be to prove \itememph{a}, from which the other assertions will be deduced. In \itememph{a}, $Y$ is affine and the other assertions are all base-local, hence without losing generality we may assume $Y=\Spec A$ for the remainder of this proof.
 	
-	Fix a finite affine open cover $\Uu$ of $X$ and let $\check{C}^\bullet=\check{C}_\alt^\bullet(\Uu,\Ff)$. Using Lemma~\reff{lem:TruncQuasiIso} we see that $\tau_{\leq d}\check{C}^\bullet$ consists of flat $A$-modules again. Then we choose a finitely generated free approximation $Q^\bullet\morphism\tau_{\leq d}\check{C}^\bullet$ as in Lemma~\reff{lem:FiniteApproximation}. By Lemma~\reff{lem:TensorQuasiIsomorphism} we get
+	Fix a finite affine open cover $\Uu$ of $X$ and let $\check{C}^\bullet=\check{C}_\alt^\bullet(\Uu,\Ff)$. Using Lemma~\reff{lem:TruncQuasiIso} we see that $\tau_{\leq d}\check{C}^\bullet$ consists of flat $A$-modules again. Then we choose a finitely generated free approximation $Q^\bullet\morphism\tau_{\leq d}\check{C}^\bullet$ as in Lemma~\reff{lem:FiniteApproximation} (here we crucially use that the $H^p(\tau_{\leq d}\check{C}^\bullet)\cong H^p(X,\Ff)$ are finitely generated over $A$ since $\Ff$ is coherent and $f$ is proper, so \cite[Theorem~5]{alggeo2} is applicable). By Lemma~\reff{lem:TensorQuasiIsomorphism} we get
 	\begin{align*}
-		H^p\left(Q^\bullet\otimes_A\KK(\mm)\right)\cong H^p\left(\tau_{\geq d}\check{C}\otimes_A\KK(\mm)\right)\cong H^p\left(\check{C}\otimes_A\KK(\mm)\right)\overset{\text{\eqreff{eq:baseChangeProperty}}}{\cong} H^p\left(X_y,\Ff|_{X_y}\right)\;,
+		H^p\left(Q^\bullet\otimes_A\KK(\mm)\right)\cong H^p\left(\tau_{\geq d}\check{C}^\bullet\otimes_A\KK(\mm)\right)\cong H^p\left(\check{C}^\bullet\otimes_A\KK(\mm)\right)\overset{\text{\eqreff{eq:baseChangeProperty}}}{\cong} H^p\left(X_y,\Ff|_{X_y}\right)\;,
 	\end{align*}
 	where $y\in Y$ on the right-hand side is the point corresponding to the maximal ideal $\mm$, so that we have $X_y\cong X\times_Y\Spec\KK(\mm)$. In particular, we see $H^p\left(Q^\bullet\otimes_A\KK(\mm)\right)=0$ if $p<d'$ and also $H^p(Q^\bullet)\cong H^p(X,\Ff)=0$ if $p<d'$ by Lemma~\reff{lem:TechnicalVanishingAssertion}, hence Lemma~\reff{lem:TruncQuasiIso2} may be applied. Therefore, $P^\bullet=\tau_{\geq d'}Q^\bullet$ is complex of finitely generated projective $A$-modules with is supported only between $d'$ and $d$, and $P^\bullet$ has the required base change property because of \eqreff{eq:baseChangeProperty} and Lemma~\reff{lem:TensorQuasiIsomorphism}. In other words, $P^\bullet$ is what we want. This proves \itememph{a}.
 	
