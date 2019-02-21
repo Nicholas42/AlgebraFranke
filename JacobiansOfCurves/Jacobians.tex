@@ -793,7 +793,7 @@ Before we state the theorem, let us once and for all fix some pretty convenient 
 			(R^pf_*\Ff)(y)\isomorphism H^p\left(X_y,\Ff|_{X_y}\right)\;,
 		\end{align}
 		where $(R^pf_*\Ff)(y)$ is to be interpreted as in Convention~\reff{con:AON}\itememph{c}.
-		\item If reducedness wasn't required in \itememph{c}, the canonical morphism \eqreff{eq:RpfFy} is bijective (for given $p$ and $y$) if and only if it is surjective. Moreover, for any $p\geq 0$ the set $U_p$ of all $y\in Y$ for which this is the case is open in $Y$.
+		\item Without the assumptions of \itememph{c} -- i.e., without $Y$ reduced and $h^p(-,\Ff)$ locally constant -- the canonical morphism \eqreff{eq:RpfFy} is bijective (for given $p$ and $y$) if and only if it is surjective. Moreover, for any $p\geq 0$ the set $U_p$ of all $y\in Y$ for which this is the case is open in $Y$.
 		\item Let $y\in U_p$, then the following assertions are equivalent.
 		\begin{itemize}
 			\item[\itememph{\alpha}] We also have $y\in U_{p-1}$.
@@ -882,18 +882,18 @@ This does it, as is easily checked.
 \end{proof}
 Let $C^\bullet$ be any cochain complex. Similar to the soft truncation from above (from above), there's a \defemph{soft truncation from below} given by
 \begin{align*}
-\tau_{\geq d}C^\bullet\colon\ldots\morphism 0\morphism 0\morphism C^d/B^d\morphism C^{d+1}\morphism C^{d+2}\morphism \ldots\;,
+\tau_{\geq d}C^\bullet\colon\ldots\morphism 0\morphism 0\morphism C^d/J^d\morphism C^{d+1}\morphism C^{d+2}\morphism \ldots\;,
 \end{align*}
-in which $B^d=\Im\left(C^{d-1}\morphism C^d\right)$. It has the property that $H^p(\tau_{\geq d}C^\bullet)=H^p(C^\bullet)$ if $p\geq d$ and $H^p(\tau_{\geq d}C^\bullet)=0$ otherwise.
+in which $J^d=\Im\left(C^{d-1}\morphism C^d\right)$. It has the property that $H^p(\tau_{\geq d}C^\bullet)=H^p(C^\bullet)$ if $p\geq d$ and $H^p(\tau_{\geq d}C^\bullet)=0$ otherwise.
 \begin{lem}\lbl{lem:TruncQuasiIso2}
 	Let $A$ be a noetherian ring and $Q^\bullet$ be a cochain complex of finitely generated projective $A$-modules. Suppose there's $d'\in\IZ$ such that $H^p(Q^\bullet)=0$ for all $p<d'$ and $H^p(Q^\bullet\otimes_A\KK(\mm))=0$ for all $p<d'$ and all maximal ideals $\mm\subseteq A$. Then $\tau_{\geq d'}Q^\bullet$ is a cochain complex of projective $A$-modules. Also $Q^\bullet\morphism \tau_{\geq d'}Q^\bullet$ is a quasi-isomorphism if $H^p(Q^\bullet)=0$ for all $p< d'$.
 \end{lem}
 \begin{proof}
-	W.l.o.g.\ let $d'=0$ and $B^0=\Im\left(Q^{-1}\morphism Q^0\right)$. Since $Q^\bullet$ is acyclic in degrees $<d'$ by assumption, we see that
+	W.l.o.g.\ let $d'=0$ and $J^0=\Im\left(Q^{-1}\morphism Q^0\right)$. Since $Q^\bullet$ is acyclic in degrees $<d'$ by assumption, we see that
 	\begin{align*}
-		\ldots \morphism Q^{-2}\morphism Q^{-1}\morphism Q^0\morphism Q^0/B^0\morphism 0
+		\ldots \morphism Q^{-2}\morphism Q^{-1}\morphism Q^0\morphism Q^0/J^0\morphism 0
 	\end{align*}
-	is a projective resolution of $Q^0/B^0$. We use this resolution to compute $\Tor_p^A(Q_0/B_0,-)$. By our assumption we get $\Tor_p^A(Q^0/B^0,\KK(\mm))=H^{-p}(Q^\bullet\otimes_A\KK(\mm))=0$ for all $\mm\in\mSpec A$ and all $p>0$. Since $Q^0/B^0$ is finitely generated over the noetherian ring $A$, this implies that $Q^0/B^0$ is projective (this is essentially \cite[Propositions~1.3.1 and~1.3.2]{homalg}, but you should combine them with \cite[Fact~1.2.4]{homalg} first). The other assertion about $Q^\bullet\morphism \tau_{\geq d'}Q^\bullet$ being a quasi-isomorphism is trivial again.
+	is a projective resolution of $Q^0/J^0$. We use this resolution to compute $\Tor_p^A(Q_0/J_0,-)$. By our assumption we get $\Tor_p^A(Q^0/J^0,\KK(\mm))=H^{-p}(Q^\bullet\otimes_A\KK(\mm))=0$ for all $\mm\in\mSpec A$ and all $p>0$. Since $Q^0/J^0$ is finitely generated over the noetherian ring $A$, this implies that $Q^0/J^0$ is projective (this is essentially \cite[Propositions~1.3.1 and~1.3.2]{homalg}, but you should combine them with \cite[Fact~1.2.4]{homalg} first). The other assertion about $Q^\bullet\morphism \tau_{\geq d'}Q^\bullet$ being a quasi-isomorphism is trivial again.
 \end{proof}
 \begin{exc}
 	Under the assumptions of Theorem~\reff{thm:GrauertGrothendieck}, derive Theorem~\reff{thm:FormalFunctions} for $f\colon X\morphism Y$ and $\Ff$ from what has been shown until Lemma~\reff{lem:FiniteApproximation}.
@@ -1009,7 +1009,7 @@ We now have all the technicalities together to prove Theorem~\reff{thm:GrauertGr
 	
 	For \itememph{d} and \itememph{e} we need yet another lemma, but I promise this will be the last technical commutative algebra lemma required to prove Theorem~\reff{thm:GrauertGrothendieck}.
 	\begin{lem}\lbl{lem:BasicallyThm4de}
-		Let $\pp\in \Spec A$. In the above situation, the following conditions are equivalent.
+		Let $\pp\in \Spec A$, and $P^\bullet$, $C^\bullet$ be as above. The following are equivalent.
 		\begin{alphanumerate}
 			\item The canonical morphism
 			\begin{align*}
@@ -1019,7 +1019,7 @@ We now have all the technicalities together to prove Theorem~\reff{thm:GrauertGr
 			\item Same as \itememph{a}, but the morphism is even bijective.
 			\item The localization $C^{p+1}_\pp$ is a free $A_\pp$-module.
 		\end{alphanumerate}
-		Moreover, in this case the localization $B^{p+1}_\pp$ of $B^{p+1}=\Im\delta^p$ is free over $A_\pp$ as well.
+		Moreover, if the above conditions are satisfied, then $(\Im\delta^p)_\pp$ is free over $A_\pp$ as well.
 	\end{lem}
 \begin{proof}
 	We use similar arguments as in Lemma~\reff{lem:BasicallyThm4bc}. Let's do the implication \itememph{a} $\Rightarrow$ \itememph{c} first. If assertion \itememph{a} holds, then we may choose $\mu_1,\ldots,\mu_r\in\ker \delta^p$ whose images $\ov{\mu}_i$ in $\ker\big(\delta^p\otimes\id_{\KK(\pp)}\big)$ form a basis. We may extend $\mu_1,\ldots,\mu_r$ by some $\mu_{r+1},\ldots,\mu_s\in C^p$ such that $\ov{\mu}_1,\ldots,\ov{\mu}_s$ form a basis of $C^p\otimes_A\KK(\pp)$. By the same argument as in Claim~\reff{claim:MatrixShit} we may replace $A$ by some localization to achieve that $\mu_1,\ldots,\mu_s$ generate $M$. Then $\Im \delta^p$ is generated by $\delta^p(\mu_{r+1}),\ldots,\delta^p(\mu_s)$, since the other generators are contained in $\ker \delta^p$. We claim that $\delta^p(\mu_{r+1}),\ldots,\delta^p(\mu_s)$ are (up to localizing $A$) actually \emph{free} generators of $\Im\delta^p$!
@@ -1027,21 +1027,21 @@ We now have all the technicalities together to prove Theorem~\reff{thm:GrauertGr
 	Indeed, the images $\delta_\pp^p(\ov{\mu}_{r+1}),\ldots,\delta_\pp^p(\ov{\mu}_s)\in P^{p+1}\otimes_A\KK(\pp)$ are $\KK(\pp)$-linearly independent, so we may choose $\pi_1,\ldots,\pi_n\in P^{p+1}$ whose images in $P^{p+1}\otimes_A\KK(\pp)$ extend $\delta_\pp^p(\ov{\mu}_{r+1}),\ldots,\delta_\pp^p(\ov{\mu}_s)$ to a basis.
 	By the same argument as in Claim~\reff{claim:MatrixShit}, we can replace $A$ by some localization so that $\delta^p(\mu_{r+1}),\ldots,\delta^p(\mu_s)$ and $\pi_1,\ldots,\pi_n$ generate $P^{p+1}$ -- and we may even assume they do so \emph{freely}! Indeed, write $\delta^p(\mu_{r+1}),\ldots,\delta^p(\mu_s)$ and $\pi_1,\ldots,\pi_n$ as linear combinations of some basis of $P^{p+1}$. Then the coefficient matrix $C$ becomes invertible when reduced to $\KK(\pp)$, hence after localizing $A$ at $\det C$ we may assume that $C$ is already invertible over $A$. Therefore, after replacing $A$ by a suitable localization, we see that $\Im\delta^p$ is a direct summand of $P^{p+1}$. Then $C^{p+1}=\coker\delta^p$ is a direct summand of $P^{p+1}\cong \Im\delta^p\oplus\coker\delta^p$ as well. This proves that $C^{p+1}$ is projective, hence $C^{p+1}_\pp$ is free over $A_\pp$. Thereby the implication \itememph{a} $\Rightarrow$ \itememph{c} has been shown.
 	
-	Now for \itememph{c} $\Rightarrow$ \itememph{b}. By \cite[Corollary~1.5.1]{alg2}, we may replace $A$ (and $C^{p+1}$) by some localization such that $C^{p+1}$ is already free over $A$. Then $P^{p+1}\epimorphism C^{p+1}=\coker\delta^p$ is split, hence $P^{p+1}\cong \Im\delta^p\oplus \coker\delta^p$ (non-canonically). Then $\Im\delta^p$ is projective as well, so $C^p\cong \ker\delta^p\oplus\Im\delta^p$ (non-canonically). That is, $\delta^p$ splits as $\delta^p\colon \ker\delta^p\oplus\Im\delta^p\morphism\Im\delta^p\oplus\coker\delta^p$, and this nice splitting behaviour is preserved after tensoring with $\KK(\pp)$. This shows $\ker\delta^p\otimes_A\KK(\pp)\cong \ker\left(\delta^p\otimes\id_{\KK(\pp)}\right)$, i.e., \itememph{b} holds.
+	Now for \itememph{c} $\Rightarrow$ \itememph{b}. By \cite[Corollary~1.5.1]{alg2}, we may replace $A$ (and $C^{p+1}$) by some localization such that $C^{p+1}$ is already free over $A$. Then $P^{p+1}\epimorphism C^{p+1}=\coker\delta^p$ is split, hence $P^{p+1}\cong \Im\delta^p\oplus \coker\delta^p$ (non-canonically). Then $\Im\delta^p$ is projective as well, so $C^p\cong \ker\delta^p\oplus\Im\delta^p$ (non-canonically). That is, the morphism $\delta^p$ splits as $\delta^p\colon \ker\delta^p\oplus\Im\delta^p\morphism\Im\delta^p\oplus\coker\delta^p$, and this nice splitting behaviour is preserved after tensoring with $\KK(\pp)$. This shows that $\ker\delta^p\otimes_A\KK(\pp)\cong \ker\big(\delta^p\otimes\id_{\KK(\pp)}\big)$. In other words, \itememph{b} holds.
 	
-	Finally \itememph{b} $\Rightarrow$ \itememph{a} is trivial, and also we've already seen that $B_\pp^{p+1}$ is free over $A_\pp$ in the proof of \itememph{a} $\Rightarrow$ \itememph{c}. We're done.
+	Finally \itememph{b} $\Rightarrow$ \itememph{a} is trivial, and also we've already seen that $(\Im \delta^p)_\pp$ is free over $A_\pp$ in the proof of \itememph{a} $\Rightarrow$ \itememph{c}. We're done.
 \end{proof}
 
 	Now there isn't really much left to prove \itememph{d} and \itememph{e}. Since $Y=\Spec A$ is affine (or rather we reduced it to this case), $R^pf_*\Ff$ is the quasi-coherent $\Oo_Y$-module given by the $A$-module $H^p(X,\Ff)\cong H^p(P^\bullet)\cong \ker\delta^p$. Then Lemma~\reff{lem:BasicallyThm4de}\itememph{a}, \itememph{b} show that $(R^pf_*\Ff)(y)\morphism H^p(X_y,\Ff|_{X_y})$ is bijective iff it is surjective. Moreover, the set of $\pp\in\Spec A$, for which $C_\pp^{p+1}$ is free, is open by \cite[Corollary~1.5.1]{alg2}. Using Lemma~\reff{lem:BasicallyThm4de}\itememph{c} this implies that $U_p\subseteq Y$ is open, proving \itememph{d}.
 	
-	Finally, part \itememph{e}. If $y\in U_p$ corresponds to $\pp\in\Spec A$, then $C_\pp^{p+1}$ as well as $B_\pp^{p+1}$ are free over $A_\pp$ by Lemma~\reff{lem:BasicallyThm4de}\itememph{c}. Therefore the short exact sequence
+	Finally, part \itememph{e}. If $y\in U_p$ corresponds to $\pp\in\Spec A$, then $C_\pp^{p+1}$ as well as $(\Im \delta^p)_\pp$ are free over $A_\pp$ by Lemma~\reff{lem:BasicallyThm4de}\itememph{c}. Therefore the short exact sequence
 	\begin{align*}
-		0\morphism H^p(X,\Ff)_\pp\morphism C_\pp^p\morphism B_\pp^{p+1}\morphism 0
+		0\morphism H^p(X,\Ff)_\pp\morphism C_\pp^p\morphism (\Im\delta^p)_\pp\morphism 0
 	\end{align*}
 	is split. This shows that $C_\pp^p$ is free over $A_\pp$ iff so is $H^p(X,\Ff)_\pp$. Using Lemma~\reff{lem:BasicallyThm4de}\itememph{c} we thus see that $y\in U_{p-1}$ iff $H^p(X,\Ff)$ is locally free at $\pp$ -- and that's precisely what we want.
 \end{proof}
 \begin{cor}
-	In the situation of Theorem~\reff{thm:GrauertGrothendieck}, if $h^p(y,\Ff)=0$, then $R^pf_*\Ff$ vanishes in some neighbourhood of $x$.
+	In the situation of Theorem~\reff{thm:GrauertGrothendieck}, if $h^p(y,\Ff)=0$, then $R^pf_*\Ff$ vanishes in some neighbourhood of $y$.
 \end{cor}
 \begin{proof}
 	By Theorem~\reff{thm:GrauertGrothendieck}\itememph{d} we have $(R^pf_*\Ff)(y)=0$, hence $R^pf_*\Ff=0$ near $y$ by Nakayama-style arguments (to be precise, this follows from \cite[Corollary~1.5.1]{alg2}).
@@ -1402,7 +1402,7 @@ Note that even without knowing whether a representing object $\PIC_{C/S}$ of $\P
 	\end{align*}
 	are mutually inverse morphisms, proving $\Ll\cong \Oo_X$.
 \end{proof}
-Now let $f\colon X\morphism S$ be proper and $\Ff$ a coherent $\Oo_X$-module which is flat over $\Oo_S$. Recall that
+Now let $f\colon X\morphism S$ be a proper between locally noetherian preschemes and $\Ff$ a coherent $\Oo_X$-module which is flat over $\Oo_S$. Recall that
 \begin{align*}
 	U_p&=\left\{s\in S\st(R^pf_*\Ff)(s)\to H^p(X_s,\Ff|_{X_s})\text{ is surjective}\right\}\\
 	&=\left\{s\in S\st(R^pf_*\Ff)(s)\to H^p(X_s,\Ff|_{X_s})\text{ is bijective}\right\}
@@ -1413,7 +1413,7 @@ is open in $S$ by Theorem~\reff{thm:GrauertGrothendieck}\itememph{d}. Also we de
 \end{align*}
 where the right-hand equality uses Remark~\reff{rem:GeometricFibres}\itememph{a}.
 \begin{prop}\lbl{prop:LineBundlesFromTheBase}
-	Let $f\colon X\morphism S$ be a proper flat morphism with integral geometric fibres $X_{\ov{s}}$ (in particular, the geometric fibres are non-empty) and $\Ll$ a line bundle on $X$. Also assume that $S$ is locally noetherian. Then the following are equivalent.
+	Let $f\colon X\morphism S$ be a proper flat morphism between locally noetherian preschemes such that the geometric fibres $X_{\ov{s}}$ are integral for all $s\in S$ (in particular, the $X_{\ov{s}}$ are non-empty). Let $\Ll$ be a line bundle on $X$. Then the following are equivalent.
 	\begin{alphanumerate}
 		\item $\Ll\cong f^*\Ll_0$ for some $\Ll_0\in\Pic(S)$ -- that is, $\Ll$ is trivial in $\Pic(X/S)$.
 		\item For both $\Ll$ and $\Ll^{\otimes -1}$, the functions $h^0\left(-,\Ll^{\otimes \pm 1}\right)$ don't vanish on $S$ and $U_0=S$.
@@ -1421,7 +1421,7 @@ where the right-hand equality uses Remark~\reff{rem:GeometricFibres}\itememph{a}
 	If this is the case, $h^0\left(s,\Ll^{\otimes\pm1}\right)=1$ for all $s\in S$ and the canonical morphism $f^*f_*\Ll\morphism\Ll$ is an isomorphism. Also $\Ll_0\cong f_*\Ll$ in this case.
 \end{prop}
 \begin{proof}
-	Assume for the moment that \itememph{a} and \itememph{b} are equivalent and that $f^*f_*\Ll\morphism \Ll$ is an isomorphism. We prove that under this assumptions we have $\Ll_0f_*\cong \Ll$ for all $\Ll_0$ as in \itememph{a}. We get a canonical morphism $\Ll_0\morphism f_*\Ll$ corresponding to the isomorphism $f^*\Ll_0\isomorphism \Ll$ under the $f^*$-$f_*$ adjunction. Since $f^*f_*\Ll\morphism\Ll$ is assumed to be an isomorphism too, we see that $\Ll_0\morphism f_*\Ll$ becomes an isomorphism after applying the functor $f^*$. Then the following claim shows that it must have been an isomorphism before.
+	Assume for the moment that \itememph{a} and \itememph{b} are equivalent and that $f^*f_*\Ll\morphism \Ll$ is an isomorphism. Under these assumptions we prove $\Ll_0\cong f_*\Ll$ for all $\Ll_0$ as in \itememph{a}. We get a canonical morphism $\Ll_0\morphism f_*\Ll$ corresponding to the isomorphism $f^*\Ll_0\isomorphism \Ll$ under the $f^*$-$f_*$ adjunction. Since $f^*f_*\Ll\morphism\Ll$ is assumed to be an isomorphism too, we see that $\Ll_0\morphism f_*\Ll$ becomes an isomorphism after applying $f^*$. Now the following claim does it.
 	\begin{claim}
 		Let $\phi\colon \Ff\morphism\Ff'$ be any morphism of quasi-coherent $\Oo_S$-modules such that the pullback $f^*(\phi)\colon f^*\Ff\morphism  f^*\Ff'$ becomes an isomorphism of $\Oo_X$-modules. Then $\phi$ is an isomorphism.
 	\end{claim}
@@ -3335,8 +3335,8 @@ Let $R\subseteq S$ be a finite ring extension\footnote{If $R$ is not a subring o
 
 \chapter{Construction of the Jacobian}\lbl{sec:Jac}
 %\setcounter{section}{-1}
-%\section{Strategy of the construction}\lbl{sec:Strategy}
-Before we dive into technical constructions, Professor Franke takes the time to review our battle plan from page~\pageref{page:battlePlan}, adding a bit more details and motivation.
+%\section{Strategy of the construction}
+\lbl{par:Strategy}Before we dive into technical constructions, Professor Franke takes the time to review our battle plan from page~\pageref{page:battlePlan}, adding a bit more details and motivation.
 
 Let $D$ be a divisor on a regular curve $C$ of genus $g=\dim_k\Gamma(C,\Omega_C)$ over an algebraically closed field $k$. Recall the notation $\ell(D)=\dim_k\Gamma(C,\Oo_C(D))$. If $\deg D=g$ and $K$ is a divisor such that $\Oo_C(K)\cong \Omega_C$, then Riemann--Roch (in the form of \cite[Corollary~3.1.1]{alggeo2}) shows
 \begin{align*}
@@ -3922,7 +3922,7 @@ Recall that Theorem~\reff{thm:final}\itememph{f} shows that $\Div_{C/S}^g$ is re
 	\end{align*}
 	It's image is a sheaf of ideals $\Jj\subseteq \Oo_{C_T}$, and it can be checked that $\Jj$ defines an effective relative Cartier divisor $E\in\Div_{C/S}^g(T)$ which is mapped to $[\Ll]$. This construction can be reversed, which shows that $\gamma$ is an isomorphism over $U_{C/S}$.
 	
-	Part~\itememph{b}. Let $T=\Spec k$ and $\Ll$ be a line bundle on $C_T$. Let $C_{\ov{T}}=C_T\times_T\Spec\ov{k}$. Since $\ov{\Ll}$ has degree $g$, Riemann--Roch shows $\dim_{\ov{k}}H^0(C_{\ov{T}},\Ll|_{C_{\ov{T}}})\geq 1$ (compare the argument at the beginning of Section~\reff{sec:Strategy}). Since $\ov{k}$ is flat over $k$, we get $\dim_kH^0(C_T,\Ll)\geq 1$ as well. Hence we may choose a non-vanishing global section $\lambda$ of $\Ll$ which defines a divisor $E$ mapping to $[\Ll]$ as in \itememph{a}.
+	Part~\itememph{b}. Let $T=\Spec k$ and $\Ll$ be a line bundle on $C_T$. Let $C_{\ov{T}}=C_T\times_T\Spec\ov{k}$. Since $\ov{\Ll}$ has degree $g$, Riemann--Roch shows $\dim_{\ov{k}}H^0(C_{\ov{T}},\Ll|_{C_{\ov{T}}})\geq 1$ (compare the argument on page~\pageref{par:Strategy}). Since $\ov{k}$ is flat over $k$, we get $\dim_kH^0(C_T,\Ll)\geq 1$ as well. Hence we may choose a non-vanishing global section $\lambda$ of $\Ll$ which defines a divisor $E$ mapping to $[\Ll]$ as in \itememph{a}.
 \end{proof}
 \begin{prop}
 	\begin{alphanumerate}
