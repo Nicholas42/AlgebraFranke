@@ -138,33 +138,27 @@ Please report bugs, typos etc. through the \emph{Issues} feature of github.
 	Now let $X_\bullet$ be arbitrary with the Mittag-Leffler property. Let $Y_i=\bigcap_{j\geq i}p_{j,i}(X_j)\subseteq X_i$. Then $\limit[][^1]Y_i=0$ by the special case we just treated, and $\limit[][^1]X_i/Y_i=0$ by Fact~\reff{fact:limVanishing}. Since $\limit[][^1]X_i$ is sandwiched between these two in the exact sequence from Fact~\reff{fact:6termLimitSequence}, this shows $\limit[][\smash{^1}]X_i=0$, as required.
 \end{proof}
 \section{The theorem about formal functions}
-Let $f\colon X\morphism Y=\Spec A$ be a  morphism of quasi-compact schemes. Let $I\subseteq A$ be any ideal. For every $n\geq 0$ consider the morphism
-\begin{align*}
-	i_n\colon X_n=X\times_Y\Spec (A/I^n)\morphism X\;,
-\end{align*}
-which is a base change of the closed immersion $Y_n=\Spec (A/I^n)\monomorphism \Spec A$, hence a closed immersion itself. Also, if $f$ is proper, then so is $X_n\morphism Y_n$ because properness is another \emph{proper}ty (tee-hee) that is stable under base change (by \cite[Remark~2.4.1]{alggeo2}).
-
-Let $\Ff$ be a quasi-coherent sheaf of $\Oo_X$-modules ($\Ff$ will eventually be assumed coherent, but for now this suffices) and $\Ff|_{X_n}=i_n ^*\Ff$ its restriction to $X_n$ (this notation is slightly abusive, but convenient).  Since $i_n$ is a closed immersion and thus affine, we have an isomorphism $H^p(X,i_{n,*}\Ff|_{X_n})\cong H^p(X_n,\Ff|_{X_n})$ for all $p\geq 0$ by \cite[Corollary~1.6.1]{alggeo2}. But it's also easy to check (e.g.\ affine-locally) that $i_{n,*}\Ff|_{X_n}\cong \Ff/I^n\Ff$. Together with the projection $ \Ff/I^{n+1}\Ff\morphism \Ff/I^n\Ff$ this gives canonical morphisms 
+Let $f\colon X\morphism Y=\Spec A$ be a  morphism of quasi-compact schemes. Let $I\subseteq A$ be any ideal and $\Ff$ a quasi-coherent sheaf of $\Oo_X$-modules. For every $n\geq 0$, the projection $\Ff/I^{n+1}\Ff\morphism \Ff/I^n\Ff$ gives a canonical morphism
 \begin{align}\lbl{eq:HpXn+1toHpXn}
-	H^p(X_{n+1},\Ff|_{X_{n+1}})\cong H^p(X,\Ff/I^{n+1}\Ff)\morphism H^p(X,\Ff/I^n\Ff)\cong H^p(X_n,\Ff|_{X_n})\;.
+	H^p(X,\Ff/I^{n+1}\Ff)\morphism H^p(X,\Ff/I^n\Ff)\;.
 \end{align}
 We have another canonical projection $\Ff\morphism \Ff/I^n\Ff$, which induces a morphism
 \begin{align}\lbl{eq:Hmorphism}
 	H^p(X,\Ff)\morphism H^p(X,\Ff/I^n\Ff)\cong H^p(X_n,\Ff|_{X_n})
 \end{align}
-for all $p\geq 0$. This is a morphism of $A$-modules, but $H^p(X_n,\Ff|_{X_n})$ is actually an $A/I^n$-module, so \eqreff{eq:Hmorphism} factors over
+for all $p\geq 0$. A priori this is only a morphism of $A$-modules, but $H^p(X,\Ff/I^n\Ff)$ is an $I^n$-torsion module (as can be seen from a close inspection of the \v Cech complex), so $H^p(X,\Ff/I^n\Ff)$ is actually an $A/I^n$-module. Therefore \eqreff{eq:Hmorphism} factors over
 \begin{align}\lbl{eq:Hmorphism2}
-	H^p(X,\Ff)/I^nH^p(X,\Ff)\morphism H^p(X_n,\Ff|_{X_n})\;.
+	H^p(X,\Ff)/I^nH^p(X,\Ff)\morphism H^p(X,\Ff/I^n\Ff)\;.
 \end{align}
-This is compatible with the canonical morphisms $H^p(X_{n+1},\Ff|_{X_{n+1}})\morphism H^p(X_n,\Ff|_{X_n})$ from equation \eqreff{eq:HpXn+1toHpXn} -- you can just check that on affine \v Cech covers. Taking the limit over \eqreff{eq:Hmorphism2} gives a morphism
+These morphisms are compatible with the canonical morphisms from equation \eqreff{eq:HpXn+1toHpXn} -- you can just check that on affine \v Cech covers. Taking the limit over \eqreff{eq:HpXn+1toHpXn} and \eqreff{eq:Hmorphism2} thus gives a canonical morphism
 \begin{align}\lbl{eq:formalFunctions}
-	H^p(X,\Ff)^\complete\morphism\limit[n\geq 1]H^p(X_n,\Ff|_{X_n})\;,
+	H^p(X,\Ff)^\complete\morphism\limit[n\geq 1]H^p(X,\Ff/I^n\Ff)\;,
 \end{align}
 where $\roof{\phantom{x}}$ denotes the $I$-adic completion.
 \begin{thm}[Grothendieck--Zariski]\lbl{thm:FormalFunctions}
 	When $f\colon X\morphism Y=\Spec A$ is proper (in which case $X$ is automatically a quasi-compact scheme), $A$ is noetherian and $\Ff$ is a coherent sheaf of $\Oo_X$-modules, then \eqreff{eq:formalFunctions} is an isomorphism
 	\begin{align*}
-		H^p(X,\Ff)^\complete\isomorphism \limit[n\geq 1]H^p(X_n,\Ff|_{X_n})\;.
+		H^p(X,\Ff)^\complete\isomorphism \limit[n\geq 1]H^p(X,\Ff/I^n\Ff)\;.
 	\end{align*}
 \end{thm}
 
@@ -177,24 +171,24 @@ where $\roof{\phantom{x}}$ denotes the $I$-adic completion.
 	\begin{claim}\lbl{claim:FFclaim1}
 		$K^p$ is a finitely generated $R$-module for all $p\geq 0$.
 	\end{claim}
-	Assuming this for the moment, recall that $H^p(X,\Ff/I^n\Ff)\cong H^p(X_n,\Ff|_{X_n})$, so the long exact cohomology sequence associated to $0\morphism I^n\Ff\morphism \Ff\morphism \Ff_n\morphism 0$ appears as
+	Assuming this for the moment, the long exact cohomology sequence associated to $0\morphism I^n\Ff\morphism \Ff\morphism \Ff_n\morphism 0$ appears as
 	\begin{align*}%\lbl{eq:FFSeq1}
-		\ldots\morphism H^p(X,I^n\Ff)\morphism H^p(X,\Ff)\morphism H^p(X_n,\Ff|_{X_n})\morphism H^{p+1}(X,I^n\Ff)\morphism\ldots \;.
+		\ldots\morphism H^p(X,I^n\Ff)\morphism H^p(X,\Ff)\morphism H^p(X,\Ff/I^n\Ff)\morphism H^{p+1}(X,I^n\Ff)\morphism\ldots \;.
 	\end{align*}
 	By \eqreff{eq:Hmorphism2}, we can turn the above long exact sequence into four-term exact sequences
 	\begin{align}\lbl{eq:FFSeq2}
-		0\morphism U_n\morphism H^p(X,\Ff)/I^nH^p(X,\Ff)\morphism H^p(X_n,\Ff|_{X_n})\morphism V_n\morphism 0\;,
+		0\morphism U_n\morphism H^p(X,\Ff)/I^nH^p(X,\Ff)\morphism H^p(X,\Ff/I^n\Ff)\morphism V_n\morphism 0\;,
 	\end{align}
 	where $U_n$ is a suitable quotient of $H^p(X,I^n\Ff)$ and $V_n\subseteq H^{p+1}(X,I^n\Ff)$ some submodule. This makes $U=\bigoplus_{n\geq 0}U_n$ a quotient of $K^p$ and $V=\bigoplus_{n\geq 0}V_n$ an $R$-submodule of $K^{p+1}$.
 	\begin{claim}\lbl{claim:FFclaim2}
 		We have $\limit U_n=\limit[][^1]U_n=0$ and $\limit V_n=\limit[][^1]V_n=0$.
 	\end{claim}
-	Before we prove this (and Claim~\reff{claim:FFclaim1}), let's see how Theorem~\reff{thm:FormalFunctions} follows from it. Let $W_n$ be the image of $H^p(X,\Ff)/I^nH^p(X,\Ff)\morphism H^p(X_n,\Ff|_{X_n})$. We may split \eqreff{eq:FFSeq2} into two short exact sequences
+	Before we prove this (and Claim~\reff{claim:FFclaim1}), let's see how Theorem~\reff{thm:FormalFunctions} follows from it. Let $W_n$ be the image of $H^p(X,\Ff)/I^nH^p(X,\Ff)\morphism H^p(X,\Ff/I^n\Ff)$. We may split \eqreff{eq:FFSeq2} into two short exact sequences
 	\begin{gather*}
 		0\morphism U_n\morphism H^p(X,\Ff)/I^nH^p(X,\Ff)\morphism W_n\morphism 0\\
-		\hphantom{\;.}0\morphism W_n\morphism H^p(X_,\Ff|_{X_n})\morphism V_n\morphism 0\;.
+		\hphantom{\;.}0\morphism W_n\morphism H^p(X,\Ff/I^n\Ff)\morphism V_n\morphism 0\;.
 	\end{gather*}
-	Applying Fact~\reff{fact:6termLimitSequence} to the first one gives $H^p(X,\Ff)^\complete\cong \limit[][^1]W_n$. Then the six-term exact sequence associated to the second proves $\limit W_n\cong \limit H^p(X_n\Ff|_{X_n})$ and we are done.
+	Applying Fact~\reff{fact:6termLimitSequence} to the first one gives $H^p(X,\Ff)^\complete\cong \limit[][^1]W_n$. Then the six-term exact sequence associated to the second proves $\limit W_n\cong \limit H^p(X,\Ff/I^n\Ff)$ and we are done.
 	
 	It remains to show the two claims. Note that the Rees algebra $R$ is noetherian. Indeed, $I$ is finitely generated as an ideal in the noetherian ring $A$, hence $R$ is of finite type over $A$. Let's also make the following convention: Whenever we write $I^kU_n$ or $I^kV_n$ in the following, this means multiplication as $A$-modules and the result is contained in $U_n$ resp.\ $V_n$ again, whereas $R_kU_n$ or $R_kV_n$ means multiplication by the $k\ordinalth$ homogeneous component of $R$ (which equals $I^k$ as well, but multiplication in a graded module has a shifting effect, which is what we want to stress by this distinction), so the result is contained on $U_{k+n}$ resp.\ $V_{k+n}$.
 	
@@ -202,18 +196,29 @@ where $\roof{\phantom{x}}$ denotes the $I$-adic completion.
 	
 	Similarly, $V$ is finitely generated as a submodule of $K^{p+1}$, which is finitely generated over the noetherian ring $R$ by Claim~\reff{claim:FFclaim1}. By the same argument as above we find a $d_1$ such that $V_n=R_nV_0+R_{n-1}V_1+\ldots+R_{n-d_1}V_{d_1}$ for all $n\geqslant d_1$. In particular, we have $V_{k+n}=R_kV_n$ for all $n\geq d_1$. Thus, for $n\geq d_1$ the image of $V_{2n}$ in $V_n$ is contained in $I^nV_n$. But $I^nV_n$ vanishes again, since $V_n$ is the image of $H^p(X_n,\Ff|_{X_n})$, which is a $A/I^n$-module. As above, we can apply Fact~\reff{fact:limVanishing}. This shows Claim~\reff{claim:FFclaim2}.
 	
-	\emph{Proof of Claim~\reff{claim:FFclaim1}.} Let $\upsilon\colon\snake{Y}=\Spec R\morphism Y$ correspond to $A\monomorphism R$ and let $\xi\colon \snake{X}=X\times_Y\snake{Y}\morphism X$ be its base change by $f$. Note that $\xi$ is affine as a base change of the affine morphism $\upsilon$ (we use \cite[Corollary~2.5.1]{alggeo1} here). We claim
+	\emph{Proof of Claim~\reff{claim:FFclaim1}.} Let $\upsilon\colon\snake{Y}=\Spec R\morphism Y$ correspond to $A\monomorphism R$ and let $\xi\colon \snake{X}=X\times_Y\snake{Y}\morphism X$ be its base change by $f$. Note that $\xi$ is affine as a base change of the affine morphism $\upsilon$ (we use \cite[Corollary~2.5.1]{alggeo1} here). Then $\xi_*\xi^*\Ff\cong\bigoplus_{n\geq 0}I^n\otimes_A\Ff$ (this is easily checked affine-locally, where $\xi^*$ is given by tensoring with $R$), and it's not hard to see that there is a quotient module $\snake{\Ff}$ of $\xi^*\Ff$ such that $\xi_*\snake{\Ff}\cong \bigoplus_{n\geq 0} I^n\Ff$; we leave the details to the reader. Also $H^p(\snake{X},\snake{\Ff})\cong H^p(X,\xi_*\snake{\Ff})$ as $\xi$ is affine. This shows
 	\begin{align*}
-		\xi_*\xi^*\Ff\cong\bigoplus_{n\geq 0}I^n\Ff\;.
-	\end{align*}
-	Indeed, this is easily checked affine-locally (where $\xi^*$ is given by tensoring with $R$); we leave the details to the reader. Also $H^p(\snake{X},\xi^*\Ff)\cong H^p(X,\xi_*\xi^*\Ff)$ as $\xi$ is affine. This shows
-	\begin{align*}
-		H^p(\snake{X},\xi^*\Ff)\cong H^p(X,\xi_*\xi^*\Ff)\cong H^p\bigg(X,\bigoplus_{n\geq 0}I^n\Ff\bigg)\cong \bigoplus_{n\geq 0}H^p(X,I^n\Ff)=K^p\;.
+		H^p(\snake{X},\snake{\Ff})\cong H^p(X,\xi_*\snake{\Ff})\cong H^p\bigg(X,\bigoplus_{n\geq 0}I^n\Ff\bigg)\cong \bigoplus_{n\geq 0}H^p(X,I^n\Ff)=K^p\;.
 	\end{align*}
 	Note that direct sums usually \emph{don't} commute with cohomology, but here they do, because $X$ is quasi-compact and $\bigoplus_{n\geq 0}I^n\Ff$ is quasi-coherent (for which we already need that $X$ is quasi-compact, otherwise direct sums of quasi-coherent sheaves aren't necessarily quasi-coherent again), so we may compute $H^p\left(X,\bigoplus_{n\geq 0}I^n\Ff\right)$ via finite affine \v Cech covers. In this case, the products in the \v Cech complex are all finite, hence commute with the direct sum, which is what we needed.
 	
-	Now $\snake{f}\colon \snake{X}\morphism\snake{Y}=\Spec R$ is proper (as a base change of the proper morphism $f$), hence the right-hand side is a finitely generated $R$-module by our finiteness results for the cohomology of proper morphisms (cf.\ \cite[Theorem~5]{alggeo2}). We win.
+	Since properness is a \emph{proper}ty (tee-hee) which is stable under base change, $\snake{f}\colon \snake{X}\morphism\snake{Y}=\Spec R$ is proper, being a base change of the proper morphism $f$. Moreover $\snake{\Ff}$ is a coherent $\Oo_{\snake{X}}$-module because it is a quotient of $\xi^*\Ff$, which is coherent (as a pullback of a coherent module). Hence $H^p(\snake{X},\snake{\Ff})$ is a finitely generated $R$-module by our finiteness results for the cohomology of proper morphisms (cf.\ \cite[Theorem~5]{alggeo2}). We win.
 \end{proof}
+\begin{rem}
+	For every $n\geq 0$ consider the morphism
+	\begin{align*}
+	i_n\colon X_n=X\times_Y\Spec (A/I^n)\morphism X\;,
+	\end{align*}
+	which is a base change of the closed immersion $Y_n=\Spec (A/I^n)\monomorphism \Spec A$, hence a closed immersion itself. Also, if $f$ is proper, then so is $X_n\morphism Y_n$ because properness is stable under base change as well (by \cite[Remark~2.4.1]{alggeo2}).
+	
+	Let $\Ff|_{X_n}=i_n ^*\Ff$ denote the restriction of $\Ff$ to $X_n$ (this notation is slightly abusive, but convenient).  Since $i_n$ is a closed immersion and thus affine, we have an isomorphism $H^p(X,i_{n,*}\Ff|_{X_n})\cong H^p(X_n,\Ff|_{X_n})$ for all $p\geq 0$ by \cite[Corollary~1.6.1]{alggeo2}. But it's also easy to check (e.g.\ affine-locally) that $i_{n,*}\Ff|_{X_n}\cong \Ff/I^n\Ff$. This gives the following reformulation of Theorem~\reff{thm:FormalFunctions}.
+\end{rem}
+\begin{varthm}{thm}\lbl{thm:FormalFunctions1.5}
+	Under the assumptions of Theorem~\reff{thm:FormalFunctions} we have a canonical isomorphism
+	\begin{align*}
+		H^p(X,\Ff)^\complete\isomorphism\limit[n\geq 1] H^p(X_n,\Ff|_{X_n})\;.
+	\end{align*}
+\end{varthm}
 \begin{rem}
 	Note that in the lecture Franke used $\Kk_n\cong \Jj^n\Ff$ instead of $I^n\Ff$, where $\Jj=f^{-1}\snake I$ denotes the inverse image in the sense of the upcoming Definition~\reff{def:f-1}. But since the $I^n$-action on $\Ff$ is given via the algebraic component $\Oo_Y\morphism f_*\Oo_X$ of $f$, it is not very surprising that $I^n\Ff= \Jj^n\Ff$ (actually, this is pretty obvious from the construction of $f^{-1}$ described in the proof of Lemma~\reff{lem:f-1} below). I prefer the notation $I^n\Ff$ -- in particular, this is how Grothendieck denotes it in \cite[Ch.\:III (4.1.7)]{egaIII}, so I believe it's my right to do so as well. Nevertheless, Lemma~\reff{lem:f-1} is \emph{perhaps worthwhile to know} (as Professor Franke would likely phrase it), so we will include it now.
 \end{rem}
@@ -231,6 +236,7 @@ where $\roof{\phantom{x}}$ denotes the $I$-adic completion.
 \begin{proof}[Sketch of a proof]
 	The question is easily seen to be local on both $X$ and $Y$. So let's consider the affine situation where $Y=\Spec A$, $X=\Spec B$, and $\Jj=\snake{J}$ for some ideal $J\subseteq A$. Let $\phi\colon A\morphism B$ be the morphism of rings corresponding to $f$. Then $f^{-1}\Jj=\snake{I}$ where $I$ is the image of $B\otimes_AJ\morphism B$ sending $b\otimes j\mapsto b\cdot \phi(j)$. All three assertions are then easily checked.
 \end{proof}
+
 \begin{rem}
 	\begin{alphanumerate}
 		\item \lbl{rem:fibres}Recall that for a morphism $f\colon X\morphism Y$ of preschemes and a point $y\in Y$ the \defemph{fibre} $f^{-1}\{y\}$ of $f$ at $y$ is defined as the prescheme $f^{-1}\{y\}=X\times_Y\Spec \KK(y)$. This makes sense, since $f^{-1}\{y\}$ is indeed -- topologically -- the preimage of $y$, because $\Spec \KK(y)\morphism Y$ is an immersion with image $\{y\}$, so \cite[Corollary~1.3.3]{alggeo1} is applicable.
@@ -238,7 +244,7 @@ where $\roof{\phantom{x}}$ denotes the $I$-adic completion.
 	\end{alphanumerate}
 \end{rem}
 Using Remark~\reff{rem:fibres}, Theorem~\reff{thm:FormalFunctions} can be restated as follows.
-\begin{varthm}{thm}\lbl{thm:FormalFunctions2}
+\begin{varthm}[b]{thm}\lbl{thm:FormalFunctions2}
 	Let $f\colon X\morphism Y$ be a proper morphism between locally noetherian\footnote{Franke only assumes $Y$ to be locally noetherian, but $f$ being of (locally) finite type implies that $X$ is locally noetherian as well by Hilbert's Basissatz. This happens multiple times throughout the text.} preschemes. Let $\Ff$ be a coherent $\Oo_X$-module. For every $y\in Y$ let $X_n=X\times_Y\Spec (\Oo_{Y,y}/\mm_{Y,y}^n)$ be the $(n-1)\ordinalst$ infinitesimal thickening of $f^{-1}\{y\}$. Then there is an isomorphism
 	\begin{align*}
 		(R^pf_*\Ff)_y^\complete\isomorphism\limit[n\geq 1] H^p(X_n,\Ff|_{X_n})\;,
@@ -252,7 +258,7 @@ Using Remark~\reff{rem:fibres}, Theorem~\reff{thm:FormalFunctions} can be restat
 	\begin{align*}
 		H^p(X\times_Y\Spec A_\pp,\pi^*\Ff)\cong H^p(X,\Ff)_\pp\cong (R^pf_*\Ff)_y\;.
 	\end{align*}
-	Also $(X\times_Y\Spec A_\pp)\times_{\Spec A_\pp}\Spec(A_\pp/\mm^n)\cong X\times_Y\Spec(A_\pp/\mm^n)\cong X_n$ by a bit abstract nonsense. Now Theorem~\reff{thm:FormalFunctions} may be applied to $X\times_Y\Spec A_\pp\morphism \Spec A_\pp$ (the base change of $f$) and the assertion follows.
+	Also $(X\times_Y\Spec A_\pp)\times_{\Spec A_\pp}\Spec(A_\pp/\mm^n)\cong X\times_Y\Spec(A_\pp/\mm^n)\cong X_n$ by a bit abstract nonsense. Now Theorem~\reff{thm:FormalFunctions1.5} may be applied to $X\times_Y\Spec A_\pp\morphism \Spec A_\pp$ (the base change of $f$) and the assertion follows.
 \end{proof}
 \section{Application to Zariski's main theorem}
 \subsection{Quasi-finite morphisms and a lot of (not necessarily main) theorems by Zariski}
@@ -446,7 +452,7 @@ The following fact wasn't mentioned in the lecture, but it's \emph{definitely} (
 		Let $f\colon X\morphism Y$ be a quasi-finite separated morphism between noetherian preschemes, and assume that $f$ factors as in \eqreff{eq:properCompactification}. Then Zariski's main theorem holds for $f$.
 	\end{lem}
 \begin{rem}
-	 It can be shown (but this is hard) that such a factorization \eqreff{eq:properCompactification} always exists for morphisms of finite type between noetherian preschemes, for which Professor Franke refers to notes of \emph{Brian Conrad} or \emph{Paul Vojta}, although he isn't sure whether using their results to prove Theorem~\reff{thm:ZariskiMain}\itememph{b} doesn't involve any circular reasoning.
+	 It can be shown (but this is hard) that such a factorization \eqreff{eq:properCompactification} always exists for morphisms of finite type between noetherian preschemes, for which Professor Franke refers to notes of \emph{Brian Conrad} (see \cite{nagataCompactification}) or \emph{Paul Vojta}, although he isn't sure whether using their results to prove Theorem~\reff{thm:ZariskiMain}\itememph{b} doesn't involve any circular reasoning.
 \end{rem}
 \begin{proof}[Proof of Lemma~\reff{lem:ZMTLemma1}]
 	Let $\ov{f}=g\circ \snake{f}$ be the Stein factorization of $\ov{f}$. Put $\ov{Y}=\SPEC(\ov{f}_*\Oo_{\ov{X}})$ for convenience. Since $g\colon \ov{Y}\morphism Y$ is finite by Fact~\reff{fact:steinFactorization} (for which we need properness of $\ov{f}$), we're done if we show that the composition $\snake{f}|_X\colon X\monomorphism \ov{X}\morphism \ov{Y}$ is an open embedding. Since $f=g\snake{f}|_X$ and $g$ are quasi-finite ($g$ is even finite), Fact~\reff{fact:annoyingQF}\itememph{c} shows that $\snake{f}|_X$ is quasi-finite as well.
@@ -462,7 +468,7 @@ The following fact wasn't mentioned in the lecture, but it's \emph{definitely} (
 		\item $f$ is quasi-compact and quasi-separated and the canonical morphism $X\morphism\SPEC(f_*\Oo_X)$ (which also appears in the Stein factorization, but exists in general) is an open immersion.
 	\end{alphanumerate}
 \end{defi}
-For a proof of equivalence, check out \cite[\stackstag{01SJ}]{stacks-project}. Note that Franke apparently had a different proof (for the case of quasi-affine morphisms of finite type) in mind than the Stacks Project guys, but I have no idea how this was going to work (whereas the Stacks Project proof is pretty clear to me and works without restrictions on $f$). Nevertheless, we are going to need the following lemma he suggested.
+For a proof of equivalence, I'd suggest to check out \cite[\stackstag{01SJ}]{stacks-project}. Note that Franke apparently had a different proof (for the case of quasi-affine morphisms of finite type) in mind than the Stacks Project guys, and Franke's proof would somehow use the following Lemma~\reff{lem:coherentExtension}, but I have no idea how this was going to work (whereas the Stacks Project proof is pretty clear to me and works without restrictions on $f$). Nevertheless, the lemma will proof useful in the future.
 \begin{lem}\lbl{lem:coherentExtension}
 	Let $X$ be a noetherian prescheme, $\Mm$ a quasi-coherent $\Oo_X$-module, and $U\subseteq X$ an open subset. Let $\Nn\subseteq \Mm|_U$ be a coherent submodule. Then there is a coherent $\snake{\Nn}\subseteq \Mm$ such that $\snake{\Nn}|_U=\Nn$. In particular, $\Mm$ is the union of its coherent submodules.
 \end{lem}
@@ -576,7 +582,9 @@ We'll give two proofs of the following Lemma~\reff{lem:OpenEmbedding}. The first
 	%Let $x\in X$. We need to show that some neighbourhood of $f(x)$ is contained in the image of $f$. Otherwise, apply the previous Proposition~\reff{prop:noetherianAffine} (with some care) to show that there is a closed subset of $Y$ containing the image of $f$ and not containing any neighbourhood of $f(x)$. There is $\lambda\in A$ such that $f(X)\subseteq V(\lambda)$. Then $\emptyset =f^{-1}(Y\setminus V(\lambda))=X\setminus V(f^*\lambda)$ implies that $f^*\lambda\in B$ is nilpotent. But then the image of $\lambda$ in $\Oo_{Y,f(x)}$ is nilpotent as well, which means that $V(\lambda)=\Spec A$ contains an open neighbourhood of $f(x)$.
 \end{proof}
 \begin{proof}[Proof of Theorem~\reff{thm:ZariskiMain}\itememph{b} \textsc{(finally)}]
-Now let $f\colon X\morphism Y$ be a quasi-finite separated morphism between noetherian preschemes such that Zariski's main theorem holds with $Y$ replaced by $\Spec \roof{\Oo}_{Y,y}$. Note that $\upsilon\colon \Spec \roof{\Oo}_{Y,y}\morphism Y$ is flat (in the sense of the upcoming Definition~\reff{def:flat}) because of Corollary~\reff{cor:completionFaithfullyFlat}\itememph{b}. Therefore, in the pullback diagram
+Now let $f\colon X\morphism Y$ be a quasi-finite separated morphism between noetherian preschemes. Doing induction on $\dim Y$, with the base case $\dim Y=-\infty$ (for $Y=\emptyset$) being trivial, we may assume that Zariski's main theorem is true for all $Y'$ satisfying $\dim Y'<\dim Y$. Then Part~II together with the inductive hypothesis shows that Zariski's main theorem holds with $Y$ replaced by $\Spec \roof{\Oo}_{Y,y}$ for all $y\in Y$. We show that this implies Zariski's main theorem for $Y$ as well.
+
+Note that $\upsilon\colon \Spec \roof{\Oo}_{Y,y}\morphism Y$ is flat (in the sense of the upcoming Definition~\reff{def:flat}) because of Corollary~\reff{cor:completionFaithfullyFlat}\itememph{b}. Therefore, in the pullback diagram
 \begin{diagram}[baseline=0.75cm-0.5ex][\lbl{diag:completionBaseChange}]
 	\object{2.5,1.5}{$\Spec \roof{\Oo}_{Y,y}$}[a];
 	\object{0,1.5}{$\roof{X}$}[b];
@@ -641,7 +649,7 @@ So how do we prove that $j$ induces isomorphisms on stalks? Intuitively it is pr
 \begin{align*}
 	\Oo=\Oo_{\SPEC(f_*\Oo_X),j(x)}\quad\text{and}\quad\roof{\Oo}=\Oo_{\SPEC(\roof{f}_*\Oo_{\roof{X}}),\roof{\jmath}(\roof{x})}
 \end{align*}
-for convenience. Then $\roof{\jmath}^*\colon\roof{\Oo} \morphism \Oo_{\roof{X},\roof{x}}$ is an isomorphism since $\roof{\jmath}$ is an open embedding. Intuitively, $\roof{\jmath}^*$ should be given by tensoring $j^*\colon \Oo\morphism \Oo_{X,x}$ with $\roof{\Oo}_{Y,y}$. Now faithful flatness of $\roof{\Oo}_{Y,y}$ over $\Oo_{Y,y}$ shows that $j^*$ must already be an isomorphism.
+for convenience (this notation doesn't necessarily mean that $\roof{\Oo}$ is the completion of $\Oo$). Then $\roof{\jmath}^*\colon\roof{\Oo} \morphism \Oo_{\roof{X},\roof{x}}$ is an isomorphism since $\roof{\jmath}$ is an open embedding. Intuitively, $\roof{\jmath}^*$ should be given by tensoring $j^*\colon \Oo\morphism \Oo_{X,x}$ with $\roof{\Oo}_{Y,y}$. Now faithful flatness of $\roof{\Oo}_{Y,y}$ over $\Oo_{Y,y}$ shows that $j^*$ must already be an isomorphism.
 
 However, the real life is more complicated, since the stalk $\roof{\Oo}$ is usually \emph{only a localization} of $\Oo\otimes_{\Oo_{Y,y}}\roof{\Oo}_{Y,y}$, and the same goes for $\Oo_{\roof{X},\roof{x}}$ and $\Oo_{X,x}\otimes_{\Oo_{Y,y}}\roof{\Oo}_{Y,y}$, cf.\ the construction in \cite[Proposition~1.3.2]{alggeo1}. We first argue why the latter problem is no problem at all in our situation.
 \begin{claim}\lbl{claim:Oxxhat}
@@ -2798,21 +2806,32 @@ As usual, this can be checked locally, where it is rather easy to see and follow
 	Part~\itememph{a} is an immediate consequence: The inversion $i_A\colon A\morphism A$ clearly satisfies $i_A\circ 0_A=0_A$, hence it is a morphism of group preschemes by the argument in the proof of \itememph{a}. This clearly implies that $A$ is abelian.
 	
 	Now part~\itememph{c}. We begin with some general considerations. Let $a_1,a_2\in A(S)$ and consider $\sigma=(a_1,a_2)\colon S\morphism A\times_SA$. Applying $\sigma^*$ to the isomorphism \eqreff{eq:p1p2Omega} gives
-	\begin{align*}
+	\begin{align}\lbl{eq:a1a2Omega}
 		\sigma^*(p_1^\oast+p_2^\oast)\colon a_1^*\Omega_A\oplus a_2^*\Omega_A\isomorphism \sigma^*\Omega_{A\times_SA}\;.
-	\end{align*}
+	\end{align}
+	Consider $\sigma_1=(\id_A, a_2\alpha)\colon A\morphism A\times_SA$ and $\sigma_2=( a_1\alpha,\id_A)\colon A\morphism A\times_SA$. We get canonical morphisms $\sigma_i^\oast\colon \sigma_i^*\Omega_{A\times_SA}\morphism \Omega_A$ for $i\in \{1,2\}$. Pulling back along $a_i$ and using $\sigma=\sigma_1 a_1=\sigma_2a_2$, we get canonical morphisms $a_i^*(\sigma_i^\oast)\colon \sigma^*\Omega_{A\times_SA}\morphism a_i^*\Omega_A$.
 	\begin{claim}\lbl{claim:technicalAFInverse}
-		Consider $\sigma_1=(\id_A, a_2\alpha)\colon A\morphism A\times_SA$ and $\sigma_2=( a_1\alpha,\id_A)\colon A\morphism A\times_SA$. Then  $(\sigma^*\sigma_1^\oast,\sigma^*\sigma_2^\oast)$ is an inverse of the above isomorphism $\sigma^*(p_1^\oast+p_2^\oast)$. 
+		The morphism $(a_1^*(\sigma_1^\oast),a_2^*(\sigma_2^\oast))\colon \sigma^*\Omega_{A\times_SA}\morphism a_1^*\Omega_A\oplus a_2^*\Omega_A$ is an inverse of the above isomorphism $\sigma^*(p_1^\oast+p_2^\oast)$ in equation~\eqreff{eq:a1a2Omega}. 
 	\end{claim}
-	It suffices to show that $(\sigma_1^\oast,\sigma_2^\oast)$ is an inverse of $p_1^\oast+p_2^\oast$ since this doesn't change when the pullback functor $\sigma^*$ is applied. Moreover, it suffices to check this on sections $\omega$ of $\Omega_{A\times_SA}$ which happen to have the form $\omega=p_1^\oast\vartheta$ or $\omega=p_2^\oast \vartheta$ for some section $\vartheta$ of $\Omega_A$, since $\Omega_{A\times_SA}\cong p_1^\oast\Omega_A\oplus p_2^\oast\Omega_A$ is generated by sections $\omega$ of this form. If $\omega=p_1^\oast\vartheta$, then
+	It suffices to check this on sections $\omega$ of $\sigma^*\Omega_{A\times_SA}$ which happen to have the form $\omega=\sigma^*(p_1^\oast)(\vartheta)$ or $\omega=\sigma^*(p_2^\oast) (\vartheta)$ for some section $\vartheta$ of $a_1^*\Omega_A$ or $a_2^*\Omega_A$ respectively, since we know from \eqreff{eq:a1a2Omega} that $\sigma^*\Omega_{A\times_SA}\cong a_1^*\Omega_A\oplus a_2^*\Omega_A$ is generated by sections $\omega$ of this form. If $\omega=\sigma^*(p_1^\oast)(\vartheta)$, then
 	\begin{align*}
-		\sigma_1^\oast\omega=\sigma_1^\oast p_1^\oast\vartheta=(p_1 \sigma_1)^\oast\vartheta=\id_A^\oast\vartheta=\vartheta
+		a_1^*(\sigma_1^\oast)(\omega)=\big(a_1^*(\sigma_1^\oast)\circ  \sigma^*(p_1^\oast)\big)(\vartheta)&=\big(a_1^*(\sigma_1^\oast)\circ  a_1^*\sigma_1^*(p_1^\oast)\big)(\vartheta)\\
+		&=a_1^*\big(\sigma_1^\oast\circ  \sigma_1^*(p_1^\oast)\big)(\vartheta)\\
+		&=a_1^*\big((p_1\sigma_1)^\oast\big)(\vartheta)\\
+		&=a_1^*(\id_A^\oast)(\vartheta)\\
+		&=\vartheta
 	\end{align*}
-	and
+	(in the third line we use the fact that $(fg)^\oast=g^\oast\circ g^*(f^\oast)$), and similarly
 	\begin{align*}
-		\sigma_2^\oast\omega=\sigma_2^\oast p_1^\oast=(p_2\sigma_2)^\oast=(a_1\alpha)^\oast \vartheta=\alpha^\oast a_1^\oast\vartheta=0\;,
+		a_2^*(\sigma_2^\oast)(\omega)=\big(a_2^*(\sigma_2^\oast)\circ  \sigma^*(p_1^\oast)\big)(\vartheta)&=\big(a_2^*(\sigma_2^\oast)\circ  a_2^*\sigma_2^*(p_1^\oast)\big)(\vartheta)\\
+		&=a_1^*\big(\sigma_2^\oast\circ  \sigma_2^*(p_1^\oast)\big)(\vartheta)\\
+		&=a_1^*\big((p_1\sigma_2)^\oast\big)(\vartheta)\\
+		&=a_1^*((a_1\alpha)^\oast)(\vartheta)\\
+		&=0\;,
 	\end{align*}
-	since $a_1^\oast\vartheta$ is a section of $\Omega_S=0$. Similar calculations apply to the case $\omega=p_2^\oast\vartheta$, thus proving Claim~\reff{claim:technicalAFInverse}. It follows that 
+	since $(a_1\alpha)^\oast=\alpha^\oast\circ \alpha^*(a_1^\oast)$ factors over $\Omega_S=0$. Similar calculations apply to the case $\omega=\sigma^*(p_2^\oast)(\vartheta)$, thus proving Claim~\reff{claim:technicalAFInverse}.
+	
+	By some more technical calculations it follows that 
 	\begin{align*}
 		\sigma^*(s_A^\oast)\colon \sigma^*s_A^*\Omega_A\morphism \sigma^*\Omega_{A\times_SA}\cong a_1^*\Omega_A\oplus a_2 ^*\Omega_A
 	\end{align*}
@@ -3269,7 +3288,7 @@ Before we start with the proof, we have to show a lemma to make up for the fact 
 	\end{align*}
 	 using that $[n]^*\Ll\cong \Ll^{\otimes n^2}$. Hence
 	\begin{align*}
-		P_{[n]_*\Oo_A}(m)&=\dim_kH^0\left(A,[n]_*\Oo_A\otimes_{\Oo_A}\Ll^{\otimes m}\right)\\
+		P_{[n]_*\Oo_A}(m)=\dim_kH^0\left(A,[n]_*\Oo_A\otimes_{\Oo_A}\Ll^{\otimes m}\right)
 		&=\dim_kH^0\left(A,[n]_*\left(\Oo_A\otimes_{\Oo_A}[n]^*\Ll^{\otimes m}\right)\right)\\
 		&=\dim_kH^0(A,\Oo_A\otimes_{\Oo_A}\Ll^{\otimes n^2m})\\
 		&=P_{\Oo_A}(n^2m)\quad\text{for }m\gge 0\;.
@@ -3318,7 +3337,7 @@ Let $R\subseteq S$ be a finite ring extension\footnote{If $R$ is not a subring o
 	If $\alpha\colon A\morphism S$ is an abelian scheme, then $[n]\colon A\morphism A$ is finite flat of degree $n^{2g}$, where $g$ is the relative dimension (as in Definition~\reff{def:relativeDimension}) of $A$ over $S$.
 \end{cor}
 \begin{proof}
-	Since $[n]$ is proper by the two-out-of-three property from \cite[Proposition~2.4.1]{alggeo2}, it suffices by Theorem~\reff{thm:ZariskiMain}\itememph{a} to check that it is quasi-finite and flat. Of course, quasi-finiteness can be checked fibre-wise, and so can $\deg{[n]}=n^{2g}$ once flatness has been established. Moreover, the critère de platitude par fibres (Lemma~\reff{lem:platitudeDeFibres}) shows that flatness too can be checked on fibres. Then all we have to do is to apply Theorem~\reff{thm:abelianVarieties}\itememph{b} to each fibre.
+	Since $[n]$ is proper by the two-out-of-three property from \cite[Proposition~2.4.1]{alggeo2}, it suffices by Theorem~\reff{thm:ZariskiMain}\itememph{a} to check that it is quasi-finite and flat. Of course, quasi-finiteness can be checked fibre-wise, and so can $\deg{[n]}=n^{2g}$ once flatness has been established. Moreover, the critère de platitude par fibres (Lemma~\reff{lem:platitudeDeFibres}) shows that flatness too can be checked on fibres. Then all we need to do is applying Theorem~\reff{thm:abelianVarieties}\itememph{b} to each fibre.
 	
 	Note that Professor Franke gave an ad-hoc argument for flatness (which actually can be used to derive another proof of the critère de platitude par fibres). His argument uses two spectral sequences and proceeds completely analogous to the proof of Lemma~\reff{lem:I(s)LineBundle}.
 \end{proof}
