@@ -1,0 +1,253 @@
+%%%% PACKAGES %%%%
+
+%%%% general stuff %%%%
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+%%%% typography %%%%
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{csquotes}
+\setkomafont{sectioning}{\rmfamily\bfseries}
+%\addtokomafont{subsection}{\centering}
+\displaywidowpenalty=8000
+%\postdisplaypenalty=8000
+\widowpenalty=8000
+\clubpenalty=8000
+
+
+%%%% math %%%%
+\usepackage{amsmath,amsfonts,amssymb,mathtools}
+\usepackage{old-arrows}
+\usepackage{accents}
+\usepackage{array}
+\usepackage{stmaryrd}
+\SetSymbolFont{stmry}{bold}{U}{stmry}{m}{n}%otherwise we get a strange warning
+
+%%%% diagrams %%%%
+\usepackage{tikz-cd}
+\usetikzlibrary{arrows}
+
+%%%% bibliography %%%%
+\usepackage[backend=biber,style=alphabetic]{biblatex}
+\setcounter{biburlnumpenalty}{7000}
+\setcounter{biburllcpenalty}{7000}
+\setcounter{biburlucpenalty}{8000}
+\addbibresource{../literatur.bib}
+
+%%%% lists %%%%
+\newlength{\thmsep}%hax
+\setlength{\thmsep}{\topsep}%dunno y dis workin
+
+\usepackage{enumitem}
+\newenvironment{numerate}{\begin{enumerate}[wide=0pt, leftmargin=*, labelindent=0pt, itemsep=0.25\thmsep, topsep=0.25\thmsep, label={\upshape(\arabic*)}]}{\end{enumerate}}
+\newcommand{\itememph}[1]{$(#1)$}
+\newenvironment{alphanumerate}{\begin{enumerate}[wide=0pt, leftmargin=*,labelindent=0pt, itemsep=0.5\thmsep, topsep=0.5\thmsep, label={\itememph{\alph*}}]}{\end{enumerate}}
+
+%%%% page headings %%%%
+\usepackage[autooneside=false,automark]{scrlayer-scrpage}
+\pagestyle{scrheadings}
+\chead{\textsc{\rightmark}}
+
+%%%% miscellaneous %%%%
+\usepackage{blindtext}
+
+
+%%%% CUSTOM LIST OF LECTURES %%%%
+
+%%%% relevant packages %%%%
+\usepackage{tocbasic}
+\usepackage{marginnote}
+\usepackage[en-GB,calc]{datetime2}
+\DTMlangsetup[en-GB]{ord=raise}
+
+%%%% new TOC list %%%%
+\DeclareNewTOC[%
+type=llecture,%
+types=llectures,%
+nonfloat,%
+name=llecture,%
+listname={List of Lectures}%
+]{lol}
+\setuptoc{lol}{chapteratlist,totoc}
+
+%%%% building a new lecture command %%%%
+\makeatletter
+\newcommand{\texttolol}[1]{%
+	\addtocontents{lol}{\smallskip\hspace{1.5em}\protect\parbox{\dimexpr\textwidth - \@pnumwidth - 1.5em}{\detokenize{#1}}\par}
+}
+\makeatother
+
+% printing margin notes on the left side
+\reversemarginpar
+
+\newcommand{\lecture}[2][]{%
+	\DTMsavedate{retardDate}{#2}%
+	\stepcounter{llecture}%
+	\marginnote{\textsc{Lecture~\arabic{llecture}}\\%
+		\normalfont \DTMenglishordinal{\DTMfetchday{retardDate}} \DTMshortmonthname{\DTMfetchmonth{retardDate}},\ \DTMfetchyear{retardDate}}%
+	\addxcontentsline{lol}{chapter}{Lecture~\arabic{llecture} (\DTMenglishordinal{\DTMfetchday{retardDate}} \DTMmonthname{\DTMfetchmonth{retardDate}},\ \DTMfetchyear{retardDate})}%
+	\IsArgEmpty{#1}{}{\texttolol{#1}}%
+}
+
+%%%% THEOREMS AND CROSS-REFERENCING %%%%
+
+%%%% relevant packages %%%%
+\usepackage{amsthm}
+\usepackage[colorlinks=true,linkcolor=blue!60!black,citecolor=cyan,urlcolor=blue!60!black,unicode]{hyperref}
+\usepackage[capitalize,compress]{cleveref}
+
+\newcommand{\stackstag}[1]{\href{https://stacks.math.columbia.edu/tag/#1}{Tag~#1}}
+
+%%%% theorem styles %%%%
+\newtheoremstyle{cthm}
+{\thmsep}   % ABOVESPACE
+{\thmsep}   % BELOWSPACE
+{\itshape}  % BODYFONT
+{0pt}       % INDENT (empty value is the same as 0pt)
+{\bfseries} % HEADFONT
+{.\enskip---}         % HEADPUNCT
+{5pt plus 1pt minus 1pt} % HEADSPACE
+{\thmnumber{#2. }\thmname{#1}\thmnote{ \textmd{(#3)}}}          % CUSTOM-HEAD-SPEC
+\newtheoremstyle{cdef}
+{\thmsep}   % ABOVESPACE
+{\thmsep}   % BELOWSPACE
+{\normalfont}  % BODYFONT
+{0pt}       % INDENT (empty value is the same as 0pt)
+{\bfseries} % HEADFONT
+{.\enskip---}         % HEADPUNCT
+{5pt plus 1pt minus 1pt} % HEADSPACE
+{\thmnumber{#2. }\thmname{#1}\thmnote{ \textmd{(#3)}}}          % CUSTOM-HEAD-SPEC
+
+%%%% theorem types %%%%
+\theoremstyle{cthm}
+\newtheorem{dummy}{Dummy}[section]
+\newtheorem{thm}[dummy]{Theorem}
+\newtheorem{lem}[dummy]{Lemma}
+\newtheorem{cor}[dummy]{Corollary}
+\newtheorem{prop}[dummy]{Proposition}
+\newtheorem{fact}[dummy]{Fact}
+\newtheorem{thm*}[dummy]{Theorem*}
+\newtheorem{lem*}[dummy]{Lemma*}
+\newtheorem{cor*}[dummy]{Corollary*}
+\newtheorem{prop*}[dummy]{Proposition*}
+\newtheorem{fact*}[dummy]{Fact*}
+
+\theoremstyle{cdef}
+\newtheorem{defi}[dummy]{Definition}
+\newtheorem{defprop}[dummy]{Definition/Proposition}
+\newtheorem{rem}[dummy]{Remark}
+\newtheorem{defi*}[dummy]{Definition*}
+\newtheorem{rem*}[dummy]{Remark*}
+\newtheorem{exm}[dummy]{Example}
+\newtheorem{exm*}[dummy]{Example*}
+\newtheorem{nota}[dummy]{Notation}
+\newtheorem{nota*}[dummy]{Notation*}
+\newtheorem{exc}[dummy]{Exercise}
+\newtheorem{warn}[dummy]{Warning}
+\newtheorem{con}[dummy]{Construction}
+\newtheorem{qst}[dummy]{Question}
+
+%%%% cross-reference styles %%%%
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+
+\crefformat{dummy}{\textup{#2#1#3}}
+\crefformat{equation}{\textup{(#2#1#3)}}
+\crefformat{thm}{Theorem~\textup{#2#1#3}}
+\crefformat{lem}{Lemma~\textup{#2#1#3}}
+\crefformat{cor}{Corollary~\textup{#2#1#3}}
+\crefformat{fact}{Fact~\textup{#2#1#3}}
+\crefformat{prop}{Proposition~\textup{#2#1#3}}
+\crefformat{nota}{Notation~\textup{#2#1#3}}
+\crefformat{rem}{Remark~\textup{#2#1#3}}
+\crefformat{con}{Construction~\textup{#2#1#3}}
+\crefformat{defi}{Definition~\textup{#2#1#3}}
+\crefformat{defprop}{Definition/Proposition~\textup{#2#1#3}}
+\crefformat{exc}{Exercise~\textup{#2#1#3}}
+\crefformat{exm}{Example~\textup{#2#1#3}}
+\crefformat{warn}{Warning~\textup{#2#1#3}}
+\crefformat{con}{Construction~\textup{#2#1#3}}
+\crefformat{qst}{Question~\textup{#2#1#3}}
+
+\crefformat{chapter}{Chapter~\textup{#2#1#3}}
+\crefformat{section}{Section~\textup{#2#1#3}}
+\crefformat{subsection}{Subsection~\textup{#2#1#3}}
+
+\crefformat{thm*}{Theorem*~\textup{#2#1#3}}
+\crefformat{lem*}{Lemma*~\textup{#2#1#3}}
+\crefformat{cor*}{Corollary*~\textup{#2#1#3}}
+\crefformat{prop*}{Proposition*~\textup{#2#1#3}}
+\crefformat{fact*}{Fact*~\textup{#2#1#3}}
+\crefformat{nota*}{Notation*~\textup{#2#1#3}}
+\crefformat{rem*}{Remark*~\textup{#2#1#3}}
+\crefformat{con*}{Construction*~\textup{#2#1#3}}
+\crefformat{defi*}{Definition*~\textup{#2#1#3}}
+\crefformat{exm*}{Example*~\textup{#2#1#3}}
+
+\newenvironment{proof*}{\begin{proof}[Proof\emph{*}]}{\end{proof}}
+
+%%%% STYLE CHOICES %%%%
+
+%%%% nice chapter headings %%%%
+
+\newlength{\chaptertitleheiight}
+\newlength{\chapternumberwiidth}
+\setkomafont{chapter}{\huge}
+\setkomafont{chapterprefix}{\LARGE}
+\settoheight{\chaptertitleheiight}{\parbox[b]{0.5\textwidth}{%
+		\LARGE \textsc{Chapter 1.}\\[0.5\baselineskip]%
+		\huge\textbf{Much}%
+}}
+
+\renewcommand{\chapterlineswithprefixformat}[3]{%
+	\mdseries\scshape#2% shitty workaround for
+	\upshape\bfseries% KOMA-Script's retardedness
+	\settowidth{\chapternumberwiidth}{\resizebox{!}{\chaptertitleheiight}{\thechapter}}%
+	\parbox[t]{\dimexpr\textwidth-\chapternumberwiidth-0.5em}{%
+		\raggedchapter%
+		#3%
+	}%
+	\hfill\smash{\resizebox{!}{\chaptertitleheiight}{\thechapter}}
+	
+}
+
+\newcommand{\IsArgEmpty}[3]{%
+	\if\relax\detokenize{#1}\relax%
+	#2%
+	\else%
+	#3%
+	\fi%
+}
+
+%%%% well-behaved numbered paragraphs %%%%
+
+\DeclareSectionCommand[%
+level=4,
+beforeskip=\thmsep,
+afterskip=0em,
+style=section,
+tocstyle=gobble,
+font={\stepcounter{dummy}\thedummy.}
+]{numberedparagraph}
+
+\DeclareSectionCommand[%
+level=4,
+beforeskip=\thmsep,
+afterskip=0em,
+style=section,
+tocstyle=gobble,
+font={}
+]{unnumpar}
+
+\newcommand{\unnumparr}[1]{\unnumpar{#1.\enskip---\enskip}}
+
+\newcommand{\numpar}[1]{%
+	\edef\retardedDummy{#1}%
+	\def\retardedDummz{*}
+	\ifx\retardedDummy\retardedDummz%
+	\expandafter\unnumparr
+	\else
+	\numberedparagraph{\IsArgEmpty{#1}{\enskip---\enskip}{\enskip#1.\enskip---\enskip}}\refstepcounter{dummy}\addtocounter{dummy}{-1}
+	\fi
+}

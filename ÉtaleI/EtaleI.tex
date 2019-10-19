@@ -1,0 +1,206 @@
+\documentclass[a4paper, 10pt, oneside, DIV=9, chapterprefix=true, numbers=enddot]{scrbook}
+\usepackage{StyleEtaleI}
+\usepackage{ShortcutsEtaleI}
+
+\subject{Lecture notes for}
+\title{Étale Cohomology I}
+\author{{\normalsize Lecturer}\\
+	Jens Franke}
+\date{{\normalsize Notes typed by}\\
+	Ferdinand Wagner}
+\publishers{Winter Term 2019/20\\
+University of Bonn}
+
+\begin{document}
+	\frontmatter
+	\KOMAoption{chapterprefix}{false}
+	\maketitle
+	\noindent This text consists of notes on the lecture Algebraic Geometry I, taught at the University of
+	Bonn by Professor Jens Franke in the winter term (Wintersemester) 2019/20.\\[\thmsep]Please report errors, typos etc.\ through the \emph{Issues} feature of GitHub.
+	
+	
+	\tableofcontents
+	\listoftoc{lol}
+	\chapter{Preface}
+	\numpar*{Organizational stuff}As a result of a democratic decision in the preliminary meeting, the lecture will take place on Mondays from from 18:00 to 20:00 and on Fridays from 16:00 to 18:00, in the \enquote{Großer Hörsaal}.
+	
+	Recommended prerequisites to this lecture are
+	\begin{itemize}
+		\item flat morphisms and faithfully flat descent,
+		\item abelian varieties, in particular, the Jacobian of a curve.
+	\end{itemize}
+	Nevertheless, Professor Franke promised to give a quick reminder on flat and étale morphisms in the first lecture. Moreover, typed lecture notes are available for Professor Franke's lecture on Jacobians of curves held in the winter term 2018/19 (see \cite{jacobians}). 
+	
+	The goal of this lecture is to study the \emph{$\ell$-adic cohomology} of a scheme $X$, where $\ell\neq p$ is a prime different from the characteristic $p$ of $X$. These groups will be constructed as
+	\begin{align*}
+		H_\et^i(X,\IZ_\ell)\coloneqq\lim_{n\geq 1}H_\et^i(X,\IZ/\ell^n\IZ)\,.
+	\end{align*}
+	Along the way, we will come across sheaves on the étale site, the relation between étale and Galois cohomology, cohomology of curves, and proper base change.
+	
+	\numpar*{Author's note}I will not follow Franke's numbering scheme\footnote{\ldots\ although he would probably call it a numbering \emph{prescheme}.}, as I believe this document is easier to navigate if propositions/lemmas/etc.\ are numbered consecutively rather than independent of each other. Also, as proofs can be sketchy sometimes, I might put some additions to the lectures in these notes. To label them as such, I'll put an asterisk behind. So any \emph{Lemma}* or \emph{Proposition}* or \emph{Proof}* that the reader might encounter have not been part of the lecture.
+	
+	Moreover, I will use the modern meaning of the word \emph{scheme}. That is, a scheme in these lecture notes is what Professor Franke would call a \emph{prescheme}, and what he would call a \emph{scheme} will be called \emph{separated scheme} in here.
+	
+	\mainmatter\KOMAoption{chapterprefix}{true}
+	
+	\chapter{Motivation and Basic Definitions}
+	\section{Motivation}
+	\lecture[Weil cohomology theories: some motivation, some (counter-)examples; flatness, flat base change, faithfully flat descent]{2019-10-18}
+	\numpar{Problem} For a scheme $X$, we would like to have cohomology groups $H^*(X,\IZ)$ with properties similar to the ones familiar from algebraic topology. For example, if $f\colon X\morphism X$ is a continuous map of a topological space into itself, then (under some sensible conditions) the \emph{Lefschetz trace formula} says
+	\begin{equation*}
+		\#\left\{\text{fixed points of }f\text{, counted with multiplicity}\right\}=\sum_{i=0}^{\dim(X)}(-1)^i\Tr\left(f^ *\middle| H^i(X,\IQ)\right)\,.
+	\end{equation*}
+	Now assume that $X$ is some variety $X$ over $k=\IF_q$, where $q=p^n$, and $f=\Frob_q$ is the Frobenius on $X$. Then the fixed points of $f$ are precisely the $k$-valued points of $X$. As the \enquote{derivative} $\d f$ vanishes, $(\id{}-\d f)$ should be invertible, so all fixed points of $f$ ought to have multiplicity one (bear in mind that all of this is purely motivational and has no ambition of being a formal argument). Hence we could hope that
+	\begin{equation*}
+		\# X(k)=\sum_{i=0}^{2\dim(X)}(-1)^i\Tr\big(f^*\big| H^i(X_{\ov{k}},\textbf{??})\big)\,,
+	\end{equation*}
+	where $H^i(X_{\ov{k}},\textbf{??})$ is a mysterious cohomology group of the base change of $X$ to an algebraic closure of $k$. Also the sum ranging up to $2\dim(X)$ accounts for the fact that the \enquote{cohomological dimension} of $X$ should be twice its Krull dimension, same as the topological dimension of a complex manifold is twice its $\IC$-dimension.
+	
+	Such a mystery cohomology theory with sufficiently nice properties is called a \defemph{Weil cohomology theory}\footnote{In fact, one can formulate a series of axioms to properly define the notion of \defemph{Weil cohomology theory}, but we didn't do that in the lecture.}, named after André Weil, who noticed that such a cohomology theory would solve most of his conjectures on varieties over finite fields, that became famously known as the \emph{Weil conjectures}.
+	
+	\numpar{Counterexample}
+	A natural candidate for a Weil cohomology theory is \emph{de Rham cohomology}. For a variety $X$ over a field $k$ it is defined as 
+	\begin{equation*}
+		H_\dR^*(X)\coloneqq H^*(X,\Omega_{X/k}^\bullet)\,,
+	\end{equation*}
+	i.e., as the (hyper-)cohomology of the de Rham complex $\Omega_{X/k}^\bullet$.	By de Rham's famous theorem, the de Rham cohomology of a real manifold coincides with its singular cohomology over $\IR$, so it makes sense to hope that $H_\dR^*(X)$ is still well-behaved for varieties over an arbitrary field $k$. But on second glance, this can't be true: even if we are lucky and a Lefschetz-like equation holds for de Rham cohomology in characteristic $p >0$, then it would still only be a congruence modulo $p$, since the $H_\dR^*(X)$ are $\IF_p$-vector spaces in this case, so the traces take values in $\IF_p$ as well.
+	
+	\numpar{Counterexample}
+	It is also impossible to find a Weil cohomology with coefficients in $\IQ$, nor in $\IZ$, nor in $\IZ_p$ if we work in characteristic $p$. Professor Franke sketched a counterexample, which I'm trying my best to reproduce here (but it may well be I got it wrong---however, this won't be needed for the lecture). For a \emph{supersingular elliptic curve} $E$ the endomorphism ring $\End(E)$ can have the property that $D=\End(E)\otimes \IQ$ is a quaternion algebra over $\IQ$ with the properties that
+	\begin{align*}
+		\inv_v(D)=\begin{cases}
+			\frac{1}{2} & \text{if }v=p\text{ or }v=\infty\\
+			0 & \text{else}
+		\end{cases}
+	\end{align*}
+	However, if we had a Weil cohomology theory with coefficients in $\IQ$, then $H^0(E,\IQ)\oplus H^2(E,\IQ)$ would be a two-dimensional representation of $D$. But this can only be true if $D$ is split over $\IQ$, which can't be true as $\inv_v(D)=\frac12$ for $v\in\{p,\infty\}$.
+	
+	\numpar{Solutions} The following approaches (might) lead to suitable Weil cohomology theories.
+	\begin{alphanumerate}
+		\item Étale cohomology $H_\et^*(X,\IZ/\ell^n\IZ)$ for a prime $\ell\neq p$. This will lead to $\ell$-adic cohomology, which has coefficients in $\IZ_\ell$ resp.\ in $\IQ_\ell$. It can still be defined for $\ell=p$, but gives the wrong results in this case.
+		\item Crystalline cohomology, with in the \emph{Witt ring} $W(k)$.
+		\item Constructing a $\IC$-valued Weil cohomology theory seems hard. For example, there ought to be an anti-linear endomorphism $\sigma$ of $H^i(X,\IC)$ that satisfies $\sigma^2=(-1)^i$. Still some people (e.g.\ Connes) try this. See for example Peter Scholze's \href{http://www.math.uni-bonn.de/people/scholze/Rio.pdf}{survey} at the ICM 2018 in Rio.
+	\end{alphanumerate}
+	In this lecture we will stick with approach \itememph{a}. Grothendieck's construction of étale cohomology is to relax the usual notion of a \emph{topology} on a topological space. In a \emph{Grothendieck topology}, the \enquote{open subsets} no longer need to form a partially ordered set, but rather more general categories are allowed. Then étale cohomology can be introduced as sheaf cohomology for such a generalized topology.
+	
+	\begin{exm}
+		Here is an example why we would want a topology that is finer than the usual Zariski topology. On a complex manifold $X$ with its sheaf $\Oo_X$ of $C^\infty$-functions we have the short exact sequence
+		\begin{equation*}
+			0\morphism 2\pi\mathrm{i}\IZ\morphism\Oo_X\morphism[\exp]\Oo_X^\times\morphism 0\,.
+		\end{equation*}
+		For a scheme $X$, there is a similar sequence
+		\begin{equation*}
+			0\morphism\mu_n\morphism\Oo_X^\times\morphism[(-)^n]\Oo_X^\times\morphism 0\,,
+		\end{equation*}
+		where $\mu_n$ is the sheaf of $n\ordinalth$ roots of unity on $X$. This has but one flaw: it is usually not exact. Indeed, for $(-)^n\colon \Oo_X^\times\morphism\Oo_X^\times$ to be an epimorphism, we would have to take \enquote{local $n\ordinalth$ roots} in $\Oo_X^\times$, which is usually not possible. Instead, taking a \enquote{local $n\ordinalth$ root} corresponds to some quasi-finite morphism $X'\morphism X$, which need not be an open immersion in the Zariski topology---that's the point! \emph{But if} morphisms like $X'\morphism X$ would count as a open subsets in some topology, then the above sequence might well be exact in that topology!
+		
+		In the étale topology, \emph{étale morphisms} (i.e.\ those that are flat and unramified) play the role of open subsets. It will turn out that the above sequence is exact as a sequence of étale sheaves. So after all it should come as no surprise that every étale morphism is also quasi-finite.
+	\end{exm}
+	
+	
+	\section{Reminder on Flat Morphisms}
+	This section is really just a crash course. Professor Franke gave a much more detailed introduction to flat morphisms in his Jacobians of curves lecture. It can be found in \cite[Chapter~2]{jacobians}.
+	\begin{defprop}
+		An $A$-module $M$ is \defemph{flat} if $-\otimes_AM\colon \cat{Mod}_A\morphism\cat{Mod}_A$ is an exact functor, or equivalently, if $\Tor_i^A(-,M)=0$ for all $i>0$.
+	\end{defprop}
+	\begin{defprop}
+		Let $f\colon X\morphism Y$ a morphism of schemes and $\Ff$ a quasi-coherent $\Oo_X$-module. Then $\Ff$ is called \defemph{flat over $\Oo_Y$} if the following equivalent conditions hold.
+		\begin{alphanumerate}
+			\item For all affine open subsets $U\subseteq X$, $V\subseteq Y$ such that $f(U)\subseteq V$, $\Global(U,\Ff)$ is a flat $\Global(V,\Oo_Y)$-module.
+			\item It is possible to cover $X$ with affine opens $U$ and $Y$ with affine opens $V$ such that the above holds.
+			\item If $x\in X$ and $y\coloneqq f(x)$, then $\Mm_x$ is a flat $\Oo_{Y,y}$-module.
+		\end{alphanumerate}
+		In the case where $\Oo_X$ itself is flat over $\Oo_Y$, the morphism $f$ is called a \defemph{flat morphism}.
+	\end{defprop}
+	\begin{rem}
+		\begin{alphanumerate}
+			\item The property of being a flat morphism is local on source and target and stable under composition and base-change. That is, if $f\colon X\morphism Y$ is flat and $Y'\morphism Y$ is any morphism, then the base change 
+			\begin{align*}
+				f'\colon X\times_YY'\morphism Y'
+			\end{align*}
+			is flat again.
+			\item When $f$ is flat, the pullback functor $f^*\colon \cat{Mod}_{\Oo_X}\morphism\cat{Mod}_{\Oo_Y}$ is exact.
+		\end{alphanumerate}
+	\end{rem}
+	\begin{prop}[Flat base change]\label{prop:FlatBaseChange}
+		Consider the following pullback diagram of morphisms of schemes
+		\begin{equation*}
+			\begin{tikzcd}
+				X'\rar["f'"]\dar["g'", swap]\drar[pullback] & Y'\dar["g"]\\
+				X\rar["f"] & Y
+			\end{tikzcd}\,,
+		\end{equation*}
+		where $f$ is quasi-compact separated and $g$ is flat. Let $\Ff$ be a quasi-coherent $\Oo_X$-module.
+		\begin{alphanumerate}
+			\item Assume $Y=\Spec A$ and $Y=\Spec A'$ are affine (so $A'$ is a flat $A$-algebra). Then there is a natural isomorphism
+			\begin{equation*}
+				H^i(X,\Ff)\otimes_AA'\isomorphism H^i(X',g'^*\Ff) \quad\text{for all }i\geq 0\,.
+			\end{equation*}
+			\item For arbitrary $Y$ and $Y'$ there is a natural isomorphism
+			\begin{equation*}
+				g^*R^if_*\Ff\isomorphism R^if'_*(g'^*\Ff)\quad\text{for all }i\geq 0\,.
+			\end{equation*}
+		\end{alphanumerate}
+	\end{prop}
+	\begin{proof}[Sketch of a proof]
+		Note that the cohomology of quasi-coherent sheaves on quasi-compact separated schemes can be computed as the \v Cech cohomology of an affine open cover. This easily shows \itememph{a}. Part~\itememph{b} can be checked locally, hence it can be reduced to \itememph{a}. For more details, check out \cite[Subsection~2.1.1]{jacobians}.
+	\end{proof}
+	\begin{rem*}
+		\cref{prop:FlatBaseChange} already holds if $f$ is quasi-compact and quasi-separated (but in this case \v Cech cohomology no longer computes sheaf cohomology). To prove this, one uses the \v Cech-to-derived spectral sequence to reduce the quasi-separated case to the separated case (check out \cite[\stackstag{02KH}]{stacks-project} for details).
+	\end{rem*}
+	\begin{defi}
+		A morphism $f\colon X\morphism Y$ is called \emph{faithfully flat} if it is flat and surjective (as a map on underlying sets).
+	\end{defi}
+	Before we give the next definition, let's fix the following notation: we denote by
+	\begin{align*}
+		q_i\colon X\times_YX&\morphism X\,,\\
+		\quad p_i\colon X\times_YX\times_YX&\morphism X\,,\\
+		\quad p_{k,l}\colon X\times_YX\times_YX&\morphism X\times_YX
+	\end{align*}
+	the canonical projections to the $i\ordinalth$ factor, to the $j\ordinalth$ factor, and to the $k\ordinalth$ and $l\ordinalth$ factor respectively. Here $i\in \{1,2\}$ and $j,k,l\in\{1,2,3\}$.
+	\begin{defi}\label{def:descent}
+		Let $f\colon X\morphism Y$ be a morphism of schemes. A \defemph{descent datum} for $f$ is a pair $(\Ff,\mu)$, where $\Ff$ is a quasi-coherent $\Oo_X$-module and $\mu$ is an isomorphism
+		\begin{equation*}
+			\mu\colon q_1^*\Ff\isomorphism q_2^*\Ff\,,
+		\end{equation*}
+		such that the following diagram commutes:
+		\begin{equation}\label{diag:cocycle}
+			\begin{tikzcd}
+				p_1^*\Ff \drar[iso,"p_{1,3}^*(\mu)"{swap}]\ar[rr,iso,"p_{1,2}^*(\mu)"{swap}]& & p_2^*\Ff\dlar[iso,"p_{2,3}^*(\mu)"]\\
+				& p_3^*\Ff &
+			\end{tikzcd}\,.
+		\end{equation}
+		A \defemph{morphism of descent data} $\phi\colon (\Ff,\mu)\morphism(\Ff',\mu')$ is a morphism of $\Oo_X$-modules $\phi\colon \Ff\morphism\Ff'$ such that the diagram
+		\begin{equation*}
+			\begin{tikzcd}
+				q_1^*\Ff\rar[iso,"\mu"{swap}]\dar["q_1^*(\phi)"{swap}] & q_2^*\Ff\dar["q_2^*(\phi)"]\\
+				q_1^*\Ff'\rar[iso,"\mu'"{swap}]& q_2^*\Ff'
+			\end{tikzcd}
+		\end{equation*}
+		commutes. One thus obtains a \defemph{category of descent data} for $f$, which is denoted $\cat{Desc}_{X/Y}$.
+	\end{defi}
+	\begin{rem*}
+		You might have seen a different definition of descent data, which, instead of a single morphism $f\colon X\morphism Y$ and a single $\Ff$, considers a family of morphisms $\{X_i\morphism Y\}_{i\in I}$ and for each $i\in I$ an $\Oo_{X_i}$-module $\Ff_i$. For example, this is the definition used in \cite[\stackstag{023A}]{stacks-project}. On taking $X=\coprod_{i\in I}X_i$ this definition becomes equivalent to \cref{def:descent}. Under this equivalence, \cref{diag:cocycle} becomes the infamous \emph{cocycle condition}.
+	\end{rem*}
+	\begin{rem}\label{rem:descentFunctor}
+		\begin{alphanumerate}
+			\item The notion of a \emph{descent datum} can be defined in a purely abstract way, as soon as one has suitable \enquote{pullback functors} $f^*$. The abstract framework to do are \defemph{fibred categories}. See \cite[Exposé~VI]{sga1}.
+			\item There is a functor $f^*\colon \cat{QCoh}_{\Oo_Y}\morphism\cat{Desc}_{X/Y}$ that assigns to a quasi-coherent $\Oo_Y$-module $\Gg$ the pair $(f^*\Gg,\mu_\Gg)$, where $\mu_\Gg$ is the canonical isomorphism
+			\begin{equation*}
+				\mu_\Gg\colon q_1^*f^*\Gg\isomorphism(fq_1)^*\Gg=(fq_2)^*\isomorphism q_2^*f^*\Gg\,.
+			\end{equation*}
+		\end{alphanumerate}
+	\end{rem}
+	\begin{thm}
+		If $f\colon X\morphism Y$ is faithfully flat and quasi-compact (which we abbreviate as \enquote{fpqc} in the following), then the functor $f^*\colon \cat{QCoh}_{\Oo_Y}\morphism \cat{Desc}_{X/Y}$ from \cref{rem:descentFunctor}\itememph{b} is an equivalence of categories.
+	\end{thm}
+	\begin{proof}[Sketch of a proof]
+		The proof consists of two essentially independent steps and a third step that combines the first two. Step~1 is to prove the assertion under the assumption that $f$ has a section $\sigma\colon Y\morphism X$ (this is pretty much straightforward). Step~2 is to construct a right-adjoint $R\colon \cat{Desc}_{X/Y}\morphism \cat{QCoh}_{\Oo_Y}$ of $f^*$.\footnote{Professor Franke emphasizes that this should be in every mathematicians bag of tricks: if you are to show that some functor is an equivalence, look for a right- or left-adjoint!}
+		
+		In Step~3 we show that $R$ (and thus $f^*$) is an equivalence of categories. This boils down to checking that unit and counit of the adjunction are natural isomorphisms. However, a map being an isomorphism can be checked after faithfully flat base change. Base-changing by $f$ itself, we end up in a situation where a section $\sigma$ exists---the diagonal $\Delta\colon X\morphism X\times_YX$. So Step~1 can be applied, which concludes the proof. For more details check out \cite[Theorem~7]{jacobians}.
+	\end{proof}
+	
+	\appendix
+	\backmatter\KOMAoption{chapterprefix}{false}
+	\printbibliography
+\end{document}
