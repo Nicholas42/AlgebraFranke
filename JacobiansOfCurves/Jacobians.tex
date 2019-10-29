@@ -2506,7 +2506,7 @@ In particular, Proposition~\reff{prop:smoothnessCriteria} implies that the relat
 \begin{alphanumerate}
 	\item The morphism $u_\pp\colon M_\pp\morphism P_\pp$ is split injective.
 	\item There is an $f\in A\setminus \pp$ such that $u_f\colon M_f\morphism P_f$ is split injective.
-	\item The morphism $u\otimes\id_{\KK(\pp)}\colon M\otimes_A\KK(\pp)\morphism P\otimes_A\KK(\pp)$.
+	\item The morphism $u\otimes\id_{\KK(\pp)}\colon M\otimes_A\KK(\pp)\morphism P\otimes_A\KK(\pp)$ is injective.
 \end{alphanumerate}
 \end{lem}
 \begin{proof}
@@ -2642,7 +2642,7 @@ The following lemma uses the notion of depth and Cohen--Macaulay rings. If you d
 	Then $B$ is flat over $A$.
 \end{lem}
 \begin{proof}
-	We do induction on $\dim A$. If $\dim A=0$, then $A$ being regular implies that $A$ is a field and the assertion is trivial. Now let $\dim A>0$ and thus also $\dim B>0$ by assumption. Let $\qq_1,\ldots,\qq_n$ be the finitely many minimal prime ideals of $B$. We claim that $\qq_i\nsupseteq \mm_AB$ for all $i$. Indeed, otherwise we would have $\dim B=\dim B/\qq_i\leq \dim B/\mm_AB$, hence $\dim A=0$. Therefore, if $\pp_i=\qq_i\cap A$ denotes the preimage of $\qq_i$ in $A$, then $\pp_i\subsetneq \mm_A$. In particular, by prime avoidance (see \cite[Lemma~2.5.1]{alg1}) it is possible to choose an element $x\in\mm_A\setminus\bigcup_{i=1}^n\pp_i$.
+	We do induction on $\dim A$. If $\dim A=0$, then $A$ being regular implies that $A$ is a field and the assertion is trivial. Now let $\dim A>0$ and thus also $\dim B>0$ by assumption. Let $\qq_1,\ldots,\qq_n$ be the finitely many minimal prime ideals of $B$. We claim that $\qq_i\nsupseteq \mm_AB$ for all $i$. Indeed, otherwise we would have $\dim B=\dim B/\qq_i\leq \dim B/\mm_AB$, hence $\dim A=0$. Therefore, if $\pp_i=\qq_i\cap A$ denotes the preimage of $\qq_i$ in $A$, then $\pp_i\subsetneq \mm_A$. In particular, by prime avoidance (see \cite[Lemma~2.5.1]{alg1}) it is possible to choose an element $x\in\mm_A\setminus\bigcup_{i=1}^n\pp_i$. Without restriction, $x$ belongs to a minimal generating set of $\mm_A$.
 	
 	The plan is to replace $B$ and $A$ by $B/xB$ and $A/xA$. Since $B$ is Cohen--Macaulay, all associated primes are minimal (see \cite[Corollary~2.4.2]{stacks-project}), so the $\qq_i$ comprise all the associated primes of $B$. Thus, by choice of $x$ and \cite[Proposition~A.3.3\itememph{a}]{homalg}, we see that multiplication with $x$ is injective on $B$. Hence $(x)$ is a $B$-regular sequence. By \cite[Proposition~2.3.2\itememph{b}]{homalg} we may extend it to a $B$-regular sequence $(x,x_2,\ldots,x_n)$, where $n=\depth_B(B)=\dim B$. Then $(x_2,\ldots,x_n)$ is a $B/xB$-regular sequence, so that $\depth_{B/xB}(B/xB)\geq n-1$. But $\dim B/xB\leq n-1$ (since none of the minimal prime ideals $\qq_i$ contains $x$), so \cite[Fact~2.4.1]{homalg} shows that equality must hold in both inequalities. In particular, $B/xB$ is Cohen--Macaulay again.
 	
@@ -3378,7 +3378,7 @@ So the first step will be to construct quotients of schemes (which are also need
 \section{Quotients by actions of finite groups}
 Let $X$ be any prescheme on which a finite group $G$ acts (via morphisms of preschemes). Define the quotient $X/G$ (which is a priori only a ringed space but not a prescheme) in the following way: 
 \begin{itemize}
-	\item \emph{Points.} On point-set level, $X$ consists of the $G$-orbits, and $\pi\colon X\morphism X/G$ maps a point to its orbit.
+	\item \emph{Points.} On point-set level, $X/G$ consists of the $G$-orbits, and $\pi\colon X\morphism X/G$ maps a point to its orbit.
 	\item \emph{Topology}. A subset $U\subseteq X/G$ is open iff $\pi^{-1}(U)\subseteq X$ is open, i.e., we equip $X/G$ with the canonical quotient topology.
 	\item \emph{Structure sheaf.} We put $\Oo_{X/G}=(\pi_*\Oo_X)^G$. That is, for every open $U\subseteq X/G$,
 	\begin{align*}

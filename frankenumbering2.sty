@@ -11,18 +11,18 @@
 	\@ifundefined{c@#2}{%
 		\def\@tempa{\@nocounterr{#2}}%
 	}{%
-	\@xp\xdef\csname the#1\endcsname{\@xp\@nx\csname the#2\endcsname}%
-	\toks@{#3}%
-	\@xp\xdef\csname#1\endcsname{%
-		\@nx\@thm{%
-			\let\@nx\thm@swap
-			\if S\thm@swap\@nx\@firstoftwo\else\@nx\@gobble\fi
-			\@xp\@nx\csname th@\the\thm@style\endcsname}%
-		{#2}{\the\toks@}}%
-	\let\@tempa\relax
-}%
-\fi
-\@tempa
+		\@xp\xdef\csname the#1\endcsname{\@xp\@nx\csname the#2\endcsname}%
+		\toks@{#3}%
+		\@xp\xdef\csname#1\endcsname{%
+			\@nx\@thm{%
+				\let\@nx\thm@swap
+				\if S\thm@swap\@nx\@firstoftwo\else\@nx\@gobble\fi
+				\@xp\@nx\csname th@\the\thm@style\endcsname}%
+			{#2}{\the\toks@}}%
+		\let\@tempa\relax
+	}%
+	\fi
+	\@tempa
 }
 
 \usepackage{xstring}
@@ -162,10 +162,10 @@
 	\IfBeginWith{#1}{sec:}{\setcounter{IsThisATheorem}{1}}{}%
 	\IfBeginWith{#1}{subsec:}{\setcounter{IsThisATheorem}{1}}{}%
 	\ifnum\value{IsThisATheorem}=1%
-		\hyperref[#1]{\getrefnumber{#1}}%ugly workaround for some \ref bug
+	\hyperref[#1]{\getrefnumber{#1}}%ugly workaround for some \ref bug
 	\else%
-		\edef\temp{\getrefnumber{lblsubsec#1}}%
-		\IfBeginWith{\temp}{\thesection}{\hyperref[#1]{\getrefnumber{#1}}}{\hyperref[#1]{\temp.\getrefnumber{#1}}}%
+	\edef\temp{\getrefnumber{lblsubsec#1}}%
+	\IfBeginWith{\temp}{\thesection}{\hyperref[#1]{\getrefnumber{#1}}}{\hyperref[#1]{\temp.\getrefnumber{#1}}}%
 	\fi
 }
 
@@ -187,3 +187,4 @@
 \newenvironment{rmnumerate}{\begin{enumerate}[label={\upshape(\roman*)},ref=\curthm]}{\end{enumerate}}   
 \renewenvironment{itemize}{\begin{enumerate}[label={$\bullet$},ref=\curthm]}{\end{enumerate}}
 \newenvironment{ordnumerate}{\begin{enumerate}[label={\upshape\arabic*.},ref=\curthm]}{\end{enumerate}}   
+
