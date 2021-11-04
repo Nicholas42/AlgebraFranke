@@ -33,7 +33,7 @@
 	\pagenumbering{roman}
 	
 	\thispagestyle{plain}
-	This text consists of notes of the lecture Algebra I, taught at the University of Bonn by Professor Jens Franke in the summer term (Sommersemester) 2017. 
+	This text consists of unofficial notes on the lecture Algebra I, taught at the University of Bonn by Professor Jens Franke in the summer term (Sommersemester) 2017. 
 	
 	Please report bugs, typos etc. through the \emph{Issues} feature of github.
 	
@@ -279,10 +279,10 @@
 	Recall the Hilbert Basissatz (Theorem~\reff{thm:Basissatz}) from Section~\ref{sec:NoetherianRings}.
 	\setcounter{thm}{0}
 	\begin{thm}
-		If $R$ is noetherian, so is the polynomial ring $R[T]$.\nopagebreak
+		If $R$ is noetherian, so is the polynomial ring $R[T]$.
 	\end{thm}
 	\begin{proof}\lbl{proof:HilbertBasis}
-		Let $I\subseteq R[T]$ be an ideal. Let $R[T]_{\leq n}$ be the set of polynomials over $R$ of degree $\leq n$. This is isomorphic to $R^{n+1}$ ($1,T,\ldots, T^n$ being free generators) as $R$-modules, thus noetherian (Proposition~\reff{prop:ringNoetherianModule}) which implies that $I_{\leq n} = I \cap R[T]_{\leq n}$ is a finitely generated $R$-module. \newpage
+		Let $I\subseteq R[T]$ be an ideal. Let $R[T]_{\leq n}$ be the set of polynomials over $R$ of degree $\leq n$. This is isomorphic to $R^{n+1}$ ($1,T,\ldots, T^n$ being free generators) as $R$-modules, thus noetherian (Proposition~\reff{prop:ringNoetherianModule}) which implies that $I_{\leq n} = I \cap R[T]_{\leq n}$ is a finitely generated $R$-module. 
 		We put 
 		\begin{align*}
 			I_n=\left\{a_n\in R\st a_0+a_1T+\ldots+a_nT^n\in I\text{ for some }a_0,\ldots,a_{n-1}\in R\right\}\;.
@@ -373,7 +373,7 @@
 		See H. Matsumura, \href{http://www.math.unam.mx/javier/Matsumura.pdf}{\emph{Commutative Ring Theory}} \cite[Theorem~3.7]{matsumuraCRT}.
 	\end{proof}
 	\section{The notion of integrity and the Noether normalization theorem}
-	Remark of the authors: It's called integrity not entireness \ldots
+	%Remark of the authors: It's called integrity not entireness \ldots
 	\begin{defi}\lbl{def:integrity}
 		Let $A\subseteq B$ be a ring extension. We call $b\in B$ \defemph{integral} over $A$ if it satisfies an equation
 		\begin{align*}
@@ -861,7 +861,7 @@
 		\begin{alphanumerate}
 			\item Even the finiteness of $\dim(k^n)$ is not trivial. 
 			\item In topology, the fact that no open subset $U\subseteq \IR^n$, $U\neq \emptyset$ is homeomorphic to any open $V\subseteq \IR^k$ for $k\neq n$ is not trivial. Among the first proofs are by Brouwer and Lebesgue (\emph{Pflastersatz, Lebesgue covering theorem}).
-			\item For $\Spec R$ with $R$ noetherian, $\codim(A,B)$ is finite for irreducible $A\subseteq B$ (quite hard, probably Krull (even though Krull was a \emph{n00b} compared to Grothendieck)) but there are examples where $\Spec R$ is infinite-dimensional (relatively easy), there are closed points of differing codimensions (quite easy) and $\Spec R$ may fail to be catenary (very hard, Nagata) but the $R$ encountered in free nature are catenary.
+			\item For $\Spec R$ with $R$ noetherian, $\codim(A,B)$ is finite for irreducible $A\subseteq B$ (quite hard, probably Krull) but there are examples where $\Spec R$ is infinite-dimensional (relatively easy), there are closed points of differing codimensions (quite easy) and $\Spec R$ may fail to be catenary (very hard, Nagata) but the $R$ encountered in free nature are catenary.
 		\end{alphanumerate}
 		
 	\end{rem*}
@@ -871,7 +871,7 @@
 	\begin{proof}
 		Let $f\in \pp \setminus \{0\}$ and $f = \prod_{i=1}^n p_i$ (note $n\neq 0$ as $f\not \in R^\times$, as $\pp$ is prime) be its decomposition into prime factors, then one of the $p_i$ must be in $\pp$, since $\pp$ is prime.
 	\end{proof}
-	\begin{prop}[a.k.a. Proposition 4, formerly known as Proposition 1, srsly get your shit together]\lbl{prop:primesHaveCodim1}
+	\begin{prop}[a.k.a. Proposition 4, formerly known as Proposition 1]\lbl{prop:primesHaveCodim1}
 		Let $p\in R=k[X_1,\ldots, X_n]$ be an irreducible polynomial. Then $V(p)$ (irreducible by Corollary~\reff{cor:irreducibleSetsAnsPolynomials}) is of codimension 1 in $k^n$ and all subsets of $k^n$ of codimension 1 can be obtained in this way.
 	\end{prop}
 	\begin{proof}
@@ -1010,7 +1010,7 @@
 		\end{alphanumerate}
 	\end{rem*}
 	\begin{proof}[Proof of Proposition~\reff{prop:primeIdealIso}]
-		For some reason, the proof given in the lecture contained a completely unnecessary technical step which we will avoid here.
+		For some reason, the proof given in the lecture contained an unnecessary technical step which we will avoid here.
 		
 		Well-definedness is immediate. To see injectivity, note that $f\in R$ vanishes on $X=V(\pp)$ iff $f\in\sqrt{\pp}=\pp$ by Proposition~\reff{prop:varietyOfRadical}. So the tricky part will be surjectivity. Let $f\in \Oo(X)$. Let $U_1,\ldots,U_n\subseteq X$ be open subsets for which there are polynomials $p_i,q_i\in R$ such that $V(q_i)\cap U_i=\emptyset$ and $f=\frac{p_i}{q_i}$ on $U_i$ for $i=1,\ldots,n$. We may choose the $U_i$ such that $X=\bigcup_{i=1}^nU_i$. Indeed, by  Definition~\reff{def:regularFunctions}, any $\xi\in X$ has an open neighbourhood $U_\xi\ni\xi$ in $X$ on which $f$ is the quotient of two polynomials and we may choose $U_1,\ldots,U_n$ to be a finite subcovering of $X=\bigcup_{\xi\in X}U_\xi$ (recall that $X$ is noetherian and an open subset of itself, hence quasicompact by Definition~\reff{def:topologicalNoetherian}\itememph{c}). 
 		
@@ -1178,7 +1178,7 @@
 		By Fact~\reff{fact:complemntOfVarietiesFormBase} and Proposition~\reff{prop:quasiIsomAffine} it follows that the \emph{affine open subsets} (open subsets which are isomorphic to affine algebraic varieties) form a base of the topology of any quasi-affine algebraic varieties.
 	\end{proof}
 	However, not every quasi-affine algebraic variety is isomorphic to an affine one, as shown by the following example.
-	\begin{rem}[or maybe 2, who knows? But sparrows are butterflies, so who cares?]\lbl{rem:NotAffineVariety}
+	\begin{rem}[or maybe Remark~2?]\lbl{rem:NotAffineVariety}
 		Let $n\geq2$. We prove that $k^n\setminus\{0\}$ isn't isomorphic to any affine algebraic variety. We claim 
 		\begin{align*}
 			k[X_1,\ldots, X_n] \cong\Oo(k^n\setminus\{0\})\;.
@@ -1738,7 +1738,7 @@
 	\begin{align*}
 		\{0\}^d\subsetneq k\times\{0\}^{d-1}\subsetneq k^2\times\{0\}^{d-2}\subsetneq\ldots\subsetneq k^d
 	\end{align*}
-	of irreducible subsets of $k^d$ to a chain of irreducible subsets of $X$ of the same length, which would establish equality in Corollary~\reff{cor:transcendenceDegreeDimension}. At this point, the going-up and going down theorem of Krull (who certainly was a \emph{n00b} compared to Grothendieck) and Cohen/Seidenberg are our friends and will be proved in the next section.
+	of irreducible subsets of $k^d$ to a chain of irreducible subsets of $X$ of the same length, which would establish equality in Corollary~\reff{cor:transcendenceDegreeDimension}. At this point, the going-up and going down theorem of Krull and Cohen/Seidenberg are our friends and will be proved in the next section.
 	
 \section{Lifting of prime ideals to integral ring extensions}
 	\begin{defi}\lbl{def:goingup/down}
@@ -1838,7 +1838,7 @@
 			
 		If $y\in Y$ belongs to $\ov{f(Z)} = V(\pp)$ (they are equal due to \itememph{b}), then the maximal ideal  $\qq = \left\{f\in\Oo_Y(Y)\st f(y) = 0\right\}$ contains $\pp$. By our going-up assumption there is a prime ideal $\snake \qq\supseteq \snake\pp$ of $\Oo_X(X)$ such that $(f^*)^{-1} \snake\qq = \qq$. Let $\mm\supseteq \snake\qq$ be a maximal ideal, then $(f^*)^{-1}\mm \supseteq (f^*)^{-1} \snake\qq = \qq$ and equality holds as $\qq$ is already maximal. The maximal ideal $\mm\subseteq \Oo_X(X)$ corresponds to a point $x\in X$. From $\snake \pp\subseteq\snake\qq\subseteq\mm$ it follows, that $V(\mm) = \left\{x\right\}\subseteq V(\snake \pp)$, that is, $x\in V(\snake\pp)$. We have $f(x) = y$ because $V(\qq) = \left\{y\right\} $ but $f(x)\in V(\qq)$ as $\ov{f(x)}=V\big((f^*)^{-1}\mm\big) = V(\qq)$ by \itememph{b}. Hence, $y$ has a preimage $x\in V(\snake \pp)=Z$ and $f(Z)=V(\pp)$ is closed, as was claimed.
 	\end{proof}
-	Professor Franke does not [know] to what extent the following is due to the \emph{n00b} Krull or to Cohen/Seidenberg.
+	Professor Franke does not [know] to what extent the following is due to Krull or to Cohen/Seidenberg.
 	\begin{thm}\lbl{thm:goingupInIntegralRingExtensions}
 		Let $A\subseteq B$ be an integral ring extension.
 		\begin{alphanumerate}
@@ -1951,7 +1951,7 @@
 			It is actually sufficient to assume that $A$ is integrally closed in $K$ and $B$ is a $\Aut(L/K)$-invariant subset of the integral closure of $A$ in $L$.
 		\item
 			This result is also important in algebraic number theory where $A=\Oo_K$, $B=\Oo_L$ are the rings of integers in their respective fields. 
-		\item If $L/K$ is infinite algebraic, $\Aut(L/K)$ is equipped with the \emph{Krull topology} (which has -- Heaven forbid! -- nothing to do with \emph{Grothendieck topologies}), in which $X\subseteq \Aut(L/K)$ is a neighbourhood of $\sigma\in\Aut(L/K)$ iff there is an intermediate field $K\subseteq M\subseteq L$ such that $X\supseteq\left\{\vartheta \in \Aut(L/K)\st \vartheta|_M = \sigma|_M\right\}$ and $M/K$ is finite. When $L/K$ is normal and separable over $K$ (that is, an infinite Galois extension) this is equivalent to saying that $\sigma\Gal(L/M)\subseteq X$ for some finite Galois subextension $M/K$, i.e. the sets $\sigma\Gal(L/M)$, where $M/K$ is a finite Galois subextension, form a neighbourhood system of $\sigma$, and  there is a bijection 
+		\item If $L/K$ is infinite algebraic, $\Aut(L/K)$ is equipped with the \emph{Krull topology}, in which $X\subseteq \Aut(L/K)$ is a neighbourhood of $\sigma\in\Aut(L/K)$ iff there is an intermediate field $K\subseteq M\subseteq L$ such that $X\supseteq\left\{\vartheta \in \Aut(L/K)\st \vartheta|_M = \sigma|_M\right\}$ and $M/K$ is finite. When $L/K$ is normal and separable over $K$ (that is, an infinite Galois extension) this is equivalent to saying that $\sigma\Gal(L/M)\subseteq X$ for some finite Galois subextension $M/K$, i.e. the sets $\sigma\Gal(L/M)$, where $M/K$ is a finite Galois subextension, form a neighbourhood system of $\sigma$, and  there is a bijection 
 		\begin{align*}
 			\left\{\text{closed subgroups }H\subseteq \Gal(L/K)\right\}&\isomorphism\left\{\text{intermediate fields }M\subseteq L\right\}\\
 			H&\longmapsto M= L^H\\

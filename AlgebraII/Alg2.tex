@@ -33,7 +33,7 @@
 \maketitle
 \pagenumbering{roman}
  \thispagestyle{plain}
-This text consists of notes of the lecture Algebra~II, taught at the University of Bonn by Professor Jens Franke in the winter term (Wintersemester) 2017/18. 
+This text consists of unofficial notes on the lecture Algebra~II, taught at the University of Bonn by Professor Jens Franke in the winter term (Wintersemester) 2017/18. 
 
 Please report bugs, typos etc. through the \emph{Issues} feature of github.
 
@@ -69,7 +69,7 @@ Professor Franke recommends the following literature:
 	\item Matsumura, H.: \emph{Commutative Ring Theory} \cite{matsumuraCRT}
 	\item Atiyah, M. \& MacDonald, I.: \emph{Introduction to Commutative Algebra}
 \end{itemize}
-The oh-so-humble authors of these notes want to use this opportunity to recommend
+The not-particularly-humble authors of these notes want to use this opportunity to recommend
 \begin{itemize}
 	\item Schwab, N. \& Wagner, F.:  \href{https://github.com/Nicholas42/AlgebraFranke/tree/master/AlgebraI}{\emph{Algebra~I by Jens Franke}} \cite{alg1}.
 \end{itemize}
@@ -1138,7 +1138,7 @@ It should be mentioned, though, that an exhaustive, self-contained, and very rea
     If $A$ is an algebra of finite type over a perfect field $k$ and $\pp\in\Spec A$ then $A_\pp$ is a regular local ring iff $\Omega_{A/k}$ is locally free of rank $\dim(A_\pp)+\trdeg(\KK(\pp)/k)$ at $\pp$. If $A$ is reduced or $\cha k=0$, we only need that $\Omega_{A/k}$ is locally free at $\pp$.
 \end{prop}
 \begin{rem*}
-	Note that Proposition~\reff{prop:finiteTypeAlgebrasRegular} is not quite what it was in the lecture.  Franke formulated the result only for maximal ideals of $A$ (but it holds for every prime ideal) and didn't mention the additional conditions in the case where $\Omega_{A/k}$ is only locally free at $\pp$ but we do not yet know its rank. However, Eisenbud, cf. \cite[Corollary~16.22]{eisenbudCommAlg}, and The Stacks Project, cf. \cite[\stackstag{00TX}]{stacks-project}, believe this is necessary, and when it comes down to facts Franke casually mentions without proving them because they are ``perhaps worthwhile to know'' I trust them more than I trust him.
+	Note that Proposition~\reff{prop:finiteTypeAlgebrasRegular} is not quite what it was in the lecture.  Franke formulated the result only for maximal ideals of $A$ (but it holds for every prime ideal) and didn't mention the additional conditions in the case where $\Omega_{A/k}$ is only locally free at $\pp$ but we do not yet know its rank. However, Eisenbud, cf. \cite[Corollary~16.22]{eisenbudCommAlg}, and The Stacks Project, cf. \cite[\stackstag{00TX}]{stacks-project}, believe this is necessary. Given that Professor Franke only mentioned this proposition as a ``perhaps worthwhile to know'' side remark, he probably just forgot to add these conditions.
 \end{rem*}
 \begin{proof}[Proof of Proposition~\reff{prop:finiteTypeAlgebrasRegular}] We start with the following lemma, which together with its proof is taken from \cite[\stackstag{00TU}]{stacks-project}.
 \begin{lem}\lbl{lem:kahlerQuotientIsomorphism}
@@ -1700,7 +1700,7 @@ As $\pp$ is homogeneous, $S(X)$ inherits a grading $S(X)=\bigoplus_{d\geq 0}S_d(
     \end{alphanumerate}
 \end{rem*}
 \begin{proof}[Proof of Theorem~\reff{thm:gradedRing}]
-    The proof of \itememph{a} is similar to what was done in the affine case, that is, in \cite[Proposition~2.2.2]{alg1}. Professor Franke's proof even contained the same unnecessary technical step, which we will -- again -- avoid. As they were before, well-definedness and injectivity are easy again so surjectivity is what we need to worry about. 
+    The proof of \itememph{a} is similar to what was done in the affine case, that is, in \cite[Proposition~2.2.2]{alg1}. Professor Franke's proof even contained the same unnecessary technical step, which we will again avoid. As they were before, well-definedness and injectivity are easy again so surjectivity is what we need to worry about. 
     
     Let $\eta\in \Oo(\ell)(X\setminus V(f))$ (the case $\ell=0$ corresponds to the study of $\Oo(X\setminus V(f))$), where $f\neq 0$ is homogeneous of degree $\delta >0$. Denote $X^\circ=X\setminus V(f)$ for short. By Definition~\reff{def:regularFunction}\itememph{b} and Remark~\reff{rem:projectiveRegularStuff}\itememph{b}, every $x\in X^\circ$ has an open neighbourhood $U_x\subseteq X^\circ$ such that there are polynomials $p_x,q_x\in R=k[X_0,\ldots, X_n]$ where $q_x$ is homogeneous of degree $b_x$, $p_x$ of degree $a_x = b_x+\ell$ and $V(q_x)\cap U_x = \emptyset$ and such that 
     \begin{align*}
@@ -2323,7 +2323,7 @@ and we have bijections
     \end{align*}
     where the length is of $\Oo_{X,Z}$-modules and in the middle term, $F$ is any element of $k[X_0,\ldots, X_n]_d$ not identically vanishing on $Z$.
 \end{defi}
-\begin{proof}[You know you are attending a Franke lecture when a definition needs a proof]
+\begin{proof}[You know you are attending a Franke lecture when a definition gets proved]
 	By the same argument as in Example~\reff{ex:O(l)LineBundle}, $F$ is a free generator of $\Oo_X(d)|_{X\setminus V(F)}$. Moreover, $X\setminus V(F)$ intersects $Z$, hence $(X\setminus V(F),F)/_\sim$ is a free generator of $\Oo_X(d)_Z$. Therefore, multiplication by $F$ defines an isomorphism
 	\begin{align*}
 	\Oo_{X,Z} \Bigm/ \left(\frac{H}{F}\cdot\Oo_{X,Z}\right) \isomorphism[\cdot F] \Oo_X(d)_Z/H\cdot \Oo_{X,Z}\;.
@@ -2602,7 +2602,7 @@ From now on, let $R$ be a noetherian local ring with maximal ideal $\mm$ and $M$
 \begin{proof}
     If $J= (x_1,\ldots,x_n)_R$ is an ideal of definition then $\dim(R) = \delta(R,J) \leq n$ as before. Vice versa, if $d=\dim(R) = \delta(R,\mm)$, there are $x_1,\ldots, x_d\in R$ such that $\length_R(R/(x_1,\ldots, x_d)_R)$ is finite, hence $J= (x_1,\ldots, x_d)_R$ is an ideal of definition.
 \end{proof}
-And finally, we are able to prove Theorem~\reff{thm:krullIdeal} and thus also Krull's (who, as we all know from \cite{alg1}, was a \emph{n00b} compared to Grothendieck) principal ideal theorem, Theorem~\reff{thm:krullPrincipalIdeal}, at last!
+And finally, we are able to prove Theorem~\reff{thm:krullIdeal} and thus also Krull's principal ideal theorem, Theorem~\reff{thm:krullPrincipalIdeal}, at last!
 \begin{cor}[Krull's height theorem]\lbl{cor:KrullHeight}
     If $R$ is any noetherian ring and $\pp$ minimal among all prime ideals containing $x_1,\ldots, x_k\in R$, then $\hoehe(\pp) \leq k$.
 \end{cor}
@@ -2702,7 +2702,7 @@ We now start proving Theorem~\reff{thm:idealOfDefinition}. To do this, we will i
      
      Now let $d(M,I)\geq 1$ and let the assertion be proved for all $R$-modules $N$ with $d(N,I) < d(M,I)$. By \eqreff{eq:dimSuppM} and Corollary~\reff{cor:dEqualsMaxDim} it is sufficient to deal with the case $M=R/\pp$ with $\pp\in\Spec R$ a prime ideal. Let $\pp \subseteq \qq_0 \subsetneq \qq_1 \subsetneq \ldots \subsetneq \qq_s$ a chain of prime ideals contained in $\supp(M)$, then we may select $x\in \qq_1\setminus \qq_0 \subseteq \qq_1\setminus \pp$. Then $x$ is no zero-divisor in $M=R/\pp$ and $\qq_1\subsetneq \ldots \subsetneq \qq_s$ are still contained in $\supp(M/x M)$ hence $\dim(M/xM) \geq s -1$, but the short exact sequence $0\morphism M\morphism[\cdot x]M \morphism M/xM\morphism0$ and Corollary~\reff{cor:shortExactd} show $d(M/xM,I) <d(M,I)$. Thus $s \leq d(M,I)$.
     
-    \begin{cor*}[\emph{Yes}, a corollary inside a proof, deal with it, I also have to]
+    \begin{cor*}[\emph{Yes}, a corollary inside a proof -- why not?]
         The finite-dimensionality of $R$ has now been established.
     \end{cor*}
     
@@ -2718,7 +2718,7 @@ We now start proving Theorem~\reff{thm:idealOfDefinition}. To do this, we will i
     \end{align*}
     and if $Q_{M,I} (k) = \gamma k^d + O(k^{d-1})$ with $\gamma\neq0$ then $Q_{M,I}(k) - Q_{M,I}(k-1) = \gamma dk^{d-1} + O(k^{d-2})$. Hence $d(N,I)\geq d(M,I) -1$ and $d(M,I) \leq d(N,I) +1 \leq \delta(N,I) +1 \leq n=\delta(M,I)$.
     
-    \begin{cor*}[*facepalm*]
+    \begin{cor*}[\dotso and another one]
         The principal ideal theorem of Krull and its consequences follow.
     \end{cor*}
     
